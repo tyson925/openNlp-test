@@ -1,9 +1,6 @@
 package uy.com.collokia.opennlp
 
-import opennlp.tools.namefind.NameFinderME
-import opennlp.tools.namefind.NameSampleDataStream
-import opennlp.tools.namefind.TokenNameFinderFactory
-import opennlp.tools.namefind.TokenNameFinderModel
+import opennlp.tools.namefind.*
 import opennlp.tools.tokenize.SimpleTokenizer
 import opennlp.tools.util.PlainTextByLineStream
 import opennlp.tools.util.Span
@@ -25,15 +22,16 @@ class OpenNLPTest {
                 "Mr. Draghi spoke on the first day of an economic policy conference here organized by the E.C.B. as a sort of counterpart to the annual symposium held in Jackson Hole, Wyo., by the Federal Reserve Bank of Kansas City. ",
                 "Donald Trump's defenders have always argued that the entire notion his campaign colluded with Russia was all smoke and no fire.")
 
-        //// http://opennlp.sourceforge.net/models-1.5/en-ner-person.bin
+        // http://opennlp.sourceforge.net/models-1.5/en-ner-person.bin
         val personModelFile = "en-ner-person.bin"
+        // http://opennlp.sourceforge.net/models-1.5/en-ner-location.bin
         val locationModelFile = "en-ner-location.bin"
         val corpusTrainFile = "corpus.train"
         val customModelFile = "en-ner-custom.bin"
 
         @JvmStatic
         fun main(args: Array<String>) {
-        //    createCustomModel()
+//            createCustomModel()
             userNameFinder()
         }
 
@@ -47,7 +45,8 @@ class OpenNLPTest {
             val sampleStream = NameSampleDataStream(lineStream)
 
             val model = try {
-                NameFinderME.train("en", "custom", sampleStream, TrainingParameters.defaultParams(), TokenNameFinderFactory())
+                NameFinderME.train("en", "custom", sampleStream,
+                        TrainingParameters.defaultParams(), TokenNameFinderFactory.create(null, null, emptyMap(), BioCodec()))
 
             } finally {
                 sampleStream.close()
