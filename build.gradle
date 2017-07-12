@@ -1,0 +1,151 @@
+group 'com.collokia'
+version '1.0.0'
+description 'open nlp test'
+
+buildscript {
+    ext.kotlin_version = '1.1.3'
+    repositories {
+        maven {
+            url "https://collokia.artifactoryonline.com/collokia/collokia-internal"
+            credentials {
+                username "${collokiaRepoUser}"
+                password "${collokiaRepoPass}"
+            }
+        }
+
+        jcenter()
+        mavenCentral()
+        maven {
+            url 'http://dl.bintray.com/kotlin/kotlin-eap'
+        }
+        maven {
+            url 'http://dl.bintray.com/kotlin/kotlin-dev'
+        }
+        maven {
+            url 'http://dl.bintray.com/jaysonminard/kohesive'
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+        //classpath "com.collokia:kluster-gradle-plugin:$kluster_version"
+    }
+}
+
+
+apply plugin: 'kotlin'
+apply plugin: 'java'
+apply plugin: 'idea'
+//apply plugin: 'kluster'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+//mainClassName = 'uy.com.collokia.runSparkOnEMR.jobs.KeyphraseExtractionJob'
+
+dependencies {
+    compile "com.collokia:collokia-common-util:$util_version"
+    compile "com.collokia:collokia-stanford-CoreNLP:$corenlpVersion"
+    compile "org.apache.opennlp:opennlp-tools:$open_nlp_version"
+
+    compile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.0'
+    compile "info.bliki.wiki:bliki-core:3.0.19"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.apache.spark:spark-mllib_${scalaVersion}:${version_Spark}"
+    compile "org.apache.spark:spark-sql_${scalaVersion}:${version_Spark}"
+    compile "org.apache.spark:spark-core_${scalaVersion}:${version_Spark}"
+    compile "org.apache.spark:spark-streaming_${scalaVersion}:${version_Spark}"
+
+    compile "org.elasticsearch:elasticsearch:$versionElasticSearch"
+    compile "org.elasticsearch.client:transport:$versionElasticSearch"
+    compile "org.elasticsearch:elasticsearch-spark-20_${scalaVersion}:$versionElasticSearchMR"
+
+    compile "com.amazonaws:aws-java-sdk-s3:$version_aws_client"
+    compile "com.amazonaws:aws-java-sdk-emr:$version_aws_client"
+
+    compile "joda-time:joda-time:$version_jodatime"
+
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$version_jackson"
+    compile "com.fasterxml.jackson.core:jackson-core:$version_jackson"
+    compile "com.fasterxml.jackson.core:jackson-databind:$version_jackson"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$version_jackson_kotlin"
+    compile "com.fasterxml.jackson.module:jackson-module-scala_${scalaVersion}:$version_jackson_scala"
+
+    compile "com.collokia.resources:stopword:0.1"
+    compile "com.collokia.resources:traittagger:${traittaggerVersion}"
+    compile "com.collokia.resources:educartagger:${educartaggerVersion}"
+
+    configurations.all {
+
+        exclude module: 'org.slf4j'
+        exclude group: 'slf4j-log4j12'
+
+        resolutionStrategy {
+            eachDependency { DependencyResolveDetails details ->
+                //specifying a fixed version for all libraries with 'org.gradle' group
+                if (details.requested.group == 'io.netty' && details.requested.version == '4.1.6.Final' && details.requested.name != 'netty-resolver') {
+                    details.useVersion "4.0.42.Final"
+                }
+            }
+
+            force "com.fasterxml.jackson.core:jackson-databind:$version_jackson","com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$version_jackson","com.fasterxml.jackson.core:jackson-core:$version_jackson","com.fasterxml.jackson.module:jackson-module-kotlin:${version_jackson_kotlin}","com.fasterxml.jackson.module:jackson-module-kotlin:${version_jackson_kotlin}","com.fasterxml.jackson.module:jackson-module-scala_${scalaVersion}:$version_jackson_scala"
+
+            forcedModules = ["com.fasterxml.jackson.core:jackson-databind:$version_jackson","com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$version_jackson","com.fasterxml.jackson.core:jackson-core:$version_jackson","com.fasterxml.jackson.module:jackson-module-kotlin:${version_jackson_kotlin}","com.fasterxml.jackson.module:jackson-module-kotlin:${version_jackson_kotlin}","com.fasterxml.jackson.module:jackson-module-scala_${scalaVersion}:$version_jackson_scala"]
+        }
+    }
+
+}
+
+
+repositories {
+    maven {
+        url "https://collokia.artifactoryonline.com/collokia/collokia-internal"
+        credentials {
+            username "${collokiaRepoUser}"
+            password "${collokiaRepoPass}"
+        }
+    }
+    maven {
+        url 'https://collokia.artifactoryonline.com/collokia/collokia-oss'
+    }
+    mavenCentral()
+    jcenter()
+    maven {
+        url 'http://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        url 'http://repo.spring.io/plugins-release'
+    }
+    maven {
+        url 'http://dl.bintray.com/kotlin/kotlin-eap'
+    }
+    maven {
+        url 'http://dl.bintray.com/jaysonminard/kohesive'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.0'
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://collokia.artifactoryonline.com/collokia/collokia-internal"
+            credentials {
+                username "${collokiaRepoUser}"
+                password "${collokiaRepoPass}"
+            }
+        }
+    }
+}
