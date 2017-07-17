@@ -2,6 +2,7 @@ package uy.com.collokia.opennlp
 
 import opennlp.tools.formats.ontonotes.OntoNotesNameSampleStream
 import opennlp.tools.namefind.NameFinderME
+import opennlp.tools.namefind.TokenNameFinderEvaluator
 import opennlp.tools.namefind.TokenNameFinderFactory
 import opennlp.tools.namefind.TokenNameFinderModel
 import opennlp.tools.tokenize.SimpleTokenizer
@@ -12,10 +13,13 @@ import weka.core.tokenizers.NGramTokenizer
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.nio.charset.Charset
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.*
+
+
+
+
 
 
 class OpenNLPTest {
@@ -39,7 +43,8 @@ class OpenNLPTest {
         fun main(args: Array<String>) {
 //            createCustomModel()
 //            userNameFinder()
-            userCustomFinder()
+            evaluateCustomModel()
+            //userCustomFinder()
         }
 
         fun getTrainingFiles(): List<String> {
@@ -58,7 +63,6 @@ class OpenNLPTest {
 
         fun createCustomModel() {
             println("Creating model...")
-            val charset = Charset.forName("UTF-8")
             val trainingFiles = getTrainingFiles().map {
                 val file = File(it)
                 file.useLines {
@@ -87,7 +91,6 @@ class OpenNLPTest {
             }
 
         }
-
 
         fun userNameFinder() {
             val classLoader = Thread.currentThread().contextClassLoader
@@ -118,6 +121,30 @@ class OpenNLPTest {
                     }
                 }
                 println("Done")
+            }
+        }
+
+        fun evaluateCustomModel() {
+            val classLoader = Thread.currentThread().contextClassLoader
+            classLoader.getResourceAsStream(customModelFile).use { customModelIn ->
+                val customModel = TokenNameFinderModel(customModelIn)
+                val evaluator = TokenNameFinderEvaluator(NameFinderME(customModel))
+
+                val trainingFiles = getTrainingFiles().map {
+                    val file = File(it)
+                    file.useLines {
+                        it.toList()
+                    }
+                }.flatten()
+                val testData = trainingFiles.toMutableList().shuffle().take(trainingFiles.size/4)
+
+                val lineStream = ObjectStreamUtils.createObjectStream(testData)
+                val sampleStream = OntoNotesNameSampleStream(lineStream)
+                evaluator.evaluate(sampleStream)
+
+                println(evaluator.fMeasure.toString())
+
+
             }
         }
 
@@ -218,4 +245,15 @@ Mr. Trump has been assured a premium spot at the parade on Friday, before he ret
         }
 
     }
+}
+
+fun <T:Comparable<T>> MutableList<T>.shuffle():List<T>{
+    val rg : Random = Random()
+    for (i in 0..size - 1) {
+        val randomPosition = rg.nextInt(size)
+        val tmp : T = this[i]
+        this[i] = this[randomPosition]
+        this[randomPosition] = tmp
+    }
+    return this
 }
