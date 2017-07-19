@@ -1,0 +1,895 @@
+
+  
+    
+      
+        Background
+        Cell-fate changes that occur during development are
+        almost always accompanied by changes in gene expression.
+        Thus detailed knowledge of the spatial and temporal
+        expression patterns for all genes will be an important step
+        in deciphering the complex regulatory <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> governing
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">Two</NUMEX> methods have been used successfully to determine
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns on a large scale - <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+        in situ hybridization [ <ENAMEX TYPE="LAW">1</ENAMEX>] and DNA
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> [ <ENAMEX TYPE="LAW">2, 3, 4</ENAMEX>]. Whole-mount <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+        in situ hybridization is a
+        <ENAMEX TYPE="ORGANIZATION">well-established</ENAMEX> approach for determining precise spatial
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>], and can be done in
+        high-throughput fashion [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>]. Although <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+        in situ hybridization is carried out
+        on fixed tissues, examining a large number of differently
+        staged specimens provides an overview of the dynamic
+        changes in gene-expression patterns that occur during
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>. Expression patterns can be documented by
+        microscopy coupled to digital photography and distributed
+        on the web as a valuable resource to the research
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>.
+        Approaches using <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> have been successful in
+        studying genome-wide transcriptional regulation during
+        animal development [ <ENAMEX TYPE="LAW">9, 10, 11</ENAMEX>], but suffer from several
+        limitations. In <ENAMEX TYPE="ANIMAL">multicellular organisms</ENAMEX>, cell division and
+        <ENAMEX TYPE="PERSON">differentiation</ENAMEX> leads to an increase in tissue complexity
+        throughout development, but whole-animal microarray
+        analysis cannot document this spatial information. One can
+        attempt to isolate mRNA from every tissue at different
+        developmental <ENAMEX TYPE="FAC_DESC">stages</ENAMEX>, measure gene expression, and assign
+        expression indexes to every tissue at every time for every
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>, in order to recreate the entire developmental
+        expression pattern. This is a formidable task. Moreover,
+        the quantitative comparison of expression levels for a
+        given gene, or among different <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, in multiple
+        experiments is complicated by differential hybridization
+        <ENAMEX TYPE="ORGANIZATION">kinetics</ENAMEX> and cross-hybridization <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> of each
+        target-probe pair [ <TIMEX TYPE="DATE">12, 13</TIMEX>]. On the other hand, microarray
+        profiles do provide a quantitative <ENAMEX TYPE="PER_DESC">overview</ENAMEX> of the relative
+        changes in each gene's expression level across time.
+        We used high-throughput <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+        in situ hybridization to assemble a
+        database of gene-expression patterns during embryonic
+        <ENAMEX TYPE="ORGANIZATION">development of</ENAMEX> 
+        Drosophila melanogaster. <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones
+        are available for <NUMEX TYPE="PERCENT">70%</NUMEX> of all 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">14, 15, 16</TIMEX>],
+        providing a convenient source of templates for generating
+        specific hybridization probes for the majority of genes. 
+        Drosophila embryogenesis has been
+        studied extensively, providing a strong <ENAMEX TYPE="ORG_DESC">foundation</ENAMEX> of
+        knowledge for our project [ <TIMEX TYPE="DATE">17</TIMEX>]. Moreover, studies of a
+        large number of individual genes have documented the
+        diversity of gene-expression patterns that occur during 
+        Drosophila embryogenesis and
+        established the importance of tissue-specific gene
+        expression for development.
+        Here we describe the molecular, microscopic, and
+        computational methods we used to produce a database of 
+        Drosophila embryonic expression
+        patterns that integrates results obtained by 
+        in situ hybridization to whole-mount
+        <ENAMEX TYPE="ORGANIZATION">embryos</ENAMEX> and by expression microarrays. Expression patterns
+        are documented by assembling digital photographs of
+        individual staged embryos that are ordered to visualize
+        <ENAMEX TYPE="ORGANIZATION">time-dependent</ENAMEX> changes. To facilitate computational
+        analysis, these patterns are annotated using a controlled
+        vocabulary that captures developmental and spatial
+        relationships between embryonic tissues. We used
+        hierarchical clustering of the annotation terms to group
+        together genes with similar expression patterns as well as
+        tissues with similar sets of expressed genes. We report
+        several noteworthy observations based on our initial data,
+        which provide a glimpse of the diversity of gene expression
+        and the <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> that will derive from a complete atlas of
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns during 
+        Drosophila development. All
+        production, image and annotation data are stored in a
+        <ENAMEX TYPE="ORGANIZATION">relational</ENAMEX> database and presented in searchable form on the
+        web [ <TIMEX TYPE="DATE">18</TIMEX>].
+      
+      
+        Results and discussion
+        
+          Overview of the high-throughput in
+          situhybridization procedure
+          The starting material for the production of
+          hybridization probes was the set of cDNA clones that
+          comprise the 
+          <ENAMEX TYPE="PRODUCT">Drosophila Gene Collection</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>,
+          <TIMEX TYPE="DATE">15, 16</TIMEX>]. The cDNAs were amplified in <NUMEX TYPE="CARDINAL">96</NUMEX>-well PCR plates
+          using a vector-specific primer set that introduces a
+          <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> for the production of a digoxigenin-labeled
+          <ENAMEX TYPE="PRODUCT">antisense RNA</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> by 
+          in vitro transcription. PCR
+          products were sized to confirm the identity of each clone
+          and that the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reaction was successful (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). The
+          strength of each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> was determined by a dot-blot color
+          reaction (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). These data were entered into a
+          <ENAMEX TYPE="ORGANIZATION">relational</ENAMEX> database and later used as experimental
+          controls when assessing the outcome of each hybridization
+          experiment.
+          <ENAMEX TYPE="SUBSTANCE">RNA probes</ENAMEX> were hybridized to fixed 
+          Drosophila embryos [ <TIMEX TYPE="DATE">19</TIMEX>] in <NUMEX TYPE="CARDINAL">96</NUMEX>-well
+          <ENAMEX TYPE="ORGANIZATION">plates</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          engrailed, hunchback, brinker )
+          with well-described expression patterns were included in
+          each <NUMEX TYPE="CARDINAL">96</NUMEX>-well plate and used to monitor hybridization
+          efficiency. After hybridization, each plate was examined
+          to determine the morphology of the embryos, quality of
+          the staining and proportion of <ENAMEX TYPE="FAC_DESC">wells</ENAMEX> that showed staining
+          (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). A plate containing embryos of acceptable
+          morphology, relatively free of staining artifacts and
+          with <NUMEX TYPE="PERCENT">more than 50%</NUMEX> of the <ENAMEX TYPE="FAC_DESC">wells stained</ENAMEX> was considered
+          successful and passed on to the image-acquisition
+          stage.
+          Embryos from successful plates were mounted onto
+          <ENAMEX TYPE="ORGANIZATION">microscope</ENAMEX> slides. Low-magnification digital images of a
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> of embryos were taken (Figure <NUMEX TYPE="CARDINAL">1d</NUMEX>) to provide a
+          permanent record of the hybridization in each well.
+          Low-resolution imaging was insufficient to document
+          highly restricted expression patterns or to identify
+          small subsets of cells. For that purpose, each slide was
+          examined under higher magnification using a Zeiss
+          Axiophot optical microscope. At this stage, a human
+          <ENAMEX TYPE="ORGANIZATION">annotator</ENAMEX> carefully examined the entire slide, taking a
+          large number of high-resolution digital photographs that
+          document that gene's expression pattern (Figure <NUMEX TYPE="CARDINAL">1e</NUMEX>). All
+          images were submitted to the relational database using a
+          web-based annotation tool. We determined the success of
+          each <ENAMEX TYPE="PER_DESC">hybridization</ENAMEX> experiment by taking into account the
+          results of the agarose gel analysis of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products,
+          <ENAMEX TYPE="ORGANIZATION">dot</ENAMEX>-blot analysis of probes, microarray data (described
+          below), available information from public databases, and
+          the quality of the captured images. Each experiment had
+          <NUMEX TYPE="CARDINAL">two</NUMEX> possible outcomes: either the observed expression
+          pattern or the absence thereof was consistent with the
+          available data, or there was a discrepancy indicating
+          failure at some point and that the experiment needs to be
+          repeated. <NUMEX TYPE="PERCENT">About 13%</NUMEX> of the 
+          in <ENAMEX TYPE="SUBSTANCE">situ</ENAMEX> experiments failed, as a
+          result of either the absence of a <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> product (<NUMEX TYPE="PERCENT">9.2%</NUMEX>) or a
+          poor probe-labeling reaction (<NUMEX TYPE="PERCENT">3.4%</NUMEX>), which resulted in no
+          detectable staining. Additionally, probes that generated
+          expression patterns inconsistent with previously
+          published data (<NUMEX TYPE="PERCENT">0.3%</NUMEX>) or the microarray expression
+          profile (<NUMEX TYPE="PERCENT">7%</NUMEX>) were rejected as being possibly mislabeled
+          or cross-contaminated. Overall, we obtained useful
+          expression data for <NUMEX TYPE="CARDINAL">2,179</NUMEX> out of <NUMEX TYPE="MONEY">2,721</NUMEX> (<NUMEX TYPE="PERCENT">80%</NUMEX>) of the genes
+          whose transcript distribution we analyzed.
+        
+        
+          Documenting expression patterns by digital
+          photography
+          We captured high-resolution photographs of the <NUMEX TYPE="CARDINAL">1,388</NUMEX>
+          genes (<NUMEX TYPE="PERCENT">63.7%</NUMEX> of the <NUMEX TYPE="CARDINAL">2,179</NUMEX> successfully asssayed <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>)
+          that exhibited some level of tissue-specific gene
+          expression. The captured images were ordered according to
+          the developmental stage of the embryos in order to
+          visualize the change of the expression pattern over time.
+          <ENAMEX TYPE="ORGANIZATION">Embryogenesis</ENAMEX> is traditionally divided into a series of
+          consecutive stages distinguished by morphological markers
+          [ <TIMEX TYPE="DATE">20</TIMEX>]. The duration of developmental stages range from <NUMEX TYPE="CARDINAL">15</NUMEX>
+          <TIMEX TYPE="TIME">minutes to more than 2 hours</TIMEX>; therefore the stages of
+          development were differentially represented in our embryo
+          <ENAMEX TYPE="PERSON">collections</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). Some consecutive
+          stages, although morphologically distinguishable, differ
+          very little in terms of changes in gene expression,
+          whereas other stage transitions, such as the onset of
+          zygotic transcription or organogenesis, are accompanied
+          by massive changes in gene expression. We divided the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">16</NUMEX> stages of embryogenesis into <NUMEX TYPE="CARDINAL">six</NUMEX> convenient
+          stage ranges (stages <ENAMEX TYPE="CONTACT_INFO">1-3, 4-6, 7-8</ENAMEX>, <ENAMEX TYPE="PRODUCT">9-10</ENAMEX>, <NUMEX TYPE="CARDINAL">11-12</NUMEX> and
+          <NUMEX TYPE="CARDINAL">13-16</NUMEX>). Each captured image is assigned to a stage range,
+          and for each stage range a number of images are taken so
+          that all stages within the range are represented. The
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of images assigned to a <ENAMEX TYPE="FAC_DESC">stage range</ENAMEX> are arranged
+          in the web-based annotation tool from left to right so
+          that one can follow the pattern through development
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          We took, on average, <NUMEX TYPE="CARDINAL">16</NUMEX> individual images for each
+          gene; however, the number of images per gene varies from
+          <TIMEX TYPE="DATE">1 to 80</TIMEX>. This variability reflects our strategy to
+          document highly dynamic, complex, novel and otherwise
+          notable patterns extensively, while progressively
+          lowering the number of images documenting common or
+          simple expression patterns. The number and type of images
+          collected for each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> were chosen so as to allow an
+          <ENAMEX TYPE="ORGANIZATION">embryologist</ENAMEX> to reconstruct the expression pattern as if
+          they were examining the stained embryos under a
+          microscope.
+          Although the 
+          in situ hybridization analysis is
+          performed on fixed tissues, the ability to take many
+          snapshots of developmental processes and to order them
+          allows us to reconstruct dynamic developmental events.
+          For example, we can visualize the progressive segmental
+          proliferation of the fat <ENAMEX TYPE="PER_DESC">body</ENAMEX> (Figure <TIMEX TYPE="DATE">3a</TIMEX>,b,c,<ENAMEX TYPE="GPE">d</ENAMEX>,e) or
+          follow the dispersal of blood-cell precursors throughout
+          the embryo (Figure <TIMEX TYPE="DATE">3f</TIMEX>,<ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,h,i,j).
+          Many genes are either not expressed at all during
+          <ENAMEX TYPE="ORGANIZATION">embryogenesis</ENAMEX> or their expression is not tissue specific.
+          Several canonical examples of these staining patterns
+          were captured, and then only textual annotation and a
+          low-magnification image were used to document additional
+          occurrences. A total of <NUMEX TYPE="CARDINAL">791</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="PERCENT">36.3%</NUMEX> of the <NUMEX TYPE="CARDINAL">2,179</NUMEX>
+          genes successfully assayed) were not documented by
+          high-resolution images. These were assigned to one of the
+          following <NUMEX TYPE="CARDINAL">four</NUMEX> classes: <ENAMEX TYPE="CONTACT_INFO">362</ENAMEX> (<NUMEX TYPE="PERCENT">16.6%</NUMEX>) do not appear to be
+          expressed during <TIMEX TYPE="DATE">embryogenesis</TIMEX>; <NUMEX TYPE="MONEY">21</NUMEX> (<NUMEX TYPE="PERCENT">1%</NUMEX>) are not
+          <ENAMEX TYPE="PERSON">maternally</ENAMEX> contributed but are ubiquitously expressed in
+          the developing embryo; 317 (<NUMEX TYPE="PERCENT">14.5%</NUMEX>) are exclusively
+          <ENAMEX TYPE="ORGANIZATION">maternally</ENAMEX> expressed; and <TIMEX TYPE="DATE">91</TIMEX> (<NUMEX TYPE="PERCENT">4.2%</NUMEX>) show both maternal
+          and ubiquitous zygotic expression.
+        
+        
+          Microarray data as independent measurements of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          expression patterns
+          We used microarray time-course expression profiles as
+          independent measurements to ascertain the accuracy of the
+          captured expression patterns. For the microarray
+          measurements to be truly independent, it was important
+          that no single <ENAMEX TYPE="SUBSTANCE">clone</ENAMEX> contamination or misidentification
+          event be able to affect the integrity of both the
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> and 
+          in situ hybridization result.
+          Existing microarray datasets, such as that reported in [
+          <NUMEX TYPE="CARDINAL">21</NUMEX>], were generated using spotted cDNA arrays [ <TIMEX TYPE="DATE">13</TIMEX>]
+          derived from the same DGC clone set [ <TIMEX TYPE="DATE">14, 15, 16</TIMEX>] that we
+          used for the 
+          in situ probes, and were therefore
+          unsuitable as independent controls. For this reason, we
+          chose to generate a new dataset using <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> GeneChip
+          technology [ <ENAMEX TYPE="LAW">3</ENAMEX>], where the oligonucleotide probes are
+          designed directly from the genome sequence and do not
+          depend on the cDNA clone identity. For the microarray
+          analysis, we divided embryogenesis into <TIMEX TYPE="TIME">12 1-hour</TIMEX> time
+          windows, collected <NUMEX TYPE="CARDINAL">three</NUMEX> independent embryo samples for
+          each time window, and hybridized total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from each
+          sample to the GeneChip 
+          <ENAMEX TYPE="PERSON">Drosophila Genome Array</ENAMEX>. As each
+          embryo sample contained a distribution of different ages,
+          we examined the distribution of morphological
+          stage-specific markers in each sample to correlate the
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-course windows with the nonlinear scale of embryonic
+          stages. As described above, the image data are organized
+          into <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of images associated with a range of
+          embryonic stages. Both the image and the microrray
+          datasets are thus linked by a common time scale of
+          developmental stages. This facilitates the direct
+          comparison of the 
+          in situ staining patterns with
+          microarray expression indexes. Figure <NUMEX TYPE="CARDINAL">4shows</NUMEX> the
+          comparison of array and image data for a highly unusual
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression pattern. In the absence of any additional
+          information on the cDNA clone <TIMEX TYPE="DATE">LD43816</TIMEX> ( 
+          CG4702 ), the contrast between the
+          heavy staining seen in late embryos and the earlier
+          highly restricted pattern might suggest the possibility
+          of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> contamination. However, when stage-specific
+          images are compared with the microarray profile, the
+          expression profile is consistent with the 
+          in situ hybridization data.
+          Although high-throughput 
+          in situ hybridization is subject to
+          potential <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error, such as cross-contamination
+          during <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplification or probe synthesis, using
+          microarray expression data in parallel helped us avoid
+          erroneous pattern assignment.
+          For a number of reasons, correlating staining patterns
+          and microarray values is not straightforward. First, the
+          intensity of 
+          in situ hybridization staining is
+          dependent on the strength of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> and length of the
+          <ENAMEX TYPE="ORGANIZATION">color</ENAMEX> reaction. <NUMEX TYPE="ORDINAL">Second</NUMEX>, it is not possible to distinguish
+          weak ubiquitous staining from strong staining in a small
+          subset of cells using whole-embryo microarray data. For
+          microarray data, it is broadly accepted that relative
+          comparison of independent measurements for the same gene
+          are reliable, whereas absolute intensities across
+          different genes are not, especially for low expression
+          values [ <TIMEX TYPE="DATE">12</TIMEX>]. For all these reasons, the most useful
+          factor in correlating microarray and image data is the
+          relative fluctuation of signal intensity over the course
+          of development. Figure 5shows <NUMEX TYPE="CARDINAL">14</NUMEX> examples of distinct
+          expression profiles that exhibit strong correlations
+          between microarray and image data. The expression
+          patterns of all these genes (except <ENAMEX TYPE="PRODUCT">CG8782</ENAMEX>) have been
+          previously described, providing independent confirmation
+          that each profile is correct. Clear-cut correlations
+          between microarray and 
+          in situ hybridization data as seen
+          in Figure <NUMEX TYPE="CARDINAL">5are</NUMEX> possible when the expression pattern
+          exhibits changes over time. For <ENAMEX TYPE="PER_DESC">monotonically</ENAMEX> expressed
+          genes, the correlation is rather subjective and relies on
+          absolute intensities of both microrarray and 
+          in situ hybridization signals. In
+          <NUMEX TYPE="PERCENT">7%</NUMEX> of the experiments, we rejected the observed
+          expression pattern because of an obvious mismatch with
+          the microarray expression profile; such cases account for
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">one third</NUMEX> of the genes whose analysis will
+          need to be repeated.
+          Large-scale production of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+          in situ data is prone occasionally
+          to produce false-negative results due to failures in
+          probe production and hybridization. Microarray data are
+          useful to identify experiments where the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+          in situ hybridization failed but
+          the given gene is highly expressed. High absolute
+          microarray-derived gene-expression values, coupled with
+          either a continuous profile across the time course or
+          distinct on/off periods during the time course, is a
+          reliable indication that a gene is expressed. Low
+          expression values, and a lack of consistency among
+          replicate experiments, may indicate that a gene is not
+          <ENAMEX TYPE="ORGANIZATION">transcribed</ENAMEX> during <TIMEX TYPE="DATE">embryogenesis</TIMEX>. However, if a given
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is active in only a very small subset of cells, the
+          microarray results from a whole-animal experiment may not
+          be sensitive enough to detect its expression. Therefore,
+          even with the microarray data at hand, it is not possible
+          to avoid completely false negatives for low-abundance
+          transcripts.
+        
+        
+          Textual annotation of gene-expression patterns and
+          assembly of a public database
+          To provide searching capability beyond queries for a
+          specific gene, we rigorously annotated the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles using a controlled vocabulary.
+          We used human <ENAMEX TYPE="SUBSTANCE">annotation</ENAMEX>, rather than automated
+          approaches based on pattern-recognition algorithms,
+          because of the overwhelming complexity of annotation.
+          Variation in morphology and incomplete knowledge of the
+          shape and position of various embryonic structures make
+          <ENAMEX TYPE="PER_DESC">computational</ENAMEX> approaches impracticable at present.
+          Moreover, a human <ENAMEX TYPE="SUBSTANCE">annotator</ENAMEX> does not only take into
+          account the image data, but also integrates other
+          information such as the microarray profile and previously
+          published data into the final assessment of the
+          expression pattern. In our project, a single person
+          carried out the initial annotation, resulting in a highly
+          consistent dataset.
+          Annotation of gene-expression patterns that change
+          dynamically over time poses a significant challenge.
+          There is a need to have a specific name not only for the
+          final developed embryonic <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> but also for all the
+          developmental intermediates that precede them. Every
+          terminally differentiated structure of the embryo
+          descends from a group of cells within the cellular
+          blastoderm epithelium [ <TIMEX TYPE="DATE">17</TIMEX>]. We used this embryological
+          concept to define a set of embryonic structure names that
+          depict a 'path' describing the development of each organ.
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> basic categories of developmental structures, called
+          <ENAMEX TYPE="ORGANIZATION">anlage</ENAMEX> in statu nascendi, anlage, primordium and organ,
+          are distinguished.
+          At the end of embryogenesis, organs can be
+          distinguished by their unique morphology and function
+          (for examples, see Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>). Traditionally, <NUMEX TYPE="CARDINAL">two</NUMEX> types
+          of developmental intermediates that precede the
+          terminally differentiated organ have been defined: anlage
+          and primordium (for examples, see Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>). An anlage
+          is defined as a morphologically indistinct <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+          contiguous cells, established by lineage tracing, that
+          gives rise to an individual organ. Anlagen for most
+          organs can be distinguished at the late cellular
+          <ENAMEX TYPE="ORGANIZATION">blastoderm</ENAMEX> or gastrula stage (stages <ENAMEX TYPE="CONTACT_INFO">5-9</ENAMEX>). A primordium
+          can be recognized on the basis of its distinct
+          <ENAMEX TYPE="ORGANIZATION">morphology</ENAMEX>. A primordium will give rise to <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          differentiated organs. We have included the germ layers
+          in the primordium category. Primordia develop from
+          anlagen but an anlage - for example, a group of cells
+          defined by gene expression that will give rise to a
+          subset of an organ - can also be part of a primordium.
+          Individual names are connected by relationships that
+          define the way the respective tissues develop from one
+          another or encompass one another.
+          Many genes whose expression is ultimately restricted
+          to, and required for the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of, a specific
+          <ENAMEX TYPE="ORGANIZATION">anlage</ENAMEX> initially appear in a larger area. This dynamic
+          expression may reflect the working of an underlying
+          molecular network of activating and inhibitory factors
+          which only gradually succeed in directing expression of a
+          given gene to a specific subset of cells which thereby
+          become defined as a distinct anlage. We propose the term
+          <ENAMEX TYPE="ORGANIZATION">'anlage</ENAMEX> in statu <ENAMEX TYPE="PER_DESC">nascendi</ENAMEX>' ( 
+          in statu nascendi can be loosely
+          translated as 'in the process of being formed') for the
+          larger domain from which a specific anlage originates.
+          <ENAMEX TYPE="ORGANIZATION">Anlagen</ENAMEX> in statu nascendi can only be visualized by
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression analysis. They typically appear at the
+          cellular blastoderm stage and resolve into specific
+          anlagen towards the beginning of gastrulation (examples
+          are given in Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>).
+          Using this naming scheme we are able to describe the
+          development of embryonic structures starting from anlage
+          in statu nascendi at the cellular blastoderm stage
+          through a series of developmental intermediates - anlage
+          and primordia - to a differentiated embryonic structure.
+          For example, the transcription factor single minded is
+          expressed in the glial cells of the mature embryo [ <TIMEX TYPE="DATE">22</TIMEX>].
+          The origin of this expression pattern can be traced from
+          the mesectoderm anlage in statu nascendi, to the
+          mesectoderm anlage, to the mesectoderm (or midline
+          <ENAMEX TYPE="ORGANIZATION">primordium</ENAMEX>) and, finally, to the mature midline glial
+          cells (Figure <NUMEX TYPE="CARDINAL">6b</NUMEX>).
+          In the annotation tool (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), only those
+          annotation terms that describe structures present within
+          a specific stage range are displayed beneath the images
+          of embryos from that stage. Annotation terms are
+          organized into a hierarchy according to the developmental
+          relationship between them. Using the annotation tool, one
+          can follow and describe the development of each structure
+          through its intermediates by observing the development of
+          the staining pattern and selecting the appropriate
+          annotation terms. Integration of image data with the
+          predefined developmental hierarchy is one of the prime
+          goals of our annotation effort.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> advantage of storing the data in a database is the
+          ability to query the data and compare results in a
+          rigorous manner. However, this is only possible if the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> that are entered into the database are themselves
+          rigorously controlled. Comparisons of biological data are
+          complicated by the lack of standards in both reagents and
+          <ENAMEX TYPE="ORGANIZATION">nomenclature</ENAMEX>. We provide a standardized set of 
+          in situ expression images prepared
+          using the same hybridization probes, laboratory
+          <ENAMEX TYPE="PERSON">protocols</ENAMEX>, and descriptive nomenclature. For the
+          nomenclature we needed an agreed vocabulary of terms to
+          describe the different anatomical features of the 
+          Drosophila <ENAMEX TYPE="PER_DESC">embryo</ENAMEX> and the different
+          stages of embryonic development. This was provided to us
+          by the controlled vocabularies of anatomy and development
+          that have been constructed by <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>] over the past
+          few <TIMEX TYPE="DATE">years</TIMEX>. A further advantage in using these
+          <ENAMEX TYPE="ORGANIZATION">vocabularies</ENAMEX> is that our data will be recorded in a way
+          that is wholly consistent with that used by the FlyBase
+          <ENAMEX TYPE="PERSON">curators</ENAMEX>, who record gene-expression data from the
+          scientific literature.
+          The <ENAMEX TYPE="LOCATION">FlyBase</ENAMEX> controlled vocabularies are organized as a
+          <ENAMEX TYPE="ORGANIZATION">directed</ENAMEX> acyclic graph (DAG). In a DAG the terms are the
+          <ENAMEX TYPE="ORGANIZATION">nodes</ENAMEX> in the graph and the relationships between terms
+          are the arcs of the graph. A <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> has <NUMEX TYPE="CARDINAL">two</NUMEX> characteristics
+          that make it extremely useful for describing
+          <ENAMEX TYPE="ORGANIZATION">vocabularies</ENAMEX>. First, the graph is directed, which means
+          that the reciprocal roles of <NUMEX TYPE="CARDINAL">two</NUMEX> terms in a relationship
+          are unequal. Thus, the 'parent' term may be a less
+          specific and the 'child' term more detailed. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+          unlike strict hierarchies, a <ENAMEX TYPE="PER_DESC">child</ENAMEX> term may have more
+          than <NUMEX TYPE="CARDINAL">one</NUMEX> parent terms. This data structure is the same as
+          that used by the <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Consortium</ENAMEX> for terms
+          that are used to annotate gene products [ <TIMEX TYPE="DATE">24</TIMEX>].
+          The <ENAMEX TYPE="LOCATION">FlyBase</ENAMEX> controlled vocabulary uses <NUMEX TYPE="CARDINAL">three</NUMEX> classes
+          of relationship between <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> and <ENAMEX TYPE="PER_DESC">child</ENAMEX> terms. The first
+          of this is 'is an instance of'; for example, the
+          <ENAMEX TYPE="ORGANIZATION">'anterior</ENAMEX> <ENAMEX TYPE="PER_DESC">spiracle</ENAMEX>' is an instance of its parent term
+          <ENAMEX TYPE="ORGANIZATION">'spiracle'</ENAMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> is 'part of; for example, the
+          <ENAMEX TYPE="ORGANIZATION">'gastric</ENAMEX> <ENAMEX TYPE="PER_DESC">caecum</ENAMEX>' is part of the <ENAMEX TYPE="FAC">'foregut'</ENAMEX>. The <NUMEX TYPE="ORDINAL">third</NUMEX> is
+          'develops from'; for example, a 'glial <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>' develops
+          from a 'glioblast'.
+          The major change that had to be made to the FlyBase
+          controlled vocabulary to support this project was to name
+          the developmental intermediates that arise during
+          embryogenesis, that is anlagen, primordia, and anlagen in
+          statu nascendi. Our annotation uses a subset of <NUMEX TYPE="CARDINAL">300</NUMEX> or so
+          of the <NUMEX TYPE="CARDINAL">5,800</NUMEX> terms in the <ENAMEX TYPE="LOCATION">FlyBase</ENAMEX> controlled vocabulary,
+          many of which only apply to later stages of
+          <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>.
+          We modified the GO database schema [ <TIMEX TYPE="DATE">25</TIMEX>] for the
+          <ENAMEX TYPE="ORGANIZATION">storage</ENAMEX> and searching of our gene-expression data. For
+          the <ENAMEX TYPE="PER_DESC">management</ENAMEX> of the terms and their relationships, the
+          core of the GO database schema remains essentially
+          unchanged. However, the database was extended to support
+          the annotation process itself; that is, assigning terms
+          to describe the expression patterns. Additional tables
+          were also added to describe when and where a given mRNA
+          is expressed, and the images that constitute the evidence
+          for these observations.
+          We implemented <NUMEX TYPE="CARDINAL">two</NUMEX> publicly available tools to search
+          and mine the gene-expression dataset. The advanced search
+          <ENAMEX TYPE="PERSON">page</ENAMEX> is a modified version of the <ENAMEX TYPE="ORGANIZATION">Gadfly</ENAMEX> search interface
+          [ <TIMEX TYPE="DATE">26, 27</TIMEX>]. It can be utilized to search for the
+          expression pattern of an individual gene of interest,
+          retrieve a list of genes expressed in a given embryonic
+          structure, or set of <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, or all genes expressed
+          at a certain stage of embryonic development. Sets of
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and their corresponding expression profiles can be
+          grouped on the basis of cytological position in the
+          genome, functional GO assignments, or the presence of
+          <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> in the gene sequence. The results
+          returned by all types of searches can be formatted to
+          display controlled vocabulary annotations exclusively or
+          also show images and microarray profiles of sets of genes
+          side by side (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). Alternatively, one can explore
+          the dataset by browsing through the controlled vocabulary
+          using a modified version of the <ENAMEX TYPE="PERSON">Amigo Gene Ontology</ENAMEX>
+          browser, which we call <ENAMEX TYPE="PERSON">ImaGO</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>]. Once a term from the
+          <ENAMEX TYPE="ORGANIZATION">vocabulary</ENAMEX> is selected, <ENAMEX TYPE="ORGANIZATION">ImaGO</ENAMEX> will return a page that
+          lists all genes expressed in a given structure and also
+          all <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed in all <ENAMEX TYPE="ORG_DESC">structures</ENAMEX> that descend from
+          it.
+        
+        
+          Systematic analysis of the in situdata
+          The embryonic expression patterns of <NUMEX TYPE="PERCENT">80%</NUMEX> of the <NUMEX TYPE="CARDINAL">1,388</NUMEX>
+          genes that display restricted expression, and were
+          therefore annotated in our database, are described by a
+          unique set of annotation terms. This observation
+          illustrates the tremendous diversity of gene-expression
+          patterns during <TIMEX TYPE="DATE">embryogenesis</TIMEX>, which range from
+          expression in a single embryonic structure to expression
+          in <NUMEX TYPE="CARDINAL">36</NUMEX> distinct tissues. Although expression patterns of
+          genes are rarely identical, there is a noticeable
+          similarity among patterns of expression of many genes.
+          Therefore we sought to order these genes on the basis of
+          the similarity of their expression patterns. Furthermore,
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data can be used to quantify the
+          relatedness of the various embryonic <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in terms
+          of similarity in gene expression between them [ <TIMEX TYPE="DATE">29</TIMEX>]. We
+          carried out hierarchical clustering of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and tissues
+          using a method based on binary similarity metrics ([ <TIMEX TYPE="DATE">30</TIMEX>];
+          for details see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). Figure <NUMEX TYPE="CARDINAL">8shows</NUMEX> the
+          result of clustering the <NUMEX TYPE="CARDINAL">99</NUMEX> differentiated embryonic
+          structures that expressed <NUMEX TYPE="CARDINAL">at least two</NUMEX> of the <NUMEX TYPE="CARDINAL">1,388</NUMEX>
+          genes. A black dash at the intersection of a row and a
+          column of the matrix occurs whenever the gene
+          corresponding to that row is expressed in the embryonic
+          structure corresponding to that column.
+          The clustering organizes the embryonic <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in
+          such a way that related <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> are close together
+          whereas unrelated ones are widely separated. For example,
+          components of the nervous system (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, green
+          <ENAMEX TYPE="ORGANIZATION">shading</ENAMEX>) that are ectoderm <ENAMEX TYPE="SUBSTANCE">derivatives</ENAMEX>, cluster together
+          and away from <ENAMEX TYPE="SUBSTANCE">mesodermal</ENAMEX> derivatives, such as muscles
+          (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, cyan shading). In other words, very few of the
+          genes in our dataset are expressed in both muscles and
+          the nervous system, reflecting the physiological
+          separation and different developmental origins of these
+          <NUMEX TYPE="CARDINAL">two</NUMEX> tissues.
+          By analogy, the genes are organized by the
+          hierarchical clustering so that those with the most
+          similar expression patterns are close together and those
+          with highly divergent patterns are widely separated. The
+          distribution of clusters in the matrix can be used to
+          identify genes that are expressed in a tissue or set of
+          <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>. For example, the red rectangle in Figure
+          8highlights a cluster of genes that are expressed
+          exclusively in the embryonic fat <ENAMEX TYPE="PER_DESC">body</ENAMEX>. Genes expressed in
+          the tracheal system are split into <NUMEX TYPE="CARDINAL">at least two</NUMEX> clusters;
+          genes expressed exclusively in the trachea form a cluster
+          in <TIMEX TYPE="TIME">the middle of the matrix</TIMEX> (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, blue rectangle),
+          and a second cluster includes <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed in the
+          <ENAMEX TYPE="ORGANIZATION">trachea</ENAMEX> and variety of epidermal structures (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>,
+          magenta rectangle). Interestingly, no genes are expressed
+          in both trachea and the <ENAMEX TYPE="ORGANIZATION">CNS</ENAMEX> (note the gap in CNS clusters
+          at the level of the tracheal cluster). Genes expressed in
+          the nervous system form the most prominent clusters. The
+          annotation vocabulary subdivides the nervous system into
+          specific subsets based on tissue <ENAMEX TYPE="ORG_DESC">types</ENAMEX> (neurons, glia)
+          and anatomical position (brain, ventral nerve cord,
+          lateral cord, sensory nervous system). A cluster of genes
+          that are expressed specifically in the components of the
+          peripheral nervous system and absent from <ENAMEX TYPE="ORGANIZATION">CNS</ENAMEX> can be
+          identified (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, yellow rectangle). An increase in
+          the depth of annotation will be required to subdivide the
+          large clusters that correspond to complex organ
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>.
+          Figure 8represents <NUMEX TYPE="CARDINAL">one</NUMEX> possible outcome of the
+          clustering analysis of the annotation dataset. Filtering
+          of the genes and anatomical structures, the type of
+          clustering algorithm and the distance metric are
+          variables that need to be optimized to address specific
+          questions about the variations in patterns of gene
+          expression. We used a relatively simple metric to define
+          similarity among the annotation data. In the future it
+          will be interesting to explore more complex similarity
+          metrics that incorporate the distance between annotation
+          terms within the ontology. Clustering of the annotation
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and other data-mining approaches will establish sets
+          of co-regulated genes that will provide a starting point
+          for investigating 
+          cis -regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> that may
+          <ENAMEX TYPE="PERSON">elucidate</ENAMEX> novel regulatory relationships in development.
+          Interactive web pages with a complete clustering matrix
+          can be accessed at [ <TIMEX TYPE="DATE">31</TIMEX>].
+          <ENAMEX TYPE="SUBSTANCE">Systematic RNA</ENAMEX> 
+          in situ hybridization is an
+          alternative to mutagenesis screens [ <TIMEX TYPE="DATE">32</TIMEX>] to uncover genes
+          involved in embryonic patterning. Figure
+          9a,b,c,dillustrates <NUMEX TYPE="CARDINAL">one</NUMEX> case where conventional
+          <ENAMEX TYPE="ORGANIZATION">mutagenesis</ENAMEX> failed to identify genes with highly specific
+          expression patterns at the cellular blastoderm stage,
+          most probably because of genetic redundancy. At map
+          position <TIMEX TYPE="DATE">66E4</TIMEX>, <NUMEX TYPE="CARDINAL">three</NUMEX> adjacent and highly homologous genes
+          for <ENAMEX TYPE="PRODUCT">Brachyury/T-box-containing</ENAMEX> transcription factors are
+          expressed with strikingly similar expression patterns.
+          Thus disruption of any one of these genes might not be
+          sufficient to produce an embryonic phenotype. Conversely,
+          in many cases the expression patterns of duplicated genes
+          have diverged and are largely non-overlapping. Expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> can provide a guide as to which multiple gene
+          knockouts are likely to yield specific phenotypes.
+          A systematic screening approach also reduces bias in
+          the selection of the types of genes chosen for study.
+          Figure <NUMEX TYPE="QUANTITY">9e,9f,9g,9h,9ishows five</NUMEX> examples of metabolic
+          genes that, contrary to naive expectation, are expressed
+          at cellular <ENAMEX TYPE="ORG_DESC">blastoderm</ENAMEX> in domains suggestive of roles in
+          embryonic patterning. A similar observation was recently
+          reported for the expression of genes isolated
+          specifically from blastoderm-specific cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">7</NUMEX>]. Tight regulation of expression of these genes could
+          be explained by a preferential requirement for certain
+          metabolic pathways in specialized embryonic tissues. That
+          argument may not be plausible for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed within
+          limited regions of the cellular blastoderm <ENAMEX TYPE="PER_DESC">embryo</ENAMEX>. It is
+          possible that these gene products are not translated, are
+          otherwise inactive in the tissues where the transcripts
+          appear abundant, or that their restricted expression is
+          simply the result of their proximity to a transcriptional
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> element of a neighboring gene. A more interesting
+          possibility is that this expression may reflect yet
+          unknown functions of these genes.
+          A major advantage of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> 
+          in situ hybridization is that this
+          method has sufficient spatial resolution to uncover
+          subcellular localization of mRNAs. Figure <TIMEX TYPE="DATE">9j</TIMEX>,lshows an
+          apically localized mRNA in the columnar epithelium of the
+          developing hindgut surrounding the migrating pole cells
+          (Figure <NUMEX TYPE="CARDINAL">9l</NUMEX>). This staining is strikingly complementary to
+          that of a basally localized mRNA from a different gene
+          that is expressed in the same cells (Figure <TIMEX TYPE="DATE">9k</TIMEX>,<ENAMEX TYPE="ORGANIZATION">m</ENAMEX>). The
+          transcript of yet another gene, whose expression is shown
+          at high magnification at the pre-cellular blastoderm
+          stage, appears to be localized to a sub-compartment of
+          the nucleus (Figure <TIMEX TYPE="DATE">9n</TIMEX>,o). We also found novel mRNAs
+          localized asymmetrically along the anterior-posterior
+          axis of the early pre-blastoderm <ENAMEX TYPE="PER_DESC">embryo</ENAMEX> (data not shown).
+          Overall, we find that <NUMEX TYPE="PERCENT">about 1%</NUMEX> of genes exhibit easily
+          discernible subcellular localization, and thus our
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> can also be useful in identifying aspects of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">localization</ENAMEX> and trafficking.
+        
+      
+      
+        Conclusions
+        The dataset we present here comprises embryonic
+        expression patterns for <NUMEX TYPE="CARDINAL">about one-sixth</NUMEX> of all 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, documented with
+        extensive digital images, controlled vocabulary annotations
+        and microarray profiles. Our ultimate goal is to determine
+        the expression patterns of all genes in the genome.
+        Considering our current production rate, we should be able
+        to finish the <NUMEX TYPE="ORDINAL">first</NUMEX> pass through the existing cDNA
+        collections that represent <NUMEX TYPE="PERCENT">about 70%</NUMEX> of all 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <TIMEX TYPE="DATE">about a year</TIMEX>. We
+        will then repeat our analysis of the <NUMEX TYPE="PERCENT">20%</NUMEX> or so of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for
+        which we did not obtain reliable data. Probes for genes
+        that lack a suitable <ENAMEX TYPE="PLANT">cDNA clone</ENAMEX>, but that show significant
+        expression by microarray analysis, will be generated by
+        <ENAMEX TYPE="ORGANIZATION">genomic PCR</ENAMEX> so that eventually all 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will be examined. We
+        also intend to extend our analysis to <NUMEX TYPE="CARDINAL">two</NUMEX> other
+        developmentally active 
+        Drosophila tissues - imaginal discs
+        and ovaries.
+        All our data are freely available to the scientific
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> through interactive web pages; these pages will
+        continue to develop and will allow for more sophisticated
+        mining of the growing dataset. Similar large-scale
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression studies have been carried out in other
+        model organisms including 
+        <ENAMEX TYPE="ORGANIZATION">Xenopus</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>], mouse [ <TIMEX TYPE="DATE">34</TIMEX>], medaka [
+        <NUMEX TYPE="CARDINAL">35</NUMEX>] and 
+        Caenorhabditis elegans [ <TIMEX TYPE="DATE">36</TIMEX>]. Our
+        database is, to our knowledge, the <NUMEX TYPE="ORDINAL">first</NUMEX> to use
+        <ENAMEX TYPE="PERSON">non-redundant</ENAMEX> expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>) collections with
+        the aim of determining and systematically annotating the
+        expression patterns of all genes in an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>. We intend
+        to link our database to the available public databases
+        containing similar image data in order to allow
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-species comparisons of expression of homologous
+        genes. The ultimate goal is to create an integrated
+        <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX> of image oriented gene-expression data analogous
+        to the public repositories of <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>.
+      
+      
+        Materials and methods
+        
+          <NUMEX TYPE="CARDINAL">96</NUMEX>-well in situhybridization
+          <ENAMEX TYPE="ORGANIZATION">Canton S</ENAMEX> <ENAMEX TYPE="ORG_DESC">embryos</ENAMEX> were collected in <TIMEX TYPE="DATE">3-h</TIMEX> intervals and
+          aged to generate animals <ENAMEX TYPE="CONTACT_INFO">0-3, 3-6, 6-9</ENAMEX>, <ENAMEX TYPE="PRODUCT">9-12</ENAMEX>, <NUMEX TYPE="CARDINAL">12-15</NUMEX> and
+          <TIMEX TYPE="DATE">15-18 h old</TIMEX>. The embryos were then dechorionated,
+          devitelinized, and stored in <ENAMEX TYPE="SUBSTANCE">methanol</ENAMEX> at <TIMEX TYPE="DATE">-20°C</TIMEX>. The <NUMEX TYPE="CARDINAL">six</NUMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>-h embryo collections were mixed in equal proportions to
+          yield a balanced <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <ENAMEX TYPE="PER_DESC">embryos</ENAMEX> representing the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="QUANTITY">18 h</NUMEX> of embryogenesis.
+          <ENAMEX TYPE="SUBSTANCE">DNA templates</ENAMEX> were generated by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> using primers
+          homologous to the vector and purified by <TIMEX TYPE="DATE">G50</TIMEX> column
+          <ENAMEX TYPE="ORGANIZATION">chromatography</ENAMEX> in <NUMEX TYPE="CARDINAL">96</NUMEX>-well format. The purified PCR
+          product (<ENAMEX TYPE="CONTACT_INFO">5 μl</ENAMEX>) was transcribed in <NUMEX TYPE="CARDINAL">96</NUMEX>-well format by
+          incubation for <TIMEX TYPE="TIME">2 h at 37°C</TIMEX> after the addition of <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of
+          a polymerase reaction cocktail consisting of <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> <ENAMEX TYPE="SUBSTANCE">T7 RNA</ENAMEX>
+          <ENAMEX TYPE="PERSON">polymerase</ENAMEX>, <NUMEX TYPE="CARDINAL">4.6</NUMEX> <ENAMEX TYPE="ORGANIZATION">U RNase</ENAMEX> inhibitor, <NUMEX TYPE="CARDINAL">10</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX>, <NUMEX TYPE="CARDINAL">3.5</NUMEX> mM
+          digoxigenin-<NUMEX TYPE="CARDINAL">11</NUMEX>-UTP, <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">Tris</ENAMEX> pH <NUMEX TYPE="CARDINAL">8.0</NUMEX>, <NUMEX TYPE="CARDINAL">6</NUMEX> mM MgCl 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , <NUMEX TYPE="CARDINAL">10</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX> mM spermidine.
+          After treatment with <ENAMEX TYPE="LAW">DNase I and Na</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 CO</ENAMEX> 
+          <TIMEX TYPE="TIME">3 pH 10.2</TIMEX>, <ENAMEX TYPE="SUBSTANCE">ethanol precipitation</ENAMEX> was
+          carried out. <ENAMEX TYPE="PERSON">Pellets</ENAMEX> were resuspended in <NUMEX TYPE="QUANTITY">50 μl</NUMEX> of <NUMEX TYPE="PERCENT">50%</NUMEX>
+          formamide, <ENAMEX TYPE="PRODUCT">5</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">mM</ENAMEX> <ENAMEX TYPE="PRODUCT">Tris-HCl</ENAMEX> pH <NUMEX TYPE="CARDINAL">7.5</NUMEX>, <NUMEX TYPE="CARDINAL">0.5</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> and <NUMEX TYPE="PERCENT">0.01%</NUMEX>
+          Tween <NUMEX TYPE="CARDINAL">20</NUMEX>.
+          The digoxigenin-labeled <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> probe was quantified by
+          immunological detection using a modified digoxigenin
+          quantification protocol (<ENAMEX TYPE="ORGANIZATION">Roche</ENAMEX>). A sample of <NUMEX TYPE="QUANTITY">0.8 μl</NUMEX> of a
+          <TIMEX TYPE="TIME">1:300</TIMEX> dilution of the probe was spotted on a positively
+          charged nylon membrane (<ENAMEX TYPE="ORGANIZATION">Roche</ENAMEX>) with a <NUMEX TYPE="CARDINAL">96</NUMEX>-well pin tool
+          (<ENAMEX TYPE="ORGANIZATION">V&P Scientific</ENAMEX>) and then cross-linked to the
+          membrane by <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> irradiation. The membranes were then
+          treated with <ENAMEX TYPE="NATIONALITY">anti-digoxigenin</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">AP</ENAMEX> <ENAMEX TYPE="PRODUCT">Fab</ENAMEX> fragments and the
+          <ENAMEX TYPE="ORGANIZATION">color</ENAMEX> substrates <ENAMEX TYPE="ORGANIZATION">NBT/BCIP</ENAMEX>. The quality of each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> was
+          determined by comparing the intensity of individual probe
+          spots to spots containing <NUMEX TYPE="CARDINAL">3,10</NUMEX>, <NUMEX TYPE="CARDINAL">30,100</NUMEX> or <NUMEX TYPE="QUANTITY">300 pg</NUMEX> of
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> probes.
+          <ENAMEX TYPE="ORGANIZATION">Re</ENAMEX>-hydrated and post-fixed embryos were incubated for
+          <TIMEX TYPE="TIME">1 h</TIMEX> in hybridization buffer (<NUMEX TYPE="PERCENT">50%</NUMEX> formamide, <NUMEX TYPE="CARDINAL">4×</NUMEX> <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, and
+          <NUMEX TYPE="PERCENT">0.01%</NUMEX> Tween <NUMEX TYPE="CARDINAL">20</NUMEX>). <NUMEX TYPE="CARDINAL">Twenty</NUMEX> <ENAMEX TYPE="PER_DESC">microliters</ENAMEX> of these embryos were
+          gently placed in each well of a <NUMEX TYPE="CARDINAL">96</NUMEX>-well filter plate
+          (<ENAMEX TYPE="ORGANIZATION">Millipore MADV</ENAMEX> <ENAMEX TYPE="PRODUCT">N65</ENAMEX>) with a multi-channel pipette (<ENAMEX TYPE="ORGANIZATION">Brand</ENAMEX>
+          Transferpette-<NUMEX TYPE="CARDINAL">12</NUMEX>) using wide-orifice <NUMEX TYPE="QUANTITY">250 �</NUMEX>�l
+          pre-sterilized tips (<ENAMEX TYPE="ORGANIZATION">Rainin</ENAMEX>). Digoxigenin-labeled <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          probe (<NUMEX TYPE="QUANTITY">200 μl</NUMEX> of a <ENAMEX TYPE="CONTACT_INFO">1:100</ENAMEX> dilution in hybridization buffer
+          with <NUMEX TYPE="PERCENT">5%</NUMEX> dextran sulfate) was added and the embryos were
+          incubated <TIMEX TYPE="TIME">overnight</TIMEX> at <TIMEX TYPE="DATE">55°C</TIMEX>. Gentle vacuum was used to
+          remove the hybridization solution and the embryos were
+          subjected to <NUMEX TYPE="QUANTITY">eight 30-min washes</NUMEX> in wash buffer (<NUMEX TYPE="PERCENT">50%</NUMEX>
+          formamide, <NUMEX TYPE="CARDINAL">2×</NUMEX> <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> and <NUMEX TYPE="PERCENT">0.01%</NUMEX> Tween <NUMEX TYPE="CARDINAL">20</NUMEX>). The embryos were
+          treated for <NUMEX TYPE="CARDINAL">2</NUMEX> h with <NUMEX TYPE="PERCENT">5%</NUMEX> goat serum (<ENAMEX TYPE="ORGANIZATION">Roche</ENAMEX>) and
+          anti-<NUMEX TYPE="CARDINAL">digoxigenin</NUMEX>-<ENAMEX TYPE="ORGANIZATION">AP</ENAMEX> <ENAMEX TYPE="PRODUCT">Fab</ENAMEX> fragments (<ENAMEX TYPE="ORGANIZATION">Roche</ENAMEX>). Following <NUMEX TYPE="CARDINAL">nine</NUMEX>
+          <NUMEX TYPE="QUANTITY">10-min washes</NUMEX> in <NUMEX TYPE="PERCENT">0.1%</NUMEX> Tween 20 in <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> and <NUMEX TYPE="CARDINAL">two</NUMEX> rinses in
+          <ENAMEX TYPE="ORGANIZATION">AP</ENAMEX> buffer (<NUMEX TYPE="CARDINAL">50</NUMEX> mM MgCl 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">NaCI</ENAMEX>, <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">Tris</ENAMEX> pH <NUMEX TYPE="CARDINAL">9.5</NUMEX>,
+          <NUMEX TYPE="PERCENT">0.01%</NUMEX> Tween <NUMEX TYPE="CARDINAL">20</NUMEX>) the <ENAMEX TYPE="ORGANIZATION">NBT/BCIP</ENAMEX> color substrates were used
+          to detect the hybridized probes. Embryos were washed <NUMEX TYPE="CARDINAL">six</NUMEX>
+          times with <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> to enhance contrast and stored in <NUMEX TYPE="PERCENT">70%</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">glycerol</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>. The quality of the hybridization signal,
+          the morphology of the embryos and the number of patterns
+          were assessed under a low-power microscope.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Digital</ENAMEX> imaging
+          Low-magnification images were taken using a dissecting
+          <ENAMEX TYPE="PERSON">microscope</ENAMEX> (<ENAMEX TYPE="FAC">Leica Wild M10</ENAMEX>) equipped with a <TIMEX TYPE="DATE">ProgRes 3012</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">digital</ENAMEX> camera. Usually <NUMEX TYPE="CARDINAL">two</NUMEX> images at different
+          magnifications were captured. High-resolution images were
+          captured with a <ENAMEX TYPE="ORGANIZATION">Spot RT</ENAMEX> digital camera mounted onto a
+          <ENAMEX TYPE="ORGANIZATION">Zeiss</ENAMEX> <ENAMEX TYPE="PRODUCT">Axiophot</ENAMEX> equipped with <ENAMEX TYPE="ORGANIZATION">Nomarski</ENAMEX> optics. The
+          majority of images were taken with either a <NUMEX TYPE="CARDINAL">20×</NUMEX> or <NUMEX TYPE="CARDINAL">40×</NUMEX>
+          objective. All images were saved as <ENAMEX TYPE="ORGANIZATION">JPEG</ENAMEX> files.
+          Often several focal <ENAMEX TYPE="PRODUCT_DESC">planes</ENAMEX> of the same <ENAMEX TYPE="PER_DESC">embryo</ENAMEX> were
+          captured to fully document the spatial distribution of
+          the staining pattern. In many cases embryos were manually
+          <ENAMEX TYPE="ORGANIZATION">repositioned</ENAMEX> to provide a more favorable angle for
+          documenting the expression pattern. When a whole embryo
+          view was insufficient to visualize the fine aspects of
+          the staining pattern, we captured a higher-magnification
+          image focused on a small part of the embryo. Such
+          higher-resolution images were generally accompanied by
+          corresponding lower-magnification images for orientation
+          purposes. Most images show the embryo with anterior to
+          the left and dorsal side up; however, the orientation of
+          images captured in the early stages of the project do not
+          consistently follow this rule.
+        
+        
+          Microarray analysis
+          <ENAMEX TYPE="ORGANIZATION">Canton S</ENAMEX> flies were seeded into <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="PER_DESC">population</ENAMEX> cages
+          and aged in the collection cages for <TIMEX TYPE="DATE">three days</TIMEX> with
+          fresh <ENAMEX TYPE="SUBSTANCE">food</ENAMEX> provided every <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="PERSON">h.</ENAMEX> In <TIMEX TYPE="TIME">the morning</TIMEX> of the
+          <NUMEX TYPE="ORDINAL">fourth</NUMEX> day, the <ENAMEX TYPE="ANIMAL">flies</ENAMEX> were allowed to pre-lay retained
+          <ENAMEX TYPE="ORGANIZATION">embryos</ENAMEX>. Fresh <ENAMEX TYPE="SUBSTANCE">plates</ENAMEX> were then introduced simultaneously
+          into <NUMEX TYPE="CARDINAL">all 12</NUMEX> cages and embryos were collected for <TIMEX TYPE="TIME">1 h.</TIMEX> The
+          embryos were then transferred into a <NUMEX TYPE="ORDINAL">25°C</NUMEX> <ENAMEX TYPE="ORG_DESC">incubator</ENAMEX> and
+          aged. At appropriate time points, embryos were
+          <ENAMEX TYPE="ORGANIZATION">dechorionated</ENAMEX> and quick-frozen in liquid nitrogen. This
+          procedure yielded <NUMEX TYPE="CARDINAL">12</NUMEX> samples of non-overlapping <NUMEX TYPE="CARDINAL">1</NUMEX>-h
+          collections starting from <TIMEX TYPE="DATE">30 to 90</TIMEX> min and ending at <NUMEX TYPE="CARDINAL">11.5</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> to <NUMEX TYPE="CARDINAL">12.5</NUMEX> h post egg laying. This procedure was carried
+          out for <TIMEX TYPE="DATE">3 days</TIMEX>, yielding <NUMEX TYPE="CARDINAL">three</NUMEX> replicates of each time
+          window. A sampling of each collection was set aside,
+          devitelinized, and stored in <ENAMEX TYPE="SUBSTANCE">methanol</ENAMEX> at <TIMEX TYPE="DATE">-20°C</TIMEX>. These
+          embryos were used to determine the distribution of stages
+          in each collection sample by examination of morphological
+          <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX>. These data were then used to construct an
+          approximate time line correlating the embryo collections
+          and embryonic stages (see Figure <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was isolated from the <NUMEX TYPE="CARDINAL">12</NUMEX> embryo samples
+          described above by homogenization with a motorized
+          plastic pellet pestle in <ENAMEX TYPE="GPE">Ambion RNAwiz</ENAMEX> solution, followed
+          by <ENAMEX TYPE="NATIONALITY">chloroform</ENAMEX> extraction and <ENAMEX TYPE="SUBSTANCE">ethanol precipitation</ENAMEX>. <NUMEX TYPE="CARDINAL">Eight</NUMEX>
+          micrograms of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> were used to generate
+          digoxigenin-labeled fragmented cRNA using a standard
+          Affymetrix amplification and labeling protocol. cRNA was
+          <ENAMEX TYPE="ORGANIZATION">hybridized</ENAMEX> to a GeneChip 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> <ENAMEX TYPE="PRODUCT">Genome Array</ENAMEX> using
+          <ENAMEX TYPE="ORGANIZATION">standard Affymetrix</ENAMEX> equipment and protocols. The scanned
+          array images were analyzed using <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> Microarray
+          <ENAMEX TYPE="PERSON">Suite</ENAMEX> and dChip software [ <TIMEX TYPE="DATE">37</TIMEX>]. We collected <NUMEX TYPE="MONEY">36</NUMEX> GeneChip
+          array scans and the success of the experiments was
+          determined by the reproducibility of the three
+          independent <ENAMEX TYPE="ORG_DESC">replicates</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> of the <NUMEX TYPE="CARDINAL">36</NUMEX> experiments were
+          repeated to gain higher-quality data. Microarray data are
+          being submitted to <ENAMEX TYPE="ORGANIZATION">Array Express</ENAMEX> as <ENAMEX TYPE="PRODUCT">E-RUBN-2</ENAMEX>.
+          Signals from all replicate experiments were averaged
+          and the standard error of the <NUMEX TYPE="CARDINAL">three</NUMEX> measurements was
+          calculated. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were entered into a custom-designed
+          MySQL database and graphs of the microarray time-course
+          for all <NUMEX TYPE="CARDINAL">14,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were generated using custom Perl
+          scripts and a <ENAMEX TYPE="ORGANIZATION">GD</ENAMEX> graphics <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. The absent/present
+          calls generated by <ENAMEX TYPE="PERSON">Affymetrix Microarray Suite</ENAMEX> were
+          <ENAMEX TYPE="PERSON">color-coded</ENAMEX> (present = green, absent = red, marginal =
+          <ENAMEX TYPE="ORGANIZATION">blue</ENAMEX>) and incorporated into graphs based on dChip-derived
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The array-based expression profiles were
+          incorporated into the annotation, report, and analysis
+          <ENAMEX TYPE="ORGANIZATION">web pages</ENAMEX> described below.
+        
+        
+          Image data annotation and presentation
+          We built a multi-platform network consisting of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">Microsoft Windows</ENAMEX> workstations connected to digital
+          cameras on microscope equipment and a <ENAMEX TYPE="ORGANIZATION">Suse Linux</ENAMEX> server
+          running an <ENAMEX TYPE="PRODUCT">Apache HTTP server</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> database. Image
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and annotations were submitted to the production
+          MySQL database through a <ENAMEX TYPE="GPE">Perl</ENAMEX>-based annotation tool
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). The annotation tool displays microarray data
+          linked to the cDNA under investigation as well as a
+          compilation of available information about that <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in
+          the form of external database links, <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> and
+          GO terms (from <ENAMEX TYPE="GPE">FlyBase</ENAMEX> [ <TIMEX TYPE="DATE">38</TIMEX>]). The annotation tool
+          permits the entering of production-level assessments
+          about the quality and identity of the captured images.
+          Several other web-based tools were developed that support
+          the entering of additional data (Figure <NUMEX TYPE="QUANTITY">1a,1b,1c,1d</NUMEX>) as
+          well as report scripts that summarize the captured
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+          Periodically, the data from the production database
+          were transferred into a second <ENAMEX TYPE="LANGUAGE">MySQL</ENAMEX> database that uses a
+          schema modified from that of the GO database. In
+          conjunction with the <ENAMEX TYPE="ORGANIZATION">Gadfly</ENAMEX> database and Application
+          <ENAMEX TYPE="ORGANIZATION">Programming Interface</ENAMEX> (see [ <TIMEX TYPE="DATE">27</TIMEX>]), this database allows
+          gene-based and anatomy-based searches of the dataset [
+          <NUMEX TYPE="CARDINAL">26</NUMEX>].
+          The controlled vocabulary used to annotate the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles is a subset of the FlyBase
+          controlled vocabulary for anatomy and development [ <TIMEX TYPE="DATE">39</TIMEX>].
+          Most annotation terms can be found under the 'developing
+          <ENAMEX TYPE="FAC">embryonic</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>' <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> of this ontology. We
+          developed a modified version of the <ENAMEX TYPE="PERSON">Amigo Gene Ontology</ENAMEX>
+          Browser, <ENAMEX TYPE="GPE">ImaGO</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>], which incorporates the anatomy
+          <ENAMEX TYPE="ORGANIZATION">ontologies</ENAMEX> and the image data. <ENAMEX TYPE="ORGANIZATION">ImaGO</ENAMEX> can be used to
+          <ENAMEX TYPE="ORGANIZATION">browse</ENAMEX> through and search the data by anatomical
+          structures. A more concise version of the annotation
+          hierarchy containing only the terms found in the
+          annotation tool can be accessed at [ <TIMEX TYPE="DATE">40</TIMEX>].
+        
+        
+          Clustering of annotation data
+          Annotation data were converted into a <ENAMEX TYPE="ANIMAL">binary matrix</ENAMEX>,
+          the rows representing the genes and the columns
+          representing the anatomical <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. When a given gene
+          was expressed in a given anatomical structure the
+          intersection in the matrix was <NUMEX TYPE="CARDINAL">1</NUMEX>; otherwise it was <NUMEX TYPE="CARDINAL">0</NUMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> was loaded into an <ENAMEX TYPE="NATIONALITY">R</ENAMEX> statistics package and
+          dissimilarity matrices were calculated for each <NUMEX TYPE="CARDINAL">two</NUMEX> rows
+          and each <NUMEX TYPE="CARDINAL">two</NUMEX> columns of the dataset. The distance measure
+          was (b + c)/(a + b + c), where a is the frequency of <NUMEX TYPE="CARDINAL">11</NUMEX>
+          columns in two rows of binary data, b is the frequency of
+          10 columns and c is the frequency of <NUMEX TYPE="CARDINAL">01</NUMEX> columns. Using
+          the dissimilarity matrices, anatomical structures and
+          genes were clustered sequentially using hierarchical
+          clustering with a complete linkage agglomeration method.
+          Clustered matrices were exported from <ENAMEX TYPE="NATIONALITY">R</ENAMEX> and converted
+          into interactive web pages using a custom <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> script.
+          The binary data were color-coded; black indicates that
+          the gene is on in a <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>, white indicates that
+          expression of the gene is not detected in that
+          structure.
+        
+      
+    
+  

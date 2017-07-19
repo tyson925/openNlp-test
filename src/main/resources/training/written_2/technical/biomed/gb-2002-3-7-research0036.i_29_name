@@ -1,0 +1,1803 @@
+
+  
+    
+      
+        Background
+        
+          Cluster analysis
+          In classification, one is concerned with assigning
+          objects to <ENAMEX TYPE="PER_DESC">classes</ENAMEX> on the basis of measurements made on
+          these <ENAMEX TYPE="PER_DESC">objects</ENAMEX>. There are <NUMEX TYPE="CARDINAL">two</NUMEX> main aspects to
+          <ENAMEX TYPE="PERSON">classification</ENAMEX>: discrimination and clustering, or
+          supervised and unsupervised learning. In unsupervised
+          learning (also known as cluster analysis, class discovery
+          and unsupervised pattern recognition), the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are
+          unknown 
+          a priori and need to be discovered
+          from the data. In contrast, in supervised learning (also
+          known as discriminant analysis, class prediction, and
+          supervised pattern recognition), the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are
+          <ENAMEX TYPE="ORGANIZATION">predefined</ENAMEX> and the task is to understand the basis for
+          the classification from a set of labeled objects
+          (training or learning set). This information is then used
+          to classify future observations. The present article
+          focuses on the unsupervised problem, that is, on cluster
+          analysis, but draws on notions from supervised learning
+          to address the problem.
+          In cluster analysis, the data are assumed to be
+          sampled from a mixture distribution with 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> components corresponding to the 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters to be recovered. Let ( 
+          X 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+          X 
+          
+            p 
+           ) denote a random <NUMEX TYPE="CARDINAL">1</NUMEX> × 
+          p vector of explanatory variables
+          or features, and let 
+          <ENAMEX TYPE="CONTACT_INFO">Y {1</ENAMEX>, ..., 
+          <ENAMEX TYPE="ORGANIZATION">K }</ENAMEX> denote the unknown component or
+          <ENAMEX TYPE="PRODUCT">cluster</ENAMEX> label. Given a sample of 
+          X values, the goal is to estimate
+          the number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> and to estimate, for each
+          <ENAMEX TYPE="PERSON">observation</ENAMEX>, its cluster label 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> 
+          Suppose we have data 
+          X = ( 
+          x 
+          
+            ij 
+           ) on 
+          p explanatory variables (for
+          example, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) for 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> observations (for example, tumor
+          mRNA <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>), where 
+          x 
+          
+            ij 
+           denotes the realization of variable 
+          X 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           for observation 
+          i and 
+          x 
+          
+            i 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          x 
+          
+          i 1 ,...,.x 
+          
+            ip 
+           ) denotes the data vector for observation 
+          i , 
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> . We consider clustering
+          procedures that partition the learning set = { 
+          x 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          x 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           } into 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters of observations that are
+          <ENAMEX TYPE="ORGANIZATION">'similar</ENAMEX>' to each other, where 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> is a user-prespecified integer.
+          More specifically, the clustering (·; ) assigns class
+          <ENAMEX TYPE="PERSON">labels</ENAMEX> ( 
+          X 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">;</ENAMEX> ) to each observation, where <ENAMEX TYPE="ORGANIZATION">Clustering</ENAMEX> procedures
+          generally operate on a matrix of pairwise dissimilarities
+          (or similarities) between the observations to be
+          <ENAMEX TYPE="PERSON">clustered</ENAMEX>, such as the <ENAMEX TYPE="ORGANIZATION">Euclidean</ENAMEX> or <ENAMEX TYPE="GPE">Manhattan</ENAMEX> distance
+          <ENAMEX TYPE="ORGANIZATION">matrices</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX>]. A partitioning of the learning set can be
+          produced directly by partitioning clustering methods (for
+          example, 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -means, partitioning around
+          <ENAMEX TYPE="ORGANIZATION">medoid</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>), self-organizing maps (SOM)) or by
+          hierarchical clustering methods, by 'cutting' the
+          <ENAMEX TYPE="ORGANIZATION">dendrogram</ENAMEX> to obtain 
+          <ENAMEX TYPE="ORGANIZATION">K 'branches</ENAMEX>' or clusters. Important
+          issues, which will only be addressed briefly in this
+          <ENAMEX TYPE="LAW">article</ENAMEX>, include: the selection of observational <ENAMEX TYPE="ORG_DESC">units</ENAMEX>,
+          the selection of variables for defining the groupings,
+          the transformation and standardization of variables, the
+          choice of a similarity or dissimilarity measure, and the
+          choice of a clustering method [ <ENAMEX TYPE="LAW">9</ENAMEX>]. Our main <ENAMEX TYPE="ORG_DESC">concern</ENAMEX> here
+          is to estimate the number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">K.</ENAMEX> 
+          When a clustering algorithm is applied to a set of
+          <ENAMEX TYPE="PERSON">observations</ENAMEX>, a partition of the data is returned whether
+          or not the data show a true clustering structure, that
+          is, whether or not 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>. This fact causes no problems
+          if clustering is done to obtain a practical grouping of
+          the given set of objects, as for organizational or
+          visualization purposes (for example, hierarchical
+          clustering for displaying large gene-expression data
+          matrices as in Eisen 
+          et al. [ <TIMEX TYPE="DATE">10</TIMEX>]). However, if interest
+          lies primarily in the recognition of an unknown
+          classification of the data, an artificial clustering is
+          not satisfactory, and clusters resulting from the
+          algorithm must be investigated for their relevance and
+          <ENAMEX TYPE="ORGANIZATION">reproducibility</ENAMEX>. This task can be carried out by
+          <ENAMEX TYPE="PERSON">descriptive</ENAMEX> and graphical exploratory methods, or by
+          relying on <TIMEX TYPE="DATE">probabilistic</TIMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> and suitable statistical
+          significance tests (for example [ <TIMEX TYPE="DATE">11, 12</TIMEX>]).
+          We argue here that validating the results of a
+          clustering procedure can be done effectively by focusing
+          on prediction accuracy. Once new <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are identified
+          and class labels are assigned to the observations, the
+          next step is often to build a classifier for predicting
+          the <ENAMEX TYPE="PER_DESC">class</ENAMEX> of future observations. The reproducibility or
+          predictability of cluster assignments becomes very
+          important in this context, and therefore provides a
+          motivation for using ideas from supervised learning in an
+          unsupervised setting. Resampling methods such as bagging
+          [ <TIMEX TYPE="DATE">13</TIMEX>] and boosting [ <TIMEX TYPE="DATE">14, 15</TIMEX>] have been applied
+          successfully in the field of supervised learning to
+          improve prediction accuracy. We propose here a novel
+          resampling method, <ENAMEX TYPE="GPE">Clest</ENAMEX>, which combines ideas from
+          <ENAMEX TYPE="ORGANIZATION">discriminant</ENAMEX> and cluster analysis for estimating the
+          number of clusters in a dataset. Although the proposed
+          resampling methods are applicable to general clustering
+          problems and procedures, particular attention is given to
+          the clustering of tumors on the basis of gene-expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> using the partitioning around medoids (<ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>)
+          procedure (see below).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Partitioning</ENAMEX> around medoids
+          The new Clest procedure is demonstrated using the <ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>
+          method of <ENAMEX TYPE="ORGANIZATION">Kaufman</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Rousseeuw</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>]. As implemented in
+          the cluster package in <ENAMEX TYPE="NATIONALITY">R</ENAMEX> and S<NUMEX TYPE="CARDINAL">-Plus</NUMEX>, the <ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX> function
+          takes as its arguments a dissimilarity matrix (for
+          example the Euclidean distance matrix as used here) and a
+          <ENAMEX TYPE="CONTACT_INFO">prespecified</ENAMEX> number of clusters 
+          <ENAMEX TYPE="PERSON">K. The PAM</ENAMEX> procedure is based on
+          the search for 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> <ENAMEX TYPE="PER_DESC">representative</ENAMEX> objects, or
+          medoids, among the observations to be clustered. After
+          finding a set of 
+          <ENAMEX TYPE="ORGANIZATION">K medoids</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters are constructed by
+          <ENAMEX TYPE="ORGANIZATION">assigning</ENAMEX> each observation to the nearest <ENAMEX TYPE="ORG_DESC">medoid</ENAMEX>. The
+          goal is to find 
+          <ENAMEX TYPE="ORGANIZATION">K medoids</ENAMEX> that minimize the sum of
+          the dissimilarities of the observations to their closest
+          <ENAMEX TYPE="ORGANIZATION">medoid</ENAMEX>. The algorithm first looks for a good initial set
+          of medoids, then finds a local minimum for the objective
+          function, that is, a solution such that there is no
+          single switch of an observation with a medoid that will
+          decrease the objective.
+          The <ENAMEX TYPE="SUBSTANCE">PAM method</ENAMEX> tends to be more robust and
+          computationally efficient than 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -means. In addition, <ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX> provides
+          a graphical display, the silhouette plot, which can be
+          used to select the number of clusters and to assess how
+          well individual observations are clustered. Let 
+          a 
+          
+            i 
+           denote the average dissimilarity between 
+          i and all other observations in the
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> to which 
+          i belongs. For any other cluster 
+          C , let 
+          d ( 
+          i,C ) denote the average
+          dissimilarity of 
+          i to all objects of 
+          C and let 
+          b 
+          
+            i 
+           denote the smallest of these 
+          d ( 
+          i,C ). The silhouette width of
+          observation 
+          i is 
+          sil 
+          
+            i 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          b 
+          
+            i 
+           - 
+          a 
+          
+            i 
+           )/<ENAMEX TYPE="PERSON">max</ENAMEX>( 
+          a 
+          
+            i 
+           , 
+          b 
+          
+            i 
+           ) and the overall average silhouette width is simply
+          the average of 
+          sil 
+          
+            i 
+           over all observations 
+          i , = ∑ 
+          
+            i 
+           
+          sil 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . Intuitively, <ENAMEX TYPE="PER_DESC">objects</ENAMEX> with large
+          silhouette width 
+          sil 
+          
+            i 
+           , are well clustered, whereas those with small 
+          sil 
+          
+            i 
+           , tend to lie between clusters. <ENAMEX TYPE="ORGANIZATION">Kaufman</ENAMEX> and
+          Rousseeuw suggest estimating the number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> by that which gives the largest
+          average silhouette width, .
+        
+        
+          Existing methods for estimating the number of
+          clusters in a dataset
+          
+            Null hypothesis
+            Suppose that the maximum possible number of clusters
+            in the data is set to 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , <ENAMEX TYPE="CONTACT_INFO">2 ≤</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">M �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . One approach to estimating
+            the number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> is to look for , <ENAMEX TYPE="CONTACT_INFO">1 < ≤</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, that provides the strongest
+            significant evidence against the null hypothesis H 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> of 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, that is, 'no clusters' in
+            the data. <NUMEX TYPE="CARDINAL">Two</NUMEX> commonly used parametric null hypotheses
+            are the unimodality hypothesis and the uniformity
+            <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX>.
+            Under the unimodality hypothesis, the data are
+            thought to be a random sample from a multivariate
+            normal distribution. This model typically gives a high
+            probability of rejection of the null 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> if the data are sampled
+            from a distribution with a lower kurtosis than the
+            normal distribution, such as the uniform distribution [
+            <NUMEX TYPE="CARDINAL">17</NUMEX>].
+            The uniformity hypothesis, also referred to as
+            <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> position hypothesis, states that the data are
+            sampled from a uniform distribution in 
+            <ENAMEX TYPE="PRODUCT">p -dimensional</ENAMEX> space [ <TIMEX TYPE="DATE">18, 19</TIMEX>,
+            <NUMEX TYPE="CARDINAL">20</NUMEX>]. Methods based on the uniformity <ENAMEX TYPE="PER_DESC">hypothesis</ENAMEX> tend to
+            be conservative, that is, lead to <NUMEX TYPE="CARDINAL">few</NUMEX> rejections of the
+            null hypothesis, when the data are sampled from a
+            strongly unimodal distribution such as the normal
+            distribution. In <NUMEX TYPE="CARDINAL">two</NUMEX> or more dimensions, and depending
+            on the test statistic, the results can be very
+            sensitive to the region of support of the reference
+            distribution [ <TIMEX TYPE="DATE">17</TIMEX>].
+            For both types of hypotheses, evidence against the
+            null hypothesis can be summarized formally under
+            probability models for the data or more informally by
+            using internal indices as described next.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Internal</ENAMEX> indices
+            Numerous methods have been proposed for testing the
+            null hypothesis 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> and estimating the number
+            of clusters in a dataset, however, none of them is
+            completely satisfactory. <ENAMEX TYPE="ORGANIZATION">Jain</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Dubes</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>] provide a
+            general overview of such methods. The majority of
+            existing approaches do not attempt to formally test the
+            null hypothesis that 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, but rather look for the
+            clustering <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> under which a summary statistic of
+            interest is optimal, being large or small depending on
+            the statistic [ <TIMEX TYPE="DATE">21, 22, 23</TIMEX>]. These statistics are
+            typically functions of the within-clusters, and
+            possibly between-clusters, sums of squares. They are
+            referred to as internal indices, in the sense that they
+            are computed from the same observations that are used
+            to create the clustering. Consequently, the
+            distribution of these indices is intractable. In
+            particular, as clustering methods attempt to maximize
+            the separation between clusters, the ordinary
+            significance tests such as analysis of variance 
+            F -tests are not valid for
+            testing differences between the clusters. Milli-gan and
+            <ENAMEX TYPE="ORGANIZATION">Cooper</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>] conducted an extensive <ENAMEX TYPE="GPE">Monte Carlo</ENAMEX>
+            evaluation of <NUMEX TYPE="CARDINAL">30</NUMEX> internal indices. Other approaches
+            include modeling the data using <ENAMEX TYPE="ORGANIZATION">Gaussian</ENAMEX> mixtures and
+            applying a <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> criterion to determine the number
+            of components in the mixture [ <TIMEX TYPE="DATE">11</TIMEX>]. A recent proposal
+            of <ENAMEX TYPE="GPE">Tib</ENAMEX>-shirani 
+            et al. [ <TIMEX TYPE="DATE">24</TIMEX>], called the gap
+            statistic method, calibrates an internal index, such as
+            the within-clusters sum of squares, against its
+            expectation under a suitably defined null hypothesis
+            (note that gap tests have been used in another context
+            in cluster analysis by <ENAMEX TYPE="PERSON">Bock</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>] to test the null
+            hypothesis of a 'homogeneous' <ENAMEX TYPE="PER_DESC">population</ENAMEX> against the
+            alternative of 'heterogeneity'). Tibshirani 
+            <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> carried out a comparative
+            <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX> study of the gap statistic and several of
+            the internal indices that showed a better performance
+            in the study of <ENAMEX TYPE="ORGANIZATION">Milligan</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Cooper</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]. These
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> indices and the gap statistic are described in
+            more detail below.
+            For a given partition of the learning set into <NUMEX TYPE="CARDINAL">1</NUMEX> ≤ 
+            <ENAMEX TYPE="ORGANIZATION">k �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> clusters, define 
+            B 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             and 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             to be the 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> matrices of between and within 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -clusters sums of squares and
+            <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-products [ <ENAMEX TYPE="LAW">8</ENAMEX>]. Note that 
+            B 
+            <ENAMEX TYPE="PRODUCT">1</ENAMEX> is not defined. The following <NUMEX TYPE="CARDINAL">six</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> indices are commonly used to estimate the
+            number of clusters in a dataset.
+            
+            sil : <ENAMEX TYPE="ORGANIZATION">Kaufman</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Rousseeuw</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>]
+            suggest selecting the number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> 2 which gives the largest
+            average silhouette width, 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             . Silhouette widths were defined above with the
+            clustering procedure PAM.
+            
+            ch : <ENAMEX TYPE="ORGANIZATION">Calinski</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Harabasz</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>].
+            For each number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <ENAMEX TYPE="PRODUCT">2</ENAMEX>, define the index
+            
+            where tr denotes the trace of a matrix, that is, the
+            sum of the diagonal entries. The estimated number of
+            <ENAMEX TYPE="PERSON">clusters</ENAMEX> is argmax 
+            
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> 2 
+            ch 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             .
+            
+            kl : <ENAMEX TYPE="ORGANIZATION">Krzanowski</ENAMEX> and <ENAMEX TYPE="PERSON">Lai</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>]. For
+            each number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <ENAMEX TYPE="PRODUCT">2</ENAMEX>, define the indices
+            
+            diff 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k - 1</ENAMEX>) 2/ 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">-1</NUMEX> - 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">2/</NUMEX> 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             and
+            
+            kl 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             = | 
+            diff 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">|/|</ENAMEX> 
+            diff 
+            
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">+1</NUMEX> |.
+            The estimated number of clusters is argmax 
+            
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> 2 
+            kl 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             .
+            
+            <ENAMEX TYPE="ORGANIZATION">hart</ENAMEX> : <ENAMEX TYPE="ORGANIZATION">Hartigan</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>]. For each
+            number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <ENAMEX TYPE="PRODUCT">1</ENAMEX>, define the index
+            
+            The estimated number of clusters is the smallest 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> such that 
+            <ENAMEX TYPE="ORGANIZATION">hart</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="PERSON">≤</ENAMEX> <NUMEX TYPE="CARDINAL">10</NUMEX>.
+            
+            gap or 
+            gapPC : Tibshirani 
+            et al. [ <TIMEX TYPE="DATE">24</TIMEX>]. This method
+            compares an observed internal index, such as the
+            within-clusters sum of squares, to its expectation
+            under a reference null distribution as follows. For
+            each number of clusters 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <ENAMEX TYPE="PRODUCT">1</ENAMEX>, compute the
+            within-clusters sum of squares tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             . Generate 
+            B (here 
+            B = <NUMEX TYPE="CARDINAL">10</NUMEX>) reference datasets under
+            the null distribution and apply the clustering
+            <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> to each, calculating the within-clusters sums
+            of squares tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <NUMEX TYPE="CARDINAL">1</NUMEX>, ..., tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             
+            B . Compute the estimated gap
+            statistic
+            
+            and the standard deviation 
+            sd 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             of log tr 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             
+            b , <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+            b ≤ 
+            <ENAMEX TYPE="PERSON">B. Let</ENAMEX> . The estimated number of
+            <ENAMEX TYPE="PERSON">clusters</ENAMEX> is the smallest 
+            <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> such that , where 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> *= argmax 
+            
+            <ENAMEX TYPE="ORGANIZATION">k �</ENAMEX>�1 
+            gap 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             .
+            Tibshirani 
+            et al. [ <TIMEX TYPE="DATE">24</TIMEX>] chose the uniformity
+            <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX> to create a reference null distribution and
+            considered <NUMEX TYPE="CARDINAL">two</NUMEX> approaches for constructing the region
+            of support of the distribution. In the first approach,
+            the sampling window for the 
+            <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> variable, <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">j �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> , is the range of the observed
+            values for that variable. In the <NUMEX TYPE="ORDINAL">second</NUMEX> approach,
+            following <ENAMEX TYPE="GPE">Sarle</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>], the variables are sampled from a
+            uniform distribution over a box aligned with the
+            principal components of the centered design matrix
+            (that is, the columns of 
+            X are <NUMEX TYPE="ORDINAL">first</NUMEX> set to have mean <NUMEX TYPE="CARDINAL">0</NUMEX> and
+            the singular value decomposition of 
+            X is computed). The new design
+            <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> is then back-transformed to obtain a reference
+            <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>. Whereas the first approach has the advantage
+            of simplicity, the <NUMEX TYPE="ORDINAL">second</NUMEX> takes into account the shape
+            of the data distribution. Note that in both approaches
+            the variables are sampled independently. The version of
+            the gap method that uses the original variables to
+            construct the region of support is referred to as gap
+            and the <NUMEX TYPE="ORDINAL">second</NUMEX> version as gapPC, where 'PC' <ENAMEX TYPE="FAC_DESC">stands</ENAMEX> for
+            principal components.
+            Note that of the above methods, only hart, gap, and
+            gapPC allow the estimation of <NUMEX TYPE="CARDINAL">only one</NUMEX> cluster in the
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, that is, = <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          
+          
+            External indices
+            The term 'validation of a clustering procedure'
+            usually refers to the ability of a given method to
+            recover the true clustering <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> in a dataset.
+            There have been several attempts to assess validity on
+            theoretical grounds [ <TIMEX TYPE="DATE">18, 25</TIMEX>]; however, such approaches
+            turn out to be of little applicability in the context
+            of high-dimensional <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> datasets. In many
+            <ENAMEX TYPE="ORGANIZATION">validation</ENAMEX> studies, clustering methods are evaluated on
+            their performance on empirical datasets with 
+            a priori known cluster labels [
+            <NUMEX TYPE="CARDINAL">25</NUMEX>] or, more commonly, on simulation studies where true
+            cluster labels are known. To assess the ability of a
+            clustering procedure to recover true cluster labels it
+            is necessary to define a measure of agreement between
+            <NUMEX TYPE="CARDINAL">two</NUMEX> partitions; the <NUMEX TYPE="ORDINAL">first</NUMEX> partition being the 
+            a priori known clustering
+            structure of the data, and the <NUMEX TYPE="ORDINAL">second</NUMEX> partition
+            resulting from the clustering procedure. In the
+            <ENAMEX TYPE="NATIONALITY">clustering</ENAMEX> literature, measures of agreement between
+            partitions are referred to as external indices; several
+            such indices are reviewed next.
+            Consider <NUMEX TYPE="CARDINAL">two</NUMEX> partitions of 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> objects 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+             : the 
+            R -class <ENAMEX TYPE="PER_DESC">partition</ENAMEX> = { 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            
+              R 
+             <ENAMEX TYPE="PERSON">}</ENAMEX> and the 
+            C -class <ENAMEX TYPE="PER_DESC">partition</ENAMEX> = { 
+            v 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+            v 
+            
+              C 
+             }. External indices of partitional agreement can
+            be expressed in terms of a contingency table (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>),
+            with entry 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+            
+              ij 
+             denoting the number of <ENAMEX TYPE="PER_DESC">objects</ENAMEX> that are both in
+            clusters 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            
+              i 
+             and 
+            v 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             , 
+            i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            R , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            C [ <TIMEX TYPE="DATE">20</TIMEX>]. Let and denote the row
+            and column sums of the contingency table, respectively,
+            and let .
+            The following indices can then be used.
+            <NUMEX TYPE="CARDINAL">1</NUMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">Rand</ENAMEX> : <ENAMEX TYPE="ORGANIZATION">Rand</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]
+            
+            <NUMEX TYPE="CARDINAL">2</NUMEX>. 
+            Jaccard : <ENAMEX TYPE="ORGANIZATION">Jain</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Dubes</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>]
+            
+            <NUMEX TYPE="CARDINAL">3</NUMEX>. 
+            FM : <ENAMEX TYPE="ORGANIZATION">Fowlkes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Mallows</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>]
+            
+            Note that <ENAMEX TYPE="ORGANIZATION">Rand</ENAMEX> and FM are linear functions of 
+            Z , and hence are linear
+            functions of one another, conditional on the row and
+            column sums in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. If the row and column sums in
+            Table 1are fixed, but the partitions are selected at
+            <ENAMEX TYPE="ORGANIZATION">random</ENAMEX>; that is, if there is independence in the table,
+            the hypergeometric distribution can be applied to
+            determine the expected value of quantities such as 
+            Z . In particular
+            
+            An external index S is often standardized in such a
+            <ENAMEX TYPE="PERSON">way</ENAMEX> that its expected value is <NUMEX TYPE="CARDINAL">0</NUMEX> when the partitions
+            are selected at random and <NUMEX TYPE="CARDINAL">1</NUMEX> when they match perfectly.
+            This amounts to computing a standardized external
+            index
+            
+            where 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              <ENAMEX TYPE="PERSON">max</ENAMEX> 
+             is the maximum value of the statistic 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> and 
+            E ( 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> ) is the expected value of 
+            S when partitions are selected at
+            <ENAMEX TYPE="ORGANIZATION">random</ENAMEX>. Accordingly, an often used correction for the
+            <ENAMEX TYPE="ORGANIZATION">Rand</ENAMEX> statistic is
+            
+            The significance of an observed external index is
+            usually assessed under the assumption that the two
+            <ENAMEX TYPE="ORGANIZATION">partitions</ENAMEX> to be compared are independent. This
+            assumption does not hold for the resampling methods
+            described in the following section, since the same data
+            are used to produce the <NUMEX TYPE="CARDINAL">two</NUMEX> partitions. Nevertheless,
+            external indices are convenient tools for comparing two
+            clusterings, and are used in the new resampling method
+            <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX>. In this context, one should think of these
+            indices as internal rather than external measures.
+          
+        
+      
+      
+        Results
+        
+          Clest, a prediction-based resampling method for
+          estimating the number of clusters
+          We propose a new prediction-based resampling method,
+          Clest, for estimating the number of clusters, if any, in
+          a dataset. The idea behind <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> is very intuitive if one
+          is concerned with reproducibility or predictability of
+          cluster assignments.
+          It is proposed to estimate the number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> by repeatedly randomly dividing
+          the original dataset into <NUMEX TYPE="CARDINAL">two</NUMEX> non-overlapping sets, a
+          learning set 
+          b and a test set . For each
+          <ENAMEX TYPE="PERSON">iteration</ENAMEX> and for each number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, a clustering (·; 
+          b ) of the learning set 
+          b is obtained and a predictor 
+          C (·; 
+          b ) is built using the class labels
+          from the clustering. The predictor 
+          C (·; 
+          b ) is then applied to the test set
+          and the predicted labels are compared to those produced
+          by applying the clustering procedure to the test set,
+          using one of the external indices (or similarity
+          statistics) described in the <ENAMEX TYPE="LOCATION">Background</ENAMEX> section. The
+          number of clusters is estimated by comparing the observed
+          similarity statistic for each 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> to its expected value under a
+          suitable null distribution with 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>. The estimated number of
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> is defined to be the corresponding to the
+          largest significant evidence against the null hypothesis
+          of 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          An early version of this approach was introduced by
+          <ENAMEX TYPE="ORGANIZATION">Breckenridge</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>] under the name of replication analysis
+          and was designed to evaluate the stability of a
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>. In the original replication analysis, the
+          number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is fixed, and the data are
+          randomly divided into <NUMEX TYPE="CARDINAL">two</NUMEX> samples. A clustering procedure
+          partitions both <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> into 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> clusters, and the centroids of
+          the clusters of the first sample are computed. A second
+          set of labels is assigned to the observations in the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> sample by assigning to each observation the
+          <ENAMEX TYPE="PRODUCT">cluster</ENAMEX> label of the closest <ENAMEX TYPE="PER_DESC">centroid</ENAMEX> from the first
+          sample. Finally, an external index is used to assess the
+          agreement between the <NUMEX TYPE="CARDINAL">two</NUMEX> partitions of the second
+          sample. This measure reflects the stability of the
+          clustering <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> procedure proposed here
+          generalizes the work of <ENAMEX TYPE="ORGANIZATION">Breckenridge</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>].
+        
+        
+          Clest procedure for estimating the number of
+          clusters in a dataset
+          Denote the maximum possible number of clusters by 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">2 ≤</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">M �</ENAMEX>� 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . For each number of clusters 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , <ENAMEX TYPE="CONTACT_INFO">2 ≤</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k �</ENAMEX>� 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , perform steps <NUMEX TYPE="CARDINAL">1</NUMEX>-4.
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. Repeat the following 
+          B times:
+          (a) Randomly split the original learning set into <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="PER_DESC">non-overlapping</ENAMEX> sets, a learning set 
+          b and a test set .
+          (b) Apply a clustering procedure to the learning set 
+          b to obtain a partition (·; 
+          b ).
+          (c) Build a classifier 
+          C (·; 
+          b ) using the learning set 
+          b and its cluster labels.
+          (<ENAMEX TYPE="GPE">d</ENAMEX>) Apply the resulting classifier to the test set
+          .
+          (e) Apply the clustering procedure to the test set to
+          obtain a partition (·; ).
+          (f) Compute an external index 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>,b 
+           comparing the <NUMEX TYPE="CARDINAL">two</NUMEX> sets of labels for , namely the
+          labels obtained by clustering and prediction.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. Let 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = median( 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">,1</NUMEX> , ..., 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>,B 
+           ) denote the observed similarity statistic for the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -cluster partition of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. Generate 
+          B 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> datasets under a suitable null
+          <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX>. For each reference dataset, repeat the
+          procedure described in steps <NUMEX TYPE="CARDINAL">1 and 2</NUMEX> above, to obtain 
+          B 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> similarity statistics 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">,1</NUMEX> , ..., 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , 
+          <ENAMEX TYPE="PERSON">Bo</ENAMEX>  .
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. Let denote the average of these 
+          B 
+          <TIMEX TYPE="DATE">0</TIMEX> statistics, , and let 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           denote the proportion of the 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , 
+          b  , <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+          b ≤ 
+          B 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , that are at least as large as the
+          observed statistic 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , that is, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           . Finally, let 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           - denote the difference between the observed
+          similarity statistic and its estimated expected value
+          under the null hypothesis of 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          Define the set 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> as
+          
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> -= {<ENAMEX TYPE="CONTACT_INFO">2 ≤</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k �</ENAMEX>� 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> : 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ≤ 
+          p 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           , 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ≥ 
+          d 
+          
+            <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">},</ENAMEX>
+          where 
+          p 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           and 
+          d 
+          
+            <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+           are preset thresholds (see <ENAMEX TYPE="PERSON">Parameters</ENAMEX> of the Clest
+          procedure section below). If this set is empty, estimate
+          the number of clusters as = <NUMEX TYPE="CARDINAL">1</NUMEX>. Otherwise, let = argmax 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           - 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , that is, take the number of clusters that
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the largest significant difference
+          statistic 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           .
+        
+        
+          Parameters of the <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> procedure
+          
+            Clustering procedure: partitioning around medoids
+            (<ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>)
+            The <ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX> clustering procedure of <ENAMEX TYPE="ORGANIZATION">Kaufman</ENAMEX> and
+            <ENAMEX TYPE="ORGANIZATION">Rousseeuw</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>], implemented in the cluster package in
+            R and S<NUMEX TYPE="CARDINAL">-Plus</NUMEX>, was used to cluster observations based on
+            the Euclidean distance metric (see Background).
+          
+          
+            Classifier: diagonal linear discriminant analysis
+            (<ENAMEX TYPE="ORGANIZATION">DLDA</ENAMEX>)
+            For multivariate <ENAMEX TYPE="NATIONALITY">Gaussian</ENAMEX> class conditional
+            densities, that is, for 
+            x | 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = 
+            <ENAMEX TYPE="ORGANIZATION">k ~ N</ENAMEX>( 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ,Σ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ), the maximum likelihood (ML) discriminant rule
+            (or <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> rule with uniform class priors) predicts the
+            class of an observation 
+            x by that which gives the largest
+            likelihood to 
+            x , that is,
+            
+            When the <ENAMEX TYPE="PER_DESC">class densities</ENAMEX> have the same diagonal
+            <ENAMEX TYPE="ORGANIZATION">covariance matrix</ENAMEX> , the discriminant rule is linear and
+            given by
+            
+            For the corresponding sample <ENAMEX TYPE="ORGANIZATION">ML</ENAMEX> discriminant rules,
+            the population mean vectors and covariance matrices are
+            estimated from a learning set by the sample mean
+            <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> and covariance matrices, respectively: <NUMEX TYPE="PERCENT">and</NUMEX> .
+            For the constant covariance matrix case, the pooled
+            estimate of the common <ENAMEX TYPE="SUBSTANCE">covariance matrix</ENAMEX> is used: <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX>
+            where 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             denotes the number of observations in class 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the total sample size. DLDA
+            is a very simple classifier but it has been shown to
+            perform well in complex situations, in particular, in
+            an extensive study of discrimination methods for the
+            classification of tumors using gene-expression data [
+            <NUMEX TYPE="CARDINAL">29</NUMEX>]. <ENAMEX TYPE="ORGANIZATION">DLDA</ENAMEX> is also known as naive Bayes
+            <ENAMEX TYPE="PERSON">classification</ENAMEX>.
+          
+          
+            Reference null distribution
+            The reference datasets are generated under the
+            uniformity hypothesis as in the gap statistic method
+            (see Background).
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">External</ENAMEX> index
+            All the external indices described in Background
+            were considered. The FM index [ <TIMEX TYPE="DATE">27</TIMEX>] was found to be
+            superior to the other indices when reference datasets
+            are generated under the uniformity hypothesis (data not
+            shown).
+          
+          
+            Threshold parameters, <ENAMEX TYPE="PRODUCT_DESC">p maxand</ENAMEX> d min
+            The choices 
+            p 
+            
+              <ENAMEX TYPE="PERSON">max</ENAMEX> 
+             = <NUMEX TYPE="CARDINAL">0.05</NUMEX> and 
+            d 
+            
+              <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+             = <NUMEX TYPE="CARDINAL">0.05</NUMEX> are 
+            ad hoc and can probably be
+            improved upon. Nevertheless, this rule gives a
+            satisfactory performance and is used in the absence of
+            a better choice.
+          
+          
+            Number of iterations and reference
+            datasets
+            Here we used 
+            B = 
+            B 
+            <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">20</NUMEX>. In general, the Clest
+            procedure is robust to the choice of 
+            B and 
+            B 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> (data not shown).
+          
+        
+        
+          Comparison of procedures on simulated data
+          The new procedure <ENAMEX TYPE="PERSON">Clest</ENAMEX> was compared to <NUMEX TYPE="CARDINAL">six</NUMEX> existing
+          methods presented in <ENAMEX TYPE="GPE">Background</ENAMEX> using data simulated from
+          the <ENAMEX TYPE="PER_DESC">models</ENAMEX> described in <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods. Figure
+          1displays <ENAMEX TYPE="ORG_DESC">bar</ENAMEX> plots for the percentage of simulations for
+          which a given method correctly recovered the number of
+          clusters for each of the <NUMEX TYPE="CARDINAL">eight</NUMEX> models. <ENAMEX TYPE="PRODUCT">Table 3provides</ENAMEX> a
+          more detailed account of the simulation results for each
+          procedure. It can be seen that <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> gave uniformly good
+          results over the range of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, <TIMEX TYPE="DATE">its worst</TIMEX> performance
+          being for <ENAMEX TYPE="PRODUCT">Model 7</ENAMEX> with <NUMEX TYPE="CARDINAL">two</NUMEX> overlapping clusters. The rest
+          of the methods failed for <NUMEX TYPE="CARDINAL">at least one</NUMEX> of the <NUMEX TYPE="CARDINAL">eight</NUMEX>
+          models considered. The gap procedure failed twice (<ENAMEX TYPE="ORGANIZATION">Models</ENAMEX>
+          <NUMEX TYPE="CARDINAL">5 and 6</NUMEX>) and gapPC failed once (<ENAMEX TYPE="PRODUCT">Model 6</ENAMEX>). Neither gap nor
+          gapPC were able to identify the presence of the two
+          clusters for <ENAMEX TYPE="PRODUCT">Model 6</ENAMEX>, which is a model with <NUMEX TYPE="CARDINAL">two</NUMEX> drawn-out
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> and <NUMEX TYPE="CARDINAL">seven</NUMEX> noise variables with varying
+          <ENAMEX TYPE="ORGANIZATION">variances</ENAMEX>. Both gap and <ENAMEX TYPE="PER_DESC">gapPC</ENAMEX> consistently estimated one
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> for this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, perhaps because both methods are
+          based on the within-clusters sums of squares and
+          consequently are more affected by the variables with
+          larger variances. In a majority of the simulations from
+          <ENAMEX TYPE="PRODUCT">Model 7</ENAMEX>, <ENAMEX TYPE="GPE">Clest</ENAMEX>, gap, and gapPC failed to distinguish
+          between <NUMEX TYPE="CARDINAL">one and two</NUMEX> clusters, while the simple hart index
+          performed well. The rest of the procedures do not have,
+          by definition, the ability to estimate one cluster and
+          hence generally identified the two clusters.
+          Interestingly, for <ENAMEX TYPE="PRODUCT">Model 8</ENAMEX> with <NUMEX TYPE="CARDINAL">three</NUMEX> overlapping
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>, sil and ch performed poorly, choosing <NUMEX TYPE="CARDINAL">two</NUMEX>
+          clusters in a majority of the simulations, while hart and
+          Clest showed the best performance. Overall, most methods
+          tended to underestimate more often than they
+          overestimated the number of clusters, but the situation
+          was reversed for <ENAMEX TYPE="ORGANIZATION">hart</ENAMEX> and kl. For <ENAMEX TYPE="PRODUCT">Model 1</ENAMEX> it is only fair
+          to compare Clest gap, gapPC, and <ENAMEX TYPE="ORGANIZATION">hart</ENAMEX>, as the other
+          methods only estimate <ENAMEX TYPE="CONTACT_INFO">≥ 2</ENAMEX>.
+          In summary, for the <ENAMEX TYPE="PRODUCT_DESC">simulation models</ENAMEX> considered here,
+          Clest was the most robust and accurate, whereas hart
+          performed worst. gapPC was better than gap and the rest
+          of the methods performed similarly.
+          For <TIMEX TYPE="DATE">a given</TIMEX> model, it is of interest to consider the
+          median value of the statistics used by each method to
+          estimate the number of clusters. For each number of
+          clusters 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, the plots of the median values,
+          over <TIMEX TYPE="DATE">the 50</TIMEX> simulated datasets, of the Clest 
+          d 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  -statistic, 
+          gapPC 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  , and 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           statistics are shown in Figures <ENAMEX TYPE="CONTACT_INFO">2, 3and 4,</ENAMEX>
+          respectively. The 
+          d -statistic does not generally
+          have local maxima except for <ENAMEX TYPE="PRODUCT">Model 5</ENAMEX>. There, a local
+          maximum appears at 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX> clusters, but the global
+          maximum occurs at 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>. It can be seen that the
+          ability of <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> to distinguish between <NUMEX TYPE="CARDINAL">one and two</NUMEX>
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> is very low for <ENAMEX TYPE="PRODUCT">Model 7</ENAMEX>; the median of the 
+          d 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> values is less than the significance
+          cut-off 
+          d 
+          
+            <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+           used in the <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> procedure. Indeed, the results in
+          <ENAMEX TYPE="PRODUCT">Table 3show</ENAMEX> that <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> identified <NUMEX TYPE="CARDINAL">two</NUMEX> clusters for only
+          <NUMEX TYPE="PERCENT">30%</NUMEX> of the datasets simulated from <ENAMEX TYPE="PRODUCT">Model 7</ENAMEX>. The figures
+          suggest that for the majority of the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, the global
+          maximum of the median 
+          d -statistic is more pronounced
+          than the global maxima of the median 
+          gapPC 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  and 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           statistics, respectively. This again suggests good
+          <ENAMEX TYPE="ORGANIZATION">robustness</ENAMEX> and accuracy properties for the Clest
+          method.
+        
+        
+          Comparison of procedures on microarray data
+          The new Clest method was also evaluated using
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data from the <NUMEX TYPE="CARDINAL">four</NUMEX> cancer microarray
+          studies described in <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods and summarized
+          in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. Recall that mRNA samples in the lymphoma,
+          <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>, and <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">datasets</ENAMEX> were assigned class labels
+          from the laboratory analyses of the tumor samples or from
+          
+          a priori knowledge of the cell
+          lines. For the melanoma dataset, tumor class labels were
+          obtained from the statistical analysis described in
+          Bittner 
+          et al. [ <TIMEX TYPE="DATE">30</TIMEX>]. In the discussion
+          that follows, these <ENAMEX TYPE="PER_DESC">class</ENAMEX> labels are treated as known.
+          The <NUMEX TYPE="CARDINAL">six</NUMEX> methods described in <ENAMEX TYPE="GPE">Background</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> were
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to estimate the number of clusters for each of
+          the <NUMEX TYPE="CARDINAL">four</NUMEX> microarray datasets; the results are presented
+          in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>.
+          The methods <ENAMEX TYPE="PERSON">Clest</ENAMEX> and sil correctly estimated the
+          <ENAMEX TYPE="CONTACT_INFO">presumed</ENAMEX> number of classes for all but the <NUMEX TYPE="ORDINAL">NCI60</NUMEX> dataset,
+          where both methods identified <NUMEX TYPE="CARDINAL">three</NUMEX> clusters only. The
+          gap and gapPC methods overestimated the number of
+          clusters for all datasets, with the exception of gapPC,
+          which identified <NUMEX TYPE="CARDINAL">eight</NUMEX> clusters for <TIMEX TYPE="DATE">the NCI60</TIMEX> dataset.
+          The ch method estimated <NUMEX TYPE="CARDINAL">two</NUMEX> clusters for each of the <NUMEX TYPE="CARDINAL">four</NUMEX>
+          datasets, whereas kl and hart identified <NUMEX TYPE="CARDINAL">four</NUMEX> classes for
+          the lymphoma dataset.
+          For <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX>, gapPC, and sil, we further investigated how
+          the strength of the evidence for the estimated number of
+          clusters varied between datasets. Figure 5displays plots
+          of the 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , 
+          gapPC 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , and 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           statistics versus the number of clusters 
+          <ENAMEX TYPE="PERSON">k. Error</ENAMEX> <ENAMEX TYPE="ORG_DESC">bars</ENAMEX> for 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           and 
+          gapPC 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           are based on the standard deviations of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           and log tr 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           under their respective null distributions. Whereas
+          the evidence for the existence of clusters is very strong
+          for the lymphoma, <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>, and <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">datasets</ENAMEX>, the
+          evidence for the two clusters in the melanoma dataset is
+          much weaker. In particular, for <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX>, the maximum value
+          of the 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="PERSON">statistic</ENAMEX> barely reaches the 
+          d 
+          
+            <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+           threshold of <NUMEX TYPE="CARDINAL">0.05</NUMEX>. For the <ENAMEX TYPE="DISEASE">leukemia dataset</ENAMEX>, the 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="PERSON">statistic</ENAMEX> clearly peaks at 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> clusters and drops off
+          abruptly; for the lymphoma and <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> datasets the
+          decrease is more gradual. Note that according to Clest
+          there was not enough evidence to identify the <NUMEX TYPE="CARDINAL">two</NUMEX> DLBCL
+          subclasses for the lymphoma dataset. Alizadeh 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] identified these
+          <ENAMEX TYPE="ORGANIZATION">subclasses</ENAMEX> using subject matter knowledge to select the
+          genes for the clustering procedure; here the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          selected in an unsupervised manner.
+        
+      
+      
+        Discussion
+        Resampling methods such as bagging and boosting have
+        been applied successfully in a supervised learning context
+        to improve prediction accuracy. Here and in a related
+        <ENAMEX TYPE="LAW">article [ 7</ENAMEX>], we have proposed resampling methods to
+        address <NUMEX TYPE="CARDINAL">two</NUMEX> main problems in cluster analysis: estimating
+        the number of clusters, if any, in a dataset; improving and
+        assessing the accuracy of a given clustering procedure. As
+        the <ENAMEX TYPE="PER_DESC">groups</ENAMEX> obtained from cluster analysis are often used
+        later on for prediction purposes, the approaches to these
+        <NUMEX TYPE="CARDINAL">two</NUMEX> problems rely on and extend ideas from supervised
+        learning. Although the methods are applicable to general
+        clustering problems and procedures, particular attention is
+        given to the clustering of tumors using gene-expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The performance of the proposed and existing methods
+        was compared using simulated data and gene-expression data
+        from <NUMEX TYPE="CARDINAL">four</NUMEX> recently published <ENAMEX TYPE="DISEASE">cancer microarray</ENAMEX> studies.
+        To estimate the number of clusters in a dataset, we
+        propose a prediction-based resampling method, <ENAMEX TYPE="GPE">Clest</ENAMEX>, which
+        estimates the number of clusters 
+        <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> based on the reproducibility of
+        cluster assignments. In comparative studies, <ENAMEX TYPE="PERSON">Clest</ENAMEX> was
+        generally found to be more accurate and robust <TIMEX TYPE="TIME">than six</TIMEX>
+        existing methods. For the simulated datasets, Clest
+        performed well across a wide range of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> with varying
+        numbers of overlapping and non-overlapping clusters,
+        different numbers of variables and covariance matrix
+        structures. Unlike methods based on <NUMEX TYPE="CARDINAL">between</NUMEX>- or
+        within-clusters sums of squares, the resampling method
+        seems robust to the varying covariance structure of the
+        variables.
+        For the microarray datasets, <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> and sil correctly
+        estimated the number of <ENAMEX TYPE="DISEASE">tumor</ENAMEX> or cell-line clusters (as
+        determined from 
+        a priori known or <ENAMEX TYPE="DISEASE">putative tumor</ENAMEX> and
+        cell-line classes) for <NUMEX TYPE="CARDINAL">three</NUMEX> out of the <NUMEX TYPE="CARDINAL">four</NUMEX> datasets; the
+        performance of other methods was significantly worse. We
+        focus here on the clustering of <ENAMEX TYPE="DISEASE">tumor</ENAMEX> mRNA samples using
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data. Once tumor <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are specified, an
+        important next step would be the identification of marker
+        genes that characterize these different tumor classes. A
+        related question, which we have not considered here, is the
+        <ENAMEX TYPE="ORGANIZATION">'transpose</ENAMEX>' clustering problem; that is, the clustering of
+        genes that have similar expression levels across biological
+        samples. One could then investigate the clusters for the
+        presence of shared regulatory motifs among the genes [ <TIMEX TYPE="DATE">31</TIMEX>].
+        This could lead to the identification of genes that are not
+        only coexpressed but are also under similar regulatory
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>. Joint analysis of transcript level and sequence
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> should lead to greater biological insight into the
+        molecular characterization of tumors.
+        A number of decisions were made regarding the different
+        parameters of the <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> procedure. The clustering procedure
+        <ENAMEX TYPE="PERSON">PAM</ENAMEX> was used in the comparison; however, one should keep in
+        mind that different clustering procedures can generate
+        different partitions of the same data, possibly leading to
+        different inferences about the number of clusters. In
+        addition, the clustering (<ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>) and prediction methods (DLDA
+        or naive <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX>) considered in this article focus on similar
+        features of the data, namely, the distance of the
+        observations from cluster 'centers'. More work is needed to
+        investigate the robustness of <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> to these choices. In
+        particular, it would be interesting to consider prediction
+        and clustering methods that focus on different aspects of
+        the data (for example, classification <ENAMEX TYPE="PLANT">trees</ENAMEX> instead of
+        <ENAMEX TYPE="ORGANIZATION">DLDA</ENAMEX>). Although it may seem that having a classifier as a
+        <ENAMEX TYPE="PER_DESC">parameter of the Clest</ENAMEX> procedure creates more room for
+        error, we have found that this is not the case in practice.
+        When the classifier in <ENAMEX TYPE="GPE">Clest</ENAMEX> performs poorly, other methods
+        for estimating the number of clusters also perform poorly.
+        Another important choice in the <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX> procedure is the
+        reference null distribution used to calibrate the observed
+        similarity statistics 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         for different numbers of clusters. The uniformity
+        hypothesis was used here; a natural alternative would be to
+        consider random permutations of the variables, that is,
+        permutations of the entries of the design matrix within
+        columns. In <ENAMEX TYPE="GPE">Clest</ENAMEX>, the observed similarity statistics 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         are compared across numbers of clusters 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> by considering their distance from
+        their estimated expected value under the null distribution.
+        A more sensitive calibration may be achieved by taking
+        scale into account, that is, by dividing the difference
+        statistic 
+        d 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         by the standard deviation of 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         under the null distribution, or even by considering 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values 
+        p 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         for 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         . We briefly considered these refinements and found
+        that on their own they did not allow good discrimination
+        between the different 
+        <ENAMEX TYPE="ORGANIZATION">k s. The Clest</ENAMEX> method does, however,
+        use the idea of 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value in combination with the
+        differences 
+        d 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         , as it imposes an upper limit on the 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value 
+        p 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         . Finally, the choice of cut-off parameters 
+        d 
+        
+          <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+         and 
+        p 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         was rather 
+        ad hoc and could be fine tuned.
+        We have not considered model-based methods, such as the
+        <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> approach of <ENAMEX TYPE="ORGANIZATION">Fraley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Raftery</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>] or the
+        mixture-model approach of McLachlan 
+        et al. [ <TIMEX TYPE="DATE">32</TIMEX>]. Another issue only
+        briefly addressed here is the selection of variables on
+        which to base the clusterings. For the microarray datasets,
+        genes were selected on the basis of the variance of their
+        expression levels across samples, and it was found that the
+        clusterings were fairly robust to the number of genes.
+        Resampling methods are promising tools for addressing
+        various problems in cluster analysis. <ENAMEX TYPE="PERSON">Ben-Hur</ENAMEX> 
+        et al. [ <TIMEX TYPE="DATE">33</TIMEX>] have recently proposed a
+        stability-based method for estimating the number of
+        <ENAMEX TYPE="PERSON">clusters</ENAMEX>, where stability is characterized by the
+        distribution of pairwise similarities between clusterings
+        obtained from subsamples of the data. It would be
+        interesting to relate the approach of <ENAMEX TYPE="PERSON">Ben-Hur</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Clest</ENAMEX>. Elsewhere, we
+        proposed <NUMEX TYPE="CARDINAL">two</NUMEX> bagged clustering methods for improving and
+        assessing the accuracy of a given partitioning clustering
+        procedure [ <ENAMEX TYPE="LAW">7</ENAMEX>]. There, the bootstrap is used to generate
+        and aggregate multiple clusterings and to assess the
+        confidence of cluster assignments for individual
+        observations. <ENAMEX TYPE="ORGANIZATION">Leisch</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX>] proposed a bagged clustering
+        method which is a combination of partitioning and
+        hierarchical methods. A partitioning method is applied to
+        bootstrap learning sets and the resulting partitions are
+        combined by performing hierarchical clustering of the
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> <ENAMEX TYPE="FAC_DESC">centers</ENAMEX>. This method is similar in spirit to our
+        <NUMEX TYPE="CARDINAL">two</NUMEX> new bagging procedures [ <ENAMEX TYPE="LAW">7</ENAMEX>].
+      
+      
+        Conclusions
+        Focusing on prediction accuracy in conjunction with
+        <ENAMEX TYPE="ORGANIZATION">resampling</ENAMEX> produces accurate and robust estimates of the
+        number of clusters. As reproducibility of the cluster
+        <ENAMEX TYPE="PERSON">assignments is an integral part of the Clest</ENAMEX> method, the
+        clustering results can be used reliably for building a
+        <ENAMEX TYPE="ORGANIZATION">classifier</ENAMEX> to predict the class of future observations. In
+        addition, the procedure is robust to the covariance
+        structure among variables.
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Simulation</ENAMEX> models
+          Procedures for estimating the number of clusters in a
+          dataset were evaluated using simulated data from a
+          variety of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, including those considered by
+          Tibshirani 
+          et al. [ <TIMEX TYPE="DATE">24</TIMEX>]. The models used for
+          comparison contain different numbers of overlapping and
+          non-overlapping clusters, different numbers of variables,
+          and a wide range of covariance <ENAMEX TYPE="FAC_DESC">matrix structures</ENAMEX>. In
+          addition, a variable number of irrelevant or 'noise'
+          variables are included in the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>. A noise variable is
+          a variable whose distribution does not depend on the
+          <ENAMEX TYPE="PRODUCT">cluster</ENAMEX> label, and such variables are added to obscure
+          the underlying clustering structure to be recovered.
+          
+          <ENAMEX TYPE="PRODUCT">Model 1</ENAMEX>. One cluster in <TIMEX TYPE="DATE">10</TIMEX>
+          <ENAMEX TYPE="CONTACT_INFO">dimensions,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">200</NUMEX> observations are simulated
+          from the uniform distribution over the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> hypercube in 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">10</NUMEX> dimensions.
+          
+          <ENAMEX TYPE="PRODUCT">Model 2</ENAMEX>. <NUMEX TYPE="CARDINAL">Three</NUMEX> clusters in two
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>. The observations in each of the three
+          clusters are independent bivariate normal random
+          variables with means (<NUMEX TYPE="MONEY">0,0</NUMEX>), (<NUMEX TYPE="MONEY">0,5</NUMEX>), and (<ENAMEX TYPE="CONTACT_INFO">5,-3</ENAMEX>),
+          respectively, and identity covariance matrix. There are
+          <TIMEX TYPE="DATE">25, 25</TIMEX>, and <NUMEX TYPE="CARDINAL">50</NUMEX> observations in each of the <NUMEX TYPE="CARDINAL">3</NUMEX> clusters,
+          respectively.
+          
+          <ENAMEX TYPE="PRODUCT">Model 3</ENAMEX>. <NUMEX TYPE="CARDINAL">Four</NUMEX> clusters in <TIMEX TYPE="DATE">10</TIMEX>
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>, <NUMEX TYPE="CARDINAL">7</NUMEX> noise variables. Each cluster is randomly
+          chosen to have <NUMEX TYPE="CARDINAL">25 or 50</NUMEX> observations, and the
+          observations in a given cluster are independently drawn
+          from a multivariate normal distribution with identity
+          covariance matrix. For each cluster, the cluster means
+          for the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">three</NUMEX> variables are randomly chosen from a
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>( 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">3 ,25</NUMEX> 
+          I 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ) distribution, where 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> 
+          
+            p 
+           denotes a <NUMEX TYPE="CARDINAL">1</NUMEX> × 
+          p vector of <NUMEX TYPE="CARDINAL">zeros</NUMEX> and 
+          I 
+          
+            p 
+           denotes the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          p identity matrix. The means for
+          the remaining <NUMEX TYPE="CARDINAL">seven</NUMEX> variables are <NUMEX TYPE="CARDINAL">0</NUMEX>. Any simulation where
+          the Euclidean distance between the two closest
+          observations belonging to different clusters is less than
+          <ENAMEX TYPE="PRODUCT">1</ENAMEX> is discarded.
+          
+          <ENAMEX TYPE="PRODUCT">Model 4</ENAMEX>. <NUMEX TYPE="CARDINAL">Four</NUMEX> clusters in <TIMEX TYPE="DATE">10</TIMEX>
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>. Each cluster is randomly chosen to contain <NUMEX TYPE="CARDINAL">25</NUMEX>
+          or <NUMEX TYPE="CARDINAL">50</NUMEX> observations, with means randomly chosen as <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>( 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> 
+          <TIMEX TYPE="DATE">10</TIMEX> , <NUMEX TYPE="CARDINAL">3.6</NUMEX> 
+          I 
+          <NUMEX TYPE="CARDINAL">10</NUMEX> ). The observations in a given
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> are independently drawn from a normal
+          distribution with identity covariance matrix and
+          appropriate mean vector. Any simulation where the
+          Euclidean distance between the two closest observations
+          belonging to different clusters is less than 1 is
+          discarded.
+          
+          <ENAMEX TYPE="PRODUCT">Model 5</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> elongated clusters in
+          <NUMEX TYPE="CARDINAL">three</NUMEX> dimensions. <ENAMEX TYPE="CONTACT_INFO">Cluster 1</ENAMEX> contains <NUMEX TYPE="CARDINAL">100</NUMEX> observations
+          generated as follows. Set 
+          x 
+          <TIMEX TYPE="DATE">1</TIMEX> = 
+          x 
+          <TIMEX TYPE="DATE">2</TIMEX> = 
+          x 
+          <TIMEX TYPE="DATE">3</TIMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>, with 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> taking on equally spaced values
+          from <NUMEX TYPE="PERCENT">-0.5</NUMEX> to <NUMEX TYPE="CARDINAL">0.5</NUMEX>. Gaussian noise with standard deviation
+          of <NUMEX TYPE="CARDINAL">0.1</NUMEX> is then added to each variable. <ENAMEX TYPE="ORGANIZATION">Cluster 2</ENAMEX> is
+          generated in the same way except that the value <TIMEX TYPE="DATE">10</TIMEX> is
+          added to each variable. This results in <NUMEX TYPE="CARDINAL">two</NUMEX> elongated
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>, stretching out along the main diagonal of a
+          three-dimensional <NUMEX TYPE="QUANTITY">cube</NUMEX>, with <NUMEX TYPE="CARDINAL">100</NUMEX> observations each.
+          
+          <ENAMEX TYPE="PRODUCT">Model 6</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> elongated clusters in <TIMEX TYPE="DATE">10</TIMEX>
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>, <NUMEX TYPE="CARDINAL">7</NUMEX> noise variables. The clusters are generated
+          as in <ENAMEX TYPE="PRODUCT">Model 5</ENAMEX>, but, in addition, <NUMEX TYPE="CARDINAL">seven</NUMEX> noise variables
+          are simulated independently from a normal distribution
+          with mean <NUMEX TYPE="CARDINAL">0</NUMEX> and variance 
+          <ENAMEX TYPE="PRODUCT">v 2for</ENAMEX> the 
+          <ENAMEX TYPE="ORGANIZATION">v th</ENAMEX> variable, <ENAMEX TYPE="CONTACT_INFO">4 ≤</ENAMEX> 
+          <ENAMEX TYPE="PERSON">v ≤</ENAMEX> <NUMEX TYPE="CARDINAL">10</NUMEX>.
+          
+          <ENAMEX TYPE="PRODUCT">Model 7</ENAMEX> . <NUMEX TYPE="CARDINAL">Two</NUMEX> overlapping clusters in
+          10 dimensions, <NUMEX TYPE="CARDINAL">9</NUMEX> noise variables. Each cluster contains
+          50 observations. The first variable in each of the two
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> is normally distributed with mean <NUMEX TYPE="CARDINAL">0 and 2.5</NUMEX>,
+          respectively, and with variance <NUMEX TYPE="CARDINAL">1</NUMEX>. The remaining <NUMEX TYPE="CARDINAL">nine</NUMEX>
+          variables are simulated from the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>( 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">9 ,</ENAMEX> 
+          I 
+          <NUMEX TYPE="CARDINAL">9</NUMEX> ) distribution (independently of the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> variable).
+          
+          <ENAMEX TYPE="PRODUCT">Model 8</ENAMEX>. <NUMEX TYPE="CARDINAL">Three</NUMEX> overlapping clusters
+          in <TIMEX TYPE="DATE">13</TIMEX> dimensions, <NUMEX TYPE="CARDINAL">10</NUMEX> noise variables. Each cluster
+          contains <NUMEX TYPE="CARDINAL">50</NUMEX> observations. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">three</NUMEX> variables have
+          a multivariate normal distribution with mean vectors
+          (<NUMEX TYPE="MONEY">0,0,0</NUMEX>), (<NUMEX TYPE="CARDINAL">2</NUMEX>,-<NUMEX TYPE="CARDINAL">2,2</NUMEX>), and (-<NUMEX TYPE="CARDINAL">2,2</NUMEX>,<ENAMEX TYPE="CONTACT_INFO">-2</ENAMEX>), respectively, and
+          <ENAMEX TYPE="ANIMAL">covariance matrix Σ</ENAMEX>, where σ 
+          
+            ij 
+           <ENAMEX TYPE="CONTACT_INFO">= 1, 1 ≤</ENAMEX> 
+          i �<NUMEX TYPE="MONEY">� 3</NUMEX>, and σ 
+          
+            ij 
+           = <NUMEX TYPE="CARDINAL">0.5</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+          i ≠ 
+          <ENAMEX TYPE="PRODUCT">j ≤ 3</ENAMEX>. The remaining <NUMEX TYPE="CARDINAL">10</NUMEX> variables
+          are simulated independently from the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>( 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> 
+          <TIMEX TYPE="DATE">10</TIMEX> , 
+          I 
+          <NUMEX TYPE="CARDINAL">10</NUMEX> ) distribution.
+          Note that <ENAMEX TYPE="LAW">Models 1, 2, 4, and 5</ENAMEX> were considered in
+          Tibshirani 
+          et al. [ <TIMEX TYPE="DATE">24</TIMEX>]. <ENAMEX TYPE="PRODUCT">Model 3</ENAMEX> is similar to
+          the <NUMEX TYPE="ORDINAL">third</NUMEX> model in [ <TIMEX TYPE="DATE">24</TIMEX>], with the addition of <NUMEX TYPE="CARDINAL">seven</NUMEX>
+          noise variables. <ENAMEX TYPE="PRODUCT">Model 6</ENAMEX> is the same as <ENAMEX TYPE="PRODUCT">Model 5</ENAMEX>, with the
+          addition of <NUMEX TYPE="CARDINAL">seven</NUMEX> noise variables.
+          Fifty datasets were simulated from each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and the
+          methods described in the <ENAMEX TYPE="ORGANIZATION">Background</ENAMEX> and Results sections
+          were applied to estimate the number of clusters in the
+          resulting datasets. We are primarily interested in
+          comparing the percentage of simulations for which each
+          procedure recovers the correct number of clusters, as
+          this quantity reflects the accuracy of the procedure.
+          However, for the purpose of future applications, it is
+          useful to also know whether a method tends to
+          <ENAMEX TYPE="ORGANIZATION">underestimate</ENAMEX> or overestimate the true number of
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>. Hence, the full distribution of the number of
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> estimated by each method is presented in Table
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. Note that only the methods <ENAMEX TYPE="PERSON">Clest</ENAMEX>, gap, gapPC and hart
+          have the capability to identify <NUMEX TYPE="CARDINAL">one</NUMEX> cluster in the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+        
+        
+          Microarray data
+          
+            Lymphoma
+            This dataset comes from a study of gene expression
+            in the <NUMEX TYPE="CARDINAL">three</NUMEX> most prevalent adult lymphoid
+            malignancies: B-cell chronic lymphocytic <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>
+            (B-CLL), follicular lymphoma (FL), and diffuse large
+            B-cell lymphoma (DLBCL) (see [ <ENAMEX TYPE="LAW">1, 37</ENAMEX>] for a detailed
+            description of the experiments). <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression levels
+            were measured using a specialized cDNA microarray, the
+            Lymphochip, containing <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are preferentially
+            expressed in lymphoid cells or which are of known
+            <ENAMEX TYPE="ORGANIZATION">immunological</ENAMEX> or oncological importance. In each
+            hybridization, fluorescent cDNA targets were prepared
+            from a tumor mRNA sample (red-fluorescent dye, <TIMEX TYPE="DATE">Cy5</TIMEX>) and
+            a reference mRNA sample derived from a pool of <NUMEX TYPE="CARDINAL">nine</NUMEX>
+            different lymphoma cell lines (green-fluorescent dye,
+            Cy3). The cell lines in the common reference pool were
+            chosen to represent diverse expression patterns, so
+            that most spots on the array would exhibit a non-zero
+            <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> in the <NUMEX TYPE="ORDINAL">Cy3</NUMEX> <ENAMEX TYPE="ORG_DESC">channel</ENAMEX>. This study produced
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data for 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">4,682</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">81</NUMEX> mRNA samples. The tumor
+            mRNA samples consist of <NUMEX TYPE="CARDINAL">29</NUMEX> cases of <ENAMEX TYPE="PRODUCT">B-CLL</ENAMEX>, <NUMEX TYPE="CARDINAL">9</NUMEX> cases of
+            <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX>, and <NUMEX TYPE="CARDINAL">43</NUMEX> cases of <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX>. Alizadeh 
+            et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] further showed that
+            the <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX> is heterogeneous and comprises <NUMEX TYPE="CARDINAL">two</NUMEX>
+            distinct subclasses of tumors with different clinical
+            <ENAMEX TYPE="PERSON">behaviors</ENAMEX>. The gene-expression data are summarized by
+            an <NUMEX TYPE="QUANTITY">81 × 4,682 matrix</NUMEX> 
+            X = ( 
+            x 
+            
+              ij 
+             ), where 
+            x 
+            
+              ij 
+             denotes the base-<NUMEX TYPE="CARDINAL">2</NUMEX> logarithm of the <ENAMEX TYPE="CONTACT_INFO">Cy5/</ENAMEX>Cy3
+            background-corrected and normalized fluorescence
+            intensity ratio for gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in lymphoma sample 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX> The mean percentage of missing
+            observations per array is <NUMEX TYPE="PERCENT">6.6%</NUMEX> and missing data were
+            <ENAMEX TYPE="PERSON">inferred</ENAMEX> as outlined below. The data were standardized
+            as described below.
+          
+          
+            <ENAMEX TYPE="CONTACT_INFO">Leukemia</ENAMEX>
+            The <ENAMEX TYPE="DISEASE">leukemia dataset</ENAMEX> is described in [ <ENAMEX TYPE="LAW">3</ENAMEX>] and
+            available at [ <TIMEX TYPE="DATE">38</TIMEX>]. This dataset comes from a study of
+            gene expression in two types of <ENAMEX TYPE="DISEASE">acute leukemia</ENAMEX>: acute
+            lymphoblastic <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ALL</ENAMEX>) and acute myeloid <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>
+            (<ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>). <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression levels were measured using
+            Affymetrix high-density oligonu-cleotide arrays
+            containing 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">6,817</NUMEX> human genes. The data
+            comprise <NUMEX TYPE="CARDINAL">47</NUMEX> cases of ALL (<TIMEX TYPE="TIME">38 ALL B-cell and 9 ALL</TIMEX>
+            <ENAMEX TYPE="ORGANIZATION">T-cell</ENAMEX>) and <NUMEX TYPE="CARDINAL">25</NUMEX> cases of <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>. Following Golub 
+            <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> (<ENAMEX TYPE="PERSON">P. Tamayo</ENAMEX>, personal
+            <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>), <NUMEX TYPE="CARDINAL">three</NUMEX> pre-processing steps were applied
+            to the normalized matrix of intensity values available
+            on the website (after pooling the <NUMEX TYPE="CARDINAL">38</NUMEX> mRNA samples from
+            the learning set and the <NUMEX TYPE="CARDINAL">34</NUMEX> mRNA samples from the test
+            set). First, a floor of <NUMEX TYPE="CARDINAL">100</NUMEX> and ceiling of <NUMEX TYPE="CARDINAL">16,000</NUMEX> was
+            set; <NUMEX TYPE="ORDINAL">second</NUMEX>, the data were filtered to exclude genes
+            with <ENAMEX TYPE="PRODUCT">max/min ≤ 5</ENAMEX> or (<ENAMEX TYPE="PRODUCT">max - min) ≤ 500</ENAMEX>, where max and
+            <ENAMEX TYPE="PERSON">min</ENAMEX> refer respectively to the maximum and minimum
+            intensities for a particular gene across the <NUMEX TYPE="CARDINAL">72</NUMEX> mRNA
+            samples; and <NUMEX TYPE="ORDINAL">third</NUMEX>, the data were transformed to base
+            <TIMEX TYPE="TIME">10 logarithms.</TIMEX> The data are then summarized by a <NUMEX TYPE="CARDINAL">72</NUMEX> ×
+            <NUMEX TYPE="CARDINAL">3,571</NUMEX> matrix 
+            X = ( 
+            x 
+            
+              ij 
+             ), where 
+            x 
+            
+              ij 
+             denotes the expression level for gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in mRNA sample 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX> There are no missing values
+            and the data were standardized as described below. Note
+            that this standardization differs from the one
+            described in Golub 
+            et al. [ <ENAMEX TYPE="LAW">3</ENAMEX>].
+          
+          
+            NCI60
+            In this study, cDNA microarrays were used to examine
+            the variation in gene expression among the <NUMEX TYPE="CARDINAL">60</NUMEX> cell
+            lines from the <ENAMEX TYPE="ORGANIZATION">National Cancer Institute</ENAMEX>'s (<NUMEX TYPE="MONEY">NCI60</NUMEX>)
+            anti-cancer drug screen [ <ENAMEX TYPE="LAW">6, 39</ENAMEX>]. The cell lines were
+            derived from tumors with different sites of origin: <ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>
+            <ENAMEX TYPE="PERSON">breast</ENAMEX>, <ENAMEX TYPE="PRODUCT">6</ENAMEX> central nervous system (CNS), <NUMEX TYPE="CARDINAL">7</NUMEX> colon, <NUMEX TYPE="CARDINAL">6</NUMEX>
+            <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX> melanoma, <NUMEX TYPE="CARDINAL">9</NUMEX> non-small-cell-lung-carcinoma
+            (<ENAMEX TYPE="ORGANIZATION">NSCLC</ENAMEX>), <NUMEX TYPE="CARDINAL">6</NUMEX> ovarian, <NUMEX TYPE="CARDINAL">2</NUMEX> prostate, <NUMEX TYPE="CARDINAL">8</NUMEX> renal, and <NUMEX TYPE="CARDINAL">1</NUMEX> unknown
+            (<ENAMEX TYPE="ORGANIZATION">ADR-RES</ENAMEX>). Gene expression was studied using
+            microarrays with <NUMEX TYPE="CARDINAL">9,703</NUMEX> spotted <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>. In each
+            hybridization, fluorescent cDNA targets were prepared
+            from a cell-line mRNA sample (red-fluorescent dye, <TIMEX TYPE="DATE">Cy5</TIMEX>)
+            and a reference mRNA sample obtained by pooling equal
+            mixtures of mRNA from <NUMEX TYPE="CARDINAL">12</NUMEX> of the cell lines
+            (green-fluorescent dye, <TIMEX TYPE="DATE">Cy3</TIMEX>). To investigate the
+            reproducibility of the entire experimental procedure
+            (cell culture, mRNA isolation, labeling, hybridization,
+            <ENAMEX TYPE="PERSON">scanning</ENAMEX>, and so on), a <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> (<NUMEX TYPE="MONEY">K562</NUMEX>) and a breast
+            <ENAMEX TYPE="DISEASE">cancer</ENAMEX> (<NUMEX TYPE="MONEY">MCF7</NUMEX>) cell line were analyzed by <TIMEX TYPE="TIME">three</TIMEX>
+            independent <ENAMEX TYPE="ORG_DESC">microarray</ENAMEX> experiments. <ENAMEX TYPE="ORGANIZATION">Ross</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> screened out genes with
+            missing data in <TIMEX TYPE="DATE">more than two arrays</TIMEX>. In addition,
+            because of their small <ENAMEX TYPE="PER_DESC">class</ENAMEX> size, the two prostate
+            cell lines and the unknown cell line (ADR-RES) were
+            excluded from our analysis. The data are summarized by
+            a <NUMEX TYPE="QUANTITY">61 × 5,244 matrix</NUMEX> 
+            X = ( 
+            x 
+            
+              ij 
+             ), where 
+            x 
+            
+              ij 
+             denotes the base-<NUMEX TYPE="CARDINAL">2</NUMEX> logarithm of the <ENAMEX TYPE="CONTACT_INFO">Cy5/</ENAMEX>Cy3
+            background-corrected and normalized fluorescence
+            intensity ratio for gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in cell line 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX> The mean percentage of missing
+            observations per array is <NUMEX TYPE="PERCENT">3.3%</NUMEX> and missing data were
+            <ENAMEX TYPE="PERSON">inferred</ENAMEX> as outlined below. The data were standardized
+            as described below.
+          
+          
+            Melanoma
+            The melanoma dataset is described in the recent
+            paper of Bittner 
+            et al. [ <TIMEX TYPE="DATE">30</TIMEX>] and is available at
+            [ <TIMEX TYPE="DATE">40</TIMEX>]. There are <NUMEX TYPE="CARDINAL">31</NUMEX> melanoma samples and <NUMEX TYPE="CARDINAL">7</NUMEX> control
+            samples. <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression levels were measured using
+            cDNA microarrays with <NUMEX TYPE="CARDINAL">8,150</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences,
+            representing <NUMEX TYPE="CARDINAL">6,971</NUMEX> unique genes. In each hybridization,
+            fluorescent cDNA targets were prepared from a melanoma
+            or control mRNA sample (red-fluorescent dye, <TIMEX TYPE="DATE">Cy5</TIMEX>) and a
+            common reference mRNA sample (green-fluorescent dye,
+            Cy3). The following pre-processing steps were applied
+            by Bittner 
+            <ENAMEX TYPE="ORGANIZATION">et al. First</ENAMEX>, a gene was excluded
+            from the analysis if its average mean intensity above
+            background for the least intense signal (<ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> or <NUMEX TYPE="MONEY">Cy5</NUMEX>)
+            across all experiments was �<NUMEX TYPE="MONEY">� 2,000</NUMEX> or its average spot
+            size across all experiments was �<NUMEX TYPE="MONEY">� 30 pixels</NUMEX>; and
+            <NUMEX TYPE="ORDINAL">second</NUMEX>, a floor and ceiling of <NUMEX TYPE="MONEY">0.02 and 50</NUMEX>,
+            respectively, were applied to the individual intensity
+            log-ratios. This initial screening resulted in a
+            dataset of <NUMEX TYPE="CARDINAL">3,613</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (see <ENAMEX TYPE="LAW">Supplemental Information</ENAMEX> to
+            [ <TIMEX TYPE="DATE">30</TIMEX>], document <ENAMEX TYPE="ORGANIZATION">II</ENAMEX>, page <NUMEX TYPE="CARDINAL">2</NUMEX>). Finally, Bittner 
+            <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> did not include the <NUMEX TYPE="CARDINAL">seven</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> samples in their analysis. The data are
+            summarized by a <NUMEX TYPE="QUANTITY">31 × 3,613 matrix</NUMEX> 
+            X = ( 
+            x 
+            
+              ij 
+             ), where 
+            x 
+            
+              ij 
+             denotes the base-<NUMEX TYPE="CARDINAL">2</NUMEX> logarithm of the <ENAMEX TYPE="CONTACT_INFO">Cy5/</ENAMEX>Cy3
+            background-corrected and normalized fluorescence
+            intensity ratio for gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in mRNA sample 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX> There were no 
+            a priori known classes for this
+            dataset, but the analysis of Bittner 
+            <ENAMEX TYPE="PERSON">et al.</ENAMEX> suggests that <NUMEX TYPE="CARDINAL">two</NUMEX> classes
+            may be present in the data, with observations in one of
+            the classes (<ENAMEX TYPE="ORGANIZATION">Group</ENAMEX> A in their <ENAMEX TYPE="PER_DESC">figures</ENAMEX>) being more
+            tightly clustered. There were no missing values and the
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> were standardized as described below. Note that
+            this standardization is slightly different from the one
+            described in [ <TIMEX TYPE="DATE">30</TIMEX>].
+          
+        
+        
+          Imputation of missing data
+          For the lymphoma and <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">datasets</ENAMEX>, each array
+          contains a number of genes with fluorescence-intensity
+          measurements that were flagged by the experimenter and
+          recorded as missing data points. Missing data were
+          imputed by a simple 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -nearest<ENAMEX TYPE="ORG_DESC">-neighbor algorithm</ENAMEX>, in
+          which the <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> are the genes and the distance
+          between <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> is based on the correlation between
+          their gene-expression levels across arrays. For each gene
+          with missing data: <NUMEX TYPE="ORDINAL">first</NUMEX> compute its correlation with all
+          other 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> - <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, and then, for each
+          missing array, identify the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> nearest <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> having data for
+          this array and infer the missing entry from the average
+          of the corresponding entries for the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX>. A value of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> was used for the
+          <ENAMEX TYPE="ORGANIZATION">lymphoma</ENAMEX> and <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">datasets</ENAMEX>. For a detailed study of
+          methods for filling in missing values in microarray
+          experiments, see [ <TIMEX TYPE="DATE">41</TIMEX>], which suggests that a
+          nearest-<ENAMEX TYPE="ORG_DESC">neighbor</ENAMEX> approach provides accurate and robust
+          estimates of missing values.
+        
+        
+          Standardization
+          The gene-expression data were standardized so that the
+          <ENAMEX TYPE="PERSON">observations</ENAMEX> (arrays) have mean <NUMEX TYPE="CARDINAL">0</NUMEX> and variance <NUMEX TYPE="CARDINAL">1</NUMEX> across
+          <ENAMEX TYPE="PERSON">variables</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>). Standardizing the data in this fashion
+          achieves a location and scale normalization of the
+          different arrays. In a study of normalization methods, we
+          have found scale adjustment to be desirable in some
+          cases, to prevent the expression levels in one particular
+          array from dominating the average expression levels
+          across arrays [ <TIMEX TYPE="DATE">36</TIMEX>]. Furthermore, this standardization is
+          consistent with the common practice in microarray
+          experiments of using the correlation between the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles of <NUMEX TYPE="CARDINAL">two</NUMEX> mRNA samples to measure
+          their similarity [ <ENAMEX TYPE="LAW">1, 4, 6</ENAMEX>]. In practice, however, we
+          recommend general adaptive and robust normalization
+          methods which correct for intensity, spatial, and other
+          types of dye biases using robust local <ENAMEX TYPE="PER_DESC">regression</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">36</NUMEX>].
+        
+        
+          Preliminary <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> selection
+          Expression levels were monitored for <NUMEX TYPE="CARDINAL">thousands</NUMEX> of
+          genes in each of the <NUMEX TYPE="CARDINAL">four</NUMEX> studies. However, the majority
+          of the genes exhibit near-constant expression levels, as
+          measured by the variance (or coefficient of variation) of
+          the expression levels across tumor samples. Genes showing
+          nearly constant expression levels are not likely to be
+          useful for classification purposes; therefore, we chose
+          to exclude low-variance <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the clustering
+          process.
+          Figure <TIMEX TYPE="DATE">6displays</TIMEX> for each dataset the individual gene
+          variances divided by the maximum variance over all genes.
+          <NUMEX TYPE="CARDINAL">All four</NUMEX> variance curves show a sharp drop-off which
+          gradually flattens. The plots are remarkably similar for
+          all the datasets, with the melanoma dataset having the
+          fastest drop-off. In this report, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX> most variable <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          used to analyze the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>, lymphoma and melanoma
+          datasets, and the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">200</NUMEX> most variable <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          used for <TIMEX TYPE="DATE">the NCI60</TIMEX> dataset as it contains <NUMEX TYPE="CARDINAL">more</NUMEX> classes.
+          Increasing the number of genes to 
+          <ENAMEX TYPE="PRODUCT">p = 300-400</ENAMEX> or decreasing the
+          number of genes to 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">50</NUMEX> did not have much effect on
+          the results (data not shown). One could also select genes
+          based on a coefficient of variation filter.
+        
+        
+          Correlation matrices
+          
+            Lymphoma
+            The existence of <NUMEX TYPE="CARDINAL">three well-separated</NUMEX> classes for
+            the lymphoma dataset is reflected in Figure <TIMEX TYPE="DATE">7for</TIMEX> both
+            sets of genes, the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> being more clearly separated
+            when the majority of the genes are screened out. Recall
+            that gene-expression levels were measured using a
+            <ENAMEX TYPE="ORGANIZATION">specialized</ENAMEX> cDNA microarray, the <ENAMEX TYPE="ORGANIZATION">Lymphochip</ENAMEX>, enriched
+            in genes that are involved in the immune system. This
+            may partly account for the clear separation of the
+            classes even when the correlation matrix is computed
+            using the full set of genes. When <ENAMEX TYPE="PERSON">PAM</ENAMEX> is applied to the
+            lymphoma dataset using the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with the largest
+            variance, the 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">3, 4, 5</ENAMEX> partitions are as
+            follows. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> classes, one cluster
+            consists of the <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> classes combined and the
+            other consists of the <ENAMEX TYPE="ORGANIZATION">CLL</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX>. This could reflect
+            differences in tissue <ENAMEX TYPE="ORG_DESC">sampling</ENAMEX>, as the <ENAMEX TYPE="ORGANIZATION">CLL</ENAMEX> mRNA samples
+            were obtained from peripheral blood cells as opposed to
+            lymph-node biopsy specimens for the <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX> and DLBCL
+            samples. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX>, <NUMEX TYPE="CARDINAL">all three</NUMEX> classes (<ENAMEX TYPE="ORGANIZATION">CLL</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX>) are recovered as distinct clusters. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>, the largest <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX> is
+            divided into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters of approximately equal size
+            and the remaining <NUMEX TYPE="CARDINAL">two</NUMEX> classes (<ENAMEX TYPE="ORGANIZATION">CLL</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX>) are
+            recovered as <NUMEX TYPE="CARDINAL">two</NUMEX> distinct clusters. The <NUMEX TYPE="CARDINAL">two</NUMEX> DLBCL
+            clusters have a <NUMEX TYPE="PERCENT">75%</NUMEX> overlap with the subclasses of
+            Alizadeh 
+            et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. Finally, for 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX>, the smallest class, <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX>, is
+            divided into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters and the rest of the clusters
+            are as with 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>. On the basis of this
+            analysis we do not expect to recover <NUMEX TYPE="QUANTITY">more than four</NUMEX>
+            classes in the lymphoma data.
+          
+          
+            <ENAMEX TYPE="CONTACT_INFO">Leukemia</ENAMEX>
+            Images of the correlation matrix for the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>
+            dataset are displayed in Figure <NUMEX TYPE="CARDINAL">8</NUMEX>. The <NUMEX TYPE="CARDINAL">three</NUMEX> classes
+            corresponding to the <ENAMEX TYPE="WORK_OF_ART">ALL T-cell, ALL B-cell</ENAMEX>, and AML
+            samples clearly stand out in the image of the
+            correlation matrix for the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with the largest
+            variance, but are indistinguishable in the image of the
+            correlation matrix based on all genes. When the <ENAMEX TYPE="ORGANIZATION">PAM</ENAMEX>
+            procedure is applied to the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> dataset using the
+            <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with the largest variance, the results are as
+            follows. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, <NUMEX TYPE="CARDINAL">eight</NUMEX> ALL T-cell
+            observations are misclassified with the AML
+            observations. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> classes, one ALL B-cell
+            sample is clustered with the <ENAMEX TYPE="ORGANIZATION">ALL T-cell</ENAMEX> tumors and the
+            rest of the observations are allocated correctly. For 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>, the ALL <ENAMEX TYPE="SUBSTANCE">B-cell samples</ENAMEX> are
+            partitioned into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters. Finally, for 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX>, the <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX> are
+            partitioned into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters. On the basis of the
+            <ENAMEX TYPE="PERSON">correlation matrix</ENAMEX>, one would expect to identify three
+            tumor classes in this dataset.
+          
+          
+            NCI60
+            For the <NUMEX TYPE="ORDINAL">NCI60</NUMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>-line dataset, the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are not
+            clearly distinguishable from the images of the
+            <ENAMEX TYPE="CONTACT_INFO">correlation matrix.</ENAMEX> Colon, <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> and melanoma cell
+            lines display the strongest correlations within class,
+            whereas breast, <ENAMEX TYPE="ORGANIZATION">NSCLC</ENAMEX> and ovarian cell lines seem to be
+            the most heterogeneous classes. When the PAM procedure
+            is applied to the <NUMEX TYPE="ORDINAL">NCI60</NUMEX> dataset using the <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            with the largest variance and varying the number of
+            clusters 
+            <ENAMEX TYPE="ORGANIZATION">K ≤</ENAMEX> <ENAMEX TYPE="PRODUCT">8</ENAMEX>, only <NUMEX TYPE="CARDINAL">five</NUMEX> types of cell
+            lines tend to cluster together (<ENAMEX TYPE="ORGANIZATION">CNS</ENAMEX>, colon, <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>,
+            melanoma, and renal cell lines). On the basis of this
+            <ENAMEX TYPE="PERSON">observation</ENAMEX>, one should not expect to recover more than
+            <NUMEX TYPE="CARDINAL">five</NUMEX> classes.
+          
+          
+            Melanoma
+            Finally, for the melanoma dataset, the image of the
+            correlation matrix for the 
+
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX> most variable genes
+            (Figure <NUMEX TYPE="CARDINAL">10</NUMEX>) could possibly suggest the existence of a
+            subclass of tumors which includes the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> A samples
+            of Bittner 
+            et al. [ <TIMEX TYPE="DATE">30</TIMEX>]. However, some
+            observations in this cluster (the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">one</NUMEX> from the
+            left in particular) were not identified by Bittner 
+            <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> as being part of the tight
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. Indeed, when <ENAMEX TYPE="PERSON">PAM</ENAMEX> is applied to the melanoma
+            <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> using the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with the largest variance,
+            <NUMEX TYPE="CARDINAL">four</NUMEX> additional observations are joined to the <NUMEX TYPE="CARDINAL">19</NUMEX>
+            observation cluster (<ENAMEX TYPE="ORG_DESC">group</ENAMEX> A) proposed by Bittner 
+            <ENAMEX TYPE="PERSON">et al. Dividing</ENAMEX> the data into
+            <NUMEX TYPE="CARDINAL">three</NUMEX> clusters results in a split of the <NUMEX TYPE="CARDINAL">19</NUMEX>
+            observations into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters. <NUMEX TYPE="CARDINAL">One</NUMEX> would expect to
+            identify, at most, <NUMEX TYPE="CARDINAL">two or three</NUMEX> classes for this
+            <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> because of the small sample size.
+          
+        
+      
+    
+  

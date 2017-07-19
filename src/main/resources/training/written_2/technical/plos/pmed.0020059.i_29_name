@@ -1,0 +1,477 @@
+
+  
+    
+      
+        Introduction
+        The <ENAMEX TYPE="ORGANIZATION">World Trade Center</ENAMEX> and <ENAMEX TYPE="DISEASE">anthrax terrorist attacks</ENAMEX> in <TIMEX TYPE="DATE">2001</TIMEX>, as well as the recent West
+        <ENAMEX TYPE="DISEASE">Nile virus</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SARS</ENAMEX> outbreaks, have motivated many public health <ENAMEX TYPE="ORG_DESC">departments</ENAMEX> to develop
+        early <ENAMEX TYPE="DISEASE">disease</ENAMEX> outbreak detection systems using non-diagnostic information, often derived
+        from electronic data collected for other purposes <ENAMEX TYPE="DISEASE">(“syndromic surveillance”</ENAMEX>)
+        [<NUMEX TYPE="CARDINAL">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17</NUMEX>]. These include systems that monitor the number
+        of emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits, primary care visits, ambulance dispatches, <ENAMEX TYPE="PER_DESC">nurse</ENAMEX> hot line
+        calls, pharmaceutical sales, and <ENAMEX TYPE="GPE">West Nile�</ENAMEX>��related dead bird reports. The establishment of
+        such systems involves many challenges in data collection, analytical methods, signal
+        interpretation, and response. Important analytical challenges include dealing with the
+        unknown time, place, and size of an outbreak, detecting an outbreak as early as possible,
+        adjusting for natural temporal and geographical variation, and dealing with the lack of
+        suitable population-at-risk data.
+        Most analytical methods in use for the early detection of disease outbreaks are purely
+        temporal in nature [<NUMEX TYPE="CARDINAL">18,19,20,21,22</NUMEX>]. These methods are useful for detecting outbreaks that
+        simultaneously affect all parts of the geographical region under surveillance, but may be
+        late at detecting outbreaks that start locally. While purely temporal methods can be used
+        in parallel for overlapping areas of different sizes in order to cover all possible
+        <ENAMEX TYPE="PERSON">outbreaks</ENAMEX>, that approach leads to a severe problem of multiple testing, generating many
+        more false signals than the nominal statistical significance level would indicate.
+        <NUMEX TYPE="ORDINAL">First</NUMEX> studied by <ENAMEX TYPE="ORGANIZATION">Naus</ENAMEX> [<TIMEX TYPE="DATE">23</TIMEX>], the scan statistic is an elegant way to solve problems of
+        multiple testing when there are closely overlapping spatial areas and/or time intervals
+        being evaluated. <ENAMEX TYPE="PERSON">Temporal</ENAMEX>, spatial, and space–time scan statistics [<NUMEX TYPE="CARDINAL">24,25,26,27</NUMEX>] are now
+        commonly used for <ENAMEX TYPE="DISEASE">disease cluster detection</ENAMEX> and evaluation, for a wide variety of diseases
+        including cancer [<NUMEX TYPE="CARDINAL">28,29</NUMEX>], <ENAMEX TYPE="GPE">Creutzfeldt</ENAMEX>-Jakob <ENAMEX TYPE="DISEASE">disease</ENAMEX> [<TIMEX TYPE="DATE">30</TIMEX>], granulocytic ehrlichiosis [<TIMEX TYPE="DATE">31</TIMEX>],
+        sclerosis [<TIMEX TYPE="DATE">32</TIMEX>], and <ENAMEX TYPE="DISEASE">diabetes</ENAMEX> [<TIMEX TYPE="DATE">33</TIMEX>]. The basic idea is that there is a scanning window that
+        moves across space and/or time. For each location and size of the window, the number of
+        observed and expected cases is counted. Among these, the most “unusual” excess of observed
+        cases is noted. The statistical significance of this cluster is then evaluated taking into
+        account the multiple testing stemming from the many potential cluster locations and sizes
+        evaluated.
+        To date, all scan statistics require either a uniform <ENAMEX TYPE="PER_DESC">population</ENAMEX> at risk, a control
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>, or other data that provide information about the geographical and temporal
+        distribution of the underlying <ENAMEX TYPE="PER_DESC">population</ENAMEX> at risk. <ENAMEX TYPE="ORGANIZATION">Census</ENAMEX> <ENAMEX TYPE="PER_DESC">population</ENAMEX> numbers are useful as
+        a denominator for <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, birth defects, and other registry data, where the expected number
+        of cases can be accurately estimated based on the underlying <ENAMEX TYPE="PER_DESC">population</ENAMEX>. They are less
+        relevant for surveillance data such as emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits and pharmacy sales,
+        since the catchment area for each <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>/<ENAMEX TYPE="DISEASE">pharmacy</ENAMEX> is undefined. Even if it were
+        available, the catchment area <ENAMEX TYPE="PER_DESC">population</ENAMEX> would not be a good denominator since there can be
+        significant natural geographical variation in health-care utilization data, due to
+        disparities in disease prevalence, access to health care, and consumer behavior [<TIMEX TYPE="DATE">34</TIMEX>]. One
+        option when evaluating data that are affected by utilization behavior is to use total
+        volume as the denominator. For example, one may use total emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits as a
+        denominator when evaluating diarrhea visits [<ENAMEX TYPE="LAW">7</ENAMEX>], or similarly, all pharmacy sales as the
+        denominator when evaluating <ENAMEX TYPE="SUBSTANCE">diarrhea medication</ENAMEX> sales [<ENAMEX TYPE="LAW">4</ENAMEX>]. This may or may not work
+        depending on the nature of the data. For example, changes in total <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> sales due to sales
+        promotions or the allergy <TIMEX TYPE="DATE">season</TIMEX> could hide a true signal or create a false signal for the
+        drug category of interest.
+        In this paper we present a prospective <ENAMEX TYPE="ORG_DESC">space�</ENAMEX>��time permutation scan statistic that does
+        not require <ENAMEX TYPE="PER_DESC">population</ENAMEX>-at-risk data, and which can be used for the early detection of
+        disease outbreaks when only the number of cases is available. The method can be used
+        prospectively to regularly scan a geographical region for outbreaks of any location and any
+        size. For each location and size, it looks at <TIMEX TYPE="DATE">potential one-day</TIMEX> as well as multi-day
+        <ENAMEX TYPE="PERSON">outbreaks</ENAMEX>, in order to quickly detect a rapidly rising outbreak and still have power to
+        detect a slowly emerging outbreak by combining information from multiple <TIMEX TYPE="DATE">days</TIMEX>.
+        The space–time permutation scan statistic was gradually developed as part of the New
+        <ENAMEX TYPE="ORGANIZATION">York City Department of Health and Mental Hygiene</ENAMEX> (DOHMH) surveillance initiatives, in
+        parallel with the adaptation of population<ENAMEX TYPE="GPE">-at-risk</ENAMEX>-based scan statistics for dead bird
+        reports (for <ENAMEX TYPE="LOCATION">West</ENAMEX> <ENAMEX TYPE="ANIMAL">Nile</ENAMEX> virus) [<TIMEX TYPE="DATE">13</TIMEX>], emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits [<ENAMEX TYPE="LAW">7</ENAMEX>], ambulance dispatch
+        calls [<ENAMEX TYPE="LAW">6</ENAMEX>], pharmacy sales [<ENAMEX TYPE="LAW">4</ENAMEX>], and <ENAMEX TYPE="PER_DESC">student</ENAMEX> absentee records [<ENAMEX TYPE="LAW">3</ENAMEX>]. In this methodological
+        paper, the space–time permutation scan statistic is presented and illustrated using
+        emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits for <ENAMEX TYPE="DISEASE">diarrhea</ENAMEX>, respiratory, and <ENAMEX TYPE="DISEASE">fever</ENAMEX>/flu-like illnesses.
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">New York City Emergency Department Syndromic Surveillance System</ENAMEX>
+          The <ENAMEX TYPE="ORGANIZATION">New York City Emergency Department</ENAMEX> syndromic surveillance system is described in
+          detail elsewhere [<ENAMEX TYPE="LAW">7</ENAMEX>]. In brief, participating <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> transmit electronic files to the
+          DOHMH <TIMEX TYPE="DATE">seven days</TIMEX> per week. Files contain data for all emergency department <ENAMEX TYPE="PER_DESC">patient</ENAMEX> visits
+          on <TIMEX TYPE="DATE">the previous day</TIMEX>, including the time of visit, <ENAMEX TYPE="PER_DESC">patient</ENAMEX> <TIMEX TYPE="DATE">age</TIMEX>, gender, home zip code, and
+          <ENAMEX TYPE="PER_DESC">chief complaint�</ENAMEX>��a free-text field that captures the <ENAMEX TYPE="PER_DESC">patient</ENAMEX>'s own description of their
+          <ENAMEX TYPE="DISEASE">illness</ENAMEX>. As of <TIMEX TYPE="DATE">November 2002</TIMEX>, <NUMEX TYPE="CARDINAL">38</NUMEX> of <ENAMEX TYPE="GPE">New York City</ENAMEX>'s <NUMEX TYPE="CARDINAL">66</NUMEX> emergency <ENAMEX TYPE="ORG_DESC">departments</ENAMEX> were
+          participating in the system, covering <NUMEX TYPE="PERCENT">an estimated 75%</NUMEX> of emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> visits in
+          the <ENAMEX TYPE="GPE_DESC">city</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> are verified for completeness and accuracy, concatenated into a single dataset,
+          and appended to a master archive using <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX> [<TIMEX TYPE="DATE">35</TIMEX>]. To categorize visits into <ENAMEX TYPE="LANGUAGE">“syndromes�</ENAMEX>��
+          (<ENAMEX TYPE="CONTACT_INFO">e.g., “diarrhea syndrome”</ENAMEX>), a computer <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> searches the <ENAMEX TYPE="PER_DESC">free-text chief</ENAMEX> complaint
+          field for <ENAMEX TYPE="PER_DESC">character</ENAMEX> strings indicating symptoms consistent with that <ENAMEX TYPE="DISEASE">syndrome</ENAMEX>.
+          The goal of data analysis, which is carried out <TIMEX TYPE="DATE">seven days</TIMEX> per week, is to detect
+          unusual increases in key syndrome categories. To run the space–time permutation scan
+          statistic we have written a <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX> program that generates the necessary case and parameter
+          files, invokes the <ENAMEX TYPE="PRODUCT">SaTScan</ENAMEX> software [<TIMEX TYPE="DATE">36</TIMEX>], and reads the results back into <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX> for
+          reporting and display.
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> sets of analyses are performed, one based on assigning each individual to the
+          coordinates of their residential zip code and the other based on their hospital address.
+          With <NUMEX TYPE="CARDINAL">183</NUMEX> zip codes versus <NUMEX TYPE="CARDINAL">38</NUMEX> <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX>, the former <ENAMEX TYPE="PER_DESC">utilizes</ENAMEX> more detailed geographical
+          information, while the latter may be able to pick up outbreaks not only related to place
+          of <ENAMEX TYPE="FAC_DESC">residence</ENAMEX> but also to place of work or other outside activities (if <ENAMEX TYPE="PER_DESC">people</ENAMEX> go to the
+          nearest <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> when they feel sick). Residential zip code is not recorded by the
+          <ENAMEX TYPE="ORGANIZATION">hospital</ENAMEX> for <NUMEX TYPE="PERCENT">about 3%</NUMEX> of <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, and for the analyses described here, these <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>
+          are only included in the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>-based analyses.
+          The performance of the prospective <ENAMEX TYPE="ORG_DESC">space�</ENAMEX>��time permutation scan statistic was evaluated
+          using both <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> and residential analyses. We used historical diarrhea data to mimic a
+          prospective surveillance <ENAMEX TYPE="PRODUCT_DESC">system</ENAMEX> with <TIMEX TYPE="DATE">daily</TIMEX> analyses from <TIMEX TYPE="DATE">15 November 2001 to 14 November</TIMEX>
+          <TIMEX TYPE="DATE">2002</TIMEX>. For each of <TIMEX TYPE="DATE">these days</TIMEX>, the analysis only used data prior to and including the day
+          in question, ignoring all data from <TIMEX TYPE="DATE">subsequent days</TIMEX>. This corresponds to the actual data
+          available at the <ENAMEX TYPE="ORGANIZATION">DOHMH</ENAMEX> <NUMEX TYPE="CARDINAL">8–12</NUMEX> h after <TIMEX TYPE="DATE">the end of that day</TIMEX>, when that analysis would have
+          been conducted if the system has been in place at that time. We also present <TIMEX TYPE="DATE">one week</TIMEX> of
+          daily prospective analyses conducted in <TIMEX TYPE="DATE">November 2003</TIMEX>, where the <TIMEX TYPE="DATE">daily</TIMEX> analysis was run
+          <NUMEX TYPE="CARDINAL">about 12</NUMEX> h after the conclusion of <TIMEX TYPE="DATE">each day</TIMEX>, as part of the regular syndromic
+          surveillance activities at the <ENAMEX TYPE="ORGANIZATION">DOHMH</ENAMEX>.
+        
+        
+          The <ENAMEX TYPE="WORK_OF_ART">Space–Time Permutation Scan Statistic</ENAMEX>
+          As with the <ENAMEX TYPE="GPE">Poisson</ENAMEX>- and <ENAMEX TYPE="GPE">Bernoulli</ENAMEX>-based prospective <ENAMEX TYPE="ORG_DESC">space�</ENAMEX>��time scan statistics [<TIMEX TYPE="DATE">27</TIMEX>],
+          the space–time permutation scan statistic utilizes <NUMEX TYPE="CARDINAL">thousands</NUMEX> or <NUMEX TYPE="CARDINAL">millions</NUMEX> of overlapping
+          cylinders to define the scanning window, each being a possible candidate for an outbreak.
+          The circular base represents the geographical area of the potential outbreak. A typical
+          approach is to <NUMEX TYPE="ORDINAL">first</NUMEX> iterate over a finite number geographical grid points and then
+          gradually increase the <ENAMEX TYPE="FAC_DESC">circle radius</ENAMEX> from <NUMEX TYPE="CARDINAL">zero</NUMEX> to some maximum value defined by the <ENAMEX TYPE="PER_DESC">user</ENAMEX>,
+          iterating over the zip codes in the order in which they enter the circle. In this way,
+          both small and large circles are considered, all of which overlap with many other
+          circles. The height of the cylinder represents the number of <TIMEX TYPE="DATE">days</TIMEX>, with the requirement
+          that <TIMEX TYPE="DATE">the last day</TIMEX> is always included together with a variable number of <TIMEX TYPE="DATE">preceding days</TIMEX>,
+          up to some maximum defined by the <ENAMEX TYPE="PER_DESC">user</ENAMEX>. For example, we may consider all cylinders with a
+          height of <ENAMEX TYPE="CONTACT_INFO">1, 2, 3, 4, 5, 6</ENAMEX>, or <NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="NATIONALITY">d.</ENAMEX> For each <ENAMEX TYPE="FAC_DESC">center</ENAMEX> and radius of the circular cylinder
+          base, the method iterates over all possible temporal cylinder lengths. This means that we
+          will evaluate cylinders that are geographically large and temporally short, forming a
+          flat disk, those that are geographically small and temporally long, forming a pole, and
+          every other combination in between.
+          What is new with the space–time permutation scan statistic is the probability model.
+          Since we do not have <ENAMEX TYPE="PER_DESC">population</ENAMEX>-at-risk data, the expected must be calculated using only
+          the cases. Suppose we have <TIMEX TYPE="DATE">daily</TIMEX> case counts for zip-code areas, where 
+          c
+          <ENAMEX TYPE="ORGANIZATION">zd</ENAMEX> is the observed number of cases in zip-code area 
+          z during <TIMEX TYPE="TIME">day</TIMEX> 
+          d . The total number of observed cases (
+          C ) is
+          
+          For each zip code and day, we calculate the expected number of cases μ
+          
+            zd
+          conditioning on the observed marginals:
+          
+          In words, this is the proportion of all cases that occurred in zip-code area 
+          z times the total number of cases during <TIMEX TYPE="TIME">day</TIMEX> 
+          d . The expected number of cases μ
+          
+            A
+          in a particular cylinder 
+          A is the summation of these expectations over all the zip-code-days
+          within that cylinder:
+          
+          The underlying assumption when calculating these expected numbers is that the
+          probability of a case being in zip-code area 
+          z, given that it was observed on day 
+          d, is the same for all days 
+          d .
+          Let 
+          c
+          A be the observed number of cases in the cylinder. Conditioned on
+          the marginals, and when there is no space–time interaction, 
+          c
+          A is distributed according to the hypergeometric distribution
+          with mean μ
+          
+            A
+          and probability function
+          
+          When both Σ
+          
+            z
+          
+          εA
+          c
+          <ENAMEX TYPE="ORGANIZATION">zd</ENAMEX> and Σ
+          
+            d
+          
+          εA
+          c
+          zd are small compared to 
+          C, c
+          A is approximately <ENAMEX TYPE="PERSON">Poisson</ENAMEX> distributed with mean μ
+          
+            A
+          [<TIMEX TYPE="DATE">37</TIMEX>]. Based on this approximation, we use the <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> generalized likelihood ratio
+          (<ENAMEX TYPE="ORGANIZATION">GLR</ENAMEX>) as a measure of the evidence that cylinder 
+          A contains an outbreak:
+          
+          In words, this is the observed divided by the expected to the power of the observed
+          inside the cylinder, multiplied by the observed divided by the expected to the power of
+          the observed outside the cylinder. Among the many cylinders evaluated, the <NUMEX TYPE="CARDINAL">one</NUMEX> with the
+          maximum GLR constitutes the space–time cluster of cases that is least likely to be a
+          chance occurrence and, hence, is the primary candidate for a true outbreak. <NUMEX TYPE="CARDINAL">One</NUMEX> reason
+          for using the <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> approximation is that it is much easier to work with this
+          distribution than the hypergeometric when adjusting for space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction
+          (see below), as the sum of <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> distributions is still a <ENAMEX TYPE="NATIONALITY">Poisson</ENAMEX> distribution.
+          Since we are evaluating a huge number of outbreak locations, sizes, and time lengths,
+          there is serious multiple testing that we need to adjust for. Since we do not have
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>-at-risk data, this cannot be done in any of the usual ways for scan
+          statistics. Instead, it is done by creating a large number of random permutations of the
+          <ENAMEX TYPE="ORGANIZATION">spatial</ENAMEX> and temporal attributes of each case in the dataset. That is, we shuffle the
+          <ENAMEX TYPE="CONTACT_INFO">dates/</ENAMEX>times and assign them to the original set of case locations, ensuring that both the
+          <ENAMEX TYPE="ORGANIZATION">spatial</ENAMEX> and temporal marginals are unchanged. After that, the most likely cluster is
+          calculated for each simulated dataset in exactly the same way as for the real data.
+          Statistical significance is evaluated using <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX> hypothesis testing [<TIMEX TYPE="DATE">38</TIMEX>]. If, for
+          example, the maximum GLR is calculated from <NUMEX TYPE="CARDINAL">999</NUMEX> simulated datasets, and the maximum GLR
+          for the real data is higher than the <NUMEX TYPE="ORDINAL">50th</NUMEX> highest, then that cluster is statistically
+          significant at the <NUMEX TYPE="CARDINAL">0.05</NUMEX> level. In general terms, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value is 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = 
+          R/ (
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>) where 
+          R is the rank of the maximum GLR from the real dataset and 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> is the number of simulated datasets [<TIMEX TYPE="DATE">38</TIMEX>]. In addition to 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values, we also report null occurrence rates [<ENAMEX TYPE="LAW">8</ENAMEX>], such as once every
+          <NUMEX TYPE="CARDINAL">45</NUMEX> d or once every <TIMEX TYPE="TIME">23 mo.</TIMEX> The null occurrence rate is the expected time between seeing an
+          outbreak signal with an equal or higher GLR assuming that the null hypothesis is true.
+          For <TIMEX TYPE="DATE">daily</TIMEX> analyses, it is defined as once every <NUMEX TYPE="CARDINAL">1</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">/p d.</ENAMEX> For example, under the null hypothesis we would at the <NUMEX TYPE="CARDINAL">0.05</NUMEX> level
+          on average expect one false alarm every <NUMEX TYPE="CARDINAL">20</NUMEX> d for each syndrome under surveillance.
+          Because of the <ENAMEX TYPE="GPE">Monte Carlo</ENAMEX> hypothesis testing, the method is computer intensive. To
+          facilitate the use of the methods by local, state, and federal health <ENAMEX TYPE="ORG_DESC">departments</ENAMEX>, the
+          space–time permutation scan statistic has been implemented as a feature in the free and
+          public domain <ENAMEX TYPE="PRODUCT">SaTScan</ENAMEX> software [<TIMEX TYPE="DATE">36</TIMEX>].
+        
+        
+          Implementation for <ENAMEX TYPE="ORGANIZATION">New York City Syndromic Surveillance</ENAMEX>
+          Depending on the application, the method may be used with different parameter
+          settings. For the syndromic surveillance analyses we set the upper limit on the
+          geographical size of the outbreak to be a circle with a <TIMEX TYPE="TIME">5-km radius</TIMEX>, and the maximum
+          temporal length to be 7 d. This means that we are evaluating outbreaks with a circle
+          radius size anywhere between <NUMEX TYPE="QUANTITY">0 km</NUMEX> (one zip code only) and <NUMEX TYPE="QUANTITY">5 km</NUMEX>, and a time length
+          (cylinder height) of <NUMEX TYPE="CARDINAL">1 to 7</NUMEX> <ENAMEX TYPE="NATIONALITY">d.</ENAMEX> The latter restriction is a reflection of the belief that
+          the main purpose of this syndromic surveillance system is early <ENAMEX TYPE="DISEASE">disease</ENAMEX> outbreak
+          detection, and if the outbreak has existed for <NUMEX TYPE="CARDINAL">over 1</NUMEX> wk, it is more likely to be picked
+          up by reporting of specific disease diagnoses by clinicians or <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>.
+          Another practical choice is the total number of <TIMEX TYPE="DATE">days</TIMEX> to include in the analysis. One
+          option is to include <TIMEX TYPE="DATE">all previous days</TIMEX> for which data are available. We chose instead to
+          analyze the last <NUMEX TYPE="CARDINAL">30</NUMEX> d of data, adding <TIMEX TYPE="DATE">one day</TIMEX> and removing another for each daily
+          analysis. We believe this time frame provides enough baseline beyond the <NUMEX TYPE="CARDINAL">1- to 7</NUMEX>-d
+          scanning window to establish the usual pattern of visits while avoiding inclusion of data
+          that may no longer be relevant to the current period.
+          To reduce the computational load, we limited the <ENAMEX TYPE="ORG_DESC">centers</ENAMEX> of the circular cylinder
+          bases to be a collection of <NUMEX TYPE="CARDINAL">446</NUMEX> zip-code area centroids and hospital locations in <ENAMEX TYPE="GPE">New</ENAMEX>
+          <ENAMEX TYPE="GPE">York City</ENAMEX> and adjacent <ENAMEX TYPE="GPE_DESC">areas</ENAMEX>. This ensures, among other things, that each zip-code area
+          may constitute an outbreak on its own.
+          The last parameter that we need to set is the number of <ENAMEX TYPE="GPE">Monte Carlo</ENAMEX> replications used
+          for each analysis. For the daily prospective analyses we chose <NUMEX TYPE="CARDINAL">999</NUMEX>, which meant that the
+          smallest 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value we could get was <NUMEX TYPE="MONEY">0.001</NUMEX>, so that the smallest null occurrence
+          rate possible for a signal was once every <NUMEX TYPE="CARDINAL">2.7</NUMEX> y. In our system, signals of that strength
+          clearly merit investigation. For the historical evaluation, in order to obtain more
+          precise null occurrence rates, we set the number of replications to <NUMEX TYPE="CARDINAL">9,999</NUMEX>.
+        
+        
+          Adjusting for <ENAMEX TYPE="ORGANIZATION">Space</ENAMEX> by <TIMEX TYPE="DATE">Day-of-Week</TIMEX> Interaction
+          The space–time permutation scan statistic automatically adjusts for any purely spatial
+          and purely temporal variation. For many syndromic surveillance data sources, there is
+          also natural space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction in the data that is not due to a disease
+          outbreak but to consumer behavior, store <TIMEX TYPE="TIME">hours</TIMEX>, etc. For example, if a particular
+          <ENAMEX TYPE="ORGANIZATION">pharmacy</ENAMEX> has an exceptionally high number of sales on <TIMEX TYPE="DATE">Sundays</TIMEX> because neighboring
+          pharmacies are closed, we might get a signal for this pharmacy every <TIMEX TYPE="DATE">Sunday</TIMEX> unless we
+          adjust for this space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction. This can be done through a stratified
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> permutation procedure.
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> step is to stratify the data by <TIMEX TYPE="DATE">day of week</TIMEX>: <TIMEX TYPE="DATE">Monday</TIMEX>, <TIMEX TYPE="DATE">Tuesday</TIMEX>,<ENAMEX TYPE="ANIMAL">…</ENAMEX>, <TIMEX TYPE="DATE">Sunday</TIMEX>. The
+          space–time permutation randomization step is then done separately for <TIMEX TYPE="DATE">each day</TIMEX> of the
+          <TIMEX TYPE="DATE">week</TIMEX>. For each zip code and day combination, the expected is then calculated using only
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from <TIMEX TYPE="DATE">that day of the week</TIMEX>. For each cylinder, both the observed and expected number
+          of cases is summed over <TIMEX TYPE="DATE">all day-of-week</TIMEX> strata, zip code, and day combinations within
+          that cylinder. The same technique can be used to adjust for other types of space–time
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX>. The underlying assumption when calculating these expected numbers is now
+          that the probability of a case being in zip-code area 
+          z, given that it was observed on a <TIMEX TYPE="DATE">Monday</TIMEX>, is the same for all <TIMEX TYPE="DATE">Mondays</TIMEX>,
+          etc.
+          All our analyses were adjusted for space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction.
+        
+        
+          Missing Data
+          Daily disease surveillance systems require rapid transmission of data, and it may not
+          be possible to get complete data from each <ENAMEX TYPE="ORG_DESC">provider</ENAMEX> <TIMEX TYPE="DATE">every single day</TIMEX>. When we first tried
+          the new method in <ENAMEX TYPE="GPE">New York City</ENAMEX>, a number of highly significant outbreak signals were
+          generated that were artifacts of previously unrecognized missing or incomplete data from
+          <NUMEX TYPE="CARDINAL">one</NUMEX> or more <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX>. This is a good reflection on the method, since it should be able
+          to detect abnormalities in the data no matter what their cause, but it also illustrates
+          the importance of accounting for missing data in order to create an early detection
+          system that is useful on a practical level.
+          Depending on the exact nature of the missing data, there are different ways to handle
+          it. We used a combination of <NUMEX TYPE="CARDINAL">three</NUMEX> different approaches. (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) If a <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> had missing
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> for all of <TIMEX TYPE="DATE">the past 7</TIMEX> d (all possible <TIMEX TYPE="DATE">days</TIMEX> within the cylinder), we completely
+          removed that <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> from the analysis, including all previous <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="PERSON">d.</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) If a <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>
+          had no missing data during the last <NUMEX TYPE="CARDINAL">7</NUMEX> d, but one or more missing <TIMEX TYPE="DATE">days</TIMEX> during the previous
+          <TIMEX TYPE="TIME">23 baseline</TIMEX> <TIMEX TYPE="DATE">days</TIMEX>, then we completely removed the baseline <TIMEX TYPE="DATE">days</TIMEX> with some missing data,
+          for all of the <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) If a <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> had missing data for <NUMEX TYPE="CARDINAL">at least one</NUMEX> but not all
+          of the last <NUMEX TYPE="CARDINAL">7</NUMEX> d, then we removed those missing days together with <TIMEX TYPE="DATE">all previous days</TIMEX> for
+          the same <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> and <TIMEX TYPE="DATE">the same day of week</TIMEX>. That is, if <TIMEX TYPE="DATE">Monday</TIMEX> was missing during the
+          <TIMEX TYPE="DATE">last week</TIMEX>, then we removed all <TIMEX TYPE="DATE">Mondays</TIMEX> for that <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>. This removal introduces
+          artificial space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction, so this approach only works if it is
+          implemented in conjunction with the stratified adjustment for space by <TIMEX TYPE="DATE">day-of-week</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX>.
+          For some analyses, <NUMEX TYPE="CARDINAL">more than one</NUMEX> of these approaches were used simultaneously. Note
+          that, since the missing data depend on the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>, the solution is to remove specific
+          <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> and <TIMEX TYPE="DATE">days</TIMEX> rather than zip codes and <TIMEX TYPE="DATE">days</TIMEX>, even when we are doing the
+          <ENAMEX TYPE="GPE">zip-code</ENAMEX>-based residential analyses. If there are many <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> with missing data, then
+          the <NUMEX TYPE="ORDINAL">second</NUMEX> approach could potentially remove all or almost all of the baseline <TIMEX TYPE="DATE">days</TIMEX>. To
+          avoid this, one could sometimes go further back in time and add the same number of
+          <TIMEX TYPE="DATE">earlier days</TIMEX> to compensate. Another option is to impute into the cells with missing data
+          a <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> random number of cases generated under the null hypothesis. Given the
+          completeness of our data, neither of these methods were employed (<NUMEX TYPE="PERCENT">94%</NUMEX> of analyses were
+          conducted with <NUMEX TYPE="CARDINAL">four or</NUMEX> fewer baseline <TIMEX TYPE="DATE">days</TIMEX> removed).
+        
+      
+      
+        Results
+        
+          <ENAMEX TYPE="WORK_OF_ART">Evaluation Using Historical Data: Diarrhea Surveillance</ENAMEX>
+          We first tested the new method by mimicking <TIMEX TYPE="DATE">daily</TIMEX> prospective analyses of hospital
+          emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> data from <TIMEX TYPE="DATE">15 Nov 2001 to 14 Nov 2002</TIMEX>, looking at diarrhea visits.
+          Signals with 
+          <ENAMEX TYPE="CONTACT_INFO">p ≤ 0</ENAMEX>
+          . <TIMEX TYPE="DATE">0027</TIMEX> are listed in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> and depicted on the map in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. That
+          is, we only list those signals with a null occurrence rate of once <TIMEX TYPE="DATE">every year</TIMEX> or less
+          often.
+          For the residential zip-code analyses, there were <NUMEX TYPE="CARDINAL">two</NUMEX> such signals. For the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>
+          <ENAMEX TYPE="PERSON">analyses</ENAMEX>, there were <NUMEX TYPE="CARDINAL">six</NUMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> of which occurred in the same place on <TIMEX TYPE="DATE">consecutive days</TIMEX>. It
+          is worth noting that at the false alarm rate chosen, none of the residential signals
+          correspond to any of the hospital signals.
+          For the residential analysis, the strongest signal was on <TIMEX TYPE="DATE">9 February 2002</TIMEX>, covering <NUMEX TYPE="CARDINAL">17</NUMEX>
+          zip-code areas in southern <ENAMEX TYPE="GPE">Bronx</ENAMEX> and northern <ENAMEX TYPE="GPE">Manhattan</ENAMEX>. This signal had <NUMEX TYPE="CARDINAL">63</NUMEX> cases
+          observed <NUMEX TYPE="CARDINAL">over 2</NUMEX> d when <NUMEX TYPE="CARDINAL">34.7</NUMEX> were expected (relative risk = <NUMEX TYPE="CARDINAL">1.82</NUMEX>). With a null occurrence
+          rate of once every <NUMEX TYPE="CARDINAL">5.5</NUMEX> y, a spike in cases of this magnitude is unlikely to be due to
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> variation. The signal immediately preceded a sharp increase in citywide diarrheal
+          visits from <TIMEX TYPE="DATE">10 February to 20 March</TIMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). In both the localized <NUMEX TYPE="CARDINAL">9</NUMEX> <TIMEX TYPE="DATE">February</TIMEX> cluster
+          and the citywide outbreak, the increase was most notable among <ENAMEX TYPE="PER_DESC">children</ENAMEX> less than <NUMEX TYPE="PERCENT">5 y</NUMEX> of
+          age. The weaker <TIMEX TYPE="DATE">26 February</TIMEX> hospital signal and the <NUMEX TYPE="CARDINAL">7</NUMEX> <TIMEX TYPE="DATE">March</TIMEX> residential signal that were
+          centered in northern <ENAMEX TYPE="GPE">Manhattan</ENAMEX> occurred at the peak of this citywide outbreak. Laboratory
+          investigation of the citywide increase in diarrheal activity indicated the rotavirus as
+          the most likely causative <ENAMEX TYPE="PER_DESC">agent</ENAMEX>.
+          The <NUMEX TYPE="CARDINAL">two</NUMEX> hospital signals on <TIMEX TYPE="DATE">1 November</TIMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX> <TIMEX TYPE="DATE">November 2002</TIMEX>, were at the same three
+          <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> in southern <ENAMEX TYPE="GPE">Bronx</ENAMEX> and northern <ENAMEX TYPE="GPE">Manhattan</ENAMEX>, with null occurrence rates of <NUMEX TYPE="CARDINAL">1.6</NUMEX> and
+          <NUMEX TYPE="PERCENT">3.4 y</NUMEX>, respectively. These signals immediately preceded another sharp increase in
+          citywide diarrheal activity, this time among <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> of all ages (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). This
+          citywide outbreak lasted <TIMEX TYPE="TIME">approximately 6 wk</TIMEX> and coincided with a number of institutional
+          outbreaks in nursing <ENAMEX TYPE="FAC_DESC">homes</ENAMEX> and on cruise <ENAMEX TYPE="PRODUCT_DESC">ships</ENAMEX>. Laboratory investigation of several of
+          these outbreaks revealed the norovirus as the most likely causative <ENAMEX TYPE="PER_DESC">agent</ENAMEX>. A similar
+          citywide outbreak of norovirus in <TIMEX TYPE="DATE">2001</TIMEX> began shortly before the <TIMEX TYPE="DATE">21 November 2001</TIMEX> hospital
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> in northern <ENAMEX TYPE="GPE">Bronx</ENAMEX>, which had a null occurrence rate of once every <NUMEX TYPE="CARDINAL">3.4</NUMEX> y.
+          For the hospital analyses, the strongest signal was a <NUMEX TYPE="CARDINAL">1</NUMEX>-d cluster at a single <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>
+          in <ENAMEX TYPE="GPE">Queens</ENAMEX> on <TIMEX TYPE="DATE">11 January 2002</TIMEX>, with <ENAMEX TYPE="DISEASE">ten diarrhea</ENAMEX> cases when <NUMEX TYPE="CARDINAL">only 2.3</NUMEX> were expected, which
+          <NUMEX TYPE="CARDINAL">one</NUMEX> would only expect to happen once every <NUMEX TYPE="CARDINAL">3.9</NUMEX> y. Being very local in both time and
+          space, it is different from the previously described signals preceding citywide
+          outbreaks. While examination of individual-level data revealed a predominance of <ENAMEX TYPE="PER_DESC">infants</ENAMEX>
+          under the age of <NUMEX TYPE="CARDINAL">two</NUMEX>, this cluster could not be associated with any known outbreak, and
+          retrospective investigation was not feasible.
+          As shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, at the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.0027</NUMEX> threshold there were <NUMEX TYPE="CARDINAL">six</NUMEX> and <NUMEX TYPE="CARDINAL">two</NUMEX> signals for the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>
+          and residential analyses, respectively, compared to <NUMEX TYPE="CARDINAL">one</NUMEX> expected in each. Figure <NUMEX TYPE="CARDINAL">3</NUMEX> shows
+          the number of <TIMEX TYPE="DATE">days</TIMEX> on which the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of the most likely cluster was within a given range. Had the
+          null hypothesis been true on all <NUMEX TYPE="CARDINAL">365</NUMEX> d analyzed, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values would have been uniformly distributed between <NUMEX TYPE="CARDINAL">zero</NUMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX>.
+          The fact that in our data there were more <TIMEX TYPE="DATE">days</TIMEX> with low rather than high 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values is an indication that there may be additional true
+          <ENAMEX TYPE="PERSON">“outbreaks”</ENAMEX> that are indistinguishable from random noise. These could be very small
+          <ENAMEX TYPE="DISEASE">disease outbreaks</ENAMEX>, for example, due to spoiled <ENAMEX TYPE="SUBSTANCE">food</ENAMEX> eaten by <NUMEX TYPE="CARDINAL">only a few</NUMEX> <ENAMEX TYPE="PER_DESC">people</ENAMEX>, or they
+          could be artifacts caused by, for example, changes in the <TIMEX TYPE="TIME">hours</TIMEX> of <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> at an
+          emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> or coding differences between the emergency department triage
+          <ENAMEX TYPE="PER_DESC">nurses</ENAMEX>.
+        
+        
+          Daily <ENAMEX TYPE="ORGANIZATION">Prospective Surveillance</ENAMEX>
+          Since <TIMEX TYPE="DATE">1 November 2003</TIMEX>, the space–time permutation scan statistic has been used daily
+          in parallel with the <ENAMEX TYPE="PER_DESC">population</ENAMEX>-<ENAMEX TYPE="GPE">at-risk</ENAMEX>-based space–time scan statistics [<ENAMEX TYPE="LAW">7</ENAMEX>] as part of
+          the <ENAMEX TYPE="ORGANIZATION">DOHMH Emergency Department</ENAMEX> surveillance system. For respiratory symptoms, <ENAMEX TYPE="DISEASE">fever</ENAMEX>/<ENAMEX TYPE="DISEASE">flu</ENAMEX>,
+          and <ENAMEX TYPE="DISEASE">diarrhea</ENAMEX>, the results for <TIMEX TYPE="DATE">the last week of November</TIMEX> are listed in <ENAMEX TYPE="FAC">Tables 2</ENAMEX> and <NUMEX TYPE="CARDINAL">3</NUMEX>. For
+          <ENAMEX TYPE="DISEASE">diarrhea</ENAMEX> or respiratory symptoms there were no strong signals warranting an
+          <ENAMEX TYPE="ORGANIZATION">epidemiological</ENAMEX> investigation, and all had null occurrence rates of more often than once
+          <TIMEX TYPE="DATE">every month</TIMEX>. This reflects a very typical week.
+          For <ENAMEX TYPE="DISEASE">fever</ENAMEX>/<ENAMEX TYPE="DISEASE">flu</ENAMEX> there was a strong <NUMEX TYPE="CARDINAL">7</NUMEX>-d hospital signal in southern <ENAMEX TYPE="GPE">Bronx</ENAMEX> and northern
+          <ENAMEX TYPE="GPE">Manhattan</ENAMEX> on <TIMEX TYPE="DATE">28 November</TIMEX> with a null occurrence rate of once every <NUMEX TYPE="CARDINAL">2.7</NUMEX> y. On each of the
+          following <ENAMEX TYPE="EVENT">2 d</ENAMEX>, there were again strong hospital signals in the same general area as well
+          as residential zip-code signals of lesser magnitude. These signals started <TIMEX TYPE="DATE">12</TIMEX> d into a
+          gradual citywide increase in fever/<ENAMEX TYPE="DISEASE">flu</ENAMEX> that continued to grow through the end of
+          <TIMEX TYPE="DATE">December</TIMEX>, driven by an unusually early <ENAMEX TYPE="DISEASE">influenza</ENAMEX> season in <ENAMEX TYPE="GPE">New York City</ENAMEX>.
+        
+      
+      
+        Discussion
+        In this paper we have presented a new method for prospective infectious <ENAMEX TYPE="DISEASE">disease</ENAMEX> outbreak
+        surveillance that uses only case data, handles missing data, and makes minimal assumptions
+        about the spatiotemporal characteristics of an outbreak. When using historical emergency
+        department <ENAMEX TYPE="PER_DESC">chief</ENAMEX> complaint data to mimic a prospective surveillance <ENAMEX TYPE="PRODUCT_DESC">system</ENAMEX> with daily
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX>, we detected <NUMEX TYPE="CARDINAL">four</NUMEX> highly unusual clusters of <ENAMEX TYPE="DISEASE">diarrhea</ENAMEX> cases, <NUMEX TYPE="CARDINAL">three</NUMEX> of which
+        heralded citywide gastrointestinal outbreaks due to rotavirus and norovirus. <NUMEX TYPE="CARDINAL">Three</NUMEX> of <NUMEX TYPE="CARDINAL">four</NUMEX>
+        weaker signals also occurred immediately preceding or concurrent with these citywide
+        outbreaks. If we assume that all of these clusters were associated with the citywide
+        <ENAMEX TYPE="DISEASE">disease outbreaks</ENAMEX>, then the method generated at most two false alarms at a signal threshold
+        where we would have expected <NUMEX TYPE="CARDINAL">one</NUMEX> by chance alone.
+        For <ENAMEX TYPE="DISEASE">disease</ENAMEX> outbreak detection, the public-health <ENAMEX TYPE="GPE_DESC">community</ENAMEX> has historically relied on
+        the watchful eyes of <ENAMEX TYPE="PER_DESC">physicians</ENAMEX> and other health-care <ENAMEX TYPE="PER_DESC">workers</ENAMEX>. However, the increasing
+        availability of timely electronic surveillance data, both reportable diagnoses and
+        pre-diagnostic syndromic indicators, raises the possibility of earlier outbreak detection
+        and intervention if suitable analytic methods are found. While it is still unclear whether
+        systematic health surveillance using syndromic or reportable disease data will be able to
+        quickly detect a bioterrorism attack [<NUMEX TYPE="CARDINAL">39,40</NUMEX>], the methods described here can also be
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to early detection of outbreaks of other, more common infectious diseases.
+        There are other alternative ways to calculate expected counts from a series of case
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. One naive approach is to use the observed count <NUMEX TYPE="CARDINAL">7</NUMEX> d ago in a zip-code area as the
+        expected count for that same area <TIMEX TYPE="DATE">today</TIMEX>, and then apply the regular <ENAMEX TYPE="GPE">Poisson</ENAMEX>-based
+        space–time scan statistic. When applied to the <ENAMEX TYPE="GPE">New York City</ENAMEX> diarrhea data described above,
+        such an approach generated <NUMEX TYPE="CARDINAL">at least one</NUMEX> �<ENAMEX TYPE="DISEASE">��statistically significant”</ENAMEX> outbreak signal on each
+        of the <NUMEX TYPE="CARDINAL">365</NUMEX> d evaluated. The basic problem with this is that there is random variation in
+        the observed counts that are used to calculate the expected, which is not accounted for in
+        the <ENAMEX TYPE="GPE">Poisson</ENAMEX>-based scan statistic. If we based the expected on the average of multiple prior
+        <TIMEX TYPE="DATE">weeks</TIMEX> of data, we would get less variability in the expected counts and fewer false
+        signals, but the problem would still persist, and as the number of <TIMEX TYPE="DATE">weeks</TIMEX> increase beyond a
+        few <TIMEX TYPE="DATE">months</TIMEX> other problems may gradually arise due to, for example, seasonal trends or
+        population size changes.
+        Computing time depends on the size of the dataset and the analysis parameters chosen.
+        With <NUMEX TYPE="CARDINAL">999</NUMEX> replications, the hospital analyses with <NUMEX TYPE="CARDINAL">38</NUMEX> data locations take <NUMEX TYPE="CARDINAL">7</NUMEX> s to run on a
+        <NUMEX TYPE="CARDINAL">2.5</NUMEX>-<ENAMEX TYPE="ORGANIZATION">MHz</ENAMEX> <ENAMEX TYPE="PRODUCT">Pentium 4</ENAMEX> computer, while the residential analyses using <NUMEX TYPE="CARDINAL">183</NUMEX> zip-code area
+        locations take <TIMEX TYPE="DATE">11</TIMEX> s. The same numbers for <NUMEX TYPE="CARDINAL">9,999</NUMEX> replications are <NUMEX TYPE="CARDINAL">27 and 57</NUMEX> s,
+        respectively.
+        There are a number of limitations with the proposed method. The method is highly
+        sensitive to missing or incomplete data. Our first implementation of the method resulted in
+        a number of false alarms, and highlights the need for systematic data quality checks and
+        the analytic adjustments described above. When excellent population-at-risk data are
+        available, we expect the <ENAMEX TYPE="GPE">Poisson</ENAMEX>-based space–time scan statistic that utilizes this extra
+        information to perform better than the space–time permutation scan statistic. If, however,
+        the <ENAMEX TYPE="PER_DESC">population</ENAMEX>-at-risk data are of poor quality or nonexistent, which is often the case,
+        then the space–time permutation scan statistic should be used.
+        Since the space–time permutation scan statistic adjusts for purely temporal clusters, it
+        can only detect citywide outbreaks if they start locally, but not if they occur more or
+        less simultaneously in the whole <ENAMEX TYPE="GPE_DESC">city</ENAMEX>. Hence, it does not replace purely temporal
+        surveillance methods, but rather complements them.
+        Finally, it is important to note that the geographical boundary of the detected outbreak
+        is not necessarily the same as the boundary of the true outbreak. Since we used circles as
+        the base for the scanning cylinder, all detected outbreaks are approximately circular.
+        Other shapes of the scanning window are also available [<TIMEX TYPE="DATE">36</TIMEX>], but it has been shown that
+        circular scan statistics are also able to detect noncircular outbreak areas [<TIMEX TYPE="DATE">41</TIMEX>]. The less
+        geographically compact the outbreak is, though, the less power (sensitivity) there is to
+        detect it. For example, using circles we cannot expect to pick up an outbreak that is very
+        long and narrow such as a <NUMEX TYPE="CARDINAL">one</NUMEX>-block area on each side of <ENAMEX TYPE="FAC">Broadway</ENAMEX>, stretching from southern
+        to northern <ENAMEX TYPE="GPE">Manhattan</ENAMEX>.
+        The emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> data used in this study also have some limitations. In addition
+        to the citywide outbreaks, there were several institutional gastrointestinal outbreaks
+        reported to <ENAMEX TYPE="ORGANIZATION">DOHMH</ENAMEX> during the historical <TIMEX TYPE="DATE">1-y</TIMEX> period but not detected in emergency department
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> using the space–time permutation scan statistic. <NUMEX TYPE="CARDINAL">One</NUMEX> reported outbreak involved school
+        <ENAMEX TYPE="PER_DESC">children</ENAMEX> that went to the emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX> of a nonparticipating <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>. Other
+        <ENAMEX TYPE="PERSON">outbreaks</ENAMEX> went undetected because medical care was not sought in emergency <ENAMEX TYPE="ORG_DESC">departments</ENAMEX>.
+        Most <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">diarrhea</ENAMEX> do not go to the hospital emergency <ENAMEX TYPE="ORG_DESC">department</ENAMEX>. Rather, they call
+        or go to their primary care <ENAMEX TYPE="PER_DESC">physician</ENAMEX>, they visit the pharmacy to buy over-the-counter
+        <ENAMEX TYPE="SUBSTANCE">medication</ENAMEX>, or they may have symptoms that are so mild that they do not seek medical care.
+        Further studies are needed to evaluate the strengths and weaknesses of different data
+        <ENAMEX TYPE="PER_DESC">sources</ENAMEX>.
+        The geographic units of analysis used were residential zip code and hospital location.
+        It may be hard to detect outbreaks that affect only a small part of a single zip code,
+        especially if the background rate of the <ENAMEX TYPE="DISEASE">syndrome</ENAMEX> is fairly high. Where available, the
+        exact coordinates of a <ENAMEX TYPE="PER_DESC">patient</ENAMEX>'s <ENAMEX TYPE="FAC_DESC">residence</ENAMEX> can be used to avoid problems introduced when
+        aggregating data. Furthermore, some outbreaks may not be clustered by place of <ENAMEX TYPE="FAC_DESC">residence</ENAMEX>,
+        as in the case of an exposure occurring at the place of work or in a subway. Using the
+        location of the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> rather than <ENAMEX TYPE="FAC_DESC">residence</ENAMEX> may provide higher power to detect
+        workplace-related outbreaks, but the only way to fully address this issue may be to conduct
+        workplace surveillance.
+        In spite of these limitations, we have presented a new method for the early detection of
+        <ENAMEX TYPE="DISEASE">disease outbreaks</ENAMEX> and illustrated its practical use. The primary advantages of the method
+        are that it is easy to use, it only requires case data, it automatically adjusts for
+        naturally occurring purely spatial and purely temporal variation, it allows adjustment for
+        space by <TIMEX TYPE="DATE">day-of-week</TIMEX> interaction, and it is capable of handling missing data.
+        While the method was developed and applied in the context of syndromic surveillance, it
+        may also be used for the early detection of diagnosed <ENAMEX TYPE="DISEASE">disease</ENAMEX> outbreaks, or for detecting
+        changes in the pattern of chronic <ENAMEX TYPE="DISEASE">diseases</ENAMEX>, when <ENAMEX TYPE="PER_DESC">population</ENAMEX> census information is
+        unavailable, unreliable, or not available at the fine geographical resolution needed. The
+        ability to perform disease surveillance without <ENAMEX TYPE="PER_DESC">population</ENAMEX>-at-risk data is especially
+        important in developing <ENAMEX TYPE="GPE_DESC">countries</ENAMEX>, where these data may be hard to obtain. The space–time
+        permutation scan statistic could also be used for similar early detection problems in other
+        <ENAMEX TYPE="PERSON">fields</ENAMEX>, such as criminology, ecology, engineering, social sciences, and veterinary
+        <ENAMEX TYPE="ORGANIZATION">sciences</ENAMEX>.
+      
+    
+  

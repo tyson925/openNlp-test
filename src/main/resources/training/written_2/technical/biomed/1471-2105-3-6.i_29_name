@@ -1,0 +1,800 @@
+
+  
+    
+      
+        Background
+        For <TIMEX TYPE="DATE">over a decade</TIMEX> the idea of representing biological
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in a continuous coordinate space has maintained
+        its appeal but not been fully realized [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] . The
+        basic idea is that sequences of symbols, such as
+        <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in genomes, aminoacids in proteomes, repeated
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">MLST</ENAMEX> [<ENAMEX TYPE="PERSON">Multi Locus Sequence Typing</ENAMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>], words
+        in languages or letters in words, would define trajectories
+        in this continuous space conserving the statistical
+        properties of the original sequences [ <NUMEX TYPE="CARDINAL">3 5 6 7 8 9</NUMEX> ] .
+        Accordingly, the coordinate position of each <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> would
+        uniquely encode for both its identity and its context, i.e.
+        the identity of its <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] . Ideally, the
+        position should be scale-independent, such that the
+        extraction of the encompassing sequence can be performed
+        with any resolution, leading to an oligomer of arbitrary
+        length. The <ENAMEX TYPE="ORG_DESC">pioneer</ENAMEX> work by <ENAMEX TYPE="PERSON">Jeffrey</ENAMEX> published in <TIMEX TYPE="DATE">1990</TIMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+        achieved this for genomic sequences by using the <ENAMEX TYPE="ORGANIZATION">Chaos Game</ENAMEX>
+        Representation technique (CGR), defining a unit-square
+        where each corner corresponds to one of the <NUMEX TYPE="CARDINAL">4</NUMEX> possible
+        <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>. Subsequent work further explored the
+        properties of <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> of biological sequences, but <NUMEX TYPE="CARDINAL">two</NUMEX> main
+        obstacles prevented the realization of its early promise -
+        lack of scalability with regard to the number of possible
+        unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX> and inability to represent succession schemes.
+        Meanwhile, <ENAMEX TYPE="PERSON">Markov Chain</ENAMEX> theory already offered a solid
+        <ENAMEX TYPE="ORGANIZATION">foundation</ENAMEX> for the identification of discrete spaces to
+        represent sequences as cross-tabulated conditional
+        <ENAMEX TYPE="PERSON">probabilities - Markov</ENAMEX> transition tables. This Bayesian
+        <ENAMEX TYPE="PERSON">technique</ENAMEX> is widely explored in bioinformatic applications
+        seeking to measure homology and align sequences [ <TIMEX TYPE="DATE">11</TIMEX> ] . In
+        a recent report [ <TIMEX TYPE="DATE">12</TIMEX> ] we have shown that, for genomic
+        sequences, <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> tables are in fact a special case of <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX>,
+        contrary to what had been suggested previously [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+        This raised the prospect of an advantageous use of
+        iterative maps as state spaces not only for representation
+        of sequences but also to identify scale independent
+        <ENAMEX TYPE="ORGANIZATION">stochastic</ENAMEX> models of the succession scheme. That work [ <NUMEX TYPE="CARDINAL">12</NUMEX>
+        ] is hereby extended and further generalized to be
+        applicable to sequences with arbitrary numbers of unique
+        component <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, without sacrificing the inverse
+        correlation between distance in the map and sequence
+        similarity independent of position. Accordingly, the
+        <ENAMEX TYPE="PERSON">technique</ENAMEX> is named <ENAMEX TYPE="WORK_OF_ART">Universal Sequence Map</ENAMEX> (USM).
+      
+      
+        Results
+        
+          Conceptual foundations
+          The <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> generalization proposed here is achieved by
+          observing <NUMEX TYPE="CARDINAL">two</NUMEX> stipulations: A-alternative <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in the
+          iterative map are positioned in distinct corners of 
+          unit <ENAMEX TYPE="FAC_DESC">block structures</ENAMEX>', and B -
+          sequence processing is bi-directional.
+          Basis for <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> generalization:
+          A. Each unique unit is referenced in the map for
+          positions that are at equal 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distances from each other, and
+          possibly, but not necessarily, defining a complete 
+          <ENAMEX TYPE="ORGANIZATION">block</ENAMEX> structure [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distances are defined as the
+          maximum distance along any dimension, e.g. 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distance between [ 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , ..., 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           ] and [ 
+          b 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , ..., 
+          b 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           ] is 
+          <ENAMEX TYPE="PERSON">max</ENAMEX>(|b 
+          <ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> |, | 
+          b 
+          <ENAMEX TYPE="CONTACT_INFO">2 -</ENAMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> |, ..., | 
+          b 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           - 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">|</ENAMEX>), see also Equation <NUMEX TYPE="QUANTITY">3</NUMEX>. It will be shown that this
+          <ENAMEX TYPE="PERSON">stipulation</ENAMEX> leads to the definition of spaces where
+          <ENAMEX TYPE="ORGANIZATION">distance</ENAMEX> is inversely proportional to sequence
+          <ENAMEX TYPE="PERSON">similarity</ENAMEX>, independent of position. In this respect, USM
+          departs from previous attempts to generalize <ENAMEX TYPE="WORK_OF_ART">Chaos Game</ENAMEX>
+          Representation that conserve the bi-dimensionality of the
+          original CGR representation [ <ENAMEX TYPE="LAW">8 15 16 17</ENAMEX> ] .
+          B. The iterative positioning is performed in both
+          <ENAMEX TYPE="ORGANIZATION">directions</ENAMEX>. Therefore, there will be <NUMEX TYPE="CARDINAL">two</NUMEX> sets of
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX>, the result of forward and backward iterative
+          operations. It will be shown that, by adding backward and
+          forward map distances between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">positions</ENAMEX>, the number
+          of identical <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in the encompassing sequences can be
+          extracted directly from the USM coordinates. As a
+          consequence, <NUMEX TYPE="CARDINAL">two</NUMEX> arbitrary positions can be compared, and
+          the number of contiguous similar <ENAMEX TYPE="ORG_DESC">units</ENAMEX> is extracted by an
+          algebraic <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> that relies solely on the USM
+          coordinates of those very <NUMEX TYPE="CARDINAL">two</NUMEX> positions.
+        
+        
+          Implementation of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> algorithm
+          The algorithm will be <NUMEX TYPE="ORDINAL">first</NUMEX> illustrated for the first
+          and last stanzas of <ENAMEX TYPE="ORGANIZATION">Wendy Cope</ENAMEX>'s poem "The Uncertainty of
+          the <ENAMEX TYPE="WORK_OF_ART">Poet"</ENAMEX> (<NUMEX TYPE="MONEY">14</NUMEX>), respectively, "I am a <ENAMEX TYPE="PER_DESC">poet</ENAMEX>. I am very
+          fond of <ENAMEX TYPE="SUBSTANCE">bananas</ENAMEX>." and "I am of very fond <ENAMEX TYPE="SUBSTANCE">bananas</ENAMEX>. Am I a
+          <ENAMEX TYPE="WORK_OF_ART">poet?</ENAMEX>". The procedure includes <NUMEX TYPE="CARDINAL">four</NUMEX> steps:
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. Identification of unique sequence <ENAMEX TYPE="ORG_DESC">units</ENAMEX> - e.g.
+          these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">stanzas</ENAMEX> have <NUMEX TYPE="CARDINAL">19</NUMEX> unique <ENAMEX TYPE="PER_DESC">characters</ENAMEX>, (table <NUMEX TYPE="CARDINAL">1</NUMEX>),
+          i.e. 
+          <ENAMEX TYPE="PER_DESC">uu</ENAMEX> = <NUMEX TYPE="CARDINAL">19</NUMEX>. 
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. <ENAMEX TYPE="PER_DESC">Replacement</ENAMEX> of each unique <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> (in this case units
+          are alphabetic <ENAMEX TYPE="PER_DESC">characters</ENAMEX>) by a unique binary number -
+          <ENAMEX TYPE="ORGANIZATION">e.g.</ENAMEX> in table 1each of the <NUMEX TYPE="CARDINAL">19</NUMEX> unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX> is replaced by
+          its rank order minus <NUMEX TYPE="CARDINAL">one</NUMEX>, represented as a binary number.
+          Other arrangements are possible leading to the same final
+          result as discussed below. The minimum number of
+          dimensions necessary to accommodate 
+          uu unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>, is the upper integer of the
+          length of its binary representation: 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <ENAMEX TYPE="PER_DESC">ceil</ENAMEX>(log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<NUMEX TYPE="MONEY">uu</NUMEX>)). For <ENAMEX TYPE="PERSON">W. Cope</ENAMEX>'s stanzas, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <ENAMEX TYPE="PER_DESC">ceil</ENAMEX>(log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<NUMEX TYPE="MONEY">19</NUMEX>)) = <NUMEX TYPE="CARDINAL">5</NUMEX>. The binary reference
+          coordinates for the unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX> are defined by the
+          numerals of the binary code - for example, 
+          a will be assigned to the position 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+          ' 
+          a ' = 
+          [<NUMEX TYPE="CARDINAL">0,0,1,0,1</NUMEX>]. Each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> is
+          represented as a corner in a n-dimensional <NUMEX TYPE="QUANTITY">cube</NUMEX> (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">1</NUMEX>). The purpose of these <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> steps is to guarantee
+          that the reference positions for each unique sequence
+          unit component are equidistant (stipulation A) in the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-metric defined above. Any other
+          procedure resulting in equidistant unique positions will
+          lead to the same final results independently of the
+          actual binary numbers used or the number of dimensions
+          used to contain them.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. The CGR procedure [ <ENAMEX TYPE="LAW">5</ENAMEX> ] (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>) is applied
+          independently to each coordinate, 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,2</NUMEX>, ...,<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>, for each <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>, 
+          i, in the sequence of length 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, u 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           
+          (i) with 
+          i = <NUMEX TYPE="CARDINAL">1,2</NUMEX>, ...,k, and starting with a
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> map position taken from a uniform distribution in
+          [<NUMEX TYPE="CARDINAL">0,1</NUMEX>] 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , i.e. 
+          <ENAMEX TYPE="ORGANIZATION">Unif</ENAMEX>([<NUMEX TYPE="CARDINAL">0,1</NUMEX>] 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). The random <ENAMEX TYPE="SUBSTANCE">seed</ENAMEX> is not
+          fundamentally different from using the middle position in
+          the map as is conventional in <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> and it has the added
+          feature that it prevents the invalidation of the inverse
+          logarithmic proportionality of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distance to sequence similarity [
+          <NUMEX TYPE="CARDINAL">12</NUMEX> ] for sequences that start or end with the same
+          <ENAMEX TYPE="PERSON">motif</ENAMEX>.
+          For a sequence with 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, the USM positions 
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, k for the 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, n dimensions are
+          determined as follows:
+          
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. The previous step generated 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> positions in a 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> -dimension space by processing
+          the sequence forward (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). This subsequent step adds
+          an additional set of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> dimensions by implementing the
+          same procedure backward (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>), again starting at random
+          positions for each coordinate. Consequently the first 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> dimensions of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> will be
+          referred as defining 
+          a forward map and the <NUMEX TYPE="ORDINAL">second</NUMEX> set of
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> dimensions will define a 
+          backward map. Put together, the
+          <ENAMEX TYPE="ORGANIZATION">bidirectional</ENAMEX> USM map defines a 
+          2n-unit <ENAMEX TYPE="FAC_DESC">block structure</ENAMEX>. 
+          The 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> additional backward coordinates
+          are determined as follows:
+          
+          The forward USM map for genomic sequences, where 
+          <ENAMEX TYPE="PER_DESC">uu</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>, and, consequently, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, is the same as the result
+          generated by <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX>. However, by freeing the iterative map
+          from the dual-dimensional constraint of conventional <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX>,
+          the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> forward map alone achieved the goal of producing
+          a scale independent representation of sequences of
+          <ENAMEX TYPE="CONTACT_INFO">arbitrary</ENAMEX> number of unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. These properties will
+          be briefly illustrated with <ENAMEX TYPE="ORGANIZATION">W Cope</ENAMEX>'s example. The <NUMEX TYPE="CARDINAL">16</NUMEX>
+          thunit of the first stanza, "I am a <ENAMEX TYPE="PER_DESC">poet</ENAMEX>. I am very fond
+          of <ENAMEX TYPE="SUBSTANCE">bananas</ENAMEX>.", has USM coordinates 
+          USM 
+          
+            [1,...,2n] 
+           
+          (<NUMEX TYPE="MONEY">16</NUMEX>) = 
+          [<NUMEX TYPE="QUANTITY">0.02 0.01 0.63 0.00 0.53 0.07 0.30</NUMEX>
+          <NUMEX TYPE="CARDINAL">0.52 0.27 0.57</NUMEX>]. The first 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX> coordinates, the position in
+          the forward map, can now be used, by reversing equation 1
+          [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] , not only to extract the identity the unit 
+          i = <NUMEX TYPE="CARDINAL">16</NUMEX> but also the identity of the
+          <ENAMEX TYPE="ORGANIZATION">preceding</ENAMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX>:
+          - using forward coordinates alone 
+          [<NUMEX TYPE="CARDINAL">0.0156 0.0138 0.6314 0.0001</NUMEX>
+          <NUMEX TYPE="CARDINAL">0.5338</NUMEX>] 
+          
+          The same procedure can be applied to the remaining 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX> coordinates, the position in
+          the backward map, to extract the identity of the
+          succeeding units, now ordered backwards.
+          - using backward coordinates alone 
+          [<NUMEX TYPE="CARDINAL">0.0703 0.3004 0.5169 0.2742</NUMEX>
+          <NUMEX TYPE="CARDINAL">0.5652</NUMEX>] 
+          
+          The length of the sequence that can be recovered from
+          a position in the <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> or <ENAMEX TYPE="PRODUCT">USM</ENAMEX> space is only as long as the
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>, in bits, of the coordinates themselves. In
+          addition, the relevance of these iterative techniques is
+          not associated with the property of recovering sequences
+          <NUMEX TYPE="PERCENT">as much as</NUMEX> with the ability to recover the succession
+          schemes, e.g. the <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> probability tables. It has been
+          recognized for <TIMEX TYPE="DATE">almost a decade</TIMEX> that the density of
+          positions in unidirectional, bi-dimensional, iterated CGR
+          <ENAMEX TYPE="PERSON">maps</ENAMEX> (e.g. of genomic sequences, 
+          <ENAMEX TYPE="PER_DESC">uu</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX> -> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> ) defines a Markov table [ <NUMEX TYPE="CARDINAL">12</NUMEX>
+          <NUMEX TYPE="CARDINAL">13</NUMEX> ] . The complete accommodation of <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> in
+          <ENAMEX TYPE="ORGANIZATION">unidirectional USM</ENAMEX> (i.e. either forward or backward,
+          which is an equivalent to a multidimensional solution for
+          <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX>) can be quickly established by noting that the
+          identity of a quadrant is set by its middle coordinates [
+          <NUMEX TYPE="CARDINAL">13</NUMEX> ] . In order to extract the <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> format, for an
+          arbitrary integer order 
+          ord, each of the two n-unit
+          hypercubes, the set of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> forward or backward coordinates,
+          would be divided in 
+          q = <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="PERSON">n.</ENAMEX>(<NUMEX TYPE="CARDINAL">ord</NUMEX>+<NUMEX TYPE="CARDINAL">1</NUMEX>) equal quadrants and the
+          quadrant frequencies rearranged [ <TIMEX TYPE="DATE">12</TIMEX> ] . The use of 
+          <ENAMEX TYPE="ORGANIZATION">quadrant</ENAMEX> to <ENAMEX TYPE="PER_DESC">designate</ENAMEX> what is in
+          fact a <ENAMEX TYPE="ORG_DESC">sub</ENAMEX>-unit <ENAMEX TYPE="FAC_DESC">hypercube</ENAMEX> is a consonance with the
+          preceding work on bidimensional CGR maps [ <TIMEX TYPE="DATE">12</TIMEX> ] , where
+          it was shown that since any number of subdivisions can be
+          considered in a continuous domain, the density
+          distribution becomes an order-free <ENAMEX TYPE="PRODUCT">Markov Table</ENAMEX> that
+          accommodates both integer and fractal memory lengths. The
+          <ENAMEX TYPE="ORGANIZATION">extraction of Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> transition tables from USM
+          <ENAMEX TYPE="PERSON">representations</ENAMEX>, both forward and backward, is included
+          in the accompanying web-based application (see
+          <ENAMEX TYPE="ORGANIZATION">Abstract</ENAMEX>).
+          Above, the USM procedure was shown to allow for the
+          representation of sequences as multidimensional objects
+          without loss of identity or context. These <ENAMEX TYPE="PER_DESC">objects</ENAMEX> can
+          now be analyzed to characterize the sequences for
+          quantities such as similarity between <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> or entropy
+          [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] within the sequence. In figure 1the
+          <NUMEX TYPE="QUANTITY">10-dimensional</NUMEX> object defined by the USM positions of the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> stanzas was projected in <NUMEX TYPE="CARDINAL">3</NUMEX>-dimensions by principal
+          component analysis. The dimensionality reduction by
+          principal factor extraction has visualization purposes
+          only. As established above, the minimum necessary
+          dimensionality of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> state <ENAMEX TYPE="FAC_DESC">space</ENAMEX> is set by the
+          binary logarithm of the number of unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX>.
+          Nevertheless, the sequence variance associated with each
+          component is provided in the figure legend. In figure <TIMEX TYPE="DATE">1a</TIMEX>,
+          the <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> " 
+          very fond of" in the <NUMEX TYPE="CARDINAL">two</NUMEX> stanzas
+          are linked by solid lines to highlight the fact that
+          sequence similarity is reflected by spatial proximity of
+          USM coordinates. The representation is repeated in Figure
+          1bwith solid lining of the <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> " 
+          bananas ". The matching of the two
+          segments of the <NUMEX TYPE="ORDINAL">second</NUMEX> stanza (light) to the similar
+          segments of the first stanza (<TIMEX TYPE="TIME">dark</TIMEX>) is, again, visually
+          apparent.
+          The <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> determines that similar sequences,
+          or segments of sequences, will have converging iterated
+          trajectories: the distance will be cut in <NUMEX TYPE="CARDINAL">half</NUMEX> for every
+          consecutive similar <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>. This property was notice before
+          for <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> of genomic sequences [ <TIMEX TYPE="DATE">12</TIMEX> ] , and will be further
+          <ENAMEX TYPE="ORGANIZATION">explored</ENAMEX> here for <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> generalization. In that preceding
+          work it was shown that the number of similar consecutive
+          units can be approximated by a symmetrical logarithmic
+          transformation of the maximum distance between <NUMEX TYPE="CARDINAL">two</NUMEX>
+          positions in either of the dimensions ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distance ), 
+          <ENAMEX TYPE="ORGANIZATION">d.</ENAMEX> 
+          
+          d = -log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (Max|Δ 
+          USM 
+          
+            undirectional 
+           <ENAMEX TYPE="PERSON">|)    </ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>)
+          Since the USM coordinates include <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> iterations
+          per dimension, <NUMEX TYPE="CARDINAL">one</NUMEX> forward and another backward, two
+          distances can be extracted. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> coordinates define a forward
+          similarity estimate, 
+          d 
+          
+            f 
+           , and the second 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>+<NUMEX TYPE="CARDINAL">1,...</NUMEX>, <TIMEX TYPE="DATE">2n</TIMEX> coordinates can be used
+          to estimate backward similarity, 
+          d 
+          
+            b 
+           . The former measures similarity with regard to the
+          units preceding the one being compared and the latter
+          does the same for those the succeeding that same <ENAMEX TYPE="ORG_DESC">units</ENAMEX>.
+          Therefore, the forward and backward distances between the
+          positions 
+          i and 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> of <NUMEX TYPE="CARDINAL">two</NUMEX> sequences, 
+          a and 
+          b, with a length of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            a 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            b 
+           , respectively, would be calculated as described by
+          <ENAMEX TYPE="CONTACT_INFO">equation 4</ENAMEX>, defining <NUMEX TYPE="CARDINAL">two</NUMEX> rectangular <ENAMEX TYPE="FAC_DESC">matrices</ENAMEX>, 
+          d 
+          
+            f 
+           and 
+          d 
+          
+            b 
+           , of size 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            a 
+           × 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            b 
+           (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2a,2b).
+          
+          However, the values of d necessarily overestimate the
+          number of similar contiguous units <TIMEX TYPE="DATE">preceding</TIMEX> ( 
+          d 
+          
+            f 
+           , illustration for stanza comparison in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 2a) or
+          succeeding ( 
+          d 
+          
+            b 
+           , illustration for stanza comparison in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 2b) the
+          positions being compared. The value of 
+          d would be the exact number of
+          contiguous similar <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX>, if the starting positions for
+          the similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> where at a 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-distance of <NUMEX TYPE="CARDINAL">1</NUMEX>, e.g. if they were
+          in different corners of the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> hyper-dimensional USM
+          <ENAMEX TYPE="PRODUCT">cube</ENAMEX>. Since the initial distance is always somewhat
+          smaller, the homology, 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX>, measured as the number of
+          consecutive similar <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, will be smaller than 
+          d (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">5</NUMEX>).
+          
+          The contribution of φ to the similarity distance, 
+          d, can be estimated from the
+          distribution of positions in the USM map of a random
+          sequence. A uniformly random sequence [ <ENAMEX TYPE="LAW">3 19 20</ENAMEX> ] will
+          occupy the <ENAMEX TYPE="PRODUCT">USM</ENAMEX> space uniformly, and, for that matter, so
+          will the random <ENAMEX TYPE="SUBSTANCE">seed</ENAMEX> of forward and backward iterative
+          <ENAMEX TYPE="PERSON">mapping</ENAMEX>, respectively equations <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>. Therefore, a
+          uniform distribution is an appropriated starting point to
+          estimate the effect of ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>, the <NUMEX TYPE="CARDINAL">over</NUMEX>-determination of 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> by 
+          d (<NUMEX TYPE="MONEY">Eq.5</NUMEX>). Accordingly, for a given 
+          <ENAMEX TYPE="ORGANIZATION">x∈</ENAMEX> [<NUMEX TYPE="CARDINAL">0,1</NUMEX>], the probability, 
+          P 
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           , that any <NUMEX TYPE="CARDINAL">two</NUMEX> coordinates, 
+          x 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          x 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , are located within a radius 
+          r ∈ (<NUMEX TYPE="MONEY">0,1</NUMEX>) is given by <ENAMEX TYPE="ORGANIZATION">Equation</ENAMEX>
+          <NUMEX TYPE="CARDINAL">6</NUMEX>.
+          
+          Since 
+          P 
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           ( 
+          r ) is the probability of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          points chosen randomly from a uniform distribution 
+          <ENAMEX TYPE="ORGANIZATION">Unif</ENAMEX>([<NUMEX TYPE="CARDINAL">0,1</NUMEX>]) being at a distance
+          less than 
+          r from each other, for any set of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> coordinates in the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>, the
+          likelihood of finding another position within a block
+          distance of 
+          r would be described by raising
+          equation <NUMEX TYPE="CARDINAL">6</NUMEX> to the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> exponent. Finally, recalling from
+          <ENAMEX TYPE="CONTACT_INFO">equation 3</ENAMEX> that sequence similarity can be obtained by a
+          <ENAMEX TYPE="PERSON">logarithmic</ENAMEX> transformation of r, the probability that the
+          unidirectional coordinates of <NUMEX TYPE="CARDINAL">two</NUMEX> random sequences are at
+          a similar length 
+          d > φ is described by equation
+          <NUMEX TYPE="CARDINAL">7</NUMEX>. The simplicity of the expansion for higher dimensions
+          highlights the order-statistics properties [ <TIMEX TYPE="DATE">21</TIMEX> ] of the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-metric introduced above (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          It is noteworthy that the model for the likelihood of
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determination is <TIMEX TYPE="DATE">the null</TIMEX>-model, e.g. the comparison
+          of actual sequences is evaluated against the hypothesis
+          that the similarity observed happened by chance
+          alone.
+          
+          Finally, it is also relevant to recall that the null
+          model for 
+          d (<NUMEX TYPE="MONEY">Eq.7</NUMEX> for unidirectional
+          comparisons, bi-directional null <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are derived
+          below) allows the generalization for non-integer
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>. For example, the <NUMEX TYPE="CARDINAL">19</NUMEX> unique unites found in
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> stanzas (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), define forward and backward
+          USM maps in <NUMEX TYPE="CARDINAL">5</NUMEX> dimensions each. However the <NUMEX TYPE="CARDINAL">5</NUMEX> thdimension
+          is not fully utilized, as that would require 
+          <NUMEX TYPE="CARDINAL">2 5</NUMEX>= 
+          <NUMEX TYPE="CARDINAL">32</NUMEX> unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. Therefore, if
+          there is no requirement for an integer result, the
+          effective value of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> for the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">stanzas</ENAMEX> can be
+          refined as being 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<NUMEX TYPE="MONEY">19</NUMEX>) = <NUMEX TYPE="CARDINAL">4.25</NUMEX>. 
+          An estimation of bi-directional similarity will now be
+          introduced that adds the forward and backward distance
+          measures 
+          d 
+          
+            f 
+           and 
+          d 
+          
+            b 
+           . The motivation for this new estimate is the the
+          determination of the similar length of the entire similar
+          segment between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> solely by comparing any two
+          <ENAMEX TYPE="ORGANIZATION">homologous</ENAMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. Accordingly, since 
+          d 
+          
+            f 
+           is an estimate of preceding similarity and 
+          d 
+          
+            b 
+           provides the succeeding similarity equivalent the
+          sum of the <NUMEX TYPE="CARDINAL">two</NUMEX> similar distances, 
+          D, (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">8</NUMEX>) will estimate of the
+          bi-directional similarity, e.g. the length of the similar
+          segment, 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> 
+          
+          As illustrated later in the implementation, for
+          pairwise comparisons of homologous units of similar
+          segments, all values of 
+          D and, consequently, of φ, are
+          exactly the same. This result could possibly have been
+          anticipated from the preceding work [ <TIMEX TYPE="DATE">12</TIMEX> ] by noting that
+          the value of 
+          d between <NUMEX TYPE="CARDINAL">two</NUMEX> adjacent homologous
+          units differs exactly by <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>. However, this result
+          was in fact a surprise and <NUMEX TYPE="CARDINAL">one</NUMEX> with far reaching
+          fundamental and practical implications.
+          Similarly to unidirectional similarity estimation, 
+          d, the <ENAMEX TYPE="PER_DESC">bi-directional</ENAMEX> estimate, 
+          D, being the sum of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          overestimates, is also overestimated by a quantity to be
+          <ENAMEX TYPE="PERSON">defined, φ</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">8</NUMEX>). The derivation of an expression for
+          the bi-directional overestimation will require the
+          decomposition of 
+          P 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">7</NUMEX>) for <NUMEX TYPE="CARDINAL">two</NUMEX> cases, comparison
+          between unidirectional coordinates of similar quadrants, 
+          P 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          a  , and of opposite quadrants,
+          
+          P 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          b  , as described in equation
+          <NUMEX TYPE="CARDINAL">9</NUMEX>. Recalling from equation <NUMEX TYPE="QUANTITY">2</NUMEX>, positions in the same
+          quadrant correspond to sequence <ENAMEX TYPE="ORG_DESC">units</ENAMEX> with the same
+          identity, and positions in opposite quadrants correspond
+          to comparison between coordinates of <ENAMEX TYPE="ORG_DESC">units</ENAMEX> with a
+          different identity.
+          
+          The need for the distinction between same and opposite
+          quadrant comparison, which is to say between similar and
+          between dissimilar sequence <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, is caused by the fact
+          that same quadrant comparisons are more likely to lead to
+          higher values of 
+          <ENAMEX TYPE="PERSON">d.</ENAMEX> As illustrated above for the <NUMEX TYPE="CARDINAL">16</NUMEX>
+          thunit of the first stanza, the forward and backward
+          coordinates must fall in the same quadrant. Consequently,
+          the similar pattern of same and opposite quadrant
+          comparisons for each dimension will be reflected as a
+          <ENAMEX TYPE="PERSON">bias</ENAMEX> in the bi-directional overestimation. The
+          determination of probability, 
+          P 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , of <NUMEX TYPE="CARDINAL">over</NUMEX>-determination between sums
+          of independent unidirectional similarity estimates is
+          derived in equation <NUMEX TYPE="CARDINAL">10</NUMEX>.
+          
+          The probability of bi-directional over-determination,
+          can now be established by using the same and opposite
+          unidirectional comparison expressions presented in
+          <ENAMEX TYPE="CONTACT_INFO">Equation 9</ENAMEX>. The resulting expression for similarity
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determination by the distance between bidirectional
+          USM coordinates, 
+          P 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> , is presented in equation <NUMEX TYPE="CARDINAL">11</NUMEX>.
+          
+          In figure <NUMEX TYPE="CARDINAL">3</NUMEX>, the probability distribution for both
+          <ENAMEX TYPE="ORGANIZATION">unidirectional</ENAMEX> ( 
+          P 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , in gray) and bidirectional ( 
+          P 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> , in black) comparisons is
+          represented for different dimensions, 
+          <ENAMEX TYPE="PERSON">n.</ENAMEX> It is clearly apparent that the
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determination becomes much less significant as
+          dimensionality increases. From a practical point of view,
+          the <NUMEX TYPE="CARDINAL">over</NUMEX>-determination is of little consequence because
+          the computational load of comparing sequences corresponds
+          mostly to the identification of <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> pairing
+          combinations. The fact that the n-metric unidirectional
+          <ENAMEX TYPE="CONTACT_INFO">distances,</ENAMEX> 
+          d 
+          
+            f 
+           and 
+          d 
+          
+            b 
+           , defined in <ENAMEX TYPE="FAC">Equation 4</ENAMEX>, and bidirectional 
+          D, defined in <ENAMEX TYPE="GPE">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">8</NUMEX>, are
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determined implies that the identification of
+          similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> will include false
+          positives but will not generate false negatives. The
+          false positive identifications can be readily recognized
+          by comparing the <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX> extracted from the
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX>, as demonstrated above for the <NUMEX TYPE="CARDINAL">16</NUMEX> thunit of
+          the first stanza. Nevertheless, since over-determination
+          will necessarily occur, its probability distribution was
+          identified (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <TIMEX TYPE="DATE">11</TIMEX>, <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). This can also be achieved
+          for <ENAMEX TYPE="PER_DESC">individual</ENAMEX> values by solving <ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <TIMEX TYPE="DATE">11</TIMEX> for the value of
+          <ENAMEX TYPE="PERSON">φ</ENAMEX> observed. For example, for the conditions of the two
+          stanzas, the value of (φ 
+          
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> = <NUMEX TYPE="CARDINAL">0.5</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">4.25</NUMEX> is <NUMEX TYPE="CARDINAL">0.71</NUMEX> sequence <ENAMEX TYPE="ORG_DESC">units</ENAMEX>,
+          which is the expected median unidirectional
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determination, 
+          P 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , of 
+          d 
+          
+            f 
+           and 
+          d 
+          
+            b 
+           (<ENAMEX TYPE="ORGANIZATION">Eqs</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">5, 7</ENAMEX>). The corresponding probability of
+          bi-directional overdetermination, 
+          P 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> , should be somewhat above twice
+          that value. Using equation <TIMEX TYPE="DATE">11</TIMEX>, the value obtained is <NUMEX TYPE="CARDINAL">1.67</NUMEX>
+          similar <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. Finally, it is worthy to stress that the
+          expressions for calculation of likelihood of arbitrary
+          levels of <NUMEX TYPE="CARDINAL">over</NUMEX>-determination (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <ENAMEX TYPE="PRODUCT">5-11</ENAMEX>) can be inverted
+          to anticipate the level of <NUMEX TYPE="CARDINAL">over</NUMEX>-determination for
+          arbitrary probability levels. This use of the null random
+          model is also included in the accompanying online tool
+          (see Abstract for <ENAMEX TYPE="ORGANIZATION">URL</ENAMEX>).
+        
+      
+      
+        Discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> of biological sequences
+          The representation of biological information as
+          discrete sequences is dominated by the fact that genomes
+          are sequences of discrete <ENAMEX TYPE="ORG_DESC">units</ENAMEX> and so are the products
+          of its transcription and translation. However, not all
+          biological sequences are composed of <ENAMEX TYPE="ORG_DESC">units</ENAMEX> that are
+          functionally equally distinct from each other, as is the
+          case of proteomic data and <ENAMEX TYPE="GPE">Multi</ENAMEX>-locus sequence typing
+          [<ENAMEX TYPE="ORGANIZATION">MLST</ENAMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>]. To avoid the issue of unit inequality and
+          highlight the general applicability of the USM procedure,
+          stanzas of a poem were used to illustrate the
+          implementation instead. Nevertheless the original
+          motivation of analyzing biological sequences is now
+          recalled.
+          In <TIMEX TYPE="DATE">the preceding</TIMEX> report the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> have illustrated
+          the properties of unidirectional 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>-metric estimation of similarity
+          for the threonine operon of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX> ] . <TIMEX TYPE="TIME">The same two two</TIMEX>
+          regions of 
+          <ENAMEX TYPE="ORGANIZATION">thrA</ENAMEX> and 
+          thrB sequences of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> <ENAMEX TYPE="PRODUCT">K-12 MG1655</ENAMEX> are compared in
+          Figure 5to highlight the advancement achieved by <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>. It
+          should be recalled that the particular dimensionality of
+          <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, allows a very convenient
+          unidirectional bi-dimensional representation, which is in
+          fact the <ENAMEX TYPE="EVENT">Chaos Game Representation</ENAMEX> procedure (CGR) [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+          . Consequently, <ENAMEX TYPE="ORGANIZATION">CGR</ENAMEX> is a particular case of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>, obtained
+          when 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> and only the forward
+          coordinates are determined. This can also be verified by
+          comparing Figure 5awith a similar representation reported
+          before [ <TIMEX TYPE="DATE">12</TIMEX> ] , obtained with the same data using CGR
+          [<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">10</NUMEX> of that report]. The advantageous properties of
+          <TIMEX TYPE="DATE">full</TIMEX> (<NUMEX TYPE="MONEY">bi-directional</NUMEX>) USM become apparent when <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 5ais
+          compared with <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 5b. It is clearly apparent for
+          <ENAMEX TYPE="PERSON">bi-directional USM (Fig</ENAMEX>. 5b) that all pair-wise
+          comparisons of units of identical segments now have the
+          same 
+          D values. This coverts any
+          individual homologous pair-wise comparison into an
+          estimation of the length of the entire similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>.
+          The conservation of statistical <ENAMEX TYPE="ORG_DESC">properties</ENAMEX> by the
+          distances obtained, 
+          D, can also be confirmed by
+          <ENAMEX TYPE="PERSON">comparing</ENAMEX> observed values with the corresponding null
+          models (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). For the analysis of this figure it is
+          noteworthy to recall that the statistical <ENAMEX TYPE="ORG_DESC">properties</ENAMEX> of
+          prokaryote <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> are often undistinguishable from uniform
+          randomness [ <NUMEX TYPE="CARDINAL">12 18 19</NUMEX> ] . The genomic sequence of the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> gene of the threonine operon of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, thrA, is compared with
+          that of the <NUMEX TYPE="ORDINAL">second</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">thrB</ENAMEX>. The distribution of the
+          resulting 
+          D values is represented in figure
+          <NUMEX TYPE="CARDINAL">4</NUMEX>(solid black <ENAMEX TYPE="PER_DESC">line</ENAMEX>), alongside with the null model for
+          that dimensionality (<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <TIMEX TYPE="DATE">11</TIMEX>, with 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) = <NUMEX TYPE="CARDINAL">2</NUMEX> , gray dotted line). The
+          genomic sequences of 
+          <ENAMEX TYPE="ORGANIZATION">thrA</ENAMEX> and 
+          thrB were translated into proteomic
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">SwissProt's</ENAMEX> on line <ENAMEX TYPE="PER_DESC">translator</ENAMEX>, applied
+          to the <NUMEX TYPE="CARDINAL">5'3</NUMEX>' <NUMEX TYPE="ORDINAL">first</NUMEX> frame
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">expasy</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">ch/tools/dna.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>. Similarly, the
+          distribution of 
+          D values for the comparison of the
+          proteomic 
+          <ENAMEX TYPE="ORGANIZATION">thrA</ENAMEX> and 
+          thrB sequences is also represented
+          in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, alongside with the null model, <ENAMEX TYPE="GPE">Eq</ENAMEX>. <TIMEX TYPE="DATE">11</TIMEX>, for
+          its dimensionality ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+          <ENAMEX TYPE="PER_DESC">uu</ENAMEX> = <NUMEX TYPE="CARDINAL">20</NUMEX> possible aminoacids) =
+          <NUMEX TYPE="MONEY">4.32</NUMEX> ), which is graphically nearly undistiguishable
+          from that of the comparison between the stanzas, with 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+          <ENAMEX TYPE="PER_DESC">uu</ENAMEX> = <NUMEX TYPE="CARDINAL">19</NUMEX> possible letters) =
+          <NUMEX TYPE="MONEY">4.25</NUMEX> (dotted gray line for the rounded value, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">4.3</NUMEX>). Both the genomic and the
+          proteomic distribution of 
+          D values is observed to be
+          contained by the null model, unlike the comparison
+          between the stanzas discussed above, where the existence
+          of structure is clearly reflected by its distribution.
+          The genomic and proteomic of 
+          <ENAMEX TYPE="ORGANIZATION">thrA</ENAMEX> and 
+          thraB, used to illustrate this
+          discussion, are provided with the web-based
+          implementation of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> (see Methods for <ENAMEX TYPE="ORGANIZATION">URL</ENAMEX>).
+        
+      
+      
+        Conclusions
+        The mounting quantity and complexity of biological
+        sequence data being produced [ <TIMEX TYPE="DATE">22</TIMEX> ] commands the
+        investigation of new approaches to sequence analysis. In
+        particular, the need for scale independent methodologies
+        becomes even more necessary as the limitations of
+        conventional <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> are increasingly noted [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+        These limitations are bound to become overwhelming when
+        signals such as succession schemes of the expression of
+        over <NUMEX TYPE="CARDINAL">30,000</NUMEX> human genes [ <TIMEX TYPE="DATE">23</TIMEX> ] become available. This
+        particular signal would be conveniently packaged within a
+        <NUMEX TYPE="CARDINAL">30</NUMEX> dimension <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> block ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <ENAMEX TYPE="PER_DESC">ceil</ENAMEX>(log 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+        <NUMEX TYPE="CARDINAL">3 10 3</NUMEX>) = <NUMEX TYPE="CARDINAL">15</NUMEX>).
+        In addition, the advances in statistical <ENAMEX TYPE="PER_DESC">mechanics</ENAMEX> for
+        the study of complex systems, particularly in non-linear
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX>, have not been fully utilizable for the analysis
+        of sequences due to the missing formal link between
+        discrete sequences and trajectories in continuous spaces.
+        The properties of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> reported above suggest that this may
+        indeed be such a <ENAMEX TYPE="FAC_DESC">bridge</ENAMEX>. For example, the embedding of
+        <ENAMEX TYPE="PERSON">dimensions</ENAMEX>, a technique at the foundations of many
+        time-series analysis techniques offers a good example of
+        the completeness of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> representation of sequences. By
+        embedding the forward and backward coordinates separately,
+        at the relevant memory length, the resulting embedded USM
+        is exactly what would be obtained by applying USM technique
+        to the embedded dimeric sequence itself.
+      
+      
+        Methods
+        
+          Computation
+          The <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> described in this manuscript were coded
+          using <ENAMEX TYPE="ORGANIZATION">MATLAB�</ENAMEX>� <NUMEX TYPE="CARDINAL">6.0</NUMEX> language (<ENAMEX TYPE="PRODUCT">Release 12</ENAMEX>), licensed by The
+          <ENAMEX TYPE="CONTACT_INFO">MathWorks Inc http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">mathworks</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. An internet
+          <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> was also developed to make them freely
+          accessible through user-friendly web-pages
+          <ENAMEX TYPE="CONTACT_INFO">http://bioinformatics.</ENAMEX><ENAMEX TYPE="ORGANIZATION">musc</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/~jonas/usm/.</ENAMEX>
+        
+        
+          Source code
+          In order to facilitate the development of sequence
+          analysis applications based on the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> state <ENAMEX TYPE="FAC_DESC">space</ENAMEX>, the
+          software <ENAMEX TYPE="ORG_DESC">library</ENAMEX> of functions written to calculate the
+          USM coordinates is provided with the web-based
+          <ENAMEX TYPE="PERSON">implementation</ENAMEX> (see address above). The code is provided
+          in <ENAMEX TYPE="ORGANIZATION">MATLAB</ENAMEX> format, which is general enough as to be easily
+          ported into other environments. These functions process
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> provided as text files in FASTA format. In
+          addition to the functions, the test datasets and a brief
+          <ENAMEX TYPE="ORGANIZATION">readme</ENAMEX>.txt documentation file are also included.
+        
+        
+          Test data
+          The USM mapping proposed is applicable to any discrete
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, even if the primary goal is the analysis of
+          biological sequences. For ease of illustration and to
+          <ENAMEX TYPE="ORGANIZATION">emphasize USM</ENAMEX>'s general validity, the test dataset used
+          to describe implementation of the <ENAMEX TYPE="FAC_DESC">algorithm</ENAMEX> consists of
+          <NUMEX TYPE="CARDINAL">two</NUMEX> stanzas of a <ENAMEX TYPE="GPE">Poem</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">Wendy Cope</ENAMEX>, "The Uncertainty of
+          the <ENAMEX TYPE="WORK_OF_ART">Poet</ENAMEX>" [ <TIMEX TYPE="DATE">14</TIMEX> ] . In the <ENAMEX TYPE="LOCATION">Discussion</ENAMEX> section, <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> was
+          also applied to the DNA sequence of the threonine operon
+          of 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> <ENAMEX TYPE="PRODUCT">K-12 MG1655</ENAMEX>,
+          obtained from the <ENAMEX TYPE="ORGANIZATION">University of Winsconsin</ENAMEX> 
+          <ENAMEX TYPE="SUBSTANCE">E. coli Genome</ENAMEX> Project
+          <ENAMEX TYPE="CONTACT_INFO">http:/www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">genetics</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">wisc</ENAMEX>.edu, and to its <NUMEX TYPE="CARDINAL">5'3</NUMEX>' <NUMEX TYPE="ORDINAL">first</NUMEX> frame
+          <ENAMEX TYPE="PERSON">proteomic</ENAMEX> translation obtained by using <ENAMEX TYPE="ORGANIZATION">SwissProt</ENAMEX> on line
+          <ENAMEX TYPE="CONTACT_INFO">translator http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">expasy</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">ch/tools/dna.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>. The three
+          test sequence datasets are also included in the web-based
+          <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> application.
+        
+      
+    
+  

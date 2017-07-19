@@ -1,0 +1,500 @@
+
+  
+    
+      
+        Background
+        In <TIMEX TYPE="DATE">the past 10 years</TIMEX> we have witnessed an almost
+        exponential growth of genomic sequence data [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. This
+        dramatic increase creates unique opportunities for
+        comparative analysis leading to new insights into the
+        behavior of living <ENAMEX TYPE="FAC_DESC">microorganisms</ENAMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> of the burning
+        questions of modern genomics research is the need to assign
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> to new genes whose biological function is yet
+        to be understood. Computational tools based on sequence
+        homology have proved to be most broadly applicable for
+        effective and accurate functional <ENAMEX TYPE="PER_DESC">annotations</ENAMEX> of genes in
+        newly sequenced genomes. Among them, BLAST and PSI-BLAST [
+        <NUMEX TYPE="CARDINAL">3</NUMEX>] are widely used to assign functions to newly sequenced
+        open reading frames (ORFs) in genome sequence. However, one
+        of the most surprising outcomes of genome research is that
+        <NUMEX TYPE="CARDINAL">roughly 20</NUMEX>-<NUMEX TYPE="PERCENT">40%</NUMEX> of genes in newly sequenced genomes do not
+        have statistically significant matches to functionally
+        annotated sequences and are annotated as 'hypothetical
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>' [ <ENAMEX TYPE="LAW">4</ENAMEX>].
+        Accordingly, several non-<ENAMEX TYPE="GPE">homology</ENAMEX>-based computational
+        methods have been introduced recently in an attempt to
+        provide putative functional assignments for those
+        'hypothetical <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>'. For example, among the most
+        reliable methods, the <ENAMEX TYPE="ORGANIZATION">Rosetta</ENAMEX> stone technique [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>]
+        detects functional <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> based on <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-domain
+        fusion events. Other methods include the chromosomal
+        proximity method and the phylogenetic profile method.
+        The chromosomal proximity method of Overbeek 
+        et al. [ <ENAMEX TYPE="LAW">7</ENAMEX>] is a popular technique
+        that utilizes chromosomal proximity information to discover
+        putative functional linkages between genes close to each
+        other on the chromosome. When <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> appear as a
+        neighboring gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in the genomes of several distantly
+        related <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> (that is, they form a conserved gene
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>) it suggests the possibility that the genes might
+        be functionally related [ <ENAMEX TYPE="LAW">7</ENAMEX>]. In fact, the analysis of
+        current data suggests that a cluster of <NUMEX TYPE="CARDINAL">two</NUMEX> or more genes
+        that appears in <NUMEX TYPE="CARDINAL">four</NUMEX> or more distantly related
+        <ENAMEX TYPE="ORGANIZATION">microorganisms</ENAMEX> has a <NUMEX TYPE="PERCENT">more than 90%</NUMEX> probability of being
+        involved in the same broad functional category (<ENAMEX TYPE="PERSON">Y.Z.</ENAMEX>,
+        unpublished data).
+        Another seminal approach for establishing functional
+        links between genes based on their coevolution patterns in
+        different organisms was proposed and popularized by
+        Pellegrini 
+        et al. [ <ENAMEX TYPE="LAW">8</ENAMEX>]. Similar proposals have
+        been made by Gaasterland 
+        et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>] and other <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. This
+        method constructs a genetic phylogenetic profile for each
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>. A phylogenetic profile of a gene indicates the
+        presence or the absence of this gene in each <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> by an
+        entry of <NUMEX TYPE="CARDINAL">1</NUMEX> or <NUMEX TYPE="MONEY">0</NUMEX> in a long vector. In other words, each gene
+        is assigned a binary vector of length 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, where 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the number of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> used to
+        construct the phylogenetic profiles. The 
+        i th bit of the vector is set to <NUMEX TYPE="CARDINAL">1</NUMEX> if
+        a homologous gene exists in the 
+        i th genome; otherwise it is set to
+        <NUMEX TYPE="CARDINAL">0</NUMEX>. Several variants of phylogenetic profiles have been
+        described in the literature [ <TIMEX TYPE="DATE">10, 11</TIMEX>]. The functional
+        <ENAMEX TYPE="PERSON">linkage</ENAMEX> is established when <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have similar
+        phylogenetic profiles, that is, they show a correlated
+        pattern of inheritance across the genomes examined.
+        Here we propose a new simple method for inferring
+        functional linkages based on the phylogenetic profiles of
+        gene clusters. This method simultaneously takes advantage
+        of chromosomal proximity information and phylogenetic
+        <ENAMEX TYPE="ORGANIZATION">coevolution</ENAMEX> information. We demonstrate an enhanced ability
+        to annotate a number of previously uncharacterized genes
+        that are not yet functionally annotated and appear to
+        resist the application of other computational
+        techniques.
+        Our new method constructs gene cluster phylogenetic
+        profiles by recording the conservation pattern of a gene
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> that contains <NUMEX TYPE="CARDINAL">two or more</NUMEX> neighboring genes in a
+        set of reference genomes. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we will focus on
+        gene clusters of size <NUMEX TYPE="CARDINAL">two</NUMEX>, that is, gene pairs. For a given
+        gene pair <ENAMEX TYPE="ORGANIZATION">AB</ENAMEX> (A and B are separate genes and are encoded
+        continuously on the chromosome) in the target genome, the
+        presence of <ENAMEX TYPE="ORGANIZATION">AB</ENAMEX> in a reference genome is recorded when we
+        detect the presence of either an A'B' or a B'A' gene
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>, where gene A' is a homolog of gene A and gene B'
+        is a homolog of gene B. There are many established methods
+        for detecting homology or orthology, for example,
+        membership in the same COG (<ENAMEX TYPE="WORK_OF_ART">Clusters of Orthologous Genes</ENAMEX>)
+        [ <TIMEX TYPE="DATE">12</TIMEX>]. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, homologs are detected by <ENAMEX TYPE="ORGANIZATION">BLASTP</ENAMEX> with
+        an 
+        E -value lower bound of <ENAMEX TYPE="PRODUCT">1e-10</ENAMEX> to
+        filter out statistically insignificant matches.
+        The implementation of the chromosomal proximity method
+        does not strictly require successive <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> in the genome. An
+        important discovery in comparative genomics is that local
+        gene rearrangements happen quite often during evolution,
+        disrupting gene order in gene clusters [ <TIMEX TYPE="DATE">13</TIMEX>]. To account
+        for possible gene insertion and rearrangement events during
+        evolution, a natural extension is to consider gene clusters
+        with <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> gaps. That is, we extend the detection of A'B'
+        clusters to include A'xB' and <ENAMEX TYPE="ORGANIZATION">A'xyB</ENAMEX>' clusters in the
+        reference genomes, where x and y are inserted <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (a
+        maximum of <NUMEX TYPE="CARDINAL">two</NUMEX>) and <ENAMEX TYPE="ORGANIZATION">A</ENAMEX>' and <ENAMEX TYPE="ORGANIZATION">B</ENAMEX>' are homologs of genes A and
+        <ENAMEX TYPE="PERSON">B. Similarly</ENAMEX>, to be symmetric, we allow the gapped gene
+        pairs in the target genome, that is, <ENAMEX TYPE="GPE">AxB</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">AxyB</ENAMEX> pairs
+        where x and y are genes between <ENAMEX TYPE="ORGANIZATION">A</ENAMEX> and B in the target
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. The implementation of the gapped version of the
+        gene cluster phylogenetic profile method increases the
+        number of putative functional linkages between genes and
+        thus improves the sensitivity of the method. Here we report
+        results from the gapped version of the method. From now on,
+        we will refer to a single gene phylogenetic profile as SGPP
+        and to a gene pair phylogenetic profile as <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX>.
+      
+      
+        Results and discussion
+        
+          Examples of functional <ENAMEX TYPE="PER_DESC">dependences</ENAMEX> revealed by
+          GPPP
+          We carried out an exhaustive grouping of the 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli gene</ENAMEX> pairs based
+          on sharing the same GPPP (<ENAMEX TYPE="ORGANIZATION">Hamming</ENAMEX> distance equal to
+          <ENAMEX TYPE="ORGANIZATION">zero</ENAMEX>). In 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, our non-gapped GPPP method
+          detects <NUMEX TYPE="CARDINAL">57</NUMEX> gene-pair clusters. These gene-pair clusters
+          include <NUMEX TYPE="CARDINAL">351</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Low-quality profiles, which refer to
+          profiles with a norm of <NUMEX TYPE="CARDINAL">less than 4</NUMEX>, are excluded. The
+          <ENAMEX TYPE="PERSON">norm</ENAMEX> of the profile is calculated by summing <TIMEX TYPE="DATE">the 1s</TIMEX> and
+          0s in the profile vector (see Figure <TIMEX TYPE="DATE">1legend</TIMEX> for the
+          definition of profile norm). By using the gapped GPPP
+          method, we were able to detect <NUMEX TYPE="CARDINAL">176</NUMEX> functionally related
+          gene clusters containing <NUMEX TYPE="CARDINAL">738</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. A two-dimensional
+          representation of these clusters and their relationships
+          is shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. As a result, by using the GPPP
+          method, we could establish functional linkages among
+          <NUMEX TYPE="PERCENT">about 17%</NUMEX> of the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli genome</ENAMEX>.
+          In many cases the GPPP method is able to establish
+          functional linkages that are missed by the application of
+          the SGPP method or the chromosomal proximity method
+          independently. There are numerous examples where gene
+          pairs share a common <ENAMEX TYPE="SUBSTANCE">GPPP</ENAMEX> and have a functional linkage,
+          although the individual genes may not have similar <ENAMEX TYPE="LAW">SGPPs</ENAMEX>.
+          Our method provides a new way to establish functional
+          linkages between distant coevolved gene clusters on the
+          chromosome, enhancing the ability to assign gene
+          functions consistently in a broader genomic context. One
+          such example consists of the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli gene</ENAMEX> pairs:
+          b1129(<NUMEX TYPE="MONEY">gi|1787374</NUMEX>)/b1130(<NUMEX TYPE="MONEY">gi|1787375</NUMEX>) and
+          b4398(<NUMEX TYPE="MONEY">gi|1790860</NUMEX>)/b4399(<NUMEX TYPE="MONEY">gi|1790861</NUMEX>). These <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> pairs
+          share the same GPPP (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), whereas individual genes
+          do not have the same SGPP (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Hamming distances
+          between the individual genes are shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+          The gene pair <ENAMEX TYPE="CONTACT_INFO">b1129/b1130</ENAMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli encodes</ENAMEX> a two-component
+          regulatory system PhoP-<ENAMEX TYPE="GPE">PhoQ</ENAMEX> [ <TIMEX TYPE="DATE">14, 15</TIMEX>]. This two-component
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> is also present in several other <ENAMEX TYPE="LANGUAGE">Gram</ENAMEX>-negative
+          <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and is associated with virulence, adaptation to
+          Mg <NUMEX TYPE="CARDINAL">2</NUMEX>+-limiting environments and other cellular activities
+          [ <TIMEX TYPE="DATE">15</TIMEX>]. The gene b4399 has been annotated as a 'catabolite
+          repression sensor kinase for <ENAMEX TYPE="ORGANIZATION">PhoB</ENAMEX>, an alternative sensor
+          for <ENAMEX TYPE="ORGANIZATION">PhoB'</ENAMEX>, although it is far from 
+          <ENAMEX TYPE="ORGANIZATION">phoB</ENAMEX> (<NUMEX TYPE="MONEY">b0399</NUMEX>) on the chromosome. In
+          fact, <ENAMEX TYPE="GPE">PhoB</ENAMEX> forms another two-component system with the
+          product of its neighboring gene, <ENAMEX TYPE="PERSON">PhoR</ENAMEX> (<NUMEX TYPE="MONEY">b0400</NUMEX>), which is
+          responsible for phosphate regulation [ <TIMEX TYPE="DATE">15</TIMEX>]. The gene
+          b4398 has been assigned a general function as a catabolic
+          regulation response <ENAMEX TYPE="PER_DESC">regulator</ENAMEX>. As these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> pairs
+          <ENAMEX TYPE="CONTACT_INFO">b4398/b4399</ENAMEX> and <ENAMEX TYPE="PRODUCT">b1129/b1130</ENAMEX> share the same coevolution
+          pattern, revealed by the gene-pair phylogenetic profiles,
+          we suggest that the gene pair <ENAMEX TYPE="CONTACT_INFO">b4398/b4399</ENAMEX> probably
+          encodes another two-component system in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>. This two-component system
+          may be functionally closer to the <ENAMEX TYPE="FAC">PhoP-PhoQ system</ENAMEX> than
+          to the <ENAMEX TYPE="PRODUCT">PhoB-PhoR</ENAMEX> system. Interestingly, as no individual
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> has a similar <ENAMEX TYPE="LAW">SGPP</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), relying on SGPP
+          would miss this highly coupled functional linkage.
+          Functional dependence between genes as a selective
+          pressure sometimes favors gene clusters over random gene
+          arrangement along the chromosome [ <TIMEX TYPE="DATE">16</TIMEX>]. The chromosomal
+          proximity method aims to detect local functional
+          <ENAMEX TYPE="ORGANIZATION">dependences</ENAMEX> ('intracluster' dependences) established by
+          conserved proximity among distantly related genomes.
+          However, functional dependencis between distant gene
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> ('intercluster' functional <ENAMEX TYPE="PER_DESC">dependences</ENAMEX>) on the
+          chromosome usually cannot be resolved by the chromosomal
+          proximity method. Instead, <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> can reveal even distant
+          functional dependences between gene clusters that
+          participate in closely coupled processes or pathways. An
+          example is the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli murG cluster</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">b0089, b0090,</ENAMEX>
+          b0092) and the 
+          lpxD cluster (<ENAMEX TYPE="CONTACT_INFO">b0177, b0179</ENAMEX>) which
+          share the same GPPP; their current annotations are shown
+          in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. They are both present in 
+          Chlamydophila pneumoniae, Chlamydia
+          trachomatis, <ENAMEX TYPE="ORGANIZATION">Xylella</ENAMEX> fastidiosa, <ENAMEX TYPE="ORGANIZATION">Haemophilus</ENAMEX> influenzae,
+          Neisseria meningitidis and 
+          Pseudomonas aeruginosa and are
+          absent in all the other genomes included. MurG, the last
+          <ENAMEX TYPE="ORGANIZATION">enzyme</ENAMEX> in the intracellular phase of peptidoglycan
+          <ENAMEX TYPE="PERSON">synthesis</ENAMEX>, is essential for the production of the layers
+          of peptidoglycan that protect cells from rupturing under
+          high internal osmotic pressure [ <TIMEX TYPE="DATE">17</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">LpxD</ENAMEX> is a key
+          <ENAMEX TYPE="ORGANIZATION">enzyme</ENAMEX> in lipid A biosynthesis [ <TIMEX TYPE="DATE">18</TIMEX>]. Lipid A is a
+          <ENAMEX TYPE="GPE">glucosamine</ENAMEX>-based phospholipid that makes up the
+          monolayer of the outer membrane outside the peptidoglycan
+          layers. None of the genes in these clusters is homologous
+          to any of the others by <ENAMEX TYPE="ORGANIZATION">BLASTP</ENAMEX>. The conventional
+          <ENAMEX TYPE="GPE">non-homology</ENAMEX>-based chromosomal proximity method can imply
+          <ENAMEX TYPE="ANIMAL">functional dependences</ENAMEX> inside each cluster separately.
+          For example, as <ENAMEX TYPE="PRODUCT">b0089</ENAMEX>, <TIMEX TYPE="DATE">b0090</TIMEX>, <ENAMEX TYPE="PRODUCT">b0092</ENAMEX> are conserved among
+          the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> above, we can infer functional linkage
+          and interpret the collective function as cell-membrane
+          maintenance from their current annotations (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          However, with additional information from <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX>, we can
+          establish a distant intercluster functional dependence in
+          addition to the intracluster dependences found by the
+          chromosomal proximity method. As both clusters are
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the outer membrane of the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> and are
+          essential for survival of the <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> [ <TIMEX TYPE="DATE">19, 20</TIMEX>], this
+          dependence may suggest an inherent functional linkage
+          between them. Noticing there is a hypothetical protein
+          (<NUMEX TYPE="MONEY">b0177</NUMEX>) in the 
+          lpxD gene cluster, we then carried
+          out sequence analysis on this gene and its encoded
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, expecting that it might be associated with the
+          outer membrane of the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>. A simple BLASTP search tells
+          us it has significant homology ( 
+          E -value <NUMEX TYPE="MONEY">0.0</NUMEX>) to the outer-membrane
+          antigen present in many other <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>. Given that the
+          lipid A layer provides anchoring sites for bacterial
+          surface <ENAMEX TYPE="SUBSTANCE">antigens</ENAMEX> such as lipopolysaccharide (LPS), this
+          discovery again supports the reliability of our
+          prediction.
+        
+        
+          Previously uncharacterized <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>
+          By applying the GPPP method, a number of previously
+          uncharacterized <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> with hypothetical or
+          unknown <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> can now be functionally linked to
+          characterized gene pairs. Some of these genes have not
+          been assigned a function because of the lack of
+          sufficient data at the time of annotation. We then
+          carried out additional sequence analyses of these genes
+          using BLAST, <ENAMEX TYPE="GPE">Pfam</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX> to confirm our
+          prediction. A number of previously unknown genes that can
+          be annotated by our method and can be confirmed by
+          additional analysis are listed in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. It can be seen
+          in <ENAMEX TYPE="PRODUCT">Table 3that</ENAMEX> many of the predictions made by <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> agree
+          with more detailed sequence analysis.
+        
+        
+          Accuracy of the GPPP method
+          We have compared the accuracy of <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> with that of the
+          SGPP method using <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX>'s broad-function classification
+          system [ <TIMEX TYPE="DATE">12</TIMEX>]. Genes in each cluster grouped by the same
+          profile are labeled using <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX>'s <NUMEX TYPE="CARDINAL">18</NUMEX> broad functional
+          categories excluding category <ENAMEX TYPE="NATIONALITY">R</ENAMEX> (general function) and
+          <ENAMEX TYPE="ORGANIZATION">category S</ENAMEX> (function unknown). A good method for
+          establishing functional linkages will tend to cluster
+          genes within the same broad functional category. To this
+          end, we devised <NUMEX TYPE="CARDINAL">two</NUMEX> separate procedures to compare the
+          effectiveness of <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SGPP</ENAMEX>, with the results
+          summarized below. Because it is hard to calculate the
+          number of false negatives, which are functionally
+          dependent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or gene clusters that do not show a
+          common coevolution pattern, we did not compare the
+          sensitivities of these methods.
+          The first accuracy measure is based on the proportion
+          of 'pure' clusters among all the clusters. We defined
+          satisfying pure clusters heuristically, considering the
+          intrinsic vagueness of the concept 'broad category' and
+          the fact that it is difficult to classify <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>'
+          functional roles precisely using a one-dimensional
+          <ENAMEX TYPE="SUBSTANCE">classification schema</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>]. If more than <NUMEX TYPE="PERCENT">80%</NUMEX> of the
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> in a cluster stay within a certain COG broad
+          functional category, which means that they might be
+          involved in the same biological process, we consider this
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> as a pure cluster. The proportion of such pure
+          clusters among the total clusters serves as a coarse
+          measure of the specificity of the phylogenetic profile
+          method.
+          We plotted this measure versus the norm of the profile
+          for both <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SGPP</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>). To account for the
+          possible systematic bias of this measure toward sizes of
+          the clusters, we also plotted the average cluster size
+          versus the norm of the profile (Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>). Figure
+          3bshows that except at the very ends of the norm axis
+          (norm = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, <NUMEX TYPE="CARDINAL">30</NUMEX>) the average cluster sizes from both
+          <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SGPP</ENAMEX> are close to each other.
+          In the other experiment to compare accuracy, we simply
+          examined <NUMEX TYPE="CARDINAL">all</NUMEX> pairs of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that end up in the same
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> and calculated the frequency with which <NUMEX TYPE="CARDINAL">two</NUMEX> such
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are from the same functional category. This
+          measure is essentially the same as the Jaccard
+          <ENAMEX TYPE="ORGANIZATION">coefficient</ENAMEX> ( 
+          C ) referred to in [ <TIMEX TYPE="DATE">10</TIMEX>]. Given a
+          gene cluster, let 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> be the number of all pairs of
+          genes chosen from this cluster and 
+          S be the number of all pairs of
+          genes that are chosen from this cluster and are from the
+          same COG category. Then the <ENAMEX TYPE="ORGANIZATION">Jaccard</ENAMEX> coefficient is
+          calculated by 
+          C = 
+          <ENAMEX TYPE="CONTACT_INFO">S /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> . 
+          C varies from <NUMEX TYPE="CARDINAL">zero</NUMEX> to <NUMEX TYPE="CARDINAL">one</NUMEX> and is
+          less dependent on cluster size, unlike the previous
+          measure. 
+          C is plotted versus the norm of the
+          profile in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. In both experiments (Figures <TIMEX TYPE="DATE">3a</TIMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>),
+          we see that <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> achieves a higher accuracy (an increase
+          of <NUMEX TYPE="PERCENT">10%</NUMEX> on average) than the conventional SGPP method,
+          especially in the norm range <TIMEX TYPE="DATE">5 to 20</TIMEX>.
+          From the information theory perspective, we know that
+          the predictive quality of a profile is reflected by its
+          mutual information:
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          i ) is the probability of seeing 
+          i ( 
+          i = <NUMEX TYPE="CARDINAL">0,1</NUMEX>) in the profile vector and 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          i,j ) is the probability of seeing
+          ( 
+          i,j ) jointly in <NUMEX TYPE="CARDINAL">two</NUMEX> aligned
+          profiles 
+          I and 
+          <ENAMEX TYPE="ORGANIZATION">J.</ENAMEX> In theory, the predictive value
+          is maximized when half the entries in a profile are 1s
+          and the others are 0s (high mutual information (MI)
+          regions). The bell-like accuracy curve for the profile
+          methods (Figures <TIMEX TYPE="DATE">3a</TIMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>) can be explained by considering
+          the information content of profiles, which is low when
+          the norm of a profile is close to <NUMEX TYPE="MONEY">0</NUMEX> (a vector with all
+          <ENAMEX TYPE="CONTACT_INFO">entries 0</ENAMEX>) or 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (a vector with all entries <NUMEX TYPE="CARDINAL">1</NUMEX>)
+          (low-MI regions). Intuitively, the fact that certain gene
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> appear in every <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> or appear in only one
+          <ENAMEX TYPE="PERSON">organism</ENAMEX> does not necessarily indicate functional
+          relationship. We can see that when the profiles are near
+          these low-MI regions, the size of the clusters tends to
+          increase dramatically, suggesting the corruption of
+          coevolution signals (Figures <TIMEX TYPE="DATE">3b</TIMEX>, <TIMEX TYPE="DATE">5b</TIMEX>). It is important to
+          realize which regions our functional linkages are
+          established from when we use these phylogenetic profile
+          methods.
+          As more and more fully sequenced genomes of
+          microorganisms have become available, it is natural to
+          ask whether the accumulation of new genomes will help us
+          improve the accuracy of the phylogenetic profile methods.
+          With <NUMEX TYPE="CARDINAL">more than 77</NUMEX> sequenced genomes now available, we
+          were able to expand the phylogenetic profile analysis to
+          a larger set of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. Using total <NUMEX TYPE="QUANTITY">68 microorganisms</NUMEX>,
+          in Figure <NUMEX TYPE="QUANTITY">5awe</NUMEX> plot the accuracy versus the norm and in
+          Figure <NUMEX TYPE="QUANTITY">5bwe</NUMEX> plot the average size distribution for both
+          <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SGPP</ENAMEX>. We can see that the accuracy of the GPPP
+          method is improved <NUMEX TYPE="PERCENT">about 5%</NUMEX> on average when more genomes
+          are included and the cluster sizes tend to become
+          smaller. However, we did not see dramatic improvements
+          when using the larger set of genomes, which made us think
+          there may be an upper limit to the accuracy of the
+          phylogenetic profile method. When more genomes are
+          included, both the coevolution signal and the noise
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> are 'amplified', so we would not expect the
+          accuracy of the phylogenetic method to improve
+          dramatically when a larger, randomly selected genome set
+          is sampled unless a clever sampling strategy is used. All
+          accuracy curves (Figures <TIMEX TYPE="DATE">3a</TIMEX>, <ENAMEX TYPE="CONTACT_INFO">4, 5a</ENAMEX>) show that the GPPP
+          method outperforms the SGPP method. The improved accuracy
+          makes <ENAMEX TYPE="SUBSTANCE">GPPP</ENAMEX> a possible complementary annotation tool to
+          aid conventional homology-based sequence comparison.
+          To measure the robustness of the GPPP method for a
+          larger sample of genomes, we also examined whether the
+          functional linkages previously established by
+          <NUMEX TYPE="CARDINAL">30</NUMEX>-dimensional profiles can still be recovered by
+          <NUMEX TYPE="CARDINAL">67</NUMEX>-dimensional profiles. We find that the previously
+          reported functional linkages can be completely
+          <ENAMEX TYPE="ORGANIZATION">reconfirmed</ENAMEX> (data not shown), which suggests that the
+          true coevolution patterns of certain gene clusters are
+          robust when a wider range of genomes are sampled and
+          appear to resist the noise due to evolutionary diversity
+          that could be introduced when more genomes are used.
+          Additionally, the GPPP method using <NUMEX TYPE="CARDINAL">68</NUMEX> genomes generates
+          additional putative functional <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> (see [ <TIMEX TYPE="DATE">23</TIMEX>]
+          for a complete list). As some microorganisms are closely
+          related to each other (for example, different strains of
+          the same <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>), it is important to realize that the
+          number of 'informative' genomes is less than the number
+          of genomes included. The discriminative power of
+          phylogenetic profiles will be improved when a proper
+          strategy for <ENAMEX TYPE="ANIMAL">sampling organisms</ENAMEX> in different taxa is
+          developed.
+          In summary, gene cluster phylogenetic profiles combine
+          and improve on the chromosomal proximity method and the
+          single-gene phylogenetic profile method. A gene cluster
+          phylogenetic profile with a large norm simply states the
+          fact that this gene cluster is highly conserved across
+          different organisms, which is equivalent to the
+          chromosomal proximity method. By clustering gene clusters
+          with the same phylogenetic profiles, we are able to
+          detect functional linkages between distant genomic
+          regions on the chromosome based on their pattern of
+          <ENAMEX TYPE="ORGANIZATION">coevolution</ENAMEX>. A phylogenetic profile of a single gene
+          could be corrupted by many genomic events during
+          evolution, such as <ENAMEX TYPE="SUBSTANCE">gene duplication</ENAMEX> or the possible loss
+          of gene functions after speciation [ <TIMEX TYPE="DATE">24</TIMEX>], which
+          introduces noise into the coevolution patterns. As the
+          requirement for the presence of a gene cluster is
+          stricter than for the presence of a single gene, the pair
+          profiles help to obtain an improvement in the accuracy of
+          functional linkage detection.
+          Genes in microorganisms are known to form operons,
+          <ENAMEX TYPE="ORGANIZATION">two-component</ENAMEX> systems, paralogous gene clusters, and
+          other functionally related genomic clusters. As described
+          in here, the implementation of <ENAMEX TYPE="ORGANIZATION">GPPPs</ENAMEX> gives us a tool for
+          establishing functional linkages between these genomic
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> even when they are not physically close on the
+          chromosome. In some cases, these functional associations
+          can help us understand the dependencies between gene
+          clusters in biological processes, such as the 
+          <ENAMEX TYPE="ORGANIZATION">murG</ENAMEX> and 
+          lpxD clusters described in this
+          paper.
+          In addition to <ENAMEX TYPE="ORGANIZATION">GPPPs</ENAMEX>, we could naturally develop
+          software for detecting higher-order profiles of bigger
+          gene clusters; however, we would expect to see a smaller
+          coverage with a possibly higher accuracy. In fact, we
+          observed that some gene pairs with the same phylogenetic
+          profile reside in a close proximity on the chromosome,
+          which suggests a longer conserved gene cluster (for
+          example, <ENAMEX TYPE="SUBSTANCE">ribosomal gene clusters</ENAMEX>). Ultimately, all these
+          techniques are based on the identification of gene
+          clusters that show similar inheritance patterns across
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>.
+          <ENAMEX TYPE="GPE">Homology</ENAMEX>-based annotation tools aim to detect sequence
+          similarity between new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and known genes by following
+          a <NUMEX TYPE="CARDINAL">one-by-one</NUMEX> gene annotation methodology. The <ENAMEX TYPE="ORGANIZATION">GPPP</ENAMEX>,
+          however, detects functional relationship between clusters
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> on the basis of their coevolution patterns
+          across genomes, and is able to assign gene functions in
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> by considering a wider genomic context. With the
+          <ENAMEX TYPE="ORGANIZATION">accumulation</ENAMEX> of fully sequenced genomes, the information
+          content in gene cluster phylogenetic profiles is expected
+          to increase, as does the accuracy of the proposed
+          <ENAMEX TYPE="PERSON">methodology</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">GPPPs</ENAMEX>, and possibly higher-order gene
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> phylogenetic profiles, together with other
+          non-homology methods, are likely to substantially
+          increase our ability to assign function to a large number
+          of <ENAMEX TYPE="SUBSTANCE">putative genes</ENAMEX>.
+        
+      
+      
+        Materials and methods
+        We initially chose <NUMEX TYPE="CARDINAL">31</NUMEX> fully sequenced microbial genomes,
+        including <NUMEX TYPE="CARDINAL">8</NUMEX> archaeal genomes and <NUMEX TYPE="CARDINAL">23</NUMEX> bacterial genomes.
+        While this work was in progress the number of fully
+        sequenced microbial genomes grew to <NUMEX TYPE="CARDINAL">more than 70</NUMEX>. We then
+        expanded our study to a total of <NUMEX TYPE="CARDINAL">68</NUMEX> <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> to estimate
+        the robustness of the phylogenetic profile method and
+        present the results on accuracy evaluation. All protein
+        sequences were retrieved from the <ENAMEX TYPE="ORGANIZATION">National Center for</ENAMEX>
+        Biotechnology Information (NCBI) genome repository. We
+        chose 
+        <ENAMEX TYPE="SUBSTANCE">E. coli K12</ENAMEX> as the target genome for
+        functional linkage detection and the other genomes as
+        reference genomes for constructing the gene cluster
+        phylogenetic profiles. We performed pairwise
+        <NUMEX TYPE="CARDINAL">one</NUMEX>-against-all BLAST searches to identify all homologous 
+        <ENAMEX TYPE="SUBSTANCE">E. coli genes</ENAMEX> in other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>.
+        By determining the presence or absence of all possible
+        neighboring 
+        <ENAMEX TYPE="SUBSTANCE">E. coli gene</ENAMEX>-pair clusters in <TIMEX TYPE="DATE">30</TIMEX>
+        other genomes, we were able to get a set of <NUMEX TYPE="CARDINAL">30 × 1</NUMEX> binary
+        profile vectors that are similar in spirit to the ones
+        obtained by the SGPP method. The profile of a gene cluster
+        is simply a binary vector that has a <NUMEX TYPE="CARDINAL">1</NUMEX> in coordinate 
+        <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> if the gene cluster occurs in the 
+        <ENAMEX TYPE="ORGANIZATION">K th</ENAMEX> genome; otherwise it has <NUMEX TYPE="CARDINAL">0</NUMEX> in
+        that coordinate. To measure the similarity between <NUMEX TYPE="CARDINAL">two</NUMEX>
+        phylogenetic profiles, we use the Hamming distance, simply
+        expressed by the number of vector entries that need to be
+        changed to obtain <NUMEX TYPE="CARDINAL">one</NUMEX> profile from the other profile. Other
+        natural techniques can include mutual information (MI) or
+        correlation coefficients (<ENAMEX TYPE="PRODUCT">CC</ENAMEX>) that measure the statistical
+        dependence of <NUMEX TYPE="CARDINAL">two</NUMEX> discrete distributions of coevolution
+        patterns.
+        The list of possible functionally linked gene clusters
+        reported by both the gapped and non-gapped versions of GPPP
+        can be accessed at [ <TIMEX TYPE="DATE">23</TIMEX>].
+      
+    
+  

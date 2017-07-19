@@ -1,0 +1,722 @@
+
+  
+    
+      
+        Background
+        Whole-genome analyses have allowed the study of gene
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> both within <ENAMEX TYPE="ANIMAL">species</ENAMEX> and in different species.
+        <ENAMEX TYPE="ORGANIZATION">Computational</ENAMEX> and experimental studies of genomes and gene
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> are providing new perspectives on our
+        understanding of the evolution of specificity and cellular
+        metabolic <ENAMEX TYPE="ORG_DESC">organization</ENAMEX>. These efforts remain limited,
+        however, by our ability to annotate gene function
+        accurately. In <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, the number of open reading frames
+        (<ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>) with functions assigned by sequence-similarity-based
+        methods is <NUMEX TYPE="PERCENT">around 43%</NUMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>]. With the inclusion of extensive
+        experimental data this value is approaching <NUMEX TYPE="PERCENT">70%</NUMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX>].
+        Meanwhile, a search of the <ENAMEX TYPE="ORGANIZATION">Protein Data Bank</ENAMEX> (PDB) for the
+        keyword 'unknown function' retrieved <NUMEX TYPE="CARDINAL">31</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>.
+        Many of these are the result of structural genomics
+        initiatives. As this number is likely to grow, it has
+        become more important to develop computational tools to
+        deduce function from analysis of sequence information in
+        the context of <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>.
+        Assigning function by sequence homology alone is subject
+        to a number of caveats, including the occurrence of
+        structurally homologous enzymes that catalyze different
+        reactions [ <ENAMEX TYPE="LAW">3</ENAMEX>] and the propagation of error through
+        successive rounds of sequence annotation [ <ENAMEX TYPE="LAW">4</ENAMEX>]. Conversely,
+        assigning function by structure alone can also be daunting,
+        even if one ignores the implicit selection bias in
+        structure databases relative to sequence databases.
+        Analysis of the CATH database revealed that whereas
+        function was conserved in nearly <NUMEX TYPE="PERCENT">51%</NUMEX> of enzyme <ENAMEX TYPE="PER_DESC">families</ENAMEX>,
+        function had diverged considerably in highly populated
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>]. This has direct implications for
+        structure-based function predictions using threading
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>]. Another serious complication in
+        structure-based deduction of function is the intrinsic
+        limit on our ability to compare distantly related sequences
+        and to recognize the role of specific <ENAMEX TYPE="SUBSTANCE">residue subsets</ENAMEX> in
+        multifunctional <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. It can be difficult to recognize
+        whether a distantly related homolog belongs to a
+        superfamily with one functional site in common [ <ENAMEX TYPE="LAW">8</ENAMEX>] or
+        whether that particular structural scaffold accommodates
+        multiple functional sites, as with the <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX>].
+        It follows that similarity-free function-prediction
+        methods are especially desirable. Marcotte 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] used correlated
+        evolution, correlated mRNA profiles and patterns of domain
+        fusion for genome-wide function prediction. A method based
+        on local gene order of <ENAMEX TYPE="SUBSTANCE">orthologous genes</ENAMEX> has been proposed
+        [ <TIMEX TYPE="DATE">11</TIMEX>]. <ENAMEX TYPE="SUBSTANCE">Protein-protein</ENAMEX> interactions have been used to
+        assign function with surprising success [ <TIMEX TYPE="DATE">12</TIMEX>] and
+        functional <ENAMEX TYPE="PER_DESC">descriptors</ENAMEX> have been used to search structure
+        space [ <TIMEX TYPE="DATE">13</TIMEX>]. However, the individual function-prediction
+        capabilities of current methods remain limited, judging by
+        the gene annotation content of public databases.
+        <TIMEX TYPE="TIME">ET</TIMEX> presumes that the branchpoints separating subclades
+        of a phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> can specify molecular speciation
+        events, and hence evolutionary selection of amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>.
+        Thus, nodes can mark points in evolution where a protein
+        gains, modifies or loses a binding or catalytic function [
+        <NUMEX TYPE="CARDINAL">14</NUMEX>]. The original <TIMEX TYPE="TIME">ET</TIMEX> method relies on a partitioning of the
+        <ENAMEX TYPE="ORGANIZATION">phylogeny</ENAMEX>. This procedure results in sets of nodes at
+        different levels of <NUMEX TYPE="PERCENT">percent</NUMEX> (sequence) identity cutoff
+        (<ENAMEX TYPE="ORGANIZATION">PIC</ENAMEX>) [ <TIMEX TYPE="DATE">15</TIMEX>]. However, as phylogenies often contain extreme
+        <ENAMEX TYPE="ORGANIZATION">branches</ENAMEX> as a result of distant <ENAMEX TYPE="PER_DESC">homologs</ENAMEX> or rapid
+        speciation, pairs of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX> are not
+        represented uniformly across the sequence-identity range.
+        This is reflected in a skewed topology of the phylogeny,
+        see, for example, the 
+        Pseudomonas aeruginosa and 
+        Streptococcus pyogenes hypothetical
+        <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> at the bottom of Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Hence, the PICs
+        correspond to intervals of percent sequence identity, and
+        the greater the number and/or magnitude of outliers in the
+        family, the larger the percent identity interval (see
+        Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). The presence of these outliers affects multiple
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> and phylogenetic <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> and in <TIMEX TYPE="TIME">ET</TIMEX> analysis can
+        misrepresent the functional <ENAMEX TYPE="PER_DESC">variability</ENAMEX> at the presumed <ENAMEX TYPE="ORGANIZATION">PIC</ENAMEX>
+        level. This issue has been addressed by normalizing the
+        score <TIMEX TYPE="TIME">in the ET</TIMEX> method with sequence variability and
+        sequence uniqueness measures [ <TIMEX TYPE="DATE">16</TIMEX>]. However, numerical
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> reduces the problem to numerical analysis, in
+        effect disregarding evolutionary aspects. In the case of
+        distant subclades, <TIMEX TYPE="TIME">ET</TIMEX> analysis of appropriately chosen
+        subclades of the phylogeny will have the desired
+        normalization effect. This approach can be used to correct
+        for positional variability, sequence representation bias
+        and non-uniform phylogenetic topologies.
+        Another limitation of the original <TIMEX TYPE="TIME">ET</TIMEX> method was the
+        definition of invariant and neutral position types.
+        Uchtarge 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>] recognized that with
+        growing sequence databases, the strict definitions of
+        invariance as a total lack of variance, and neutrality as a
+        <NUMEX TYPE="CARDINAL">one</NUMEX>-residue variation in an aligned position in even one
+        family, were destined to require amendment. <ENAMEX TYPE="PERSON">Inherently</ENAMEX>, the
+        functional resolution in the <TIMEX TYPE="TIME">ET</TIMEX> method relies on an
+        <ENAMEX TYPE="ORGANIZATION">optimization</ENAMEX> based on <TIMEX TYPE="TIME">ET</TIMEX> results from multiple partitions,
+        each corresponding to unique definitions of subclade
+        <ENAMEX TYPE="ORGANIZATION">invariance</ENAMEX>. Although <NUMEX TYPE="CARDINAL">two</NUMEX> automated <TIMEX TYPE="TIME">ET</TIMEX> methods exist,
+        notably a public <TIMEX TYPE="TIME">ET</TIMEX> server by Innis 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">17</TIMEX>] and an implementation
+        by Aloy 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">18</TIMEX>], optimization of the
+        original <TIMEX TYPE="TIME">ET</TIMEX> method has evaded automation thus far. The
+        result is that <ENAMEX TYPE="PER_DESC">users</ENAMEX> have to resort to manipulation of the
+        underlying data and cycles of <TIMEX TYPE="TIME">ET</TIMEX> analysis and visual
+        inspection of the results mapped to protein <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>.
+        Aside from manually filtering and pruning the data,
+        there has been no simple way of controlling which subclades
+        of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> are used in the analysis. An elegant
+        solution to this problem is to allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to access all
+        possible <ENAMEX TYPE="ORG_DESC">subclades</ENAMEX> represented by the phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>. In
+        this way a number of <TIMEX TYPE="TIME">ET</TIMEX> variations can be performed,
+        extending the analysis to multiple views of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family
+        evolutionary data.
+        <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> is one possible implementation of protein
+        family analysis. Such analyses, which include experimental
+        techniques such as alanine scanning [ <TIMEX TYPE="DATE">19</TIMEX>] and computational
+        techniques such as <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> coloring schemes [ <TIMEX TYPE="DATE">20</TIMEX>], attempt to
+        organize the massive amounts of sequence and structure
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The results introduce the problem of choice of
+        strategies to identify biologically meaningful patterns. In
+        <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, sequence and structure alignments are frequently
+        used to sort features of gene-family data. Analysis of
+        <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> provides coherence to the understanding of
+        biological data, especially from the perspective of
+        distinct features that may explain the unique functional
+        attributes of an individual entry. As is common in <TIMEX TYPE="TIME">ET</TIMEX>
+        analysis, these features may extend over sequentially or
+        <ENAMEX TYPE="FAC_DESC">spatially</ENAMEX> clustered sets of nucleotides or amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, and
+        patterns are frequently difficult to identify without a
+        form of color coding. Obviously, color coding exploits our
+        cognitive pattern-recognition skills - skills that have
+        been difficult to replicate algorithmically.
+      
+      
+        Results
+        An example of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with unknown function is PDB
+        1G2R, representing the 
+        ylxR gene from 
+        Streptococcus pneumoniae [ <TIMEX TYPE="DATE">21</TIMEX>]. 
+        <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> belongs to the putative 
+        <ENAMEX TYPE="CONTACT_INFO">nusA/infB</ENAMEX> operon in 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> pneumoniae . The operon contains
+        <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">three</NUMEX> of which are conserved in other
+        <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>: 
+        rbfA, nusA (with its well
+        characterized gene product IF2 [ <TIMEX TYPE="DATE">22</TIMEX>]) and 
+        <ENAMEX TYPE="ORGANIZATION">infB</ENAMEX> . These <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are
+        involved in translation and <ENAMEX TYPE="SUBSTANCE">ribosomal function</ENAMEX> during
+        cold-shock response [ <TIMEX TYPE="DATE">23</TIMEX>]. The <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein sequence</ENAMEX> has
+        been assigned to the 'cluster of orthologous <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>' (COG)
+        <TIMEX TYPE="DATE">2740</TIMEX> [ <TIMEX TYPE="DATE">24</TIMEX>], which contains the conserved amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> motif
+        <ENAMEX TYPE="ORGANIZATION">GRGA</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Y/W</ENAMEX>) (in the single-letter amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> code). The
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX> <TIMEX TYPE="DATE">2740</TIMEX> are predicted to be nucleotide-binding
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> implicated in transcription termination. Several
+        features of the structure of <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX>, including the conserved
+        and appropriately spaced arginines that could form a
+        characteristic positively charged surface patch (colored
+        red in Figure 2b,2c) and a large bent groove reminiscent of
+        other <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding structures, support the argument that
+        <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> is an <ENAMEX TYPE="SUBSTANCE">RNA-binding protein</ENAMEX>.
+        Structures of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> with small molecules
+        have led to and confirmed predictions of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> function.
+        The <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> is complexed with <NUMEX TYPE="CARDINAL">three</NUMEX> sulfate ions,
+        <NUMEX TYPE="CARDINAL">two</NUMEX> of which are bound to the arginines <TIMEX TYPE="DATE">R25 and R45</TIMEX>, and
+        the <NUMEX TYPE="ORDINAL">third</NUMEX> to a lysine pair <TIMEX TYPE="DATE">K62 and K63</TIMEX>. It has been
+        observed that the distances between the sulfate ions
+        correspond to distances between <ENAMEX TYPE="PER_DESC">phosphate groups</ENAMEX> in an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        duplex [ <TIMEX TYPE="DATE">21</TIMEX>]. The predicted binding site also fully
+        encompasses <NUMEX TYPE="CARDINAL">two</NUMEX> out of <NUMEX TYPE="CARDINAL">three</NUMEX> of the sulfate ions and
+        borders the <NUMEX TYPE="ORDINAL">third</NUMEX>.
+        The <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family retrieved by <ENAMEX TYPE="ORGANIZATION">PSI</ENAMEX>-BLAST [ <TIMEX TYPE="DATE">25</TIMEX>] consists
+        of <NUMEX TYPE="CARDINAL">20</NUMEX> unique. The hypothetical <ENAMEX TYPE="ANIMAL">ancestor sequence</ENAMEX> has three
+        conserved arginines. Although this is a relatively small
+        family for <TIMEX TYPE="TIME">ET</TIMEX> analysis, a simple <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> suggests that only the
+        arginine of the conserved <ENAMEX TYPE="ORGANIZATION">GRGA</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Y/W</ENAMEX>) motif is absolutely
+        <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX>. However, as the key arginines associated with
+        the predicted function are absolutely conserved, this
+        implies that the predicted <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding function is
+        <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> across this <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> subclade trace analysis was performed on all
+        the subclades of this family ranging from <NUMEX TYPE="PERCENT">28% to 53%</NUMEX>
+        sequence identity (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). After filtering out <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>
+        that are inaccessible to the solvent, the following
+        <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> were identified in the vicinity of the conserved
+        <ENAMEX TYPE="ORGANIZATION">arginines</ENAMEX> (the conserved arginines are in parentheses):
+        K10, <TIMEX TYPE="DATE">V12</TIMEX>, <TIMEX TYPE="DATE">V13</TIMEX>, <TIMEX TYPE="DATE">S14</TIMEX>, <TIMEX TYPE="DATE">K20</TIMEX> (<NUMEX TYPE="MONEY">r9</NUMEX>), <TIMEX TYPE="DATE">G40</TIMEX> (<NUMEX TYPE="MONEY">R25</NUMEX>), <TIMEX TYPE="DATE">G46</TIMEX> (<NUMEX TYPE="MONEY">R25</NUMEX>), 48Y
+        (<ENAMEX TYPE="CONTACT_INFO">R25, R45</ENAMEX>) and <TIMEX TYPE="DATE">K30 and E31</TIMEX> (<NUMEX TYPE="MONEY">R45</NUMEX>). <NUMEX TYPE="CARDINAL">At least eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>
+        form a spatial cluster in the vicinity of the conserved
+        <ENAMEX TYPE="ORGANIZATION">arginines</ENAMEX>. The <ENAMEX TYPE="SUBSTANCE">residues K10</ENAMEX>, the backbone of <TIMEX TYPE="DATE">S11</TIMEX>, <TIMEX TYPE="DATE">V12</TIMEX>, <TIMEX TYPE="DATE">V12</TIMEX>,
+        S14, <TIMEX TYPE="DATE">V17</TIMEX>, <TIMEX TYPE="DATE">G40</TIMEX>, <TIMEX TYPE="DATE">E55</TIMEX>, <TIMEX TYPE="DATE">K63 and 64V</TIMEX>, from the kinked
+        carboxy-terminal helix, a beta-turn, and parts of the
+        beta-sheet, define a putative binding epitope (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>).
+        The epitope includes a collection of hydrophobic
+        interactions that have been correlated with the evolution
+        of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> forming a surface <ENAMEX TYPE="SUBSTANCE">epitope</ENAMEX> in the vicinity of r9
+        (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>).
+        There appear to be <NUMEX TYPE="CARDINAL">two</NUMEX> distinct subclades within the
+        YlxR sequence <ENAMEX TYPE="PER_DESC">family</ENAMEX>, both consisting of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with
+        unknown or uncertain function (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> and S 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> , Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). A subclade comparison
+        was carried out to analyze the conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. Such a
+        comparison is useful when a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family has few
+        <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> or limited evolutionary diversity, that is,
+        few subclades. In this <ENAMEX TYPE="PER_DESC">family</ENAMEX>, it appears that independent
+        sets of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are conserved, all in the vicinity of one
+        or more of the conserved arginines. These amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+        define a slightly larger and differently oriented surface
+        <ENAMEX TYPE="ORGANIZATION">epitope</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2c</NUMEX>) than in the <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> subclade trace
+        analysis (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). We propose that the conserved
+        residues modulate the specificity of the predicted <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        interaction, and that the <NUMEX TYPE="CARDINAL">two</NUMEX> subclades correspond to
+        specificity subtypes within the larger <ENAMEX TYPE="PER_DESC">family</ENAMEX>, possibly
+        with unique functional features. The <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> not
+        identified by subclade trace analysis but appearing in the
+        subclade comparison are responsible for a finer level of
+        molecular specificity. In this case of a predicted protein
+        function, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis presented direct evidence for
+        additional binding functions and highlighted the presence
+        of potential subtypes in the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding specificity.
+        Another interesting <ENAMEX TYPE="PER_DESC">family</ENAMEX> of unknown function is the
+        <ENAMEX TYPE="PRODUCT">bacterial YbaK</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. A structure of the homolog from 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> influenzae has been solved by
+        <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">26</TIMEX>]. This gene product has
+        been proposed to serve as a regulatory <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> [ <TIMEX TYPE="DATE">27, 28</TIMEX>].
+        Analysis of the sequence <ENAMEX TYPE="PER_DESC">family</ENAMEX> in the context of the
+        structure revealed <NUMEX TYPE="CARDINAL">one</NUMEX> conserved <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>, <TIMEX TYPE="DATE">K46</TIMEX>, in a small
+        putative binding site [ <TIMEX TYPE="DATE">26</TIMEX>]. The <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> fold is related to a
+        circular permutation and truncation of the <ENAMEX TYPE="PRODUCT">C-</ENAMEX><ENAMEX TYPE="PER_DESC">lectin</ENAMEX> fold.
+        However, a saccharide binding function for <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> is
+        unlikely, because of a small putative binding site and lack
+        of <ENAMEX TYPE="SUBSTANCE">saccharide binding residues</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]. <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . discuss the possibility of an
+        oxyanion hole formed by backbone nitrogens of the two
+        <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> following <TIMEX TYPE="DATE">conserved G101</TIMEX> (with the exception of an
+        <ENAMEX TYPE="ORGANIZATION">arginine</ENAMEX> in an unknown <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> from 
+        <ENAMEX TYPE="ORGANIZATION">Mycobacterium</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">smegmatis</ENAMEX> (<NUMEX TYPE="MONEY">AAD41809</NUMEX>)).
+        The <ENAMEX TYPE="PERSON">YbaK</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> is composed of three large subclades,
+        related by an absolutely conserved lysine, <TIMEX TYPE="DATE">K46</TIMEX>. The three
+        subclades are <ENAMEX TYPE="PERSON">YbaK</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> in Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>), an insertion domain in
+        the acceptor stem of prokaryotic prolyl-tRNA synthetases (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+        
+        <NUMEX TYPE="CARDINAL">1</NUMEX> in Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>) and a prokaryotic family
+        of hypothetical <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> in Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>). <TIMEX TYPE="DATE">Seventy</TIMEX>-<NUMEX TYPE="CARDINAL">one</NUMEX> sequences
+        were used in the <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis. Of these, <NUMEX TYPE="CARDINAL">23</NUMEX> formed a
+        distinct subclade containing the 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> influenzae YbaK sequence.
+        <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> parent trace analysis, which relies on tracing
+        the conservation of the progenitor sequences of a single
+        selected node (Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>), identified a number of neutral
+        <ENAMEX TYPE="ORGANIZATION">polar</ENAMEX> and hydrophobic amino <ENAMEX TYPE="SUBSTANCE">acids conserved</ENAMEX> in the YbaK
+        subclade on the conserved lysine face of <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> (Figure <TIMEX TYPE="DATE">3a</TIMEX>,
+        top). This was consistent with the analysis of <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">26</TIMEX>]. Among these conserved
+        positions, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> identified a cluster of
+        solvent-accessible <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> above and beyond the proposed
+        oxyanion hole, including <ENAMEX TYPE="PRODUCT">Y20</ENAMEX>, <TIMEX TYPE="DATE">H22</TIMEX>, <TIMEX TYPE="DATE">D23</TIMEX>, <TIMEX TYPE="DATE">E32 and R132</TIMEX>.
+        Together, these <ENAMEX TYPE="SUBSTANCE">residues form</ENAMEX> a polar surface patch and the
+        wall of the putative binding site. D23 and <ENAMEX TYPE="PRODUCT">E32</ENAMEX> contribute
+        to the negative face identified by <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> .
+        The phylogenetic partition JEvTrace algorithm was
+        carried out using <NUMEX TYPE="CARDINAL">six</NUMEX> partitions from the <NUMEX TYPE="CARDINAL">7</NUMEX>-<NUMEX TYPE="PERCENT">50%</NUMEX> average
+        percent sequence identity range (Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>). The resulting
+        highest-scoring position is S104 (magenta), and then <TIMEX TYPE="DATE">T47</TIMEX>,
+        T96, <TIMEX TYPE="DATE">Y98</TIMEX>, <TIMEX TYPE="DATE">G102</TIMEX>, <TIMEX TYPE="DATE">I103 and S129</TIMEX> (orange). Most of these
+        positions are partially shielded from solvent and/or
+        contribute main-chain hydrogen-bonding interactions.
+        Eliminating solvent-accessible <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> left <TIMEX TYPE="DATE">S129</TIMEX>, a
+        position that belongs to the neutral polar patch of the
+        putative binding site. Considering <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> with less
+        prominent scores (gray, blue, cyan, yellow), the size of
+        the epitope identified by <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> increases considerably
+        and encompasses <NUMEX TYPE="CARDINAL">nearly half</NUMEX> of <TIMEX TYPE="DATE">the K46</TIMEX> face (Figure <TIMEX TYPE="DATE">3b</TIMEX>,
+        top). Together these positions form a partially buried
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> that defines the bottom and walls of the putative
+        ligand-binding <ENAMEX TYPE="FAC_DESC">site</ENAMEX> spanning <TIMEX TYPE="DATE">the K46</TIMEX> face. From the <NUMEX TYPE="ORDINAL">fifth</NUMEX>
+        level on (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) all identified positions are on the
+        <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> <ENAMEX TYPE="PER_DESC">lysine</ENAMEX> face of <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX>. Significantly, the loop
+        immediately above the oxyanion hole is disordered in the
+        <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> PDB <ENAMEX TYPE="FAC">1DBX</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. This loop, formed by <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>
+        <NUMEX TYPE="CARDINAL">26-30</NUMEX>, is not conserved nor does it conserve chemical
+        properties across the phylogeny. However, a number of
+        <ENAMEX TYPE="PER_DESC">subclades</ENAMEX> express invariance at these positions. Because of
+        its proximity to the conserved <ENAMEX TYPE="PRODUCT">G101</ENAMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX> branch of the
+        J-shaped putative binding site, this disordered region is
+        predicted to contribute to the functional <ENAMEX TYPE="PER_DESC">interaction</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">specificity of YbaK</ENAMEX>. A number of structural studies by NMR
+        have shown that <ENAMEX TYPE="SUBSTANCE">RNA-binding proteins</ENAMEX> are flexible and
+        undergo conformational changes upon binding [ <TIMEX TYPE="DATE">29, 30</TIMEX>,
+        <NUMEX TYPE="CARDINAL">31</NUMEX>].
+        Using GRASP [ <TIMEX TYPE="DATE">32</TIMEX>] <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">26</TIMEX>] predicted a positively
+        charged patch on the face of the <ENAMEX TYPE="SUBSTANCE">protein opposite K46</ENAMEX>, and
+        a negatively charged patch on a face adjacent to <TIMEX TYPE="DATE">K46</TIMEX>.
+        However, the <ENAMEX TYPE="FAC">YbaK</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> has the interesting feature of
+        a single conserved lysine separated by a <ENAMEX TYPE="ORG_DESC">ring</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">hydrophobic</ENAMEX> or neutral <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> from a circular arrangement
+        of mixed charged <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Asp, Arg, Glu, Lys</ENAMEX>). These
+        <ENAMEX TYPE="CONTACT_INFO">residues</ENAMEX> line the perimeter of <TIMEX TYPE="DATE">the K46</TIMEX> face. This is
+        reminiscent of numerous examples of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+        interaction, where hydrophobic "rings" of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are
+        observed to surround polar and charged <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, with the
+        proposed purpose of screening ionic interactions from
+        solvent [ <TIMEX TYPE="DATE">33, 34</TIMEX>]. This potential <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+        interaction feature of <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> is additionally supported by
+        evidence that the prolyl-tRNA synthetases (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> in Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>) interact with other
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> involved in <ENAMEX TYPE="SUBSTANCE">protein synthesis</ENAMEX>. There may be
+        additional surface patches of mixed positively and
+        negatively charged <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in <ENAMEX TYPE="GPE">YbaK</ENAMEX>. However, the
+        positively charged surface identified by <ENAMEX TYPE="PERSON">Zhang</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . contains the largest number
+        of high scoring positions in the <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis of
+        <ENAMEX TYPE="DISEASE">multiple phylogenetic partitions</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>). The lysine
+        perimeter patch (Figure 3a,3b, top) and other potential
+        patches are not conserved nor are they identified
+        completely by the partition algorithm (Figure 3a,3b, side),
+        and thus are not expected to be a predominant functional
+        feature of the <ENAMEX TYPE="PERSON">YbaK</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis suggests that <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX> is involved in a
+        <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interaction requiring a binding site with
+        <ENAMEX TYPE="ORGANIZATION">hydrophobic</ENAMEX> and polar patches, and an oxyanion hole
+        opposite a conserved lysine. Pursuing the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+        interaction hypothesis, it appears that a protruding
+        J-shaped polypeptide volume involving an aspartic or
+        glutamic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>, or a negatively charged cofactor, is a
+        likely ligand for the <ENAMEX TYPE="GPE">YbaK</ENAMEX>-binding site. The face opposite
+        this binding site presents a patch of positively charged
+        <ENAMEX TYPE="PERSON">residues</ENAMEX>, supporting the hypothesis of a nucleotide binding
+        function for at least some subclades of the <ENAMEX TYPE="PERSON">YbaK</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+        Thus although, the <ENAMEX TYPE="PERSON">YbaK</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> subtypes only share one
+        conserved amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> across <ENAMEX TYPE="ANIMAL">species</ENAMEX>, the patterns of
+        subclade sequence conservation suggest a main binding
+        function, characterized by unique specificity within
+        multiple clades that is spatially centered around the
+        conserved lysine, <TIMEX TYPE="DATE">K46</TIMEX>.
+      
+      
+        Discussion
+        
+          JEvTrace
+          The <TIMEX TYPE="TIME">ET</TIMEX> method has been a successful tool for analyzing
+          protein functional surfaces using the additional
+          information present in <ENAMEX TYPE="SUBSTANCE">protein phylogenetic</ENAMEX> <ENAMEX TYPE="PLANT">trees</ENAMEX>.
+          However, this approach has been limited by difficulty in
+          producing a dynamic graphical <ENAMEX TYPE="PER_DESC">user interface</ENAMEX> to analyze
+          the data. The optimization involved in producing <TIMEX TYPE="TIME">ET</TIMEX>
+          results has previously relied on manually manipulating
+          the underlying data, while certain <ENAMEX TYPE="FAC_DESC">paths</ENAMEX> of analysis were
+          inherently inaccessible. Thus, identification of the
+          dominant spatial cluster of <ENAMEX TYPE="SUBSTANCE">invariant residues</ENAMEX> has been
+          unwieldy. To improve this operational challenge we have
+          <ENAMEX TYPE="ORGANIZATION">constructed JEvTrace</ENAMEX>, a <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> <ENAMEX TYPE="FAC_DESC">suite</ENAMEX> of algorithms and
+          objects together with a graphical <ENAMEX TYPE="PER_DESC">user interface</ENAMEX>. The
+          algorithms allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to identify evolutionarily
+          relevant positions based on <ENAMEX TYPE="PER_DESC">user</ENAMEX> selections of subclades
+          (Figure 2a,2b) or partitions of the phylogeny (Figure
+          3b). This approach introduces new features and parameters
+          in <TIMEX TYPE="TIME">ET</TIMEX> analysis. Additional algorithms for tracing
+          subclade conservation through <ENAMEX TYPE="PER_DESC">parents</ENAMEX> or <ENAMEX TYPE="PER_DESC">children</ENAMEX> of a
+          specific subclade (Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>) and subclade conservation
+          <ENAMEX TYPE="PERSON">comparisons</ENAMEX> (Figure 2a,2c) are also implemented. The user
+          <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> produces interactive graphical results, and
+          access to the corresponding sequence, phylogenetic and
+          protein structure data. To map <TIMEX TYPE="TIME">ET</TIMEX> results and alignment
+          selections to the structural dimension, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> is
+          <ENAMEX TYPE="ORGANIZATION">dynamically</ENAMEX> linked to a <NUMEX TYPE="ORDINAL">3D</NUMEX>-structure <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> <ENAMEX TYPE="PER_DESC">viewer</ENAMEX>, WebMol
+          [ <TIMEX TYPE="DATE">35</TIMEX>].
+          These algorithms (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods) allow
+          comparisons of features within a phylogeny in ways that
+          are not directly limited by the topology of the
+          phylogeny, sequence representation bias or sequence
+          distance metrics. The implementation allows an analysis
+          of any possible combination of subclades within the
+          <ENAMEX TYPE="SUBSTANCE">protein phylogeny</ENAMEX>. The resulting decompositions of
+          evolutionary sequence data allow multiple definitions of
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, structure and function homology within a
+          <ENAMEX TYPE="PERSON">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, and hence grant new perspectives to
+          family sequence analysis.
+          The original <TIMEX TYPE="TIME">ET</TIMEX> method relies on <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> to
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> phylogenetic results in order to identify
+          predicted functional sites. A recognized limitation of
+          the original method was filtering out buried polar side
+          chains within structural <ENAMEX TYPE="SUBSTANCE">clefts</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> gives
+          access to the entire set of results before residue
+          solvent-accessibility filtering. Extensive structural
+          <ENAMEX TYPE="PERSON">filtering</ENAMEX>, not limited to solvent <ENAMEX TYPE="ORG_DESC">accessibility</ENAMEX> can be
+          carried out in <ENAMEX TYPE="GPE">WebMol</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>].
+          <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> facilitates the analysis of other features of
+          <ENAMEX TYPE="PER_DESC">protein families</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Conserved</ENAMEX> positions can be found for
+          any subclade in the phylogeny, and the conservation and
+          variability between any set of subclades can be analyzed
+          (subclade comparison, Figure 2b,2c). This functionality
+          can be used to distinguish homologous <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with
+          different functions, as <NUMEX TYPE="ORDINAL">first</NUMEX> suggested by Aloy 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">18</TIMEX>]. For a particular
+          subclade, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> can perform a <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> or <ENAMEX TYPE="PER_DESC">child</ENAMEX> trace,
+          identifying the subclade specific conservation within a
+          chain of <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> or <ENAMEX TYPE="PER_DESC">child</ENAMEX> subclades of a node (Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>).
+          This method can be used as an <TIMEX TYPE="TIME">ET</TIMEX> surrogate if there is
+          lack of significant homology between subclades of a
+          <ENAMEX TYPE="PERSON">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>. This was helpful in the analysis of <ENAMEX TYPE="ORGANIZATION">YbaK</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> can identify the unique <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in a single
+          sequence relative to the considered sequence data. This
+          was useful for our drug-design efforts on a malarial
+          cysteine protease [ <TIMEX TYPE="DATE">36</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> also serves as a
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> and structure <ENAMEX TYPE="PER_DESC">viewer</ENAMEX>. Any <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis of
+          the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> or phylogenetic data can be visualized on
+          available <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. This can be useful in
+          protein structure <ENAMEX TYPE="PER_DESC">homology</ENAMEX> modeling by highlighting the
+          evolutionary contexts for structural analysis within a
+          <ENAMEX TYPE="PERSON">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX>]. All these informatics features
+          address sequence determinants of specificity and
+          similarity using distinct biological data.
+          In general, the <TIMEX TYPE="TIME">ET</TIMEX> approach is more difficult to apply
+          at lower percent sequence identity, owing to the problem
+          of building accurate sequence alignments, especially in
+          the absence of structural information [ <TIMEX TYPE="DATE">37, 38</TIMEX>]. For
+          example, annotations based on remote homology pairwise
+          alignments were a significant source of errors in the
+          initial <ENAMEX TYPE="SUBSTANCE">yeast genome annotation</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>]. Known alignment
+          problems occur at the amino and carboxyl termini of a
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, and even more commonly in loop regions. In
+          addition to an accurate alignment, <TIMEX TYPE="TIME">ET</TIMEX> also requires a
+          minimal amount of sequence information and the related
+          parameter of evolutionary diversity within the protein
+          family. Of the algorithms provided in <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX>, the
+          parent/<ENAMEX TYPE="PER_DESC">child</ENAMEX> trace and subclade comparisons can be
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> with <NUMEX TYPE="CARDINAL">as few as two</NUMEX> sequences. The partition trace
+          and subclade trace require more than a pair of subclades,
+          and benefit non-linearly from larger amounts of data.
+          Overall, the <NUMEX TYPE="CARDINAL">two</NUMEX> largest effects of limited sequence data
+          are the signal-to-noise ratio for the correlation of
+          invariant <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> to functional <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> and the ability to
+          identify functional specificity and specific functions.
+          As a corollary, until the sequence space of a protein
+          family has been sampled sufficiently, insight into the
+          <TIMEX TYPE="DATE">full</TIMEX> functions and specificities within a phylogeny
+          remain limited.
+        
+        
+          SCF: an MSA sequence coloring format
+          With rapidly enlarging biological data sources, there
+          is a clear need for sensible standards. We propose SCF: a
+          file format that will encode any <ENAMEX TYPE="PER_DESC">user</ENAMEX>-defined coloring
+          scheme for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and nucleotide sequences as well as
+          their secondary and tertiary structures, based on the
+          inherent structure of <ENAMEX TYPE="ORGANIZATION">MSAs</ENAMEX>. The format is simple, easy to
+          verify manually, and readable as text by any alignment or
+          structure <ENAMEX TYPE="PER_DESC">viewer</ENAMEX>.
+          An example <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> alignment with a selection of
+          <ENAMEX TYPE="PERSON">residues</ENAMEX>, including absolutely conserved positions as
+          well as positions forming <NUMEX TYPE="CARDINAL">two</NUMEX> structural epitopes in one
+          of the known protein <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, is shown in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. It
+          is important to note that only selected <ENAMEX TYPE="PER_DESC">positions</ENAMEX> are
+          encoded - which is both a performance and a storage
+          <ENAMEX TYPE="ORGANIZATION">asset</ENAMEX>. Our implementation of an alignment viewer allows
+          transparent interaction with tertiary structures, using
+          the <ENAMEX TYPE="PRODUCT">JAVA applet WebMol</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>]. In this setting, the color
+          format serves to annotate <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> with
+          multiple sequence information, and allows comparisons
+          across multiple sequences and <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. This format
+          should also aid the visualization of experimental results
+          <ENAMEX TYPE="ORGANIZATION">pertaining</ENAMEX> to biological sequences and <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. Most
+          important, it will allow integration of visualized
+          sequence alignment results under a single representation
+          scheme.
+        
+      
+      
+        Conclusions
+        We have designed a <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> application, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX>,
+        implementing the <TIMEX TYPE="TIME">ET</TIMEX> method [ <TIMEX TYPE="DATE">14</TIMEX>] and its variations. These
+        methods have in common the analysis of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> families
+        through <ENAMEX TYPE="ORGANIZATION">MSAs</ENAMEX>, phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX> and protein <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>.
+        The <TIMEX TYPE="TIME">ET</TIMEX> method has proved a useful tool for understanding
+        the sequential and structural aspects of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> function,
+        including the analysis of variations relevant to molecular
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX>. From an evolutionary perspective, the function
+        of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> within a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family encompasses both
+        <ENAMEX TYPE="PERSON">variation</ENAMEX>, for example, substrate specificity reflected in
+        amino <ENAMEX TYPE="SUBSTANCE">acids lining substrate</ENAMEX>-binding pockets, and
+        <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>, for example, regions responsible for general
+        enzymatic activity or binding of a common molecular
+        <ENAMEX TYPE="ORGANIZATION">scaffold</ENAMEX>. While it is trivial to identify absolutely
+        conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, function discovery often requires a
+        context for the predicted or unknown function associated
+        with the absolute conservation pattern.
+        Using the examples of <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> and <ENAMEX TYPE="PERSON">YbaK</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> identified
+        <ENAMEX TYPE="SUBSTANCE">residues clustering</ENAMEX> around the putative conserved
+        <ENAMEX TYPE="SUBSTANCE">functional residue</ENAMEX>(s), thus validating a functional
+        prediction. These findings supported an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding
+        prediction for <ENAMEX TYPE="ORGANIZATION">YlxR</ENAMEX> and most likely a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+        <ENAMEX TYPE="WORK_OF_ART">interaction interface for YbaK</ENAMEX>. For discovery of additional
+        functional properties, as in the case of a new binding
+        <ENAMEX TYPE="ORGANIZATION">epitope</ENAMEX> in <ENAMEX TYPE="GPE">YlxR</ENAMEX> or the extensive putative binding site and
+        positively charged epitope in <ENAMEX TYPE="GPE">YbaK</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> provided
+        phylogenetic evidence of clusters of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> on the
+        protein surface.
+        It is hoped that the JEvTrace implementation will lead
+        to analysis of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> at varying levels of
+        detail, leading to useful decompositions of the data. One
+        of these decompositions comes from evidence in the
+        evolutionary record of <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>. As documented by
+        the biological applications of the <TIMEX TYPE="TIME">ET</TIMEX> method, evolutionary
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> presents evidence allowing the distinction of
+        conserved spatial arrangements of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> versus
+        evolutionary sequence changes with negligible or no effect
+        on function. Together with experimental data, the
+        decompositions of evolutionary data provided by JEvTrace
+        may enable us to make additional distinctions in the
+        molecular specificity, kinetic and dynamic properties of
+        protein function.
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="PERSON">Sequence</ENAMEX> family retrieval and analysis
+          We chose <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structures of unknown function,
+          and retrieved their protein <ENAMEX TYPE="PER_DESC">families</ENAMEX> from the sequence
+          database. The sequence of the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> was used as a
+          query for PSI-BLAST [ <TIMEX TYPE="DATE">25</TIMEX>] against the <ENAMEX TYPE="ORGANIZATION">GenPept</ENAMEX> database
+          from the <ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology Information</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>). The sequences were then aligned and phylogenetic
+          <ENAMEX TYPE="PLANT">trees</ENAMEX> created with <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX>] and/or combinations of
+          software from the <ENAMEX TYPE="ORGANIZATION">GCG</ENAMEX> package [ <TIMEX TYPE="DATE">40</TIMEX>] including <ENAMEX TYPE="PRODUCT">PILEUP</ENAMEX> [
+          <TIMEX TYPE="DATE">41, 42, 43</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">PAUPSEARCH</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>].
+        
+        
+          Algorithm
+          The binary phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> data are
+          implemented as <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> <ENAMEX TYPE="PER_DESC">objects</ENAMEX>. The phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>,
+          assumed to be binary, is modeled as <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> and nodes
+          along with an ordering such that each <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> shares a
+          node with a parent <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> and from <NUMEX TYPE="CARDINAL">zero</NUMEX> to <NUMEX TYPE="CARDINAL">two</NUMEX> child
+          <ENAMEX TYPE="ORGANIZATION">branches</ENAMEX>. Each node in the phylogeny corresponds to a
+          subset of sequences in the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>. Every phylogenetic branch
+          is represented with an abstract consensus sequence, used
+          to model the corresponding subclade sequence
+          <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>. The implemented <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> derives a
+          consensus sequence for every subclade of sequences
+          represented in the phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>. This information is
+          used to dynamically generate results with the supplied
+          <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> based on <ENAMEX TYPE="PER_DESC">user</ENAMEX>-defined subclades or partitions
+          of subclades.
+          The partition trace variation of the <TIMEX TYPE="TIME">ET</TIMEX> method assigns
+          nodes from the <ENAMEX TYPE="PLANT">tree</ENAMEX> to a defined partition of the
+          <ENAMEX TYPE="ORGANIZATION">phylogeny</ENAMEX>. Partitions are perpendicular to the direction
+          of <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> in the <ENAMEX TYPE="PLANT">tree</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Sequence conservation
+          in each subclade is compared pairwise to conservation in
+          all other subclades within <TIMEX TYPE="DATE">a given partition</TIMEX>.
+          Alternatively, in the subclade trace algorithm, requiring
+          <ENAMEX TYPE="PER_DESC">user specification</ENAMEX> of a set of nodes, the defined nodes
+          are <ENAMEX TYPE="SUBSTANCE">algorithmically</ENAMEX> treated as a single partition. The
+          subclade trace does not require partitions, and is
+          therefore independent of the topology of the phylogeny.
+          In both algorithms, each position of the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> is scored by
+          the frequency of conservation of different amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in
+          pairs of subclades at that <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> position. In the partition
+          <ENAMEX TYPE="ORGANIZATION">trace</ENAMEX>, the score is cumulative across partitions. All
+          scores are normalized if there are more than <NUMEX TYPE="CARDINAL">seven</NUMEX> pairs
+          of invariant subclades at any alignment position. The
+          numerical scores are mapped to a <NUMEX TYPE="CARDINAL">seven</NUMEX>-color scale
+          (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>), limited by graphical interaction with the
+          structure. Scores can include normalization by the
+          sequence variability of the identified invariant
+          <ENAMEX TYPE="ORGANIZATION">subclades</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> also provides the ability to perform a single
+          subclade trace. The <ENAMEX TYPE="PER_DESC">user</ENAMEX>-defined subclade is assigned as
+          a <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> or <ENAMEX TYPE="PER_DESC">child</ENAMEX> node, and the subclade-specific
+          sequence conservation below or above that node is
+          identified. Subclade-specific conservation is defined by
+          the set of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> that are conserved in a subclade but
+          not in its <ENAMEX TYPE="ORG_DESC">parent</ENAMEX>. The results are a <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> of related
+          subclades of the phylogeny, with color-coded subclade
+          sequence selections on the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> and structure. We call
+          this variation of the <TIMEX TYPE="TIME">ET</TIMEX> method a <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> (or <ENAMEX TYPE="PER_DESC">child</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">trace</ENAMEX>, and it is especially useful for <ENAMEX TYPE="PER_DESC">families</ENAMEX> with few
+          <ENAMEX TYPE="ORGANIZATION">subclades</ENAMEX> and cases of highly speciated specificity.
+          JEvTrace generates results dynamically, displays them
+          on the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> and enables saving in standard graphics
+          formats or the SCF format. As in the original <TIMEX TYPE="TIME">ET</TIMEX> method,
+          absolutely conserved positions are inherently excluded
+          from the analysis. Structural filtering is assigned to
+          the <ENAMEX TYPE="ORGANIZATION">WebMol JAVA</ENAMEX> program, packaged with <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX>.
+          Concurrently with <ENAMEX TYPE="ORGANIZATION">WebMol</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> reads <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> data and
+          aligns the sequence of the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> with a selected
+          sequence in the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>. This alignment enables <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> to
+          map results and selections from the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> to the structural
+          dimension. <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> also presents the option of using the
+          ACCESS program [ <TIMEX TYPE="DATE">45</TIMEX>], which calculates the static solvent
+          accessibility of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structure [ <TIMEX TYPE="DATE">46</TIMEX>]. This
+          solvent-accessibility data can be used to filter results
+          of the phylogenetic analysis by <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of amino
+          <ENAMEX TYPE="SUBSTANCE">acid solvent accessibility</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX>].
+        
+        
+          JEvTrace implementation
+          The program takes as input an <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>, or an MSA with a
+          corresponding phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">PILEUP</ENAMEX> (GCG),
+          <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">New Hampshire</ENAMEX> [ <TIMEX TYPE="DATE">48</TIMEX>] formats are
+          recognized. <ENAMEX TYPE="ORGANIZATION">Phylogeny</ENAMEX> is interpreted as a binary tree
+          with a hypothetical root. Protein structure viewing is
+          designated to the JAVA structure viewer <ENAMEX TYPE="ORGANIZATION">WebMol</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>].
+          <ENAMEX TYPE="PER_DESC">Alignment</ENAMEX> selections in <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> can be mapped to the
+          Chimera structure viewer [ <TIMEX TYPE="DATE">49</TIMEX>] using an earlier version
+          of the SCF format available in <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX>. As many proteins
+          lack representative crystal structures, use of structures
+          in <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> analysis is optional. Currently, JEvTrace
+          supports <NUMEX TYPE="CARDINAL">one</NUMEX> active <ENAMEX TYPE="ORGANIZATION">WebMol</ENAMEX> window per session.
+          <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can select up to <NUMEX TYPE="CARDINAL">seven</NUMEX> partitions of the
+          phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>, or choose any set of nodes. A number
+          of operations, including the <TIMEX TYPE="TIME">ET</TIMEX> method, can be carried
+          out on the selected parts of the phylogeny. The resulting
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are independent of structural information and can be
+          viewed and manipulated directly on the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> of the protein
+          family. To aid interpretation of the phylogenetic data,
+          the <ENAMEX TYPE="PLANT">tree</ENAMEX> can be annotated with the percent sequence
+          identity of all the subclades. The identified positions
+          are visualized on the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> as well as any available
+          structures (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          Among the many sequence-structure features of JEvTrace
+          is the ability to highlight the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in contact with
+          a selected position, using a residue-residue distance
+          calculation and a distance cutoff. A number of
+          <ENAMEX TYPE="GPE">sequence</ENAMEX>-based features are also available, including
+          calculation of alignment position statistics for a
+          variety of physical-chemical <ENAMEX TYPE="FAC_DESC">properties</ENAMEX>: molecular volume
+          [ <TIMEX TYPE="DATE">50</TIMEX>], average pKa [ <TIMEX TYPE="DATE">50</TIMEX>], <ENAMEX TYPE="SUBSTANCE">hydrogen</ENAMEX>-bonding potential,
+          number of rotatable bonds and hydrophobicity [ <TIMEX TYPE="DATE">51</TIMEX>].
+          <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> consists of <NUMEX TYPE="CARDINAL">three</NUMEX> graphical canvases: a
+          binary phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>, a list of sequence identifiers
+          (for example, accession codes) and an <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>. The three
+          canvases are aligned by row, such that the terminal nodes
+          (representing individual sequences) of the phylogenetic
+          <ENAMEX TYPE="PLANT">tree align</ENAMEX> with their names and amino<ENAMEX TYPE="SUBSTANCE">-acid sequences</ENAMEX>. The
+          <ENAMEX TYPE="PLANT">tree</ENAMEX> and alignment canvases are scrollable in two
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>, and have a practical capacity of more than
+          <NUMEX TYPE="CARDINAL">150</NUMEX> sequences of <NUMEX TYPE="CARDINAL">less than 400</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, on a Pentium
+          workstation with <ENAMEX TYPE="PRODUCT">256 M of RAM</ENAMEX>. All <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> functions are
+          organized into menus and buttons, allowing extensive user
+          interaction with the data. Any results that are
+          represented graphically in <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">WebMol</ENAMEX> can be
+          printed or saved.
+        
+        
+          Sequence coloring format (SCF)
+          implementation
+          The colored format for the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> is given as a text file
+          with the file extension '.<ENAMEX TYPE="ORGANIZATION">SCF</ENAMEX>'. It is accurate with
+          respect to the underlying sequence data, given that the
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>(s) remains unchanged in length and order. As a
+          safeguard for underlying sequence data consistency, the
+          <ENAMEX TYPE="ORGANIZATION">SCF</ENAMEX> object calculates a <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> checksum variable (see SCF
+          website [ <TIMEX TYPE="DATE">52</TIMEX>] for details). <ENAMEX TYPE="ORGANIZATION">Relational</ENAMEX> databases and
+          software environments such as <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> represent dynamic
+          extensions of the format. The coloring data can exist as
+          an individual file or can be appended to the actual data
+          <ENAMEX TYPE="FAC">file - Multiple Sequence Format</ENAMEX> (MSF) (GCG) or CLUSTALW [
+          <NUMEX TYPE="CARDINAL">39</NUMEX>] files in the case of <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>, and a PDB file [ <TIMEX TYPE="DATE">53</TIMEX>] for
+          structural data. Appending the coloring to the underlying
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> can allow transparent annotation by color.
+          The residue positions of sequences in an alignment are
+          uniquely indexed from top to bottom, using sequence
+          numbers starting at <NUMEX TYPE="CARDINAL">one</NUMEX> as rows, and left to right, using
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> positions starting at <NUMEX TYPE="CARDINAL">zero</NUMEX> as columns. The
+          actual file format consists of <NUMEX TYPE="CARDINAL">six</NUMEX> columns: sequence
+          number, residue number, <NUMEX TYPE="CARDINAL">three</NUMEX> columns for the primary
+          <ENAMEX TYPE="ORGANIZATION">color</ENAMEX> space (red green blue, <ENAMEX TYPE="ORGANIZATION">RGB</ENAMEX>) designation of the
+          <ENAMEX TYPE="ORGANIZATION">color</ENAMEX>, and an optional comment/property column (Figure
+          1c). The last column can accommodate accepted coloring
+          schemes or can be used to define properties for colors
+          and/or the underlying data. This format accommodates any
+          <NUMEX TYPE="QUANTITY">24-bit</NUMEX> digital color, and allows highlighting of any
+          subset of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in any subset of sequences of the <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX>.
+          The selections are encoded in a hierarchical sorted
+          manner, that is, smallest to largest sequence position,
+          and within this group smallest to largest sequence, and
+          within those <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, smallest to largest color
+          values.
+          Our JEvTrace implementation of the SCF format in <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX>,
+          allows reading of <ENAMEX TYPE="ORGANIZATION">MSF</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> data files, and
+          interpretation of the SCF coloring data in each of these
+          <ENAMEX TYPE="ORGANIZATION">contexts</ENAMEX>. In addition, the underlying sequence data are
+          modeled as <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> objects, whose properties are dynamically
+          updated. In this implementation, it is possible to
+          translate selections between different MSAs that share at
+          least <NUMEX TYPE="CARDINAL">one</NUMEX> sequence. Using a single sequence as a
+          <ENAMEX TYPE="ORGANIZATION">'translator'</ENAMEX>, any selections can be 'translated' from one
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> to another, given that both alignments contain
+          the 'translator' sequence. This feature is useful in
+          bridging analysis of <ENAMEX TYPE="PER_DESC">families</ENAMEX> containing distant
+          homologs, performing independent analysis of multiple
+          subclades of a protein <ENAMEX TYPE="PER_DESC">family</ENAMEX>, or updating <ENAMEX TYPE="ORGANIZATION">MSA</ENAMEX> data.
+        
+        
+          Hardware
+          The <ENAMEX TYPE="ORGANIZATION">JEvTrace</ENAMEX> and SCF JAVA packages have been tested on
+          <ENAMEX TYPE="ORGANIZATION">SGI MIPS</ENAMEX>, <ENAMEX TYPE="PERSON">Pentium Pro</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Windows</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX>) and <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>. Both <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> packages are compatible with <NUMEX TYPE="CARDINAL">1.2</NUMEX> and
+          higher versions of <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX>.
+        
+        
+          Availability
+          A <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> executable package and manual for JEvTrace v1.0
+          is available on the web [ <TIMEX TYPE="DATE">54</TIMEX>]. A description and JAVA
+          source for the <ENAMEX TYPE="ORGANIZATION">SCF</ENAMEX> <ENAMEX TYPE="PRODUCT">v1.0</ENAMEX> format are also available on the
+          web [ <TIMEX TYPE="DATE">52</TIMEX>].
+        
+      
+    
+  

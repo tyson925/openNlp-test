@@ -1,0 +1,822 @@
+
+  
+    
+      
+        Background
+        Injuries to nerve or tissue cause an immediate sensation
+        of pain, or acute pain, which resolves with the resolution
+        of the injury. Less commonly, these injuries produce a
+        <ENAMEX TYPE="ORGANIZATION">heterogeneous</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of pathological states that produce
+        chronic pain that is unresponsive to the analgesics used to
+        treat acute pain. It would be therefore of great interest
+        to map the characteristic features of gene expression
+        following nerve injuries, as they may reveal mechanisms of
+        chronic pain and genetic targets for the design of novel
+        therapies. In this study we apply the powerful microarray
+        technology to study the injuries of the brachial plexus, a
+        typical form of nerve injury from <ENAMEX TYPE="PRODUCT_DESC">motorcycle</ENAMEX> or workplace
+        <ENAMEX TYPE="ORGANIZATION">incidences</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Since this is largely a paper focusing
+        on methodology, we refer the <ENAMEX TYPE="PER_DESC">readers</ENAMEX> to our website [ <ENAMEX TYPE="LAW">2</ENAMEX> ]
+        for details of the brachial plexus injuries.
+        The goal of this study, detection of <ENAMEX TYPE="DISEASE">condition</ENAMEX> or
+        state-dependent <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes, is an
+        important problem in the context of microarrays. Fold
+        changes and 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> tests have been applied to
+        microarray datasets to yield lists of genes that have
+        undergone altered expression under a certain significance
+        threshold. Although these methods are useful in identifying
+        potential gene targets, they are best applied to small sets
+        of hypothesis tests. In the context of microarray
+        experiments where <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes are commonly evaluated
+        simultaneously, the probability of detecting false
+        positives rises sharply. <NUMEX TYPE="CARDINAL">Two</NUMEX> recently proposed algorithms
+        seeking to address this multiple testing problem,
+        <ENAMEX TYPE="ORGANIZATION">Significance Analysis of Microarray</ENAMEX> (<ENAMEX TYPE="PERSON">SAM) and Westfall</ENAMEX> and
+        Young step-down adjusted 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values, will be investigated in our
+        study. We note at the outset that our investigation of
+        methods for detection of such differentially expressed
+        genes has several limitations. Firstly, it is based solely
+        on the brachial plexus injury data which, in turn, is
+        limited by small sample sizes (<NUMEX TYPE="CARDINAL">10</NUMEX> injured <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and <NUMEX TYPE="CARDINAL">3</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">controls</ENAMEX>). However, such small sample sizes are
+        characteristic of many current microarray studies, in view
+        of technologic expense, so that exploration in this setting
+        is purposeful. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, our investigation is largely
+        empiric, there being no overarching theory by which to
+        arbitrate competing approaches. Nonetheless, it is the
+        frequently observed heteroskedasticity of gene expression
+        measurements that motivates our extension of the <ENAMEX TYPE="ORGANIZATION">SAM</ENAMEX>
+        <ENAMEX TYPE="PERSON">methodology</ENAMEX> (see below) to <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+        <ENAMEX TYPE="PERSON">SAM</ENAMEX> was designed to evaluate the significance of changes
+        in gene expression between different biological <ENAMEX TYPE="GPE_DESC">states</ENAMEX> [ <NUMEX TYPE="CARDINAL">3</NUMEX>
+        ] . <ENAMEX TYPE="PERSON">SAM</ENAMEX> assigns a score to each gene (here and below what
+        we refer to as genes are actually probe sets on the chip
+        that target full length cDNAs or ESTs) as an index of the
+        relative difference between <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. A gene is labeled as
+        significant if its score surpasses a threshold. <ENAMEX TYPE="PERSON">SAM</ENAMEX> terms
+        the percentage of genes identified by chance the false
+        discovery rate (FDR) and estimates this quantity by
+        recourse to permutation. The threshold can be adjusted to
+        identify different sizes of sets of putatively significant
+        genes, and <ENAMEX TYPE="ORGANIZATION">FDRs</ENAMEX> are modified accordingly. We note here that
+        this differs from the formulation and sequential control of
+        <ENAMEX TYPE="ORGANIZATION">FDRs</ENAMEX> as originally proposed by <ENAMEX TYPE="ORGANIZATION">Benjamini</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Hochberg</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+        ; see <ENAMEX TYPE="ORGANIZATION">Storey</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">Storey</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Tibshirani</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] for
+        discussion of the distinctions and considerations pertinent
+        to microarray data analysis. Throughout, we will use FDR in
+        the sense of <ENAMEX TYPE="GPE">SAM</ENAMEX>. Tusher, 
+        <ENAMEX TYPE="SUBSTANCE">et al.</ENAMEX> used <ENAMEX TYPE="PRODUCT">SAM</ENAMEX> to study the
+        <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> response of lymphoblastoid cells to
+        <ENAMEX TYPE="GPE">ionizing</ENAMEX> radiation, and they were successful in identifying
+        <NUMEX TYPE="CARDINAL">34</NUMEX> biologically meaningful genes. A different algorithm,
+        proposed by <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> and adapted by Dudoit 
+        et al. [ <ENAMEX TYPE="LAW">7</ENAMEX> ] for microarrays, tackles
+        the multiple testing problem from a different angle. It
+        controls the family-wise Type I error rate (FWER), which is
+        the probability of having <NUMEX TYPE="CARDINAL">at least one</NUMEX> false positive among
+        all <ENAMEX TYPE="PER_DESC">hypotheses</ENAMEX> tested. It provides less conservative
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> than the traditional <ENAMEX TYPE="PERSON">Bonferroni, Šidák</ENAMEX>, and Holm
+        corrections and is able to handle the dependence (e.g.
+        <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-regulation) among gene expression profiles. In a study
+        that tested whether alterations in the expression of genes
+        related to high-density lipoprotein metabolism affects the
+        expression of other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, multiple-testing methods
+        identified <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that showed significant altered
+        expression levels in <ENAMEX TYPE="SUBSTANCE">scavenger receptor BI</ENAMEX> transgenic <ENAMEX TYPE="ANIMAL">mice</ENAMEX>
+        and <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in apolipoprotein AI-knockout <ENAMEX TYPE="ANIMAL">mice</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+        Further discussions, additional approaches and comparisons
+        can be found at [ <ENAMEX TYPE="LAW">9</ENAMEX> ] .
+        In the comparison of expression levels of <TIMEX TYPE="DATE">more than 5000</TIMEX>
+        <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> between normal <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and brachial plexus
+        injury <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, we adopt both <ENAMEX TYPE="PERSON">SAM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Westfall & Young</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> using regular 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics assuming equal variances
+        and 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics assuming unequal
+        <ENAMEX TYPE="ORGANIZATION">variances</ENAMEX> (hereafter called <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistics). The
+        application of <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics is motivated by the work of
+        <ENAMEX TYPE="PERSON">Thomas</ENAMEX>, 
+        et al. [ <TIMEX TYPE="DATE">10</TIMEX> ] . In their paper, they
+        <ENAMEX TYPE="ORGANIZATION">applied Welch</ENAMEX> tests on a <ENAMEX TYPE="DISEASE">leukemia dataset</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] and
+        demonstrated the importance of allowing for unequal
+        <ENAMEX TYPE="ORGANIZATION">variances</ENAMEX>. Following a similar approach, we have identified
+        a set of known and novel genes that largely fall into <NUMEX TYPE="CARDINAL">six</NUMEX>
+        categories: <ENAMEX TYPE="CONTACT_INFO">cytokines / neurotrophine</ENAMEX>, myelin function,
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> transduction, cytoskeleton, <ENAMEX TYPE="CONTACT_INFO">transcription /</ENAMEX>
+        translation and others. Some genes are confirmed by
+        literature; others still require explanation and future
+        research. We also compared the performance of <ENAMEX TYPE="GPE">SAM</ENAMEX> and
+        <ENAMEX TYPE="PERSON">Westfall & Young</ENAMEX> algorithms, as well as 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics. In
+        this study, we hope to provide a framework for future
+        experimental research in avulsion injuries and pain. In
+        addition, we illustrated the use of appropriate multiple
+        testing methods for microarrays in monitoring differential
+        gene expression between different biological <ENAMEX TYPE="GPE_DESC">states</ENAMEX>.
+      
+      
+        Results
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> displays for test statistics
+          Figure 1is a scatter plot of the intensity readings
+          for a <ENAMEX TYPE="PER_DESC">patient</ENAMEX> (<NUMEX TYPE="MONEY">P15</NUMEX>) and the corresponding readings of a
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> (<NUMEX TYPE="MONEY">C1</NUMEX>). The considerable deviation from the
+          identity line indicates that gene expression is
+          substantially disturbed as a consequence of the avulsion
+          injury. For comparison, the scatter plots for a pair of
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> and a pair of patient data sets clearly show less
+          deviation.
+          The frequency distribution of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics and the normal Q-Q
+          plot for 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics are provided in
+          Figure <NUMEX TYPE="CARDINAL">2</NUMEX>. Both the histogram and the Q-Q plot show that
+          the distribution of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics is not normal.
+          However, in our study we are more interested in
+          identifying genes with substantial 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics than in testing the
+          distribution of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> having 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics that deviate markedly
+          from the bulk of the observations were labeled as
+          potentially having biological significance and may
+          deserve further investigation [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . Plots of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics against average
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> and different components of 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics against each other
+          (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) are especially useful in identifying genes
+          with substantial statistics and in studying the features
+          of these genes [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . The average intensity for each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is the average of the mean expression level for the
+          <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and the control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. In Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, large 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics were easily
+          <ENAMEX TYPE="ORGANIZATION">visualized</ENAMEX> and labeled in red. They correspond to the
+          same genes identified as outliers in the Q-Q plot (Figure
+          <NUMEX TYPE="CARDINAL">2</NUMEX>). The <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that have the largest 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics do so by virtue of
+          having denominators <NUMEX TYPE="CARDINAL">close to zero</NUMEX>, implying near constant
+          expression levels. Further, their expression levels are
+          observed to be very low. Consequently, these genes might
+          be of little biological interest. In order to more
+          systematically evaluate differential expression and
+          complement these graphical approaches, we next apply
+          <ENAMEX TYPE="PERSON">SAM</ENAMEX>.
+        
+        
+          Application of <ENAMEX TYPE="WORK_OF_ART">SAM: t-SAM and Welch-SAM</ENAMEX>
+          
+            <ENAMEX TYPE="ORGANIZATION">t-SAM</ENAMEX>
+            
+              Experimental outline
+              We used the <ENAMEX TYPE="PERSON">SAM</ENAMEX> methodology to identify genes with
+              statistically significant changes in expression. For
+              the 
+              i thgene a modified 
+              <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic, 
+              d(i) , was used to quantitate
+              differential expression.
+              
+              All quantities here and below are defined in the
+              Methods section. The 
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              <NUMEX TYPE="CARDINAL">0</NUMEX> factor was added to help ensure
+              that the variance of 
+              d(i) is independent of gene
+              expression level and to mitigate problems caused by
+              small denominators. A similar strategy derived from a
+              <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> approach is detailed in [ <TIMEX TYPE="DATE">12</TIMEX> ] . In order to
+              select an appropriate 
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              <TIMEX TYPE="DATE">0</TIMEX> value for this dataset, we
+              <ENAMEX TYPE="PERSON">plotted Δ</ENAMEX> against <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> using different values of 
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              <NUMEX TYPE="CARDINAL">0</NUMEX> . Figure <TIMEX TYPE="DATE">4shows</TIMEX> that calculating
+              
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              0 according to the <ENAMEX TYPE="ORGANIZATION">Tusher</ENAMEX>, 
+              et al. prescription yields a
+              value equal to the minimum of the pooled standard
+              deviations over all the genes, which fails to reduce
+              <ENAMEX TYPE="ORGANIZATION">FDRs</ENAMEX>. We therefore elected to set 
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              <NUMEX TYPE="CARDINAL">0</NUMEX> at the <NUMEX TYPE="CARDINAL">5</NUMEX> thpercentile of the
+              pooled standard deviations ( 
+              <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+              <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">2.8</NUMEX>); this choice does reduce
+              <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX>.
+              As Δ increases, the number of significant genes
+              <ENAMEX TYPE="PERSON">decreases</ENAMEX>, but at the same time the percentage of
+              <ENAMEX TYPE="PERSON">falsely</ENAMEX> called <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> also decreases. The curve of FDR
+              vs. Δ in Figure <TIMEX TYPE="DATE">4shows</TIMEX> that <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> generally decreases
+              monotonically as Δ increases, but from some Δ on the
+              decrease flattens markedly (see also <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The
+              choice of Δ is somewhat arbitrary, but is driven by
+              choosing an acceptable <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> and an appropriate number
+              of significant genes. We choose Δ = <NUMEX TYPE="CARDINAL">12</NUMEX>, corresponding
+              to an FDR at <NUMEX TYPE="PERCENT">18%</NUMEX>. This yields a set of <NUMEX TYPE="CARDINAL">73</NUMEX> significant
+              genes that are described next. Not surprisingly, the
+              concordance between genes identified via graphical
+              methods and those selected by <ENAMEX TYPE="PERSON">SAM</ENAMEX> is high.
+            
+            
+              Genes identified by <ENAMEX TYPE="ORGANIZATION">t-SAM</ENAMEX>
+              
+                <ENAMEX TYPE="CONTACT_INFO">Cytokines / Neurotrophines</ENAMEX>
+                Mild tissue damage, nerve damage and infection
+                produce inflammation and associated pain. This
+                results in the migration of immune cells to the
+                site of injury, which is followed by release of
+                <ENAMEX TYPE="ORGANIZATION">cytokines</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ] . <NUMEX TYPE="CARDINAL">Five</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> identified as
+                significant by 
+                <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX> have been reported in
+                the literature as relevant to the inflammation and
+                pain pathways. Interleukine <NUMEX TYPE="CARDINAL">13</NUMEX> inhibits
+                inflammatory cytokine production. <ENAMEX TYPE="ORGANIZATION">Midkine</ENAMEX> is
+                <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with neurite growth and was recently
+                discovered to have potent neuroprotective activity
+                in vivo [ <TIMEX TYPE="DATE">14</TIMEX> ] . IGFBP6 plays a significant role in
+                the differentiation, maintenance and regeneration
+                of the central cholinergic neurons [ <TIMEX TYPE="DATE">15</TIMEX> ] .
+                Cysteine-rich fibroblast growth <ENAMEX TYPE="SUBSTANCE">factor receptor</ENAMEX> is
+                also implicated in neuronal growth and
+                <ENAMEX TYPE="ORGANIZATION">differentiation</ENAMEX>. <ENAMEX TYPE="PERSON">TrkA</ENAMEX> plays a crucial role in the
+                <ENAMEX TYPE="ORGANIZATION">development</ENAMEX> and function of the nociceptive
+                reception system.
+              
+              
+                Myelin function
+                <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were identified that are involved in
+                myelin <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> and myelination: <ENAMEX TYPE="ORGANIZATION">MPZ</ENAMEX> (myelin
+                protein <NUMEX TYPE="CARDINAL">zero</NUMEX>), <TIMEX TYPE="DATE">PLP1</TIMEX> (myelin proteolipid <ENAMEX TYPE="SUBSTANCE">protein 1</ENAMEX>)
+                and <ENAMEX TYPE="ORGANIZATION">MBP</ENAMEX> (myelin basic <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>). Defects in these
+                genes are the cause of demyelinating
+                <ENAMEX TYPE="ORGANIZATION">neuropathies</ENAMEX>.
+              
+              
+                <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> transduction
+                <ENAMEX TYPE="ORGANIZATION">PKC</ENAMEX> and <ENAMEX TYPE="PERSON">Frizzled</ENAMEX> play roles in apoptosis. The
+                down regulation of both might represent a cellular
+                response to prevent neurons from death.
+              
+              
+                Cytoskeleton
+                <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>: Myosin light <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>, Myosin heavy
+                chain and <ENAMEX TYPE="ORGANIZATION">MLCK</ENAMEX> (<ENAMEX TYPE="PRODUCT">Myosin</ENAMEX> light-<ENAMEX TYPE="ORG_DESC">chain</ENAMEX> kinase) are
+                notable in this category. The altered expression of
+                them together suggests a probable link between
+                calcium signaling and rearrangement of the
+                cytoskeleton, possibly leading to long-term changes
+                in neuronal morphology.
+              
+              
+                Others
+                <ENAMEX TYPE="EVENT">MT-III</ENAMEX> has been recently implicated as being
+                involved in sensory and nociceptive transmission [
+                <NUMEX TYPE="CARDINAL">16</NUMEX> ] . Its down regulation might also lead to
+                promotion of neurite extension to promote recovery
+                in the <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+              
+            
+          
+          
+            <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX>
+            <ENAMEX TYPE="PERSON">Thomas</ENAMEX>, 
+            et al. [ <TIMEX TYPE="DATE">10</TIMEX> ] showed that in the
+            <NUMEX TYPE="CARDINAL">two</NUMEX>-<ENAMEX TYPE="ORG_DESC">group</ENAMEX> microarray study setting the 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic assumption of equal
+            variances between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> could result in poor
+            performance. We therefore extended the <ENAMEX TYPE="PERSON">SAM</ENAMEX> framework to
+            include <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics. Under the assumption of
+            unequal variances, the associated degrees of freedom
+            are variable, and the strict monotonic decreasing
+            relationship between 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values and test statistic
+            values no longer holds. Accordingly, it is misplaced to
+            use the values of the statistics under permutation.
+            Rather, for each data permutation, we standardized the
+            <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistic using an appropriate 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> referent distribution and used
+            the resultant " 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values" as described in the
+            Method section; see also <ENAMEX TYPE="PERSON">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] . By
+            so taking into account between<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> heterogeneity,
+            <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX> identified a set of up regulated genes that
+            were not detected by 
+            <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX>. Several of these up
+            regulated genes are engaged in transcription and
+            translation regulation: transcription factor <ENAMEX TYPE="ORGANIZATION">AP</ENAMEX>-<NUMEX TYPE="CARDINAL">4</NUMEX>,
+            transcriptional coactivator <TIMEX TYPE="DATE">Pc4</TIMEX>, <TIMEX TYPE="DATE">Nrf2</TIMEX>, <TIMEX TYPE="DATE">EIF5</TIMEX> (Eukaryotic
+            translation initiation factor <NUMEX TYPE="CARDINAL">5</NUMEX>), and PABPL1
+            (<NUMEX TYPE="CARDINAL">polyadenylate</NUMEX>-binding <ENAMEX TYPE="SUBSTANCE">protein 1</ENAMEX>). In addition, two
+            genes are involved in cell cycle regulation:
+            Autoantigen pericentriol material and <ENAMEX TYPE="ORGANIZATION">CDC</ENAMEX>-like kinase.
+            Their identification suggests a secondary mechanism to
+            repair the damaged <ENAMEX TYPE="FAC_DESC">cells</ENAMEX>. The entire list of genes
+            identified by 
+            <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX> and <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX> can be found
+            at [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+          
+          
+            <ENAMEX TYPE="PERSON">t-SAM</ENAMEX> vs. <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX>
+            The relationship between <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> and Δ for <ENAMEX TYPE="PERSON">Welch</ENAMEX> is also
+            included in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. The un-pooled variance in the
+            denominator of <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistic is highly unstable under
+            <ENAMEX TYPE="ORGANIZATION">permutation</ENAMEX> in this small sample setting. Consequently,
+            <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> for <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX> is not a smooth function of Δ, as is
+            the case of 
+            <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> values for selected
+            Δs for both 
+            <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX> and <ENAMEX TYPE="PERSON">Welch-SAM</ENAMEX> when 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> was chosen at the <NUMEX TYPE="CARDINAL">5</NUMEX> thpercentile
+            of standard deviations, are listed in <ENAMEX TYPE="PRODUCT">Table 1along</ENAMEX> with
+            corresponding numbers of significant genes and false
+            <ENAMEX TYPE="ORGANIZATION">positives</ENAMEX>.
+          
+        
+        
+          Application of <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> step-down
+          adjusted pvalues
+          <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX>'s step-down adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were calculated using both
+          
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+          As before, the <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics and 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values are not monotonely related
+          because of the variation in degrees of freedom. So, we
+          again calibrated the <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistic against the
+          appropriate 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> referent distribution and
+          determined (unadjusted) " 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values" for each permutation. The
+          <ENAMEX TYPE="PERSON">smallest Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values for 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics were <NUMEX TYPE="MONEY">0.053</NUMEX>,
+          <NUMEX TYPE="MONEY">0.042</NUMEX> respectively. Figure <NUMEX TYPE="CARDINAL">5illustrates</NUMEX> the relationship
+          <TIMEX TYPE="DATE">between</TIMEX> adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values and the number of genes
+          being tested. A small simulation shows that this
+          relationship is governed by the number of true null
+          <ENAMEX TYPE="ORGANIZATION">hypotheses</ENAMEX> in the tests (unpublished data). Profiles for
+          <NUMEX TYPE="CARDINAL">nine</NUMEX> selected genes are displayed; 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics are presented in
+          Figure 5Aand <ENAMEX TYPE="PERSON">Welch</ENAMEX>-statistics in Figure <TIMEX TYPE="DATE">5B</TIMEX>. For each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>, the adjusted 
+          p value increased with the increase
+          of the number of <ENAMEX TYPE="SUBSTANCE">null genes</ENAMEX> being tested. Genes with
+          smaller statistics had greater adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values and their adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values increased at a greater
+          rate when the number of <ENAMEX TYPE="SUBSTANCE">null genes</ENAMEX> being tested was
+          larger.
+        
+      
+      
+        Discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">FWER</ENAMEX> vs. <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX>
+          In a single hypothesis test, a <ENAMEX TYPE="DISEASE">Type</ENAMEX> I error occurs
+          when a true hypothesis is rejected. In multiple testing,
+          <ENAMEX TYPE="ORGANIZATION">FWER</ENAMEX> refers to the probability of rejection of any true
+          <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX>. When many <ENAMEX TYPE="PER_DESC">hypotheses</ENAMEX> are tested, such as
+          expression data of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes being compared
+          between different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">FWER</ENAMEX> increases dramatically,
+          and is typically much larger than the significance level
+          at which the individual <ENAMEX TYPE="PER_DESC">hypotheses</ENAMEX> are tested.
+          As defined by <ENAMEX TYPE="PERSON">Shaffer</ENAMEX>, given any test procedure, an
+          adjusted 
+          p value corresponding to the test
+          of a single hypothesis H 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> is the level of the entire test
+          procedure at which H 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> would just be rejected, given the
+          values of all test statistics involved [ <TIMEX TYPE="DATE">18</TIMEX> ] . Several
+          approaches have been proposed to calculate adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values for the purpose of
+          providing control of <ENAMEX TYPE="ORGANIZATION">FWER</ENAMEX>. Among these, the method
+          developed by <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> is best suited for
+          microarray data analysis. It is superior to the
+          single-step methods proposed by <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> and <ENAMEX TYPE="DISEASE">Šidák</ENAMEX> by
+          allowing different 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values to be adjusted
+          differently; therefore the power of the procedure is
+          improved. It is also able to take into account the
+          dependence structure between variables. In a biological
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX>, expression levels of <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may
+          correlate with each other for various reasons such as
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-regulation.
+          However, when the <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX>'s permutation
+          algorithm was applied to calculate step-down adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values in our dataset, only one
+          of the adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values from <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics
+          reached a conventional significance level of <NUMEX TYPE="CARDINAL">0.05</NUMEX>. A few
+          factors might contribute to the absence of adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values at that significance
+          level. <NUMEX TYPE="ORDINAL">First</NUMEX> and foremost, the small sample sizes are
+          limiting. Furthermore, the unbalanced allocation of (<NUMEX TYPE="MONEY">10</NUMEX>)
+          <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) controls limits the precision of the
+          adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values. The number of
+          permutations we can do is only <NUMEX TYPE="CARDINAL">285</NUMEX>. A more balanced
+          experimental design will increase the number to <TIMEX TYPE="DATE">1715</TIMEX> (<NUMEX TYPE="CARDINAL">13</NUMEX>
+          choose <NUMEX TYPE="CARDINAL">6</NUMEX>, then <NUMEX TYPE="QUANTITY">minus 1</NUMEX>). <NUMEX TYPE="ORDINAL">Second</NUMEX>, the vast majority of
+          genes are expressed at low levels, as depicted in Figure
+          <NUMEX TYPE="CARDINAL">3</NUMEX>, where biological signals may become indistinguishable
+          from noise. For those cases where the difference in mean
+          expression levels is small, a pooled standard deviation
+          that is also small can give rise to a significant
+          <ENAMEX TYPE="PERSON">statistic</ENAMEX>, where in fact no difference exists. <NUMEX TYPE="ORDINAL">Third</NUMEX>,
+          Figure <TIMEX TYPE="DATE">5shows</TIMEX> that adjusted 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values are sensitive to the
+          number of <ENAMEX TYPE="SUBSTANCE">null genes</ENAMEX> being tested. Given that many genes
+          are likely to be irrelevant to the biological processes
+          underlying the brachial plexus injuries and hence are
+          expected to show little difference in their expression
+          levels between injured <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and control <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>, it
+          is not surprising that no significant result was obtained
+          for 
+          <ENAMEX TYPE="PRODUCT">t -SAM</ENAMEX> when applying the complete
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> set. In Figure <NUMEX TYPE="ORDINAL">5we</NUMEX> also try to illustrate the
+          potential abuse of using <ENAMEX TYPE="SUBSTANCE">filtered gene subsets</ENAMEX> (based on
+          statistics measuring differential expression) to achieve
+          significant results, given that such filtering is
+          commonplace in microarray literature. <TIMEX TYPE="DATE">Last</TIMEX>, although
+          <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX>'s algorithm is more powerful than
+          <ENAMEX TYPE="PERSON">Bonferroni, Šidák</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Holm</ENAMEX> adjustments by taking into
+          account the joint distribution of the test statistics, it
+          may still be too stringent. The same result also occurred
+          for <ENAMEX TYPE="ORGANIZATION">Tusher</ENAMEX>, 
+          et al. [ <ENAMEX TYPE="LAW">3</ENAMEX> ] when applying this
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> to study the transcriptional response of
+          lymphoblastoid cells to ionizing radiation. A less
+          stringent method may therefore be needed to analyze
+          microaray data.
+          The <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> provides a different point of view on how the
+          errors in multiple testing should be controlled. Having
+          many <ENAMEX TYPE="PER_DESC">hypotheses</ENAMEX> rejected signals clearly that many
+          hypotheses are not true. It is therefore more crucial to
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> the rate of false positives among all rejected
+          hypotheses than the probability of one single erroneous
+          rejection. It might thus be argued that the control of
+          <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> is a more appropriate approach to dealing with the
+          multiplicity <ENAMEX TYPE="ORG_DESC">concern</ENAMEX>. That argument is especially true in
+          the setting of microarray data analysis, where one is
+          more interested in studying as many relevant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as
+          possible, and less interested in sacrificing possible
+          targets for the <ENAMEX TYPE="ORG_DESC">concern</ENAMEX> of making one mistake [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . The
+          algorithm of <ENAMEX TYPE="PERSON">SAM</ENAMEX> proposed by <ENAMEX TYPE="PERSON">Tusher</ENAMEX>, 
+          et al. [ <ENAMEX TYPE="LAW">3</ENAMEX> ] provides an estimate
+          of the <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> for each value of the parameter Δ in the
+          application of microarray settings. The estimated <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> is
+          computed from permutation of the data and allows for the
+          possibility of dependent tests [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . We derived a set
+          of <NUMEX TYPE="CARDINAL">73</NUMEX> significant genes using <ENAMEX TYPE="PERSON">SAM</ENAMEX>, out of which <NUMEX TYPE="CARDINAL">13</NUMEX> were
+          false positives, giving rise to a <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> of <NUMEX TYPE="PERCENT">18%</NUMEX>. Although
+          <ENAMEX TYPE="PERSON">SAM</ENAMEX> is not able to disclose the identities of these false
+          positives, it does provide <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> a reasonable set of
+          potential <ENAMEX TYPE="ORG_DESC">target</ENAMEX> genes and a sense of the trustworthiness
+          of the outcome. By estimating <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> by permutations of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, <ENAMEX TYPE="PERSON">SAM</ENAMEX> assumes that all null hypotheses are true;
+          hence the estimated <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> is biased upward. <ENAMEX TYPE="ORGANIZATION">Storey</ENAMEX> and
+          Tibshirani tackled this problem by multiplying <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> by an
+          estimate of the proportion of true null hypotheses, π 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . A detailed description of the
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> can be found in <ENAMEX TYPE="GPE">Storey</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Tibshirani</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+          Following their approach, the <NUMEX TYPE="PERCENT">18%</NUMEX> false discovery rate is
+          lowered to <NUMEX TYPE="PERCENT">about 13%</NUMEX> by assuming that not all hypotheses
+          are null. Further recent comparisons of multiple testing
+          procedures are provided by <ENAMEX TYPE="PERSON">Holland</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Cheung</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ]
+          .
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>-statistics vs. <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistics
+          We applied both 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+          The <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics identified a set of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> having
+          increased expression in the patient <ENAMEX TYPE="ORG_DESC">group</ENAMEX> that were not
+          detected by 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics under the same
+          <ENAMEX TYPE="ORGANIZATION">stringency</ENAMEX>. One can argue that the active <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have
+          greater variability in gene expression than inactive ones
+          have [ <TIMEX TYPE="DATE">20</TIMEX> ] . Such a difference will be reflected in
+          larger variances in the patient <ENAMEX TYPE="PER_DESC">group</ENAMEX> relative to the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, a scenario more appropriate for <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX>
+          statistics than 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics. In addition,
+          <ENAMEX TYPE="PERSON">subjects</ENAMEX> (<ENAMEX TYPE="PER_DESC">patients</ENAMEX>) in our analysis might be in different
+          conditions. Some <ENAMEX TYPE="PER_DESC">patients</ENAMEX> might have more tissue damage
+          and/or more severe pain than others. Further, the patient
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> is likely to be inherently more heterogeneous with
+          respect to the extent of tissue damage and other relevant
+          yet <ENAMEX TYPE="ORG_DESC">unmeasured</ENAMEX> attributes. These considerations also
+          argue for the appropriateness of <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+          <ENAMEX TYPE="PERSON">Thomas</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> also found that <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX>
+          statistics conformed better than 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics to their regression
+          modeling approach used to discover differentially
+          expressed genes in a microarray setting where
+          between<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> heterogeneity was evident [ <TIMEX TYPE="DATE">10</TIMEX> ] . There
+          are drawbacks, however, to using the <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+          Firstly, they need to be calibrated, introducing
+          distributional assumptions. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, and more
+          <ENAMEX TYPE="PERSON">importantly</ENAMEX>, there are stability and power concerns that
+          <ENAMEX TYPE="ORGANIZATION">pertain</ENAMEX> in small sample settings [ <TIMEX TYPE="DATE">17</TIMEX> ] .
+        
+      
+      
+        Conclusion
+        The use of high-density microarray technology to
+        identify specific genes that are expressed differently
+        under <NUMEX TYPE="CARDINAL">one</NUMEX> or more biological conditions is particularly
+        relevant to drug discovery and development. However, in the
+        context of microarray data analysis, multiple testing
+        concerns are forefront. In this study, we attacked the very
+        important problem of application of appropriate multiple
+        testing methods in identifying differential gene
+        expression, and in addition, we have provided a framework
+        for future experimental research in brachial plexus
+        injuries and pain pathways. Simple statistical summaries,
+        such as fold change, 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics,
+        have been applied. To further investigate some recently
+        proposed multiple testing schemes, we compared the
+        performance of <NUMEX TYPE="CARDINAL">two</NUMEX> approaches, <ENAMEX TYPE="PERSON">SAM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX>
+        step down adjusted 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values, as applied to a microarray
+        study of gene expression in a brachial plexus injury. Our
+        results show that using <ENAMEX TYPE="PERSON">SAM</ENAMEX> and controlling <ENAMEX TYPE="SUBSTANCE">FDR</ENAMEX> leads to
+        identification of a set of potentially interesting genes
+        consistent with prior knowledge of their function. In
+        addition, <ENAMEX TYPE="PERSON">SAM</ENAMEX> readily quantitates the trade-offs between
+        false discovery rates and numbers of selected genes. On the
+        other hand, the <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> algorithm, by
+        <ENAMEX TYPE="ORGANIZATION">controlling FWER</ENAMEX>, is highly conservative in this small
+        sample setting. To the extent that <ENAMEX TYPE="ORGANIZATION">FWER</ENAMEX> provides
+        appreciably more stringent selection, attendant findings of
+        significant differential gene expression are more likely to
+        be validated (by follow-up experiment) than those deriving
+        from FDR-controlling methods. However, there has been
+        recent recognition [ <NUMEX TYPE="CARDINAL">5 6 21</NUMEX> ] and our study also shows that
+        FWER-control can be unnecessarily stringent since falsely
+        selecting a few <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will not be a serious problem if the
+        majority of differentially expressed genes are chosen
+        correctly. In addition to comparing multiple testing
+        algorithms, we also compared the performance of 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics.
+
+        By taking into account the heterogeneous nature of the
+        <ENAMEX TYPE="PER_DESC">patient group</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics identified a set of genes
+        having increased expression in the patient <ENAMEX TYPE="PER_DESC">group</ENAMEX>, whereas
+        these <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were not selected by the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics under the same
+        criteria.
+      
+      
+        Methods
+        
+          Materials
+          Briefly, cervical avulsed human <ENAMEX TYPE="ORGANIZATION">DRG</ENAMEX> tissues (<ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">10</NUMEX>)
+          were removed in the setting of a dorsal rhizotomy of
+          lower cervical (and upper thoracic in <NUMEX TYPE="CARDINAL">one</NUMEX> case) nerve
+          roots in <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with persistent pain syndromes after
+          accidental avulsion injuries. Details on obtaining,
+          processing and measuring the expression of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> in
+          the <ENAMEX TYPE="ORGANIZATION">human DRG</ENAMEX> and control tissue samples are located
+          elsewhere <ENAMEX TYPE="CONTACT_INFO">http://itsa.</ENAMEX><ENAMEX TYPE="ORGANIZATION">ucsf</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/~yxiao/Avulsion.</ENAMEX> The
+          <ENAMEX TYPE="ORGANIZATION">control human DRG</ENAMEX> sample was pooled from total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">n</ENAMEX> =
+          <NUMEX TYPE="CARDINAL">8</NUMEX>; prepared by <ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX>) obtained from post-mortem
+          <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>. The pool of <ENAMEX TYPE="PER_DESC">n</ENAMEX>=<NUMEX TYPE="CARDINAL">8</NUMEX> was then run in triplicate
+          (n=<NUMEX TYPE="CARDINAL">3</NUMEX>). Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was extracted from the tissue by Trizol
+          (<ENAMEX TYPE="ORGANIZATION">LifeTechnologies</ENAMEX>) extraction and <ENAMEX TYPE="SUBSTANCE">polyA +RNA</ENAMEX> was
+          recovered by <ENAMEX TYPE="ORGANIZATION">Oligotex</ENAMEX> mRNA <ENAMEX TYPE="ORGANIZATION">Spin Columns</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>).
+          Biotinylated cRNA targets were prepared and hybridized to
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">HU6800</ENAMEX> oligonucleotide arrays according to the
+          <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>'s protocol (<ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>, <ENAMEX TYPE="GPE">Santa Clara</ENAMEX>,
+          <ENAMEX TYPE="GPE">California</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> analysis methods
+          
+            Normalization
+            All data from <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and control <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were
+            <ENAMEX TYPE="ORGANIZATION">preprocessed</ENAMEX> (background subtraction, differential
+            <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>) using <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">GeneChip</ENAMEX> software, and
+            average differential intensity (ADI) was used for
+            analysis. The average of all <ENAMEX TYPE="ORGANIZATION">ADI</ENAMEX> values of each chip
+            was calculated and the mean of average values of all
+            chips was used as the target intensity. The ADI value
+            of each chip was normalized to be equal to the target
+            intensity. Since negative, <NUMEX TYPE="CARDINAL">zero</NUMEX>, and very small
+            positive values (<NUMEX TYPE="MONEY"><20</NUMEX>) of ADI most likely represent
+            noise instead of actual gene expression, all such
+            values were truncated at <TIMEX TYPE="DATE">20</TIMEX> resulting in <NUMEX TYPE="CARDINAL">5,638</NUMEX> probe
+            sets for analysis.
+          
+          
+            Graphical display
+            A <ENAMEX TYPE="GPE">Quantile-Quantile</ENAMEX> plot (Q-Q plot) was generated by
+            plotting the quantiles of 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics of all genes against
+            the quantiles of a standard normal distribution. In
+            addition to examining the distribution of 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics, we used this plot
+            to observe points that deviate markedly from the bulk
+            of the observations since they may represent difference
+            in means of the <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. <NUMEX TYPE="CARDINAL">Four</NUMEX>
+            scatter plots were generated to study the features of
+            large 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics: 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics vs. average
+            intensities, 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics vs. 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> denominators, 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics vs. 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> numerators, and 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> <ENAMEX TYPE="PER_DESC">numerators</ENAMEX> vs. 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> denominators.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Significance Analysis of Microarrays</ENAMEX> (<ENAMEX TYPE="GPE">SAM</ENAMEX>)
+            The <ENAMEX TYPE="PERSON">SAM</ENAMEX> procedure described by Tusher 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">3</ENAMEX> ] based on the 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic (under the
+            assumption of equal variances between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>)
+            and the <ENAMEX TYPE="PERSON">Welch</ENAMEX> statistic (under the assumption of
+            unequal variances between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>) was modified
+            as follows:
+            <NUMEX TYPE="CARDINAL">1</NUMEX>. The relative difference in the expression 
+            d(i) for the 
+            i thof 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <ENAMEX TYPE="PRODUCT">5638</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> was defined
+            as, ; 
+            i = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, ..., 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+            where and are means of expression levels of probe
+            set 
+            i in the <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and control
+            <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, respectively.
+            For statistics, and for <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics, ; where
+            and are the variances of expression levels for probe
+            set 
+            i in the <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and control
+            <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. The <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">0</ENAMEX> is discussed in the Results
+            <ENAMEX TYPE="LANGUAGE">section</ENAMEX>. For all 
+            d(i) values, corresponding 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were calculated with 
+            d(i) referenced to an appropriate
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> distribution.
+            <NUMEX TYPE="CARDINAL">2</NUMEX>. All 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were ordered: 
+            p 
+            <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+            p 
+            <ENAMEX TYPE="CONTACT_INFO">2 ≤ ... ≤</ENAMEX> 
+            p 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             .
+            <NUMEX TYPE="CARDINAL">3</NUMEX>. An exhaustive set of <NUMEX TYPE="MONEY">285</NUMEX> (<NUMEX TYPE="CARDINAL">286</NUMEX> minus the original
+            <ENAMEX TYPE="PERSON">configuration</ENAMEX>, <ENAMEX TYPE="PRODUCT">286</ENAMEX> being <NUMEX TYPE="CARDINAL">13</NUMEX> choose <NUMEX TYPE="CARDINAL">3</NUMEX>) permutations were
+            conducted. For each permutation 
+            b , 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were calculated and
+            ordered in the way of
+            <NUMEX TYPE="CARDINAL">4</NUMEX>. Expected 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values for all <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> were
+            calculated as , where 
+            i = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, ..., 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> .
+            <NUMEX TYPE="CARDINAL">5</NUMEX>. For a fixed threshold Δ, a probe set was called
+            "significant" if its 
+            p value satisfied the criterion .
+            The total number of "significant" <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> was
+            counted. The 
+            p 
+            
+              i 
+             largest among the "significant" probe set was
+            defined as the cutoff value.
+            <NUMEX TYPE="CARDINAL">6</NUMEX>. For each permutation, all <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> whose 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were smaller than the
+            cutoff value were found and were called "falsely
+            significant". The total number of these <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> was
+            counted. The estimated number of "falsely significant"
+            <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> was defined as the average of the number of
+            "falsely significant" <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> from all permutations.
+            The false discovery rate (FDR) was computed as the
+            ratio of the estimated number of "falsely significant"
+            <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> to the total number of "significant" probe
+            sets.
+            <NUMEX TYPE="CARDINAL">7</NUMEX>. <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> was computed with different values of
+            <ENAMEX TYPE="PERSON">threshold Δ</ENAMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX> step-down adjusted
+            pvalues
+            Both 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics and <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX>
+            statistics were used to compare gene expression between
+            the <ENAMEX TYPE="PER_DESC">patient</ENAMEX> and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Our data were organized
+            in a matrix in which each row represents the expression
+            of <NUMEX TYPE="CARDINAL">one</NUMEX> gene for all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and each column represents
+            the expression of all genes for one subject. The
+            permutation algorithm developed by <ENAMEX TYPE="ORGANIZATION">Westfall</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Young</ENAMEX>
+            to obtain step-down adjusted 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values was then applied as
+            follows. Note that the procedures were modified when
+            using <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX> statistics. Instead of using the <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX>
+            statistic to compute adjusted 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values, we used unadjusted 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values derived from <ENAMEX TYPE="ORGANIZATION">Welch</ENAMEX>
+            statistics and the appropriate degrees of freedom. An
+            exhaustive set of <NUMEX TYPE="CARDINAL">285</NUMEX> permutations were conducted.
+            <NUMEX TYPE="CARDINAL">1</NUMEX>. Compute the 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistic for each gene in the
+            original dataset.
+            <NUMEX TYPE="CARDINAL">2</NUMEX>. Order them: | 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">1 | ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">2 | ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">3 | ≥ ... ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              rk 
+             <ENAMEX TYPE="PERSON">|</ENAMEX>.
+            <NUMEX TYPE="CARDINAL">3</NUMEX>. Permute the <NUMEX TYPE="CARDINAL">13</NUMEX> columns of the data matrix. The
+            <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">10</NUMEX> columns now represent the pseudo-patient group
+            and the other <NUMEX TYPE="CARDINAL">3</NUMEX> columns represent the pseudo-control
+            <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>.
+            <NUMEX TYPE="CARDINAL">4</NUMEX>. Compute 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> statistics for all <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets
+            for the permuted dataset:
+            <NUMEX TYPE="CARDINAL">5</NUMEX>. <ENAMEX TYPE="PERSON">Compute</ENAMEX> and , <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">j �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">k - 1</ENAMEX>, where 
+            r 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             is such that | 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">1 | ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">2 | ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+            r <ENAMEX TYPE="CONTACT_INFO">3 | ≥ ... ≥ |</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              rk 
+             | for the original dataset.
+            <NUMEX TYPE="CARDINAL">6</NUMEX>. Repeat <ENAMEX TYPE="CONTACT_INFO">1-5</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> = <NUMEX TYPE="CARDINAL">286</NUMEX>) times and calculate the
+            adjusted 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values:
+            
+            where <ENAMEX TYPE="PRODUCT">I(•</ENAMEX>) is the indicator function setting to <NUMEX TYPE="CARDINAL">1</NUMEX> if
+            the condition in parentheses is true and <NUMEX TYPE="CARDINAL">0</NUMEX> if false.
+            The monotonicity was enforced as , for <NUMEX TYPE="CARDINAL">2</NUMEX> ≤ 
+            <ENAMEX TYPE="PRODUCT">j �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> .
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> material
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> material is located at [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . This web
+          page includes our data analysis results and also further
+          tissue and patient information.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="GPE">YX</ENAMEX> performed the statistical studies, participated in
+        its coordination, and drafted the manuscript. <ENAMEX TYPE="ORGANIZATION">MRS</ENAMEX> initiated
+        and designed the statistical analyses and drafted the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">DR</ENAMEX> carried out the tissue preparation and
+        microarray hybridization. <ENAMEX TYPE="ORGANIZATION">AHA</ENAMEX> participated in the drafting
+        of the manuscript regarding the biology of avulsion
+        injuries. <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> initiated and organized the study, and
+        participated in the collection and tissue dissection of the
+        <ENAMEX TYPE="ORGANIZATION">DRG</ENAMEX>. <ENAMEX TYPE="ORG_DESC">LS</ENAMEX> initiated the study and participated in its design
+        and coordination. <ENAMEX TYPE="ORGANIZATION">DH</ENAMEX> participated in the statistical
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX> and the initial manuscript drafting. <ENAMEX TYPE="ORGANIZATION">CAH</ENAMEX> initiated
+        the different methods of statistical analysis and
+        participated in its design, coordination and manuscript
+        drafting. <ENAMEX TYPE="ORGANIZATION">YX</ENAMEX> and <ENAMEX TYPE="PERSON">MRS</ENAMEX> contributed equally to this work.
+      
+    
+  

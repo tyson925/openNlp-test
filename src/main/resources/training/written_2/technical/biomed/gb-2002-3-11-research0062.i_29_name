@@ -1,0 +1,789 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray analysis has become the most widely used
+        technique for the study of gene-expression patterns on a
+        genomic scale [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. Differential microarray
+        <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-hybridization assays measure the relative gene
+        expression of paired query and reference samples, and the
+        power of microarray analysis comes from identification of
+        informative patterns of gene expression across multiple
+        experiments. Achieving both these objectives is facilitated
+        by using a common reference sample that provides a baseline
+        expression measure for each gene, enabling normalization
+        and comparison of independent experiments.
+        <ENAMEX TYPE="SUBSTANCE">Pooled RNA</ENAMEX> derived from cell lines is a commonly used
+        reference sample. To provide optimal coverage of genes
+        spotted on the array, reference samples are often
+        constructed from a large number of cell lines from a
+        variety of tissues. <NUMEX TYPE="CARDINAL">One</NUMEX> example is the universal human <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        reference commercially available from <ENAMEX TYPE="GPE">Stratagene</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>]. This
+        reference consists of equimolar quantities of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from <NUMEX TYPE="CARDINAL">ten</NUMEX>
+        human cancer cell lines representing <NUMEX TYPE="CARDINAL">ten</NUMEX> different tissues
+        (B cells, <ENAMEX TYPE="DISEASE">breast</ENAMEX>, brain, cervix, liver, lipocytes,
+        macrophage, skin, T cells and testis).
+        Another challenging technical consideration in
+        microarray analysis is the cutoff value used to distinguish
+        differential expression from natural <ENAMEX TYPE="SUBSTANCE">variability</ENAMEX> in the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. A cutoff of twofold up- or down-regulation has been
+        chosen to define differential expression in most published
+        studies [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. However, little has been done to evaluate
+        the accuracy of the technique and assess the confidence
+        levels for various fold-level changes in expression ratios.
+        In addition, microarray analysis is a complex, multistep
+        technique involving array fabrication, labeling,
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> and data analysis, and many <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> have
+        developed a variety of protocols for each of these steps [
+        <ENAMEX TYPE="LAW">4, 5</ENAMEX>]. Studies by a number of <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> using a range of
+        <ENAMEX TYPE="PERSON">protocols</ENAMEX> and including many different <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> will
+        give a better picture of how reliable microarrays are for
+        elucidating gene-expression profiles.
+        In this study, we evaluate the performance of cDNA
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> using our current <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> and data-analysis
+        <ENAMEX TYPE="PERSON">protocols</ENAMEX> and derive a new intensity-dependent approach to
+        identifying <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from <NUMEX TYPE="CARDINAL">19</NUMEX>
+        different human cancer cell lines, the <ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX> universal
+        <ENAMEX TYPE="SUBSTANCE">reference RNA</ENAMEX>, and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> isolated from a tumor specimen were
+        <ENAMEX TYPE="ORGANIZATION">assayed</ENAMEX> in a series of 'self-self' hybridizations on a
+        <NUMEX TYPE="CARDINAL">19,200</NUMEX>-element cDNA array (containing <NUMEX TYPE="CARDINAL">9,600</NUMEX> elements
+        spotted in duplicate). Statistical analysis of the ratios
+        of <ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX> fluorescence intensities among this large number
+        of distinct samples provides insight into the variation
+        inherent in expression ratios extracted from cDNA
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. We assess reproducibility of array experiments
+        by analyzing replicates, using both clones spotted in
+        duplicate on the same array and in triplicate hybridization
+        <ENAMEX TYPE="ORGANIZATION">assays</ENAMEX>. In addition, we use the methodology developed in
+        this study to compare expression in a colon and an ovarian
+        cell line to identify tissue-specific genes.
+        Self-self hybridization results for individual cell
+        lines were also analyzed to determine the composition of an
+        optimal reference pool consisting of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> derived from cell
+        lines. Our underlying hypothesis was that pooling a large
+        number of cell lines might not necessarily improve the
+        overall gene representation. Although some cell lines
+        <ENAMEX TYPE="ORGANIZATION">express</ENAMEX> significantly more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> than others, not all cell
+        lines express all genes at the same levels. Consequently,
+        mixing cell lines may dilute rare transcripts so that their
+        representation in the final <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> pool is below the
+        detectable limit. Results of our analysis will aid in the
+        future assessment of gene-expression patterns and the
+        design of reference <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX>.
+      
+      
+        Results and discussion
+        
+          Cell line self-self hybridizations
+          To evaluate the natural variability present in spotted
+          cDNA microarray data across a number of <ENAMEX TYPE="SUBSTANCE">distinct RNA</ENAMEX>
+          samples, we carried out a set of self-self assays in
+          which aliquots of the same <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> are separately labeled
+          with <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX> dyes and co-hybridized to a single
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Poly</ENAMEX>(A) +<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was prepared from <NUMEX TYPE="CARDINAL">19</NUMEX> human
+          carcinoma cell lines (<NUMEX TYPE="CARDINAL">2</NUMEX> brain, <NUMEX TYPE="CARDINAL">5</NUMEX> colon, <NUMEX TYPE="CARDINAL">10</NUMEX> ovarian, <NUMEX TYPE="CARDINAL">1</NUMEX>
+          pancreatic, and <NUMEX TYPE="CARDINAL">1</NUMEX> testicular) and <ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>'s universal
+          human <ENAMEX TYPE="SUBSTANCE">reference RNA</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was reverse transcribed into
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> using random hexamer primers in the presence of
+          <NUMEX TYPE="QUANTITY">5-aminoallyl-dUTP</NUMEX>; <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX> dyes were covalently
+          coupled to the incorporated aminoallyl linkers in a
+          subsequent labeling reaction.
+          For each cell line, <ENAMEX TYPE="PRODUCT">Cy3- and Cy5-</ENAMEX><ENAMEX TYPE="SUBSTANCE">cDNA samples</ENAMEX> were
+          <ENAMEX TYPE="ORGANIZATION">co-hybridized</ENAMEX> to a spotted microarray containing <NUMEX TYPE="CARDINAL">19,200</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">human cDNA</ENAMEX> clones (<NUMEX TYPE="CARDINAL">9,600</NUMEX> clones printed in duplicate).
+          Hybridization results were analyzed to determine relative
+          expression levels for each printed element, and
+          hybridization intensity data were first normalized
+          globally using an iterative mean-log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio)-centering approach. <ENAMEX TYPE="CONTACT_INFO">Briefly,</ENAMEX>
+          log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values were calculated for
+          each array element and the mean of the distribution was
+          calculated. Ratios were adjusted such that the mean log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) for the entire collection of
+          genes was set to <NUMEX TYPE="CARDINAL">zero</NUMEX> (or a corresponding average ratio
+          of <NUMEX TYPE="CARDINAL">1</NUMEX>). As <ENAMEX TYPE="PER_DESC">outliers</ENAMEX> can significantly influence this
+          process, these were identified and excluded and the
+          process repeated until <TIMEX TYPE="DATE">convergence</TIMEX>. This process results
+          in an average <ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX> log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) of <NUMEX TYPE="CARDINAL">zero</NUMEX> for the spots
+          analyzed in each microarray.
+          We and others have noted that the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values often have a
+          systematic dependence on intensity most often observed as
+          a deviation from <NUMEX TYPE="CARDINAL">zero</NUMEX> for low-intensity spots. Locally
+          weighted linear regression (lowess) [ <ENAMEX TYPE="LAW">6</ENAMEX>] has been
+          proposed as a normalization method for microarray assays
+          [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>] that can remove intensity-dependent dye-specific
+          effects in the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values.
+          In this procedure, fluorescence intensities are
+          measured from both <ENAMEX TYPE="ORG_DESC">channels</ENAMEX> for all elements on the array
+          and the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) ratios for each spot are
+          represented as a function of the log 
+          <TIMEX TYPE="DATE">10</TIMEX> (<TIMEX TYPE="TIME">Cy5*Cy3</TIMEX>) product intensities.
+          Scatter-plots of such data, referred to as an 'R-I plot'
+          (for ratio-intensity), can reveal intensity-specific
+          artifacts in the measurement of the ratio, which tend to
+          occur most notably for weakly fluorescing arrayed
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. For a self-self hybridization of the type
+          analyzed here, one expects a mean log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) ratio of <NUMEX TYPE="CARDINAL">zero</NUMEX> for each
+          element in the array independent of intensity. Lowess
+          enables deviations from this expected behavior to be
+          detected and corrected by performing a local weighted
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> regression for each data point in the <ENAMEX TYPE="NATIONALITY">R</ENAMEX>-I plot and
+          subtracting the average ratio from the experimentally
+          observed ratio. A representative <ENAMEX TYPE="NATIONALITY">R</ENAMEX>-I plot for the cell
+          line <NUMEX TYPE="ORDINAL">KM12L4A</NUMEX> in Figure 1shows a slight upward curve of
+          the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) for low-intensity data
+          points (shown in blue) which is removed after application
+          of the lowess correction, producing a balanced
+          distribution of expression ratios around <NUMEX TYPE="CARDINAL">zero</NUMEX> independent
+          of intensity (shown in red). Similar plots, including a
+          calculated standard deviation (SD) both before and after
+          lowess correction, are shown in Figure <TIMEX TYPE="DATE">1c</TIMEX>. The most
+          important feature of the data is the narrow distribution
+          of ratios in individual array experiments regardless of
+          the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sample assayed in each experiment. This is also
+          true of the entire dataset, as can be seen in the
+          histogram of combined expression ratios from <NUMEX TYPE="CARDINAL">30</NUMEX>
+          experiments, shown in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          These results are comparable to those obtained in a
+          recent study of <NUMEX TYPE="CARDINAL">30</NUMEX> self-self hybridizations on
+          <NUMEX TYPE="CARDINAL">10,000</NUMEX>-element cDNA arrays [ <ENAMEX TYPE="LAW">9</ENAMEX>]. Yue 
+          et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>] created histograms for
+          <NUMEX TYPE="CARDINAL">three</NUMEX> sets of data, each consisting of <NUMEX TYPE="CARDINAL">10</NUMEX> independent
+          array experiments, using <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX> derived from human
+          placenta, brain and heart tissue. In one of their data
+          sets, a <ENAMEX TYPE="LAW">2-SD</ENAMEX> limit of <NUMEX TYPE="CARDINAL">1.25</NUMEX>-fold was observed; combined,
+          <NUMEX TYPE="PERCENT">99.5%</NUMEX> of the data points were within ± <NUMEX TYPE="CARDINAL">1.4</NUMEX>-fold. A small
+          number of <ENAMEX TYPE="SUBSTANCE">distinct samples</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) in combination with a
+          large number of replicates per sample (<NUMEX TYPE="MONEY">10</NUMEX>) most probably
+          accounts for the slightly tighter distribution of
+          expression ratios than that observed in our study.
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> important aspect of our dataset is the
+          number of 'outliers'; <NUMEX TYPE="PERCENT">approximately 5%</NUMEX> of the data points
+          in each array fall outside of <NUMEX TYPE="QUANTITY">2 SD</NUMEX> from the mean (data
+          not shown). While this is not unexpected, it suggests
+          that the distribution of log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values does not deviate
+          badly from normal. This is of a particular significance
+          because it should enable detection of genes with low
+          levels of differential expression at high confidence in
+          future studies. Combining all data from <NUMEX TYPE="CARDINAL">all 30</NUMEX>
+          hybridizations, the <ENAMEX TYPE="LAW">2-SD</ENAMEX> limit is equivalent to <NUMEX TYPE="CARDINAL">1.46</NUMEX>-fold
+          change <NUMEX TYPE="MONEY">(± 0.546</NUMEX> log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio)), <NUMEX TYPE="CARDINAL">only 18,221</NUMEX> out of <NUMEX TYPE="CARDINAL">332,601</NUMEX>
+          points, or <NUMEX TYPE="PERCENT">5.5%</NUMEX> of the expression ratios, fall outside a
+          <NUMEX TYPE="CARDINAL">2</NUMEX>-SD threshold. Consequently, if differential expression
+          is defined as greater than <NUMEX TYPE="QUANTITY">2 SD</NUMEX> from the mean, genes with
+          fold changes greater than <NUMEX TYPE="CARDINAL">1.5</NUMEX> can be classified as up- or
+          down-regulated at <NUMEX TYPE="PERCENT">approximately 95%</NUMEX> confidence level.
+          Good-quality array data can only be generated using
+          well developed and extensively tested <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>-analysis protocols. Our <ENAMEX TYPE="ORG_DESC">group</ENAMEX> has been working
+          continuously to improve our laboratory procedures and
+          implement new data-analysis methods. <NUMEX TYPE="CARDINAL">One</NUMEX> of the changes
+          recently adopted by ours and many other <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> is
+          indirect cDNA labeling. As <NUMEX TYPE="ORDINAL">first</NUMEX>-strand cDNA synthesis is
+          identical for both <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, incorporation of nucleotides
+          with an aminoallyl linker followed by the covalent
+          coupling reaction to <ENAMEX TYPE="WORK_OF_ART">Cy dyes reduces bias for</ENAMEX>
+          incorporation of <NUMEX TYPE="CARDINAL">one</NUMEX> dye over the other by the reverse
+          <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX>. Slight dye-specific effects are present in
+          normalized low-intensity data, probably caused by a
+          wavelength-dependent differential response of the
+          photomultiplier tubes in the array scanners or slight
+          differences or nonlinearities in the quantum efficiencies
+          of the fluorescent dyes, but these can be efficiently
+          removed by the application of the lowess correction.
+        
+        
+          Tissue sample self-self hybridization
+          In our experience, hybridization using <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> derived
+          from tissue samples is generally more problematic than
+          that derived from cell lines. To determine whether data
+          of comparable quality can be generated with tissue <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>,
+          we carried out a similar expression analysis using <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          derived from a colon <ENAMEX TYPE="DISEASE">tumor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">liver metastasis</ENAMEX>. <TIMEX TYPE="DATE">Twenty</TIMEX>
+          micrograms of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> that have been extracted using
+          <ENAMEX TYPE="ORGANIZATION">Trizol</ENAMEX> and subjected to secondary purification using
+          <ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX> RNeasy columns were labeled with both <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and Cy5
+          and examined in a self-self co-hybridization assay. The
+          distribution of expression ratios is in excellent
+          agreement with cell-line data; <NUMEX TYPE="CARDINAL">only 507</NUMEX> out of <NUMEX TYPE="CARDINAL">11,743</NUMEX>
+          (<NUMEX TYPE="PERCENT">4.3%</NUMEX>) of identified spots fall outside the <NUMEX TYPE="CARDINAL">1.42</NUMEX>-fold
+          change, <NUMEX TYPE="CARDINAL">2</NUMEX>-SD limit.
+        
+        
+          Intensity-dependent estimation of differential
+          expression
+          While lowess normalization greatly reduces
+          dye-specific artifacts that often appear for
+          low-intensity data points, the data exhibit additional
+          structure that can be used to evaluate patterns of gene
+          expression. As can be seen in Figure <TIMEX TYPE="DATE">1a</TIMEX>, the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) measures generally show
+          greater variation at lower intensities. Most published
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> studies use a single log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) threshold as a measure of
+          differential expression. Examination of the distribution
+          in Figure <TIMEX TYPE="DATE">1suggests</TIMEX> that this may inappropriately
+          identify genes at intensities where the natural variation
+          in the data would not support their selection, while at
+          the same time causing genes to be missed in other
+          intensities where the data suggest that much lower log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values are statistically
+          significant. Several mathematical <ENAMEX TYPE="PER_DESC">models</ENAMEX> have been
+          derived to explain this phenomenon [ <TIMEX TYPE="DATE">10, 11, 12, 13, 14</TIMEX>].
+          <NUMEX TYPE="CARDINAL">One</NUMEX> [ <TIMEX TYPE="DATE">10</TIMEX>] discusses the use of a smoothed estimate of the
+          <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> as a function of the fluorescence intensity. The study
+          conducted by <ENAMEX TYPE="ORGANIZATION">Hughes</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">11</TIMEX>] shows how their model
+          for estimating intensity-dependent differential
+          expression can be used to identify biologically
+          meaningful differential regulation at levels lower than
+          <ENAMEX TYPE="ORGANIZATION">twofold</ENAMEX> in a compendium of <NUMEX TYPE="CARDINAL">300</NUMEX> different 
+          Saccharomyces cerevisiae mutants
+          and chemical treatments.
+          We developed a much simpler approach to identify
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes using an
+          intensity-dependent calculation of a standard 
+          Z -score. Using a sliding window of
+          fixed width in log 
+          <TIMEX TYPE="DATE">10</TIMEX> (<TIMEX TYPE="TIME">Cy5*Cy3</TIMEX>), the local mean and SD
+          was calculated for each gene using the data in the
+          normalized <ENAMEX TYPE="NATIONALITY">R</ENAMEX>-I plot. Figure <NUMEX TYPE="CARDINAL">3adepicts</NUMEX> the result of such
+          a calculation for the cell line <NUMEX TYPE="ORDINAL">KM12L4A</NUMEX>, with data less
+          than <NUMEX TYPE="CARDINAL">1</NUMEX> SD shown blue, <TIMEX TYPE="DATE">between 1SD and 2SD</TIMEX> in green, and
+          greater than <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> in red, respectively; genes greater
+          than <NUMEX TYPE="QUANTITY">2 SD</NUMEX> from the local mean ( 
+          Z <NUMEX TYPE="MONEY">> 2</NUMEX>) are identified as being
+          significantly differentially expressed.
+          The shape of the <ENAMEX TYPE="NATIONALITY">R</ENAMEX>-I plot and the 
+          Z -score distributions are
+          characteristic of the samples being compared in the
+          microarray assay under consideration. For closely related
+          samples, such as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from a cell line and the same line
+          perturbed with a stressor, the <ENAMEX TYPE="NATIONALITY">R</ENAMEX>-I distribution has a
+          <ENAMEX TYPE="ORGANIZATION">'tadpole</ENAMEX>' shape similar to that shown for our self-self
+          hybridization, although typically with a slightly broader
+          distribution in the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) than that shown in Figure
+          3a. When <NUMEX TYPE="CARDINAL">two</NUMEX> very different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> or tissues are
+          compared, however, the distribution generally has a
+          <ENAMEX TYPE="PERSON">characteristic 'eye</ENAMEX>' shape, with the greatest spread
+          coming at intermediate expression levels. Figure 3bshows
+          the results from a hybridization comparing the CaC02
+          (colon) and <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>-1 (ovary) cell lines.
+        
+        
+          Analysis of replicates
+          Expression data for clones spotted in duplicate were
+          examined to assess reproducibility within each array.
+          Plots of the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> -transformed ratios of <TIMEX TYPE="DATE">the Cy5</TIMEX> and
+          Cy3 <ENAMEX TYPE="PER_DESC">intensities</ENAMEX> for the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> were generated for
+          this purpose. As can be seen in the representative plot
+          in Figure <TIMEX TYPE="DATE">4a</TIMEX>(blue), log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) values form a 'sphere'
+          centered around <NUMEX TYPE="CARDINAL">zero</NUMEX> with the majority of data points
+          lying between - <NUMEX TYPE="CARDINAL">0.5</NUMEX> and + <NUMEX TYPE="CARDINAL">0.5</NUMEX> on both axes. However, a
+          small number of outliers is present and probably
+          represent situations where one or both of the replica
+          spots are of poor quality. Similar plots were obtained
+          for <TIMEX TYPE="DATE">the other 29</TIMEX> self-self hybridization assays (data not
+          shown).
+          Because <NUMEX TYPE="CARDINAL">one</NUMEX> cannot determine 
+          a priori which of the duplicates is
+          in error, irreproducible <ENAMEX TYPE="PER_DESC">elements</ENAMEX> should be removed
+          before any further analysis, unless many more replicates
+          are analyzed. The idea of outlier filtering was also
+          incorporated into the model for the intensity-dependence
+          of expression ratios introduced by Baggerly 
+          et al. [ <TIMEX TYPE="DATE">10</TIMEX>]; we developed a simple
+          approach to flag and eliminate questionable replicates.
+          Ideally, <ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX> ratios should be the same for the two
+          <ENAMEX TYPE="ORGANIZATION">replicas</ENAMEX> and log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (r 
+          <ENAMEX TYPE="CONTACT_INFO">1 /r</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) (where r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> are <ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX> ratios for the two
+          <ENAMEX TYPE="ORGANIZATION">replicas</ENAMEX>) should be equal to <NUMEX TYPE="CARDINAL">zero</NUMEX>; replicates where this
+          condition is not satisfied probably contain <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          bad elements. Consequently, we sought to filter out genes
+          whose log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (r 
+          <ENAMEX TYPE="CONTACT_INFO">1 /r</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) deviates greatly from this
+          expected value of <NUMEX TYPE="CARDINAL">zero</NUMEX>. We calculated the mean and <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> of
+          this log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (r 
+          <ENAMEX TYPE="CONTACT_INFO">1 /r</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) for each pair of replicas in the
+          entire array, and eliminated pairs of <ENAMEX TYPE="PER_DESC">elements</ENAMEX> whose log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (r 
+          <ENAMEX TYPE="CONTACT_INFO">1 /r</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) is greater than <NUMEX TYPE="QUANTITY">2 SD</NUMEX> from the
+          mean. In Figure <TIMEX TYPE="DATE">4a</TIMEX>, <NUMEX TYPE="PERCENT">6.3%</NUMEX> of data points were eliminated
+          using this outlier criterion (red), resulting in a much
+          tighter dataset.
+          We also examined duplicate clone filtering in a
+          hybridization assay of <NUMEX TYPE="CARDINAL">two</NUMEX> different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, <ENAMEX TYPE="PRODUCT">CaCO2</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>-1 (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). In the case of differential expression,
+          the correlation of the replica ratios is expected to be
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX>. The correlation increases from r = <NUMEX TYPE="CARDINAL">0.86</NUMEX> (blue;
+          dashed line) to r = <NUMEX TYPE="CARDINAL">0.95</NUMEX> (red; solid line) after <NUMEX TYPE="PERCENT">1.7%</NUMEX> of
+          outliers are filtered out using the method outlined
+          above. The substantial increase in the correlation
+          <ENAMEX TYPE="PERSON">coefficient</ENAMEX> suggests that our filtering procedure
+          efficiently removes elements with <NUMEX TYPE="CARDINAL">at least one</NUMEX> unreliable
+          log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) value.
+          A similar approach can be used to identify
+          questionable replicate spots on separate slides. To show
+          this, <NUMEX TYPE="CARDINAL">five</NUMEX> cell lines (<ENAMEX TYPE="CONTACT_INFO">CaOV3, HCT-116, KM12L4A, NT2/D1,</ENAMEX>
+          and <ENAMEX TYPE="PRODUCT">SW480</ENAMEX>) were selected and assayed in triplicate. In
+          addition, expression in <TIMEX TYPE="DATE">CaCO2</TIMEX> and <ENAMEX TYPE="ORGANIZATION">PA-1</ENAMEX> was compared in
+          triplicate hybridizations. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from the same isolation
+          was used for replicate hybridizations, thus allowing us
+          to concentrate on technical and not biological
+          <ENAMEX TYPE="PERSON">replication</ENAMEX> and to explore more thoroughly the systematic
+          errors that can arise. <ENAMEX TYPE="ORGANIZATION">Replicate</ENAMEX> slides were subject to
+          filtering in pairs (arrays <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>; <NUMEX TYPE="CARDINAL">2 and 3</NUMEX>; <NUMEX TYPE="CARDINAL">1 and 3</NUMEX>)
+          using a process analogous to that applied to within-slide
+          <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX>; <ENAMEX TYPE="PER_DESC">representative</ENAMEX> data are shown in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>.
+          Correlations of log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) values for the <NUMEX TYPE="CARDINAL">three</NUMEX> pairs
+          of arrays before (blue; dashed line) and after (red;
+          solid line) filtering for <TIMEX TYPE="DATE">the CaOV3</TIMEX> cell line self-self
+          hybridizations are shown in Figure <TIMEX TYPE="DATE">5a</TIMEX>. The same set of
+          plots for differential expression assays of <ENAMEX TYPE="SUBSTANCE">CaCO2</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>-1 cell lines including linear fits to the data is
+          shown in Figure <TIMEX TYPE="DATE">5b</TIMEX>.
+          Triplicate hybridization assays enable us to assess
+          variability among independent labeling reactions and
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX>. As can be seen in Figure <TIMEX TYPE="DATE">5a</TIMEX>, there is
+          some variation in correlations for each pair of
+          hybridization replicas (arrays <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>, as well as <ENAMEX TYPE="PRODUCT">2</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">3</NUMEX>, show better correlation than do arrays <NUMEX TYPE="CARDINAL">1 and 3</NUMEX>). When
+          averaged over <NUMEX TYPE="CARDINAL">three</NUMEX> pairs of replicas, however, the
+          variability between arrays is comparable to within-array
+          variation. Similar results were obtained for the
+          remaining <NUMEX TYPE="CARDINAL">four</NUMEX> cell lines (data not shown). For the case
+          of hybridizations of <NUMEX TYPE="CARDINAL">two</NUMEX> different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>),
+          the mean r values increase significantly from <NUMEX TYPE="MONEY">0.83</NUMEX> (blue;
+          dashed lines) to <NUMEX TYPE="MONEY">0.94</NUMEX> (red; solid lines) after outliers
+          in each pair of hybridizations are filtered out. These
+          correlations are, as in the case of self-self
+          hybridizations, similar to those seen for within-array
+          <ENAMEX TYPE="ORGANIZATION">replicas</ENAMEX>.
+          Our analysis suggests that replication is essential
+          for ensuring data quality, whether spotting replicate
+          clones on single arrays or performing multiple
+          independent hybridization assays. Further, the replicate
+          filtering process we describe here is a simple approach
+          that can eliminate questionable array elements and
+          provide higher-confidence expression measurements.
+        
+        
+          Identification of differentially expressed
+          genes
+          To show how the concepts presented in this study can
+          be applied to detect differentially regulated genes, we
+          sought to identify sets of genes that are over- and
+          under-expressed in ovary relative to colon by analyzing
+          hybridization assays of <TIMEX TYPE="DATE">CaCO2</TIMEX> (colon) and <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>-1 (ovary)
+          cell lines. The <NUMEX TYPE="ORDINAL">CaCO2</NUMEX> sample was labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and the
+          <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>-1 sample was labeled with <TIMEX TYPE="DATE">Cy5</TIMEX>; genes that are
+          expressed in colon at much higher levels will, therefore,
+          have negative log-ratios and ovary <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will have
+          positive log-ratios.
+          For this analysis, we applied the process outlined in
+          the previous discussion as follows. First, individual
+          arrays were normalized using mean-log-centering and
+          <ENAMEX TYPE="ORGANIZATION">lowess</ENAMEX> procedures (as outlined in the <ENAMEX TYPE="PRODUCT">Cell</ENAMEX> line self-self
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> section). Next, unreliable spots among
+          triplicate arrays were eliminated using the filtering
+          approach discussed in the <ENAMEX TYPE="ORGANIZATION">Analysis</ENAMEX> of replicates section.
+          Then, intensity-dependent SDs on the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) were computed for each
+          array, as described in the <ENAMEX TYPE="PRODUCT">Intensity-dependent</ENAMEX> estimation
+          of differential expression section. Array elements with
+          ratios outside the <ENAMEX TYPE="LAW">2-SD</ENAMEX> limit were defined as
+          differentially regulated; <NUMEX TYPE="CARDINAL">510</NUMEX>, <NUMEX TYPE="CARDINAL">543 and 523</NUMEX> were
+          identified in each individual assay. Finally, the
+          intersection of differentially expressed genes on all
+          <NUMEX TYPE="CARDINAL">three</NUMEX> arrays was taken; this resulted in a list of <NUMEX TYPE="CARDINAL">324</NUMEX>
+          array elements (<NUMEX TYPE="CARDINAL">225</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, as some are within-array
+          <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX>), of which <NUMEX TYPE="CARDINAL">157</NUMEX> (<NUMEX TYPE="CARDINAL">109</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) have higher
+          expression in colon and <NUMEX TYPE="CARDINAL">167</NUMEX> (<NUMEX TYPE="CARDINAL">116</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) are more highly
+          expressed in the ovary relative to colon.
+          A list of differentially expressed genes with mean log
+          
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) values and <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> calculated
+          over <NUMEX TYPE="CARDINAL">three</NUMEX> experiments is available (see Additional data
+          files). The small <ENAMEX TYPE="ORG_DESC">SDs</ENAMEX> illustrate the reproducibility of
+          measurements made using the methods described here and
+          show their ability to provide a high-confidence list of
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes and their expression
+          ratios.
+          In an attempt to validate the differential expression
+          we observed in this assay, we compared our results to the
+          expression patterns derived from <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> generated
+          from <NUMEX TYPE="CARDINAL">18</NUMEX> colon and <NUMEX TYPE="CARDINAL">12</NUMEX> ovarian <ENAMEX TYPE="PER_DESC">sources</ENAMEX> (including normal
+          tissue, cancer tissue, and cell lines) using the digital
+          differential display (DDD) available at the National
+          <ENAMEX TYPE="ORGANIZATION">Center for Biotechnology Information</ENAMEX> (NCBI) [ <TIMEX TYPE="DATE">15</TIMEX>] (see
+          Additional data files). Although these data sets are not
+          completely complementary, we identified <NUMEX TYPE="CARDINAL">one</NUMEX> gene that is
+          significantly upregulated in the colon relative to ovary
+          ( 
+          <ENAMEX TYPE="ORGANIZATION">PLAB</ENAMEX> , coding for prostate
+          differentiation factor; Hs<NUMEX TYPE="CARDINAL">.296638</NUMEX>; <ENAMEX TYPE="PRODUCT">THC888554</ENAMEX>), and one
+          gene that is overexpressed in the ovary relative to colon
+          (<NUMEX TYPE="CARDINAL">24</NUMEX>-dehydrocholesterol reductase; 
+          DHCR24; Hs<NUMEX TYPE="CARDINAL">.75616</NUMEX>; <ENAMEX TYPE="PRODUCT">THC932478</ENAMEX>) in
+          both microarray and <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX> data. We also identified three
+          gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> significantly differentially expressed in
+          both datasets. We found genes in the solute carrier
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> <TIMEX TYPE="DATE">34</TIMEX> (<NUMEX TYPE="MONEY">Hs.84700</NUMEX>; <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX>), <TIMEX TYPE="DATE">22</TIMEX> (<TIMEX TYPE="DATE">THC960422</TIMEX>; microarray)
+          and <TIMEX TYPE="DATE">16</TIMEX> (<TIMEX TYPE="DATE">THC863879</TIMEX>; microarray), as well as <ENAMEX TYPE="SUBSTANCE">laminin</ENAMEX> A5
+          (Hs<NUMEX TYPE="CARDINAL">.11669</NUMEX>; <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX>) and <TIMEX TYPE="DATE">A4</TIMEX> (<TIMEX TYPE="DATE">THC933239</TIMEX>; microarray) to be more
+          abundant in the ovary. In addition, serologically defined
+          colon <ENAMEX TYPE="DISEASE">cancer</ENAMEX> antigens <TIMEX TYPE="DATE">28</TIMEX> (<NUMEX TYPE="MONEY">Hs.84700</NUMEX>; <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX>) and <NUMEX TYPE="CARDINAL">33</NUMEX>
+          (<TIMEX TYPE="DATE">THC899239</TIMEX>; microarray) were more highly represented in
+          colon. However, we also found <NUMEX TYPE="CARDINAL">two</NUMEX> discrepancies in
+          relative abundances of <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX> gene family
+          between the <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX> and microarray data. <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX> data indicate
+          that the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-kinase inhibitor <TIMEX TYPE="DATE">P58</TIMEX> (<NUMEX TYPE="MONEY">Hs.177574</NUMEX>;
+          THC906738) is more abundant in the ovary but the same
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> appears to be more highly represented in the colon
+          in our microarray study. Similarly, insulin-like growth
+          factor binding <ENAMEX TYPE="SUBSTANCE">protein 3</ENAMEX> (<NUMEX TYPE="MONEY">Hs.77326</NUMEX>; <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX>) is upregulated
+          in the ovary relative to colon while the opposite is true
+          for insulin-like growth <ENAMEX TYPE="SUBSTANCE">factor binding protein</ENAMEX> 6
+          (<TIMEX TYPE="DATE">THC1022140</TIMEX>; microarray).
+          To further validate our findings, we performed
+          quantitative real-time reverse transcription <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> (RT-PCR)
+          assays on <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with log 
+          <TIMEX TYPE="DATE">10</TIMEX> (<ENAMEX TYPE="NATIONALITY">R</ENAMEX>*<ENAMEX TYPE="ORGANIZATION">G</ENAMEX>) and log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="ORGANIZATION">R/G</ENAMEX>) values encompassing the entire
+          range present in the microarray data. Expression ratios
+          obtained by quantitative <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> (see Additional data
+          files), are in good agreement with the ratios obtained
+          using microarrays. This concordance is especially
+          significant for genes with low expression ratios and for
+          <ENAMEX TYPE="PERSON">transcripts</ENAMEX> expressed at low copy number, confirming the
+          validity of our approach for obtaining a high-confidence
+          list of differentially expressed genes. <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> data also
+          showed that the <ENAMEX TYPE="SUBSTANCE">P58 protein</ENAMEX>-kinase inhibitor (<NUMEX TYPE="MONEY">Hs.177574</NUMEX>;
+          THC906738) is upregulated in the colon relative to ovary,
+          which supports our array results and suggests that the
+          discrepancy between microarrays and <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX> is not due to
+          technical limitations of microarray assays but reflects a
+          true biological difference between the cell lines we
+          compared and tissues used in <ENAMEX TYPE="ORGANIZATION">DDD</ENAMEX>.
+        
+        
+          Reference pool selection
+          Comparison of <ENAMEX TYPE="SUBSTANCE">query samples</ENAMEX> to a common reference
+          sample is among the most widely used experimental designs
+          for large-scale microarray studies [ <TIMEX TYPE="DATE">16, 17</TIMEX>]. Reference
+          samples often consist of pools of <ENAMEX TYPE="SUBSTANCE">RNA molecules</ENAMEX> derived
+          from cell lines because cell lines provide a renewable
+          source of large quantities of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. Each cell line
+          expresses a distinct assortment of <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX>, so any
+          particular cell line will provide measurable, baseline
+          hybridization for only a subset of the genes on an array.
+          Consequently, cell line <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> reference <ENAMEX TYPE="FAC_DESC">pools</ENAMEX> are typically
+          constructed from a large number (<NUMEX TYPE="CARDINAL">10 or more</NUMEX>) of cell
+          lines derived from a variety of primary tissues. The idea
+          underlying such a design is that by combining <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> from
+          diverse cell lines, one might obtain a more complete
+          representation of the genes spotted on the array.
+          This approach, however, does not take into account the
+          expression levels of individual genes in each cell line.
+          While genes expressed at high levels will give detectable
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> even when diluted by a factor of <NUMEX TYPE="CARDINAL">10</NUMEX>, many of the
+          more rare transcripts may get diluted to below the
+          detection limit. Therefore, we hypothesized that
+          comparable or better representation of spotted genes
+          might be obtained using fewer cell lines, each expressing
+          a large number of diverse genes. To test this hypothesis,
+          we constructed <NUMEX TYPE="CARDINAL">two</NUMEX> reference pools, <ENAMEX TYPE="SUBSTANCE">TP-1</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">TP-2</ENAMEX>, using
+          a naive gene-counting approach designed to include three
+          cell lines with the greatest representation of unique
+          genes that are also easy to grow and yield high
+          quantities of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">TP-1</ENAMEX> consists of colon cell lines
+          CaCO2 and <ENAMEX TYPE="PRODUCT">KM12L4A</ENAMEX> as well as the ovarian cell line
+          OVCAR3; <ENAMEX TYPE="PRODUCT">OVCAR3</ENAMEX> is replaced with <TIMEX TYPE="DATE">the U118MG</TIMEX> (brain) cell
+          line in TP-2.
+          The results of our analysis are summarized in Figure
+          <NUMEX TYPE="CARDINAL">6</NUMEX>, which shows a <ENAMEX TYPE="PER_DESC">histogram</ENAMEX> representing the percentage of
+          array elements with signals in both <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels
+          in self-self hybridizations. The performance of <ENAMEX TYPE="SUBSTANCE">TP-1</ENAMEX> is
+          comparable to that of the <ENAMEX TYPE="NATIONALITY">Stratagene</ENAMEX> <ENAMEX TYPE="GAME">pool</ENAMEX> (approximately
+          <NUMEX TYPE="PERCENT">75%</NUMEX>), despite a large difference in the number of cell
+          lines in each pool. This supports our hypothesis that
+          adding more cell lines to the pool may not necessarily
+          improve the overall gene representation because some
+          genes are diluted below the detection limit.
+          Including cell lines from very dissimilar tissues may,
+          however, give a better representation of the genes on the
+          array. <ENAMEX TYPE="SUBSTANCE">TP-2</ENAMEX> contains a brain instead of an ovarian cell
+          line and covers close to <NUMEX TYPE="PERCENT">80%</NUMEX> of the spotted <ENAMEX TYPE="ANIMAL">sequences</ENAMEX>.
+          This improved performance relative to <ENAMEX TYPE="SUBSTANCE">TP-1</ENAMEX> is likely to
+          be due <TIMEX TYPE="DATE">both</TIMEX> to the fact that brain exhibits the greatest
+          diversity of transcripts (on the basis of based <TIMEX TYPE="TIME">EST</TIMEX> and
+          serial analysis of gene expression, <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX>, analysis), and
+          that the subset of genes expressed in brain is more
+          disjoint with the genes observed in colon than in ovary.
+          This illustrates that a simple pool of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from diverse
+          cell lines can provide a superior reference.
+        
+      
+      
+        Conclusion
+        <ENAMEX TYPE="SUBSTANCE">DNA microarray assays</ENAMEX> performed using well optimized
+        laboratory protocols can produce high-quality, reproducible
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, although the use of replicates, particularly
+        dye-reversal, or <NUMEX TYPE="MONEY">'flip-dye</NUMEX>' assays, are highly desirable.
+        While global normalization of the data can help to provide
+        meaningful expression ratios, a more sophisticated
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> using lowess allows for correction of
+        intensity-dependent artifacts in the data. Together, the
+        laboratory and analytical techniques described here can
+        produce highly precise and accurate data. In the <NUMEX TYPE="CARDINAL">30</NUMEX> assays
+        we performed, the global <NUMEX TYPE="CARDINAL">2</NUMEX>-SD limit corresponded to an
+        expression ratio <NUMEX TYPE="MONEY">between ± 1.33</NUMEX>-fold and ± <NUMEX TYPE="CARDINAL">1.62</NUMEX>-fold
+        <ENAMEX TYPE="ORGANIZATION">induction</ENAMEX> or repression, with a mean of ± <NUMEX TYPE="CARDINAL">1.47</NUMEX>
+        (corresponding to log 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> (ratio) values of <NUMEX TYPE="MONEY">± 0.41</NUMEX>, <NUMEX TYPE="MONEY">± 0.70</NUMEX>, and
+        ± <NUMEX TYPE="CARDINAL">0.56</NUMEX>, respectively), with <NUMEX TYPE="PERCENT">fewer than 5%</NUMEX> of the data
+        points falling outside the <NUMEX TYPE="QUANTITY">2 SD</NUMEX> limit. This suggests that
+        changes in gene expression smaller than the ± <NUMEX TYPE="CARDINAL">2</NUMEX>-fold
+        commonly used can be reliably identified as differential
+        expression. More careful analysis of the distribution of
+        ratios as a function of intensity suggests that an
+        intensity-dependent assessment of local <ENAMEX TYPE="PER_DESC">SD</ENAMEX> of the
+        distribution provides a better measure of statistically
+        significant differential expression; essentially
+        calculating a local 
+        Z -score. The same holds true for
+        <ENAMEX TYPE="SUBSTANCE">tissue RNA</ENAMEX> from tumor samples. Individual labeling
+        reactions and hybridizations do not introduce significant
+        variability, as judged from good correlations of replicate
+        experiments. However, a small number of outliers present in
+        replicate spots and/or arrays can be filtered out,
+        underlining the importance of replicates in generating
+        high-quality expression data.
+        Pooled reference samples should be designed on the basis
+        not only of representation of individual genes in each cell
+        line but also of expression levels of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the cell
+        lines. Adding more cell lines to the pool does not
+        necessarily improve overall gene representation because
+        rare transcripts become undetectable when diluted in a pool
+        of a large number of cell lines.
+        Overall, the data presented herein, derived from a large
+        number of <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> from cell lines and tissue, suggest
+        that the <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> and data analysis protocols we describe
+        should allow for a more accurate and reproducible
+        identification of differentially expressed genes than does
+        the selection of an arbitrary, global fold-change threshold
+        chosen independent of any measure of the natural
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in the data. We propose a model for analysis of
+        cDNA microarray data consisting of <NUMEX TYPE="CARDINAL">three</NUMEX> steps:
+        lowess-normalization of individual <ENAMEX TYPE="PER_DESC">arrays</ENAMEX>, followed by
+        replica filtering to remove questionable elements, and
+        finally estimation of the local 
+        Z -score for identification of
+        differentially regulated genes.
+      
+      
+        Materials and methods
+        
+          Array fabrication
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones were obtained from the <ENAMEX TYPE="ORGANIZATION">Research Genetics</ENAMEX>
+          sequence-verified human cDNA collection. Clone inserts
+          were PCR-amplified directly from culture and purified
+          according to a previously published protocol [ <ENAMEX TYPE="LAW">5, 18</ENAMEX>].
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> from plasmid miniprep <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was carried out for
+          microtiter plates that had <NUMEX TYPE="PERCENT">fewer than 85%</NUMEX> single-band PCR
+          products when amplified from culture. The overall success
+          rate for single-band amplification was <NUMEX TYPE="PERCENT">88%</NUMEX>. Clones were
+          printed in duplicate from <NUMEX TYPE="PERCENT">50%</NUMEX> <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX> onto <ENAMEX TYPE="ORGANIZATION">SuperAmine</ENAMEX> slides
+          (<ENAMEX TYPE="ORGANIZATION">Telechem International</ENAMEX>) as described previously and
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-linked at <NUMEX TYPE="CARDINAL">90</NUMEX> mJ using a Stratalinker
+          (<ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> extraction
+          Cells were grown in a tissue culture <ENAMEX TYPE="ORG_DESC">incubator</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">37°C,</ENAMEX>
+          <NUMEX TYPE="PERCENT">5%</NUMEX> <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) in RPMI <TIMEX TYPE="DATE">1640</TIMEX> or DMEM medium (<ENAMEX TYPE="ORGANIZATION">Life</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Technologies</ENAMEX>) supplemented with <NUMEX TYPE="PERCENT">10%</NUMEX> fetal bovine serum,
+          <ENAMEX TYPE="CONTACT_INFO">200 μg/ml</ENAMEX> streptomycin and <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="ORGANIZATION">U/ml</ENAMEX> penicillin. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was
+          extracted with <ENAMEX TYPE="PERSON">Trizol</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>) according to
+          the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s protocol and stored at <TIMEX TYPE="DATE">-80°C</TIMEX>. mRNA
+          selection from <NUMEX TYPE="QUANTITY">100 �</NUMEX>�g total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> using oligo-d(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) 
+          <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="PERSON">Dynabeads</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Dynal</ENAMEX>) and following the
+          <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>'s directions yielded <ENAMEX TYPE="PRODUCT">2-3 μg</ENAMEX> poly(A)
+          +-enriched <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> in <NUMEX TYPE="QUANTITY">20 μl 10 mM</NUMEX> <ENAMEX TYPE="PRODUCT">Tris-HCl</ENAMEX>, pH <NUMEX TYPE="CARDINAL">7.5</NUMEX>. Agilent
+          <TIMEX TYPE="DATE">2100</TIMEX> Bioanalyzer mRNA assays were carried out on <NUMEX TYPE="CARDINAL">1</NUMEX>-μl
+          <ENAMEX TYPE="ORGANIZATION">aliquots</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX> contamination was estimated to
+          vary <NUMEX TYPE="PERCENT">between 0 and 25%</NUMEX>. The rest of the mRNA sample was
+          used to prepare <ENAMEX TYPE="PER_DESC">fluorescently</ENAMEX> labeled cDNA probes.
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from a colon <ENAMEX TYPE="DISEASE">tumor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">liver metastasis</ENAMEX> was extracted
+          with <ENAMEX TYPE="PERSON">Trizol</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>) and further purified on
+          RNeasy columns (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>) using the protocol supplied by
+          the <ENAMEX TYPE="ORG_DESC">manufacturers</ENAMEX>. For each labeling reaction, <NUMEX TYPE="QUANTITY">20 �</NUMEX>�g
+          total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> were used.
+        
+        
+          Probe preparation
+          <NUMEX TYPE="ORDINAL">First</NUMEX>-strand cDNA synthesis was primed with <NUMEX TYPE="QUANTITY">4 μg</NUMEX> of
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> nonamers (<ENAMEX TYPE="ORGANIZATION">New England Biolabs</ENAMEX>) or <NUMEX TYPE="QUANTITY">6 �</NUMEX>�g random
+          <ENAMEX TYPE="ORGANIZATION">hexamers</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>) by heating at <TIMEX TYPE="DATE">70°C</TIMEX> for <NUMEX TYPE="CARDINAL">10</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>, snap-cooling in dry <ENAMEX TYPE="SUBSTANCE">ice/ethanol</ENAMEX> for <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="ORGANIZATION">sec</ENAMEX>, and
+          incubating at room temperature for <NUMEX TYPE="CARDINAL">an additional 5-10</NUMEX>
+          <ENAMEX TYPE="NATIONALITY">min.</ENAMEX> Reverse transcription was performed in the presence
+          of <NUMEX TYPE="QUANTITY">500 �</NUMEX>�M each of dATP, dCTP, and dGTP, <NUMEX TYPE="QUANTITY">200 �</NUMEX>�M
+          <TIMEX TYPE="TIME">5-aminoallyl-dUTP</TIMEX> (<ENAMEX TYPE="ORGANIZATION">Sigma</ENAMEX>), <NUMEX TYPE="QUANTITY">300 μM</NUMEX> dTTP, <NUMEX TYPE="CARDINAL">1</NUMEX> × <NUMEX TYPE="ORDINAL">first</NUMEX>-strand
+          <ENAMEX TYPE="PERSON">buffer</ENAMEX>, <NUMEX TYPE="CARDINAL">10</NUMEX> mM dithiothreitol, and <NUMEX TYPE="CARDINAL">400</NUMEX> <ENAMEX TYPE="ORGANIZATION">U Superscript II</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>) in <TIMEX TYPE="TIME">40-μl</TIMEX> reactions at <TIMEX TYPE="DATE">42°C</TIMEX> for <TIMEX TYPE="TIME">3 h to</TIMEX>
+          overnight. Reactions were quenched by the addition of <NUMEX TYPE="CARDINAL">10</NUMEX>
+          μl of <NUMEX TYPE="CARDINAL">0.5</NUMEX> <ENAMEX TYPE="ORGANIZATION">M EDTA</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA template</ENAMEX> was hydrolyzed by the
+          addition of <NUMEX TYPE="QUANTITY">10 μl</NUMEX> of <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="PERSON">M NaOH</ENAMEX> followed by heating at 70°C
+          for <NUMEX TYPE="CARDINAL">10</NUMEX> min. Reactions were neutralized with <NUMEX TYPE="QUANTITY">10 μl</NUMEX> of <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">HCl</ENAMEX>, and cDNA was purified on QIAquick columns (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>)
+          according to the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s directions but
+          substituting phosphate wash buffer (<NUMEX TYPE="CARDINAL">5</NUMEX> mM potassium
+          <ENAMEX TYPE="ORGANIZATION">phosphate</ENAMEX> pH <NUMEX TYPE="CARDINAL">8.0</NUMEX>, <NUMEX TYPE="PERCENT">80%</NUMEX> <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>) for buffer <ENAMEX TYPE="ORGANIZATION">PE</ENAMEX>, and
+          <ENAMEX TYPE="ORGANIZATION">phosphate</ENAMEX> elution buffer (<NUMEX TYPE="CARDINAL">4</NUMEX> mM potassium phosphate pH
+          <NUMEX TYPE="MONEY">8.5</NUMEX>) for buffer <ENAMEX TYPE="ORGANIZATION">EB</ENAMEX>.
+          cDNA was lyophilized to dryness and resuspended in <NUMEX TYPE="CARDINAL">4.5</NUMEX>
+          μl of <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> sodium <ENAMEX TYPE="SUBSTANCE">carbonate</ENAMEX> pH <NUMEX TYPE="CARDINAL">9.0</NUMEX> buffer. <ENAMEX TYPE="ORGANIZATION">NHS</ENAMEX> ester
+          (<NUMEX TYPE="QUANTITY">4.5 μl</NUMEX>) of <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> or <NUMEX TYPE="MONEY">Cy5 dye</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Amersham Pharmacia</ENAMEX>) in DMSO
+          (dye from one tube was dissolved in <NUMEX TYPE="QUANTITY">72 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX>) were
+          added and reactions were incubated at room temperature in
+          the dark for <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="PERSON">h. Coupling</ENAMEX> reactions were quenched by the
+          addition of <NUMEX TYPE="QUANTITY">41 μl</NUMEX> of <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> sodium acetate pH <NUMEX TYPE="CARDINAL">5.2</NUMEX>, and
+          unincorporated dye was removed using <ENAMEX TYPE="ORGANIZATION">QIAquick</ENAMEX> columns.
+          Labeling efficiency was determined by analyzing the whole
+          undiluted sample in a spectrophotometer using a <NUMEX TYPE="QUANTITY">50-�</NUMEX>�L
+          <ENAMEX TYPE="ORGANIZATION">MicroCuvette</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Beckman</ENAMEX>). Total incorporated <ENAMEX TYPE="WORK_OF_ART">Cy</ENAMEX> dye ranged
+          from <ENAMEX TYPE="PRODUCT">300-600</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">pmol</ENAMEX> and the ratio of unlabeled to labeled
+          nucleotides was typically <TIMEX TYPE="DATE">between 25 and 50</TIMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Hybridization</ENAMEX> and image processing
+          Slides were prehybridized in <NUMEX TYPE="PERCENT">1.0%</NUMEX> <ENAMEX TYPE="ORGANIZATION">BSA</ENAMEX>, <NUMEX TYPE="CARDINAL">5</NUMEX> × <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.1%</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> for <TIMEX TYPE="TIME">45 min</TIMEX>, washed by repeated dipping in MilliQ
+          water twice and <NUMEX TYPE="CARDINAL">2</NUMEX>-propanol once, and air dried.
+          Fluorescent cDNA probes were lyophilized to dryness and
+          <ENAMEX TYPE="ORGANIZATION">resuspended</ENAMEX> in <TIMEX TYPE="DATE">12 �</TIMEX>�l hybridization buffer (<NUMEX TYPE="PERCENT">50%</NUMEX> formamide,
+          <NUMEX TYPE="CARDINAL">5</NUMEX> × <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.1%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>). To combined <NUMEX TYPE="QUANTITY">Cy3</NUMEX> and <ENAMEX TYPE="SUBSTANCE">Cy5 samples</ENAMEX> were
+          added <NUMEX TYPE="CARDINAL">20</NUMEX> μg <ENAMEX TYPE="SUBSTANCE">Cot1 DNA</ENAMEX> and <NUMEX TYPE="QUANTITY">20 μg</NUMEX> poly(A) +<ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and samples
+          were denatured at <TIMEX TYPE="DATE">95°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX>, followed by snap
+          cooling on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX> for <NUMEX TYPE="CARDINAL">1</NUMEX> min. Room-temperature probes were
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to a prehybridized array, covered with a glass
+          <ENAMEX TYPE="ORGANIZATION">coverslip</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Fisher</ENAMEX>), and placed in a humidified
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> <ENAMEX TYPE="FAC_DESC">chamber</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Corning</ENAMEX>). Hybridizations were
+          carried out at <TIMEX TYPE="DATE">42°C</TIMEX> for <TIMEX TYPE="TIME">16-20 h</TIMEX>, followed by washing in
+          (<TIMEX TYPE="TIME">5 min each</TIMEX>): <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> × <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> and <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> at <NUMEX TYPE="ORDINAL">42°C</NUMEX> once, <NUMEX TYPE="CARDINAL">0.1</NUMEX> ×
+          <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> and <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> at room temperature once, and <NUMEX TYPE="QUANTITY">0.1 ×</NUMEX> SSC
+          at <ENAMEX TYPE="FAC_DESC">room</ENAMEX> temperature twice. Arrays were scanned using a
+          GenePix <TIMEX TYPE="DATE">4000</TIMEX> dual-color confocal laser scanner (<ENAMEX TYPE="ORGANIZATION">Axon</ENAMEX>).
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were collected in <TIMEX TYPE="DATE">Cy3</TIMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels and stored as
+          paired TIFF images.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> analysis
+          Spots were identified and local background subtracted
+          in the <ENAMEX TYPE="PRODUCT">TIGR_Spotfinder</ENAMEX> software [ <TIMEX TYPE="DATE">19</TIMEX>]. In the <NUMEX TYPE="ORDINAL">first</NUMEX> step,
+          a grid consisting of <ENAMEX TYPE="FAC_DESC">square cells</ENAMEX> is drawn around each
+          array element. Spot segmentation is then performed using
+          a histogram segmentation method that uses the
+          distribution of pixel intensities to separate probable
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> from background and a binary thresholding approach
+          to identify spots, followed by a procedure to exclude
+          disconnected features. Raw intensity for each element is
+          obtained by <NUMEX TYPE="ORDINAL">first</NUMEX> excluding saturated pixels and then
+          summing all remaining pixel intensities inside the spot
+          <ENAMEX TYPE="ORGANIZATION">contour</ENAMEX>. The <ENAMEX TYPE="GPE_DESC">area</ENAMEX> outside the spot contour but inside the
+          cell is used to calculate local background. Background
+          per pixel is estimated as a median of the pixels in this
+          area and is multiplied by the spot area to give an
+          estimated spot background value. In the final step, this
+          integrated background value is subtracted from the raw
+          <ENAMEX TYPE="ORGANIZATION">integrated</ENAMEX> spot intensity to produce the
+          background-subtracted integrated intensities we use for
+          further analysis. Furthermore, a quality control (QC)
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> is used to remove questionable array features. Two
+          criteria for spot rejection are a spot shape that
+          deviates greatly from a circle and low signal-to-noise
+          ratio. Spots for which the ratio of area to circumference
+          deviates by <NUMEX TYPE="PERCENT">more than 20%</NUMEX> from the value for an ideal
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX> and spots containing <NUMEX TYPE="PERCENT">fewer than 50%</NUMEX> of pixels
+          above the median background value are flagged and
+          eliminated from further consideration. This approach has
+          proved extremely robust to misidentification of the spot
+          boundaries, and expression measures have shown it to be
+          both reproducible and verifiable. The output data from
+          <ENAMEX TYPE="ORGANIZATION">Spotfinder</ENAMEX> is available as additional data files.
+          Lowess normalization was implemented using a native
+          Java implementation in <ENAMEX TYPE="ORGANIZATION">TIGR MIDAS</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Microarray Data</ENAMEX>
+          Analysis <ENAMEX TYPE="ORGANIZATION">System</ENAMEX>), freely available through [ <TIMEX TYPE="DATE">19</TIMEX>] and
+          based on the <ENAMEX TYPE="ORGANIZATION">LOCFIT</ENAMEX> package developed by <ENAMEX TYPE="ORGANIZATION">Bell Labs</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>].
+          For all normalization, the smoothing parameter was set to
+          <NUMEX TYPE="PERCENT">33%</NUMEX>. All additional data files and protocols used in this
+          study are available from [ <TIMEX TYPE="DATE">21</TIMEX>].
+        
+        
+          Quantitative real-time RT-PCR
+          <ENAMEX TYPE="PRODUCT">Quantitative RT-PCR</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">assays</ENAMEX> were performed on the ABI
+          <ENAMEX TYPE="ORGANIZATION">Prism</ENAMEX> <ENAMEX TYPE="PRODUCT">7900HT</ENAMEX> sequence-detection system using the Taqman
+          <ENAMEX TYPE="PERSON">Reverse Transcription Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Applied Biosystems</ENAMEX>) and
+          <ENAMEX TYPE="ORGANIZATION">QuantiTech</ENAMEX> <ENAMEX TYPE="PRODUCT">SYBRGreen PCR Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>) using a two-step
+          reaction with protocols supplied by <ENAMEX TYPE="ORG_DESC">manufacturers</ENAMEX>.
+          Primers were designed in the <ENAMEX TYPE="ORGANIZATION">Primer</ENAMEX> <ENAMEX TYPE="PRODUCT">3 Old Version</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>]
+          using default parameters with minor modifications
+          (product size range <ENAMEX TYPE="PRODUCT">100-150</ENAMEX>; optimum T 
+          <ENAMEX TYPE="PRODUCT">m 60</ENAMEX>; minimum T 
+          <ENAMEX TYPE="PRODUCT">m 58</ENAMEX>; maximum T 
+          <ENAMEX TYPE="PRODUCT">m 61</ENAMEX>; maximum <TIMEX TYPE="DATE">3</TIMEX>' complementarity <NUMEX TYPE="CARDINAL">1</NUMEX>).
+          Following the initial RT, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of the resulting reaction
+          product amplified by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> in a <NUMEX TYPE="QUANTITY">20 �</NUMEX>�l reaction volume with
+          <NUMEX TYPE="CARDINAL">200</NUMEX> nM final primer concentration. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were normalized
+          to 18S <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX> <ENAMEX TYPE="PRODUCT">Ambion QuantumRNA</ENAMEX> 18S <ENAMEX TYPE="ORGANIZATION">Internal</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Standards Kit</ENAMEX>; the <NUMEX TYPE="ORDINAL">18S</NUMEX> primers and competimers were in a
+          <NUMEX TYPE="CARDINAL">3</NUMEX>:<NUMEX TYPE="CARDINAL">7</NUMEX> ratio with the primers at <NUMEX TYPE="CARDINAL">200</NUMEX> nM final
+          concentration.
+        
+      
+      
+        Additional data files
+        Spotfinder data files (tab-delimited text files) and
+        tables (<ENAMEX TYPE="ORGANIZATION">Word</ENAMEX> files) showing (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) <ENAMEX TYPE="PERSON">Differentially</ENAMEX> expressed
+        genes in <ENAMEX TYPE="ORGANIZATION">PA-1</ENAMEX> and <ENAMEX TYPE="PRODUCT">CaCO2</ENAMEX> cell lines, and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) genes
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in colon and ovary as determined
+        using digital differential display to analyze sequence
+        <ENAMEX TYPE="ORGANIZATION">abundance</ENAMEX> in <TIMEX TYPE="TIME">EST</TIMEX> libraries deposited in dbEST, are
+        available with as a zip file.
+        Additional data file 1
+        Spotfinder data files and tables showing differentially
+        expressed genes in <ENAMEX TYPE="ORGANIZATION">PA-1</ENAMEX> and <ENAMEX TYPE="PRODUCT">CaCO2</ENAMEX> cell lines, and genes
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in the colon and ovary
+        Spotfinder data files and tables showing differentially
+        expressed genes in <ENAMEX TYPE="ORGANIZATION">PA-1</ENAMEX> and <ENAMEX TYPE="PRODUCT">CaCO2</ENAMEX> cell lines, and genes
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in the colon and ovary
+        Click here for additional data file
+      
+    
+  

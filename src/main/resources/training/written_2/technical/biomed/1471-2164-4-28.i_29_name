@@ -1,0 +1,598 @@
+
+  
+    
+      
+        Background
+        Gene expression profiles generally present signatures
+        for cells at specific <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, homeostatic or stressed,
+        providing fingerprints critical in identifying regulatory
+        <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray technologies are designed to
+        reveal gene expression profiles by simultaneously detecting
+        the expression levels on a genomic scale [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . They are
+        now used to profile gene expression in a variety of model
+        <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>, such as antioxidant response [ <ENAMEX TYPE="LAW">3</ENAMEX> ] and tumor
+        staging [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . However, the hybridization based approach
+        suffers from limitations including, low sensitivity for
+        genes with small changes of expression level, limited
+        accuracy with potential for high experimental error [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+        and necessity for a large amount of biological starting
+        material. The <ENAMEX TYPE="PERSON">Amplified Differential Gene Expression</ENAMEX> (ADGE)
+        <ENAMEX TYPE="PERSON">technique</ENAMEX> was designed to quadratically magnify the ratios
+        of gene expression [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . Briefly, the control and tester
+        <ENAMEX TYPE="ORGANIZATION">cDNA's</ENAMEX> are digested with 
+        Taq I restriction enzyme, then
+        ligated with the <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> adapters, respectively. The
+        adapter-linked control and tester <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> are reassociated
+        through mixing at a ratio of <NUMEX TYPE="CARDINAL">1</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, denaturing and annealing.
+        The <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> reassociation results in the quadratic
+        magnification of expression ratios for the up- and
+        down-regulated genes in control and tester samples. The
+        ADGE magnification is theoretically governed by the algebra
+        formula (a + b)(a' + b') = <ENAMEX TYPE="PER_DESC">aa</ENAMEX>' + <ENAMEX TYPE="PER_DESC">bb</ENAMEX>' + <NUMEX TYPE="CARDINAL">a'b</NUMEX> + <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX>' where aa'
+        represents the control <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, <ENAMEX TYPE="PER_DESC">bb</ENAMEX>' represents the tester DNA
+        and a'b and <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX>' represent hybrid <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>' s. For example, for a
+        gene up-regulated <NUMEX TYPE="CARDINAL">2</NUMEX>-fold in tester over control, the
+        formula is (a + <NUMEX TYPE="CARDINAL">2b</NUMEX>)(a' + <NUMEX TYPE="CARDINAL">2b'</NUMEX>) = <ENAMEX TYPE="PER_DESC">aa</ENAMEX>' + <NUMEX TYPE="CARDINAL">4bb'</NUMEX> + <NUMEX TYPE="CARDINAL">2a'b</NUMEX> + <NUMEX TYPE="CARDINAL">2ab'</NUMEX>.
+        After <ENAMEX TYPE="SUBSTANCE">DNA reassociation</ENAMEX>, the ratio of <ENAMEX TYPE="PER_DESC">bb</ENAMEX>' /aa' increases
+        <TIMEX TYPE="DATE">from 2 to 4</TIMEX>. If expression of another gene is
+        down-regulated <NUMEX TYPE="CARDINAL">3</NUMEX> times in the tester, the formula is (<NUMEX TYPE="CARDINAL">3a</NUMEX> +
+        b) (<NUMEX TYPE="CARDINAL">3a'</NUMEX> + b') = <NUMEX TYPE="CARDINAL">9aa'</NUMEX> + <ENAMEX TYPE="PER_DESC">bb</ENAMEX>' + <NUMEX TYPE="CARDINAL">3a'b</NUMEX> + <NUMEX TYPE="CARDINAL">3ab'</NUMEX>. Therefore, the
+        ratio of aa' /<ENAMEX TYPE="PER_DESC">bb</ENAMEX>' increases from <TIMEX TYPE="DATE">3 to 9</TIMEX> after
+        <ENAMEX TYPE="ORGANIZATION">reassociation</ENAMEX>. For a gene with a ratio of <NUMEX TYPE="CARDINAL">1</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, the ratio is
+        kept unchanged after reassociation. The reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> is
+        amplified by using <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> with the <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> primer complementary to
+        the CT adapter or the <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primer complementary to the TT
+        adapter. The <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> primer amplifies the control <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (aa')
+        <ENAMEX TYPE="ORGANIZATION">exponentially</ENAMEX> and hybrid <ENAMEX TYPE="PERSON">DNA (a'b</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX>') linearly while
+        the <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primer amplifies the tester <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (<ENAMEX TYPE="PER_DESC">bb</ENAMEX>') exponentially
+        and hybrid <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> linearly since hybrid <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> has <NUMEX TYPE="CARDINAL">two</NUMEX> different
+        adapters at the ends. The PCR not only exponentially
+        amplifies the control and tester <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> but also separates
+        them from each other. The expression patterns for
+        <NUMEX TYPE="CARDINAL">over</NUMEX>-expressed, repressed and unchanged genes were profiled
+        with the <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> technique [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . However, the throughput of
+        <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> is low since it displays an average of <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at a
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> with agarose gels. Our present <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> combines the ADGE
+        technique with <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX> (hereafter called ADGE
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>) in order to integrate the high throughput of
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray with the ratio magnification and the PCR
+        amplification of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX>. The combination of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> and DNA
+        microarray was used to analyze differential gene expression
+        in a selected drug resistant cell line.
+        The <ENAMEX TYPE="SUBSTANCE">prodrug</ENAMEX> TLK286
+        <ENAMEX TYPE="CONTACT_INFO">[γ-glutamyl-α-amino-β</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">2-ethyl-</ENAMEX><ENAMEX TYPE="ORGANIZATION">N</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">N-tetrakis</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">2-chloroethyl</ENAMEX>)phosphorodiamidate)-<ENAMEX TYPE="GPE">sulfonyl-propionyl-</ENAMEX>(<ENAMEX TYPE="NATIONALITY">R</ENAMEX>)-(<ENAMEX TYPE="CONTACT_INFO">-</ENAMEX>)<ENAMEX TYPE="PER_DESC">phenylglycine</ENAMEX>]
+        is activated by glutathione S-transferase (GST) <ENAMEX TYPE="PRODUCT">P1-1</ENAMEX> and to
+        a lesser degree <ENAMEX TYPE="PRODUCT">A1-1</ENAMEX> and generates tetrakis chloroethyl
+        alkylating moieties that can react with cellular
+        <ENAMEX TYPE="ORGANIZATION">nucleophiles</ENAMEX>. Cellular response to chronic TLK286 exposure
+        included a <NUMEX TYPE="CARDINAL">two</NUMEX>-fold decrease in <ENAMEX TYPE="SUBSTANCE">GSTP1-1 protein</ENAMEX> levels,
+        confirming a <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> mediated mechanism of <ENAMEX TYPE="SUBSTANCE">activation</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ]
+        . Mouse embryo fibroblast cells from <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> deficient
+        <ENAMEX TYPE="ANIMAL">animals</ENAMEX> elevated the expression of signal-regulated kinases
+        <ENAMEX TYPE="CONTACT_INFO">ERK1/ERK2</ENAMEX> and reduced the doubling time of cell
+        proliferation [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . That <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> also found that a clone of
+        HL60 cells resistant to <TIMEX TYPE="DATE">TLK199</TIMEX>, an inhibitor of <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX>,
+        has been shown to have elevated activities of c-<ENAMEX TYPE="ORGANIZATION">Jun NH</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> -terminal kinase (JNK) and <ENAMEX TYPE="PRODUCT">ERK1/ERK2</ENAMEX>.
+        In addition, <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> acts as a negative <ENAMEX TYPE="PER_DESC">regulator</ENAMEX> of JNK
+        primarily through direct <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">protein interactions</ENAMEX> [ <NUMEX TYPE="CARDINAL">9</NUMEX>
+        <NUMEX TYPE="CARDINAL">10</NUMEX> ] . These data suggest that <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> has a role in
+        regulation of kinase activities and cell proliferation [ <NUMEX TYPE="CARDINAL">8</NUMEX>
+        <NUMEX TYPE="CARDINAL">11 12 13</NUMEX> ] . Because of this available background
+        information, <TIMEX TYPE="DATE">the HL60</TIMEX> wild type and <ENAMEX TYPE="PRODUCT">TLK286</ENAMEX> resistant cell
+        lines were chosen as model systems for analysis by ADGE
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>. The results show that <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> <ENAMEX TYPE="FAC_DESC">microarray</ENAMEX> improves
+        the sensitivity and fidelity of detection and reduces the
+        requirement for starting material while maintaining the
+        high throughput of regular microarray. The gene expression
+        profile for the resistant cells revealed with ADGE
+        microarray reflected changes in the expression of <NUMEX TYPE="CARDINAL">GSTP1</NUMEX>-1
+        and genes related to kinase and proliferation pathways.
+      
+      
+        Results
+        
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray magnified ratios
+          The ratios detected with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray were greater
+          than the corresponding input ratios. The input ratios of
+          <TIMEX TYPE="DATE">2, 3, 4</TIMEX> were detected as averages of <NUMEX TYPE="MONEY">3.6</NUMEX>, <NUMEX TYPE="CARDINAL">5.3</NUMEX> and <NUMEX TYPE="CARDINAL">9.1</NUMEX>,
+          respectively, after normalization with the ratio of <NUMEX TYPE="CARDINAL">1</NUMEX>. In
+          contrast, these <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were detected as <NUMEX TYPE="CARDINAL">1.5</NUMEX>, <NUMEX TYPE="CARDINAL">2.0</NUMEX> and <NUMEX TYPE="CARDINAL">2.7</NUMEX>
+          with regular microarray, values that were less than their
+          corresponding input ratios (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). The power regression
+          best fits the data trend of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray with the
+          largest <ENAMEX TYPE="NATIONALITY">R</ENAMEX> 2of <NUMEX TYPE="CARDINAL">0.97</NUMEX> among linear, logarithmic, polynomial,
+          power and exponential. The relationship between the
+          detected ratio (<ENAMEX TYPE="ORGANIZATION">y</ENAMEX>) and the input ratio (x) for ADGE
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> is y = <NUMEX TYPE="MONEY">1.05x 1.55</NUMEX>(<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2A). This relationship
+          is close to the theoretical one of quadratic
+          <ENAMEX TYPE="CONTACT_INFO">magnification y = x 2</ENAMEX>. Therefore, the ratios were
+          magnified in power function within this low range.
+          However, the linear regression best fits the data trend
+          of regular microarray with the largest <ENAMEX TYPE="NATIONALITY">R</ENAMEX> 2of <NUMEX TYPE="CARDINAL">0.96</NUMEX>. The
+          relationship for regular microarray is y = <NUMEX TYPE="CARDINAL">0.56x</NUMEX> + <NUMEX TYPE="CARDINAL">0.39</NUMEX>,
+          which suggests that the ratio detected with regular
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> represents <NUMEX TYPE="CARDINAL">about half</NUMEX> the input ratio within
+          this range.
+          The magnification of power function continued until
+          the <NUMEX TYPE="CARDINAL">6</NUMEX>-fold input ratio. After that, the magnitude of ADGE
+          magnification leveled off (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2B). The overall
+          relationship between detected ratios and input ratios had
+          a logarithmic trend: y = 15.99ln(x) - <NUMEX TYPE="CARDINAL">6.14</NUMEX> with <ENAMEX TYPE="NATIONALITY">R</ENAMEX> <TIMEX TYPE="DATE">2</TIMEX>=
+          0.84.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray improved detection
+          sensitivity
+          The ratio magnification was also observed when the
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray method was applied to the whole
+          microarray chip. The <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX> plot of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray has wider
+          upward and downward distribution from the central area
+          than that of regular microarray, particularly for the
+          spots with high intensity (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3Aand <ENAMEX TYPE="ORGANIZATION">3B</ENAMEX>). <NUMEX TYPE="CARDINAL">578</NUMEX> of <NUMEX TYPE="CARDINAL">10,000</NUMEX>
+          genes were detected at <ENAMEX TYPE="CONTACT_INFO">2-4</ENAMEX> fold up-regulated and <NUMEX TYPE="CARDINAL">460</NUMEX>
+          genes at <ENAMEX TYPE="CONTACT_INFO">2-4</ENAMEX> fold down-regulated with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray
+          (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3D); <NUMEX TYPE="CARDINAL">107 and 38</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> detected at <NUMEX TYPE="MONEY">>4</NUMEX> fold up-
+          and down-regulated, respectively. In contrast, with
+          regular microarray, <NUMEX TYPE="CARDINAL">227 and 244</NUMEX> of <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          detected at <ENAMEX TYPE="CONTACT_INFO">2-4</ENAMEX> fold up- and down-regulated,
+          respectively; <NUMEX TYPE="CARDINAL">10 and 30</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at <NUMEX TYPE="MONEY">>4</NUMEX> fold up- and
+          down-regulated, respectively. Most outliers in regular
+          microarray were the results of spontaneous experimental
+          error, with low spot intensities. When only these genes
+          with ><NUMEX TYPE="PERCENT">99%</NUMEX> confidence level of t test are considered,
+          <NUMEX TYPE="CARDINAL">one</NUMEX> and <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected at <ENAMEX TYPE="CONTACT_INFO">2-4</ENAMEX> fold up- and
+          down-regulated, respectively, with regular microarray;
+          <NUMEX TYPE="CARDINAL">one</NUMEX> gene detected at <NUMEX TYPE="MONEY">>4</NUMEX> fold down-regulated (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3D).
+          However, with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray, there were <NUMEX TYPE="CARDINAL">63</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ><NUMEX TYPE="CARDINAL">4</NUMEX>
+          fold up-regulated, <NUMEX TYPE="CARDINAL">220</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> <ENAMEX TYPE="PRODUCT">2-4</ENAMEX> fold up-regulated, <NUMEX TYPE="CARDINAL">92</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">genes 2-4</ENAMEX> fold down-regulated and <NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ><NUMEX TYPE="CARDINAL">4</NUMEX>
+          down-regulated. The ADGE magnification raised small
+          changes in gene expression to a level beyond the inherent
+          limit of <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX> and improved detection
+          sensitivity.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray improved detection fidelity
+          Multiple steps were integrated to improve the fidelity
+          of detection in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. The ADGE magnification
+          increased the magnitude of the expression ratios beyond
+          the detection error of standard microarray. PCR
+          amplification of <ENAMEX TYPE="SUBSTANCE">DNA templates</ENAMEX> dramatically increased the
+          amount of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> adapters at the DNA
+          fragment ends facilitated efficient labeling of <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and
+          Cy5, thus enhancing signal intensity. Variances of Cy3
+          and <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">intensities</ENAMEX> were less in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray than in
+          regular microarray (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4Aand <ENAMEX TYPE="ORGANIZATION">4B</ENAMEX>). <TIMEX TYPE="DATE">6888 and 6663</TIMEX> of
+          <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> <ENAMEX TYPE="PER_DESC">microarray</ENAMEX> had variances of < <NUMEX TYPE="CARDINAL">0.5</NUMEX>
+          in <TIMEX TYPE="DATE">Cy3</TIMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels, respectively, while in regular
+          microarray, there are only <NUMEX TYPE="CARDINAL">717 and 741</NUMEX> such <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          suggesting that the results among <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> were more
+          consistent with less variation in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray.
+          The confidence levels of t tests reflect the magnitude
+          of consistent differences between <TIMEX TYPE="DATE">HL60</TIMEX> and <ENAMEX TYPE="PRODUCT">HL60/</ENAMEX>TLK286
+          among replicates. <NUMEX TYPE="CARDINAL">836</NUMEX> of <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were identified at
+          <NUMEX TYPE="PERCENT">99%</NUMEX> confidence level, <NUMEX TYPE="CARDINAL">2013</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at <NUMEX TYPE="PERCENT">95-98%</NUMEX>, <NUMEX TYPE="CARDINAL">753</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at
+          <NUMEX TYPE="PERCENT">90-94%</NUMEX> with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. In contrast, for regular
+          microarray, <NUMEX TYPE="CARDINAL">85</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected at <NUMEX TYPE="PERCENT">99%</NUMEX>, <NUMEX TYPE="CARDINAL">367</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at
+          <NUMEX TYPE="PERCENT">95-98%</NUMEX> and <NUMEX TYPE="CARDINAL">409</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at <NUMEX TYPE="PERCENT">90-94%</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4C).
+          Among the genes with ><NUMEX TYPE="PERCENT">99%</NUMEX> confidence levels and
+          <ENAMEX TYPE="PRODUCT">>4</ENAMEX> fold changes, <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were found duplicated on
+          the chip. The results of the duplicated spots were
+          similar (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). For example, <ENAMEX TYPE="SUBSTANCE">bmi-1</ENAMEX> was detected at
+          <NUMEX TYPE="MONEY">7.96 and 7.29</NUMEX> in both spots.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray revealed genes associated with drug
+          resistance
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray was used to compare expression
+          patterns for <TIMEX TYPE="DATE">the TLK286</TIMEX> resistant cell line and its wild
+          type <ENAMEX TYPE="PER_DESC">counterpart</ENAMEX> by screening the expression pattern of
+          <NUMEX TYPE="CARDINAL">20,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. <NUMEX TYPE="CARDINAL">Ninety three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were selected with the
+          threshold average ratio <NUMEX TYPE="MONEY">>4.0</NUMEX> and confidence level
+          ><NUMEX TYPE="PERCENT">99%</NUMEX>. Among the <NUMEX TYPE="CARDINAL">93</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">12</NUMEX> had functions related to
+          cell proliferation and kinase pathways (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). In
+          addition, expression of <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> was reduced in the
+          <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286 cell</ENAMEX> line, which was consistent with a
+          previous study [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . <ENAMEX TYPE="ORGANIZATION">Quantitative RT-PCR</ENAMEX> confirmed the
+          results of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray for <NUMEX TYPE="CARDINAL">eleven</NUMEX> of <ENAMEX TYPE="SUBSTANCE">thirteen genes</ENAMEX>.
+          The other <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected unchanged with <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX>.
+          The gene expression profile revealed with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray
+          supported the principle of <ENAMEX TYPE="PRODUCT">GSTP1-1</ENAMEX> mediated regulation of
+          cell proliferation and kinase pathways.
+        
+      
+      
+        Discussion
+        The <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> technique is a method designed to magnify the
+        ratios of gene expression before detection. The ratio
+        <ENAMEX TYPE="PERSON">magnification</ENAMEX> was reported with a gel system [ <ENAMEX TYPE="LAW">6</ENAMEX> ] and was
+        observed in this study with <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1and <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        The magnification of a power function was found up to a
+        <NUMEX TYPE="CARDINAL">6</NUMEX>-fold input ratio or <NUMEX TYPE="CARDINAL">30</NUMEX>-fold detected ratio. The magnitude
+        of magnification leveled off after that. Since different
+        dilutions, different cycles of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> and dye reverse were
+        used, <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> magnification can be applied for up- and
+        down-regulated genes with different abundance. <NUMEX TYPE="CARDINAL">One</NUMEX> reason
+        for the level-off might be the capacity of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray
+        to detect large ratios. For instance, the maximum value of
+        spot intensity is <NUMEX TYPE="CARDINAL">65,000</NUMEX> in an <ENAMEX TYPE="ORGANIZATION">Affymetrix scanner</ENAMEX>. If an
+        abundant gene has an intensity of <TIMEX TYPE="DATE">1000</TIMEX> in another scanning
+        <ENAMEX TYPE="ORGANIZATION">channel</ENAMEX>, the largest detectable ratio will be <TIMEX TYPE="DATE">65</TIMEX>. Another
+        explanation might be the saturation of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> for abundant
+        genes. The regression equations of the detected values with
+        input values not only demonstrate the magnitude of
+        magnification with ADGE technology, but also provide a
+        guideline to interpret the results of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. The
+        quantitative relationship between input values (x) and
+        detected values (<ENAMEX TYPE="ORGANIZATION">y</ENAMEX>) was y = <NUMEX TYPE="CARDINAL">0.56x</NUMEX> + <NUMEX TYPE="CARDINAL">0.39</NUMEX> for regular
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>. Thus, regular microarray may under-estimate
+        differences of gene expression between <NUMEX TYPE="CARDINAL">two</NUMEX> samples.
+        ADGE methodology not only magnifies the differential
+        expression ratios but also amplifies the amount of
+        templates with <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX>. Exponential amplification by PCR
+        dramatically increases the amount of probes and reduces the
+        requirement for starting material. Based on the current
+        working protocol, <NUMEX TYPE="QUANTITY">10 μg</NUMEX> of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from control and
+        tester <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> was used to generate <NUMEX TYPE="QUANTITY">160 μl</NUMEX> of reassociated
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. <NUMEX TYPE="QUANTITY">2 μl</NUMEX> of the reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was needed to make probe
+        for <NUMEX TYPE="CARDINAL">one</NUMEX> slide hybridization. Thus, <NUMEX TYPE="CARDINAL">125</NUMEX> ng of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> can
+        be used for one slide hybridization. Therefore, ADGE
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> could provide a platform for using <NUMEX TYPE="CARDINAL">160</NUMEX>-<NUMEX TYPE="CARDINAL">200</NUMEX> fold
+        less total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> than regular microarray (which generally
+        requires <NUMEX TYPE="QUANTITY">20 μg</NUMEX> of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>). It is also comparable to
+        other <ENAMEX TYPE="SUBSTANCE">RNA amplification</ENAMEX> methods, such as <ENAMEX TYPE="SUBSTANCE">antisense RNA</ENAMEX>
+        amplification where <NUMEX TYPE="CARDINAL">0.25</NUMEX> - <NUMEX TYPE="CARDINAL">3.0</NUMEX> μg of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> is required
+        [ <TIMEX TYPE="DATE">14</TIMEX> ] and <ENAMEX TYPE="GPE">Amine</ENAMEX>-modified random primer where <NUMEX TYPE="QUANTITY">1.0 μg</NUMEX> of
+        total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> is required [ <TIMEX TYPE="DATE">15</TIMEX> ] . <NUMEX TYPE="CARDINAL">20-30</NUMEX> <ENAMEX TYPE="PRODUCT">PCR</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> are
+        recommended since too few <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> will reduce the difference
+        between the exponentially amplified tester or control DNA
+        and the linearly amplified hybrid <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and too many cycles
+        will saturate abundant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+        The adapters at the DNA fragment ends facilitate
+        efficient incorporation of <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> into <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> templates
+        and enhance signal intensity. Both methods of direct and
+        indirect labeling were used in this study. With direct
+        labeling, <NUMEX TYPE="CARDINAL">Cy3</NUMEX>-dCTP is incorporated into control and
+        Cy5-dCTP into <ENAMEX TYPE="SUBSTANCE">tester DNA</ENAMEX> during the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplification of
+        the hybridized <ENAMEX TYPE="SUBSTANCE">DNA templates</ENAMEX>. The use of <ENAMEX TYPE="WORK_OF_ART">Cy dyes</ENAMEX> can be
+        reversed if required. With indirect labeling,
+        aminoallyl-dUTP is incorporated into control and tester DNA
+        with <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> of <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> after the reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> templates
+        are amplified. The <ENAMEX TYPE="ORG_DESC">aminoallyl-dUTP</ENAMEX> labeled <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> templates
+        are in turn coupled with <ENAMEX TYPE="WORK_OF_ART">Cy dyes</ENAMEX>. The use of
+        aminoallyl-dUTP in <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplification of the hybridized DNA
+        <ENAMEX TYPE="ORGANIZATION">template</ENAMEX> is not recommended. It is also possible to adapt
+        other methods of signal enhancement to the labeling
+        procedure. For example, the <NUMEX TYPE="ORDINAL">3DNA</NUMEX> fluorescent dendrimer
+        <ENAMEX TYPE="PERSON">probes</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Genisphere</ENAMEX>, <ENAMEX TYPE="GPE">Montvale</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>) can be attached on the CT
+        and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primers which then are used to amplify the control
+        and <ENAMEX TYPE="SUBSTANCE">tester DNA</ENAMEX>'s. Since both strands of the probe <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> are
+        labeled with direct labeling or indirect labeling, the
+        specific intensity is enhanced. The ratio of signal to
+        background was improved in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. For example, on
+        slides of <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">1301</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected at ratios
+        ><NUMEX TYPE="CARDINAL">18 and 7988</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at ratios <NUMEX TYPE="MONEY">< 9</NUMEX> with ADGE
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>. In contrast, <NUMEX TYPE="CARDINAL">578</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected at ratios
+        ><NUMEX TYPE="CARDINAL">18 and 8678</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at ratios <NUMEX TYPE="MONEY">< 9</NUMEX> with regular
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX>. The reason that overall spot intensities in
+        <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3Aare lower than in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 3Bis that smaller gain values
+        were used for <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray when scanning microarray
+        chips.
+        The integration of these features in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray
+        improves detection sensitivity and <ENAMEX TYPE="ORGANIZATION">fidelity</ENAMEX>. ADGE
+        <ENAMEX TYPE="PERSON">magnification</ENAMEX> raised small changes in gene expression to a
+        level beyond the inherent limit of <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX>. Thus,
+        genes with small expression changes could be identified
+        more accurately and false negatives could be minimized with
+        <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. <NUMEX TYPE="CARDINAL">77</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with ><NUMEX TYPE="PERCENT">99%</NUMEX> confidence level and
+        <ENAMEX TYPE="PRODUCT">>4</ENAMEX> fold changes were identified with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray,
+        compared to <NUMEX TYPE="CARDINAL">only one</NUMEX> such gene with regular microarray
+        (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3D). Therefore, a more informative gene profile was
+        revealed with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray than with regular microarray.
+        The probability that the ADGE magnification introduces
+        false positives is low. The <NUMEX TYPE="ORDINAL">HL60</NUMEX> vs HL60 self-hybridization
+        showed that the relationship of <TIMEX TYPE="DATE">Cy3</TIMEX> (<ENAMEX TYPE="ORGANIZATION">y</ENAMEX>) and <TIMEX TYPE="DATE">Cy5</TIMEX> (x) is y =
+        1.02x - <NUMEX TYPE="CARDINAL">0.21</NUMEX> with <ENAMEX TYPE="NATIONALITY">R</ENAMEX> <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.92</NUMEX>; none of the <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was
+        detected at <ENAMEX TYPE="CONTACT_INFO">≥ 4</ENAMEX> fold change with confidence level ≥ <NUMEX TYPE="PERCENT">99%</NUMEX>
+        (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3C). <NUMEX TYPE="CARDINAL">Eleven</NUMEX> of <ENAMEX TYPE="SUBSTANCE">thirteen genes</ENAMEX> have consistent results
+        between <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray and quantitative <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX>. The other
+        <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were detected unchanged with <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        Experimental artifacts in microarray data are
+        <ENAMEX TYPE="PERSON">intensity-dependent</ENAMEX> and tend to occur primarily for weak
+        spots [ <TIMEX TYPE="DATE">16</TIMEX> ] . The nucleporin <NUMEX TYPE="MONEY">88 kD</NUMEX> (<NUMEX TYPE="MONEY">AA488609</NUMEX>) with the
+        largest standard deviation in the <ENAMEX TYPE="PRODUCT">Table 2had</ENAMEX> weak signal.
+        Exponential amplification of <ENAMEX TYPE="SUBSTANCE">DNA templates</ENAMEX> and double
+        strand labeling in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> dramatically enhances
+        the signal intensity of spots. Combined with magnified
+        ratios, the enhanced signal intensities improve the data
+        quality and detection fidelity in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. More
+        genes have low variances in both <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels and
+        high confidence levels in <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray than in regular
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). The similarity and reproducibility of
+        results between duplicate spots also suggests the
+        improvement of detection fidelity (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        The sensitive and accurate method of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray
+        provides a novel tool to reveal informative gene profiles.
+        <NUMEX TYPE="CARDINAL">12</NUMEX> of the <NUMEX TYPE="CARDINAL">93</NUMEX> differential <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were clustered in cell
+        proliferation and kinase pathways. Expression changes of
+        genes related to regulation of cell proliferation may be
+        directly pertinent to the resistant phenotype or may be a
+        consequence of cell growth under drug stressed conditions.
+        <ENAMEX TYPE="ORGANIZATION">Adaptive</ENAMEX> changes in kinase expression have been
+        characterized in a variety of drug resistant cells. For
+        example, the <ENAMEX TYPE="DISEASE">stress kinase</ENAMEX> JNK1 was activated during TLK286
+        induced <ENAMEX TYPE="PER_DESC">apoptosis</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">JNK</ENAMEX> is known to be activated
+        during apoptosis induced by a variety of stress stimuli [
+        <NUMEX TYPE="CARDINAL">18</NUMEX> ] . However, in <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX> resistant cells, we observed
+        an overexpression of <NUMEX TYPE="CARDINAL">two</NUMEX> phosphatases 
+        PP2 (<NUMEX TYPE="MONEY">AA599092</NUMEX>) and 
+        MKP5 (<NUMEX TYPE="MONEY">AA056608</NUMEX>) involved in JNK
+        <ENAMEX TYPE="ORGANIZATION">dephosphorylation</ENAMEX> and inactivation (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). PP2 is a
+        <ENAMEX TYPE="CONTACT_INFO">serine/threonine</ENAMEX> phosphatase which dephosphorylates JNK
+        during inflammatory cell signaling [ <TIMEX TYPE="DATE">19</TIMEX> ] , while MKP5 is a
+        <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the dual specificity phosphatase family which
+        <ENAMEX TYPE="DISEASE">selectively dephosphorylates stress activated MAP</ENAMEX> kinases
+        including <ENAMEX TYPE="ORGANIZATION">JNK</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] . The overexpression of these two
+        <ENAMEX TYPE="ORGANIZATION">phosphatases</ENAMEX> might contribute in part to the <ENAMEX TYPE="ORG_DESC">resistance</ENAMEX> of
+        <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX> by impairing the activity of <ENAMEX TYPE="ORGANIZATION">JNK</ENAMEX>. Kinase
+        pathways, particularly those involving <ENAMEX TYPE="ORGANIZATION">ERK</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">JNK</ENAMEX>, are
+        suggested to have prominent roles in regulation of
+        proliferation pathways in a variety of cell lines [ <NUMEX TYPE="CARDINAL">11 12</NUMEX>
+        <NUMEX TYPE="CARDINAL">13</NUMEX> ] . Reduced expression of 
+        GSTP1-<NUMEX TYPE="CARDINAL">1</NUMEX> in the resistant cells
+        provides a plausible link with the <ENAMEX TYPE="ORGANIZATION">JNK</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ERK</ENAMEX> regulation
+        <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> in the resistant cells. Although the interaction
+        among 
+        GSTP1-1 and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> of proliferation
+        and kinase pathways needs to be verified and the roles of
+        other differential genes in <TIMEX TYPE="DATE">the TLK286</TIMEX> resistant cell line
+        need further investigation, the expression pattern
+        generated with <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray provides a blueprint for
+        designing further experiments.
+      
+      
+        Conclusions
+        <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray is the combination of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> technique and
+        <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX>. It magnified the ratios of differential
+        gene expression in power function, improved detection
+        <ENAMEX TYPE="ORGANIZATION">sensitivity and fidelity</ENAMEX> and reduced the requirement for
+        starting material while maintaining high throughput. ADGE
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> generated a more informative expression pattern
+        than regular microarray.
+      
+      
+        Methods
+        
+          Cell lines
+          The <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286 cell</ENAMEX> line is resistant to the prodrug
+          TLK286 and derived from the wild-type HL60 by stepwise
+          selection. Both <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60</ENAMEX> cell lines were
+          <ENAMEX TYPE="ORGANIZATION">cultured</ENAMEX> in RPMI-<NUMEX TYPE="CARDINAL">1640</NUMEX> medium supplemented with <NUMEX TYPE="CARDINAL">2</NUMEX> mM
+          <ENAMEX TYPE="ORGANIZATION">L-glutamine</ENAMEX>, <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="ORGANIZATION">U/ml</ENAMEX> penicillin, <NUMEX TYPE="QUANTITY">50 �</NUMEX>�g/ml streptomycin
+          and <NUMEX TYPE="PERCENT">10%</NUMEX> heat-inactivated fetal bovine serum. Cells were
+          maintained in a humidified atmosphere of <NUMEX TYPE="PERCENT">5%</NUMEX> <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Adapters</ENAMEX> and primers
+          The sequences of the adapters and primers were
+          modified from reference [ <ENAMEX TYPE="LAW">6</ENAMEX> ] for better priming
+          efficiency.
+          CT adapter: <ENAMEX TYPE="ORGANIZATION">AAC</ENAMEX> <ENAMEX TYPE="PRODUCT">TGC AGG AGG GAC AGT TGA AGG AGG CA CC</ENAMEX>
+          TCC GTG C
+          TT adapter: <ENAMEX TYPE="ORGANIZATION">AAC</ENAMEX> <ENAMEX TYPE="PRODUCT">TCA GAG GTG AGA CAG GAG TGG AGG CA CC</ENAMEX>
+          TCC GTG C
+          <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> primer: <ENAMEX TYPE="PERSON">GCA GGA GGG ACA GTT GAA GGA G</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primer: <ENAMEX TYPE="PERSON">CAG AGG TGA GAC AGG AGT GGA G</ENAMEX>
+        
+        
+          Verification of ratio magnification
+          In order to verify the ratio magnification for ADGE
+          and to build a relationship between input and detected
+          ratios, a contiguous area of twelve spots (<ENAMEX TYPE="CONTACT_INFO">3 × 4</ENAMEX>) on the
+          microarray chip was selected. The corresponding clones
+          were amplified by using <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> with the primers having a 
+          Taq I site at the end. The PCR
+          products were then purified and cut with 
+          Taq I at <TIMEX TYPE="DATE">65°C</TIMEX> for <NUMEX TYPE="CARDINAL">2</NUMEX> hr. The same
+          amount of 
+          Taq I fragments for each clone was
+          <ENAMEX TYPE="ORGANIZATION">ligated</ENAMEX> to the <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> adapters at <TIMEX TYPE="TIME">16°C overnight</TIMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> adapter-linked DNA fragments were mixed in
+          ratios of <NUMEX TYPE="CARDINAL">1</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> for the <NUMEX TYPE="CARDINAL">three</NUMEX> clones of the <NUMEX TYPE="ORDINAL">first</NUMEX> column,
+          <TIMEX TYPE="TIME">1:2 and 1:6</TIMEX> for the clones of the <NUMEX TYPE="ORDINAL">second</NUMEX> column, <TIMEX TYPE="TIME">1:3 and</TIMEX>
+          <TIMEX TYPE="TIME">1:10</TIMEX> for the clones of the <NUMEX TYPE="ORDINAL">third</NUMEX> column, <TIMEX TYPE="TIME">1:4 and 1:20</TIMEX> for
+          the clones of the <NUMEX TYPE="ORDINAL">fourth</NUMEX> column (see clone arrangement in
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). Reverse ratios were also made for all except
+          <TIMEX TYPE="TIME">1:1.</TIMEX> A fraction of each mixture was reassociated by
+          denaturing at <TIMEX TYPE="DATE">95°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX> and annealing at <TIMEX TYPE="DATE">68°C</TIMEX> for <NUMEX TYPE="CARDINAL">20</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">hr</ENAMEX>. Due to high concentration of templates and
+          possibility of effects of template abundance, the
+          reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was diluted <TIMEX TYPE="DATE">1000</TIMEX> or <NUMEX TYPE="CARDINAL">100,000</NUMEX> times, then
+          amplified using <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> with the <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> or TT primers. A PCR
+          reaction was set up with <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of the reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, <NUMEX TYPE="CARDINAL">5</NUMEX>
+          μl of 10x <ENAMEX TYPE="ORGANIZATION">Clontech PCR</ENAMEX> buffer, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <NUMEX TYPE="CARDINAL">10</NUMEX> mM dNTPS, <NUMEX TYPE="QUANTITY">2 �</NUMEX>�l
+          of <NUMEX TYPE="QUANTITY">10 μM</NUMEX> CT primer or TT primer, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX> cDNA
+          <ENAMEX TYPE="PERSON">polymerase</ENAMEX> and <NUMEX TYPE="QUANTITY">40 μl</NUMEX> of ddH 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> The reaction cycling conditions
+          were 72°C for <TIMEX TYPE="TIME">5 min</TIMEX> (for filling in the adapter ends),
+          94°C for <TIMEX TYPE="TIME">1 min</TIMEX>, then <NUMEX TYPE="CARDINAL">15 or 20</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">94°C</ENAMEX> for <TIMEX TYPE="DATE">30</TIMEX> s,
+          66°C for <TIMEX TYPE="DATE">30</TIMEX> s, <TIMEX TYPE="DATE">72°C</TIMEX> for <TIMEX TYPE="DATE">90</TIMEX> s, then 72°C for a final
+          <ENAMEX TYPE="CONTACT_INFO">extension.</ENAMEX> The <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were purified with <ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX> PCR
+          <ENAMEX TYPE="PERSON">Purification Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>, <ENAMEX TYPE="GPE">Valencia</ENAMEX>, CA) and eluted into
+          <NUMEX TYPE="QUANTITY">42 μl</NUMEX> of ddH 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>, which was used for indirect
+          labeling with <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX>. The PCR labeling reaction was set up
+          with <NUMEX TYPE="QUANTITY">42 μl</NUMEX> of <ENAMEX TYPE="SUBSTANCE">DNA templates</ENAMEX>, <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of 10x <ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX> PCR
+          <ENAMEX TYPE="PERSON">buffer</ENAMEX>, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <NUMEX TYPE="CARDINAL">10</NUMEX> mM dNTPS containing <NUMEX TYPE="CARDINAL">8</NUMEX> mM
+          aminoallyl-dUTP and <NUMEX TYPE="CARDINAL">2</NUMEX> mM dTTP, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <NUMEX TYPE="QUANTITY">10 μM</NUMEX> CT primer or
+          <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primer and <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX> cDNA polymerase. The
+          reaction cycling conditions were <TIMEX TYPE="DATE">94°C</TIMEX> for <TIMEX TYPE="TIME">1 min</TIMEX>, then <NUMEX TYPE="CARDINAL">3</NUMEX>
+          cycles of <ENAMEX TYPE="SUBSTANCE">94°C</ENAMEX> for <TIMEX TYPE="DATE">30</TIMEX> s, <TIMEX TYPE="DATE">64°C</TIMEX> for <TIMEX TYPE="DATE">30</TIMEX> s, <TIMEX TYPE="DATE">72°C</TIMEX> for <TIMEX TYPE="DATE">90</TIMEX> s,
+          then <TIMEX TYPE="DATE">72°C</TIMEX> for a final extension. The <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> product was
+          ethanol-precipitated, resuspended in <NUMEX TYPE="QUANTITY">5 μl</NUMEX> <ENAMEX TYPE="PRODUCT">2x</ENAMEX> coupling
+          <ENAMEX TYPE="PERSON">buffer</ENAMEX>, then coupled with <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> or <NUMEX TYPE="ORDINAL">Cy5</NUMEX> dye
+          (<ENAMEX TYPE="ORGANIZATION">Amersham Pharmacia</ENAMEX>, <ENAMEX TYPE="GPE">Piscataway</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>) for <NUMEX TYPE="CARDINAL">1</NUMEX> hr in the
+          dark. The labeled <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was mixed with <NUMEX TYPE="QUANTITY">50 μl</NUMEX> of <NUMEX TYPE="CARDINAL">100</NUMEX> mM
+          sodium acetate (pH <NUMEX TYPE="CARDINAL">5.2</NUMEX>), purified with <ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX> PCR
+          <ENAMEX TYPE="PERSON">Purification Kit</ENAMEX>, reduced to a final volume of <NUMEX TYPE="QUANTITY">7.5 �</NUMEX>�l
+          with a speed vac, mixed with <NUMEX TYPE="QUANTITY">3.75 μl</NUMEX> of 20x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="QUANTITY">0.75 �</NUMEX>�l
+          of <NUMEX TYPE="PERCENT">10%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>, <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of <ENAMEX TYPE="CONTACT_INFO">1 μg/�</ENAMEX>�l <ENAMEX TYPE="SUBSTANCE">salmon DNA</ENAMEX> and <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of
+          50x <ENAMEX TYPE="ORGANIZATION">Denhardt</ENAMEX>'s solution, denatured at <TIMEX TYPE="DATE">95°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX>,
+          cooled on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX> and incubated at <TIMEX TYPE="DATE">42°C</TIMEX> for <NUMEX TYPE="CARDINAL">15</NUMEX> min. The
+          <ENAMEX TYPE="ORGANIZATION">denatured</ENAMEX> <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">Cy5 DNA</ENAMEX> were mixed and loaded onto the
+          area of the twelve selected spots on the microarray chip.
+          The hybridization and washing conditions were the same as
+          for regular microarray.
+          As a control, another fraction of the mixture of each
+          ratio from <TIMEX TYPE="DATE">1 to 4</TIMEX> directly proceeded to the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> indirect
+          labeling without <ENAMEX TYPE="SUBSTANCE">DNA reassociation</ENAMEX>. The conditions for
+          chip hybridization and washing were the same as above.
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> were performed for both the control and
+          the combination of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> and microarray.
+        
+        
+          Regular DNA microarray
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was isolated from both <ENAMEX TYPE="SUBSTANCE">HL60</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60/</ENAMEX>TLK286
+          cell lines with a <ENAMEX TYPE="ORGANIZATION">Qiagen RNeasy</ENAMEX> <ENAMEX TYPE="PRODUCT">Midi Kit</ENAMEX>. Regular
+          microarray was carried out following the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s
+          instructions for the <ENAMEX TYPE="ORGANIZATION">FairPlay�</ENAMEX>� microarray labeling kit
+          (<ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>, <ENAMEX TYPE="GPE">La Jolla</ENAMEX>, CA). Briefly, <TIMEX TYPE="TIME">twenty μg</TIMEX> of total
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from <TIMEX TYPE="DATE">HL60</TIMEX> or <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX> cells was
+          reverse-transcribed into single stranded cDNA. The cDNA
+          was purified with <ENAMEX TYPE="SUBSTANCE">ethanol precipitation</ENAMEX> and resuspended
+          in <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of 2x coupling buffer, then coupled with <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of
+          Cy3 or <NUMEX TYPE="ORDINAL">Cy5</NUMEX> dye for <NUMEX TYPE="CARDINAL">1</NUMEX> hr in the dark. The labeled HL60
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60/TLK286</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">cDNA</ENAMEX> were combined and purified. The
+          labeled cDNA was mixed with <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of <NUMEX TYPE="QUANTITY">10 μg</NUMEX><ENAMEX TYPE="PRODUCT">/μl Cot-1</ENAMEX> <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>,
+          <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of <ENAMEX TYPE="PRODUCT">8 μg/μl</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">poly</ENAMEX> d(A), <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of <ENAMEX TYPE="CONTACT_INFO">4 μg/μl yeast</ENAMEX>
+          tRNA, <NUMEX TYPE="QUANTITY">4.5 μl</NUMEX> of 20x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> and <NUMEX TYPE="QUANTITY">0.75 μl</NUMEX> of <NUMEX TYPE="PERCENT">10%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>, heated at
+          99°C for <TIMEX TYPE="TIME">2 minutes</TIMEX>, and then incubated at <TIMEX TYPE="DATE">45°C</TIMEX> for <NUMEX TYPE="CARDINAL">15</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>. The labeled <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was loaded onto a microarray
+          chip. A hybridization <ENAMEX TYPE="FAC_DESC">chamber</ENAMEX> was assembled with the
+          microarray chip and submerged in a water bath at 60°C
+          overnight. The microarray chip was washed in wash buffer
+          I (2x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.1%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>) for <TIMEX TYPE="TIME">5 minutes</TIMEX>, then in wash buffer
+          <ENAMEX TYPE="PERSON">II</ENAMEX> (1x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>) for <TIMEX TYPE="TIME">5 minutes</TIMEX> and wash buffer <ENAMEX TYPE="PERSON">III</ENAMEX> (0.2x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>)
+          for <TIMEX TYPE="TIME">5 minutes</TIMEX>. The slide was dried by centrifuging at <NUMEX TYPE="CARDINAL">650</NUMEX>
+          rpm for <TIMEX TYPE="TIME">5 minutes</TIMEX> and scanned with <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">428 Array</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Scanner</ENAMEX> using the <NUMEX TYPE="ORDINAL">Cy3</NUMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels. <NUMEX TYPE="CARDINAL">Three</NUMEX> replicates
+          were performed on the <NUMEX TYPE="ORDINAL">first</NUMEX> set of human microarray chips
+          containing <NUMEX TYPE="CARDINAL">10,368</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> each made at the <ENAMEX TYPE="ORGANIZATION">Fox Chase Cancer</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Center Microarray Facility</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray
+          The protocol of <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray is available on
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">fccc</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">edu/research/ADGEmicroarray</ENAMEX>. Briefly, <NUMEX TYPE="CARDINAL">ten</NUMEX>
+          μg of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was reverse-transcribed into single
+          stranded cDNA with oligo(dT) 
+          <NUMEX TYPE="CARDINAL">12-18</NUMEX> . Then the double stranded cDNA
+          for <TIMEX TYPE="DATE">HL60</TIMEX> and <ENAMEX TYPE="PRODUCT">HL60/TLK286</ENAMEX> was generated with the cDNA
+          <ENAMEX TYPE="ORGANIZATION">Synthesis System</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>, <ENAMEX TYPE="GPE">Rockville</ENAMEX>, <ENAMEX TYPE="PRODUCT">MD</ENAMEX>).
+          After phenol extraction and <ENAMEX TYPE="SUBSTANCE">ethanol precipitation</ENAMEX>, the
+          cDNA was resuspended in <NUMEX TYPE="QUANTITY">25 μl</NUMEX> of ddH 
+          <ENAMEX TYPE="CONTACT_INFO">2 O. Both HL60</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60/TLK286</ENAMEX> cDNA
+          were digested with <NUMEX TYPE="QUANTITY">3 μl</NUMEX> (<NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX>) of the restriction
+          enzyme 
+          <ENAMEX TYPE="LAW">Taq I</ENAMEX> in a final volume of <NUMEX TYPE="QUANTITY">30 μl</NUMEX>.
+          The 
+          Taq I fragments of <ENAMEX TYPE="PRODUCT">HL60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">cDNA</ENAMEX> were
+          ligated with the CT adapter at <TIMEX TYPE="TIME">16°C overnight</TIMEX> with <NUMEX TYPE="QUANTITY">3 �</NUMEX>�l
+          (<NUMEX TYPE="CARDINAL">9</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX>) of <ENAMEX TYPE="PRODUCT">T4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">ligase</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Promega</ENAMEX>, <ENAMEX TYPE="GPE">Madison</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">WI</ENAMEX>) while the 
+          Taq I fragments of <ENAMEX TYPE="CONTACT_INFO">HL60/TLK286 cDNA</ENAMEX>
+          were ligated with the TT adapter. <NUMEX TYPE="CARDINAL">Fifteen</NUMEX> μl each of the
+          <ENAMEX TYPE="ORGANIZATION">adapterized</ENAMEX> <ENAMEX TYPE="PRODUCT">HL60</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">cDNA</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60/TLK286</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">cDNA</ENAMEX> were mixed
+          with <NUMEX TYPE="QUANTITY">30 μl</NUMEX> of 2x <ENAMEX TYPE="ORGANIZATION">HB</ENAMEX> buffer in a final volume of <NUMEX TYPE="QUANTITY">60 μl</NUMEX>,
+          denatured at <TIMEX TYPE="DATE">95°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX> and annealed at <TIMEX TYPE="DATE">68°C</TIMEX> for <NUMEX TYPE="CARDINAL">20</NUMEX>
+          <TIMEX TYPE="TIME">hours</TIMEX>. The reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was used as a template for
+          the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> direct labeling. To generate the probe of HL60
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, a <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reaction was set up with <NUMEX TYPE="QUANTITY">0.5 μl</NUMEX> of the
+          reassociated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of 10x <ENAMEX TYPE="ORGANIZATION">Clontech PCR</ENAMEX> buffer, <NUMEX TYPE="QUANTITY">1 �</NUMEX>�l
+          of dNTPS (<NUMEX TYPE="CARDINAL">10</NUMEX> mM dATP, dTTP, and dGTP each, <NUMEX TYPE="CARDINAL">6</NUMEX> mM dCTP), <NUMEX TYPE="CARDINAL">4</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">μl of FluoroLink</ENAMEX> <ENAMEX TYPE="PRODUCT">Cy3-</ENAMEX>dCTP (<ENAMEX TYPE="ORGANIZATION">Amersham Pharmacia</ENAMEX>), <NUMEX TYPE="QUANTITY">4.5 μl</NUMEX> of
+          <NUMEX TYPE="QUANTITY">10 μM</NUMEX> CT primer, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX> cDNA polymerase and <NUMEX TYPE="CARDINAL">34</NUMEX>
+          μl of ddH 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> In the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reaction for the probe
+          of <ENAMEX TYPE="CONTACT_INFO">HL60/</ENAMEX>TLK286 <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, <NUMEX TYPE="CARDINAL">Cy5</NUMEX>-dCTP and <ENAMEX TYPE="ORGANIZATION">TT</ENAMEX> primer were used
+          instead of <NUMEX TYPE="CARDINAL">Cy3</NUMEX>-dCTP and <ENAMEX TYPE="ORGANIZATION">CT</ENAMEX> primer. The reaction cycling
+          conditions were <TIMEX TYPE="DATE">72°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX> (for filling in the
+          adapter ends), <TIMEX TYPE="DATE">94°C</TIMEX> for <TIMEX TYPE="TIME">1 min</TIMEX>, then <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">94°C</ENAMEX> for
+          30 s, <TIMEX TYPE="DATE">62°C</TIMEX> for <TIMEX TYPE="DATE">30</TIMEX> s, <TIMEX TYPE="DATE">72°C</TIMEX> for <TIMEX TYPE="DATE">60</TIMEX> s, then 72°C for a final
+          <ENAMEX TYPE="CONTACT_INFO">extension.</ENAMEX> <TIMEX TYPE="TIME">Three PCR</TIMEX> reactions were set up for each
+          probe. <TIMEX TYPE="DATE">The Cy3</TIMEX> (<NUMEX TYPE="MONEY">HL60</NUMEX>) and <TIMEX TYPE="DATE">Cy5</TIMEX> (<ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products
+          were purified with <ENAMEX TYPE="ORGANIZATION">Qiagen PCR</ENAMEX> purification kit, reduced
+          to a final volume of <NUMEX TYPE="QUANTITY">7.5 �</NUMEX>�l with a speed vac, mixed with
+          <NUMEX TYPE="QUANTITY">3.75 μl</NUMEX> of 20x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="QUANTITY">0.75 μl</NUMEX> of <NUMEX TYPE="PERCENT">10%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>, <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of <ENAMEX TYPE="CONTACT_INFO">1 μg/μl</ENAMEX>
+          <ENAMEX TYPE="SUBSTANCE">salmon DNA</ENAMEX> and <NUMEX TYPE="QUANTITY">1.5 μl</NUMEX> of 50x <ENAMEX TYPE="ORGANIZATION">Denhardt</ENAMEX>'s solution,
+          denatured at <TIMEX TYPE="DATE">95°C</TIMEX> for <TIMEX TYPE="TIME">5 min</TIMEX>, cooled on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX> and incubated
+          at <TIMEX TYPE="DATE">42°C</TIMEX> for <NUMEX TYPE="CARDINAL">15</NUMEX> min. The denatured <TIMEX TYPE="DATE">Cy3</TIMEX> (<NUMEX TYPE="MONEY">HL60</NUMEX>) and Cy5
+          (<ENAMEX TYPE="CONTACT_INFO">HL60/TLK286</ENAMEX>) <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> were mixed and loaded onto a microarray
+          chip. The hybridization and washing conditions were the
+          same as for regular microarray. <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> were
+          performed on the <NUMEX TYPE="ORDINAL">first</NUMEX> and <NUMEX TYPE="ORDINAL">second</NUMEX> sets of human
+          microarray <ENAMEX TYPE="SUBSTANCE">chips</ENAMEX> containing <NUMEX TYPE="CARDINAL">10,368</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> each.
+        
+        
+          RT-PCR
+          <ENAMEX TYPE="ORGANIZATION">Quantitative RT-PCR</ENAMEX> was used to verify the results of
+          <ENAMEX TYPE="ORGANIZATION">ADGE</ENAMEX> microarray. Primers for <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> were designed with
+          <ENAMEX TYPE="ORGANIZATION">Software OLIGO</ENAMEX> <NUMEX TYPE="MONEY">4.0</NUMEX> based upon the sequences of the genes
+          corresponding to the identified spots on the chip. The
+          total <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">HL60</ENAMEX> and <ENAMEX TYPE="PRODUCT">HL60/TLK286</ENAMEX> were
+          reverse-transcribed with <ENAMEX TYPE="LAW">Superscript II</ENAMEX> reverse
+          <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX>. The cDNA templates of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were
+          normalized with beta-actin. <TIMEX TYPE="DATE">Three</TIMEX> levels of dilution were
+          made for templates. For each gene, specific PCR cycle
+          conditions were selected to optimize the levels of
+          differential expression. The bands of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were
+          quantified with <ENAMEX TYPE="ORGANIZATION">NIH</ENAMEX> Image <NUMEX TYPE="CARDINAL">1.62</NUMEX> and ratios were
+          calculated.
+        
+        
+          Analysis of microarray data
+          The spots from the microarray images were quantified
+          with <NUMEX TYPE="MONEY">ImaGene4.1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Biodiscovery</ENAMEX>, <ENAMEX TYPE="GPE">Los Angeles</ENAMEX>, CA). The Cy3
+          and <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> data were integrated into a data set and
+          transformed with <NUMEX TYPE="MONEY">GeneSight3.0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Biodiscovery</ENAMEX>) by using
+          local background correction and logarithm of base <NUMEX TYPE="CARDINAL">2</NUMEX> for
+          the verification experiment of ratio magnification. The
+          following sequence was used for regular and ADGE
+          microarray: local background correction, removal of
+          <ENAMEX TYPE="ORGANIZATION">flagged</ENAMEX> spots, logarithm of base 2, ratio calculation and
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> regression normalization. The transformed data
+          were exported into <ENAMEX TYPE="ORGANIZATION">Microsoft Excel</ENAMEX>. The <NUMEX TYPE="CARDINAL">three</NUMEX> replicates
+          were combined and <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX> plots were constructed [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">=</ENAMEX> log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>) = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> Cy5 - log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> Cy3; A = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ((<TIMEX TYPE="TIME">Cy5 * Cy3</TIMEX>) <NUMEX TYPE="CARDINAL">1/2</NUMEX>) = (log 
+          <NUMEX TYPE="CARDINAL">2 Cy5</NUMEX> + log 
+          <ENAMEX TYPE="CONTACT_INFO">2 Cy3</ENAMEX>)<TIMEX TYPE="DATE">/2</TIMEX>. A represents the intensity
+          of a spot. <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> represents the ratios in the power of <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX>
+          with positive values for up-regulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy5/Cy3</ENAMEX>),
+          negative values for down-regulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Cy3/Cy5</ENAMEX>), zero
+          for unchanged genes. In addition, variances of <ENAMEX TYPE="SUBSTANCE">Cy3</ENAMEX> and
+          Cy5 and the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values of t test were calculated for each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. Confidence levels were calculated from the
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-values. Genes with significantly altered expression
+          were selected based on a threshold of ratios and
+          confidence level.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">ZJC</ENAMEX> participated in the design of the study, carried out
+        major experiments, performed the data analysis and drafted
+        the manuscript. <ENAMEX TYPE="ORGANIZATION">LG</ENAMEX> participated in the design of the study
+        and carried out part of the experiments. <ENAMEX TYPE="ORGANIZATION">WD</ENAMEX> participated in
+        the design of the study. <ENAMEX TYPE="ORGANIZATION">KEI</ENAMEX> carried out part of the
+        experiments. <ENAMEX TYPE="ORGANIZATION">KDT</ENAMEX> participated in the design of the study
+        and coordination. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

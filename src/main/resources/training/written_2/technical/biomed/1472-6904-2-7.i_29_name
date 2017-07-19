@@ -1,0 +1,896 @@
+
+  
+    
+      
+        Background
+        The goal of physiologically based pharmacokinetic models
+        (<ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>) is to describe the whole body <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> distribution and
+        metabolism in terms of an accurate physiological model of
+        the <ENAMEX TYPE="ANIMAL">animal</ENAMEX>. The most difficult component to model is the
+        description of the exchange between the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and tissue.
+        This is a complicated process, involving, e.g., transport
+        across the capillary and tissue cell membranes and
+        <ENAMEX TYPE="ORGANIZATION">diffusion</ENAMEX> in the extravascular and cellular space. Because
+        of this complexity, some simplifying assumptions must be
+        made in order to incorporate it into a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is a
+        new general purpose PBPK software routine that has
+        previously been used to model the human pharmacokinetics of
+        <ENAMEX TYPE="ORGANIZATION">propranolol</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , D 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , and the volatile
+        <ENAMEX TYPE="ORGANIZATION">solutes</ENAMEX> and anesthetics [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, this
+        blood-tissue exchange for organ i is characterized by the
+        parameter fclear [i] defined by (see [ <ENAMEX TYPE="LAW">1</ENAMEX> ] for
+        details):
+        (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)     
+        <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [ 
+        i ] = ( 
+        c 
+        
+          A 
+         - 
+        c 
+        
+          V 
+         )/( 
+        c 
+        
+          A 
+         - 
+        c 
+        
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+         )
+        where c 
+        A , c 
+        <ENAMEX TYPE="PERSON">V</ENAMEX> and c 
+        <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> are the free water concentrations in
+        the <ENAMEX TYPE="FAC_DESC">artery</ENAMEX> entering the tissue, the vein leaving it, and
+        the (assumed) well mixed tissue space, respectively. Fclear
+        is a measure of the fraction of solute that equilibrates
+        with the tissue in one pass through the capillary. In the
+        limiting case where the capillary is impermeable, c 
+        A = c 
+        <ENAMEX TYPE="PERSON">V</ENAMEX> and <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>. At the opposite
+        extreme, where <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> is very fast and the venous
+        concentration equilibrates with the tissue, c 
+        <ENAMEX TYPE="PERSON">V</ENAMEX> = c 
+        <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> and <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>. This latter case is
+        referred to as "flow-limited" because the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-tissue
+        exchange becomes limited by the blood flow. Flow limitation
+        simplifies the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> because it eliminates the necessity of
+        having to determine the value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i]. Because of
+        this simplicity, the vast majority of <ENAMEX TYPE="ORGANIZATION">PBPKs</ENAMEX> in the
+        literature assume that the <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> is flow limited [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+        .
+        The parameter fclear [i] (eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) of organ i can be
+        related to the capillary permeability-surface area product
+        (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        i , <ENAMEX TYPE="CONTACT_INFO">liters/min/Kg</ENAMEX>) by the relation (see
+        [ <ENAMEX TYPE="LAW">1</ENAMEX> ] for derivation):
+        
+        where fw 
+        B is the fraction free in the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, F 
+        i is the organ blood flow
+        (<ENAMEX TYPE="CONTACT_INFO">liters/min/Kg</ENAMEX>), wfract 
+        B is the fraction of <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> in the blood
+        (<ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>) and ρ 
+        B is the blood density. As the
+        <ENAMEX TYPE="ORGANIZATION">permeability</ENAMEX> <ENAMEX TYPE="PRODUCT">PS</ENAMEX> becomes large, fclear approaches <TIMEX TYPE="DATE">1</TIMEX> (the
+        flow-limited condition). It can be seen from eq. <NUMEX TYPE="CARDINAL">2</NUMEX> that the
+        value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i] depends on <NUMEX TYPE="CARDINAL">3</NUMEX> different physiological
+        <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        i , F 
+        i , and fw 
+        B ). The design of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> implements a
+        unique feature that makes it easy for the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to test
+        whether the solute under study has some significant
+        capillary permeability limitation. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has
+        preprogrammed the relative values of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        i for organ i relative to the value of
+        <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle of the muscle <ENAMEX TYPE="PRODUCT_DESC">capillaries</ENAMEX> based
+        on previous experimental measurements (reviewed in Crone
+        and <ENAMEX TYPE="PERSON">Levitt</ENAMEX>, [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ). Thus, the capillary permeability for
+        all the organs is determined by <NUMEX TYPE="CARDINAL">just one</NUMEX> adjustable
+        parameter, the fclear for muscle. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> uses this value
+        of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] to find <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle from eq. <NUMEX TYPE="CARDINAL">2</NUMEX>, uses the stored
+        <ENAMEX TYPE="ORGANIZATION">ratios PS</ENAMEX> 
+        i /<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle to find the value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        i , and then uses eq. <NUMEX TYPE="CARDINAL">2</NUMEX> to find the
+        value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i] for all the other organs. In addition
+        to simplifying the implementation of the capillary
+        permeability limitation, this also has the major advantage
+        that it ensures that the values of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i] for the
+        different organs are correctly adjusted for the organ blood
+        flow (F 
+        i ) and fraction free in <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> (fw 
+        B ) and have the appropriate <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> value
+        relative to muscle.
+        All previous <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> analysis of antibiotics have assumed
+        that the antibiotic was flow limited. It can be seen from
+        eq<NUMEX TYPE="CARDINAL">.2</NUMEX> that the value of fclear is determined by the product
+        of the intrinsic capillary permeability (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX>) and the
+        fraction of <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that is free in the <ENAMEX TYPE="SUBSTANCE">blood water</ENAMEX> (fw 
+        B ). This implies that <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> that have a
+        high degree of binding (small fw 
+        B ) are especially likely to have some
+        capillary permeability limitation (i.e., not flow limited).
+        The <NUMEX TYPE="CARDINAL">two</NUMEX> antibiotics that are investigated in this paper
+        (dicloxacillin and ceftriaxone) were chosen as likely
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for having some permeability limitation because
+        they have a high degree of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding (small fw 
+        B ) and they are both relatively lipid
+        <ENAMEX TYPE="ORGANIZATION">insoluble</ENAMEX> so that one would predict that they would not
+        have high intrinsic <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> values.
+        <ENAMEX TYPE="ORGANIZATION">Ceftriaxone</ENAMEX> has the additional complication that the
+        <ENAMEX TYPE="SUBSTANCE">protein binding</ENAMEX> is non-linear, saturating at high
+        concentrations. Incorporating non-linear binding greatly
+        complicates the kinetic equations (see [ <ENAMEX TYPE="LAW">1</ENAMEX> ] for details)
+        and for, this reason, is not included in most PBPKs. A
+        notable exception is the investigation by <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+        ] of the kinetics of cefazolin in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX>, an antibiotic
+        with non-<ENAMEX TYPE="PRODUCT_DESC">liner</ENAMEX> protein binding. Although this <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> analysis
+        by <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ] is one the most complete and
+        extensive in the literature, it was assumed that cefazolin
+        was flow limited and did not include a permeability
+        <ENAMEX TYPE="PERSON">limitation</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is the <NUMEX TYPE="ORDINAL">first</NUMEX> PBPK that allows for the
+        combination of both non-linear binding and a permeability
+        <ENAMEX TYPE="PERSON">limitation</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has also reduced the number of
+        parameters that must be entered to characterize the protein
+        binding. The extravascular extracellular albumin
+        concentration in the different organs (cProt [i]) relative
+        to the albumin concentration in plasma (cProt [vein]) has
+        been preprogrammed (these values are based primarily on the
+        measurements of <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ] for the <ENAMEX TYPE="ANIMAL">rat</ENAMEX>). Assuming
+        that the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding in the different organs is
+        proportional to the albumin concentration, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> needs
+        to enter just the binding parameters for plasma and PKQuest
+        will then automatically determine the corresponding binding
+        parameters for all the organs.
+        The following sections will present a detailed
+        description of the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to the human
+        pharmacokinetics of dicloxacillin and ceftriaxone. For this
+        analysis it is useful to establish a reference <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> value for
+        a solute that is known to be permeability limited. For this
+        reason, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will first be used to determine the
+        capillary permeability of inulin, a large water soluble
+        molecule that is known to be capillary limited [ <ENAMEX TYPE="LAW">5</ENAMEX> ] .
+      
+      
+        Methods
+        
+          PBPK program and its assumptions
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] was used for all the analysis in this
+          paper. The details of the implementation of the program
+          and a complete derivation of the pharmacokinetic
+          <ENAMEX TYPE="PERSON">equations</ENAMEX> is described in [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . It is assumed that each
+          organ can be modeled as a single well-stirred
+          <ENAMEX TYPE="PERSON">compartment</ENAMEX>. This is clearly an approximation and effects
+          such a diffusion gradients, countercurrent <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> and
+          heterogeneous organ blood flows [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] will produce
+          small deviations from this assumption.
+          The free <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> solute concentration (c, <ENAMEX TYPE="CONTACT_INFO">moles/liter</ENAMEX>)
+          plays a central role in these calculations because the
+          rate of <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> across the capillary depends on
+          differences in the value of c between the capillary and
+          tissue (see eq. <NUMEX TYPE="CARDINAL">1</NUMEX>). For the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> or any organ, the free
+          concentration can be related to the total (measured)
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (C 
+          <ENAMEX TYPE="CONTACT_INFO">tot , moles/Kg</ENAMEX>) by the relation C 
+          <ENAMEX TYPE="PER_DESC">tot</ENAMEX> = c wfract/fw where wfract
+          (<ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>) is the water fraction in the organ and fw is
+          the fraction of the solute that is free in the water
+          phase. The parameter fw 
+          i , the fraction free in organ i
+          (including vascular compartments), characterizes the
+          fraction free (and bound) and the corresponding
+          tissue/blood partition coefficients. Solute binding is a
+          ubiquitous aspect of pharmacokinetics and <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has
+          provided a number of different procedures for handling
+          it. For example, the propranolol pharmacokinetics [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          were described in terms of "ktiss" (tissue/blood
+          partition coefficients) and "freepl" (the fraction free
+          in plasma). In the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to the volatile
+          <ENAMEX TYPE="ORGANIZATION">solutes</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , fw was described in terms of "<ENAMEX TYPE="WORK_OF_ART">Kfwat</ENAMEX>"
+          (oil/water partition coefficient) and "klip 
+          i " (the fraction of lipid in each
+          <ENAMEX TYPE="ORGANIZATION">organ</ENAMEX>).
+          For the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> bound antibiotics it will be assumed
+          that the value of fw 
+          i for organ i can be described by the
+          single site Scatchard type binding equation (see [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          for details):
+          
+          where c 
+          i is the free concentration in organ
+          i, k is the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding constant and Pb 
+          i is the concentration of protein
+          binding sites in organ i. For the special case of linear
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> (no saturation), kc 
+          i <<NUMEX TYPE="MONEY"><1</NUMEX>, eq. <NUMEX TYPE="CARDINAL">3</NUMEX> reduces to
+          
+          As is the case for other beta-lactam antibiotics [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+          <NUMEX TYPE="CARDINAL">10</NUMEX> ] , it will also be assumed that albumin is the
+          <ENAMEX TYPE="SUBSTANCE">binding protein</ENAMEX> so that the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding site
+          concentration in organ i (Pb 
+          i ) is proportional to the
+          extravascular albumin concentration in organ i. In
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the default values for the tissue protein
+          <ENAMEX TYPE="PERSON">concentrations</ENAMEX> (cProt 
+          i ) relative to plasma have been
+          <ENAMEX TYPE="ORGANIZATION">preprogrammed</ENAMEX>. These values are based primarily on the
+          measurements of <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ] for the <ENAMEX TYPE="ANIMAL">rat</ENAMEX>. (The
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> can change these values by entering values for cProt
+          
+          i .) Only the experimental value of Pb
+          of plasma needs to be entered in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> and the value of
+          Pb 
+          i for the different organs are then
+          calculated using these stored default values.
+          For the general case (eq. <NUMEX TYPE="CARDINAL">3</NUMEX>), the PKQuest protein
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> is characterized by <NUMEX TYPE="CARDINAL">2</NUMEX> parameters: kProt (the
+          binding constant, k) and cProt 
+          <ENAMEX TYPE="PERSON">vein</ENAMEX> (the concentration of binding
+          sites in venous plasma, <ENAMEX TYPE="ORGANIZATION">Pb</ENAMEX>). The special case of linear
+          albumin binding is completely described by just the one
+          parameter k*Pb (see eq. <NUMEX TYPE="CARDINAL">4</NUMEX>). In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the linear case
+          is turned on by entering fw [vein] (the fraction free in
+          the vein plasma, which is independent of concentration)
+          and setting <ENAMEX TYPE="PER_DESC">kProt</ENAMEX> = <NUMEX TYPE="PERCENT">-2</NUMEX> and the following procedure is
+          used to find the default values of fw 
+          i for each organ <ENAMEX TYPE="PRODUCT">i. First</ENAMEX>, eq. <NUMEX TYPE="CARDINAL">4</NUMEX> for
+          i=vein is solved for the value of kPb 
+          vein . Then, using the default values
+          of albumin concentration in each organ (cProt [i]), the
+          value of kPb 
+          i is found, and, from eq. <NUMEX TYPE="CARDINAL">4</NUMEX>, the
+          corresponding fw 
+          i determined.
+        
+        
+          Experimental pharmacokinetic data
+          <NUMEX TYPE="CARDINAL">Three</NUMEX> set of data from previous <ENAMEX TYPE="ORG_DESC">publications</ENAMEX> were
+          used. The data for inulin was based on the experimental
+          measurements of <ENAMEX TYPE="ORGANIZATION">Odeh et</ENAMEX>. al. [ <TIMEX TYPE="DATE">11</TIMEX> ] in which the venous
+          plasma inulin was measured following a <TIMEX TYPE="TIME">5 minute</TIMEX>, constant
+          intravenous infusion of <NUMEX TYPE="QUANTITY">4 gm</NUMEX> of inulin. The data from
+          subject <NUMEX TYPE="MONEY">#1</NUMEX> was used (<TIMEX TYPE="DATE">42 year</TIMEX> old normal female, weight
+          <ENAMEX TYPE="PRODUCT">87.3 Kg</ENAMEX>, height <NUMEX TYPE="CARDINAL">173</NUMEX> cm). The data for dicloxacillin was
+          obtained from the measurements of <ENAMEX TYPE="ORGANIZATION">Lofgren et</ENAMEX>. al. [ <TIMEX TYPE="DATE">12</TIMEX> ]
+          of the venous plasma time course following a <TIMEX TYPE="TIME">30 minute</TIMEX>
+          constant infusion of <NUMEX TYPE="CARDINAL">2</NUMEX> gms dicloxacillin. The averaged
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from <NUMEX TYPE="CARDINAL">6</NUMEX> young <ENAMEX TYPE="PER_DESC">males</ENAMEX> (average weight <NUMEX TYPE="QUANTITY">75 Kg</NUMEX>) was used.
+          The data for ceftriaxone was obtained from the
+          measurements of <ENAMEX TYPE="ORGANIZATION">Stoeckel</ENAMEX> and colleaques [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . The
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are for a single subject (<ENAMEX TYPE="PERSON">M.Fl</ENAMEX>.) given <NUMEX TYPE="CARDINAL">4</NUMEX> different
+          <ENAMEX TYPE="PRODUCT">IV</ENAMEX> doses of ceftriaxone - <NUMEX TYPE="CARDINAL">0.15</NUMEX>, <NUMEX TYPE="CARDINAL">0.5</NUMEX>, <NUMEX TYPE="CARDINAL">1.5</NUMEX> and <NUMEX TYPE="CARDINAL">3</NUMEX> gms as a <NUMEX TYPE="CARDINAL">5</NUMEX>
+          minute constant infusion. The experimental data points
+          were obtained by using <ENAMEX TYPE="ORGANIZATION">UN-SCAN</ENAMEX>-IT (<ENAMEX TYPE="ORGANIZATION">Silk Scientific</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Corporation</ENAMEX>) to read the data from the published figures.
+          All the figures shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are direct copies (in
+          jpeg format) of standard PKQuest output.
+        
+        
+          Standard human parameters
+          The default standard values ("standardhuman") are
+          stored as a <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> procedure in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The values used
+          for organ flows, volumes, etc. are identical to those
+          used in all the other applications of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] .
+          <ENAMEX TYPE="PRODUCT">Table Ilists</ENAMEX> the values of organ weight and the blood
+          flow per organ weight for each organ for the standard
+          <ENAMEX TYPE="ORGANIZATION">human</ENAMEX> (<NUMEX TYPE="QUANTITY">70 Kg</NUMEX>). These organ weights are for the default
+          value of <NUMEX TYPE="PERCENT">20%</NUMEX> body fat. They are scaled depending on the
+          value of "<ENAMEX TYPE="WORK_OF_ART">Fat</ENAMEX>" that is input. The "portal" compartment
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to all the organs drained by the portal vein
+          (stomach, small and large intestine, pancreas and spleen)
+          with a blood flow equal to that in the portal vein. The
+          "liver" blood flow corresponds to the hepatic <ENAMEX TYPE="FAC_DESC">artery</ENAMEX>. The
+          compartment labeled "other" <ENAMEX TYPE="PER_DESC">groups</ENAMEX> all the other organs
+          with a flow and weight adjusted to account for the total
+          body weight (<NUMEX TYPE="QUANTITY">70 Kg</NUMEX>) and the total default cardiac output
+          (<NUMEX TYPE="CARDINAL">6.06</NUMEX> <ENAMEX TYPE="PER_DESC">liters</ENAMEX>/<ENAMEX TYPE="DISEASE">min</ENAMEX>). For a complete listing of all
+          parameters and constants used in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, download the
+          file gensolve.mws from the PKQuest web site
+          <ENAMEX TYPE="CONTACT_INFO">http:\\www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.comand view the routines
+          "standardman()" and "defaultpar()".
+        
+      
+      
+        Results
+        
+          Inulin
+          As described previously [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> data unique
+          to each solute is input to <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> in the form a short
+          <ENAMEX TYPE="CONTACT_INFO">Maple http:\\www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">maplesoft</ENAMEX>.comprocedure that completely
+          characterizes the pharmacokinetics:
+          
+            inulin:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>() 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>(): 
+          
+          
+            Wtot:=<NUMEX TYPE="CARDINAL">87.3</NUMEX>; 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>); 
+          
+          
+            Fat:=<NUMEX TYPE="CARDINAL">0.28</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> <NUMEX TYPE="PERCENT">26%</NUMEX> <ENAMEX TYPE="EVENT">Fat</ENAMEX> by weight based
+            on <NUMEX TYPE="CARDINAL">173</NUMEX> cm height. 
+          
+          
+            mecf:=<NUMEX TYPE="CARDINAL">1.0</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> <ENAMEX TYPE="ORGANIZATION">Inulin</ENAMEX> distributes only
+            in default extracellular space 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [muscle]:=<NUMEX TYPE="CARDINAL">0.354</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>
+            permeability value for muscle, all other organs set
+            from it 
+          
+          
+            rclr:=<NUMEX TYPE="CARDINAL">0.1</NUMEX>; <ENAMEX TYPE="FAC">#Renal</ENAMEX> water clearance of
+            <ENAMEX TYPE="CONTACT_INFO">0.10 liters/min</ENAMEX> 
+          
+          
+            cunit:="milligrams"; <NUMEX TYPE="MONEY">#</NUMEX><ENAMEX TYPE="ORG_DESC">unit</ENAMEX> used in
+            printed and plotted output 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [vein]:=<NUMEX TYPE="CARDINAL">4</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> input data =
+            venous plasma concentration 
+          
+          
+            ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>;
+            <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">1</ENAMEX>]:=table([organ=vein, type=<NUMEX TYPE="CARDINAL">1</NUMEX>, rate=<NUMEX TYPE="CARDINAL">800</NUMEX>,
+            <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          
+          
+            tend=<NUMEX TYPE="CARDINAL">5</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]); <NUMEX TYPE="MONEY"># 5</NUMEX>
+            minute constant infusion of <TIMEX TYPE="DATE">4000</TIMEX> mg 
+          
+          The experimental data was for the subject in fig. 2of
+          <ENAMEX TYPE="ORGANIZATION">Odeh et</ENAMEX>. al. [ <TIMEX TYPE="DATE">11</TIMEX> ] (this female had a weight and height
+          of <NUMEX TYPE="QUANTITY">87.3 Kg and 173 cm</NUMEX>, and a predicted <NUMEX TYPE="PERCENT">28%</NUMEX> <ENAMEX TYPE="SUBSTANCE">fat</ENAMEX> content).
+          There are <NUMEX TYPE="CARDINAL">3</NUMEX> parameters that specifically characterize
+          inulin: mecf, rclr, and fclear [muscle]:
+          The parameter <ENAMEX TYPE="ORG_DESC">mecf</ENAMEX> determines the extravascular volume
+          of distribution. The default value is <ENAMEX TYPE="PER_DESC">mecf</ENAMEX> = <NUMEX TYPE="PERCENT">-1</NUMEX>, which
+          indicates that the solute distributes in all the body
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>. If mecf is ><NUMEX TYPE="CARDINAL">0</NUMEX> then the solute distributes in
+          organ i in a water volume equal to mecf*ecf [i] where ecf
+          [i] is the default extracellular space for organ i. The
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> has the option to either adjust each of the
+          individual values of <ENAMEX TYPE="SUBSTANCE">ecf</ENAMEX> [i], or scale all the values by
+          the factor mecf. The default ecf [i] values in
+          "standardhuman" were initially set equal to the values
+          directly determined in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ]
+          from steady state tissue inulin measurements. Then, the
+          value of mecf that optimized the fit to this data of Odeh
+          <ENAMEX TYPE="ORGANIZATION">et</ENAMEX>. <ENAMEX TYPE="PERSON">al.</ENAMEX> was determined, and these new values were chosen
+          for "standardhuman". (The human values were <NUMEX TYPE="PERCENT">16%</NUMEX> larger
+          than the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> values). Since the default data was chosen
+          to fit this data, setting <ENAMEX TYPE="PER_DESC">mecf</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> simply selects this
+          optimized data.
+          The parameter rclr is the free water concentration
+          renal clearance. It is equal to the volume of blood water
+          cleared per min (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>). It differs slightly from
+          the standard renal clearance which is equal to plasma
+          volume/<ENAMEX TYPE="DISEASE">min</ENAMEX> (<ENAMEX TYPE="PER_DESC">rclr</ENAMEX> = <NUMEX TYPE="CARDINAL">0.94</NUMEX> × plasma clearance). The value of
+          rclr of <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PER_DESC">liter</ENAMEX>/<ENAMEX TYPE="DISEASE">min corresponds</ENAMEX> to the value directly
+          measured by <ENAMEX TYPE="ORGANIZATION">Odeh et</ENAMEX>. al. for this subject.
+          The <ENAMEX TYPE="PER_DESC">user</ENAMEX> has <NUMEX TYPE="CARDINAL">two</NUMEX> different options for entering the
+          values of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i] (see eq. <NUMEX TYPE="CARDINAL">1</NUMEX>). If, as in this case,
+          just the value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] is input, then PKQuest
+          <ENAMEX TYPE="PERSON">will</ENAMEX>, by default, use the relation in eq. <NUMEX TYPE="CARDINAL">2</NUMEX> to determine
+          the value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          muscle ; use the default ratios of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          i /<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          muscle to determine the value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          i for the other organs, and then use
+          <ENAMEX TYPE="ORGANIZATION">eq</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX> to find the corresponding flcear [i] for the other
+          organs. The default ratios <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          i /<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          muscle assume, for example, that the
+          liver and kidney have a high permeability and are flow
+          <ENAMEX TYPE="ORGANIZATION">limited</ENAMEX>, while, because of the blood brain barrier, the
+          brain capillary permeability is <NUMEX TYPE="CARDINAL">zero</NUMEX>. The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can also
+          individually input the value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i] for any organ
+          <ENAMEX TYPE="PERSON">i.</ENAMEX> If an organ's value for fclear is not set, then
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will use the value set from the above calculation
+          based on the muscle value. The parameter fclear [muscle]
+          was adjusted to find the best fit to the inulin data
+          using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> minimization feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] .
+          The optimal value of fclear 
+          muscle was <NUMEX TYPE="CARDINAL">0.354</NUMEX>.
+          Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output for this inulin data
+          (all the figures in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are copied directly from
+          the standard output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>). There is good agreement
+          between the predicted venous plasma concentration (solid
+          line) and the experimental values (squares). <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also
+          routinely outputs the experimental pharmacokinetic
+          clearance and volume of distribution determined from the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> and <NUMEX TYPE="ORDINAL">second</NUMEX> moments of the plasma concentration
+          extrapolated exponentially to infinite time [ <TIMEX TYPE="DATE">15</TIMEX> ] .
+          These experimentally derived values are in good agreement
+          with the model values: <ENAMEX TYPE="GPE">Plasma</ENAMEX> clearance: <ENAMEX TYPE="CONTACT_INFO">0.104 liters/min</ENAMEX>
+          (experimental) versus <NUMEX TYPE="MONEY">0.1</NUMEX> (<ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>); Volume of
+          distribution: <NUMEX TYPE="MONEY">10.7 liters</NUMEX> (experimental) versus <NUMEX TYPE="CARDINAL">10.7</NUMEX>
+          (<ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also outputs the values of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [i]
+          and the corresponding value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          i determined from eq. <NUMEX TYPE="CARDINAL">2</NUMEX>. The fclear
+          [muscle] of <NUMEX TYPE="CARDINAL">0.354</NUMEX> corresponds to a <ENAMEX TYPE="PRODUCT">PS of</ENAMEX> muscle of <NUMEX TYPE="CARDINAL">0.6</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">ml/min/100 gm.</ENAMEX>
+        
+        
+          Dicloxacillin
+          <NUMEX TYPE="PERCENT">Approximately 97%</NUMEX> of human serum dicloxacillin is
+          protein bound (fw 
+          B = <NUMEX TYPE="CARDINAL">0.03</NUMEX>) [ <TIMEX TYPE="DATE">16</TIMEX> ] , making it a likely
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> to show some permeability limitation. Another
+          advantage of dicloxacillin is that this binding is
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX>, showing no evidence of saturation at
+          concentrations <NUMEX TYPE="CARDINAL">up to 230</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/liter [ <ENAMEX TYPE="LAW">6 16</ENAMEX> ] , simplifying
+          the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. Since the binding does not saturate, it can be
+          described by eq. <NUMEX TYPE="CARDINAL">4</NUMEX> and the binding is characterized by
+          the single parameter fw [vein] (see Methods).
+          The complete <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> procedure for dicloxacillin is:
+          
+            dicloxacillin:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>() 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>(): 
+          
+          
+            Wtot:=<NUMEX TYPE="CARDINAL">75.0</NUMEX>; 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>); 
+          
+          
+            Fat:=<NUMEX TYPE="CARDINAL">0.16</NUMEX>; 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [vein]:=<NUMEX TYPE="CARDINAL">4</NUMEX>; 
+          
+          
+            mecf:=<NUMEX TYPE="CARDINAL">1.0</NUMEX>; 
+          
+          
+            kProt:=-<NUMEX TYPE="CARDINAL">2</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>this turns on use of
+            <ENAMEX TYPE="ORGANIZATION">cProt</ENAMEX> [i] to determine fw [i] 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">fw</ENAMEX> [vein]:=<NUMEX TYPE="CARDINAL">0.03</NUMEX>; 
+          
+          
+            rclr:=<NUMEX TYPE="CARDINAL">0.12</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> renal filtraton
+            clearance 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]:=<NUMEX TYPE="CARDINAL">3.0</NUMEX>;<ENAMEX TYPE="PERSON"># Renal</ENAMEX> tubule
+            <ENAMEX TYPE="GPE">secretion</ENAMEX> clearance 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [muscle]:=<NUMEX TYPE="CARDINAL">0.26</NUMEX>; 
+          
+          
+            ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>;
+            <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">1</ENAMEX>]:=table([organ=vein, type=<NUMEX TYPE="CARDINAL">1</NUMEX>, rate=<NUMEX TYPE="CARDINAL">2000.0/30</NUMEX>,
+            <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          
+          
+            tend=<NUMEX TYPE="CARDINAL">30</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]); <NUMEX TYPE="MONEY">#</NUMEX>
+            constant <TIMEX TYPE="TIME">30 minute</TIMEX> infusion of <NUMEX TYPE="CARDINAL">2</NUMEX> gms 
+          
+          The data of <ENAMEX TYPE="ORGANIZATION">Lofgren et</ENAMEX>. al. [ <TIMEX TYPE="DATE">12</TIMEX> ] for the venous
+          plasma time course of normal young <ENAMEX TYPE="PER_DESC">males</ENAMEX> given a <NUMEX TYPE="CARDINAL">30</NUMEX>
+          minute constant infusion of <NUMEX TYPE="CARDINAL">2</NUMEX> gms dicloxacillin was used
+          as input. The average body weight for this group was <NUMEX TYPE="CARDINAL">75</NUMEX>
+          <ENAMEX TYPE="PERSON">Kg</ENAMEX>, and the standard fat content for young <ENAMEX TYPE="PER_DESC">males</ENAMEX> (<NUMEX TYPE="PERCENT">16%</NUMEX>, [
+          <NUMEX TYPE="CARDINAL">17</NUMEX> ] ) was assumed. The parameter mecf is set = <NUMEX TYPE="CARDINAL">1</NUMEX> because
+          dicloxacillin, like inulin, distributes only in the
+          <ENAMEX TYPE="PRODUCT">extracellular</ENAMEX> space as shown by its negligible
+          distribution into red cells and its low blood/tissue
+          partition coefficient [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . This means that
+          <ENAMEX TYPE="ORGANIZATION">dicloxacillin</ENAMEX> has the same volume of distributions in the
+          different organs as was used above for inulin.
+          <ENAMEX TYPE="ORGANIZATION">Dicloxacillin</ENAMEX> is cleared primarily by the kidney in these
+          subjects [ <TIMEX TYPE="DATE">12</TIMEX> ] and there is a large component of renal
+          tubular secretion that is blocked by probenecid [ <TIMEX TYPE="DATE">18</TIMEX> ]
+          determined by the parameter <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]. (Other studies
+          have indicated that the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> can account for <NUMEX TYPE="PERCENT">40%</NUMEX> or more
+          of the total clearance [ <TIMEX TYPE="DATE">16</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> calculations (not
+          shown) based on the assumption that the clearance was
+          divided equally between the kidney and liver yield almost
+          identical results). The value of <ENAMEX TYPE="DISEASE">renal filtration</ENAMEX> (rclr)
+          was set to the normal value of <NUMEX TYPE="CARDINAL">0.12</NUMEX> <ENAMEX TYPE="PER_DESC">liters</ENAMEX>/min. The
+          capillary permeability limitation is characterized by the
+          single parameter fclear [muscle] (from which the
+          permeabililty of the other organs is calculated by
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>). The above values of <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney] = <NUMEX TYPE="CARDINAL">3.0</NUMEX>
+          (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>) and fclear [muscle]:= <NUMEX TYPE="CARDINAL">0.26</NUMEX> (dimensionless)
+          were obtained by simultaneously optimizing both values
+          using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> minimization procedure in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          to find the values that provided the best fit to the
+          experimental data.
+          The left hand <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> in figure 2shows a comparison of
+          the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> model predictions (solid line) for this set
+          of input parameters with the experimental data of Lofgren
+          <ENAMEX TYPE="ORGANIZATION">et</ENAMEX>. al. [ <TIMEX TYPE="DATE">12</TIMEX> ] . Again, the agreement is quite good. This
+          model fit used a permeability limitation (fclear) for
+          muscle of <NUMEX TYPE="CARDINAL">0.26</NUMEX>. This means that the venous blood leaving
+          the muscle is <NUMEX TYPE="PERCENT">26%</NUMEX> equilibrated with the tissue. Using eq.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>, this corresponds to a <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          muscle of <ENAMEX TYPE="CONTACT_INFO">13 ml/min/100 gm.</ENAMEX>
+          The right hand <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> in figure 2shows the best fit
+          that can be found for this same data, assuming that
+          <ENAMEX TYPE="ORGANIZATION">dicloxacillin</ENAMEX> is flow limited (<ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>). The fit is
+          clearly worse, especially at the <TIMEX TYPE="TIME">early time</TIMEX> points where
+          a permeability limitation should be important. Part of
+          the better fit may have resulted from adjusting 2
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX> (fclear [muscle] and <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]) for fig.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>(left), while, in fig. <NUMEX TYPE="CARDINAL">2</NUMEX>(right), <NUMEX TYPE="CARDINAL">only one</NUMEX> parameter was
+          adjusted (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]). However, the fact that the fit
+          in fig. <NUMEX TYPE="CARDINAL">2</NUMEX>(right) could not be significantly improved by
+          trying to adjust other parameters, such as muscle blood
+          flow, extracellular space and/or plasma protein binding,
+          suggests that this permeability limitation is real.
+        
+        
+          Ceftriaxone
+          In addition to having a high degree of protein
+          <ENAMEX TYPE="PERSON">binding</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Ceftriaxone</ENAMEX> has the additional complication that
+          this binding is non-linear and saturates at high
+          concentrations. <ENAMEX TYPE="ORGANIZATION">Stoeckel</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> have carried out
+          detailed investigations of the pharmacokinetics of
+          <ENAMEX TYPE="ORGANIZATION">ceftriaxone</ENAMEX> in <ENAMEX TYPE="PER_DESC">humans</ENAMEX> and the influence of this
+          non-linear binding [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . They showed that the
+          non-linear kinetics of ceftriaxone arise solely from this
+          non-linear binding by demonstrating that the kinetics
+          became linear if the free drug concentrations are used in
+          the pharmacokinetic calculations. In this section,
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will be used to develop a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model for this
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The model includes both non-linear binding and a
+          permeability limitation, the <NUMEX TYPE="ORDINAL">first</NUMEX> time that both these
+          factors have been included in a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>.
+          Because the <ENAMEX TYPE="SUBSTANCE">protein binding saturates</ENAMEX>, the general
+          Scatchard binding equation (eq. <NUMEX TYPE="CARDINAL">3</NUMEX>) must be used. This
+          requires a value for the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding constant (k) and
+          the concentration of binding sites in each organ (Pb 
+          i ). As described above (<ENAMEX TYPE="ORGANIZATION">Methods</ENAMEX>),
+          these constants are determined by <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> parameters:
+          <ENAMEX TYPE="ORGANIZATION">kProt</ENAMEX> (the <ENAMEX TYPE="ORG_DESC">association</ENAMEX> constant for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding) and
+          <ENAMEX TYPE="ORGANIZATION">cProt</ENAMEX> [vein] (the plasma concentration of binding sites).
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> then uses the default information about the
+          tissue albumin concentration in each organ relative to
+          the plasma albumin to determine the concentration of
+          binding sites in each organ (Pb 
+          i ). The data of <ENAMEX TYPE="ORGANIZATION">Stoeckel et</ENAMEX>. al. [ <NUMEX TYPE="CARDINAL">13</NUMEX>
+          <NUMEX TYPE="CARDINAL">14</NUMEX> ] are ideal for this analysis because they provide
+          information about the venous <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels for the same
+          subject (<ENAMEX TYPE="PERSON">M.Fl</ENAMEX>.) given <NUMEX TYPE="CARDINAL">4</NUMEX> different <ENAMEX TYPE="PRODUCT">IV</ENAMEX> doses of ceftriaxone
+          - <NUMEX TYPE="CARDINAL">0.15</NUMEX>, <NUMEX TYPE="CARDINAL">0.5</NUMEX>, <NUMEX TYPE="CARDINAL">1.5</NUMEX> and <NUMEX TYPE="CARDINAL">3</NUMEX> gms. It is important to have these
+          different inputs in order to test if the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> can
+          accurately model the non-linear kinetics. Since all the
+          doses were given to the same subject, an identical set of
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters is used for all the doses:
+          
+            ceftriaxone:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>() 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>(): 
+          
+          
+            Wtot:=<NUMEX TYPE="CARDINAL">70.0</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>Body weight 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>); 
+          
+          
+            Fat:=<NUMEX TYPE="CARDINAL">0.18</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> <ENAMEX TYPE="EVENT">Fat</ENAMEX> body weight fraction
+            for <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="PERSON">Kg</ENAMEX>, <NUMEX TYPE="CARDINAL">183</NUMEX> cm <ENAMEX TYPE="PER_DESC">man</ENAMEX>. 
+          
+          
+            cunit:="micromoles"; 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [vein]:=<NUMEX TYPE="CARDINAL">4</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> input = venous
+            plasma concentration 
+          
+          
+            mecf:=<NUMEX TYPE="CARDINAL">0.85</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> distribute only in
+            <ENAMEX TYPE="PRODUCT">extracellular</ENAMEX> space - adjusted to fit data 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [muscle]:=<NUMEX TYPE="CARDINAL">0.15</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> determinse
+            muscle capillary permeability 
+          
+          
+            rclr:=<NUMEX TYPE="CARDINAL">0.11</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> Normal renal
+            clearance 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]:=<NUMEX TYPE="CARDINAL">0.035</NUMEX>; <ENAMEX TYPE="PERSON"># Renal</ENAMEX> tubule
+            secretion 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]:=<NUMEX TYPE="CARDINAL">0.06</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> Liver
+            metabolism 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">cProt</ENAMEX> [vein]:=<NUMEX TYPE="CARDINAL">806</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> total conc.
+            protein binding site in plasma (<ENAMEX TYPE="CONTACT_INFO">micromoles/liter</ENAMEX>) 
+          
+          
+            kProt:=<NUMEX TYPE="CARDINAL">0.0315</NUMEX>; <ENAMEX TYPE="ORGANIZATION"># Association</ENAMEX> constant
+            (<ENAMEX TYPE="CONTACT_INFO">liters/micromoles</ENAMEX>) 
+          
+          <ENAMEX TYPE="PERSON">Subject M.Fl</ENAMEX>. had a weight of <NUMEX TYPE="QUANTITY">70 Kg</NUMEX> and height of <NUMEX TYPE="CARDINAL">183</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">cm</ENAMEX> (<ENAMEX TYPE="PERSON">K. Stoeckel</ENAMEX>, personal communication). The values of
+          <ENAMEX TYPE="ORGANIZATION">cProt</ENAMEX> [vein] and kProt used above are the values
+          determined by equilibrium dialysis for the subject <ENAMEX TYPE="PERSON">M.Fl</ENAMEX>.
+          [ <TIMEX TYPE="DATE">13</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Ceftriaxone</ENAMEX> is eliminated by both renal
+          <ENAMEX TYPE="ORGANIZATION">secretion</ENAMEX> and liver metabolism. The normal value of 0.ll
+          <ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX> was used for renal clearance, and the tubule
+          <ENAMEX TYPE="ORGANIZATION">secretion</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]) and liver metabolism (Tclr
+          [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]) were adjusted to have a renal clearance of about
+          <NUMEX TYPE="PERCENT">65%</NUMEX> of the total clearance as was observed
+          <ENAMEX TYPE="PERSON">experimentally</ENAMEX>. The liver metabolism and tubule secretion
+          were assumed to be linear because the kinetics were
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> if corrections were made for the plasma binding.
+          The value mecf has been set to <NUMEX TYPE="CARDINAL">0.85</NUMEX> to slightly improve
+          the fit to the data. This makes the extracellular volume
+          of distribution <NUMEX TYPE="PERCENT">85%</NUMEX> of the default value. It is not clear
+          whether this has some physiological significance for this
+          subject or if it is just a "fudge" factor that corrects
+          for some other limitation in the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. The <NUMEX TYPE="CARDINAL">two</NUMEX> parameters
+          <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [muscle] and <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>] were simultaneously
+          adjusted using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> minimization procedure in
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to obtain the best fit to the experimental data.
+          For this case, where the binding is non-linear, the value
+          of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] that is input is interpreted as the
+          value of fclear in the limit of <NUMEX TYPE="CARDINAL">zero</NUMEX> concentration. As
+          the concentration increases, the value of the fraction
+          free (fw 
+          B ) will increase (eq. <NUMEX TYPE="CARDINAL">3</NUMEX>) and the
+          corresponding value of fclear (eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) will also increase
+          (i.e. become less permeability limited). The optimized
+          value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] of <NUMEX TYPE="MONEY">0.15 corresponds</NUMEX> (see eq. <NUMEX TYPE="CARDINAL">2</NUMEX>)
+          to a <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          muscle of <ENAMEX TYPE="CONTACT_INFO">6 ml/min/100 gm.</ENAMEX>
+          Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the agreement between the model
+          predictions of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> and the experimental data for
+          inputs of <NUMEX TYPE="MONEY">0.15</NUMEX>, <NUMEX TYPE="CARDINAL">0.5</NUMEX>, <NUMEX TYPE="QUANTITY">1.5 and 3.0 grams</NUMEX>. The same
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> set was used for each of these <NUMEX TYPE="CARDINAL">4</NUMEX> fits. Only the
+          input function was varied. Over the plasma concentration
+          ranges seen at <TIMEX TYPE="TIME">early</TIMEX> times for each of the <NUMEX TYPE="CARDINAL">4</NUMEX> doses, the
+          fraction free in the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and the fclear 
+          <ENAMEX TYPE="PERSON">muscle</ENAMEX> (fraction of solute that
+          equilibrates with the tissue in one pass through the
+          muscle <ENAMEX TYPE="PRODUCT_DESC">capillary</ENAMEX>) varies as follows: At <ENAMEX TYPE="CONTACT_INFO">0 μM: fraction</ENAMEX>
+          free = <NUMEX TYPE="CARDINAL">0.038</NUMEX>, <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">0.15</NUMEX>; At <TIMEX TYPE="TIME">50 μM: fraction</TIMEX> free =
+          <NUMEX TYPE="CARDINAL">0.092</NUMEX>, <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">0.33</NUMEX>; <NUMEX TYPE="CARDINAL">At 150</NUMEX> μM: fraction free = <NUMEX TYPE="CARDINAL">0.18</NUMEX>,
+          <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">0.55</NUMEX>; <NUMEX TYPE="CARDINAL">At 450</NUMEX> μM: fraction free = <NUMEX TYPE="CARDINAL">0.374</NUMEX>, <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> =
+          <NUMEX TYPE="CARDINAL">0.8</NUMEX>; <NUMEX TYPE="CARDINAL">At 800</NUMEX> μM: fraction free = <NUMEX TYPE="CARDINAL">0.51</NUMEX>; <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">0.89</NUMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">non-linearity</ENAMEX> in the kinetics is apparent both in the
+          changes in the qualitative shape of the curve and in the
+          absolute values of the plasma concentration. The
+          agreement between the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and experiment for <TIMEX TYPE="DATE">this 20</TIMEX>
+          fold dose range and <NUMEX TYPE="CARDINAL">roughly 10</NUMEX> fold range of fraction
+          free is surprisingly good, especially considering that
+          there are so few adjustable parameters (see below).
+          Figure <NUMEX TYPE="CARDINAL">4show</NUMEX> the corresponding fits for the case where
+          <ENAMEX TYPE="ORGANIZATION">ceftriaxone</ENAMEX> is assumed to be flow limited (<ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>)
+          for the <NUMEX TYPE="CARDINAL">0.15</NUMEX> and <NUMEX TYPE="CARDINAL">3.0</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm</ENAMEX> dose. Comparing figures 3and 4it
+          can be seen that the permeability limitation
+          significantly influences the pharmacokinetics only for
+          the lower doses because of the saturation of the protein
+          binding. For the low dose (<NUMEX TYPE="QUANTITY">0.15 grams</NUMEX>), the plasma
+          concentration at <TIMEX TYPE="TIME">early</TIMEX> times is <NUMEX TYPE="QUANTITY">about 50 μM</NUMEX> which will
+          have a corresponding fclear of <NUMEX TYPE="CARDINAL">0.33</NUMEX>. This means that
+          there will be <NUMEX TYPE="PERCENT">only 33%</NUMEX> equilibration during <TIMEX TYPE="TIME">one</TIMEX> pass
+          through the capillary - a significant permeability
+          <ENAMEX TYPE="PERSON">limitation</ENAMEX>. However, for the high dose (<NUMEX TYPE="QUANTITY">3.0 grams</NUMEX>), the
+          early plasma concentration is <NUMEX TYPE="QUANTITY">about 800 μM</NUMEX> which
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to a fclear of <NUMEX TYPE="MONEY">0.89</NUMEX> which differs only
+          sightly from the flow limited condition (<ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>)
+          assumed for figure <NUMEX TYPE="CARDINAL">4</NUMEX>.
+        
+      
+      
+        Discussion and Conclusions
+        The definition that is introduced in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> for
+        capillary-tissue clearance (fclear, eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) and its relation
+        to the fraction free in tissue (fw 
+        B , eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) is not new. These definitions
+        are identical to the classical expressions used to describe
+        pulmonary diffusion capacity of a gas where fw 
+        B corresponds to the inverse of the gas
+        <ENAMEX TYPE="ORGANIZATION">solubililty (β</ENAMEX>) [ <TIMEX TYPE="DATE">19</TIMEX> ] . The capillary permeability
+        limitation produced by the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding of dicloxacillin
+        and <ENAMEX TYPE="PER_DESC">ceftriaxone</ENAMEX> described in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> is directly
+        analogous to the <ENAMEX TYPE="SUBSTANCE">carbon monoxide</ENAMEX> pulmonary diffusion
+        limitation that results from its high blood solubility.
+        This analogy has not been previously recognized for the
+        <ENAMEX TYPE="SUBSTANCE">protein bound antibiotics</ENAMEX>.
+        The value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle of inulin determined above is a
+        measure of the capillary <ENAMEX TYPE="SUBSTANCE">permeability</ENAMEX> averaged over all the
+        muscles. It represents the permeability for the muscle in
+        the condition of these measurements - the resting human
+        with a relatively low muscle blood flow (default value =
+        <ENAMEX TYPE="CONTACT_INFO">0.0266 liters/min/Kg</ENAMEX>). Surprisingly, this may be the first
+        report of this value in <ENAMEX TYPE="PER_DESC">humans</ENAMEX>. The value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle found here for inulin of <NUMEX TYPE="CARDINAL">0.6</NUMEX>
+        <ENAMEX TYPE="CONTACT_INFO">ml/min/100 gm</ENAMEX> is slightly less than the reported value of
+        <NUMEX TYPE="MONEY">0.9</NUMEX> for lightly exercising in vivo human forearm muscle [
+        <NUMEX TYPE="CARDINAL">20</NUMEX> ] and is in the range reported for animal measurements
+        (<NUMEX TYPE="CARDINAL">0.6</NUMEX> to <NUMEX TYPE="CARDINAL">1.2</NUMEX>; [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ). The literature values are for muscles
+        with <NUMEX TYPE="CARDINAL">2 to 4</NUMEX> times the default blood flow assumed for these
+        measurements. Since the muscle capillary surface area (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX>)
+        can vary by a factor of <NUMEX TYPE="CARDINAL">more than 4</NUMEX> as capillaries are
+        recruited at higher flows [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , this low resting blood
+        flow could easily account for the low <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> inulin value
+        obtained in this analysis.
+        The values of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle for dicloxacillin and ceftriaxone
+        estimated here are the first measurements of the capillary
+        permeability for any <ENAMEX TYPE="SUBSTANCE">antibiotic</ENAMEX>. In fact, as discussed
+        above, it had always been assumed previously that these
+        <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> were flow limited, which would mean that their
+        permeability was so large that it could not be measured.
+        These <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> do, in fact, have a high intrinsic
+        <ENAMEX TYPE="ORGANIZATION">permeability</ENAMEX>. For example, the value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle found for dicloxacillin of <NUMEX TYPE="CARDINAL">13</NUMEX>
+        <ENAMEX TYPE="CONTACT_INFO">ml/min/100 gm</ENAMEX> is a very high permeability and, if it were
+        not protein bound (and fw 
+        B equaled <NUMEX TYPE="CARDINAL">1</NUMEX>), would correspond to an
+        <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> [muscle] of <NUMEX TYPE="MONEY">0.999</NUMEX> (see eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) - i.e. it would be
+        flow limited. The only reason that it is not flow limited
+        and that its value can be measured is because of its high
+        <ENAMEX TYPE="SUBSTANCE">protein binding</ENAMEX>, with a fw 
+        B of <NUMEX TYPE="CARDINAL">0.03</NUMEX>. The value of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle found for ceftriaxone (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>
+        <ENAMEX TYPE="CONTACT_INFO">ml/min/100 gm</ENAMEX>) is <NUMEX TYPE="CARDINAL">about half</NUMEX> the dicloxacillin value.
+        The <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle values for the antibiotics are
+        <NUMEX TYPE="CARDINAL">about 10</NUMEX> times larger than the <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> value of inulin. If these
+        antibiotics were lipid <ENAMEX TYPE="SUBSTANCE">impermeable</ENAMEX> and had to cross the
+        capillary via the interendothelial cell slits, their
+        <ENAMEX TYPE="ORGANIZATION">permeability</ENAMEX> should be determined simply by their molecular
+        <ENAMEX TYPE="ORGANIZATION">radius</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , and they should have a permeability similar
+        to that of sucrose or EDTA, molecules with similar
+        molecular radii. The <ENAMEX TYPE="SUBSTANCE">antibiotic skeletal</ENAMEX> muscle capillary
+        <ENAMEX TYPE="ORGANIZATION">permeabilities</ENAMEX> found here are <NUMEX TYPE="CARDINAL">about 2</NUMEX> times larger than
+        those reported for sucrose and <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . It has recently
+        been shown that the β-Lactam antibiotics are transported
+        across the intestinal epithelial cells via the peptide
+        transport system [ <TIMEX TYPE="DATE">21</TIMEX> ] . This relatively high capillary
+        permeability for these antibiotics may indicate that this
+        <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> is also present in the capillary endothelium.
+        Does this capillary permeability limitation have any
+        practical significance in terms of therapeutics? The
+        anti-infective activity of the antibiotic should be roughly
+        equivalent to the free concentration in the tissue <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">22</NUMEX> ] . Figure 5contrasts <TIMEX TYPE="DATE">the time</TIMEX> course of the free
+        ceftriaxone concentration in the extracellular muscle
+        (black) and plasma (red) <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> for the permeability limited
+        (solid line) and flow limited (dashed line) cases. For the
+        low dose (<NUMEX TYPE="QUANTITY">0.15 gram</NUMEX>) where the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding is high and
+        the permeability limitation is at its maximum, the muscle
+        <ENAMEX TYPE="SUBSTANCE">water antibiotic</ENAMEX> concentration for the permeability limited
+        case (black solid line) is significantly less than for the
+        flow limited case (black dashed line) for <TIMEX TYPE="DATE">the first 30</TIMEX>
+        <TIMEX TYPE="TIME">minutes</TIMEX>. After <TIMEX TYPE="TIME">40 minutes</TIMEX> the muscle tissue concentrations
+        for the permeability limited and flow limited cases are not
+        significantly different. At the high dose (<NUMEX TYPE="QUANTITY">3.0 gram</NUMEX>), there
+        is no significant difference even at <TIMEX TYPE="DATE">early times</TIMEX>. Thus,
+        from a therapeutic viewpoint, this permeability limitation
+        is probably not important.
+        This inference of a capillary permeability limitation is
+        indirect since it is based only on a theoretical analysis
+        of the experimental plasma pharmacokinetics. The analysis
+        shown in fig. 5suggests that it should be possible directly
+        observe the effects of this permeability limitation from
+        simultaneous measurements of the free water concentration
+        in the plasma and muscle. The low dose (<NUMEX TYPE="QUANTITY">0.15 gram</NUMEX>) <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> in
+        <ENAMEX TYPE="PERSON">fig</ENAMEX>. 5shows that the capillary permeability limitation
+        creates a large difference between the plasma (red line)
+        and muscle (black <ENAMEX TYPE="PER_DESC">line</ENAMEX>) free water concentration during the
+        <NUMEX TYPE="ORDINAL">first</NUMEX> <TIMEX TYPE="TIME">30 minutes</TIMEX>. <ENAMEX TYPE="ORGANIZATION">Kovar et</ENAMEX>. al. [ <TIMEX TYPE="DATE">22</TIMEX> ] measured the
+        ceftriaxone free plasma and muscle water using
+        <ENAMEX TYPE="ORGANIZATION">microdialysis</ENAMEX> in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> for doses of <NUMEX TYPE="CARDINAL">50 and 100</NUMEX> mg<ENAMEX TYPE="PRODUCT">/Kg</ENAMEX>.
+        They compared their experimental measurements with
+        theoretical pharmacokinetic curves based on the flow
+        limited assumption. For the low dose (where binding and
+        permeability limitation will be higher) the experimental
+        muscle water concentration at <TIMEX TYPE="TIME">50 minutes</TIMEX> was significantly
+        less (<NUMEX TYPE="PERCENT">about 40%</NUMEX>) than the flow limited prediction and this
+        difference became insignificant by <TIMEX TYPE="TIME">100 minutes</TIMEX>. Similarly,
+        the muscle tissue measurements of <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ] of
+        <ENAMEX TYPE="ORGANIZATION">cefazolin</ENAMEX> (another <ENAMEX TYPE="SUBSTANCE">protein bound antibiotic</ENAMEX>) were
+        significantly less than the flow limited predictions for
+        the <NUMEX TYPE="ORDINAL">first</NUMEX> <TIMEX TYPE="TIME">100 minutes</TIMEX>. Although both of these results are
+        consistent with a capillary permeability limitation, they
+        are probably not conclusive because of the large scatter in
+        the measurements and the inherent uncertainties and limited
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> resolution of the tissue measurements.
+        The <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> for ceftriaxone discussed in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> would
+        normally be thought of as very "difficult" or
+        "complicated". The model requires information for each
+        organ about the extravascular volumes of distribution,
+        <ENAMEX TYPE="SUBSTANCE">protein binding constants</ENAMEX>, capillary permeability, weights
+        and blood flows, in addition to information about renal
+        clearance, tubular secretion and hepatic metabolism. One
+        would expect that, with this many parameters, it would be
+        impossible to have any confidence in the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters
+        that are found. However, because of the basic design
+        feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, there are actually only <NUMEX TYPE="CARDINAL">6</NUMEX> parameters
+        that are specifically required to completely characterize
+        <ENAMEX TYPE="ORGANIZATION">ceftriaxone</ENAMEX> (rclr, <ENAMEX TYPE="GPE">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>], <ENAMEX TYPE="GPE">Tclr</ENAMEX> [kidney], cProt
+        [vein] and kProt; see the ceftriaxone procedure above). Two
+        of these parameters were measured experimentally (cProt
+        [vein] and kProt) and the value of rclr (renal plasma
+        clearance) was set to the default human value. Since the
+        ratio of <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> to renal clearance is known experimentally,
+        <NUMEX TYPE="CARDINAL">only one</NUMEX> of the parameters <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>] and <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [kidney]
+        is independent. This leaves <TIMEX TYPE="DATE">just two</TIMEX> adjustable parameters
+        (<ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] and <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]). In addition, it may be
+        necessary to slightly adjust some of the default parameters
+        (e.g. mecf for the ceftriaxone case) to optimize the
+        fit.
+        These <ENAMEX TYPE="DISEASE">PBPK</ENAMEX> studies provide a good example of the major
+        difference of philosophy between <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> and the usual
+        <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. For example, in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> PBPK developed by <ENAMEX TYPE="ORGANIZATION">Tsuji et</ENAMEX>.
+        al. [ <ENAMEX TYPE="LAW">6</ENAMEX> ] for cefazolin, nearly every PBPK parameter
+        required by the model was directly measured, including
+        steady state extravascular volumes of distribution in the
+        different organs, organ blood flows and weights, renal and
+        <ENAMEX TYPE="GPE">hepatic</ENAMEX> clearance, time dependence of cefazolin
+        concentration in the different organs, etc. This approach
+        is, for obvious reasons, impossible for human studies. The
+        basic philosophy of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is that it is not necessary to
+        make these measurements for each <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that is investigated
+        if the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> has been previously tested and refined using a
+        large variety of compounds, combined with information
+        available in the literature. For example, for these
+        studies, the extracellular volumes of distribution (ecf)
+        determined in the inulin PBPK analysis have been used as
+        the default values for the antibiotic studies. As PKQuest
+        is applied to other compounds, these "default" value will
+        be improved and modified. The more that <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is used,
+        the more reliable are its values and the more confidence
+        one can place in its results.
+        The major design feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, which is to
+        minimize the number of input parameters required from the
+        <ENAMEX TYPE="PER_DESC">user</ENAMEX>, and maximize the use of previously determined
+        information, supports this philosophy. For example, the
+        user only needs to enter the value of <ENAMEX TYPE="SUBSTANCE">fclear</ENAMEX> [muscle] and
+        <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> uses the previously determined ratios of <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        i /<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+        muscle to set all the other organ
+        <ENAMEX TYPE="ORGANIZATION">permeabilities</ENAMEX>. As another example, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> need only
+        enter the <NUMEX TYPE="CARDINAL">one</NUMEX> parameter mecf to set all the extracellular
+        volumes for each organ and the <ENAMEX TYPE="PER_DESC">user</ENAMEX> knows that a mecf of <NUMEX TYPE="CARDINAL">1</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the standard default human set of values. If
+        the <ENAMEX TYPE="PER_DESC">user</ENAMEX> wanted, e.g. to make the ecf of muscle <NUMEX TYPE="PERCENT">10%</NUMEX> larger
+        than the default, it is only necessary to enter ecf
+        [muscle] = <NUMEX TYPE="CARDINAL">1.1</NUMEX>*ecf [muscle] and the <ENAMEX TYPE="PER_DESC">user</ENAMEX> does not need to
+        know the actual default value. This not only makes PKQuest
+        easier to use, but it also improves the validity of the
+        final <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> because the <ENAMEX TYPE="PER_DESC">user</ENAMEX> has confidence that the best
+        estimates based on previous applications of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> are
+        being used.
+        The PKQuest program and all of the examples used in this
+        paper are freely available on the Web at
+        <ENAMEX TYPE="CONTACT_INFO">http:\\www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>.
+      
+      
+        Competing Interests
+        None.
+      
+    
+  

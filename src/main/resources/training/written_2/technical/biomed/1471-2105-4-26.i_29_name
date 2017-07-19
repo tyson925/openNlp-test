@@ -1,0 +1,587 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> are increasingly realizing the importance of
+        
+        true biological replicates for
+        assessing statistical confidence in <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments
+        [ <NUMEX TYPE="CARDINAL">1 2 3 4 5 6</NUMEX> ] , but replication is often hindered by
+        financial or technical constraints. <NUMEX TYPE="CARDINAL">One</NUMEX> problem is that
+        large, prefabricated microarray chips can be relatively
+        expensive, driving up the total cost of an experiment. (In
+        fact, the cost of a subject is often lower.) Another
+        obstacle to using replicates is that the biological tissues
+        from which <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> is extracted can often be of such small
+        quantity by nature that it is technically difficult to get
+        enough <ENAMEX TYPE="SUBSTANCE">RNA sample</ENAMEX> from one subject for hybridization to one
+        array [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . Either or both of these problems have
+        motivated <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> to pool <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> together before
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>. Many research <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> using this method have
+        been published [ <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] , but the statistical properties
+        of pooling have not been explicitly addressed. There are
+        <NUMEX TYPE="CARDINAL">two</NUMEX> different approaches of sample pooling. One is dubbed
+        "complete pooling", where all samples from one treatment
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> are pooled onto <NUMEX TYPE="CARDINAL">one</NUMEX> chip and there is no replication
+        of chips for one treatment. This approach does not provide
+        an estimate of variability among chips and therefore can
+        not be used for statistical analysis. The other approach is
+        dubbed "sub-pooling", where subsets of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> are randomly
+        selected and pooled onto <NUMEX TYPE="CARDINAL">one</NUMEX> chip but there are still
+        multiple chips within each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Here we investigated the
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> properties and the technical and financial
+        implications of the <NUMEX TYPE="ORDINAL">second</NUMEX>, sub-pooling approach.
+      
+      
+        Results
+        
+          Simulation study of statistical
+          characteristics
+          First, simulated microarray data were used to
+          investigate the statistical properties (see Methods for
+          details). Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the simulated power curves (for
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t tests) with respect to different α levels
+          (i.e. type I error rates), effect sizes (i.e. differences
+          of the means divided by common standard deviation), and
+          sample sizes. Some well-known statistical properties are
+          shown here: power increases with effect size and/or
+          sample size when other conditions are fixed (e.g. curve 8
+          vs. curve <NUMEX TYPE="CARDINAL">5</NUMEX>, or curve <NUMEX TYPE="CARDINAL">4</NUMEX> vs. curve <NUMEX TYPE="CARDINAL">1</NUMEX>); but it decreases
+          when α level is lowered with other conditions being fixed
+          (e.g. curve <NUMEX TYPE="CARDINAL">8</NUMEX> vs. curve <NUMEX TYPE="CARDINAL">4</NUMEX>). However, the main purpose of
+          Figure <NUMEX TYPE="CARDINAL">1is</NUMEX> to demonstrate the effect of pooling. Consider
+          <TIMEX TYPE="DATE">curves 5 to 8</TIMEX>, all of which have α level fixed at <NUMEX TYPE="CARDINAL">0.05</NUMEX>.
+          Without pooling, <NUMEX TYPE="MONEY">nine replicates</NUMEX> per <ENAMEX TYPE="PER_DESC">group</ENAMEX> (curve <NUMEX TYPE="CARDINAL">8</NUMEX>) give
+          much higher power than <NUMEX TYPE="MONEY">three replicates</NUMEX> per <ENAMEX TYPE="PER_DESC">group</ENAMEX> (curve
+          <NUMEX TYPE="CARDINAL">5</NUMEX>). With pooling, power curves are intermediate. Both
+          <ENAMEX TYPE="CONTACT_INFO">curve 6</ENAMEX> and curve <NUMEX TYPE="CARDINAL">7</NUMEX> reveal the power of pooling <NUMEX TYPE="CARDINAL">nine</NUMEX>
+          samples onto <NUMEX TYPE="QUANTITY">three</NUMEX> chips each. The difference between
+          them is that equal pooling with replicates in the same
+          <ENAMEX TYPE="GAME">pool</ENAMEX> contributing equally (curve <NUMEX TYPE="CARDINAL">7</NUMEX>) has better power than
+          non-equal pooling (curve <NUMEX TYPE="CARDINAL">6</NUMEX>). See methods section for
+          statistical justification. <ENAMEX TYPE="LAW">Notice</ENAMEX> that power curve 7 is
+          not very far from power curve <NUMEX TYPE="CARDINAL">8</NUMEX>, with <NUMEX TYPE="CARDINAL">only one third</NUMEX> the
+          number of chips being used.
+          Figure <TIMEX TYPE="DATE">2shows</TIMEX> that approximately equivalent power to
+          non-pooling can be achieved if the number of gene chips
+          is reduced but the number of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> is increased. The
+          simulated power curves for <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t tests for
+          different pooling schemes under the same type I error
+          rate control are very similar. In this figure, n25c5
+          means that <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> from <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are randomly
+          pooled onto <NUMEX TYPE="QUANTITY">5</NUMEX> chips with <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> contributing equally
+          to each pool. Specifically, the power of (<NUMEX TYPE="MONEY">n25c5</NUMEX>) ≈ power
+          of (<NUMEX TYPE="MONEY">n24c6</NUMEX>) ≈ power of (<NUMEX TYPE="MONEY">n22c11</NUMEX>) ≈ power of (<NUMEX TYPE="MONEY">n21c7</NUMEX>) ≈ power
+          of (<NUMEX TYPE="MONEY">n20c20</NUMEX>). <ENAMEX TYPE="LAW">Notice</ENAMEX> that power of (<NUMEX TYPE="MONEY">n25c5</NUMEX>) ≈ power of
+          (<NUMEX TYPE="MONEY">n20c20</NUMEX>), which suggests that by randomly pooling <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> from <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> onto <NUMEX TYPE="CARDINAL">one</NUMEX> chip with equal
+          contributions, we can decrease number of <ENAMEX TYPE="SUBSTANCE">chips</ENAMEX> needed per
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> from <TIMEX TYPE="DATE">20 to 5</TIMEX> while number of subjects per group
+          only needs to be increased from <TIMEX TYPE="DATE">20 to 25</TIMEX>. As will be
+          shown later, this may have great financial
+          consequences.
+        
+        
+          "<ENAMEX TYPE="WORK_OF_ART">Virtual</ENAMEX>" pooling example using data from an
+          Affymetrix microarray experiment
+          <ENAMEX TYPE="ORGANIZATION">Blalock et al</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] investigated the correlation of
+          gene expression with cognitive impairment in rats of
+          different ages. Original data were from <TIMEX TYPE="DATE">29</TIMEX> Affymetrix
+          <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. To further study the effect of pooling, we
+          used <NUMEX TYPE="CARDINAL">24</NUMEX> of the <NUMEX TYPE="CARDINAL">29</NUMEX> arrays to do "virtual pooling". <ENAMEX TYPE="CONTACT_INFO">Namely,</ENAMEX>
+          we first randomly selected <NUMEX TYPE="CARDINAL">24</NUMEX> arrays and assigned them to
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>-values from <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t-tests on
+          individual <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were recorded. Next, in each of the two
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, we "virtually" pooled the <NUMEX TYPE="CARDINAL">12</NUMEX> samples onto <ENAMEX TYPE="CONTACT_INFO">6, 4, 3</ENAMEX>
+          arrays respectively (assuming equal contribution in each
+          <ENAMEX TYPE="GAME">pool</ENAMEX>). The statistical tests were then conducted on the
+          "pooled" data with degrees of freedom being reduced to <NUMEX TYPE="CARDINAL">10</NUMEX>
+          (i.e. <TIMEX TYPE="TIME">2*</TIMEX>(<ENAMEX TYPE="CONTACT_INFO">6-1</ENAMEX>)), <NUMEX TYPE="CARDINAL">6</NUMEX> (i.e. <TIMEX TYPE="TIME">2*</TIMEX>(<ENAMEX TYPE="CONTACT_INFO">4-1</ENAMEX>)), or <NUMEX TYPE="MONEY">4</NUMEX> (i.e. <TIMEX TYPE="TIME">2*</TIMEX>(<ENAMEX TYPE="CONTACT_INFO">3-1</ENAMEX>)),
+          respectively. The P-values from the "pooled" data were
+          then plotted against the original P-values. As shown in
+          Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, there is a good agreement of the P-values among
+          the pooling schemes for the majority of the genes among
+          the pooling and no pooling schemes. <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> that a
+          moderate percentage of those genes that are found to be
+          significant at a fixed <NUMEX TYPE="MONEY">α</NUMEX> (<NUMEX TYPE="MONEY">0.05</NUMEX>) level can be picked up by
+          designs with pooling at the same α level.
+          Multiple-testing adjustment was not considered here
+          because it is a separate statistical issue. Note that
+          "virtual" pooling serves as indirect evidence only.
+        
+        
+          Effect size considerations
+          Because we are testing <NUMEX TYPE="CARDINAL">hundreds</NUMEX> or <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes
+          at the same time, it is not easy to determine the effect
+          size needed for power or sample size estimation. Effect
+          size can vary from experiment to experiment, from one
+          kind of biological sample to another, as well as from
+          gene to gene. If we set the goal of an experiment to
+          detect all genes that are differentially expressed at any
+          scale, then the sample size needed to do so would be
+          prohibitively large. Therefore, we need to set up a
+          realistic goal, say, to detect genes with effect size ≥
+          <NUMEX TYPE="CARDINAL">0.5</NUMEX>. For a <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t test, this means the true
+          difference between the means is <NUMEX TYPE="CARDINAL">one half</NUMEX> of the common
+          standard deviation. Empirical data from many experiments
+          suggest that this goal is often achievable. A <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> study
+          is also desirable to obtain an estimate of approximate
+          effect size for specific experiments and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. To assist
+          <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> in making such estimates, we include here
+          some empirical results from several experiments conducted
+          in our core <ENAMEX TYPE="FAC_DESC">facility</ENAMEX>, which may provide a rough idea
+          regarding the range of effect sizes that might be
+          realistically expected with <NUMEX TYPE="CARDINAL">one</NUMEX> type of microarray - the
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix oligonucleotide GeneChip ®array.</ENAMEX> Of course,
+          the <ENAMEX TYPE="PER_DESC">reader</ENAMEX> should be cautious in relying on these
+          numbers, as they are estimates based on pilot studies
+          from <NUMEX TYPE="CARDINAL">only one</NUMEX> microarray core <ENAMEX TYPE="FAC_DESC">facility</ENAMEX>.
+        
+        
+          Financial implications of sample pooling and
+          optimal pooling design
+          Since a microarray chip often costs more than a
+          biological subject and we have <NUMEX TYPE="CARDINAL">more than one</NUMEX> pooling
+          design to achieve the same statistical control, it is
+          possible for us to search for the most cost effective
+          pooling design while maintaining the desired statistical
+          properties. For a given combination of maximal type I
+          error rate, minimal power, and the estimated or expected
+          effect size to be detected, there are multiple pooling
+          designs that may satisfy these conditions. We can compare
+          the total cost of chips and <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> for each design and
+          choose the <NUMEX TYPE="CARDINAL">one</NUMEX> with minimal total cost, provided it is
+          technical feasible. While this is a simplified economic
+          <ENAMEX TYPE="PERSON">framework</ENAMEX> (because it does not consider other cost in the
+          experiment), it manifests the major point of the
+          financial efficiency with pooling. An example function
+          written in <ENAMEX TYPE="NATIONALITY">R</ENAMEX> language used to automate the searching and
+          comparing process is attached as an additional file.
+        
+      
+      
+        Discussion
+        Assessing variability on a per gene basis is an
+        increasingly important aspect of microarray analysis. In
+        the present paper we demonstrate that variance could be
+        estimated accurately with different pooling schemes, and
+        that the chip cost (and therefore experimental cost) can be
+        dramatically affected by decisions regarding the pooling
+        scheme employed. Many <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> are aware that replicates
+        of biological samples are needed to assess experimental
+        error. Even though <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes are interrogated
+        simultaneously on each chip, estimates of variance based on
+        these measures do not of course include biological variance
+        for any single gene in question. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we
+        addressed the question of how many <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> are needed to
+        achieve adequate power while considering an efficient
+        technical procedure that is applicable in microarray
+        experiments.
+        Since the specific design and data processing of
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> can cause some confusion about what constitutes
+        true replicates, it is important to distinguish technical
+        replicates from biological replicates. In the Affymetrix
+        microarray, <NUMEX TYPE="CARDINAL">11 to 20</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs are used to measure
+        expression level of a probe set. It is important to note
+        that these duplicated probe pairs are different measurement
+        units rather than experimental <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. The true biological
+        replicates are the arrays (provided that they do not
+        measure the same biological sample). An estimate of
+        variability among the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs reveals the precision of
+        the measurement at the probe level but not the variability
+        among biological samples. The latter is usually what is
+        needed when conducting statistical hypothesis testing in
+        order to make inferences about differential gene expression
+        under various treatment or environmental conditions.
+        Confusion between technical duplicates and biological
+        <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX> can sometimes lead to misconceptions in
+        conducting and interpreting statistical tests. Based on the
+        intensity readings on the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs, Affymetrix
+        <ENAMEX TYPE="PRODUCT">Microarray Suite Version 5.0</ENAMEX> gives a "change P-value" for
+        the comparison analysis of each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set ("gene") between
+        a baseline chip and an experiment chip (MAS V <NUMEX TYPE="CARDINAL">5.0</NUMEX> manual)
+        based on <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> signed rank test. According to the
+        <ENAMEX TYPE="PERSON">manual</ENAMEX>, the change P-value indicates the significance of
+        the difference between the experimental chip and the
+        <ENAMEX TYPE="PRODUCT">baseline</ENAMEX> chip. However, it should be noted that a
+        significant difference of gene expression between a 
+        single chip from the experimental
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> and a 
+        single chip from the baseline group
+        can not provide statistical evidence to show that the two
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are different. Often the goal of comparing a
+        treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to a control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is to detect the true
+        difference of the population means, and the "change
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>-value" is not the appropriate P-value for that goal.
+        To overcome the difficulty of estimating the variance of
+        microarray data with few or no biological replicates,
+        so-called "cross-gene models", "global error models" or
+        "local error models" have been proposed [ <NUMEX TYPE="CARDINAL">7 8</NUMEX> ] . According
+        to such <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, genes with similar expression levels from
+        the same chip can be "borrowed" to construct a pseudo
+        sample as the basis to estimate the "global" or "local"
+        errors for each individual gene. This is very appealing
+        because "<ENAMEX TYPE="ORGANIZATION">Statistical</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> comparisons can now be done on
+        experiments without replicates by using the global error
+        model" [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . However, these algorithms are based on <NUMEX TYPE="CARDINAL">two</NUMEX>
+        implicit assumptions that are difficult to support:
+        (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>). The measurement of the expression of a gene on one
+        single chip can be used to estimate the 
+        true population mean expression of
+        that gene. This assumption is often false because an
+        observed intensity can be far from the 
+        true mean with moderate or high
+        probability. For example, even if gene expression
+        measurements follow a perfect normal distribution, the
+        chance that a measurement falls beyond <NUMEX TYPE="CARDINAL">one</NUMEX> standard
+        deviation from the mean on either side is as large as
+        <NUMEX TYPE="PERCENT">32%</NUMEX>.
+        (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>). Genes with similar measurement values "share" the
+        same variance within the treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. This assumption
+        may be reasonably accurate for some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (e.g. those with
+        low expression intensities), but empirical observations
+        show that it is clearly not true for all genes, especially
+        for those with high intensity.
+        The cross gene error model references for support the
+        <NUMEX TYPE="CARDINAL">two</NUMEX> component error model proposed by <ENAMEX TYPE="ORGANIZATION">Rocke et al</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] and
+        <ENAMEX TYPE="ORGANIZATION">Durbin et al</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] but those papers made it very clear
+        that true replication could not be circumvented, especially
+        to estimate variances for genes with high expression. (For
+        additional discussion on different <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error in
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments, see [ <NUMEX TYPE="CARDINAL">10 11 12 13</NUMEX> ] .)
+        Except under very restrictive models, duplicate
+        observations per chip do not provide valid estimates of
+        variability among <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. Hence, multiple chips per
+        treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, each measuring an <ENAMEX TYPE="SUBSTANCE">RNA sample</ENAMEX> from a
+        separate biological subject or pooled <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of subjects,
+        are required for statistical analysis. However, this
+        approach often entails financial and/or technical
+        difficulties. To address these issues, we tested <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sample
+        <ENAMEX TYPE="PERSON">pooling</ENAMEX> and showed that it provides an efficient
+        alternative <ENAMEX TYPE="SUBSTANCE">solution</ENAMEX>. Because arrays are usually more
+        expensive than <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>, sample pooling frequently may help
+        defray the total cost of an experiment. The larger the
+        difference between the cost of a single array and that of a
+        single subject, the more the sub-pooling strategy will
+        save. Simulated microarray data and "virtual pooling" of
+        actual data utilized here as well as statistical theory
+        suggest that the underlying principles of this proposal are
+        sound. Note that even with pooling, we still show a
+        requirement for reasonable replication of (pooled) arrays
+        because there is no other way to assess biological
+        variation.
+        A limitation of our current study is that we have yet to
+        conduct a definitive experiment in which the same
+        biological samples are compared with or without pooling.
+        Although this has not been done, we nevertheless have
+        indirect supporting evidences from multiple actual
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments. After analyzing data from <NUMEX TYPE="CARDINAL">over 50</NUMEX>
+        research projects ( 
+        with replications ) done in our
+        <ENAMEX TYPE="ORGANIZATION">facility</ENAMEX>, we have consistently seen smaller within-group
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> (and more genes with significant differences)
+        in experiments using appropriate <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> pooling strategies
+        than those with approximately the same number of arrays
+        that did not employ pooling. This observation implies that
+        experiments with pooling have greater power than those
+        without pooling for a fixed number of chips, when
+        conditions are comparable (i.e. similar experimental
+        conditions, statistical methods and multiple testing
+        correction procedures, etc.). In addition, a recent study [
+        <NUMEX TYPE="CARDINAL">5</NUMEX> ] found high correlation between the intensities from the
+        calculated pool and those from the actual pool using the
+        same <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, (although in that study the pooling effect on
+        reducing variance was not explicitly addressed).
+        <ENAMEX TYPE="SUBSTANCE">RNA pooling</ENAMEX> may also have adverse consequences, and can
+        be inappropriate in some cases. <ENAMEX TYPE="PERSON">Pooling</ENAMEX> should not be used
+        if inferences are needed for single <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. For example,
+        when the goal of the research is to correlate gene
+        expression with some other variables measured at the
+        subject level [ <ENAMEX TYPE="LAW">2</ENAMEX> ] or to identify gene profiles that help
+        classify individual <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and predict their membership
+        in <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (e.g. <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> vs. normal <ENAMEX TYPE="PER_DESC">patients</ENAMEX>).
+        <ENAMEX TYPE="PERSON">Pooling</ENAMEX> will also prevent later analysis of the data on
+        variables that may have been ignored initially. As an
+        example, suppose that we pooled all samples from the same
+        gender and compared the differential expression of some
+        genes between the <NUMEX TYPE="CARDINAL">two</NUMEX> genders. This would make it
+        impossible to subsequently analyze differential gene
+        expression related to aging effects since samples from
+        different ages would have been pooled together. The
+        <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> must decide at the outset whether the potential
+        loss of information is outweighed by the increased
+        statistical power and cost-efficiency of the design.
+        Similarly, pooling will prevent <ENAMEX TYPE="PER_DESC">users</ENAMEX> from finding
+        differences in expression that might divide <NUMEX TYPE="CARDINAL">only one</NUMEX> set of
+        samples. For example, if the goal of the experiment is to
+        find genes that help differentiate subtypes of colon
+        <ENAMEX TYPE="DISEASE">cancers</ENAMEX> rather than between colon <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and healthy
+        <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>, then it is inappropriate to pool cancer
+        <ENAMEX TYPE="ORGANIZATION">subtypes</ENAMEX>.
+        As pointed out by <NUMEX TYPE="CARDINAL">one</NUMEX> reviewer, sample pooling is able
+        to reflect <ENAMEX TYPE="ORG_DESC">group</ENAMEX>-specific variance, but assumes that
+        residual individual variance is not influenced by the group
+        variable. While this assumption may be a reasonable first
+        approximation, it does not allow for the possibility of a
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-product relationship in which a group-specific
+        <ENAMEX TYPE="PERSON">variable</ENAMEX> (for example, toxic exposure) might lead to
+        <ENAMEX TYPE="ORGANIZATION">informative</ENAMEX> sub-states that exhibit separate <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        coordinately regulated responsive genes as a function of
+        the extent to which the <ENAMEX TYPE="PER_DESC">individual</ENAMEX> responds. Thus, there
+        may also be loss of information regarding possible
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-product relationships by pooling. The experimenter
+        should be aware of this caveat before deciding to pool
+        samples.
+        There are also a few technical <ENAMEX TYPE="ORG_DESC">concerns</ENAMEX> with pooling.
+        Theoretically, the more samples pooled, the greater the
+        improvement in power. Practically, however, <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> may
+        be reluctant to pool <NUMEX TYPE="CARDINAL">more than five</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> to <NUMEX TYPE="CARDINAL">one</NUMEX> chip due
+        to technical limitations, and here we restricted our
+        comparisons among pool sizes to <NUMEX TYPE="CARDINAL">no more than five</NUMEX>. Further,
+        we recommend pooling <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> instead of tissue or cell
+        samples, because the variability at the tissue level is
+        usually larger than at the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> level. However, as long as
+        equal contribution is assured, pooling at the tissue level
+        should not make a big difference.
+        Finally, although we used only Affymetrix
+        oligonucleotide data models as examples in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, the
+        same principles should be readily applicable to <NUMEX TYPE="CARDINAL">two</NUMEX> color
+        cDNA arrays as well. In general, pooling should have
+        similar advantages for more complex experimental designs
+        (such as factorial designs, time course designs, etc.),
+        when inferences are being made at the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> level.
+      
+      
+        Conclusions
+        Appropriately designed <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sample pooling can provide
+        adequate statistical power, and improve efficiency and
+        cost-effectiveness, for many types of microarray
+        experiments when inferences are made at the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> level.
+        However, <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> have to consider the <ENAMEX TYPE="PER_DESC">pros</ENAMEX> and cons of
+        pooling for their experimental objectives. Designing
+        optimal pooling schemes to achieve statistical control with
+        minimal total cost is readily possible before the
+        experiments are conducted.
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Mixtures of Individual Gene Expressions</ENAMEX>
+          Gene expression levels for a single gene for 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> will be denoted as <ENAMEX TYPE="LAW">X</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,...,<ENAMEX TYPE="LAW">X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . If the <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> from 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are randomly selected
+          and pooled, then we can model the resulting gene
+          expression level as , where w 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            p 
+           are the mixing coefficients. These coefficients may
+          be random. If the original gene expression levels, <ENAMEX TYPE="LAW">X</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,...,<ENAMEX TYPE="LAW">X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , are identically and independently
+          distributed random variables with mean μ and variance σ
+          2and the mixing coefficients are independent of the
+          individual gene expression levels, then we have
+          <NUMEX TYPE="CARDINAL">σ 2/</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p �</ENAMEX>� 
+          <ENAMEX TYPE="ORGANIZATION">Var</ENAMEX> ( 
+          X *) <ENAMEX TYPE="CONTACT_INFO">≤ σ 2</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          This result follows immediately from the fact that
+          
+          and
+          
+          Since , (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) follows. Note that the lower bound is
+          achieved when the mixing coefficients are equal; i.e.,
+          uniform mixing. This shows that <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> pooling reduces
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> and the minimal variance of the mixture is
+          achieved with equal pooling.
+        
+        
+          Relative Efficiency
+          As far as the number of <ENAMEX TYPE="SUBSTANCE">chips</ENAMEX> needed is concerned, the
+          relative efficiency of pooling 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> subject to 
+          <ENAMEX TYPE="ORGANIZATION">n /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> chips with uniform mixing can be
+          computed as:
+          
+          as 
+          <ENAMEX TYPE="ORGANIZATION">n → ∞</ENAMEX> and 
+          <ENAMEX TYPE="CONTACT_INFO">p /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n →</ENAMEX> <ENAMEX TYPE="PRODUCT">0</ENAMEX>. Hence, when 
+          p samples are equally mixed, we
+          need <NUMEX TYPE="CARDINAL">approximately 1/</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> of the original number of chips
+          to achieve similar power with pooling when both 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is large and 
+          <ENAMEX TYPE="CONTACT_INFO">p /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is small. This is a large sample
+          result and does not take into account the loss of degrees
+          of freedom for the test. Next, we consider the effects of
+          both aspects on statistical power.
+        
+        
+          Power Equivalence
+          Although pooling <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> with uniform mixing
+          substantially reduces the variability among chips within
+          a <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, this may not result in an increase in power
+          while testing differences among <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> with a fixed
+          number of subjects. Here we investigate the power of the
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t-test. Let X 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,...,<ENAMEX TYPE="LAW">X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> be identically and independently
+          distributed with <ENAMEX TYPE="ORGANIZATION">N(�</ENAMEX>� 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , σ 
+          <NUMEX TYPE="CARDINAL">1 2</NUMEX>) and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,...,<ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> be identically and independently
+          distributed with <ENAMEX TYPE="ORGANIZATION">N(�</ENAMEX>� 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , σ 
+          <NUMEX TYPE="CARDINAL">2 2</NUMEX>). For simplicity, let σ 
+          <NUMEX TYPE="CARDINAL">1 2</NUMEX>= σ 
+          <NUMEX TYPE="CARDINAL">2 2</NUMEX>= <NUMEX TYPE="MONEY">σ 2</NUMEX>. Suppose we use <NUMEX TYPE="CARDINAL">two</NUMEX>-sample
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>-test to test H 
+          <TIMEX TYPE="TIME">0 : �</TIMEX>� 
+          <TIMEX TYPE="DATE">1</TIMEX> = μ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> against H 
+          a : <ENAMEX TYPE="CONTACT_INFO">μ</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> <μ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> . Without pooling, the t statistic
+          follows the central t distribution 
+          f ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>, df 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ) with 
+          df 
+          <TIMEX TYPE="DATE">1</TIMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">n - 1</ENAMEX>) under H 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ; while under H 
+          a , it follows a non-central t
+          distribution with 
+          df 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and non-centrality parameter , which
+          is inversely related to the standard deviation σ. For a
+          fixed α level, we can find a critical value t 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> under H 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> such that . To compute the power, we
+          only need to find the rejection region corresponding to t
+          
+          <NUMEX TYPE="CARDINAL">0</NUMEX> under the alternative non-central t
+          distribution 
+          <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>, df 
+          <ENAMEX TYPE="CONTACT_INFO">1 , δ</ENAMEX>): . <TIMEX TYPE="DATE">Now</TIMEX> when the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> are randomly assigned
+          into pools of size 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> with equal mixing, power is
+          decreased because the degrees of freedom are reduced to 
+          df 
+          <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">n /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p - 1</ENAMEX>), which makes the tails of
+          the central t distribution under H 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> heavier and thus the critical value
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          <TIMEX TYPE="TIME">0 *</TIMEX> will be further from <NUMEX TYPE="CARDINAL">0</NUMEX>, while the
+          non-centrality parameter is unchanged: (since the
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> is reduced to <NUMEX TYPE="CARDINAL">σ 2/</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> and the number of chips reduced
+          to 
+          <ENAMEX TYPE="ORGANIZATION">n /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ). However, if 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with pool size 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> are compared to 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> without pooling, then
+          the power change is not monotonic. The loss of power due
+          to reduction of degrees of freedom will be partially
+          compensated by gain of power due to increase of effect
+          size. This can be seen by noting that the non-centrality
+          parameter for pooling is now , which is non-trivially
+          larger than . This shifts the alternative distribution
+          further away from the null distribution and thus
+          increases power. Hence we have heuristically shown that
+          the power change is not monotonic when decreasing
+          replication of chips while simultaneously increasing
+          number of subjects. This implies that power can be
+          preserved with the right choice of (subject) sample size
+          and pool size. Many statistical software packages, such
+          as <ENAMEX TYPE="NATIONALITY">R</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> <ENAMEX TYPE="PRODUCT">Plus</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX>, have built-in functions for both
+          <ENAMEX TYPE="ORGANIZATION">central</ENAMEX> and non-central t distributions and thus we can
+          write programs to evaluate the power change or equivalent
+          power curves under different pooling schemes. For <TIMEX TYPE="TIME">two</TIMEX>
+          sided <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t test or experiments with <NUMEX TYPE="CARDINAL">more than 2</NUMEX>
+          treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, we can use the central and non-central
+          F distributions rather than t distributions. The power
+          <ENAMEX TYPE="ORGANIZATION">equivalence</ENAMEX> should be very similar. <ENAMEX TYPE="PER_DESC">Readers</ENAMEX> not very
+          familiar with the above statistical concepts are referred
+          to [ <NUMEX TYPE="CARDINAL">14 15 16</NUMEX> ] .
+        
+        
+          Simulation study
+          To investigate the above properties, we generated
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> based on <NUMEX TYPE="CARDINAL">two</NUMEX>-treatment design and then
+          compared the performance of different pooling schemes. We
+          simulated microarray data as follows: randomly generate a
+          <ENAMEX TYPE="ORGANIZATION">data matrix</ENAMEX> of <TIMEX TYPE="DATE">5000</TIMEX> rows and <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> columns, with each row represents
+          <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> and each column represents <NUMEX TYPE="CARDINAL">one</NUMEX> subject. The
+          first 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are random samples from
+          a normal distribution with mean μ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and standard deviation σ; the last 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are random samples from
+          a normal distribution with mean μ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> and standard deviation σ, where .
+          For each row, μ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> was generated from a uniform
+          distribution <ENAMEX TYPE="ORGANIZATION">U</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">0, 30000</ENAMEX>) and standard deviation σ is set
+          to be <TIMEX TYPE="TIME">0.2 * �</TIMEX>� 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> . The effect size δ was specified
+          for every data matrix.
+          Simulation of power curves without pooling: for <NUMEX TYPE="MONEY">δ</NUMEX> from
+          <NUMEX TYPE="CARDINAL">0</NUMEX> to <NUMEX TYPE="CARDINAL">4.0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> from <TIMEX TYPE="DATE">3 to 30</TIMEX>, we generated data
+          <ENAMEX TYPE="ORGANIZATION">matrices</ENAMEX> and then performed <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t tests on each
+          row between the first 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> observations and the last 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> observations. For each specified
+          δ, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> and α level (<NUMEX TYPE="MONEY">0.05</NUMEX> or <NUMEX TYPE="MONEY">0.01</NUMEX>), we
+          repeated the above simulation <NUMEX TYPE="CARDINAL">1000</NUMEX> times and recorded the
+          proportion of rejections, 
+          R 
+          α, δ, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>  , for each iteration. We
+          then calculated the averaged 
+          R 
+          α, δ, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>  as the simulated power.
+          Simulation of power curves with pooling: similar to
+          the above with the only difference being that the
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-sample t tests were performed on first 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> pools and last 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> pools, where each of the 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> pools is the average of 
+          p subjects randomly selected from
+          the original 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. Note that 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> * 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> and we used sampling without
+          replacement. This is to simulate the <ENAMEX TYPE="GPE_DESC">scenario</ENAMEX> of equal
+          <ENAMEX TYPE="PERSON">pooling</ENAMEX>.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' Contributions
+        <ENAMEX TYPE="ORGANIZATION">XP</ENAMEX> carried out the study. <ENAMEX TYPE="ORGANIZATION">CLW</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">AJS</ENAMEX> supervised the
+        study. <ENAMEX TYPE="ORGANIZATION">EMB</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">KC</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">PWL</ENAMEX> contributed discussions. All
+        <ENAMEX TYPE="PERSON">authors</ENAMEX> contributed to writing the manuscript. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX>
+        read and approved the final manuscript.
+      
+    
+  

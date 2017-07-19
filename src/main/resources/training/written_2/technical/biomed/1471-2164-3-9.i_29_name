@@ -1,0 +1,514 @@
+
+  
+    
+      
+        Background
+        Coiled-coil domains are <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> oligomerization motifs,
+        which consist of <NUMEX TYPE="CARDINAL">two</NUMEX> or more alpha helices that twist
+        around one another to form a supercoil [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Peptides
+        with the capacity to form coiled coils are characterized by
+        a heptad repeat pattern in which <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the <NUMEX TYPE="ORDINAL">first</NUMEX> and
+        <NUMEX TYPE="ORDINAL">fourth</NUMEX> position are hydrophobic, and <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the <NUMEX TYPE="ORDINAL">fifth</NUMEX>
+        and <NUMEX TYPE="ORDINAL">seventh</NUMEX> position are predominantly charged or polar.
+        This pattern can be used by computational methods to
+        predict coiled-coil domains in amino <ENAMEX TYPE="SUBSTANCE">acid sequences</ENAMEX> [ <NUMEX TYPE="CARDINAL">2 3</NUMEX> ]
+        .
+        Coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> can be grouped into <NUMEX TYPE="CARDINAL">two</NUMEX> general
+        classes. The <NUMEX TYPE="ORDINAL">first</NUMEX> class is comprised of short coiled-coil
+        domains of <NUMEX TYPE="CARDINAL">six or seven</NUMEX> heptad repeats, also called leucine
+        <ENAMEX TYPE="ORGANIZATION">zippers</ENAMEX>. They are frequently found as homo- and
+        hetero-dimerization domains in transcription factors (e.g.
+        [ <ENAMEX TYPE="LAW">4</ENAMEX> ] ). The <NUMEX TYPE="ORDINAL">second</NUMEX> class is defined by long coiled-coil
+        domains of <NUMEX TYPE="CARDINAL">several hundred</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, which are found in
+        a variety of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> involved in structuring cellular
+        processes [ <ENAMEX TYPE="LAW">1</ENAMEX> ] .
+        <NUMEX TYPE="CARDINAL">One</NUMEX> of the <NUMEX TYPE="CARDINAL">three</NUMEX> main classes of <ENAMEX TYPE="SUBSTANCE">cytoskeletal proteins</ENAMEX>,
+        the intermediate-filament <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, represents a
+        <ENAMEX TYPE="ORGANIZATION">well-characterized</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. A
+        subgroup of intermediate-filament <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are the nuclear
+        lamins, which are involved in attaching chromatin to the
+        nuclear envelope and have recently been implicated in
+        inherited human diseases [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] . Besides structural
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> of the cytoskeleton, the motor <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that
+        interact with them also contain coiled-coil motifs. Myosin,
+        the actin motor <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, has an extended coiled-coil domain
+        necessary for the <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> of the muscle thick filaments [
+        <NUMEX TYPE="CARDINAL">7</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Kinesin</ENAMEX> and dynein, <TIMEX TYPE="DATE">two microtubule</TIMEX> motor <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>,
+        also contain coiled-coil domains [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] .
+        The coiled-coil motif has also been identified in a
+        variety of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> associated with centromeres,
+        centrosomes, the nuclear <ENAMEX TYPE="FAC_DESC">matrix</ENAMEX>, and chromatin [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX>
+        <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">TPR</ENAMEX>, a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> associated with the inner
+        filaments of the nuclear <ENAMEX TYPE="FAC_DESC">pore complex</ENAMEX> is an extended
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] . The filamentous structures
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with both the outer and inner surface of the
+        nuclear <ENAMEX TYPE="FAC_DESC">pore complex</ENAMEX> suggest that additional unknown
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> might be involved in its assembly.
+        Several large coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> were also found
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the cytoplasmic surface of the Golgi
+        <ENAMEX TYPE="PERSON">apparatus</ENAMEX>, and <NUMEX TYPE="CARDINAL">two</NUMEX> of them have been shown to function in
+        the docking of vesicles to the <ENAMEX TYPE="ORGANIZATION">Golgi</ENAMEX> <ENAMEX TYPE="PER_DESC">cisternae</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 17 18</NUMEX> ]
+        . <ENAMEX TYPE="ORGANIZATION">AKAPs</ENAMEX> are adapter <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that attach <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX> PKA
+        <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> to cytoskeletal elements. <NUMEX TYPE="CARDINAL">At least one</NUMEX> <ENAMEX TYPE="ORGANIZATION">AKAP</ENAMEX>, AKAP
+        <ENAMEX TYPE="PRODUCT">450</ENAMEX> is a large coiled-coil <ENAMEX TYPE="SUBSTANCE">protein attaching PKA</ENAMEX> to the
+        <ENAMEX TYPE="ORGANIZATION">centrosome</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+        Despite the multitude of cellular functions in which
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> participate, the general theme is the
+        <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with the solid-state components of
+        the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>. In some cases, as in the attachment of <ENAMEX TYPE="ORGANIZATION">PKA</ENAMEX>, this
+        function appears to be crucial for the spatial regulation
+        of signal transduction. <ENAMEX TYPE="PERSON">Importantly</ENAMEX>, mutations in
+        individual <ENAMEX TYPE="PER_DESC">coiled</ENAMEX>-coil proteins lead to specific
+        <ENAMEX TYPE="ORGANIZATION">developmental</ENAMEX> or even behavioral phenotypes. The Drosophila
+        mutations 
+        Mushroom body defect (a gene involved
+        in the proliferation of neuronal precursor cells) and 
+        quick-to-<ENAMEX TYPE="ORG_DESC">court</ENAMEX> (a mutation that
+        causes elevated sexual behavior) lie in two
+        tissue-specifically expressed coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> of
+        unknown function [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] . In <ENAMEX TYPE="PER_DESC">humans</ENAMEX> and <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> models,
+        specific point mutations in nuclear <ENAMEX TYPE="PRODUCT_DESC">lamins</ENAMEX> are the cause
+        for autosomal <ENAMEX TYPE="ORGANIZATION">Emery-Dreifuss</ENAMEX> muscular <ENAMEX TYPE="PER_DESC">dystrophy</ENAMEX> [ <NUMEX TYPE="CARDINAL">22 23</NUMEX> ]
+        .
+        In contrast to <ENAMEX TYPE="ANIMAL">animals</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, only a small number of
+        long coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> have been identified from <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>.
+        MFP1 contains an extended coiled-coil domain and is located
+        at the nuclear periphery of tobacco suspension culture
+        cells [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] . The <ENAMEX TYPE="SUBSTANCE">carrot protein NMCP1</ENAMEX> is also located
+        at the nuclear rim and has been shown to migrate to the
+        spindle poles in dividing carrot suspension culture cells [
+        <NUMEX TYPE="CARDINAL">26 27</NUMEX> ] . The cellular function of these plant <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> is
+        not known.
+        Several <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for myosins and kinesins have been
+        identified from <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> and their function as motor <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>
+        is under investigation [ <NUMEX TYPE="CARDINAL">28 29</NUMEX> ] . Besides these few
+        examples, nothing is presently known about plant long
+        coiled-coils and their potential function in anchoring and
+        structuring of different cellular events.
+        In the early nineties, several <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> reported
+        lamin-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in different plant species [ <NUMEX TYPE="CARDINAL">30 31 32</NUMEX> ]
+        . A purification protocol adapted from animal <ENAMEX TYPE="SUBSTANCE">lamins</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to <ENAMEX TYPE="PLANT">pea nuclei</ENAMEX> was used to purify four proteins
+        <TIMEX TYPE="DATE">between 49 and 66</TIMEX> kD [ <TIMEX TYPE="DATE">31</TIMEX> ] . These <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> were
+        recognized by <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> against mammalian intermediate
+        filament <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and by <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> against a peptide
+        derived from lamin B. By immunofluorescence and immunogold
+        labeling, these antigens were located mostly in the
+        <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> nuclear <ENAMEX TYPE="FAC_DESC">matrix</ENAMEX>, and not predominantly at the
+        nuclear rim. Similar results were obtained by other
+        <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ] . Although these early reports were
+        promising, no lamin ortholog has been identified
+        molecularly from <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>. In a recent search of all publicly
+        available plant sequences, including the full 
+        Arabidopsis genome, no homologs of
+        lamins were found ( [ <TIMEX TYPE="DATE">33</TIMEX> ] and <ENAMEX TYPE="PERSON">Meier</ENAMEX>, unpublished results).
+        Similarly, despite <TIMEX TYPE="DATE">earlier</TIMEX> reports of lamin-like proteins
+        in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] , the fully sequenced 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae genome [ <TIMEX TYPE="DATE">35</TIMEX> ] also
+        contains no lamin <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. It is therefore likely that
+        non-animal eukaryotes have a distinct set of nuclear
+        <ENAMEX TYPE="SUBSTANCE">envelope proteins</ENAMEX> that functionally replace the lamins.
+        Here, we have used a tomato <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> containing long
+        coiled-coil domains to search the <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> genome for
+        related sequences. We have identified <NUMEX TYPE="CARDINAL">seven</NUMEX> novel
+        Arabidopsis <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with extended coiled-coil domains,
+        which form a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family distinct from other Arabidopsis
+        long coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. They are characterized by <TIMEX TYPE="TIME">four</TIMEX>
+        novel motifs, which are highly conserved in sequence and
+        position, and which were not found in <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> outside of
+        this <ENAMEX TYPE="PER_DESC">family</ENAMEX>. In addition, a <ENAMEX TYPE="SUBSTANCE">rice homolog</ENAMEX> was identified,
+        indicating conservation between dicots and monocots.
+      
+      
+        Results
+        
+          LeFPP, a novel plant coiled-coil protein
+          A yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid screen was performed to identify
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> <ENAMEX TYPE="PER_DESC">partners</ENAMEX> of the tomato nuclear
+          envelope-associated <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> LeMAF1 [ <TIMEX TYPE="DATE">36</TIMEX> ] . A prey
+          <ENAMEX TYPE="ORGANIZATION">plasmid</ENAMEX> (pAD-<ENAMEX TYPE="GPE">LeFPP</ENAMEX>) was identified that led to activation
+          of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> genes 
+          HIS and 
+          <ENAMEX TYPE="ORGANIZATION">LacZ</ENAMEX> after retransformation with
+          the pBD-<NUMEX TYPE="CARDINAL">LeMAF1</NUMEX> bait. We tested the specificity of this
+          interaction by co-transforming pAD-LeFPP with <NUMEX TYPE="CARDINAL">two</NUMEX>
+          additional bait plasmids, <TIMEX TYPE="DATE">pBD-AtMAF1 and pBD-AtRanGAP1</TIMEX>.
+          AtMAF1 is one of <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="NATIONALITY">Arabidopsis</ENAMEX> homologs of LeMAF1
+          (<ENAMEX TYPE="PERSON">Patel</ENAMEX> and <ENAMEX TYPE="PERSON">Meier</ENAMEX>, unpublished results), and has <NUMEX TYPE="PERCENT">45%</NUMEX> amino
+          acid identity with <TIMEX TYPE="DATE">LeMAF1</TIMEX>. AtRanGAP1 is one of the two
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis Ran GTPase</ENAMEX> activating <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Its
+          <ENAMEX TYPE="ORGANIZATION">N-terminus</ENAMEX> has <NUMEX TYPE="PERCENT">28%</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> identity with <ENAMEX TYPE="PRODUCT">LeMAF1</ENAMEX> and
+          <NUMEX TYPE="PERCENT">30%</NUMEX> with <TIMEX TYPE="DATE">AtMAF1</TIMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1C; [ <NUMEX TYPE="CARDINAL">33 37</NUMEX> ] ). <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1Ashows that
+          <ENAMEX TYPE="PERSON">pAD-LeFPP</ENAMEX> leads to activation of the 
+          HIS gene in combination with
+          <ENAMEX TYPE="PRODUCT">pBD-LeMAF1</ENAMEX> (sector a) and with <TIMEX TYPE="DATE">pBD-AtMAF1</TIMEX> (sector b), but
+          not with <TIMEX TYPE="DATE">pBDAtRanGAP1</TIMEX> (sector c) or the binding domain
+          vector <TIMEX TYPE="DATE">pBD-GAL4</TIMEX> alone (sector d). This demonstrates that
+          the observed interaction is specific for <NUMEX TYPE="CARDINAL">MAF1</NUMEX>-like
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1Bshows <NUMEX TYPE="ORDINAL">the</NUMEX> quantification of β-Galactosidase
+          activity in <TIMEX TYPE="DATE">the pBD-LeMAF1</TIMEX>/pAD-LeFPP strain. <ENAMEX TYPE="CONTACT_INFO">Lanes one</ENAMEX>
+          and <NUMEX TYPE="CARDINAL">two</NUMEX> are the positive and negative control provided
+          with the kit, respectively, lane <NUMEX TYPE="CARDINAL">three</NUMEX> shows the activity
+          of the <ENAMEX TYPE="CONTACT_INFO">pBD-LeMAF1/pAD-LeFPP</ENAMEX> strain and lane <NUMEX TYPE="CARDINAL">4</NUMEX> the
+          activity of the <ENAMEX TYPE="CONTACT_INFO">pBD-GAL4/pAD-LeFFP</ENAMEX> strain. Although yeast
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid interactions can not be easily quantified, the
+          very high level of β-<ENAMEX TYPE="PERSON">Galactosidase</ENAMEX> expressed by the
+          <ENAMEX TYPE="CONTACT_INFO">pBD-LeMAF1/pAD-LeFPP</ENAMEX> stain suggests a comparably strong
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> in the yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid screen.
+          The <TIMEX TYPE="DATE">1927</TIMEX> bp pAD-LeFPP cDNA was sequenced and was shown
+          to contain an uninterrupted open reading frame in frame
+          with the <NUMEX TYPE="ORDINAL">GAL4</NUMEX> activation domain. The conceptual
+          translation of this sequence leads to a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> of <NUMEX TYPE="CARDINAL">582</NUMEX>
+          amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> (aa) with a calculated molecular weight of
+          <NUMEX TYPE="CARDINAL">64.4</NUMEX> kDa and a pI of <NUMEX TYPE="CARDINAL">4.7</NUMEX>. The <NUMEX TYPE="ORDINAL">first</NUMEX> methionine is at
+          position <TIMEX TYPE="DATE">71</TIMEX>, and does not have a plant start ATG
+          consensus sequence [ <TIMEX TYPE="DATE">38</TIMEX> ] , suggesting that the cDNA is
+          not full length.
+          A BLAST search with the pAD-LeFPP open reading frame
+          indicated that it represents a novel <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with weak
+          similarity to filament-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from <ENAMEX TYPE="ANIMAL">animals</ENAMEX> and
+          yeast (see below). Secondary structure prediction
+          algorithms showed that it is organized almost entirely in
+          <ENAMEX TYPE="PERSON">alpha-helical</ENAMEX> domains and contains extensive stretches of
+          coiled-coil domains (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2Aand <ENAMEX TYPE="ORGANIZATION">Fig 3</ENAMEX>). The <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> was
+          named <ENAMEX TYPE="PERSON">LeFPP</ENAMEX> for tomato filament-like plant <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          blot analysis showed a single species of mRNA of ca. <NUMEX TYPE="CARDINAL">2.4</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">kb</ENAMEX>. It is present in tomato <ENAMEX TYPE="PLANT">leaves</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">fruits</ENAMEX>, <ENAMEX TYPE="PLANT">flowers</ENAMEX>,
+          light-grown seedlings, and dark-grown seedlings (<ENAMEX TYPE="PERSON">Fig</ENAMEX>.
+          2B).
+        
+        
+          A family of <ENAMEX TYPE="GPE">LeFPP</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+          Arabidopsis
+          A BLAST search was performed with the <ENAMEX TYPE="ORGANIZATION">LeFPP</ENAMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+          and <ENAMEX TYPE="SUBSTANCE">DNA sequence</ENAMEX>. In a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> BLAST, sequences with
+          highest scores represented a number of uncharacterized
+          open reading frames in the <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> genome, followed
+          by sequences for animal filament-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> such as
+          myosin, kinesin, ankyrin, etc. While the e-values for the
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis ORFs</ENAMEX> were between <ENAMEX TYPE="PRODUCT">2e-56</ENAMEX> and <ENAMEX TYPE="PRODUCT">1e-16</ENAMEX>, the best
+          e-value for a non-plant sequence was <NUMEX TYPE="MONEY">0.003</NUMEX> for an unknown
+          human open reading frame. The <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> "hits"
+          represented <NUMEX TYPE="CARDINAL">seven</NUMEX> unique genes, some of which had
+          repeated entries in <ENAMEX TYPE="GPE">GenBank</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          A translated BLAST search identified <NUMEX TYPE="CARDINAL">one</NUMEX> additional
+          "hit" in the <ENAMEX TYPE="SUBSTANCE">rice BAC</ENAMEX> H0212B02 of chromosome <NUMEX TYPE="CARDINAL">4</NUMEX> (GenBank
+          <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> number <NUMEX TYPE="CARDINAL">AL442007</NUMEX>). The "hit" lay between the
+          annotated open reading frames H0212B02.17 and H0212B02.18
+          in a region of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> not predicted to have coding capacity.
+          However, running <ENAMEX TYPE="ORGANIZATION">GenScan</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX> ] on this part of the <ENAMEX TYPE="ORGANIZATION">BAC</ENAMEX>,
+          an open reading frame of <TIMEX TYPE="DATE">1074</TIMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> was identified
+          on the opposite strand that contained the "hit". The
+          predicted coding region begins at position <NUMEX TYPE="CARDINAL">114,922</NUMEX> of the
+          H0212B02 <ENAMEX TYPE="SUBSTANCE">DNA sequence</ENAMEX>, ends at position <NUMEX TYPE="CARDINAL">107,317</NUMEX>, and
+          contains <NUMEX TYPE="CARDINAL">seven</NUMEX> predicted introns. This <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> open reading
+          frame was named <ENAMEX TYPE="PERSON">OsFPP</ENAMEX> and was included in the sequence
+          and structural analysis shown in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 3and <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>.
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3shows a comparison of the secondary structure of
+          LeFPP with the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="ORGANIZATION">Arabidopsis ORFs</ENAMEX> and the <ENAMEX TYPE="SUBSTANCE">rice ORF</ENAMEX>.
+          All open reading frames are characterized by extended
+          <ENAMEX TYPE="PERSON">alpha-helical</ENAMEX> and coiled-coil domains. The extension of
+          the coiled-coil domains shown in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 3is derived from
+          the "coiled-coil" analysis software in the DNASTAR
+          sequence analysis software package, and was confirmed in
+          all cases by the <ENAMEX TYPE="ORGANIZATION">MultiCoil</ENAMEX> <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . In addition,
+          <ENAMEX TYPE="ORGANIZATION">MultiCoil</ENAMEX> predicted that all coiled-coil regions have a
+          high probability to form dimers and a low probability to
+          form trimers. The <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="ORGANIZATION">Arabidopsis ORFs</ENAMEX> were named
+          <ENAMEX TYPE="PRODUCT">AtFPP1 - AtFPP7</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3and <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). They fall into <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> according to size and extension of coiled-coil
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX>. AtFPP1, <TIMEX TYPE="DATE">AtFPP2</TIMEX>, and <ENAMEX TYPE="PRODUCT">AtFPP3</ENAMEX> are shorter (<ENAMEX TYPE="CONTACT_INFO">603 aa</ENAMEX>
+          to <ENAMEX TYPE="CONTACT_INFO">779 aa</ENAMEX>) and contain <NUMEX TYPE="CARDINAL">two</NUMEX> extended coiled-coil domains
+          connected by a short non-<NUMEX TYPE="CARDINAL">coiled</NUMEX>-coil linker. AtFPP4 to
+          AtFPP7 are longer (<NUMEX TYPE="QUANTITY">866 aa to 1054 aa</NUMEX>) and contain a
+          longer <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-<ENAMEX TYPE="FAC_DESC">terminal</ENAMEX> and a shorter <ENAMEX TYPE="PRODUCT">C-</ENAMEX>terminal coiled-coil
+          <ENAMEX TYPE="PERSON">domain</ENAMEX>, separated by a long non-<NUMEX TYPE="CARDINAL">coiled</NUMEX>-coil linker domain
+          (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). The <ENAMEX TYPE="SUBSTANCE">rice ORF</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">OsFPP</ENAMEX>) resembles structurally
+          more the <NUMEX TYPE="ORDINAL">second</NUMEX> group of <ENAMEX TYPE="ORGANIZATION">Arabidopsis ORFs</ENAMEX>, with <NUMEX TYPE="CARDINAL">two</NUMEX>
+          shorter stretches of coiled-coil domains separated by a
+          long linker.
+        
+        
+          Novel sequence motifs define a subfamily of plant
+          coiled-coil proteins
+          Alignment of <NUMEX TYPE="CARDINAL">all nine</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> sequences showed the
+          presence of <NUMEX TYPE="CARDINAL">four</NUMEX> novel sequence motifs, which are <NUMEX TYPE="PERCENT">100%</NUMEX>
+          conserved between the tomato and <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> proteins
+          (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4A). <ENAMEX TYPE="PERSON">Motifs II</ENAMEX>, <ENAMEX TYPE="PERSON">III</ENAMEX>, and <ENAMEX TYPE="PRODUCT">IV</ENAMEX> are also <NUMEX TYPE="PERCENT">100%</NUMEX> conserved
+          in <ENAMEX TYPE="GPE">OsFPP</ENAMEX>, while motif I is present, but slightly less
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in the monocot sequence. Their location in each
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is indicated in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>. Their position with
+          respect to the arrangement of the coiled-coil domains is
+          strikingly conserved, despite differences in spacing
+          between the <NUMEX TYPE="CARDINAL">four</NUMEX> motifs due to the different length of
+          the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and the coiled-coil domains.
+          <ENAMEX TYPE="LAW">Motifs I and II</ENAMEX> always correlate with the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-terminal
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> of coiled-coil domains, with motif I being
+          located at the beginning and <ENAMEX TYPE="DISEASE">motif II</ENAMEX> at the end of this
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. <ENAMEX TYPE="PERSON">Motif III</ENAMEX> is always located in the linker
+          between the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-<ENAMEX TYPE="FAC_DESC">terminal</ENAMEX> and <ENAMEX TYPE="PRODUCT">C-</ENAMEX>terminal coiled-coil
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX>. <ENAMEX TYPE="PERSON">Motif IV</ENAMEX> is always located at the very end of
+          the most C-terminal coiled-coil domain. This positioning
+          is conserved even in the <ENAMEX TYPE="SUBSTANCE">rice sequence</ENAMEX>, where the
+          C-terminal coiled-coil domain is extremely short (<ENAMEX TYPE="PERSON">Fig</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          The amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> identities between the <NUMEX TYPE="CARDINAL">eight</NUMEX> dicot
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are in the range of <NUMEX TYPE="PERCENT">20% to 50%</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4B), with
+          the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> sequence showing <NUMEX TYPE="PERCENT">between 13% and 26%</NUMEX> identity
+          with the dicot sequences. The <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with
+          the greatest similarity to <ENAMEX TYPE="ORGANIZATION">LeFPP</ENAMEX> is AtFPP1 (<NUMEX TYPE="PERCENT">40%</NUMEX>
+          identity).
+          <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> an overview of the genomic organization
+          of 
+          AtFPP1 through 
+          AtFPP7 and of the features of the
+          predicted <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The genes are not clustered, and no
+          <NUMEX TYPE="CARDINAL">two</NUMEX> of them are arranged in tandem array. Except for
+          chromosome <NUMEX TYPE="CARDINAL">5</NUMEX>, <NUMEX TYPE="CARDINAL">at least one</NUMEX> <ENAMEX TYPE="PER_DESC">member</ENAMEX> of this gene <ENAMEX TYPE="PER_DESC">family</ENAMEX> is
+          present on each chromosome. <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> have been identified for
+          all <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, indicating that they are expressed (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          Consistent with the ubiquitous expression pattern found
+          for 
+          LeFPP , 
+          AtFPP expression covers a variety
+          of tissues and developmental stages including shoots,
+          hypocotyls, roots, and siliques.
+          In order to identify more long coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+          the <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> genome, the complete list of annotated
+          <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> was searched with the keyword "myosin" to identify
+          <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> that had been annotated as myosin-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          Because of the long stretches of conserved heptad
+          <ENAMEX TYPE="PERSON">repeats</ENAMEX>, BLAST searches with large coiled-coil proteins
+          usually produce significant e-values with at least some
+          of the large number of myosin heavy-<ENAMEX TYPE="ORG_DESC">chain</ENAMEX> sequences in
+          GenBank, frequently leading to this annotation.
+          The <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> identified this way were analyzed by
+          <ENAMEX TYPE="ORGANIZATION">MultiCoil</ENAMEX> and <NUMEX TYPE="CARDINAL">37</NUMEX> were found to contain coiled-coil
+          domains of <NUMEX TYPE="CARDINAL">at least 200</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> showed no
+          coiled-coil motifs and were discarded. AtFPP2 and AtFPP5
+          had been annotated as "myosin-like" too and were
+          therefore identified in this search. They were discarded
+          to avoid duplication. None of the remaining <NUMEX TYPE="CARDINAL">35</NUMEX> new
+          coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> contained any of the conserved
+          motifs identified in the <ENAMEX TYPE="ORGANIZATION">FPP</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+          The <NUMEX TYPE="CARDINAL">35</NUMEX> new sequences were aligned with the <NUMEX TYPE="CARDINAL">seven</NUMEX> AtFPP
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in a <ENAMEX TYPE="ORGANIZATION">CLUSTAL</ENAMEX> analysis. <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 5shows the results
+          represented as a phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX>. The <ENAMEX TYPE="PERSON">AtFPP</ENAMEX> family
+          clearly forms a family of sequences separate from the
+          other coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (boxed in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">5</NUMEX>). The three
+          "short" <ENAMEX TYPE="PERSON">AtFPPs</ENAMEX>, <TIMEX TYPE="DATE">AtFPP1</TIMEX>, <TIMEX TYPE="DATE">AtFPP2</TIMEX>, and <NUMEX TYPE="CARDINAL">AtFPP3</NUMEX> form a
+          <ENAMEX TYPE="PERSON">sub-</ENAMEX><ENAMEX TYPE="PER_DESC">family</ENAMEX>, as do the <NUMEX TYPE="CARDINAL">four</NUMEX> "long" <ENAMEX TYPE="WORK_OF_ART">AtFPPs AtFPP4, AtFPP5,</ENAMEX>
+          AtFPP6, and <TIMEX TYPE="DATE">AtFPP7</TIMEX> (see <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). Interestingly, the two
+          most closely related 
+          AtFPP <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+          AtFPP1 and 
+          AtFPP2 are located in comparable
+          positions on <NUMEX TYPE="CARDINAL">two</NUMEX> duplicated segments of chromosome <NUMEX TYPE="CARDINAL">1</NUMEX>,
+          indicating that they might be derived from a recent
+          duplication event.
+        
+      
+      
+        Discussion
+        A novel class of plant <ENAMEX TYPE="SUBSTANCE">coiled-coil proteins</ENAMEX> has been
+        identified that are conserved in dicots and monocots. <NUMEX TYPE="CARDINAL">Seven</NUMEX>
+        <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the FPP protein <ENAMEX TYPE="PER_DESC">family</ENAMEX> are present in the
+        Arabidopsis genome. They are characterized by the presence
+        of <NUMEX TYPE="CARDINAL">two</NUMEX> clusters of coiled-coil domains separated by a
+        linker domain of variable size. <NUMEX TYPE="CARDINAL">Four</NUMEX> highly conserved
+        sequence motifs were identified, which are a signature
+        feature of this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> and which are also conserved
+        in the homologs <ENAMEX TYPE="ORGANIZATION">LeFPP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">OsFPP</ENAMEX> from tomato and <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>,
+        respectively. The tomato homolog of the <ENAMEX TYPE="ORGANIZATION">FPP</ENAMEX> family binds in
+        a yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid <ENAMEX TYPE="SUBSTANCE">assay</ENAMEX> to a nuclear envelope-associated
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, indicating that they might function in nuclear
+        envelope biology.
+        Besides the presence of extended coiled-coil domains,
+        the <ENAMEX TYPE="ORGANIZATION">FPP</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX> have no sequence similarity to the
+        vertebrate lamins. They also do not show significant
+        sequence similarity to other vertebrate nuclear
+        envelope-associated <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> such as <ENAMEX TYPE="PRODUCT">LAP1</ENAMEX>, <TIMEX TYPE="DATE">LAP2</TIMEX>, <TIMEX TYPE="DATE">MAN1</TIMEX>, and
+        <ENAMEX TYPE="ORGANIZATION">emerin</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers <TIMEX TYPE="DATE">A55649</TIMEX>, <TIMEX TYPE="DATE">S55255</TIMEX>, <TIMEX TYPE="DATE">Q9WU40</TIMEX>,
+        and <ENAMEX TYPE="ORGANIZATION">XP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">048410</ENAMEX>, respectively). None of these proteins
+        appears to have a convincing ortholog in the Arabidopsis
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> (data not shown), consistent with the hypothesis
+        that the composition of nuclear envelope-associated
+        <ENAMEX TYPE="PRODUCT">proteins</ENAMEX> differs significantly between the <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and animal
+        <ENAMEX TYPE="GPE">kingdom</ENAMEX>.
+        Interestingly, a recent report about the protein
+        composition of the nuclear envelope of the highly divergent
+        eukaryote 
+        Trypanosoma brucei has identified a
+        coiled-coil nuclear envelope <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="PRODUCT">TbNUP-1</ENAMEX>) in this
+        <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> that also has no similarity with lamins [ <TIMEX TYPE="DATE">40</TIMEX> ] .
+        TbNUP-1 is a <NUMEX TYPE="CARDINAL">350</NUMEX> kDa <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with a striking repeat
+        structure. Its full sequence is presently not known but a
+        partial open reading frame of <NUMEX TYPE="CARDINAL">268</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> has been
+        constructed [ <TIMEX TYPE="DATE">40</TIMEX> ] . The near-perfect 144 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+        repeats contain <NUMEX TYPE="CARDINAL">two coiled</NUMEX>-coil domains each. Pairwise
+        alignments of <ENAMEX TYPE="PRODUCT">TbNUP-1</ENAMEX> with <TIMEX TYPE="DATE">AtFPP1 through ATFPP7</TIMEX> showed no
+        significant sequence similarities beyond the typical low
+        degree of similarity generally observed between coiled-coil
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (data not shown). The <ENAMEX TYPE="PRODUCT">TbNUP-1</ENAMEX> open reading frame
+        was also used for a BLAST search of the full Arabidopsis
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. Only comparably weak similarities with other
+        "myosin-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>" were found.
+        The <NUMEX TYPE="CARDINAL">four</NUMEX> conserved sequence motifs identified in the FPP
+        family appear to be unique to this group of coiled-coil
+        <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and are neither shared by other coiled-coil open
+        reading frames present in the <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> genome nor by
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> such as lamins from other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>.
+        Their role in the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> or function of the FPP proteins
+        is presently not known, but their high degree of
+        conservation in the tomato and <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> sequences imply that
+        they are of relevance. Several functional small conserved
+        motifs have been identified in other <ENAMEX TYPE="PER_DESC">families</ENAMEX> of long
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The nuclear lamins contain short,
+        conserved sequences flanking the lamin rod domain, which
+        are phosphorylated by <ENAMEX TYPE="PER_DESC">cdc2 kinase</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX> ] . The <NUMEX TYPE="CARDINAL">90</NUMEX> amino
+        acid PACT domain, which immediately follows the coiled-coil
+        domain of the related <ENAMEX TYPE="SUBSTANCE">proteins pericentrin</ENAMEX> and <ENAMEX TYPE="PRODUCT">AKAP450</ENAMEX> and
+        <NUMEX TYPE="CARDINAL">two</NUMEX> uncharacterized coiled-coil open reading frames from
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and 
+        Schizosaccharomyces pombe , confers
+        centrosomal localization [ <TIMEX TYPE="DATE">19</TIMEX> ] . A conserved domain of ca.
+        50 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> was found in several <ENAMEX TYPE="NATIONALITY">Golgi</ENAMEX>-associated large
+        coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. It has been named GRIP domain [ <TIMEX TYPE="DATE">42</TIMEX> ]
+        or Golgi localization domain (GLD) [ <TIMEX TYPE="DATE">18</TIMEX> ] and is sufficient
+        to specify Golgi targeting in mammalian cells. Nearly all
+        <ENAMEX TYPE="PRODUCT">intermediate</ENAMEX> <ENAMEX TYPE="SUBSTANCE">filament proteins</ENAMEX> exhibit a highly conserved
+        amino <ENAMEX TYPE="SUBSTANCE">acid motif</ENAMEX> (YRKLLEGEE) at the <ENAMEX TYPE="PRODUCT">C-</ENAMEX>terminal end of their
+        central alpha-helical rod domain which has been shown to be
+        crucial for the formation of authentic tetrameric complexes
+        and for the control of filament width [ <TIMEX TYPE="DATE">43</TIMEX> ] .
+        No sequences with similarity to the consensus sequences
+        of <ENAMEX TYPE="DISEASE">motifs II</ENAMEX>, <ENAMEX TYPE="PERSON">III</ENAMEX>, and <ENAMEX TYPE="PRODUCT">IV</ENAMEX> were found in the databases that
+        might indicate their potential function. However, a
+        sequence with some similarity to motif I was identified in
+        the hemaglutinin-esterase fusion glycoprotein from
+        <ENAMEX TYPE="DISEASE">influenza</ENAMEX> virus C (<ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession number <NUMEX TYPE="CARDINAL">S07412</NUMEX>).
+        Alignment of this sequence (amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> <TIMEX TYPE="DATE">39 to 74</TIMEX>) with the
+        central conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> of motif I:
+        A--GWEK---<ENAMEX TYPE="PRODUCT">E---LK</ENAMEX>--<ENAMEX TYPE="ORGANIZATION">L------------R</ENAMEX>--<ENAMEX TYPE="ORGANIZATION">H-D</ENAMEX> (-- indicating
+        non-conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>) shows a good match of identical and
+        conserved amino <ENAMEX TYPE="SUBSTANCE">acid residues</ENAMEX>:
+        A--<ENAMEX TYPE="ORGANIZATION">GFEK---D---LK</ENAMEX>--I---------<ENAMEX TYPE="NATIONALITY">R</ENAMEX>--<ENAMEX TYPE="ORGANIZATION">H-E</ENAMEX>. The fusion
+        glycoproteins contain a coiled-coil domain and are involved
+        in fusing the viral envelope with the host <ENAMEX TYPE="FAC_DESC">cell membrane</ENAMEX>.
+        The conformational change of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> necessary for
+        membrane fusion is driven by ionic interactions between
+        <ENAMEX TYPE="PERSON">residues</ENAMEX> of the coiled-coil domain, and <ENAMEX TYPE="PRODUCT">Glu74</ENAMEX>, the last
+        amino <ENAMEX TYPE="SUBSTANCE">acid aligning</ENAMEX> to motif I, is involved in this process
+        [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . In light of their putative interaction with the
+        nuclear envelope-associated <ENAMEX TYPE="SUBSTANCE">protein MAF1</ENAMEX>, it will be
+        interesting to investigate if <ENAMEX TYPE="ORGANIZATION">FPPs</ENAMEX> are associated with
+        <ENAMEX TYPE="ORGANIZATION">membrane</ENAMEX> systems of the <ENAMEX TYPE="FAC_DESC">plant cell</ENAMEX>.
+      
+      
+        Conclusions
+        A family of novel long coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> has been
+        identified from <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>. They are characterized by <TIMEX TYPE="TIME">two</TIMEX>
+        clusters of long coiled-coil domains separated by a
+        non-<NUMEX TYPE="CARDINAL">coiled</NUMEX>-coil linker and by <NUMEX TYPE="CARDINAL">four</NUMEX> novel sequence motifs.
+        <NUMEX TYPE="CARDINAL">Seven</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the 
+        filament-like plant <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">FPP</ENAMEX> ) <ENAMEX TYPE="PER_DESC">family</ENAMEX> are present in the
+        Arabidopsis genome, and <NUMEX TYPE="CARDINAL">one</NUMEX> homolog each has been
+        identified from tomato and <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>. Thus, this <ENAMEX TYPE="PER_DESC">family</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> appears to be conserved among higher <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>, but
+        we have not found convincing homologs from <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> or animals
+        by sequence similarity searches. <ENAMEX TYPE="ORGANIZATION">Tomato FPP</ENAMEX> was originally
+        isolated in a yeast <NUMEX TYPE="CARDINAL">two</NUMEX> hybrid screen with <TIMEX TYPE="DATE">MAF1</TIMEX>, a small
+        plant-specific <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> associated with the nuclear envelope
+        [ <TIMEX TYPE="DATE">36</TIMEX> ] . Because the full <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> genome does not
+        appear to contain <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for lamins, it is of particular
+        interest to investigate which other long coiled-coil
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> might functionally replace lamins in the plant
+        <ENAMEX TYPE="GPE">kingdom</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">FPP</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> represents an exciting <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for such <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+      
+      
+        Materials and methods
+        
+          Yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid screen
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from young <ENAMEX TYPE="PER_DESC">tomato</ENAMEX> leaves ( 
+          Lycopersicon esculentum ) was
+          isolated as described by <ENAMEX TYPE="ORGANIZATION">Wanner</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Gruissem</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] .
+          mRNA was purified using the mRNA purification kit
+          (<ENAMEX TYPE="ORGANIZATION">Pharmacia Biotech</ENAMEX>, <ENAMEX TYPE="GPE">Piscataway</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>). To construct the
+          yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid library the cDNA synthesis kit, the
+          Gigapack III <ENAMEX TYPE="SUBSTANCE">gold</ENAMEX> packaging extract and the HybriZAP
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid <ENAMEX TYPE="PLANT">predigested</ENAMEX> vector kit (all <ENAMEX TYPE="GPE">Stratagene</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">La</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Jolla</ENAMEX>, CA) were used according to the protocol of the
+          <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>. The size of the primary <ENAMEX TYPE="ORG_DESC">library</ENAMEX> was
+          determined to be <NUMEX TYPE="QUANTITY">1.5 × 10 6plaque</NUMEX> forming <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. The
+          complete cDNA of <TIMEX TYPE="DATE">LeMAF1</TIMEX> (<ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession number
+          AF118113) was cloned as an <ENAMEX TYPE="ORGANIZATION">EcoRI/XhoI</ENAMEX> fragment between
+          the <ENAMEX TYPE="ORGANIZATION">EcoRI</ENAMEX> and <ENAMEX TYPE="GPE">SalI</ENAMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of the bait vector pBD-GAL4
+          (<ENAMEX TYPE="ORGANIZATION">Statagene</ENAMEX>). <NUMEX TYPE="PERCENT">Approximately</NUMEX> <NUMEX TYPE="CARDINAL">one million</NUMEX> primary
+          transformants were screened for growth on histidine
+          <ENAMEX TYPE="PER_DESC">dropout plates</ENAMEX>. All steps of the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> screening
+          including the transformation, the isolation of clones,
+          and the verification of the interactions, and the
+          β-Galactosidase assays were performed as described by the
+          <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>. <ENAMEX TYPE="PRODUCT">pBD-AtRanGAP1</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] and pBD-<NUMEX TYPE="CARDINAL">AtMAF1</NUMEX> were
+          both constructed by cloning an <ENAMEX TYPE="ORGANIZATION">EcoRI</ENAMEX> fragment containing
+          the complete open reading frames into the <ENAMEX TYPE="ORGANIZATION">EcoRI</ENAMEX> site of
+          <ENAMEX TYPE="PRODUCT">pBD-GAL4</ENAMEX>. The <NUMEX TYPE="ORDINAL">AtMAF1</NUMEX> open reading frame was isolated by
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> from <ENAMEX TYPE="ORGANIZATION">Arabidopis</ENAMEX> genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> using the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' primer
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="ORGANIZATION">TCC</ENAMEX> <ENAMEX TYPE="PRODUCT">ATG GCC GAA ACC GAA-3</ENAMEX>' and the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' primer <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-CTA
+          <ENAMEX TYPE="ORGANIZATION">AGT</ENAMEX> <ENAMEX TYPE="PRODUCT">TCA CTT CGA ACT GCT C-3</ENAMEX>', which had been designed to
+          match the <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> <ENAMEX TYPE="PRODUCT">MAF1</ENAMEX> homolog on the <ENAMEX TYPE="PRODUCT">P1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">clone</ENAMEX> MGG4
+          of chromosome <NUMEX TYPE="CARDINAL">5</NUMEX> (<ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession number <NUMEX TYPE="CARDINAL">AB008267</NUMEX>).
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> isolation and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> blotting
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from tomato leaves (<TIMEX TYPE="TIME">5-15 mm</TIMEX>), <ENAMEX TYPE="SUBSTANCE">fruits</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3-8</ENAMEX> mm
+          in diameter), whole <ENAMEX TYPE="PLANT">flowers</ENAMEX>, and light-grown and
+          dark-grown tomato seedlings was isolated with the Trizol
+          Reagent from <ENAMEX TYPE="ORGANIZATION">Gibco BRL</ENAMEX> (<ENAMEX TYPE="GPE">Gaithersburg</ENAMEX>, <ENAMEX TYPE="PRODUCT">MD</ENAMEX>). Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<NUMEX TYPE="CARDINAL">20</NUMEX>
+          μg each) was separated on a <ENAMEX TYPE="SUBSTANCE">formaldehyde gel</ENAMEX>, blotted to
+          a nitrocellulose membrane, and hybridized with a
+          <ENAMEX TYPE="PER_DESC">radioactively</ENAMEX> labeled fragment corresponding to bp 1140 -
+          <TIMEX TYPE="DATE">1926</TIMEX> of the <ENAMEX TYPE="ORGANIZATION">LeFPP</ENAMEX> cDNA, essentially as described by [ <NUMEX TYPE="CARDINAL">45</NUMEX>
+          ] .
+        
+        
+          Database searches, secondary structure prediction,
+          and sequence comparison
+          Sequences with similarity to <ENAMEX TYPE="ORGANIZATION">LeFPP</ENAMEX> were identified by
+          conducting BLAST (<ENAMEX TYPE="ORGANIZATION">Basic Local Alignment Search Tool</ENAMEX>; [ <NUMEX TYPE="CARDINAL">46</NUMEX>
+          ] ) searches for similarity to sequences contained in
+          <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>. GenBank data were accessed through NCBI
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">ncbi</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/.</ENAMEX> Arabidopsis genome data
+          were accessed through the TAIR database
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">arabidopsis</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/.</ENAMEX> <ENAMEX TYPE="ORGANIZATION">Arabidopsis ESTs</ENAMEX> were
+          <ENAMEX TYPE="ORGANIZATION">accessed</ENAMEX> through the TIGR 
+          Arabidopsis thaliana database
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">tigr</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/tdb/e2k1/ath1/.</ENAMEX> Multiple sequence
+          alignments were performed with the DNASTAR protein
+          alignment protocol (<ENAMEX TYPE="ORGANIZATION">DNASTAR</ENAMEX>, <ENAMEX TYPE="GPE">Madison</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">WI</ENAMEX>) using the
+          <ENAMEX TYPE="ORGANIZATION">CLUSTAL</ENAMEX> algorithm. Parameters for <ENAMEX TYPE="ORGANIZATION">CLUSTAL</ENAMEX> alignments
+          were: Pairwise alignment: <ENAMEX TYPE="ORGANIZATION">Ktuple</ENAMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX>; gap Penalty, <NUMEX TYPE="CARDINAL">3</NUMEX>;
+          windows, <NUMEX TYPE="CARDINAL">5</NUMEX>; <ENAMEX TYPE="PER_DESC">diagonals</ENAMEX> saved, <NUMEX TYPE="CARDINAL">5</NUMEX>. Multiple alignment: gap
+          penalty, <NUMEX TYPE="CARDINAL">10</NUMEX>; gap length penalty, <TIMEX TYPE="DATE">10</TIMEX>. The <NUMEX TYPE="ORDINAL">PAM250</NUMEX> weight
+          table was used. Percent identities and phylogenetic
+          relationships were derived from the <ENAMEX TYPE="ORGANIZATION">CLUSTAL</ENAMEX> output using
+          the MEGALIGN software package in <ENAMEX TYPE="ORGANIZATION">DNASTAR</ENAMEX>. The secondary
+          structures of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, α-helical, and coiled-coil
+          regions were analyzed using <ENAMEX TYPE="ORGANIZATION">DNASTAR</ENAMEX> PROTEAN software and
+          the coiled-coil regions were confirmed with the MultiCoil
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Coiled-coil <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from Arabidopsis
+          were identified by searching the lists of complete-genome
+          <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> annotations
+          <ENAMEX TYPE="CONTACT_INFO">ftp://ftp.</ENAMEX><ENAMEX TYPE="ORGANIZATION">arabidopsis</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/home/tair/Genes/ORF_annotationsfor</ENAMEX>
+          the keywords "myosin" (<NUMEX TYPE="CARDINAL">40</NUMEX> hits) and "coiled-coil" (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>
+          hits). <ENAMEX TYPE="ORGANIZATION">Arabidopsis ORFs</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">CLUSTAL</ENAMEX> analysis were
+          <ENAMEX TYPE="ORGANIZATION">downloaded</ENAMEX> either using their GenBank accession numbers
+          or, if not yet available, by searching the TAIR database
+          with the respective gene name.
+        
+      
+    
+  

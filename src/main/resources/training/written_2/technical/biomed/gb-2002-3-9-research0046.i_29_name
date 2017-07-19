@@ -1,0 +1,592 @@
+
+  
+    
+      
+        Background
+        Among the many challenges that microarrays present to
+        both bioinformaticists and <ENAMEX TYPE="PER_DESC">biologists</ENAMEX>, data communication
+        is one of the most significant. This stems from the fact
+        that, unlike biological sequences, microarray data requires
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> structures that are both multidimensional and varied,
+        and no natural or standard ways to move results between
+        research <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> yet exist. This applies to both the
+        underlying gene-expression data and the descriptive
+        biological annotations that provide context for the
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression measurements. <NUMEX TYPE="CARDINAL">Hundreds</NUMEX> of papers have now
+        been published, but no more than a handful have presented
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in the same format, and none has provided adequate
+        <ENAMEX TYPE="ORGANIZATION">contextual</ENAMEX> information to allow reproduction of
+        experiments.
+        For <TIMEX TYPE="DATE">the past two years</TIMEX>, <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> (the microarray gene
+        expression data <ENAMEX TYPE="ORG_DESC">group</ENAMEX>) has been wrestling with
+        standards-based microarray data exchange. Recently <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> has
+        published a specification describing <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX>, the minimal
+        information for the annotation of a microarray experiment [
+        <NUMEX TYPE="CARDINAL">1</NUMEX>]. <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX> is based on the consensus of <NUMEX TYPE="QUANTITY">hundreds of</NUMEX>
+        <ENAMEX TYPE="PER_DESC">participants</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> conferences (for more information
+        see [ <ENAMEX TYPE="LAW">2</ENAMEX>]) and specifies which data and contextual
+        information should be supplied when a microarray
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression dataset is published. Some <ENAMEX TYPE="ORG_DESC">journals</ENAMEX> (for
+        example, 
+        <ENAMEX TYPE="ORGANIZATION">Nature</ENAMEX> ) have begun to endorse or
+        encourage MIAME compliance for papers describing the
+        results of <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments. It is expected (indeed
+        hoped) that in the future, <ENAMEX TYPE="ORG_DESC">journals</ENAMEX> and funding agencies
+        will require MIAME-compliant data for continued funding and
+        publishing, respectively.
+        It is not enough to specify that certain data and
+        accessory information be provided. It is essential, if
+        <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX> is to be useful, that a standard transmission format
+        exists for the data. Many of the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> have
+        previously responded to this need by developing <ENAMEX TYPE="PRODUCT">XML</ENAMEX>-based
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>-communication syntaxes for <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments
+        (<ENAMEX TYPE="ORGANIZATION">GEML</ENAMEX>, gene expression markup language [ <ENAMEX TYPE="LAW">3</ENAMEX>] from Rosetta
+        Inpharmatics, and <ENAMEX TYPE="ORGANIZATION">MAML</ENAMEX>, microarray markup language from
+        <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX>).
+        <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> (extensible markup language) is a set of rules
+        whereby new vocabularies may themselves be defined. In some
+        respects it is similar to <ENAMEX TYPE="ORGANIZATION">HTML</ENAMEX>, in that tags are used to
+        <ENAMEX TYPE="ORGANIZATION">encode</ENAMEX> information, but in HTML the information is related
+        to the formatting of a document, using a predefined set of
+        tags. In <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX>, the tags do not indicate how a document
+        should be formatted, but instead provide semantic context
+        to the content of the document. <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> vocabularies define
+        their own tags, and thus use XML to hold information in a
+        <ENAMEX TYPE="PERSON">way</ENAMEX> such that that information can be understood. Because
+        of this, and the wide support that <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> has received since
+        its release as a <NUMEX TYPE="ORDINAL">W3C</NUMEX> recommendation in <TIMEX TYPE="DATE">1998</TIMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>] both GEML
+        and <ENAMEX TYPE="ORGANIZATION">MAML</ENAMEX> chose <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> for encoding microarray data. Usually an
+        <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> document is not a stand-alone document, but will refer
+        to another document, called the document type definition,
+        or DTD. The <ENAMEX TYPE="LAW">DTD</ENAMEX> contains a set of rules, or 'declarations',
+        that specify which tags can be used, and what they contain.
+        It is the <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX> that we specify in <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> documents
+        created to use MAGE-ML will refer to this <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX>. In response
+        to a request for proposals from the <ENAMEX TYPE="ORGANIZATION">OMG</ENAMEX> (object management
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>]) for methods of communicating gene-expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, the <ENAMEX TYPE="PER_DESC">designers</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">GEML</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MAML</ENAMEX> submitted their
+        vocabularies as potential solutions to this problem.
+      
+      
+        Results
+        
+          The object model: MAGE-OM
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> is a data-centric <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> that contains <NUMEX TYPE="CARDINAL">132</NUMEX>
+          classes grouped into <NUMEX TYPE="CARDINAL">17</NUMEX> packages containing, in total,
+          <NUMEX TYPE="CARDINAL">123</NUMEX> attributes and <NUMEX TYPE="CARDINAL">223</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between classes.
+          Classes in our model represent distinct things or events,
+          and each <ENAMEX TYPE="PER_DESC">class</ENAMEX> may have attributes as well as
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> to other classes. A list of the MAGE-OM
+          packages and the classes contained within each <NUMEX TYPE="CARDINAL">one</NUMEX> are
+          listed in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. The packages are used to organize
+          classes that share a common purpose, for example the
+          Array package contains classes that describe individual
+          arrays, including detailed information on relevant
+          manufacturing processes. The key components of MAGE-OM
+          reflect many of the core requirements of <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX>,
+          specifically: experiment goals and design (<ENAMEX TYPE="ORGANIZATION">Experiment</ENAMEX>
+          package); biological materials used and description of
+          their creation (<ENAMEX TYPE="GPE">BioMaterial</ENAMEX> package); array design and
+          purpose (<ENAMEX TYPE="ORGANIZATION">ArrayDesign, BioSequence</ENAMEX> packages); array
+          manufacture (<ENAMEX TYPE="GPE">Array</ENAMEX> package); hybridization, wash, and
+          scan information (<ENAMEX TYPE="GPE">BioAssay</ENAMEX> package); gene-expression data
+          (<ENAMEX TYPE="GPE">BioAssayData</ENAMEX> package).
+          Other <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> packages support requirements shared by
+          the above components, specifically information on people
+          and <ENAMEX TYPE="ORG_DESC">organizations</ENAMEX>, protocols used, simple annotations,
+          free-text descriptions, and the ability to specify links
+          to predefined ontologies such as those provided by <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">2</NUMEX>].
+        
+        
+          Mapping of biological experiments to MAGE-OM
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> provides a <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for the logical flow of
+          experiments using the <NUMEX TYPE="CARDINAL">six</NUMEX> requirements listed above.
+          While the <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is not a laboratory information
+          management system (LIMS), laboratory information does
+          have a critical role in understanding microarray data,
+          and much of this information is accounted for in our
+          model (for example, protocols and <ENAMEX TYPE="PER_DESC">sources</ENAMEX> for clones used
+          in manufacturing microarrays). A conceptualized model of
+          the biological work-flow modified from the <NUMEX TYPE="CARDINAL">one</NUMEX> in the OMG
+          submission document is presented in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">workflow</ENAMEX> is based on <NUMEX TYPE="CARDINAL">two</NUMEX> parallel processes - the
+          manufacture of microarrays, and the generation of
+          biological samples - that come together in a
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>. A detailed breakdown of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and its
+          relation to the workflow are presented below.
+        
+        
+          <ENAMEX TYPE="PERSON">Descriptions</ENAMEX> and protocols
+          During the design of MAGE we recognized that despite
+          all efforts it would be impossible to create a model that
+          would be completely expressive for all microarray
+          experiments. Thus, to allow <ENAMEX TYPE="PER_DESC">extensible</ENAMEX> experiment
+          <ENAMEX TYPE="PERSON">documentation</ENAMEX>, several <ENAMEX TYPE="PER_DESC">classes</ENAMEX> that allow additional
+          information to be associated with other <ENAMEX TYPE="ORG_DESC">entities</ENAMEX> in the
+          model were included. <NUMEX TYPE="CARDINAL">Two</NUMEX> of these <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are Annotation
+          and <ENAMEX TYPE="GPE">Description</ENAMEX>; all model components can be annotated by
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> with an instance of the <ENAMEX TYPE="ORGANIZATION">Annotation</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX>, and
+          many can be described. Annotations are simple mechanisms
+          for storing local parameters, using name/value/type (NVT)
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>. Descriptions are a method of providing
+          extra information allowing both <ENAMEX TYPE="ORGANIZATION">NVTs</ENAMEX> and free text: for
+          example, MAGE-OM allows users to describe protocols (as
+          well as experimental <ENAMEX TYPE="SUBSTANCE">materials</ENAMEX>, see below) using
+          free-text descriptions. From a database and computational
+          <ENAMEX TYPE="ORGANIZATION">perspective</ENAMEX>, structured annotations are preferable
+          because they facilitate searches and automated data
+          processing (see below).
+          There are <NUMEX TYPE="CARDINAL">three</NUMEX> other key components of the
+          Description package: <ENAMEX TYPE="ORGANIZATION">Databases, DatabaseEntries</ENAMEX>, and
+          <ENAMEX TYPE="ORGANIZATION">OntologyEntries</ENAMEX>. Databases are references to external
+          <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of information such as <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> or the 
+          <ENAMEX TYPE="PERSON">Saccharomyces Genome Database</ENAMEX>,
+          whereas <ENAMEX TYPE="ORGANIZATION">DatabaseEntries</ENAMEX> refer to individual records in
+          those databases. OntologyEntries are a mechanism by which
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> can use commonly defined terms to aid
+          <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>. In designing MAGE it was recognized that
+          it would be impossible to specify fully all the many
+          possible parameters and their allowable values, but it
+          was important that a flexible and extensible mechanism
+          existed to support this possibility. Thus, the model
+          <ENAMEX TYPE="PERSON">contains OntologyEntries</ENAMEX>, whose roles are named to fit
+          their purpose; for example, <ENAMEX TYPE="ORGANIZATION">BioSequences</ENAMEX> has an
+          <ENAMEX TYPE="ORGANIZATION">OntologyEntry</ENAMEX> named <ENAMEX TYPE="PER_DESC">'species</ENAMEX>', which should be used to
+          refer to an entry in the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> taxonomy database.
+          The <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> model provides a rich mechanism for
+          describing protocols and their use. Protocols can use
+          <ENAMEX TYPE="ORGANIZATION">equipment</ENAMEX> (hardware) and software, as well as have a list
+          of parameters whose values can change between individual
+          uses of the protocol. The use of a protocol, termed a
+          ProtocolApplication, involves specifying the values for
+          each of the protocol parameters, as well as setting the
+          protocol parameters for any hardware or software used. To
+          encode a <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reaction using this method the protocol
+          could describe the thermal cycling conditions and the
+          make<ENAMEX TYPE="PRODUCT">/</ENAMEX>model of the instrument, while the protocol
+          application might give the sequences of the primers and
+          the serial number of the thermal cycler. Another example
+          would be to define the feature-extraction protocol
+          whereby data were extracted from a scanned microarray
+          image, which would have a reference to a piece of
+          software. The software might have parameters for the
+          layout of the features (spacing and position) and the
+          background calculation method.
+        
+        
+          Array information
+          <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> packages in the object model, <ENAMEX TYPE="GPE">ArrayDesign</ENAMEX>,
+          Array, and <ENAMEX TYPE="PERSON">DesignElement</ENAMEX>, contain information regarding
+          the design, manufacture and contents of microarrays. The
+          <ENAMEX TYPE="ORGANIZATION">DesignElement</ENAMEX> package is arguably the most complex of the
+          <NUMEX TYPE="CARDINAL">three</NUMEX>, allowing <ENAMEX TYPE="PER_DESC">users</ENAMEX> to specify information about the
+          biological materials deposited on an array. The
+          <ENAMEX TYPE="ORGANIZATION">ArrayDesign</ENAMEX> package stores the intended pattern of
+          individual array elements, while the <ENAMEX TYPE="GPE">Array</ENAMEX> package
+          <ENAMEX TYPE="ORGANIZATION">records</ENAMEX> information on the actual events that produced
+          <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>. ArrayDesigns allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to specify the
+          protocol used, a relevant contact, the grids structure,
+          and which <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">DesignElements</ENAMEX> are present in the
+          design.
+          There are <NUMEX TYPE="CARDINAL">three</NUMEX> classes of <ENAMEX TYPE="WORK_OF_ART">DesignElements: Features</ENAMEX>,
+          <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CompositeSequences</ENAMEX>. Features represent a
+          unique address on the array, specified either using
+          <ENAMEX TYPE="ORGANIZATION">Cartesian</ENAMEX> or logical coordinates (zone/sector, row,
+          column). It is important to note that in <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX>, Features
+          do not possess substantial biological information; only
+          <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CompositeSequences</ENAMEX> have <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> to
+          <ENAMEX TYPE="ORGANIZATION">BioSequenes</ENAMEX>. <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX> are the <NUMEX TYPE="ORDINAL">first</NUMEX> level of
+          DesignElement abstraction, and correspond to <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          features. A <ENAMEX TYPE="PER_DESC">Reporter models</ENAMEX> a physical sequence, and thus
+          if exactly the same biological sequence is spotted on an
+          array twice, as <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="LANGUAGE">Features</ENAMEX>, both of these Features are
+          represented by the same <ENAMEX TYPE="PER_DESC">Reporter</ENAMEX>. However, <NUMEX TYPE="CARDINAL">two</NUMEX> expressed
+          sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>) clones mapping to the same UniGene
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> are represented by <NUMEX TYPE="CARDINAL">two</NUMEX> distinct <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX>, as
+          would be <NUMEX TYPE="CARDINAL">two</NUMEX> distinct oligonucleotides which map to the
+          same open reading frame.
+          CompositeSequences are the highest level of
+          abstraction, allowing multiple <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX> or multiple
+          <ENAMEX TYPE="ORGANIZATION">CompositeSequences</ENAMEX> to be combined so that data can be
+          mapped to <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX> that are longer than the lengths
+          of individual <ENAMEX TYPE="PER_DESC">Reporters</ENAMEX>. Thus, the <NUMEX TYPE="CARDINAL">two</NUMEX> previously
+          <ENAMEX TYPE="ORGANIZATION">mentioned ESTs</ENAMEX> that map to the same <ENAMEX TYPE="PERSON">UniGene</ENAMEX> cluster can
+          be grouped in a <ENAMEX TYPE="ORGANIZATION">CompositeSequence</ENAMEX> that represents that
+          UniGene cluster. It is important to note that the
+          CompositeSequence with which a <ENAMEX TYPE="PER_DESC">Reporter</ENAMEX> may be associated
+          is dynamic, as gene predictions in an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> become
+          more refined. In addition, the biological annotation
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with a <ENAMEX TYPE="ORGANIZATION">CompositeSequence</ENAMEX> is also dynamic, as
+          our knowledge of the functions of genes, and the
+          processes in which they participate, changes over time. A
+          <ENAMEX TYPE="ORGANIZATION">CompositeSequence</ENAMEX> should not be merely thought of as a
+          <ENAMEX TYPE="ORGANIZATION">'gene'</ENAMEX>. There are many different types of sequence
+          features in a genome, such as centromeres, telomeres,
+          intergenic regions, <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>.
+          Even a 'gene' itself has several components, such as a
+          <ENAMEX TYPE="PERSON">promoter</ENAMEX>, and introns and exons, as well as potential
+          signals in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'-untranslated region. A
+          <ENAMEX TYPE="ORGANIZATION">CompositeSequence</ENAMEX> can theoretically be used to represent
+          any of these, or even a chromosome itself.
+          The Array package stores information on arrays created
+          on the basis of an <ENAMEX TYPE="ORGANIZATION">ArrayDesign</ENAMEX>. This includes the
+          manufacturing protocols, contacts, and details of the
+          exact materials used for each Feature. It is important to
+          note that the materials are actually BioMaterials
+          (described below), which allows them to be very detailed;
+          examples include <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reactions based on different
+          <ENAMEX TYPE="ORGANIZATION">identifiable cDNA</ENAMEX> clones. Position changes and other
+          feature defects can be recorded for each array. To
+          accommodate some manufacturing processes, arrays may be
+          part of an <ENAMEX TYPE="ORGANIZATION">ArrayGroup</ENAMEX> (<NUMEX TYPE="CARDINAL">several</NUMEX> distinct arrays that are
+          <ENAMEX TYPE="ORGANIZATION">synthesized</ENAMEX> and distributed as a single <ENAMEX TYPE="ORG_DESC">entity</ENAMEX>). The
+          <ENAMEX TYPE="ORGANIZATION">ArrayGroup</ENAMEX> also records the locations of signifying marks
+          (<NUMEX TYPE="MONEY">fiducials</NUMEX>) and details about the array's substrate.
+        
+        
+          Preparation of experimental <ENAMEX TYPE="SUBSTANCE">materials</ENAMEX>,
+          hybridizations, and scans
+          Experimental samples from the <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> are termed
+          <ENAMEX TYPE="ORGANIZATION">BioMaterials</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>, with key subclasses being
+          <ENAMEX TYPE="ORGANIZATION">BioSource, BioSample</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">LabeledExtract</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">BioSource</ENAMEX>
+          is used to designate <TIMEX TYPE="DATE">the innate</TIMEX> (or starting) properties
+          of a sample, such as genotype, age, <ENAMEX TYPE="ANIMAL">species</ENAMEX>, and disease
+          state. Each of these properties is set by the
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">OntologyEntries</ENAMEX>. A <ENAMEX TYPE="ORGANIZATION">BioMaterial</ENAMEX> is derived
+          from <NUMEX TYPE="CARDINAL">one</NUMEX> or more <ENAMEX TYPE="SUBSTANCE">BioMaterials</ENAMEX> through Treatment events,
+          which also specify the protocol and amount(s) of the
+          <ENAMEX TYPE="ORGANIZATION">BioMaterial</ENAMEX>(s) used. The treatment provides an
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> to the action <ENAMEX TYPE="PRODUCT">Ontology-Entry</ENAMEX>. Examples of
+          common terms in this ontology might be: add, centrifuge,
+          and incubate. Each treatment also has an optional
+          actionMeasurement that would allow relevant values to be
+          stored. Together, action and actionMeasurement might be
+          used to specify "incubate <TIMEX TYPE="TIME">10 minutes</TIMEX>". <ENAMEX TYPE="ORGANIZATION">BioMaterials</ENAMEX> can
+          be designated as being of a certain type (an
+          <ENAMEX TYPE="ORGANIZATION">OntologyEntry</ENAMEX>) such as the MIAME concept of an <ENAMEX TYPE="ORGANIZATION">Extract</ENAMEX>,
+          so that the role in the laboratory can be specified. The
+          final BioMaterial is the <ENAMEX TYPE="ORGANIZATION">LabeledExtract</ENAMEX>, which is also
+          created by a treatment event from other <ENAMEX TYPE="ORGANIZATION">BioMaterials</ENAMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">LabeledExtract</ENAMEX> has an <ENAMEX TYPE="ORG_DESC">association</ENAMEX> to labels (compounds
+          that will be used to measure the abundance of components
+          of the <ENAMEX TYPE="ORGANIZATION">LabeledExtract</ENAMEX>).
+          In the workflow above, an Array and one or more
+          <ENAMEX TYPE="ORGANIZATION">BioMaterials</ENAMEX> (for <NUMEX TYPE="CARDINAL">two</NUMEX>-color microarrays this would be two
+          <ENAMEX TYPE="PERSON">Labeled-Extracts</ENAMEX>) are combined to create a
+          <ENAMEX TYPE="ORGANIZATION">PhysicalBioAssay</ENAMEX>. The <ENAMEX TYPE="PRODUCT">BioEvent</ENAMEX> model used by <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX>-OM
+          allows for a <ENAMEX TYPE="ORGANIZATION">BioEvent</ENAMEX> to be applied to a
+          PhysicalBioAssay, to create a new <ENAMEX TYPE="ORGANIZATION">PhysicalBioAssay</ENAMEX>, for
+          example, a washing event can be applied to the above
+          <ENAMEX TYPE="ORGANIZATION">PhysicalBioAssay</ENAMEX> to create a new <ENAMEX TYPE="PRODUCT">PhysicalBioAssay</ENAMEX>. One
+          <ENAMEX TYPE="ORGANIZATION">specialized BioAssayTreatment</ENAMEX> is the <ENAMEX TYPE="ORGANIZATION">ImageAcquisition</ENAMEX>,
+          the product of which has <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> to <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          Images. A <ENAMEX TYPE="ORGANIZATION">MeasuredBioAssay</ENAMEX> is generated by the
+          FeatureExtraction event operating on a <ENAMEX TYPE="ORGANIZATION">PhysicalBioAssay</ENAMEX>.
+          The <ENAMEX TYPE="ORGANIZATION">FeatureExtraction</ENAMEX> is <ENAMEX TYPE="ORGANIZATION">Software</ENAMEX> guided and the
+          <ENAMEX TYPE="ORGANIZATION">MeasuredBioAssay</ENAMEX> has an association with the numeric data
+          that are produced (that is, the tab-delimited data output
+          by the scanner software). <ENAMEX TYPE="ORGANIZATION">MeasuredBioAssays</ENAMEX> can be
+          processed or combined by a Transformation producing a
+          <ENAMEX TYPE="ORGANIZATION">DerivedBioAssay</ENAMEX>. Again, the <ENAMEX TYPE="ORGANIZATION">DerivedBioAssay</ENAMEX> is not
+          numeric data, its data are obtained through an
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">DerivedBioAssayData</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> model and storage
+          The data model is perhaps the most complex aspect of
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>. We view the data as a three-dimensional matrix
+          (or <NUMEX TYPE="QUANTITY">cube</NUMEX>) of values whose axes are labeled by
+          <ENAMEX TYPE="PERSON">Design-Elements</ENAMEX> (the <ENAMEX TYPE="FAC">'genes'</ENAMEX>), <ENAMEX TYPE="PERSON">BioAssays</ENAMEX> ('experimental
+          samples'), and <ENAMEX TYPE="PERSON">QuantitationTypes</ENAMEX> (parameters from the
+          scanning software). Figure <ENAMEX TYPE="PRODUCT">2ashows</ENAMEX> data for <TIMEX TYPE="TIME">four</TIMEX>
+          DesignElements, <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="ORGANIZATION">QuantitationTypes</ENAMEX> and a single
+          BioAssay, which is similar to the table of data generally
+          presented by a <ENAMEX TYPE="EVENT">FeatureExtraction</ENAMEX> event. The
+          QuantitationTypes shown include <ENAMEX TYPE="ORGANIZATION">Channel 1 Foreground</ENAMEX> and
+          Background, <ENAMEX TYPE="ORGANIZATION">Channel 2 Foreground</ENAMEX> and <ENAMEX TYPE="PERSON">Background</ENAMEX>, and the
+          ratio between the background subtracted intensities of
+          <ENAMEX TYPE="ORGANIZATION">Channel 2</ENAMEX> over <ENAMEX TYPE="ORGANIZATION">Channel 1</ENAMEX>.
+          QuantitationTypes are the types of data that are
+          communicated in <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments and can be either
+          Standard or <ENAMEX TYPE="ORGANIZATION">Specialized</ENAMEX> types. StandardQuantitationTypes
+          were designed to allow <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ORG_DESC">parties</ENAMEX> to understand the
+          structure and meaning of the gene-expression data. <NUMEX TYPE="CARDINAL">Four</NUMEX>
+          of the <ENAMEX TYPE="ORGANIZATION">StandardQuantitationTypes</ENAMEX> are <ENAMEX TYPE="PERSON">MeasuredSignal</ENAMEX> (that
+          is, intensity), <ENAMEX TYPE="PERSON">DerivedSignal</ENAMEX> (background subtracted
+          intensity), <ENAMEX TYPE="PERSON">Ratio</ENAMEX> (the result of dividing one signal by
+          another), and <ENAMEX TYPE="PERSON">PresentAbsent</ENAMEX> (enumerated evaluation of
+          presence). There are <NUMEX TYPE="CARDINAL">three</NUMEX> more
+          StandardQuantitationTypes: <ENAMEX TYPE="ORGANIZATION">PValue</ENAMEX>, <ENAMEX TYPE="PERSON">Error</ENAMEX> (standard
+          deviation), and <ENAMEX TYPE="PERSON">ExpectedValue</ENAMEX>, which are
+          ConfidenceIndicators, meaning that their values modify or
+          describe another <ENAMEX TYPE="ORGANIZATION">QuantitationType</ENAMEX>. For example, if a
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>'s relative expression between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">BioMaterials</ENAMEX> is
+          known by another experimental method to be unchanged,
+          then the <ENAMEX TYPE="WORK_OF_ART">ExpectedValue of the Ratio</ENAMEX> should be <NUMEX TYPE="MONEY">1.00</NUMEX>, while
+          the <ENAMEX TYPE="FAC">Ratio</ENAMEX> itself might be <NUMEX TYPE="MONEY">1.08</NUMEX>. This ability allows
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> values to be included in the gene-expression data
+          so others can evaluate the accuracy and reliability of
+          the measurements provided. Each StandardQuantitationType
+          has an optional <ENAMEX TYPE="ORG_DESC">association</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">Channel</ENAMEX> and a designator
+          indicating whether the value refers to the background or
+          <ENAMEX TYPE="PERSON">foreground</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">SpecializedQuantitationTypes</ENAMEX> are user
+          defined; possible examples include the number of pixels
+          in each feature, or <NUMEX TYPE="QUANTITY">the pixel-by-pixel</NUMEX> correlation
+          between <NUMEX TYPE="CARDINAL">two</NUMEX> channels within a feature.
+          The matrix of values is represented in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> as
+          either a <NUMEX TYPE="QUANTITY">cube</NUMEX> of values (<ENAMEX TYPE="ORGANIZATION">BioAssayDataCube</ENAMEX>), or as value
+          coordinate tuples (<ENAMEX TYPE="ORGANIZATION">BioDataTuples</ENAMEX>). Both of these data
+          sources share BioAssayDimensions that identify all of the
+          DesignElements, <ENAMEX TYPE="GPE">QuantitationTypes</ENAMEX>, or <ENAMEX TYPE="PERSON">BioAssays</ENAMEX> used.
+          Each of the dimensions of the <NUMEX TYPE="QUANTITY">cube</NUMEX> specifies the order of
+          the values along <NUMEX TYPE="CARDINAL">one</NUMEX> axis (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>).
+        
+        
+          Experiments
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>'s highest-level object is the <ENAMEX TYPE="ORGANIZATION">Experiment</ENAMEX>, a
+          collection of results for one or more <ENAMEX TYPE="PERSON">BioAssay</ENAMEX>(s), the
+          intent of which is to communicate the biological
+          properties tested. Experiments have an <ENAMEX TYPE="ORGANIZATION">ExperimentDesign</ENAMEX>,
+          which records the following key <ENAMEX TYPE="LAW">MIAME</ENAMEX> requirements:
+          replicate; quality and data-processing information (in
+          free-text form); <ENAMEX TYPE="PERSON">Ontology-Entries</ENAMEX> describing the type of
+          experiment; and a set of <ENAMEX TYPE="ORGANIZATION">ExperimentalFactors</ENAMEX> (the
+          parameters of the experiment). For example, a simple
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression time course could vary cell density and
+          glucose concentration over time; these would be the
+          <ENAMEX TYPE="ORGANIZATION">ExperimentalFactors</ENAMEX>. Each <ENAMEX TYPE="ORGANIZATION">ExperimentalFactor</ENAMEX> also has an
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> to <ENAMEX TYPE="PERSON">FactorValues</ENAMEX>, which hold the values for
+          each of the factors for each <ENAMEX TYPE="WORK_OF_ART">BioAssay in the Experiment</ENAMEX>.
+          This will facilitate queries of gene-expression
+          repositories where a <ENAMEX TYPE="PER_DESC">user</ENAMEX> might wish to find all
+          experiments that varied the dosage of exposure to a given
+          <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Experiment</ENAMEX> also has a set of <ENAMEX TYPE="ORGANIZATION">Providers</ENAMEX> who are
+          the relevant <ENAMEX TYPE="WORK_OF_ART">Contacts for the Experiment</ENAMEX> (the
+          <ENAMEX TYPE="ORGANIZATION">experimenters</ENAMEX> themselves).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> analysis
+          The <ENAMEX TYPE="ORGANIZATION">Experiment</ENAMEX> also has <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> to analyses
+          (<ENAMEX TYPE="ORGANIZATION">HigherLevelAnalyses</ENAMEX>) that go beyond the recorded data.
+          Typical examples might include clustered results (from
+          hierarchical or k-means clustering) or results from
+          self-organizing maps. More complex HigherLevelAnalyses
+          might include predictions of gene function, experiment
+          class (for example, tumor classification), or associated
+          regulatory sequences (transcription factor binding
+          sites).
+          At present the model only contains a limited framework
+          supporting node- and <ENAMEX TYPE="PLANT">tree</ENAMEX>-based clusters. Each clustering
+          has an <ENAMEX TYPE="ORG_DESC">association</ENAMEX> to the data from which the results
+          were generated as well as one or more nodes. Each node
+          can contain other nodes to create a <ENAMEX TYPE="PLANT">tree</ENAMEX> or it can
+          contain <NUMEX TYPE="CARDINAL">one</NUMEX> or more dimensions, allowing the node to
+          identify which of the matrix indices are clustered
+          together (for example, a node might contain a
+          DesignElementDimension with <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>).
+        
+        
+          MAGE-ML
+          A few simple rules were used to translate MAGE-OM into
+          the <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX> named <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX>. First, each <ENAMEX TYPE="PER_DESC">class</ENAMEX> in the object
+          model is represented as an element with an attribute list
+          matching the attributes of the class. <NUMEX TYPE="ORDINAL">Second</NUMEX>, for each
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> of that <ENAMEX TYPE="PER_DESC">class</ENAMEX>, a <ENAMEX TYPE="PER_DESC">daughter</ENAMEX> element having the
+          role's name with 'assn' appended to the end is created.
+          Further, if the <ENAMEX TYPE="ORG_DESC">association</ENAMEX> is by reference 'ref is
+          <ENAMEX TYPE="PERSON">appended</ENAMEX> and if the cardinality of the <ENAMEX TYPE="ORG_DESC">association</ENAMEX> is
+          greater than <NUMEX TYPE="CARDINAL">one</NUMEX> 'list' is appended. For example, in
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>, <ENAMEX TYPE="PER_DESC">Person</ENAMEX> has an <ENAMEX TYPE="ORG_DESC">association</ENAMEX>, <ENAMEX TYPE="FAC">'affiliation'</ENAMEX>, by
+          reference to an <ENAMEX TYPE="ORGANIZATION">Organization</ENAMEX>. In the XML this would
+          appear as:
+          <Person identifier="Person1" name="John
+          <ENAMEX TYPE="ORGANIZATION">Doe</ENAMEX>">
+          <Affiliation_assnref>
+          <Organization_refidentifier="ABC Inc."=/>
+          </Affiliation_assnref>
+          </Person>
+          We have adopted this strict naming scheme so that
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> is predictable and so that future additions and
+          extensions to <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> will be compatible. Several special
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are also created: <NUMEX TYPE="CARDINAL">one</NUMEX> for the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (MAGE-ML);
+          <NUMEX TYPE="CARDINAL">one</NUMEX> for each of the packages in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>; and a list
+          element that each identifiable <ENAMEX TYPE="PER_DESC">class</ENAMEX> within a package
+          receives and that serves to organize each instances of
+          that class. The packages ensure that <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> is modular,
+          so that, for example, related <ENAMEX TYPE="ORGANIZATION">ArrayDesigns</ENAMEX>,
+          DesignElements, and <ENAMEX TYPE="ORGANIZATION">BioSequences</ENAMEX> can be stored in
+          different documents.
+        
+        
+          Production uses of MAGE
+          There is substantial evidence that <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> is a useful
+          <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX>. First, <ENAMEX TYPE="ORGANIZATION">Rosetta Biosoftware</ENAMEX> has used GEML
+          (a <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> <ENAMEX TYPE="PER_DESC">predecessor</ENAMEX>) as an internal data-communication
+          standard for over <TIMEX TYPE="DATE">two years</TIMEX>, primarily as an intermediate
+          step in their data pipeline. The <ENAMEX TYPE="LOCATION">Rosetta</ENAMEX> pipeline
+          principally included data associated with array design,
+          printing, scanning and feature extraction. Their XML
+          format handles many technology <ENAMEX TYPE="ORG_DESC">types</ENAMEX>, including
+          <NUMEX TYPE="CARDINAL">two</NUMEX>-channel ratio data and single-channel intensity data.
+          At a minimum, <ENAMEX TYPE="ORGANIZATION">GEML</ENAMEX> has shown that an XML format can work
+          very well for a disconnected high-throughput internal
+          pipeline. It showed that the large amount of data in
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression experiments can be effectively encoded in
+          an XML format and also showed that a single experiment
+          can be spread through several documents and/or data
+          <ENAMEX TYPE="ORG_DESC">stores</ENAMEX> and linked using common identifiers.
+          More recently, the <ENAMEX TYPE="NATIONALITY">European</ENAMEX> Bioinformatics <ENAMEX TYPE="ORG_DESC">Institute</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">EBI</ENAMEX>) has begun using <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> as the basis for the
+          ArrayExpress gene-expression database [ <ENAMEX TYPE="LAW">9</ENAMEX>]. ArrayExpress
+          is a relational implementation of <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> that can
+          import, and in the near future, export <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> documents.
+          This project has proved that there is more value to
+          MAGE-OM than just an easier-to-read MAGE-ML
+          <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX>; database schema, various software pieces
+          for data loading and access, as well as templates for web
+          pages were automatically generated from <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>. Although
+          this effort is just beginning, a number of submissions
+          have been successfully entered into the database.
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> has also implemented MAGE-compliant
+          software, particularly an <ENAMEX TYPE="PER_DESC">exporter</ENAMEX> application
+          <ENAMEX TYPE="ORGANIZATION">programmers interface</ENAMEX> (API) in a software component
+          called <ENAMEX TYPE="WORK_OF_ART">the 'Expression Data Access Component Exporter</ENAMEX>' or
+          'EDAC-<ENAMEX TYPE="PER_DESC">Exporter</ENAMEX>' that will export <ENAMEX TYPE="PERSON">Affymetrix</ENAMEX> experiment
+          result data files to MAGE-ML-compliant <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> documents.
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> is further providing the <ENAMEX TYPE="ORGANIZATION">EBI</ENAMEX>'s ArrayExpress
+          with <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> files with <ENAMEX TYPE="ORGANIZATION">ArrayDesign, DesignElement</ENAMEX>, and
+          <ENAMEX TYPE="ORGANIZATION">BioSequence</ENAMEX> information to facilitate submissions of
+          experimental data ]from <ENAMEX TYPE="ORGANIZATION">Affymetrix GeneChips</ENAMEX> and queries
+          of this data within <ENAMEX TYPE="ORGANIZATION">ArrayExpress</ENAMEX>.
+          Finally the <ENAMEX TYPE="ORGANIZATION">National Cancer Institute</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NCI</ENAMEX>) has over
+          <NUMEX TYPE="CARDINAL">150</NUMEX> experiments, including oligo, spotted array, CGH
+          (comparative genome hybridization), and <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> (serial
+          analysis of gene expression) experiments in their
+          <ENAMEX TYPE="PERSON">database</ENAMEX> (which is based on MAGE). Currently, the <ENAMEX TYPE="ORGANIZATION">NCI</ENAMEX>
+          database can generate <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> documents for all submitted
+          experiments.
+        
+        
+          The software toolkit: MAGE-STK
+          We do not expect that <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> will access and use
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> directly. Instead, we have developed a <ENAMEX TYPE="FAC_DESC">suite</ENAMEX> of
+          software tools based on MAGE-OM that is collectively
+          called the <ENAMEX TYPE="ORGANIZATION">MAGE-STK</ENAMEX>. These tools define an <ENAMEX TYPE="ORGANIZATION">API</ENAMEX> to
+          <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX>. The <ENAMEX TYPE="FAC_DESC">suite</ENAMEX> currently supports three
+          implementations: <ENAMEX TYPE="ORGANIZATION">MAGE-Perl</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MAGE-Java</ENAMEX>, and <ENAMEX TYPE="PRODUCT">MAGE-C++</ENAMEX>. Each
+          of the APIs use similarly named methods and <ENAMEX TYPE="PER_DESC">classes</ENAMEX> to
+          provide access to their <ENAMEX TYPE="PER_DESC">objects</ENAMEX>. The goal of <ENAMEX TYPE="ORGANIZATION">MAGE-STK</ENAMEX> is
+          to provide an intermediate object layer that can then be
+          used to export data to <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX>, to store data in a
+          persistent data store such as a relational database, or
+          as input to software-analysis tools.
+          Currently, each <ENAMEX TYPE="ORGANIZATION">API</ENAMEX> provides a <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> <ENAMEX TYPE="PER_DESC">reader</ENAMEX> and a
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> <ENAMEX TYPE="PER_DESC">writer</ENAMEX>: the <ENAMEX TYPE="PER_DESC">reader</ENAMEX> packages load a set of MAGE-ML
+          documents into the <ENAMEX TYPE="ORGANIZATION">API</ENAMEX>, creating a collection of <ENAMEX TYPE="PER_DESC">objects</ENAMEX>;
+          the <ENAMEX TYPE="ORG_DESC">writer</ENAMEX> packages create a <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> document from a
+          collection of <ENAMEX TYPE="ORGANIZATION">API</ENAMEX> <ENAMEX TYPE="PER_DESC">objects</ENAMEX>.
+          Because there is no public adaptation of <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> to a
+          <ENAMEX TYPE="ORGANIZATION">relational</ENAMEX> database schema, the <ENAMEX TYPE="ORGANIZATION">APIs</ENAMEX> must be mapped to
+          and from a site's local <ENAMEX TYPE="PER_DESC">model</ENAMEX> (that is, their database
+          <ENAMEX TYPE="ORGANIZATION">schema</ENAMEX>) before use. Once this is done, each <ENAMEX TYPE="ORG_DESC">group</ENAMEX> will be
+          able to share (and receive) data from other <ENAMEX TYPE="SUBSTANCE">MAGE</ENAMEX> <ENAMEX TYPE="PER_DESC">users</ENAMEX> in
+          an unambiguous and predictable format - MAGE-ML. <ENAMEX TYPE="FAC_DESC">Projects</ENAMEX>
+          are currently underway which map <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> to a relational
+          database schema (see, for example, <ENAMEX TYPE="GPE">ArrayExpress</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>]),
+          and as soon as such a public database schema exists, the
+          <ENAMEX TYPE="ORGANIZATION">APIs</ENAMEX> will provide a default set of mappings to that
+          <ENAMEX TYPE="ORGANIZATION">schema</ENAMEX>.
+          As addressed in <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX>, one of the current shortcomings
+          of public microarray data is the lack of sufficient
+          <ENAMEX TYPE="ORGANIZATION">contextual</ENAMEX> information. <NUMEX TYPE="CARDINAL">One</NUMEX> of the next goals of the
+          <ENAMEX TYPE="ORGANIZATION">MAGE-STK</ENAMEX> project is to develop tools for annotating MAGE
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The overriding goal is to create tools that make it
+          less burdensome on the experimenter to annotate his or
+          her experiments. <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX> currently specifies a large amount
+          of annotation as required for the 'minimal' amount. MIAME
+          will live or die by whether it is reasonable to provide
+          this level of annotation, not whether it is unreasonable
+          not to. Thus tools that allow a user rapidly and
+          accurately to annotate microarrays, or <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+          microarrays, or even related experiments, are of
+          <ENAMEX TYPE="ORGANIZATION">paramount</ENAMEX> importance.
+          All MAGE software is open source, available under the
+          <ENAMEX TYPE="GPE">Massachusetts</ENAMEX> <ENAMEX TYPE="ORGANIZATION">Institute of Technology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MIT</ENAMEX>) license which
+          allows unrestricted use of the <ENAMEX TYPE="ORGANIZATION">MAGE-STK</ENAMEX> for any purpose,
+          academic or commercial. All MAGE software and
+          documentation can be found at [ <TIMEX TYPE="DATE">11</TIMEX>].
+        
+      
+      
+        Discussion
+        
+          Future of MAGE
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> has been designed to be flexible so that it
+          can be used in a wide variety of technical settings
+          (spotted <NUMEX TYPE="CARDINAL">two</NUMEX>-color cDNA arrays, <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> arrays, and so
+          on). These extend well beyond gene-expression
+          experiments, for without modification, data from all DNA
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments and technologies that we know of
+          can be stored. Examples of some of the uses and
+          <ENAMEX TYPE="ORGANIZATION">technologies</ENAMEX> supported include: <NUMEX TYPE="CARDINAL">one</NUMEX>- and <NUMEX TYPE="CARDINAL">two</NUMEX>-color
+          spotted <ENAMEX TYPE="ANIMAL">arrays</ENAMEX> (cDNAs, <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products, or oligonucleotides)
+          on <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> or nylon, 
+          in situ synthesized
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> (Affymetrix/photolithography, ink-jet),
+          <ENAMEX TYPE="SUBSTANCE">RNA abundance</ENAMEX> (gene expression, polysome profiling), and
+          <ENAMEX TYPE="SUBSTANCE">DNA abundance</ENAMEX> (array-CGH, chromatin immunoprecipitation,
+          <ENAMEX TYPE="ORGANIZATION">genotyping</ENAMEX>). We believe that with, at most, modest
+          changes, <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> can support experiments that use arrays
+          made of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, cells, or tissues.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the main weaknesses of <ENAMEX TYPE="ORGANIZATION">MAGE-OM</ENAMEX> is the limited
+          support it provides for data analysis. Our goal is to
+          enhance the current capabilities in the next version
+          substantially by providing explicit support for different
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> and analysis methods. Another development
+          initiative is to support conclusions based on the
+          microarray data, for example the ability to indicate
+          sequence motifs or biological effects (such as mortality)
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with individual (or sets of) nodes in a
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> will adapt to the changes that occur because
+          the <ENAMEX TYPE="ORG_DESC">developers</ENAMEX> are actively committed to maintaining
+          useful standards. We appreciate all comments about
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> has a moderated mailing list at
+          mged-mage@lists.<ENAMEX TYPE="ORGANIZATION">sourceforge</ENAMEX>.net, which is available as a
+          mechanism for announcements, instructive material, and
+          general discussion.
+        
+        
+          Interaction of <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> with other projects
+          The success of this project largely depends on the
+          <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>, availability, and use of ontological terms
+          not defined in the <ENAMEX TYPE="ORGANIZATION">MAGE</ENAMEX> project. We expect some of these
+          to be designed by <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> (those covering the general
+          properties of microarrays, and biological sciences) but
+          some will certainly be developed outside the MGED
+          umbrella. We are actively interested in this problem and
+          look forward to interacting with these development
+          efforts. For information on the <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> <ENAMEX TYPE="PER_DESC">ontologies</ENAMEX> please
+          see [ <TIMEX TYPE="DATE">12</TIMEX>].
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the prime motivations for developing MAGE-ML
+          was to encourage the analysis of
+          microarray/gene-expression data by <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> other than
+          the original <ENAMEX TYPE="PER_DESC">authors</ENAMEX>. The <NUMEX TYPE="ORDINAL">first</NUMEX> key step in this process
+          is the development of databases (<ENAMEX TYPE="PER_DESC">public</ENAMEX> and private) to
+          warehouse the experimental results. Such databases will
+          then allow MIAME-compliant data to be retrieved as
+          <ENAMEX TYPE="ORGANIZATION">MAGE-ML</ENAMEX> documents. Many of us are actively involved in
+          developing <ENAMEX TYPE="NATIONALITY">ArrayExpress</ENAMEX> - a repository of gene-expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> hosted by the <ENAMEX TYPE="ORGANIZATION">EBI</ENAMEX>, while others represent <ENAMEX TYPE="ORGANIZATION">companies</ENAMEX>
+          and <ENAMEX TYPE="PER_DESC">academics</ENAMEX> developing laboratory or institutional
+          <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Affymetrix, Iobion</ENAMEX>, and <ENAMEX TYPE="PERSON">Rosetta</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">University of</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Pennsylvania, GeneX</ENAMEX>). We believe that the efforts
+          presented here will also allow software <ENAMEX TYPE="ORG_DESC">vendors</ENAMEX> to
+          streamline the analysis of gene-expression data, thus
+          removing the current communication impasse that is so
+          common.
+        
+      
+    
+  

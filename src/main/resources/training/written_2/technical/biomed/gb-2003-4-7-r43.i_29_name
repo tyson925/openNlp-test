@@ -1,0 +1,1424 @@
+
+  
+    
+      
+        Background
+        All organisms have evolved intricate signaling networks
+        that sense and respond to their environment. At a cellular
+        level, the activation of <NUMEX TYPE="CARDINAL">one</NUMEX> or more signaling networks
+        often leads to coordinated changes in gene expression, via
+        the regulated activity and binding of transcription factors
+        to transcription control regions (TCRs) of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (for
+        example, enhancers and upstream activating sequences). In
+        yeast and most other eukaryotes, the transcriptional
+        regulation of individual genes is often multifactorial, as
+        multiple transcription factors may bind to a single <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ] . Multifactorial regulation encompasses several
+        distinct biochemical mechanisms. In some cases,
+        transcription factors may bind cooperatively to adjacent
+        DNA sites via direct physical interaction [ <NUMEX TYPE="CARDINAL">3 4</NUMEX> ] . In
+        other cases, multiple transcription factors that bind
+        independently may recruit a common co-activator [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , or
+        may act independently of one another to alter gene
+        expression in response to distinct cellular cues [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+        Recent studies have also suggested that nearby
+        transcription factors may collaboratively compete with
+        nucleosomes, thus enhancing the binding of individual
+        transcription factors [ <NUMEX TYPE="CARDINAL">7 8</NUMEX> ] . Many experiments in yeast
+        have shown that specific pairs of factors must be bound
+        near each other for multifactorial regulation to occur [ <NUMEX TYPE="CARDINAL">7</NUMEX>
+        <NUMEX TYPE="CARDINAL">8 9 10</NUMEX> ] , and it is on these spatial constraints that we
+        focus here.
+        The challenges in understanding how regulatory
+        information is encoded in genomes include both the
+        identification of regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> and the
+        elucidation of sequence constraints on productive
+        multifactorial regulation. Previous computational work has
+        been devoted to identifying putative binding sites for
+        transcription factors. A plethora of computational methods
+        has been developed to find over-represented sequences in a
+        subset of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> believed to contain a common transcription
+        factor binding site (reviewed in [ <TIMEX TYPE="DATE">11</TIMEX> ] ). The rapid pace
+        of genome sequencing has enabled a complementary approach -
+        phylogenetic footprinting (reviewed in [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] ) - which
+        recognizes that the conservation of sequences across
+        related <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> often reflects evolutionary selection for
+        their presence in <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>. Several <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> have been
+        developed to perform systematic phylogenetic footprinting
+        analyses [ <NUMEX TYPE="CARDINAL">14 15 16</NUMEX> ] .
+        After compiling a collection of putative binding sites,
+        <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> can be made between various binding site
+        <ENAMEX TYPE="ORGANIZATION">assortments</ENAMEX> and gene expression. Some recent approaches
+        include <ENAMEX TYPE="ORGANIZATION">Boolean</ENAMEX> logic [ <TIMEX TYPE="DATE">17</TIMEX> ] , regression methods [ <NUMEX TYPE="CARDINAL">18 19</NUMEX>
+        <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] , spatial clustering [ <TIMEX TYPE="DATE">22</TIMEX> ] , and multiple binding
+        site matrix classifiers [ <NUMEX TYPE="CARDINAL">23 24 25</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Spatial</ENAMEX> information
+        on the relative locations of binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> is ignored in
+        all but the last <NUMEX TYPE="CARDINAL">two</NUMEX> classes of approaches.
+        The primary aim of this work was to incorporate
+        positional information and phylogenetic footprinting in
+        methods of identifying sequence motifs that may regulate
+        gene expression. Consequently, we expanded the focus of
+        phylogenetic footprinting from the conservation of
+        <ENAMEX TYPE="PERSON">contiguous</ENAMEX> sequences to higher-order features of <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>,
+        namely the spatial <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> of individual binding
+        sites. Because transcription factors participating in
+        multifactorial regulation may require binding sites in
+        physical proximity to each other, we searched for <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of
+        conserved sequences that were more closely spaced in TCRs
+        than expected. We refer to these spatially organized
+        sequences as conserved 'word <ENAMEX TYPE="PER_DESC">templates</ENAMEX>'. As a proof of
+        principle, we started with the simplest example of such
+        templates: pairs of conserved words of <NUMEX TYPE="CARDINAL">6</NUMEX> base-pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>).
+        <ENAMEX TYPE="ORGANIZATION">Conservation</ENAMEX> was assessed using the genome sequences of 
+        Saccharomyces cerevisiae and three
+        closely related 
+        Saccharomyces <ENAMEX TYPE="ANIMAL">species</ENAMEX>, which had been
+        <ENAMEX TYPE="ORGANIZATION">sequenced</ENAMEX> to identify conserved regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ]
+        . To exploit this comparative genomic data, we have devised
+        a method that systematically tested sequence pairs for
+        joint conservation across genomes and close spacing within
+        <ENAMEX TYPE="ORGANIZATION">individual TCRs</ENAMEX>. As genes regulated by the same set of
+        transcription factors often display similar gene-expression
+        patterns in certain experimental conditions, we identified
+        pairs of conserved word templates whose gene <ENAMEX TYPE="PER_DESC">targets</ENAMEX> were
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with common changes in gene expression. We
+        adopted a group-by-sequence approach to <NUMEX TYPE="ORDINAL">first</NUMEX> identify
+        genes that contained the word-pair templates and then to
+        test for significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with expression levels of
+        the identified genes [ <TIMEX TYPE="DATE">27</TIMEX> ] . Significant associations
+        between conserved word-pair templates and specific
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes and the prevalence of known
+        transcription factor binding sites suggest that conserved
+        word-pair <ENAMEX TYPE="FAC_DESC">templates</ENAMEX> comprise sequences important for
+        multifactorial regulation in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>. In addition, conserved
+        word-<ENAMEX TYPE="PER_DESC">pair templates</ENAMEX> represent more specific predictors of
+        gene expression than individual words or word pairs in 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae .
+      
+      
+        Results
+        
+          Identification of conserved word-pair
+          templates
+          Multiple genome sequences provide additional power to
+          studies of gene regulation. Because of natural selection,
+          mutations accumulate more rapidly in non-functional DNA
+          regions than in functionally constrained bases. Given a
+          multiple sequence alignment of orthologous sequences from
+          closely related <ENAMEX TYPE="ANIMAL">species</ENAMEX>, the aligned and invariant
+          regions should be enriched for functionally important
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] . Additional 
+          Saccharomyces genomes were
+          <ENAMEX TYPE="ORGANIZATION">sequenced</ENAMEX> to ensure sufficient sequence similarity to 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae such that orthologous
+          regions could be reliably aligned, yet enough sequence
+          divergence that functional <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> would be much more
+          conserved than nonfunctional sequences [ <NUMEX TYPE="CARDINAL">26 28</NUMEX> ] . To
+          confirm that regulatory <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> were found in conserved
+          regions, we tested a database of <NUMEX TYPE="CARDINAL">47</NUMEX> known, nonredundant
+          regulatory motifs and found that <TIMEX TYPE="TIME">35</TIMEX> show conservation
+          ratios that were <NUMEX TYPE="CARDINAL">more than three</NUMEX> standard deviations
+          above that expected by chance [ <NUMEX TYPE="CARDINAL">26 29</NUMEX> ] .
+          We present a method to find conserved higher-order
+          sequence templates from related 
+          Saccharomyces genomes (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+          Our method incorporates sequential statistical tests,
+          with each step focusing on a distinct property of
+          conserved sequence templates. The simplest instances of
+          sequence templates involve word pairs and their relative
+          <ENAMEX TYPE="ORGANIZATION">spacing</ENAMEX>. As described in detail below, pairs of words
+          that were conserved in the same intergenic regions of
+          <NUMEX TYPE="CARDINAL">four</NUMEX> 
+          Saccharomyces genomes were
+          identified using a <NUMEX TYPE="QUANTITY">chi-square</NUMEX> test for independence.
+          Next, a permutation test was used to select word pairs
+          whose physical proximity was closer than that expected by
+          chance. Finally, to evaluate the transcriptional
+          information contained in conserved word pairs with close
+          spacing, the expression of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> containing <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> templates
+          was compared to the rest of the genome. We initialized
+          our word list using <NUMEX TYPE="CARDINAL">all 2,080</NUMEX> words of length <NUMEX TYPE="CARDINAL">6</NUMEX>, treating
+          a given word and its reverse complement as identical. For
+          each <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> (consisting of <NUMEX TYPE="QUANTITY">up to 600 bp</NUMEX> upstream of an open
+          reading frame), a word was labeled conserved if all <NUMEX TYPE="CARDINAL">six</NUMEX>
+          bases were identical in <NUMEX TYPE="CARDINAL">at least three</NUMEX> of the <NUMEX TYPE="CARDINAL">four</NUMEX> 
+          Saccharomyces genomes, on the basis
+          of the <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> alignment of that <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX>.
+          To test systematically whether words were conserved
+          more often in the same intergenic regions of the 
+          Saccharomyces genomes than expected
+          by independent conservation, a <NUMEX TYPE="QUANTITY">chi-square</NUMEX> test was
+          performed on all possible <ENAMEX TYPE="SUBSTANCE">pairwise</ENAMEX> combinations of words
+          (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). Pairs of words that
+          <ENAMEX TYPE="ORGANIZATION">overlapped</ENAMEX> each other by <NUMEX TYPE="CARDINAL">more than three</NUMEX> <ENAMEX TYPE="PER_DESC">nucleotides</ENAMEX> were
+          excluded. A significant proportion of word pairs showed
+          dependent conservation: among the <NUMEX TYPE="CARDINAL">2.16 million</NUMEX> word pairs
+          tested, <NUMEX TYPE="CARDINAL">8,452</NUMEX> of them (<NUMEX TYPE="PERCENT">approximately 0.4%</NUMEX>) had
+          <ENAMEX TYPE="ORGANIZATION">conservation χ</ENAMEX> <ENAMEX TYPE="PRODUCT">2scores</ENAMEX> greater than <NUMEX TYPE="CARDINAL">31.1</NUMEX>. This threshold
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to a probability of <NUMEX TYPE="MONEY">0.05</NUMEX> for obtaining one or
+          more false positives after a <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction for
+          multiple testing.
+          Next, we selected word pairs that displayed closer
+          physical spacing in intergenic regions than expected by
+          chance. The choice of a statistical test to evaluate
+          close distances must consider the local fluctuations of
+          A+<ENAMEX TYPE="PRODUCT">T</ENAMEX> <ENAMEX TYPE="SUBSTANCE">nucleotide</ENAMEX> content in genome sequences. Previous work
+          used a <ENAMEX TYPE="NATIONALITY">Poisson</ENAMEX> distribution to evaluate proximity between
+          binding sites [ <TIMEX TYPE="DATE">22</TIMEX> ] . However, variability in base
+          composition can skew occurrences of arbitrary sequences
+          away from their expected distributions. Indeed, this
+          statistical test was confounded by large fluctuations in
+          the <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> parameter estimates, which varied up to
+          <ENAMEX TYPE="ORGANIZATION">twofold</ENAMEX> within a single chromosome [ <TIMEX TYPE="DATE">22</TIMEX> ] .
+          The effects of base-composition fluctuations, as well
+          as varying lengths of <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, motivated our nonparametric
+          statistical test for close spacing. We used the median,
+          denoted by , to summarize a distribution of minimum
+          distances between <NUMEX TYPE="CARDINAL">two</NUMEX> words in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae . This distribution
+          was calculated on the basis of the genes whose TCRs
+          conserved both words, and is independent of the relative
+          word order. If <NUMEX TYPE="CARDINAL">two</NUMEX> nonoverlapping words were closely
+          spaced in all <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, we should find to be smaller than
+          expected by chance. The statistical significance of this
+          spacing was assessed using a permutation test by
+          selecting the set of genes that contained a conserved
+          word <ENAMEX TYPE="PER_DESC">pair</ENAMEX> and then randomizing the assignment of <NUMEX TYPE="CARDINAL">one</NUMEX> of
+          the words to the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> containing that word (see
+          Materials and methods). By permuting the <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> labels for
+          <NUMEX TYPE="CARDINAL">one</NUMEX> of the words, but not the word positions themselves,
+          we retained the positional biases of individual words
+          within intergenic regions.
+          After correcting for multiple testing by controlling
+          the false discovery rate (FDR), a total of <NUMEX TYPE="CARDINAL">989</NUMEX> out of
+          <NUMEX TYPE="CARDINAL">8,452</NUMEX> word pairs (<NUMEX TYPE="PERCENT">around 12%</NUMEX>) had significantly small
+          values (FDR 
+          q <NUMEX TYPE="MONEY">< 0.05</NUMEX>) for (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). For a
+          list of these closely spaced and jointly conserved word
+          pairs see Additional data files. As a negative control,
+          we also assayed a sample of word pairs that did not show
+          dependent conservation (conservation <NUMEX TYPE="MONEY">χ 2< 1</NUMEX>), yet were
+          jointly conserved in <NUMEX TYPE="CARDINAL">at least 10</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>. No word pairs in a
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> sample of <NUMEX TYPE="CARDINAL">42,718</NUMEX> pairs with nondependent
+          <ENAMEX TYPE="CONTACT_INFO">conservation (χ 2< 1</ENAMEX>) showed significantly small
+          values for , after correction for multiple testing.
+          Figure <NUMEX TYPE="CARDINAL">2illustrates</NUMEX> the distributions of for conserved
+          word-pair templates, jointly conserved word pairs, and
+          randomly conserved word pairs. The medians of these
+          distance distributions were <NUMEX TYPE="CARDINAL">54</NUMEX> nucleotides, <NUMEX TYPE="CARDINAL">73</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> and <NUMEX TYPE="CARDINAL">89</NUMEX> nucleotides, respectively. Notably,
+          the median for template pairs was significantly smaller (
+          
+          p <NUMEX TYPE="MONEY">< 0.05</NUMEX>) than the median for
+          randomly conserved pairs. These results indicate that
+          many of the word pairs that were conserved in the same
+          intergenic regions of multiple 
+          Saccharomyces genomes also
+          exhibited closer spacing in <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>.
+        
+        
+          Conserved word-<ENAMEX TYPE="PER_DESC">pair templates</ENAMEX> were significantly
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with gene expression
+          Our method identified conserved word-pair templates
+          that were statistically significant with respect to both
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-conservation in multiple genomes and close spacing in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae TCRs</ENAMEX>. To evaluate the
+          regulatory information in these templates, we assessed
+          the statistical association between gene groups that
+          <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> a template and changes in gene expression.
+          Similarly to other <ENAMEX TYPE="ORG_DESC">group</ENAMEX>-by-sequence approaches for
+          finding regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX>, we expect that gene subsets
+          defined by common <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> sequence features should have
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns that are similar under
+          conditions where the transcription factors are active,
+          yet are different from the average expression of genes in
+          the <ENAMEX TYPE="ORG_DESC">genome</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] .
+          To assess the association between conserved word-pair
+          <ENAMEX TYPE="ORGANIZATION">templates</ENAMEX> and differentially expressed genes, we
+          identified gene subsets whose TCRs contained both
+          conserved words in the template and observed their
+          expression patterns in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae in</ENAMEX> publicly available
+          <ENAMEX TYPE="ORGANIZATION">datasets</ENAMEX> ( [ <NUMEX TYPE="CARDINAL">30 31 32 33 34 35</NUMEX> ] , see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods for details). We then conducted
+          Kolmogorov-<ENAMEX TYPE="PERSON">Smirnov</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX>) tests to evaluate for
+          differential gene expression between each gene subset and
+          the whole genome. <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> tests provide a nonparametric,
+          sensitive and robust way to compare <NUMEX TYPE="CARDINAL">two</NUMEX> distributions.
+          Similar results were obtained using other statistical
+          tests, such as 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -tests and likelihood ratio tests
+          (<ENAMEX TYPE="PERSON">A.M. Moses</ENAMEX>, unpublished data). A 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> × 
+          C matrix was computed: each
+          conserved word pair in 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> was assigned a <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for each experimental
+          condition observed in 
+          C (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods).
+          Entries in this matrix (<ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values) were filtered out if the
+          <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value: did not meet the
+          threshold for multiple testing or was <NUMEX TYPE="CARDINAL">less than 10</NUMEX> times
+          more significant than the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for a gene subset
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with either word alone (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods). The latter criterion minimizes gene-expression
+          changes that can be explained by the presence of a single
+          conserved word.
+          Figure <NUMEX TYPE="CARDINAL">3ashows</NUMEX> the number of conserved word-pair
+          templates that were significantly associated with
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes, for varying significance levels
+          of the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> test, which have been corrected for multiple
+          testing (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). Each <ENAMEX TYPE="PER_DESC">line</ENAMEX> indicates
+          the number of gene subsets that were significant in a
+          different minimum number of experimental conditions.
+          <NUMEX TYPE="CARDINAL">Several hundred</NUMEX> closely spaced word pairs were
+          significantly associated with differential gene
+          expression. For example, <ENAMEX TYPE="LANGUAGE">314</ENAMEX> word pairs met an
+          FDR-corrected significance threshold of 
+          <ENAMEX TYPE="PRODUCT">p < 10</ENAMEX> -3for <NUMEX TYPE="CARDINAL">five</NUMEX> or more
+          experimental conditions, which represented approximately
+          <NUMEX TYPE="PERCENT">32%</NUMEX> of all closely spaced word pairs.
+          The proportion of conserved word-pair templates
+          showing significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with gene expression was
+          compared to <NUMEX TYPE="CARDINAL">two</NUMEX> sets of negative controls, comprising
+          word pairs that failed either the <NUMEX TYPE="ORDINAL">first</NUMEX> (co-conservation)
+          or <NUMEX TYPE="ORDINAL">second</NUMEX> (<NUMEX TYPE="MONEY">close spacing</NUMEX>) statistical test. For the first
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>, we used a sample of <ENAMEX TYPE="LANGUAGE">624</ENAMEX> word pairs that failed
+          the joint conservation test (conservation <NUMEX TYPE="MONEY">χ 2< 1</NUMEX>)
+          found in <NUMEX TYPE="CARDINAL">at least 25</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, but also showed modest
+          constraints on word pair spacing ( 
+          p <NUMEX TYPE="MONEY">< 0.15</NUMEX>). Only <NUMEX TYPE="CARDINAL">eight</NUMEX> of these
+          word pairs (<NUMEX TYPE="PERCENT">approximately 1.3%</NUMEX>) were significantly
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with gene-expression changes at an
+          FDR-corrected threshold of 
+          <ENAMEX TYPE="PRODUCT">p < 10</ENAMEX> -3for <NUMEX TYPE="CARDINAL">five</NUMEX> or more
+          experimental conditions. To assess the relative
+          enrichment for significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes at a variety of multiple testing
+          thresholds, we computed an odds ratio: the proportion of
+          significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> among the template pairs,
+          divided by the proportion of significant associations
+          among the random pairs. For the above threshold, the odds
+          ratio was <NUMEX TYPE="CARDINAL">about 22</NUMEX>. In other words, gene groups that
+          contain a common conserved word-pair template in their
+          <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> were <NUMEX TYPE="CARDINAL">about 22</NUMEX> times more likely to be associated
+          with significant gene-expression changes, compared with
+          gene <ENAMEX TYPE="PER_DESC">groups</ENAMEX> selected using randomly conserved word pairs.
+          As shown in Figure <TIMEX TYPE="DATE">3b</TIMEX>, the odds ratios for association
+          with gene expression changes in multiple conditions
+          varied <TIMEX TYPE="DATE">between 10 and 35</TIMEX>. This analysis was repeated for
+          a sample of <NUMEX TYPE="CARDINAL">2,737</NUMEX> co-conserved (conservation <NUMEX TYPE="MONEY">χ 2</NUMEX>>
+          <NUMEX TYPE="MONEY">31.1</NUMEX>) word pairs that failed the close spacing test
+          (permutation 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> > <NUMEX TYPE="CARDINAL">0.05</NUMEX> after multiple
+          testing), yet occurred in <NUMEX TYPE="CARDINAL">at least 10</NUMEX> intergenic regions.
+          The relative enrichment for gene expression associations
+          in closely spaced words is displayed in Figure <TIMEX TYPE="DATE">3c</TIMEX>. Among
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-conserved word pairs, those pairs that were closely
+          spaced than expected were still <NUMEX TYPE="CARDINAL">about 2 to 12</NUMEX> times more
+          likely to be significantly associated with gene
+          expression changes, compared to word pairs that were not
+          found to have significantly close spacing. We confirmed
+          that gene <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> associated with significant gene
+          expression changes did not have statistically significant
+          differences in their <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> sizes, as assessed by a
+          permutation test (data not shown). Thus, gene groups that
+          <ENAMEX TYPE="PERSON">contained</ENAMEX> co-conserved and spatially close word pairs are
+          more significantly associated with gene-expression
+          changes than expected by chance.
+        
+        
+          Many identified sequences represented known
+          transcription factor binding sites
+          In addition to their statistical significance, many
+          conserved word-pair templates that were most strongly
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with gene-expression changes were consistent
+          with biological information on the transcription factors
+          known to bind those sites [ <TIMEX TYPE="DATE">36</TIMEX> ] . In all analyses
+          described below, we used a set of <ENAMEX TYPE="LANGUAGE">314</ENAMEX> word pairs that had
+          significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with gene-expression changes at
+          an FDR-corrected multiple testing threshold of 
+          <ENAMEX TYPE="PRODUCT">p < 10</ENAMEX> -3for <NUMEX TYPE="CARDINAL">five</NUMEX> or more
+          experiments. For visualization purposes, we organized the
+          
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> × 
+          C matrix by hierarchically
+          clustering the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for the <ENAMEX TYPE="LANGUAGE">314</ENAMEX> word pairs
+          (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods for details).
+          Hierarchical clustering of this output matrix
+          identified <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of word pairs with similar <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values in specific subsets of
+          experimental conditions (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). For these clustered
+          output matrices, see Additional data files. In many
+          cases, the word pairs that clustered together also
+          comprised overlapping hexamer sequences, suggesting that
+          some of the hexamers in different pairs may represent a
+          larger, somewhat variable sequence (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). For
+          example, group <NUMEX TYPE="CARDINAL">9</NUMEX> in Figure <NUMEX TYPE="CARDINAL">4included six</NUMEX> word pairs. In
+          each of these word pairs, one of the component words -
+          such as <ENAMEX TYPE="ORGANIZATION">TCACGT</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CACGTG</ENAMEX>, or ACGTGC - matched part of the
+          consensus binding site for <TIMEX TYPE="DATE">Cbf1p</TIMEX> (TCACGTG). The other
+          component word in each <ENAMEX TYPE="PER_DESC">pair</ENAMEX> - such as <ENAMEX TYPE="ORGANIZATION">ACTGTG</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CTGTGG</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">TGTGGC</ENAMEX> or GTGGCT - represented part of the known
+          Met31<NUMEX TYPE="CARDINAL">/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> binding site (AAACTGTGG). Therefore, genes
+          whose <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> contained any word pair within this group
+          probably contained a conserved <NUMEX TYPE="CARDINAL">Cbf1p</NUMEX>-binding site, along
+          with a conserved <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-binding site, and the
+          distances between the conserved sites in these genes were
+          also smaller than expected by chance. These results agree
+          with the known interaction of <ENAMEX TYPE="SUBSTANCE">Cbf1p</ENAMEX> and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> for the
+          regulation of genes involved in sulfur utilization (see
+          Discussion).
+          <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> a partial list of the <NUMEX TYPE="CARDINAL">14</NUMEX> most significant
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of consensus sequences, which were assembled by
+          joining adjacent word pairs in the clustered output
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> with overlapping sequences. Many of these
+          consensus sequences matched transcription factor binding
+          sites that had been biochemically verified. Several pairs
+          of transcription factors, denoted by stars in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>,
+          were not previously known to act on the same sets of
+          target genes.
+        
+        
+          Conditions with significant gene-expression changes
+          coincided with transcription factor activity
+          Further support that templates contain transcriptional
+          regulatory information was obtained from a key
+          observation: the experimental conditions with significant
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes often corresponded to conditions
+          in which the cognate transcription factors are known to
+          be active (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). In addition, many gene subsets that
+          <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> an individual word-pair template in their TCRs
+          were highly enriched for gene-expression changes. We will
+          survey examples of word-pair templates associated with
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes, focusing our attention on
+          several environmental stress conditions. The
+          environmental stress response represents a paradigm for
+          multifactorial control of transcription regulation.
+          Genome-wide expression studies found that <NUMEX TYPE="CARDINAL">around 300</NUMEX>
+          genes were induced and <NUMEX TYPE="CARDINAL">around 600</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were repressed in
+          response to a wide variety of stressful environmental
+          <ENAMEX TYPE="ORGANIZATION">transitions</ENAMEX> [ <NUMEX TYPE="CARDINAL">30 37</NUMEX> ] . Many of these genes also showed
+          subtly different expression patterns in response to
+          specific stimuli, suggesting that the common
+          environmental stress response may be modulated by the
+          activity of <ENAMEX TYPE="DISEASE">condition</ENAMEX>-specific transcription factors [ <NUMEX TYPE="CARDINAL">30</NUMEX>
+          ] .
+          <NUMEX TYPE="CARDINAL">Over a third</NUMEX> of the conserved word-<ENAMEX TYPE="PER_DESC">pair templates</ENAMEX> were
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with gene-expression changes in multiple
+          environmental stress conditions (Figure <TIMEX TYPE="DATE">4a</TIMEX>, <ENAMEX TYPE="PRODUCT">Tables 1</ENAMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          The largest <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of overlapping word pairs contained
+          matches to the <ENAMEX TYPE="ORG_DESC">PAC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RRPE</ENAMEX> motifs, which were associated
+          with genes that were repressed in multiple stresses [ <NUMEX TYPE="CARDINAL">30</NUMEX>
+          <NUMEX TYPE="CARDINAL">38</NUMEX> ] . These motifs were discovered by their enrichment
+          among the <NUMEX TYPE="CARDINAL">approximately 600</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that were commonly
+          repressed in stress, yet the putative transcription
+          factors that bind these sequences have yet to be
+          determined. The <NUMEX TYPE="ORDINAL">second</NUMEX> largest <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of overlapping word
+          pairs corresponded to the RRPE core, which is <NUMEX TYPE="CARDINAL">10</NUMEX>
+          nucleotides long, along with some flanking conserved
+          bases. These repressed <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were enriched for rRNA
+          processing <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of genes in which this motif
+          was originally identified [ <TIMEX TYPE="DATE">38</TIMEX> ] . <NUMEX TYPE="CARDINAL">Nine</NUMEX> conserved
+          word-pair templates contained sequences that matched most
+          of the stress response element (STRE), the consensus site
+          for the general stress transcription factors <ENAMEX TYPE="CONTACT_INFO">Msn2p/Msn4p.</ENAMEX>
+          Genes that conserved both these words in their TCRs were
+          significantly associated with gene-expression induction
+          in multiple environmental stresses, including cadmium,
+          heat shock, amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> starvation, nitrogen depletion and
+          stationary phase. In most cases, the <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> comprising
+          the word pairs were mutually overlapping. We interpret
+          these sequences as representing different <NUMEX TYPE="CARDINAL">halves</NUMEX> of the
+          same binding site. Because our test for close spacing
+          required non-overlapping sequences, the <NUMEX TYPE="CARDINAL">two</NUMEX> words must
+          have appeared <NUMEX TYPE="QUANTITY">over 6 bp</NUMEX> away in <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>. Thus, these genes
+          have probably conserved <NUMEX TYPE="CARDINAL">at least two Msn2/4</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-like
+          consensus sequences in their <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>.
+          Several <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of conserved word-pair templates only
+          showed significant <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with gene expression
+          changes in different subsets of stress conditions (Figure
+          <ENAMEX TYPE="CONTACT_INFO">4b, Tables 1, 2</ENAMEX>). For example, binding sites for Cbf1p
+          and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> were found to co-occur in several conserved
+          word-pair templates. Genes that contained conserved
+          binding sites for these transcription factors in their
+          <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> were strongly induced in cadmium, amino-acid
+          <ENAMEX TYPE="PERSON">starvation</ENAMEX> and early nitrogen depletion. These conditions
+          are consistent with the biological activity of these
+          transcription factors, which induce transcription of
+          <ENAMEX TYPE="SUBSTANCE">sulfur-assimilation genes</ENAMEX> in response to the demand of
+          <ENAMEX TYPE="SUBSTANCE">sulfur-containing metabolites</ENAMEX> [ <ENAMEX TYPE="LAW">5 39 40</ENAMEX> ] . In another
+          example, several word pairs comprising binding sites for
+          the transcriptional repressors <TIMEX TYPE="DATE">Mig1p and Ume6p</TIMEX> were
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with induced gene expression in stationary
+          phase. The observed derepression of <ENAMEX TYPE="SUBSTANCE">Mig1p</ENAMEX> and Ume6p
+          targets in stationary phase is consistent with the
+          nuclear export of the <NUMEX TYPE="ORDINAL">Mig1p</NUMEX> repressor under glucose
+          <ENAMEX TYPE="PERSON">limitation</ENAMEX>, as well as recent findings that carbon source
+          genes can be <TIMEX TYPE="DATE">Ume6p</TIMEX> targets [ <TIMEX TYPE="DATE">41</TIMEX> ] . In addition, genes
+          containing a conserved sequence similar to the consensus
+          for <NUMEX TYPE="CARDINAL">Msn2/4</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>, an inducer of the environmental stress
+          response, and the heat-shock transcription factor Hsf1p
+          were significantly induced under heat shock. Once again,
+          the conditions with most significant gene-expression
+          changes corresponded to the known activities of the
+          transcription factors involved.
+        
+        
+          Enrichment for known transcription factor targets
+          among individual gene groups
+          Some <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of genes with shared word-pair templates
+          were enriched for known targets of transcription factors.
+          The vast majority of genes with conserved sites for both
+          the <NUMEX TYPE="ORDINAL">Cbf1p</NUMEX> and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> transcription factors were
+          induced more than fourfold in cadmium, amino-acid
+          <ENAMEX TYPE="PERSON">starvation</ENAMEX> and early nitrogen depletion (Figure <NUMEX TYPE="CARDINAL">5a</NUMEX>). Half
+          of these genes have confirmed roles in <ENAMEX TYPE="SUBSTANCE">sulfur</ENAMEX>-utilization
+          processes, such as methionine metabolism, sulfate
+          assimilation, sulfate transport and <ENAMEX TYPE="SUBSTANCE">sulfur amino acid</ENAMEX>
+          metabolism [ <TIMEX TYPE="DATE">42</TIMEX> ] . Compared to the rest of the genome,
+          the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of genes that conserved both of these words
+          within their TCRs was highly enriched for
+          <ENAMEX TYPE="SUBSTANCE">sulfur-utilization genes</ENAMEX> (hypergeometric 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value <NUMEX TYPE="MONEY">< 1</NUMEX> × <NUMEX TYPE="PERCENT">10 -16</NUMEX>, after
+          Bonferroni correction for multiple testing). In addition,
+          we found <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> ( 
+          GSH1 , 
+          RAD59 and 
+          BNA3 ) with highly correlated
+          expression under the above conditions, and thus may be
+          commonly regulated by <TIMEX TYPE="DATE">Cbf1p</TIMEX> and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>, despite their
+          lack of direct annotation as <ENAMEX TYPE="SUBSTANCE">sulfur-utilization genes</ENAMEX>.
+          The shared conservation of both <TIMEX TYPE="DATE">the Cbf1p</TIMEX> and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>
+          sites provides further evidence that these genes comprise
+          part of the cellular response to the demand for products
+          of this pathway.
+          Genes with a conserved <NUMEX TYPE="CARDINAL">half</NUMEX>-site for the Hap1p
+          transcription factor, as well as a <ENAMEX TYPE="CONTACT_INFO">conserved Ecm22p/</ENAMEX>Upc2p
+          binding site in their <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, were significantly associated
+          with induction in the presence of <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> that inhibited
+          ergosterol biosynthesis (Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>). This <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of <NUMEX TYPE="CARDINAL">30</NUMEX>
+          genes contained <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">ergosterol biosynthesis genes</ENAMEX>; this
+          proportion represented an enrichment compared to the rest
+          of the genome (hypergeometric 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value <NUMEX TYPE="MONEY">< 6</NUMEX> × <NUMEX TYPE="CARDINAL">10</NUMEX> -6after
+          Bonferroni correction for multiple testing). The
+          transcription factors <TIMEX TYPE="DATE">Ecm22p and Upc2p</TIMEX> have been shown to
+          induce the expression of ergosterol biosynthesis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in
+          response to low intracellular concentrations of
+          ergosterol, whereas <ENAMEX TYPE="ORGANIZATION">Hap1p</ENAMEX> is known to regulate the
+          expression of these genes according to the availability
+          of heme and <ENAMEX TYPE="SUBSTANCE">oxygen</ENAMEX>, which are required for the pathway [
+          <NUMEX TYPE="CARDINAL">43 44</NUMEX> ] .
+        
+        
+          Conserved word pairs were more informative than
+          sequence features derived from single words or single
+          species
+          The above results from the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> test strongly suggested
+          that sequence features based on the co-conservation and
+          close spacing of word pairs identified examples of
+          multifactorial regulation. <NUMEX TYPE="CARDINAL">Two</NUMEX> other statistical tests
+          were also performed to examine how information contained
+          in conserved word-pair templates compared to other
+          sequence features derived from 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , or from single
+          conserved words. Informative sequence features should be
+          both highly specific (a high proportion of genes that
+          share the feature should show gene-expression changes)
+          and highly sensitive (most of the genes that show
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes should also share the
+          feature).
+          To assess the specificity of a sequence feature in
+          explaining gene expression, we computed the average
+          expression profile for all genes that shared that
+          feature. We expect that if a sequence feature represented
+          a transcription factor binding site, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> containing
+          that feature in their <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> would be induced (or
+          <ENAMEX TYPE="ORGANIZATION">repressed</ENAMEX>), on average, compared to all the genes in the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] . By comparing the average expression
+          profile derived from conserved word-pair templates with
+          average expression profiles derived from simpler sequence
+          features, we assessed how much information was obtained
+          by incorporating both the conservation and pairwise
+          combination of sequences. For <ENAMEX TYPE="PER_DESC">representative</ENAMEX> word pairs
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with significant gene-expression changes in
+          environmental stress conditions, we compared the average
+          expression profile for: gene subsets that shared single
+          words in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae ; gene subsets that
+          conserved single words among multiple genomes; and gene
+          subsets that shared both words in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> (Figure <TIMEX TYPE="DATE">6and</TIMEX> see
+          Additional data files). In general, the average
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles for conserved word pairs were
+          more significantly different from the average expression
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the genome when either conservation or word
+          <ENAMEX TYPE="PERSON">pairs</ENAMEX> was used as an additional criterion for gene
+          selection. In Figure <NUMEX TYPE="CARDINAL">6</NUMEX>, the last <NUMEX TYPE="CARDINAL">two</NUMEX> rows for each word
+          pair indicate the average expression profiles for genes
+          that shared both words in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , as well as the
+          average expression profile for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that conserved both
+          words in multiple genomes, respectively. <ENAMEX TYPE="PERSON">Strikingly</ENAMEX>, the
+          consideration of word-pair conservation yielded further
+          increases in average gene-expression profiles compared to
+          word pairs in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae alone. Similar
+          effects were observed for the <ENAMEX TYPE="ORG_DESC">PAC</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">RRPE</ENAMEX> and the
+          <ENAMEX TYPE="ORGANIZATION">overlapping RRPE</ENAMEX> pairs associated with genes repressed in
+          the environmental stress response (see Additional data
+          files). Thus, conserved word-pair templates contained
+          more specific predictors of gene expression than
+          comparable sequence <ENAMEX TYPE="SUBSTANCE">templates</ENAMEX> derived from 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae alone.
+          To evaluate how well sequence features can explain
+          gene expression changes across the whole genome, several
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> have constructed linear regression models using
+          various choices for features [ <NUMEX TYPE="CARDINAL">18 19 20 21</NUMEX> ] . The 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> statistic of a regression
+          model indicates the percent of global variance that can
+          be explained using the sequence features in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+          Models with better fits to the genome-wide expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> would thus have greater 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> values. To assess the
+          sensitivity of individual word pairs in explaining global
+          gene expression, we first constructed regression models
+          using individual word pairs (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods).
+          We chose <NUMEX TYPE="CARDINAL">three</NUMEX> representative environmental conditions:
+          <ENAMEX TYPE="SUBSTANCE">amino-acid starvation</ENAMEX> (<TIMEX TYPE="TIME">30 min</TIMEX>) [ <TIMEX TYPE="DATE">30</TIMEX> ] ; stationary phase
+          (<NUMEX TYPE="CARDINAL">10</NUMEX> h in <ENAMEX TYPE="ORGANIZATION">YPD</ENAMEX>) [ <TIMEX TYPE="DATE">30</TIMEX> ] ; and ergosterol inhibition
+          (<NUMEX TYPE="MONEY">terbinafine</NUMEX>) [ <TIMEX TYPE="DATE">35</TIMEX> ] . We constructed regression models
+          using counts of individual words in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae TCRs</ENAMEX>, or using counts
+          of words that were conserved among 
+          <ENAMEX TYPE="ORGANIZATION">Saccharomyces TCRs</ENAMEX>. Sequence
+          conservation improved the fit of regression <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> based
+          on individual word pairs (Δ 
+          R <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.3</NUMEX>-<NUMEX TYPE="PERCENT">1.3%</NUMEX>) (see Additional data
+          files). These results clearly show that sequences
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in multiple 
+          Saccharomyces <ENAMEX TYPE="ANIMAL">species</ENAMEX> were more
+          likely to be associated with gene-expression changes.
+          To assess the joint contribution of word pairs on gene
+          expression, we also included interaction terms between
+          the individual words only if their coefficients were
+          statistically significant (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods).
+          Pairwise interaction terms, expressed as the product of
+          scores for <NUMEX TYPE="CARDINAL">two</NUMEX> features, represent a standard way to
+          assess whether <NUMEX TYPE="CARDINAL">two</NUMEX> features contribute nonadditively to
+          gene expression [ <TIMEX TYPE="DATE">19</TIMEX> ] . Indeed, the inclusion of
+          significant pairwise interaction terms improved the fits
+          for both the 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae sequence <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and
+          the conserved sequence model, increasing the 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> by a further <NUMEX TYPE="PERCENT">0.2% to 0.9%</NUMEX>
+          (see Additional data files). Whereas the interaction
+          terms only comprise a small proportion of the global
+          variance, they can be interpreted as statistical evidence
+          of dependence between sequence features [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+          Therefore, the nonadditive contributions of conserved
+          word-pair templates further suggest their involvement in
+          multifactorial regulation.
+          We expanded these <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> to include multiple conserved
+          word-pair templates using a stepwise linear regression
+          procedure. The set of potential sequence features was
+          expanded to include all words found in templates
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with significant gene expression changes in
+          that condition, as assessed previously by the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> test
+          (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). The final 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> values for regression
+          models based on occurrences of multiple words in 
+          S. <ENAMEX TYPE="SUBSTANCE">cerevisiae</ENAMEX> ranged from <NUMEX TYPE="PERCENT">7.2%</NUMEX> to
+          <NUMEX TYPE="PERCENT">9.3%</NUMEX> (<ENAMEX TYPE="PRODUCT">Table 3and</ENAMEX> see Additional data files). Once again,
+          the use of conserved instances of individual words
+          yielded better model fits, with improvements in 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> values from <NUMEX TYPE="PERCENT">3.1% to 9.5%</NUMEX>.
+          Further improvements in the model fit (Δ 
+          R <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="PERCENT">0.5% to 1.4%</NUMEX>) were obtained
+          using pairwise interaction terms between <ENAMEX TYPE="PER_DESC">individual</ENAMEX> words
+          found in the same word-pair template. The total 
+          R <NUMEX TYPE="QUANTITY">-square</NUMEX> values for the regression
+          models based on conserved word-pair templates with
+          interaction terms thus ranged from <NUMEX TYPE="PERCENT">10.8% to 20.2%</NUMEX> (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>). Thus, sequence features based on conserved word-pair
+          <ENAMEX TYPE="ORGANIZATION">templates</ENAMEX> could explain more of the global gene
+          expression changes than features based on 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae alone.
+        
+      
+      
+        Discussion
+        This work describes <NUMEX TYPE="CARDINAL">two</NUMEX> principles for analyzing
+        combinations of regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX>. First, sequence
+        conservation among closely related yeast <ENAMEX TYPE="ANIMAL">species</ENAMEX> was used
+        to find sequences that were more likely to be functionally
+        important. <NUMEX TYPE="ORDINAL">Second</NUMEX>, a template approach that considered
+        joint positional distributions of word pairs increased the
+        specificity of gene-expression predictions using
+        <ENAMEX TYPE="GPE">sequence</ENAMEX>-based rules. We have demonstrated that
+        higher-order sequence features within <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> were conserved
+        across multiple 
+        Saccharomyces genomes. Closely spaced
+        and jointly conserved word pairs were also more likely to
+        be associated with specific gene-expression changes. A
+        large proportion of words contained in templates matched
+        known transcription factor binding sites. In many cases,
+        associations between templates and gene-expression changes
+        were significant in conditions when the corresponding
+        transcription factors are known to be active. In addition,
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes that co-conserved both words in a template
+        often were enriched for common functional roles. These
+        results suggest that conserved word-pair templates, which
+        were discovered strictly on the basis of higher-order
+        properties of sequence conservation, also carry biological
+        relevance.
+        Conserved word-<ENAMEX TYPE="PER_DESC">pair templates</ENAMEX> may be consistent with
+        several underlying biochemical mechanisms. <NUMEX TYPE="CARDINAL">One</NUMEX> possible
+        interpretation of templates is that closely spaced sequence
+        <ENAMEX TYPE="PERSON">pairs</ENAMEX> may promote direct or indirect interactions between
+        transcription factors by increasing the local
+        concentrations of the individual factors. For example, the
+        proximity of <ENAMEX TYPE="SUBSTANCE">Cbf1p</ENAMEX> and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> may promote
+        interaction between these factors in recruiting their
+        common transcriptional activators, <TIMEX TYPE="DATE">Met4p and Met28p</TIMEX>.
+        Experimental studies on the <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> of 
+        MET3 and 
+        MET28 have demonstrated that the
+        binding of <TIMEX TYPE="DATE">Cbf1p</TIMEX> enhances the DNA-binding affinity of
+        Met31<ENAMEX TYPE="ORGANIZATION">/32p</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . Indeed, <ENAMEX TYPE="SUBSTANCE">biochemical</ENAMEX> experiments suggest
+        that all these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> may interact at the <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> of some
+        <ENAMEX TYPE="SUBSTANCE">sulfur-utilization genes</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] .
+        Another possible regulatory scheme for conserved,
+        closely spaced word pairs is that individual sequences
+        found in templates may correspond to binding sites for
+        transcription factors that bind independently under the
+        same or separate conditions. The <NUMEX TYPE="CARDINAL">Msn2/4</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> and Hsf1p
+        transcription factors, whose binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> were similar to
+        words identified in a template, represent an example of
+        multifactorial regulation in response to distinct
+        environmental stimuli [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . Spacing constraints between
+        their binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> could nevertheless be important under
+        conditions when both factors are active. Recent experiments
+        have suggested that transcription factors that do not
+        physically interact may still co-activate gene expression
+        as long as their binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are spaced within a
+        nucleosome length (<TIMEX TYPE="TIME">approximately 150 bp</TIMEX>), due to
+        collaborative competition of the bound transcription
+        factors with core histones [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+        Close spacing between word pairs may be important for
+        reasons other than the promotion of transcription factor
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. Different <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> at varying windows
+        away from translation start sites may be more competent at
+        recruiting or <ENAMEX TYPE="SUBSTANCE">inhibiting RNA polymerase</ENAMEX>. These differences
+        may be influenced by nucleosome accessibility, chromatin
+        structure or <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> physical properties, which can be
+        correlated with local A+T content (see [ <TIMEX TYPE="DATE">45</TIMEX> ] for
+        references). Notably, we have also found that the relative
+        proportions of <ENAMEX TYPE="ORGANIZATION">A and T</ENAMEX> <ENAMEX TYPE="PER_DESC">nucleotides</ENAMEX> vary considerably within
+        the <NUMEX TYPE="CARDINAL">200</NUMEX> bp closest to translation start sites (<ENAMEX TYPE="PERSON">A.M. Moses</ENAMEX>,
+        <ENAMEX TYPE="PERSON">M.B.Eisen</ENAMEX> and <ENAMEX TYPE="PERSON">Audrey Gasch</ENAMEX>, unpublished results).
+        Low-complexity words that contained <NUMEX TYPE="CARDINAL">four</NUMEX> or more As or Ts
+        could be found in many templates (denoted by T 
+        
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+         C in Figure <ENAMEX TYPE="PRODUCT">4and Table 1</ENAMEX>); these words may serve as
+        surrogates for a distance window from the translation
+        start. Binding sites that are close to these low-complexity
+        words may be found in more transcriptionally competent
+        regions of <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>. Alternatively, the possibility that each
+        word in an identified <ENAMEX TYPE="PER_DESC">pair</ENAMEX> may be found at similar
+        distances from <NUMEX TYPE="CARDINAL">a third</NUMEX> conserved sequence element in all
+        <ENAMEX TYPE="GPE">TCRs</ENAMEX> cannot be discounted.
+        Direct biological models of binding-site <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> in
+        <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, as exemplified by conserved word-pair templates,
+        provided several advantages over naive statistical models
+        based on sequence combinations in 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae . Average
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles showed that conserved word pairs
+        were more specific predictors of gene expression (giving
+        fewer false positives) than single or pairwise sequences
+        derived from 
+        <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , indicating that
+        conserved regions among these closely related 
+        Saccharomyces <ENAMEX TYPE="ANIMAL">species</ENAMEX> were enriched
+        for functional <ENAMEX TYPE="PER_DESC">sequences</ENAMEX>. The consideration of distance
+        constraints between pairs of conserved sequences found many
+        more examples than a previous study of binding-site
+        clustering for multiple transcription factors in 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae [ <TIMEX TYPE="DATE">22</TIMEX> ] . In addition,
+        we discovered new sequences and pairwise interaction terms
+        using regression <ENAMEX TYPE="PER_DESC">models</ENAMEX> similar to those reported in [ <TIMEX TYPE="DATE">20</TIMEX> ]
+        and [ <TIMEX TYPE="DATE">21</TIMEX> ] (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). Conserved word-pair templates
+        accounted for similar changes in genome-wide expression ( 
+        R <NUMEX TYPE="QUANTITY">-square</NUMEX> from <NUMEX TYPE="PERCENT">approximately 11%</NUMEX> to
+        <NUMEX TYPE="PERCENT">approximately 20%</NUMEX>) using <NUMEX TYPE="CARDINAL">only 8 to 10</NUMEX> features, compared
+        with <NUMEX TYPE="CARDINAL">dozens</NUMEX> of overlapping features used by other methods [
+        <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] . Therefore, <ENAMEX TYPE="PER_DESC">individual</ENAMEX> features from our methods
+        were more predictive of genome-wide expression changes.
+        A key limitation of our approach is the use of hexamers,
+        which may fail to capture known binding sites. For example,
+        the binding sites for <TIMEX TYPE="DATE">Mcm1p and Rap1p</TIMEX> are poorly modeled by
+        exact words, in that these transcription factors bind
+        sequences with relaxed specificity at certain positions [
+        <NUMEX TYPE="CARDINAL">11</NUMEX> ] . Our method missed examples of multifactorial
+        regulation involving <ENAMEX TYPE="SUBSTANCE">Mcm1p</ENAMEX> or <TIMEX TYPE="DATE">Rap1p</TIMEX> that were suggested by
+        previous work using position-weight matrices [ <TIMEX TYPE="DATE">17</TIMEX> ] . In
+        addition, our method required sequence identity for a word
+        to be labeled as conserved. This strict requirement omitted
+        binding sites that may have retained their function,
+        despite mutations in degenerate positions that may have
+        little impact on transcription factor binding. This
+        tradeoff between enumerating all possible words and
+        capturing degenerate positions in binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> was
+        compounded by the very large number of pairwise word
+        combinations that were enumerated. Further work should
+        incorporate more complicated sequence models, as well as
+        optimization methods that restrict the search space of
+        sequence combinations.
+        The consideration of joint conservation and close
+        <ENAMEX TYPE="ORGANIZATION">spacing</ENAMEX> has provided insights into how <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> may
+        influence the multifactorial regulation of gene expression
+        in 
+        Saccharomyces cerevisiae . These
+        criteria were motivated by experimental studies on the
+        positional <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> of individual binding sites within
+        <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>, with the hypothesis that this underlying architecture
+        would be functionally conserved. Even more complicated
+        higher-order sequence rules are apparent in the
+        <ENAMEX TYPE="ORGANIZATION">organization of</ENAMEX> 
+        cis -regulatory <ENAMEX TYPE="ORG_DESC">modules</ENAMEX> in 
+        Drosophila melanogaster [ <TIMEX TYPE="DATE">46</TIMEX> ] .
+        Nevertheless, a common organizational theme of the <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> in
+        both of these <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> is the importance of relative
+        spacing between transcription factor binding sites. The
+        discovery of additional principles for <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> organization
+        will further advance our understanding of how regulatory
+        information is encoded in genome sequences.
+      
+      
+        Materials and methods
+        
+          Datasets
+          Whole-genome <ENAMEX TYPE="PRODUCT_DESC">shotgun</ENAMEX> sequencing of 
+          Saccharomyces bayanus , 
+          <ENAMEX TYPE="PERSON">S. mikatae</ENAMEX> , and 
+          <ENAMEX TYPE="PERSON">S. paradoxus</ENAMEX> has been previously
+          described [ <TIMEX TYPE="DATE">26</TIMEX> ] . All are highly related to 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , as they are grouped
+          within the 
+          sensu stricto <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> of the 
+          Saccharomyces genus [ <TIMEX TYPE="DATE">28</TIMEX> ] .
+          Intergenic regions were aligned using <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> as
+          described [ <TIMEX TYPE="DATE">26</TIMEX> ] and are available from the <ENAMEX TYPE="ORGANIZATION">Yeast</ENAMEX>
+          <ENAMEX TYPE="PERSON">Comparative Genomics</ENAMEX> website [ <TIMEX TYPE="DATE">42</TIMEX> ] . A total of <NUMEX TYPE="CARDINAL">4,101</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> alignments were analyzed. These alignments were
+          filtered for orthologs in <NUMEX TYPE="CARDINAL">at least three</NUMEX> genomes.
+          <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression measurements were obtained from the
+          <ENAMEX TYPE="ORGANIZATION">Stanford Microarray Database</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Rosetta</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX> ] .
+          The main experimental types among the <NUMEX TYPE="CARDINAL">342</NUMEX> conditions
+          examined include cell cycle [ <NUMEX TYPE="CARDINAL">31 32</NUMEX> ] , environmental
+          stress response [ <TIMEX TYPE="DATE">30</TIMEX> ] , DNA damage [ <NUMEX TYPE="CARDINAL">33 34</NUMEX> ] , cadmium
+          (<ENAMEX TYPE="ORGANIZATION">N. Ogawa</ENAMEX> and <ENAMEX TYPE="PERSON">P.O. Brown</ENAMEX>, unpublished data), and
+          inhibition of ergosterol biosynthesis [ <TIMEX TYPE="DATE">35</TIMEX> ] . This data
+          has been log-transformed (base <NUMEX TYPE="CARDINAL">2</NUMEX>), and each experimental
+          condition has been median normalized.
+        
+        
+          Dependent conservation of word pairs
+          To assess whether <NUMEX TYPE="CARDINAL">two</NUMEX> words were co-conserved in the
+          same intergenic regions, a <NUMEX TYPE="QUANTITY">chi-square</NUMEX> test of
+          independence was systematically conducted for all
+          possible words of length <NUMEX TYPE="CARDINAL">6</NUMEX>. We defined a word to include
+          a <NUMEX TYPE="CARDINAL">6</NUMEX>-bp sequence and its reverse complement. Each
+          transcriptional control <ENAMEX TYPE="LOCATION">region</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX>) for a gene was
+          defined as the <NUMEX TYPE="QUANTITY">600 bp</NUMEX> upstream of its translation start
+          site. <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> shared between divergently transcribed genes
+          less than <NUMEX TYPE="QUANTITY">600 bp long</NUMEX> were only counted once. A word was
+          labeled conserved in a <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> if all <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> were
+          identical among <NUMEX TYPE="CARDINAL">at least three</NUMEX> of the <NUMEX TYPE="CARDINAL">four</NUMEX> genomes in the
+          <ENAMEX TYPE="ORGANIZATION">CLUSTALW</ENAMEX> alignment. For each word pair ( 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> , 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ) whose overlap was <NUMEX TYPE="CARDINAL">less than 4</NUMEX>,
+          a contingency table 
+          
+            C 
+           
+          
+            wv 
+           was constructed. In this table, 
+          
+            C 
+           
+          
+            wv 
+           <ENAMEX TYPE="CONTACT_INFO">=</ENAMEX> number of <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX>( 
+          
+            I 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             
+           ∩ 
+          
+            I 
+            
+              v 
+             
+           ), where 
+          
+            I 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             
+           , 
+          
+            I 
+            
+              v 
+             
+           are indicator variables for the presence of each
+          conserved word in a <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX>, summed over all <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>. TCRs
+          <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> between divergently transcribed genes less than
+          <TIMEX TYPE="TIME">600 bp long</TIMEX> were only counted once. The expected counts 
+          
+            E 
+           
+          
+            wv 
+           were obtained from an independence assumption; that
+          is, the product of the individual word conservation
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>, multiplied by the total number of <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX>.
+          The <NUMEX TYPE="QUANTITY">chi-square</NUMEX> statistic with <ENAMEX TYPE="PERSON">Yates</ENAMEX> continuity correction
+          was computed according to the definition:
+          
+        
+        
+          Spatial proximity of constrained word pairs
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> requirement for a conserved sequence
+          <ENAMEX TYPE="PER_DESC">template</ENAMEX> involved constraints on spatial arrangements
+          between individual words. Any method that evaluates
+          spacing distributions between word pairs must take into
+          account positional biases that may be present for
+          individual words (<ENAMEX TYPE="PERSON">A.M. Moses</ENAMEX>, unpublished results). We
+          used a permutation test to evaluate the significance of
+          the median of minimum distances, excluding overlaps,
+          between conserved word pairs. By permuting the <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> labels
+          for <NUMEX TYPE="CARDINAL">one</NUMEX> of the words, but not the word positions
+          themselves, we retained the positional biases of
+          individual words within intergenic regions. Within any
+          given <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           , define 
+          
+            p 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           ( 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           ) = { 
+          
+            p 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           <NUMEX TYPE="CARDINAL">1</NUMEX>( 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           ), ..., 
+          
+            p 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           
+          <ENAMEX TYPE="PERSON">j</ENAMEX> ( 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           )} as a vector of positions in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae where the 
+          j occurrences of word 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           are conserved. Suppose that words 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           and 
+          
+            V 
+           were jointly conserved in TCRs 
+          
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+            . For each <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           ∈ 
+          { 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+           <ENAMEX TYPE="PERSON">}</ENAMEX> , the minimum distance between words 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           and 
+          
+            V 
+           was computed as
+          
+          The median of minimum distances, , was simply the
+          median of the ordered distribution 
+          { 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           } .
+          We used a permutation test to generate an empirical
+          null distribution of for all word pairs with 
+          <ENAMEX TYPE="ORGANIZATION">N �</ENAMEX>�<NUMEX TYPE="MONEY">� 10</NUMEX>. After randomly permuting
+          the labels 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+           for the position vectors of word 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> , a permutation test statistic,
+          *, can be calculated as above. By repeating this
+          resampling procedure 
+          R times, an empirical null
+          distribution 
+          
+            null 
+           = { *<TIMEX TYPE="DATE">1</TIMEX>, ..., * 
+          R } can be obtained. The
+          significance of the observed median of minimum distances,
+          , in the 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> was calculated as its
+          <ENAMEX TYPE="ORGANIZATION">quantile</ENAMEX> in the empirical null distribution 
+          
+            null 
+           . We set an upper bound of 
+          R = <NUMEX TYPE="CARDINAL">10 6</NUMEX>, but stopped permutations
+          early if <NUMEX TYPE="CARDINAL">20</NUMEX> or more values in 
+          
+            null 
+           were found less than .
+          Correction for multiple testing involved control of
+          the proportion of false positives using an FDR method [
+          <NUMEX TYPE="CARDINAL">48</NUMEX> ] . This method has increased power over
+          Bonferroni-type methods. Permutation quantiles for all 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> word pairs tested were sorted in
+          non-decreasing order: 
+          
+            q 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> 
+           ≤ ... ≤ 
+          
+            q 
+            
+              <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+             
+           . Let
+          
+          Then the first 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           word pairs in the ordering had a corrected
+          significance level of 
+          q <NUMEX TYPE="MONEY">< 0.05</NUMEX>; that is, the rate of
+          false positives is <NUMEX TYPE="PERCENT">approximately 5%</NUMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Association</ENAMEX> between template-specified gene groups
+          and gene-expression changes
+          For each gene-expression condition 
+          
+            c 
+           in our dataset, 
+          
+            c 
+           <ENAMEX TYPE="ORGANIZATION">∈</ENAMEX> {<NUMEX TYPE="CARDINAL">1</NUMEX>, ..., <NUMEX TYPE="CARDINAL">342</NUMEX>}, we tested the null hypothesis that
+          a gene subset 
+          
+            G 
+           
+          
+            wv 
+           ⊆ 
+          
+            G 
+           selected by a conserved word pair ( 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> , 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> ) had the same distribution of
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression ratios ( 
+          
+            E 
+           
+          
+            wv 
+           
+          c ) as the entire genome ( 
+          
+            E 
+           
+          c ). The <ENAMEX TYPE="PER_DESC">alternate</ENAMEX> hypothesis
+          stated that the <NUMEX TYPE="CARDINAL">two</NUMEX> gene-expression distributions were
+          significantly different. Any gene was an element of 
+          
+            G 
+           
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           if its corresponding <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> conserved both sequences in
+          the word pair. Since the size 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           of gene subsets may be small and the distributions
+          may not be normally distributed, we used the
+          <ENAMEX TYPE="ORGANIZATION">nonparametric K-S</ENAMEX> test. The test statistic 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           compares the cumulative distribution functions 
+          
+            F 
+           
+          
+            wv 
+           
+          c and 
+          
+            F 
+           
+          c corresponding to 
+          
+            E 
+           
+          
+            wv 
+           
+          c and 
+          
+            E 
+           
+          c by the formula
+          
+          The significance level of an observed value 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           * can be obtained using a numerical approximation [
+          <NUMEX TYPE="CARDINAL">49</NUMEX> ] .
+          A gene subset determined by a word pair was deemed to
+          have significantly different expression if its <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value was less than a certain
+          threshold. To correct for multiple testing, this
+          <ENAMEX TYPE="PERSON">threshold</ENAMEX> was established by controlling the <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX>. The
+          significance levels 
+          
+            p 
+            
+              i 
+             
+           from each <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> test were ordered in ascending order.
+          Let 
+          
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+           represent the total number of <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> tests performed;
+          that is, the number of jointly conserved, closely spaced
+          word pairs times the number of gene-expression
+          experiments). If 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           was the largest 
+          
+            i 
+           such that
+          
+          then the first 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           word pairs in the ordering were deemed to have a
+          significance level of 
+          <ENAMEX TYPE="ORGANIZATION">p < α.</ENAMEX>
+          We ensured that the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for the conserved
+          word-pair subset 
+          
+            G 
+           
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           was more significant than subsets 
+          
+            G 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             
+           or 
+          
+            G 
+            
+              v 
+             
+           comprised of <NUMEX TYPE="CARDINAL">only one</NUMEX> conserved word by computing 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           for 
+          
+            E 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           
+          c vs 
+          
+            E 
+           
+          
+            v 
+           
+          c , as well as for 
+          
+            E 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           
+          c vs 
+          
+            E 
+           
+          c . The marginal improvement of the
+          joint word pair was defined as: 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           ( 
+          
+            F 
+           
+          
+            <ENAMEX TYPE="PERSON">o</ENAMEX> 
+           
+          c vs 
+          
+            F 
+           
+          c ) - <ENAMEX TYPE="PERSON">max</ENAMEX>( 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           ( 
+          
+            F 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           
+          c vs 
+          
+            F 
+           
+          c ), 
+          
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+           ( 
+          
+            F 
+           
+          
+            v 
+           
+          c vs 
+          
+            F 
+           
+          c )).
+        
+        
+          Hierarchical clustering of word pair
+          associations
+          The 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> × 
+          C matrix of <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values was log-transformed (base
+          <NUMEX TYPE="CARDINAL">10</NUMEX>), and the word pairs contained in 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> were clustered by average-linkage
+          hierarchical clustering using the <ENAMEX TYPE="ORGANIZATION">program Cluster</ENAMEX> [ <TIMEX TYPE="DATE">50</TIMEX> ]
+          . As the log-transformed <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values were all negative, a
+          <ENAMEX TYPE="PRODUCT">centered Pearson</ENAMEX> correlation was used as the similarity
+          metric.
+        
+        
+          Stepwise linear regression of gene
+          expression
+          Regression analyses assume that a log-transformed
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression measurement, 
+          
+            E 
+           
+          
+            gc 
+           for gene 
+          
+            g 
+           in condition 
+          
+            c 
+           can be modeled by a linear equation:
+          
+          where 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           
+          
+            
+              gf 
+             
+           represents the score of a sequence feature 
+          
+            f 
+           in gene 
+          
+            g 
+           , 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           
+          
+            
+              fc 
+             
+           represents the influence term of the feature 
+          
+            f 
+           on gene expression in condition 
+          
+            c 
+           , and ε 
+          
+            g 
+           is the gene-specific error term. Genome-wide
+          expression data was filtered for a set of <NUMEX TYPE="CARDINAL">4,703</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          with <ENAMEX TYPE="ORGANIZATION">TCRs</ENAMEX> conserved in <NUMEX TYPE="CARDINAL">three</NUMEX> or more 
+          Saccharomyces genomes. For a
+          certain experimental condition, the list of features was
+          restricted to either <NUMEX TYPE="CARDINAL">two</NUMEX> words found in a single
+          word-pair template, or to all words found in conserved
+          word-pair templates that were significantly associated
+          with gene-expression changes in that condition. The score
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           
+          
+            
+              gf 
+             
+           for feature 
+          
+            f 
+           in a <ENAMEX TYPE="ORGANIZATION">TCR</ENAMEX> corresponding to gene 
+          
+            g 
+           was taken as either the number of occurrences in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , or the number of
+          occurrences conserved in <NUMEX TYPE="CARDINAL">three</NUMEX> or more 
+          Saccharomyces genomes. Stepwise
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> regression <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> were fit to genome-wide
+          expression data using the statistical package <ENAMEX TYPE="NATIONALITY">R</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX> ] .
+          At each iteration, the sequence feature with the largest
+          increase in the 
+          R <NUMEX TYPE="QUANTITY">-square goodness-</NUMEX>of-fit score was
+          added to the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, where
+          
+          Pairwise interaction terms between sequence features 
+          
+            f1 
+           and 
+          
+            f2 
+           already selected in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, expressed as 
+          
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+          <ENAMEX TYPE="CONTACT_INFO">gf 1 •</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+          <ENAMEX TYPE="PRODUCT">gf 2</ENAMEX>  , could also be added
+          to the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> at each iteration if the features were found
+          in the same conserved word-pair template. Sequence
+          features were added to the regression <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> as long as
+          the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for their associated
+          influence terms ( 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+            
+              fc 
+             
+           ) were less than <NUMEX TYPE="CARDINAL">0.05</NUMEX>.
+        
+      
+      
+        Additional data files
+        Additional files are available with the online version
+        of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. They comprise a tab-delimited text list of
+        <TIMEX TYPE="DATE">989</TIMEX> identified conserved word-pair templates (Additional
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> file <NUMEX TYPE="CARDINAL">1</NUMEX>), a figure that shows that incorporation of
+        <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX> and word pairs provided more informative
+        average expression profiles (Additional data file <NUMEX TYPE="CARDINAL">2</NUMEX>), a
+        figure that shows that regression models using conserved
+        word pairs represented better fits to genome-wide
+        expression data (Additional data file <NUMEX TYPE="CARDINAL">3</NUMEX>), and the
+        underlying data for Figure 4that show <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> that share a conserved word-pair template with
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes (available as a zip.file,
+        Additional data file <NUMEX TYPE="CARDINAL">4</NUMEX>; all files in <ENAMEX TYPE="GPE">TreeView</ENAMEX>, text
+        tab-delimited, format). When visualized in TreeView
+        (available from [ <TIMEX TYPE="DATE">52</TIMEX> ] ), these files correspond to the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> underlying Figure <ENAMEX TYPE="PRODUCT">4aand Figure 4b</ENAMEX>. See Figure 4legend
+        for details.
+        Additional data file 1
+        A tab-delimited text list of <NUMEX TYPE="CARDINAL">989</NUMEX> identified conserved
+        word-pair templates
+        A tab-delimited text list of <NUMEX TYPE="CARDINAL">989</NUMEX> identified conserved
+        word-pair templates
+        Click here for additional data file
+        Additional data file 2
+        A figure that shows that incorporation of conservation
+        and word pairs provided more informative average expression
+        profiles
+        A figure that shows that incorporation of conservation
+        and word pairs provided more informative average expression
+        profiles
+        Click here for additional data file
+        Additional data file 3
+        A figure that shows that regression models using
+        conserved word pairs represented better fits to genome-wide
+        expression data
+        A figure that shows that regression models using
+        conserved word pairs represented better fits to genome-wide
+        expression data
+        Click here for additional data file
+        Additional data file 4
+        The underlying data for Figure 4that show associations
+        between gene groups that share a conserved word-pair
+        template with gene-expression changes
+        The underlying data for Figure 4that show associations
+        between gene groups that share a conserved word-pair
+        template with gene-expression changes
+        Click here for additional data file
+      
+    
+  

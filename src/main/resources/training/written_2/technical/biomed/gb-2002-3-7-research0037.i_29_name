@@ -1,0 +1,955 @@
+
+  
+    
+      
+        Background
+        
+          Normalization by controls identified a
+          priori
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. Assume that some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will not change under the
+          treatment under investigation.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. Identify these core genes in advance of the
+          experiment (housekeeping genes, extrinsic controls)
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. Normalize all genes against these genes assuming
+          they do not change
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. Done.
+        
+        
+          Normalization by self-consistency
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. Assume that some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will not change under the
+          treatment under investigation.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. Initially designate all genes as core genes.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. <ENAMEX TYPE="PERSON">Normalize</ENAMEX> (provisionally) all genes against the
+          core genes under the assumption that the true abundance
+          of the core <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> does not change.
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. Determine which genes appear to remain unchanged
+          under this normalization; make this set the new core.
+          <NUMEX TYPE="CARDINAL">5</NUMEX>. If the new core differs from the previous core,
+          then go to step <NUMEX TYPE="CARDINAL">3</NUMEX>.
+          <NUMEX TYPE="CARDINAL">6</NUMEX>. Else: done.
+        
+        
+          Modeling and estimation
+          
+            The basic model
+            Let 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+            
+              ijk 
+             <ENAMEX TYPE="ORGANIZATION">=</ENAMEX> log 
+            I 
+            
+              ijk 
+             denote the logarithm of the measured intensity of
+            the 
+            <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> spot in the 
+            <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> replicate assay of the 
+            i th treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Thus, 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ranges from <NUMEX TYPE="CARDINAL">1</NUMEX> to 
+            G, the number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> per array,
+            
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ranges from <NUMEX TYPE="CARDINAL">1</NUMEX> to 
+            r 
+            
+              i 
+             , the number of replicate arrays within the 
+            i th treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, and 
+            i takes values from <NUMEX TYPE="CARDINAL">1</NUMEX> to the
+            number of treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. The examples in this paper
+            use <NUMEX TYPE="CARDINAL">two</NUMEX> treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. The logarithmic
+            transformation converts a multiplicative normalization
+            constant to an <ENAMEX TYPE="SUBSTANCE">additive normalization</ENAMEX> constant. We also
+            find that this transformation renders the error
+            variances more homogeneous than they are in the
+            untransformed data. Then the error model corresponding
+            to <ENAMEX TYPE="PRODUCT">Equation 1</ENAMEX> is:
+            
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+            
+              ijk 
+             <ENAMEX TYPE="CONTACT_INFO">= υ</ENAMEX> 
+            
+              ij 
+             <ENAMEX TYPE="CONTACT_INFO">+ α</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">+ δ</ENAMEX> 
+            
+              ik 
+             <ENAMEX TYPE="CONTACT_INFO">+ σ</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ε 
+            
+              ijk 
+             <ENAMEX TYPE="PERSON">   </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+            where the 
+            
+              ij 
+             <ENAMEX TYPE="ORGANIZATION">=</ENAMEX> log 
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+            
+              ij 
+             are now the normalization constants, 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+            
+              ik 
+             <ENAMEX TYPE="ORGANIZATION">=</ENAMEX> log 
+            A 
+            
+              ik 
+             are the mean log relative abundance and the
+            differential treatment effects, respectively, and 
+            <ENAMEX TYPE="PRODUCT">0</ENAMEX> is the error standard deviation.
+            The treatment effects, are the quantities of most
+            direct interest for comparing expression profiles. We
+            assume that the residuals 
+            
+              ijk 
+             are independent and identically distributed and
+            have zero mean and <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> variance. For the significance
+            tests below, we will further assume that the errors are
+            normally distributed.
+          
+          
+            Estimation by self-consistency
+            Estimation of the parameters in <ENAMEX TYPE="FAC">Equation 4</ENAMEX> is
+            carried out in an iteratively reweighted least-squares
+            (<ENAMEX TYPE="ORGANIZATION">IRLS</ENAMEX>) procedures. First, let 
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             indicate the assignment of the 
+            <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> gene to the core set: 
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX> if gene 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is not in the core and 
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             = <NUMEX TYPE="CARDINAL">1/</NUMEX> 
+            G if gene 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is in the core, where 
+            G is the number of genes in the
+            core. The vector 
+            c is thus normalized: <ENAMEX TYPE="CONTACT_INFO">Σ</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">= 1</ENAMEX>. These indicators play the role of weights in
+            an <ENAMEX TYPE="ORGANIZATION">IRLS</ENAMEX>. Although they do depend on other estimated
+            <ENAMEX TYPE="PERSON">parameters</ENAMEX>, in each iteration the weights are treated
+            as constants, depending only on parameter estimates
+            from the previous iteration.
+            The notion of self-consistency arises in the
+            combined processes of identifying the core and
+            normalizing the data: the choice of genes belonging to
+            the core depends on the normalization, and the optimal
+            normalization depends on which genes are identified
+            with the core.
+            We start by minimizing the core sum of squares (<ENAMEX TYPE="ORGANIZATION">SS</ENAMEX> 
+            
+              C 
+             ):
+            
+            over and . Note that one can add a constant to and
+            subtract the same constant from without changing <ENAMEX TYPE="ORGANIZATION">SS</ENAMEX> 
+            
+              C 
+             . This invariance corresponds to our inability to
+            estimate absolute abundances, but relative abundances
+            only. We therefore enforce an 'identifiability'
+            <ENAMEX TYPE="CONTACT_INFO">constraint: ∑</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>. The minimization gives:
+            
+            where 
+            a and 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> are the estimators for and ,
+            respectively; overbars indicate averages over the
+            dotted subscripts, for example, .
+            The normalized and scaled data are now given by
+            
+            Note that if all of the genes are placed in the
+            core, we have
+            
+            as expected.
+            Now we estimate the differential treatment effects
+            by minimizing the residual sum of squares,
+            
+            of the normalized data over yielding
+            
+            Note that the matrix, 
+            d, of differential treatment
+            effects obeys Σ 
+            
+              i 
+             
+            r 
+            
+              i 
+             
+            d 
+            
+              ik 
+             <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>, as we would hope.
+            Self-consistency requires that the vector of core
+            indicators 
+            c depend on the estimated
+            differential treatment effects, 
+            d . We have tried several methods
+            for implementing an appropriate dependence and find
+            that one of the simplest schemes works very well. We
+            simply fix the proportion of genes in the core, rank
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> by the <ENAMEX TYPE="FAC_DESC">square</ENAMEX> of the estimated differential
+            treatment effect and remove from the core for the next
+            iteration those genes in the <NUMEX TYPE="CARDINAL">1</NUMEX> - quantile.
+            
+            where is a threshold chosen to ensure that a fixed
+            proportion of genes are designated core genes. Note
+            that a possible improvement to the algorithm might be
+            found by appropriate optimization of rather than simply
+            fixing it in advance.
+            We carry out the estimation iteratively. We start
+            with 
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             = <NUMEX TYPE="CARDINAL">1/</NUMEX> 
+            G for all 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> (all genes in the core) and
+            estimate 
+            
+              ik 
+             by <ENAMEX TYPE="PERSON">Equation</ENAMEX> <NUMEX TYPE="CARDINAL">10</NUMEX>. We then update 
+            c according to <ENAMEX TYPE="PRODUCT">Equation 11</ENAMEX> and
+            repeat the estimation of with this new 
+            c . We stop when 
+            c does not change from one
+            iteration to the next.
+          
+          
+            The local regression model
+            What we find in the analysis of experimental data,
+            however, is that <ENAMEX TYPE="PRODUCT">Equation 1</ENAMEX> with 
+            <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> constant is not adequately
+            realistic. A more flexible approach that covers the
+            <ENAMEX TYPE="PRODUCT">contingencies of Equations 1-3</ENAMEX> and many others, is to
+            <ENAMEX TYPE="PRODUCT">generalize Equation 4</ENAMEX> to
+            
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+            
+              ijk 
+             <ENAMEX TYPE="CONTACT_INFO">= υ</ENAMEX> 
+            
+              ij 
+             (α 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ) + α 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">+ δ</ENAMEX> 
+            
+              ik 
+             <ENAMEX TYPE="CONTACT_INFO">+ σ(α</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             )ε 
+            
+              ijk 
+             . <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">12</NUMEX>)
+            where 
+            
+              ij 
+             is the normalization function, now assumed
+            explicitly to depend on the mean log abundance 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             . The function , which scales the error variance,
+            describes the heteroscedasticity, or non-constancy of
+            the variance, which we here assume depends only on the
+            mean log intensity level. The <NUMEX TYPE="CARDINAL">two</NUMEX> functions are
+            constrained to vary slowly and thus can be estimated by
+            local regression.
+            If <ENAMEX TYPE="PRODUCT">Equation 4</ENAMEX> is used to estimate the normalization,
+            the departures from linearity manifest themselves as
+            systematic bias in the residuals (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). In all the
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> we have examined, the resulting biases are small
+            and slowly-varying function of the mean log intensity,
+            and so can be estimated using local regression on 
+            a, the estimator for the mean log
+            <ENAMEX TYPE="ORGANIZATION">abundance</ENAMEX>. It should be noted that an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>
+            component of the variability with non-zero expectation,
+            in addition to the multiplicative noise (<ENAMEX TYPE="CONTACT_INFO">Equation 2</ENAMEX>)
+            can, when the logarithmic transformation is applied,
+            lead to such nonlinear response curves. Our approach
+            here is to develop a method flexible enough to allow
+            for all <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of nonlinearity, including <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>
+            noise. We demonstrate the validity of this method for
+            these formally mis-specified <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> in our simulation
+            studies below.
+            Estimation of both the normalization function, , and
+            of the heteroscedasticity is carried out by local
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX>.
+          
+          
+            Local regression
+            Local regression is a generalization of the
+            intuitive idea of smoothing by using a moving average.
+            In local regression, one goes beyond computing the
+            local average of a set of measured points by
+            estimating, at each value of the predictor variables,
+            all of the coefficients in a 
+            <ENAMEX TYPE="ORGANIZATION">P th</ENAMEX>-order regression in which
+            the regression coefficients themselves are slowly
+            varying functions of the predictor variable.
+            Computation of a moving average is thus a zeroth order
+            local regression. The availability of inexpensive
+            powerful computing has sparked renewed interest in
+            local regression techniques and its theoretical
+            underpinnings have been extensively elucidated [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>,
+            <NUMEX TYPE="CARDINAL">11</NUMEX>].
+            Modeling a response function as a function of a
+            predictor 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> via local regression proceeds
+            in <NUMEX TYPE="CARDINAL">two</NUMEX> steps. First, we estimate a function of <NUMEX TYPE="CARDINAL">two</NUMEX>
+            variables 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">u'</ENAMEX>, 
+            
+            f ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>' ; ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )) = 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )+ 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )( 
+            <ENAMEX TYPE="CONTACT_INFO">u -</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>' ) + ... + 
+            
+              P 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )( 
+            <ENAMEX TYPE="CONTACT_INFO">u -</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ') 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> . <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">13</NUMEX>)
+            For fixed 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>, f ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>' ; ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )) is a polynomial in 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>' with coefficients 
+            
+              i 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ). These coefficients will be
+            constrained to vary slowly with 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> , the quantitative rates of
+            change specified by a parameter introduced below.
+            <NUMEX TYPE="ORDINAL">Second</NUMEX>, we estimate ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) as
+            
+            where 
+            b is the vector of estimators for .
+            In other words, we estimate the coefficients and
+            evaluate the function at 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>' = 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> . The terms of order greater
+            than <NUMEX TYPE="CARDINAL">0</NUMEX> vanish, but the estimates for the remaining
+            zeroth-order terms depend nevertheless on the estimated
+            higher-order coefficients, as follows. Given a dataset
+            consisting of 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> pairs ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            
+              i 
+             , 
+            v 
+            
+              i 
+             ), 
+            i ∈ (<NUMEX TYPE="MONEY">1,...</NUMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ), we estimate the coefficients
+            at a point 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> (not necessarily corresponding
+            to any 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            
+              i 
+             in the dataset), by minimizing a weighted
+            sum-of<NUMEX TYPE="QUANTITY">-</NUMEX>squares over :
+            
+            The weighting functions 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> are given by
+            
+            where 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> is a symmetric function having
+            a simple maximum at the origin, strictly decreasing on
+            [<NUMEX TYPE="CARDINAL">0,1</NUMEX>] and vanishing for 
+            <ENAMEX TYPE="CONTACT_INFO">u ≥ 1</ENAMEX>. For our application in
+            this paper, we use the efficiently computed tricube
+            function
+            
+            The function 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> is known as the bandwidth, and
+            controls just how slowly 
+            f varies with 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> . We choose the bandwidth so as
+            to give equal <ENAMEX TYPE="FAC_DESC">span</ENAMEX> at all points 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> . The <ENAMEX TYPE="FAC_DESC">span</ENAMEX> is defined as the
+            proportion of points 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+            
+              i 
+             contained in a ball of radius 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ). This choice of bandwidth
+            function is used in <ENAMEX TYPE="GPE">Loess</ENAMEX> regression [ <TIMEX TYPE="DATE">11</TIMEX>]. For all of
+            the computations in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we have used a span of
+            0.5.
+            <ENAMEX TYPE="LAW">Minimization of Equation 15</ENAMEX> over the coefficient
+            <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) results in linear equations
+            of the form
+            
+            b 
+            
+              i 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) = 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+            
+              i 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) 
+            <ENAMEX TYPE="PRODUCT">v    </ENAMEX> (<NUMEX TYPE="MONEY">18</NUMEX>)
+            Where 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+            
+              i 
+             is the linear <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> appropriate to the 
+            i th coefficient and 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> is the vector with components 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             . Note that the 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+            
+              i 
+             depends on the order 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> of the local regression. For
+            any given value of 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>, the 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+            
+              i 
+             can be explicitly written down, but quickly become
+            algebraically complicated.
+            The local <ENAMEX TYPE="PER_DESC">regression</ENAMEX> estimate of 
+            f ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ; ( 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )) is
+            
+            Because of this linearity, the sampling
+            distributions for these coefficients are known and we
+            can compute their sampling variances in a
+            straightforward manner [ <TIMEX TYPE="DATE">11</TIMEX>].
+            To adapt this method to the problem of
+            normalization, and simultaneously to implement
+            self-consistency, we take for the weighting functions
+            the product of a tricube and a core indicator:
+            
+            where 
+            c 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             is the core indicator as given in <ENAMEX TYPE="FAC">Equation 11</ENAMEX> and
+            the 
+            a 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             are given by <ENAMEX TYPE="LAW">Equation 6</ENAMEX>. In these terms, the local
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> estimate 
+            <ENAMEX TYPE="ORGANIZATION">n of</ENAMEX> 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> is given by
+            
+            with the normalized data given by
+            
+            and the differential treatment effects by
+            
+            Again, we have Σ 
+            
+              i 
+             
+            r 
+            
+              i 
+             
+            d 
+            
+              ik 
+             <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>. The core indicator vector 
+            c is then iterated to fixation as
+            described in the previous section but with Σ 
+            
+              i 
+             
+            r 
+            
+              i 
+             
+            d 
+            
+              ik 
+             2compared against 
+            <ENAMEX TYPE="ORGANIZATION">s 2</ENAMEX>( 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ) where 
+            <ENAMEX TYPE="ORGANIZATION">s 2</ENAMEX>( ) is the estimated local
+            variance, discussed in the next section.
+          
+          
+            Local variance estimation
+            In addition to local nonlinearities in the response
+            curve, we also find that the data are heteroscedastic:
+            the error variance shows a clear dependence on the
+            estimated abundance. The logarithmic transformation
+            removes a substantial part of this dependence, but does
+            not flatten it out entirely. One might try an 
+            a priori accounting of the
+            <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error and thereby provide a parametric model
+            for it, but the number of potential error <ENAMEX TYPE="PER_DESC">sources</ENAMEX> is
+            large, so we instead choose a flexible error <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and
+            estimate local variance by again using local
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX>. The technique involves computing the local
+            likelihood and the effective residual degrees of
+            <ENAMEX TYPE="ORGANIZATION">freedom</ENAMEX> and is described in detail in [ <TIMEX TYPE="DATE">11</TIMEX>]. Their
+            ratio of the local likelihood and the effective degrees
+            of freedom provides a smooth estimate of the local
+            <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX>. The estimated residuals are not strictly
+            <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> functions of 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> because of the implicit
+            dependence of the indicator vector 
+            c on the data 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> and because of our use of the
+            estimator 
+            a, rather than a strictly
+            independent variable, as the predictor for the local
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX>. We expect these corrections due to
+            <ENAMEX TYPE="ORGANIZATION">nonlinearities</ENAMEX> to be small and thus neglect them in our
+            estimates of the local variance.
+            At this stage, we have computed a first-order
+            approximate solution for the estimation problem. We may
+            now perform another iteration (in addition to the
+            iterated solution for the core indicator 
+            c ) to improve the approximation,
+            reweighting the data by the inverse of the estimated
+            local variance. Our experience, however, has been that
+            the first-order corrections are sufficient and the
+            higher-order corrections are more difficult to compute
+            and make little difference in the final analysis. For
+            the applications and validation tests that follow, we
+            use just the first-order corrections.
+          
+          
+            Pairwise expression-level comparisons
+            We perform individual pairwise hypothesis tests for
+            each spot in the array by computing the statistic
+            
+            where 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ( 
+            a 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ) is the square-root of the local variance at the
+            mean relative expression value 
+            a 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             . We test 
+            z as a standard normal under the
+            null hypothesis of no expression difference.
+          
+        
+        
+          Validation
+          We illustrate the use of the computational methods by
+          fixing = <NUMEX TYPE="CARDINAL">0.9</NUMEX> and applying them to data generated in an
+          experiment carried out on cultured, spontaneously
+          <ENAMEX TYPE="NATIONALITY">immortalized</ENAMEX> <ENAMEX TYPE="ANIMAL">rat peritoneal</ENAMEX> mesothelial cells to
+          determine the transcriptional effects of treatment with
+          potassium bromate. The data consist of measured
+          intensities of 
+          G = <NUMEX TYPE="CARDINAL">596</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from each of <NUMEX TYPE="CARDINAL">four</NUMEX>
+          arrays: <NUMEX TYPE="CARDINAL">two</NUMEX> replicates 
+          r 
+          <TIMEX TYPE="DATE">1</TIMEX> = 
+          r 
+          <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> in each of <NUMEX TYPE="CARDINAL">two</NUMEX> treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+          A complete discussion of the biological results obtained
+          in these experiments can be found in [ <TIMEX TYPE="DATE">12</TIMEX>].
+        
+      
+      
+        Results and discussion
+        
+          Confirmation by quantitative PCR
+          <ENAMEX TYPE="ORGANIZATION">Quantitative PCR</ENAMEX> analysis confirmed <NUMEX TYPE="CARDINAL">nine</NUMEX> gene changes.
+          The <NUMEX TYPE="CARDINAL">tenth</NUMEX>, 
+          PLA2, could not be confirmed
+          because of lack of signal in both treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> and
+          was therefore likely to be due to a problem in the PCR
+          for that <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>].
+          Morphologic analysis revealed complete mitotic arrest
+          by <TIMEX TYPE="TIME">4 hours</TIMEX> post-exposure, with increased numbers of
+          condensed cells with pyknotic nuclei, believed to be
+          <ENAMEX TYPE="ORGANIZATION">apoptotic</ENAMEX>. Strong <ENAMEX TYPE="GPE">HO</ENAMEX>-<NUMEX TYPE="CARDINAL">1</NUMEX>-specific staining was observed in
+          treated cells, whereas control <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> showed weak
+          nonspecific staining, or no staining at all.
+        
+        
+          Statistical characteristics of the data
+          A histogram of mean log spot intensities (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>)
+          shows that <NUMEX TYPE="CARDINAL">nearly a quarter of the 596</NUMEX> spots on the array
+          show little or no signal. The remainder of the
+          distribution shows a very gradual maximum followed by a
+          long tail skewing the distribution to the right. The
+          total range is about 9 (natural) logs, corresponding to
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">9,000</NUMEX>-fold change from highest intensity to
+          <ENAMEX TYPE="ORGANIZATION">'background'</ENAMEX>.
+          The estimated variance of the log intensities
+          increases from the lowest log intensities for <NUMEX TYPE="CARDINAL">about one</NUMEX>
+          (natural) log to peak at a value of <NUMEX TYPE="CARDINAL">about 0.25</NUMEX> and then
+          decreases to asymptote at <NUMEX TYPE="MONEY">about 0.04</NUMEX> for intense spots.
+          This suggests that the error is dominated by different
+          <ENAMEX TYPE="PER_DESC">sources</ENAMEX> in the two intensity regimes. Furthermore, the
+          fact that the variance of the log intensity decreases for
+          large intensities indicates that the variance scales like
+          
+          <ENAMEX TYPE="PERSON">q</ENAMEX> , where 
+          <ENAMEX TYPE="CONTACT_INFO">q < 2</ENAMEX>. 
+          q = <NUMEX TYPE="CARDINAL">2</NUMEX> corresponds to lognormal
+          behavior with constant coefficient of variation and 
+          q = <NUMEX TYPE="CARDINAL">1</NUMEX> corresponds to the
+          Poisson-like behavior of independent counting
+          processes.
+          The <NUMEX TYPE="CARDINAL">four</NUMEX> arrays in this study also showed
+          non-negligible bias (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). The root-mean<NUMEX TYPE="QUANTITY">-square</NUMEX>
+          (<ENAMEX TYPE="ORGANIZATION">RMS</ENAMEX>) bias over <TIMEX TYPE="DATE">all four arrays</TIMEX> was <NUMEX TYPE="QUANTITY">17.5 × 10 -2</NUMEX>. This
+          should be compared to the estimated standard deviation of
+          the residuals after bias removal of <NUMEX TYPE="CARDINAL">19.2</NUMEX> × <NUMEX TYPE="PERCENT">10 -2</NUMEX>; it is
+          clearly comparable. This bias is not likely not to be an
+          artifact of the fitting procedure. Application of the
+          fitting procedure to simulated data without bias (see
+          below) results in a range of <ENAMEX TYPE="ORGANIZATION">RMS</ENAMEX> bias that is much
+          smaller than that seen in the real data (<ENAMEX TYPE="CONTACT_INFO">Tables 1, 2,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          In addition to the experiments reported here, we have
+          examined data from several other microarray <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and
+          find that in terms of the heteroscedasticity and apparent
+          <ENAMEX TYPE="PERSON">bias</ENAMEX>, they are qualitatively similar (not shown).
+        
+        
+          Simulation studies
+          To determine the reliability of our methods, we
+          generated simulated data under a number of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> based
+          on the statistical characteristics of the data obtained
+          in our <ENAMEX TYPE="SUBSTANCE">hybridization</ENAMEX> experiments. All of the simulated
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> was produced using <ENAMEX TYPE="ORGANIZATION">FORTRAN</ENAMEX> programs calling IMSL
+          subroutines for sorting, cubic spline interpolation and
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> number generation.
+          For each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and each set of conditions we ran 100
+          independent <ENAMEX TYPE="ORG_DESC">realizations</ENAMEX>. The data from each of these
+          realizations was used as input to our normalization
+          <ENAMEX TYPE="PERSON">routines</ENAMEX>, which performed normalizations in <NUMEX TYPE="CARDINAL">two</NUMEX> ways.
+          First, we normalized according to <ENAMEX TYPE="PRODUCT">Equations 4</ENAMEX>, <TIMEX TYPE="DATE">10 and 6</TIMEX>,
+          that is, without bias removal and without accounting for
+          <ENAMEX TYPE="ORGANIZATION">heteroscedasticity</ENAMEX>; this procedure is referred to as
+          <ENAMEX TYPE="ORGANIZATION">'naive'</ENAMEX>. Then, we normalized according to <ENAMEX TYPE="PRODUCT">Equations 12</ENAMEX>,
+          <TIMEX TYPE="DATE">21 and 23</TIMEX> and = <NUMEX TYPE="CARDINAL">0.9</NUMEX> with bias removal and estimation of
+          <ENAMEX TYPE="ORGANIZATION">heteroscedasticity</ENAMEX>. The software that implements the
+          latter method is referred to as <ENAMEX TYPE="PERSON">NoSeCoLoR</ENAMEX>, for
+          Normalization by <ENAMEX TYPE="ORGANIZATION">Self-Consistency and Local Regression</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">13</NUMEX>]. For judging the relative performance of the two
+          methods, we recorded the number of true positives and the
+          number of false positives for each simulated dataset.
+        
+        
+          Homoscedastic error model
+          In the <NUMEX TYPE="ORDINAL">first</NUMEX> set of tests, the data were generated by
+          simulations of the model
+          
+          where the values for were generated as normals with
+          mean <NUMEX TYPE="CARDINAL">0</NUMEX> and standard deviation <NUMEX TYPE="CARDINAL">0.2</NUMEX>, the 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           were taken to be the values 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           estimated from the experimental data, = <NUMEX TYPE="CARDINAL">0.039</NUMEX> (this
+          is the value estimated from the experimental data,
+          treated as homoscedastic) and 
+          
+            ijk 
+           were generated as standard normal. The treatment
+          effects were generated by choosing at random a fixed
+          number of genes 
+          <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> (<NUMEX TYPE="PERCENT">10% or 20%</NUMEX> of the total number 
+          <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> ) and within this set, letting 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  = 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           log 
+          <ENAMEX TYPE="PRODUCT">f</ENAMEX> and 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  = <NUMEX TYPE="CARDINAL">0</NUMEX>. Outside this set, 
+          
+            ik 
+           <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>. Here, 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           are independently drawn from {-<NUMEX TYPE="CARDINAL">1,1</NUMEX>} with equal
+          <ENAMEX TYPE="PERSON">probability</ENAMEX>, and 
+          f is the 'fold change', or ratio of
+          expression level between treated and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+          The function 
+          
+            ij 
+           ( ) representing nonlinearity and bias was taken to
+          be proportional to the corresponding function 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            ij 
+           estimated in the above data analysis (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) and
+          completed by <NUMEX TYPE="QUANTITY">cubic spline</NUMEX> interpolation. The constant of
+          proportionality, designated 
+          q in the tables, regulates the size
+          of the bias.
+          What we find (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>) is that the power of the test
+          for the naive analysis is diminished by the presence of
+          <ENAMEX TYPE="PERSON">bias</ENAMEX>. For the local-regression analysis (<ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX>), the
+          power is unaffected by the presence of bias. Furthermore,
+          when the proportion, , of affected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> among all genes
+          is small ( = <NUMEX TYPE="PERCENT">10%</NUMEX>), the power of the two methods is about
+          the same. When = <NUMEX TYPE="PERCENT">20%</NUMEX>, the naive method has slightly
+          better power when bias is absent.
+        
+        
+          Heteroscedastic error model
+          As discussed above, even the log-transformed data are
+          not homoscedastic, but have variance that varies with the
+          mean intensity level. The <NUMEX TYPE="ORDINAL">second</NUMEX> set of simulations is
+          similar to the <NUMEX TYPE="ORDINAL">first</NUMEX>, but differs in that the constant 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> in <ENAMEX TYPE="LAW">Equation 25</ENAMEX> is replaced by the
+          function ( ) estimated from the Clontech array
+          experiments (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). All other details are as for the
+          previous simulation.
+          In this case (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>), we find as before that bias
+          diminishes the power of the naive procedure, but not that
+          of <ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX>. In addition, the rate of false positives is
+          now notably high for the naive method. <ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX> yields
+          consistently smaller false-positive rates, although when
+          large proportions of genes are affected and have large
+          effect size, the rate of false positives with NoSeCoLoR
+          is also larger than nominal.
+        
+        
+          Compound error model
+          The model given by <ENAMEX TYPE="LAW">Equation 12</ENAMEX> is intended to be
+          flexible and to be a reasonable approximation to a
+          variety of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>. One particularly common source of
+          <ENAMEX TYPE="ORGANIZATION">nonlinearity</ENAMEX> is additive error (on the untransformed
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>), or background with nonzero mean (<ENAMEX TYPE="CONTACT_INFO">Equation 2</ENAMEX>). We
+          have therefore simulated data according to a model given
+          by
+          
+          I 
+          
+            ijk 
+           = exp {α 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          v 
+          
+            ij 
+           <ENAMEX TYPE="CONTACT_INFO">+ δ</ENAMEX> 
+          
+            ik 
+           <ENAMEX TYPE="CONTACT_INFO">+ ε</ENAMEX> 
+          
+            ijk 
+           } + <NUMEX TYPE="CARDINAL">exp</NUMEX> {ζ 
+          
+            ij 
+           <ENAMEX TYPE="CONTACT_INFO">+ η</ENAMEX> 
+          
+            ijk 
+           <ENAMEX TYPE="PERSON">}    </ENAMEX> (<NUMEX TYPE="MONEY">26</NUMEX>)
+          where the terms , , and have the <ENAMEX TYPE="PER_DESC">meanings</ENAMEX> assigned
+          above and are computed as in the first simulation. In
+          particular, ε has <NUMEX TYPE="CARDINAL">zero</NUMEX> mean and constant variance with =
+          <NUMEX TYPE="CARDINAL">0.2</NUMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> exponential represents an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>
+          background. This background is modeled as lognormal. The
+          component 
+          
+            ij 
+           common to all spots in an array is chosen as a
+          normal random deviate with mean <NUMEX TYPE="CARDINAL">zero</NUMEX> and standard
+          deviation 
+          <ENAMEX TYPE="PERSON">q. Differences</ENAMEX> in from one array to
+          the other can create apparent biases in the
+          log-transformed data (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). The gene-specific term
+          in the background 
+          
+            ijk 
+           has mean <NUMEX TYPE="CARDINAL">zero</NUMEX> and standard deviation <NUMEX TYPE="CARDINAL">0.2</NUMEX>.
+          It is in this simulation that the naive method fails
+          most dramatically. For all datasets, the naive method
+          gives false-positive rates significantly greater than
+          nominal, some <NUMEX TYPE="CARDINAL">as much as ten</NUMEX>-fold higher than nominal.
+          <ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX> has much better error rates, although as seen
+          before, performance starts to suffer when larger numbers
+          of spots are affected. The power of comparisons using
+          <ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX> is again much more resistant to changes in the
+          effective bias level ( 
+          c in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>) than is the naive
+          method.
+        
+      
+      
+        Conclusions
+        We have presented a method for normalizing microarray
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> that relies on the statistical consistency of relative
+        expression levels among a core set of genes that is not
+        identified in advance, but inferred from the data itself.
+        The normalization and variance estimation are both
+        performed using local regression. We are then able to
+        perform standard comparison tests. This technique reveals
+        biologically plausible expression-level differences between
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> mesotheliomas and <ENAMEX TYPE="SUBSTANCE">mesotheliomas</ENAMEX> treated with a
+        potent inducer of <ENAMEX TYPE="DISEASE">oxidative stress</ENAMEX>. The expression changes
+        identified by our normalization methodology were confirmed
+        by quantitative <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> in all cases but one where there was no
+        <ENAMEX TYPE="ORGANIZATION">detectable PCR</ENAMEX> amplification at all.
+        Our simulation studies show that our normalization
+        technique performs well. The worst case occurs when the
+        response curve is perfectly linear, the variance constant
+        and a large proportion of genes experiences sizable
+        expression-level changes. Under these conditions, our
+        method has a false-positive rate somewhat greater than
+        nominal and self-consistent normalization without local
+        <ENAMEX TYPE="ORG_DESC">regression</ENAMEX> performs slightly better than that with local
+        <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX>. On the other hand, our method is insensitive to
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> and heteroscedasticity, both of which have a
+        significant deleterious effect on the naive method.
+        Furthermore, bias and heteroscedasticity are both
+        measurably present in all data that we have examined from
+        microarrays from a number of different <ENAMEX TYPE="ORG_DESC">manufacturers</ENAMEX> and
+        from several different <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>. In these cases, local
+        <ENAMEX TYPE="ORG_DESC">regression</ENAMEX> performs better than self-consistency alone.
+        When the data are generated by an
+        additive<NUMEX TYPE="CARDINAL">-plus</NUMEX>-multiplicative error model, the naive method
+        completely breaks down, whereas our method continues to
+        perform well.
+        We have applied these methods to the analysis of
+        microarray data in toxicogenomic studies [ <TIMEX TYPE="DATE">12, 14</TIMEX>], where
+        the results made good biological sense and, where relevant,
+        were confirmed by subsequent experimentation. All
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>-analytic techniques benefit from extensive use and
+        assessment using several <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and diverse biological
+        <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>. To facilitate this process for the methods
+        described here, and to provide them to the interested
+        research <ENAMEX TYPE="PER_DESC">community</ENAMEX>, we have made the software used to
+        implement them available for non-commercial use [ <TIMEX TYPE="DATE">13</TIMEX>].
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> hybridization microarrays promise unprecedented
+        <ENAMEX TYPE="ORGANIZATION">insight</ENAMEX> into many areas of cell biology, and statistical
+        methods will be essential for making sense of the vast
+        quantities of information contained in their data.
+        Efficient and reliable normalization procedures are an
+        <ENAMEX TYPE="ORGANIZATION">indispensable</ENAMEX> component of any statistical method; further
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX> and analysis of error models for microarray
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> will be a worthwhile investment.
+      
+      
+        Materials and methods
+        
+          Clontech microarrays
+          This is a brief description of the experimental
+          methods; complete details can be found in [ <TIMEX TYPE="DATE">12</TIMEX>].
+          <ENAMEX TYPE="NATIONALITY">Immortalized</ENAMEX> <ENAMEX TYPE="ANIMAL">rat peritoneal</ENAMEX> mesothelial cells (<ENAMEX TYPE="PERSON">Fred-Pe</ENAMEX>)
+          developed in-house were grown in mesothelial <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> culture
+          <ENAMEX TYPE="ORGANIZATION">media</ENAMEX> as previously described [ <TIMEX TYPE="DATE">12</TIMEX>] for <TIMEX TYPE="DATE">several months</TIMEX>
+          before experiment with <TIMEX TYPE="DATE">weekly</TIMEX> <ENAMEX TYPE="ORG_DESC">subculturing</ENAMEX>. Cells plated
+          at <NUMEX TYPE="CARDINAL">1</NUMEX> × <NUMEX TYPE="CARDINAL">10 7cells/150</NUMEX> mm <ENAMEX TYPE="SUBSTANCE">dish</ENAMEX> in <TIMEX TYPE="DATE">30</TIMEX> ml <ENAMEX TYPE="ORG_DESC">media</ENAMEX> were grown
+          for <TIMEX TYPE="DATE">24</TIMEX> h and treated with the pre-determined <ENAMEX TYPE="ORGANIZATION">ED</ENAMEX> 
+          50 concentration of <NUMEX TYPE="CARDINAL">6</NUMEX> mM KBrO 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> for <NUMEX TYPE="CARDINAL">4</NUMEX> or <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="PERSON">h. Cells</ENAMEX> were detached
+          using a cell lifter and centrifuged at <NUMEX TYPE="CARDINAL">175</NUMEX> 
+          g for <NUMEX TYPE="CARDINAL">3</NUMEX> min. The supernatant
+          (medium) was removed by aspiration and cells were
+          <ENAMEX TYPE="ORGANIZATION">re</ENAMEX>-suspended in <NUMEX TYPE="CARDINAL">1</NUMEX> ml sterile <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> and frozen at -80°C
+          until <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> extraction. The <ENAMEX TYPE="PRODUCT">Atlas Pure Total</ENAMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> protocol
+          for <TIMEX TYPE="DATE">poly</TIMEX>(A) +<ENAMEX TYPE="NATIONALITY">mRNA</ENAMEX> extraction was used. Samples were
+          <ENAMEX TYPE="ORGANIZATION">hybridized</ENAMEX> in <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>-supplied hybridization
+          solution (<ENAMEX TYPE="ORGANIZATION">Clontech ExpressHyb</ENAMEX>) for <TIMEX TYPE="TIME">30 min</TIMEX> at <TIMEX TYPE="DATE">68°C</TIMEX>. After
+          hybridization, the membranes were washed, removed,
+          wrapped in plastic wrap, and placed against a rare-earth
+          screen for <TIMEX TYPE="TIME">24 h</TIMEX>, followed by phosphoim-ager detection and
+          AtlasImage analysis before application of the software
+          tools described in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="CONTACT_INFO">Quantitative PCR</ENAMEX>
+          Confirmation by <ENAMEX TYPE="PERSON">Taqman</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Perkin-Elmer</ENAMEX>) quantitative PCR
+          was performed for <NUMEX TYPE="CARDINAL">nine</NUMEX> selected genes as described in [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>]. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> selected for confirmation were those for
+          <ENAMEX TYPE="ORGANIZATION">cyclin</ENAMEX> <ENAMEX TYPE="PRODUCT">D1</ENAMEX>, <TIMEX TYPE="DATE">GADD45</TIMEX>, <ENAMEX TYPE="ORGANIZATION">GPX</ENAMEX>, <ENAMEX TYPE="PRODUCT">HO-1</ENAMEX>, <TIMEX TYPE="DATE">HSP70</TIMEX>, <ENAMEX TYPE="PRODUCT">Mdr-1</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">QR</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">prostaglandin H</ENAMEX> synthase (PGHS), <ENAMEX TYPE="CONTACT_INFO">p21WAF1/CIP1</ENAMEX> and <TIMEX TYPE="DATE">PLA2</TIMEX>.
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> control and <NUMEX TYPE="CARDINAL">two</NUMEX> treated samples from the <NUMEX TYPE="ORDINAL">4-h</NUMEX> time
+          point, and <NUMEX TYPE="CARDINAL">two</NUMEX> control and one treated from the <NUMEX TYPE="CARDINAL">12</NUMEX>-h time
+          point, were analyzed. Each plate contained duplicate
+          <ENAMEX TYPE="PERSON">wells</ENAMEX> of each gene, and <NUMEX TYPE="CARDINAL">16 no</NUMEX>-template control (NTC)
+          <ENAMEX TYPE="PERSON">wells</ENAMEX> divided evenly among <NUMEX TYPE="CARDINAL">four</NUMEX> quadrants.
+        
+        
+          Analysis
+          Software for the implementation of the statistical
+          <ENAMEX TYPE="PERSON">estimation</ENAMEX> and testing procedures described above was
+          written in <ENAMEX TYPE="ORGANIZATION">FORTRAN</ENAMEX> and run on desktop PCs [ <TIMEX TYPE="DATE">13</TIMEX>].
+          Additional statistical computations were performed using
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>-plus <NUMEX TYPE="MONEY">4.5</NUMEX> (<ENAMEX TYPE="ORGANIZATION">MathSoft</ENAMEX>).
+        
+      
+      
+        Additional data files
+        The additional data filesavailable or from [ <TIMEX TYPE="DATE">13</TIMEX>] consist
+        of several files for implementing the methods described
+        here: <ENAMEX TYPE="ORGANIZATION">NoSeCoLoR</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">exe</ENAMEX> is the executable file, compiled for
+        Windows, for the program itself; <ENAMEX TYPE="PRODUCT">NoSe-CoLoR-The-Manual</ENAMEX>.pdf
+        is the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s <ENAMEX TYPE="PER_DESC">guide</ENAMEX> and contains information on input
+        <ENAMEX TYPE="ORGANIZATION">formatting</ENAMEX> and the interpretation of output files;
+        <ENAMEX TYPE="ORGANIZATION">README</ENAMEX>.<ENAMEX TYPE="SUBSTANCE">txt</ENAMEX> contains instructions for installation and
+        start-up;. there are several sample input files and
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> output files.
+        Additional data file 1
+        A zip file containing several files for implementing the
+        methods described here
+        A zip file containing several files for implementing the
+        methods described here
+        Click here for additional data file
+      
+    
+  

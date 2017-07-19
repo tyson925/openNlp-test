@@ -1,0 +1,563 @@
+
+  
+    
+      
+        Background
+        Characterized examples of endogenous <ENAMEX TYPE="SUBSTANCE">antisense RNA</ENAMEX> in
+        <ENAMEX TYPE="ORGANIZATION">metazoans</ENAMEX> can be broadly divided into <NUMEX TYPE="CARDINAL">two</NUMEX> categories (see [
+        <ENAMEX TYPE="LAW">1, 2</ENAMEX>] for extensive review). <ENAMEX TYPE="ORGANIZATION">Antisense RNAs</ENAMEX> transcribed
+        from loci distinct from their putative targets, such as 
+        <ENAMEX TYPE="ORGANIZATION">lin-4</ENAMEX> of 
+        Caenorhabditis elegans , are
+        generally short and have the potential to form imperfect
+        duplexes with complementary regions of their sense
+        counterparts [ <ENAMEX TYPE="LAW">3</ENAMEX>]. In contrast, antisense transcripts that
+        originate from the same genomic region (but with opposing
+        <ENAMEX TYPE="ORGANIZATION">orientation</ENAMEX>) have, by virtue of their common but
+        complementary origin, the potential to form long perfect
+        <ENAMEX TYPE="ORGANIZATION">duplexes</ENAMEX>.
+        Experimental evidence suggests a functional role for
+        sense-antisense pairings at a surprising variety of levels
+        in mammalian gene regulation, including genomic imprinting
+        [ <ENAMEX TYPE="LAW">4, 5</ENAMEX>], <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> interference [ <ENAMEX TYPE="LAW">6</ENAMEX>], translational regulation [
+        <NUMEX TYPE="CARDINAL">7</NUMEX>], alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX>], <NUMEX TYPE="PERCENT">X</NUMEX>-inactivation [ <ENAMEX TYPE="LAW">9</ENAMEX>], and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        editing [ <TIMEX TYPE="DATE">10</TIMEX>]. Where the mode of regulation has been
+        <ENAMEX TYPE="ORGANIZATION">explored</ENAMEX> in detail each case has proved unique, so that it
+        is difficult to make generalizations about mechanism or
+        function. In transfection assays, full-length constructs of
+        <NUMEX TYPE="CARDINAL">three</NUMEX> splice variants of an endogenous coding transcript
+        containing regions antisense to the 
+        FGF2 (fibroblast growth <ENAMEX TYPE="SUBSTANCE">factor-2</ENAMEX>)
+        <ENAMEX TYPE="ORGANIZATION">mRNA</ENAMEX> can each suppress <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> levels (but not mRNA levels)
+        of FGF2 [ <ENAMEX TYPE="LAW">7</ENAMEX>]. A non-coding transcript antisense to a
+        homeobox gene, 
+        MSX1 , has a conserved transcription
+        initiation site and is expressed in inverse correlation to
+        the <ENAMEX TYPE="SUBSTANCE">MSX1 protein</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]. 
+        SCA8 , an untranslated transcript
+        implicated in spinocerebellar ataxia type <NUMEX TYPE="CARDINAL">8</NUMEX>, overlaps the
+        <ENAMEX TYPE="PRODUCT">5</ENAMEX>' translation and transcription sites of 
+        KLHL1 , a gene primarily expressed in
+        the <ENAMEX TYPE="ORG_DESC">cerebellum</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]. 
+        <ENAMEX TYPE="ORGANIZATION">XIST</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">TSIX</ENAMEX> are conserved, overlapping, but
+        oppositely oriented non-coding transcripts, which serve
+        crucial functions in <ENAMEX TYPE="LAW">X</ENAMEX>-inactivation [ <ENAMEX TYPE="LAW">9</ENAMEX>]. Several imprinted
+        loci generate multiple sense and antisense transcripts that
+        are subject to reciprocal genomic imprinting, and a recent
+        study demonstrated 
+        in vivo that premature termination of
+        
+        <ENAMEX TYPE="ORGANIZATION">AIR</ENAMEX> , a non-coding imprinted
+        antisense transcript, results in a failure to imprint
+        several sense counterparts [ <ENAMEX TYPE="LAW">5</ENAMEX>]. <ENAMEX TYPE="PERSON">Lipman</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>] suggested
+        that this phenomenon might be much more widespread than
+        previously believed, and hypothesized that the existence of
+        functionally relevant overlapping antisense transcripts
+        might explain a subset of the many cases in which strong
+        evolutionary conservation is observed in <TIMEX TYPE="DATE">5</TIMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+        untranslated regions of mammalian genes.
+        Consistent with this, the number of known examples of
+        pairs of <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX> with the potential to form long
+        sense-antisense duplexes has increased steadily. We
+        reviewed the literature and found <NUMEX TYPE="CARDINAL">40</NUMEX> such cases (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>),
+        and a recent analysis identified <NUMEX TYPE="CARDINAL">more than 80</NUMEX> additional
+        pairs of annotated human mRNAs that originate from the same
+        genomic locus and share regions of overlap [ <TIMEX TYPE="DATE">14</TIMEX>]. We
+        postulated that additional examples of this phenomenon
+        might be obtainable by mining public human and mouse
+        expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>) databases.
+        <NUMEX TYPE="CARDINAL">Thousands</NUMEX> of <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, consisting in sum of
+        <NUMEX TYPE="CARDINAL">millions</NUMEX> of single-pass sequence reads, have been generated
+        by <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> from around the world, using a variety of
+        methods, and deposited into public sequence databases.
+        <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>] is an experimental <ENAMEX TYPE="SUBSTANCE">algorithm</ENAMEX> developed at the
+        <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>, in which full-length mRNA and <TIMEX TYPE="TIME">EST</TIMEX> sequences are
+        partitioned into a non-redundant set of gene-oriented
+        clusters on the basis of nucleotide-level identity (using
+        annotated mRNAs as <ENAMEX TYPE="SUBSTANCE">initializing seeds</ENAMEX>), but these clusters
+        are not further curated. The avoidance of spurious
+        alignments by masking of transcribed repetitive elements,
+        <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> contaminants or low-complexity sequence is an
+        important part of the <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> build procedure. <TIMEX TYPE="TIME">Each EST</TIMEX>
+        thus belongs to both an individual <ENAMEX TYPE="ORG_DESC">library</ENAMEX> from which it
+        was sequenced (for example, a specific tissue from a
+        specific individual) and a single <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> cluster (along
+        with other <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> that are presumably derived from the same
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>). We hypothesized that as a consequence of the
+        <ENAMEX TYPE="ORGANIZATION">automation of the UniGene</ENAMEX> build procedure, unannotated
+        antisense transcripts might be found co-clustered with
+        their sense counterparts. As nearly all annotated mRNAs in
+        GenBank serve as <ENAMEX TYPE="SUBSTANCE">UniGene cluster seeds</ENAMEX> (and therefore
+        cannot be co-clustered with one another), such a strategy
+        is strongly biased towards finding pairs of overlapping
+        transcripts where one or both of the transcripts are
+        <ENAMEX TYPE="ORGANIZATION">unannotated</ENAMEX>.
+        Our bioinformatics and experimental strategy involved
+        <NUMEX TYPE="CARDINAL">five</NUMEX> steps. We first identified <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> that were
+        directionally cloned and sequenced (that is, <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> were
+        <ENAMEX TYPE="PERSON">cloned</ENAMEX> and sequenced in a defined orientation with respect
+        to the mRNA transcript); then, focusing exclusively on ESTs
+        from such <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, we searched for <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> clusters
+        containing a statistically significant number of
+        <ENAMEX TYPE="ORGANIZATION">misoriented ESTs</ENAMEX>. We then mapped the mRNA and <TIMEX TYPE="TIME">EST</TIMEX> sequences
+        from <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX> clusters to their genomic
+        <ENAMEX TYPE="PERSON">coordinates</ENAMEX> and evaluated whether putative sense and
+        <ENAMEX TYPE="ORGANIZATION">antisense ESTs</ENAMEX> in a given <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> cluster represented
+        <ENAMEX TYPE="ANIMAL">distinct RNA species</ENAMEX>, on the basis of differential
+        exon-intron splicing structures, the locations of poly(A)
+        signals and tails, and patterns of <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>-human sequence
+        <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>. Finally, we experimentally validated a subset
+        of the predictions by orientation-specific reverse
+        <ENAMEX TYPE="ORGANIZATION">transcription PCR</ENAMEX> (RT-PCR).
+      
+      
+        Results
+        A major obstacle to deducing the transcriptional
+        orientation of individual <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> is that not all cloning
+        methods used to generate <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> are directional. For
+        example, a substantial fraction of publicly available ESTs
+        were generated by a random priming method that provides no
+        information about directionality of <ENAMEX TYPE="SUBSTANCE">transcription</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>],
+        whereas other methods that exploit the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' polyadenylated
+        tails of eukaryotic mRNAs do provide directional
+        information. Rather than relying on fragmentary library
+        annotation, we developed a simple measure of the quality of
+        directional cloning of <TIMEX TYPE="TIME">each EST</TIMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. A subset of
+        UniGene clusters includes <NUMEX TYPE="CARDINAL">at least one</NUMEX> full-length mRNA
+        sequence for which the correct transcriptional orientation
+        is known. Focusing on <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> belonging to these clusters, we
+        estimated 
+        in silico the fraction of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> from
+        each <ENAMEX TYPE="ORG_DESC">library</ENAMEX> that were correctly oriented, relative to the
+        mRNA-defined orientations (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Our subsequent
+        analysis focused exclusively on ESTs from <NUMEX TYPE="CARDINAL">899</NUMEX> human and <NUMEX TYPE="CARDINAL">176</NUMEX>
+        <ENAMEX TYPE="ANIMAL">mouse libraries</ENAMEX> for which we estimated that <NUMEX TYPE="PERCENT">more than 95%</NUMEX>
+        of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> were in the correct orientation.
+        As expected, a small fraction of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> (<NUMEX TYPE="PERCENT">around 1.5%</NUMEX> on
+        average) from these <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> were incorrectly oriented.
+        Our null hypothesis was that these represented random
+        artifacts that would be distributed across the full set of
+        UniGene clusters in a manner proportional to the size of
+        the individual <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> clusters. In other words, we
+        expected that <NUMEX TYPE="PERCENT">98.5%</NUMEX> of the directionally cloned <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> in
+        each <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> cluster would be correctly oriented. Binomial
+        statistics were applied to identify UniGene clusters that
+        contained a statistically significant overrepresentation of
+        incorrectly oriented <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>. For the substantial subset of
+        UniGene clusters for which the dominant transcriptional
+        <ENAMEX TYPE="PERSON">orientation</ENAMEX> was unannotated, we required that the
+        <ENAMEX TYPE="ORGANIZATION">misoriented</ENAMEX> ESTs be significantly overrepresented
+        regardless of the correct orientation of the cluster. In
+        total, we were able to identify <NUMEX TYPE="CARDINAL">549</NUMEX> <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> and human
+        clusters that significantly deviated from the null
+        <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX>.
+        We next sought to address the possibility that a
+        significant number of our <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> could represent
+        systematic errors (for example, systematic bias for
+        directional-cloning artifacts to occur in association with
+        specific transcripts) or errors of the <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> clustering
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. We postulated that if <NUMEX TYPE="CARDINAL">two</NUMEX> distinct, overlapping
+        but oppositely oriented <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX> were present in a
+        <ENAMEX TYPE="PERSON">single UniGene</ENAMEX> cluster, they should map to the same genomic
+        region, but should possess significantly distinguishable
+        exon-intron splicing structures.
+        We used publicly available tools (<ENAMEX TYPE="ORGANIZATION">MEGABLAST</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>] and
+        SIM4 [ <TIMEX TYPE="DATE">18</TIMEX>]) to map the exon-intron splicing structures of
+        the relevant set of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> and mRNAs from <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX>
+        <ENAMEX TYPE="PERSON">clusters</ENAMEX> onto draft assemblies of the human and mouse
+        <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> [ <TIMEX TYPE="DATE">19, 20</TIMEX>]. Patterns of evolutionary conservation
+        between these assemblies were determined by reference to a
+        whole-genome set of <NUMEX TYPE="CARDINAL">approximately 1.15 million</NUMEX> <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>-human
+        sequence alignments [ <TIMEX TYPE="DATE">21</TIMEX>]. Graphical representations were
+        manually reviewed to evaluate whether the putative sense
+        and antisense <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> represented distinct <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX>, on the
+        basis of differential exon-intron splicing structures,
+        <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) signal and tail locations, and <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>-human
+        conservation patterns. We identified <NUMEX TYPE="CARDINAL">144</NUMEX> human and <NUMEX TYPE="CARDINAL">73</NUMEX> mouse
+        UniGene clusters that each appear to contain <NUMEX TYPE="CARDINAL">two</NUMEX> distinct
+        but oppositely oriented <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX>, co-clustered in
+        UniGene as a consequence of a bidirectionally transcribed
+        region of overlap. Figures <ENAMEX TYPE="CONTACT_INFO">2, 3, 4, 5, 6,</ENAMEX> 7present several
+        interesting <ENAMEX TYPE="PER_DESC">representative</ENAMEX> examples of distinguishable
+        exon-intron splicing structures of sense and antisense ESTs
+        over the relevant genomic regions. For a data file
+        containing a full tabulated list of the <NUMEX TYPE="CARDINAL">217</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, see
+        Additional data files and our website [ <TIMEX TYPE="DATE">22</TIMEX>]. Graphical
+        representations for all <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, similar to those in
+        Figures <ENAMEX TYPE="CONTACT_INFO">2, 3, 4, 5, 6, 7</ENAMEX>, are also available at [ <TIMEX TYPE="DATE">22</TIMEX>].
+        To further validate our methodology, we sought to
+        confirm a subset of our predictions experimentally. An
+        orientation-specific RT-PCR assay was applied to test the
+        directionality of transcription over the regions of
+        predicted overlap (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>). Primers were designed to
+        amplify regions of predicted bidirectional transcription.
+        The relative orientation of transcription was assessed by
+        restricting which primers were present during the reverse
+        <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX> (RT) single-strand synthesis step of the
+        reaction. Although total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from a series of different
+        human tissues was used as template, only one tissue type
+        was assayed per <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, with the choice for each
+        candidate geared towards the tissue types of <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> from
+        which putative antisense <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> were derived. We successfully
+        detected the presence of antisense transcription over the
+        queried region for <NUMEX TYPE="CARDINAL">33</NUMEX> out of <NUMEX TYPE="CARDINAL">39</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> tested, and <NUMEX TYPE="CARDINAL">0</NUMEX>
+        out of <NUMEX TYPE="CARDINAL">17</NUMEX> negative controls (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). For <NUMEX TYPE="CARDINAL">26</NUMEX> of these <NUMEX TYPE="CARDINAL">33</NUMEX>
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, both sense and antisense transcription was
+        detected in the same tissue.
+      
+      
+        Discussion
+        Our bioinformatics approach identified <NUMEX TYPE="CARDINAL">217</NUMEX> candidate
+        instances of overlapping transcriptional <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in the human
+        and <ENAMEX TYPE="ANIMAL">mouse genomes</ENAMEX>. We characterized the genomic arrangement
+        of each pair of overlapping transcripts relative to one
+        another (<ENAMEX TYPE="PRODUCT">Table 3a</ENAMEX>, see also Additional data files). Our
+        results are generally consistent with those of Lehner 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>], in that the majority
+        of overlapping pairs can be described as having a
+        tail-to-tail (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>' to <NUMEX TYPE="CARDINAL">3</NUMEX>') arrangement. We were also
+        interested in whether sense and <ENAMEX TYPE="SUBSTANCE">antisense RNA species</ENAMEX> in
+        these <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> clusters represented <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding or
+        untranslated transcripts. For each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, we determined
+        the best <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> match to <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> oriented in both the sense
+        and antisense direction. Of the <NUMEX TYPE="CARDINAL">217</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX>
+        <ENAMEX TYPE="PERSON">clusters</ENAMEX>, <NUMEX TYPE="CARDINAL">116</NUMEX> contain <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> with significant homology to a
+        known <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> on both strands, <NUMEX TYPE="CARDINAL">95</NUMEX> on <NUMEX TYPE="CARDINAL">one</NUMEX> strand, and <NUMEX TYPE="CARDINAL">six</NUMEX> on
+        neither strand. The identities of these best <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-level
+        matches are provided as additional data with this paper and
+        <ENAMEX TYPE="ORGANIZATION">integrated</ENAMEX> with the graphical representation of each
+        <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> at our website [ <TIMEX TYPE="DATE">22</TIMEX>]. It is possible that a
+        subset of the <NUMEX TYPE="CARDINAL">101</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> with no significant
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-level match on <NUMEX TYPE="CARDINAL">one</NUMEX> or both strands include ESTs
+        derived from non-coding transcripts. However, as ESTs
+        represent fragments of the full transcripts, we cannot be
+        certain about this until the <ENAMEX TYPE="ANIMAL">full-length RNA species</ENAMEX> are
+        <ENAMEX TYPE="PERSON">cloned</ENAMEX>. The characteristics of each <ENAMEX TYPE="PER_DESC">candidate pair</ENAMEX> with
+        respect to observed coding potential and observed splicing
+        (with the same caveat of being based on limited
+        information) are listed in the additional data and are
+        summarized in <ENAMEX TYPE="PRODUCT">Table 3b</ENAMEX>.
+        The misinterpretation of genomic contaminants as
+        putative antisense <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> is a clear <ENAMEX TYPE="ORG_DESC">concern</ENAMEX>. The
+        observation of transcript splicing, <ENAMEX TYPE="SUBSTANCE">protein homology</ENAMEX> and/or
+        derivation from multiple independent <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> for any
+        given set of putative antisense <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> is evidence against
+        <ENAMEX TYPE="SUBSTANCE">genomic</ENAMEX> contamination. We have flagged (as requiring
+        particular caution) <NUMEX TYPE="CARDINAL">18</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> cases where the set of
+        <ENAMEX TYPE="ORGANIZATION">antisense ESTs</ENAMEX> derive from one or a few <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, and are
+        not observed to be spliced or have <ENAMEX TYPE="SUBSTANCE">protein homologies</ENAMEX> (see
+        Additional data files).
+        Experimental validation of a subset of our predictions
+        by orientation-specific RT-PCR supports our bioinformatics
+        <ENAMEX TYPE="PERSON">methodology</ENAMEX>. We estimate that our approach has a
+        specificity of <NUMEX TYPE="PERCENT">84%</NUMEX>, as we were able to detect antisense
+        transcription over <NUMEX TYPE="CARDINAL">33</NUMEX> of <NUMEX TYPE="CARDINAL">39</NUMEX> regions queried. This may be a
+        low-end estimate as we only queried one tissue per
+        <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, and cell type and/or temporal specificity of
+        antisense transcript expression might explain our inability
+        to confirm antisense transcription for <NUMEX TYPE="CARDINAL">six</NUMEX> of the
+        <ENAMEX TYPE="PER_DESC">candidates experimentally</ENAMEX>. These same factors (differential
+        temporal or cell-type distribution) may explain why the
+        sense transcript (all of which are annotated mRNAs in the
+        <NUMEX TYPE="CARDINAL">39</NUMEX> cases that we attempted to experimentally verify) was
+        not detected for <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> that were positive for
+        antisense transcription.
+        The observation of highly conserved regions in the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'
+        and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' untranslated regions (UTRs) of a large fraction of
+        <ENAMEX TYPE="SUBSTANCE">mammalian genes</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>] has been an intriguing mystery.
+        <ENAMEX TYPE="PERSON">Lipman</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>] hypothesized that the existence of
+        functionally relevant overlapping antisense transcripts
+        might explain a subset of these cases. Indeed, with a
+        number of <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> we do observe interesting correlations
+        between mouse-human nucleotide-level conservation patterns
+        in <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> and their <ENAMEX TYPE="GPE_DESC">region</ENAMEX>(s) of overlap with the putative
+        antisense <ENAMEX TYPE="ANIMAL">species</ENAMEX>. This includes both cases where the
+        antisense <ENAMEX TYPE="ANIMAL">species</ENAMEX> has homology to a known <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (Figures
+        <ENAMEX TYPE="CONTACT_INFO">2, 7</ENAMEX>) and cases where it does not (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>; UniGene
+        <ENAMEX TYPE="ORGANIZATION">cluster Mm.</ENAMEX><NUMEX TYPE="CARDINAL">41304</NUMEX>; UniGene cluster <NUMEX TYPE="MONEY">Mm.183060</NUMEX>).
+        There are <NUMEX TYPE="CARDINAL">seven</NUMEX> cases in which a <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> and
+        human <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> are clear orthologs (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). In <NUMEX TYPE="CARDINAL">six</NUMEX> of
+        these cases, the location, coding potential/identity and
+        pattern of the overlap with the <ENAMEX TYPE="SUBSTANCE">antisense RNA species</ENAMEX> is
+        highly consistent between the mouse and human <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>,
+        supporting the argument for functional relevance of these
+        <ENAMEX TYPE="ORGANIZATION">overlaps</ENAMEX>. Why is such little intersection observed between
+        the human and mouse <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> sets? <NUMEX TYPE="CARDINAL">One</NUMEX> possibility is that
+        many of the examples of overlaps, whether functionally
+        relevant or not, are not general to mammals but are
+        lineage-specific in nature. A <NUMEX TYPE="ORDINAL">second</NUMEX> possibility is that
+        our method has a high frequency of false-negatives.
+        Although <TIMEX TYPE="TIME">EST</TIMEX> databases are growing rapidly, it is clear
+        that they are still under-sampling the full mammalian
+        <ENAMEX TYPE="ORGANIZATION">transcriptome</ENAMEX>. Undersampling of the transcriptome by either
+        or both the mouse and human <TIMEX TYPE="TIME">EST</TIMEX> databases might be expected
+        to contribute significantly to the false negative rate, and
+        consequently to the relatively limited intersection between
+        the <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> and human <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> sets. We are carrying out
+        experiments to test mouse-human conservation of predicted
+        overlaps more directly by focused and sensitive
+        experimental <ENAMEX TYPE="SUBSTANCE">assays</ENAMEX> such as quantitative <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> and
+        oligonucleotide arrays.
+        As the proposed mechanisms by which the formation of
+        <ENAMEX TYPE="PERSON">long</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex dsRNA</ENAMEX> can potentially affect gene regulation
+        are so varied [ <ENAMEX TYPE="LAW">4, 5, 6, 7, 8, 9, 10</ENAMEX>, <TIMEX TYPE="DATE">11, 12</TIMEX>], it is
+        difficult to draw inferences regarding function without
+        further experiments. <NUMEX TYPE="CARDINAL">One</NUMEX> of the few areas where
+        functionally relevant information on sequences is available
+        relates to the neoplastic versus non-neoplastic nature of
+        the tissue of origin of <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>. An interesting
+        example is <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX> cluster <NUMEX TYPE="MONEY">Hs.288835</NUMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>),
+        which contains <ENAMEX TYPE="ORGANIZATION">CIDEB</ENAMEX> (cell-death inducing DFFA-like
+        <ENAMEX TYPE="ORGANIZATION">effector B</ENAMEX>). Noting that the sense transcript encoded a
+        potential <ENAMEX TYPE="DISEASE">tumor</ENAMEX> suppressor, we checked the annotated tissue
+        origin of these ESTs, and found that a significantly
+        greater fraction of the antisense <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> (<TIMEX TYPE="DATE">34/46</TIMEX> = <NUMEX TYPE="MONEY">~0.74</NUMEX>) than
+        the sense ESTs (<TIMEX TYPE="DATE">3/15</TIMEX> = <NUMEX TYPE="MONEY">~0.2</NUMEX>) were derived from neoplastic
+        <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="MONEY">~0.0002</NUMEX> by chi-squared
+        <ENAMEX TYPE="ORGANIZATION">statistic</ENAMEX>). As the sense transcript codes for a
+        pro-apoptotic gene, the result immediately suggests the
+        interesting hypothesis that upregulation of the antisense
+        <ENAMEX TYPE="SUBSTANCE">RNA species</ENAMEX> in cancer tissues has functional relevance with
+        respect to suppression of the potentially tumor-suppressing
+        sense gene.
+        It is worth noting that stages of our methodology may
+        also be useful for determining the correct transcriptional
+        <ENAMEX TYPE="ORGANIZATION">orientation of UniGene</ENAMEX> clusters that contain no annotated
+        mRNA sequences. Many probes on orientation-sensitive
+        oligonucleotide arrays for unknown genes are often based on
+        such <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>, and knowledge of the correct transcriptional
+        orientation of each cluster may help circumvent problems
+        such as those recently encountered in the design of an
+        <ENAMEX TYPE="PER_DESC">Affymetrix</ENAMEX> mouse chip [ <TIMEX TYPE="DATE">24</TIMEX>].
+        We observed surprisingly little redundancy (<NUMEX TYPE="CARDINAL">10</NUMEX> out of
+        <NUMEX TYPE="CARDINAL">217</NUMEX> of our <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>) between our results and the
+        <ENAMEX TYPE="PERSON">literature</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>). As the sampling strategies applied
+        seem more orthogonal than similar, it is difficult to
+        assess how many more examples of overlapping
+        <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in the human and <ENAMEX TYPE="ANIMAL">mouse genomes</ENAMEX> remain
+        to be discovered. <ENAMEX TYPE="PERSON">Shoemaker</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] carried
+        out an experiment in which they queried the transcription
+        of <NUMEX TYPE="CARDINAL">over 400,000</NUMEX> exon predictions using <NUMEX TYPE="CARDINAL">two</NUMEX> strand-specific
+        <NUMEX TYPE="QUANTITY">60-mer</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">oligonucleotide probe sets</ENAMEX> per exon. The negative
+        controls, a set of probes that were the reverse complement
+        of probes for <NUMEX TYPE="CARDINAL">78,486</NUMEX> confirmed exons, indicated a <NUMEX TYPE="PERCENT">5%</NUMEX>
+        false-positive rate. We speculate that a subset of these
+        false positives may have actually represented
+        bidirectionally transcribed regions of the human
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>.
+      
+      
+        Conclusions
+        Our results, in conjunction with the literature, bring
+        the total number of predicted and validated examples of
+        overlapping but oppositely oriented transcripts to over
+        <NUMEX TYPE="CARDINAL">300</NUMEX>. Given the variety of gene-regulatory phenomena that
+        <ENAMEX TYPE="PERSON">long-</ENAMEX><ENAMEX TYPE="FAC_DESC">duplex dsRNA</ENAMEX> has been suggested or shown to influence
+        [ <ENAMEX TYPE="LAW">4, 5, 6, 7, 8, 9, 10</ENAMEX>, <TIMEX TYPE="DATE">11, 12</TIMEX>], experimental approaches
+        are required to query whether and how each of these
+        <ENAMEX TYPE="ORGANIZATION">overlaps</ENAMEX> is functionally relevant.
+      
+      
+        Materials and methods
+        
+          Identification of high-quality directionally cloned
+          ESTlibraries
+          <ENAMEX TYPE="ORGANIZATION">Human UniGene</ENAMEX> (Build <NUMEX TYPE="CARDINAL">146</NUMEX>) and <ENAMEX TYPE="ANIMAL">mouse UniGene</ENAMEX> (Build
+          <NUMEX TYPE="CARDINAL">100</NUMEX>) datasets were downloaded from <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> on <TIMEX TYPE="DATE">16 January</TIMEX>,
+          <TIMEX TYPE="DATE">2002</TIMEX>. A useful feature of the <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> resource is the
+          identification of a single sequence in each cluster as
+          its longest high-quality <ENAMEX TYPE="PER_DESC">member</ENAMEX>. We refer to this set of
+          <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> as the best-of-<ENAMEX TYPE="PERSON">UniGene</ENAMEX> (BOU) sequences.
+          To assess the quality of directional cloning in <TIMEX TYPE="TIME">EST</TIMEX>
+          <ENAMEX TYPE="PERSON">libraries</ENAMEX>, we applied the <ENAMEX TYPE="ORGANIZATION">MEGABLAST</ENAMEX> tool [ <TIMEX TYPE="DATE">17</TIMEX>] to align
+          <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> to the <ENAMEX TYPE="ORGANIZATION">BOU of the UniGene</ENAMEX> cluster to which they
+          belonged. For <TIMEX TYPE="TIME">each EST</TIMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX>, we then calculated the
+          fraction of <ENAMEX TYPE="PER_DESC">member</ENAMEX> ESTs that were deposited in the same
+          <ENAMEX TYPE="PERSON">orientation</ENAMEX> as the BOU sequence of the <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> cluster to
+          which they belonged. This fraction, a metric of the
+          quality of directional cloning of <TIMEX TYPE="TIME">each EST</TIMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX>, is
+          referred to as the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> quality score (LQS).
+          Our original analysis was revised in <NUMEX TYPE="CARDINAL">two</NUMEX> ways to
+          improve its accuracy. Our goal of calculating library
+          quality by estimating the 'correctness' <TIMEX TYPE="TIME">of EST</TIMEX>
+          <ENAMEX TYPE="PERSON">orientation</ENAMEX> is complicated by the fact that not every
+          UniGene cluster contains an mRNA with a defined open
+          reading frame (ORF), and not every BOU sequence is
+          deposited in the correct orientation (in other words, the
+          correct orientation of many <ENAMEX TYPE="NATIONALITY">UniGene</ENAMEX> clusters is not known
+          definitively). We therefore revised our analysis to
+          <ENAMEX TYPE="ORGANIZATION">calculate LQS</ENAMEX> scores exclusively from UniGene clusters
+          whose <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> <ENAMEX TYPE="PER_DESC">representative</ENAMEX> was an mRNA with an annotated
+          <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> window (indicating that the <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> is deposited in the
+          correct orientation). We subsequently refer to these as
+          <ENAMEX TYPE="ORGANIZATION">'oriented BOUs</ENAMEX>'. Another caveat arises in <TIMEX TYPE="DATE">that 3</TIMEX>'
+          <ENAMEX TYPE="PER_DESC">sequencing</ENAMEX> reads of <ENAMEX TYPE="SUBSTANCE">directionally cloned ESTs</ENAMEX> are
+          generally not reoriented before deposit of sequences in
+          <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>. We resolved this issue by 'flipping' 
+          in silico sequences annotated as <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+          reads. The results of this analysis on the human <TIMEX TYPE="TIME">EST</TIMEX>
+          dataset are shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. In our final analysis
+          (green <ENAMEX TYPE="ORG_DESC">bars</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>), the distribution of LQS scores
+          across the full set of <TIMEX TYPE="TIME">UniGene EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> is roughly
+          bimodal, with a peak near <ENAMEX TYPE="ORGANIZATION">LQS</ENAMEX> = <NUMEX TYPE="CARDINAL">0.5</NUMEX> (random orientation
+          of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>) and a peak near <ENAMEX TYPE="ORGANIZATION">LQS</ENAMEX> = <NUMEX TYPE="CARDINAL">1.0</NUMEX> (correct orientation
+          of nearly all ESTs). These peaks correspond broadly to
+          <ENAMEX TYPE="ORGANIZATION">libraries</ENAMEX> generated by non-directional and directional
+          cloning methods, respectively.
+          Of the <NUMEX TYPE="CARDINAL">6,525</NUMEX> human and <TIMEX TYPE="TIME">566 mouse EST libraries</TIMEX>
+          considered, <NUMEX TYPE="CARDINAL">899 and 176</NUMEX>, respectively, had an LQS of
+          greater than <NUMEX TYPE="CARDINAL">0.95</NUMEX>, indicating that these <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> were
+          generated by an efficient method of directional cloning.
+          The remainder of our analysis focused exclusively on the
+          <NUMEX TYPE="CARDINAL">1,151,724</NUMEX> human <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> and <NUMEX TYPE="CARDINAL">550,567</NUMEX> mouse <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> derived from
+          the <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">LQS</ENAMEX> scores of greater than <NUMEX TYPE="CARDINAL">0.95</NUMEX>. A
+          <TIMEX TYPE="DATE">full</TIMEX> list of the mouse and human <TIMEX TYPE="TIME">EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> and their
+          <ENAMEX TYPE="ORGANIZATION">LQS</ENAMEX> <ENAMEX TYPE="PER_DESC">scores</ENAMEX> is available at our website [ <TIMEX TYPE="DATE">22</TIMEX>].
+        
+        
+          Statistically significant overrepresentation of
+          <ENAMEX TYPE="ORGANIZATION">misoriented ESTs</ENAMEX> in a subset of <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> clusters
+          Our null hypothesis was that the relatively small
+          fraction of misoriented ESTs from high-quality
+          <TIMEX TYPE="TIME">directionally cloned EST</TIMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> (<NUMEX TYPE="PERCENT">approximately 1.5%</NUMEX>)
+          represented random artifacts, leading to the expectation
+          that they would be distributed across the full set of
+          UniGene clusters in a manner proportional to the sizes of
+          <ENAMEX TYPE="ORGANIZATION">individual UniGene</ENAMEX> clusters. We applied binomial
+          distribution probability analysis to identify clusters
+          that significantly deviated from this expectation with a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of <NUMEX TYPE="CARDINAL">less than 0.00001</NUMEX>
+          (roughly equivalent to the number of hypotheses being
+          tested). This analysis was sufficient for UniGene
+          clusters with an oriented <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> (see above). To avoid
+          excluding from consideration UniGene clusters without
+          <ENAMEX TYPE="ORGANIZATION">oriented BOU</ENAMEX> sequences, we again applied the binomial
+          distribution probability test, with an additional
+          requirement; the result had to be significant ( 
+          p <NUMEX TYPE="MONEY">< 0.00001</NUMEX>) regardless of
+          whether the <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> was correctly or incorrectly oriented.
+          For example, the observation of a <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> cluster with
+          <NUMEX TYPE="CARDINAL">100</NUMEX> ESTs deposited in the same orientation as the <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">100</NUMEX> ESTs oriented opposite to the <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> would deviate
+          significantly from the null hypothesis expectation of
+          <NUMEX TYPE="PERCENT">98.5%</NUMEX> regardless of whether the <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> was correctly
+          oriented or not. This approach identified <NUMEX TYPE="CARDINAL">297</NUMEX> human and
+          <NUMEX TYPE="CARDINAL">252</NUMEX> <ENAMEX TYPE="ANIMAL">mouse UniGene clusters</ENAMEX> that contained a statistically
+          significant over-representation of incorrectly oriented
+          <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>.
+        
+        
+          Mapping of exon-intron <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> and
+          mRNAs from <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX> clusters to the mouse and
+          human genomes
+          We downloaded the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> human genome draft assembly
+          (Build <NUMEX TYPE="CARDINAL">24</NUMEX>) [ <TIMEX TYPE="DATE">19</TIMEX>] and the <ENAMEX TYPE="ANIMAL">Celera mouse genome</ENAMEX> draft
+          assembly [ <TIMEX TYPE="DATE">20</TIMEX>] in <TIMEX TYPE="DATE">August 2001</TIMEX>. Although the <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> mouse
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> is not generally accessible, draft assemblies of
+          the <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> genome based on the public sequencing effort
+          have recently been released, and we anticipate that use
+          of these assemblies would yield essentially equivalent
+          results [ <TIMEX TYPE="DATE">26</TIMEX>]. The <ENAMEX TYPE="ORGANIZATION">MEGABLAST</ENAMEX> tool [ <TIMEX TYPE="DATE">17</TIMEX>] was used to
+          identify the approximate genomic coordinates for each
+          UniGene cluster (for example, the contig on which a given
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> appeared to be located). The <NUMEX TYPE="ORDINAL">SIM4</NUMEX> tool [ <TIMEX TYPE="DATE">18</TIMEX>] was
+          then applied to map the exon-intron splicing coordinates
+          of individual <ENAMEX TYPE="ORGANIZATION">BOU</ENAMEX> and <TIMEX TYPE="TIME">EST</TIMEX> sequences more precisely. We
+          have exploited mouse-human <ENAMEX TYPE="SUBSTANCE">synteny</ENAMEX> and the availability
+          of draft assemblies of the mouse and human genomes to
+          generate a set of <NUMEX TYPE="MONEY">around 1.15 million</NUMEX> mouse-human
+          sequence alignments. These have been used to create
+          <ENAMEX TYPE="ORGANIZATION">overlay</ENAMEX> versions of each genome, in which the most
+          conserved sequences (<NUMEX TYPE="PERCENT">around 10%</NUMEX> of each genome) is
+          overlaid with homologous sequence of the other <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          More detailed descriptions of the methodology followed
+          and general statistics on this resource (HUMMUS) is
+          available over the web [ <TIMEX TYPE="DATE">21</TIMEX>]. The graphical
+          representations integrating information on transcript
+          <ENAMEX TYPE="PERSON">orientation</ENAMEX>, exon-intron structure, and <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>-human
+          genomic conservation were generated using <ENAMEX TYPE="ORGANIZATION">GNUPLOT</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>].
+          Graphical representations for the curated set of <NUMEX TYPE="CARDINAL">144</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">human</ENAMEX> and <NUMEX TYPE="CARDINAL">73</NUMEX> mouse <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> is available from our
+          website [ <TIMEX TYPE="DATE">22</TIMEX>], and an <ENAMEX TYPE="PRODUCT">Excel</ENAMEX>-format summary is available
+          as additional data with this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>.
+        
+        
+          Assessment of transcriptional directionality via
+          RT-PCR assay
+          Primers were designed with the <NUMEX TYPE="ORDINAL">PRIMER3</NUMEX> [ <TIMEX TYPE="DATE">28</TIMEX>] algorithm
+          and custom synthesized by <ENAMEX TYPE="ORGANIZATION">Operon</ENAMEX>. For <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, primers
+          were selected to amplify a <ENAMEX TYPE="CONTACT_INFO">100-200</ENAMEX> base-<ENAMEX TYPE="PER_DESC">pair</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>)
+          sequence that was internal to a predicted region of
+          transcriptional overlap. <ENAMEX TYPE="ORGANIZATION">Control</ENAMEX> <ENAMEX TYPE="PER_DESC">primers</ENAMEX> were designed to
+          <ENAMEX TYPE="CONTACT_INFO">amplify 100-200 bp</ENAMEX> as well, either from non-overlapping
+          regions of <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> transcripts or randomly selected
+          regions of non-<ENAMEX TYPE="PER_DESC">candidate</ENAMEX> transcripts. Templates included
+          total human <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from placenta, kidney, brain, thymus or
+          <ENAMEX TYPE="PERSON">uterus</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX>). For each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> or control, <NUMEX TYPE="CARDINAL">four</NUMEX>
+          RT-PCR reactions were carried out using total human <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          from a single tissue as template. We used the <ENAMEX TYPE="ORGANIZATION">Qiagen One</ENAMEX>
+          Step <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> kit according to the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s protocol,
+          except that reaction volume was reduced to <NUMEX TYPE="QUANTITY">25 μl</NUMEX>.
+          Orientation of transcripts was assessed by restricting
+          which primers were present during <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> single-strand
+          <ENAMEX TYPE="PERSON">synthesis</ENAMEX>. The cycling parameters were as follows: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          50°C × <NUMEX TYPE="QUANTITY">30 min</NUMEX>, reverse transcription single-strand
+          <ENAMEX TYPE="PERSON">synthesis</ENAMEX> (with <NUMEX TYPE="CARDINAL">one</NUMEX>, both or neither primer); (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) 95°C ×
+          <TIMEX TYPE="TIME">15 min</TIMEX>, activate AmpliTaq polymerase, inactivate RT
+          <ENAMEX TYPE="ORGANIZATION">enzymes</ENAMEX>; (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) <TIMEX TYPE="DATE">4°C</TIMEX>, add missing primers; (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) <TIMEX TYPE="DATE">94°C × 30</TIMEX> <ENAMEX TYPE="ORGANIZATION">sec</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">commence</ENAMEX> PCR cycling; (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) <TIMEX TYPE="DATE">56°C × 30 sec</TIMEX>; (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) <TIMEX TYPE="DATE">72°C × 30</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">sec</ENAMEX>; (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) go to step <NUMEX TYPE="CARDINAL">4</NUMEX> (<NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> in total); (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>) <TIMEX TYPE="DATE">72°C × 10</TIMEX>
+          min.
+          The inclusion of step (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) ensures that the <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> will be
+          inactivated before addition of missing primers. For each
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> or control primer <ENAMEX TYPE="PER_DESC">pair</ENAMEX>, <NUMEX TYPE="CARDINAL">four</NUMEX> RT-PCR reactions
+          were carried out using total human <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from a single
+          tissue as template. In the first reaction, both primers
+          were present during <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> single-strand synthesis (positive
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>). In the <NUMEX TYPE="ORDINAL">second</NUMEX> reaction, only the primer
+          complementary to the antisense-orientation of the PCR
+          product was present during <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> single-strand synthesis (to
+          assay for antisense transcription). In the third
+          reaction, only the primer complementary to the
+          sense-orientation of the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> product was present during
+          RT single-strand synthesis (to assay for sense
+          <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX>). In the <NUMEX TYPE="ORDINAL">fourth</NUMEX> reaction, neither primer
+          was present during <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> single-strand synthesis (control
+          for <ENAMEX TYPE="SUBSTANCE">genomic</ENAMEX> contamination). Primers were designed to
+          amplify regions of predicted bidirectional transcription
+          for <NUMEX TYPE="CARDINAL">39</NUMEX> of the human <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> and <NUMEX TYPE="CARDINAL">18</NUMEX> negative controls.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the <NUMEX TYPE="CARDINAL">18</NUMEX> negative controls was discarded because no
+          <ENAMEX TYPE="ORGANIZATION">lane</ENAMEX> gave rise to a sharp band of the proper size. In all
+          other cases, a sharp band of expected size was observed
+          in one or more of the reactions.
+        
+        
+          Determination of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> homologies of sense and
+          antisense oriented <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> from <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> clusters
+          We applied the <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> tool [ <TIMEX TYPE="DATE">29, 30</TIMEX>] to blast each of
+          the <NUMEX TYPE="CARDINAL">45,588</NUMEX> relevant <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX> and <TIMEX TYPE="TIME">EST</TIMEX> sequences that belonged
+          to both high-quality directionally cloned <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> and
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> <ENAMEX TYPE="PERSON">UniGene</ENAMEX> clusters against the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> nr database
+          (non-redundant database of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences deposited in
+          <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>), with a threshold expectation value of <NUMEX TYPE="CARDINAL">1e</NUMEX>-<NUMEX TYPE="CARDINAL">10</NUMEX>.
+          Summary information for each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> on the best
+          <ENAMEX TYPE="SUBSTANCE">protein alignment</ENAMEX> for ESTs oriented in each sense is
+          available as additional data (see Additional data
+          files).
+        
+      
+      
+        Additional data files
+        Additional dataincluding a full list of the <NUMEX TYPE="CARDINAL">217</NUMEX>
+        sense-antisense <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, genomic data on overlapping
+        <ENAMEX TYPE="PERSON">transcripts</ENAMEX>, and data on <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-level homologies are
+        available and at our website [ <TIMEX TYPE="DATE">22</TIMEX>].
+        Additional data file 1
+        Additional data
+        Additional data
+        Click here for additional data file
+      
+    
+  

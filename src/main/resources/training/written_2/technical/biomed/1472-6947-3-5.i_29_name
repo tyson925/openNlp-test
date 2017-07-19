@@ -1,0 +1,624 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="PERSON">Tissue Microarrays</ENAMEX> (TMAs), first introduced in <TIMEX TYPE="DATE">1998</TIMEX>, are
+        collections of <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of tissue cores arrayed into a
+        single paraffin histology block [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Each <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> <ENAMEX TYPE="FAC_DESC">block</ENAMEX> can
+        be sectioned and mounted onto <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides, producing
+        <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of <NUMEX TYPE="CARDINAL">nearly</NUMEX>-identical slides. TMAs permit
+        <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> to use a single slide to conduct controlled
+        studies on large <ENAMEX TYPE="PER_DESC">cohorts</ENAMEX> of tissues, using a small amount
+        of reagent. The source of tissue is only restricted by its
+        availability in paraffin and ranges from cores of embedded
+        cultured cells to tissues from any higher <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>. In a
+        typical TMA study, every TMA core is associated with a rich
+        variety of data elements (image, tissue diagnosis, patient
+        demographics or other biomaterial description, quantified
+        experimental results). Under ideal circumstances, a single
+        <ENAMEX TYPE="ORGANIZATION">paraffin</ENAMEX> TMA block can be sectioned into nearly identical
+        glass slides dispensed to many different <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>.
+        These <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> may use different experimental
+        protocols. They may capture data using different
+        <ENAMEX TYPE="ORGANIZATION">instruments</ENAMEX>, different databases, different data
+        architectures, different data elements and immensely
+        different formats. These <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> could vastly increase
+        the value of their experimental findings if they could
+        merge their findings with those of the other <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>
+        that used the same TMA block. Unfortunately, the practice
+        of merging <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data sets obtained at different laboratories
+        using different information systems is infrequently
+        practiced. A key barrier to this process is the
+        incompatibility of the individual data sets. There simply
+        is no specification for exchanging <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data. Without such a
+        specification, <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data files can not be shared or merged,
+        and the full scientific value of this new technology is not
+        realized.
+        The need for a data exchange standards is not unique to
+        <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> experiments. The same issues have challenged <ENAMEX TYPE="PER_DESC">scientists</ENAMEX>
+        who use another array technology, gene expression arrays.
+        The history of <ENAMEX TYPE="ORGANIZATION">MIAME</ENAMEX> (minimum information about a
+        <ENAMEX TYPE="PERSON">microarray</ENAMEX> experiment) and <ENAMEX TYPE="ORGANIZATION">MGED</ENAMEX> (microarray gene expression
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Standards</ENAMEX> has been described [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> was
+        chosen as the formatting language for the effort to
+        standardize gene expression data. The purpose of <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> is to
+        eliminate barriers to data exchange and permit the
+        integration of data from heterogeneous <ENAMEX TYPE="PER_DESC">sources</ENAMEX> [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] .
+        Consequently, a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification in <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> would provide
+        another level of biomedical data integration in which array
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> of many different types can be combined and
+        analyzed.
+        In <TIMEX TYPE="DATE">the past five years</TIMEX>, <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> has emerged as the document
+        format used in almost all new data standards. <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> achieves
+        its functionality through the use of metadata. <ENAMEX TYPE="ORGANIZATION">Metadata</ENAMEX> is
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> that describes things, including data elements. In XML
+        documents, most metadata is marked by enclosing sets of
+        <ENAMEX TYPE="CONTACT_INFO">angle brackets:</ENAMEX>
+        <birthdate><ENAMEX TYPE="PERSON">Jan</ENAMEX> <TIMEX TYPE="DATE">1, 2003</TIMEX></birthdate>
+        In this example, birthdate is the metadata that
+        describes and flanks "<TIMEX TYPE="DATE">Jan 1, 2003</TIMEX>". Besides providing
+        <ENAMEX TYPE="ORGANIZATION">metadata</ENAMEX> to describe the data elements contained in the XML
+        file, <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> files can be self-described by metadata.
+        Self-description is a simple but powerful concept. If a
+        file describes itself (its subject, its <ENAMEX TYPE="PER_DESC">creator</ENAMEX>, its
+        <ENAMEX TYPE="PERSON">semantics</ENAMEX> and all its data elements), it can exist as a
+        completely independent data object unassociated with any
+        software applications or database instrument. There is an
+        abundance of freely available software implementations,
+        written in a variety of open source programming languages,
+        that permit <ENAMEX TYPE="PER_DESC">users</ENAMEX> to validate and parse <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> data files [ <NUMEX TYPE="CARDINAL">5</NUMEX>
+        ] .
+        The metadata in <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> files can be formalized as
+        <ENAMEX TYPE="ORGANIZATION">well-defined</ENAMEX> common data elements whose definition and
+        usage semantics are explicitly described in an accessible,
+        unique document. Most efforts that create an XML
+        specification for data domains (such as gene expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>), will also produce a formal document for the metadata
+        (<ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> tags) included in the specification. Anyone wishing to
+        implement the specification would need to understand the
+        metadata definitions and refer to the <ENAMEX TYPE="ORG_DESC">metadata</ENAMEX> definition
+        document from their <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> data files. The standard guidelines
+        for creating metadata specifications is the <ENAMEX TYPE="PRODUCT">ISO-11179</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ]
+        .
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Organization</ENAMEX> and sponsoring agencies
+          The <ENAMEX TYPE="ORGANIZATION">Association for Pathology Informatics</ENAMEX> (API) is an
+          <ENAMEX TYPE="ORGANIZATION">organization</ENAMEX> whose mission is to promote the field of
+          pathology informatics as an academic and a clinical
+          subspecialty of pathology. Further information on the API
+          is available at their web site:
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pathologyinformatics</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org</ENAMEX>
+          The <ENAMEX TYPE="ORGANIZATION">Technical Standards Committee</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">API</ENAMEX>,
+          recognizing the importance of TMA technology to pathology
+          <ENAMEX TYPE="ORGANIZATION">departments</ENAMEX>, organized a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> workshop to discuss the
+          subject of a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification. A
+          sponsorship listing is contained in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. The complete
+          listing of <ENAMEX TYPE="ORGANIZATION">TMA Data exchange</ENAMEX> workshops is found in Table
+          <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="PER_DESC">community</ENAMEX> discussion was held <TIMEX TYPE="DATE">May 30, 2001</TIMEX>
+          at the "<ENAMEX TYPE="ORGANIZATION">Automated Information Management</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">Clinical</ENAMEX>
+          Laboratory" meeting, held at the <ENAMEX TYPE="ORGANIZATION">University of Michigan</ENAMEX>
+          and organized by Dr. <ENAMEX TYPE="PERSON">Bruce Friedman</ENAMEX>. The complete listing
+          of <ENAMEX TYPE="ORGANIZATION">TMA Data exchange</ENAMEX> workshops is found in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+          Workshop <ENAMEX TYPE="PER_DESC">attendees</ENAMEX> endorsed an effort by the <ENAMEX TYPE="ORGANIZATION">Technical</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Standards Committee</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">API</ENAMEX>, to create a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data
+          exchange <ENAMEX TYPE="PER_DESC">specification</ENAMEX>. Consensus was reached on the
+          following guiding principles, and has been documented in
+          a [public domain] <ENAMEX TYPE="PER_DESC">workshop</ENAMEX> summary, available at:
+          <ENAMEX TYPE="CONTACT_INFO">http://65.222.228.150/jjb/tmasum.</ENAMEX><ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX>
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. The standard should be free and
+          non-proprietary.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. The standard should be self-descriptive. Anyone
+          reviewing a TMA file should be able to precisely
+          determine how the data is organized by reading the data
+          tags included in the file.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. The standard should, when feasible, use publicly
+          available common data elements linked to a web site that
+          fully defines each common data element included in the
+          <ENAMEX TYPE="ORGANIZATION">standard</ENAMEX> (needed to support dataset-independent
+          distributed network queries). This means that the
+          <ENAMEX TYPE="ORGANIZATION">committee</ENAMEX> that creates the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> standard must work with
+          other standards <ENAMEX TYPE="ORG_DESC">committees</ENAMEX> to ensure cross-database
+          compatibility of common data elements
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. The standard should be generic (able to describe
+          any laboratory's <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data structure)
+          <NUMEX TYPE="CARDINAL">5</NUMEX>. The standard should be extensible. This means that
+          there will need to be a standards <ENAMEX TYPE="ORG_DESC">committee</ENAMEX> that can make
+          changes in the standard over time and that can keep a
+          documented history of modifications in the standard.
+          <NUMEX TYPE="CARDINAL">6</NUMEX>. The standard should be easy to implement. It should
+          be relatively easy for a <ENAMEX TYPE="ORG_DESC">programmer</ENAMEX> to translate any
+          <ENAMEX TYPE="ORGANIZATION">commercial TMA</ENAMEX> dataset into the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> standard (and to
+          reverse the process)
+          <NUMEX TYPE="CARDINAL">7</NUMEX>. The standard should not be a requirement. The
+          <ENAMEX TYPE="ORGANIZATION">committee</ENAMEX> that creates the standard should take no
+          measure to require <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> to implement the
+          standard. Those using the standard would be able to
+          choose that data that is included in their shared
+          <ENAMEX TYPE="ORGANIZATION">datasets</ENAMEX> (e.g. they may choose to withold or encrypt
+          <ENAMEX TYPE="PER_DESC">patient identifiers</ENAMEX>)
+          <NUMEX TYPE="CARDINAL">8</NUMEX>. The standard should have <ENAMEX TYPE="PER_DESC">community</ENAMEX> buy-in.
+          <ENAMEX TYPE="ORGANIZATION">Laboratories</ENAMEX>, commercial <ENAMEX TYPE="ORG_DESC">vendors</ENAMEX>, pathology
+          <ENAMEX TYPE="ORGANIZATION">organizations</ENAMEX>, government <ENAMEX TYPE="ORG_DESC">agencies</ENAMEX>, and other standards
+          <ENAMEX TYPE="ORGANIZATION">committees</ENAMEX> should all have the opportunity to comment on
+          the standards.
+          Subsequent <ENAMEX TYPE="ORG_DESC">workshops</ENAMEX> affirmed the guidelines
+          established in the <NUMEX TYPE="ORDINAL">first</NUMEX> conference, but plans to develop
+          a formal standard (approved by a <ENAMEX TYPE="ORGANIZATION">Standards Organization</ENAMEX>)
+          were abandoned in favor of developing a
+          <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>-supported <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification. The specification
+          would conform to pre-existing standards for creating XML
+          <ENAMEX TYPE="ORGANIZATION">vocabularies</ENAMEX> and well-formed <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> documents. This strategy
+          would produce a new specification as a standard metadata
+          document [see Discussion]. The current draft
+          specification complies with guidelines formulated during
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> workshop, and the <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data structure
+          conform with all subsequent recommendations from workshop
+          <ENAMEX TYPE="GPE_DESC">participants</ENAMEX>. The workshops themselves were composed of
+          <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> from academia, industry and <ENAMEX TYPE="ORG_DESC">government</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">About 75</NUMEX> <ENAMEX TYPE="PER_DESC">people</ENAMEX> were present at each workshop.
+        
+      
+      
+        Results
+        
+          The data structure
+          Every TMA file is an XML file that is divided into <NUMEX TYPE="CARDINAL">4</NUMEX>
+          sections
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. A header section, with data elements that provides
+          basic information about the file (<ENAMEX TYPE="PER_DESC">creator</ENAMEX>, date created,
+          <ENAMEX TYPE="ORGANIZATION">etc.</ENAMEX>). The header elements are taken directly from the
+          <ENAMEX TYPE="ORGANIZATION">Dublin Core</ENAMEX>, a set of specification <ENAMEX TYPE="PER_DESC">elements</ENAMEX> used in
+          <ENAMEX TYPE="PERSON">libraries</ENAMEX> throughout the world to index electronic
+          information files <ENAMEX TYPE="CONTACT_INFO">http://dublincore.</ENAMEX><ENAMEX TYPE="CONTACT_INFO">org</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. A block section, with data elements that describe
+          the TMA block (how many cores, how large are cores, how
+          are the cores arrayed in the block, etc.)
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. A slide section, with data elements that describe
+          the slides prepared from the TMA block (how are the
+          slides stored, how are they identified, etc)
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. A core <ENAMEX TYPE="ORG_DESC">section</ENAMEX> with data elements that describe
+          each of the cores in the TMA block (what case did the
+          core come from, what block from the case was used to make
+          the core, what drill-site in the block was used, what was
+          the diagnosis of the drill-site, what clinical history is
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the core, what demographic information is
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the <ENAMEX TYPE="PER_DESC">patient</ENAMEX> from whom the core was taken,
+          <ENAMEX TYPE="ORGANIZATION">etc.</ENAMEX>). This section is by far the longest section, with
+          well-annotated data for every core in the TMA array.
+        
+        
+          The data elements
+          <ENAMEX TYPE="ORGANIZATION">Common Data Elements</ENAMEX> (CDEs) are well-defined XML
+          metadata tags that can be used to consistenly describe
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in different <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> files. <NUMEX TYPE="CARDINAL">Eighty</NUMEX> <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> were created to
+          describe the kinds of data contained in a TMA file. These
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> elements are listed in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. Each data element is
+          fully described as a set of features conforming to the
+          ISO-<NUMEX TYPE="CARDINAL">11179</NUMEX> standard for meta-data [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . The CDE
+          descriptor file is included as an attachment to this
+          <ENAMEX TYPE="LAW">article</ENAMEX> [see Additional file <NUMEX TYPE="CARDINAL">1</NUMEX>]. The most current
+          descriptor file for the <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX> can be found as a public
+          document at:
+          Additional File 1
+          
+          <ENAMEX TYPE="ORGANIZATION">TMA Common Data Elements HTML</ENAMEX> file of
+          each data element from <ENAMEX TYPE="PRODUCT">Table 3annotated</ENAMEX> with metadata
+          <ENAMEX TYPE="ORGANIZATION">descriptors</ENAMEX> (tma_cde.<ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX>).
+          Click here for file
+          <ENAMEX TYPE="CONTACT_INFO">http://65.222.228.150/jjb/tma_cde.</ENAMEX><ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX>
+          This web address is the <ENAMEX TYPE="ORGANIZATION">Unique Resource</ENAMEX> Identifier
+          (<ENAMEX TYPE="ORGANIZATION">URI</ENAMEX>) for the <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> files that use any of the TMA
+          <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> can refer to the <ENAMEX TYPE="ORGANIZATION">URI</ENAMEX>, ensuring that anyone
+          encountering the <ENAMEX TYPE="ORGANIZATION">CDE</ENAMEX> will understand its intended meaning
+          [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] .
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> example CDEs from the descriptor file are shown.
+          Each <ENAMEX TYPE="ORGANIZATION">CDE</ENAMEX> is followed by a basic set of information as
+          specified in <ENAMEX TYPE="SUBSTANCE">ISO-11179</ENAMEX> that fully describes the <ENAMEX TYPE="ORGANIZATION">CDE</ENAMEX>. TMA
+          files may refer directly to the <ENAMEX TYPE="ORGANIZATION">URL</ENAMEX> as a namespace
+          reference for the <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX>.
+          
+            <ENAMEX TYPE="CONTACT_INFO">slide_test_date</ENAMEX> 
+          
+          Identifier: slide_test_date
+          Version: <NUMEX TYPE="CARDINAL">1.0</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">Registration Authority</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Association for Pathology</ENAMEX>
+          Informatics
+          Language: <ENAMEX TYPE="NATIONALITY">English</ENAMEX> (en)
+          <ENAMEX TYPE="CONTACT_INFO">Obligation: Optional</ENAMEX>
+          Datatype: <ENAMEX TYPE="PERSON">Date</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">YYYY</ENAMEX><ENAMEX TYPE="PRODUCT">-MM</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>)
+          <ENAMEX TYPE="PERSON">Maximum Occurrence</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Unlimited</ENAMEX>
+          Definition: This is the date that the slide was
+          <ENAMEX TYPE="ORGANIZATION">stained</ENAMEX>; it should be expressed in integers as
+          <ENAMEX TYPE="ORGANIZATION">YYYY</ENAMEX><ENAMEX TYPE="PRODUCT">-MM</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>.
+          
+            <ENAMEX TYPE="CONTACT_INFO">slide_test_category</ENAMEX> 
+          
+          Identifier: slide_test_category
+          Version: <NUMEX TYPE="CARDINAL">1.0</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">Registration Authority</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Association for Pathology</ENAMEX>
+          Informatics
+          Language: <ENAMEX TYPE="NATIONALITY">English</ENAMEX> (en)
+          <ENAMEX TYPE="CONTACT_INFO">Obligation: Optional</ENAMEX>
+          Datatype: Character <ENAMEX TYPE="PERSON">String</ENAMEX>
+          <ENAMEX TYPE="PERSON">Maximum Occurrence</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Unlimited</ENAMEX>
+          Definition: This is the type of special study applied
+          to this slide, <ENAMEX TYPE="ANIMAL">e.g. FISH</ENAMEX>,
+          Immunohistochemistry, in situ <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX>, <ENAMEX TYPE="PERSON">BLOT</ENAMEX>, regular
+          <ENAMEX TYPE="PERSON">stain</ENAMEX>, other.
+        
+        
+          Semantic rules for the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange
+          specification
+          <NUMEX TYPE="CARDINAL">Six</NUMEX> semantic rules define the <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Specification</ENAMEX>. The specification refers to <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> listed in
+          <ENAMEX TYPE="CONTACT_INFO">Table 3</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. The TMA file must consist of well-formed <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. Every TMA file must have histo as its root
+          element.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. Every TMA file must have header, tma, block, slide,
+          and core element sections.
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. The tma element is nested under the root element,
+          <ENAMEX TYPE="ORGANIZATION">histo</ENAMEX>. The header and block <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are nested under the
+          tma element. The slide and core elements are nested under
+          the block element but are not nested within <TIMEX TYPE="TIME">each</TIMEX>
+          other.
+          <NUMEX TYPE="CARDINAL">5</NUMEX>. The header elements are the <ENAMEX TYPE="GPE">Dublin</ENAMEX> Core elements
+          and provide general information about the file and the
+          laboratory that produced the file. The header section
+          must be the <NUMEX TYPE="ORDINAL">first</NUMEX> TMA CDE nested under the 'tma'
+          element.
+          <NUMEX TYPE="CARDINAL">6</NUMEX>. <ENAMEX TYPE="PER_DESC">Elements</ENAMEX> that begin with block_, slide_ or core_
+          are nested by the hierarchy contained in their name and
+          separated by underscores.
+          This approach gives the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> <ENAMEX TYPE="PER_DESC">creators</ENAMEX> enormous
+          flexibility while still providing a rich set of metadata
+          and a uniform data structure.
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. The semantics of every <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange file can
+          be entirely specified by <NUMEX TYPE="CARDINAL">six</NUMEX> semantic rules that can be
+          understood by non-<ENAMEX TYPE="PER_DESC">programmers</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> of the specification can add tags of their
+          own creation and can even add arguments to the list of
+          <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX>. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> are free to add any <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> constructs they wish
+          (<ENAMEX TYPE="ORGANIZATION">DTDs</ENAMEX>, <ENAMEX TYPE="GPE">Schemas</ENAMEX>, <ENAMEX TYPE="PERSON">Entities</ENAMEX>, non-parsed data, <ENAMEX TYPE="ORGANIZATION">RDF</ENAMEX>
+          <ENAMEX TYPE="PERSON">references</ENAMEX>, attributes, etc.). Namespace prefixes are
+          allowed.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. The only <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX> (XML tags) required in every TMA
+          document are histo, header, tma, block, slide, and core.
+          There are no data inclusion requirements, so a valid TMA
+          file may consist exclusively of <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> tags.
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. The <NUMEX TYPE="CARDINAL">six</NUMEX> semantic rules are easy to model in
+          validating software implementations. A <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> script
+          (tmavalid.<ENAMEX TYPE="ORGANIZATION">pl</ENAMEX>) for validating <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange files is
+          included as a supplemental attachment with this
+          publication.
+          <NUMEX TYPE="CARDINAL">5</NUMEX>. The <NUMEX TYPE="CARDINAL">six</NUMEX> semantic rules provide enough data
+          structure and metadata to for <ENAMEX TYPE="SUBSTANCE">TMA</ENAMEX> <ENAMEX TYPE="PER_DESC">users</ENAMEX> to design
+          understandable and parsable <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> documents.
+          <NUMEX TYPE="CARDINAL">6</NUMEX>. The <NUMEX TYPE="CARDINAL">six</NUMEX> semantic rules and the <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> can be referred
+          to from <ENAMEX TYPE="ORGANIZATION">URIs</ENAMEX> within the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> documents, so that TMA
+          documents can be self-descriptive.
+        
+        
+          Examples of valid <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange files
+          
+            Example1.xml
+            <histo>
+            <tma>
+            <header>
+            </header>
+            <block>
+            <slide>
+            </slide>
+            <core>
+            </core>
+            </block>
+            </tma>
+            </histo>
+            The specification does not require that <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> tags
+            actually enclose data. Example <TIMEX TYPE="DATE">1</TIMEX>, consisting only of
+            <ENAMEX TYPE="PERSON">tags</ENAMEX>, is a well-formed TMA file. Only the minimal
+            required <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX>, are contained: histo, header, tma,
+            <ENAMEX TYPE="ORGANIZATION">block</ENAMEX>, slide and core. Note that 'histo' is the root
+            element. The <ENAMEX TYPE="ORG_DESC">tma</ENAMEX> file nests under histo. A single TMA
+            file may include several tma tags, allowing a
+            collection of many different TMA data sets in a single
+            document. The <ENAMEX TYPE="FAC">'header'</ENAMEX> section nests under 'tma'.
+            Typically, the <ENAMEX TYPE="FAC">'header'</ENAMEX> section will contain the <ENAMEX TYPE="GPE">Dublin</ENAMEX>
+            Core elements. The header section, when populated by
+            all the <ENAMEX TYPE="GPE">Dublin</ENAMEX> Core header elements, will permit
+            indexing services, <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, <ENAMEX TYPE="ORG_DESC">publishers</ENAMEX>, and anyone
+            examining the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> document, to easily determine the
+            basic identifying information about the file (who made
+            the file, what is the file, when was the file made,
+            where was it made, etc).
+          
+          
+            Example2.xml
+            <histo>
+            <my_own_tag>
+            </my_own_tag>
+            <tma>
+            <header>
+            <font>
+            </font>
+            </header>
+            <block>
+            <slide>
+            </slide>
+            <core>
+            <secret-tag>
+            </secret-tag>
+            </core>
+            <core name="liver">
+            </core>
+            <slide>
+            </slide>
+            </block>
+            </tma>
+            </histo>
+            Example 2 is also valid. <ENAMEX TYPE="LAW">Notice</ENAMEX> that several of the
+            tags do not match <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> found in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. This is
+            permitted. Also, an attribute was added for 'core' a
+            required TMA element. The attribute is not part of the
+            <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification. The <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> validator ignores elements
+            and attributes added by the <ENAMEX TYPE="PER_DESC">user</ENAMEX>.
+          
+          
+            Example3.<ENAMEX TYPE="ORGANIZATION">xml</ENAMEX> (invalid structure)
+            <HISTO>
+            <tma>
+            <block>
+            <header>
+            </header>
+            <slide>
+            </slide>
+            <core>
+            </core>
+            </block>
+            </tma>
+            </HISTO>
+            In <ENAMEX TYPE="WORK_OF_ART">Example 3</ENAMEX>, there are <NUMEX TYPE="CARDINAL">two</NUMEX> errors. The 'HISTO'
+            element is in uppercase. As in all <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX>, elements tags
+            are case sensitive, and the root element, histo, must
+            appear as lowercase. Additionally, the 'header' element
+            is nested under the block element. There are very few
+            <ENAMEX TYPE="ORGANIZATION">nesting</ENAMEX> rules in the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification, but the
+            <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX> requires a separate <ENAMEX TYPE="ORG_DESC">section</ENAMEX> for header
+            and for block. The 'header' tag must be the <NUMEX TYPE="ORDINAL">first</NUMEX> TMA
+            <ENAMEX TYPE="ORGANIZATION">CDE</ENAMEX> following the 'tma' tag. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> may add their own
+            tags that precede the 'header' tag after the 'tma' tag.
+            Non-CDE tags are tags that are not included in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>,
+            and are simply ignored by the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> validator. The block
+            element may contain only block, slide and core
+            <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX>.
+          
+          
+            Example4.xml
+            Example <NUMEX TYPE="CARDINAL">4</NUMEX> illustrates use of the self-describing
+            nesting hierarchy of CDEs taken from <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. In this
+            example, values for several of the tags are added.
+            <histo>
+            <tma>
+            <header>
+            <Title><ENAMEX TYPE="ORGANIZATION">All-Purpose Tissue</ENAMEX>
+            Array</Title>
+            </header>
+            <block>
+            
+            <block_identifier>15</block_identifier>
+            <slide>
+            
+            <slide_identifier><TIMEX TYPE="DATE">5534</TIMEX></slide_identifier>
+            </slide>
+            <core>
+            <core_array-id>22</core_array-id>
+            <core_histo-repository><ENAMEX TYPE="ORGANIZATION">Generic Tissue Bank</ENAMEX>
+            <core_histo-repository_donor-block><NUMEX TYPE="CARDINAL">99945</NUMEX>
+            
+            <core_histo-repository_donor-block_drill-site>78,90
+            
+            <core_histo-repository_donor-block_drill-site_diagnosis>bcc
+            
+            </core_histo-repository_donor-block_drill-site_diagnosis>
+            
+            </core_histo-repository_donor-block_drill-site>
+            </core_histo-repository_donor-block>
+            </core_histo-repository>
+            </core>
+            </block>
+            </tma>
+            </histo>
+            In <ENAMEX TYPE="WORK_OF_ART">Example 4</ENAMEX>, there is a hierarchy of core <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX>, and
+            the order of the hierarchy is specified by underscore
+            <ENAMEX TYPE="PER_DESC">characters</ENAMEX> within <TIMEX TYPE="TIME">each CDE</TIMEX>.
+            When run through the <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> validator script
+            (validtma.<ENAMEX TYPE="ORGANIZATION">pl</ENAMEX>), <ENAMEX TYPE="PRODUCT">Example 4</ENAMEX> produces the following
+            results, consisting of a list of the used tags, a
+            statement that the XML file parsed as a valid TMA file,
+            and an authentication string for the file.
+            Begining to parse <TIMEX TYPE="DATE">ex4</TIMEX>.<ENAMEX TYPE="ORGANIZATION">xml</ENAMEX> now
+            histo
+            tma
+            header
+            <ENAMEX TYPE="LAW">Title</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">block</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">block</ENAMEX>_identifier
+            slide
+            slide_identifier
+            core
+            <ENAMEX TYPE="CONTACT_INFO">core_array-id</ENAMEX>
+            core_histo-repository
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block</ENAMEX>
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block_drill-</ENAMEX>site
+            
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block_drill-site_diagnosis</ENAMEX>
+            Finished. ex4.<ENAMEX TYPE="ORGANIZATION">xml</ENAMEX> is a valid <ENAMEX TYPE="PERSON">Tissue Microarray</ENAMEX>
+            File.
+            The one-way hash of your file is
+            bb0aa66660074cd3322ff339c7a45d47
+            <ENAMEX TYPE="GPE">TMA CDEs</ENAMEX> beginning with block, core, or slide and
+            containing underscore characters contain a
+            self-describing hierarchical XML nesting pattern.
+            
+            
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block_drill-site_diagnosis ,</ENAMEX>
+            nested under
+            
+            
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block_drill-</ENAMEX>site ,
+            nested under
+            
+            <ENAMEX TYPE="CONTACT_INFO">core_histo-repository_donor-block ,</ENAMEX>
+            nested under
+            
+            core_histo-repository , nested
+            under
+            
+              core 
+            
+            This means that once an hierarchical TMA CDE from
+            <ENAMEX TYPE="PRODUCT">Table 3is</ENAMEX> chosen, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> is committed to include the
+            <ENAMEX TYPE="ORGANIZATION">ancestor CDEs</ENAMEX>. In the case of the <ENAMEX TYPE="ORGANIZATION">CDE</ENAMEX>,
+            <ENAMEX TYPE="CONTACT_INFO">core_repository_donor_block_drill-</ENAMEX>site_diagnosis, the
+            ancestors shown above would need to be included in the
+            TMA file with nesting as shown in Example <TIMEX TYPE="DATE">4</TIMEX>. As always,
+            the insertion of <ENAMEX TYPE="PER_DESC">user</ENAMEX>-created elements is ignored by
+            the validator, even when those elements interrupt a
+            nested hierarchy. The <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> script for the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> validator
+            is included as an attachment file with this article
+            [see Additional file <NUMEX TYPE="CARDINAL">2</NUMEX>].
+            Additional File 2
+            
+            <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> <ENAMEX TYPE="PRODUCT">Validator Perl Script</ENAMEX> for
+            <ENAMEX TYPE="ORGANIZATION">validating TMA</ENAMEX> files with the <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">Specification</ENAMEX> (validtma.<ENAMEX TYPE="ORGANIZATION">pl</ENAMEX>).
+            Click here for file
+          
+        
+      
+      
+        Discussion
+        <ENAMEX TYPE="ORGANIZATION">Data Exchange Specifications</ENAMEX> are written so that
+        databases related to a specific data domain may be designed
+        with common data and common data structures. Standards are
+        now available for creating <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> documents [ <ENAMEX TYPE="LAW">6</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX> [ <NUMEX TYPE="CARDINAL">7</NUMEX>
+        ] . <ENAMEX TYPE="ORGANIZATION">Data exchange</ENAMEX> specifications that conform to <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> and
+        <ENAMEX TYPE="GPE">CDE</ENAMEX> standards and receive support from the <ENAMEX TYPE="PER_DESC">user</ENAMEX> community
+        become powerful research devices. The availability of large
+        numbers of <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> files conforming to the data exchange
+        <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX> will permit the inter-laboratory comparison
+        of <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data and the integration of <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data with data from
+        other biological databases. <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> will be able to
+        submit their <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data as supplemental files with their
+        research <ENAMEX TYPE="ORG_DESC">publications</ENAMEX> so that <ENAMEX TYPE="PER_DESC">reviewers</ENAMEX> and <ENAMEX TYPE="PER_DESC">readers</ENAMEX> can
+        examine the original research data. Because the
+        <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX> provides a way to produce a self-describing
+        file, it would be a simple matter to port the data from TMA
+        files into virtually any commercial or open source
+        database.
+        Specifications are only adopted when they fill the needs
+        of a heterogeneous <ENAMEX TYPE="PER_DESC">user community</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . The <ENAMEX TYPE="GPE_DESC">community</ENAMEX> of
+        <ENAMEX TYPE="SUBSTANCE">TMA</ENAMEX> <ENAMEX TYPE="PER_DESC">users</ENAMEX> includes: pathologists, research <ENAMEX TYPE="PER_DESC">scientists</ENAMEX>,
+        informaticians, commercial tissue repositories, and journal
+        <ENAMEX TYPE="PER_DESC">editors</ENAMEX>. In order to develop a set of standards that will
+        appeal to all these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX>
+        specification was developed in a series of open workshops.
+        <NUMEX TYPE="CARDINAL">One</NUMEX> of the early <ENAMEX TYPE="ORG_DESC">concerns</ENAMEX> was that advances in TMA
+        technology would be stifled by a rigid standard containing
+        a list of required <ENAMEX TYPE="ORGANIZATION">Common Data Elements</ENAMEX> and a required data
+        structure. A <NUMEX TYPE="ORDINAL">second</NUMEX> <ENAMEX TYPE="ORG_DESC">concern</ENAMEX> was expressed by <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>
+        who were using proprietary database implementations. These
+        <ENAMEX TYPE="PER_DESC">participants</ENAMEX> wanted the freedom to add [proprietary] data
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">TMA exchange</ENAMEX> documents without violating the
+        <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX>. They also indicated that they required a
+        loose data structure that could be easily re-constructed
+        from their own databases.
+        The most common way of specifying properties of an XML
+        document is through a a <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Data Type Definition</ENAMEX>) or a
+        <ENAMEX TYPE="ORGANIZATION">Schema</ENAMEX> [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] . In fact, the workshops considered several
+        versions of a <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX> without obtaining approval at any of the
+        <ENAMEX TYPE="ORGANIZATION">workshops</ENAMEX>. The <ENAMEX TYPE="ORG_DESC">group</ENAMEX>'s emphasis on flexibility and open
+        design of the specification, particularly the requirement
+        that users be allowed to add their own tags, made writing a
+        DTD difficult. The spectrum of workshop <ENAMEX TYPE="PER_DESC">participants</ENAMEX>, which
+        included pathologists, imaging <ENAMEX TYPE="PER_DESC">experts</ENAMEX>, and tissue <ENAMEX TYPE="ORG_DESC">bankers</ENAMEX>,
+        was not particularly focused on the technicalities of <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX>.
+        We fully expect that <ENAMEX TYPE="PER_DESC">users</ENAMEX> will eventually move toward a
+        <ENAMEX TYPE="ORGANIZATION">DTD</ENAMEX> or schema to support the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification.
+        The current draft of the <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX> specification
+        satisfies user requests for maximum flexibility. With
+        freedom comes responsibility. It is quite possible to
+        design a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data file that conforms to the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data
+        exchange <ENAMEX TYPE="PER_DESC">specification</ENAMEX> but lacks annotational detail. Of
+        the eighty <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX> in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>, <NUMEX TYPE="CARDINAL">only six</NUMEX> are required. A
+        <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> that lacks detailed identifying information for <ENAMEX TYPE="FAC_DESC">blocks</ENAMEX>,
+        slides, cores and images may pass inspection by the
+        validator, but it would be of little scientific value.
+        Similarly, a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> that lacks a full set of header
+        information (<ENAMEX TYPE="ORGANIZATION">Title</ENAMEX>, <ENAMEX TYPE="PERSON">Creator</ENAMEX>, Subject and <ENAMEX TYPE="PERSON">Keywords</ENAMEX>,
+        <ENAMEX TYPE="PERSON">Description</ENAMEX>, etc.) cannot be sensibly indexed or shared.
+        Depending on comments from implementers, the specification
+        may need to expand the number of required <ENAMEX TYPE="ORGANIZATION">CDEs</ENAMEX>.
+        Those who wish to use the specification will need short
+        programs that map their pre-existing database elements over
+        to the equivalent data elements of the <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">specification</ENAMEX>. The programs will need to adhere to the
+        general XML structure described in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. For elements
+        with no corresponding listing in the specification,
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> will be expected to create their own metadata
+        tags for their <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> files. It is hoped that <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> files will
+        soon be available to the public as supplemental attachments
+        to journal submissions. This means that <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> will
+        need to exclude identifying information from shared TMA
+        files. These considerations place additional burdens on
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange Specification</ENAMEX> provides
+        software <ENAMEX TYPE="ORG_DESC">programmers</ENAMEX> with a promising new area for
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>.
+      
+      
+        Conclusion
+        The <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification is now available in
+        a draft form with <ENAMEX TYPE="PER_DESC">community</ENAMEX>-approved <ENAMEX TYPE="ORGANIZATION">Common Data Elements</ENAMEX>
+        and <ENAMEX TYPE="PER_DESC">community</ENAMEX>-approved general file format and structure.
+        The specification can be freely used by the scientific
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>. It is designed to be independent of the source
+        of the data, including the source of the tissue, the
+        experimental protocol, the imaging <ENAMEX TYPE="ORG_DESC">modality</ENAMEX>, the data
+        capture method, and the schema for internal storage. The
+        metadata file of fully described <ENAMEX TYPE="ORGANIZATION">TMA CDEs</ENAMEX> (tma_cde.<ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX>) and
+        a <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> implementation of the validator (validtma.<ENAMEX TYPE="ORGANIZATION">pl</ENAMEX>) are
+        attached as supplemental files with this article. Efforts
+        sponsored by the <ENAMEX TYPE="ORGANIZATION">Association for Pathology Informatics</ENAMEX> to
+        establish a <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification are expected to
+        continue for <TIMEX TYPE="DATE">several more years</TIMEX>. The interested <ENAMEX TYPE="PER_DESC">public</ENAMEX> is
+        invited to participate in these efforts.
+      
+      
+        <ENAMEX TYPE="PERSON">Author Contributions</ENAMEX>
+        <ENAMEX TYPE="PER_DESC">Dr.</ENAMEX> <ENAMEX TYPE="PERSON">Berman</ENAMEX> wrote the first draft of the article and
+        wrote the <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> validator for the current <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> specification
+        draft, chairs the <ENAMEX TYPE="ORGANIZATION">API Technical Standards Committee</ENAMEX> that
+        launched the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification and chaired
+        the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="ORGANIZATION">TMA Data Exchange</ENAMEX> discussion held at the <ENAMEX TYPE="ORGANIZATION">U of</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Michigan AIMCL</ENAMEX> meeting, <TIMEX TYPE="DATE">May 30, 2002</TIMEX>. <ENAMEX TYPE="PER_DESC">Dr.</ENAMEX> <ENAMEX TYPE="PERSON">Mary Edgerton</ENAMEX>
+        wrote the first draft of <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> common data elements, helped
+        design the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data structure. <ENAMEX TYPE="PER_DESC">Dr.</ENAMEX> <ENAMEX TYPE="PERSON">Edgerton</ENAMEX> was Principal
+        <ENAMEX TYPE="PER_DESC">Investigator</ENAMEX> for the <ENAMEX TYPE="ORGANIZATION">National Cancer Institute</ENAMEX> grant R13
+        CA094453, supporting the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> workshops, and chaired three
+        of the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification workshops. Dr.
+        <ENAMEX TYPE="PERSON">Friedman</ENAMEX> is the current <ENAMEX TYPE="PER_DESC">President</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">API</ENAMEX> and conceived the
+        idea of a series of community-based workshops to further
+        <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> informatics. <ENAMEX TYPE="PER_DESC">Dr.</ENAMEX> <ENAMEX TYPE="PERSON">Friedman</ENAMEX> helped plan, organize and
+        arrange funding for the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> informatics workshops. Dr.
+        <ENAMEX TYPE="PERSON">Friedman</ENAMEX> has reviewed and corrected all drafts of the
+        <ENAMEX TYPE="LAW">article</ENAMEX>.
+        None of the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> have any financial interest in this
+        <ENAMEX TYPE="LAW">article</ENAMEX> or in the <ENAMEX TYPE="ORGANIZATION">TMA</ENAMEX> data exchange specification.
+      
+    
+  

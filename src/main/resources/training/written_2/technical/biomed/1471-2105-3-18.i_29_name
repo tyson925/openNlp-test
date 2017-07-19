@@ -1,0 +1,2236 @@
+
+  
+    
+      
+        Background
+        There are a growing number of <ENAMEX TYPE="SUBSTANCE">RNA gene</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        motifs [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . Many (though not all) RNAs conserve a
+        base-paired <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure. Computational analyses
+        of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sequence <ENAMEX TYPE="PER_DESC">families</ENAMEX> are more powerful if they take
+        into account both primary sequence and secondary structure
+        consensus [ <NUMEX TYPE="CARDINAL">3 4</NUMEX> ] .
+        Some excellent approaches have been developed for
+        database searching with <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure consensus
+        patterns. Exact- and approximate-match pattern searches
+        (analogous to <ENAMEX TYPE="ORGANIZATION">PROSITE</ENAMEX> patterns for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>) have been
+        extended to allow patterns to specify long-range base
+        pairing constraints [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] . In <NUMEX TYPE="CARDINAL">several</NUMEX> cases, specialized
+        programs have been developed to recognize specific <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        structures [ <ENAMEX TYPE="LAW">4</ENAMEX> ] - for example, programs exist for
+        detecting transfer <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] , <ENAMEX TYPE="ORG_DESC">group</ENAMEX> I catalytic
+        <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] , and small nucleolar <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> [ <NUMEX TYPE="CARDINAL">11 12</NUMEX> ] . All
+        of these approaches, though powerful, lack generality, and
+        they require <ENAMEX TYPE="PER_DESC">expert</ENAMEX> knowledge about each particular <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        family of interest.
+        In primary sequence analysis, the most useful analysis
+        techniques are general primary sequence alignment
+        algorithms with probabilistically based scoring systems -
+        for example, the BLAST [ <TIMEX TYPE="DATE">13</TIMEX> ] , <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX> ] , or CLUSTALW
+        [ <TIMEX TYPE="DATE">15</TIMEX> ] <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX>, and the <ENAMEX TYPE="PRODUCT">PAM</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] or BLOSUM [ <TIMEX TYPE="DATE">17</TIMEX> ]
+        score matrices. Unlike specialized programs, a general
+        alignment algorithm can be applied to find homologs of any
+        query sequence(s). Unlike pattern searches, which give
+        yes/no answers for whether a candidate sequence is a match,
+        a scoring system gives a meaningful score that allows
+        ranking <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> hits by their statistical significance.
+        It is of interest to develop general alignment algorithms
+        for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary <ENAMEX TYPE="ORG_DESC">structures</ENAMEX>.
+        The problem I consider here is as follows. I am given a
+        multiple alignment of an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sequence <ENAMEX TYPE="PER_DESC">family</ENAMEX> for which I
+        know the consensus secondary structure. I want to search a
+        sequence database for homologs that significantly match the
+        sequence 
+        and structure of my query. The
+        sequence analysis analogue is the use of profile hidden
+        <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> (profile <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX>) to model multiple alignments
+        of <ENAMEX TYPE="SUBSTANCE">conserved protein domains</ENAMEX>, and to discover new
+        <ENAMEX TYPE="ORGANIZATION">homologues</ENAMEX> in sequence databases [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] . For instance,
+        if we had an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structure equivalent of the <ENAMEX TYPE="ORGANIZATION">HMMER</ENAMEX> profile
+        HMM program suite <ENAMEX TYPE="CONTACT_INFO">http://hmmer.</ENAMEX><ENAMEX TYPE="ORGANIZATION">wustl</ENAMEX>.edu/it would be
+        possible to develop and efficiently maintain databases of
+        conserved <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> and <ENAMEX TYPE="DISEASE">multiple alignments</ENAMEX>, analogous
+        to the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> or SMART databases of <ENAMEX TYPE="SUBSTANCE">conserved protein</ENAMEX> domains
+        [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] .
+        Stochastic context free grammar (SCFG) algorithms
+        provide a general approach to <ENAMEX TYPE="SUBSTANCE">RNA structure alignment</ENAMEX> [ <NUMEX TYPE="CARDINAL">22</NUMEX>
+        <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] . SCFGs allow the strong pairwise residue
+        <ENAMEX TYPE="ORGANIZATION">correlations</ENAMEX> in non-pseudoknotted <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure
+        to be taken into account in <ENAMEX TYPE="SUBSTANCE">RNA alignments</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">SCFGs</ENAMEX> can be
+        aligned to sequences using a dynamic programming algorithm
+        that guarantees finding a mathematically optimal solution
+        in polynomial time. <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> alignment algorithms can be
+        thought of as an extension of sequence alignment algorithms
+        (particularly those with fully probabilistic, hidden Markov
+        model formulations) into an additional dimension necessary
+        to deal with <ENAMEX TYPE="SUBSTANCE">2D RNA</ENAMEX> secondary structure.
+        While <ENAMEX TYPE="ORGANIZATION">SCFGs</ENAMEX> provide a natural mathematical framework for
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure alignment problems, <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> algorithms
+        have high computational complexity that has impeded their
+        practical application. <ENAMEX TYPE="GPE">Optimal SCFG</ENAMEX>-based structural
+        alignment of an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> to a sequence costs 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 3</ENAMEX>) memory and 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 4</ENAMEX>) time for a sequence of length 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, compared to 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 2</ENAMEX>) memory and time for sequence
+        alignment algorithms. (<ENAMEX TYPE="ORGANIZATION">Corpet</ENAMEX> and <ENAMEX TYPE="PERSON">Michot</ENAMEX> described a
+        program that implements a different general dynamic
+        programming algorithm for <ENAMEX TYPE="SUBSTANCE">RNA alignment</ENAMEX>; their algorithm
+        solves the same problem but even less efficiently,
+        requiring 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 4</ENAMEX>) memory and 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 5</ENAMEX>) time [ <TIMEX TYPE="DATE">25</TIMEX> ] .) <ENAMEX TYPE="GPE">SCFG</ENAMEX>-based
+        alignments of small structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX> are feasible. Using my
+        COVE software
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">genetics</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">wustl</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/eddy/</ENAMEX>software<NUMEX TYPE="MONEY">#cove</NUMEX>, transfer
+        <ENAMEX TYPE="SUBSTANCE">RNA alignments</ENAMEX> (<NUMEX TYPE="MONEY">~75 nucleotides</NUMEX>) take <NUMEX TYPE="CARDINAL">about 0.2</NUMEX> cpu second
+        and <ENAMEX TYPE="PRODUCT">3 Mb</ENAMEX> of memory. Most <ENAMEX TYPE="ORG_DESC">genome centers</ENAMEX> now use an
+        <ENAMEX TYPE="GPE">COVE</ENAMEX>-based search program, <ENAMEX TYPE="PRODUCT">tRNAscan-SE</ENAMEX>, for annotating
+        transfer <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] . However, many larger <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> of
+        interest are OUTSIDE the capabilities of the standard SCFG
+        alignment algorithm. Alignment of a small subunit (SSU)
+        <ENAMEX TYPE="SUBSTANCE">ribosomal RNA sequence</ENAMEX> to the <ENAMEX TYPE="ORGANIZATION">SSU</ENAMEX> rRNA consensus structure
+        would take <NUMEX TYPE="CARDINAL">about 23</NUMEX> <ENAMEX TYPE="ORGANIZATION">GB of RAM</ENAMEX> and <TIMEX TYPE="TIME">an hour of CPU time</TIMEX>.
+        Applying SCFG methods to RNAs this large has required
+        clever heuristics, such as using a precalculation of
+        <ENAMEX TYPE="PERSON">confidently</ENAMEX> predicted regions of primary sequence alignment
+        to strongly constrain which parts of the <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> dynamic
+        programming matrix need to be calculated [ <TIMEX TYPE="DATE">26</TIMEX> ] . The steep
+        memory requirement remains a significant barrier to the
+        practicality of <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> algorithms.
+        <ENAMEX TYPE="CONTACT_INFO">Notredame</ENAMEX> 
+        <ENAMEX TYPE="PERSON">et al.</ENAMEX> pointed specifically to this
+        problem [ <TIMEX TYPE="DATE">27</TIMEX> ] . They described <ENAMEX TYPE="ORGANIZATION">RAGA</ENAMEX>, a program that uses a
+        genetic algorithm (<ENAMEX TYPE="GPE">GA</ENAMEX>) to optimize a pairwise <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> alignment
+        using an objective function that includes base pairing
+        terms. Because <ENAMEX TYPE="ORGANIZATION">GAs</ENAMEX> have an <ENAMEX TYPE="PERSON">O</ENAMEX>( 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ) memory requirement, <ENAMEX TYPE="ORGANIZATION">RAGA</ENAMEX> can find
+        reasonable solutions for large <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> alignment problems,
+        including <ENAMEX TYPE="SUBSTANCE">ribosomal RNA alignments</ENAMEX>. A different
+        memory-efficient approach has also been described [ <NUMEX TYPE="CARDINAL">28 29</NUMEX> ]
+        . However, both approaches are approximate and cannot
+        guarantee a mathematically optimal solution, in contrast to
+        the (mathematically) optimal but more expensive dynamic
+        programming approaches.
+        Here, I introduce a dynamic programming solution to the
+        problem of structural <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> of large <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>. The central
+        idea is a divide and conquer strategy. For linear sequence
+        alignment, a divide and conquer algorithm was introduced by
+        <ENAMEX TYPE="ORGANIZATION">Hirschberg</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] , an algorithm known in the computational
+        biology community as the <ENAMEX TYPE="ORGANIZATION">Myers/Miller</ENAMEX> <ENAMEX TYPE="SUBSTANCE">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+        (Ironically, at the time, dynamic programming methods for
+        optimal sequence alignment were well known, but were
+        considered impractical on <TIMEX TYPE="DATE">1970</TIMEX>'s era computers because of
+        the "extreme" 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 2</ENAMEX>) memory requirement.)
+        <ENAMEX TYPE="ORGANIZATION">Myers/Miller</ENAMEX> reduces the memory complexity of a dynamic
+        programming sequence alignment algorithm from 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N 2</ENAMEX>) to 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ), at the cost of a roughly
+        <NUMEX TYPE="CARDINAL">two</NUMEX>-fold increase in <ENAMEX TYPE="GPE">CPU</ENAMEX> time. Here I show that a divide
+        and conquer strategy can also be applied to the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        structural alignment problem, greatly reducing the memory
+        requirement of <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> alignments and making optimal
+        structural <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> of large RNAs possible.
+        I will strictly be dealing with the problem of aligning
+        a target sequence of unknown secondary structure to a query
+        of known <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. By "secondary structure" I mean
+        <ENAMEX TYPE="ORGANIZATION">nested</ENAMEX> (nonpseudoknotted) <ENAMEX TYPE="SUBSTANCE">pairwise RNA</ENAMEX> secondary structure
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>, primarily <ENAMEX TYPE="PERSON">Watson</ENAMEX>-<ENAMEX TYPE="NATIONALITY">Crick</ENAMEX> base pairs but also
+        permitting noncanonical base pairs. This <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structural
+        alignment problem is different from the problem of aligning
+        <NUMEX TYPE="CARDINAL">two</NUMEX> known <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> together [ <TIMEX TYPE="DATE">32</TIMEX> ] , and
+        from the problem of aligning <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sequences of unknown
+        structure together under a secondary structure-aware
+        <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> system [ <NUMEX TYPE="CARDINAL">33 34 35 36 37</NUMEX> ] .
+      
+      
+        Algorithm
+        
+          Prelude: the simpler case of sequence
+          alignment
+          The essential concepts of a divide and conquer
+          alignment algorithm are most easily understood for the
+          case of linear sequence alignment [ <NUMEX TYPE="CARDINAL">30 31</NUMEX> ] .
+          Dynamic programming (DP) algorithms for sequence
+          <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> fill in an 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">M DP</ENAMEX> matrix of scores 
+          F(i,j) for <NUMEX TYPE="CARDINAL">two</NUMEX> sequences of lengths
+          
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> < 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) [ <NUMEX TYPE="CARDINAL">38 39</NUMEX> ] . Each score 
+          F(i,j) is the score of the optimal
+          alignment of prefix 
+          x 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> .. 
+          x 
+          
+            i 
+           of <NUMEX TYPE="CARDINAL">one</NUMEX> sequence to prefix 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> .. 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           of the other. These scores are calculated
+          iteratively, e.g. for global (<ENAMEX TYPE="ORGANIZATION">Needleman/Wunsch</ENAMEX>)
+          alignment:
+          
+          At the end, 
+          F(<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>) contains the score of the
+          optimal alignment. The alignment itself is recovered by
+          tracing the individual optimal steps backwards through
+          the matrix, starting from cell ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ). The algorithm is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX>(NM) in both time and memory.
+          If we are only interested in the score, not the
+          alignment itself, the whole 
+          <ENAMEX TYPE="PRODUCT">F matrix</ENAMEX> does not have to be kept
+          in memory. The iterative calculation only depends on the
+          current and previous row of the matrix. Keeping two rows
+          in memory suffices (in fact, a compulsively efficient
+          implementation can get away with 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> cells). A score-only
+          calculation can be done in 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ) space.
+          The fill stage of <ENAMEX TYPE="ORGANIZATION">DP</ENAMEX> alignment algorithms may be run
+          either forwards and backwards. We can just as easily
+          calculate the optimal score 
+          B(i, j) of the best alignment of
+          the 
+          suffix i + <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> of sequence <NUMEX TYPE="CARDINAL">1</NUMEX> to the suffix 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> + <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> of sequence <NUMEX TYPE="CARDINAL">2</NUMEX>, until <NUMEX TYPE="CARDINAL">one</NUMEX> obtains
+          B(<NUMEX TYPE="MONEY">0,0</NUMEX>), the overall optimal score - the same number as 
+          F(<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">M</ENAMEX>). 
+          The sum of 
+          F(i,j) and 
+          B(i,j) at any <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> in the optimal
+          path through the <ENAMEX TYPE="ORGANIZATION">DP matrix</ENAMEX> is also the optimal overall
+          alignment score. More generally, 
+          F(i,j) + B(i,j) at any <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> ( 
+          i,j ) is the score of the best
+          alignment that uses that <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>. Therefore, since we know
+          the optimal alignment must pass through any given row 
+          i somewhere, we can pick some row 
+          i in the middle of sequence 
+          x, run the forward calculation to 
+          i to obtain row 
+          F(i), run the backwards calculation
+          back to 
+          i to get row 
+          B(i), and then find argmax 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           
+          F ( 
+          i , 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> )+ 
+          B ( 
+          i , 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> ). Now I know the optimal
+          <ENAMEX TYPE="PERSON">alignment</ENAMEX> passes through <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> ( 
+          i,j ). (For clarity, I am leaving
+          out details of how indels and local <ENAMEX TYPE="PER_DESC">alignments</ENAMEX> are
+          handled.)
+          This divides the alignment into <NUMEX TYPE="CARDINAL">two</NUMEX> smaller alignment
+          problems, and these smaller problems can themselves be
+          subdivided by the same trick. Thus, the complete optimal
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> can be found by a recursive series of split
+          point calculations. Although this seems laborious - each
+          calculation is giving us only a single point in the
+          alignment - if we choose our split row 
+          i to be in the middle, the size of
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> smaller DP problems is decreased by <NUMEX TYPE="CARDINAL">about 4</NUMEX>-fold
+          at each split. A complete alignment thus costs only about
+          times as much CPU time as doing the alignment in a single
+          DP matrix calculation, but the algorithm is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ) in memory.
+          A standard dynamic programming alignment algorithm for
+          <ENAMEX TYPE="ORGANIZATION">SCFGs</ENAMEX> is the <ENAMEX TYPE="FAC">Cocke-Younger-Kasami</ENAMEX> (CYK) algorithm, which
+          finds an optimal parse <ENAMEX TYPE="PLANT">tree</ENAMEX> (e.g. alignment) for a model
+          and a sequence [ <NUMEX TYPE="CARDINAL">24 40 41 42</NUMEX> ] . (<ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> is usually
+          described in the literature as a dynamic programming
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> algorithm for nonstochastic <ENAMEX TYPE="ORGANIZATION">CFGs</ENAMEX> in Chomsky
+          normal form, rather than as a dynamic programming parsing
+          algorithm for <ENAMEX TYPE="ORGANIZATION">SCFGs</ENAMEX> in any form. The use of the name
+          "<ENAMEX TYPE="WORK_OF_ART">CYK</ENAMEX>" here is therefore a little imprecise [ <TIMEX TYPE="DATE">24</TIMEX> ] .) CYK
+          can be run in a memory-saving "score only" mode. The DP
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> can also be filled in two opposite
+          <ENAMEX TYPE="ORGANIZATION">directions</ENAMEX> - either "inside" or "outside", analogous to
+          forward and backward DP matrix fills for linear sequence
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>. I will refer to these algorithms as <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/inside
+          and <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/outside (or just inside and outside), but <ENAMEX TYPE="PER_DESC">readers</ENAMEX>
+          familiar with <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> algorithms should not confuse them
+          with the SCFG Inside and <ENAMEX TYPE="ORGANIZATION">Outside</ENAMEX> <ENAMEX TYPE="ORG_DESC">algorithms</ENAMEX> [ <NUMEX TYPE="CARDINAL">43 44</NUMEX> ]
+          which sum over all possible parse <ENAMEX TYPE="PLANT">trees</ENAMEX> rather than
+          finding one optimal parse <ENAMEX TYPE="PLANT">tree</ENAMEX>. I am always talking about
+          the <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> algorithm in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, and by "inside" and
+          "outside" I am only referring generically to the
+          direction of the CYK DP calculation.
+          The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside and <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/outside <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> are not as
+          nicely symmetrical as the forward and backward <ENAMEX TYPE="ORGANIZATION">DP</ENAMEX> fills
+          are in sequence alignment algorithms. The splitting
+          procedure that one obtains does not generate identical
+          types of subproblems, so the divide and conquer procedure
+          for <ENAMEX TYPE="GPE">SCFG</ENAMEX>-based <ENAMEX TYPE="SUBSTANCE">RNA alignment</ENAMEX> is not as obvious.
+        
+        
+          Definition and construction of a covariance
+          model
+          
+            Definition of a stochastic context free
+            grammar
+            A stochastic context free grammar (SCFG) consists of
+            the following:
+            • 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> different nonterminals (here
+            called 
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> ). I will use capital
+            letters to refer to specific nonterminals; 
+            <ENAMEX TYPE="PERSON">V</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> will be used to refer
+            generically to unspecified nonterminals.
+            • 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> different terminal symbols
+            (e.g. the observable alphabet, a,c,<ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,u for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>). I will
+            use small letters 
+            a, b to refer generically to
+            terminal symbols.
+            • a number of 
+            production rules of the form: 
+            <ENAMEX TYPE="PRODUCT">V → γ</ENAMEX>, where γ can be any string
+            of nonterminal and/or terminal symbols, including (as a
+            special case) the empty string ε.
+            • Each production rule is associated with a
+            <ENAMEX TYPE="PERSON">probability</ENAMEX>, such that the sum of the production
+            probabilities for any given nonterminal 
+            <ENAMEX TYPE="PERSON">V</ENAMEX> is equal to <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          
+          
+            <ENAMEX TYPE="GPE">SCFG</ENAMEX> productions allowed in covariance
+            models
+            A <ENAMEX TYPE="PRODUCT_DESC">covariance model</ENAMEX> is a specific repetitive "profile
+            <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX>" architecture consisting of <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of model states
+            that are associated with base pairs and single-stranded
+            positions in an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure consensus. A
+            <ENAMEX TYPE="ORGANIZATION">covariance</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> has <NUMEX TYPE="CARDINAL">seven</NUMEX> types of <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and
+            production rules (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+            Each overall production probability is the
+            independent product of an emission probability 
+            e 
+            
+              v 
+             and a transition probability 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             , both of which are position-dependent parameters
+            that depend on the state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> (analogous to hidden Markov
+            models). For example, a particular <ENAMEX TYPE="PER_DESC">pair</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">P</ENAMEX>) state 
+            v produces <NUMEX TYPE="CARDINAL">two</NUMEX> correlated letters
+            
+            a and 
+            b (e.g. one of <NUMEX TYPE="CARDINAL">16</NUMEX> possible base
+            <ENAMEX TYPE="ORGANIZATION">pairs</ENAMEX>) with probability 
+            e 
+            
+              v 
+             ( 
+            a , 
+            b ) and transits to one of
+            several possible new states 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> of various types with
+            probability 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> ). A bifurcation (<ENAMEX TYPE="ORGANIZATION">B</ENAMEX>) state
+            splits into <NUMEX TYPE="CARDINAL">two</NUMEX> new start ( 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> ) <ENAMEX TYPE="GPE_DESC">states</ENAMEX> with probability 1.
+            The E <ENAMEX TYPE="GPE_DESC">state</ENAMEX> is a special case ε production that
+            terminates a derivation.
+            A <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> consists of many <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of these <NUMEX TYPE="CARDINAL">seven</NUMEX> basic
+            types, each with its own emission and transition
+            probability distributions, and its own set of states
+            that it can transition to. Consensus base pairs will be
+            modeled by <ENAMEX TYPE="LAW">P</ENAMEX> states, consensus single stranded residues
+            by <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> and <ENAMEX TYPE="NATIONALITY">R</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, insertions relative to the consensus
+            by more L and <ENAMEX TYPE="NATIONALITY">R</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, deletions relative to consensus
+            by <ENAMEX TYPE="NATIONALITY">D</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, and the branching topology of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+            secondary structure by B, <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>, and E <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. The
+            procedure for starting from an input multiple alignment
+            and determining how many <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, what types of <ENAMEX TYPE="GPE_DESC">states</ENAMEX>,
+            and how they are interconnected by transition
+            <ENAMEX TYPE="PERSON">probabilities</ENAMEX> is described next.
+          
+          
+            From consensus structural alignment to guide
+            tree
+            Figure 1shows an example input file: a multiple
+            sequence alignment of homologous <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, with a line
+            describing the consensus <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure. The
+            <NUMEX TYPE="ORDINAL">first</NUMEX> step of building a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> is to produce a binary 
+            <ENAMEX TYPE="PLANT">guide tree</ENAMEX> of <ENAMEX TYPE="PER_DESC">nodes</ENAMEX> representing
+            the consensus secondary structure. The <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree is a
+            parse <ENAMEX TYPE="PLANT">tree</ENAMEX> for the consensus structure, with nodes as
+            <ENAMEX TYPE="ORGANIZATION">nonterminals</ENAMEX> and alignment columns as <ENAMEX TYPE="FAC_DESC">terminals</ENAMEX>.
+            The guide <ENAMEX TYPE="PLANT">tree</ENAMEX> has <NUMEX TYPE="CARDINAL">eight</NUMEX> types of nodes (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+            <NUMEX TYPE="CARDINAL">2</NUMEX>).
+            These consensus node types correspond closely with a
+            <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>'s final state <ENAMEX TYPE="PER_DESC">types</ENAMEX>. Each <ENAMEX TYPE="PER_DESC">node</ENAMEX> will eventually
+            contain <NUMEX TYPE="CARDINAL">one or more</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. The <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree deals with
+            the consensus structure. For <ENAMEX TYPE="PER_DESC">individual</ENAMEX> sequences, we
+            will need to deal with insertions and deletions with
+            respect to this consensus. The <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree is the
+            skeleton on which we will organize the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>. For example,
+            a <ENAMEX TYPE="ORGANIZATION">MATP</ENAMEX> node will contain a <ENAMEX TYPE="GPE">P-type</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> to model a
+            consensus base <ENAMEX TYPE="PER_DESC">pair</ENAMEX>; but it will also contain several
+            other <ENAMEX TYPE="GPE_DESC">states</ENAMEX> to model infrequent insertions and
+            deletions at or adjacent to this <ENAMEX TYPE="PER_DESC">pair</ENAMEX>.
+            The input alignment is first used to construct a
+            consensus secondary structure (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>) that defines
+            which aligned columns will be ignored as non-consensus
+            (and later modeled as insertions relative to the
+            consensus), and which consensus alignment columns are
+            base-paired to each other. Here I assume that both the
+            structural <ENAMEX TYPE="SUBSTANCE">annotation</ENAMEX> and the labeling of insert versus
+            consensus columns is given in the input file, as shown
+            in the line marked "[structure]" in the alignment in
+            Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Alternatively, automatic methods might be
+            employed. A consensus <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> could be predicted from
+            comparative analysis of the alignment [ <NUMEX TYPE="CARDINAL">22 45 46</NUMEX> ] .
+            The consensus columns could be chosen as those columns
+            with less than a certain fraction of gap symbols, or by
+            a maximum likelihood criterion, as is done for profile
+            <ENAMEX TYPE="GPE">HMM</ENAMEX> construction [ <NUMEX TYPE="CARDINAL">18 24</NUMEX> ] .
+            Given the consensus structure, consensus base pairs
+            are assigned to <ENAMEX TYPE="ORGANIZATION">MATP</ENAMEX> nodes and consensus unpaired
+            columns are assigned to <ENAMEX TYPE="ORGANIZATION">MATL</ENAMEX> or MATR nodes. One ROOT
+            <ENAMEX TYPE="ORGANIZATION">node</ENAMEX> is used at the <ENAMEX TYPE="PER_DESC">head</ENAMEX> of the <ENAMEX TYPE="PLANT">tree</ENAMEX>. Multifurcation
+            <ENAMEX TYPE="PERSON">loops</ENAMEX> and/or multiple stems are dealt with by assigning
+            <NUMEX TYPE="CARDINAL">one</NUMEX> or more BIF nodes that <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> to subtrees starting
+            with <ENAMEX TYPE="ORGANIZATION">BEGL</ENAMEX> or BEGR <ENAMEX TYPE="PER_DESC">head</ENAMEX> nodes. (<ENAMEX TYPE="ORGANIZATION">ROOT</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">BEGL</ENAMEX>, and BEGR
+            start nodes are labeled differently because they will
+            be expanded to different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="GPE_DESC">states</ENAMEX>; this has to
+            do with avoiding ambiguous parse <ENAMEX TYPE="PLANT">trees</ENAMEX> for individual
+            sequences, as described below.) Alignment columns that
+            are considered to be insertions relative to the
+            consensus <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> are ignored at this stage.
+            In general there will be more than <NUMEX TYPE="CARDINAL">one</NUMEX> possible
+            <ENAMEX TYPE="PLANT">guide tree</ENAMEX> for any given consensus structure. Almost
+            all of this ambiguity is eliminated by <TIMEX TYPE="TIME">three</TIMEX>
+            <ENAMEX TYPE="PERSON">conventions</ENAMEX>: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">MATL</ENAMEX> nodes are always used instead of
+            <ENAMEX TYPE="ORGANIZATION">MATR</ENAMEX> nodes where possible, for instance in hairpin
+            loops; (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) in describing interior loops, <ENAMEX TYPE="ORGANIZATION">MATL</ENAMEX> nodes are
+            used before <ENAMEX TYPE="ORGANIZATION">MATR</ENAMEX> nodes; and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">BIF</ENAMEX> nodes are only
+            invoked where necessary to explain branching secondary
+            structure stems (as opposed to unnecessarily
+            <ENAMEX TYPE="ORGANIZATION">bifurcating</ENAMEX> in single stranded sequence). <NUMEX TYPE="CARDINAL">One</NUMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> of
+            <ENAMEX TYPE="PERSON">ambiguity</ENAMEX> remains. In invoking a bifurcation to explain
+            alignment columns 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PRODUCT">j</ENAMEX> by <NUMEX TYPE="CARDINAL">two</NUMEX> substructures on
+            columns 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">k</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+            <ENAMEX TYPE="PERSON">j</ENAMEX>, there will be more than one
+            possible choice of 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> if 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PERSON">j</ENAMEX> is a multifurcation loop
+            containing <NUMEX TYPE="CARDINAL">three</NUMEX> or more stems. The choice of 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> impacts the performance of the
+            divide and conquer algorithm; for optimal time
+            performance, we will want bifurcations to split into
+            <NUMEX TYPE="CARDINAL">roughly</NUMEX> equal sized alignment problems, so I choose the
+            
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> that makes 
+            <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">k</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> as close to the same length as
+            possible.
+            The result of this procedure is the guide <ENAMEX TYPE="PLANT">tree</ENAMEX>. The
+            nodes of the guide <ENAMEX TYPE="PLANT">tree</ENAMEX> are numbered in preorder
+            <ENAMEX TYPE="ORGANIZATION">traversal</ENAMEX> (e.g. a recursion of "number the current
+            node, visit its left <ENAMEX TYPE="PER_DESC">child</ENAMEX>, visit its right <ENAMEX TYPE="PER_DESC">child</ENAMEX>":
+            thus parent <ENAMEX TYPE="ORG_DESC">nodes</ENAMEX> always have lower indices than their
+            <ENAMEX TYPE="PER_DESC">children</ENAMEX>). The <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree corresponding to the input
+            multiple alignment in Figure 1is shown in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          
+          
+            From guide <ENAMEX TYPE="PLANT">tree</ENAMEX> to covariance model
+            A <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> must deal with insertions and deletions in
+            individual sequences relative to the consensus
+            structure. For example, for a consensus base <ENAMEX TYPE="PER_DESC">pair</ENAMEX>,
+            either <ENAMEX TYPE="PER_DESC">partner</ENAMEX> may be deleted leaving a single unpaired
+            <ENAMEX TYPE="PERSON">residue</ENAMEX>, or the <ENAMEX TYPE="PER_DESC">pair</ENAMEX> may be entirely deleted;
+            additionally, there may be inserted nonconsensus
+            residues between this <ENAMEX TYPE="PER_DESC">pair</ENAMEX> and the next <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in the
+            stem. Accordingly, each node in the master tree is
+            expanded into one or more 
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> as follows
+            (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>)
+            Here we distinguish between consensus ("<ENAMEX TYPE="ORGANIZATION">M</ENAMEX>", for
+            "match") <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and insert ("I") <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">ML</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">IL</ENAMEX>, for
+            example, are both L type <ENAMEX TYPE="GPE_DESC">states</ENAMEX> with L type
+            <ENAMEX TYPE="ORGANIZATION">productions</ENAMEX>, but they will have slightly different
+            <ENAMEX TYPE="ORGANIZATION">properties</ENAMEX>, as described below.
+            The <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are grouped into a 
+            split set of <NUMEX TYPE="CARDINAL">1</NUMEX>-<NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> (shown in
+            <ENAMEX TYPE="ORGANIZATION">brackets</ENAMEX> above) and an 
+            insert set of <NUMEX TYPE="CARDINAL">0</NUMEX>-2 insert <ENAMEX TYPE="GPE_DESC">states</ENAMEX>.
+            The split set includes the main consensus <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, which
+            by <ENAMEX TYPE="PER_DESC">convention</ENAMEX> is <NUMEX TYPE="ORDINAL">first</NUMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> and <NUMEX TYPE="CARDINAL">only one</NUMEX> of the states
+            in the split set must be visited in <TIMEX TYPE="DATE">every parse</TIMEX> tree
+            (and this fact will be exploited by the divide and
+            conquer algorithm). The insert <ENAMEX TYPE="GPE_DESC">state</ENAMEX>(s) are not
+            <ENAMEX TYPE="ORGANIZATION">obligately</ENAMEX> visited, and they have self-transitions, so
+            they will be visited <NUMEX TYPE="CARDINAL">zero</NUMEX> or more times in any given
+            parse <ENAMEX TYPE="PLANT">tree</ENAMEX>.
+            State <ENAMEX TYPE="PER_DESC">transitions</ENAMEX> are then assigned as follows. For
+            bifurcation nodes, the B state makes obligate
+            <ENAMEX TYPE="ORGANIZATION">transitions</ENAMEX> to the S <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of the <ENAMEX TYPE="PER_DESC">child</ENAMEX> BEGL and BEGR
+            <ENAMEX TYPE="ORGANIZATION">nodes</ENAMEX>. For other nodes, each <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in a split set has a
+            possible transition to every insert <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in the 
+            same node, and to every <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in
+            the split set of the 
+            next node. An <ENAMEX TYPE="ORGANIZATION">IL state</ENAMEX> makes a
+            transition to itself, to the <ENAMEX TYPE="ORGANIZATION">IR</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in the same node
+            (if present), and to every <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in the split set of
+            the next node. An IR state makes a transition to itself
+            and to every <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in the split set of the next
+            <ENAMEX TYPE="ORGANIZATION">node</ENAMEX>.
+            This arrangement of transitions guarantees that
+            (given the guide <ENAMEX TYPE="PLANT">tree</ENAMEX>) there is unambiguously <NUMEX TYPE="CARDINAL">one</NUMEX> and
+            <NUMEX TYPE="CARDINAL">only one</NUMEX> parse <ENAMEX TYPE="PLANT">tree</ENAMEX> for any given individual <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>.
+            This is important. The algorithm will find a maximum
+            likelihood parse <ENAMEX TYPE="PLANT">tree</ENAMEX> for a given sequence, and we wish
+            to interpret this result as a maximum likelihood
+            structure, so there must be a <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">one</NUMEX> relationship
+            between parse <ENAMEX TYPE="PLANT">trees</ENAMEX> and secondary <ENAMEX TYPE="ORG_DESC">structures</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX> ]
+            .
+            The final <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> is an array of 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, connected as a directed
+            graph by transitions 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) (or probability <NUMEX TYPE="CARDINAL">1</NUMEX> transitions
+            
+            <ENAMEX TYPE="PERSON">v →</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>,z ) for bifurcations) with the
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> numbered such that ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>,z ) ≥ 
+            v. There are no cycles in the
+            <ENAMEX TYPE="ORGANIZATION">directed</ENAMEX> graph other than cycles of length <NUMEX TYPE="CARDINAL">one</NUMEX> (e.g.
+            the self-transitions of the insert <ENAMEX TYPE="GPE_DESC">states</ENAMEX>). We can
+            think of the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> as an array of <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in which all
+            transition dependencies run in one direction; we can do
+            an iterative dynamic programming calculation through
+            the model <ENAMEX TYPE="GPE_DESC">states</ENAMEX> starting with the last numbered end
+            state 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> and ending in the root state 1.
+            An example <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>, corresponding to the input alignment of
+            Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, is shown in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>.
+            As a convenient side effect of the construction
+            procedure, it is guaranteed that the transitions from
+            any <ENAMEX TYPE="GPE_DESC">state</ENAMEX> are to a 
+            <ENAMEX TYPE="PERSON">contiguous</ENAMEX> set of <ENAMEX TYPE="PER_DESC">child</ENAMEX> states,
+            so the transitions for state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> may be kept as an offset and a
+            count. For example, in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, state <TIMEX TYPE="DATE">12</TIMEX> (an <ENAMEX TYPE="PER_DESC">MP</ENAMEX>)
+            connects to states <TIMEX TYPE="DATE">16, 17, 18, 19, 20</TIMEX>, and <NUMEX TYPE="CARDINAL">21</NUMEX>. We can
+            store this as an offset of <NUMEX TYPE="CARDINAL">4</NUMEX> to the <NUMEX TYPE="ORDINAL">first</NUMEX> connected
+            state, and a total count of <NUMEX TYPE="CARDINAL">6</NUMEX> connected <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. We know
+            that the offset is the distance to the next non-split
+            state in the current node; we also know that the count
+            is equal to the number of insert <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the current
+            node, plus the number of split set states in the next
+            <ENAMEX TYPE="ORGANIZATION">node</ENAMEX>. These properties make establishing the
+            connectivity of the CM trivial. Similarly, all the
+            <ENAMEX TYPE="PER_DESC">parents</ENAMEX> of any given <ENAMEX TYPE="GPE_DESC">state</ENAMEX> are also contiguously
+            <ENAMEX TYPE="PERSON">numbered</ENAMEX>, and can be determined analogously. We are
+            also guaranteed that the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in a split set are
+            numbered contiguously. This contiguity is exploited by
+            the divide and conquer implementation.
+          
+          
+            Parameterization
+            Using the guide <ENAMEX TYPE="PLANT">tree</ENAMEX> and the final <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>, each
+            individual sequence in the input multiple <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> can
+            be converted unambiguously to a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> parse <ENAMEX TYPE="PLANT">tree</ENAMEX>, as shown
+            in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. Counts for observed state transitions and
+            singlet/pair <ENAMEX TYPE="SUBSTANCE">emissions</ENAMEX> are then collected from these
+            parse <ENAMEX TYPE="PLANT">trees</ENAMEX>. The observed counts are converted to
+            transition and emission probabilities by standard
+            procedures. I calculate maximum a posteriori
+            <ENAMEX TYPE="PERSON">parameters</ENAMEX>, using <ENAMEX TYPE="ORGANIZATION">Dirichlet</ENAMEX> priors.
+          
+          
+            Comparison to profile HMMs
+            The relationship between an <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> and a covariance
+            model is analogous to the relationship of hidden Markov
+            models (HMMs) and profile <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX> for modeling multiple
+            sequence alignments [ <NUMEX TYPE="CARDINAL">18 19 24</NUMEX> ] . A comparison may be
+            instructive to <ENAMEX TYPE="PER_DESC">readers</ENAMEX> familiar with profile <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX>. A
+            <ENAMEX TYPE="ORGANIZATION">profile HMM</ENAMEX> is a repetitive <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> architecture that
+            <ENAMEX TYPE="PER_DESC">associates</ENAMEX> each consensus column of a multiple
+            alignment with a single type of model node - a MATL
+            node, in the above notation. Each node contains a
+            "match", "delete", and "insert" <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> state - ML, <ENAMEX TYPE="ORGANIZATION">IL</ENAMEX>, and
+            D <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, in the above notation. The profile <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> also
+            has special begin and end <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Profile HMMs</ENAMEX> could
+            therefore be thought of as a special case of <ENAMEX TYPE="ORGANIZATION">CMs</ENAMEX>. An
+            unstructured <ENAMEX TYPE="SUBSTANCE">RNA multiple alignment</ENAMEX> would be modeled by
+            a <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree of all MATL nodes, and converted to an
+            <ENAMEX TYPE="ORGANIZATION">unbifurcated CM</ENAMEX> that would essentially be identical to
+            a profile <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX>. (The only difference is trivial; the CM
+            root node includes a <ENAMEX TYPE="ORGANIZATION">IR</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, whereas the start node
+            of a profile <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> does not.) All the other node types
+            (especially <ENAMEX TYPE="ORGANIZATION">MATP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MATR</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">BIF</ENAMEX>) and state <ENAMEX TYPE="PER_DESC">types</ENAMEX> (e.g.
+            <ENAMEX TYPE="PER_DESC">MP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MR</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">IR</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">B</ENAMEX>) are <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> augmentations necessary to
+            extend profile <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX> to deal with <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary
+            structure.
+            The <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> inside and outside <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> are analogous
+            to the <ENAMEX TYPE="FAC">Forward and Backward</ENAMEX> algorithms for <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX> [ <NUMEX TYPE="CARDINAL">24 48</NUMEX>
+            ] . The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside parsing algorithm is analogous to
+            the <ENAMEX TYPE="ORGANIZATION">Viterbi HMM</ENAMEX> alignment algorithm run in the forward
+            direction. <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/outside is analogous to a <ENAMEX TYPE="ORGANIZATION">Viterbi</ENAMEX> DP
+            algorithm run in the backwards direction.
+          
+        
+        
+          Divide and conquer algorithm
+          
+            Notation
+            I use 
+            r, v, w, y, and 
+            z as indices of <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the
+            model, where 
+            r <ENAMEX TYPE="ANIMAL">≤</ENAMEX> ( 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) ≤ 
+            <ENAMEX TYPE="PERSON">z.</ENAMEX> These indices will range from
+            <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , for a CM 
+            G that contains 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. refers to a subgraph of
+            the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, rooted at state 
+            r and ending at state 
+            z, for a contiguous set of states
+            
+            <ENAMEX TYPE="PERSON">r.</ENAMEX>.<ENAMEX TYPE="PERSON">z. G</ENAMEX> 
+            r , without a subscript, refers
+            to a subgraph of the model rooted at state 
+            r and ending at the highest
+            numbered E state <ENAMEX TYPE="PER_DESC">descendant</ENAMEX> from state 
+            <ENAMEX TYPE="PERSON">r.</ENAMEX> The complete <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is , or 
+            G <NUMEX TYPE="CARDINAL">1</NUMEX>, or just 
+            <ENAMEX TYPE="ORGANIZATION">G.</ENAMEX> 
+            
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             refers to the 
+            type of state 
+            <ENAMEX TYPE="PRODUCT">v</ENAMEX> ; it will be one of <NUMEX TYPE="CARDINAL">seven</NUMEX> types
+            {D,<ENAMEX TYPE="ORGANIZATION">P</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">L</ENAMEX>,<ENAMEX TYPE="NATIONALITY">R</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">S</ENAMEX>,E,B}. 
+            C 
+            
+              v 
+             is a list of <ENAMEX TYPE="PER_DESC">children</ENAMEX> for state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> (e.g. the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> that 
+            <ENAMEX TYPE="PRODUCT">v</ENAMEX> can transit to); it will
+            contain <NUMEX TYPE="CARDINAL">up to six</NUMEX> contiguous indices 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> with 
+            <ENAMEX TYPE="PRODUCT">v �</ENAMEX>� 
+            <ENAMEX TYPE="CONTACT_INFO">y ≤</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> . 
+            P 
+            
+              v 
+             is a list of <ENAMEX TYPE="PER_DESC">parents</ENAMEX> for state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> (states that could have
+            <ENAMEX TYPE="ORGANIZATION">transited</ENAMEX> to state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> ); it will contain <NUMEX TYPE="CARDINAL">up to six</NUMEX>
+            contiguous indices 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> with <NUMEX TYPE="QUANTITY">1 �</NUMEX>� 
+            <ENAMEX TYPE="CONTACT_INFO">y ≤</ENAMEX> 
+            <ENAMEX TYPE="PERSON">v.</ENAMEX> ( 
+            P 
+            
+              v 
+             parent lists should not be confused with P state
+            types.)
+            I use 
+            g, h, i, j, k, <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>, and 
+            q as indices referring to
+            positions in a sequence 
+            x, where 
+            <ENAMEX TYPE="ORGANIZATION">g �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">h �</ENAMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">p �</ENAMEX>� 
+            <ENAMEX TYPE="PERSON">q</ENAMEX> and 
+            i ≤ 
+            <ENAMEX TYPE="PRODUCT">j</ENAMEX> for all subsequences of nonzero
+            length. These indices range from <NUMEX TYPE="MONEY">1.</NUMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>, for a sequence of length 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> . Some <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> will also use
+            
+            d to refer to a subsequence
+            length, where 
+            d = 
+            <ENAMEX TYPE="CONTACT_INFO">j -</ENAMEX> 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX> for a subsequence 
+            x 
+            
+              i 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             .
+            The algorithms will have to account for subsequences
+            of <NUMEX TYPE="CARDINAL">zero</NUMEX> length (because of deletions). By convention,
+            these will be in the <ENAMEX TYPE="ORG_DESC">off-diagonal</ENAMEX> where 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> = 
+            i - 1 or 
+            i = 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>. This special case (usually
+            an <ENAMEX TYPE="DISEASE">initialization condition</ENAMEX>) is the reason for the
+            qualification that 
+            i ≤ 
+            <ENAMEX TYPE="PRODUCT">j</ENAMEX> for subsequences of 
+            nonzero length.
+            The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm calculates a
+            three-dimensional matrix of numbers α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), and <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/outside calculates
+            numbers β 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ). I will refer to 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> (state indices) as 
+            deck coordinates in the
+            three-dimensional matrices, whereas 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> and 
+            i (sequence positions) are row
+            and column coordinates within each <ENAMEX TYPE="FAC_DESC">deck</ENAMEX>. α 
+            
+              v 
+             and β 
+            
+              v 
+             refer to whole two-dimensional decks containing
+            scores α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) and β 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) for a particular state 
+            <ENAMEX TYPE="PERSON">v.</ENAMEX> The dividing and conquering
+            will be done in the 
+            v dimension, by choosing
+            particular decks as split points.
+          
+          
+            The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm
+            The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm iteratively calculates α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) - the log probability of the
+            most likely CM parse subtree rooted at state 
+            v that generates subsequence 
+            x 
+            
+              i 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             of sequence 
+            <ENAMEX TYPE="PERSON">x.</ENAMEX> The calculation initializes at
+            the smallest <ENAMEX TYPE="PRODUCT_DESC">subgraphs</ENAMEX> and subsequences (e.g. subgraphs
+            rooted at E <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, generating subsequences of length
+            <NUMEX TYPE="CARDINAL">0</NUMEX>), and iterates outwards to progessively longer
+            <ENAMEX TYPE="ORGANIZATION">subsequences</ENAMEX> and larger <ENAMEX TYPE="PRODUCT">CM</ENAMEX> subgraphs.
+            For example, if we're calculating α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) and 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= P</ENAMEX> (that is, 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> is a pair state), 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> will generate the pair 
+            x 
+            
+              i 
+             , 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             and transit to a new state 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> (one of its possible
+            transitions 
+            C 
+            
+              v 
+             ) which then will have to account for the smaller
+            subsequence 
+            x 
+            
+            i <NUMEX TYPE="CARDINAL">+1</NUMEX> .. 
+            x 
+            
+            <ENAMEX TYPE="CONTACT_INFO">j -1 .</ENAMEX> The log probability
+            for a particular choice of next state 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> is the sum of three terms: an
+            emission term log 
+            e 
+            
+              v 
+             ( 
+            x 
+            
+              i 
+             , 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             ), a transition term log 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ), and an already calculated
+            solution for the smaller optimal parse <ENAMEX TYPE="PLANT">tree</ENAMEX> rooted at 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PRODUCT">j - 1</ENAMEX>). The answer for α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) is the maximum over all
+            possible choices of <ENAMEX TYPE="PER_DESC">child</ENAMEX> states 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> that 
+            <ENAMEX TYPE="PRODUCT">v</ENAMEX> can transit to.
+            The algorithm INSIDE is as follows:
+            
+            Input: A CM subgraph and
+            subsequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              q 
+             .
+            
+            Output: <ENAMEX TYPE="WORK_OF_ART">Scoring matrix</ENAMEX> decks α 
+            
+              r 
+             ..α 
+            
+              z 
+             .
+            <ENAMEX TYPE="ORGANIZATION">INSIDE</ENAMEX>(r,<ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,q)
+            
+            for 
+            <ENAMEX TYPE="PRODUCT">v</ENAMEX> ← 
+            z 
+            down to 
+            r 
+            
+            for 
+            <ENAMEX TYPE="PERSON">j ←</ENAMEX> 
+            g - 1 
+            to 
+            q 
+            
+            for 
+            i ← 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> 
+            down to 
+            g 
+            
+            d ← 
+            <ENAMEX TYPE="CONTACT_INFO">j -</ENAMEX> 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>
+            
+            if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="NATIONALITY">= D</ENAMEX> or S:
+            α 
+            
+              v 
+             ( 
+            i, j ) = [α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i, j ) + log 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> )]
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= P</ENAMEX> and 
+            d <ENAMEX TYPE="CONTACT_INFO">≥ 2:</ENAMEX>
+            α 
+            
+              v 
+             ( 
+            i, j ) = log 
+            e 
+            
+              v 
+             ( 
+            x 
+            
+              i 
+             , 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             ) + [α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PRODUCT">j - 1</ENAMEX>) + log 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> )]
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= L</ENAMEX> and 
+            d <ENAMEX TYPE="CONTACT_INFO">≥ 1:</ENAMEX>
+            α 
+            
+              v 
+             ( 
+            i, j ) = log 
+            e 
+            
+              v 
+             ( 
+            x 
+            
+              i 
+             ) + [α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) + log 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> )]
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= R</ENAMEX> and 
+            d <ENAMEX TYPE="CONTACT_INFO">≥ 1:</ENAMEX>
+            α 
+            
+              v 
+             ( 
+            i, j ) = log 
+            e 
+            
+              v 
+             ( 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             ) + [α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i , 
+            <ENAMEX TYPE="PRODUCT">j - 1</ENAMEX>) + log 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              v 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> )]
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = B:
+            ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , 
+            z ) ← left and right S <ENAMEX TYPE="PER_DESC">children</ENAMEX>
+            of state 
+            v 
+            α 
+            
+              v 
+             ( 
+            i, j ) = [α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            i, k ) + α 
+            
+              z 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> )]
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= E</ENAMEX> and 
+            d = <NUMEX TYPE="CARDINAL">0</NUMEX>:
+            α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) = <NUMEX TYPE="CARDINAL">0</NUMEX> (initializations)
+            
+              else 
+            
+            α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j ) = -∞</ENAMEX> (initializations)
+            Given a sequence 
+            x of length 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> and a CM 
+            G of length 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , we could call INSIDE (<NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>;
+            <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>) to align the whole <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (states <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) to the whole sequence ( 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+             ). When INSIDE returns, α 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) would contain the log
+            probability of the best parse of the complete sequence
+            with the complete <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+            We do not have to keep the entire α
+            three-dimensional matrix in memory to calculate these
+            scores. As we reach higher decks α 
+            
+              v 
+             in the <NUMEX TYPE="QUANTITY">three dimensional</NUMEX> dynamic programming
+            <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>, our calculations no longer depend on certain
+            lower decks. A lower deck 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> can be deallocated whenever all
+            the parent decks 
+            P 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             that depend on it have been calculated. (The
+            implementation goes even further and recycles decks
+            when possible, saving some initialization steps and
+            many memory allocation calls; for example, since values
+            in all E decks are identical, only one E deck needs to
+            be calculated and that precalculated <ENAMEX TYPE="FAC_DESC">deck</ENAMEX> can be reused
+            whenever 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = 
+            E .)
+            This deallocation rule has an important property
+            that the divide and conquer algorithm takes advantage
+            of when solving smaller subproblems for <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> subgraphs
+            rooted at some state 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX> When the root state 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> is an S <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, the α matrix
+            returned by INSIDE contains <NUMEX TYPE="CARDINAL">only one</NUMEX> active deck α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             . (No lower state > 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> can be reached from any state
+            < 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> without going through 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX>, so all lower decks are
+            <ENAMEX TYPE="ORGANIZATION">deallocated</ENAMEX> once deck 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> is completed.) When the root
+            state 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> is the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in a split
+            set 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">y</ENAMEX> (see below for more
+            explanation), all (and only) the decks α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             are active when INSIDE returns.
+            In some cases we want to recover the optimal parse
+            tree itself, not just its score. The <ENAMEX TYPE="PRODUCT">INSIDE τroutine</ENAMEX> is
+            a modified version of INSIDE. It keeps an additional
+            "shadow matrix" τ 
+            
+              v 
+             ( 
+            i,j ). A τ 
+            
+              v 
+             ( 
+            i,j ) traceback pointer either
+            <ENAMEX TYPE="ORGANIZATION">records</ENAMEX> the index 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> that maximized α 
+            
+              v 
+             ( 
+            i,j ) (for state <ENAMEX TYPE="PER_DESC">types</ENAMEX> D,<ENAMEX TYPE="ORGANIZATION">S,P</ENAMEX>,<ENAMEX TYPE="ORGANIZATION">L</ENAMEX>,<ENAMEX TYPE="NATIONALITY">R</ENAMEX>)
+            or records the split point 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> that maximized α 
+            
+              v 
+             ( 
+            i,j ) for a bifurcation (<ENAMEX TYPE="ORGANIZATION">B</ENAMEX>)
+            state. The τ shadow matrix does not use the
+            deallocation rules - INSIDE τcan only be called for
+            problems small enough that they can be solved within
+            our available memory space. Thus the INSIDE τroutine
+            works by calling INSIDE in a mode that also keeps a
+            <ENAMEX TYPE="PRODUCT">shadow matrix τ</ENAMEX>, and then calls a recursive traceback
+            starting with 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j :
+            
+            Input: A <ENAMEX TYPE="PER_DESC">shadow matrix τ</ENAMEX> for CM
+            subgraph 
+            G 
+            v rooted at state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, and subsequence 
+            x 
+            
+              i 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             .
+            
+            Output: An optimal parse tree 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> .
+            <ENAMEX TYPE="PERSON">TRACEBACK(v</ENAMEX>,i,j)
+            
+            if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = 
+            E :
+            attach 
+            v 
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = 
+            S or <ENAMEX TYPE="NATIONALITY">D</ENAMEX>:
+            attach 
+            v 
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>(τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ))
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= P</ENAMEX>:
+            attach 
+            x 
+            
+              i 
+             , 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> , 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>(τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PRODUCT">j - 1</ENAMEX>)
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= L</ENAMEX>:
+            attach 
+            x 
+            
+              i 
+             , 
+            v 
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>(τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), 
+            i + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> )
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">= R</ENAMEX>:
+            attach 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> , 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>(τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), 
+            i , 
+            <ENAMEX TYPE="PRODUCT">j - 1</ENAMEX>)
+            
+            else if 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = B:
+            ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , 
+            z ) ← left and right S <ENAMEX TYPE="PER_DESC">children</ENAMEX>
+            of state 
+            v 
+            attach 
+            v 
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , 
+            i , τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ))
+            <ENAMEX TYPE="ORGANIZATION">TRACEBACK</ENAMEX>( 
+            z , τ 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> )
+          
+          
+            The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/outside algorithm
+            The <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/outside algorithm iteratively calculates β 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ), the log probability of the
+            most likely CM parse <ENAMEX TYPE="PLANT">tree</ENAMEX> for a CM generating a
+            sequence 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+             
+            excluding the optimal parse
+            subtree rooted at state 
+            v that accounts for the
+            subsequence 
+            x 
+            
+              i 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             . The calculation initializes with the entire
+            sequence excluded (e.g. β 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) = <NUMEX TYPE="CARDINAL">0</NUMEX>), and iterates inward to
+            progressively shorter and shorter excluded subsequences
+            and smaller CM subgraphs.
+            A complete implementation of the <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/outside
+            <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> requires first calculating the <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside
+            <ENAMEX TYPE="ORGANIZATION">matrix α</ENAMEX> because it is needed to calculate β 
+            
+              v 
+             when the <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> of 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> is a bifurcation [ <NUMEX TYPE="CARDINAL">24 43 44</NUMEX> ] .
+            However, the divide and conquer algorithm described
+            here only calls OUTSIDE on 
+            unbifurcated, linear CM
+            <ENAMEX TYPE="ORGANIZATION">subgraphs</ENAMEX> (only the final state 
+            z may be a B <ENAMEX TYPE="GPE_DESC">state</ENAMEX>; there are no
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> bifurcations that lead to <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> in the
+            model). Thus the <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> of a state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> is never a bifurcation, and the
+            implementation can therefore be streamlined as
+            follows:
+            
+            Input: An unbifurcated CM subgraph
+            and subsequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              q 
+             .
+            
+            Output: <ENAMEX TYPE="WORK_OF_ART">Scoring matrix</ENAMEX> decks β 
+            
+              r 
+             ..β 
+            
+              z 
+             .
+            <ENAMEX TYPE="ORGANIZATION">OUTSIDE</ENAMEX>(r,<ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,q)
+            β 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PRODUCT">j ) ← - ∞ �</ENAMEX>� 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> , 
+            i , 
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+            β 
+            
+              r 
+             ( 
+            g , 
+            <ENAMEX TYPE="ORGANIZATION">q</ENAMEX> ) ← <NUMEX TYPE="CARDINAL">0</NUMEX>
+            
+            for 
+            <ENAMEX TYPE="PRODUCT">v</ENAMEX> ← 
+            r + <NUMEX TYPE="CARDINAL">1</NUMEX> 
+            to 
+            z 
+            
+            for 
+            <ENAMEX TYPE="PERSON">j ←</ENAMEX> 
+            q 
+            down to 
+            g - 1
+            
+            for 
+            i ← 
+            g 
+            to 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>
+            
+            As with INSIDE, we do not keep the entire β matrix
+            in memory. A deck β 
+            
+              v 
+             can be deallocated when all <ENAMEX TYPE="PER_DESC">child</ENAMEX> decks 
+            C 
+            
+              v 
+             that depend on the values in β 
+            
+              v 
+             have been calculated. This means that if the last
+            deck 
+            z is a bifurcation or end <ENAMEX TYPE="GPE_DESC">state</ENAMEX>,
+            β 
+            
+              z 
+             will be the only active allocated deck when
+            OUTSIDE returns. If 
+            z is the last <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in a split
+            set 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.z, all (and only) the split
+            set decks β 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..β 
+            
+              z 
+             will be active when OUTSIDE returns.
+          
+          
+            Using <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside and <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/outside to divide and
+            conquer
+            Now, for any chosen state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, argmax 
+            
+            i , 
+            <ENAMEX TYPE="PERSON">j  [α</ENAMEX> 
+            
+              v 
+             ( 
+            i, j ) + β 
+            
+              v 
+             ( 
+            ,i,j )] tells us which cell 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j the optimal parse tree
+            passes through, conditional on using state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> in the parse. We know that any
+            parse <ENAMEX TYPE="PLANT">tree</ENAMEX> must include all the bifurcation and start
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>, so we know that the optimal alignment
+            
+            must use any chosen bifurcation
+            state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> and its <ENAMEX TYPE="PER_DESC">child</ENAMEX> start states 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> and 
+            <ENAMEX TYPE="PERSON">y. Thus</ENAMEX>, we are guaranteed that
+            (when 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              v 
+             = B and 
+            C 
+            
+              v 
+             = 
+            <ENAMEX TYPE="ORGANIZATION">w, y</ENAMEX> ):
+            
+            is the optimal overall alignment score, and we also
+            know that
+            
+            gives us a triplet that identifies <NUMEX TYPE="CARDINAL">three</NUMEX> cells that
+            must be in the optimal alignment - ( 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j ), ( 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX>, i, k ), and ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>, k + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ). This splits the remaining
+            problem into <NUMEX TYPE="CARDINAL">three</NUMEX> smaller subproblems - an alignment
+            of the sequence 
+            x 
+            
+              i 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             to a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> subgraph 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">y - 1</ENAMEX>, an alignment of the
+            sequence 
+            x 
+            
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">+1</NUMEX> .. 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             to a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> subgraph 
+            <ENAMEX TYPE="PERSON">y.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , and an alignment of the
+            <NUMEX TYPE="CARDINAL">two</NUMEX>-piece sequence 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> .. 
+            z 
+            
+            i <ENAMEX TYPE="CONTACT_INFO">-1 //</ENAMEX> 
+            x 
+            
+            <ENAMEX TYPE="PRODUCT">j +1</ENAMEX> .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+             to a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> subgraph <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> .
+            The subproblems are then themselves split, and this
+            splitting can continue recursively until all the
+            bifurcation triplets on the optimal parse <ENAMEX TYPE="PLANT">tree</ENAMEX> have
+            been determined.
+            At this point the remaining alignment subproblems
+            might be small enough to be solved by straightforward
+            application of the standard CYK/inside algorithm (e.g.
+            <ENAMEX TYPE="ORGANIZATION">INSIDE τ</ENAMEX>). However, this is not guaranteed to be the
+            case. A more general <ENAMEX TYPE="ORG_DESC">division</ENAMEX> strategy is needed that
+            does not depend on splitting at bifurcations.
+            For the more general strategy we take advantage of
+            the fact that we know that the optimal parse <ENAMEX TYPE="PLANT">tree</ENAMEX> must
+            also include <NUMEX TYPE="CARDINAL">one and only one</NUMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> from the split set
+            of each node (e.g. the non-insert <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the node).
+            Let 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.y be the indices of a split
+            set of <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in <TIMEX TYPE="DATE">the middle of the current</TIMEX> model
+            <ENAMEX TYPE="ORGANIZATION">subgraph</ENAMEX>. ( 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">y</ENAMEX> can be at most <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>.) We
+            know that
+            
+            gives us a new <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> ( 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j ) in the optimal parse
+            <ENAMEX TYPE="PLANT">tree</ENAMEX>, and splits the problem into <NUMEX TYPE="CARDINAL">two</NUMEX> smaller problems.
+            This strategy can be applied recursively all the way
+            down to single nodes, if necessary. We can therefore
+            guarantee that we will never need to carry out a full
+            <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside alignment algorithm on any subproblem. The
+            most memory-intensive alignment problem that needs to
+            be solved is the very first split. The properties of
+            the <NUMEX TYPE="ORDINAL">first</NUMEX> split determine the memory complexity of the
+            <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>.
+            The bifurcation-dependent strategy is a special case
+            of this more general splitting strategy, where the B
+            state is the only <ENAMEX TYPE="PER_DESC">member</ENAMEX> of its split set, and where we
+            also take advantage of the fact that α 
+            
+              v 
+             ( 
+            i , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ) = max 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ( 
+            i, k ) + α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ). By carrying out the max 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             operation during the split, rather than before, we
+            can split the current problem into <NUMEX TYPE="CARDINAL">three optimal</NUMEX> pieces
+            instead of just <NUMEX TYPE="CARDINAL">two</NUMEX>.
+            If we look at the consequences of these splitting
+            strategies, we see we will have to deal with <NUMEX TYPE="CARDINAL">three</NUMEX>
+            types of problems (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>):
+            • A 
+            generic problem means finding the
+            optimal alignment of a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> subgraph to a contiguous
+            subsequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              q 
+             . The subgraph corresponds to a complete subtree
+            of the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>'s <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree - e.g. state 
+            r is a start (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX>), and state 
+            z is an end (<ENAMEX TYPE="ORGANIZATION">E</ENAMEX>). may contain
+            <ENAMEX TYPE="ORGANIZATION">bifurcations</ENAMEX>. The problem is solved in one of <NUMEX TYPE="CARDINAL">two</NUMEX> ways.
+            If contains no bifurcations, it is solved as a wedge
+            problem (see below). Else, the problem is subdivided by
+            the bifurcation-dependent strategy: an optimal triple
+            (i, 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, j ) is found for a bifurcation
+            state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> and its <ENAMEX TYPE="PER_DESC">children</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX>, y, splitting the problem into
+            a V problem and <NUMEX TYPE="CARDINAL">two</NUMEX> generic problems.
+            • A 
+            wedge problem means finding the
+            optimal alignment of an 
+            <ENAMEX TYPE="ORGANIZATION">unbifurcated CM</ENAMEX> subgraph to a
+            <ENAMEX TYPE="PERSON">contiguous</ENAMEX> subsequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              q 
+             . State 
+            z does not have to be a start
+            state (<ENAMEX TYPE="ORGANIZATION">S</ENAMEX>); it may be a <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in a split set (<ENAMEX TYPE="PER_DESC">MP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">ML</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">MR</ENAMEX>, or <ENAMEX TYPE="NATIONALITY">D</ENAMEX>). State 
+            z is an end (<ENAMEX TYPE="ORGANIZATION">E</ENAMEX>). A wedge problem
+            is solved by the split set-dependent strategy: an
+            <ENAMEX TYPE="ORGANIZATION">optimal</ENAMEX> ( 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j ) is found, splitting the
+            problem into a V problem and a smaller wedge
+            problem.
+            • A 
+            V problem consists of finding the
+            optimal alignment of an 
+            <ENAMEX TYPE="ORGANIZATION">unbifurcated CM</ENAMEX> subgraph to a
+            noncontiguous, <NUMEX TYPE="CARDINAL">two</NUMEX>-piece sequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">//</ENAMEX> 
+            x 
+            
+              p 
+             .. 
+            x 
+            
+              g 
+             , exclusive of the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+             and 
+            x 
+            
+              p 
+             (open circles in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). State 
+            r can be a start state or any
+            state in a split set; the same is true for 
+            <ENAMEX TYPE="PERSON">z.</ENAMEX> A V problem is solved by a
+            split set-dependent strategy: an optimal ( 
+            <ENAMEX TYPE="PERSON">v</ENAMEX>, i, j ) is found, splitting the
+            problem into <NUMEX TYPE="CARDINAL">two</NUMEX> V problems.
+            The <NUMEX TYPE="CARDINAL">three</NUMEX> recursive splitting algorithms to solve
+            these problems are as follows:
+          
+          
+            The generic_splitter routine
+            
+            Input: A generic problem, for CM
+            <ENAMEX TYPE="ORGANIZATION">subgraph</ENAMEX> and subsequence 
+            x 
+            
+            g .. 
+            q  .
+            
+            Output: An optimal parse subtree 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> .
+            <ENAMEX TYPE="PERSON">GENERIC_SPLITTER</ENAMEX>(r, <ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,q)
+            
+            if no bifurcation in :
+            
+            return <ENAMEX TYPE="ORGANIZATION">WEDGE_SPLITTER</ENAMEX>(r,<ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,q)
+            
+              else 
+            
+            
+            <ENAMEX TYPE="PRODUCT">v ←</ENAMEX> lowest numbered bifurcation
+            state in subgraph .
+            
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX>,<ENAMEX TYPE="PERSON">y ←</ENAMEX> left and right S <ENAMEX TYPE="PER_DESC">children</ENAMEX>
+            of 
+            <ENAMEX TYPE="PERSON">v.</ENAMEX> 
+            β 
+            
+              v 
+             <ENAMEX TYPE="ORGANIZATION">← OUTSIDE</ENAMEX>(r,<ENAMEX TYPE="ORGANIZATION">w; g</ENAMEX>,q)
+            α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             <ENAMEX TYPE="ORGANIZATION">← INSIDE</ENAMEX>(w,<ENAMEX TYPE="SUBSTANCE">y-1</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,q)
+            α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             <ENAMEX TYPE="ORGANIZATION">← INSIDE</ENAMEX>(<ENAMEX TYPE="WORK_OF_ART">y,z; g</ENAMEX>,q)
+            
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">1  ← V_SPLITTER</ENAMEX>(r,v; <ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,i;
+            <ENAMEX TYPE="PERSON">j</ENAMEX>,q)
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">2  ← GENERIC_SPLITTER</ENAMEX>(w,<ENAMEX TYPE="SUBSTANCE">y-1</ENAMEX>;
+            i,k)
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">3  ← GENERIC_SPLITTER</ENAMEX>(<ENAMEX TYPE="WORK_OF_ART">y,z</ENAMEX>;
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>+l,j)
+            Attach S state 
+            <ENAMEX TYPE="ORGANIZATION">w of</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">2</NUMEX>  as left <ENAMEX TYPE="PER_DESC">child</ENAMEX> of B state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> in 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  .
+            Attach S state 
+            <ENAMEX TYPE="ORGANIZATION">y of</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">3</NUMEX>  as right <ENAMEX TYPE="PER_DESC">child</ENAMEX> of B state 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> in 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">2</NUMEX>  .
+            
+            return T 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  .
+          
+          
+            The wedge_splitter routine
+            
+            Input: A wedge problem, for
+            <ENAMEX TYPE="ORGANIZATION">unbifurcated CM</ENAMEX> subgraph and subsequence 
+            x 
+            
+            g .. 
+            q  .
+            
+            Output: An optimal parse subtree 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> .
+            <ENAMEX TYPE="PERSON">WEDGE_SPLITTER</ENAMEX>(r,<ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,q)
+            ( 
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> .. 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) ← a split set chosen from
+            middle of
+            (α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ) ← INSIDE(<ENAMEX TYPE="WORK_OF_ART">w,z; g</ENAMEX>,q)
+            (β 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..β 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ) ← OUTSIDE(r,<ENAMEX TYPE="ORGANIZATION">y; g</ENAMEX>,q)
+            
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">1  ← V_SPLITTER</ENAMEX>(r,v; <ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,i;
+            <ENAMEX TYPE="PERSON">j</ENAMEX>,q)
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">2  ← WEDGE_SPLITTER</ENAMEX>(<ENAMEX TYPE="WORK_OF_ART">v,z</ENAMEX>;
+            i,j)
+            Attach 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">2</NUMEX>  to 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  by merging at state 
+            <ENAMEX TYPE="PERSON">v.</ENAMEX> 
+            
+            return T 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  .
+
+          
+          
+            The <ENAMEX TYPE="PRODUCT">V_splitter</ENAMEX> routine
+            
+            Input: A V problem, for
+            <ENAMEX TYPE="ORGANIZATION">unbifurcated CM</ENAMEX> subgraph and <NUMEX TYPE="CARDINAL">two</NUMEX>-part subsequence 
+            x 
+            
+            g .. 
+            <ENAMEX TYPE="CONTACT_INFO">h  //</ENAMEX> 
+            x 
+            
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> .. 
+            q  .
+            
+            Output: An optimal parse subtree 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> .
+            <ENAMEX TYPE="PERSON">V_SPLITTER</ENAMEX>(r,<ENAMEX TYPE="WORK_OF_ART">z; g</ENAMEX>,h; <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>,q)
+            ( 
+            <ENAMEX TYPE="PERSON">w.</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) ← a split set chosen from
+            middle of
+            (α 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..α 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ) ← VINSIDE(<ENAMEX TYPE="WORK_OF_ART">w,z; g</ENAMEX>,h; <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>,q)
+            (β 
+            
+              <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+             ..β 
+            
+              <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+             ) ← VOUTSlDE(r,<ENAMEX TYPE="ORGANIZATION">y; g</ENAMEX>,h; <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>,q)
+            
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">1  ← V_SPLITTER</ENAMEX>(r,v; <ENAMEX TYPE="ORGANIZATION">g</ENAMEX>,i;
+            <ENAMEX TYPE="PERSON">j</ENAMEX>,q)
+            
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">2  ← V_SPLITTER</ENAMEX>(<ENAMEX TYPE="WORK_OF_ART">v,z; i</ENAMEX>,h;
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>,j)
+            Attach 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">2</NUMEX>  to 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  by merging at state 
+            <ENAMEX TYPE="PERSON">v.</ENAMEX> 
+            
+            return T 
+            <NUMEX TYPE="CARDINAL">1</NUMEX>  .
+          
+          
+            The vinside and voutside routines
+            The <ENAMEX TYPE="ORGANIZATION">VINSIDE</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">VOUTSIDE</ENAMEX> routines are just INSIDE
+            and OUTSIDE, modified to deal with a <NUMEX TYPE="CARDINAL">two</NUMEX>-piece
+            subsequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">//</ENAMEX> 
+            x 
+            
+              p 
+             .. 
+            x 
+            
+              g 
+             instead of a contiguous sequence 
+            x 
+            
+              g 
+             .. 
+            x 
+            
+              q 
+             . These modifications are fairly obvious. The
+            range of 
+            i, j is restricted so that 
+            i ≤ 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> and 
+            <ENAMEX TYPE="PRODUCT">j �</ENAMEX>� 
+            <ENAMEX TYPE="PERSON">p. Also</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">VINSIDE</ENAMEX> (<ENAMEX TYPE="WORK_OF_ART">w, z; g</ENAMEX>, h; <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">q</ENAMEX>) initializes α 
+            
+              z 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) = <NUMEX TYPE="CARDINAL">0</NUMEX>: that is, we know that
+            sequence 
+            x 
+            
+              <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+             .. 
+            x 
+            
+              p 
+             has already been accounted for by a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> parse tree
+            rooted at 
+            <ENAMEX TYPE="CONTACT_INFO">z.</ENAMEX> 
+          
+          
+            Implementation
+            In the description of the algorithms above, some
+            technical detail has been omitted - in particular, a
+            detailed description of efficient initialization steps,
+            and details of how the <NUMEX TYPE="QUANTITY">the</NUMEX> dynamic programming matrices
+            are laid out in memory. These details are not necessary
+            for a high level understanding of the divide and
+            conquer algorithm. However, they may be necessary for
+            reproducing a working implementation. <ENAMEX TYPE="DISEASE">Commented ANSI</ENAMEX>/C
+            source code for a reference implementation is therefore
+            freely available at
+            <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">genetics</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">wustl</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/eddy/infernal/</ENAMEX>under a GNU
+            <ENAMEX TYPE="ORGANIZATION">General Public License</ENAMEX>. This code has been tested on
+            <ENAMEX TYPE="ORGANIZATION">GNU/Linux</ENAMEX> <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>.
+            In this codebase, the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> data structure is defined
+            in structs<ENAMEX TYPE="ORGANIZATION">.h.</ENAMEX> The <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> construction procedure is in
+            <ENAMEX TYPE="ORGANIZATION">modelmaker</ENAMEX>. c:<ENAMEX TYPE="PERSON">Handmodelmaker</ENAMEX>(). The <ENAMEX TYPE="PER_DESC">guide</ENAMEX> tree is
+            constructed in <ENAMEX TYPE="GPE">HandModelmaker</ENAMEX>(). A <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> is constructed
+            from the guide <ENAMEX TYPE="PLANT">tree</ENAMEX> by cm_from_master(). Individual
+            parse <ENAMEX TYPE="PLANT">trees</ENAMEX> are constructed using the guide <ENAMEX TYPE="PLANT">tree</ENAMEX> by
+            <ENAMEX TYPE="ORGANIZATION">transmogrify</ENAMEX>(). The divide and conquer algorithm is
+            implemented in smallcyk. c:<ENAMEX TYPE="ORGANIZATION">CYKDivideAndConquer</ENAMEX>(), which
+            will <ENAMEX TYPE="PER_DESC">recursively</ENAMEX> call a set of functions: the three
+            <ENAMEX TYPE="ANIMAL">splitting routines GENERIC_SPLITTER</ENAMEX>(),
+            <ENAMEX TYPE="PERSON">wedge_splitter</ENAMEX>(), and <ENAMEX TYPE="PRODUCT">v_splitter</ENAMEX>(); the <NUMEX TYPE="CARDINAL">four</NUMEX> alignment
+            engines INSIDE(), OUTSIDE(), <ENAMEX TYPE="ORGANIZATION">VINSIDE</ENAMEX>(), and <ENAMEX TYPE="ORGANIZATION">VOUTSIDE</ENAMEX>();
+            and the <NUMEX TYPE="CARDINAL">two</NUMEX> traceback routines <ENAMEX TYPE="ORGANIZATION">INSIDET</ENAMEX>() and
+            <ENAMEX TYPE="ORGANIZATION">VINSIDET</ENAMEX>().
+          
+        
+      
+      
+        Results and discussion
+        
+          Memory complexity analysis
+          The memory complexity of normal <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/inside is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 2 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ), for a model of 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and a query sequence of 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, since the full 3D
+          dynamic programming matrix is indexed 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> (and since 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ∝ 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> , we can alternatively state the
+          upper bound as 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N 3</ENAMEX>)). The memory complexity of the
+          divide and conquer algorithm is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 2log 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ). The analysis that leads to
+          this conclusion is as follows.
+          For a model with no bifurcations, the divide and
+          conquer algorithm will never require <NUMEX TYPE="CARDINAL">more than 10</NUMEX> decks
+          in memory at once. In the case of <NUMEX TYPE="CARDINAL">two</NUMEX> adjacent MATP
+          nodes, we will need <NUMEX TYPE="CARDINAL">six</NUMEX> decks to store the scores for the
+          current node we're calculating, and <NUMEX TYPE="CARDINAL">four</NUMEX> decks for the
+          split set of the adjacent node that we're connecting to
+          (and dependent upon) (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          <ENAMEX TYPE="ORGANIZATION">Bifurcations</ENAMEX> will require some number of additional
+          decks for start <ENAMEX TYPE="GPE_DESC">states</ENAMEX> (BEGL_S and <ENAMEX TYPE="ORGANIZATION">BEGR_S</ENAMEX>) to be kept. In
+          <ENAMEX TYPE="ORGANIZATION">INSIDE</ENAMEX>, whenever we reach a deck for a start <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, we
+          will keep that <ENAMEX TYPE="FAC_DESC">deck</ENAMEX> in memory until we reach the parent
+          bifurcation <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. Half the time, that will mean waiting
+          until another complete subgraph of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is
+          calculated (e.g. the subgraph rooted at the other start
+          <ENAMEX TYPE="PER_DESC">child</ENAMEX> of that bifurcation); that is, to calculate deck α 
+          
+            v 
+           for a bifurcation 
+          <ENAMEX TYPE="PERSON">v</ENAMEX>, we need both decks α 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           and α 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           for its <ENAMEX TYPE="PER_DESC">child</ENAMEX> start states 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>, so we have to hold on to α 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           until we reach α 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           . In turn, the subgraph rooted at 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> might contain bifurcations, so
+          our calculation of α 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           might require additional decks to be kept. Each
+          start deck we reach in the INSIDE iteration means holding
+          <NUMEX TYPE="CARDINAL">one</NUMEX> extra <ENAMEX TYPE="FAC_DESC">deck</ENAMEX> in memory, and each bifurcation we reach
+          means deallocating the <NUMEX TYPE="CARDINAL">two</NUMEX> start decks it depends on;
+          therefore we can iteratively calculate the maximum number
+          of extra decks we will require:
+          
+          x 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">← -1</ENAMEX>
+          
+          for v ← 
+          <ENAMEX TYPE="CONTACT_INFO">M -1</ENAMEX> 
+          to 1
+          
+          
+          return max 
+          
+            v 
+           
+          x 
+          
+            v 
+           
+          This number depends on the topology and order of
+          evaluation of the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>. Think of the
+          bifurcating structure of the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> as a binary <ENAMEX TYPE="PLANT">tree</ENAMEX> numbered
+          in preorder traversal (e.g. left <ENAMEX TYPE="PER_DESC">children</ENAMEX> are visited
+          first, and have lower indices than right <ENAMEX TYPE="PER_DESC">children</ENAMEX>). If
+          this is a complete balanced <ENAMEX TYPE="PLANT">tree</ENAMEX> with 
+          B bifurcations, we will need log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          B extra decks. If it is a maximally
+          unbalanced <ENAMEX TYPE="PLANT">tree</ENAMEX> in which bifurcations only occur in left
+          <ENAMEX TYPE="PER_DESC">children</ENAMEX>, we will need 
+          B extra decks (all the right
+          <ENAMEX TYPE="PER_DESC">children</ENAMEX>). If it is a maximally unbalanced <ENAMEX TYPE="PLANT">tree</ENAMEX> in which
+          bifurcations only occur in right <ENAMEX TYPE="PER_DESC">children</ENAMEX>, we will only
+          ever need <NUMEX TYPE="CARDINAL">1</NUMEX> extra deck. A <ENAMEX TYPE="PER_DESC">left-unbalanced</ENAMEX> binary <ENAMEX TYPE="PLANT">tree</ENAMEX> can
+          be converted to a right-unbalanced binary <ENAMEX TYPE="PLANT">tree</ENAMEX> just by
+          <ENAMEX TYPE="ORGANIZATION">swapping</ENAMEX> <ENAMEX TYPE="ORG_DESC">branches</ENAMEX>. For a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>, we can't swap branches
+          without affecting the order of the sequence that's
+          generated. We can, however, get the same effect by
+          renumbering the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in a modified preorder
+          <ENAMEX TYPE="ORGANIZATION">traversal</ENAMEX>. Instead of always visiting the left subtree
+          first, we visit the best subtree <NUMEX TYPE="ORDINAL">first</NUMEX>, where "best"
+          means the choice that will optimize memory usage. This
+          <ENAMEX TYPE="PERSON">reordering</ENAMEX> is readily calculated in 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) time (not shown; see cm.
+          c:<ENAMEX TYPE="ORGANIZATION">CMRebalance</ENAMEX>() in the implementation). This way, we can
+          never do worse than the balanced case, and we will often
+          do better. We never need more than log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          B extra decks. Since 
+          B < 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, we can guarantee a 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 2log 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) bound on memory complexity.
+        
+        
+          Time complexity analysis
+          The time complexity of the standard algorithm is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">MN</ENAMEX> <NUMEX TYPE="CARDINAL">2</NUMEX>+ 
+          <ENAMEX TYPE="CONTACT_INFO">BN 3</ENAMEX>), for a model of 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> ( 
+          B of which are bifurcations)
+          aligned to a sequence of 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. Since 
+          B < 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ∝ 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, we can also state the upper
+          bound as 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">MN 3</ENAMEX>) or 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N 4</ENAMEX>).
+          The time complexity of the divide and conquer
+          algorithm depends on how close each split is to dividing
+          a problem into equal sized subproblems. In the most ideal
+          case, each call to <ENAMEX TYPE="ORGANIZATION">GENERIC_SPLITTER</ENAMEX> could split into
+          <NUMEX TYPE="CARDINAL">three</NUMEX> subproblems that each contained <NUMEX TYPE="CARDINAL">1/3</NUMEX> of the states
+          and <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>: splitting those <NUMEX TYPE="CARDINAL">three</NUMEX> subproblems would
+          only cost:
+          <NUMEX TYPE="CARDINAL">3</NUMEX> × × 
+          <ENAMEX TYPE="ORGANIZATION">MN</ENAMEX> 3
+          in time, e.g. <NUMEX TYPE="CARDINAL">only about 1/27</NUMEX> the time it took to
+          split the <NUMEX TYPE="ORDINAL">first</NUMEX> problem. Thus in an ideal case the time
+          requirement is almost completely dominated by the first
+          split, and the extra time required to do the complete
+          divide and conquer algorithm could be negligible. In
+          pathological cases, optimal splits might lead to a series
+          of very unequally sized problems. We never need to do
+          more splits than there are <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, so we
+          cannot do worse than 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">M 2</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">N 3</ENAMEX>) in time.
+          An example of a pathological case is an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structure
+          composed of a series of multifurcation loops such that
+          each bifurcation leads to a small stem on <NUMEX TYPE="CARDINAL">one</NUMEX> side, and
+          the rest of the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> on the other. In such a case,
+          every call to <ENAMEX TYPE="ORGANIZATION">GENERIC_SPLITTER</ENAMEX> will split into a small
+          <ENAMEX TYPE="SUBSTANCE">subproblem</ENAMEX> containing a small stem (e.g. only removing a
+          constant number of <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> per split) and a
+          large subproblem containing all the remaining <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and
+          sequence. This case can be avoided. It only arises
+          because of the decision to implement a simplified
+          <ENAMEX TYPE="ORGANIZATION">CYK/Outside</ENAMEX> <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> and always split at the highest
+          <ENAMEX TYPE="ORGANIZATION">bifurcations</ENAMEX>. Better time performance could be guaranteed
+          if a complete <ENAMEX TYPE="DISEASE">CYK</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">Outside</ENAMEX> <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> were implemented (at
+          the cost of complexity in the description and
+          implementation of the algorithm). This would allow us to
+          choose a split point in a generic problem at any <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in
+          the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> (for instance, in the middle) regardless of its
+          bifurcating <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>.
+          In practice, empirical results on a variety of real
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> (see below) indicate that the extra time required to
+          do the divide and conquer is a small constant factor. A
+          more complex implementation does not seem to be
+          necessary.
+        
+        
+          Empirical results
+          <NUMEX TYPE="CARDINAL">Six</NUMEX> structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> were chosen for empirical
+          evaluations of the algorithm, using available <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          database resources - tRNA [ <TIMEX TYPE="DATE">49</TIMEX> ] , <ENAMEX TYPE="SUBSTANCE">5S ribosomal RNA</ENAMEX> [ <NUMEX TYPE="CARDINAL">50</NUMEX>
+          ] , signal recognition particle (SRP) <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX> ] , RNase
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> [ <TIMEX TYPE="DATE">52</TIMEX> ] , small subunit (SSU) <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX> [ <TIMEX TYPE="DATE">53</TIMEX> ] , and
+          large subunit (<ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX>) <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ] . For each
+          family, a secondary structure annotated multiple
+          alignment of <NUMEX TYPE="CARDINAL">four or five</NUMEX> example sequences was
+          <ENAMEX TYPE="PERSON">extracted</ENAMEX>, and used to construct a <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>.
+          The top of <ENAMEX TYPE="PRODUCT">Table 4shows</ENAMEX> some statistics about these
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CMs</ENAMEX>. The number of consensus columns in
+          the <ENAMEX TYPE="PRODUCT_DESC">alignments</ENAMEX> ranges from <NUMEX TYPE="MONEY">72</NUMEX> (tRNA) to <TIMEX TYPE="DATE">2898</TIMEX> (<ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> rRNA);
+          <NUMEX TYPE="PERCENT">about 55-60%</NUMEX> are involved in consensus base pairs. The
+          number of <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> is consistently <NUMEX TYPE="CARDINAL">about 3</NUMEX>-fold more
+          than the consensus alignment length, ranging from <NUMEX TYPE="CARDINAL">230</NUMEX>
+          <ENAMEX TYPE="GPE_DESC">states</ENAMEX> (tRNA) to <TIMEX TYPE="DATE">9023</TIMEX> (<ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX>). <NUMEX TYPE="CARDINAL">About 1/150</NUMEX> of the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in
+          each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are bifurcations. After optimal reordering of
+          the model <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, the number of extra decks required by
+          the alignment algorithm is small, ranging <NUMEX TYPE="CARDINAL">up to 3</NUMEX> for SSU
+          and <NUMEX TYPE="CARDINAL">5</NUMEX> for <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> rRNA. Therefore the minimum constant of <NUMEX TYPE="CARDINAL">10</NUMEX>
+          decks required in iterations across unbifurcated model
+          segments dominates the memory requirement. The memory
+          required for extra decks does not have much impact even
+          for the largest structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX>. (Even without optimal
+          <ENAMEX TYPE="PERSON">reordering</ENAMEX>, the number of extra decks required for SSU
+          and <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> are only <NUMEX TYPE="CARDINAL">7 and 9</NUMEX>, respectively. State reordering
+          was only needed to assure a 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 2log 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) memory complexity bound.)
+          To determine the memory and <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time requirements for
+          a structural <ENAMEX TYPE="PER_DESC">alignment</ENAMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX> example sequence from each
+          family was aligned to the <ENAMEX TYPE="ORGANIZATION">CM</ENAMEX>. <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time was measured and
+          memory requirements were calculated for <NUMEX TYPE="CARDINAL">three</NUMEX> algorithms:
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the full <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm, but in memory-saving
+          score-only mode (e.g. INSIDE(<TIMEX TYPE="DATE">1,M</TIMEX>; <ENAMEX TYPE="PRODUCT">1,L</ENAMEX>); (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) the full
+          <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm, with <ENAMEX TYPE="PER_DESC">shadow matrix</ENAMEX> and traceback to
+          recover the optimal alignment (<ENAMEX TYPE="SUBSTANCE">e.g. INSIDE τ</ENAMEX>(<TIMEX TYPE="DATE">1,M</TIMEX>; <ENAMEX TYPE="PRODUCT">1,L</ENAMEX>));
+          and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) the divide and conquer algorithm to recover an
+          optimal alignment (<ENAMEX TYPE="SUBSTANCE">e.g. GENERIC_SPLITTER</ENAMEX> (<TIMEX TYPE="DATE">1,M</TIMEX>; <ENAMEX TYPE="PRODUCT">1,L</ENAMEX>)). The
+          most important comparison is between the full <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> and the divide and conquer algorithm. The
+          score-only <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>/inside algorithm was included, because a
+          complete <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> alignment couldn't be done on <ENAMEX TYPE="ORGANIZATION">SSU</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">rRNA</ENAMEX> (because of the steep memory requirement). In all
+          cases where comparison could be done, the scores and
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> produced by these algorithms were verified to
+          be identical.
+          The results of these tests are shown in the bottom
+          half of <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. The memory required by divide and
+          <ENAMEX TYPE="PRODUCT">conquer</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">alignment</ENAMEX> ranges <TIMEX TYPE="DATE">up to 271</TIMEX> <ENAMEX TYPE="PRODUCT">MB</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> rRNA,
+          compared to a prohibitive <NUMEX TYPE="CARDINAL">151</NUMEX> <ENAMEX TYPE="ORGANIZATION">GB</ENAMEX> for the standard CYK
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. The extra CPU time required by the divide and
+          <ENAMEX TYPE="PERSON">conquer</ENAMEX> is small; usually <NUMEX TYPE="PERCENT">about 20%</NUMEX> more, with a maximum
+          of <NUMEX TYPE="CARDINAL">about two</NUMEX>-fold more for <ENAMEX TYPE="SUBSTANCE">SRP-RNA</ENAMEX>.
+          The same results are plotted in Figure <NUMEX TYPE="CARDINAL">6</NUMEX>. Memory
+          requirements scale as expected: 
+          <ENAMEX TYPE="ORGANIZATION">N 3for</ENAMEX> standard CYK alignment, and
+          better than 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 2log 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> for the divide and conquer
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. <ENAMEX TYPE="PRODUCT">Empirical CPU</ENAMEX> time requirements scale
+          similarly for the <NUMEX TYPE="CARDINAL">two</NUMEX> algorithms ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> <NUMEX TYPE="CARDINAL">3.24</NUMEX>- 
+          <ENAMEX TYPE="ORGANIZATION">N 3.29</ENAMEX>). The observed performance
+          is better than the theoretical worst case of 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N 4</ENAMEX>). The proportion of extra time
+          required by divide and conquer is roughly constant over a
+          wide range of <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>. The difference shown in Figure 6is
+          exaggerated because times are plotted for score-only <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX>,
+          not complete CYK alignment, in order to include <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> times
+          for <ENAMEX TYPE="ORGANIZATION">SSU</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> rRNA. Because score-only <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> does not
+          keep a shadow traceback matrix nor perform the traceback,
+          it is <NUMEX TYPE="PERCENT">about 20%</NUMEX> faster than <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> alignment, as seen in the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>.
+        
+      
+      
+        Conclusions
+        The divide and conquer algorithm described here makes it
+        possible to align even the largest structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX> to
+        secondary structure consensus models, without exceeding the
+        available memory on current computational hardware. Optimal
+        <ENAMEX TYPE="ORGANIZATION">SSU</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">LSU</ENAMEX> rRNA structural <ENAMEX TYPE="PER_DESC">alignments</ENAMEX> can be performed in
+        <ENAMEX TYPE="PRODUCT">70 MB and 270 MB</ENAMEX> of memory, respectively. Previous
+        structural <ENAMEX TYPE="SUBSTANCE">alignment algorithms</ENAMEX> had to sacrifice
+        mathematical optimality to achieve <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX>.
+        The <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time requirement of the alignment algorithm is
+        still significant, and even prohibitive for certain
+        important applications. However, <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time is generally an
+        easier issue to deal with. A variety of simple
+        parallelization strategies are possible. Banded dynamic
+        programming algorithms (e.g. calculating only relevant
+        parts of the <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>) of various forms can also be explored,
+        including not only heuristic schemes, but also optimal
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> based on <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> and bound ideas. (Properly
+        implemented, banded <ENAMEX TYPE="ORGANIZATION">DP</ENAMEX> algorithms would also save
+        additional memory.)
+        The algorithm takes advantage of the structure of
+        <ENAMEX TYPE="PRODUCT">covariance</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> (profile <ENAMEX TYPE="ORGANIZATION">SCFGs</ENAMEX>), splitting in the
+        dimension of the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of the model rather than in the
+        sequence dimensions. The approach does not readily apply,
+        therefore, to unprofiled SCFG applications in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary
+        structure prediction [ <NUMEX TYPE="CARDINAL">34 36 55 56</NUMEX> ] , where the <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are
+        fewer and more fully interconnected. For these
+        applications, it would seem to be necessary to divide and
+        conquer in the sequence dimensions to obtain any
+        significant improvement in memory requirements, and it is
+        not immediately apparent how one would do this.
+        The current implementation of the algorithm is not
+        biologically useful. It is meant only as a testbed for the
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. It outputs a raw traceback structure and
+        alignment score, not a standardly formatted alignment file.
+        Most importantly, the probability parameters for <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are
+        calculated in a very quick and simple minded fashion, and
+        are far from being reasonable for producing robustly
+        accurate structural <ENAMEX TYPE="PER_DESC">alignments</ENAMEX>. The next step along this
+        line is to produce good prior distributions for estimating
+        better parameters, by estimating mixture <ENAMEX TYPE="PERSON">Dirichlet</ENAMEX> priors
+        from known <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structures [ <TIMEX TYPE="DATE">57</TIMEX> ] . At this stage it would
+        not be meaningful to compare the biological alignment
+        accuracy of this implementation to (for instance) the
+        excellent performance of the <ENAMEX TYPE="ORGANIZATION">RAGA</ENAMEX> genetic <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ]
+        . A biologically useful implementation with accurate
+        alignment performance is of course the eventual goal of
+        this line of work, but is not the point of the present
+        paper.
+      
+    
+  

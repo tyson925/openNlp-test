@@ -1,0 +1,523 @@
+
+  
+    
+      
+        Background
+        The early diagnosis of <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX> has the potential
+        to dramatically reduce the mortality associated with this
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>. Recently, the use of surface-enhanced laser
+        <ENAMEX TYPE="CONTACT_INFO">desorption/ionization</ENAMEX> (SELDI) time-of-flight mass
+        spectrometry profiling of patient serum <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, combined
+        with advanced data mining <ENAMEX TYPE="ORG_DESC">algorithms</ENAMEX>, to detect protein
+        patterns associated with malignancy, has been reported as a
+        promising field of research to achieve the goal of early
+        <ENAMEX TYPE="DISEASE">cancer detection</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3 4 5</NUMEX> ] . Several reports have
+        detailed the ability of this proteomic method to diagnose
+        the difference between ovarian <ENAMEX TYPE="DISEASE">cancer</ENAMEX> [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] , prostate
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> [ <NUMEX TYPE="CARDINAL">9 10 11 12 13</NUMEX> ] , and <ENAMEX TYPE="DISEASE">bladder cancer</ENAMEX> [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] .
+        Much of the effort in these analyses has focused on the use
+        of a variety of data mining tools such as the evaluation of
+        <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> using peaks in the mass to charge (<ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>)
+        region between <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> and <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> combined with boosted decision
+        tree analysis [ <TIMEX TYPE="DATE">10</TIMEX> ] to try to detect patterns that allow
+        the diagnosis of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> versus non-<ENAMEX TYPE="DISEASE">cancer</ENAMEX>. The use of
+        similar technology to evaluate bladder <ENAMEX TYPE="DISEASE">cancer</ENAMEX> has also been
+        reported [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . Thus, this field represents an active
+        area of current research. For example, a recent report by
+        the <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Program Databank</ENAMEX> has demonstrated
+        that the use of genetic algorithms coupled with clustering
+        analysis has resulted in rule sets that can predict ovarian
+        <ENAMEX TYPE="DISEASE">cancers</ENAMEX> (including samples from <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with stage 1
+        <ENAMEX TYPE="ORGANIZATION">disease</ENAMEX>) with <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and <NUMEX TYPE="PERCENT">96%</NUMEX> specificity [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+        These results have been extended by the same <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to
+        include a larger series of <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> as well
+        as <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> [ <NUMEX TYPE="CARDINAL">7 9</NUMEX> ] . The <ENAMEX TYPE="ORGANIZATION">Clinical</ENAMEX>
+        Proteomics Program <ENAMEX TYPE="PERSON">Databank</ENAMEX> has provided <NUMEX TYPE="CARDINAL">three</NUMEX> sets of
+        ovarian <ENAMEX TYPE="DISEASE">cancer</ENAMEX> data to the scientific community without
+        restriction. These data sets include <ENAMEX TYPE="ORGANIZATION">Lancet Ovarian Data</ENAMEX>
+        <TIMEX TYPE="TIME">2-16-02</TIMEX> used in the study noted above [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . This study
+        consisted of a total of <NUMEX TYPE="CARDINAL">100</NUMEX> control, 100 <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, and <NUMEX TYPE="CARDINAL">16</NUMEX>
+        benign disease samples run on a <ENAMEX TYPE="PRODUCT">Ciphergen</ENAMEX> H4 ProteinChip
+        array (since discontinued). The <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were manually
+        processed. The data was posted after baseline subtraction.
+        The <NUMEX TYPE="ORDINAL">second</NUMEX> data set, <ENAMEX TYPE="ORGANIZATION">Ovarian Dataset</ENAMEX> <ENAMEX TYPE="PRODUCT">4-3-02</ENAMEX> consist of the
+        same samples as the first but the samples were run on a
+        Ciphergen WCX2 ProteinChip array. The <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were manually
+        prepared and the data was posted with baseline subtraction.
+        A model diagnostic rule based on this dataset is published
+        on the website, but no data is given regarding the rules
+        sensitivity or specificity. In this report, we analyze the
+        <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ORGANIZATION">Ovarian Dataset</ENAMEX> <ENAMEX TYPE="PRODUCT">8-7-02</ENAMEX> and corresponding sample
+        information downloaded from the <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Program</ENAMEX>
+        <ENAMEX TYPE="PERSON">Databank</ENAMEX> website [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . This set of data consists of serum
+        profiles of <NUMEX TYPE="CARDINAL">162</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX> and <NUMEX TYPE="CARDINAL">91</NUMEX>
+        non-cancer control subjects. The <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> may be
+        further divided into <NUMEX TYPE="CARDINAL">28</NUMEX> stage <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, <NUMEX TYPE="CARDINAL">20</NUMEX> stage 2
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, <NUMEX TYPE="CARDINAL">99</NUMEX> stage <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, <NUMEX TYPE="CARDINAL">12</NUMEX> stage <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, and <NUMEX TYPE="CARDINAL">3</NUMEX>
+        no stage specified <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. For each subject a set of data
+        consisting of intensities at <NUMEX TYPE="CARDINAL">15,154</NUMEX> distinct <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values
+        ranging from <NUMEX TYPE="CARDINAL">0.0000786</NUMEX> to <NUMEX TYPE="CARDINAL">19995.513</NUMEX> was available for
+        analysis. This dataset was constructed using the Ciphergen
+        WCX2 ProteinChip array. All the steps of preparing the
+        chips for sample analysis were preformed robotically, and
+        the raw data without baseline subtraction was posted for
+        <ENAMEX TYPE="ORGANIZATION">download</ENAMEX>. A model rule claiming <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> is also given. Additional details of
+        experimental data collection may be found at the <ENAMEX TYPE="ORGANIZATION">Clinical</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Proteomics Data Bank</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . In addition to the various
+        methods of preparing and running the samples on the mass
+        spectrometer, the optimal steps in processing the raw data
+        from the mass spectrometer for further analysis have not
+        been standardized and remain a fertile area for
+        investigation [ <TIMEX TYPE="DATE">15</TIMEX> ] . We choose the deliberately simple
+        strategy of using <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> test on the raw data to better
+        understand the underlying properties of the data set. We
+        consider this simple approach a "benchmark method" to which
+        other methods can be compared. Further, we use Wilcoxon
+        test and stepwise discriminant analysis on a training
+        subset consisting of 80 <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and <NUMEX TYPE="CARDINAL">45</NUMEX> controls,
+        randomly chosen from the original data set, to develop
+        rules to classify a test set consisting of the remaining
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control subjects. <ENAMEX TYPE="DISEASE">Disease classifiers</ENAMEX> of great
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity could be readily constructed by
+        visual inspection and manual binning of <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values based on
+        the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values of the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test combined with classical
+        stepwise discriminant analysis. The ability of these rules
+        to classify <ENAMEX TYPE="DISEASE">disease</ENAMEX> and normal samples were comparable to
+        the model rule published on this dataset at the <ENAMEX TYPE="ORGANIZATION">Clinical</ENAMEX>
+        Proteomics Program <ENAMEX TYPE="PERSON">Databank</ENAMEX> website which was developed
+        using a proprietary genetic algorithm. Further, in
+        examining all <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values, the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values that discriminated
+        best between ovarian <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control were all found to
+        be <NUMEX TYPE="MONEY">less than 500</NUMEX>, an area of the spectrum often discarded
+        as noise [ <TIMEX TYPE="DATE">10</TIMEX> ] . These findings are useful for several
+        reasons. First, the statistical methods used in this study
+        are readily available, widely understood, and can be
+        cheaply implemented. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, a vast amount of
+        mathematical research and practical experience underlies
+        their interpretation. Finally, they can be used to discover
+        unexpected patterns present in the data set. These patterns
+        may be missed by machine learning methods that are narrowly
+        focused on diagnostic classification, and do not present
+        the <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> with a broad overview of the data. As a
+        result of these traditional studies, a better understanding
+        of the weaknesses and possible strengths of serum proteomic
+        <ENAMEX TYPE="PERSON">profiling</ENAMEX> becomes apparent.
+      
+      
+        Results and Discussion
+        Based on the initial training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>, the intensity at each
+        of the consecutive <NUMEX TYPE="CARDINAL">15,154</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values was first compared
+        using a <NUMEX TYPE="CARDINAL">two</NUMEX>-sided <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test (see methods) Figure 1shows
+        the pattern of the resulting <NUMEX TYPE="CARDINAL">two</NUMEX>-sided <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-values generated on a training set consisting of <NUMEX TYPE="CARDINAL">80</NUMEX>
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and <NUMEX TYPE="CARDINAL">45</NUMEX> controls randomly chosen from the
+        larger data set, with the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values on the <ENAMEX TYPE="LAW">x-</ENAMEX>axis and the
+        negative logarithm (base <NUMEX TYPE="CARDINAL">10</NUMEX>) of the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test p-values
+        on the y-axis. There are a total of <NUMEX TYPE="CARDINAL">685</NUMEX> distinct <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values
+        differing between the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control <ENAMEX TYPE="PER_DESC">populations</ENAMEX> with a
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-value of <NUMEX TYPE="PERCENT">less than 10 -6</NUMEX>. Also of note in this
+        distribution is that all <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values with a <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value
+        less than <NUMEX TYPE="CARDINAL">10</NUMEX> -12are found at <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="CARDINAL">less than 500</NUMEX>.
+        The significance of this finding will be discussed further
+        below.
+        In order to determine if these data could be used to
+        separate normal from <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, we used <NUMEX TYPE="CARDINAL">three</NUMEX> strategies to
+        develop rules for diagnostic classification. First, all
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> points regardless of <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value were sorted from most
+        to least significant (according to the <NUMEX TYPE="CARDINAL">two</NUMEX>-sided Wilcoxon
+        test p-values) and the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values with the lowest
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-values were chosen. These <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values were then
+        separated into distinct bins by sorting on consecutive <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        and requiring a separation of <NUMEX TYPE="CARDINAL">at least 1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value to start
+        the next bin (<NUMEX TYPE="CARDINAL">12</NUMEX> bins were detected in this process). The
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>/Z value with the smallest <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value in each bin was
+        selected. The results are shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Next, stepwise
+        discriminate analysis was performed, and <NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values were
+        selected for <ENAMEX TYPE="PRODUCT">Rule 1</ENAMEX> (of note, all but <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value was
+        <ENAMEX TYPE="CONTACT_INFO">below 500</ENAMEX>). When this rule was applied to the entire data
+        set, test and training inclusive, all 162 <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and <NUMEX TYPE="CARDINAL">91</NUMEX>
+        controls were appropriately classified without error for
+        <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and specificity. Given that the
+        interpretation of low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values maybe problematic, we next
+        focused attention on a set of rules which met the following
+        requirements. First, the <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value had to exceed <TIMEX TYPE="DATE">2000</TIMEX>, and
+        the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test P-value had to be <NUMEX TYPE="PERCENT">less than 10 -6</NUMEX>. A
+        total of <NUMEX TYPE="CARDINAL">462</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values from the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> met these
+        criteria. As shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, a total of <NUMEX TYPE="CARDINAL">30</NUMEX> bins were
+        detected by sorting on consecutive <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values as above, and
+        the most significant <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value from each bin was selected for
+        stepwise discriminant analysis. <ENAMEX TYPE="ORGANIZATION">Thirteen M/Z</ENAMEX> values were
+        retained in <ENAMEX TYPE="FAC">Rule 2</ENAMEX>. In the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>, one subject in the
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> was misclassified as normal and one in the
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> was misclassified as <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. In the test set,
+        <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> from the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> were misclassified as
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. Therefore for the test set, the sensitivity was
+        <NUMEX TYPE="CARDINAL">82/82</NUMEX> or <NUMEX TYPE="PERCENT">100%</NUMEX> and the specificity was <NUMEX TYPE="CARDINAL">43/45</NUMEX> or <NUMEX TYPE="PERCENT">95.7%</NUMEX>. For
+        the test and training set combined, one subject was
+        misclassified in the cancer <ENAMEX TYPE="PER_DESC">group</ENAMEX> as normal and three
+        <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were misclassified in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> as <ENAMEX TYPE="DISEASE">cancer</ENAMEX>.
+        Thus for this rule the overall sensitivity was <NUMEX TYPE="CARDINAL">161/162</NUMEX> or
+        <NUMEX TYPE="PERCENT">99.4 %</NUMEX> and its overall specificity was <NUMEX TYPE="CARDINAL">88/91</NUMEX> or <NUMEX TYPE="PERCENT">96.7 %</NUMEX>.
+        Finally, <ENAMEX TYPE="PRODUCT">Rule 3</ENAMEX> was constructed using the <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values in
+        Rule <TIMEX TYPE="DATE">2</TIMEX> combined with <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values <NUMEX TYPE="CARDINAL">409.75936</NUMEX>, <NUMEX TYPE="CARDINAL">418.11364</NUMEX>,
+        <NUMEX TYPE="CARDINAL">435.0751</NUMEX>, and <NUMEX TYPE="MONEY">464.3617</NUMEX> (all also used in <ENAMEX TYPE="FAC">Rule 1</ENAMEX>). This was
+        done because prior studies have indicated the possible
+        presence of low molecular weight biomarkers in ovarian
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> (see below). When this set of <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values was
+        subjected to stepwise discriminant analysis, <NUMEX TYPE="CARDINAL">seven</NUMEX>
+        variables at <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="MONEY">418.1136</NUMEX>, <NUMEX TYPE="CARDINAL">435.0751</NUMEX>, <NUMEX TYPE="CARDINAL">464.3617</NUMEX>,
+        <NUMEX TYPE="CARDINAL">4003.645</NUMEX>, <NUMEX TYPE="CARDINAL">4906.962</NUMEX>, <NUMEX TYPE="CARDINAL">6599.8232</NUMEX>, and <NUMEX TYPE="CARDINAL">6801.495</NUMEX> were retained.
+        When <ENAMEX TYPE="PRODUCT">Rule 3</ENAMEX> was applied to the entire data set, test and
+        training inclusive, all 162 <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and <NUMEX TYPE="CARDINAL">91</NUMEX> controls were
+        appropriately categorized without error for <NUMEX TYPE="PERCENT">100%</NUMEX>
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity. The actual classification
+        schema for <NUMEX TYPE="CARDINAL">all three</NUMEX> rules is shown in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. The results
+        presented with these <NUMEX TYPE="CARDINAL">three</NUMEX> rules were all achieved in the
+        <NUMEX TYPE="ORDINAL">first</NUMEX> attempt. No effort was made to further optimize these
+        rules. We next interchanged the test and training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> and
+        used the same <NUMEX TYPE="CARDINAL">three</NUMEX> rule development strategies. This
+        resulted in:
+        <NUMEX TYPE="CARDINAL">1</NUMEX>) Rule <TIMEX TYPE="DATE">1</TIMEX> with <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="MONEY">2.8234234</NUMEX>, <NUMEX TYPE="CARDINAL">222.41828</NUMEX>,
+        <NUMEX TYPE="CARDINAL">410.13727</NUMEX>, <NUMEX TYPE="CARDINAL">417.73207</NUMEX>, <NUMEX TYPE="CARDINAL">435.07512</NUMEX>, <NUMEX TYPE="CARDINAL">4027.2999</NUMEX>, and <NUMEX TYPE="CARDINAL">8035.0581</NUMEX>,
+        achieved <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and specificity on both the test
+        and training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">2</NUMEX>) Rule <TIMEX TYPE="DATE">2</TIMEX> with <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="MONEY">3676.3951</NUMEX>, <NUMEX TYPE="CARDINAL">3937.7816</NUMEX>,
+        <NUMEX TYPE="CARDINAL">4003.6449</NUMEX>, <NUMEX TYPE="CARDINAL">4440.095</NUMEX>, <NUMEX TYPE="CARDINAL">5269.0367</NUMEX>, <NUMEX TYPE="CARDINAL">10511.699</NUMEX>, <NUMEX TYPE="CARDINAL">14182.82</NUMEX>, and
+        <NUMEX TYPE="CARDINAL">17019.433</NUMEX>. This rule achieved <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and
+        specificity on the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. However sensitivity and
+        <ENAMEX TYPE="ORGANIZATION">specificity</ENAMEX> fell on the test set to <NUMEX TYPE="PERCENT">96.25% and 91.11%</NUMEX>
+        respectively.
+        <NUMEX TYPE="CARDINAL">3</NUMEX>) Rule <TIMEX TYPE="DATE">3</TIMEX> with <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="MONEY">417.73207</NUMEX>, <NUMEX TYPE="CARDINAL">435.07512</NUMEX>,
+        <NUMEX TYPE="CARDINAL">2666.361</NUMEX>, <NUMEX TYPE="CARDINAL">2674.0769</NUMEX>, <NUMEX TYPE="CARDINAL">3937.7816</NUMEX>, <NUMEX TYPE="CARDINAL">3991.8435</NUMEX>, <NUMEX TYPE="CARDINAL">4821.0481</NUMEX>,
+        <NUMEX TYPE="CARDINAL">4839.2088</NUMEX>, <NUMEX TYPE="CARDINAL">5269.0367</NUMEX>, <NUMEX TYPE="CARDINAL">7627.1183</NUMEX>, <NUMEX TYPE="CARDINAL">14182.82</NUMEX>, and <NUMEX TYPE="CARDINAL">17019.433</NUMEX>.
+        This rule achieved <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and specificity on the
+        training set. On the test set it achieved a sensitivity of
+        <NUMEX TYPE="PERCENT">100%</NUMEX> and a specificity of <NUMEX TYPE="PERCENT">97.8%</NUMEX>. We have used a strategy
+        identical to that used in Rule <NUMEX TYPE="CARDINAL">1</NUMEX> to further analyze this
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. First, a randomly ordered list of <ENAMEX TYPE="DISEASE">cancer spectra</ENAMEX> and
+        a randomly ordered list of control spectra were prepared.
+        Next, we assigned the first <NUMEX TYPE="PERCENT">20%</NUMEX> of each list to a test set
+        and the remaining <NUMEX TYPE="PERCENT">80%</NUMEX> to a training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. The process was
+        repeated <NUMEX TYPE="CARDINAL">five</NUMEX> times assigning the next consecutive <NUMEX TYPE="PERCENT">20%</NUMEX> of
+        each list for the test set on each occasion. The results
+        were very similar to those above with <NUMEX TYPE="CARDINAL">all five</NUMEX> rules
+        achieving <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and specificity. This data is
+        posted as additional data file Supplement1.<ENAMEX TYPE="ORGANIZATION">xls</ENAMEX>.
+        Additional File 1
+        This <ENAMEX TYPE="ORGANIZATION">Excel</ENAMEX> file contains <NUMEX TYPE="CARDINAL">5</NUMEX> work sheets. Each sheet
+        contains the most significant <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="ORGANIZATION">MZ</ENAMEX> values from a training
+        set consisting of a different <NUMEX TYPE="PERCENT">80%</NUMEX> subset of the data. The
+        <ENAMEX TYPE="ORGANIZATION">MZ</ENAMEX> values have been sorted into bins and the most
+        significant MZ value from each bin (marked with a "I" in
+        <ENAMEX TYPE="ORGANIZATION">column E</ENAMEX>) was used in stepwise dicriminant analysis. MZ
+        values retained in the final rule are indicated with an "s"
+        in column <ENAMEX TYPE="ORGANIZATION">F.</ENAMEX>
+        Click here for file
+        The presence of statistically significant signals at <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        values less than 500 was unexpected as some <ENAMEX TYPE="PER_DESC">investigators</ENAMEX>,
+        in their systems, conservatively disregard data beneath <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        values of <TIMEX TYPE="DATE">2000</TIMEX> as possible noise [ <TIMEX TYPE="DATE">12</TIMEX> ] . To further
+        investigate this, we first repeated the calculation of
+        <ENAMEX TYPE="PRODUCT">2-sided Wilcoxon</ENAMEX> test p-values at each of the <NUMEX TYPE="CARDINAL">15,154</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        values using the entire data set (see Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). The trends
+        noted in the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> were present in the entire data
+        set, although with increased statistical significance. For
+        example <NUMEX TYPE="CARDINAL">3,591</NUMEX> of the <NUMEX TYPE="CARDINAL">15,154</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values had mean intensities
+        that varied between <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control with a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of <NUMEX TYPE="CARDINAL">10</NUMEX>
+        -6or less. In a sample of a panel consisting of <NUMEX TYPE="CARDINAL">15,154</NUMEX>
+        independent random sets of measurements split between
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control, using <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> test <NUMEX TYPE="CARDINAL">15,154</NUMEX> times with
+        an individual significance level of <NUMEX TYPE="PERCENT">10 -6</NUMEX>, the number of
+        false positives is expected to be <NUMEX TYPE="MONEY">0.015</NUMEX>. It is very small.
+        Alternatively, in the above setting the chance that at
+        least <NUMEX TYPE="CARDINAL">one</NUMEX> of the <NUMEX TYPE="CARDINAL">15,154</NUMEX> measurements would have a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value
+        less than <NUMEX TYPE="CARDINAL">10</NUMEX> -6is <NUMEX TYPE="PERCENT">approximately 1.5%</NUMEX>. Thus it is extremely
+        unlikely that a false positive would occur by chance alone
+        in a <NUMEX TYPE="CARDINAL">15,154</NUMEX> member test set. The finding of significant
+        signals at <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values less than 500 is consistent with <NUMEX TYPE="CARDINAL">two</NUMEX>
+        of the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values used in the model rule published at
+        the <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Program Databank</ENAMEX> website that was
+        developed on the same data set (see <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>), specifically
+        <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values <NUMEX TYPE="MONEY">435.46452</NUMEX> (<ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value = <NUMEX TYPE="CARDINAL">9.08</NUMEX> × <NUMEX TYPE="PERCENT">10 -372</NUMEX> ndmost
+        significant of <NUMEX TYPE="CARDINAL">9</NUMEX> values in its bin) and <NUMEX TYPE="MONEY">465.56916</NUMEX> (<ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value
+        = <NUMEX TYPE="CARDINAL">2.50</NUMEX> × <NUMEX TYPE="PERCENT">10 -286</NUMEX> thmost significant of the <NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values
+        found in its bin) [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . These values correspond to <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        values of <NUMEX TYPE="CARDINAL">435.0751</NUMEX> and <NUMEX TYPE="CARDINAL">464.3617</NUMEX> used in <ENAMEX TYPE="FAC">Rule 1</ENAMEX>. As shown in
+        Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, each of these <NUMEX TYPE="CARDINAL">two</NUMEX> pairs of <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values are
+        surprisingly effective at separating the <NUMEX TYPE="CARDINAL">162</NUMEX> cancer
+        subjects from the <NUMEX TYPE="CARDINAL">91</NUMEX> control <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with an advantage
+        noted with the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX> (compare <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> A with <ENAMEX TYPE="ORGANIZATION">B</ENAMEX>). Even
+        more interesting is the finding that significant <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values
+        found in the first Rule <TIMEX TYPE="DATE">1</TIMEX> included the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of
+        <NUMEX TYPE="MONEY">2.7921478 and 245.53704</NUMEX>. As shown in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> C,
+        these <NUMEX TYPE="CARDINAL">two</NUMEX> values can also significantly separate the <NUMEX TYPE="CARDINAL">162</NUMEX>
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> from the <NUMEX TYPE="CARDINAL">91</NUMEX> control subjects. The
+        interpretation of these values is problematic, given the
+        low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values involved. In order to evaluate these
+        findings, we first investigated whether data normalization
+        as described at the <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Data Bank</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+        could influence the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test p-values found using the
+        raw data (see methods). Several points were chosen, and no
+        effect was noted on the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values (see <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>). We further
+        analyzed <NUMEX TYPE="CARDINAL">several</NUMEX> selected low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values, <NUMEX TYPE="CARDINAL">less than 500</NUMEX>. In
+        this process, the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control data were pooled. The
+        pooled data were randomly partitioned between a set
+        containing <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> and a set containing <NUMEX TYPE="CARDINAL">162</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>. The
+        Wilcoxon test was then run on the randomized set. The
+        process was repeated <NUMEX TYPE="CARDINAL">10,000</NUMEX> times, and the lowest p-values
+        were chosen. As shown in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>, the lowest p-values
+        generated by the permutation process were on the order of
+        <NUMEX TYPE="CARDINAL">0.0001</NUMEX>, as expected given the number of permutations
+        tested. Thus, it is highly unlikely that either data
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> or a chance distribution could have accounted
+        for the highly significant <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values noted in the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> region
+        less than <NUMEX TYPE="CARDINAL">500</NUMEX>. Finally, it is interesting to note that the
+        remaining <NUMEX TYPE="CARDINAL">five</NUMEX> values in the <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Program</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Databank</ENAMEX> model rule all have <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values greater than <TIMEX TYPE="DATE">2000</TIMEX>
+        and relatively high p-values. Specifically the remaining
+        values are (note that the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values are calculated from the
+        entire data set):
+        <NUMEX TYPE="CARDINAL">1</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">2760.6685</NUMEX>, p = <NUMEX TYPE="CARDINAL">0.24</NUMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">19643.409</NUMEX>, p = <NUMEX TYPE="CARDINAL">0.52</NUMEX>
+        <NUMEX TYPE="CARDINAL">3</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">6631.7043</NUMEX>, p = <NUMEX TYPE="CARDINAL">9.0</NUMEX> × <NUMEX TYPE="PERCENT">10 -4</NUMEX>
+        <NUMEX TYPE="CARDINAL">4</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">14051.976</NUMEX>, p = <NUMEX TYPE="CARDINAL">1.8</NUMEX> × <NUMEX TYPE="PERCENT">10 -8</NUMEX>
+        <NUMEX TYPE="CARDINAL">5</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">3497.5508</NUMEX>, p = <NUMEX TYPE="CARDINAL">1.4</NUMEX> × <NUMEX TYPE="PERCENT">10 -6</NUMEX>
+        By contrast all the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values used in <ENAMEX TYPE="FAC">Rule 1</ENAMEX> have
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-values <NUMEX TYPE="PERCENT">less than 10 -26</NUMEX>(compare <ENAMEX TYPE="PRODUCT">Table 1with Table 4</ENAMEX>).
+        There are several non-exclusive explanations for the
+        presence of significant P-values in <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> region less than
+        <NUMEX TYPE="CARDINAL">500</NUMEX>. First, these may actually represent biomarkers that
+        correlate with <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX>. The disease process may
+        influence the serum concentration of lipids, or other small
+        molecules that either bind to the chip directly or through
+        a complex formation with other macromolecules (e.g.,
+        binding to a <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>). For example, the lysophospholipids
+        represent a class of compounds that have an important role
+        in extracellular signaling. <ENAMEX TYPE="PERSON">Lysophophatidic Acid</ENAMEX> (LPA) is a
+        <ENAMEX TYPE="PER_DESC">member</ENAMEX> of this class of compounds, and its plasma levels
+        have been proposed as a potential biomarker for ovarian
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 17</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> is a family of related molecules
+        with molecular weights in the vicinity of <NUMEX TYPE="CARDINAL">400 to 600</NUMEX>
+        Daltons, and a variety of LPA <ENAMEX TYPE="ANIMAL">species</ENAMEX> has been reported to
+        be increased in malignant ascites from <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with
+        ovarian <ENAMEX TYPE="DISEASE">cancer</ENAMEX> as detected by electrospray ionization mass
+        <ENAMEX TYPE="ORGANIZATION">spectrometry</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ESI-MS</ENAMEX>) [ <TIMEX TYPE="DATE">18</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> related species have
+        also been reported to be increased in plasma samples from
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX> using a combination of thin
+        layer chromatography (to isolate an "<ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> <ENAMEX TYPE="ORG_DESC">band</ENAMEX>" from patient
+        <ENAMEX TYPE="ORGANIZATION">plasma</ENAMEX>) followed by <ENAMEX TYPE="ORGANIZATION">ESI-MS.</ENAMEX> This study reported significant
+        <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> increases in cancer samples with increased intensities
+        noted at <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <ENAMEX TYPE="CONTACT_INFO">409, 433-437, 457, 481-482, 571,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">599</NUMEX>, and <NUMEX TYPE="CARDINAL">619</NUMEX>. This report also reviews the evidence that
+        these <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values are consistent with <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">19</NUMEX> ] . Figure <NUMEX TYPE="CARDINAL">4shows</NUMEX> the average intensities and <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values
+        for both the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in the region
+        between <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <TIMEX TYPE="DATE">410 to 470</TIMEX>. Among other features, an
+        increase in the mean intensity for <ENAMEX TYPE="DISEASE">cancers</ENAMEX> at a peak
+        centered at an <ENAMEX TYPE="PRODUCT">M/Z of 459</ENAMEX> is noted. However, also of note
+        in this region are:
+        <NUMEX TYPE="CARDINAL">1</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">464.3617</NUMEX> with a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value less than <NUMEX TYPE="PERCENT">6.8 × 10 -35</NUMEX>,
+        that correlates with a shoulder in a secondary peak at
+        <NUMEX TYPE="CARDINAL">about 463</NUMEX>, that is decreased in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> (average
+        intensity <NUMEX TYPE="MONEY">17.5</NUMEX> for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> versus <NUMEX TYPE="MONEY">23.6</NUMEX> for controls).
+        <NUMEX TYPE="CARDINAL">2</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">435.0751</NUMEX> with a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of <NUMEX TYPE="CARDINAL">less than 3.9</NUMEX> × <NUMEX TYPE="CARDINAL">10</NUMEX>
+        -<NUMEX TYPE="CARDINAL">37</NUMEX>, that corresponds to a peak with increased intensity in
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> (average intensity <NUMEX TYPE="CARDINAL">33</NUMEX> for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> versus <NUMEX TYPE="MONEY">25.5</NUMEX> for
+        <ENAMEX TYPE="ORGANIZATION">controls</ENAMEX>).
+        <NUMEX TYPE="CARDINAL">3</NUMEX>) <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> = <NUMEX TYPE="CARDINAL">417.73207</NUMEX> with a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value less than <NUMEX TYPE="CARDINAL">6.2</NUMEX> × <NUMEX TYPE="CARDINAL">10</NUMEX>
+        -<NUMEX TYPE="CARDINAL">35</NUMEX>, that corresponds to a peak that is decreased in cancer
+        (average intensity <NUMEX TYPE="MONEY">39.5</NUMEX> for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> versus <NUMEX TYPE="MONEY">47.4</NUMEX> for
+        <ENAMEX TYPE="ORGANIZATION">controls</ENAMEX>)
+        The identity of the molecules responsible for these
+        differences cannot be determined from this data. However,
+        it is possible that in some cases they may relate to the
+        <ENAMEX TYPE="PERSON">LPA</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> of molecules, or to alterations in <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that
+        <ENAMEX TYPE="ORGANIZATION">bind LPA</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX>.
+        Other explanations for the presence of statistically
+        significant bands of low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> include degradation products
+        of higher molecular weight macromolecules or a matrix
+        effect. For example, if a set of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> exist that are
+        expressed at different levels between <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control
+        subjects but have a common domain, then a common product
+        <ENAMEX TYPE="PERSON">ion</ENAMEX> of lower <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> may be generated that would represent a
+        summation of all the changes in expression of the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, and might thus have greater statistical
+        significance than the changes associated with any single
+        high <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value. Similarly, a set of low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> molecules
+        (e.g., energy-absorbing molecule or matrix) that interacts
+        differently in a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> environment that differs markedly
+        between <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control could hypothetically generate a
+        similar phenomenon. However, it is difficult to apply any
+        of the above explanations to the very low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values such
+        as <NUMEX TYPE="CARDINAL">2.7921478</NUMEX> and <NUMEX TYPE="CARDINAL">245.53704</NUMEX>, although in the last case an
+        extremely small organic molecule is possible.
+        Alternatively, there maybe some unexpected experimental
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> or systematic error that accounts for low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        discrimination. This could occur at any experimental step,
+        and might include medication or lifestyle change that
+        occurs in <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who learn they have a <ENAMEX TYPE="DISEASE">cancer</ENAMEX> diagnosis,
+        variation in sample collection, processing and
+        <ENAMEX TYPE="PERSON">preservation</ENAMEX>, as well as bias introduced at the time of
+        analysis. In the case of <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX>, increased plasma levels may
+        be associated with platelet activation. Another group
+        trying to repeat the observations of increased levels of
+        LPA associated with <ENAMEX TYPE="DISEASE">ovarian cancer</ENAMEX> concluded that there was
+        no diagnostic value in the assay, and attributed the
+        discrepant findings as possibly related to different sample
+        centrifugation protocols used by the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> to remove
+        platelets from the samples prior to analysis [ <TIMEX TYPE="DATE">20</TIMEX> ] .
+        However, <ENAMEX TYPE="ORGANIZATION">LPA</ENAMEX> continues to be actively evaluated for its
+        clinical utility [ <TIMEX TYPE="DATE">21</TIMEX> ] .
+      
+      
+        Conclusions
+        Serum proteomic profiling is a new approach to cancer
+        diagnosis. However it confronts a challenging environment,
+        as it combines measurement technologies that are new in the
+        clinical setting with novel approaches to processing and
+        interpreting high dimensional data. Further, controlling
+        large clinical studies can be challenging even in more
+        established settings. Nevertheless, it represents an
+        advance in the ability to diagnose and understand illness.
+        The results presented in this study are useful for several
+        reasons. First, in regard to <ENAMEX TYPE="DISEASE">disease classification</ENAMEX>,
+        advanced data mining techniques should be benchmarked
+        against traditional methods when possible. Further
+        identical training <ENAMEX TYPE="FAC_DESC">sets</ENAMEX> should be defined for such a
+        comparison as results may very depending on the samples
+        chosen for inclusion in the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. The development
+        of <ENAMEX TYPE="DISEASE">disease</ENAMEX> classifiers using routine analysis proved to be
+        <ENAMEX TYPE="PERSON">straightforward</ENAMEX>, and resulted in excellent performance in
+        both the test and training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> (e.g. <NUMEX TYPE="PERCENT">100%</NUMEX> sensitivity and
+        specificity for <ENAMEX TYPE="ORGANIZATION">Rules</ENAMEX> <NUMEX TYPE="CARDINAL">1 and 3</NUMEX> in the <NUMEX TYPE="ORDINAL">first</NUMEX> training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>).
+        In particular these preliminary data suggest that these two
+        rules may be specific enough to scale to larger population
+        trials without generating an unacceptably high false
+        positive rate. This study also confirms that a classifier
+        could be developed with <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values greater than <TIMEX TYPE="DATE">2000</TIMEX>. This
+        indicates that information regarding the difference between
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control is present throughout the entire <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        region studied, a result entirely consistent with the
+        <ENAMEX TYPE="PRODUCT">observed Wilcoxon</ENAMEX> test p-values. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, routine analysis
+        allows <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> to rapidly review the data for their
+        general trends, and correlate the findings with other
+        information. The findings of significant discrimination
+        between <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> at low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values
+        indicates that attention should be focused in this region.
+        In particular, if experimental bias and noise effects can
+        be excluded, this region may prove to offer the optimum for
+        ovarian <ENAMEX TYPE="DISEASE">cancer</ENAMEX> diagnostic test development. On the other
+        hand, if bias cannot be excluded, the possibility must be
+        entertained that higher <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values may also have been
+        similarly affected. In order to address these issues,
+        consideration may be given to using mass spectrometry
+        methods with increased sensitivity in the low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> region.
+        The experimental conditions used to physically bind the
+        serum <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> to the chip prior to analysis may also prove
+        critical, and should be consistent with those used in
+        collecting the current data set. Also, the possibility that
+        the changes in the low <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> region may represent an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>
+        effect caused by differing protein environments between
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and normal may be approached by intentionally
+        spiking samples with panels of known <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and
+        determining if there is an effect on the spectra in the low
+        <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> region. The use of internal standards to normalize this
+        type of experimental system in general may also be
+        considered. As with all clinical test development,
+        confirmation of results in independent <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> running
+        blinded <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> will remain the gold standard in ruling out
+        the possible effects of bias, unless the sample set itself
+        contains the bias. Particular attention should be paid to
+        pre-analytic causes of bias that may influence the serum
+        <ENAMEX TYPE="ORGANIZATION">proteome</ENAMEX>. In particular the coagulation and complement
+        <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX> should be considered as potential <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of noise
+        in this context, as both are activated during serum sample
+        collection and generate low molecular weight products.
+        These products are undesirable for <NUMEX TYPE="CARDINAL">two</NUMEX> reasons. First, if a
+        <ENAMEX TYPE="DISEASE">putative tumor biomarker</ENAMEX> (e.g. LPA) is a <ENAMEX TYPE="PER_DESC">member</ENAMEX> of a
+        pathway altered during serum sample collection, changes
+        between plasma levels of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> may be
+        <ENAMEX TYPE="PERSON">obscured</ENAMEX>. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, the generation of activation products
+        may simply complicate the spectrum. Also, sample collection
+        practices should be rigorously defined, and include
+        <ENAMEX TYPE="PRODUCT">submitting</ENAMEX> matched control and <ENAMEX TYPE="DISEASE">cancer</ENAMEX> samples from all
+        <ENAMEX TYPE="FAC_DESC">centers</ENAMEX> participating in the study. Matching for age and
+        menopausal status should be considered. For example, in the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> set used in this study, the mean age of the control
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> was <TIMEX TYPE="DATE">47 years</TIMEX> and the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> group <TIMEX TYPE="DATE">60 years</TIMEX>. It is
+        noteworthy that the average age of menopause is
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">51 years</TIMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] . This may introduce a bias
+        in the results reported in this study as well as all others
+        derived from this dataset. Finally, the steps associated
+        with sample collection, processing, and binding to the chip
+        may represent a particularly fertile area for research. Any
+        combination of such steps may significantly alter the
+        molecular subset of the sample that can be successfully
+        analyzed.
+        However, the ability to discriminate between <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> based on the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values of <NUMEX TYPE="CARDINAL">2.79</NUMEX> and <NUMEX TYPE="CARDINAL">245.5</NUMEX> reveals
+        the presence of a significant experimental bias not related
+        to disease pathology, that likely involves machine noise
+        and matrix effects. This is particularly true of the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        value at 2.79 which represents a bias of the mass
+        spectrometer instrument itself. If this is the case the
+        higher <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> regions may also be affected. These findings
+        indicate that any rule derived from this data set,
+        including the ones presented in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, may be
+        detecting differences in experimental bias and not disease
+        <ENAMEX TYPE="PERSON">pathology</ENAMEX>. <ENAMEX TYPE="PER_DESC">Investigators</ENAMEX> in this field may minimize their
+        chances of false discovery by careful experimental design
+        and by using routine statistical methods to both overview
+        the data (in an intentional search for bias) as well as a
+        benchmark for comparison with other data mining
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX>.
+      
+      
+        Methods
+        A training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> was formed by randomly sampling <NUMEX TYPE="CARDINAL">45</NUMEX>
+        spectra out of the <NUMEX TYPE="CARDINAL">91</NUMEX> controls and <NUMEX TYPE="CARDINAL">80</NUMEX> spectra out of the
+        162 <ENAMEX TYPE="DISEASE">cancer</ENAMEX> cases (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Those spectra that were in
+        the original data set but not in the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> were
+        considered in a 'test' set. <NUMEX TYPE="CARDINAL">Two</NUMEX>-sided <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test was
+        used to compare the intensity between the controls and
+        <ENAMEX TYPE="DISEASE">cancers</ENAMEX> in the training set at each of the <NUMEX TYPE="CARDINAL">15,154</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX>
+        values. We then selected a subset of the <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values with
+        the lowest <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test p-values (see the Results section
+        for details). We sorted on consecutive <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values to get
+        <ENAMEX TYPE="PERSON">bins</ENAMEX>. A separation of <NUMEX TYPE="CARDINAL">at least one</NUMEX> <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value was required
+        to start the next bin. The lowest p-value in each bin was
+        selected and the corresponding <ENAMEX TYPE="ORGANIZATION">M/</ENAMEX>Z value was used in
+        stepwise discriminant analysis to determine the subset of
+        <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> values that best discriminated <ENAMEX TYPE="DISEASE">cancer</ENAMEX> from control in
+        the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. The criteria were applied to the test
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> set, and sensitivity and specificity were computed.
+        All the analyses were performed in <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX> <ENAMEX TYPE="PRODUCT">Version 8.2</ENAMEX> (A
+        statistical package from <ENAMEX TYPE="ORGANIZATION">SAS Institute Inc.</ENAMEX>, <ENAMEX TYPE="GPE">Cary</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">USA</ENAMEX>)
+        on a personal computer. Wilcoxon test was performed using
+        NPAR1WAY procedure in <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX>, stepwise discriminant analysis
+        was performed using <ENAMEX TYPE="ORGANIZATION">STEPDISC</ENAMEX> procedure in <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX>, and
+        discriminant analysis was performed using <ENAMEX TYPE="ORGANIZATION">DISCRIM</ENAMEX> procedure
+        in <ENAMEX TYPE="ORGANIZATION">SAS</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] .
+        To normalize the data, the procedure outlined by the
+        <ENAMEX TYPE="ORGANIZATION">Clinical Proteomics Program Databank</ENAMEX> was used [ <TIMEX TYPE="DATE">24</TIMEX> ] . The
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and control values for each <ENAMEX TYPE="ORGANIZATION">M/Z</ENAMEX> were given
+        respective labels, and the data were then pooled and
+        <ENAMEX TYPE="ORGANIZATION">normalized</ENAMEX> using the formula <ENAMEX TYPE="ORGANIZATION">NV</ENAMEX> = (<ENAMEX TYPE="PRODUCT">V-Min</ENAMEX>)/(<ENAMEX TYPE="PERSON">Max - Min</ENAMEX>). In
+        this expression, <ENAMEX TYPE="PERSON">Min</ENAMEX> is the minimum intensity of the pooled
+        samples, <ENAMEX TYPE="PERSON">Max</ENAMEX> represents the maximum intensity found in the
+        <ENAMEX TYPE="SUBSTANCE">pooled samples</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">NV</ENAMEX> represents the normalized value.
+        Using this procedure, the data intensities will all fall
+        <TIMEX TYPE="DATE">between 0 and 1</TIMEX>. The data points were sorted into cancer
+        and controls, and the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values were calculated.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="PERSON">JMS</ENAMEX> conceived of the studies and developed the initial
+        process for selecting diagnostic rules. <ENAMEX TYPE="GPE">MZ</ENAMEX> performed the
+        statistical analysis and further refined the rules with
+        stepwise discrminant analysis. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and agreed
+        with the final manuscript.
+      
+    
+  

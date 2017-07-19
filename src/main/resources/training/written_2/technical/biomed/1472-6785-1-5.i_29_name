@@ -1,0 +1,701 @@
+
+  
+    
+      
+        Background
+        Early recognition of the contrast between the
+        stabilizing influences of density-dependent population
+        regulation, and potentially de-stabilizing influences of
+        environmental variation [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , laid a foundation for
+        theoretical modeling of population stability in stochastic
+        environments [ <ENAMEX TYPE="LAW">2</ENAMEX> ] that assumes renewed relevance in light
+        of current developments in ecology and climate research [ <NUMEX TYPE="CARDINAL">3</NUMEX>
+        ] . Recently, for instance, numerous studies have
+        documented the influences of global-scale climatic
+        variation on the population dynamics of vertebrates in
+        widely diverse ecosystems (see, e.g., [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] for reviews),
+        including <ENAMEX TYPE="ANIMAL">species interactions</ENAMEX> at the <ENAMEX TYPE="PER_DESC">community</ENAMEX> level [ <NUMEX TYPE="CARDINAL">6 7</NUMEX>
+        <NUMEX TYPE="CARDINAL">8</NUMEX> ] . To our knowledge, however, no study has yet
+        documented a simultaneous and direct influence of
+        large-scale climate on the dynamics at all trophic levels
+        in a single system. Such a pervasive influence could pose
+        consequences for the persistence of biological communities
+        if the climatic influence at any trophic level (or multiple
+        levels) were strong enough to alter its dynamical stability
+        [ <ENAMEX TYPE="LAW">3</ENAMEX> ] .
+        Here, we use empirical data on a <NUMEX TYPE="CARDINAL">three</NUMEX>-trophic level
+        system involving <ENAMEX TYPE="ORG_DESC">predators</ENAMEX>, herbivores, and vegetation, and
+        a <ENAMEX TYPE="PER_DESC">community</ENAMEX>-level model, to test for the influences of
+        climate on the dynamics at and among <ENAMEX TYPE="PER_DESC">individual</ENAMEX> trophic
+        levels, while simultaneously accounting for the roles of
+        <ENAMEX TYPE="PERSON">intrinsic</ENAMEX> (density-dependent) and interspecific
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. Previously, we identified correlations
+        between large-scale variation in <TIMEX TYPE="DATE">winter</TIMEX> climate, the <ENAMEX TYPE="ORGANIZATION">North</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Atlantic Oscillation</ENAMEX> (NAO) [ <ENAMEX TYPE="LAW">9</ENAMEX> ] , and: predation
+        efficiency of <ENAMEX TYPE="ANIMAL">wolves</ENAMEX> ( 
+        Canis lupus ), mortality of old moose
+        ( 
+        Alces alces ), and growth dynamics of
+        balsam fir ( 
+        Abies balsamea ) on <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ]
+        . Additionally, we have documented influences of the <ENAMEX TYPE="ORGANIZATION">NAO</ENAMEX>,
+        <ENAMEX TYPE="PERSON">wolf</ENAMEX> predation, and density dependence on the intrinsic
+        rate of increase in the moose <ENAMEX TYPE="PER_DESC">population</ENAMEX> on <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">10</NUMEX> ] . Hence, the current analysis was motivated by the
+        results of these earlier attempts to dissect the relative
+        contributions of intrinsic and extrinsic processes to the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> of this <ENAMEX TYPE="GPE_DESC">community</ENAMEX>, as well as by a more general
+        interest in developing a community-level model of climatic
+        effects at and among multiple trophic levels that may
+        subsequently contribute to our understanding of the
+        implications of climatic change for community stability.
+        Quantifying the role of climatic variation in the dynamics
+        at multiple trophic levels requires, however, a modeling
+        framework that first accounts for the influence of
+        <ENAMEX TYPE="ORGANIZATION">interspecific</ENAMEX> and intrinsic processes on the dynamical
+        structure at each level, so that the influence of intrinsic
+        processes on the autoregressive (AR) structure of the time
+        series data is not mistaken for a lagged influence of
+        environmental <ENAMEX TYPE="PER_DESC">stochasticity</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] .
+        Based on the approach used in the development of
+        previous bivariate <ENAMEX TYPE="PER_DESC">population</ENAMEX> models [ <NUMEX TYPE="CARDINAL">12 13 14</NUMEX> ] , we
+        developed and applied a model testing for the direct
+        influence of large-scale climate on the dynamics at
+        individual trophic levels and interactions among levels
+        (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). This graphical model was used to express
+        mathematically the predicted autoregressive structure of
+        the time series data at each level on the basis of
+        interspecific density interactions at adjacent trophic
+        levels [ <TIMEX TYPE="DATE">12</TIMEX> ] , as well as the time lags at which climate
+        might influence dynamics at each level (see equations (<ENAMEX TYPE="CONTACT_INFO">1-4</ENAMEX>)
+        in <ENAMEX TYPE="GPE">Methods</ENAMEX>, below). The time series we analyzed comprise <NUMEX TYPE="CARDINAL">30</NUMEX>
+        <TIMEX TYPE="DATE">years</TIMEX> of data (<TIMEX TYPE="DATE">1958-88</TIMEX>) from the monitoring study on <ENAMEX TYPE="GPE">Isle</ENAMEX>
+        Royale on the population dynamics of <ENAMEX TYPE="ANIMAL">wolves</ENAMEX> and moose, and
+        interannual variability in growth increments of balsam fir
+        [ <ENAMEX TYPE="LAW">6 15 16</ENAMEX> ] . Though the data extend to the present,
+        estimates of moose density beyond <TIMEX TYPE="DATE">1988</TIMEX> have not been
+        adjusted by cohort <ENAMEX TYPE="ORGANIZATION">reconstruction</ENAMEX> (see <ENAMEX TYPE="SUBSTANCE">ref.</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ), so we
+        constrained our analysis to the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">3</NUMEX> <TIMEX TYPE="DATE">decades</TIMEX>.
+      
+      
+        Results
+        The corrected <ENAMEX TYPE="ORGANIZATION">Akaike Information Criterion</ENAMEX> (AIC 
+        
+          c 
+         ) [ <TIMEX TYPE="DATE">17</TIMEX> ] scores of the pure time series data at each
+        level of the <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> <ENAMEX TYPE="PER_DESC">community</ENAMEX> indicate that the AR
+        dimension of the data for the period <TIMEX TYPE="DATE">1958-88</TIMEX> is one for
+        <ENAMEX TYPE="PERSON">wolves</ENAMEX>, <NUMEX TYPE="CARDINAL">three</NUMEX> for moose, and one for fir. AIC 
+        
+          c 
+         scores of the <NUMEX TYPE="ORDINAL">first</NUMEX>, <NUMEX TYPE="ORDINAL">second</NUMEX>, and <NUMEX TYPE="ORDINAL">third</NUMEX> order
+        <ENAMEX TYPE="ORGANIZATION">autoregressive</ENAMEX> models [i.e., <ENAMEX TYPE="ORGANIZATION">AR</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), <ENAMEX TYPE="ORGANIZATION">AR</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), and <ENAMEX TYPE="ORGANIZATION">AR</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)] are,
+        for <ENAMEX TYPE="ANIMAL">wolves</ENAMEX> <NUMEX TYPE="CARDINAL">4.2</NUMEX>, <NUMEX TYPE="CARDINAL">7.1</NUMEX>, <NUMEX TYPE="CARDINAL">10.6</NUMEX>; for moose <NUMEX TYPE="PERCENT">-64.6</NUMEX>, <NUMEX TYPE="PERCENT">-63.9</NUMEX>, <NUMEX TYPE="PERCENT">-67.1</NUMEX>;
+        and for balsam <ENAMEX TYPE="CONTACT_INFO">fir -26.0, -22.1, -21.6.</ENAMEX> The lowest AIC 
+        
+          c 
+         score indicates the most parsimonious dimension at
+        each trophic level.
+        In full agreement with the pure AR structure of the time
+        series, the most parsimonious ecological model of wolf
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> was an AR(<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) model with current-year climate as a
+        <ENAMEX TYPE="ORGANIZATION">covariate</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1a</ENAMEX>); the best model of moose dynamics was
+        an AR(<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) model with current-year climate as a covariate
+        (<ENAMEX TYPE="PRODUCT">Table 1b</ENAMEX>); and the best model of fir dynamics was an AR(<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+        model with current-year climate as a covariate (<ENAMEX TYPE="PRODUCT">Table 1c</ENAMEX>).
+        Each of these <ENAMEX TYPE="PER_DESC">models</ENAMEX> provided a good approximation of the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> at the individual trophic levels (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>; Figure
+        <NUMEX TYPE="CARDINAL">2</NUMEX>). Note, however, that for moose a good approximation of
+        the dynamics was afforded by an AR(<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) model with the same
+        covariates as the best AR(<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) model in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>( 
+        R <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.96</NUMEX>, AIC 
+        
+          c 
+         <ENAMEX TYPE="CONTACT_INFO">= -63.9</ENAMEX>), and so might be favored over the <ENAMEX TYPE="ORGANIZATION">AR</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) model
+        on the basis of parsimony.
+        Direct density dependence was slightly stronger at the
+        middle trophic level (moose) than at the top or bottom
+        levels, though none of the tests for differences between
+        these coefficients was significant (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). In contrast,
+        the influence of large-scale climate was significantly
+        weaker at the middle trophic level than at either the top
+        or bottom trophic levels (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>).
+      
+      
+        Discussion
+        The results of our analysis corroborate previous
+        observations of the limiting influences of <TIMEX TYPE="DATE">winter</TIMEX> climate
+        in moose <ENAMEX TYPE="PER_DESC">population</ENAMEX> dynamics [ <TIMEX TYPE="DATE">18</TIMEX> ] , of the mediating
+        influence of <TIMEX TYPE="DATE">winter</TIMEX> climate in wolf-moose interactions [ <NUMEX TYPE="CARDINAL">19</NUMEX>
+        ] , of the roles of <ENAMEX TYPE="SUBSTANCE">wolf predation</ENAMEX> and density dependence
+        in moose dynamics [ <NUMEX TYPE="CARDINAL">10 20</NUMEX> ] , and of the direct influence
+        of <TIMEX TYPE="DATE">winter</TIMEX> climate on growth dynamics of balsam fir [ <ENAMEX TYPE="LAW">6</ENAMEX> ] on
+        <ENAMEX TYPE="PERSON">Isle Royale</ENAMEX>. To our knowledge, however, this study
+        constitutes the first documentation of direct and
+        simultaneous influences of large-scale climate on the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> at multiple trophic levels in a single system.
+        Although many studies have documented influences of
+        <ENAMEX TYPE="PERSON">winter</ENAMEX> weather, particularly snow conditions, on wolf-prey
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX> (e.g., [ <NUMEX TYPE="CARDINAL">19 21 22 23</NUMEX> ] , we are unaware of
+        studies showing an influence of <TIMEX TYPE="DATE">winter</TIMEX> climate on wolf
+        <ENAMEX TYPE="ORGANIZATION">population dynamics</ENAMEX>. Evidence of influences of <ENAMEX TYPE="SUBSTANCE">snow</ENAMEX> on wolf
+        movement, social tendencies [ <TIMEX TYPE="DATE">24</TIMEX> ] and predation rates [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+        ] suggests, however, that <TIMEX TYPE="DATE">winter</TIMEX> climate might affect wolf
+        survival. While we wish to avoid speculating as to
+        potential mechanisms underlying the direct influence of the
+        <ENAMEX TYPE="ORGANIZATION">NAO</ENAMEX> on wolf dynamics indicated by our analysis (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>),
+        it may be worth considering that residual variation in
+        <TIMEX TYPE="DATE">annual</TIMEX> wolf mortality, after accounting for the influences
+        of wolf density and pack size [ <ENAMEX TYPE="LAW">6</ENAMEX> ] , correlates negatively
+        with the current-year <ENAMEX TYPE="ORGANIZATION">NAO</ENAMEX> index (standardized 
+        r = <NUMEX TYPE="PERCENT">-0.52</NUMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = <NUMEX TYPE="CARDINAL">2.22</NUMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">0.038</NUMEX>).
+        Trophic theory [ <TIMEX TYPE="DATE">25</TIMEX> ] , statistical <ENAMEX TYPE="ORG_DESC">ecology</ENAMEX> [ <NUMEX TYPE="CARDINAL">26 27</NUMEX> ] ,
+        and our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1and</NUMEX> equation (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) in <ENAMEX TYPE="GPE">Methods</ENAMEX>) predict
+        that the embedding dimension (i.e., the number of time lags
+        we must look back upon in order to find a correlation with
+        <TIMEX TYPE="DATE">the current year</TIMEX>'s density) of the dynamics at each trophic
+        level should reflect the number of species influencing the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> at each level, as several recent analyses have
+        also demonstrated [ <NUMEX TYPE="CARDINAL">14 28 29</NUMEX> ] . In this perspective, we
+        found, however, lower dimension (i.e., first-order) at both
+        the <ENAMEX TYPE="ORG_DESC">predator</ENAMEX> and vegetation levels than expected (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>),
+        while dynamics at the herbivore level displayed the higher
+        <ENAMEX TYPE="PERSON">dimension</ENAMEX> predicted by our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. Interestingly,
+        <ENAMEX TYPE="ORGANIZATION">dimensionality</ENAMEX> in this large-mammal system parallels the
+        dynamic structure of the lynx-hare system of the <ENAMEX TYPE="ORGANIZATION">Canadian</ENAMEX>
+        boreal forest at the herbivore level, but not at the
+        predator level [ <TIMEX TYPE="DATE">28</TIMEX> ] . The embedding dimension of lynx,
+        which are affected by many species other than snowshoe hare
+        across the boreal forest of <ENAMEX TYPE="GPE">Canada</ENAMEX>, is generally <NUMEX TYPE="CARDINAL">two</NUMEX> or
+        higher [ <NUMEX TYPE="CARDINAL">28 30</NUMEX> ] . The contrasting simplicity of wolf
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> on <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> reflects, we suggest, the
+        comparatively insular nature of the <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> system and
+        relative scarcity of additional species influencing the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> of <ENAMEX TYPE="ANIMAL">wolves</ENAMEX> there [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+        Despite having low dimension, the top and bottom trophic
+        levels displayed complex dynamics (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Indeed,
+        spectral analysis of the <ENAMEX TYPE="PERSON">wolf</ENAMEX> and moose time series reveals
+        significant periodicity at both levels that is apparently
+        driven by phase-dependent predation, a process that is
+        <ENAMEX TYPE="ORGANIZATION">endogenous</ENAMEX> to wolf dynamics but exogenous to moose (<ENAMEX TYPE="ORGANIZATION">E.</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Post</ENAMEX>, <ENAMEX TYPE="GPE">N.C. Stenseth</ENAMEX>, <ENAMEX TYPE="PERSON">R.O. Peterson</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">J.A. Vucetich, A.M.</ENAMEX>
+        <ENAMEX TYPE="PERSON">Ellis</ENAMEX>, in review). Fir dynamics on <ENAMEX TYPE="LOCATION">Isle Royale</ENAMEX> are,
+        moreover, tightly linked with changes in moose density [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+        <NUMEX TYPE="CARDINAL">16</NUMEX> ] , which could contribute to exogenously generated
+        periodicity at that level [ <TIMEX TYPE="DATE">27</TIMEX> ] .
+        The low dimension of the dynamics at the top and bottom
+        <ENAMEX TYPE="ORGANIZATION">trophic</ENAMEX> levels masks, in a sense, interactions with the
+        <ENAMEX TYPE="PERSON">adjacent</ENAMEX> (herbivore) level that were captured in these
+        models. Note, however, that in the most parsimonious model
+        of wolf dynamics (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), the lag-<NUMEX TYPE="CARDINAL">one</NUMEX> autoregressive term
+        quantifying direct density dependence includes the
+        coefficient of self-regulation in moose (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ), and the coefficient of the lag-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        pack size term includes the coefficient quantifying the
+        interaction between moose density and wolf density
+        (coefficient 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> from <ENAMEX TYPE="PRODUCT">Equation 2a</ENAMEX>). As well, in the
+        most parsimonious model of fir dynamics (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), the
+        lag-<NUMEX TYPE="CARDINAL">one</NUMEX> autoregressive term includes the coefficients
+        quantifying the influences of moose on fir (coefficient 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> from equation <NUMEX TYPE="QUANTITY">2c</NUMEX>) and of fir on moose
+        (coefficient b 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> from equation <NUMEX TYPE="QUANTITY">2b</NUMEX>). Hence, an important
+        conclusion of this analysis is that while interactions
+        between adjacent trophic levels lead to predictions of
+        higher-order dynamics during the derivation of the
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> model (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>), the act of following the
+        coefficients from the individual trophic-level models ( 
+        <ENAMEX TYPE="ORGANIZATION">sensu</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ] ) allows us to observe
+        that trophic interactions may also appear in first-order
+        density dependence.
+      
+      
+        Conclusions
+        Experimental evidence from microcosm studies indicates
+        that climatic change may alter community stability if
+        individual <ENAMEX TYPE="PER_DESC">populations</ENAMEX> composing the community exhibit weak
+        density dependence, or if climate change influences
+        interspecific interactions [ <TIMEX TYPE="DATE">33</TIMEX> ] . While we caution
+        against drawing general conclusions from this analysis, our
+        results suggest that climatic change has the potential to
+        influence the stability of this <ENAMEX TYPE="GPE_DESC">community</ENAMEX> by altering the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> and stability at any single, or <NUMEX TYPE="CARDINAL">all three</NUMEX>, of the
+        individual trophic levels. Because self-regulation (i.e.,
+        direct density dependence) was relatively weaker at the top
+        and bottom trophic levels (though not significant
+        <ENAMEX TYPE="ORGANIZATION">statistically</ENAMEX>), it may be these levels at which climate
+        change alters stability of the <ENAMEX TYPE="GPE_DESC">community</ENAMEX>. It is worth
+        <ENAMEX TYPE="PERSON">recalling</ENAMEX>, however, that theory predicts that population
+        stability depends on the relative strengths of intrinsic
+        and environmental influences on population dynamics [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+        In this regard, it may be the observation that climate
+        exerted its greatest influence on the dynamics of the top
+        and bottom trophic levels (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) that is most relevant
+        because, even if self regulation were equivalent at all
+        <TIMEX TYPE="DATE">three</TIMEX> levels, it is at the levels most responsive to
+        climate where we will see the greatest effects of climate
+        change on dynamics and stability [ <ENAMEX TYPE="LAW">3</ENAMEX> ] .
+        Moreover, it appears that in this system, the two
+        <ENAMEX TYPE="ORGANIZATION">trophic</ENAMEX> levels with the simplest dynamics (<ENAMEX TYPE="ORG_DESC">predator</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">vegetation</ENAMEX>) also displayed the greatest response to
+        climate. Whether community stability in a changing climate
+        relates to dynamic complexity at individual trophic levels,
+        as opposed to complexity of entire food webs ( 
+        <ENAMEX TYPE="ORGANIZATION">sensu</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] ), should prove to be a
+        <ENAMEX TYPE="PERSON">fruitful</ENAMEX> and important pursuit in future research.
+      
+      
+        Methods
+        We expressed the dynamics of <ENAMEX TYPE="ORG_DESC">predator</ENAMEX> density (<ENAMEX TYPE="ORGANIZATION">P</ENAMEX>),
+        herbivore density ( 
+        <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> ), and incremental vegetation
+        growth ( 
+        <ENAMEX TYPE="PERSON">V</ENAMEX> ) as (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>):
+        
+        P 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        P 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">exp</ENAMEX>( 
+        f ( 
+        X 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1</ENAMEX> ), 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         , 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">)    </ENAMEX> (<NUMEX TYPE="MONEY">1a</NUMEX>)
+        
+        <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">exp</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> ( 
+        X 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1 ,</ENAMEX> 
+        Z 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1</ENAMEX> ), 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         , 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">)    </ENAMEX> (<NUMEX TYPE="MONEY">1b</NUMEX>)
+        
+        V 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        V 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">exp</ENAMEX>( 
+        <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> ( 
+        Z 
+        
+        <ENAMEX TYPE="CONTACT_INFO">t -1 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         ), 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         <ENAMEX TYPE="PERSON">)    </ENAMEX> (<NUMEX TYPE="MONEY">1c</NUMEX>)
+        where 
+        X 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         
+        , <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         and 
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         are the log 
+        
+          e 
+         -transformed 
+        P 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         , 
+        <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         and 
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         , respectively, and where 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         is a climate variable (here, 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         is the NAO <TIMEX TYPE="DATE">winter</TIMEX> index; see [ <ENAMEX TYPE="LAW">9</ENAMEX> ] ), and where 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         represents wolf pack size, which correlates with
+        winter climatic conditions and pack kill rate (moose
+        killed/<ENAMEX TYPE="PER_DESC">pack</ENAMEX>/<TIMEX TYPE="DATE">day</TIMEX>) [ <ENAMEX TYPE="LAW">6</ENAMEX> ] , and which incorporates social
+        structure and associated non-predatory behavior that could
+        affect dynamics of both <ENAMEX TYPE="ANIMAL">wolves</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX> ] and moose [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+        The choice of the ecological functions 
+        <ENAMEX TYPE="PRODUCT">f (•</ENAMEX>), 
+        <ENAMEX TYPE="ORGANIZATION">g (•</ENAMEX>), and 
+        <ENAMEX TYPE="ORGANIZATION">h (•</ENAMEX>) is not straightforward,
+        considering the variety of functional forms that have been
+        suggested [ <TIMEX TYPE="DATE">36</TIMEX> ] . However, for the subsequent purposes of
+        estimating statistical density dependence, it is
+        biologically reasonable to assume that the functions may be
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> linear in 
+        X 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         , 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         , and 
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         <ENAMEX TYPE="ORGANIZATION">;</ENAMEX> that is, we may assume that <ENAMEX TYPE="PER_DESC">population</ENAMEX> and
+        vegetation growth rates are <NUMEX TYPE="CARDINAL">approximately</NUMEX> linearly related
+        to log-density [ <NUMEX TYPE="CARDINAL">12 14 37 38</NUMEX> ] . Hence, we may re-write
+        <ENAMEX TYPE="PERSON">equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) as:
+        
+        X 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        a 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        X 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        a 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">2a</NUMEX>)
+        
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        b 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        X 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">5</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">2b</NUMEX>)
+        
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        c 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -1</ENAMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        c 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">2c</NUMEX>)
+        In a straight-chain <ENAMEX TYPE="PER_DESC">community</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>), equations (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+        can be integrated to produce bi-variate autoregressive
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> at each trophic level [ <TIMEX TYPE="DATE">26</TIMEX> ] ,
+        giving:
+        
+        X 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = 
+        a 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <ENAMEX TYPE="CONTACT_INFO">0 -</ENAMEX> 
+        a 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) + [(<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) + (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> )] 
+        X 
+        
+        <ENAMEX TYPE="PRODUCT">t -1 +</ENAMEX> [ 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> - (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> )(<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> )] 
+        X 
+        
+        <ENAMEX TYPE="PRODUCT">t -2</ENAMEX> + + 
+        a 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         + [ 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">5</NUMEX> - (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        a 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> ] 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">Pt -1</ENAMEX> + 
+        a 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         + [ 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">5</NUMEX> - (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        a 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> ] 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">Pt -1    </ENAMEX> (<NUMEX TYPE="MONEY">3a</NUMEX>)
+        
+        
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         = [ 
+        c 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> - (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        c 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> ] + [(<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) + (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) + 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ] 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -1 -</ENAMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> )(<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -2 +</ENAMEX> ( 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         - (<NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        b 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        c 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">Dt -1</ENAMEX> + 
+        c 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        b 
+        <NUMEX TYPE="CARDINAL">5</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">3c</NUMEX>)
+        After re-designation of the coefficients (see also [ <NUMEX TYPE="CARDINAL">26</NUMEX>
+        ] , pp. <NUMEX TYPE="CARDINAL">71-72</NUMEX>), these equations simplify to:
+        
+        
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= β</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + (<NUMEX TYPE="CARDINAL">3</NUMEX> + β 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -1 +</ENAMEX> (<NUMEX TYPE="CARDINAL">2</NUMEX> + β 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -2 +</ENAMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> + β 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">t -3 + �</ENAMEX>� 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         <ENAMEX TYPE="CONTACT_INFO">+ ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">Dt -1 + + ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">Dt -2 + + ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="CONTACT_INFO">+ ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">5</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="PRODUCT">Pt -1    </ENAMEX> (<NUMEX TYPE="MONEY">4b</NUMEX>)
+        
+        Z 
+        
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= γ</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + (<NUMEX TYPE="CARDINAL">2</NUMEX> + γ 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -1 +</ENAMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> + γ 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ) 
+        Z 
+        
+        <ENAMEX TYPE="PRODUCT">t -2 + �</ENAMEX>� 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Dt 
+         <ENAMEX TYPE="CONTACT_INFO">+ ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+        <ENAMEX TYPE="CONTACT_INFO">Dt -1 + ω</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+        
+          Pt 
+         <ENAMEX TYPE="PERSON">   </ENAMEX> (<NUMEX TYPE="MONEY">4c</NUMEX>)
+        We used the full model framework (<ENAMEX TYPE="CONTACT_INFO">equations 4</ENAMEX>) to
+        identify the most parsimonious model of the dynamics at
+        each trophic level. Beginning with the full <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> at each
+        <ENAMEX TYPE="ORGANIZATION">trophic</ENAMEX> level, we used autoregressive analysis with maximum
+        likelihood estimation and backwards elimination of
+        non-significant covariates and lagged autoregressive terms
+        to arrive at reduced models that minimized the corrected
+        <ENAMEX TYPE="ORGANIZATION">Akaike Information Criterion</ENAMEX> (AIC 
+        
+          c 
+         ) [ <TIMEX TYPE="DATE">17</TIMEX> ] . We considered changes in the AIC 
+        
+          c 
+         scores of <NUMEX TYPE="CARDINAL">less than one</NUMEX> to be insignificant
+        improvement of the models [ <NUMEX TYPE="CARDINAL">37 39</NUMEX> ] .
+      
+    
+  

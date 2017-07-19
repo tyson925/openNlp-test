@@ -1,0 +1,803 @@
+
+  
+    
+      
+        Background
+        In the budding yeast 
+        Saccharomyces cerevisiae , the
+        mitotic <ENAMEX TYPE="FAC_DESC">exit network</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX>) plays a pivotal role in driving
+        cells from mitosis to <TIMEX TYPE="DATE">G1</TIMEX>. Identified components of the <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX>
+        include Tem1 (a <ENAMEX TYPE="SUBSTANCE">GTP-binding protein</ENAMEX>), <TIMEX TYPE="DATE">Lte1</TIMEX> (a putative
+        <ENAMEX TYPE="ORGANIZATION">guanine</ENAMEX> <ENAMEX TYPE="ORG_DESC">nucleotide</ENAMEX> releasing <ENAMEX TYPE="SUBSTANCE">factor</ENAMEX>), <TIMEX TYPE="DATE">Nud1</TIMEX> (a
+        spindle-pole-body <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>), <TIMEX TYPE="DATE">Cdc15</TIMEX> (a <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX>),
+        <ENAMEX TYPE="CONTACT_INFO">Dbf2/Mob1</ENAMEX> (a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>), <TIMEX TYPE="DATE">Cdc5</TIMEX> (a <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like
+        <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX>), and <TIMEX TYPE="DATE">Cdc14</TIMEX> (a <ENAMEX TYPE="SUBSTANCE">protein phosphatase</ENAMEX>). When
+        cells harboring conditional-lethal temperature-sensitive
+        (<NUMEX TYPE="MONEY">ts</NUMEX>) mutations in any of these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are shifted to the
+        restrictive temperature, they uniformly arrest in late
+        anaphase as large-budded cells with segregated chromosomes,
+        fully elongated microtubule spindles, and in all tested
+        cases, elevated <ENAMEX TYPE="CONTACT_INFO">Cdc28/</ENAMEX>Clb2 <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase activity (Cdc28
+        is the major cyclin-dependent kinase <TIMEX TYPE="DATE">Cdk1 and Clb2</TIMEX> the
+        major mitosis-specific cyclin of budding <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>) (reviewed
+        in [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , [ <ENAMEX TYPE="LAW">2</ENAMEX> ] ).
+        The <ENAMEX TYPE="SUBSTANCE">protein phosphatase Cdc14</ENAMEX> is likely to be the most
+        downstream element in the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> because it can act directly
+        on cell cycle <ENAMEX TYPE="ORG_DESC">regulators</ENAMEX> to promote exit from mitosis. By
+        counteracting Cdk1-mediated phosphorylations, Cdc14
+        activates both <ENAMEX TYPE="CONTACT_INFO">Hct1/Cdh1</ENAMEX>, which targets Clb2 for
+        degradation [ <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] , and <ENAMEX TYPE="PRODUCT">Swi5</ENAMEX>, which turns on the
+        transcription of <ENAMEX TYPE="PRODUCT">Cdk1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">inhibitor</ENAMEX> <ENAMEX TYPE="PRODUCT">Sic1</ENAMEX> [ <NUMEX TYPE="CARDINAL">6 3</NUMEX> ] . Degradation
+        of <ENAMEX TYPE="SUBSTANCE">Clb2</ENAMEX> and accumulation of <NUMEX TYPE="ORDINAL">Sic1</NUMEX> act in concert to
+        eliminate mitotic Cdk activity, which is required for exit
+        from mitosis [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . Thus, elucidating how <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> is
+        regulated holds the key to understanding how cells exit
+        <ENAMEX TYPE="ORGANIZATION">mitosis</ENAMEX>. In pre-anaphase cells, <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> is confined to the
+        nucleolus as a subunit of the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> (which also
+        <ENAMEX TYPE="CONTACT_INFO">contains Net1/Cfi1</ENAMEX> and <ENAMEX TYPE="PRODUCT">Sir2</ENAMEX>), and its phosphatase activity
+        is inhibited by <NUMEX TYPE="ORDINAL">Net1</NUMEX> [ <NUMEX TYPE="CARDINAL">8 9 10 11</NUMEX> ] . Damaged <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and
+        mis-oriented mitotic spindles delay exit from mitosis
+        (reviewed in [ <TIMEX TYPE="DATE">12</TIMEX> ] ), but after errors have been rectified
+        or bypassed, <TIMEX TYPE="DATE">Lte1</TIMEX>, <TIMEX TYPE="DATE">Nud1</TIMEX>, and possibly other unidentified
+        factors [ <TIMEX TYPE="DATE">13</TIMEX> ] promote Tem1 <ENAMEX TYPE="PER_DESC">activation</ENAMEX>. Tem1 recruits Cdc15
+        to the spindle pole <ENAMEX TYPE="ORG_DESC">body</ENAMEX>, which in turn <ENAMEX TYPE="PER_DESC">recruits</ENAMEX> and
+        phosphorylates the <ENAMEX TYPE="PRODUCT">Dbf2/Mob1</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>,
+        thereby switching it on [ <NUMEX TYPE="CARDINAL">2 14 15 16 17</NUMEX> ] . The
+        Tem1-signaling pathway eventually triggers disassembly of
+        the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>, enabling the release of <TIMEX TYPE="DATE">Cdc14</TIMEX> (and a
+        portion of <NUMEX TYPE="MONEY">Sir2</NUMEX>) from <TIMEX TYPE="DATE">Net1</TIMEX>. Active <TIMEX TYPE="DATE">Cdc14</TIMEX> diffuses into the
+        <ENAMEX TYPE="PERSON">nucleus</ENAMEX> and cytoplasm to extinguish mitotic Cdk activity
+        and to promote exit from mitosis.
+        The relative position of the <ENAMEX TYPE="FAC">Polo</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">kinase Cdc5</ENAMEX> in
+        the <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX> is obscure. Cdc5 is required for full activation of
+        the <NUMEX TYPE="ORDINAL">Dbf2</NUMEX>-Mob1 <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase complex [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX> ] , and has
+        been proposed to impinge on the <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX> both upstream and
+        downstream of <ENAMEX TYPE="PRODUCT">Tem1</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16 17 18</NUMEX> ] . During exit from
+        mitosis, <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is required for <ENAMEX TYPE="FAC">Clb2</ENAMEX> destruction, and similar
+        to over-expression of <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , induction of Cdc5
+        triggers precocious Clb2 degradation in pre-anaphase cells
+        [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] . In addition to its role in exit from mitosis,
+        Cdc5 has other functions during mitosis in budding <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>.
+        Depletion of <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinase in 
+        cdc5▲ cells arrests a significant
+        fraction of the <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in early anaphase with short mitotic
+        <ENAMEX TYPE="ORGANIZATION">spindles</ENAMEX> [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] , and phosphorylation of the cohesin
+        <ENAMEX TYPE="ORGANIZATION">subunit</ENAMEX> <ENAMEX TYPE="PRODUCT">Scc1</ENAMEX> by <TIMEX TYPE="DATE">Cdc5</TIMEX> enhances the efficiency of Scc1
+        cleavage by the separase <ENAMEX TYPE="SUBSTANCE">Esp1</ENAMEX> during the metaphase to
+        <ENAMEX TYPE="PERSON">anaphase</ENAMEX> transition [ <TIMEX TYPE="DATE">22</TIMEX> ] .
+        Although many <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are known to be essential for
+        exit from mitosis, the factor that sets Cdc14 free from the
+        <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX> still remains elusive. In this study, we assess
+        the roles of <ENAMEX TYPE="SUBSTANCE">Cdc5</ENAMEX> in disassembly of the RENT complex and
+        exit from mitosis.
+      
+      
+        Results
+        
+          <ENAMEX TYPE="PRODUCT">Release of Cdc14</ENAMEX> from the nucleolus in late
+          <ENAMEX TYPE="ORGANIZATION">anaphase</ENAMEX> requires Cdc5
+          In 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> , disassembly of the
+          <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> and the subsequent release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the
+          nucleolus drive cells to exit mitosis [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] . This
+          event is thought to require <NUMEX TYPE="CARDINAL">two</NUMEX> independent signals: an
+          unknown mitosis-specific signal and a signal from the
+          mitotic <ENAMEX TYPE="FAC_DESC">exit network</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX>) <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> including <ENAMEX TYPE="PRODUCT">Tem1</ENAMEX>,
+          Cdc15, and <ENAMEX TYPE="PRODUCT">Dbf2</ENAMEX> [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] . The <ENAMEX TYPE="FAC">Polo</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">kinase Cdc5</ENAMEX> also
+          belongs to the <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX>, thus we tested whether it too is
+          required for release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the nucleolus by using
+          indirect immunofluorescence to compare <NUMEX TYPE="CARDINAL">Cdc14</NUMEX> localization
+          patterns in wild type and 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells. Wild type cells with
+          short <ENAMEX TYPE="PER_DESC">spindles</ENAMEX> were in pre-anaphase and showed focal
+          <ENAMEX TYPE="ORGANIZATION">nucleolar</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">staining</ENAMEX>, and those with elongated
+          mitotic spindles were in late anaphase and showed
+          <ENAMEX TYPE="ORGANIZATION">diffused</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">staining</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Rows 1</ENAMEX> and <NUMEX TYPE="CARDINAL">4</NUMEX>; [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ]
+          ). In contrast, 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells uniformly exhibited
+          <ENAMEX TYPE="PRODUCT">focal Cdc14</ENAMEX> staining whether they were grown
+          exponentially at permissive temperature (<NUMEX TYPE="MONEY">25°C</NUMEX>) or
+          arrested in late mitosis at nonpermissive temperature
+          (<NUMEX TYPE="MONEY">33°C</NUMEX>) (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Rows 2</ENAMEX> and <NUMEX TYPE="CARDINAL">5</NUMEX>). Furthermore, in all
+          (including late anaphase) 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells, <ENAMEX TYPE="PERSON">Cdc14</ENAMEX> co-localized
+          with <TIMEX TYPE="DATE">A190</TIMEX>, a nucleolar <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Rows 3</ENAMEX> and <NUMEX TYPE="CARDINAL">6</NUMEX>),
+          suggesting that when 
+          CDC5 is compromised, most or all
+          Cdc14 fails to vacate the nucleolus in late anaphase.
+        
+        
+          Overexpression of <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">evicts</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> from the
+          nucleolus
+          To identify candidate <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that directly disrupt
+          the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>, we examined whether overexpression of
+          the <ENAMEX TYPE="SUBSTANCE">MEN proteins</ENAMEX> could release Cdc14 from the nucleolus.
+          We first tested <TIMEX TYPE="DATE">Cdc5</TIMEX>, because <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is required for Cdc14
+          release (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>), and because overexpression of Cdc5
+          triggers ectopic degradation of <ENAMEX TYPE="PRODUCT">Clb2</ENAMEX> [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] , which
+          normally depends upon active Cdc14 [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . These
+          experiments employed a 
+          <ENAMEX TYPE="PRODUCT">GAL-CDC5</ENAMEX>(DB▲) strain, in which
+          expression of <TIMEX TYPE="DATE">Cdc5</TIMEX>(DB▲), a stabilized version of Cdc5
+          lacking the destruction box, was driven by the inducible 
+          <ENAMEX TYPE="ORGANIZATION">GAL</ENAMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] . Cells were
+          arrested in <TIMEX TYPE="DATE">G1</TIMEX> by α-factor, supplemented with galactose
+          to induce the 
+          <ENAMEX TYPE="ORGANIZATION">GAL</ENAMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX>, and released into
+          galactose-containing medium. Cdc14 was focal in almost
+          all cells with short mitotic spindles, but became
+          <ENAMEX TYPE="ORGANIZATION">diffused</ENAMEX> in a significant fraction of these <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> after
+          Cdc5(DB▲) was induced (Figure <NUMEX TYPE="CARDINAL">2A</NUMEX>). A similar result was
+          obtained if the total number of cells with <ENAMEX TYPE="DISEASE">diffused</ENAMEX> Cdc14
+          was plotted instead (data not shown). To address whether
+          overexpression of <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> could also force Cdc14 out of the
+          <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX> in cells arrested at a cell cycle stage where
+          Cdc14 is nucleolar, we arrested <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> in metaphase using
+          the microtubule polymerization inhibitor nocodazole.
+          After the expression of <TIMEX TYPE="DATE">Cdc5</TIMEX>(DB▲) was induced in
+          nocodazole-arrested <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX>, <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> diffused beyond the
+          domain of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> in ~<NUMEX TYPE="PERCENT">49%</NUMEX> of cells (Figure <NUMEX TYPE="CARDINAL">2B</NUMEX>). In contrast,
+          
+          GAL -driven overexpression of
+          <ENAMEX TYPE="CONTACT_INFO">Dbf2/</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">GST</ENAMEX><ENAMEX TYPE="PRODUCT">-Mob1</ENAMEX>) <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> did not dislodge
+          Cdc14 from the nucleolus (data not shown). Taken
+          together, these data suggest that overexpression of Cdc5
+          - but not the putative downstream-most <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> component
+          <ENAMEX TYPE="CONTACT_INFO">Dbf2/Mob1</ENAMEX> - activates premature release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the
+          <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX>.
+        
+        
+          Cdc5 influences the phosphorylation state of Net1
+          in vivo
+          Because the overexpression studies implicated <TIMEX TYPE="DATE">Cdc5</TIMEX> as
+          a promising <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> for participating directly in
+          disassembly of the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>, we evaluated further
+          whether the phosphorylation state of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> was affected by
+          Cdc5. <ENAMEX TYPE="PRODUCT">Net1-Myc9</ENAMEX> from a 
+          cdc14-<NUMEX TYPE="CARDINAL">1</NUMEX> culture at 37°C
+          (<ENAMEX TYPE="SUBSTANCE">nonpermissive</ENAMEX> temperature) was hyperphosphorylated and
+          migrated slower in <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>-PAGE [ <ENAMEX TYPE="LAW">8</ENAMEX> ] than that from
+          <ENAMEX TYPE="SUBSTANCE">identically</ENAMEX> treated wild-type or 
+          cdc5-1 cultures (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, compare
+          <ENAMEX TYPE="ORGANIZATION">Lane</ENAMEX> <ENAMEX TYPE="PRODUCT">4 with Lanes 1</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX>). Furthermore, this
+          hyperphosphorylation of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> in 
+          cdc14-<NUMEX TYPE="CARDINAL">1</NUMEX> cells was significantly
+          reduced upon simultaneous inactivation of 
+          CDC5 (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, compare <ENAMEX TYPE="PRODUCT">Lanes 3</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">4</NUMEX>), suggesting that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is at least partially
+          responsible for the phosphorylation state of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> in late
+          <ENAMEX TYPE="ORGANIZATION">mitosis</ENAMEX>.
+          Our analysis of <TIMEX TYPE="DATE">Cdc5</TIMEX>'s role in release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from
+          the RENT complex revealed that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is required for
+          disassembly of <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> in late anaphase, that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> can
+          provoke premature disassembly of <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> in pre-anaphase
+          cells, and that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> controls (at least in part) the
+          phosphorylation <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> during <TIMEX TYPE="DATE">anaphase</TIMEX>. Moreover,
+          the arrest of 
+          <ENAMEX TYPE="CONTACT_INFO">cdc5-1 ,</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">cdc5-2 ,</ENAMEX> 
+          cdc5-<NUMEX TYPE="CARDINAL">4</NUMEX> , and 
+          cdc5<ENAMEX TYPE="SUBSTANCE">-7</ENAMEX> temperature-sensitive
+          <ENAMEX TYPE="ORGANIZATION">mutants</ENAMEX> in late mitosis was potently suppressed by the 
+          TAB6-<NUMEX TYPE="CARDINAL">1</NUMEX> allele (<ENAMEX TYPE="ORGANIZATION">Park et al.</ENAMEX>,
+          submitted), which encodes a form of <TIMEX TYPE="DATE">Cdc14</TIMEX> that binds
+          <ENAMEX TYPE="ORGANIZATION">weakly</ENAMEX> to <NUMEX TYPE="QUANTITY">Net1</NUMEX> and is released from <TIMEX TYPE="DATE">Net1</TIMEX> during mitosis
+          even in the absence of <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX> function [ <TIMEX TYPE="DATE">23</TIMEX> ] . Taken
+          together, these data suggested the hypothesis that 
+          cdc5 <ENAMEX TYPE="PER_DESC">mutants</ENAMEX> arrest in late
+          <ENAMEX TYPE="ORGANIZATION">anaphase</ENAMEX> because inadequate Cdc5-dependent
+          phosphorylation of <TIMEX TYPE="DATE">Net1</TIMEX> results in failure to release
+          active Cdc14 from the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinases can disrupt the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> in
+          <ENAMEX TYPE="ORGANIZATION">vitro</ENAMEX>
+          Both <TIMEX TYPE="DATE">Net1 and Cdc14</TIMEX> are extensively phosphorylated by
+          Cdc5 
+          in vitro (Figure <NUMEX TYPE="CARDINAL">4A</NUMEX>). To test if
+          Cdc5 could dislodge <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> from <TIMEX TYPE="DATE">Net1</TIMEX>, we devised a
+          simplified 
+          in vitro release assay using
+          <ENAMEX TYPE="PRODUCT">GST-Cdc14</ENAMEX> and <ENAMEX TYPE="PRODUCT">His6-T7</ENAMEX>-Net1<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> expressed and purified from
+          <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>. Net1N includes the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-terminal 341 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+          of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> and is sufficient to bind and inhibit Cdc14 [ <NUMEX TYPE="CARDINAL">11</NUMEX>
+          ] . When <ENAMEX TYPE="PRODUCT">GST-Cdc14/His6-T7</ENAMEX>-Net1<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> complex anchored to
+          anti-<NUMEX TYPE="CARDINAL">T7</NUMEX> beads was treated with <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> plus increasing
+          amounts of recombinant Cdc5 <ENAMEX TYPE="PER_DESC">purified</ENAMEX> from insect cells,
+          both <TIMEX TYPE="DATE">Cdc14 and Net1N</TIMEX> were phosphorylated as indicated by
+          their increased apparent molecular weight. Furthermore,
+          Cdc14 was released from bead-bound <TIMEX TYPE="DATE">Net1N</TIMEX> to the
+          <ENAMEX TYPE="ORGANIZATION">supernatant</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4A</NUMEX>), and free <NUMEX TYPE="ORDINAL">Cdc14</NUMEX> was active as a
+          <ENAMEX TYPE="SUBSTANCE">protein phosphatase</ENAMEX> (data not shown), suggesting that
+          Cdc5 is sufficient to disengage active Cdc14 from
+          Net1.
+          The essential functions of <ENAMEX TYPE="SUBSTANCE">Cdc5</ENAMEX> can be performed by
+          <ENAMEX TYPE="ORGANIZATION">mammalian Polo</ENAMEX>-like <ENAMEX TYPE="ANIMAL">kinase</ENAMEX> Plk1 [ <TIMEX TYPE="DATE">21</TIMEX> ] , which led us to
+          test if <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> can also be substituted by other <ENAMEX TYPE="FAC">Polo</ENAMEX>-like
+          <ENAMEX TYPE="ORGANIZATION">kinases</ENAMEX> in the release assay. <ENAMEX TYPE="PRODUCT">His6-T7-Net1N/GST-T7-</ENAMEX>Cdc14
+          complex was assembled on anti-GST beads, and treated with
+          either active or <NUMEX TYPE="QUANTITY">N172A kinase-inactive</NUMEX> Plx1 (<ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like
+          kinase from 
+          <ENAMEX TYPE="ORGANIZATION">Xenopus</ENAMEX> ; [ <TIMEX TYPE="DATE">24</TIMEX> ] ) in the presence
+          of <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>. Active but not inactive <ENAMEX TYPE="PRODUCT">Plx1</ENAMEX> phosphorylated both
+          Net1N and <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX>, and completely dislodged <ENAMEX TYPE="SUBSTANCE">Net1N</ENAMEX> from
+          bead-bound Cdc14 (Figure <NUMEX TYPE="CARDINAL">4B</NUMEX>). Thus, we conclude that like
+          Cdc5, the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase activity of <ENAMEX TYPE="SUBSTANCE">Plx1</ENAMEX> can disrupt the
+          interaction between <TIMEX TYPE="DATE">Net1N and Cdc14</TIMEX>. Because recombinant
+          Plx1 but not Cdc5 was consistently expressed at high
+          levels in insect cells, and because release assays using
+          Plx1 and <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> yielded similar results, we used <ENAMEX TYPE="PRODUCT">Plx1</ENAMEX> in
+          most of our release assays.
+          The <ENAMEX TYPE="CONTACT_INFO">Net1N/Cdc14</ENAMEX> complex is only a <ENAMEX TYPE="SUBSTANCE">crude</ENAMEX> approximation
+          of <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>, because it does not contain all components of
+          <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> (such as <ENAMEX TYPE="PRODUCT">Sir2</ENAMEX>), lacks modifications which normally
+          occur in <ENAMEX TYPE="SUBSTANCE">yeast cells</ENAMEX>, and contains <NUMEX TYPE="QUANTITY">Net1N</NUMEX> instead of <TIMEX TYPE="DATE">Net1</TIMEX>.
+          Thus, we tested whether <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinases could disrupt a
+          <ENAMEX TYPE="ORGANIZATION">physiological RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>. Myc9<ENAMEX TYPE="ORGANIZATION">-Net1</ENAMEX> and the associated
+          <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> subunits were immunopurified from extracts of 
+          myc9<NUMEX TYPE="CARDINAL">-NET1</NUMEX> cells on <TIMEX TYPE="DATE">9E10</TIMEX> beads and
+          treated with <NUMEX TYPE="MONEY">Plx1</NUMEX> plus <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>. Active but not inactive Plx1
+          released a significant portion of <TIMEX TYPE="DATE">Cdc14 and Sir2</TIMEX> from
+          bead-bound <TIMEX TYPE="DATE">Net1</TIMEX> to the supernatant fraction (Figure <NUMEX TYPE="CARDINAL">4C</NUMEX>).
+          In a similar experiment, <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> also disrupted the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>
+          complex (data not shown). Taken together, these data
+          suggest that <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinases are sufficient to release
+          Cdc14 and <ENAMEX TYPE="PRODUCT">Sir2</ENAMEX> from Net1 
+          in vitro. 
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinase abolishes <NUMEX TYPE="CARDINAL">Cdc14</NUMEX>-binding activity
+          of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> in vitro
+          <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinases phosphorylated and disrupted
+          <ENAMEX TYPE="CONTACT_INFO">Net1N/Cdc14</ENAMEX> complex, raising the question whether
+          disassembly of the complex 
+          in vitro required phosphorylation
+          of <ENAMEX TYPE="PRODUCT">Net1N</ENAMEX> or <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> or both. To address this question, we
+          tested the binding affinity of combinations of
+          Plx1-phosphorylated or unphosphorylated <TIMEX TYPE="DATE">Net1N and Cdc14</TIMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Unmodified</ENAMEX> <ENAMEX TYPE="PRODUCT">Net1N</ENAMEX> bound equally well to beads harboring
+          <ENAMEX TYPE="ORGANIZATION">phosphorylated</ENAMEX> or unphosphorylated <TIMEX TYPE="DATE">Cdc14</TIMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, <ENAMEX TYPE="ORGANIZATION">Lanes</ENAMEX>
+          <NUMEX TYPE="CARDINAL">5 and 8</NUMEX>, respectively). To the contrary, phosphorylated
+          Net1N remained in the supernatant (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, <ENAMEX TYPE="PRODUCT">Lanes 2</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">3</NUMEX>), and failed to bind to <NUMEX TYPE="CARDINAL">Cdc14</NUMEX> beads (Figure <ENAMEX TYPE="CONTACT_INFO">5, Lanes 6</ENAMEX>
+          and <NUMEX TYPE="CARDINAL">7</NUMEX>). Thus, we surmise that <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinase
+          <ENAMEX TYPE="ORGANIZATION">disassembles RENT</ENAMEX> 
+          in vitro by eliminating the
+          Cdc14-affinity of <TIMEX TYPE="DATE">Net1</TIMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> comprised of <NUMEX TYPE="QUANTITY">Net1 phospho-</NUMEX>site
+          mutants are resistant to disassembly by <ENAMEX TYPE="ORGANIZATION">Polo</ENAMEX>-like kinase,
+          but exhibit only minor phenotypes in vivo
+          If <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> disassembled the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> through
+          <ENAMEX TYPE="ORGANIZATION">phosphorylating</ENAMEX> <ENAMEX TYPE="PRODUCT">Net1</ENAMEX>, then a mutant Net1 lacking Cdc5
+          phosphorylation <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> should bind Cdc14 even in the
+          presence of active <ENAMEX TYPE="ORGANIZATION">Cdc5/Polo</ENAMEX>-like kinase. To test this
+          hypothesis, we prepared <TIMEX TYPE="DATE">Net1N</TIMEX> phosphorylated by Cdc5 
+          in vitro , and mapped <NUMEX TYPE="CARDINAL">12</NUMEX> definitive
+          and <NUMEX TYPE="CARDINAL">more than 20</NUMEX> potential phosphorylation sites using
+          mass spectrometry, which is described in detail elsewhere
+          [ <TIMEX TYPE="DATE">25</TIMEX> ] .
+          We constructed an extensive set of phospho-site
+          mutants of <TIMEX TYPE="DATE">Net1N</TIMEX>, which were tested for their ability to
+          remain bound to <NUMEX TYPE="CARDINAL">Cdc14</NUMEX> beads in the presence of <ENAMEX TYPE="PRODUCT">Plx1</ENAMEX> [ <NUMEX TYPE="CARDINAL">25</NUMEX>
+          ] . By successively combining individual mutations in
+          Cdc5 phosphorylation sites, we created the phosphosite
+          <ENAMEX TYPE="ORGANIZATION">mutants</ENAMEX> <ENAMEX TYPE="PRODUCT">Net1N</ENAMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) (with <TIMEX TYPE="DATE">S30</TIMEX>, <TIMEX TYPE="DATE">S31</TIMEX>, <TIMEX TYPE="DATE">S48</TIMEX>, <TIMEX TYPE="DATE">S60</TIMEX>, <TIMEX TYPE="DATE">S64</TIMEX>, <TIMEX TYPE="DATE">S242</TIMEX>,
+          and <NUMEX TYPE="ORDINAL">S335</NUMEX> all changed to A) and <TIMEX TYPE="DATE">Net1N</TIMEX>(<NUMEX TYPE="MONEY">19m'</NUMEX>) (with <TIMEX TYPE="DATE">T16</TIMEX>,
+          S30, <ENAMEX TYPE="WORK_OF_ART">S31, S48, S60, S64, T194, T195, T196, T197, S223,</ENAMEX>
+          S224, <TIMEX TYPE="DATE">S228</TIMEX>, <TIMEX TYPE="DATE">S231</TIMEX>, <TIMEX TYPE="DATE">S242</TIMEX>, <TIMEX TYPE="DATE">S295</TIMEX>, <TIMEX TYPE="DATE">S301</TIMEX>, <TIMEX TYPE="DATE">T302</TIMEX>, <TIMEX TYPE="DATE">S335</TIMEX> all
+          changed to A). Net1N(<NUMEX TYPE="MONEY">7m</NUMEX>) contained mutations required to
+          strongly inhibit Plx1-dependent disruption of <NUMEX TYPE="CARDINAL">Net1N</NUMEX>-Cdc14
+          <ENAMEX TYPE="PERSON">complexes</ENAMEX>, whereas Net1N(<NUMEX TYPE="MONEY">19m'</NUMEX>) contained additional
+          mutations without compromising the affinity of <NUMEX TYPE="CARDINAL">Net1N</NUMEX> to
+          Cdc14 [ <TIMEX TYPE="DATE">25</TIMEX> ] . Both of these mutant <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, when
+          expressed in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and assembled with
+          <ENAMEX TYPE="PRODUCT">recombinant Cdc14</ENAMEX>, were found to be severely defective in
+          releasing Cdc14 upon treatment with <TIMEX TYPE="DATE">Plx1</TIMEX> (data not
+          shown).
+          To evaluate the effects of <TIMEX TYPE="DATE">the Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) and <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">19m'</NUMEX>)
+          mutants 
+          in vivo , <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> fragments encoding
+          either the wild type or the mutant 
+          NET1N <ENAMEX TYPE="PER_DESC">alleles</ENAMEX> were subcloned into a
+          
+          TRP1 -marked integrating plasmid to
+          generate full-length 
+          <ENAMEX TYPE="PRODUCT">NET1-myc9 [894L1</ENAMEX>], 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> [894L2], and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> [894L3] <ENAMEX TYPE="PER_DESC">plasmids</ENAMEX>,
+          respectively, which were then integrated into the 
+          TRP1 <ENAMEX TYPE="PER_DESC">locus</ENAMEX> of 
+          <ENAMEX TYPE="CONTACT_INFO">net1▲/</ENAMEX>+ <ENAMEX TYPE="SUBSTANCE">diploid yeast cells</ENAMEX>. After
+          sporulation, 
+          net1▲ <ENAMEX TYPE="PRODUCT">NET1-myc9</ENAMEX>, net1▲
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> , and 
+          net1▲ net1(<NUMEX TYPE="MONEY">19m'</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> strains were
+          obtained and analyzed.
+          First, we compared 
+          in vivo phosphorylation <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of
+          Net1 and <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>). Net1 and <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) from asynchronously
+          growing cells migrated identically in an
+          SDS-polyacrylamide gel (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, <ENAMEX TYPE="PRODUCT">Lanes 1</ENAMEX> and <NUMEX TYPE="CARDINAL">5</NUMEX>).
+          Net1(<NUMEX TYPE="MONEY">7m</NUMEX>) from 
+          cdc14-<NUMEX TYPE="CARDINAL">1</NUMEX> cells arrested at 37°C
+          appeared to migrate slightly faster than the
+          corresponding Net1 (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, compare <ENAMEX TYPE="PRODUCT">Lanes 8</ENAMEX> and <NUMEX TYPE="CARDINAL">4</NUMEX>), and
+          the reduced mobility of <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) in 
+          cdc14 <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> was no longer dependent
+          upon 
+          CDC5 (compare <ENAMEX TYPE="FAC_DESC">lanes</ENAMEX> <TIMEX TYPE="DATE">7 and 8</TIMEX>).
+          Net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) behaved identically to Net1(<NUMEX TYPE="MONEY">7m</NUMEX>) in this assay
+          (data not shown). We conclude that there is diminished
+          Cdc5-dependent phosphorylation of <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) in 
+          cdc14 cells arrested in
+          <ENAMEX TYPE="ORGANIZATION">anaphase</ENAMEX>.
+          Next, we asked if the mutant RENT <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> is more
+          resistant toward <TIMEX TYPE="DATE">Plx1</TIMEX>. <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> from 
+          net1▲ <ENAMEX TYPE="PRODUCT">NET1-myc9</ENAMEX> and 
+          net1▲ net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> lysates
+          were captured on <TIMEX TYPE="DATE">9E10</TIMEX> beads and treated with increasing
+          amounts of recombinant Plx1 plus <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>. Whereas ~<NUMEX TYPE="PERCENT">40%</NUMEX> of
+          Cdc14 was released from wild-type RENT <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> in the
+          presence of <NUMEX TYPE="QUANTITY">0.5 μl</NUMEX> of <TIMEX TYPE="DATE">Plx1</TIMEX>, <NUMEX TYPE="PERCENT">less than 10%</NUMEX> of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> was
+          released from mutant RENT complex when treated with <NUMEX TYPE="QUANTITY">15 �</NUMEX>�l
+          of Plx1 (Figure <NUMEX TYPE="CARDINAL">6A</NUMEX>). Thus, the mutant <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> is at least
+          <NUMEX TYPE="CARDINAL">30-fold</NUMEX> more resistant to <TIMEX TYPE="DATE">Plx1</TIMEX> than wild-type RENT. <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>
+          complexes comprising Net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) yielded nearly identical
+          results (data not shown).
+          Despite the striking defects of the phosphosite mutant
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> 
+          in vitro , neither 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> nor 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> cells expressed a
+          dramatic phenotype. We observed that ~<NUMEX TYPE="PERCENT">40%</NUMEX> of 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> cells with long
+          mitotic spindles showed focal (i.e. nucleolar) Cdc14
+          localization, compared to ~<NUMEX TYPE="PERCENT">6%</NUMEX> of wild type <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> (Figure
+          6B). However, this result indicates that the majority (~
+          <NUMEX TYPE="PERCENT">60%</NUMEX>) of 
+          net1 <NUMEX TYPE="CARDINAL">phosphosite</NUMEX>-mutant cells
+          released Cdc14 from the nucleolus during anaphase with
+          normal kinetics. Indeed, the kinetics of cell cycle
+          <ENAMEX TYPE="ORGANIZATION">progression</ENAMEX> (monitored by either elongation of the
+          mitotic spindle or delocalization of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the
+          <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX>) in the wild-type and the 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) mutant strains were almost
+          <ENAMEX TYPE="PERSON">identical</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6C</NUMEX>).
+          While this manuscript was under consideration, Cdc5
+          was shown to be involved in promoting <NUMEX TYPE="ORDINAL">'Cdc14</NUMEX> early
+          anaphase release' (FEAR, [ <TIMEX TYPE="DATE">26</TIMEX> ] ). FEAR is a transient
+          phenomenon that depends on <TIMEX TYPE="DATE">Cdc5</TIMEX>, but does not depend upon
+          other components of the <ENAMEX TYPE="PER_DESC">MEN pathway</ENAMEX>. It was reported that
+          in early anaphase, <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> is transiently released from the
+          nucleolus by the action of the FEAR pathway, but quickly
+          returns to the nucleolus unless the <ENAMEX TYPE="ORGANIZATION">MEN</ENAMEX> is activated to
+          promote sustained release of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> and subsequent exit
+          from mitosis. To evaluate whether the 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) phosphosite mutants have
+          an impact on FEAR, we analyzed <NUMEX TYPE="CARDINAL">Cdc14</NUMEX> localization in
+          <ENAMEX TYPE="PER_DESC">synchronous populations</ENAMEX> of 
+          <ENAMEX TYPE="CONTACT_INFO">dbf2-1 ,</ENAMEX> 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) <ENAMEX TYPE="PRODUCT">dbf2-1</ENAMEX>, and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) dbf2-<NUMEX TYPE="CARDINAL">1</NUMEX> cells following
+          release from an α-factor block in <NUMEX TYPE="ORDINAL">G1</NUMEX> phase at <NUMEX TYPE="CARDINAL">25°C</NUMEX> to
+          α-factor-free medium prewarmed to 37°C (nonpermissive
+          temperature for 
+          dbf2-<NUMEX TYPE="CARDINAL">1</NUMEX> ). As shown in Figure <TIMEX TYPE="DATE">6D</TIMEX>,
+          the percentage of cells that completely released Cdc14
+          during <TIMEX TYPE="DATE">early anaphase</TIMEX> (spindle length <ENAMEX TYPE="CONTACT_INFO">0-8 μm</ENAMEX>) was reduced
+          by ~<NUMEX TYPE="PERCENT">50%</NUMEX> in 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and ~<NUMEX TYPE="PERCENT">25%</NUMEX> in 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) cells compared with
+          wild-type cells.
+          To test for the possibility that the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded
+          by 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) might be hypomorphic
+          with respect to their <ENAMEX TYPE="ORG_DESC">resistance</ENAMEX> toward phosphorylation
+          by <TIMEX TYPE="DATE">Cdc5</TIMEX> (i.e., not all <NUMEX TYPE="ORDINAL">Cdc5</NUMEX> <ENAMEX TYPE="FAC_DESC">phosphorylation sites</ENAMEX> on Net1
+          were mapped and mutated), we evaluated whether the 
+          net1 <ENAMEX TYPE="PER_DESC">phosphosite-mutants</ENAMEX> exhibited
+          a synthetic growth phenotype when combined with 
+          msd2-1 (a mutant allele of 
+          CDC5 ). This experiment was based
+          on the idea that a reduction in phosphorylation sites on
+          Net1 coupled with a reduction in <TIMEX TYPE="DATE">Cdc5</TIMEX> activity might
+          <ENAMEX TYPE="ORGANIZATION">synergize</ENAMEX> to prevent efficient release of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> during
+          anaphase, resulting in failure to exit mitosis. The 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) but not 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) allele showed a synthetic
+          growth defect when combined with 
+          msd2-1 (Figure <NUMEX TYPE="CARDINAL">6E</NUMEX>). The 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) allele also showed a
+          synthetic growth defect when combined with 
+          dbf2-<NUMEX TYPE="CARDINAL">1</NUMEX> . These observations imply
+          that some of the <ENAMEX TYPE="SUBSTANCE">residues mutated</ENAMEX> in 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) represent 
+          in vivo phosphorylation sites that
+          influence the <ENAMEX TYPE="PER_DESC">MEN-dependent</ENAMEX> release of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> during
+          <ENAMEX TYPE="ORGANIZATION">anaphase</ENAMEX>.
+        
+      
+      
+        Discussion
+        
+          Cdc5 participates in disassembly of the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>
+          complex during anaphase
+          
+          CDC5 was originally discovered as a
+          gene essential for exit from mitosis [ <TIMEX TYPE="DATE">27</TIMEX> ] . We found
+          that Cdc5 was required to release Cdc14 from the
+          nucleolus: 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells in late anaphase
+          displayed focal nucleolar <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">staining</ENAMEX>, whether grown
+          at the permissive or restrictive temperature. By
+          contrast, <TIMEX TYPE="DATE">Cdc14</TIMEX> was released from the nucleolus in the
+          great majority of wild type <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> by late anaphase.
+          Surprisingly, 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells grown at <TIMEX TYPE="DATE">25°C</TIMEX> could
+          exit mitosis despite persistent nucleolar localization of
+          Cdc14, which may have been due to release of a small
+          fraction of <TIMEX TYPE="DATE">Cdc14</TIMEX> that was nevertheless sufficient to
+          drive exit from mitosis in these cells. Alternatively, it
+          is possible that complete release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the
+          <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX> in 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells was so brief that it
+          escaped our detection. A ramification of this observation
+          is that indirect immunofluorescence assays based on Cdc14
+          localization may not correctly predict whether a cell can
+          exit mitosis.
+          Not only was <NUMEX TYPE="ORDINAL">Cdc5</NUMEX> required for <TIMEX TYPE="DATE">Cdc14</TIMEX> release, but a
+          stabilized mutant lacking the destruction box (<NUMEX TYPE="MONEY">Cdc5</NUMEX>(DB▲))
+          triggered inappropriate Cdc14 release in pre-anaphase
+          cells when overexpressed from the 
+          GAL1<NUMEX TYPE="CARDINAL">,10</NUMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX>. Ectopic release
+          of Cdc14 might contribute to the proliferation block and
+          Clb2 degradation caused by induction of 
+          <ENAMEX TYPE="PRODUCT">GAL-CDC5</ENAMEX>(DB▲) [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] .
+          Overexpression of <TIMEX TYPE="DATE">Cdc5</TIMEX>(DB▲) also altered nucleolar
+          structure in nocodazole-arrested <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2B</NUMEX>), the
+          reason for which is not understood. In contrast, 
+          GAL -mediated overexpression of
+          Tem1 (<ENAMEX TYPE="PERSON">R. Li</ENAMEX>, personal communication), <ENAMEX TYPE="PRODUCT">Cdc15</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ] , or
+          Dbf2<ENAMEX TYPE="ORGANIZATION">/GST</ENAMEX><ENAMEX TYPE="PRODUCT">-Mob1</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">RA</ENAMEX>, unpublished data) had little or no
+          detectable effect on either exit from mitosis or cell
+          proliferation, suggesting that the <ENAMEX TYPE="CONTACT_INFO">Tem1/Cdc15/Dbf2/</ENAMEX>Mob1
+          <ENAMEX TYPE="ORGANIZATION">branch of the MEN</ENAMEX> plays a more restricted role in
+          promoting the exit from mitosis.
+          The observations that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> was both necessary and
+          sufficient for <TIMEX TYPE="DATE">Cdc14</TIMEX> release and that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> influenced
+          phosphorylation <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of Net1 
+          in vivo prompted us to examine
+          whether Cdc5 directly catalyzes disassembly of the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>
+          complex. Indeed, <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> and the 
+          Xenopus polo-like <ENAMEX TYPE="ANIMAL">kinase</ENAMEX> Plx1
+          reduced the binding affinity between recombinant Cdc14
+          and Net1 by <TIMEX TYPE="DATE">phosphorylating Net1</TIMEX>, and dislodged both
+          Cdc14 and <ENAMEX TYPE="PRODUCT">Sir2</ENAMEX> from the RENT complex 
+          in vitro .
+        
+        
+          Net1 <ENAMEX TYPE="ORG_DESC">mutants</ENAMEX> lacking critical <TIMEX TYPE="DATE">Cdc5</TIMEX> phosphorylation
+          sites support normal progression through mitosis
+          If Cdc5 directly promotes disassembly of <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> 
+          in vivo by a mechanism similar to
+          that observed 
+          in vitro , then a <NUMEX TYPE="ORDINAL">Net1</NUMEX> mutant that
+          cannot be phosphorylated by <TIMEX TYPE="DATE">Cdc5</TIMEX> should not allow release
+          of Cdc14 from the nucleolus in anaphase cells. To address
+          this prediction, we mapped 
+          in vitro Cdc5-phosphorylation sites
+          in the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-terminal part of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> which is sufficient to
+          bind and inhibit Cdc14 [ <TIMEX TYPE="DATE">11</TIMEX> ] . The details of this study
+          are described elsewhere [ <TIMEX TYPE="DATE">25</TIMEX> ] . Among the <TIMEX TYPE="DATE">thirty</TIMEX> or so
+          mapped sites (with some being more efficiently
+          phosphorylated than others), no strict consensus sequence
+          for <TIMEX TYPE="DATE">Cdc5</TIMEX> phosphorylation could be derived. However, the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from this and other [ <NUMEX TYPE="CARDINAL">22 29</NUMEX> ] studies suggest a
+          clear preference for phenyl or aliphatic <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> (<ENAMEX TYPE="PRODUCT">F</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Y, L</ENAMEX>, I, <ENAMEX TYPE="PERSON">V</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>) in the <NUMEX TYPE="CARDINAL">+1</NUMEX> position.
+          Mutating all mapped phosphorylation <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> was ruled
+          out as being uninformative, because a <NUMEX TYPE="ORDINAL">Net1</NUMEX> mutant lacking
+          22 sites [Net1(<NUMEX TYPE="MONEY">22m</NUMEX>)] already suffered significantly
+          reduced binding affinity for <TIMEX TYPE="DATE">Cdc14</TIMEX> (data not shown).
+          Thus, we prioritized phospho-sites based on their
+          stoichiometry of phosphorylation and on homology to sites
+          whose phosphorylation was demonstrated to be important in
+          earlier release assays. In total, we tested <NUMEX TYPE="CARDINAL">more than 20</NUMEX>
+          phospho-site mutants of <TIMEX TYPE="DATE">Net1</TIMEX>, and identified <NUMEX TYPE="CARDINAL">two</NUMEX> -
+          Net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and <TIMEX TYPE="DATE">Net1</TIMEX>(<NUMEX TYPE="MONEY">19m'</NUMEX>) - that still bound Cdc14
+          normally, but displayed a strong defect in releasing
+          Cdc14 upon treatment with <TIMEX TYPE="DATE">Plx1</TIMEX>. <TIMEX TYPE="DATE">Full</TIMEX> length 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> alleles were
+          constructed and expressed in 
+          net1▲ background. <ENAMEX TYPE="ORGANIZATION">Mutant RENT</ENAMEX>
+          complexes retrieved from these cells were significantly
+          more resistant to the <ENAMEX TYPE="FAC">Polo</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">kinase Plx1</ENAMEX> in release
+          <ENAMEX TYPE="ORGANIZATION">assays</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 6Aand data not shown). However, when 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) cells were evaluated by
+          immunofluorescence, the majority released <TIMEX TYPE="DATE">Cdc14</TIMEX> in late
+          anaphase, and the subset that exhibited a modest delay in
+          Cdc14 mobilization probably released enough <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> to exit
+          <ENAMEX TYPE="ORGANIZATION">mitosis</ENAMEX> in a timely manner such that essentially no cell
+          cycle progression defect was evident (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 6C). In
+          addition, <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> remained nucleolar in 
+          <ENAMEX TYPE="PRODUCT">cdc5-1 net1▲</ENAMEX> net1(<NUMEX TYPE="MONEY">7m</NUMEX>)-<NUMEX TYPE="CARDINAL">myc9</NUMEX> cells
+          (data not shown), suggesting that the release event was
+          still regulated properly.
+        
+        
+          How does Cdc5 promote disassembly of the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>
+          complex and exit from mitosis?
+          There are <NUMEX TYPE="CARDINAL">two</NUMEX> extreme interpretations of our analysis
+          of <TIMEX TYPE="DATE">the Net1</TIMEX>(<NUMEX TYPE="MONEY">7m</NUMEX>) and <TIMEX TYPE="DATE">Net1</TIMEX> (<NUMEX TYPE="MONEY">19m'</NUMEX>) mutants: <ENAMEX TYPE="ORGANIZATION">First</ENAMEX>, <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is
+          not directly involved in disrupting the <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>, and
+          <NUMEX TYPE="ORDINAL">second</NUMEX>, <TIMEX TYPE="DATE">Cdc5</TIMEX> directly disassembles the RENT complex via
+          phosphorylation of <TIMEX TYPE="DATE">Net1</TIMEX>, but because it is not feasible
+          to evaluate all possible <NUMEX TYPE="CARDINAL">10 9</NUMEX>(=<NUMEX TYPE="CARDINAL">2 30</NUMEX>) combinations of
+          phospho-site mutants or because the <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> phosphorylated
+          by Cdc5 
+          in vivo are different from those 
+          in vitro due to the presence of
+          factors such as <ENAMEX TYPE="PRODUCT">Sir2</ENAMEX>, <ENAMEX TYPE="PERSON">Pol</ENAMEX> I, and rDNA [ <NUMEX TYPE="CARDINAL">10 23</NUMEX> ] , we
+          missed key phosphorylation sites that would have given a
+          more definitive phenotype when mutated. A variation on
+          this theme is that it might never be possible to
+          construct a phosphosite mutant of <TIMEX TYPE="DATE">Net1</TIMEX> that binds Cdc14
+          but fails to release it during <TIMEX TYPE="DATE">anaphase</TIMEX>, if the hydroxyl
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> that are phosphorylated normally form critical
+          hydrogen bonds that tether <TIMEX TYPE="DATE">Cdc14</TIMEX> to <TIMEX TYPE="DATE">Net1</TIMEX>.
+          <NUMEX TYPE="CARDINAL">A third</NUMEX> hypothesis that stakes middle ground between
+          these polar extremes is that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> affects RENT stability
+          both directly and indirectly, with the former role being
+          less significant than the latter. Several lines of
+          evidence are consistent with this view. First, 
+          net1(<NUMEX TYPE="MONEY">7m</NUMEX>) and 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) mutants exerted a modest
+          effect on release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the nucleolus, in that
+          ~<NUMEX TYPE="PERCENT">40%</NUMEX> of cells with long mitotic <ENAMEX TYPE="ORG_DESC">spindles</ENAMEX> retained focal
+          localization of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> and that both 
+          net1 <ENAMEX TYPE="GPE">phospho-</ENAMEX>site mutants displayed
+          a modest defect in <NUMEX TYPE="ORDINAL">'Cdc14</NUMEX> early anaphase release' (FEAR;
+          [ <TIMEX TYPE="DATE">26</TIMEX> ] ). <NUMEX TYPE="ORDINAL">Second</NUMEX>, 
+          net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) showed a synthetic
+          growth defect when combined with 
+          dbf2-1 or the 
+          msd2-<NUMEX TYPE="CARDINAL">1</NUMEX> allele of 
+          CDC5 . <NUMEX TYPE="ORDINAL">Third</NUMEX>, phosphorylation site
+          mapping of <ENAMEX TYPE="PRODUCT">Net1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">purified</ENAMEX> from arrested 
+          cdc14-<NUMEX TYPE="CARDINAL">1</NUMEX> cells (<ENAMEX TYPE="ORGANIZATION">WS</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SC</ENAMEX>,
+          unpublished data) revealed that <NUMEX TYPE="CARDINAL">at least one</NUMEX> (<NUMEX TYPE="MONEY">S231</NUMEX>) of
+          the <NUMEX TYPE="CARDINAL">five</NUMEX> 
+          in vivo phosphorylation sites in
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">341</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> was directly phosphorylated by
+          Cdc5 
+          in vitro . Nevertheless, because
+          expression of neither Net1(<NUMEX TYPE="MONEY">7m</NUMEX>) nor Net1(<NUMEX TYPE="MONEY">19m'</NUMEX>) had a major
+          impact on exit from mitosis, any direct effect of <TIMEX TYPE="DATE">Cdc5</TIMEX> on
+          Net1 appears to be minor, and the requirement for <TIMEX TYPE="DATE">Cdc5</TIMEX> in
+          the release of <ENAMEX TYPE="SUBSTANCE">Cdc14</ENAMEX> might arise principally from
+          phosphorylation of other release-promoting <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          If <ENAMEX TYPE="SUBSTANCE">Cdc5</ENAMEX> plays a minor role in directly disassembling
+          <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX>, then how does it promote exit from mitosis? Cdc15,
+          Dbf2, and <ENAMEX TYPE="PRODUCT">Mob1</ENAMEX> are not properly localized to the spindle
+          pole <ENAMEX TYPE="ORG_DESC">body</ENAMEX> in a significant fraction of 
+          cdc5-<NUMEX TYPE="CARDINAL">1</NUMEX> cells [ <NUMEX TYPE="CARDINAL">30 31 17</NUMEX> ] , and
+          <ENAMEX TYPE="CONTACT_INFO">Dbf2/</ENAMEX>Mob1 <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase activity is diminished in 
+          cdc5 <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX> ] ,
+          suggesting that <NUMEX TYPE="CARDINAL">at least one</NUMEX> function of <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is to
+          generate maximally active <ENAMEX TYPE="CONTACT_INFO">Dbf2/Mob1</ENAMEX>, which can then
+          trigger Cdc14 release. This explanation is unlikely to
+          account fully for <TIMEX TYPE="DATE">Cdc5</TIMEX>'s role in exit from mitosis,
+          however, because (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) overexpression of <TIMEX TYPE="DATE">Cdc5</TIMEX>, but not
+          <ENAMEX TYPE="CONTACT_INFO">Dbf2/Mob1</ENAMEX>, provoked ectopic release of <NUMEX TYPE="QUANTITY">Cdc14</NUMEX> from the
+          <ENAMEX TYPE="ORGANIZATION">nucleolus</ENAMEX>; and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) the <ENAMEX TYPE="CONTACT_INFO">Dbf2/Mob1</ENAMEX> kinase <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> is at
+          least partially activated and is correctly localized to
+          the spindle pole <ENAMEX TYPE="ORG_DESC">body</ENAMEX> in <NUMEX TYPE="PERCENT">50%</NUMEX> of 
+          cdc5 cells at the nonpermissive
+          temperature [ <NUMEX TYPE="CARDINAL">16 17</NUMEX> ] .
+          While this manuscript was under consideration, two
+          papers presented new evidence on how Cdc5 contributes to
+          exit from mitosis [ <NUMEX TYPE="CARDINAL">29 26</NUMEX> ] . To summarize our study and
+          these recent findings, we present a model (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>) that
+          is consistent with all of the available data. Upon
+          initiation of chromosome segregation, <TIMEX TYPE="DATE">Cdc5</TIMEX> promotes the
+          transient <NUMEX TYPE="ORDINAL">'Cdc14</NUMEX> early anaphase release' [ <TIMEX TYPE="DATE">26</TIMEX> ] . Our
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> suggest that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> can promote FEAR by directly
+          <ENAMEX TYPE="ORGANIZATION">phosphorylating</ENAMEX> <ENAMEX TYPE="PRODUCT">Net1</ENAMEX> as well as other
+          yet-to-be-identified FEAR factors. Cdc5 also helps to
+          activate the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> by directly phosphorylating and
+          <ENAMEX TYPE="PRODUCT">disabling Bfa1</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] , which is thought to inhibit Tem1
+          by serving as a <ENAMEX TYPE="SUBSTANCE">GTPase-activating protein</ENAMEX>. Cdc5
+          presumably impinges on the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> by other means as well,
+          because <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is required for <ENAMEX TYPE="SUBSTANCE">maximal Dbf2 protein</ENAMEX> kinase
+          activity even in the absence of <TIMEX TYPE="DATE">Bfa1</TIMEX>'s obligate partner
+          Bub2 [ <TIMEX TYPE="DATE">18</TIMEX> ] . Once activated, the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> in turn sustains
+          the transient Cdc14 release enabled by <TIMEX TYPE="DATE">Cdc5</TIMEX> and other
+          FEAR pathway components. The unique ability of
+          <ENAMEX TYPE="ORGANIZATION">overexpressed</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> to expel Cdc14 from the nucleolus may
+          thus be a consequence of <TIMEX TYPE="DATE">Cdc5</TIMEX>'s abilities to directly
+          <ENAMEX TYPE="PRODUCT">disassemble Net1-Cdc14</ENAMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>, promote FEAR, and
+          activate the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX>. A complete understanding of <TIMEX TYPE="DATE">Cdc5</TIMEX>'s role
+          in mitotic exit will ultimately require identification of
+          all of its direct substrates in the <ENAMEX TYPE="PER_DESC">MEN</ENAMEX> and FEAR
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX>.
+        
+        
+          A word of caution on phosphosite mapping
+          Cdc5 can phosphorylate <NUMEX TYPE="CARDINAL">up to 30</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the amino
+          terminal domain of Net1 
+          in vitro . <ENAMEX TYPE="PERSON">Remarkably</ENAMEX>, only <NUMEX TYPE="CARDINAL">five</NUMEX>
+          sites in this same <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> were confirmed to be
+          phosphorylated 
+          in vivo in 
+          cdc14 cells, and <NUMEX TYPE="CARDINAL">only one</NUMEX> of these
+          corresponded to a site phosphorylated by Cdc5 
+          in vitro . Whereas it is possible
+          that Cdc5 <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinase activity is qualitatively or
+          quantitatively altered in cells held at the 
+          cdc14 block, resulting in reduced
+          phosphorylation of <NUMEX TYPE="MONEY">Cdc5</NUMEX> target sites on <TIMEX TYPE="DATE">Net1</TIMEX>, our data
+          suggest that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> is a promiscuous <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX>. This
+          raises significant concerns about the interpretation of
+          numerous studies in the literature that report effects of
+          Cdc5<ENAMEX TYPE="ORGANIZATION">/Polo</ENAMEX> on 
+          in vitro processes without mapping
+          and genetic confirmation of phosphorylation sites.
+          Moreover, several recent studies have reported direct
+          mapping of sites phosphorylated by <ENAMEX TYPE="ORGANIZATION">Cdc5/Polo</ENAMEX> 
+          in vitro [ <NUMEX TYPE="CARDINAL">22 29 32</NUMEX> ] , but in two
+          of these cases the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> relied exclusively on
+          phosphoshift analysis of <ENAMEX TYPE="SUBSTANCE">mutant proteins</ENAMEX> to confirm that
+          the same <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are phosphorylated 
+          in vivo . Given the significant
+          possibility that multiply mutated <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are not
+          properly phosphorylated 
+          in vivo for indirect reasons, or
+          migrate aberrantly upon <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>-PAGE, it may be prudent to
+          perform direct mapping experiments to confirm
+          unambiguously the physiological significance of sites
+          phosphorylated by <ENAMEX TYPE="ORGANIZATION">Cdc5/Polo</ENAMEX> 
+          in vitro .
+        
+      
+      
+        Conclusions
+        Although <TIMEX TYPE="DATE">Cdc5</TIMEX> activity (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) is necessary to free
+        <ENAMEX TYPE="ORGANIZATION">nucleolar</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> in late mitosis, (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) can elicit ectopic
+        <ENAMEX TYPE="PRODUCT">release of Cdc14</ENAMEX> in pre-anaphase cells when overproduced,
+        (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) regulates the phosphorylation state of <ENAMEX TYPE="SUBSTANCE">Net1</ENAMEX> during
+        anaphase, and (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) can disassemble <ENAMEX TYPE="PER_DESC">native</ENAMEX> and recombinant
+        RENT complexes 
+        in vitro by <TIMEX TYPE="DATE">phosphorylating Net1</TIMEX>, a
+        combination of 
+        in vivo and 
+        in vitro phosphosite mapping and
+        <ENAMEX TYPE="ORGANIZATION">mutagenesis</ENAMEX> experiments suggest that <ENAMEX TYPE="PRODUCT">Cdc5</ENAMEX> mediates exit
+        from mitosis primarily by phosphorylating targets other
+        than <TIMEX TYPE="DATE">Net1</TIMEX>. The unusual promiscuity of <ENAMEX TYPE="CONTACT_INFO">Cdc5/Polo highlights</ENAMEX>
+        the need to validate Cdc5<ENAMEX TYPE="ORGANIZATION">/Polo</ENAMEX> 
+        in vitro phosphorylation sites by
+        direct 
+        in vivo mapping experiments.
+      
+      
+        Materials and Methods
+        
+          <ENAMEX TYPE="SUBSTANCE">Protein</ENAMEX> detection
+          The SDS-boiling method for <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> extract preparation
+          to visualize <ENAMEX TYPE="FAC">Net1</ENAMEX> phosphorylation state 
+          in vivo and methods for protein
+          detection were described previously [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . For indirect
+          immunofluorescence, we used <ENAMEX TYPE="PRODUCT">1</ENAMEX>:<ENAMEX TYPE="CONTACT_INFO">1000 rabbit α-A190, 1:2000</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">rabbit α-tubulin, 1:200 rabbit α-Cdc14, 1:1000 rat YL</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1/2</NUMEX> (against tubulin), and <NUMEX TYPE="CARDINAL">1</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1000</ENAMEX>
+          <ENAMEX TYPE="ANIMAL">mouse monoclonal HA</ENAMEX><NUMEX TYPE="CARDINAL">.11</NUMEX> and <ENAMEX TYPE="SUBSTANCE">9E10 antibodies</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Babco/CRP</ENAMEX>).
+          For <ENAMEX TYPE="ORGANIZATION">Western</ENAMEX> blots, we used <ENAMEX TYPE="PRODUCT">1</ENAMEX>:<ENAMEX TYPE="CONTACT_INFO">2000 9E10, 1:2500 α-Sir2,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">1:1000 rabbit α-</ENAMEX>Cdc14 (crude <ENAMEX TYPE="SUBSTANCE">serum</ENAMEX>), <ENAMEX TYPE="CONTACT_INFO">1:6000</ENAMEX> α-GST, and
+          <NUMEX TYPE="CARDINAL">1</NUMEX>:<ENAMEX TYPE="PRODUCT">5000 α-T7</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Novagen</ENAMEX>).
+        
+        
+          Recombinant protein expression
+          <ENAMEX TYPE="PRODUCT">GST-T7-Cdc14</ENAMEX> (<NUMEX TYPE="MONEY">RDB 872</NUMEX>) and <ENAMEX TYPE="PRODUCT">GST-Cdc14</ENAMEX> (RDB <TIMEX TYPE="DATE">1183</TIMEX>) were
+          expressed in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli BL21</ENAMEX>(<NUMEX TYPE="MONEY">DE3</NUMEX>) pLysS cells, and
+          purified on glutathione-agarose beads (<ENAMEX TYPE="ORGANIZATION">Sigma</ENAMEX>) as
+          described previously [ <TIMEX TYPE="DATE">33</TIMEX> ] . <ENAMEX TYPE="PRODUCT">His6-T7</ENAMEX>-Net1(<ENAMEX TYPE="CONTACT_INFO">1-341</ENAMEX>) (<ENAMEX TYPE="CONTACT_INFO">Net1N,</ENAMEX>
+          RDB1153) [ <TIMEX TYPE="DATE">11</TIMEX> ] was expressed in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli BL21</ENAMEX>(<NUMEX TYPE="MONEY">DE3</NUMEX>) pLysS cells, and
+          purified on <ENAMEX TYPE="LOCATION">Ni</ENAMEX>-NTA agarose beads (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>) as described
+          previously for <ENAMEX TYPE="PRODUCT">p28 Kix1</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] . Purification of
+          <ENAMEX TYPE="PRODUCT">His6-Plx1</ENAMEX>, <ENAMEX TYPE="PRODUCT">His6-Plx1</ENAMEX>(<NUMEX TYPE="MONEY">N172</NUMEX>), and <ENAMEX TYPE="PRODUCT">His6-HA-Cdc5</ENAMEX> from
+          baculovirus-infected insect cells followed an earlier
+          protocol [ <TIMEX TYPE="DATE">24</TIMEX> ] . The concentrations of purified proteins
+          were in the ranges of: Net1N~0<NUMEX TYPE="CARDINAL">.4</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/ml; <ENAMEX TYPE="PRODUCT">GST-Cdc14~0.1</ENAMEX>-<NUMEX TYPE="CARDINAL">0.2</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">mg/ml</ENAMEX>; Plx1~0<NUMEX TYPE="CARDINAL">.3</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/ml; Plx1(<NUMEX TYPE="MONEY">N172</NUMEX>)~<NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/ml; and Cdc5~1
+          <ENAMEX TYPE="CONTACT_INFO">mg/ml</ENAMEX> (although the level of Cdc5 expression varied
+          drastically from one batch to another).
+        
+        
+          Release assays
+          The substrates for release assays were <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> (isolated
+          from <ENAMEX TYPE="SUBSTANCE">yeast cells</ENAMEX>) or <ENAMEX TYPE="CONTACT_INFO">Cdc14/Net1N</ENAMEX> (assembled 
+          in vitro ) complexes anchored on
+          <ENAMEX TYPE="SUBSTANCE">resins</ENAMEX> through tags on either Net1 (Figures <TIMEX TYPE="DATE">4A</TIMEX>, <TIMEX TYPE="DATE">4C</TIMEX>, and
+          6A) or <NUMEX TYPE="MONEY">Cdc14</NUMEX> (Figures <NUMEX TYPE="CARDINAL">4Band 5</NUMEX>), and were prepared at <TIMEX TYPE="DATE">4°C</TIMEX>.
+          For experiments in Figures <TIMEX TYPE="DATE">4Cand 6A</TIMEX>, immunoprecipitation
+          of <ENAMEX TYPE="ORGANIZATION">RENT</ENAMEX> through <TIMEX TYPE="DATE">Myc9-Net1</TIMEX> was carried out as described
+          earlier [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , except that <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> (final <TIMEX TYPE="TIME">2 mM</TIMEX>) was
+          included in the lysis buffer. Each release reaction
+          <ENAMEX TYPE="ORGANIZATION">contained RENT</ENAMEX> from <NUMEX TYPE="MONEY">~10</NUMEX> OD 
+          <NUMEX TYPE="CARDINAL">600</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> unit equals <NUMEX TYPE="CARDINAL">1</NUMEX> ml of
+          culture at OD 
+          <TIMEX TYPE="DATE">600</TIMEX> = <NUMEX TYPE="CARDINAL">1.0</NUMEX>) of cells bound to <NUMEX TYPE="QUANTITY">15 μl</NUMEX> of
+          9E10 <ENAMEX TYPE="PER_DESC">beads</ENAMEX>. To assemble Cdc14 <ENAMEX TYPE="PER_DESC">beads</ENAMEX> with <ENAMEX TYPE="PRODUCT">Net1N</ENAMEX> for <TIMEX TYPE="TIME">two</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">assays</ENAMEX> (Figure <TIMEX TYPE="DATE">4B</TIMEX>, detection method: Western blotting), <NUMEX TYPE="CARDINAL">2</NUMEX>
+          μl of rabbit-anti-GST <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> were absorbed to <NUMEX TYPE="QUANTITY">40 �</NUMEX>�l
+          of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> A beads (<ENAMEX TYPE="ORGANIZATION">Sigma</ENAMEX>) in <NUMEX TYPE="QUANTITY">100 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">HBS</ENAMEX> [<NUMEX TYPE="CARDINAL">20</NUMEX> mM HEPES
+          (<NUMEX TYPE="MONEY">pH 7.2</NUMEX>), <NUMEX TYPE="CARDINAL">150</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">NaCl</ENAMEX>] + <NUMEX TYPE="CARDINAL">2</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> + <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/ml <ENAMEX TYPE="ORGANIZATION">BSA</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> mM
+          <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> (HEBD) buffer for <NUMEX TYPE="CARDINAL">1</NUMEX> hr. The beads were washed twice
+          with <ENAMEX TYPE="ORGANIZATION">HBS</ENAMEX> + <NUMEX TYPE="CARDINAL">2</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> + <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">Triton</ENAMEX> and once with <ENAMEX TYPE="ORGANIZATION">HBS</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">mM DTT</ENAMEX>. The beads were incubated with <NUMEX TYPE="CARDINAL">250</NUMEX> ng of
+          <ENAMEX TYPE="PRODUCT">GST-T7-Cdc14</ENAMEX> in <NUMEX TYPE="QUANTITY">100 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">HEBD</ENAMEX> for <NUMEX TYPE="CARDINAL">1</NUMEX> hr, followed by the
+          same sequence of washes. Finally, the beads were
+          incubated with <TIMEX TYPE="DATE">Net1N</TIMEX> (<NUMEX TYPE="MONEY">450 ng</NUMEX>) for <NUMEX TYPE="CARDINAL">1</NUMEX> hr. To assemble Net1N
+          beads with <ENAMEX TYPE="PRODUCT">Cdc14</ENAMEX> for <TIMEX TYPE="TIME">six</TIMEX> reactions (Figure <TIMEX TYPE="DATE">4A</TIMEX>, detection
+          method: <ENAMEX TYPE="ORGANIZATION">Coomassie Blue</ENAMEX> staining), <NUMEX TYPE="QUANTITY">105 μl</NUMEX> of anti-<NUMEX TYPE="CARDINAL">T7</NUMEX> beads
+          (<ENAMEX TYPE="ORGANIZATION">Novagen</ENAMEX>) were incubated with <NUMEX TYPE="QUANTITY">24 μg</NUMEX> of <ENAMEX TYPE="PRODUCT">His6-T7</ENAMEX>-Net1<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> in
+          <NUMEX TYPE="QUANTITY">100 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">HEBD</ENAMEX> for <NUMEX TYPE="CARDINAL">1</NUMEX> hr, washed <NUMEX TYPE="CARDINAL">four</NUMEX> times with <ENAMEX TYPE="ORGANIZATION">HBS</ENAMEX> +
+          <NUMEX TYPE="PERCENT">0.2%</NUMEX> n-<NUMEX TYPE="CARDINAL">octylglucoside</NUMEX> + <NUMEX TYPE="CARDINAL">2</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, and incubated with <NUMEX TYPE="QUANTITY">6 �</NUMEX>�g
+          of <ENAMEX TYPE="PRODUCT">GST-Cdc14</ENAMEX> in <NUMEX TYPE="QUANTITY">100 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">HEBD</ENAMEX> for <NUMEX TYPE="CARDINAL">1</NUMEX> hr. After the final
+          incubation step of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> complete assembly process,
+          beads were extensively washed, followed by a final wash
+          with <ENAMEX TYPE="PRODUCT">Kinase Buffer</ENAMEX> [<NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">Tris·HCl</ENAMEX> (pH <NUMEX TYPE="CARDINAL">8.0</NUMEX>), <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">NaCl</ENAMEX>,
+          <NUMEX TYPE="CARDINAL">10</NUMEX> mM MgCl 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , <NUMEX TYPE="CARDINAL">1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/ml <ENAMEX TYPE="ORGANIZATION">BSA</ENAMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>,
+          <ENAMEX TYPE="CONTACT_INFO">10 μg/ml pepstatin</ENAMEX> + <NUMEX TYPE="CARDINAL">chymostatin</NUMEX> + leupeptin (PCL)]. The
+          beads were then distributed into equal aliquots for
+          release assays. Kinase reactions were carried out in <TIMEX TYPE="DATE">30</TIMEX>
+          <ENAMEX TYPE="PERSON">μl Kinase Buffer</ENAMEX> at room temperature for <NUMEX TYPE="CARDINAL">0.5</NUMEX>-<NUMEX TYPE="CARDINAL">1</NUMEX> hr, and
+          the supernatant was transferred to new tubes at the end
+          of assays. The beads were washed once with <NUMEX TYPE="QUANTITY">70 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">HEBD</ENAMEX>,
+          and the <ENAMEX TYPE="ORG_DESC">wash</ENAMEX> was pooled with the supernatant, and
+          precipitated with <ENAMEX TYPE="ORGANIZATION">TCA</ENAMEX> (<NUMEX TYPE="PERCENT">10%</NUMEX> final) on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX> for <NUMEX TYPE="CARDINAL">30</NUMEX> min.
+          After centrifugation in a microfuge for <TIMEX TYPE="TIME">10 min</TIMEX>, the
+          pellet was saved as "sup". Proteins present on the beads
+          or in the sup were subjected to SDS-polyacrylamide gel
+          <ENAMEX TYPE="ORGANIZATION">electrophoresis</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>-PAGE).
+          For experiments in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, <NUMEX TYPE="CARDINAL">all four</NUMEX> reactions
+          consisted of <NUMEX TYPE="QUANTITY">125 ng</NUMEX> <ENAMEX TYPE="PRODUCT">GST-T7-Cdc14</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">adsorbed</ENAMEX> to <NUMEX TYPE="QUANTITY">20 �</NUMEX>�l
+          anti-GST beads, <NUMEX TYPE="QUANTITY">200 ng</NUMEX> <ENAMEX TYPE="PRODUCT">His6-T7</ENAMEX>-Net1<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, <ENAMEX TYPE="PRODUCT">1 μl Plx1</ENAMEX>, <NUMEX TYPE="QUANTITY">20 �</NUMEX>�l
+          kinase buffer containing <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>, and the <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> depletion
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> (see below).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> depletion
+          <ENAMEX TYPE="ORGANIZATION">Kinase</ENAMEX> reaction was terminated by depleting <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> with <NUMEX TYPE="CARDINAL">1</NUMEX>
+          μl of hexokinase (<ENAMEX TYPE="CONTACT_INFO">1 U/μl</ENAMEX>) and <NUMEX TYPE="QUANTITY">2 μl</NUMEX> of <NUMEX TYPE="QUANTITY">10 ×</NUMEX> <ENAMEX TYPE="FAC">G+ I</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 μl 10</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">mg/ml PCL</ENAMEX>+ <NUMEX TYPE="CARDINAL">20</NUMEX> μl <NUMEX TYPE="PERCENT">50%</NUMEX> <ENAMEX TYPE="SUBSTANCE">glucose</ENAMEX> + <NUMEX TYPE="CARDINAL">79</NUMEX> μl H 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>) for <TIMEX TYPE="TIME">20 min</TIMEX> at room
+          temperature.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">WS</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">RA</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">RJD</ENAMEX> contributed to Figures <NUMEX TYPE="CARDINAL">1</NUMEX>- Figure
+        6B,Figures <ENAMEX TYPE="PRODUCT">6C-6E</ENAMEX>, and Figure <NUMEX TYPE="CARDINAL">7</NUMEX>, respectively. Together, <ENAMEX TYPE="ORGANIZATION">RA</ENAMEX>
+        and <ENAMEX TYPE="ORGANIZATION">WS</ENAMEX> did many experiments which, although invisible here,
+        are essential to the development of this project. <ENAMEX TYPE="ORGANIZATION">SLC</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MJH</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">RSA</ENAMEX> and SAC mapped 
+        in vitro <NUMEX TYPE="ORDINAL">Cdc5</NUMEX> phosphorylation sites
+        on <TIMEX TYPE="DATE">Net1N</TIMEX> and in vivo phosphorylation sites on <TIMEX TYPE="DATE">Net1</TIMEX>. <ENAMEX TYPE="ORGANIZATION">CB</ENAMEX> and
+        HC mapped the <NUMEX TYPE="ORDINAL">Cdc14</NUMEX>-interaction domain of <NUMEX TYPE="CARDINAL">Net1</NUMEX> to the first
+        <NUMEX TYPE="CARDINAL">341</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, and constructed the corresponding Net1N
+        <ENAMEX TYPE="ORGANIZATION">plasmid</ENAMEX>.
+      
+    
+  

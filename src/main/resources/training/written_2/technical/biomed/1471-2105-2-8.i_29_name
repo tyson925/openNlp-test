@@ -1,0 +1,1495 @@
+
+  
+    
+      
+        Introduction
+        Some genes produce functional noncoding <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> (ncRNAs)
+        instead of coding for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . For <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+        genes, we have computational genefinding tools [ <ENAMEX TYPE="LAW">3</ENAMEX> ] that
+        predict novel genes in genome sequence data with reasonable
+        efficiency [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . For <ENAMEX TYPE="SUBSTANCE">ncRNA genes</ENAMEX>, there are as yet no
+        general genefinding algorithms. The number and diversity of
+        ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> remains poorly understood, despite the
+        availability of many complete genome sequences. Gene
+        discovery methods (whether experimental or computational)
+        typically assume that the target is a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> coding gene
+        that produces a messenger <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>.
+        New <ENAMEX TYPE="SUBSTANCE">noncoding RNA genes</ENAMEX> continue to be discovered by
+        less systematic means, which makes it seem likely that a
+        <ENAMEX TYPE="SUBSTANCE">systematic RNA genefinding algorithm</ENAMEX> would be of use.
+        Recent discoveries have included <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> involved in dosage
+        compensation and imprinting [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , numerous small
+        <ENAMEX TYPE="ORGANIZATION">nucleolar RNAs</ENAMEX> involved in <ENAMEX TYPE="SUBSTANCE">RNA modification</ENAMEX> and processing
+        [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] , and small riboregulatory <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> controlling
+        translation and/or stability of target <ENAMEX TYPE="ORG_DESC">mRNAs</ENAMEX> [ <ENAMEX TYPE="LAW">9 10</ENAMEX> ] .
+        Mutations in the gene for RNase MRP are associated with
+        <ENAMEX TYPE="SUBSTANCE">cartilage-hair hypoplasia</ENAMEX> (CHH), a recessive pleiotropic
+        human genetic disorder [ <TIMEX TYPE="DATE">11</TIMEX> ] . The <ENAMEX TYPE="ORGANIZATION">CHH</ENAMEX> locus eluded
+        positional cloning for some time; the RNase MRP gene was
+        only detected in the completely sequenced CHH critical
+        region because the RNase MRP sequence was already in the
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>.
+        We have previously explored <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> genefinding approach
+        with very limited success [ <TIMEX TYPE="DATE">12</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Maizel</ENAMEX> and coworkers [
+        <NUMEX TYPE="CARDINAL">13 14 15</NUMEX> ] had hypothesized that biologically functional
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> may have more stable predicted secondary
+        structures than would be expected for a random sequence of
+        the same base composition. Though we could confirm some
+        anecdotal results where this was true, we were forced to
+        the conclusion that in general, the predicted stability of
+        structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX> is not sufficiently distinguishable from
+        the predicted stability of random sequences to use as the
+        basis for a reliable ncRNA genefinding algorithm.
+        Nonetheless, <ENAMEX TYPE="SUBSTANCE">conserved RNA</ENAMEX> secondary structure remained our
+        best hope for an exploitable statistical signal in ncRNA
+        genes. We decided to consider ways of incorporating
+        additional statistical signal using comparative sequence
+        analysis.
+        We were motivated by the work of <ENAMEX TYPE="PERSON">Badger & Olsen</ENAMEX> [ <NUMEX TYPE="CARDINAL">16</NUMEX>
+        ] for bacterial coding-region identification. Badger &
+        <ENAMEX TYPE="PERSON">Olsen</ENAMEX> use the BLASTN program [ <TIMEX TYPE="DATE">17</TIMEX> ] to locate genomic
+        regions with significant sequence similarity between <NUMEX TYPE="CARDINAL">two</NUMEX>
+        related bacterial species. Their program, <ENAMEX TYPE="ORGANIZATION">CRITICA</ENAMEX>, then
+        analyzes the pattern of mutation in these ungapped, aligned
+        conserved <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> for evidence of coding structure. For
+        example, mutations to synonymous codons get positive
+        scores, while aligned triplets that translate to dissimilar
+        amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> get negative scores. (<ENAMEX TYPE="ORGANIZATION">CRITICA</ENAMEX> then subsequently
+        extends any coding-assigned ungapped seed <ENAMEX TYPE="PLANT">alignments</ENAMEX> into
+        complete open reading frames.)
+        Here we extend the central idea of the <ENAMEX TYPE="ORGANIZATION">Badger</ENAMEX> &
+        <ENAMEX TYPE="PERSON">Olsen</ENAMEX> approach to identify structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> regions. Our
+        extensions include: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) using fully probabilistic <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>;
+        (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) adding a <NUMEX TYPE="ORDINAL">third</NUMEX> model of pairwise alignments constrained
+        by structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> evolution; (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) allowing gapped
+        <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX>; and (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) allowing for the possibility that only
+        part of the pairwise alignment may represent a coding
+        region or structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, because a primary sequence
+        alignment may extend into flanking noncoding or
+        nonstructural conserved sequence. These extensions add
+        complexity to the approach. We use probabilistic modeling
+        methods and formal languages to guide our construction. We
+        use "pair hidden <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> models" (pair-HMMs) (introduced in
+        [ <TIMEX TYPE="DATE">18</TIMEX> ] ) and a "pair stochastic context free grammar"
+        (pair-SCFG) (a natural extension of the <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-HMM idea to
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>) to produce <NUMEX TYPE="CARDINAL">three</NUMEX> evolutionary <ENAMEX TYPE="PER_DESC">models</ENAMEX> for
+        "coding", "structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>", or "something else" (a null
+        <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX>). Given <TIMEX TYPE="DATE">three probabilistic</TIMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> and a
+        pairwise sequence alignment to be tested, we can calculate
+        the <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probability that an alignment should
+        be classified as "coding", "structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>", or "something
+        else".
+        Our approach is designed to detect conserved 
+        structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX>. Some ncRNA genes do
+        not have well-conserved intramolecular secondary
+        structures, and some conserved <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structures
+        function as cis-regulatory regions in mRNAs rather than as
+        independent <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX>. We will be using the term "ncRNA
+        gene" to refer to our prediction targets, but it must be
+        understood that this really means a conserved <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary
+        structure that may or may not turn out to be an independent
+        functional ncRNA gene upon further analysis.
+      
+      
+        Algorithm
+        
+          Overview of the approach: simple, ungapped global
+          case
+          The key idea is to produce <NUMEX TYPE="CARDINAL">three probabilistic</NUMEX> models
+          (<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>) describing different evolutionary
+          constraints on the pattern of mutations observed in a
+          pairwise sequence alignment. We will first introduce toy
+          versions of these <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, for clarity.
+          <NUMEX TYPE="CARDINAL">All three</NUMEX> models use the "pair-grammar" formalism
+          described in [ <TIMEX TYPE="DATE">18</TIMEX> ] . A standard hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> model
+          (<ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX>) generates a single observable sequence by emitting
+          single <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, whereas a pair-HMM generates <NUMEX TYPE="CARDINAL">two</NUMEX> aligned
+          sequences 
+          X, <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> by emitting a pair of aligned
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> at a time (or single <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in either sequence
+          to deal with insertion and deletion).
+          The <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> model assumes mutations occur in a simple
+          position-independent fashion. <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> has <NUMEX TYPE="CARDINAL">4</NUMEX> × <NUMEX TYPE="CARDINAL">4</NUMEX> core
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, which are the pairwise alignment
+          probabilities 
+          <ENAMEX TYPE="ORGANIZATION">P OTH</ENAMEX>( 
+          a, b ) - that is, the joint
+          probabilities of emitting an alignment of a nucleotide 
+          a in sequence 
+          X and a nucleotide 
+          b in sequence 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> represents our
+          null hypothesis. The probability of the alignment given
+          the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is just the product of the probabilities of
+          the <ENAMEX TYPE="PER_DESC">individual</ENAMEX> aligned positions.
+          The <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> model assumes that the aligned sequences
+          encode homologous <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. In a coding region, we
+          <ENAMEX TYPE="PER_DESC">intuitively</ENAMEX> expect to see mutations that make
+          conservative amino <ENAMEX TYPE="SUBSTANCE">acid substitutions</ENAMEX>; in particular, we
+          expect an abundance of synonymous mutations. To capture
+          this, <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> has <NUMEX TYPE="CARDINAL">64 × 64</NUMEX> core parameters, which are 
+          <ENAMEX TYPE="ORGANIZATION">P COD</ENAMEX>( 
+          a 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">3 ,</ENAMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ), the probabilities of the
+          correlated emission of <NUMEX TYPE="CARDINAL">two codons</NUMEX> - that is, three
+          nucleotides 
+          a 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> in sequence 
+          X , aligned to <NUMEX TYPE="CARDINAL">three</NUMEX> nucleotides 
+          b 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> in sequence 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> . (See <ENAMEX TYPE="PRODUCT">Table 1for</ENAMEX> an example of
+          pair codon probabilities.) The probability of the
+          alignment given the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> model for a particular reading
+          frame is the product of the probabilities of the
+          individual aligned codons in that frame. Since we don't
+          know the correct frame 
+          a priori , the overall probability
+          of an alignment is a sum over <NUMEX TYPE="CARDINAL">all six</NUMEX> frames 
+          f ,
+          
+          and we assume that all frames are a priori
+          <ENAMEX TYPE="ORGANIZATION">equiprobable</ENAMEX> in the alignment ( 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          <ENAMEX TYPE="PRODUCT">f |COD</ENAMEX>) = ).
+          The <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model assumes that the pattern of mutation
+          significantly conserves a <ENAMEX TYPE="SUBSTANCE">homologous RNA</ENAMEX> secondary
+          structure. Intuitively, we expect a significant abundance
+          of pairwise-correlated mutations that preserve
+          <ENAMEX TYPE="ORGANIZATION">Watson-Crick</ENAMEX> complementarity in an (as yet unknown)
+          structure. To capture this, the core parameters in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          are the <NUMEX TYPE="CARDINAL">16 × 16</NUMEX> probabilities 
+          <ENAMEX TYPE="ORGANIZATION">P RNA</ENAMEX>( 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          a 
+          
+            R 
+           , 
+          b 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          b 
+          
+            R 
+           ) - that is, the probabilities associated with the
+          correlated emission of <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">base-pair</ENAMEX> ( 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          a 
+          
+            R 
+           ) in sequence 
+          X aligned to a homologous base-pair
+          ( 
+          b 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          b 
+          
+            R 
+           ) in sequence 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Single stranded
+          positions in the alignment are modeled by 
+          <ENAMEX TYPE="ORGANIZATION">P RNA</ENAMEX>( 
+          a, b ), the same functional form as
+          in the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. For a given alignment of known
+          structure 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> , the probability 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( | 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> , <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>) is a product of terms 
+          <ENAMEX TYPE="ORGANIZATION">P RNA</ENAMEX>( 
+          x 
+          
+            i 
+           
+          x 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            i 
+           
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           ) for all base paired positions 
+          i, j and 
+          <ENAMEX TYPE="ORGANIZATION">P RNA</ENAMEX>( 
+          x 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ) for all single stranded positions 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> in the alignment. Since we don't
+          know the correct structure 
+          a priori , the overall probability
+          of an alignment given by the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model is a sum over all
+          structures 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> :
+          
+          But here, we cannot assume equiprobability for the
+          various structures 
+          s as we did for coding frames 
+          f above; in fact, calculating 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          s |<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>) implies a full
+          <ENAMEX TYPE="ORGANIZATION">probabilistic</ENAMEX> model describing favorable and unfavorable
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary <ENAMEX TYPE="ORG_DESC">structures</ENAMEX>. The necessary machinery for
+          calculating this weighted sum is exactly what we
+          developed previously for searching for significant
+          structure in single sequences [ <TIMEX TYPE="DATE">12</TIMEX> ] . In that paper we
+          parameterized a stochastic context-free grammar (SCFG)
+          that incorporates a model of hairpin loops, stems,
+          bulges, and internal loops, including stacking and
+          loop-length distributions, making a probabilistic
+          <ENAMEX TYPE="PER_DESC">counterpart</ENAMEX> for the widely used <ENAMEX TYPE="PRODUCT">MFOLD</ENAMEX> program for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          structure prediction. The SCFG we use here is almost the
+          same, with the difference that now we generate <NUMEX TYPE="QUANTITY">two</NUMEX>
+          aligned sequences simultaneously: i.e., a pair-SCFG. The
+          summation over all possible <ENAMEX TYPE="ORG_DESC">structures</ENAMEX> can be done
+          efficiently using an SCFG Inside algorithm (a dynamic
+          programming algorithm).
+          In Figure <NUMEX TYPE="CARDINAL">1we</NUMEX> present an example of <NUMEX TYPE="CARDINAL">three</NUMEX> different
+          alignments with different mutation patterns, and how they
+          would be scored with the <NUMEX TYPE="CARDINAL">three</NUMEX> different models.
+          Finally, in order to classify the input alignment as
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, or OTH, we use the <NUMEX TYPE="CARDINAL">three</NUMEX> likelihoods to
+          calculate a <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probability, under the
+          simple assumption that the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> are 
+          a priori equiprobable. Alignments
+          with high <ENAMEX TYPE="SUBSTANCE">RNA posterior probabilities</ENAMEX> are interpreted as
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          For scoring purposes, it will also be useful to
+          calculate log-odds scores in the standard manner [ <TIMEX TYPE="DATE">19</TIMEX> ]
+          relative to a <NUMEX TYPE="ORDINAL">fourth</NUMEX> model, which we will call <ENAMEX TYPE="ORGANIZATION">IID</ENAMEX>. In
+          <ENAMEX TYPE="ORGANIZATION">IID</ENAMEX>, we assume the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> are nonhomologous
+          independent, identically distributed sequences. The IID
+          model has <NUMEX TYPE="CARDINAL">8</NUMEX> parameters corresponding to the expected base
+          <ENAMEX TYPE="SUBSTANCE">compositions ofthe</ENAMEX> <TIMEX TYPE="DATE">two sequences</TIMEX>, 
+          P 
+          X ( 
+          a ) and 
+          P 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> ( 
+          b ).
+        
+        
+          Parameter estimation in the simple case
+          Parameter estimation is crucial for our approach. The
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> have to be calibrated to an overall similar
+          evolutionary divergence time, and to similar base
+          compositions. Else, <NUMEX TYPE="CARDINAL">one</NUMEX> model might be artifactually
+          favored over the others because of the degree of
+          conservation or the base composition in an input
+          alignment, not because of the pattern of mutation.
+          In an ideal world, we could empirically estimate the
+          parameters of each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> using training sets of pairwise
+          alignments culled from real RNAs, coding regions, and
+          other conserved noncoding regions, using pairwise
+          alignments that were all about the same percent identity.
+          Unfortunately it is unlikely that we can amass suitably
+          large training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>. Instead, we take a somewhat 
+          ad hoc approach that ties the
+          parameters of <NUMEX TYPE="CARDINAL">all three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> as much as possible to a
+          particular choice of a standard amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> substitution
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>, such as <TIMEX TYPE="DATE">BLOSUM62</TIMEX>. We will derive joint codon
+          probabilities from the chosen scoring matrix, then use
+          these codon probabilities to calculate the average single
+          nucleotide substitution probabilities in <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>, then
+          combine these OTH substitution parameters with base-pair
+          frequencies to obtain the parameters of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model.
+          This procedure is as follows.
+          <NUMEX TYPE="ORDINAL">First</NUMEX> <NUMEX TYPE="QUANTITY">the 64 × 64 codon</NUMEX> emission probabilities 
+          <ENAMEX TYPE="ORGANIZATION">P COD</ENAMEX>( 
+          a 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">3,</ENAMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> | 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ), for some divergence "time" 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> , are derived from the chosen
+          <ENAMEX TYPE="PERSON">substitution matrix</ENAMEX> (i.e. the choice of <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> defines 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ). We make an independence
+          assumption that the conditional probability of each codon
+          depends only on its own encoded amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> - i.e., it
+          does not depend on the the other codon - so we can use
+          the approximation
+          
+          for 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          a 
+          <ENAMEX TYPE="CONTACT_INFO">3 ,</ENAMEX> 
+          b 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          b 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          b 
+          <NUMEX TYPE="CARDINAL">3 ∈</NUMEX> { 
+          A, C, <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">U }</ENAMEX> and 
+          A, <ENAMEX TYPE="PRODUCT">B ∈</ENAMEX> {amino <ENAMEX TYPE="SUBSTANCE">acids}</ENAMEX>. (An example
+          of where this independence assumption is violated: for
+          equiprobable codon bias, our parameters will say that
+          <ENAMEX TYPE="ORGANIZATION">aligning TCA</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">AGT</ENAMEX> is as likely as aligning <ENAMEX TYPE="ORGANIZATION">TCA</ENAMEX> to TCG
+          because all <NUMEX TYPE="CARDINAL">three</NUMEX> are <ENAMEX TYPE="ORGANIZATION">Ser</ENAMEX> codons, despite the fact that
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> case requires <NUMEX TYPE="CARDINAL">three</NUMEX> transversions.) 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          A , 
+          B | 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) are the joint target
+          probabilities of aligned amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> obtained from the
+          amino <ENAMEX TYPE="SUBSTANCE">acid score matrix</ENAMEX>, such as <ENAMEX TYPE="PRODUCT">BLOSUM62</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] , as
+          described by [ <TIMEX TYPE="DATE">19</TIMEX> ] . The terms 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          a 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          a 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> | 
+          A ) are the probabilities of
+          observing a particular codon given a particular amino
+          <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>; these terms can include a codon-bias model [ <TIMEX TYPE="DATE">21</TIMEX> ]
+          and, if desired, a substitution error model to deal with
+          error-prone sequence data. The sum over all possible
+          amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in equation (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) is relevant only when a
+          substitution error model applies, since otherwise each
+          observed codon can only mean <NUMEX TYPE="CARDINAL">one</NUMEX> possible amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>.
+          The <NUMEX TYPE="CARDINAL">16</NUMEX> mutation probabilities for the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are
+          then obtained by marginalizing the corresponding
+          codon-codon emission probabilities in equation (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>), in
+          the following way:
+          
+          The <NUMEX TYPE="CARDINAL">16 × 16</NUMEX> core parameters of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model are
+          calculated by combining the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (which sets the
+          average divergence of the <NUMEX TYPE="CARDINAL">two</NUMEX> sequences) with some
+          additional parameters that specify the probability of
+          base pairs. This involves making an independence
+          assumption:
+          
+          Alternatively, we can symmetrically derive a equation
+          in which the divergence is controlled by the mutation
+          probability of the right position instead of the left
+          position. We calculate the overall joint probability of
+          the aligned base pairs as the average of these two
+          <ENAMEX TYPE="CONTACT_INFO">equations:</ENAMEX>
+          
+          Here 
+          P pair( 
+          a 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          a 
+          
+            R 
+           | 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ), 
+          P pair( 
+          b 
+          
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+           
+          b 
+          
+            R 
+           | 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) are just the probabilities of
+          the various sorts of base pairs (<ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>, <ENAMEX TYPE="PERSON">AU</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX>) in a single
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>.
+        
+        
+          Extension of the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> to gapped local
+          alignments
+          
+            The <ENAMEX TYPE="PRODUCT">OTH Model</ENAMEX>
+            The complete <ENAMEX TYPE="PRODUCT_DESC">OTH model</ENAMEX>, a pair hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>,
+            is diagrammed in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. The flanking double<ENAMEX TYPE="PRODUCT_DESC">-</ENAMEX>circled
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> 
+            F 
+            
+              <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+             , 
+            F 
+            
+              R 
+             , and 
+            F 
+            
+              <ENAMEX TYPE="CONTACT_INFO">J</ENAMEX> 
+             are a shorthand for a full <ENAMEX TYPE="ORGANIZATION">IID</ENAMEX> model of the type
+            in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, which allow the alignment to be flanked or
+            interrupted by runs of unassigned (independent)
+            <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. (In general we will use the convention that
+            single<ENAMEX TYPE="PRODUCT_DESC">-</ENAMEX>circled <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are "single <ENAMEX TYPE="GPE_DESC">states</ENAMEX>", and
+            double<ENAMEX TYPE="PRODUCT_DESC">-</ENAMEX>circled <ENAMEX TYPE="GPE_DESC">states</ENAMEX> represent some "composite <ENAMEX TYPE="ORG_DESC">state</ENAMEX>"
+            of some kind previously defined. This differs from a
+            convention in formal languages in which double<ENAMEX TYPE="PRODUCT_DESC">-</ENAMEX>circled
+            <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are terminal <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of a finite-state automaton
+            [ <TIMEX TYPE="DATE">22</TIMEX> ] .)
+            The <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> model requires us to specify emission
+            probabilities for the state <ENAMEX TYPE="ORGANIZATION">XY</ENAMEX> (that emits <NUMEX TYPE="CARDINAL">two</NUMEX> aligned
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>), and also for the <ENAMEX TYPE="LAW">X</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> (that
+            emit <NUMEX TYPE="CARDINAL">one</NUMEX> nucleotide "aligned" to a gap <ENAMEX TYPE="PER_DESC">character</ENAMEX> in the
+            other sequence). The emission probabilities for state
+            <ENAMEX TYPE="ORGANIZATION">XY</ENAMEX>, 
+            P 
+            <ENAMEX TYPE="ORGANIZATION">XY</ENAMEX> ( 
+            a , 
+            b | 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ), are simply the mutation
+            probabilities 
+            <ENAMEX TYPE="ORGANIZATION">P OTH</ENAMEX>( 
+            a , 
+            b | 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) of the toy <ENAMEX TYPE="ORG_DESC">ungapped</ENAMEX> OTH
+            model, as described above. The emission probabilities
+            for <ENAMEX TYPE="LAW">states X</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> are obtained by marginalization of
+            the 
+            P 
+            <ENAMEX TYPE="ORGANIZATION">XY</ENAMEX> 's:
+            
+          
+          
+            The <ENAMEX TYPE="PRODUCT">COD Model</ENAMEX>
+            The complete <ENAMEX TYPE="PRODUCT_DESC">COD model</ENAMEX>, a pair hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>,
+            is diagrammed in Figure <NUMEX TYPE="CARDINAL">6</NUMEX>. A new degree of "locality"
+            is introduced. In addition to regions of the alignment
+            that are better left "unaligned" (i.e. generated by the
+            flanking <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of an <ENAMEX TYPE="ORGANIZATION">IID</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>), we want to model
+            regions of the alignment that are not coding but still
+            well-conserved. To model this, we add <NUMEX TYPE="CARDINAL">three</NUMEX> full copies
+            of <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> models to the core of the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, indicated
+            by the symbols 
+            <ENAMEX TYPE="PERSON">O</ENAMEX> 
+            
+              B 
+             , 
+            <ENAMEX TYPE="PERSON">O</ENAMEX> 
+            
+              E 
+             , and 
+            <ENAMEX TYPE="PERSON">O</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">J</ENAMEX> 
+             . We represent a full <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with:
+            
+            with the understanding that any arrow that goes into
+            " 
+            <ENAMEX TYPE="PERSON">O "</ENAMEX> indicates a transition into
+            the " 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            
+              FL 
+             " state of the 
+            F 
+            
+              <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+             <ENAMEX TYPE="ORGANIZATION">flanking</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, and any arrow leaving " 
+            <ENAMEX TYPE="PERSON">O "</ENAMEX> emerges from the " 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            
+              FR 
+             " state of the 
+            F 
+            
+              R 
+             <ENAMEX TYPE="ORGANIZATION">flanking</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. In this way the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can
+            score a coding-aligned region that is nested between
+            other independently-aligned regions.
+            The different COD <ENAMEX TYPE="GPE_DESC">states</ENAMEX> described in Figure 6emit
+            correlated codon pairs, possibly with indels. To deal
+            with <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> misalignments of codons and possible
+            applications to error-prone sequence data (expressed
+            sequence tags or low-pass genome <ENAMEX TYPE="PRODUCT_DESC">shotgun</ENAMEX>), we model -1
+            or <NUMEX TYPE="MONEY">+1 frameshifts</NUMEX> (by having a probability of emitting
+            abnormal codons of <NUMEX TYPE="CARDINAL">2</NUMEX> or <NUMEX TYPE="MONEY">4 nucleotides</NUMEX>), in addition to
+            the more expected indels of multiples of three
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>. (No explicit transition for 
+            C 
+            
+              E 
+             → 
+            C 
+            
+              B 
+             is necessary; the intermediate sub-model " 
+            <ENAMEX TYPE="PERSON">O</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">J</ENAMEX> 
+             " has a non-emitting path that deals with
+            consecutive codons.)
+            Codon emission probabilities for the different
+            coding <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are derived from the joint codon
+            probabilities 
+            <ENAMEX TYPE="ORGANIZATION">P CODgiven</ENAMEX> in equation (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) for
+            the toy case. For incomplete codons we do the
+            convenient marginalizations. For example,
+            
+            <ENAMEX TYPE="LAW">Notice</ENAMEX> that there are <NUMEX TYPE="CARDINAL">three</NUMEX> different 
+            C (<ENAMEX TYPE="CONTACT_INFO">3, 2</ENAMEX>) <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, of which we have
+            only described <NUMEX TYPE="CARDINAL">one</NUMEX> in equation (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>). Similarly there are
+            <NUMEX TYPE="CARDINAL">four</NUMEX> different 
+            C (<ENAMEX TYPE="CONTACT_INFO">3, 4</ENAMEX>) <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, and <NUMEX TYPE="CARDINAL">six</NUMEX>
+            different 
+            C (<ENAMEX TYPE="CONTACT_INFO">2, 4</ENAMEX>) <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, depending on the
+            position of the gaps. We will represent these
+            codon-emission probabilities in general by 
+            <ENAMEX TYPE="ORGANIZATION">P α</ENAMEX>, <NUMEX TYPE="MONEY">β</NUMEX>( 
+            a 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+            a 
+            α , 
+            b 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+            b 
+            <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> ) with α, <ENAMEX TYPE="PER_DESC">β</ENAMEX> = {<ENAMEX TYPE="CONTACT_INFO">0, 2, 3, 4</ENAMEX>} and a<ENAMEX TYPE="CONTACT_INFO">,</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">b ∈</ENAMEX> {A, C, <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">U}</ENAMEX>.
+          
+          
+            The <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="PRODUCT">Model</ENAMEX>
+            The complete <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model, a pair stochastic context
+            free grammar (pair-SCFG), is crudely diagrammed in
+            Figure <NUMEX TYPE="CARDINAL">7</NUMEX>. The crucial <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> machinery of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is
+            <ENAMEX TYPE="ORGANIZATION">encapsulated</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of the diagram. This
+            <ENAMEX TYPE="ORGANIZATION">pair-SCFG</ENAMEX>, similar to the <ENAMEX TYPE="ORGANIZATION">SCFG</ENAMEX> described in [ <TIMEX TYPE="DATE">12</TIMEX> ] ,
+            has <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> labeled 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             , 
+            <ENAMEX TYPE="PERSON">V</ENAMEX> . They correspond to the 
+            <ENAMEX TYPE="PERSON">V</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> dynamic programming matrices in
+            [ <TIMEX TYPE="DATE">23</TIMEX> ] , and to the matrices 
+            wx , 
+            <ENAMEX TYPE="ORGANIZATION">wbx</ENAMEX> and 
+            vx of the diagrammatic
+            representation in [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] . We use the diagrams as a
+            convenient visual representation to enumerate the
+            configurations which we take into account in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+            State 
+            V represents a substring
+            (sequence fragment) in which the <ENAMEX TYPE="PER_DESC">ends</ENAMEX> are definitely
+            base-paired. <ENAMEX TYPE="GPE_DESC">States</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             represent a substring in which the <ENAMEX TYPE="PER_DESC">ends</ENAMEX> are either
+            paired or unpaired.
+            To extend these more or less standard <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> folding
+            algorithm conventions from a single sequence to an
+            aligned pair of sequences, let us introduce some
+            vectorial notation. In this notation <ENAMEX TYPE="FAC_DESC">stands</ENAMEX> for the
+            corresponding positions 
+            i in sequence 
+            X and 
+            i' in sequence 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> . Similarly stands for the pair
+            of nucleotides in positions 
+            i and 
+            i' of sequences 
+            X and 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> respectively. With this
+            notation, we also define and . We are going to assume
+            that for <NUMEX TYPE="CARDINAL">two</NUMEX> aligned columns and , 
+            x 
+            
+              i 
+             is base-paired to 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             if and only if 
+            x 
+            
+            i ' is base-paired to 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+            <ENAMEX TYPE="PERSON">j</ENAMEX>' which is a reasonable assumption
+            if we are trying to find commonly occurring secondary
+            structures within an alignment of <NUMEX TYPE="CARDINAL">two</NUMEX> sequences.
+            
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> acts as the starting <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             are essentially equivalent, but 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             is used exclusively for starting multiloops. The
+            production rules for 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> are (for 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             , replace 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> by 
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+            
+              B 
+             everywhere in the recursion),
+            
+            The vector provides us with a compact notation to
+            represent the <NUMEX TYPE="CARDINAL">three</NUMEX> possible situations in which one
+            <ENAMEX TYPE="ORGANIZATION">nucleotide</ENAMEX> is emitted in <NUMEX TYPE="CARDINAL">at least one</NUMEX> of the two
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in the alignment. The components 
+            e 
+            x and 
+            e 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> take values 1 or <NUMEX TYPE="CARDINAL">0</NUMEX> with at
+            least <NUMEX TYPE="CARDINAL">one</NUMEX> of the two being different from <NUMEX TYPE="CARDINAL">zero</NUMEX>. If 
+            e 
+            x = <NUMEX TYPE="CARDINAL">0</NUMEX> or 
+            e 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> we place a gap in the
+            corresponding position in the alignment.
+            The symbol 
+            V represents the paired <ENAMEX TYPE="GPE_DESC">state</ENAMEX>,
+            that is, the state we are in after emitting one <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in
+            each sequence. The recursion for state 
+            <ENAMEX TYPE="PERSON">V</ENAMEX> is,
+            
+            Here the <NUMEX TYPE="ORDINAL">first</NUMEX> transition corresponds to hairpin
+            <ENAMEX TYPE="PERSON">loops</ENAMEX>, and is equivalent to function 
+            <ENAMEX TYPE="ORGANIZATION">FH</ENAMEX> ( 
+            i, j ) in [ <TIMEX TYPE="DATE">23</TIMEX> ] ; the second
+            transition corresponds to stems, bulges, and internal
+            <ENAMEX TYPE="PERSON">loops</ENAMEX>, and is equivalent to function 
+            <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX> ( 
+            i, j, k, l ) in [ <TIMEX TYPE="DATE">23</TIMEX> ] ; the last
+            transition corresponds to multiloops, that is, loops
+            closed by <NUMEX TYPE="CARDINAL">more than two</NUMEX> hydrogen bonds. The length of
+            the <ENAMEX TYPE="ORG_DESC">alignments</ENAMEX> generated for those hairpin loops and
+            <ENAMEX TYPE="ORGANIZATION">bulges</ENAMEX> and internal loops is variable and depends on
+            the number of gaps introduced. The only condition is
+            that all nucleotides in that <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> have to be used -
+            for instance, and for the hairpin loops.
+            The full description of the algorithms associated to
+            this grammar is given in the Additional file. The
+            <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> requires <NUMEX TYPE="CARDINAL">two</NUMEX> kind of emission
+            <ENAMEX TYPE="CONTACT_INFO">probabilities,</ENAMEX>
+            <ENAMEX TYPE="PERSON">•</ENAMEX> , the concurrent emission of <NUMEX TYPE="CARDINAL">two</NUMEX> paired nucleotide
+            in both sequences, already introduced in equation
+            (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>).
+            <ENAMEX TYPE="PERSON">•</ENAMEX> , the concurrent emission of <NUMEX TYPE="CARDINAL">one</NUMEX> unpaired
+            <ENAMEX TYPE="ORGANIZATION">nucleotide</ENAMEX> in both sequences, which are taken as the
+            mutation probabilities in equation (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>).
+            Both types of emission probabilities have been
+            extended to also emit gaps. For any position , we also
+            introduce a penalty for "mutating" to a gap, and
+            another one for "pairing" to a gap. This is a linear
+            gap cost, and is more convenient than implementing the
+            additional extra states that an affine gap cost would
+            require.
+            The vectorial notation becomes particularly
+            important if we realigned the input sequences to the
+            <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, though, we will only be
+            working with a special case where we hold an input
+            (<ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX>) pairwise alignment fixed and simply score it
+            with the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model; in this case, for any given vector
+            .
+          
+        
+        
+          <ENAMEX TYPE="PERSON">Transition Probabilities</ENAMEX>
+          In <NUMEX TYPE="CARDINAL">all three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX>, one of the prices we pay for
+          introducing realistic flexibility is that we have
+          introduced a number of transition probability parameters,
+          in addition to the emission probabilities presented in
+          the ungapped case (Section <NUMEX TYPE="CARDINAL">2.1</NUMEX>). Now we have to determine
+          the transition probabilities of the different models.
+          Again, we want the <ENAMEX TYPE="PER_DESC">models</ENAMEX> tuned to the same level of
+          "gappiness", else alignments may be artifactually
+          classified based on how gappy they are. Whereas we were
+          able to construct divergence-matched emission
+          probabilities for the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> in a somewhat
+          justified fashion, we have no guiding theory for
+          constructing divergence-matched transition
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>.
+          Instead, we have estimated all new transition
+          probabilities by hand. The number of additional
+          parameters in the most complete <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> is <NUMEX TYPE="CARDINAL">8</NUMEX> for the OTH
+          model, and <NUMEX TYPE="CARDINAL">20</NUMEX> for the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> models. These
+          parameters have been optimized by studying the
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>'s discrimination ability on model generated
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and random sequence alignments. More details on the
+          type of simulated data used to set the transition
+          probabilities of the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> is given in Section <NUMEX TYPE="CARDINAL">3.1</NUMEX>. This
+          approach to estimating the transition parameters of the
+          models is very arbitrary, but we do not currently see a
+          plausible alternative.
+          The <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model also has additional SCFG-related
+          probability parameters to take into account length
+          distributions of hairpin loops, bulges, and internal
+          loops. Those parameters have been determined from a
+          training set of aligned tRNAs and <ENAMEX TYPE="SUBSTANCE">ribosomal RNAs</ENAMEX> as
+          described previously [ <NUMEX TYPE="CARDINAL">12 26 27</NUMEX> ] .
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> and scoring algorithms
+          We are given a pairwise sequence alignment , composed
+          of 
+          L aligned columns. We will hold the
+          input alignment fixed. Thus, globally aligning and
+          <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> the alignment with each of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> could
+          be done by straightforward extensions of standard HMM
+          <ENAMEX TYPE="ORGANIZATION">Viterbi</ENAMEX> and/or Forward algorithms and <ENAMEX TYPE="ORGANIZATION">SCFG CYK</ENAMEX> and/or
+          Inside algorithms. The <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-HMM alignment
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> would cost <ENAMEX TYPE="PERSON">O</ENAMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) in storage and time; the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          pair-SCFG algorithm would cost <ENAMEX TYPE="PERSON">O</ENAMEX>( 
+          <ENAMEX TYPE="CONTACT_INFO">L 2</ENAMEX>) in storage and <ENAMEX TYPE="PERSON">O</ENAMEX>( 
+          <ENAMEX TYPE="CONTACT_INFO">L 3</ENAMEX>) in time [ <NUMEX TYPE="CARDINAL">12 24</NUMEX> ] .
+          We are interested, however, in a combination of the
+          standard algorithms. Consider the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model. Recall that
+          we need to obtain 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( <ENAMEX TYPE="SUBSTANCE">|RNA</ENAMEX>) by a summation over all
+          possible <ENAMEX TYPE="ORG_DESC">structures</ENAMEX>, which will require the Inside
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> rather than the <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> algorithm (which, like
+          Viterbi for <ENAMEX TYPE="ORGANIZATION">HMMs</ENAMEX>, recovers the maximum likelihood parse,
+          i.e. structure). But we will also be interested in
+          obtaining a maximum likelihood location of a predicted
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> within the input alignment - that is, we would like
+          to identify the maximum likelihood position of the
+          starting and ending nucleotides that are aligned to
+          <ENAMEX TYPE="GPE_DESC">states</ENAMEX> in the core of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model, as opposed to
+          <ENAMEX TYPE="PERSON">flanking</ENAMEX> states that are accounting for flanking
+          <ENAMEX TYPE="ORGANIZATION">nonconserved</ENAMEX> (IID) and conserved but non-<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (OTH)
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in the input alignment. This would require
+          the <ENAMEX TYPE="ORGANIZATION">CYK</ENAMEX> (maximum likelihood parse) algorithm for the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          model, outside of the core <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> pair-SCFG <ENAMEX TYPE="GPE_DESC">state</ENAMEX>.
+          To combine the desired features of the <NUMEX TYPE="CARDINAL">two</NUMEX> algorithms,
+          we use a trick introduced by <ENAMEX TYPE="ORGANIZATION">Stormo</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Haussler</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ] ,
+          perhaps most widely known for its application in the
+          "semi-<ENAMEX TYPE="NATIONALITY">Markov</ENAMEX> model" of the (<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>) genefinding program
+          <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] . The basic idea is that we start with a
+          model organized into "meta-<ENAMEX TYPE="GPE">states</ENAMEX>" (such as the 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            B 
+           , 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            E 
+           , 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">J</ENAMEX> 
+           , and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). Each
+          <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-state contains its own (possibly complex and
+          <ENAMEX TYPE="ORGANIZATION">arbitrary</ENAMEX>) model of a feature (such as the <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-SCFG
+          represented by the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX>). The <ENAMEX TYPE="LOCATION">meta-</ENAMEX><ENAMEX TYPE="GPE_DESC">states</ENAMEX> are
+          connected to each other by transition probabilities as in
+          an <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX>. To parse and score a sequence, "feature scores"
+          are first precomputed for the score of all possible
+          subsequences 
+          <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PRODUCT">j</ENAMEX> being generated by each
+          <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-state; then a dynamic programming <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> is used
+          to assemble a maximum likelihood parse of the sequence
+          into a series of component features. Thus, we can (for
+          instance) use a pair-SCFG Inside algorithm to precompute
+          scores 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+          
+            ij 
+           for the core <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> metastate of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model
+          generating the part of the alignment from 
+          <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PERSON">j</ENAMEX> summed over all possible
+          structures, then use the <ENAMEX TYPE="ORGANIZATION">Stormo/Haussler</ENAMEX> parsing
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> to determine the optimal 
+          <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PERSON">j</ENAMEX> segment that should be
+          assigned as structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, versus assigning flanking
+          sequence to the 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            B 
+           , 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            E 
+           or 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">J</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-states describing non-<ENAMEX TYPE="SUBSTANCE">RNA conserved residues</ENAMEX>
+          and <ENAMEX TYPE="SUBSTANCE">nonconserved residues</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Stormo/Haussler</ENAMEX> parsing algorithms add <NUMEX TYPE="CARDINAL">one</NUMEX> order of
+          complexity both in storage and time to the underlying
+          dynamic programming problem to which they are applied.
+          The Forward algorithm for scoring a pair-HMM against a 
+          fixed pairwise alignment is 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ), but since <ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> dynamic
+          programming algorithms work by iteratively calculating
+          scores of prefixes <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> of increasing length, whereas we
+          need scores of subsections 
+          <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PERSON">j</ENAMEX> , we have to run the algorithm
+          
+          L times, once from each possible
+          start point 
+          i , making the feature scoring
+          phase 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">L 2</ENAMEX>) in storage and time for both
+          the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-HMM. (The <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> would be 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">L 3</ENAMEX>) in memory, but the actual
+          implementation uses a simplified 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) version for the <ENAMEX TYPE="LAW">OTH meta-</ENAMEX>states
+          included in the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> that keeps the whole COD
+          parsing algorithm 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">L 2</ENAMEX>).) The Inside algorithm for
+          <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> a pair-SCFG against a fixed pairwise alignment is
+          
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">L 2</ENAMEX>) space and 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">L 3</ENAMEX>) time, and conveniently yields
+          the matrix of scores we need for all subsections 
+          <ENAMEX TYPE="PERSON">i.</ENAMEX>.<ENAMEX TYPE="PERSON">j</ENAMEX> . Therefore the computational
+          complexity of our complete algorithm is dominated by the
+          Inside algorithm for scoring the core <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of the
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model. (See Additional filefor more details.)
+          In principle, we could forget about the input pairwise
+          alignment, and allow our <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> to optimally
+          realign the input sequences. This would be desirable; it
+          is dangerous, for example, to rely on the external
+          sequence alignment program (e.g. BLASTN) to produce a
+          correct secondary structural <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> of <NUMEX TYPE="CARDINAL">two</NUMEX> homologous
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, whereas the <ENAMEX TYPE="SUBSTANCE">RNA pair-SCFG</ENAMEX>, which models
+          base-pairing correlation, would potentially produce
+          better structural <ENAMEX TYPE="PER_DESC">alignments</ENAMEX>. However, such an algorithm
+          would be expensive: for <NUMEX TYPE="CARDINAL">two</NUMEX> input sequences of length 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> respectively, scoring the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">pair-SCFG</ENAMEX> would cost 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">m 2</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n 2</ENAMEX>) in storage and 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">m 3</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n 3</ENAMEX>) in time. (See the Additional
+          filefor a detailed description of all the different
+          algorithms, and their complexity.) Since this realignment
+          approach is prohibitive, we rely on an assumption that
+          the external pairwise alignment algorithm will produce
+          alignments that are close enough to being correct for
+          coding <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> and structural <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX>, even though the
+          external alignment program has no notion of these
+          constraints.
+        
+        
+          Bayesian score evaluation
+          Once we have calculated the probabilities that a
+          pairwise alignment has been generated by any one of the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX>, we can classify the alignment into one of
+          <NUMEX TYPE="CARDINAL">three</NUMEX> using a posterior probability calculation:
+          
+          where
+          
+          We assume a uniform distribution for the prior
+          probabilities 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> (<ENAMEX TYPE="PRODUCT">Model</ENAMEX> 
+          
+            i 
+           ).
+          In some figures, we use a phase diagram representation
+          of the same information in the <NUMEX TYPE="CARDINAL">three</NUMEX> posterior
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>. We plot log-odds scores of the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          models with respect to the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> model in an ( 
+          x, <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) <ENAMEX TYPE="PRODUCT_DESC">plane</ENAMEX>:
+          
+          We can then separate the <ENAMEX TYPE="PRODUCT_DESC">plane</ENAMEX> into <NUMEX TYPE="CARDINAL">three</NUMEX> different
+          regions "phases" dominated by any of the <NUMEX TYPE="CARDINAL">three</NUMEX> models
+          (for example, see Figure <NUMEX TYPE="CARDINAL">8</NUMEX>). Those <NUMEX TYPE="CARDINAL">three</NUMEX> phases
+          correspond to the conditions,
+          
+          Points deep in one of the phases represent a higher
+          <ENAMEX TYPE="ORGANIZATION">posterior</ENAMEX> probability for a particular model, whereas
+          points falling next to phase-transition boundaries
+          represent situations in which the method can not clearly
+          decide for <NUMEX TYPE="CARDINAL">one</NUMEX> model or the other.
+        
+        
+          Implementation
+          This approach was implemented in <ENAMEX TYPE="ORGANIZATION">ANSI</ENAMEX> <ENAMEX TYPE="PRODUCT">C</ENAMEX> in a program
+          called <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. The <ENAMEX TYPE="PER_DESC">source</ENAMEX> code and the full set of
+          probability parameters used in <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> are freely available
+          from <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">genetics</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">wustl</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/eddy/software/</ENAMEX>under
+          the terms of the <ENAMEX TYPE="ORGANIZATION">GNU General Public License</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> has
+          been tested on <ENAMEX TYPE="ORGANIZATION">Intel/Linux</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Silicon Graphics</ENAMEX> IRIX
+          <ENAMEX TYPE="PERSON">platforms</ENAMEX>.
+          The input alignment is given in a modified (aligned)
+          FASTA file format. For instance the following file
+          contains the two homologous nematode sequences shown in
+          the <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> alignment in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>:
+          >F08G2
+          
+          CATTTCATAGTGTCACACGCGCACCCATGAGTTGTCGGCACAC-CACTCCCCACTACCCC
+          TACCCTCTCCTCCATTCAGTATCGCTTCTTCGGCTTATTAGCTAAGATCAAAGTGTAGTA
+          TCTGTTCTTATCGTATTAACCTACGGTATACACTCGAATGAGTGTAATAAAGGTTATATG
+          ATTTTTGGAACCTAGGGAAGACTCGGGGCTTGCTCCGACTTCCCAAGGGTCGTCCTGGCG
+          TTGCACTGCTGCCGGGCTCGGCCCAGTCCCCGAGGGGACAA
+          >G42J05
+          
+          CATTCCATAGTGGCCGACGCGAGCCCGGTTTTTGTCGGTACATGCGCGCACC-CTACCCC
+          CCGCGCCTCGTTCTCACCGCATCGCTTCTTCGGCTTATTAGCTAAGATCAAAGTGTAGTA
+          TCTGTTCTTATCGTATTAACCTACGGTATGCACTCGAATGAGTGTAATAAAGGTTATATG
+          ATTTTTGGAACCTAGGAAAGACTCGGGGCTTGCTCCGACTTTCCAAGGGTCGTCCCGGCG
+          TTGCACTGCTGCCGGGCTCGGCCCAGTCCCTGTGGGGACAA
+          Note the gap characters preserving the pairwise
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>. (In many cases, there would be more gap
+          <ENAMEX TYPE="PER_DESC">characters</ENAMEX> than in this particular example.) Multiple
+          pairs of sequences can be added to a single fasta file,
+          and will be scored sequentially, one <ENAMEX TYPE="PER_DESC">pair</ENAMEX> at a time.
+          Typing the following command line:
+          qrna fastafile
+          we obtain the output in the following form:
+          <ENAMEX TYPE="ORGANIZATION">></ENAMEX><ENAMEX TYPE="PRODUCT">F08G2</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">281</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">></ENAMEX><ENAMEX TYPE="PRODUCT">G42J05</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">281</ENAMEX>)
+          ... [some irrelevant output not shown]...
+          <ENAMEX TYPE="PER_DESC">winner</ENAMEX> = <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> = <NUMEX TYPE="CARDINAL">152.817</NUMEX> <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> = <NUMEX TYPE="CARDINAL">129.240</NUMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> = <NUMEX TYPE="CARDINAL">182.522</NUMEX>
+          <ENAMEX TYPE="PER_DESC">logoddspostOTH</ENAMEX> = <NUMEX TYPE="CARDINAL">0.000</NUMEX> <ENAMEX TYPE="PER_DESC">logoddspostCOD</ENAMEX> = <NUMEX TYPE="PERCENT">-23.577</NUMEX>
+          <ENAMEX TYPE="PER_DESC">logoddspostRNA</ENAMEX> = <NUMEX TYPE="CARDINAL">29.705</NUMEX>
+          The <ENAMEX TYPE="PER_DESC">line winner</ENAMEX> = <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> indicates that the <NUMEX TYPE="CARDINAL">281</NUMEX> nt
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> has been classified as a structural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. The
+          next <NUMEX TYPE="CARDINAL">three</NUMEX> numbers correspond to the <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>( <ENAMEX TYPE="PRODUCT">|Model</ENAMEX>) in
+          log-odds scores. The <NUMEX TYPE="CARDINAL">two</NUMEX> non-null numbers in the second
+          row ("logoddspostCOD"and "logoddspostRNA") correspond to
+          the <NUMEX TYPE="ORDINAL">2-D</NUMEX> phase diagram scores described previously. For
+          this alignment, the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model is favored over <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> and OTH
+          by <NUMEX TYPE="QUANTITY">29.7 bits</NUMEX>.
+          A scanning version of the algorithms is also
+          implemented. In this scanning mode a partial segment of
+          the alignment - a window of <ENAMEX TYPE="PER_DESC">user</ENAMEX>-determined fixed length
+          - is scored. The window slides across the alignment and
+          each window is scored independently from the others. This
+          option is useful when the input alignment is long, or one
+          expects different types of functionalities within a given
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>. This is the mode of the program that we use
+          for whole genome analysis.
+          <ENAMEX TYPE="PRODUCT">Scoring</ENAMEX> a window of <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="PER_DESC">nts</ENAMEX> takes <TIMEX TYPE="TIME">about 14 CPU-seconds</TIMEX>
+          and <ENAMEX TYPE="PRODUCT">8 MB</ENAMEX> of memory on <NUMEX TYPE="CARDINAL">225</NUMEX> <ENAMEX TYPE="ORGANIZATION">Mhz MIPS</ENAMEX> R10K <ENAMEX TYPE="PER_DESC">processor</ENAMEX> of a
+          <ENAMEX TYPE="ORGANIZATION">Silicon Graphics</ENAMEX> <ENAMEX TYPE="PRODUCT">Origin2000</ENAMEX>. <ENAMEX TYPE="PRODUCT">Scoring</ENAMEX> an alignment of <NUMEX TYPE="CARDINAL">2</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">Kbases</ENAMEX> in windows of <NUMEX TYPE="CARDINAL">200</NUMEX> nts and moving <NUMEX TYPE="CARDINAL">50</NUMEX> nts at a time
+          takes <TIMEX TYPE="TIME">about 9 minutes</TIMEX>. <ENAMEX TYPE="PRODUCT">Scoring</ENAMEX> the <ENAMEX TYPE="ORG_DESC">alignments</ENAMEX> generated
+          between the intergenic regions of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+          <ENAMEX TYPE="PERSON">S. typhi</ENAMEX> (<NUMEX TYPE="MONEY">12</NUMEX>, <NUMEX TYPE="CARDINAL">000</NUMEX> alignments with
+          average length of <NUMEX TYPE="CARDINAL">about 100</NUMEX> nt) took <NUMEX TYPE="CARDINAL">about 9</NUMEX>
+          <TIMEX TYPE="TIME">CPU-hours</TIMEX>.
+          Additional file
+          <ENAMEX TYPE="PERSON">• Description</ENAMEX> of data: In this additional file we
+          provide a detailed description of the algorithms involved
+          in implementing the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probabilistic models</ENAMEX> components
+          of our comparative method <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. We give the most general
+          description of the scoring/parsing algorithms. We also
+          indicate how to obtain some simplifications that are part
+          of the software implementation.
+          Click here for file
+        
+      
+      
+        Results
+        
+          Tests on simulated data
+          Because all <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> are fully probabilistic, we
+          can use them in a generative mode to sample synthetic
+          pairwise alignments. These simulations allow us to assess
+          the sensitivity and specificity of the approach on
+          idealized data, to get a sense of the best that the
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> can do. We generated <NUMEX TYPE="MONEY">1</NUMEX>, <NUMEX TYPE="CARDINAL">000</NUMEX> pairwise alignments
+          of <NUMEX TYPE="CARDINAL">200</NUMEX> nucleotides in length from each of the three
+          models. Each of these <NUMEX TYPE="CARDINAL">3</NUMEX>, <NUMEX TYPE="CARDINAL">000</NUMEX> alignments was then scored
+          and classified by the program. Results are shown in
+          Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, showing that simulated alignments are almost
+          always classified correctly.
+          We wanted to test that the classification is based on
+          the pattern of mutation in the alignments, not on a
+          spurious artifact of differing base composition, sequence
+          identity, or gap frequency. To do this, we randomly
+          shuffled each alignment by columns - preserving the
+          sequence identity in the alignment, while destroying any
+          <ENAMEX TYPE="ORGANIZATION">correlations</ENAMEX> in the pattern of mutation. Figure 8shows
+          that shuffled alignments are classified in the <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> phase,
+          as expected.
+          These simulation experiments were iterated during the
+          development of the approach. They were important <ENAMEX TYPE="PER_DESC">guide</ENAMEX> in
+          setting the 
+          ad hoc transition probabilities in
+          each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+          We used these simulation results from <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-generated
+          and shuffled data to set crude but reasonable score
+          thresholds for classification of alignments as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. A
+          threshold of <NUMEX TYPE="QUANTITY">1.4 bits</NUMEX> for the <ENAMEX TYPE="SUBSTANCE">RNA posterior</ENAMEX> log-odds
+          scores would determine a minimum error rate area with a
+          frequency of <NUMEX TYPE="CARDINAL">0.023</NUMEX> false positives and <NUMEX TYPE="CARDINAL">0.081</NUMEX> false
+          negatives. In whole-genome scans, we want to push the
+          rate of false positives down, even at the expense of
+          increasing the number of false negatives. To reduce the
+          false positive frequency to <NUMEX TYPE="CARDINAL">0.005</NUMEX>, we would need a cutoff
+          of <NUMEX TYPE="QUANTITY">5.8 bits</NUMEX>, which increases the false negative frequency
+          to <NUMEX TYPE="CARDINAL">0.14</NUMEX>. We set a cutoff of <NUMEX TYPE="QUANTITY">5 bits</NUMEX> for the remainder of
+          the results in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. These error rates are probably
+          somewhat pessimistic. Figure <TIMEX TYPE="DATE">8shows</TIMEX> that the rate of
+          false positive <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> classifications of <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> or
+          OTH-generated data is lower (<NUMEX TYPE="MONEY">about 0.001</NUMEX>) at the <NUMEX TYPE="QUANTITY">5-bit</NUMEX>
+          cutoff that we set based on finding false positives in
+          <ENAMEX TYPE="SUBSTANCE">shuffled RNA</ENAMEX>-generated alignments.
+        
+        
+          Tests on simulated genomes
+          To get a better idea of the false positive rate in
+          whole genome screens, where the background is dominated
+          by sequences other than <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, we used the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> and OTH
+          models to simulate <NUMEX TYPE="CARDINAL">two</NUMEX> aligned complete "pseudobacterial"
+          genomes with no structural <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> present. The aligned
+          pseudo-genomes have the following characteristics [ <NUMEX TYPE="CARDINAL">30 31</NUMEX>
+          ] : <NUMEX TYPE="MONEY">~2 megabases</NUMEX> in total length, with coding regions
+          generated from the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with length distributions
+          distributed normally around a mean length of ~<NUMEX TYPE="CARDINAL">900</NUMEX>
+          nucleotides, and intergenic regions generated using the
+          <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with length distributions distributed normally
+          around the mean length of <NUMEX TYPE="MONEY">~100 nucleotides</NUMEX> (thus, an
+          overall coding density of ~<NUMEX TYPE="PERCENT">90%</NUMEX>).
+          Because the parameters of the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are ultimately
+          dependent upon the <NUMEX TYPE="ORDINAL">BLOSUM62</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid scoring matrix</ENAMEX>,
+          the average percent identity of the aligned genomes was
+          <NUMEX TYPE="PERCENT">only 41%</NUMEX> in "coding" regions and <NUMEX TYPE="PERCENT">36%</NUMEX> in "intergenic"
+          regions. This is a weakness in the simulation, because in
+          a real genome screen, we would be looking at alignments
+          in the <NUMEX TYPE="PERCENT">65-85%</NUMEX> nucleotide identity range, as we discuss
+          later in the paper.
+          The parameters also gave a simulated pair of genomes
+          with an overall GC content of <NUMEX TYPE="PERCENT">47.25%</NUMEX>. From previous
+          experience [ <TIMEX TYPE="DATE">12</TIMEX> ] , we expected that genomic sequences
+          with high <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content might tend to be misclassified as
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>. We therefore devised a crude way of modifying the
+          parameters of the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> to correspond to different base
+          <ENAMEX TYPE="PERSON">compositions</ENAMEX>, by expressing various joint probabilities
+          instead as a function of conditional probabilities, i.e.
+          for <NUMEX TYPE="CARDINAL">two</NUMEX> aligned codons 
+          c, c' :
+          
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          c, c' ) = 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">c|c'</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          c' ), <ENAMEX TYPE="ANIMAL">   </ENAMEX> (<NUMEX TYPE="MONEY">16</NUMEX>)
+          where the 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          c' ) are codon frequencies obtained
+          by marginalization of the joint probabilities, and the
+          information about the mutation rate is in the conditional
+          probabilities 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">c|c'</ENAMEX> ). We then can modify overall
+          frequencies to a different set while keeping the same
+          conditional probabilities. The joint probabilities are
+          then recalculated as:
+          
+          where is obtained as the product of the single
+          nucleotide frequencies for the new GC composition. This
+          approximation for the codon probabilities could be
+          refined to better reflect the actual codon bias of the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>.
+          This correction of probabilities can be performed for
+          both codon-codon probabilities and independent mutation
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>. Using this modification to the <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> and OTH
+          models, we generated <NUMEX TYPE="CARDINAL">two more</NUMEX> pairs of genomes which had
+          overall GC contents of <NUMEX TYPE="PERCENT">57.7% and 38.9%</NUMEX>. We then ran QRNA
+          using its default parameters (i.e. uncorrected for GC
+          <ENAMEX TYPE="ORGANIZATION">composition</ENAMEX>) across these <NUMEX TYPE="CARDINAL">three</NUMEX> aligned simulated genomes
+          in scanning mode, using a window <NUMEX TYPE="QUANTITY">200 nucleotides</NUMEX> wide,
+          moving <NUMEX TYPE="CARDINAL">50</NUMEX> nucleotides at a time, and counted the number
+          of times a window was called <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> with a score of <ENAMEX TYPE="CONTACT_INFO">≥ 5</ENAMEX>
+          bits. All such windows are false positives, because the
+          simulated genomes have no <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> component.
+          The observed false positive numbers for the <ENAMEX TYPE="PRODUCT">2 Mb</ENAMEX>
+          low-GC, average-GC, and high-GC simulated genomes were <NUMEX TYPE="CARDINAL">8</NUMEX>,
+          <TIMEX TYPE="DATE">14</TIMEX>, and <TIMEX TYPE="DATE">21</TIMEX> respectively, or <NUMEX TYPE="CARDINAL">about 4-10</NUMEX> per megabase of
+          <ENAMEX TYPE="ORGANIZATION">pairwise</ENAMEX> <ENAMEX TYPE="PER_DESC">alignment</ENAMEX> analyzed. This indicates that
+          specificity degrades with higher GC <ENAMEX TYPE="SUBSTANCE">compositions</ENAMEX>. We
+          reanalyzed the high-GC genome using the high-GC parameter
+          set that generated it (i.e. parameters corrected for GC
+          <ENAMEX TYPE="ORGANIZATION">composition</ENAMEX>), and saw <NUMEX TYPE="CARDINAL">one</NUMEX> false positive. This indicates
+          that setting the parameters of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> to be
+          appropriate for the GC composition of the input alignment
+          should improve the effectiveness of the approach;
+          however, our current method for doing this may be too
+          crude.
+        
+        
+          Tests on known RNAs
+          To test the sensitivity and specificity of our method
+          on real RNAs, we analyzed pairwise alignments taken from
+          a multiple alignment of <NUMEX TYPE="QUANTITY">63 eukaryotic</NUMEX> <ENAMEX TYPE="PRODUCT">SRP-RNAs</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ]
+          (also known as <ENAMEX TYPE="SUBSTANCE">7SL RNA</ENAMEX>), and a multiple alignment of <NUMEX TYPE="CARDINAL">51</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">eukaryotic</ENAMEX> <ENAMEX TYPE="PRODUCT">RNaseP RNAs</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] . These <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> were
+          chosen because they are independent from the set of tRNAs
+          and <ENAMEX TYPE="SUBSTANCE">rRNAs</ENAMEX> used to train the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model.
+          We did <NUMEX TYPE="CARDINAL">two</NUMEX> different types of experiments. In the
+          first, we used the pairwise alignments as given in the
+          curated <ENAMEX TYPE="DISEASE">multiple sequence alignment</ENAMEX>. These pairwise
+          alignments are an ideal case for <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>, because they are
+          structurally aligned. In the <NUMEX TYPE="ORDINAL">second</NUMEX> set of experiments,
+          we took each known <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> in turn and used it as a BLASTN
+          <ENAMEX TYPE="ORGANIZATION">query</ENAMEX> against the rest of the <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, then classified all
+          significant alignments with <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. This is a more
+          realistic scenario for <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>; a <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> primary sequence
+          alignment may be fragmentary and/or not entirely
+          structurally correct. All alignments were scored with
+          <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> using default parameters.
+          For the <NUMEX TYPE="ORDINAL">first</NUMEX> experiment, we used <ENAMEX TYPE="SUBSTANCE">QRNA</ENAMEX> to score in
+          <TIMEX TYPE="DATE">full</TIMEX> (i.e. not with a scanning window) the <ENAMEX TYPE="CONTACT_INFO">2, 016</ENAMEX>
+          different structural pairwise alignments for <ENAMEX TYPE="ORGANIZATION">SRP-RNAs</ENAMEX>,
+          and the <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">325</NUMEX> structural pairwise alignments for RNaseP
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>. The manually <ENAMEX TYPE="SUBSTANCE">curated RNA</ENAMEX> structural <ENAMEX TYPE="PER_DESC">alignments</ENAMEX> have
+          a wide range of sequence diversity that extends from <NUMEX TYPE="PERCENT">100%</NUMEX>
+          to <NUMEX TYPE="PERCENT">0%</NUMEX> pairwise identity. The number of pairwise
+          alignments that were classified as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> with a score of
+          > <NUMEX TYPE="QUANTITY">5 bits</NUMEX> was counted, and these counts were binned by
+          ranges of percent identity. The fraction of alignments
+          classified as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> is a measure of the sensitivity of
+          <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. To measure specificity, we randomly shuffled each
+          pairwise alignment by columns, which destroys the nested
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> correlations but retains the percentage
+          identity of the alignments. Shuffled alignments that are
+          classified by <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> are false positives. The
+          results in <ENAMEX TYPE="PRODUCT">Table 2show</ENAMEX> that <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> can detect <NUMEX TYPE="CARDINAL">about half</NUMEX> of
+          the alignments as <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> at a wide range of percent
+          identities; however, specificity seriously degrades for
+          alignments <NUMEX TYPE="PERCENT">over 90%</NUMEX> identity.
+          In the <NUMEX TYPE="ORDINAL">second</NUMEX> set of experiments, we have taken each
+          single <ENAMEX TYPE="SUBSTANCE">RNA gene</ENAMEX> in a given <ENAMEX TYPE="PER_DESC">family</ENAMEX> (both for the <ENAMEX TYPE="SUBSTANCE">SRP-RNA</ENAMEX>
+          and the <ENAMEX TYPE="SUBSTANCE">RNaseP RNA</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>) and used it as a BLASTN
+          <ENAMEX TYPE="ORGANIZATION">query</ENAMEX> against all genes in the same <ENAMEX TYPE="PER_DESC">family</ENAMEX> (including
+          itself). We used <ENAMEX TYPE="SUBSTANCE">WUBLASTN</ENAMEX> (<ENAMEX TYPE="PRODUCT">2.0MP-WashU</ENAMEX>, <NUMEX TYPE="CARDINAL">12</NUMEX> Feb 01
+          version, default parameters and scoring matrix) and
+          retained those alignments that were longer than 50
+          nucleotides, with an <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value of <NUMEX TYPE="MONEY">≤ 0.01</NUMEX>, and with an
+          overall similarity of ≥ <NUMEX TYPE="PERCENT">65%</NUMEX>. Of the <NUMEX TYPE="CARDINAL">3</NUMEX>, <NUMEX TYPE="CARDINAL">342</NUMEX> possible
+          comparisons, this produced <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">003</NUMEX> alignments (<ENAMEX TYPE="CONTACT_INFO">586</ENAMEX> for SRP
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, and <NUMEX TYPE="CARDINAL">417</NUMEX> for RNaseP RNAs). These were then scored by
+          <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> to measure sensitivity, and then shuffled by columns
+          and rescored to measure specificity. <ENAMEX TYPE="PRODUCT">Table 3shows</ENAMEX> that
+          <ENAMEX TYPE="ORGANIZATION">specificity</ENAMEX> follows the same trend we saw in the
+          structural <ENAMEX TYPE="PER_DESC">alignments</ENAMEX>, with a sharp degradation in
+          specificity <NUMEX TYPE="PERCENT">over 90%</NUMEX> identity. <ENAMEX TYPE="PERSON">Sensitivity</ENAMEX>, however,
+          drops off steeply in the other direction; as percent
+          identity declines, sensitivity decreases.
+          We also analyzed the dependency of sensitivity and
+          specificity with the <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content of the alignments, both
+          for structural and BLASTN-type alignments. We observe a
+          similar trend for both types of alignments; both
+          <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity reach their best values for
+          GC contents ranging from <NUMEX TYPE="PERCENT">45% to 60%</NUMEX>. Specificity drops
+          faster for high <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content alignments, which is
+          consistent with the fact that unstructured sequences with
+          high <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content tend to produce more spurious secondary
+          structure predictions than low <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> [ <NUMEX TYPE="CARDINAL">12</NUMEX>
+          ] .
+          These results show <NUMEX TYPE="CARDINAL">two</NUMEX> competing <ENAMEX TYPE="PER_DESC">forces</ENAMEX> at play. In
+          order to be detected by <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">RNA sequences</ENAMEX> must be
+          similar enough to produce a <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> alignment that is
+          reasonably correct and extensive, but they also must be
+          dissimilar enough to show compensatory mutations in
+          base-paired positions of the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure.
+          There is therefore a "sweet spot" of percent identity in
+          which <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> performance is optimal. Based on these
+          results, we choose to analyze only <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> pairwise
+          alignments of <NUMEX TYPE="PERCENT">between 65% and 85%</NUMEX> nucleotide identity
+          with <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. However, we do not fully understand the
+          degradation of specificity at high percentage identities
+          (see Discussion).
+        
+        
+          Tests on a whole genome
+          To test QRNA performance in a realistic whole genome
+          screen, we used it to analyze the 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli genome</ENAMEX> by
+          comparisons to the related genome of 
+          <ENAMEX TYPE="DISEASE">Salmonella typhi</ENAMEX> . We compared QRNA
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> to the curated annotation of known coding
+          genes, ncRNAs, and intergenic regions [ <TIMEX TYPE="DATE">34</TIMEX> ] . The
+          feature tables for version M52 of the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> genome includes <NUMEX TYPE="CARDINAL">115</NUMEX> known
+          <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> and <NUMEX TYPE="CARDINAL">4</NUMEX>, <NUMEX TYPE="CARDINAL">290</NUMEX> known coding <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (ORFs). The known
+          <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> include <NUMEX TYPE="CARDINAL">22</NUMEX> rRNAs, <NUMEX TYPE="CARDINAL">86</NUMEX> tRNAs, and <NUMEX TYPE="CARDINAL">7</NUMEX> miscellaneous
+          <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">RNase P</ENAMEX>, for example). <NUMEX TYPE="CARDINAL">At least 4</NUMEX> other known <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          genes [ <ENAMEX TYPE="LAW">1 35 36</ENAMEX> ] - csrB, oxyS, micF, and rprA - were not
+          present in <TIMEX TYPE="DATE">the M52</TIMEX> feature table.
+          We split the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli genome</ENAMEX> in <NUMEX TYPE="CARDINAL">three</NUMEX> different
+          <ENAMEX TYPE="ORGANIZATION">components</ENAMEX>: <NUMEX TYPE="CARDINAL">115</NUMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> features (a total of <NUMEX TYPE="CARDINAL">40</NUMEX> kb, <NUMEX TYPE="PERCENT">1%</NUMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>), <TIMEX TYPE="DATE">4290</TIMEX> <ENAMEX TYPE="PRODUCT_DESC">ORF</ENAMEX> features (<TIMEX TYPE="DATE">4090</TIMEX> kb, <NUMEX TYPE="PERCENT">88%</NUMEX> of the genome),
+          and <TIMEX TYPE="DATE">2367</TIMEX> intergenic sequences of length <ENAMEX TYPE="LAW">≥ 50</ENAMEX> nt (<NUMEX TYPE="CARDINAL">500</NUMEX> kb,
+          <NUMEX TYPE="PERCENT">11%</NUMEX> of the genome). Each sequence was compared against
+          the complete 
+          <ENAMEX TYPE="DISEASE">Salmonella typhi genome</ENAMEX> (<ENAMEX TYPE="PERSON">Sanger</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Centre</ENAMEX>, unpublished genome data,
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="PERSON">sanger</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">ac</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">uk/Projects/S_typhi</ENAMEX>) using <ENAMEX TYPE="ORGANIZATION">WUBLASTN</ENAMEX>,
+          and all alignments of <ENAMEX TYPE="LAW">≥ 50</ENAMEX> nt with an <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value of ≤ <NUMEX TYPE="CARDINAL">0.01</NUMEX>
+          and a percent identity of ≥ <NUMEX TYPE="PERCENT">65%</NUMEX> and ≤ <NUMEX TYPE="PERCENT">85%</NUMEX> were kept. This
+          resulted in <NUMEX TYPE="CARDINAL">354</NUMEX> alignments to <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>, <NUMEX TYPE="CARDINAL">946</NUMEX> alignments to
+          <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>, and <NUMEX TYPE="CARDINAL">11</NUMEX>, <NUMEX TYPE="CARDINAL">509</NUMEX> alignments to intergenic regions. (The
+          large number of alignments in intergenic regions is due
+          to repetitive sequence <ENAMEX TYPE="PER_DESC">families</ENAMEX>.) These alignments were
+          then classified by <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> in scanning mode, scoring
+          overlapping windows of <NUMEX TYPE="CARDINAL">200</NUMEX> nucleotides sliding <NUMEX TYPE="CARDINAL">50</NUMEX>
+          nucleotides at a time, and all windows with scores of <ENAMEX TYPE="CONTACT_INFO">≥ 5</ENAMEX>
+          bits for one of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> were annotated as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, or OTH correspondingly.
+          We then looked at these data in <NUMEX TYPE="CARDINAL">two</NUMEX> ways. First, how
+          many of the known features (ncRNAs and <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>) were
+          detected correctly? We counted a known feature as
+          "detected" as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> or COD if it had one or more
+          <ENAMEX TYPE="ORGANIZATION">overlapping QRNA</ENAMEX> annotations of that type. It is possible
+          for different parts of a long feature (especially the
+          <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>) to be detected with different annotations. For the
+          <NUMEX TYPE="CARDINAL">115</NUMEX> known ncRNAs, <NUMEX TYPE="CARDINAL">33</NUMEX> have one or more BLASTN alignments
+          to 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> typhi in the right range, and
+          all <NUMEX TYPE="CARDINAL">33</NUMEX> were annotated as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>; none were called
+          <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>. For <TIMEX TYPE="DATE">the 4290</TIMEX> known <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>, <TIMEX TYPE="DATE">3181</TIMEX> had BLASTN alignments
+          in the right range; <TIMEX TYPE="DATE">2876</TIMEX> were called <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, <NUMEX TYPE="CARDINAL">20</NUMEX> were called
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, and <NUMEX TYPE="CARDINAL">184</NUMEX> were called both <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>.
+          These results indicate that the sensitivity of the
+          program is largely dependent upon the availability of
+          appropriate comparative sequence data - <NUMEX TYPE="PERCENT">only 29%</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">115</NUMEX> known RNAs were detected, but invariably (in this
+          case), a failure to detect an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> resulted from the lack
+          of an appropriate BLASTN alignment to analyze (of <NUMEX TYPE="PERCENT">65-85%</NUMEX>
+          identity). Therefore sensitivity could presumably be
+          improved by using multiple comparative genome sequences
+          at different evolutionary distances.
+          A <NUMEX TYPE="ORDINAL">second</NUMEX> way to look at the data is from the
+          <ENAMEX TYPE="ORGANIZATION">perspective</ENAMEX> of how many of <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>'s annotations are
+          correct. In a postprocessing step, any overlapping
+          windows with the same QRNA annotation were merged into a
+          longer annotated region. A total of <NUMEX TYPE="CARDINAL">148</NUMEX> regions are
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> in the ncRNA sequence <TIMEX TYPE="TIME">fraction: 33</TIMEX> as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, none
+          as <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, and <NUMEX TYPE="CARDINAL">115</NUMEX> as <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>. <TIMEX TYPE="DATE">7422</TIMEX> regions are annotated in the
+          ORF sequence <TIMEX TYPE="TIME">fraction: 88</TIMEX> as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, <TIMEX TYPE="DATE">3397</TIMEX> as <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, and <TIMEX TYPE="DATE">3937</TIMEX>
+          as <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>. <TIMEX TYPE="DATE">1974</TIMEX> regions are annotated in the intergenic
+          sequence fraction: <NUMEX TYPE="CARDINAL">351</NUMEX> as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, <TIMEX TYPE="DATE">61</TIMEX> as <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, and <TIMEX TYPE="DATE">1562</TIMEX> as
+          <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>. Therefore <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> annotated a total of <TIMEX TYPE="DATE">5614</TIMEX> sequence
+          regions as <ENAMEX TYPE="ORGANIZATION">OTH</ENAMEX>, of which <TIMEX TYPE="DATE">3937</TIMEX> (<NUMEX TYPE="PERCENT">70%</NUMEX>) are actually in known
+          ORFs-this means we must interpret an OTH annotation as a
+          <ENAMEX TYPE="ORGANIZATION">catch-all</ENAMEX> "don't know" category, rather than as a
+          conserved noncoding sequence of potential interest. QRNA
+          annotated a total of <TIMEX TYPE="DATE">3458</TIMEX> regions as <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX>, of which <TIMEX TYPE="DATE">3397</TIMEX>
+          (<NUMEX TYPE="PERCENT">98%</NUMEX>) are in known ORFs. The other <NUMEX TYPE="CARDINAL">61</NUMEX> <ENAMEX TYPE="ORGANIZATION">COD</ENAMEX> annotated
+          regions could either be false positive calls, or could be
+          previously undetected small coding <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          Most interestingly, <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> annotated a total of <NUMEX TYPE="CARDINAL">472</NUMEX>
+          regions of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, of which <NUMEX TYPE="CARDINAL">only 33</NUMEX>
+          (<NUMEX TYPE="PERCENT">7%</NUMEX>) are in known RNAs. It is not possible to
+          definitively accept or reject the rest of these
+          <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> without additional experimental data. The <NUMEX TYPE="CARDINAL">88</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">RNA annotations</ENAMEX> that overlap known <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> may be false
+          positives, or may indicate cis-regulatory <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structures
+          that overlap coding regions. It is intriguing that a
+          <ENAMEX TYPE="CONTACT_INFO">disproportionate</ENAMEX> number of <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>'s <ENAMEX TYPE="SUBSTANCE">RNA annotations</ENAMEX> (<NUMEX TYPE="PERCENT">74%</NUMEX>,
+          <NUMEX TYPE="CARDINAL">351/472</NUMEX>) were in the "intergenic" data fraction, which is
+          <NUMEX TYPE="PERCENT">only 11%</NUMEX> of the genome - which is what we would expect to
+          see if there were a fair number of <ENAMEX TYPE="SUBSTANCE">undetected RNA</ENAMEX>
+          features in the genome.
+          We examined many of these <NUMEX TYPE="CARDINAL">351</NUMEX> regions by eye. <NUMEX TYPE="CARDINAL">Four</NUMEX> of
+          them are the <NUMEX TYPE="CARDINAL">four</NUMEX> ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (csrB, oxyS, micF, and
+          <ENAMEX TYPE="ORGANIZATION">rprA</ENAMEX>) that were not included in <TIMEX TYPE="DATE">the M52</TIMEX> feature table for
+          
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> . Others are repetitive
+          sequence <ENAMEX TYPE="PER_DESC">families</ENAMEX> with conserved palindromic sequence,
+          such as <ENAMEX TYPE="ORGANIZATION">BIMEs</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX> ] . Some correspond to known
+          cis-regulatory <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="ORG_DESC">structures</ENAMEX> such as ρ-independent
+          <ENAMEX TYPE="ORGANIZATION">terminators</ENAMEX> (which have an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> stem loop structure) and
+          transcriptional attenuators. For <NUMEX TYPE="CARDINAL">about half</NUMEX> of these
+          regions, we cannot exclude the possibility that they
+          correspond to novel <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, and we cannot assign a known
+          biological role to them without additional computational
+          or experimental evidence. A more in-depth QRNA screen of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> for novel ncRNAs using
+          multiple comparative genomes from <NUMEX TYPE="MONEY">γ-proteobacteria</NUMEX>,
+          accompanied by experimental evidence that many of the
+          predicted <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> are indeed novel ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, is presented
+          elsewhere (<ENAMEX TYPE="ORGANIZATION">E.R.</ENAMEX>, <ENAMEX TYPE="PERSON">R.J. Klein</ENAMEX>, <ENAMEX TYPE="PERSON">T.A. Jones</ENAMEX>, and S.<ENAMEX TYPE="ORGANIZATION">R.E.</ENAMEX>,
+          <ENAMEX TYPE="PERSON">manuscript</ENAMEX> submitted).
+        
+      
+      
+        Discussion
+        There are a number of ways in which we could improve
+        <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>. The <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probabilistic models</ENAMEX> are calibrated to a
+        fixed evolutionary distance. We used the BLOSUM62
+        substitution matrix to define the fixed evolutionary
+        distance of our <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX>, and it is now quite clear
+        that this is the wrong distance. Our models generate
+        pairwise alignments of <NUMEX TYPE="PERCENT">about 40%</NUMEX> sequence identity. We
+        expect on theoretical grounds that this is where the models
+        would perform optimally on real input alignments. However,
+        <ENAMEX TYPE="GPE">BLASTN</ENAMEX> cannot detect <ENAMEX TYPE="SUBSTANCE">RNA sequences</ENAMEX> that are this diverged.
+        Our evaluations indicated a sweet spot of <NUMEX TYPE="PERCENT">65%-85%</NUMEX> identity
+        for <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> to work best in its current formulation. We
+        suspect that we could obtain some improvement by choosing a
+        substitution matrix corresponding to more closely related
+        nucleotide sequences.
+        In principle <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> may also be useful as a coding-region
+        <ENAMEX TYPE="ORGANIZATION">genefinder</ENAMEX>. The coding <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is a fully probabilistic
+        formalization of comparative analysis ideas used by the
+        <ENAMEX TYPE="ORGANIZATION">genefinder CRITICA</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] , and by comparative exon finding
+        approaches such as the <ENAMEX TYPE="ORGANIZATION">EXOFISH</ENAMEX> <ENAMEX TYPE="PER_DESC">vertebrate</ENAMEX>/ 
+        Tetraodon comparison [ <TIMEX TYPE="DATE">38</TIMEX> ] and the
+        human/mouse comparison in [ <TIMEX TYPE="DATE">39</TIMEX> ] . In the 
+        <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> whole genome screen, the
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity of <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> coding annotations seem
+        quite high. We have not yet attempted to optimize the
+        performance of <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> for this purpose.
+        In terms of other <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> improvements, it should be
+        advantageous to make the emission and transition parameters
+        of the models conditional on a parametric evolutionary
+        distance. We could then optimize a maximum likelihood
+        distance separately for each input alignment (or,
+        marginalize over all distances, in a more Bayesian
+        approach). This should widen the <NUMEX TYPE="PERCENT">65-85%</NUMEX> alignment identity
+        window that <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> works best in - in particular, by
+        <ENAMEX TYPE="PRODUCT">constructing</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> more appropriate for nearly identical
+        sequences, where we currently have high false positive
+        rates.
+        It would be good to have more theory to guide how we
+        produce divergence-matched transition probability
+        parameters for the <NUMEX TYPE="CARDINAL">three</NUMEX> models. We suspect our 
+        ad hoc estimation may be causing the
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> model to be favored artifactually in certain cases
+        (less gappy alignments and longer alignments), elevating
+        our false positive rate.
+        We also made a number of simplifying independence
+        assumptions in trying to calculate <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>'s parameters all
+        from a single chosen amino <ENAMEX TYPE="SUBSTANCE">acid substitution matrix</ENAMEX>. Some
+        of these assumptions probably reduce our performance. It
+        would be desirable to move towards estimating parameters
+        based on real datasets of aligned nucleotide sequences, if
+        large enough datasets could be amassed.
+        We are relying on <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> to produce <NUMEX TYPE="QUANTITY">approximately</NUMEX>
+        correct pairwise alignments of coding regions or <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        structures, even though <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> is purely a
+        position-independent primary sequence alignment program. We
+        could instead realign the two input sequences using the
+        pair-grammars. In principle this should increase the
+        performance of <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>, particularly for more dissimilar
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. Unfortunately, alignment of <NUMEX TYPE="CARDINAL">two</NUMEX> sequences to a
+        <ENAMEX TYPE="ORGANIZATION">pair-SCFG</ENAMEX> is effectively the <ENAMEX TYPE="ORGANIZATION">Sankoff</ENAMEX> <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] with
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> and memory complexity of 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="CONTACT_INFO">L 6</ENAMEX>) and 
+        <ENAMEX TYPE="PERSON">O</ENAMEX> ( 
+        <ENAMEX TYPE="CONTACT_INFO">L 4</ENAMEX>), respectively, so we will need a
+        more clever algorithmic strategy than straightforward
+        dynamic programming (if, indeed, dynamic programming <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        structure <ENAMEX TYPE="FAC_DESC">alignment</ENAMEX> in a four-dimensional hypercube can be
+        called "straightforward").
+        Because <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> detects <ENAMEX TYPE="SUBSTANCE">conserved RNA</ENAMEX> secondary structure,
+        it is not expected to detect ncRNAs that apparently lack
+        significant intramolecular secondary structure, such as <ENAMEX TYPE="PRODUCT">C/</ENAMEX>D
+        box small nucleolar <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . <ENAMEX TYPE="PERSON">Identifying</ENAMEX> novel
+        unstructured ncRNAs remains an entirely open problem. A
+        pure computational approach will probably have to identify
+        transcriptional signals - <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, enhancers, and
+        terminators - and this remains a difficult problem,
+        particularly in <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> genomes. Experimental screens for
+        novel ncRNAs may prove more fruitful for unstructured
+        <ENAMEX TYPE="ORGANIZATION">ncRNAs</ENAMEX>. Expression arrays that pave the entire target
+        genome with probes can detect novel transcripts [ <TIMEX TYPE="DATE">41</TIMEX> ] ,
+        and cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> that enrich for small, nonpolyadenylated
+        <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> can be constructed and <TIMEX TYPE="TIME">EST</TIMEX> <TIMEX TYPE="DATE">sequenced</TIMEX> [ <TIMEX TYPE="DATE">42</TIMEX> ] .
+        <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> is also expected to identify 
+        cis -regulatory <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in
+        mRNAs, in addition to structured ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+        Distinguishing an ncRNA gene from a 
+        cis -regulatory <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> in an
+        <ENAMEX TYPE="ORGANIZATION">mRNA</ENAMEX> is nontrivial in absence of experimental evidence.
+        This cautions against using <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> for fully automated genome
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and "gene counting" exercises in the way that
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> genefinders like <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> are used.
+        Instead, <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> is best used as a computational screen for
+        <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, after which <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> loci are
+        further characterized both computationally and
+        experimentally before considering them to be "genes". Both
+        the data presented here and in a second paper detailing a
+        careful 
+        <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> genome screen with
+        experimental verification of many novel ncRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">E.R.</ENAMEX>,
+        <ENAMEX TYPE="PERSON">R.J. Klein</ENAMEX>, <ENAMEX TYPE="PERSON">T.A. Jones</ENAMEX>, and S.<ENAMEX TYPE="ORGANIZATION">R.E.</ENAMEX>, manuscript submitted)
+        indicate that <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> can be successfully used in this role.
+        Although we have much we can do to improve its performance,
+        we believe <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX> is the first example of a generally
+        applicable computational genefinder for <ENAMEX TYPE="SUBSTANCE">noncoding RNA</ENAMEX>
+        genes. We expect to be able to apply QRNA - based screens
+        for ncRNAs to a number of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> as comparative sequence
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> become available - including <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, 
+        Caenorhabditis , 
+        Drosophila , human, and several
+        <ENAMEX TYPE="ORGANIZATION">microbial</ENAMEX> systems.
+      
+      
+        Conclusions
+        We have described an algorithm that uses <NUMEX TYPE="CARDINAL">three</NUMEX> different
+        <ENAMEX TYPE="PRODUCT">probabilistic</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> (for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-structure-constrained,
+        coding-constrained, and position-independent evolution) to
+        examine the pattern of mutations in a pairwise sequence
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>. The alignment is classified as <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, coding, or
+        other, according to the <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probability of
+        each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. We have implemented this algorithm as a
+        program, <ENAMEX TYPE="ORGANIZATION">QRNA</ENAMEX>, which we consider to be a prototype
+        structural ncRNA genefinding program.
+      
+    
+  

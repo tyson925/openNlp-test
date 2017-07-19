@@ -1,0 +1,633 @@
+
+  
+    
+      
+        Background
+        The identification of individual genes governing
+        <ENAMEX TYPE="ORGANIZATION">phenotypic</ENAMEX> variation is crucial to understand the
+        <ENAMEX TYPE="ORGANIZATION">mechanistic</ENAMEX> basis of quantitative inheritance and
+        ultimately provide information about the design of optimal
+        breeding strategies in both <ENAMEX TYPE="PLANT">plants</ENAMEX> and <ENAMEX TYPE="ANIMAL">animals</ENAMEX>.
+        Quantitative genetics based on new statistical and
+        computational technologies has advanced to the point at
+        which individual genes can be detected and mapped on
+        chromosomes [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . The underpinning for the detection
+        and mapping of genes is founded on their particular
+        segregation pattern. For a <ENAMEX TYPE="SUBSTANCE">pedigree</ENAMEX> derived from inbred
+        lines, the segregation pattern of a gene can be exactly
+        predicted. In this situation, quantitative genetic theory
+        can lay a sufficient foundation for <ENAMEX TYPE="SUBSTANCE">gene detection</ENAMEX> and,
+        thus, the properties of a detected <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> can be adequately
+        described by its effect and genomic location. However, for
+        outcrossing <ENAMEX TYPE="PER_DESC">populations</ENAMEX>, such as forest <ENAMEX TYPE="PLANT">trees</ENAMEX>, in which
+        inbred lines are not available, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> also display
+        population genetic properties [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . Hence, the foundation
+        for <ENAMEX TYPE="SUBSTANCE">gene detection</ENAMEX> in these <ENAMEX TYPE="PER_DESC">populations</ENAMEX> should be
+        established on a combination of quantitative genetics and
+        population genetics. The estimation of the population
+        <ENAMEX TYPE="ORGANIZATION">genetic</ENAMEX> properties of genes, such as allele frequencies and
+        the degree of disequilibrium, can not only enhance the
+        <ENAMEX TYPE="ORGANIZATION">precision</ENAMEX> and power of gene detection, but also is
+        fundamentally important to our understanding of population
+        <ENAMEX TYPE="ORGANIZATION">differentiation</ENAMEX> and evolution [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] .
+        We present a strategy for investigating the existence of
+        genes in an arbitrarily complex progeny test based on
+        phenotype data and estimating the effects of these genes on
+        a quantitative trait and their <ENAMEX TYPE="PER_DESC">population</ENAMEX> properties under
+        the maximum likelihood framework. Only a limited number of
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> studies have been performed to detect genes
+        based on the phenotypic data [ <NUMEX TYPE="CARDINAL">6 7 8 9 10 11 12 13</NUMEX> ] , and
+        none of these studies have considered the <ENAMEX TYPE="PER_DESC">population</ENAMEX> and
+        evolutionary genetic properties of genes. Our study
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX> can be derived from a natural population instead
+        of inbred lines as used for general agronomic <ENAMEX TYPE="PLANT">crops</ENAMEX>. A
+        <ENAMEX TYPE="CONTACT_INFO">finite</ENAMEX> number of unrelated <ENAMEX TYPE="PER_DESC">parents</ENAMEX> are randomly selected
+        from a natural population and are mated to produce progeny
+        tests under a mating design such as factorial or diallel.
+        In a recent paper, we used such progeny tests to derive a
+        model for detecting major genes affecting a quantitative
+        trait [ <TIMEX TYPE="DATE">14</TIMEX> ] . This model has power to estimate the effect
+        of drift errors on genetic variation during <TIMEX TYPE="DATE">hybridization</TIMEX>,
+        thus providing information about dynamic changes of the
+        genetic architecture of a <ENAMEX TYPE="PER_DESC">population</ENAMEX> under artificial
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>. However, the estimates of population genetic
+        parameters from the progeny test using the above model
+        cannot be generalized to the original <ENAMEX TYPE="PER_DESC">population</ENAMEX> from which
+        the mating design is derived. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we developed a
+        <ENAMEX TYPE="PRODUCT">hierarchical</ENAMEX> model for analyzing the pattern of gene
+        segregation at both <ENAMEX TYPE="PER_DESC">population</ENAMEX> and family levels, which
+        thus can provide estimates of genetic parameters in two
+        successive <ENAMEX TYPE="PER_DESC">generations</ENAMEX> of the <ENAMEX TYPE="PER_DESC">population</ENAMEX>. Estimates of
+        population genetic parameters using this hierarchical model
+        can reasonably infer the genetic structure of the original
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX>. A forest tree example is used to demonstrate
+        the application of the new statistical model for gene
+        <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX>.
+      
+      
+        Model
+        
+          Population genetic structure
+          Suppose there is a segregating major gene responsible
+          for a quantitative trait in a natural or experimental
+          diploid <ENAMEX TYPE="PER_DESC">population</ENAMEX>. This gene has 
+          s different codominant alleles, 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          A 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           , whose frequencies in the <ENAMEX TYPE="PER_DESC">population</ENAMEX> are denoted by
+          
+          p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           with 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">κ</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>. These 
+          s alleles randomly unite to form 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>)<NUMEX TYPE="CARDINAL">/2</NUMEX> distinguishable genotypes
+          including 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> <ENAMEX TYPE="ORG_DESC">homozygotes</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">s - 1</ENAMEX>)<NUMEX TYPE="CARDINAL">/2</NUMEX> heterozygotes. The
+          population frequencies of the genotypes are denoted by 
+          p 
+          <ENAMEX TYPE="PERSON">κι (κ</ENAMEX>, <ENAMEX TYPE="PER_DESC">ι</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ). If the <ENAMEX TYPE="PER_DESC">population</ENAMEX> is at
+          <ENAMEX TYPE="PERSON">Hardy-Weinberg</ENAMEX> disequilibrium (HWD), the genotypic
+          frequency is the product of the two corresponding allelic
+          <ENAMEX TYPE="PERSON">frequencies</ENAMEX>, plus the coefficient of <ENAMEX TYPE="ORGANIZATION">HWD</ENAMEX> ( 
+          d 
+          <ENAMEX TYPE="ORGANIZATION">κι</ENAMEX> ), i.e., 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">κι</ENAMEX> = 
+          p 
+          κ 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">ι</ENAMEX> + 
+          d 
+          <ENAMEX TYPE="PERSON">κι</ENAMEX> , where 
+          d 
+          <ENAMEX TYPE="ORGANIZATION">κι</ENAMEX> has the restrictions, max{- 
+          p 
+          <ENAMEX TYPE="PERSON">κ</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">ι</ENAMEX> ), - 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">ι</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">κ</ENAMEX> )} ≤ 
+          d 
+          <ENAMEX TYPE="CONTACT_INFO">κι ≤</ENAMEX> 
+          p 
+          κ 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">ι</ENAMEX> and ∑ 
+          <ENAMEX TYPE="CONTACT_INFO">υ≠κ</ENAMEX> 
+          d 
+          <ENAMEX TYPE="CONTACT_INFO">κυ - ∑</ENAMEX> 
+          
+          <ENAMEX TYPE="PRODUCT">v ≠�</ENAMEX>� 
+          d 
+          <ENAMEX TYPE="PRODUCT">υυ ≥ -</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] .
+        
+        
+          Mating design
+          A finite number of unrelated <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> are randomly
+          selected from the <ENAMEX TYPE="PER_DESC">population</ENAMEX> as <ENAMEX TYPE="PER_DESC">female</ENAMEX> and male parents
+          to generate a 
+          I × 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> factorial mating design. Based on
+          sampling theory, these selected <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> have
+          genotypes at the major <ENAMEX TYPE="ORG_DESC">locus</ENAMEX> whose counts follow the same
+          multinomial distribution as those in the original
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>, with probability vector 
+          
+            p 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          p 
+          <ENAMEX TYPE="PERSON">κι</ENAMEX> , κ, <ENAMEX TYPE="PER_DESC">ι</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). The segregation of progeny
+          <ENAMEX TYPE="ORGANIZATION">genotypes</ENAMEX> in the mating design depends on how the
+          major-locus genotypes segregate (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) among the selected
+          female or male <ENAMEX TYPE="PER_DESC">parents</ENAMEX> and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) within each of the
+          <TIMEX TYPE="DATE">full-sib</TIMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The segregation among the 
+          I female or 
+          J male <ENAMEX TYPE="PER_DESC">parents</ENAMEX> having the same
+          pattern as in the original <ENAMEX TYPE="PER_DESC">population</ENAMEX> is viewed as the
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>-level segregation. The segregation within a
+          <TIMEX TYPE="DATE">full-sib</TIMEX> family of size 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            ij 
+           derived from the 
+          i th female and 
+          <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> male <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> follows the
+          Mendelian segregation ratio, viewed as the family-level
+          segregation. To understand the genetic structure of the
+          original <ENAMEX TYPE="PER_DESC">population</ENAMEX>, different genetic information
+          derived from this two-level segregation will not be
+          mixed, but rather combined within a maximum likelihood
+          <ENAMEX TYPE="PRODUCT">framework</ENAMEX>.
+        
+        
+          Estimation method
+          Let 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            ijk 
+           denote the phenotypic measurement for the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> <ENAMEX TYPE="PER_DESC">offspring</ENAMEX> from 
+          i th female <ENAMEX TYPE="PER_DESC">parent</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> male <ENAMEX TYPE="PER_DESC">parent</ENAMEX> and 
+          g 
+          
+            ijk 
+           denote its genotype at the major gene, 
+          i = <NUMEX TYPE="CARDINAL">1,2</NUMEX>, ..., 
+          I , 
+          <ENAMEX TYPE="PRODUCT">j = 1</ENAMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, ..., 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1,2</NUMEX>, ..., 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            ij 
+           . The statistical model describing the
+          phenotype-genotype relationship can be expressed as
+          
+          where μ 
+          κι is the genotypic value of genotype 
+          A 
+          κ 
+          A 
+          <ENAMEX TYPE="ORGANIZATION">ι</ENAMEX> ; and 
+          e 
+          
+            ijk 
+           is the error term with the normal distribution 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (<NUMEX TYPE="CARDINAL">0,σ 2</NUMEX>).
+          Let be the genotype for the 
+          i th female <ENAMEX TYPE="PER_DESC">parent</ENAMEX> and for the 
+          <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> male <ENAMEX TYPE="PER_DESC">parent</ENAMEX>. We denote by 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           the collection of the observed data and by 
+          
+            z 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          
+            g 
+           , 
+          
+            g 
+           
+          
+            f 
+           , 
+          
+            g 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           ) the collection of the major-locus genotypes for
+          <ENAMEX TYPE="PERSON">offspring</ENAMEX>, female <ENAMEX TYPE="PER_DESC">parents</ENAMEX> and male <ENAMEX TYPE="PER_DESC">parents</ENAMEX>. We assume the
+          following hierarchical model:
+          
+          where 
+          f denotes the normal distribution
+          of the phenotype 
+          <ENAMEX TYPE="ORGANIZATION">N (�</ENAMEX>� 
+          <ENAMEX TYPE="CONTACT_INFO">κι , σ 2</ENAMEX>), 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> is distributed according to the
+          Mendelian segregation pattern and ψ is multinomially
+          distributed with probability vector 
+          
+            p 
+           . Note that genotypes for <ENAMEX TYPE="PER_DESC">siblings</ENAMEX> are dependent
+          and, given genotypes, the traits are independent of each
+          other. Under the above model ( 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>, z 
+           ) has a joint <ENAMEX TYPE="ORG_DESC">distribution</ENAMEX> as follows:
+          
+          <ENAMEX TYPE="PERSON">Statistically</ENAMEX>, equation (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) is a mixture model in
+          which each <ENAMEX TYPE="ORG_DESC">component</ENAMEX> is represented by a genotype within
+          a full-sib <ENAMEX TYPE="PER_DESC">family</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 17 18</NUMEX> ] . The maximum likelihood
+          estimates for <TIMEX TYPE="DATE">θ</TIMEX> = ( 
+          <ENAMEX TYPE="CONTACT_INFO">μ , σ 2,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) can be obtained using the EM
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] . At the 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">th</ENAMEX> step of the EM sequence, the
+          expected log-likelihood is proportional to
+          
+          where Σ 
+          
+            G 
+           sums over all possible genotypes, are the posterior
+          distributions of <ENAMEX TYPE="PER_DESC">offspring genotypes</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">iG</ENAMEX> , 
+          jG are the posterior distributions
+          of parent <ENAMEX TYPE="ORG_DESC">genotypes</ENAMEX>. Conditional on , these posterior
+          probabilities can be evaluated as follows:
+          
+          The EM sequence is defined by
+          
+          Suppose the major gene has <NUMEX TYPE="CARDINAL">two</NUMEX> different codominant
+          alleles, the posterior probablities in equation (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) can
+          be exactly calculated for a usual mating design. However,
+          for large designs with many <ENAMEX TYPE="PER_DESC">parents</ENAMEX> or for the case where
+          the major gene has many different alleles, we have to
+          rely on a <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX> version of the <ENAMEX TYPE="ORGANIZATION">EM</ENAMEX> algorithm. For
+          example, we can sample from the conditional distribution
+          of 
+          
+            z 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          
+            g 
+           , 
+          
+            g 
+           
+          
+            f 
+           , 
+          
+            g 
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           ) given using the following <ENAMEX TYPE="NATIONALITY">Gibbs</ENAMEX> <ENAMEX TYPE="PER_DESC">sampler</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ]
+          :
+          
+        
+      
+      
+        Example
+        We use data from <ENAMEX TYPE="PLANT">aspen trees</ENAMEX> to illustrate the
+        appication of our statistical model for detecting a major
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>. The example is derived from a <NUMEX TYPE="QUANTITY">6 ×</NUMEX> <ENAMEX TYPE="PRODUCT">6</ENAMEX> factorial mating
+        design of 
+        Populus tremuloides and 
+        P. tremula. The <ENAMEX TYPE="PER_DESC">parents</ENAMEX> for the
+        crosses were randomly selected from a mixed breeding
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <NUMEX TYPE="CARDINAL">two</NUMEX> different species established at the
+        <ENAMEX TYPE="ORGANIZATION">University of Minnesota</ENAMEX>. Originally, the 
+        P. tremuloides <ENAMEX TYPE="PLANT">trees</ENAMEX> used as the
+        female <ENAMEX TYPE="PER_DESC">parents</ENAMEX> from the <ENAMEX TYPE="LOCATION">Upper Peninsula</ENAMEX> of <ENAMEX TYPE="GPE">Michigan</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">northern Wisconsin</ENAMEX>, and the 
+        P. tremula male <ENAMEX TYPE="PER_DESC">parents</ENAMEX> came from
+        northeastern <ENAMEX TYPE="GPE">Poland</ENAMEX> and <ENAMEX TYPE="GPE">Germany</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] . The seedlings from
+        the progeny <ENAMEX TYPE="PER_DESC">population</ENAMEX> were planted in <NUMEX TYPE="CARDINAL">two</NUMEX> different
+        locations, <NUMEX TYPE="CARDINAL">one</NUMEX> on a cutover forest site near <ENAMEX TYPE="GPE">Grand Rapids</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">Minnesota</ENAMEX>, and the other on farmland near <ENAMEX TYPE="GPE">Rhinelander</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">Wisconsin</ENAMEX>. Both trials were laid out in a randomized
+        complete block design with <NUMEX TYPE="CARDINAL">10</NUMEX> replicates and <NUMEX TYPE="CARDINAL">six</NUMEX> seedlings
+        per <ENAMEX TYPE="PER_DESC">family</ENAMEX> in each replicate at <NUMEX TYPE="MONEY">2.5 × 2.5 spacing</NUMEX>. At the
+        end of <TIMEX TYPE="DATE">the second year</TIMEX> in the field, all <ENAMEX TYPE="PLANT">trees</ENAMEX> were
+        measured for stem height.
+        Figure 1presents density estimates of the <NUMEX TYPE="ORDINAL">second</NUMEX> year
+        height from each <ENAMEX TYPE="PER_DESC">family</ENAMEX> pooled over the <NUMEX TYPE="CARDINAL">two</NUMEX> locations.
+        <ENAMEX TYPE="PLANT">Trees</ENAMEX> from <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> did not have growth data due to
+        mortality. The phenotypic distributions suggest the
+        existence of a major <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in the progeny test. For example,
+        in the family derived from <ENAMEX TYPE="PRODUCT">Clone-5 × TA-1-68</ENAMEX>, the
+        phenotypic distribution is a mixture of <NUMEX TYPE="CARDINAL">at least two</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">components</ENAMEX>, showing the existence of a segregating gene.
+        Figure <NUMEX TYPE="CARDINAL">1also</NUMEX> indicates different segregation patterns among
+        the <ENAMEX TYPE="PER_DESC">families</ENAMEX>, with some more smooth and others more waved,
+        thus suggesting that some <ENAMEX TYPE="PER_DESC">parents</ENAMEX> are heterozygous with
+        their alleles segregating in the progeny.
+        The effect and genotypic frequencies of the major gene
+        are estimated using the hierarchical model assuming two
+        <ENAMEX TYPE="ORGANIZATION">alleles</ENAMEX>. Since no significant difference is detected
+        between <NUMEX TYPE="CARDINAL">two</NUMEX> locations, we only report the result based on
+        pooled data. With probability of <NUMEX TYPE="CARDINAL">almost one</NUMEX>, parents
+        <ENAMEX TYPE="ORGANIZATION">TA-1-91</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TA-2-68</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TA-4-91</ENAMEX>, <ENAMEX TYPE="PRODUCT">XTA-3-6</ENAMEX> have genotype 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> , parents <ENAMEX TYPE="ORGANIZATION">TA-1-68</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TA-1-75</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">CLONE-5</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">TA-5-61</ENAMEX> have genotype 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> and the rest <ENAMEX TYPE="PER_DESC">parents</ENAMEX> have genotype 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> . The estimates of the genotypic
+        values of 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> and 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> are 
+        <TIMEX TYPE="DATE">11</TIMEX> = <NUMEX TYPE="MONEY">56.7 ± 0.80</NUMEX>, 
+        <TIMEX TYPE="DATE">12</TIMEX> = <NUMEX TYPE="CARDINAL">40.6</NUMEX> ± <NUMEX TYPE="CARDINAL">0.32</NUMEX> and 
+        <TIMEX TYPE="DATE">22</TIMEX> = <NUMEX TYPE="MONEY">30.0 ± 1.02</NUMEX>, respectively. The
+        estimate of residual variance is = <NUMEX TYPE="CARDINAL">218.676</NUMEX> ± <NUMEX TYPE="CARDINAL">6.09</NUMEX>. Here,
+        the estimates of standard errors for the parameter
+        estimators are obtained based on the <ENAMEX TYPE="ORGANIZATION">Fisher</ENAMEX> information
+        <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] . We also fitted the model under the null
+        hypothesis that there is no major <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> with a single normal
+        distribution. The likelihood ratio test has ( 
+        p <NUMEX TYPE="MONEY">< 0.0001</NUMEX>), suggesting the
+        existence of a major gene for height growth. The ratio of
+        the dominant to <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> effect for this major gene is less
+        than <NUMEX TYPE="CARDINAL">0.2</NUMEX>, which implies that it affects the stem height
+        growth in an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> manner.
+        The <ENAMEX TYPE="PER_DESC">population</ENAMEX> genetic parameters of this major <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> are
+        estimated based on the genotypes of the parents detected.
+        The genotype frequencies estimated are identical for the
+        <NUMEX TYPE="CARDINAL">three</NUMEX> genotypes, i.e. 
+        <TIMEX TYPE="DATE">11</TIMEX> = 
+        <TIMEX TYPE="DATE">12</TIMEX> = 
+        <TIMEX TYPE="DATE">22</TIMEX> = <NUMEX TYPE="CARDINAL">1/3</NUMEX>. In consequence, the allele
+        frequencies are also same ( 
+        <TIMEX TYPE="DATE">1</TIMEX> = 
+        <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">1/2</NUMEX>). Thus, the mixed breeding
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX> of 
+        P. tremulodes and 
+        P. tremula is not at <ENAMEX TYPE="ORGANIZATION">Hardy-Weinberg</ENAMEX>
+        <ENAMEX TYPE="PERSON">equilibrium</ENAMEX>, because the genotype frequencies are not
+        products of the corresponding allele frequencies. The
+        coefficient of <ENAMEX TYPE="PERSON">Hardy-Weinberg</ENAMEX> disequilibrium is estimated
+        as . The estimate of allele frequencies and <ENAMEX TYPE="PERSON">Hardy-Weinberg</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">disequilibrium</ENAMEX> using our hierarchical <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be well
+        generalized to the original breeding <ENAMEX TYPE="PER_DESC">population</ENAMEX> from which
+        the <ENAMEX TYPE="PER_DESC">parents</ENAMEX> were sampled. However, one should be cautious
+        about the accuracy of the estimator due to the small sample
+        size.
+      
+      
+        <ENAMEX TYPE="CONTACT_INFO">Simulation</ENAMEX>
+        The behavior of the EM estimators is evaluated by <TIMEX TYPE="TIME">two</TIMEX>
+        simulation experiments. In the first simulation, a <NUMEX TYPE="CARDINAL">6</NUMEX> by <NUMEX TYPE="CARDINAL">6</NUMEX>
+        mating design same as our real example is assumed. The
+        major gene is assumed to have <NUMEX TYPE="CARDINAL">two</NUMEX> codominant alleles 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> whose frequencies in the population
+        are 
+        p 
+        <TIMEX TYPE="DATE">1</TIMEX> = <NUMEX TYPE="CARDINAL">0.6</NUMEX> and 
+        p 
+        <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">0.4</NUMEX>. The genotypic values are set to
+        be <TIMEX TYPE="DATE">65, 40 and 25</TIMEX> with standard deviation <NUMEX TYPE="CARDINAL">15</NUMEX>. Based on the
+        <ENAMEX TYPE="PRODUCT">hierarchical</ENAMEX> model defined in equation (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), we first
+        simulated a set of the parental genotypes ( 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> for <ENAMEX TYPE="PER_DESC">females</ENAMEX> and 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> for <ENAMEX TYPE="PER_DESC">males</ENAMEX>). Then we randomly generated
+        <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="PER_DESC">offspring genotypes</ENAMEX> and observations for each
+        family.
+        Our <ENAMEX TYPE="PER_DESC">EM</ENAMEX> estimating procedure converged to the correct
+        parental genotypes after <TIMEX TYPE="DATE">only a few iterations</TIMEX> (normally 2
+        or <NUMEX TYPE="MONEY">3</NUMEX>). A loglikelihood test is highly significant with
+        log-likelihood ratio equals <NUMEX TYPE="MONEY">125</NUMEX> (<ENAMEX TYPE="PER_DESC">df</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>). The estimates of
+        <ENAMEX TYPE="ORGANIZATION">genotypic</ENAMEX> values from a single simulation replicate are
+        <NUMEX TYPE="MONEY">64.1 ± 0.74</NUMEX> for 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> , <NUMEX TYPE="MONEY">39.5 ± 0.59</NUMEX> for 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> and and <NUMEX TYPE="MONEY">26.8 ± 1.64</NUMEX> for 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> . The estimate of residual variance is
+        <NUMEX TYPE="CARDINAL">241.6</NUMEX> ± <NUMEX TYPE="CARDINAL">10.30</NUMEX>.
+        In our <NUMEX TYPE="ORDINAL">second</NUMEX> simulation we studied a <NUMEX TYPE="CARDINAL">5</NUMEX> by <NUMEX TYPE="CARDINAL">5</NUMEX> mating
+        design. We used <NUMEX TYPE="CARDINAL">25</NUMEX> replications to investigate the
+        empirical accuracy of the estimators. We assume the major
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> has <NUMEX TYPE="CARDINAL">2</NUMEX> alleles and randomly generated parental
+        <ENAMEX TYPE="ORGANIZATION">genotypes</ENAMEX>. The parental genotypes were randomly generated
+        based on allele frequence 
+        p 
+        <TIMEX TYPE="DATE">1</TIMEX> = <NUMEX TYPE="CARDINAL">0.5</NUMEX>. That resulted in female
+        <ENAMEX TYPE="ORGANIZATION">genotypes</ENAMEX> ( 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ) and male genotypes ( 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> 
+        A 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ). For each <ENAMEX TYPE="PER_DESC">family</ENAMEX> we simulated the <NUMEX TYPE="CARDINAL">50</NUMEX>
+        genotypes for its offsprings and then simulated its trait
+        measurement using a normal and log-normal distribution.
+        The results from the <NUMEX TYPE="ORDINAL">second</NUMEX> simulation study are
+        summarized in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>. The top <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of the plots is for
+        the simulation where trait measurements are simulated from
+        a normal distribution. The bottom <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> corresponds to
+        lognormal data. In each plot we graphed the ideal estimates
+        of the parameter (assuming that we know the genotypes of
+        each <ENAMEX TYPE="PER_DESC">offspring</ENAMEX>) versus our estimates based on the EM
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. Mean squared errors are also indicated in the
+        plots. It is seen from Figure <NUMEX TYPE="CARDINAL">2that all four</NUMEX> parameters can
+        be estimated quite accurately in the normal case while they
+        are slightly biased for the lognormal data.
+      
+      
+        Discussion
+        We have derived a hierarchical model for detecting major
+        genes affecting a quantitative trait based on progeny tests
+        of <ENAMEX TYPE="ANIMAL">outcrossing species</ENAMEX>. The new model takes into account
+        the <ENAMEX TYPE="PER_DESC">population</ENAMEX> genetic properties of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and is expected
+        to enhance the accuracy, precision and power of gene
+        <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX>. The information about the population behavior of
+        genes estimated from this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is fundamentally important
+        to our understanding of the genetic architecture of a
+        natural or experimental <ENAMEX TYPE="PER_DESC">population</ENAMEX> and is also useful for
+        the design of sound breeding strategies for agricultural
+        <ENAMEX TYPE="PLANT">crops</ENAMEX> and forest <ENAMEX TYPE="PLANT">trees</ENAMEX>.
+        We used an example from interspecific <ENAMEX TYPE="PLANT">aspen hybrids</ENAMEX> to
+        illustrate the application of our gene-detecting model. The
+        model has successfully identified a major <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> with
+        additive effects on <TIMEX TYPE="DATE">second year</TIMEX> stem growth in the hybrid
+        <ENAMEX TYPE="PLANT">aspens</ENAMEX>. The <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> effect of genes on height growth in
+        young <ENAMEX TYPE="PER_DESC">poplars</ENAMEX> was also observed in a molecular marker
+        experiment [ <TIMEX TYPE="DATE">23</TIMEX> ] . In this marker experiment, an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>
+        quantitative trait locus was found to explain almost a
+        <TIMEX TYPE="DATE">quarter</TIMEX> of the total phenotypic variation in <NUMEX TYPE="ORDINAL">second</NUMEX> year
+        height growth. The result from the <ENAMEX TYPE="PLANT">aspen hybrids</ENAMEX> was
+        consistent with that from a simulation experiment based on
+        a mating scheme analogous to that used in our real example.
+        The consistency of the results from the simulation study
+        suggests that the model proposed here can be adequately
+        used to detect genes of large effect on the phenotypes.
+        The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> will have immediate applications for many
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> in which progeny tests have been established for a
+        number of <TIMEX TYPE="DATE">years</TIMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] . Most of these tests are maintained
+        in different locations and measured <TIMEX TYPE="DATE">annually</TIMEX>, thus offering
+        desirable opportunities to address <NUMEX TYPE="CARDINAL">two</NUMEX> important questions:
+        (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) How does the genes interact with environment? (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) What
+        is the developmental plasticity of gene expression? In our
+        real example, no evidence has been obtained for the change
+        of gene expression at the major locus detected over the two
+        field trials, despite their dramatic differences in
+        climate, soil properties and silvicultural measures [ <TIMEX TYPE="DATE">21</TIMEX> ]
+        . If the stability of the expression of this gene over a
+        range of environments is confirmed by more accurate
+        genotype determination methods, e.g. based on genetic
+        <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX>. It will have a tremendous application in breeding
+        for stable cultivars of forest tree <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+        Our analysis and simulation is based on diallelic
+        inheritance. But multiallelic inheritance can be similarly
+        considered, although <NUMEX TYPE="CARDINAL">more</NUMEX> parameters should be introduced.
+        Also, our <ENAMEX TYPE="PER_DESC">model</ENAMEX> assumes the segregation of a single gene in
+        <ENAMEX TYPE="ORGANIZATION">progeny</ENAMEX> tests. The principle behind the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be
+        extended to consider <NUMEX TYPE="CARDINAL">two</NUMEX> or more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Modelling multiple
+        genes may be closer to biological reality, because the
+        <ENAMEX TYPE="PERSON">linkage</ENAMEX>, epistatic interaction and genetic association
+        among genes are considered. However, the consideration of
+        these relationships needs to estimate an increased number
+        of unknown genetic parameters. Finally, our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is based
+        on a balanced factorial design. For some <ENAMEX TYPE="PER_DESC">populations</ENAMEX>, like
+        mammals, mating designs are frequently unbalanced because
+        of limited resources or reproductive difficulties. It is
+        very important to extend our analysis and <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to an
+        <ENAMEX TYPE="ORGANIZATION">unbalanced</ENAMEX> mating design of any complexity. For all of
+        these extensions mentioned above, maximum likelihood
+        approaches may not be sufficient owing to an increasing
+        dimension of parameter space. A more powerful computational
+        <ENAMEX TYPE="ORGANIZATION">tool</ENAMEX>, e.g., <ENAMEX TYPE="GPE">Markov</ENAMEX> chain <ENAMEX TYPE="ORGANIZATION">Monte Carol</ENAMEX> methods, may be needed
+        [ <TIMEX TYPE="DATE">20</TIMEX> ] to make our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> more tractable in real
+        applications.
+      
+    
+  

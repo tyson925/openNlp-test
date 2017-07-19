@@ -1,0 +1,887 @@
+
+  
+    
+      
+        Background
+        
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>
+          Identify the unique symbols in the analyzed sequences.
+          For a nucleotide sequence the unique symbols would be A,
+          G, C, and <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> for the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">nucleotides</ENAMEX> found in DNA
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>
+          Map each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> to a unique corner in the unit
+          <ENAMEX TYPE="ORGANIZATION">hypercube</ENAMEX>. The dimension of the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> hypercube, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , is chosen as the upper integer
+          of 
+          log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">uu</ENAMEX> ) where 
+          <ENAMEX TYPE="ORGANIZATION">uu</ENAMEX> is the number of unique symbols.
+          Therefore 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> has the value of <NUMEX TYPE="CARDINAL">2</NUMEX> for <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and <NUMEX TYPE="CARDINAL">5</NUMEX>
+          for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. For each symbol mapped in such a way, let 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           be the 
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+          th coordinate of the corner of the
+          <ENAMEX TYPE="ORGANIZATION">hypercube</ENAMEX> to which symbol 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> is mapped. For <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> <NUMEX TYPE="CARDINAL">one</NUMEX> possible
+          mapping is 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          A = [<NUMEX TYPE="CARDINAL">0,0</NUMEX>], 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          C = [<NUMEX TYPE="CARDINAL">0,1</NUMEX>], 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          G = [<NUMEX TYPE="CARDINAL">1,0</NUMEX>], and 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = [<NUMEX TYPE="CARDINAL">1,1</NUMEX>]. There are sparser
+          implementations of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> that may use values of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> up to the number of unique <ENAMEX TYPE="ORG_DESC">units</ENAMEX>,
+          
+          uu , as detailed in the original
+          proposition [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . However, those solutions are not
+          essentially different and the implementation presented
+          here can be straightforwardly ported to sparser USM
+          <ENAMEX TYPE="PERSON">representations</ENAMEX>.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>
+          Iteratively generate the forward USM coordinates for
+          each of the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> symbols and each of the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> coordinates as follows
+          
+        
+        
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>
+          Iteratively generate the backward USM coordinates for
+          each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> and each coordinate as follows
+          
+          The given procedure results in the <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n USM</ENAMEX> coordinates for each of the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> symbols in the transformed
+          sequence. The similarity of <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> at any pair of
+          symbols can be measured using the distance measure
+          defined by <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . The measure is
+          defined by
+          
+          D = 
+          d 
+          
+            f 
+           ( 
+          a 
+          
+            i 
+           
+          b 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           ) + 
+          d 
+          
+            b 
+           ( 
+          a 
+          
+            i 
+           
+          b 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="PERSON">)    </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+          where
+          
+          <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX> present the distance measure as an
+          estimator of the length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> containing
+          the compared symbols. They also note that the measure, as
+          defined, necessarily overestimates the length of these
+          segments.
+          As can be seen in the USM procedure, each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in
+          the sequence is encoded as a set of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> coordinates.
+          These coordinates are constructed in such a way as to
+          encode the symbol itself as well as the preceding symbols
+          (forward coordinates) and following symbols (backward
+          <ENAMEX TYPE="ORGANIZATION">coordinates</ENAMEX>). Scale independence is a property of this
+          representation that allows the complete recovery of the
+          encompassing sequence (preceding and following symbols)
+          from the USM coordinates of any <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in the sequence to
+          any resolution (any scale) up to the complete length of
+          the sequence. In practical implementations we are faced
+          with the limitations of finite word length
+          representations of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> coordinates. In these
+          implementations our ability to recover the encompassing
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> is bounded by the word length of the coordinate
+          representation. For this reason, we refer to <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> and bUSM
+          implementations with finite precision coordinates as
+          bounded scale independent representations. In this paper
+          we consider the implementation of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> algorithm and
+          propose a modification to <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX>'s approach [
+          <NUMEX TYPE="CARDINAL">4</NUMEX> ] that eliminates the overestimation and allows
+          determination of similar segment lengths of bounded
+          length and offer an algorithm for overcoming the bounded
+          length restriction.
+        
+      
+      
+        Results
+        
+          Source of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> distance metric
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-estimation
+          The application of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> as a tool for measuring
+          scale-independent discrete sequence similarity and its
+          particular application to genomics and proteomics
+          exploits a distance metric providing an estimate of the
+          length of similar regions surrounding a pair of symbols.
+          In the approach presented by <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="PERSON">Vinga</ENAMEX>, this
+          distance metric is shown to overestimate the true length
+          of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>. We propose a variation on their
+          approach that retains the distance property, eliminates
+          the <NUMEX TYPE="CARDINAL">over</NUMEX>-estimation, and uses more computationally
+          efficient operations. We begin this discussion by first
+          providing a more complete proof of the distribution of
+          <ENAMEX TYPE="ORGANIZATION">overestimation</ENAMEX> in the unidirectional <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>. This proof aids
+          in the illumination of the source of the
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-estimation.
+          The <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> distance metric estimates the length of
+          <ENAMEX TYPE="PERSON">ungapped</ENAMEX> identical segments in the region surrounding the
+          symbols being compared. As such, we now consider two
+          sequences, 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> with 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> symbols in agreement starting at
+          symbol indices 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            v 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           respectively.
+          
+          From the definition of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> recursion (<ENAMEX TYPE="CONTACT_INFO">Equation 1</ENAMEX>)
+          we can see that the <ENAMEX TYPE="PER_DESC">j thcoordinate</ENAMEX> at the k thstep can
+          also be written as
+          
+          Where the is the j thcoordinate of the k thsymbol and
+          the are determined by the initial values of the
+          coordinates. These values are assigned in the
+          initialization step of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> encoding process. We write
+          a coordinate of the sequence at the 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            v 
+           thand 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">thstep</ENAMEX> in the recursion as:
+          
+          These representations are given as <NUMEX TYPE="CARDINAL">three</NUMEX> summations
+          corresponding to the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> symbols in agreement, the symbols
+          preceding the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> back to the beginning of
+          each sequence, and the initial value of the coordinate.
+          From our definition of these sequences ( 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> most recent symbols in agreement)
+          we see that that the first terms (<NUMEX TYPE="ORDINAL">first</NUMEX> summation) in
+          each of the expressions are equal. We can factor a common
+          term from each of the remaining <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">summations</ENAMEX> giving
+          
+          By change of index we get
+          
+          We let , , and for the non-similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> be
+          <ENAMEX TYPE="PERSON">independent Bernoulli</ENAMEX> random variables with 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">1/2</NUMEX>. The term in brackets is
+          recognized as a uniformly distributed random value on
+          [<NUMEX TYPE="CARDINAL">0,1</NUMEX>). We can rewrite 
+          <ENAMEX TYPE="ORGANIZATION">USMv</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">USMw</ENAMEX> as follows
+          
+          Where 
+          <ENAMEX TYPE="CONTACT_INFO">Rv</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           and 
+          Rw 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           are uniformly distributed on [<NUMEX TYPE="CARDINAL">0,1</NUMEX>). Next consider
+          the differences between the USM coordinates for each of
+          these sequences.
+          
+          The terms in the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> are eliminated and
+          the difference becomes a scaled difference between <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="PERSON">uniformly</ENAMEX> distributed random variables. The scale factor
+          of this difference gives the length of the similar
+          segment.
+          The unidirectional distance metric given by <ENAMEX TYPE="PERSON">Almeida</ENAMEX>
+          and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX> is defined as
+          
+          d = -log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (max|Δ 
+          USM 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">|</ENAMEX>) for 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1.</NUMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">n    </ENAMEX> (<NUMEX TYPE="MONEY">12</NUMEX>)
+          where 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the number of coordinates in
+          the USM vector. Exploiting the fact that 
+          log is monotone increasing we
+          substitute our expression for the USM difference and
+          write 
+          d as:
+          
+          where Δ 
+          R 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           = | 
+          <ENAMEX TYPE="CONTACT_INFO">Rv</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           - 
+          Rw 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="PERSON">|</ENAMEX>. The overestimation is given by φ. Since 
+          <ENAMEX TYPE="CONTACT_INFO">Rv</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           and 
+          Rw 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           are uniformly distributed on [<NUMEX TYPE="CARDINAL">0,1</NUMEX>), the distribution
+          of Δ 
+          R 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is given by:
+          
+          And the associated cumulative distribution is given
+          by:
+          
+          Therefore for 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> independent coordinates
+          distributed as defined, the distribution for the maximum
+          is
+          
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          R 
+          <ENAMEX TYPE="PERSON">max �</ENAMEX>� 
+          r ) = 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> (Δ 
+          R 
+          <ENAMEX TYPE="CONTACT_INFO">1 ≤</ENAMEX> 
+          r , Δ 
+          R 
+          <ENAMEX TYPE="CONTACT_INFO">2 ≤</ENAMEX> 
+          r ,...,Δ 
+          R 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           ≤ 
+          r ) = ( 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> (Δ 
+          R ≤ 
+          r )) 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = ( 
+          r ·(<ENAMEX TYPE="CONTACT_INFO">2 -</ENAMEX> 
+          r )) 
+          <ENAMEX TYPE="ORGANIZATION">n    </ENAMEX> (<NUMEX TYPE="MONEY">16</NUMEX>)
+          Under the transformation
+          <ENAMEX TYPE="ORGANIZATION">φ</ENAMEX>( 
+          r ) = -log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+          r <ENAMEX TYPE="PERSON">)    </ENAMEX> (<NUMEX TYPE="MONEY">17</NUMEX>)
+          the distribution of φ can be determined as follows
+          
+          This confirms the result originally reported by
+          <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . We see from this derivation
+          that the exact length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>, given by 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , is determined by the exponent
+          of the common factor of <NUMEX TYPE="CARDINAL">1/2</NUMEX> factored from the non-similar
+          segment. The remaining factor in that term constitutes
+          the overestimation. <ENAMEX TYPE="ORGANIZATION">Overestimation</ENAMEX> is, therefore,
+          determined by the difference between terms in the series
+          representation of the maximum coordinate difference
+          beyond the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>. The symbol sequence encoded
+          in this portion of the coordinate provides no information
+          as to the length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> and so we wish to
+          eliminate its effect on the estimation of the similar
+          length.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Boolean</ENAMEX> USMs
+          It is clear from the discussion above that
+          overestimation of the length of similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> by USM
+          results from contributions to the coordinate difference
+          from terms in the coordinate summation preceding the
+          similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>. This effect is due to the use of an
+          arithmetic difference in the computation of <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX>'s distance metric. Consider the following
+          example
+          
+          where 
+          R 
+          
+            a 
+           and 
+          R 
+          
+            b 
+           are the uniformly distributed random values on [<NUMEX TYPE="CARDINAL">0,1</NUMEX>)
+          described in the previous derivation. Finite length
+          coordinates are used here for illustration purposes.
+          These <NUMEX TYPE="CARDINAL">two</NUMEX> quantities must differ in the most significant
+          position but are not constrained in the remaining terms.
+          In this example we see that for the least significant
+          subtraction to occur, the difference must borrow from the
+          next more significant term. The borrow propagates the
+          length of the sum and the length is overestimated, in
+          this case, by <NUMEX TYPE="CARDINAL">5</NUMEX>. The overestimation is therefore, due to
+          the interaction of the symbols prior to the first symbol
+          at which the sequences differ.
+          We propose a variation on the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> encoding and
+          difference metric in which arithmetic operations
+          (subtraction, maximum, and base <NUMEX TYPE="CARDINAL">2</NUMEX> logarithm) are replaced
+          with equivalent <ENAMEX TYPE="GPE">Boolean</ENAMEX> operations in which the values of
+          individual terms in the above expression do not interact.
+          We now present the proposed change of arithmetic.
+          Consider the following representation of a bUSM
+          (<ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX>) coordinate
+          
+          c = 
+          R 
+          i 
+          a 
+          
+            i 
+           
+          where 
+          a 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">∈</ENAMEX> {<NUMEX TYPE="CARDINAL">0,1</NUMEX><ENAMEX TYPE="PRODUCT">}    </ENAMEX> (<NUMEX TYPE="MONEY">20</NUMEX>)
+          Where represents the bit-wise logical OR of a series
+          of terms and 
+          R 
+          i is the right shift operator
+          repeated 
+          i times. The value 
+          c is then an infinite bit
+          representation that encodes one bit from each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in
+          the encoded sequence. The bUSM recursion is then written
+          as
+          
+          The representation of a coordinate of the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> after
+          the k thstep of the recursion is given by
+          
+          Again, consider <TIMEX TYPE="DATE">two sequences</TIMEX>, 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> , as defined previously. We write
+          the coordinates of these sequences at the 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            v 
+           thand 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">thstep</ENAMEX> in the recursion as:
+          
+          As before, we break the representation into three
+          terms; <NUMEX TYPE="CARDINAL">one</NUMEX> representing the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>, one
+          representing terms prior to the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>, and one
+          representing the initial value of the coordinate. The
+          proposed recursion replaces <ENAMEX TYPE="ORG_DESC">division</ENAMEX> by <NUMEX TYPE="CARDINAL">2</NUMEX> with a right
+          shift operation and addition with a bit-wise logical OR.
+          Resulting coordinates are histories of one bit of the
+          symbols preceding the encoded <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> with the most recent
+          <ENAMEX TYPE="ORGANIZATION">symbol</ENAMEX>'s bit stored in the <ENAMEX TYPE="PER_DESC">left-</ENAMEX>most bit position (most
+          significant position).
+          Given the proposed coordinate representation and
+          recursion, we now examine the bit-wise binary equivalent
+          to the computation of the distance metric. Consider the
+          exclusive OR of the coordinates of <NUMEX TYPE="CARDINAL">two</NUMEX> symbols being
+          compared.
+          
+          The exclusive OR operation yields true (bit is set) if
+          the bits differ and false (bit is not set) otherwise.
+          Based on our definition of sequences 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> and 
+          W none of the <NUMEX TYPE="QUANTITY">bits</NUMEX> in the similar
+          segment of the newly defined bUSM coordinate difference
+          are set and the first bit beyond the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> must
+          be set. The exact length of the similar segment is given
+          by <NUMEX TYPE="CARDINAL">one</NUMEX> less than the position of the <ENAMEX TYPE="PER_DESC">left-</ENAMEX>most set bit in
+          the set of coordinate differences.
+          Under the original approach, the maximum of the
+          differences across all coordinates is taken prior to
+          computing the base <NUMEX TYPE="CARDINAL">2</NUMEX> logarithm. Under the proposed
+          approach we replace this <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> with the bit-wise OR
+          of the differences across all coordinates. The <ENAMEX TYPE="PER_DESC">left-</ENAMEX>most
+          bit set in the result corresponds to the bUSM coordinate
+          that determines the length of the similar segment
+          (equivalent to the coordinate winning the max operation
+          in the standard USM). The computation of the distance
+          metric in the original approach employs a base-2
+          <ENAMEX TYPE="ORGANIZATION">logarithm</ENAMEX>. Under the proposed approach we substitute the
+          logarithm with a scan for the position of the most
+          significant bit set in the bit-wise OR of the coordinate
+          differences. By forming both the forward and reverse bUSM
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX> and adding the forward and backward
+          <ENAMEX TYPE="PERSON">distances</ENAMEX>, the exact length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> can be
+          determined for all pairs within the <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>.
+          For the standard USM, initial values for coordinates
+          are taken as random draws on [<NUMEX TYPE="CARDINAL">0,1</NUMEX>). This allows the
+          <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> properties of the overestimation to remain
+          consistent at the beginning and end of the sequences. The
+          <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> does not overestimate the similar length and
+          we must, therefore, reexamine the initialization approach
+          so as to preserve the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of exact lengths at
+          the beginning and end of the sequences. This can be
+          accomplished through the addition of <NUMEX TYPE="CARDINAL">two</NUMEX> unique symbols,
+          a tail symbol for sequence V and a tail symbol for
+          <ENAMEX TYPE="CONTACT_INFO">sequence W.</ENAMEX> The use of <NUMEX TYPE="CARDINAL">two</NUMEX> special symbols to mark the
+          ends of the sequences results in no change to the
+          <ENAMEX TYPE="ORGANIZATION">recursion</ENAMEX> or similar segment length determination. It
+          does impact the initialization and possibly the
+          computational costs due to a potential increase in the
+          number of coordinates required to represent the alphabet
+          and the tail symbols. The addition of <NUMEX TYPE="CARDINAL">two</NUMEX> extra symbols
+          <ENAMEX TYPE="PERSON">will</ENAMEX>, in some cases, increase the number of coordinates
+          required. If, for example, an alphabet of <NUMEX TYPE="CARDINAL">4</NUMEX> is required,
+          the addition of <NUMEX TYPE="CARDINAL">two</NUMEX> symbols increases the number of
+          coordinates from <TIMEX TYPE="DATE">2 to 3</TIMEX>. If, however, an alphabet of <NUMEX TYPE="CARDINAL">20</NUMEX>
+          is required, the addition of <NUMEX TYPE="CARDINAL">two</NUMEX> symbols results in no
+          increase in the number of coordinates. Naturally, this
+          would not ever happen for a sparse implementation of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>,
+          where 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">uu</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , and, consequently, the
+          number of coordinates increases with every new <ENAMEX TYPE="PER_DESC">symbol</ENAMEX>.
+          Nevertheless, this would not, in any way, change the bUSM
+          proposition as the sole difference between sparse and
+          compact representations concerns the binary
+          representation of each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">uu</ENAMEX>  . It is noteworthy,
+          however, that the incentive to use sparser USM
+          <ENAMEX TYPE="PERSON">representations</ENAMEX>, which is the smaller extent of
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-determination, does not exist for bUSM, where
+          determination of length unit identity is exact, as shown
+          below.
+          The initial value of the <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> coordinates for
+          <ENAMEX TYPE="PERSON">sequence V</ENAMEX> are set to indicate that an occurrence of the
+          sequence V tail symbol precedes the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in <ENAMEX TYPE="PERSON">V. An</ENAMEX>
+          instance of the tail symbol is also added to the end of
+          the sequence (follows the last <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in V). The initial
+          value for sequence <ENAMEX TYPE="ORGANIZATION">W</ENAMEX>'s coordinates are set similarly
+          using the sequence W tail symbol. Since tail symbols
+          differ from each other and from all non-tail symbols,
+          similar regions will be terminated at the beginning and
+          end of the sequence and exact distances will be
+          determined as required.
+          Both forms of the USM coordinates can be considered a
+          form of embedding and reorientation of the sequence data
+          as illustrated in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Instead of coding the
+          information as a sequence of symbol codes, we code it as
+          a collection of coordinates containing one code bit for
+          each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> in the sequence. Each <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> coordinate stores
+          one bit for each <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> preceding (forward coordinates)
+          or following (backward coordinates) the symbol associated
+          with the coordinate. The sequence of coordinates
+          redundantly embeds the symbols surrounding the current
+          symbol.
+          The standard USM coordinates can be directly obtained
+          from the bUSM form by interpreting the bUSM coordinates
+          as block floating point representations of the USM
+          coordinates with the binary decimal point set to the left
+          of the most significant bit. Dividing the unsigned word
+          representation of the bUSM coordinate by <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> , where 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> is the word length, yields the
+          equivalent standard USM coordinate with 
+          W symbols of precision. We also
+          recognize that for both the standard and <ENAMEX TYPE="ORGANIZATION">Boolean</ENAMEX> USM
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX>, the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of similar segment lengths
+          is limited by the length (or precision) of the word used
+          to represent the coordinate. The original implementation
+          of the standard USM was created in <ENAMEX TYPE="GPE">Matlab</ENAMEX> and used <NUMEX TYPE="QUANTITY">64-bit</NUMEX>
+          floating point coordinates. As such, lengths for similar
+          segments <TIMEX TYPE="TIME">longer than 53 symbols</TIMEX> (<ENAMEX TYPE="ORGANIZATION">IEEE</ENAMEX> <ENAMEX TYPE="PRODUCT">754</ENAMEX> format provides
+          <NUMEX TYPE="QUANTITY">53 bits</NUMEX> of precision [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ) cannot be determined. The
+          bUSM coordinates are similarly limited. The comparable
+          implementation encodes bUSM coordinates in <NUMEX TYPE="QUANTITY">64-bit</NUMEX> fixed
+          point representations and so exact similar segment
+          lengths up to a maximum length of <NUMEX TYPE="CARDINAL">63</NUMEX> can be
+          determined.
+        
+        
+          Overcoming finite word length limitations
+          In theory, <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> encoded sequences could be used to
+          detect arbitrarily long similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX>. Previously we
+          discuss the constraint imposed by finite-length binary
+          representations of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> and bUSM coordinates. An algorithm
+          for overcoming this limitation will now be presented.
+          <NUMEX TYPE="ORDINAL">First</NUMEX> we define <TIMEX TYPE="DATE">the following two</TIMEX> functions
+          
+          Under the finite word length limitation we note that 
+          d 
+          
+            f 
+           and 
+          d 
+          
+            b 
+           , the true forward and backward distances, cannot be
+          determined from a single symbol pair comparison. We
+          define <NUMEX TYPE="CARDINAL">two</NUMEX> new functions and which can be determined from
+          
+          <ENAMEX TYPE="ORGANIZATION">W -bit</ENAMEX> coordinate representations.
+          These functions provide the length of similar segments up
+          to the length of the underlying representation 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> . The true length of the forward
+          and backward similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> are returned for lengths
+          less than 
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> and the word length is returned
+          otherwise. Next we present the following recursive
+          functions
+          
+          The functions 
+          D 
+          
+            f 
+           and 
+          D 
+          
+            b 
+           recursively locate the end of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> by
+          stepping backward ( 
+          D 
+          
+            f 
+           ) and forward ( 
+          D 
+          
+            b 
+           ) through the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> until the end of the
+          region is detected. The exact forward and backward
+          lengths of similar segments of arbitrary length can be
+          determined from these recursions. If the similar segment
+          extends to the end of the sequence, the recursion will
+          terminate on the last step due to the tail symbols added
+          to the beginning and end of the sequence. The exact
+          length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> containing symbols 
+          v 
+          
+            i 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is given by
+          
+          The proposed recursive definition of similar segment
+          length overcomes the finite word length limitation and
+          provides a practical method for recovering exact
+          distances for arbitrarily long similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX>.
+        
+        
+          Performance comparisons
+          Computational comparisons of the <NUMEX TYPE="CARDINAL">two</NUMEX> approaches were
+          performed using the <ENAMEX TYPE="PRODUCT">C-</ENAMEX>code implementations developed as
+          described in <ENAMEX TYPE="GPE">Methods</ENAMEX>. This comparison examines the
+          performance gains achieved through the use of binary
+          operations (shift, exclusive OR, OR, bit scan) as
+          replacements for the equivalent functions in the standard
+          <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> (<ENAMEX TYPE="ORG_DESC">division</ENAMEX> by <NUMEX TYPE="CARDINAL">2</NUMEX>, subtraction, <ENAMEX TYPE="PERSON">max</ENAMEX>, and log). Since the
+          <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> requires <NUMEX TYPE="CARDINAL">two</NUMEX> additional symbols to represent
+          the tail symbols for each of the sequences, three
+          coordinates are required for each of the forward and
+          reverse directions (<NUMEX TYPE="CARDINAL">six</NUMEX> total). <NUMEX TYPE="CARDINAL">Four</NUMEX> coordinates were
+          required for the standard USM. <ENAMEX TYPE="ORGANIZATION">Standard USM</ENAMEX> coordinates
+          were stored as 64 bit floating point numbers and bUSM
+          coordinates as 64 bit unsigned fixed point numbers. The
+          standard and binary USM implementations were, therefore,
+          limited to detecting similar segments up to lengths <NUMEX TYPE="CARDINAL">53</NUMEX>
+          and <TIMEX TYPE="DATE">63</TIMEX> respectively in a single comparison (not using the
+          recursive distance algorithm).
+          Elapsed execution time measurements were made for each
+          of the <NUMEX TYPE="CARDINAL">10</NUMEX> test cases and are presented in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. For
+          small sequence lengths (<NUMEX TYPE="CARDINAL">less than 10,000</NUMEX> symbols) the
+          symbol-pair distance calculations for the binary USM
+          achieved <NUMEX TYPE="CARDINAL">approximately 8.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> comparisons per second on
+          our test <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> while the standard USM achieved rates
+          of <NUMEX TYPE="CARDINAL">approximately 2.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> comparisons per second. The binary
+          <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> approach was <NUMEX TYPE="CARDINAL">approximately 3.7</NUMEX> times the speed of the
+          <ENAMEX TYPE="ORGANIZATION">standard USM</ENAMEX>. For these small sequence test cases, the
+          test application and the USM representations of the small
+          <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> fit within the <ENAMEX TYPE="ORG_DESC">processor</ENAMEX>'s on-chip cache (<ENAMEX TYPE="CONTACT_INFO">512</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">kilobytes</ENAMEX>). For cases where the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> encoded sequences
+          exceed the cache size and require reads from main memory,
+          the performance decreases as indicated for the larger
+          cases (<NUMEX TYPE="CARDINAL">10,000</NUMEX> symbols and above). For these cases, the
+          <ENAMEX TYPE="ORGANIZATION">binary</ENAMEX> USM executes at <NUMEX TYPE="CARDINAL">3.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> comparisons per second and
+          the standard USM at <NUMEX TYPE="CARDINAL">1.7</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> comparisons per second for a
+          performance ratio of <NUMEX TYPE="CARDINAL">approximately 1.9</NUMEX>.
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> examples applying both the standard and binary USM
+          approaches were prepared to illustrate the difference in
+          results obtained from overestimated distance and exact
+          similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> length determination. The <NUMEX TYPE="ORDINAL">first</NUMEX> case
+          duplicates the example given by <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vinga</ENAMEX>.
+          Phrases from the <ENAMEX TYPE="ORGANIZATION">Wendy Cope</ENAMEX> poem were converted to
+          standard and binary <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> for each of the sequences. The
+          pair-wise comparisons were performed using both
+          approaches and the results are shown as pixel maps
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). In these pixel maps, brighter regions
+          indicate higher distance values and should correspond to
+          symbol pairs found in similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX>. It is clear from
+          the images in this figure that the major similar segments
+          (lengths <TIMEX TYPE="DATE">7, 9</TIMEX>, and <NUMEX TYPE="CARDINAL">11</NUMEX>) are clearly visible in both
+          images. However, the exact distances in the <ENAMEX TYPE="ORGANIZATION">Boolean</ENAMEX> USM
+          image clearly show the shorter segments (<ENAMEX TYPE="CONTACT_INFO">lengths 3, 4,</ENAMEX>
+          and <NUMEX TYPE="CARDINAL">5</NUMEX>) that are somewhat hidden by the standard USM
+          overestimation error (Figure <NUMEX TYPE="CARDINAL">2A</NUMEX>). A similar illustration
+          is provided using a sample nucleotide sequence. The
+          sequence coding the human <ENAMEX TYPE="SUBSTANCE">insulin receptor</ENAMEX> was acquired
+          through <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">XM</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">048346</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">INSR</ENAMEX>) and used in a BLAST search
+          for similar sequences. The <NUMEX TYPE="ORDINAL">second</NUMEX> sequence (<ENAMEX TYPE="CONTACT_INFO">M69243,</ENAMEX>
+          <ENAMEX TYPE="SUBSTANCE">CTK-1</ENAMEX>) was taken from that list. A <NUMEX TYPE="CARDINAL">100</NUMEX> nucleotide segment
+          of the of the human <ENAMEX TYPE="SUBSTANCE">insulin receptor</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">XM</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">048346,</ENAMEX>
+          <TIMEX TYPE="DATE">3056-3155</TIMEX>) associated with the predicted tyrosine kinase
+          domain and a <ENAMEX TYPE="PRODUCT">100</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">nucleotide</ENAMEX> <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> from the chicken
+          tyrosine kinase (<ENAMEX TYPE="PRODUCT">M69243</ENAMEX>, <NUMEX TYPE="CARDINAL">51-150</NUMEX>) were converted to
+          <ENAMEX TYPE="ORGANIZATION">standard USM</ENAMEX> and bUSM coordinates and <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-wise compared
+          using the associated distance metrics. Pixel maps of the
+          distance metrics were prepared (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). Again, the
+          long similar <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> are clearly visible in both images.
+          The overestimation noise in the standard USM (image A)
+          again masks many of the shorter similar segments seen in
+          the <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> (image B).
+        
+      
+      
+        Discussion
+        <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="PERSON">Vinga</ENAMEX> presented a fundamentally interesting
+        and practically useful extension of the <ENAMEX TYPE="ORGANIZATION">Chaos Game</ENAMEX>
+        Representation iterative function (CGR) referred to as
+        <ENAMEX TYPE="ORGANIZATION">Universal Sequence Maps</ENAMEX> (USM) and demonstrated the
+        application of this representation and an associated
+        distance metric in the identification of similar segments
+        of discrete sequences. In this report we have presented
+        considerations for the practical implementation of these
+        methods and offer an implementation of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> that <NUMEX TYPE="CARDINAL">1</NUMEX>)
+        eliminates the overestimation of the length of similar
+        <ENAMEX TYPE="CONTACT_INFO">segments, 2</ENAMEX>) eliminates the inability to recognize similar
+        segments longer than the word length of the coordinate
+        representation, <NUMEX TYPE="CARDINAL">3</NUMEX>) can be implemented with more efficient
+        operations, and <NUMEX TYPE="CARDINAL">4</NUMEX>) provides a simple conversion that
+        recovers the standard USM coordinates. As currently
+        defined, the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> distance metric (and associated bUSM
+        implementation) is limited to the estimation of lengths of
+        local identity about the pair of symbols being
+        compared.
+        The nature of the overestimation by the unidirectional
+        distance metric was revealed in a proof of the distribution
+        of the overestimation from the standard method. The
+        algebraic difference taken in computing the distance
+        results in the overestimation of length. This observation
+        leads to a modification of the algorithm that eliminates
+        the interaction of symbols when computing distance. We also
+        recognize, in this derivation, that to achieve this result
+        we must assume that the i thcoordinates for the symbol
+        representations are equally likely ( 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">1/2</NUMEX>). The <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> coding
+        selections for standard USM sequences must be balanced so
+        as to make the occurrence of <NUMEX TYPE="CARDINAL">1 and 0</NUMEX> in a standard USM
+        coordinate equally likely for the given <ENAMEX TYPE="PER_DESC">symbol</ENAMEX> set (and
+        frequency of occurrence). This indicates that instead of
+        choosing the first <ENAMEX TYPE="ANIMAL">n binary representations</ENAMEX> of symbols as
+        suggested in [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , the symbols should be chosen from the
+        <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> possible values in such a way as to
+        balance the occurrences of <NUMEX TYPE="CARDINAL">1 and 0</NUMEX> for each coordinate. The
+        <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> approach places no constraints other than
+        uniqueness on the symbol representation.
+        The <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX> approach eliminates the overestimation
+        problem noted in the standard USM and can recover more
+        symbols than the standard approach for a given amount of
+        storage. The binary approach is faster than the standard
+        approach (based on a straightforward implementation) and
+        offers the potential for further enhancement through, for
+        example, the use of processor instructions designed
+        specifically to find the <NUMEX TYPE="ORDINAL">first</NUMEX> or last bit set in a word
+        (<ENAMEX TYPE="PER_DESC">e.g.</ENAMEX> <ENAMEX TYPE="PERSON">Pentium Bit Scan Reverse</ENAMEX> (BSR) instruction [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ).
+        In our test cases the binary approach performed <NUMEX TYPE="CARDINAL">1.9</NUMEX> to <NUMEX TYPE="CARDINAL">3.7</NUMEX>
+        times that of the standard approach even though it
+        processed 6 (<NUMEX TYPE="CARDINAL">3</NUMEX> forward, <NUMEX TYPE="CARDINAL">3</NUMEX> backward) rather than 4 (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>
+        forward, <NUMEX TYPE="CARDINAL">2</NUMEX> backward) coordinates. These measurements are
+        specific to the test <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> (processor, OS, <ENAMEX TYPE="ORG_DESC">compiler</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">etc.</ENAMEX>) and with optimizations these ratios will change
+        considerably.
+        The computational cost of preparing the coordinates is
+        insignificant when compared to the cost of the distance
+        calculations in cases we examined. This may, in part, be
+        due to the fact that we performed 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> comparisons for sequences of length
+        
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> and with a minimum value for 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> or 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> of <TIMEX TYPE="DATE">1000</TIMEX>. Since the storage
+        requirements for a USM representation of a sequence are
+        considerably larger than that of the sequence itself, it
+        may be more efficient to store the sequence in its native
+        form (a sequence of symbols) and compute the USM
+        coordinates just prior to sequence comparison when a large
+        number of comparisons are being performed. We also observed
+        that the storage size of the coordinates had an impact on
+        computational performance. The performance of the algorithm
+        decreases sharply when the USM coordinate representation
+        exceeds the on-chip cache of the <ENAMEX TYPE="ORG_DESC">processor</ENAMEX>. This may
+        indicate that we should be considering tradeoffs between
+        word length and the size of the similar segments we wish to
+        detect without using the recursive length function. If, for
+        example, the probability of sequences <TIMEX TYPE="TIME">longer than 16</TIMEX>
+        <ENAMEX TYPE="PERSON">symbols</ENAMEX> is sufficiently small, then a <NUMEX TYPE="CARDINAL">16</NUMEX> bit coordinate
+        might be used.
+        A single pairwise comparison grows as the upper integer
+        of the base <NUMEX TYPE="CARDINAL">2</NUMEX> logarithm of the number of unique symbols.
+        <ENAMEX TYPE="PERSON">Almeida</ENAMEX> and <ENAMEX TYPE="NATIONALITY">Vinga</ENAMEX> note that for a given length of interest 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> , we need to sample the distance
+        metric at no more than 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+        
+          A 
+         · 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+        
+          B 
+         <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+        w indices to locate all sequences of
+        length 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> or greater. In an application
+        focused on locating all identical segments of length 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> or greater, the computational cost
+        therefore grows as [log 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+        nn <ENAMEX TYPE="PERSON">)]·</ENAMEX>( 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+        
+          A 
+         · 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+        
+          B 
+         )/ 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> . The exact distance given in the
+        <ENAMEX TYPE="ORGANIZATION">binary</ENAMEX> approach allows us to locate, from this sampling,
+        the beginning and end of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> from the
+        sampled symbol indices and the forward and reverse
+        <ENAMEX TYPE="PERSON">distances</ENAMEX>. Subtracting <NUMEX TYPE="CARDINAL">one</NUMEX> less than the exact forward
+        distance from the indices of the symbols being compared and
+        adding <NUMEX TYPE="CARDINAL">one</NUMEX> less than the exact backward distance from the
+        indices we can identify the start and end of the similar
+        segment containing the given <ENAMEX TYPE="PER_DESC">symbol pair</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Boolean USM</ENAMEX>,
+        offers this advantage due to its unique ability to
+        determine the exact length of the similar <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>.
+      
+      
+        Conclusions
+        USM representations of discrete sequences in genomics
+        and proteomics offer the possibility of scale-independent
+        representations of sequence information surrounding points
+        of comparison in those sequences. In order to maximize the
+        potential for application of these methods we must consider
+        both their theoretical properties and the computational
+        methods for efficient implementation that retain these
+        properties. We have offered one further step in that
+        direction by identifying a <ENAMEX TYPE="ORGANIZATION">Boolean</ENAMEX> implementation of USM
+        (<NUMEX TYPE="MONEY">bUSM</NUMEX>) that not only preserves the theoretical properties
+        of numerical USM but actually uses the binary environment
+        of the computational implementation to achieve a more exact
+        logical solution. The proposed implementation leads to a
+        distance metric that exactly determines similarity length
+        between sequences. Ultimately, this achievement can be
+        described as one that replaces the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of
+        logarithmic, numerical distance, with computationally more
+        efficient logic operations. It could then be argued that,
+        given the discrete nature of biological sequences, new
+        scale-independent numerical representations, such as <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX>,
+        are all but the <NUMEX TYPE="ORDINAL">first</NUMEX> step in the identification of more
+        <ENAMEX TYPE="PERSON">accurate Boolean</ENAMEX> equivalents of fundamental relevance.
+      
+      
+        Methods
+        
+          Software implementation
+          Test versions of both the standard USM and the Boolean
+          <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> algorithms were developed in order to facilitate
+          performance comparisons of practical implementations. A
+          single "generic" implementation of the framework for both
+          methods was first developed and then used as the starting
+          point for developing method-specific implementations.
+          <ENAMEX TYPE="ORGANIZATION">Care</ENAMEX> was taken so as to minimize differences in any code
+          other than that implementing the recursion and the
+          distance metric calculations. Programs were written in C
+          and compiled and tested in the same environment
+          (<ENAMEX TYPE="ORG_DESC">compiler</ENAMEX>, linker, <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, and <ENAMEX TYPE="PER_DESC">host</ENAMEX>) and executed
+          against the same test cases. No attempt was made to
+          <ENAMEX TYPE="ORGANIZATION">optimize</ENAMEX> either implementation (beyond that performed by
+          the <ENAMEX TYPE="ORG_DESC">compiler</ENAMEX>). Both applications were compiled using the
+          <ENAMEX TYPE="ORGANIZATION">GNU</ENAMEX> <ENAMEX TYPE="ORG_DESC">compiler</ENAMEX> (gcc version <NUMEX TYPE="MONEY">2.95.3</NUMEX>) under the cygwin
+          <ENAMEX TYPE="CONTACT_INFO">environment http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">cygwin</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/</ENAMEX>on a <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">GHz</ENAMEX> Pentium
+          <ENAMEX TYPE="PERSON">III</ENAMEX>-based <ENAMEX TYPE="ORG_DESC">system</ENAMEX> running Windows <TIMEX TYPE="DATE">2000</TIMEX>. The <ENAMEX TYPE="PER_DESC">source</ENAMEX> code,
+          Makefiles, and test data are available from
+          <ENAMEX TYPE="CONTACT_INFO">http://bioinformatics.</ENAMEX><ENAMEX TYPE="ORGANIZATION">musc</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">edu/resources</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">html</ENAMEX>.
+        
+        
+          Software performance testing
+          Test cases were produced by replicating <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          <TIMEX TYPE="TIME">1 kbp</TIMEX> segments of the e-<ENAMEX TYPE="SUBSTANCE">coli genome</ENAMEX> to create <NUMEX TYPE="CARDINAL">2</NUMEX> kbp, <NUMEX TYPE="CARDINAL">3</NUMEX>
+          kbp, <NUMEX TYPE="CARDINAL">4</NUMEX> kbp, <NUMEX TYPE="CARDINAL">5</NUMEX> kbp, <NUMEX TYPE="CARDINAL">10</NUMEX> kbp, <NUMEX TYPE="CARDINAL">15</NUMEX> kbp, <NUMEX TYPE="CARDINAL">17</NUMEX> kbp, <NUMEX TYPE="CARDINAL">20</NUMEX> kbp, and <NUMEX TYPE="CARDINAL">40</NUMEX>
+          kbp sequences. Each implementation is run as a separate
+          program. The programs load the <NUMEX TYPE="CARDINAL">two</NUMEX> sequences to be
+          compared from disk, compute the <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> (or bUSM) coordinates
+          for all symbols in each sequence, and compute the local
+          distance metric ( or ) for all pairs of symbols. Compute
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> was measured from the point following the load of
+          the sequence from disk to the point at which all of the
+          distance calculations were completed. Times were measured
+          using the unix clock() function. Compute time was also
+          measured from the point at which the USM coordinate
+          calculations were completed to the end of the distance
+          calculations.
+        
+      
+      
+        Acknowledgements
+        The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> thankfully acknowledge support by the
+        training grant <ENAMEX TYPE="PRODUCT">1-T15-LM07438-01</ENAMEX> "training of toolmakers for
+        <ENAMEX TYPE="PERSON">Biomedical Informatics</ENAMEX>" by the <ENAMEX TYPE="ORGANIZATION">National Library of Medicine</ENAMEX>
+        of the <ENAMEX TYPE="ORGANIZATION">National Institutes of Health</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">USA</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NLM/NIH</ENAMEX>,
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/ep/T15Training.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>).
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <NUMEX TYPE="ORDINAL">First</NUMEX> <ENAMEX TYPE="PER_DESC">author</ENAMEX> developed bolean implementation of
+        <ENAMEX TYPE="ORGANIZATION">Universal Sequence Map</ENAMEX> (bUSM). <NUMEX TYPE="ORDINAL">Second</NUMEX> <ENAMEX TYPE="PER_DESC">author</ENAMEX>, the original
+        <ENAMEX TYPE="PER_DESC">proponent</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">USM</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] identified theoretical context.
+      
+    
+  

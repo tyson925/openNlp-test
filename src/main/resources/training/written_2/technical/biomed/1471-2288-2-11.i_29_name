@@ -1,0 +1,632 @@
+
+  
+    
+      
+        Background
+        
+          Lead-time bias
+          Detection of an asymptomatic <ENAMEX TYPE="DISEASE">cancer</ENAMEX> by screening
+          starts the clock at a younger age so the survival time
+          from screen detection is longer than the survival time
+          from clinical <ENAMEX TYPE="FAC_DESC">detection</ENAMEX>, even if screening does not
+          change the age of death. As an analogy, imagine waiting
+          at a bus stop C for a <ENAMEX TYPE="PRODUCT_DESC">bus</ENAMEX> traveling north to destination
+          <ENAMEX TYPE="PERSON">D. Suppose</ENAMEX> you walk south and board the same <ENAMEX TYPE="PRODUCT_DESC">bus</ENAMEX> at stop
+          B prior to its arrival at <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> Although the bus ride from B
+          to D is longer than from <NUMEX TYPE="MONEY">C</NUMEX> to <ENAMEX TYPE="NATIONALITY">D</ENAMEX> (by the lead time from B
+          to C), the arrival time at <ENAMEX TYPE="NATIONALITY">D</ENAMEX> is unchanged. You have
+          simply spent more of your life on the <ENAMEX TYPE="PRODUCT_DESC">bus</ENAMEX>. The travel
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> from B to <ENAMEX TYPE="NATIONALITY">D</ENAMEX> is a lead-time-biased estimate of the
+          travel time from <NUMEX TYPE="MONEY">C</NUMEX> to D.
+        
+        
+          Length-bias
+          Screening preferentially detects slower growing
+          <ENAMEX TYPE="DISEASE">cancers</ENAMEX> because there is a longer period of time (hence
+          the name length-bias) when such <ENAMEX TYPE="DISEASE">cancers</ENAMEX> could be found on
+          screening. If slower growing <ENAMEX TYPE="DISEASE">cancers</ENAMEX> have a different
+          prognosis than faster growing <ENAMEX TYPE="DISEASE">cancers</ENAMEX>, the estimated
+          survival time after diagnosis will be subject to
+          length-bias. Continuing with the analogy, suppose there
+          are <NUMEX TYPE="CARDINAL">two</NUMEX> types of <ENAMEX TYPE="PRODUCT_DESC">buses</ENAMEX>: slow local <ENAMEX TYPE="PRODUCT_DESC">buses</ENAMEX> that frequently
+          stop at B, and fast express <ENAMEX TYPE="PRODUCT_DESC">buses</ENAMEX> that rarely stop at <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX>
+          Because a bus boarded at <ENAMEX TYPE="ORGANIZATION">B</ENAMEX> is most likely local, the
+          average time it takes to travel from <NUMEX TYPE="MONEY">C</NUMEX> to <ENAMEX TYPE="NATIONALITY">D</ENAMEX> (thus the
+          lead time has been subtracted) will be a length-biased
+          estimate of the averages of the local and express travel
+          times from <NUMEX TYPE="MONEY">C</NUMEX> to D.
+        
+        
+          <ENAMEX TYPE="NATIONALITY">Overdiagnosis</ENAMEX> bias
+          Screening may detect <ENAMEX TYPE="DISEASE">cancers</ENAMEX> that would never surface
+          clinically or be diagnosed in the absence of screening.
+          Continuing with the analogy, suppose some <ENAMEX TYPE="PRODUCT_DESC">buses</ENAMEX> stop at B
+          but not <ENAMEX TYPE="NATIONALITY">D. Overdiagnosis</ENAMEX> bias arises when counting all
+          <ENAMEX TYPE="PRODUCT_DESC">buses</ENAMEX> stopping at <ENAMEX TYPE="ORGANIZATION">B</ENAMEX> as going to D.
+        
+        
+          Selection bias
+          The type of <ENAMEX TYPE="PER_DESC">subject</ENAMEX> who receives screening may differ
+          from other subjects in ways that are related to survival
+          times. Continuing with the analogy, suppose there is only
+          <NUMEX TYPE="CARDINAL">one</NUMEX> type of bus (so there is no length-bias or
+          <ENAMEX TYPE="NATIONALITY">overdiagnosis</ENAMEX> bias), but you only <ENAMEX TYPE="ORG_DESC">board</ENAMEX> it at stop B in
+          the <TIMEX TYPE="TIME">morning</TIMEX> when the traffic is heaviest. The time it
+          takes the bus boarded at <ENAMEX TYPE="ORGANIZATION">B</ENAMEX> to travel from <NUMEX TYPE="MONEY">C</NUMEX> to <ENAMEX TYPE="NATIONALITY">D</ENAMEX> (so
+          lead-time has been removed) is a selection-biased
+          estimate of the average, over <TIMEX TYPE="DATE">the entire day</TIMEX>, of the
+          travel times from <NUMEX TYPE="MONEY">C</NUMEX> to D.
+          A randomized trial with an endpoint of death
+          (typically measured in each trial <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> as a death rate
+          among all <ENAMEX TYPE="PER_DESC">participants</ENAMEX>) avoids these biases. Lead-time
+          <ENAMEX TYPE="PERSON">bias</ENAMEX> is avoided by setting the time of randomization
+          instead of the time of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection as the <NUMEX TYPE="CARDINAL">zero</NUMEX> time.
+          Length-bias and overdiagnosis bias are avoided because
+          the comparison is between randomized <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> not between
+          screen-detected and clinically detected <ENAMEX TYPE="DISEASE">cancer</ENAMEX> cases. The
+          use of a mortality endpoint also avoids lead-time bias,
+          length-bias, and overdiagnosis bias that would arise with
+          an endpoint based on characteristics of the <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. For
+          example, suppose that stage were the endpoint of the
+          trial. A screen-detected stage I cancer is likely to have
+          a different prognosis than a clinically detected stage I
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> due to lead-time, length, and overdiagnosis
+          <ENAMEX TYPE="PERSON">biases</ENAMEX>. Therefore using stage as endpoint would bias the
+          results.
+          Selection bias within the trial is avoided because
+          <ENAMEX TYPE="ORGANIZATION">randomization</ENAMEX> guarantees the same distribution of known
+          and unknown covariates in both <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Under
+          randomization, imbalances can occur in the empirical
+          distribution of baseline covariates. These imbalances are
+          not generally a <ENAMEX TYPE="ORG_DESC">concern</ENAMEX> unless they are extremely large
+          even after adjusting for multiple comparisons. In that
+          case one should investigate if there were any deviation
+          from random treatment assignment that may have affected
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death rates. It is important that only baseline
+          characteristics be considered in investigating imbalance.
+          Characteristics that could be known only after
+          <ENAMEX TYPE="ORGANIZATION">randomization</ENAMEX> (e.g. number of <ENAMEX TYPE="DISEASE">cancers</ENAMEX> diagnosed, stage,
+          age at diagnosis, cure rates of detected <ENAMEX TYPE="DISEASE">cancers</ENAMEX>) are
+          likely to be biased because the screening could have
+          affected these characteristics and the analysis is no
+          longer "protected" by randomization.
+          <ENAMEX TYPE="ORGANIZATION">Randomization</ENAMEX> does not, however, correct for another
+          type of selection bias. <ENAMEX TYPE="PER_DESC">Volunteers</ENAMEX> who participate in
+          clinical trials and who consent to randomization may
+          differ from the general <ENAMEX TYPE="PER_DESC">population</ENAMEX>. They often have
+          better underlying health, an effect known as "healthy
+          volunteer bias." Although we do not discuss this bias
+          further, it should be considered in planning trial size
+          and in trying to generalize trial results to the
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>- at-large.
+        
+      
+      
+        Methods
+        Our emphasis is on simple methods. Although survival
+        analyses from time of randomization (e.g. logrank tests)
+        are sometimes used, we focus on simple estimates based on
+        the cumulative number of cancer deaths. Because cancer
+        death is a rare event in asymptomatic <ENAMEX TYPE="PER_DESC">participants</ENAMEX> in a
+        screening trial, inference based on survival analysis and
+        cumulative number of cancer deaths is similar [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . We
+        assume the <TIMEX TYPE="DATE">yearly</TIMEX> numbers of cancer deaths follow a Poisson
+        distribution, which is appropriate for rare events.
+      
+      
+        Results
+        
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) Use death from <ENAMEX TYPE="DISEASE">cancer</ENAMEX> as the primary endpoint,
+          but review death records carefully and report all causes
+          of death
+          The primary endpoint of most cancer screening trials
+          is death from <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. Recently <ENAMEX TYPE="EVENT">Black</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] identified two
+          types of biases that can affect the assessment of the
+          <ENAMEX TYPE="DISEASE">cancer death endpoint</ENAMEX>. Sticky-diagnosis bias arises when
+          deaths from an uncertain cause are more likely to be
+          attributed to <ENAMEX TYPE="DISEASE">cancer</ENAMEX> if there was a previous diagnosis of
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, especially if the diagnosis was relatively
+          recent. If there were overdiagnosis, sticky-diagnosis
+          would induce a higher cancer death rate in the
+          intervention <ENAMEX TYPE="ORG_DESC">group</ENAMEX> than actually the case. Slippery
+          <ENAMEX TYPE="PERSON">linkage</ENAMEX>, the <NUMEX TYPE="ORDINAL">second</NUMEX> type of bias, occurs because deaths
+          that are caused or triggered by screening, work-up, or a
+          subsequent therapy (e.g. perforation of the colon and
+          perhaps cardiovascular deaths) are not attributed to
+          screening.
+          Using all deaths as an endpoint avoids these biases
+          but leads to prohibitive sample sizes as shown in the
+          following calculations based on a power of <NUMEX TYPE="PERCENT">80%</NUMEX> and a
+          one-sided type I error of <NUMEX TYPE="PERCENT">2.5%</NUMEX>.
+          <NUMEX TYPE="ORDINAL">First</NUMEX> consider the design of a randomized trial with a
+          <ENAMEX TYPE="DISEASE">cancer death endpoint</ENAMEX>. Under the null hypothesis, the
+          probability of cancer death in each group is 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> . Under the alternative
+          hypothesis the probability of cancer death is 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">p-d</ENAMEX> in the study <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, where 
+          d is the probability of cancer
+          death in the control group minus the probability of
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death in the screened <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. For computing sample
+          size, we assume 
+          d is positive. Assuming a Poisson
+          distribution for the number of cancer deaths, the sample
+          size (for both <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> combined) for a cancer death
+          <ENAMEX TYPE="ORGANIZATION">endpoint</ENAMEX> is
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> (<NUMEX TYPE="MONEY">1.96</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [<NUMEX TYPE="CARDINAL">2</NUMEX> v 
+          cancerH0 ] + <NUMEX TYPE="CARDINAL">.84</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [v 
+          cancerH0 + v 
+          <ENAMEX TYPE="ORGANIZATION">cancerHA</ENAMEX> ]) 2/ 
+          d <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX>
+          where v 
+          cancerH0 = 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> and v 
+          <ENAMEX TYPE="PER_DESC">cancerHA</ENAMEX> = 
+          p-d are the variances for one
+          subject under the null and alternative hypotheses
+          respectively.
+          Now consider the design of a randomized trial with an
+          all death endpoint. Let 
+          <ENAMEX TYPE="ORGANIZATION">k denote</ENAMEX> the probability of death
+          from causes unrelated to either <ENAMEX TYPE="DISEASE">cancer</ENAMEX> or screening.
+          Under the null hypothesis the probability of death from
+          all causes is 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> in each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Under the
+          alternative hypothesis the probability of death from all
+          causes is 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )-( 
+          d - 
+          e ) in the screened <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, where 
+          e is the additional probability of
+          non-cancer deaths due to screening. Therefore 
+          d - 
+          e is the probability of death from
+          all causes in the control group minus the probability of
+          death from all causes in the screened <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Assuming a
+          binomial distribution for the number of deaths from all
+          causes, the sample size (for both <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> combined) for an
+          all death endpoint is
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          all = <NUMEX TYPE="CARDINAL">2</NUMEX> (<NUMEX TYPE="MONEY">1.96</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [<NUMEX TYPE="CARDINAL">2</NUMEX> v 
+          allH0 ] + <NUMEX TYPE="CARDINAL">.84</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [v 
+          allH0 + v 
+          <ENAMEX TYPE="ORGANIZATION">allHA</ENAMEX> ]) <NUMEX TYPE="MONEY">2/</NUMEX>( 
+          d - 
+          e ) <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX>
+          where v 
+          allH0 = ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )(<ENAMEX TYPE="CONTACT_INFO">1-</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> - 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) and v 
+          <ENAMEX TYPE="PER_DESC">allHA</ENAMEX> = ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> - 
+          d + 
+          e ) (<ENAMEX TYPE="CONTACT_INFO">1-</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> - 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + 
+          d - 
+          e ) are the variances for one
+          subject under the null and alternative hypotheses
+          respectively.
+          For purposes of illustration, suppose that 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> =. <ENAMEX TYPE="CONTACT_INFO">005,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> =. <TIMEX TYPE="DATE">15</TIMEX> (these values are based
+          <NUMEX TYPE="CARDINAL">roughly</NUMEX> on data from a colorectal cancer screening trial
+          [ <ENAMEX TYPE="LAW">4</ENAMEX> ] ), and 
+          d =. <NUMEX TYPE="CARDINAL">001</NUMEX>. To minimize <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          all , we set 
+          e = <NUMEX TYPE="CARDINAL">0</NUMEX>. With these specifications, a
+          study with a cancer death endpoint would require <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> = <NUMEX TYPE="CARDINAL">150,000</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX> while a
+          study with an all death endpoint would require <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          all = <NUMEX TYPE="CARDINAL">4.1 million</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX>.
+          For practical considerations, we recommend using
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death as an endpoint with careful review of the
+          death records to minimize sticky-diagnosis and slippery
+          linkage bias. We also recommend that "cancer" deaths
+          include any non-cancer deaths attributable to screening
+          or treatment for the <ENAMEX TYPE="DISEASE">cancer</ENAMEX>.
+          We also recommend that all deaths and their causes be
+          reported. If, after adjusting for multiple comparisons,
+          there is a statistically significant difference between
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in the estimated probability of a particular
+          non-cancer cause of death, the <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> should
+          reexamine the death records to check for potential
+          <ENAMEX TYPE="PERSON">biases</ENAMEX>. If there are no potential biases, the
+          <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> will need to consider the possibility that
+          screening or treatment was responsible for the
+          difference.
+        
+        
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) Use a simple "causal" estimate to adjust for
+          <ENAMEX TYPE="ORGANIZATION">nonattendance</ENAMEX> and contamination occurring immediately
+          after randomization
+          
+            <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX>
+            There are <NUMEX TYPE="CARDINAL">three</NUMEX> types of subjects: always-<ENAMEX TYPE="PER_DESC">takers</ENAMEX> who
+            would receive screening if randomized to either <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+            never-<ENAMEX TYPE="PER_DESC">takers</ENAMEX> who would not receive screening if
+            <ENAMEX TYPE="ORGANIZATION">randomized</ENAMEX> to either <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, and <ENAMEX TYPE="PER_DESC">compliers</ENAMEX> who would
+            receive screening if randomized to the intervention
+            <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> but not the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. (In other words, no
+            subjects would receive screening if randomized to the
+            <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> but not randomized to the intervention
+            <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>).
+          
+          
+            <ENAMEX TYPE="CONTACT_INFO">Assumption 2</ENAMEX>
+            For always-taker and never-<ENAMEX TYPE="PER_DESC">takers</ENAMEX> the probability of
+            <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death is the same for each treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. (In
+            other words, when a control subject switches to
+            screening immediately after randomization, the
+            <ENAMEX TYPE="PERSON">screening</ENAMEX> <ENAMEX TYPE="ORG_DESC">regime</ENAMEX> is identical to that in intervention
+            <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>, and when an intervention subject immediately
+            refuses screening, the lack of screening is identical
+            to that in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.)
+            Unfortunately neither of the assumptions is
+            <ENAMEX TYPE="PERSON">verifiable</ENAMEX>, but they are reasonable, and therefore have
+            "face" validity. Although the analysis is not by
+            intent-to-treat, it makes use of the randomization to
+            avoid selection bias.
+            When computing f 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> and f 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , it is important to count only
+            <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who switch treatment immediately after
+            randomization, so as not to violate Assumption <NUMEX TYPE="CARDINAL">2</NUMEX>. With
+            this modification d 
+            <ENAMEX TYPE="PERSON">causal</ENAMEX> is unbiased even if
+            additional <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> switch treatment later in the
+            study, as for example, if some <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are screened
+            initially but refuse subsequent screenings. The effect
+            of later switching is folded into the interpretation.
+            Thus d 
+            <ENAMEX TYPE="PERSON">causal</ENAMEX>, is the estimated effect of 
+            immediately receiving screening
+            with the understanding that the effect is likely
+            attenuated from <TIMEX TYPE="DATE">later</TIMEX> switching of treatments.
+            In designing a randomized trial of cancer screening
+            <NUMEX TYPE="CARDINAL">one</NUMEX> should adjust the sample size for anticipated
+            non-attendance and contamination. Suppose the
+            anticipated fraction receiving immediate screening is f
+            
+            <NUMEX TYPE="CARDINAL">0</NUMEX> and f 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> for the control and intervention
+            <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, respectively. As derived by <ENAMEX TYPE="ORGANIZATION">Zelen</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] , the
+            adjusted sample size is the sample size if there were
+            <TIMEX TYPE="DATE">full</TIMEX> attendance and no contamination divided by (f 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> - f 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ) 2.
+          
+        
+        
+          (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) Use a simple adaptive estimate to adjust for
+          dilution following the last screen
+          In a typical randomized trial of cancer screening,
+          screening is offered for a limited time and <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are
+          followed after screening has stopped. This leads to a
+          dilution of treatment effect, as will be explained.
+          Consider a special baseline variable B such that B = <NUMEX TYPE="CARDINAL">1</NUMEX> if
+          (i) the subject would not be detected with cancer 
+          if screened, (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) the subject would
+          become a cancer case after the time of the last screen,
+          and (<ENAMEX TYPE="ORGANIZATION">iii</ENAMEX>) the subject would die from the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> during
+          the follow-up period. Otherwise B = <NUMEX TYPE="CARDINAL">0</NUMEX>. In other words B =
+          <NUMEX TYPE="CARDINAL">1</NUMEX> indicates a set of cancer deaths that could not have
+          benefited from screening. We can identify <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with B
+          <ENAMEX TYPE="CONTACT_INFO">= 1</ENAMEX> in the screened <ENAMEX TYPE="ORG_DESC">group</ENAMEX> but not in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.
+          Let D denote the number of subjects with B = <NUMEX TYPE="CARDINAL">1</NUMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">screened</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. By virtue of the randomization, there
+          will be approximately <ENAMEX TYPE="NATIONALITY">D</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with B = <NUMEX TYPE="CARDINAL">1</NUMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. As the length of follow-up after the last
+          screening increases, the amount of dilution D increases,
+          which increases the variance of the estimated treatment
+          difference.
+          In estimating the relative risk of randomization to
+          screening or no screening, the value of <ENAMEX TYPE="NATIONALITY">D</ENAMEX> affects the
+          point estimate because <ENAMEX TYPE="NATIONALITY">D</ENAMEX> is added to both the numerator
+          and denominator. But when estimating a difference in
+          treatment effect between the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, the value of D
+          <ENAMEX TYPE="PERSON">cancels</ENAMEX>. Nevertheless, the point estimate of a difference
+          in treatment effect will likely change systematically
+          during follow-up. The reason is that as follow-up
+          increases, the point estimate includes longer-term
+          effects of screening on <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality. For example,
+          suppose that screening reduces <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality up to
+          <TIMEX TYPE="DATE">five years</TIMEX> after the last screening. If one used the
+          estimated difference in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality at <TIMEX TYPE="TIME">the end of a</TIMEX>
+          <TIMEX TYPE="DATE">3-year</TIMEX> follow-up period, this estimate would likely be
+          biased relative to the true difference at <TIMEX TYPE="DATE">5 years</TIMEX>. Thus,
+          the longer the longer the follow-up period (up to some
+          point) the less chance for bias due to excluding
+          long-term effects of screening. But as mentioned
+          previously, the longer the follow-up period the greater
+          the dilution. Thus with longer follow-up, there is a
+          variance-bias tradeoff for estimating the difference in
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality.
+          Because of this variance-bias trade-off, the results
+          of a randomized screening trial vary with the length of
+          follow-up after the last screening. For example, consider
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from the <ENAMEX TYPE="ORGANIZATION">Health Insurance Plan of Greater New York</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">HIP</ENAMEX>) Study [ <TIMEX TYPE="DATE">12</TIMEX> ] in which <NUMEX TYPE="CARDINAL">approximately 62,000</NUMEX> women
+          were randomized to either no screening or an invitation
+          for <TIMEX TYPE="DATE">four annual</TIMEX> breast <ENAMEX TYPE="DISEASE">cancer screenings</ENAMEX>. We estimated
+          the reduction in the probability of cancer death among
+          compliers at <TIMEX TYPE="DATE">years 5, 10</TIMEX>, and <NUMEX TYPE="CARDINAL">15</NUMEX> since randomization
+          pretending each of these times was fixed in advance of
+          the study (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). At <TIMEX TYPE="DATE">5 and 10 years</TIMEX> after
+          randomization, the lower bound of the <NUMEX TYPE="PERCENT">95%</NUMEX> confidence
+          <ENAMEX TYPE="PERSON">interval</ENAMEX> was above <NUMEX TYPE="CARDINAL">zero</NUMEX>; however this was not the case
+          for <TIMEX TYPE="DATE">15 years</TIMEX> after randomization. A major problem is how
+          to best to analyze these data.
+          One approach is a limited mortality analysis [ <ENAMEX TYPE="LAW">2</ENAMEX> ]
+          that counts cancer deaths over the entire follow-up
+          period but only among <ENAMEX TYPE="PER_DESC">participants</ENAMEX> with <ENAMEX TYPE="DISEASE">cancer</ENAMEX> up to time
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          catch-up after randomization. The time
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          <ENAMEX TYPE="PERSON">catch-up</ENAMEX> is the time when the number
+          of cases in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> first equals or surpasses
+          (catches-<NUMEX TYPE="CARDINAL">up to</NUMEX>) the number of cases in the intervention
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>. The presumption is that cases surfacing after t 
+          catch-up only dilute the estimated
+          effect. <NUMEX TYPE="CARDINAL">One</NUMEX> problem is that t 
+          <ENAMEX TYPE="PERSON">catch-up</ENAMEX> does not occur if there is
+          <ENAMEX TYPE="ORGANIZATION">overdiagnosis</ENAMEX>. A related problem is that t 
+          <ENAMEX TYPE="PERSON">catch-up</ENAMEX> might not occur for a very
+          long time, making its calculation impractical. Another
+          problem is that equal numbers of cases in both <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> do
+          not guarantee an unbiased test [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+          A <NUMEX TYPE="ORDINAL">second</NUMEX> approach is to test if screening reduces
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rates using a special weighted logrank
+          statistic for survival data [ <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] .
+          <NUMEX TYPE="CARDINAL">A third</NUMEX> approach is to select follow-up times based on
+          maximum power given parameter estimates from previous
+          trials and the effect size that one would like to detect
+          [ <TIMEX TYPE="DATE">16</TIMEX> ] .
+          As a <NUMEX TYPE="ORDINAL">fourth</NUMEX> approach, we propose a simple adaptive
+          method to compute estimates and confidence intervals for
+          the effect of screening when there is follow-up after the
+          last screen. To the best of our knowledge this method is
+          new to the screening literature. In this analysis,
+          "adaptive" refers to using the data to select the
+          follow-up time, with appropriate adjustment in computing
+          confidence intervals. Let p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) and p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) denote the cumulative fraction
+          of <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who die from <ENAMEX TYPE="DISEASE">cancer</ENAMEX> up to time t in the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> and intervention <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, respectively. Letting n
+          denote the number of subjects in each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, we
+          define
+          z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)= (p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) - p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)) / (<ENAMEX TYPE="ORGANIZATION">Sqrt</ENAMEX> [p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) + p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)]/<ENAMEX TYPE="DISEASE">n</ENAMEX>),
+          which is the difference between p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) and p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) divided by its standard error,
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, the z-value associated with a normally distributed
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> variable. If screening reduces the probability of
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death, z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) will generally increase over the time
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> that screening is offered and perhaps a little longer.
+          However at some point after screening has stopped z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          will generally decrease over time because p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) and p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) will each increase by roughly
+          the same amount from cases that arose after screening had
+          stopped (i.e. the effect of dilution). See also [ <TIMEX TYPE="DATE">16</TIMEX> ]
+          for a justification of this behavior of z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) based on
+          modeling natural history in breast <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening. We
+          assume that screening does not cause <ENAMEX TYPE="DISEASE">cancer</ENAMEX> deaths;
+          otherwise it would be possible for z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) to decrease for
+          reasons other than dilution. This motivates selecting as
+          the follow-up time the time t* that maximizes z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) with
+          an estimated effect of
+          d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*)=(p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (t*) -p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (t*))/ (f 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> - f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ).
+          We interpret d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*) as the effect of receiving
+          screening in compliers before dilution attenuates any
+          effects. For d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*) to be correctly
+          interpretable as an effect of receiving screening, we
+          assume that after perhaps some initial fluctuations p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) -p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is generally increasing or
+          constant over time until dilution reduces z(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). In other
+          words, although there may be a brief increase in cancer
+          deaths due to screening soon after the start of the
+          trial, we assume that after screening stops, screening
+          does not start causing more cancer deaths than in the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Otherwise we might incorrectly attribute a
+          small difference between p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) -p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) to the effect of dilution when
+          it is due to delayed harms of screening and early
+          treatment.
+          Computing confidence intervals by ignoring the fact
+          that t* was based on the data represents "cutpoint
+          <ENAMEX TYPE="ORGANIZATION">optimization</ENAMEX>" [ <TIMEX TYPE="DATE">17</TIMEX> ] and is thus inappropriate. To
+          compute a confidence interval for d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*) that accounts for the
+          adaptive choice of t*, we use the following bootstrap [
+          <NUMEX TYPE="CARDINAL">18</NUMEX> ] approach.
+          For purposes of illustration we applied this method to
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in [ <ENAMEX TYPE="LAW">2</ENAMEX> ] on <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> screening from the <ENAMEX TYPE="ORGANIZATION">Health</ENAMEX>
+          Insurance Plan of <ENAMEX TYPE="ORGANIZATION">Greater of New York</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">HIP</ENAMEX>) Study. For
+          <TIMEX TYPE="DATE">each year</TIMEX> after randomization we randomly generated a
+          number of cancer deaths in each <ENAMEX TYPE="ORG_DESC">group</ENAMEX> based on a Poisson
+          distribution with mean value equal to the observed number
+          of deaths in <TIMEX TYPE="DATE">that year</TIMEX> and <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. From these randomly
+          generated data we computed t* and d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*). We repeated this
+          calculation <NUMEX TYPE="CARDINAL">10,000</NUMEX> times to obtain distributions for t*
+          and d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*). The mean value of these
+          distributions is the estimate and the lower <NUMEX TYPE="PERCENT">2.5 %</NUMEX> and
+          upper <NUMEX TYPE="PERCENT">97.5%</NUMEX> quantiles gives the <NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval.
+          For t* we obtained an estimate of <TIMEX TYPE="DATE">7.3 years</TIMEX> with a <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval of <TIMEX TYPE="DATE">4 to 13 years</TIMEX>. For d 
+          <ENAMEX TYPE="PERSON">causal</ENAMEX> (t*), the estimate and <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval are shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          To compute sample size for a randomized trial with
+          follow-up after the last screening, we propose the
+          following approach to account for the adaptive nature of
+          the test statistic. The <NUMEX TYPE="ORDINAL">first</NUMEX> step is to create
+          anticipated data with 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> per <ENAMEX TYPE="ORG_DESC">group</ENAMEX> under the null
+          and alternative hypotheses. The <NUMEX TYPE="ORDINAL">second</NUMEX> step is to treat
+          the anticipated data as observed data and compute
+          <ENAMEX TYPE="ORGANIZATION">bootstrap</ENAMEX> estimates of the variance. Let 
+          v 
+          
+            adpativeH0 
+           and 
+          v 
+          
+            adaptiveHA 
+           denote the <ENAMEX TYPE="PER_DESC">bootstrap</ENAMEX> estimate of the variance
+          divided by 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> under the null and alternative
+          hypothesis, respectively. In other words 
+          v 
+          
+            adpativeH0 
+           and 
+          v 
+          
+            adaptiveHA 
+           are the bootstrap estimates of variance for one
+          subject. The sample size with cancer death endpoint and
+          adjustment for non-attendance and contamination is
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="PER_DESC">adaptive</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>((<NUMEX TYPE="MONEY">1.96</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [<NUMEX TYPE="CARDINAL">2</NUMEX> 
+          v 
+          
+            adpativeH0 
+           ] + <NUMEX TYPE="CARDINAL">.84</NUMEX> <ENAMEX TYPE="PRODUCT">Sqrt</ENAMEX> [ 
+          v 
+          
+            adpativeH0 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          v 
+          
+            adaptiveHA 
+           ]) 2/ 
+          d <NUMEX TYPE="CARDINAL">2</NUMEX>)/(f 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> - f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ) 2.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> other issue in design is the duration of
+          screening. It should be sufficiently long so that any
+          reduction in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality would be apparent before
+          <ENAMEX TYPE="PERSON">dilution</ENAMEX> has an effect.
+        
+      
+      
+        Discussion
+        In cancer therapy trials, the standard statistical
+        approach is an intent-to-treat analysis using a
+        non-adaptive statistic with an all death endpoint. Why are
+        we advocating a different approach for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening
+        trials? On a fundamental level, <ENAMEX TYPE="DISEASE">cancer</ENAMEX>-screening trials
+        differ from therapy trials because of the high amount of
+        "noise" relative to the "signal" of screening effect. This
+        "noise" arises because <ENAMEX TYPE="DISEASE">cancer</ENAMEX> deaths are rare relative to
+        all deaths, non-attendance and contamination immediately
+        after randomization are common, and discontinuation of
+        screening leads to a dilution of cancer deaths due to cases
+        arising after screening has stopped.
+        With the proposed analysis, we can reduce the "noise" at
+        the "price" of a few reasonable assumptions. In using a
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> death endpoint with careful review of death records,
+        we assume that deaths caused by screening via unanticipated
+        pathways, such as <ENAMEX TYPE="DISEASE">cardiovascular disease</ENAMEX>, are correctly
+        attributed to screening. In using the simple "causal" model
+        to adjust for nonattendance and contamination, we assume
+        that (i) a <ENAMEX TYPE="PER_DESC">subject</ENAMEX> who switches treatment immediately after
+        <ENAMEX TYPE="ORGANIZATION">randomization</ENAMEX> does in fact receive the same treatment as in
+        the other treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, and (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) no subject would
+        receive screening outside the trial if randomized to the
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> group 
+        and refuse screening if randomized to
+        the intervention <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. In using the adaptive statistic to
+        estimate the effect of screening in a trial with follow-up
+        after the end of screening, we assume that screening does
+        not increase <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality after some point in time.
+        Even with the proposed method for reducing "noise", the
+        sample sizes for randomized <ENAMEX TYPE="DISEASE">cancer</ENAMEX>-screening trials are
+        substantial, typically requiring <NUMEX TYPE="CARDINAL">tens of thousands</NUMEX> of
+        subjects. Thus randomized screening trials should only be
+        undertaken when there is strong preliminary evidence for a
+        potential benefit of screening that could outweigh
+        attendant harms. In this regard, it is important to have a
+        well-designed strategy for selecting the most promising
+        early detection markers for evaluation in a randomized
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX>-screening trial [ <NUMEX TYPE="CARDINAL">19 20 21</NUMEX> ] .
+        Our focus has been on randomized trials for evaluating
+        the efficacy of cancer screening and the attendant harms.
+        However observational studies have a role particularly when
+        investigating secondary questions involving the effect of
+        age to begin screening, interval between screenings, or
+        small changes in the screening <ENAMEX TYPE="FAC_DESC">modality</ENAMEX>. Case-control
+        studies are applicable with special considerations for
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening [ <TIMEX TYPE="DATE">22</TIMEX> ] . <ENAMEX TYPE="PERSON">Periodic Screening Evaluation</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>) is a method for using data from <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> of various
+        age who receive <NUMEX TYPE="CARDINAL">at least two</NUMEX> regularly scheduled screenings
+        to estimate the reduction in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality from periodic
+        screening over a range of ages [ <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] . The main
+        assumptions of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> are (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) once a <ENAMEX TYPE="DISEASE">cancer</ENAMEX> is detectable on
+        screening it would be detectable on later screenings (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+        given age, <TIMEX TYPE="DATE">year</TIMEX> of birth adds no information for predicting
+        the detection rate on the first screen, (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) no selection
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> in using <ENAMEX TYPE="PER_DESC">refusers</ENAMEX> to estimate survival from detection
+        in the absence of screening. The paired availability design
+        (<ENAMEX TYPE="ORGANIZATION">PAD</ENAMEX>) is a method for combining data from various
+        before-and-after studies that adjusts for different
+        fraction receiving the intervention in a manner similar to
+        that for nonattendance and contamination [ <TIMEX TYPE="DATE">25</TIMEX> ] . For
+        applications to screening, <ENAMEX TYPE="ORGANIZATION">PAD</ENAMEX> requires a well-defined
+        <ENAMEX TYPE="ORGANIZATION">geographic</ENAMEX> region in which screening has been introduced,
+        with little in- or -out- migration and no other changes
+        over time that would affect the endpoint of cancer
+        mortality.
+        We emphasized estimating the reduction (if any) in
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> deaths due to screening. For a balanced evaluation,
+        <NUMEX TYPE="CARDINAL">one</NUMEX> should also estimate the probability of an unnecessary
+        <ENAMEX TYPE="ORGANIZATION">biopsy</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] and other harms attendant to screening and
+        interventions triggered by the screening process.
+      
+      
+        Conclusion
+        The proposed guidelines combine recent methodological
+        work on screening <ENAMEX TYPE="FAC_DESC">endpoints</ENAMEX> and <ENAMEX TYPE="DISEASE">noncompliance</ENAMEX>/contamination
+        with a new adaptive method to adjust for dilution in a
+        study where follow-up continues after the last screen. They
+        should greatly help <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> design and analyze
+        <ENAMEX TYPE="ORGANIZATION">randomized</ENAMEX> trials for the early detection of <ENAMEX TYPE="DISEASE">cancer</ENAMEX>.
+        Because the assumptions are reasonable, we recommend these
+        guidelines as one of the primary analyses.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' Contributions
+        <ENAMEX TYPE="ORGANIZATION">SGB</ENAMEX> wrote an initial draft and <ENAMEX TYPE="ORGANIZATION">BSK</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PCP</ENAMEX> made
+        important improvements. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the
+        final manuscript.
+      
+      
+        Competing interests
+        None declared.
+      
+    
+  

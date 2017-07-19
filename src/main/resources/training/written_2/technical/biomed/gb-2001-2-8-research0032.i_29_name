@@ -1,0 +1,485 @@
+
+  
+    
+      
+        Background
+        The statistical model proposed in [ <ENAMEX TYPE="LAW">1</ENAMEX>] for one probe set
+        in multiple oligonucleotide arrays has the form
+        <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+        It states that the perfect match (PM)/mismatch (MM)
+        difference in array 
+        i, probe 
+        <ENAMEX TYPE="PERSON">j</ENAMEX> of this probe set is the product of
+        model-based expression index (MBEI) in array 
+        i (θ 
+        
+          i 
+         ) and <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity index of probe 
+        <ENAMEX TYPE="PERSON">j</ENAMEX> ( 
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         ) plus random error. Here 
+        <ENAMEX TYPE="PERSON">J</ENAMEX> is the number of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs in the
+        probe set. Fitting the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, we can identify
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridizing probes ( 
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         with large standard error (<ENAMEX TYPE="PRODUCT">SE</ENAMEX>), which are excluded
+        during <ENAMEX TYPE="PLANT">iterative</ENAMEX> fitting) and arrays with image
+        contamination at this probe set (θ 
+        
+          i 
+         with large <ENAMEX TYPE="PRODUCT">SE</ENAMEX>), as well as single outliers (image
+        <ENAMEX TYPE="ORGANIZATION">spikes</ENAMEX>) which are replaced by the fitted values. In effect
+        the estimated expression index θ 
+        
+          i 
+         is a weighted average of <ENAMEX TYPE="ORGANIZATION">PM/MM</ENAMEX> differences:
+        
+        with larger weights given to probes with larger . The
+        image of outliers (array and single outliers) identified
+        through model-fitting can be used to assess the quality of
+        an experiment and to identify unexpected problems such as a
+        misaligned corner of a DAT file [ <ENAMEX TYPE="LAW">1</ENAMEX>].
+        We have investigated several important properties of the
+        model, including the reliability and stability of the
+        fitted parameters <ENAMEX TYPE="ORGANIZATION">MBEI (θ</ENAMEX>) and probe sensitivity indexes (
+        ), the performance of <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> compared to the commonly used
+        average difference (<ENAMEX TYPE="ORGANIZATION">AD</ENAMEX>), and how the availability of <ENAMEX TYPE="PRODUCT">SE</ENAMEX>
+        facilitates downstream comparative and clustering
+        analysis.
+      
+      
+        Results and discussion
+        
+          Probe-sensitivity indexes are stable across tissue
+          types
+          In practice, in an array experiment, a researcher
+          hybridizes tissue or cell line samples, corresponding to
+          different treatments or conditions, to a batch of arrays.
+          Ideally, the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity index ( ) should be
+          independent of the tissue type. This condition, however,
+          may not hold for those probes that have
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridization affinity to non-target genes.
+          Nevertheless, assuming that a non-target gene
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridizes only to a few probes of a probe set, and
+          its expression levels across arrays do not correlate with
+          the <ENAMEX TYPE="ORG_DESC">target</ENAMEX> gene, the iterative <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-excluding procedure
+          in [ <ENAMEX TYPE="LAW">1</ENAMEX>] may be able to exclude cross-hybridizing probes,
+          regardless of the tissue type hybridized. In addition,
+          the relative probe-sensitivity indexes of the good probes
+          called by the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are likely to be similar across sets
+          of arrays hybridizing to different tissue samples.
+          The stability of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity index is
+          studied using <NUMEX TYPE="CARDINAL">226</NUMEX> HU6800 <ENAMEX TYPE="PER_DESC">arrays</ENAMEX>. We apply the model
+          (equation <NUMEX TYPE="QUANTITY">1</NUMEX>) independently to <NUMEX TYPE="CARDINAL">six</NUMEX> sets of <ENAMEX TYPE="PRODUCT">HU6800</ENAMEX> arrays
+          (<TIMEX TYPE="TIME">21 leukemia</TIMEX>, lymphoma and mantle cell samples, <NUMEX TYPE="CARDINAL">20</NUMEX>
+          <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> cell lines, <NUMEX TYPE="CARDINAL">17</NUMEX> brain tumor samples, <NUMEX TYPE="CARDINAL">55</NUMEX>
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> cell lines, <NUMEX TYPE="CARDINAL">58</NUMEX> brain <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, and <NUMEX TYPE="CARDINAL">55</NUMEX> lung <ENAMEX TYPE="DISEASE">tumor</ENAMEX>
+          samples). Figure <NUMEX TYPE="CARDINAL">1ashows</NUMEX> the values fitted for <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set
+          <TIMEX TYPE="DATE">6457</TIMEX> (used in Figure <NUMEX TYPE="CARDINAL">1and</NUMEX> 2of [ <ENAMEX TYPE="LAW">1</ENAMEX>]) in the <NUMEX TYPE="CARDINAL">six</NUMEX> array
+          sets. The patterns resemble each other greatly, showing
+          that the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity index is an inherent property
+          of these non-cross-hybridizing probes and can be
+          consistently identified from different sets of arrays.
+          Figure <NUMEX TYPE="CARDINAL">1bshows</NUMEX> the patterns for another <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set. It is
+          noteworthy that the probe <NUMEX TYPE="CARDINAL">11</NUMEX> in array set <TIMEX TYPE="DATE">5</TIMEX> is likely to
+          be cross-hybridizing, making its relative strength (here
+          <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> is consistently larger than <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and this leads to a
+          negative ) dissimilar to the probe <NUMEX TYPE="CARDINAL">11</NUMEX> in other array
+          sets. The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> identifies this <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> as a
+          'probe-<ENAMEX TYPE="PER_DESC">outlier</ENAMEX>' only for array set <TIMEX TYPE="DATE">5</TIMEX> and excludes it when
+          calculating <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> ( 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ) for array set 5.
+          In Figure <TIMEX TYPE="DATE">1a</TIMEX>,bthe target gene is present in most
+          samples of all array sets. For a probe set whose target
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is mostly absent throughout <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>),
+          many probes are identified as <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-outliers because of
+          their negative indexes. Here, we cannot obtain correct
+          probe-sensitivity indexes because of the absence of the
+          target gene. Nevertheless, the <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> values for these
+          probes are random fluctuations around <NUMEX TYPE="CARDINAL">zero</NUMEX>, leading to a
+          correct expression index <NUMEX TYPE="CARDINAL">close to zero</NUMEX>. If the target
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> becomes available for a future array set, the
+          correct <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity indexes will be recovered and
+          these probes will be used for expression calculation.
+          Occasionally, a responsive probe set may give rise to
+          very different estimates in two array sets. In Figure <TIMEX TYPE="DATE">1b</TIMEX>,
+          <ENAMEX TYPE="CONTACT_INFO">probes 8</ENAMEX> and <NUMEX TYPE="CARDINAL">13</NUMEX> have different relative responses in
+          array set <TIMEX TYPE="DATE">1 and 4</TIMEX>, leading to different <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-response
+          patterns. This might be due to the possibility that the
+          probes in this probe set are differentially
+          <ENAMEX TYPE="ORGANIZATION">cross-hybridized</ENAMEX> in different array sets, or that the
+          same probe in different batches of arrays may
+          systematically behave differently. Identification and
+          flagging such <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> is desirable and essential if we
+          want to compare arrays hybridized to different tissue
+          samples.
+          Figure <NUMEX TYPE="CARDINAL">2shows</NUMEX> the boxplots of average pairwise
+          correlations of values between <NUMEX TYPE="CARDINAL">two</NUMEX> array sets, stratified
+          by average lower presence proportion in the <NUMEX TYPE="CARDINAL">two</NUMEX> sets. In
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, when a gene is present in many samples of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          array sets, the patterns estimated from the <NUMEX TYPE="CARDINAL">two</NUMEX> sets are
+          very similar. The <ENAMEX TYPE="ORG_DESC">target</ENAMEX> gene's presence in many arrays
+          of an array set allows the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity index to be
+          estimated accurately.
+        
+        
+          Model-based analysis for PM-only arrays
+          From Figure <NUMEX TYPE="ORDINAL">1of</NUMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>], one can see that some MM probes
+          may respond poorly to the changes in the expression level
+          of the target gene. This phenomenon raised questions on
+          the efficiency of using <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> probes, and led some
+          <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> to design custom arrays that use PM probes
+          <ENAMEX TYPE="PERSON">exclusively</ENAMEX> (<ENAMEX TYPE="PERSON">R. Abagyan</ENAMEX> and <ENAMEX TYPE="PERSON">Yingyao Zhou</ENAMEX>, personal
+          <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>; <ENAMEX TYPE="PERSON">B.R. Conklin</ENAMEX>, personal communication), and
+          others to calculate fold changes using only <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> probes (<ENAMEX TYPE="ORGANIZATION">F.</ENAMEX>
+          Naef, personal communication). This design greatly
+          increases the number of genes that can be studied on one
+          array. To investigate the relative performance of <ENAMEX TYPE="ORGANIZATION">PM/MM</ENAMEX>
+          versus PM-<NUMEX TYPE="CARDINAL">only</NUMEX> designs, we exploited the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to
+          estimate gene expression levels using only <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> probes, and
+          compared it to the <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> using both <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> probes.
+          The full intensity model (equation <NUMEX TYPE="QUANTITY">1</NUMEX> of [ <ENAMEX TYPE="LAW">1</ENAMEX>])
+          specifies the relationship of <ENAMEX TYPE="PRODUCT">PM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> responses and
+          expression level θ:
+          <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+          where 
+          v 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is the baseline response of probe pair 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX> due to nonspecific hybridization,
+          and ' 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is the sensitivity of <ENAMEX TYPE="PRODUCT">PM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> of the probe pair 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . The parameter estimates can be
+          obtained by <ENAMEX TYPE="PLANT">iteratively</ENAMEX> fitting θ 
+          
+            i 
+           and 
+          v 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , ' 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , regarding the other set as known. The same outlier
+          exclusion procedure in [ <ENAMEX TYPE="LAW">1</ENAMEX>] is applied. The MM probe
+          responses have a similar form as equation <NUMEX TYPE="QUANTITY">2</NUMEX> except for
+          different <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-sensitivity indexes. We fit a PM-only and
+          an MM-only <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to obtain expression values of all
+          <NUMEX TYPE="CARDINAL">20</NUMEX>-<ENAMEX TYPE="PRODUCT_DESC">probe probe sets</ENAMEX> using array set <TIMEX TYPE="DATE">1</TIMEX>. For comparison, we
+          also used <NUMEX TYPE="CARDINAL">half</NUMEX> of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs (by alternatively
+          picking one out of every <NUMEX TYPE="CARDINAL">two</NUMEX> probes) in a <NUMEX TYPE="CARDINAL">20</NUMEX>-probe probe
+          set to fit to the difference model (equation <NUMEX TYPE="QUANTITY">1</NUMEX>). For each
+          probe set, these <NUMEX TYPE="CARDINAL">three</NUMEX> sets of expression values were
+          compared with the expression values of the original
+          difference model using <NUMEX TYPE="CARDINAL">20</NUMEX> probes, in terms of correlation
+          of θs obtained by <NUMEX TYPE="CARDINAL">two</NUMEX> methods across the <NUMEX TYPE="CARDINAL">21</NUMEX> arrays. We
+          assumed the <NUMEX TYPE="CARDINAL">20</NUMEX>-probe difference model provides the most
+          accurate expression estimates. If, for a probe set, a
+          <ENAMEX TYPE="PRODUCT">simplified</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (PM-<NUMEX TYPE="CARDINAL">only</NUMEX>, MM-<NUMEX TYPE="CARDINAL">only or 10</NUMEX>-probe difference
+          model) performs reasonably well, we expect its θ
+          estimates to correlate with that from the <NUMEX TYPE="CARDINAL">20</NUMEX>-probe
+          difference model.
+          Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the histogram and Figure <NUMEX TYPE="CARDINAL">4the</NUMEX> boxplot of
+          correlations of <NUMEX TYPE="MONEY">θs estimated</NUMEX> from the <NUMEX TYPE="CARDINAL">20</NUMEX>-probe difference
+          model and θs estimated from the <NUMEX TYPE="CARDINAL">10</NUMEX>-probe difference model
+          (a), the <NUMEX TYPE="CARDINAL">20</NUMEX>-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> PM-only <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (b) and the <NUMEX TYPE="CARDINAL">20</NUMEX>-probe
+          MM-only <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (c). For <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> with high presence
+          proportion, both the <NUMEX TYPE="CARDINAL">10</NUMEX>-<ENAMEX TYPE="PRODUCT_DESC">probe difference model</ENAMEX> and the
+          PM-<NUMEX TYPE="CARDINAL">only</NUMEX> model correlate well with the <NUMEX TYPE="CARDINAL">20</NUMEX>-probe difference
+          model. The MM-<NUMEX TYPE="CARDINAL">only</NUMEX> model yields noticeably lower
+          correlations, however. We note that this comparison is
+          intrinsically biased in favor of the <NUMEX TYPE="CARDINAL">10</NUMEX>-probe difference
+          model because the 'truth' is constructed from <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX><ENAMEX TYPE="PRODUCT">-MM</ENAMEX>
+          differences.
+          This comparison corroborates the basic notion of the
+          technology: the PM probes hybridize more strongly to the
+          target signals than MM probes and contain most of the
+          information. We stress that, whereas the above analysis
+          illustrates the applicability of <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based analysis to
+          PM-only arrays, the assessment presented here is only
+          tentative because of the limited information provided by
+          the <NUMEX TYPE="ORDINAL">HU6800</NUMEX> arrays on the comparisons. Definitive
+          comparisons of the efficiency of the designs must await
+          the availability of data from PM-only arrays.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> reduces variability for low expression
+          estimates
+          The array set <TIMEX TYPE="DATE">5</TIMEX> has <NUMEX TYPE="CARDINAL">29</NUMEX> pairs of <ENAMEX TYPE="SUBSTANCE">arrays</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX>]. Each pair
+          consists of <NUMEX TYPE="CARDINAL">two</NUMEX> arrays hybridizing to samples replicated
+          at total mRNA level (the total mRNA sample is split and
+          then amplified and labeled separately, and hybridized to
+          <NUMEX TYPE="CARDINAL">two</NUMEX> different arrays). The differences between the
+          expression values of the two replicate arrays in a pair
+          are due to the variation introduced in experimental steps
+          after the split, the array manufacturing difference and
+          analytical methods such as normalization and expression
+          calculation. This difference provides a lower bound of
+          biological variation that can be detected between <NUMEX TYPE="CARDINAL">two</NUMEX>
+          independently amplified samples, and serves as a good
+          statistic for comparing different analytical methods.
+          The agreement of <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> between <NUMEX TYPE="CARDINAL">two</NUMEX> replicate arrays is
+          shown in Figure <TIMEX TYPE="DATE">5a</TIMEX>. For comparison, we also used the
+          method in [ <ENAMEX TYPE="LAW">3</ENAMEX>] to calculate ADs for all <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> and
+          plot them in Figure <TIMEX TYPE="DATE">5b</TIMEX>(<ENAMEX TYPE="ORGANIZATION">AD</ENAMEX> is based on normalized probe
+          values, see <ENAMEX TYPE="PERSON">Methods</ENAMEX> and materials section for the
+          normalization method. Also note that <ENAMEX TYPE="PRODUCT">GeneChip</ENAMEX> software
+          excludes probes whose <ENAMEX TYPE="ORGANIZATION">PM/MM</ENAMEX> difference is outside <TIMEX TYPE="TIME">three</TIMEX>
+          standard deviations (SDs) of all probe differences in
+          either of the <NUMEX TYPE="CARDINAL">two</NUMEX> arrays in the comparison; here, as we
+          are comparing multiple arrays at the same time, when
+          calculating ADs a <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> is excluded if its difference is
+          an outlier in the above sense in any of the arrays, until
+          a minimum of <NUMEX TYPE="CARDINAL">five</NUMEX> probes is reached, where <NUMEX TYPE="CARDINAL">all five</NUMEX>
+          probes will be used). Both the <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> and the AD method
+          yielded some expression values differing by more than a
+          factor of <NUMEX TYPE="CARDINAL">two</NUMEX>, especially for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at low expression
+          level. This might be explained by the relatively larger
+          <ENAMEX TYPE="ORGANIZATION">amplification</ENAMEX> variation for weakly expressed genes, given
+          a constant success rate of amplifying a sequence by a
+          certain fold.
+          <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> often use 'log ratio' between expression
+          values of a gene in <NUMEX TYPE="CARDINAL">two</NUMEX> arrays as the criterion for
+          identifying <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes. Between
+          duplicate arrays, we expect these log ratios of
+          expression values based on a good expression index (<ENAMEX TYPE="ORGANIZATION">AD</ENAMEX> or
+          <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX>) to be close to <NUMEX TYPE="CARDINAL">zero</NUMEX>. Thus for every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set we
+          calculated its average absolute log (base <NUMEX TYPE="CARDINAL">10</NUMEX>) ratio of <NUMEX TYPE="CARDINAL">29</NUMEX>
+          pairs of duplicates as a statistic to compare the
+          variation in expression levels between duplicates using
+          the AD or the MBEI method. Figure <NUMEX TYPE="CARDINAL">6presents</NUMEX> the results
+          of the comparison. The average absolute log ratio
+          distribution of the MBEI method is significantly lower
+          than that of the AD method when expression level is low
+          (and thus probe sets have a low proportion of detections
+          of the target gene across arrays). As expression level
+          becomes higher (when the target gene of a probe set is
+          detected in more arrays), the AD method shows a rapid
+          improvement in performance, approaching the level of the
+          MBEI method. The same boxplots (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>) for another set
+          of <NUMEX TYPE="CARDINAL">60</NUMEX> human <ENAMEX TYPE="SUBSTANCE">U95A</ENAMEX> arrays consisting of <NUMEX TYPE="CARDINAL">30</NUMEX> replicate pairs
+          conveys similar information. These results suggest that
+          the MBEI method is able to extend the reliable detection
+          limit of expression to a lower mRNA concentration.
+        
+        
+          Confidence interval for fold change
+          After obtaining expression indexes using AD or MBEI,
+          fold changes can be calculated between <NUMEX TYPE="CARDINAL">two</NUMEX> arrays for
+          every <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> and used to identify <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed
+          genes. Usually, low or negative expressions are truncated
+          to a small number before calculating fold changes, and
+          <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> also cautions against using fold changes when
+          the baseline expression is absent.
+          The availability of <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX> for the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based expression
+          indexes allows us to obtain confidence intervals for fold
+          changes. Suppose
+          
+          where θ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and θ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> are the real expression levels in
+          the sample, and 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> are the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based estimates of
+          expression levels. We substitute the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX> for
+          δ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and δ 
+          <ENAMEX TYPE="CONTACT_INFO">2 Letting</ENAMEX> 
+          r = θ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">/θ</ENAMEX> 
+          2 be the real fold change, then
+          inference on r can be based on the quantity
+          
+          It can be shown that Q has a <ENAMEX TYPE="PRODUCT">Χ 2distribution</ENAMEX> with <NUMEX TYPE="CARDINAL">1</NUMEX>
+          degree of freedom irrespective of the values of θ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and θ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>]. Thus Q is a pivotal quantity
+          involving r. We can use Q to construct fixed-level tests
+          and to invert them to obtain confidence intervals (CI)
+          for fold changes [ <ENAMEX TYPE="LAW">5</ENAMEX>].
+          <ENAMEX TYPE="PRODUCT">Table 1presents</ENAMEX> the estimated expression indexes (with
+          <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX>) in <NUMEX TYPE="CARDINAL">two</NUMEX> arrays and the <NUMEX TYPE="PERCENT">90%</NUMEX> confidence intervals of
+          the fold changes for <NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Although all genes have
+          similar estimated fold changes, the confidence intervals
+          are very different. For example, <ENAMEX TYPE="SUBSTANCE">gene 1</ENAMEX> has fold change
+          <NUMEX TYPE="CARDINAL">2.47</NUMEX> and a tight confidence interval (<NUMEX TYPE="MONEY">2.06</NUMEX>, <NUMEX TYPE="CARDINAL">3.02</NUMEX>). In
+          contrast, gene <TIMEX TYPE="DATE">11</TIMEX> has a similar fold change of <NUMEX TYPE="CARDINAL">2.48</NUMEX> but a
+          much wider confidence interval (<NUMEX TYPE="MONEY">0.96</NUMEX>, <NUMEX TYPE="CARDINAL">18.18</NUMEX>). Thus the
+          fold change <NUMEX TYPE="MONEY">around 2.5</NUMEX> for gene <TIMEX TYPE="DATE">11</TIMEX> is not as trustworthy
+          as that for <ENAMEX TYPE="SUBSTANCE">gene 1</ENAMEX>. Further examination reveals that this
+          is due to the large <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX> relative to the expression
+          indexes for gene <NUMEX TYPE="CARDINAL">11</NUMEX>. This agrees with the intuition that
+          when <NUMEX TYPE="CARDINAL">one</NUMEX> or both expression levels are <NUMEX TYPE="CARDINAL">close to zero</NUMEX> for
+          <NUMEX TYPE="CARDINAL">one</NUMEX> gene, the fold change cannot be estimated with much
+          accuracy. In addition, when image contamination results
+          in unreliable expression values with large <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX>, the fold
+          changes calculated using these expression value are
+          attached with wide <ENAMEX TYPE="ORGANIZATION">CIs</ENAMEX>. In this manner, the measurement
+          accuracy of expression values propagates to the
+          estimation of fold changes.
+          In practice, we find it useful to sort genes by the
+          lower confidence bound ('Lower <ENAMEX TYPE="ORGANIZATION">CB</ENAMEX>' in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), which is
+          a <ENAMEX TYPE="PER_DESC">conservative</ENAMEX> estimate of the fold change. When an
+          expression index is negative (as a result of taking <ENAMEX TYPE="ORGANIZATION">PM/MM</ENAMEX>
+          differences), we do not calculate the confidence
+          intervals. In such a case, it is more helpful to filter
+          genes by presence calls.
+        
+        
+          Standard errors help to assess clustering
+          results
+          Cluster analysis is a popular method for analyzing the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> of a series of <ENAMEX TYPE="SUBSTANCE">microarrays</ENAMEX> [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>]. If <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-regulated at the transcription level, their expression
+          values across samples are likely to be correlated.
+          Clustering algorithms use these correlations (or monotone
+          transformation of correlations) to cluster co-regulated
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> together. The correlation based on the estimated
+          expression levels may, however, be different from that
+          based on the real but unobserved expression levels. Also,
+          the commonly used hierarchical clustering algorithm is an
+          irreversible process: once <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or nodes are merged,
+          they will stay together, even if later on there is good
+          reason to adjust previous clustering. Thus there is a
+          need to assess the reliability of clusters.
+          A global way of using <ENAMEX TYPE="PRODUCT">SE</ENAMEX> in hierarchical clustering is
+          to resample or bootstrap [ <ENAMEX TYPE="LAW">8</ENAMEX>] the whole 'gene by sample'
+          <ENAMEX TYPE="ORGANIZATION">data matrix</ENAMEX> and redo the clustering, then investigate the
+          overall properties emerging from this repertoire of
+          clustering <ENAMEX TYPE="PLANT">trees</ENAMEX>. In Bittner 
+          et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>], the data matrix coming
+          from cDNA <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments is resampled using the
+          estimated variation derived from the median <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> of log
+          ratios for a gene across samples. As we now have <ENAMEX TYPE="ORGANIZATION">SEs</ENAMEX> for
+          all data points, we can resample each expression value
+          from a normal distribution with mean equal to the
+          estimated expression value and <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> equal to the attached
+          <ENAMEX TYPE="PRODUCT">SE</ENAMEX>.
+          Figure 8ashows a hierarchical clustering <ENAMEX TYPE="PLANT">tree</ENAMEX> of <NUMEX TYPE="CARDINAL">225</NUMEX>
+          selected genes with presence proportion <NUMEX TYPE="MONEY">> 0.5</NUMEX> and
+          coefficient of variation (SD/mean) <NUMEX TYPE="MONEY">> 0.7</NUMEX> across the <NUMEX TYPE="CARDINAL">20</NUMEX>
+          samples in array set <TIMEX TYPE="DATE">2</TIMEX>. In trying to interpret this tree,
+          we may be interested in the gene cluster colored in blue
+          and the reliability of the gene <ENAMEX TYPE="PER_DESC">members</ENAMEX> belonging to this
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. The whole data matrix is resampled, and the
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> is performed again (Figure <NUMEX TYPE="CARDINAL">8b</NUMEX>). We notice that
+          some blue <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the original cluster are
+          colored blue) are clustered with other non-blue <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          and some non-blue <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are mixed into the main <ENAMEX TYPE="ORG_DESC">body</ENAMEX> of
+          the blue <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. After each resampling, we identify a
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> that contains <NUMEX TYPE="PERCENT">more than 80%</NUMEX> of all the blue
+          genes, but as few non-blue <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as possible (measured as
+          a percentage of all genes in this cluster). This cluster
+          is considered to be the cluster that corresponds to the
+          original one in Figure <TIMEX TYPE="DATE">8a</TIMEX>. In Figure <NUMEX TYPE="CARDINAL">8bthe</NUMEX> root node of
+          the 'corresponding cluster' is marked with small
+          <ENAMEX TYPE="ORGANIZATION">horizontal</ENAMEX> line intersecting the vertical line
+          (representing the range of the cluster) on the right of
+          the clustering picture. Then, for each of all the <NUMEX TYPE="CARDINAL">225</NUMEX>
+          genes, if it belongs to this 'corresponding cluster', we
+          increase its 'in-cluster' count by <NUMEX TYPE="CARDINAL">1</NUMEX>. After resampling <NUMEX TYPE="CARDINAL">30</NUMEX>
+          times, the in-cluster counts are indicated in gray-scale
+          on the left side of the original clustering (Figure <NUMEX TYPE="CARDINAL">8c</NUMEX>),
+          with black representing <NUMEX TYPE="CARDINAL">30</NUMEX> and white representing <NUMEX TYPE="CARDINAL">zero</NUMEX>. A
+          high 'in-cluster' count indicates a gene 'remains' in the
+          original cluster in most of the resampled clustering
+          <ENAMEX TYPE="PLANT">trees</ENAMEX>.
+          We can see from Figure <NUMEX TYPE="CARDINAL">8cthat</NUMEX> most genes in the
+          original cluster are reliable <ENAMEX TYPE="PER_DESC">members</ENAMEX>, whereas a few
+          genes at the bottom of the cluster are not (in fact they
+          are merged into the original cluster last).
+          Interestingly, some genes originally not in the original
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with the 'corresponding clusters' during
+          resampling many times and have gray 'in-cluster' marks.
+          These <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may be related to the original cluster in
+          some way. In summary, this method can help us to
+          distinguish reliable and unreliable gene <ENAMEX TYPE="PER_DESC">members</ENAMEX> of a
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>, as well as draw our attention to related genes
+          originally clustered somewhere else because of the
+          accidental nature of hierarchical clustering.
+        
+      
+      
+        Methods and materials
+        
+          Software
+          We have developed a software package DNA-<ENAMEX TYPE="PERSON">Chip Analyzer</ENAMEX>
+          (<ENAMEX TYPE="SUBSTANCE">dChip</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>]) to perform invariant-set normalization (see
+          below), calculation of <ENAMEX TYPE="ORGANIZATION">MBEI</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>], computation of
+          confidence intervals of fold changes, and hierarchical
+          clustering with resampling.
+          Our experience is that <NUMEX TYPE="CARDINAL">more than 10</NUMEX> arrays are
+          appropriate for model training, outlier detection and
+          MBEI calculation. <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> with <NUMEX TYPE="CARDINAL">fewer than 10</NUMEX> arrays
+          may seek arrays of the same chip type and hybridizing to
+          similar tissue samples, and combine them in a single
+          dChip analysis session. We are exploring model-based
+          <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-analysis of many arrays of the same chip type but
+          <ENAMEX TYPE="ORGANIZATION">hybridizing</ENAMEX> to a heterogeneous set of <ENAMEX TYPE="SUBSTANCE">tissues samples</ENAMEX>,
+          and will present such analysis in future work.
+        
+        
+          Normalization of arrays based on an 'invariant
+          set'
+          As array images usually have different overall image
+          <ENAMEX TYPE="ORGANIZATION">brightness</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9a</NUMEX>), especially when they are
+          generated at different times and places, proper
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> is required before comparing the expression
+          levels of genes between arrays. Model-based expression
+          <ENAMEX TYPE="ORGANIZATION">computation</ENAMEX> requires normalized <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-level data (from
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>'s DAT or <ENAMEX TYPE="ORGANIZATION">CEL</ENAMEX> files). For a group of arrays, we
+          normalize all arrays (except the baseline array) to a
+          common baseline array having the median overall
+          <ENAMEX TYPE="ORGANIZATION">brightness</ENAMEX> (as measured by the median CEL intensity in an
+          array).
+          A normalization relation can be understood as a curve
+          in the scatterplot of <NUMEX TYPE="CARDINAL">two</NUMEX> arrays with the baseline array
+          drawn on the 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> -axis and the array to be
+          normalized on the <ENAMEX TYPE="LAW">x-</ENAMEX>axis. A straight line running through
+          the origin is a multiplicative normalization method
+          (<ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX>'s scaling method), and a smoothing spline
+          through the scatterplot can also be used (Figure <TIMEX TYPE="DATE">9a</TIMEX>, also
+          see [ <TIMEX TYPE="DATE">11</TIMEX>]).
+          We should base the normalization only on probe values
+          that belong to non-differentially expressed genes, but
+          generally we do not know which genes are
+          <ENAMEX TYPE="PERSON">non-differentially</ENAMEX> expressed (control or housekeeping
+          genes may also be variable across arrays). Nevertheless,
+          we expect that a probe of a non-differentially expressed
+          gene in <NUMEX TYPE="CARDINAL">two</NUMEX> arrays to have similar intensity ranks (ranks
+          are calculated in <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">arrays</ENAMEX> separately). We use an
+          iterative procedure to identify a set of probes (called
+          the invariant set), which presumably consists of points
+          from non-differentially expressed genes (Figure <NUMEX TYPE="CARDINAL">9b</NUMEX>).
+          Specifically, we start with points of all PM probes
+          (<NUMEX TYPE="MONEY">about 140,000</NUMEX> for <TIMEX TYPE="DATE">HU6800</TIMEX> array). If a point's proportion
+          rank difference (<ENAMEX TYPE="ORGANIZATION">PRD</ENAMEX>, absolute rank difference in two
+          arrays divided by 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">140,000</NUMEX>) is small enough, it is
+          kept for the new set. Here the threshold of being small
+          is <NUMEX TYPE="MONEY">PRD < 0.003</NUMEX> when a points's average intensity ranks
+          in the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">arrays</ENAMEX> is small and <ENAMEX TYPE="ORGANIZATION">PRD</ENAMEX> < <NUMEX TYPE="CARDINAL">0.007</NUMEX> when it is
+          large, accounting for <NUMEX TYPE="CARDINAL">fewer</NUMEX> points at high-intensity
+          range; and the threshold is interpolated in between. We
+          chose these parameters empirically to make the selected
+          points in the invariant set thin enough to naturally
+          determine a normalization relation. In this way we may
+          obtain a new set of <NUMEX TYPE="CARDINAL">10,000</NUMEX> points, and the same procedure
+          is applied to the new set iteratively, until the number
+          of points in the new set does not decrease anymore. A
+          piecewise linear running median line is then calculated
+          and used as the normalization curve. After normalization,
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">arrays</ENAMEX> have similar overall brightness. (Figure
+          9c). Figure 10shows another pair of arrays where the
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> relationship is non-linear.
+        
+      
+    
+  

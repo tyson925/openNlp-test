@@ -1,0 +1,880 @@
+
+  
+    
+      
+        Background
+        
+          Model of an oscillating biochemical network
+          In [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , <ENAMEX TYPE="ORGANIZATION">Laub</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Loomis</ENAMEX> propose a model of the
+          molecular network underlying adenosine <ENAMEX TYPE="PRODUCT">3</ENAMEX>'<NUMEX TYPE="CARDINAL">,5</NUMEX>'-cyclic
+          <ENAMEX TYPE="ORGANIZATION">monophosphate</ENAMEX> (<ENAMEX TYPE="ORG_DESC">cAMP</ENAMEX>) oscillations observed in fields of
+          chemotactic 
+          Dictyostelium discoideum cells. The
+          model, based on the network depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, induces
+          the spontaneous oscillations in <ENAMEX TYPE="FAC_DESC">cAMP</ENAMEX> observed during the
+          early development of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> discoideum. 
+          In this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, changes in the enzymatic activities of
+          these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are described by a system of <NUMEX TYPE="CARDINAL">seven</NUMEX>
+          non-linear differential equations:
+          
+          where the state variable 
+          x = [ 
+          x 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          x 
+          <NUMEX TYPE="CARDINAL">7</NUMEX> ] represents the concentrations of
+          the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>: 
+          x 
+          <TIMEX TYPE="DATE">1</TIMEX> = [<ENAMEX TYPE="ORGANIZATION">ACA</ENAMEX>], 
+          x 
+          <TIMEX TYPE="DATE">2</TIMEX> = [<ENAMEX TYPE="ORGANIZATION">PKA</ENAMEX>], 
+          x 
+          <TIMEX TYPE="DATE">3</TIMEX> = [<TIMEX TYPE="DATE">ERK2</TIMEX>], 
+          x 
+          <TIMEX TYPE="DATE">4</TIMEX> = [<ENAMEX TYPE="ORGANIZATION">REG</ENAMEX> A], 
+          x 
+          <TIMEX TYPE="DATE">5</TIMEX> = [<ENAMEX TYPE="ORGANIZATION">Internal</ENAMEX> <ENAMEX TYPE="FAC_DESC">cAMP</ENAMEX>], 
+          x 
+          <TIMEX TYPE="DATE">6</TIMEX> = [<ENAMEX TYPE="ORGANIZATION">External</ENAMEX> <ENAMEX TYPE="FAC_DESC">cAMP</ENAMEX>] and 
+          x 
+          <TIMEX TYPE="DATE">7</TIMEX> = [<TIMEX TYPE="DATE">CAR1</TIMEX>] and the <NUMEX TYPE="CARDINAL">fourteen</NUMEX> different 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            i 
+           represent system parameter values. It was shown
+          numerically in [ <ENAMEX TYPE="LAW">8</ENAMEX> ] that spontaneous oscillations appear
+          at the nominal parameter values found in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Note
+          that because there are typographical errors in the
+          original paper, the values being used here for the
+          nominal parameters were obtained directly from the
+          <ENAMEX TYPE="PER_DESC">authors</ENAMEX> of [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+          This particular model is primarily concerned with
+          describing self-sustaining oscillations in the
+          <ENAMEX TYPE="ORGANIZATION">biochemical</ENAMEX> system. From <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>, it is clear that at the
+          nominal parameter values of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, this is achieved.
+          We seek to determine whether the system is robust - that
+          is, if we change these kinetic parameters, will the
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX> oscillatory behaviour persist? We next present
+          <NUMEX TYPE="CARDINAL">two</NUMEX> possible means, based on whether parameters are
+          changed <NUMEX TYPE="CARDINAL">one</NUMEX> at a time or in <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+        
+      
+      
+        Methods
+        
+          Single parameter robustness: Bifurcation
+          analysis
+          Self-sustained oscillations such as those being
+          <ENAMEX TYPE="ORGANIZATION">modelled</ENAMEX> here appear as stable limit cycles in trajectory
+          of the underlying dynamical system [ <TIMEX TYPE="DATE">11</TIMEX> ] . The existence
+          and stability of these limit cycles may change under
+          <ENAMEX TYPE="ORGANIZATION">parametric</ENAMEX> perturbations. Whenever a stable periodic
+          solution loses stability as we vary the underlying
+          parameters of the system and this <ENAMEX TYPE="SUBSTANCE">solution transitions</ENAMEX> to
+          another qualitative solution - for example, a
+          steady-state equilibrium - we say that the system
+          undergoes a 
+          Hopf bifurcation. It is therefore
+          possible to use bifurcation theory as a means of
+          quantifying the robustness of this oscillatory network
+          model [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] .
+          Using the bifurcation analysis package AUTO [ <TIMEX TYPE="DATE">14</TIMEX> ] ,
+          it is possible to produce <NUMEX TYPE="CARDINAL">one</NUMEX>-parameter bifurcation
+          diagrams for each of the model parameters 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            i 
+           . These <ENAMEX TYPE="ORG_DESC">diagrams</ENAMEX> illustrate the steady-state
+          behaviour of the systems as the parameter values are
+          changed. Suppose that <ENAMEX TYPE="ORGANIZATION">Hopf</ENAMEX> bifurcations occur at 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           
+          
+            i 
+           and 
+          
+            i 
+           so that (stable) limit cycles occur for the range ( 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+            
+              i 
+             
+           , 
+          
+            i 
+           ). Both the size of this interval as well as the
+          proximity of the nominal parameter value to either
+          boundary are measures of the robustness of the system. To
+          compare the robustness of the system to the different
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, we can define a series of parametric
+          robustness measures. We define the 
+          degree of robustness (DOR) for each
+          parameter 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          
+            i 
+           as:
+          
+          It is straightforward to see that this value is always
+          between <NUMEX TYPE="CARDINAL">zero</NUMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX>. The former indicates extreme
+          parameter sensitivity whereas the latter implies large
+          <ENAMEX TYPE="PERSON">insensitivity</ENAMEX>.
+          Bifurcation diagrams provide an excellent means of
+          determining the robustness of systems to single parameter
+          <ENAMEX TYPE="ORGANIZATION">perturbations</ENAMEX>. We next describe a method for analysing
+          and quantifying robustness to simultaneous changes in
+          several parameters.
+        
+        
+          Multiparametric robustness: <ENAMEX TYPE="ORGANIZATION">Structural</ENAMEX> singular
+          values
+          
+            Determining the limit cycle: <ENAMEX TYPE="GPE">Harmonic</ENAMEX> balance
+            method
+            The <NUMEX TYPE="ORDINAL">first</NUMEX> step is to obtain a mathematical
+            expression for the limit cycle oscillation. The
+            harmonic balance method can be used [ <TIMEX TYPE="DATE">17</TIMEX> ] . The basic
+            idea is to represent the limit cycle by a Fourier
+            series with unknown <ENAMEX TYPE="PER_DESC">coefficients</ENAMEX> ( 
+            a 
+            
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , 
+            i  , φ 
+            
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , 
+            i  ) and period 
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> :
+            
+            The non-linear differential equation can be used to
+            set up a series of algebraic equations that the
+            coefficients must satisfy. These equations can be
+            solved using numerical packages such as <ENAMEX TYPE="ORGANIZATION">Mathematica</ENAMEX> or
+            <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>. Depending on the particular form of the limit
+            cycle, a small finite number of coefficients can be
+            used. We can denote this periodic solution as 
+            x *( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ).
+          
+          
+            Linearization
+            The non-linear differential equation must now be
+            linearized about this periodic orbit [ <TIMEX TYPE="DATE">17</TIMEX> ] . Writing
+            the state vector 
+            x ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) as
+            
+            x ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+            x *( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) + 
+            x 
+            <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )
+            then the local behaviour of the non-linear system is
+            governed by that of the linearized system:
+            
+            <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) ≅ 
+            <ENAMEX TYPE="PERSON">J</ENAMEX> ( 
+            x *( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )) 
+            x 
+            <ENAMEX TYPE="PERSON">≈</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )
+            where 
+            <ENAMEX TYPE="PERSON">J</ENAMEX> is the <ENAMEX TYPE="ORGANIZATION">Jacobian matrix</ENAMEX> of the
+            vector field 
+            f . Note that since the
+            <ENAMEX TYPE="ORGANIZATION">linearization</ENAMEX> is performed about a periodic orbit, the
+            <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> system is periodic.
+          
+          
+            Restructuring into nominal/uncertainty
+            systems
+            The <ENAMEX TYPE="ORGANIZATION">Jacobian matrix</ENAMEX> includes all uncertain
+            parameters. At this point we need to separate the
+            system into a nominal <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and a feedback
+            interconnection that involves all parametric
+            uncertainty. We first write each parameter as
+            
+            where 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+            
+              i 
+             is the nominal value and δ 
+            
+              i 
+             is the relative amount of perturbation in the 
+            i thparameter. We now separate
+            the <ENAMEX TYPE="ORGANIZATION">Jacobian matrix</ENAMEX> as
+            
+            <ENAMEX TYPE="PERSON">J</ENAMEX> ( 
+            x *( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )) = 
+            A 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) + 
+            B 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) Δ 
+            C 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+            where 
+            A 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) is the <ENAMEX TYPE="ORGANIZATION">Jacobian matrix</ENAMEX> with
+            all parameters at their nominal value, and Δ is a
+            diagonal <ENAMEX TYPE="SUBSTANCE">matrix</ENAMEX> containing all the uncertainties δ 
+            
+              i 
+             . Let 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+            C 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) 
+            x 
+            <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) and 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = Δ 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ), the system is now of the
+            form of <ENAMEX TYPE="ORGANIZATION">Eqn</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) (with 
+            x ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) replaced by 
+            x 
+            <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )).
+          
+          
+            Discretization
+            The system can be discretized by sampling the state
+            and output with sampling period 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> = 
+            <ENAMEX TYPE="ORGANIZATION">T/n</ENAMEX> , where 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is a positive integer and
+            assuming that the inputs are piecewise constant; this
+            is also a standard technique in control engineering [
+            <NUMEX TYPE="CARDINAL">18</NUMEX> ] . In particular, a linear continuous-time system
+            governed by <ENAMEX TYPE="ORGANIZATION">Eqn</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) gives rise to the discrete-time,
+            <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> system
+            <ENAMEX TYPE="PERSON">ξ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+            A 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) ξ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) + 
+            B 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )
+            <ENAMEX TYPE="ORGANIZATION">η</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            C 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) ξ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )
+            where 
+            A 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) <ENAMEX TYPE="PERSON">= Φ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> + 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> ), 
+            B 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) <ENAMEX TYPE="PERSON">= Φ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> + 
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> , 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) 
+            B 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) 
+            <ENAMEX TYPE="CONTACT_INFO">ds ,</ENAMEX> 
+            C 
+            
+              d 
+             ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            C 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> ), and <ENAMEX TYPE="PERSON">Φ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t , τ</ENAMEX>) is the transition matrix
+            of 
+            A 
+            <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) [ <TIMEX TYPE="DATE">19</TIMEX> ] . The discretized
+            signals are 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> ), <NUMEX TYPE="MONEY">η</NUMEX>( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> ), and <ENAMEX TYPE="PERSON">ξ</ENAMEX>( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            x ( 
+            <ENAMEX TYPE="ORGANIZATION">kh</ENAMEX> ). Periodicity of 
+            A 
+            
+              d 
+             and 
+            B 
+            
+              d 
+             is preserved due to the periodicity of the
+            transition matrix. Moreover, it is not difficult to
+            confirm that 
+            A 
+            
+              d 
+             , 
+            B 
+            
+              d 
+             and 
+            C 
+            
+              d 
+             are periodic with period 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . The uncertainty matrix after
+            <ENAMEX TYPE="ORGANIZATION">discretization</ENAMEX> is now Δ 
+            
+              d 
+             . The discretization step is illustrated in <ENAMEX TYPE="GPE">Fig</ENAMEX>.
+            4A.
+          
+          
+            Lifting
+            The final step in preparing the system for SSV
+            analysis is to transform the periodic, linearized
+            system into an equivalent time-invariant one. The
+            technique for this is known as 
+            lifting [ <TIMEX TYPE="DATE">18</TIMEX> ] . Rather than
+            giving the general formulae, it is easier to illustrate
+            the general principle with an example.
+            Suppose that a discrete-time system with state
+            <ENAMEX TYPE="PERSON">variable ξ</ENAMEX>, input 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> , and output η obeys the
+            difference equation
+            <ENAMEX TYPE="PERSON">ξ</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+            a ( 
+            <ENAMEX TYPE="ORGANIZATION">k )ξ</ENAMEX>( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) + 
+            b ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) 
+            <ENAMEX TYPE="PERSON">v</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )
+            <ENAMEX TYPE="ORGANIZATION">η</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) = 
+            c ( 
+            <ENAMEX TYPE="ORGANIZATION">k )ξ</ENAMEX>( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )
+            where the time varying coefficients 
+            a ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ), 
+            b ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) and 
+            c ( 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) are all periodic with period
+            <NUMEX TYPE="CARDINAL">two</NUMEX>. Calculating the state variable and output
+            <ENAMEX TYPE="PERSON">step-by-step</ENAMEX> leads to:
+            
+            for any integer 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> . By defining "lifted" inputs
+            and outputs
+            
+            and considering the system state only at the even
+            <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points ( ( 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) <ENAMEX TYPE="PERSON">= ξ</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> )) we arrive at an equivalent
+            <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-invariant system.
+            The lifting technique has been illustrated above for
+            a discrete-time system with period <TIMEX TYPE="DATE">two</TIMEX>; however, it can
+            be applied to systems with arbitrary period - though
+            the corresponding formulae are considerably more
+            complicated; see [ <TIMEX TYPE="DATE">18</TIMEX> ] .
+          
+          
+            Computation of SSV
+            There is considerable literature in control theory
+            on the computation of the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX>; see for example [ <NUMEX TYPE="CARDINAL">20 21</NUMEX>
+            <NUMEX TYPE="CARDINAL">22</NUMEX> ] . For general <ENAMEX TYPE="PER_DESC">classes</ENAMEX> of uncertainty, computing μ 
+            <ENAMEX TYPE="ORGANIZATION">Δ</ENAMEX> is known to be <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>-hard [ <TIMEX TYPE="DATE">21</TIMEX> ] .
+            Typically, given the feedback loop consisting of 
+            G and Δ we compute upper and
+            lower bounds for the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] . The lower bound is
+            exactly equal to <NUMEX TYPE="MONEY">�</NUMEX>� 
+            <ENAMEX TYPE="ORGANIZATION">Δ</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] ; unfortunately computing
+            this lower bound involves a search over a non-convex
+            set and therefore may converge to local optimums that
+            are not global. In contrast, the upper bound can be
+            rewritten in terms of a convex optimisation problem, so
+            that a global minimum can be obtained. However, this
+            upper bound is, in general not tight. A software
+            package is commercially available that can compute μ 
+            upper and uses a power algorithm
+            to attempt to compute μ 
+            lower [ <TIMEX TYPE="DATE">22</TIMEX> ] .
+          
+        
+      
+      
+        Results
+        
+          Single parameter robustness
+          The robustness of <ENAMEX TYPE="ORGANIZATION">Laub</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Loomis</ENAMEX>'s oscillatory model
+          was <NUMEX TYPE="ORDINAL">first</NUMEX> analysed by means of single-parameter
+          bifurcation diagrams. <NUMEX TYPE="CARDINAL">Four</NUMEX> typical diagrams are shown in
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">5</NUMEX>. The activity of internal <ENAMEX TYPE="FAC_DESC">cAMP</ENAMEX> ( 
+          x 
+          <NUMEX TYPE="CARDINAL">5</NUMEX> ) is plotted as a function of the
+          variation of each parameter. We use internal <ENAMEX TYPE="FAC_DESC">cAMP</ENAMEX> in the
+          <ENAMEX TYPE="PERSON">diagram</ENAMEX> as it is the element that is usually observed
+          experimentally [ <TIMEX TYPE="DATE">23</TIMEX> ] . In each of the diagrams, there
+          are <NUMEX TYPE="CARDINAL">three</NUMEX> types of <ENAMEX TYPE="SUBSTANCE">solutions</ENAMEX>: stable steady <ENAMEX TYPE="GPE_DESC">state</ENAMEX>,
+          unstable steady state and limit cycle oscillations.
+          These <ENAMEX TYPE="ORG_DESC">diagrams</ENAMEX> illustrate that <ENAMEX TYPE="ORGANIZATION">Hopf</ENAMEX> bifurcations occur
+          for each parameter; that is, the oscillatory behaviour
+          exists only in a limited range of parameters around the
+          nominal value. For each of these parameters, the
+          respective intervals and values for degree-of-robustness
+          are found in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+        
+        
+          Structural singular value
+          From the numerical simulation (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>) of the
+          <ENAMEX TYPE="ORGANIZATION">non-linear</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, we observed that the oscillatory curves
+          did not deviate greatly from a simple harmonic oscillator
+          plus a constant offset. Thus, to obtain an analytic
+          expression for the periodic orbits we assume that the
+          state variables are expanded into <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> series
+          containing only the fundamental and constant terms:
+          
+          for each of the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. Since it is the relative
+          phase shift between each <ENAMEX TYPE="GPE_DESC">state</ENAMEX> variable that is relevant,
+          we assume that θ 
+          <TIMEX TYPE="DATE">1</TIMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>. The substitution of the Fourier
+          series into the original equations leads to a series of
+          real algebraic equations for the coefficients (not shown)
+          whose solution was obtained using <ENAMEX TYPE="ORGANIZATION">Mathematica</ENAMEX>. This leads
+          us to obtain the corresponding periodic solutions where
+          the values of 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          i  , 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX> 
+          i  and θ 
+          
+            i 
+           are found in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. The period 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> is <TIMEX TYPE="TIME">approximately 7.31 minutes</TIMEX>.
+          This analytic solution matches well with the numerical
+          simulation except for an arbitrary phase shift, which
+          does not affect the shape and location of the limit cycle
+          in the phase space and can thereby be ignored (not
+          shown).
+          Following our prescribed methods, we next linearized
+          the system. The <ENAMEX TYPE="ORGANIZATION">Jacobian matrix</ENAMEX> is obtained and was
+          decomposed as in <ENAMEX TYPE="GPE">Eqn</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) to obtain:
+          
+          The matrix 
+          B 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = { 
+          B 
+          
+          i , 
+          j  } where
+          
+          Similarly, the matrix 
+          C 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = { 
+          C 
+          
+          i , 
+          j  } where all coefficients are
+          zero except for the following:
+          
+          Finally, 
+          D 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> and the perturbation structure
+          is given by
+          <ENAMEX TYPE="PER_DESC">Δ</ENAMEX> = <ENAMEX TYPE="PER_DESC">diag</ENAMEX> {δ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">4</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">5</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">6</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">6</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">8</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">8</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">9</NUMEX> ,δ 
+          <TIMEX TYPE="DATE">10</TIMEX> ,δ 
+          <TIMEX TYPE="DATE">10</TIMEX> ,δ 
+          <TIMEX TYPE="DATE">11</TIMEX> ,δ 
+          <TIMEX TYPE="DATE">12</TIMEX> ,δ 
+          <TIMEX TYPE="DATE">13</TIMEX> ,δ 
+          14 }
+          Note that since the nominal trajectory is periodic,
+          the matrix functions in the nominal description are also
+          periodic. Note also that in the uncertainty matrix, Δ,
+          some uncertainties are repeated (δ 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">6</NUMEX> ,δ 
+          <NUMEX TYPE="CARDINAL">8</NUMEX> and δ 
+          <NUMEX TYPE="CARDINAL">10</NUMEX> ) while δ 
+          <ENAMEX TYPE="PRODUCT">7</ENAMEX> is missing.
+          The system was then discretized and lifted following
+          the procedure outlined above. A comparison of the system
+          response for each of the approximations at the nominal
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> values is given in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4B.
+          For the sampling time we tried various values of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> but found negligible differences
+          for values above <NUMEX TYPE="CARDINAL">eight</NUMEX>. Finally, we computed the bounds
+          on the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX>. Once again, we found that the values of these
+          <NUMEX TYPE="CARDINAL">two</NUMEX> bounds were not affected much by the sampling
+          frequency provided that 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is greater than <NUMEX TYPE="CARDINAL">eight</NUMEX>. The upper
+          bound was successfully computed using [ <TIMEX TYPE="DATE">22</TIMEX> ] . The
+          maximum over all frequencies is <NUMEX TYPE="CARDINAL">approximately 12.06</NUMEX>.
+          However, the high dimension of system causes convergence
+          problem during the computation of μ 
+          lower using this package. To obtain
+          an acceptable lower bound, we calculate the spectral
+          radius at each frequency. This gives us a lower bound for
+          μ 
+          lower . The plot of the bounds for
+          the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> when 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">16</NUMEX> is shown in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">6</NUMEX>. We can
+          use μ 
+          lower to obtain a conservative
+          region for robust stability. The highest value over all
+          frequencies for μ 
+          lower is <NUMEX TYPE="CARDINAL">approximately 2.636</NUMEX>.
+        
+      
+      
+        Discussion
+        Recent <TIMEX TYPE="DATE">years</TIMEX> has seen an appreciation that key cellular
+        properties are robust to variations in individual parameter
+        values. Based on the topology of many of these <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>,
+        this should not be surprising. Feedback - both negative and
+        positive - control systems are ubiquitous in most
+        biological <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] and one of the reasons for using
+        <ENAMEX TYPE="PERSON">feedback</ENAMEX> is that it reduces sensitivity of a system's
+        <ENAMEX TYPE="ORGANIZATION">behaviour</ENAMEX> to its parameter values.
+        In modelling biological <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, it is important that
+        this robustness also be in evidence. The particular
+        behaviour being characterized by the model should not rely
+        on precise values of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>'s parameters - for example,
+        reaction rate constants or <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> concentrations. In
+        particular, a precise measurement of these constants is
+        difficult whereas protein concentrations will vary from one
+        cell to another or throughout the lifetime of any
+        individual. Deviations from the nominal model parameter
+        values should not result in a loss of the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>'s
+        performance; thus, parameter sensitivity can be used to
+        validate mathematical models of biochemical system. That
+        is, the more insensitive the system response is to the
+        accuracy of the parameter, the more faith we should have in
+        the model [ <TIMEX TYPE="DATE">25</TIMEX> ] .
+        In looking at certain classes of behaviour, where
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> changes in the stability of the system are
+        possible, bifurcation diagrams provide an elegant means of
+        evaluating robustness. For example, in evaluating the
+        robustness of the model of <ENAMEX TYPE="ORGANIZATION">Laub</ENAMEX> and <ENAMEX TYPE="PERSON">Loomis</ENAMEX>, of primary
+        importance is determining whether the oscillatory behaviour
+        will persist if the parameter values are altered. This
+        qualitative difference in performance - from limit cycle
+        <ENAMEX TYPE="ORGANIZATION">oscillations</ENAMEX> to constant steady <ENAMEX TYPE="GPE_DESC">states</ENAMEX> - can be quantified
+        and compared across parameters or from <NUMEX TYPE="CARDINAL">one</NUMEX> model to
+        another. Once the robustness of the oscillatory behaviour
+        is established, further investigations of the robustness of
+        some of the oscillatory features, for example frequency and
+        <ENAMEX TYPE="ORGANIZATION">amplitude</ENAMEX> can further be evaluated.
+        From the bifurcation diagrams obtained for each of the
+        <NUMEX TYPE="CARDINAL">fourteen</NUMEX> parameters, we know that oscillations exist only
+        in a limited range around the nominal value. We find the
+        system to be quite sensitive to variations in 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">4 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">10</TIMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">14</TIMEX> and mostly insensitive to the others.
+        Single-parameter bifurcation analysis also shows that the
+        amplitude of the oscillation is greatly affected by the
+        variation of <NUMEX TYPE="CARDINAL">9</NUMEX> parameters ( 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">4 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">6 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">7 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">10</TIMEX> , 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">11</TIMEX> , 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">12</TIMEX> , and 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">14</NUMEX> ).
+        Based on the SSV stability to interpret multiple
+        parameter sensitivity, we can conclude that robust
+        stability of the periodic orbits will be maintained,
+        provided that
+        
+        Since the uncertainty matrix consists only of diagonal
+        <ENAMEX TYPE="PERSON">entries</ENAMEX>, this bound applies to each of the individual
+        parameters. Thus, we can guarantee that the system will be
+        robustly stable provided that no single parameter differs
+        more than <NUMEX TYPE="PERCENT">8.3%</NUMEX> from its nominal value.
+        In our analysis we found a large gap between μ 
+        upper and our lower bound for <ENAMEX TYPE="ANIMAL">μ</ENAMEX>. As
+        we later show, for this system the upper bound is fairly
+        tight, as we are able to obtain a destabilizing
+        perturbation of size <NUMEX TYPE="PERCENT">9%</NUMEX>. For general biological models, a
+        <ENAMEX TYPE="ORGANIZATION">robustness</ENAMEX> measure based on the upper bound μ 
+        upper may also be more appropriate.
+        <ENAMEX TYPE="ORG_DESC">Robustness</ENAMEX> bounds for systems in which arbitrarily
+        slowly-time-varying parameter values are allowed are known
+        [ <TIMEX TYPE="DATE">26</TIMEX> ] . For these systems it has been shown that the
+        bounds converge as the time-variations approach <NUMEX TYPE="CARDINAL">zero</NUMEX> to the
+        upper bound μ 
+        upper [ <TIMEX TYPE="DATE">26</TIMEX> ] . Since many of the
+        parameters in models of biochemical <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> represent
+        features that will vary over time, such as enzyme
+        <ENAMEX TYPE="PERSON">concentrations</ENAMEX>, this <ENAMEX TYPE="PER_DESC">number</ENAMEX> may therefore be more
+        indicative of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>'s true robustness.
+        The ability to consider the effect of time-variations on
+        the robustness of the system is one great advantage of the
+        <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> over other methodologies. One drawback of the SSV
+        approach compared to the bifurcation theory is that it does
+        not provide the precise combination of parameters that
+        destabilizes the system - only its size. Also, since the
+        upper bound is only sufficient to guarantee robustness,
+        this number may, in general, give an overly conservative
+        notion of robustness.
+        It must be emphasized that the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> approach denoted here
+        is based on the linearized model of the system. For some
+        classes of systems this linearization may not be possible -
+        in this case, the linear <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> approach documented here will
+        not be applicable. However, for most <ENAMEX TYPE="PER_DESC">models</ENAMEX> used to
+        describe biochemical reactions, this should not be a
+        problem.
+        Because we are concentrating exclusively on the local
+        stability of the linearized model, important parameters of
+        the oscillatory behaviour such as robustness of the
+        frequency and amplitudes of oscillation are not evaluated.
+        Also, the effect of parameter variations on the equilibrium
+        orbit are omitted. In particular, varying the kinetic
+        parameters will change the behaviour of the system in two
+        different ways: the equilibrium periodic orbit will change
+        and the stability of deviations about this orbit will also
+        change. The SSV allows <NUMEX TYPE="CARDINAL">one</NUMEX> to quantify the robustness of
+        the <NUMEX TYPE="ORDINAL">second</NUMEX> of these <NUMEX TYPE="CARDINAL">two</NUMEX> effects. It does not say anything
+        directly regarding the effect of parameter variations on
+        the equilibrium periodic orbit. <NUMEX TYPE="CARDINAL">One</NUMEX> way of bounding the
+        effect of these parameter changes is to write the original
+        differential equation as
+        ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+        f ( 
+        x , 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )
+        where 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> + δ is the set of kinetic parameters
+        with nominal values 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> . If the nominal periodic orbit (when
+        <ENAMEX TYPE="PER_DESC">δ</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>) is given by
+        
+        x *( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+        x ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) - 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> )
+        then, linearizing about this orbit yields
+        
+        <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+        A ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">δ</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) + 
+        v 
+        where δ is a constant vector that includes the effect of
+        this parametric uncertainty. Thus, the system can be
+        considered as being perturbed by a constant input signal 
+        <ENAMEX TYPE="PERSON">v</ENAMEX> . Provided that the homogeneous
+        <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> is exponentially stable (and this is guaranteed by
+        the existence of a stable limit cycle) and that 
+        <ENAMEX TYPE="PERSON">v</ENAMEX> is not "too large", the perturbed
+        <ENAMEX TYPE="ORGANIZATION">system</ENAMEX>'s <ENAMEX TYPE="GPE_DESC">state</ENAMEX> will remain in a neighbourhood of the origin
+        if the 
+        f ( 
+        x , 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) in the original equation is
+        reasonably well behaved in 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> . Detailed bounds and conditions on
+        
+        f are given in <ENAMEX TYPE="GPE">Theorem</ENAMEX> <NUMEX TYPE="CARDINAL">5.1</NUMEX> of [ <TIMEX TYPE="DATE">17</TIMEX> ]
+        , though it should be emphasized that these bounds tend to
+        be overly conservative in practice.
+        To illustrate the local nature of the <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> analysis for
+        this system, we perturbed the system parameters by varying
+        amounts. The particular parameters were either increased or
+        decreased so as to bring them closer to the Hopf
+        <ENAMEX TYPE="ORGANIZATION">bifurcation</ENAMEX>. For example, the nominal value of 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="PRODUCT">1</ENAMEX> is closer to 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         
+        <TIMEX TYPE="TIME">1 than to</TIMEX> 
+        <ENAMEX TYPE="PRODUCT">1</ENAMEX> so that we reduced 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> whereas 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="PRODUCT">4</ENAMEX> is closer to 
+        <TIMEX TYPE="TIME">4 than to</TIMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+         
+        <ENAMEX TYPE="PRODUCT">4</ENAMEX> so we increased 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> . In <ENAMEX TYPE="GPE">Fig</ENAMEX>. 7we show the response of
+        these systems to changes of <NUMEX TYPE="PERCENT">7% and 9%</NUMEX> both for the
+        <ENAMEX TYPE="ORGANIZATION">linearized</ENAMEX> system - where the linearized response has been
+        superimposed on the nominal limit cycle (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 7A) and the
+        original non-linear system (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 7B). For the smaller
+        value, the linearized response is stable and we see that,
+        after a transient, the response settles to the nominal
+        limit cycle. We also see this same behaviour in the
+        response of the non-linear system with this level of
+        parameter perturbation. For a <NUMEX TYPE="PERCENT">9%</NUMEX> change in the parameters,
+        however, the linearized system is unstable. We see this as
+        a deviation from the nominal limit cycle. In the non-linear
+        <ENAMEX TYPE="ORGANIZATION">system</ENAMEX>'s response, this translates into an end to the
+        stable limit cycle. The response does not "blow up" but
+        instead settles into a fixed point.
+        This example illustrates how a robustness analysis of
+        the linearized system can be used to deduce the robustness
+        of the original non-linear system, as it shows that when
+        the linearized system is unstable, the desired behaviour of
+        the non-linear system will no longer be present. This
+        example also points out the fact that the upper bound μ 
+        <ENAMEX TYPE="ORGANIZATION">upper �</ENAMEX>�� <NUMEX TYPE="PERCENT">8.3%</NUMEX> is not overly
+        conservative for this system as we were able to produce a
+        destabilizing perturbation of size <NUMEX TYPE="PERCENT">9%</NUMEX>.
+        Finally, we note that multiparametric robustness
+        analysis considered here is based on local <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> of
+        the dynamical system, since we are evaluating the
+        robustness of the linearized model. Extensions to the
+        <ENAMEX TYPE="ORGANIZATION">non-linear</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are the subject of active investigation [
+        <NUMEX TYPE="CARDINAL">27</NUMEX> ] .
+        However, it is by combining the robustness analysis of
+        both single and multiple parameters, we can obtain a more
+        thorough understanding of the region of stability of the
+        periodic solution in the high dimensional parameter space
+        and use this to improve upon the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. In this particular
+        example, we find that the system's robustness is governed
+        by several "robustness limiting" parameters, 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">4 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">10</TIMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+        <TIMEX TYPE="DATE">14</TIMEX> .
+      
+      
+        Conclusions
+        Determining the robustness of mathematical models of
+        biological systems is important for several reasons. First,
+        there is growing evidence that many aspects of the networks
+        being modelled have evolved in such a way so that they are
+        robust as this allows them to tolerate natural variations
+        in the environment. Thus, <ENAMEX TYPE="PER_DESC">faithful models</ENAMEX> should replicate
+        this robustness. <NUMEX TYPE="ORDINAL">Second</NUMEX>, robustness of the models provide a
+        means of validating model quality since the performance of
+        the <ENAMEX TYPE="PER_DESC">models</ENAMEX> should not rely on precisely tuned parameter
+        values that are impossible - or at best - difficult to
+        measure exactly.
+        In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we illustrated the use of <NUMEX TYPE="CARDINAL">two</NUMEX> tools
+        developed in dynamical systems theory and control
+        engineering to assess robustness quantitatively. For an
+        example, we considered an oscillatory molecular network
+        model due to <ENAMEX TYPE="ORGANIZATION">Laub</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Loomis</ENAMEX> that aims at describing
+        oscillatory behaviour in cAMP signalling observed in the
+        <ENAMEX TYPE="ORGANIZATION">social</ENAMEX> amoeba 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> discoideum. This behaviour appears
+        as a stable limit cycle of the equations describing the
+        model. We have evaluated the degree to which this limit
+        cycle is robust to variations in all the system
+        parameters.
+        The robustness of the oscillatory behaviour to single
+        parameter variations was quantified using bifurcation
+        analysis. Using the bifurcation analysis software tool <ENAMEX TYPE="ORGANIZATION">AUTO</ENAMEX>
+        we determined that single parameter changes as small <NUMEX TYPE="PERCENT">as 20%</NUMEX>
+        from the nominal value can cause the limit cycle to
+        disappear and a stable equilibrium to appear. In addition
+        to the stability robustness, <ENAMEX TYPE="ORGANIZATION">AUTO</ENAMEX> is also able to evaluate
+        the sensitivity of the amplitude of the oscillation to
+        these parameter changes.
+        To investigate the robustness of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to
+        simultaneous changes in parameter values, the structured
+        singular value (SSV) analysis tool was used. Once the
+        <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> was in the correct framework for <ENAMEX TYPE="ORGANIZATION">SSV</ENAMEX> analysis, we
+        were able to determine that the system can only tolerate
+        very small changes in the parameter values - in the order
+        of <NUMEX TYPE="PERCENT">8%</NUMEX> - if we allow these parameters to vary with time
+        arbitrarily slowly.
+        Finally, it is important to note that to understand
+        completely the robustness <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> of a model, it is
+        appropriate to combine single and multiple parameter
+        sensitivity analyses.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">LM</ENAMEX> carried out the computational studies and analysis.
+        <ENAMEX TYPE="PERSON">PAI</ENAMEX> conceived of the study and participated in its design
+        and coordination. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

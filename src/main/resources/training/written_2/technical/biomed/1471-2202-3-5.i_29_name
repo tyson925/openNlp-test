@@ -1,0 +1,910 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">Circadian</ENAMEX> clocks located within metazoan brains have
+        been a focus of investigation for <TIMEX TYPE="DATE">decades</TIMEX> [ <NUMEX TYPE="CARDINAL">1 2 3 4</NUMEX> ] .
+        Such clocks are compelling in part because they influence
+        timing across many levels of analysis; they are driven by
+        molecular <ENAMEX TYPE="PER_DESC">elements</ENAMEX> whose concerted output, in the form of
+        neuronal signaling, controls physiology and behavior [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+        . Recently, the presence of circadian clocks in peripheral
+        <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX> has been established in the fruitfly as well as in
+        lower vertebrates and mammals [ <NUMEX TYPE="CARDINAL">6 7 8 9</NUMEX> ] . For example, in
+        
+        Drosophila such clock functions have
+        been demonstrated in antennae, wings, legs, a neuro-humoral
+        gland, and internal excretory structures [ <ENAMEX TYPE="LAW">6 10 11</ENAMEX> ] . But
+        it is unknown whether time-keeping mechanisms are identical
+        wherever clocks are found within an <ENAMEX TYPE="ANIMAL">animal</ENAMEX>. While it
+        appears that the same molecules previously identified as
+        clock components in the brain give rise to clock function
+        in the periphery, it is not yet known whether clock genes
+        and their encoded <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> act and interact in the same
+        manner wherever they are expressed. Similarly, although
+        circadian pacemaker cells in the 
+        Drosophila brain have been
+        characterized anatomically as discrete clusters of cells
+        called the <ENAMEX TYPE="PRODUCT">Lateral Neurons</ENAMEX> [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] , the identity of
+        clock <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in the tissues we studied is unknown. The same
+        can be said about the function of these clocks: while
+        circadian clock <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in the brain control behavioral
+        rhythms, the biological functions of clocks in peripheral
+        tissues are minimally understood, except perhaps in the
+        case of the antenna [ <TIMEX TYPE="DATE">14</TIMEX> ] .
+        Analysis of genetic and molecular mechanisms underlying
+        <ENAMEX TYPE="ORGANIZATION">circadian</ENAMEX> clocks in whole <ENAMEX TYPE="ANIMAL">animals</ENAMEX> or isolated tissues is
+        facilitated by the use of molecular <ENAMEX TYPE="PER_DESC">reporters</ENAMEX>, such as
+        firefly 
+        <ENAMEX TYPE="ORGANIZATION">luciferase</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> ). The use of firefly- 
+        <ENAMEX TYPE="ORGANIZATION">luciferase</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> ) as a real-time molecular
+        <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> of gene expression has been illustrated in a
+        variety of model systems including cyanobacteria, <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>, 
+        Drosophila , and mammals [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX>
+        <NUMEX TYPE="CARDINAL">18</NUMEX> ] . This method has proved especially valuable in
+        studies about molecular <ENAMEX TYPE="PER_DESC">rhythms</ENAMEX> because real-time
+        expression of clock genes and other chronobiological
+        factors may be monitored over <TIMEX TYPE="DATE">many daily</TIMEX> cycles 
+        in vivo [ <NUMEX TYPE="CARDINAL">17 6 19 20 21</NUMEX> ] .
+        Applications of this technique are varied. For example, 
+        <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> have been employed to
+        identify previously unappreciated genes that are involved
+        in circadian timing [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ] as well as to demonstrate the
+        presence of circadian clocks in isolated 
+        Drosophila tissues.
+        We previously employed 
+        <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> reporting to study the effects of
+        a 
+        cryptochrome mutation ( 
+        cry 
+        b ), concentrating on clock gene
+        expression in isolated antennal pairs from 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] . Earlier studies
+        established that 
+        cry encodes a 'deep-brain' element of
+        the photoreceptive pathway to the circadian clock [ <NUMEX TYPE="CARDINAL">24 25</NUMEX>
+        <NUMEX TYPE="CARDINAL">26</NUMEX> ] . But our study suggested a different role for 
+        cry in the periphery, because
+        antennal rhythmicity in mutant specimens was dramatically
+        reduced in constant darkness [ <TIMEX TYPE="DATE">23</TIMEX> ] , an effect that is not
+        consistent with the idea that the encoded <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">CRY</ENAMEX>)
+        functions solely as a photoreceptor for the circadian
+        system [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] .
+        While carrying out those studies, we became aware that
+        there are interesting features of these peripheral <ENAMEX TYPE="ORG_DESC">rhythms</ENAMEX>,
+        like the phase of peak expression, for example, that we
+        were unable to compare rigorously amongst body parts. Such
+        concerns motivated us to develop a set of tools for the
+        analysis of circadian rhythms [ <TIMEX TYPE="DATE">27</TIMEX> ] . Here we apply two
+        key features of this analytic package that were unavailable
+        for <TIMEX TYPE="DATE">our earlier</TIMEX> report on the effects of 
+        cry 
+        b in the periphery [ <TIMEX TYPE="DATE">23</TIMEX> ] . <NUMEX TYPE="ORDINAL">First</NUMEX> is
+        a method to eliminate nonlinear trends in the data, a
+        potential <ENAMEX TYPE="PER_DESC">source</ENAMEX> of artifact that could affect whether 
+        luciferase activity is scored as
+        rhythmic or arrhythmic. Figure 1illustrates how rhythmicity
+        generated by <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">antennal pair</ENAMEX> is extracted from rather
+        weak output by the application of appropriate analytic
+        tools. In addition, the normalization procedure facilitates
+        comparisons between rhythms from different tissues by
+        reducing the scale of the output to a mean of <NUMEX TYPE="CARDINAL">one</NUMEX> for each
+        case (see Results). <NUMEX TYPE="ORDINAL">Second</NUMEX>, we were not previously able to
+        examine effects of a given variable (genotype, <ENAMEX TYPE="PER_DESC">body</ENAMEX> part)
+        on circadian phase. The application of circular statistics
+        to these data allows us to evaluate such effects.
+        Our earlier conclusions [ <TIMEX TYPE="DATE">23</TIMEX> ] have been substantially
+        buttressed by the new features of these time-series
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX>: With respect to its effects on clock-gene
+        cyclings, the 
+        cry 
+        b mutation significantly reduces the
+        number of rhythmic antennal pairs, <ENAMEX TYPE="PER_DESC">heads</ENAMEX>, <ENAMEX TYPE="PER_DESC">bodies</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">forelegs</ENAMEX> (but not wings) compared with 
+        cry +controls. Moreover, we have
+        intensified the analysis of the rhythmic specimens and thus
+        observed that parameters of rhythmicity are altered in the
+        subset of rhythmic mutant specimens. Among the new findings
+        that have emerged from the current analyses, the most
+        salient are that (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) 
+        cry 
+        b has a significant effect on the
+        phase of clock gene expression in rhythmic peripheral
+        <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>; and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) in isolated 
+        cry +tissues, the relationship
+        between the peak phase time of 
+        luc -reported expression from 
+        per and 
+        <ENAMEX TYPE="PERSON">tim</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (respectively) varies such
+        that the peaks are indistinguishable in antennae and they
+        differ significantly in wings or forelegs, for example. The
+        findings reported here strengthen the hypothesis that clock
+        mechanisms in the periphery differ from each other as well
+        as from those operating in the central nervous system of 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] .
+      
+      
+        Results
+        
+          Effects of cry b on rhythms in isolated clock
+          tissues under light-dark cycles
+          We evaluated these various isolated tissues under a
+          series of successive <NUMEX TYPE="CARDINAL">12-hr</NUMEX>-<NUMEX TYPE="CARDINAL">light12</NUMEX>-<NUMEX TYPE="CARDINAL">hr</NUMEX>-dark cycles (LD
+          <TIMEX TYPE="TIME">12:12</TIMEX>). These environmental conditions are the least
+          likely to reveal deficits in the pattern of clock gene
+          expression because the light-dark cycle provides a
+          dominant stimulus to the clock (clock time is normally
+          synchronized to this environmental cue) and is thought to
+          increase the amplitude of clock gene cycling [ <NUMEX TYPE="CARDINAL">20 28 29</NUMEX> ]
+          . Rhythmicity was assessed for each specimen by
+          autocorrelation analysis [ <NUMEX TYPE="CARDINAL">30 27</NUMEX> ] . This analysis
+          provides a quantitative estimate of rhythmicity with
+          statistical confidence; whereas the confidence interval
+          is based solely on the number of data points used in the
+          analysis without relying on the variability in the data
+          set or any other feature of the measured values, the
+          criterion for statistical confidence is the same for all
+          individual or <ENAMEX TYPE="ORG_DESC">group</ENAMEX> analyses within an experiment (see [
+          <NUMEX TYPE="CARDINAL">27</NUMEX> ] for more detail). In addition, the autocorrelation
+          read-outs may be used in a less stringent (and more
+          <ENAMEX TYPE="ORGANIZATION">subjective</ENAMEX>) manner to evaluate rhythmicity, based on the
+          shape of a given plot - even when statistical
+          significance is not achieved (see [ <TIMEX TYPE="DATE">27</TIMEX> ] for discussion
+          of this feature of applying autocorrelation). This
+          qualitative criterion is conservative from <NUMEX TYPE="CARDINAL">at least one</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">perspective</ENAMEX>: If we imagine that 
+          cry 
+          b 's effect might be an elimination
+          of 
+          per-luc and 
+          <ENAMEX TYPE="PERSON">tim-luc cyclings</ENAMEX> (given the
+          <ENAMEX TYPE="PERSON">mutant</ENAMEX>'s isolation phenotype [ <TIMEX TYPE="DATE">21</TIMEX> ] ), elementary
+          scrutiny of correlogram plots increases the chance that
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from a given specimen could be judged rhythmic,
+          thereby decreasing the likelihood that we would go
+          overboard in evaluating mutationally induced damage to
+          the clock system. Figure 2provides an example of why we
+          use a system of qualitative criteria to assess
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX>; while the correlogram of a pair of forelegs
+          shown on the top row indicates a statistically
+          significant rhythm, the foreleg pair shown on the bottom
+          row is tabulated as rhythmic even though the correlogram
+          does not achieve statistical significance. In an effort
+          to include any specimen that could be judiciously
+          apprehended as rhythmic, we applied this conservative
+          criterion to obtain the data shown in <ENAMEX TYPE="PRODUCT">Tables 1and 2</ENAMEX>. We
+          also show our analysis in graphic form for data averaged
+          from each tissue of a given type to illustrate effects of
+          
+          cry 
+          b in cases for which only the
+          rhythmic specimens were included (Figures <NUMEX TYPE="CARDINAL">3and 4</NUMEX>; also
+          see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Methods</ENAMEX>).
+          The 
+          cry 
+          b mutation significantly reduced
+          the number of rhythmic specimens for each of the body
+          parts we assayed as measured by both <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> in LD
+          <TIMEX TYPE="TIME">12:12</TIMEX>, with the exception of the <ENAMEX TYPE="ORG_DESC">wing</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 1and
+          <ENAMEX TYPE="CONTACT_INFO">Table 2</ENAMEX>). Moreover, whereas, on average, all of the 
+          luc -reported <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> were
+          significantly rhythmic in a 
+          cry +background, the minor fraction
+          of 
+          cry 
+          b specimens that appeared rhythmic
+          (based on the shape of the correlogram) were not always
+          significantly rhythmic on average. <ENAMEX TYPE="PRODUCT">Mutant</ENAMEX> rhythmicity
+          that passed muster in that manner was evident for both
+          <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> only in the <ENAMEX TYPE="ORG_DESC">wing</ENAMEX> and antennal pairs. In
+          addition, 
+          BG-luc; cry 
+          b (but not 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc; cry 
+          b ) cycles were significantly
+          rhythmic in the forelegs. Otherwise, the mutation
+          eliminated significant rhythmicity.
+          We were interested in whether the mutant specimens
+          that retained <ENAMEX TYPE="PER_DESC">rhythmicity</ENAMEX> appeared normal. In this
+          regard, a potentially more informative indication of the 
+          cry 
+          b effect was provided by the
+          <ENAMEX TYPE="ORGANIZATION">Rhythmicity</ENAMEX> Index (RI), an estimate of a rhythm's
+          strength that draws on the autocorrelation read-outs (see
+          Tables 1and <NUMEX TYPE="CARDINAL">2</NUMEX>; see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and <ENAMEX TYPE="PERSON">Methods</ENAMEX> as well as [ <NUMEX TYPE="CARDINAL">27</NUMEX>
+          <NUMEX TYPE="CARDINAL">31</NUMEX> ] for further discussion of this parameter). <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> values
+          indicated that the strengths of rhythmicity from the LD
+          <TIMEX TYPE="TIME">12:12 monitorings</TIMEX> were significantly lowered by 
+          cry 
+          b for both <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> and in all of
+          the body parts (<ENAMEX TYPE="PRODUCT">Table 1and Table 2</ENAMEX>). Thus, the 
+          cry 
+          b mutation reduces the strength of
+          <ENAMEX TYPE="ORGANIZATION">cycling</ENAMEX> in these body parts; in other words, these
+          rhythms are less robust than in the 
+          cry +controls.
+          In Figures <ENAMEX TYPE="CONTACT_INFO">3, 4, 5, 6</ENAMEX>, plots of average counts for
+          each tissue are presented, based on the rhythmic subset
+          of specimens tabulated in <ENAMEX TYPE="PRODUCT">Tables 1and</ENAMEX> 2for <ENAMEX TYPE="ORGANIZATION">LD</ENAMEX> <TIMEX TYPE="TIME">12:12</TIMEX>.
+          These average signals indicate once again that 
+          cry 
+          b impinges on clock-gene cyclings.
+          For example, with the exception of the 
+          BG-<NUMEX TYPE="CARDINAL">luc</NUMEX> -reported wing data shown in
+          Figure <TIMEX TYPE="DATE">4d</TIMEX>, simple inspection of the raw data column
+          suggests that 
+          cry 
+          b reduces or eliminates such
+          cyclings under <ENAMEX TYPE="LAW">LD 12</ENAMEX>:<NUMEX TYPE="MONEY">12</NUMEX> (compare the raw data for 
+          cry +v 
+          cry 
+          b for example, in Figure <TIMEX TYPE="DATE">3a</TIMEX>, <TIMEX TYPE="DATE">3b</TIMEX>, or
+          3c). The appearance of rhythmicity in the 
+          cry 
+          b specimens is mostly revealed
+          after detrending and normalization (see Figures <ENAMEX TYPE="CONTACT_INFO">3, 4, 5,</ENAMEX>
+          6the <NUMEX TYPE="ORDINAL">second</NUMEX> column labeled normalized). However, in the
+          case of <ENAMEX TYPE="PER_DESC">heads</ENAMEX> and <ENAMEX TYPE="PER_DESC">bodies</ENAMEX> - for which there were very few
+          rhythmic 
+          cry 
+          b samples (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>) - no
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX> is evident in the averaged plots. One
+          explanation for this could be that the separate rhythms
+          are not in phase with one another or are noisy; thus the
+          average may not appear to be rhythmic. Nevertheless,
+          applying autocorrelation to the averaged <TIMEX TYPE="TIME">time</TIMEX>-courses
+          revealed daily cyclings to have occurred in all cases
+          except for the average taken from the rhythmic subset of 
+          BG-luc; cry 
+          b bodies. These results show that
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX> is evident in the mean signal as well as when
+          it was initially tabulated on a specimen by specimen
+          basis (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Methods</ENAMEX>). Nevertheless, there
+          might not have been agreement between these <NUMEX TYPE="CARDINAL">two</NUMEX> views of
+          rhythmicity for any of the tissues (or between different
+          approaches to the analysis of phase as described below).
+          Although it is unlikely that arrhythmic specimens would
+          give rise to a mean rhythm, it is conceivable that
+          rhythmic specimens might give rise to an arrhythmic
+          mean.
+        
+        
+          Output from phase analysis
+          We measured the time of peak luciferase activity for
+          each of the <NUMEX TYPE="CARDINAL">five</NUMEX> daily cycles included in the monitoring
+          and analysis of a given specimen (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          Methods). A mean peak time (per day) was thereby
+          calculated for each specimen, with such a value taken as
+          the <ENAMEX TYPE="PER_DESC">representative</ENAMEX> phase for that specimen. One goal of
+          quantifying the molecular phases was to compare the
+          normal 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc time-course values to the 
+          BG-luc ones for each tissue in a 
+          cry +genetic background. For this,
+          we used circular statistics [ <NUMEX TYPE="CARDINAL">27 32</NUMEX> ] . Briefly, the
+          phase of each specimen is plotted as a time point
+          (Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>). An average vector is calculated based on
+          the distribution of phase points around the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> circle.
+          The angle of the vector corresponds to the mean phase for
+          the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of points, and the magnitude of the vector
+          represents the variability in the phase estimates [ <TIMEX TYPE="DATE">32</TIMEX> ]
+          . The <ENAMEX TYPE="PERSON">Watson-Williams</ENAMEX>-<ENAMEX TYPE="PERSON">Stevens</ENAMEX> statistic was applied to
+          evaluate whether <NUMEX TYPE="CARDINAL">two</NUMEX> such vectors are significantly
+          different from one another [ <TIMEX TYPE="DATE">32</TIMEX> ] . Significant
+          differences were evident in the phase of these <NUMEX TYPE="CARDINAL">two</NUMEX> clock
+          genes' cyclical expression under a light-dark cycle, for
+          all tissues except isolated antennal pairs and the heads
+          (see Figure <NUMEX TYPE="CARDINAL">7</NUMEX>) and <NUMEX TYPE="CARDINAL">8</NUMEX>.
+          From similar analyses performed on the 
+          BG-luc data in a 
+          cry +vs a 
+          cry 
+          b background, the mutation was
+          revealed to affect the phase of 
+          BG-<NUMEX TYPE="CARDINAL">luc</NUMEX> -reported cycling in all
+          tissues except <ENAMEX TYPE="PER_DESC">bodies</ENAMEX> (see Figure <NUMEX TYPE="CARDINAL">7</NUMEX>, and note that there
+          were <NUMEX TYPE="CARDINAL">only 4</NUMEX> or <NUMEX TYPE="CARDINAL">5</NUMEX> rhythmic 
+          BG-luc; cry 
+          b samples for analysis of <ENAMEX TYPE="PER_DESC">heads</ENAMEX> and
+          <ENAMEX TYPE="PERSON">bodies</ENAMEX>, respectively; and that neither one of the mean
+          <ENAMEX TYPE="PER_DESC">vectors</ENAMEX> representing these <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> is significant by
+          <ENAMEX TYPE="ORGANIZATION">Rayleigh</ENAMEX>'s test). Thus 
+          cry 
+          b 's effect on the phase of these
+          molecular rhythms is as potent as the effect on cycling
+          as such.
+          The analysis of phase presented in Figure <NUMEX TYPE="CARDINAL">7and</NUMEX> Figure
+          8relies on an average estimate of phase for each specimen
+          and it neglects any variability in the occurrence of
+          peaktime associated with the daily rhythm in
+          <ENAMEX TYPE="ORGANIZATION">bioluminescence</ENAMEX>. As noted above, the mean vectors
+          depicted within each <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="QUANTITY">8represent</NUMEX> a
+          vector average of the individual phase estimates with the
+          direction of the vector indicating the mean time and the
+          length of the vector indicating the variability
+          (<NUMEX TYPE="MONEY">dispersion</NUMEX>) of the estimates. An alternative analysis,
+          presented in Figures <NUMEX TYPE="CARDINAL">9</NUMEX>, <TIMEX TYPE="DATE">10</TIMEX>, preserves the intraspecimen
+          <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX>. This analysis, called a bivariate analysis [
+          <NUMEX TYPE="CARDINAL">32</NUMEX> ] , represents an individual specimen as a vector in
+          the <ENAMEX TYPE="PRODUCT_DESC">x-y plane</ENAMEX>. The position of each point (plotted as an
+          <ENAMEX TYPE="ORGANIZATION">asterisk</ENAMEX> or an open <ENAMEX TYPE="FAC_DESC">circle</ENAMEX>) is determined by the
+          variability of the occurrence of the peak for that
+          individual record. Thus, the points that fall on the
+          diameter of the <ENAMEX TYPE="PER_DESC">circle</ENAMEX> are precisely consistent from day
+          to day, while those falling closer to the origin indicate
+          greater variability. The position of the point within the
+          <ENAMEX TYPE="PERSON">circle</ENAMEX> describes the mean peak time for each specimen. In
+          this way, each point indicates the <ENAMEX TYPE="PER_DESC">head</ENAMEX> of a vector that
+          summarizes the phase for a particular specimen. The tail
+          of the vector would connect the point to the origin but
+          we do not plot the vectors this way because the figure
+          would be difficult to interpret. A statistical comparison
+          between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (in this case 
+          per-luc v 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc or 
+          per-luc; cry +v 
+          per-luc; cry 
+          b ) is obtained by first
+          calculating a mean vector that connects the origin to the
+          <ENAMEX TYPE="ORGANIZATION">center</ENAMEX> of the cloud of points defined by the respective
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> and then testing whether or not these
+          <ENAMEX TYPE="PER_DESC">representative vectors</ENAMEX> are different from one
+          another.
+          The results shown in Figures <NUMEX TYPE="CARDINAL">9and</NUMEX> 10are consistent
+          with those in Figure <NUMEX TYPE="CARDINAL">7and 8</NUMEX>, but the interpretation of
+          the figures is different. For example, Figure <TIMEX TYPE="DATE">8e</TIMEX>(on the
+          right) shows that the 
+          cry 
+          b mutation affects the mean peak
+          phase significantly; this difference is evident in the
+          distribution of the mean phase estimates estimates
+          plotted outside the <ENAMEX TYPE="FAC_DESC">circle</ENAMEX> on the right in Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>.
+          When these same 
+          <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> records are plotted using the
+          bivariate method as shown in Figures <NUMEX TYPE="CARDINAL">9</NUMEX>, <TIMEX TYPE="DATE">10</TIMEX>, both the
+          temporal distribution and the intraspecimen variability
+          determine the placement of individual points within the
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX> (on the right in Figure <NUMEX TYPE="CARDINAL">10e</NUMEX>). The plot in Figure
+          10eshows much more detail about the rhythmic output
+          generated by each specimen; it is clear that the 
+          cry +<ENAMEX TYPE="SUBSTANCE">forelegs</ENAMEX> produced a stable
+          rhythm in nearly all of the <NUMEX TYPE="CARDINAL">33</NUMEX> cases as indicated by the
+          presence of the asterisks on or near the edge of the
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX>. On the other hand, it is readily apparent from
+          this plot that the <NUMEX TYPE="CARDINAL">11</NUMEX> rhythmic 
+          cry 
+          b specimens are more variable in
+          the <TIMEX TYPE="DATE">daily</TIMEX> timing of peak phase because <NUMEX TYPE="CARDINAL">more than half</NUMEX> of
+          the points representing this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> are plotted within the
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX>, relatively closer to the origin than the 
+          cry +points. Nevertheless, the
+          statistical test that corresponds to the treatment of
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> depicted in Figures <TIMEX TYPE="DATE">9, 10only</TIMEX> tells us that the
+          phases are different; it is not possible to determine
+          whether this difference comes from the temporal
+          distribution or the variability or a combination of the
+          <NUMEX TYPE="CARDINAL">two</NUMEX>. Therefore, the interpretation of these <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          phase analyses is that there is a significant effect of 
+          cry 
+          b on the peak phase of the clock in
+          the foreleg (Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>) and that there is also an
+          effect of this variant on the mean occurrence of peak
+          phase (Figures <NUMEX TYPE="CARDINAL">9and 10</NUMEX>).
+        
+        
+          Effects of cry b on antennal rhythms in constant
+          darkness and constant temperature
+          Temporally varying LUC activity was examined for
+          <ENAMEX TYPE="ORGANIZATION">antennal</ENAMEX> pairs in constant darkness (<ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>) to assess
+          whether 
+          cry 
+          b affects <ENAMEX TYPE="PER_DESC">free-</ENAMEX>running rhythmicity.
+          As noted above, these rhythms may appear to be weaker in
+          constant conditions than under <ENAMEX TYPE="LAW">LD 12</ENAMEX>:<NUMEX TYPE="MONEY">12</NUMEX> (see <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          Earlier studies have shown that the amplitude of rhythms
+          in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> is reduced compared to <ENAMEX TYPE="ORGANIZATION">LD</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] . These
+          observations could reflect a weakening of synchrony
+          between, for example, the <NUMEX TYPE="CARDINAL">two</NUMEX> antennae within a well, or
+          between multiple clock cells within a specimen. But the
+          method for monitoring 
+          luc activity can also contribute to
+          the appearance of damping within a record.
+          <ENAMEX TYPE="ORGANIZATION">Linear</ENAMEX> as well as nonlinear trends in the data come
+          into play in experiments using luciferase <ENAMEX TYPE="PER_DESC">reporter</ENAMEX>
+          technology [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] . Such artifacts were shown (in one
+          substrate replenishment experiment) to be the result of
+          inevitable depletion of luciferin from the medium
+          surrounding the tissues over time [ <TIMEX TYPE="DATE">19</TIMEX> ] . Removal of
+          these trends quantitatively clarifies the record of
+          bioluminescent activity with regard to any rhythmicity
+          that might be present [ <TIMEX TYPE="DATE">27</TIMEX> ] . The normalization
+          procedure we use (see Figure <NUMEX TYPE="ORDINAL">1and</NUMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] for more detail)
+          exposes the rhythm (if one is present) in a manner that
+          is quantifiable without reference to the type of
+          measurement that has been employed (for example,
+          counts-per<TIMEX TYPE="TIME">-second</TIMEX> metric on the ordinate of the relevant
+          <ENAMEX TYPE="PERSON">plots</ENAMEX> becomes dimensionless). One salutary consequence is
+          that comparisons between <ENAMEX TYPE="PER_DESC">groups</ENAMEX> - differing, for example,
+          by <ENAMEX TYPE="PER_DESC">body</ENAMEX> part-are based on the nature of the rhythmicity
+          per se (independent of tissue-dependent levels of overall
+          reporter expression). Therefore, the use of computational
+          techniques to detrend and normalize the signals permitted
+          us to extract and characterize rhythms for comparative
+          analysis - clearing out other features that were deemed
+          relatively unimportant in terms of the manner by which
+          tissue-type, background genotype, or <ENAMEX TYPE="SUBSTANCE">transgene</ENAMEX> type would
+          influence the appreciation of these clock-gene
+          <ENAMEX TYPE="ORGANIZATION">cyclings</ENAMEX>.
+          As indicated in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, the effects of 
+          cry 
+          b in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> are consistent with its
+          effects in <TIMEX TYPE="TIME">LD 12:12</TIMEX>. In constant conditions, the mutation
+          significantly reduced the number of rhythmic antennal
+          pairs for both <ENAMEX TYPE="PER_DESC">reporters</ENAMEX>. However, degrees of rhythmicity
+          were also impinged on by the conditions alone, in that
+          only the 
+          BG-luc; cry +<ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> were
+          significantly rhythmic on average.
+          From a more quantitative perspective, the mean RI
+          value resulting from the <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> monitorings was decreased by
+          an order of magnitude in the 
+          cry 
+          b mutation compared to 
+          cry +for 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc as well as 
+          BG-luc activity (see <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). This
+          effect of 
+          cry 
+          b is further underscored by an
+          analogous effect on rhythm amplitude. The measures of
+          mean amplitudes given in <ENAMEX TYPE="PRODUCT">Tables 1and 2stem</ENAMEX> from computing
+          the distances (as graphed) from <TIMEX TYPE="DATE">the peak</TIMEX> (or trough) to
+          the "mean line" running through plots of the detrended
+          and normalized signals, 
+          cry 
+          b caused amplitude decrements for
+          the time-courses mediated by expression of both 
+          luc -fusion <ENAMEX TYPE="SUBSTANCE">transgene</ENAMEX> types (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          This 
+          cryptochrome mutation produced
+          dramatic effects on the phase of both <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>:
+          The mean-phase values were estimated to occur <NUMEX TYPE="CARDINAL">more than 7</NUMEX>
+          <TIMEX TYPE="TIME">hours</TIMEX> earlier for 
+          cry 
+          b antennae compared to the 
+          cry +appendages. This effect of 
+          cry 
+          b indicates that the gene may
+          contribute to regulation of the endogenous phase for the
+          antennal clock. Alternatively, the extreme difference in
+          phase could indicate the loss of synchrony between
+          multiple clock cells within the antennae consistent with
+          the large decrease seen in the RI value. These results
+          suggest that 
+          cry may normally play a role in the
+          determination of clock time or, alternatively, that it
+          may act to synchronize clock time between individual
+          clock cells.
+          Previous studies of <ENAMEX TYPE="PER_DESC">cryptochrome</ENAMEX>'s chronobiological
+          role in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> emphasized that <ENAMEX TYPE="ORGANIZATION">CRY</ENAMEX> may
+          function as a deep brain photoreceptor involved in
+          mediating resetting of the clock by light [ <TIMEX TYPE="DATE">26</TIMEX> ] .
+          Support for this hypothesis came from the observation
+          that locomotor-activity rhythms in 
+          cry 
+          b flies are unaffected in constant
+          darkness and also maintain rhythmicity under constant
+          light, a condition that causes behavioral arrhythmicity
+          in the wild type [ <TIMEX TYPE="DATE">33</TIMEX> ] . While antennal rhythms of gene
+          expression and of odor sensitivity in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> are
+          significantly attenuated in 
+          cry 
+          b tissues ( [ <TIMEX TYPE="DATE">23</TIMEX> ] , unlike
+          locomotor rhythmicity [ <TIMEX TYPE="DATE">21</TIMEX> ] ), it remained possible that
+          such effects are due to an altered role of light on the
+          developing clock. To address this possibility, we reared
+          experimental <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and prepared antennal samples in a
+          temperature cycle (<ENAMEX TYPE="CONTACT_INFO">27°C:18°C</ENAMEX>) in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> and then tested the
+          antennal <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> in constant darkness at a constant warm
+          <ENAMEX TYPE="CONTACT_INFO">temperature 27°</ENAMEX> (here called HH - for constant high
+          temperature - to distinguish this experiment from the
+          <ENAMEX TYPE="ORGANIZATION">standard LD</ENAMEX> rearing-><ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> tests described above).
+          As shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, the effects of 
+          cry 
+          b on molecular <ENAMEX TYPE="PER_DESC">rhythmicity</ENAMEX> in HH
+          are similar to what was observed in the <ENAMEX TYPE="ORGANIZATION">LD</ENAMEX> and (standard)
+          <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> monitorings. The number of rhythmic specimens was
+          significantly reduced by the mutation for both 
+          BG-<NUMEX TYPE="CARDINAL">luc</NUMEX>- and 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-<NUMEX TYPE="CARDINAL">luc</NUMEX>- reported rhythms. However,
+          very few of the rhythmic specimens, among either 
+          cry +or 
+          cry 
+          b antennal pairs, was significantly
+          <ENAMEX TYPE="PERSON">periodic</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Further, unlike what was found in
+          the other conditions, the <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> values stemming from the HH
+          test were similar across genotypes and <ENAMEX TYPE="PER_DESC">reporters</ENAMEX>.
+          Similiarly, there was no effect of the 
+          cry 
+          b mutant on the amplitude of the
+          normalized rhythmic output of our <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> in these
+          experiments (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          A combined effect of the temperature regimen together
+          with that of 
+          cry 
+          b was detected on the phase of
+          molecular cycling: A mutationally induced difference of
+          <TIMEX TYPE="TIME">2.5 hours</TIMEX> was observed in <ENAMEX TYPE="ORGANIZATION">HH</ENAMEX> as opposed to <TIMEX TYPE="TIME">7 hours</TIMEX> in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>.
+          The direction of the 
+          cry 
+          b -induced phase modification was
+          the same as that observed in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> at a lower temperature.
+          More generally (and aside from the genotypic effect),
+          high:low entrainment, followed by subjecting these
+          isolated appendages to a constant high temperature,
+          caused a phase effect: <ENAMEX TYPE="ORGANIZATION">Peak</ENAMEX> times of LUC-reported
+          cyclings were shifted <NUMEX TYPE="CARDINAL">4</NUMEX> or <TIMEX TYPE="TIME">6 hours</TIMEX> earlier in the HH
+          tests - respectively, for 
+          BG-luc; cry +and 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc; cry +<NUMEX TYPE="CARDINAL">antennae</NUMEX> - compared
+          with the results of <ENAMEX TYPE="ORGANIZATION">LD</ENAMEX> rearing and <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> monitoring.
+        
+      
+      
+        Discussion
+        We have developed a tool kit for the analysis of
+        cyclical data [ <TIMEX TYPE="DATE">27</TIMEX> ] and here have applied it to molecular
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> involving circadian clocks in isolated tissues of 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> features of this
+        approach: the evaluation of rhythmicity and the evaluation
+        of phase, have been emphasized.
+        The first prominent feature is the application of
+        filters for normalizing and detrending the raw time-course
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Such a preparation may indicate whether or not a
+        rhythmic signal is present, as shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+        Subsequent criteria are evaluated by means of the
+        autocorrelation function to determine whether a rhythm is
+        present in the data and, if so, whether it is statistically
+        significant. However, we do not rely on statistical
+        significance as an absolute test of rhythmicity. On the one
+        hand, statistical confidence provides a quantitative
+        standard that removes <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> bias; on the other hand,
+        biological signals can fail this test while still
+        displaying the features of rhythmicity. We have adopted a
+        strategy for addressing this complexity based on several
+        criteria as discussed in the companion paper [ <TIMEX TYPE="DATE">27</TIMEX> ] . The
+        overall approach is somewhat subjective, yet it is
+        systematic and does not rely on an arbitrary decision about
+        <ENAMEX TYPE="ORGANIZATION">periodicity</ENAMEX> in the data. We evaluate each record - blind to
+        treatment or genotype - as raw data or <ENAMEX TYPE="DISEASE">normalized</ENAMEX>/detrended
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. If the shape of the autocorrelation function displays
+        <ENAMEX TYPE="ORGANIZATION">periodicity</ENAMEX> (a sinusoidal pattern) in the circadian range,
+        we accept the presence of rhythmicity and quantify the
+        strength of the rhythm using the RI value. In addition, we
+        keep track of which samples are significantly rhythmic and
+        which samples are not with the RS metric (see Tables 1and
+        2for examples). Although we go into this matter more
+        thoroughly in the companion paper, we reiterate here that
+        this subjective use of the autocorrelation function to
+        establish rhythmicity is not unprecedented; in fact, it has
+        been recommended as a valid approach to situations like our
+        experiments where the number of data points is relatively
+        small [ <TIMEX TYPE="DATE">30</TIMEX> ] . In general, it must be noted that the use of
+        both tabulated and averaged data also supports this
+        approach. For example, the average of the <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> values given
+        for the rhythmic 
+        per-luc <ENAMEX TYPE="SUBSTANCE">antennal samples</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">LD</ENAMEX> as
+        indicated in <ENAMEX TYPE="PRODUCT">Table 2is</ENAMEX> lower than the <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> values shown for
+        the mean signal presented in Figure <TIMEX TYPE="DATE">3a</TIMEX>. This difference
+        occurs because the rhythmicity expressed by individual
+        samples within the respective <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> is similar and the
+        averaging process (portrayed in the plotted data shown in
+        Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>) tends to strengthen the rhythms in question and
+        to eliminate idiosyncracies within <TIMEX TYPE="DATE">a given record</TIMEX>.
+        Thus, we have quantified how the 
+        cry 
+        b mutation affects molecular
+        <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX> in <NUMEX TYPE="CARDINAL">two</NUMEX> ways. First, it reduces the number of
+        rhythmic peripheral-tissue specimens in all cases, except -
+        and most intriguing - for the <ENAMEX TYPE="ORG_DESC">wing</ENAMEX>. <NUMEX TYPE="ORDINAL">Second</NUMEX>, even when only
+        the rhythmic 
+        cry 
+        b versus 
+        cry +specimens are considered, the
+        former genotype causes a significant reduction of RI
+        values, with the exception of <NUMEX TYPE="CARDINAL">antennal</NUMEX> pairs whose
+        molecular time-<ENAMEX TYPE="FAC_DESC">courses</ENAMEX> were monitored at constant
+        temperature.
+        A variety of claims have been made about the phase of
+        clock gene expression in various tissues and cell types.
+        While immunohistochemical studies have suggested that the
+        course of wild-type 
+        per cycling may differ between
+        <ENAMEX TYPE="ORGANIZATION">photoreceptors</ENAMEX> and neurons in the central brain [ <TIMEX TYPE="DATE">34</TIMEX> ] ,
+        molecular studies have suggested that there is no
+        difference between the phase of 
+        per mRNA cycling in photoreceptors
+        vs. the rest of the head (<NUMEX TYPE="MONEY">35</NUMEX>). The interpretation of such
+        studies is complicated by the inability to assess phase
+        over several cycles within a specimen. However, even when
+        such measurements have been facilitated by the use of
+        real-time monitoring of 
+        luc -<ENAMEX TYPE="PER_DESC">reporters</ENAMEX>, there has been an
+        assertion that phase is essentially the same amongst
+        isolated tissues [ <TIMEX TYPE="DATE">19</TIMEX> ] . Nevertheless, given our
+        observation that the effects of the 
+        cry 
+        b variant may be tissue-specific, as
+        well as the use of both 
+        per-luc and 
+        <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc <ENAMEX TYPE="PER_DESC">reporters</ENAMEX>, we re-examined
+        this question quantitatively.
+        Thus, the <NUMEX TYPE="ORDINAL">second</NUMEX> analytic feature we emphasize is the
+        analysis of phase. We have applied <NUMEX TYPE="CARDINAL">two</NUMEX> complementary
+        approaches. The first approach uses circular statistics to
+        evaluate the distribution of peak phase estimates. The
+        <NUMEX TYPE="ORDINAL">second</NUMEX> approach uses a bivariate analysis that reveals
+        intraspecimen variability as well as mean peak time to test
+        differences in phase. Specifically, we applied these
+        methods to ask whether the two 
+        <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> ( 
+        BG-luc and 
+        <ENAMEX TYPE="PERSON">tim-luc</ENAMEX> ) peak at the same time in a 
+        cry +(and otherwise clock-normal
+        genetic background) and also whether the 
+        cry 
+        b mutation influences peak phase of
+        the 
+        BG-luc <ENAMEX TYPE="PER_DESC">reporter</ENAMEX>.
+        The observation of tissue-specific phase relationships
+        between 
+        per-luc and 
+        <ENAMEX TYPE="PERSON">tim-luc</ENAMEX>, along with the apparent
+        difference in the absolute timing of phase is not
+        surprising. Such differences could be explained both on the
+        basis of differences in cell types and differences in
+        function. Whereas peripheral clocks are not necessarily
+        <ENAMEX TYPE="ORGANIZATION">neuronal</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX> ] , it is conceivable that tissue specific
+        differences in the intracellular environment would force
+        different peak times on the clock mechanism. Further, based
+        on the tissue specific effects of 
+        cry 
+        b it is possible that the
+        configuration of a clock mechanism may vary between
+        different cell types. For example, the full ensemble of
+        clock factors present within these various tissues is not
+        yet known.
+      
+      
+        Conclusions
+        Following our previous development of a collection of
+        analytical tools for the study of molecular and behavioral
+        cycles [ <TIMEX TYPE="DATE">27</TIMEX> ] , we now provide intensively performed
+        examples of the analysis of molecular <ENAMEX TYPE="PER_DESC">rhythms</ENAMEX> in isolated
+        tissues from 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX>. In the main, but by no
+        means exclusively, the current analyses were applied to
+        published data revolving round effects of the 
+        cryptochrome <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> as it functions in 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX>'s circadian system [ <TIMEX TYPE="DATE">23</TIMEX> ]
+        . The results of the present study show that procedures for
+        <ENAMEX TYPE="ORGANIZATION">detrending</ENAMEX> and normalizing the data clarify the presence
+        versus absence of rhythmicity - which tend strongly to be
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with 
+        cry +functioning versus that
+        putatively remaining in the 
+        cry 
+        b mutant - as well as permitting a
+        more detailed understanding of the features accompanying a
+        given molecular time-course. Our conclusions from extended
+        and deepened analyses of these clock-gene cyclings are
+        consistent with those in the <TIMEX TYPE="DATE">earlier</TIMEX> report [ <TIMEX TYPE="DATE">23</TIMEX> ] ,
+        including the matter of peripheral-tissue <ENAMEX TYPE="ORG_DESC">rhythms</ENAMEX> being
+        dependent in part on CRY-mediated functions. Moreover,
+        current applications of our phase analysis uncovered new
+        <ENAMEX TYPE="PERSON">phenomena</ENAMEX>. These components of the tool-kit reveal that 
+        cry 
+        b alters the phase of 
+        period and 
+        timeless gene expressions, suggesting
+        further that - at least in the periphery - CRY plays a
+        quasi-central role in molecular <ENAMEX TYPE="PER_DESC">timekeeping</ENAMEX>. More broadly,
+        in peripheral tissues whose genotype was clock-normal,
+        phase differences that were evident among the different
+        body parts strengthen the notion that overall features of
+        the timekeeping mechanisms vary according to the local
+        molecular milieu. This is perhaps as it should be - because
+        why would a structure such as the antenna necessarily wish
+        to exhibit a maximum or mininim value for a given piece of
+        clock-output that might be the same as those elaborated
+        within the fly's legs?
+        The development of analytical strategies for analyzing
+        biological time-series will continue to be important as new
+        real-time methods (potentially including images of tissues)
+        provide greater access to molecular and physiological
+        cycles. Such strategies add depth as well as detail to the
+        study of biological time-keeping mechanisms.
+      
+      
+        Materials and Methods
+        Peripheral tissues were dissected from 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="PER_DESC">adults</ENAMEX> as described
+        in <ENAMEX TYPE="ORGANIZATION">Krishnan et al</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] . The 
+        per-luc (BG-luc) and 
+        <ENAMEX TYPE="PERSON">tim</ENAMEX>-<NUMEX TYPE="CARDINAL">luc</NUMEX> transgenic <ENAMEX TYPE="PLANT">strains</ENAMEX> were
+        originally described elsewhere [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] . Automated
+        monitorings of luciferase (LUC) activity were the same
+        previously described [ <NUMEX TYPE="CARDINAL">20 23</NUMEX> ] . All of the data from
+        light-dark cycles (LD <TIMEX TYPE="TIME">12:12</TIMEX>) and from constant darkness
+        (<ENAMEX TYPE="ORGANIZATION">DD</ENAMEX>) were from the <ENAMEX TYPE="ORGANIZATION">LUC</ENAMEX> <ENAMEX TYPE="ORG_DESC">monitorings</ENAMEX> reported in <ENAMEX TYPE="ORGANIZATION">Krishnan et</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">al</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] , although most of the pertinent data were not
+        separated as to 
+        per-luc versus 
+        <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc expressions, and many of the
+        results were included as supplementary material. Additional
+        
+        cry +specimens in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, which did
+        not appear in the <TIMEX TYPE="DATE">earlier</TIMEX> report, have been included here,
+        substantially to augment the appreciation of normal
+        clock-gene cycling in isolated tissues. We also include
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from additional experiments collected under constant
+        high temperature (<NUMEX TYPE="MONEY">27°C</NUMEX>) [ <TIMEX TYPE="DATE">23</TIMEX> ] . These data were collected
+        after the submission of the <TIMEX TYPE="DATE">earlier</TIMEX> report.
+        In these new experiments flies were reared in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> and in
+        temperature cycles (<TIMEX TYPE="TIME">12-hr 27°C: 12-hr 18°C</TIMEX>). <NUMEX TYPE="CARDINAL">One</NUMEX>-to-<NUMEX TYPE="CARDINAL">three</NUMEX>
+        day-old ether-anesthetized <ENAMEX TYPE="PER_DESC">males</ENAMEX> were collected and housed
+        for <TIMEX TYPE="DATE">2 days</TIMEX> in these same conditions before the antennal
+        pairs were dissected. The antennal pairs were placed
+        immediately in luciferin-containing <ENAMEX TYPE="PER_DESC">medium</ENAMEX> in <NUMEX TYPE="CARDINAL">96</NUMEX>-well
+        <ENAMEX TYPE="ORGANIZATION">plates</ENAMEX> and transferred to the luminometer (as described in
+        [ <TIMEX TYPE="DATE">23</TIMEX> ] ), where they were exposed to <NUMEX TYPE="CARDINAL">2</NUMEX> additional <TIMEX TYPE="DATE">days</TIMEX> of
+        the temperature-cycle in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> before being maintained at a
+        constant temperature of <ENAMEX TYPE="SUBSTANCE">27°C</ENAMEX> for the duration of the
+        LUC-monitoring runs.
+        The basic flow-chart for handling data from a given
+        <ENAMEX TYPE="ORGANIZATION">specimen</ENAMEX> and from an ensemble of like ones was as follows:
+        Each record was evaluated for an adequate level of
+        expression above 'no-<ENAMEX TYPE="PER_DESC">specimen</ENAMEX>' background to insure that
+        the tissue had survived and was producing valid data [<ENAMEX TYPE="SUBSTANCE">cf.</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">23</NUMEX> ] ]. If expression levels were adequate, the specimen
+        was assessed for rhythmicity. Temporally varying LUC
+        activity was detrended and normalized as described in
+        Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Next, autocorrelation analysis [ <TIMEX TYPE="DATE">30</TIMEX> ] was
+        performed to look for a rhythmic pattern of activity. The
+        <ENAMEX TYPE="ORGANIZATION">correlogram</ENAMEX> is a plot that reports correlation-coefficient
+        values on the vertical axis versus time-lags plotted on the
+        horizontal axis. Zero lag always provides a value of <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX>
+        because the correlation is perfect between the activity
+        record and a copy of itself at each point. However, as one
+        copy of the activity record is shifted along the time axis
+        (in either direction) by <NUMEX TYPE="CARDINAL">one</NUMEX> point (in other words, a lag
+        of <TIMEX TYPE="TIME">1 hour</TIMEX>), the correlation falls off. This process is
+        repeated, and a correlation coefficient is calculated for
+        the activity record against itself for each lag shown in
+        the correlogram (see bottom row of Figure <TIMEX TYPE="DATE">1for</TIMEX> an example).
+        If the correlation coefficients fall and rise in a periodic
+        fashion, resembling a sinusoidal curve, the record of LUC
+        activity is "rhythmic." As to whether such periodicity is
+        significant, a <NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval is calculated based
+        on the number of observations in the experiment. Rhythmic
+        activity is statistically significant if the peaks and
+        troughs of the autocorrelation function cross the boundary
+        set by the confidence interval centered at <NUMEX TYPE="CARDINAL">0</NUMEX> on the
+        <ENAMEX TYPE="ORGANIZATION">correlogram</ENAMEX> (for further detail see [ <TIMEX TYPE="DATE">27</TIMEX> ] and references
+        <ENAMEX TYPE="ORGANIZATION">therein</ENAMEX>). As noted above in Results text, we do not require
+        statistical significance to score a record as rhythmic. The
+        appearance of rhythmicity in the correlogram is applied as
+        a qualitative criterion so that we do not treat weakly
+        rhythmic data as arrhythmic data. The justification for
+        this strategy is given in <ENAMEX TYPE="ORGANIZATION">Levine et al</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] . In
+        addition, we keep track of the number of specimens that
+        generated statistically significant rhythms as indicated in
+        <ENAMEX TYPE="PRODUCT">Table 1and Table 2</ENAMEX>.
+        We quantify the strength of a rhythm with the
+        <ENAMEX TYPE="ORGANIZATION">aforementioned Rhythmicity</ENAMEX> Index. <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> is the height of the
+        <NUMEX TYPE="ORDINAL">third</NUMEX> peak of the correlogram [ <NUMEX TYPE="CARDINAL">27 31</NUMEX> ] . Whereas the
+        confidence interval for the correlogram is based solely on
+        the number of observations, the RI value is based on the
+        robustness of any regular fluctuations in the data. For
+        example, we record LUC activity <TIMEX TYPE="TIME">every hour</TIMEX>. If we increased
+        the sampling frequency from once every <TIMEX TYPE="TIME">60 minutes</TIMEX> to once
+        <TIMEX TYPE="TIME">every 30 or 15 minutes</TIMEX>, the confidence interval would
+        become smaller while the shape and amplitude of the
+        <ENAMEX TYPE="ORGANIZATION">correlogram</ENAMEX> would presumably remain unchanged from the
+        curve obtained by <TIMEX TYPE="TIME">60 minute</TIMEX> sampling. The RI value,
+        however, would not vary, while the estimates of statistical
+        significance would vary according to the sampling
+        frequency.
+        It is nevertheless informative to monitor the
+        statistical significance of periodicities; for this we
+        devised a ratio that allows us to track whether or not a
+        <ENAMEX TYPE="ORGANIZATION">specimen</ENAMEX> is significantly rhythmic, the so-called
+        <ENAMEX TYPE="PERSON">Rhythmicity Statistic</ENAMEX> (RS). An RS value is a ratio of the
+        RI value to the absolute value of the <NUMEX TYPE="PERCENT">95%</NUMEX> confidence line.
+        If <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> is equal to or greater than the numerical height of
+        the confidence line, then the rhythm is significant (by
+        definition, the height of the peak is ≥ the height of the
+        confidence interval used to determine statistical
+        significance). Alternatively, if <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> is less than the
+        confidence line, the rhythm is not statistically
+        significant. Thus, <ENAMEX TYPE="ORGANIZATION">RS</ENAMEX> provides a numerical accounting of
+        significance for an individual specimen or an average
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>.
+        We define the amplitude of a rhythmic <ENAMEX TYPE="ORGANIZATION">LUC</ENAMEX> time-course as
+        the (plotted) distance (in arbitrary <ENAMEX TYPE="ORG_DESC">units</ENAMEX>) from the mean
+        peak or mean trough of the normalized activity record to <NUMEX TYPE="CARDINAL">1</NUMEX>
+        (the latter is always the mean value of detrended and
+        normalized data, as exemplified in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). The complete
+        range of the rhythm is twice the amplitude.
+        Most of the analyses applied in the current study were
+        described in detail in the companion paper [ <TIMEX TYPE="DATE">27</TIMEX> ] . We
+        augmented such treatments of the data by developing two
+        additional parameters, the <ENAMEX TYPE="PERSON">Rhythmicity Statistic</ENAMEX> (RS) and a
+        metric that allows <ENAMEX TYPE="PER_DESC">specification</ENAMEX> of cycling amplitude.
+        Analyses leading to the rhythmic parameters were applied to
+        individual samples; their averages appear in Tables 1and 2.
+        In addition, averages of the <ENAMEX TYPE="ORGANIZATION">LUC</ENAMEX> data computed across all
+        <ENAMEX TYPE="ORGANIZATION">records</ENAMEX> within a given <ENAMEX TYPE="ORG_DESC">group</ENAMEX> (which varied as to <ENAMEX TYPE="PER_DESC">body</ENAMEX> part,
+        
+        luc <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> type, and 
+        cry allele) were obtained; and such
+        averaged time-<ENAMEX TYPE="FAC_DESC">courses</ENAMEX> were formally analyzed, as shown in
+        Figures <NUMEX TYPE="CARDINAL">3</NUMEX>, <ENAMEX TYPE="PRODUCT">4and Figures 5</ENAMEX>, <NUMEX TYPE="CARDINAL">6</NUMEX>. Consequently, there are
+        differences between the <ENAMEX TYPE="ORGANIZATION">Tables</ENAMEX> and Figures in values of
+        parameters such as the Rhythmicity Index (<ENAMEX TYPE="ORGANIZATION">RI</ENAMEX>, see below),
+        because the tables specify the means determined from
+        individual-specimen analyses, while the figures provide
+        parameters determined after computing the average
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-courses.
+        Maximum <ENAMEX TYPE="ORGANIZATION">Entropy Spectral Analysis</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>) was employed to
+        estimate the period of a rhythm, i.e., for a given
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-course previously determined to be significantly
+        periodic by correlogram. This method is presented in detail
+        elsewhere [ <NUMEX TYPE="CARDINAL">37 27</NUMEX> ] .
+        We have discussed the analysis of phase using circular
+        statistics in the companion paper [ <TIMEX TYPE="DATE">27</TIMEX> ] . Briefly, an
+        average estimate of peak phase, obtained for each specimen,
+        is plotted as a point on a unit circle. A mean vector,
+        extending from the center of the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> circle towards the
+        <ENAMEX TYPE="PERSON">diameter</ENAMEX> is calculated for each group of points; the
+        direction of the vector indicates mean peak phase for the
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> and the length of the vector represents the
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> or dispersion between the points (phase
+        estimates for each specimen). The <ENAMEX TYPE="PERSON">Watson-Williams</ENAMEX>-<ENAMEX TYPE="PERSON">Stevens</ENAMEX>
+        test returns an <ENAMEX TYPE="PRODUCT">F-</ENAMEX>statistic for the comparison of vectors
+        between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> to determine whether they represent
+        significantly different estimates of phase (see Figures <NUMEX TYPE="CARDINAL">5</NUMEX>,
+        6and [ <NUMEX TYPE="CARDINAL">27 32</NUMEX> ] for further detail).
+        One disadvantage of this phase analysis is the loss of
+        information about the variability of phase across cycles
+        for each specimen. Therefore, we have also introduced
+        another approach using bivariate statistics to represent
+        the molecular cycles more completely [ <TIMEX TYPE="DATE">32</TIMEX> ] . In this
+        approach, the record of each specimen is represented as the
+        tip of a vector whose direction indicates the mean phase
+        estimate (<NUMEX TYPE="MONEY">as above</NUMEX>) and whose distance from the origin in
+        the <ENAMEX TYPE="PRODUCT_DESC">x-y plane</ENAMEX> represents intraspecimen variability (see
+        Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>). Each <ENAMEX TYPE="ORG_DESC">group</ENAMEX> appears as a distribution of
+        points. A mean vector extending from the origin to the
+        <ENAMEX TYPE="ORGANIZATION">center</ENAMEX> of the distribution is calculated to describe the
+        overall mean peak phase and variability of the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+        points (see Figures <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>, for example). Finally, the two
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are compared using <ENAMEX TYPE="ORGANIZATION">Hotelling</ENAMEX>'s <NUMEX TYPE="CARDINAL">two</NUMEX>-sample test to
+        determine whether the respective <ENAMEX TYPE="PER_DESC">vectors</ENAMEX> are different. If
+        a significant difference between vectors is obtained, this
+        method does not specify whether the difference is due to
+        the variability, the peak phase estimate or some
+        combination of the <NUMEX TYPE="CARDINAL">two</NUMEX>.
+        All of the analyses described above as well as the
+        subsequent output (the figures) come from programs written
+        for the current study and the just-previous one [ <TIMEX TYPE="DATE">27</TIMEX> ]
+        using Matlab6 (<ENAMEX TYPE="ORGANIZATION">Mathworks</ENAMEX>). This software is available on
+        request.
+      
+    
+  

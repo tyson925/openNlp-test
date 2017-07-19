@@ -1,0 +1,678 @@
+
+  
+    
+      
+        Background
+        The expression "first pass metabolism" (FPM) refers to
+        the metabolism that an ingested <ENAMEX TYPE="FAC_DESC">compound undergoes</ENAMEX> in its
+        passage through the gut and liver before reaching the
+        systemic circulation. It is a useful concept for a drug
+        because it provides information about the relative
+        therapeutic effect of an orally administered drug relative
+        to its intravenous <ENAMEX TYPE="ORG_DESC">administration</ENAMEX> (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>). The standard
+        approach to quantitate <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is to compare the area under the
+        <ENAMEX TYPE="PERSON">curve</ENAMEX> (AUC) for equal <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral doses. The fractional FPM
+        is then defined as the fractional difference in these two
+        <ENAMEX TYPE="FAC_DESC">areas</ENAMEX>:
+        
+        The mathematical basis of this definition is based on
+        the following arguments: Given some time dependent input to
+        the systemic compartment (I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)), and some removal rate from
+        the systemic compartment (Q(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)), the integral over all time
+        of <TIMEX TYPE="DATE">these two</TIMEX> rates must be equal:
+        
+        If the removal rate has a linear dependence on
+        <ENAMEX TYPE="PERSON">concentration</ENAMEX> (Q(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) = <ENAMEX TYPE="ORGANIZATION">KC</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)) then this total input can be
+        related to the AUC:
+        
+        Since the total input to the systemic compartment is
+        proportional to the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> (eq. <NUMEX TYPE="CARDINAL">3</NUMEX>), the fractional difference
+        in the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> for an oral and <ENAMEX TYPE="PRODUCT">IV</ENAMEX> dose (<ENAMEX TYPE="CONTACT_INFO">eq 1</ENAMEX>) is a measure of
+        the amount of the oral <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that never reached the systemic
+        compartment because of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>.
+        This standard operational definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> (eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) is
+        crucially dependent on the assumption that the removal rate
+        is linear. If this assumption is invalid, then use of this
+        definition can return very misleading results. A recent
+        <ENAMEX TYPE="ORGANIZATION">review</ENAMEX> has described the confusion that has resulted from
+        applying this definition to human <ENAMEX TYPE="SUBSTANCE">ethanol pharmacokinetics</ENAMEX>,
+        a <ENAMEX TYPE="FAC_DESC">compound</ENAMEX> that has extremely non-linear liver metabolism [
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ] .
+        For the non-linear case, the intuitive idea that <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is
+        equal to the fraction of the absorbed <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that is
+        metabolized in its first pass through the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> is no
+        longer valid [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Consider the case where <ENAMEX TYPE="PER_DESC">GI</ENAMEX> absorption
+        is occurring at a time when the systemic drug concentration
+        is so high that the liver metabolism is completely
+        <ENAMEX TYPE="PERSON">saturated</ENAMEX> and the metabolic rate is constant, independent
+        of concentration. Clearly, at this time, the rate of drug
+        metabolism for an oral input must be identical to that for
+        an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input so that <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> must be <NUMEX TYPE="CARDINAL">zero</NUMEX>, even though a large
+        fraction of the absorbed <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> may be metabolized in its
+        <NUMEX TYPE="ORDINAL">first</NUMEX> pass through the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>. This metabolized <ENAMEX TYPE="PER_DESC">GI</ENAMEX> component
+        is simply displacing systemic <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that would otherwise
+        have been metabolized.
+        In order to avoid these problems, <ENAMEX TYPE="PERSON">Lieber</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX>
+        [ <ENAMEX TYPE="LAW">3</ENAMEX> ] introduced a new definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>, based on
+        estimating the "<ENAMEX TYPE="WORK_OF_ART">Peripheral Availability"</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>) of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>.
+        The <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is defined as the total amount of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> that
+        reaches the systemic circulation. <ENAMEX TYPE="ORGANIZATION">Gentry et al.</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ]
+        estimated the value of <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> by assuming that the tail of the
+        <ENAMEX TYPE="PRODUCT">IV</ENAMEX> <ENAMEX TYPE="SUBSTANCE">ethanol venous</ENAMEX> concentration curve can be approximated
+        by a <NUMEX TYPE="CARDINAL">one</NUMEX> compartment model in which the <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> rate of
+        <ENAMEX TYPE="PERSON">metabolism</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">M</ENAMEX>) was defined by a <ENAMEX TYPE="GPE">Michaelis-Menten</ENAMEX> function
+        (<ENAMEX TYPE="PRODUCT">M = VmC/</ENAMEX>(<ENAMEX TYPE="PRODUCT">Km+C</ENAMEX>)). The values of <ENAMEX TYPE="ORGANIZATION">Vm and Km</ENAMEX> are found by
+        curve fitting, and then <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is defined as the integral of <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>
+        from time <NUMEX TYPE="CARDINAL">0</NUMEX> to a long time when no <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> is present.
+        Thus, <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is defined as the total amount of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> that was
+        metabolized from the systemic circulation. The <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is then
+        defined as the difference between the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> for an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> infusion
+        and the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> for the oral intake of an identical dose. This
+        one compartment definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> has become the standard
+        definition in some <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] .
+        This definition of <ENAMEX TYPE="ORGANIZATION">FPM of Gentry et al.</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] is
+        inaccurate because it is a poor approximation to treat
+        ethanol metabolism as a <NUMEX TYPE="CARDINAL">one</NUMEX> compartment system (see below).
+        <ENAMEX TYPE="PERSON">Levitt</ENAMEX> and <ENAMEX TYPE="PERSON">Levitt</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] described an approach to estimate
+        <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> using a <NUMEX TYPE="CARDINAL">two</NUMEX> compartment model. They distinguished the
+        <ENAMEX TYPE="SUBSTANCE">liver ethanol</ENAMEX> that came directly from the <ENAMEX TYPE="LAW">GI</ENAMEX> tract from the
+        recirculating <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, and derived an accurate
+        approximation for this recirculating component. This 2
+        compartment approach provides a significantly more accurate
+        (and smaller) estimate of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> than the one compartment
+        model.
+        The <ENAMEX TYPE="PRODUCT">2</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">compartment model</ENAMEX> still makes some simplifying
+        assumptions. These assumptions are eliminated in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">5</NUMEX> ] , a new, general-purpose physiologically based
+        <ENAMEX TYPE="ORGANIZATION">pharmacokinetic</ENAMEX> (PBPK) software routine. The approach used
+        by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is to <NUMEX TYPE="ORDINAL">first</NUMEX> use the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input data to find the
+        <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters for <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, and then, using these
+        <ENAMEX TYPE="PERSON">parameters</ENAMEX>, solve for the time dependent <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input function
+        that would produce a blood time course identical to the
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> course observed with the orally administered <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>.
+        This <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input function is a direct measure of the rate that
+        the oral dose reaches the systemic circulation, i.e. the
+        <ENAMEX TYPE="GPE">PA. Using</ENAMEX> as input just the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters and the blood
+        ethanol levels produced by an oral dose, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> outputs
+        (in both tabular and graphical form) the time course of the
+        intestinal absorption and the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> (see [ <ENAMEX TYPE="LAW">5</ENAMEX> ] for the
+        mathematical and computational details).
+        The difficulty in defining the <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> has
+        created a controversy over the question of the magnitude of
+        ethanol metabolism that occurs in the stomach before
+        reaching the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . It has been observed that the
+        "<ENAMEX TYPE="WORK_OF_ART">FPM</ENAMEX>" is significantly reduced when <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> is infused
+        <ENAMEX TYPE="ORGANIZATION">intraduodenally</ENAMEX> compared to the standard oral
+        administration and this difference has been interpreted as
+        representing gastric mucosal metabolism [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] .
+        Clearly, if there are errors in the measurement of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> then
+        this estimate of gastric metabolism may be spurious. In
+        addition to providing a value for <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also
+        provides a direct measurement of the rate and amount of the
+        orally administered solute that reaches the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>. In this
+        paper, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will be applied to investigations of human
+        <ENAMEX TYPE="SUBSTANCE">ethanol pharmacokinetics</ENAMEX>, providing information about the
+        <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>; the time course of intestinal absorption, and the
+        total amount of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> reaching the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>. This is the
+        <ENAMEX TYPE="ORGANIZATION">first human PBPK</ENAMEX> model for ethanol incorporating intestinal
+        <ENAMEX TYPE="PERSON">absorption</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Pistino</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Conolly</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] have
+        previously developed a <ENAMEX TYPE="ANIMAL">rat</ENAMEX> PBPK that quantitated ethanol
+        <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>.
+        The PKQuest program and all the examples used here are
+        freely available on the <ENAMEX TYPE="ORGANIZATION">WEB</ENAMEX> at <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>.
+      
+      
+        Methods
+        
+          PBPK program and its assumptions
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] was used for all the analysis in this
+          paper. All the figures shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are direct
+          copies (in jpeg format) of standard PKQuest output.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> makes several simplifying assumptions (see [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+          for details). It is assumed that each organ can be
+          modeled as a single well-stirred compartment. In
+          addition, for the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">solutes</ENAMEX> investigated in this paper
+          (D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>) it is also assumed
+          that the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-tissue <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> is flow limited so that
+          the unbound water concentration in the tissue is equal to
+          that in the vein leaving the tissue. This is clearly an
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX> and effects such as diffusion gradients,
+          countercurrent <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> and heterogeneous organ blood
+          flows [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX> ] will produce small deviations from
+          this assumption.
+        
+        
+          Standard human parameters
+          The <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters used here are identical to those
+          used in all the other applications of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">5 13 14</ENAMEX> ]
+          . The procedures used for choosing and refining these
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX> has been described in [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . <ENAMEX TYPE="PRODUCT">Table 1lists</ENAMEX> the
+          organ weights (<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>) and blood flows (<ENAMEX TYPE="CONTACT_INFO">liters/min/Kg</ENAMEX>) for
+          the standard <ENAMEX TYPE="WORK_OF_ART">70 Kg human</ENAMEX>. The "liver" flow is the hepatic
+          blood flow; "portal" refers to the portal vein blood flow
+          and to the organs drained by the portal vein (stomach,
+          small and large intestine, spleen and pancreas); "bone"
+          refers to the inert component of <ENAMEX TYPE="SUBSTANCE">bone</ENAMEX>, cartilage etc. in
+          which it is assumed there is no solute distribution or
+          blood flow; and "other" are all the other organs with a
+          flow and weight adjusted to account for the total body
+          weight (<NUMEX TYPE="QUANTITY">70 Kg</NUMEX>) and the total default cardiac output (<NUMEX TYPE="CARDINAL">6.06</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>). These organ weights are for the default
+          value of <NUMEX TYPE="PERCENT">20%</NUMEX> body fat. They are scaled depending on the
+          value of "<ENAMEX TYPE="WORK_OF_ART">Fat</ENAMEX>" that is input. For a complete listing of
+          all parameters and constants used in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, download
+          the file gensolve.mws from the PKQuest web site
+          <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.comand view the routines "standardman()" and
+          "defaultpar()".
+        
+        
+          Experimental data
+          The D 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> data was obtained from the
+          measurements of the <ENAMEX TYPE="ORGANIZATION">Schloerb et al.</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] of the
+          arterial serum concentration after a <NUMEX TYPE="QUANTITY">15 second</NUMEX> bolus
+          injection. The results are for one experiment on <NUMEX TYPE="CARDINAL">one</NUMEX> male
+          subject (<ENAMEX TYPE="PERSON">J.O.</ENAMEX>, total body water of <NUMEX TYPE="CARDINAL">48.0</NUMEX> liters, <ENAMEX TYPE="PRODUCT">Table I</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">15</NUMEX> ] ). The amount of D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> injected was back calculated from
+          the total body water and the concentration after <NUMEX TYPE="CARDINAL">90</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX> when the D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> had equilibrated.
+          A baseline <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> <ENAMEX TYPE="PRODUCT">PBPK</ENAMEX> model was developed based on
+          the careful and detailed measurements of <ENAMEX TYPE="ORGANIZATION">Norberg et al.</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">16</NUMEX> ] of the simultaneous breath and venous blood
+          concentrations for a <TIMEX TYPE="TIME">30 minute</TIMEX> constant <ENAMEX TYPE="PRODUCT">IV</ENAMEX> ethanol
+          infusion. The concentration calculated from the breath
+          measurements was in good agreement with the direct venous
+          measurements. The breath results were used here since
+          they should be closer to the ideal of an arterial sample
+          then the venous measurements from the cubital vein. The
+          total body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> for each subject in this study was
+          directly measured using D 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> The time course of the mean
+          values for all <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (figure <NUMEX TYPE="CARDINAL">1</NUMEX>, [ <TIMEX TYPE="DATE">16</TIMEX> ] ) was
+          modeled using <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The data of <ENAMEX TYPE="ORGANIZATION">DiPadova et al.</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ]
+          was used for the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of the rate of absorption
+          of oral <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, along with calculations of the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> was applied to the data plotted in figures
+          1and <ENAMEX TYPE="ORGANIZATION">3of DiPadova et al.</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] which describe the mean
+          <ENAMEX TYPE="SUBSTANCE">blood ethanol</ENAMEX> for subjects given <NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">g/Kg</ENAMEX> body weight
+          (fig. <NUMEX TYPE="CARDINAL">1</NUMEX>) or <NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">g/Kg</ENAMEX> (fig. <NUMEX TYPE="CARDINAL">3</NUMEX>) either orally (with or
+          without a breakfast) or <ENAMEX TYPE="PRODUCT">IV</ENAMEX> on alternate <TIMEX TYPE="DATE">days</TIMEX>.
+          The experimental data points were obtained by using
+          <ENAMEX TYPE="ORGANIZATION">UN-SCAN</ENAMEX>-IT (<ENAMEX TYPE="ORGANIZATION">Silk Scientific Corporation</ENAMEX>) to read the data
+          from the published figures.
+        
+      
+      
+        Results
+        
+          Determination of baseline resting muscle blood
+          flow
+          The baseline resting muscle blood flow used in PKQuest
+          was determined by fitting the D 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> data of <ENAMEX TYPE="ORGANIZATION">Schoerb et al.</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] in
+          which <TIMEX TYPE="DATE">the arterial</TIMEX> D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> concentration was measured after a
+          <TIMEX TYPE="TIME">15 second</TIMEX> <ENAMEX TYPE="SUBSTANCE">venous</ENAMEX> injection of D 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> As described previously [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ,
+          each <ENAMEX TYPE="FAC_DESC">compound</ENAMEX> modeled by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is characterized by a
+          short <ENAMEX TYPE="CONTACT_INFO">Maple www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">maplesoft</ENAMEX>.comprocedure that lists the
+          model parameters that are unique for that solute. The
+          procedure for D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> is very simple because it
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the default case so that very few
+          parameters have to be input:
+          d20_schoerb:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>():
+          Wtot:=<NUMEX TYPE="CARDINAL">81.9</NUMEX>;
+          <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>);
+          cunit:="<NUMEX TYPE="QUANTITY">10 ml</NUMEX> D20";<NUMEX TYPE="MONEY"># 10 ml</NUMEX>/liter is equivalent to
+          <ENAMEX TYPE="CONTACT_INFO">vol%</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [artery] :=<NUMEX TYPE="CARDINAL">3</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> input data is concentration in
+          free water
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>; finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :
+          table([organ=vein, type=<NUMEX TYPE="CARDINAL">1</NUMEX>, rate=<NUMEX TYPE="CARDINAL">27.6</NUMEX>, <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>,
+          tend=<NUMEX TYPE="CARDINAL">.25</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);
+          end proc:
+          The published data was for <ENAMEX TYPE="PER_DESC">subject</ENAMEX> <ENAMEX TYPE="PERSON">JO</ENAMEX> (body weight
+          <ENAMEX TYPE="PRODUCT">81.9 Kg</ENAMEX> and total body water = <NUMEX TYPE="CARDINAL">48</NUMEX> liters). This value for
+          total body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> (<NUMEX TYPE="CARDINAL">0.58</NUMEX> <ENAMEX TYPE="PER_DESC">liter</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>) corresponds to a body
+          fat fraction of <NUMEX TYPE="CARDINAL">about 0.2</NUMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] .. This subject was
+          defined as the "standardhuman" (<ENAMEX TYPE="ORGANIZATION">Fat</ENAMEX> = <NUMEX TYPE="CARDINAL">0.2</NUMEX>). The values of
+          the <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> fraction parameter for each tissue compartment
+          in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> was then adjusted so that the model total body
+          water equaled this measured value. Since, this <ENAMEX TYPE="PER_DESC">man</ENAMEX> is the
+          "standardhuman", all the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameter are input simply
+          by calls to the "defaultpar()" and "standardhuman()"
+          procedures. All <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> are in terms of liters,
+          <ENAMEX TYPE="PERSON">Kg</ENAMEX> and <TIMEX TYPE="TIME">minutes</TIMEX>. The parameter "cunit" is the amount unit
+          (concentration = <ENAMEX TYPE="CONTACT_INFO">cunit/liter</ENAMEX>). Since the D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> concentration was expressed in
+          <NUMEX TYPE="PERCENT">vol%</NUMEX>, this corresponds to a cunit of <NUMEX TYPE="CARDINAL">10</NUMEX> ml. The only
+          other information that is needed is concunit [artery] =
+          <NUMEX TYPE="CARDINAL">3</NUMEX>, which indicates that the input data is the arterial
+          free <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> concentration. The observed equilibrium
+          concentration was <NUMEX TYPE="PERCENT">0.144 vol%</NUMEX> which corresponds to a total
+          D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> dose of <NUMEX TYPE="CARDINAL">69.05</NUMEX> ml, or <ENAMEX TYPE="CONTACT_INFO">276 ml/min</ENAMEX>
+          for <TIMEX TYPE="TIME">0.25 minutes</TIMEX>, or <NUMEX TYPE="CARDINAL">27.6</NUMEX> units/<ENAMEX TYPE="DISEASE">min</ENAMEX> if <ENAMEX TYPE="ORGANIZATION">1</ENAMEX> <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> = <NUMEX TYPE="CARDINAL">10</NUMEX> ml.
+          The output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> for this data is shown in fig.
+          1A(all of the figures in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are taken unmodified
+          from the standard output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>). The value for the
+          <ENAMEX TYPE="PRODUCT">resting</ENAMEX> muscle blood flow (<ENAMEX TYPE="CONTACT_INFO">0.0266 Lit/min/Kg</ENAMEX>) was
+          determined by adjusting the flow to optimize the fit to
+          the data using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> minimization procedure of
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The agreement between the PBPK prediction (solid
+          line) and the experimental measurements (squares) is very
+          good.
+          This agreement is sensitive to the value used for the
+          muscle blood flow. For example, fig. 1Bshows the effect
+          of doubling the total muscle blood flow from this
+          default, best fit, value of <NUMEX TYPE="CARDINAL">0.0266</NUMEX> to <NUMEX TYPE="CARDINAL">0.0532</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">liters/min/kg</ENAMEX> (increasing the cardiac output from <NUMEX TYPE="CARDINAL">6.06</NUMEX> to
+          <ENAMEX TYPE="CONTACT_INFO">6.93 liters/min</ENAMEX> for a <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="PER_DESC">Kg man</ENAMEX>). Muscle blood flow can
+          vary many fold and one would expect that it would depend
+          on the specific experimental conditions, such as whether
+          the subject was supine or ambulatory. In any case, muscle
+          blood flow is routinely varied when fitting data with
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. This variation may have some physiological
+          significance and/or it may be just a "fudge factor".
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Standard Ethanol PBPK</ENAMEX> parameters
+          The recent measurements of <ENAMEX TYPE="ORGANIZATION">Norberg et al.</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] of
+          the time course of <ENAMEX TYPE="SUBSTANCE">ethanol blood</ENAMEX> levels after an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input
+          were used to determine the standard ethanol PBPK
+          parameters. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> was used to model the time course of
+          the mean blood values of the <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (<NUMEX TYPE="CARDINAL">8</NUMEX> <ENAMEX TYPE="PER_DESC">men</ENAMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>
+          <ENAMEX TYPE="PER_DESC">women</ENAMEX>). This data was expressed as the concentration in
+          the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> in units of <ENAMEX TYPE="DISEASE">millimoles</ENAMEX>/liter of <ENAMEX TYPE="SUBSTANCE">blood water</ENAMEX>.
+          Both breath and direct venous sampling results were
+          reported and they were in very good agreement. The
+          results shown in fig. 2use the breath measurements since
+          they should be closer to the ideal of an arterial sample
+          then the venous measurements from the cubital vein. The
+          PKQuest procedure that is used for <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> is listed
+          below:
+          <ENAMEX TYPE="PERSON">ethanol_norberg</ENAMEX>:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>():
+          Wtot:=<NUMEX TYPE="CARDINAL">80.0</NUMEX>; <NUMEX TYPE="MONEY">#Arbitray</NUMEX> since <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> dose is per Kg
+          <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>);
+          Fat:=<NUMEX TYPE="CARDINAL">0.24</NUMEX>;
+          cunit:="millimoles";
+          <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [artery]:=<NUMEX TYPE="CARDINAL">3</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> concentration in arterial blood
+          water
+          <ENAMEX TYPE="ORGANIZATION">Vm</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]:=<NUMEX TYPE="CARDINAL">2.1</NUMEX>:
+          Km [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]:=<NUMEX TYPE="CARDINAL">0.04</NUMEX>;
+          <ENAMEX TYPE="ORGANIZATION">fw</ENAMEX> [lipid]:=<NUMEX TYPE="CARDINAL">1.0/0.074</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> = <NUMEX TYPE="CARDINAL">1/</NUMEX>(oil-water partition
+          coefficient for <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>)
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>;finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :
+          table([organ = vein, type = <NUMEX TYPE="CARDINAL">1</NUMEX>, rate = <NUMEX TYPE="CARDINAL">23.15</NUMEX>, <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>,
+          tend = <NUMEX TYPE="CARDINAL">30</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> ]);
+          end <TIMEX TYPE="DATE">proc</TIMEX>;
+          The value for <ENAMEX TYPE="EVENT">Fat</ENAMEX> (fraction of body weight that is
+          <ENAMEX TYPE="ORGANIZATION">fat</ENAMEX>) of <NUMEX TYPE="CARDINAL">0.24</NUMEX> was chosen so that the model subject had a
+          <ENAMEX TYPE="ORGANIZATION">water</ENAMEX> volume equal to the average D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> volume of distribution of the <NUMEX TYPE="CARDINAL">8</NUMEX>
+          <ENAMEX TYPE="PER_DESC">males</ENAMEX> and <NUMEX TYPE="CARDINAL">8</NUMEX> <ENAMEX TYPE="PER_DESC">females</ENAMEX> in the study (<NUMEX TYPE="MONEY">44.5 liters</NUMEX> for <NUMEX TYPE="CARDINAL">80</NUMEX> <ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">human</ENAMEX>). The muscle blood flow was the same as the
+          (default) value that was used in fig. 1Afor the D 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> data. Since liver metabolism
+          accounts for <NUMEX TYPE="PERCENT">greater than 95%</NUMEX> of ethanol removal, it is
+          assumed that the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> is the only site of ethanol
+          elimination [ <TIMEX TYPE="DATE">19</TIMEX> ] . The <ENAMEX TYPE="SUBSTANCE">liver metabolic constants</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Vm</ENAMEX> =
+          <NUMEX TYPE="CARDINAL">2.1</NUMEX> <ENAMEX TYPE="PER_DESC">millimoles</ENAMEX>/<ENAMEX TYPE="WORK_OF_ART">min for 80 Kg man, Km</ENAMEX> = <NUMEX TYPE="CARDINAL">0.04</NUMEX> mM) were
+          adjusted using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> minimization procedure of
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to give the best fit to the data. These values
+          refer to the free water concentration in the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> (see [
+          <NUMEX TYPE="CARDINAL">5</NUMEX> ] for details). There are a number of isoenzymes of
+          <ENAMEX TYPE="SUBSTANCE">alcohol dehyrogrenase</ENAMEX> (ADH) in the human <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> and this
+          <ENAMEX TYPE="PERSON">model Km</ENAMEX> of <NUMEX TYPE="CARDINAL">0.04</NUMEX> mM is consistent with the in vitro <ENAMEX TYPE="PERSON">Km</ENAMEX> of
+          <NUMEX TYPE="QUANTITY">0.048 mM</NUMEX> observed for one of these isoenzyme [ <TIMEX TYPE="DATE">20</TIMEX> ] . It
+          is assumed that ethanol distributes in the total body
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, which is the default in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The parameter fw
+          [lipid] = <NUMEX TYPE="CARDINAL">1/0.074</NUMEX> represents the inverse of the oil/water
+          partition coefficient and indicates that the equilibrium
+          ethanol concentration in the body fat is <NUMEX TYPE="PERCENT">7.4%</NUMEX> of the
+          concentration in body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] . The <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> dose was
+          <ENAMEX TYPE="ORGANIZATION">0.4 gm/Kg</ENAMEX>, given as a constant <TIMEX TYPE="TIME">30 minute</TIMEX> infusion,
+          corresponding to an infusion rate of <NUMEX TYPE="CARDINAL">23.15</NUMEX> <ENAMEX TYPE="PER_DESC">millimoles</ENAMEX>/min
+          for an <ENAMEX TYPE="WORK_OF_ART">80 Kg human</ENAMEX>. This <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> procedure
+          (<ENAMEX TYPE="SUBSTANCE">ethanol_norberg</ENAMEX>) completely specifies the PBPK
+          parameters. All the other <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> parameters are set by the
+          calls to defaultpar() and standardhuman(). Figure 2shows
+          the output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> for this input. Again, the
+          agreement between the PBPK prediction for the arterial
+          blood concentration (solid line) and the observed breath
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (squares) is quite good.
+        
+        
+          Quantitation of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> first pass metabolism
+          (<ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">DiPadova et al.</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] measured the <ENAMEX TYPE="SUBSTANCE">blood ethanol</ENAMEX> in
+          subjects that were given the same dose of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, either
+          <ENAMEX TYPE="PERSON">IV</ENAMEX> (<TIMEX TYPE="TIME">20 minute</TIMEX> constant infusion) or orally (<NUMEX TYPE="CARDINAL">over 10</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>), on <TIMEX TYPE="DATE">consecutive days</TIMEX>. Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the venous
+          concentrations as a function of time when a low dose of
+          <ENAMEX TYPE="PERSON">ethanol</ENAMEX> (<NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">g/Kg</ENAMEX>, equivalent to <NUMEX TYPE="CARDINAL">approximately 12</NUMEX> oz of
+          <ENAMEX TYPE="ORGANIZATION">beer</ENAMEX>) was given at the same time as a standard breakfast
+          either <ENAMEX TYPE="PRODUCT">IV</ENAMEX> (black) or orally (red). The <ENAMEX TYPE="GPE_DESC">area</ENAMEX> under the
+          oral dose curve is <NUMEX TYPE="PERCENT">only 27%</NUMEX> of that for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> dose. This
+          would correspond to a <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> of <NUMEX TYPE="PERCENT">73%</NUMEX> if metabolism was linear
+          - i.e. <NUMEX TYPE="PERCENT">only 27%</NUMEX> of the orally ingested <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> reaches
+          the systemic circulation.. As will be shown below, the
+          actual <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is much less than this.
+          The data in fig. 3was analyzed using <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. Figure
+          4Ashows the agreement between the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and the
+          venous plasma ethanol concentration for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters used in this calculation were
+          identical to those used for figure <TIMEX TYPE="DATE">2except</TIMEX> that the
+          <ENAMEX TYPE="ORGANIZATION">portal</ENAMEX> blood flow was increased <NUMEX TYPE="PERCENT">50%</NUMEX> because of the
+          coincident meal [ <NUMEX TYPE="CARDINAL">22 23 24</NUMEX> ] , the <ENAMEX TYPE="SUBSTANCE">liver Vm</ENAMEX> was increased
+          from <NUMEX TYPE="MONEY">2.1 to 2.5</NUMEX> because of the induced ethanol effect [
+          <NUMEX TYPE="CARDINAL">25 26</NUMEX> ] and the muscle blood flow was doubled. Also, the
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> "concunit [vein]" was set = <NUMEX TYPE="CARDINAL">2</NUMEX>, indicating that
+          the whole <ENAMEX TYPE="SUBSTANCE">blood venous</ENAMEX> concentration was used as the
+          input data.
+          Figure <NUMEX TYPE="CARDINAL">4Bshows</NUMEX> the output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> when the
+          "findabsorption" [ <ENAMEX TYPE="LAW">5</ENAMEX> ] option was applied to the oral
+          ethanol input data. Since the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral data used for
+          <ENAMEX TYPE="ORGANIZATION">figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">4Aand 4Bwere</ENAMEX> collected in the same <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> under
+          identical conditions, exactly the same PBPK parameters
+          where used for both calculations. The open squares show
+          the time course of the predicted <ENAMEX TYPE="PER_DESC">GI</ENAMEX> ethanol absorption
+          (amount entering the liver in the portal vein [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ).
+          The solid line is a <NUMEX TYPE="CARDINAL">3</NUMEX> parameter approximation to the
+          absorption data (absorption at time t = A [<ENAMEX TYPE="ORGANIZATION">t H/</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t H+T H</ENAMEX>)]
+          where A = total absorption, <ENAMEX TYPE="ORGANIZATION">H = Hill</ENAMEX> exponent, <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = half
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>).
+          It can be seen that the intestinal absorption (fig.
+          4B) is complete within <TIMEX TYPE="TIME">about 2 hours</TIMEX>. The total predicted
+          absorption of <NUMEX TYPE="CARDINAL">250</NUMEX> millimoles is slightly less than the
+          actual total oral dose of <NUMEX TYPE="CARDINAL">260</NUMEX> millimoles. Although this
+          is consistent with a small amount of gastric mucosal
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX> (<NUMEX TYPE="MONEY">10 millimoles</NUMEX>) it is probably not
+          significant. The calculation of the total absorption for
+          this low dose is critically dependent on the accuracy of
+          the venous blood measurements at long times. Since the
+          <ENAMEX TYPE="PERSON">liver</ENAMEX> has such a low <ENAMEX TYPE="PERSON">Km</ENAMEX> (<NUMEX TYPE="MONEY">0.04 mM</NUMEX>), significant amounts of
+          intestinal absorption could be occurring at long times
+          even though the venous concentration remained close to
+          zero because of the high rate of liver clearance. The
+          fluctuation in the total absorption points at long times
+          in fig. 4Bis caused by errors in these long time blood
+          measurements.
+          When the "findabsorption" option is used, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also
+          <ENAMEX TYPE="PERSON">routinely</ENAMEX> calculates the time course of the "<ENAMEX TYPE="WORK_OF_ART">Peripheral</ENAMEX>
+          Availability" (<ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>), indicated by the <ENAMEX TYPE="SUBSTANCE">diamonds</ENAMEX> in fig.
+          4BThe <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is defined as the equivalent <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input that would
+          produce the observed venous concentration. Thus, an <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          input with the time course of the <ENAMEX TYPE="SUBSTANCE">diamonds</ENAMEX> in fig.
+          4Bwould produce exactly the same blood concentration as a
+          function of time as the <ENAMEX TYPE="LAW">GI</ENAMEX> absorption represented by the
+          open squares. <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is related to <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> by the relation: <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> =
+          Total <ENAMEX TYPE="PRODUCT">Dose - PA. Thus</ENAMEX> for the data used for fig. 4B, the
+          <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> of <NUMEX TYPE="CARDINAL">160</NUMEX> millimoles corresponds to a <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> of <NUMEX TYPE="CARDINAL">100</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">millimoles</ENAMEX> (total dose = <NUMEX TYPE="CARDINAL">260</NUMEX>). This represents <NUMEX TYPE="PERCENT">38%</NUMEX> of the
+          total dose, <NUMEX TYPE="CARDINAL">about half</NUMEX> the value of <NUMEX TYPE="PERCENT">73%</NUMEX> using the
+          <ENAMEX TYPE="ORGANIZATION">classical AUC</ENAMEX> approach.
+          The <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> for this data was also estimated by using the
+          one compartment approach [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . Figure <NUMEX TYPE="CARDINAL">5Ashows</NUMEX> the
+          optimized one compartment <ENAMEX TYPE="PERSON">Michaelis-Menten</ENAMEX> fit to the
+          <ENAMEX TYPE="PERSON">tail</ENAMEX> of the venous ethanol data (<ENAMEX TYPE="ORGANIZATION">Vm</ENAMEX> = <NUMEX TYPE="CARDINAL">8.68</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">millimoles/min</ENAMEX>; <ENAMEX TYPE="PERSON">Km</ENAMEX> = <NUMEX TYPE="CARDINAL">5.46</NUMEX> mM). Figure <NUMEX TYPE="CARDINAL">5Bshows</NUMEX> the
+          corresponding fit to the data of <ENAMEX TYPE="ORGANIZATION">DiPadova</ENAMEX> etal. [ <TIMEX TYPE="DATE">17</TIMEX> ]
+          for a doubling (<NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>) of the oral dose (see below).
+          Not surprisingly, a <NUMEX TYPE="CARDINAL">one</NUMEX> compartment model does not
+          provide an accurate fit to the ethanol data. The fit is
+          better for the large input dose. Using these values of Vm
+          and <ENAMEX TYPE="PERSON">Km</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> was determined for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral dose by
+          assuming a <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">compartment model</ENAMEX> and integrating the
+          liver metabolism (= VmC/(<ENAMEX TYPE="PRODUCT">Km+C</ENAMEX>) where C equals venous
+          blood concentration) over the time. For the data of <ENAMEX TYPE="SUBSTANCE">fig</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">4</NUMEX>, this one compartment method yielded a <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> of <NUMEX TYPE="PERCENT">59%</NUMEX>. This
+          is less than the <NUMEX TYPE="PERCENT">73% estimated</NUMEX> from the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX>, but
+          significantly greater than the <NUMEX TYPE="PERCENT">38%</NUMEX> using <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">DiPadova et al.</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] also measured the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels
+          resulting from an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> or oral input of a larger ethanol
+          <ENAMEX TYPE="PERSON">dose</ENAMEX> (<NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>, total dose of <NUMEX TYPE="CARDINAL">520</NUMEX> millimoles for the <NUMEX TYPE="CARDINAL">80</NUMEX>
+          <ENAMEX TYPE="PRODUCT">Kg</ENAMEX> model subject) and this time they also compared the
+          <ENAMEX TYPE="ORGANIZATION">fasting</ENAMEX> and standard breakfast case. Figures 6Aand 6Bshow
+          the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral data when the
+          <ENAMEX TYPE="PERSON">ethanol</ENAMEX> was taken with the same standard meal as was used
+          for the data in <TIMEX TYPE="DATE">figs. 4Aand 4B</TIMEX>. The parameters were
+          identical to those used in <TIMEX TYPE="DATE">figs. 4except</TIMEX> that the liver
+          Vm was reduced from <NUMEX TYPE="MONEY">2.5 to 2.4</NUMEX> (a different set of
+          <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were used in the <NUMEX TYPE="CARDINAL">two</NUMEX> sets of experiments). It
+          can be seen from fig. 6Bthat, for this higher dose, the
+          total peripheral availability (<ENAMEX TYPE="SUBSTANCE">diamonds</ENAMEX>) is <NUMEX TYPE="CARDINAL">only about 40</NUMEX>
+          millimoles less than the total dose of <NUMEX TYPE="CARDINAL">520</NUMEX> millimoles,
+          corresponding to a fractional <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> of <NUMEX TYPE="PERCENT">7%</NUMEX>. This is much
+          less than the FPM value of <NUMEX TYPE="PERCENT">44%</NUMEX> determined by using the
+          <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> approach or of <NUMEX TYPE="PERCENT">30%</NUMEX> using the one compartment
+          approach. The time course of the intestinal absorption
+          for the two doses (compare fig. 4Band <ENAMEX TYPE="PERSON">fig</ENAMEX>. 6B) has the
+          same shape (e.g. same <ENAMEX TYPE="PERSON">Hill</ENAMEX> coefficient) but occurs over a
+          slightly longer time for the larger dose (<ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> <NUMEX TYPE="CARDINAL">half</NUMEX> time
+          <TIMEX TYPE="TIME">= 34 minutes</TIMEX> for <NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX> dose, and <TIMEX TYPE="TIME">48 minutes</TIMEX> for <NUMEX TYPE="CARDINAL">0.3</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX> dose) presumably because the larger oral dose was
+          ingested over a longer time (<TIMEX TYPE="TIME">20 minutes</TIMEX> for <NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>
+          versus <TIMEX TYPE="TIME">10 minutes</TIMEX> for <NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>).
+          Figures 7Aand <TIMEX TYPE="DATE">7Bshow</TIMEX> the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output for the same
+          ethanol dose (<NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>) given to fasting <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters for these experiments had the portal
+          blood flow reduced back to the default fasting value.
+          Also, the <ENAMEX TYPE="SUBSTANCE">liver Vm</ENAMEX> was reduced back to <NUMEX TYPE="CARDINAL">2.0</NUMEX>, the same
+          value that was used for the fasting data of <ENAMEX TYPE="ORGANIZATION">Norberg et al</ENAMEX>
+          [ <TIMEX TYPE="DATE">16</TIMEX> ] in <TIMEX TYPE="DATE">fig 2</TIMEX>. This change in <ENAMEX TYPE="SUBSTANCE">ethanol metabolism</ENAMEX> is
+          consistent with earlier observations that the rate of
+          ethanol disappearance from the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> is increased by a
+          coincident meal [ <NUMEX TYPE="CARDINAL">25 26</NUMEX> ] . It can be seen in fig. 7Bthat
+          the <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">diamonds</ENAMEX>) is nearly identical to the <ENAMEX TYPE="LAW">GI</ENAMEX>
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> (squares) so that <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is <NUMEX TYPE="CARDINAL">close to zero</NUMEX> for the
+          fasting <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> and one compartment approach
+          also indicate a small <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> for this case.
+        
+      
+      
+        Discussion and conclusions
+        
+          Validity of the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model
+          The philosophy behind the use and development of
+          <ENAMEX TYPE="PRODUCT">PKQuest</ENAMEX> differs from that of the standard PBPK
+          applications. <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> have usually been applied to
+          animal data where it is possible to accurately measure
+          and control the relevant parameters (tissue distribution,
+          organ blood flows, etc.). In contrast, for human studies,
+          not only are the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters poorly characterized,
+          but they are subject to large individual variation. The
+          impetus behind <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is to try and develop a "standard"
+          set of human <ENAMEX TYPE="SUBSTANCE">PBPK</ENAMEX> parameters that can be applied in the
+          absence of this detailed information. For this reason,
+          the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to human data should be
+          regarded as a <NUMEX TYPE="ORDINAL">first</NUMEX> approximation.
+          Since muscle represents <NUMEX TYPE="PERCENT">roughly 50%</NUMEX> of the body mass,
+          the muscle blood flow, which can vary <TIMEX TYPE="DATE">10</TIMEX> fold or more
+          depending on experimental conditions, is the single most
+          important <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameter and the parameter that limits
+          the accuracy of the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. The pharmacokinetics of D
+          
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> (or other tracers of <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>) are
+          especially simple since the rate of elimination is very
+          slow and it distributes simply in the organ <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>. As
+          shown by figs. <ENAMEX TYPE="PRODUCT">1Aand 1B</ENAMEX>, the D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> kinetics are sensitive to the
+          muscle blood flow and the data of <ENAMEX TYPE="ORGANIZATION">Schloerb et al.</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ]
+          was used to determine the resting muscle blood flow value
+          (<ENAMEX TYPE="CONTACT_INFO">0.0266 liters/min/Kg</ENAMEX>) for the "standardhuman". Although
+          it is problematical to base such an important parameter
+          on <NUMEX TYPE="CARDINAL">just one</NUMEX> set of measurements on <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">subject</ENAMEX>, this
+          represents the only published measurement of this type
+          that I could find. It is also an approximation to treat
+          the muscle as a single compartment with a uniform blood
+          flow and in some human <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> models [ <TIMEX TYPE="DATE">27</TIMEX> ] <NUMEX TYPE="CARDINAL">two</NUMEX> muscle
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX> ("resting" and "working") are included. For
+          the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> modeling, the muscle blood flow is usually
+          treated as an adjustable parameter and not as a strictly
+          determined PBPK constant.
+          The ethanol data that was modeled are the mean values,
+          averaged over a number of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>. Because of the
+          non-linear nature of the pharmacokinetics, it is an
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX> to treat these mean values as
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of an equivalent "average" human [ <TIMEX TYPE="DATE">28</TIMEX> ] .
+          However, it should provide a <NUMEX TYPE="ORDINAL">first</NUMEX> approximation to the
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters of an "average" human. For the common
+          case where the published mean values are the only data
+          that is available, there is no other option.
+          In the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> modeling of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, it is assumed that
+          <ENAMEX TYPE="ORGANIZATION">ethanol</ENAMEX> distributes freely in the tissue <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>. This
+          seems like a reasonable assumption given the
+          physical-chemical <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>. Measurements of
+          plasma/whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> concentration ratios show that this
+          assumption is valid for red blood cells [ <TIMEX TYPE="DATE">29</TIMEX> ] . However,
+          <ENAMEX TYPE="ORGANIZATION">Norberg et al.</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 19</NUMEX> ] has shown that the ethanol
+          volume of distribution estimated using a <NUMEX TYPE="CARDINAL">2</NUMEX> compartment
+          model is significantly less than the total water volume
+          and they have reviewed the literature that suggests that
+          the tissue <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> distribution may be restricted.
+          Despite this, the agreement between <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> results and
+          the <ENAMEX TYPE="ORGANIZATION">Norberg et al.</ENAMEX> data (figure <NUMEX TYPE="CARDINAL">2</NUMEX>) indicate that this
+          assumption is a useful approximation given the
+          limitations of using the mean data.
+        
+        
+          Ethanol first pass metabolism and intestinal
+          absorption
+          The definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> implemented in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is both
+          <ENAMEX TYPE="PERSON">rigorous</ENAMEX> and intuitive. It is based on defining a time
+
+          dependent "peripheral availability" (<ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>) that is equal to
+          the rate of <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input that would produce the observed time
+          course of the plasma ethanol concentration. This <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> is a
+          direct quantitative measure of the amount of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> that
+          has reached the systemic circulation. The <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> is then
+          defined as the difference between the total dose
+          administered and the <ENAMEX TYPE="GPE">PA.</ENAMEX> The classical procedure of
+          determining <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> from the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> (eq<NUMEX TYPE="CARDINAL">.1</NUMEX>) markedly
+          overestimates the <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>. For the case of the small ethanol
+          <ENAMEX TYPE="PERSON">dose</ENAMEX> (<NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>) taken with a meal, the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> estimate of
+          <ENAMEX TYPE="ORGANIZATION">fractional FPM</ENAMEX> of <NUMEX TYPE="PERCENT">73%</NUMEX> was about twice the value (<NUMEX TYPE="PERCENT">38%</NUMEX>)
+          obtained using <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. For the higher dose (<NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>)
+          the error was even larger (<NUMEX TYPE="PERCENT">44%</NUMEX> versus <NUMEX TYPE="PERCENT">7%</NUMEX>). Although the
+          more recent one compartment approximation provides a
+          better estimate of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>, it is still significantly larger
+          than the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> values (<NUMEX TYPE="PERCENT">59%</NUMEX> versus <NUMEX TYPE="PERCENT">38%</NUMEX> for <NUMEX TYPE="CARDINAL">0.15</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX>
+          dose and <NUMEX TYPE="PERCENT">30%</NUMEX> versus <NUMEX TYPE="PERCENT">7%</NUMEX> for <NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX> dose).
+          The error in both these approximations to <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> results
+          primarily from the fact that the systemic appearance of
+          the oral ethanol taken with a meal is slow compared to
+          the <TIMEX TYPE="TIME">20 minute</TIMEX> constant infusion that was used to obtain
+          the <ENAMEX TYPE="PRODUCT">IV AUC</ENAMEX>. Since the <ENAMEX TYPE="SUBSTANCE">liver ethanol metabolism</ENAMEX> saturates
+          at low concentrations, the shorter dose will have a
+          higher average blood concentration and a corresponding
+          lower value of fractional metabolism. The error would be
+          less if the time course of the oral absorption was
+          similar to that of the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input. This explains why the
+          <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> calculated <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] was greatly reduced when the
+          <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were fasting so that the gastric emptying rate
+          was increased and <ENAMEX TYPE="PER_DESC">GI</ENAMEX> absorption was more rapid (compare
+          <ENAMEX TYPE="ORGANIZATION">figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">6Band 7B</ENAMEX>) and closer to the rate of <ENAMEX TYPE="PRODUCT">IV</ENAMEX> infusion.
+          The critical dependence of the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> on the rate of
+          systemic ethanol input was first pointed out by <ENAMEX TYPE="PERSON">Wagner</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">30</NUMEX> ] . He showed that the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> for the oral input was
+          equal to (or even larger than) the <ENAMEX TYPE="PRODUCT">IV AUC</ENAMEX> if the <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          <ENAMEX TYPE="PERSON">infusion</ENAMEX> was administered at a slower rate (for <TIMEX TYPE="TIME">2 hours</TIMEX>)
+          than the rate of intestinal absorption.
+          Failure to appreciate the problems inherent in using
+          the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> or one compartment method to measure <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> has led
+          to the concept that the gastric mucosa metabolizes a
+          significant fraction of oral <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>. <ENAMEX TYPE="PERSON">Lieber</ENAMEX> and
+          <ENAMEX TYPE="PERSON">colleague</ENAMEX> observed that the "<ENAMEX TYPE="WORK_OF_ART">FPM</ENAMEX>" was reduced when
+          <ENAMEX TYPE="PERSON">ethanol</ENAMEX> was infused intraduodenally compared to the
+          standard oral <ENAMEX TYPE="ORG_DESC">administration</ENAMEX> and concluded that the
+          difference must have resulted from gastric mucosa
+          metabolism [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] . This decreased <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> for the
+          <TIMEX TYPE="DATE">intradudenal</TIMEX> dose is probably a result of the much more
+          rapid time course of absorption when the <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> is
+          administered directly into the duodenum. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> provides
+          a direct estimate of the amount of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> reaching the
+          liver. As shown by <TIMEX TYPE="DATE">figs. 4B</TIMEX>, <ENAMEX TYPE="PRODUCT">6Band 7B</ENAMEX>, the total amount
+          of absorbed ethanol reaching the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> does not differ
+          significantly from the total oral dose, indicating that
+          gastric mucosa metabolism is negligible.
+          In addition to providing a direct measure of <ENAMEX TYPE="ORGANIZATION">PA</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also provides, for the <NUMEX TYPE="ORDINAL">first</NUMEX> time,
+          quantitative information about the rate of intestinal
+          absorption of an orally administered <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that has
+          non-linear metabolism. A comparison of <ENAMEX TYPE="SUBSTANCE">figs.</ENAMEX> 6Band
+          7Bprovides a dramatic view of the decreased rate of
+          ethanol absorption when it is accompanied by a meal. In
+          the fasting <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> is almost completely absorbed
+          within <TIMEX TYPE="TIME">50 minutes</TIMEX> (fig. 7B) while the ethanol
+          administered with a standard breakfast takes <NUMEX TYPE="CARDINAL">3</NUMEX> or more
+          <TIMEX TYPE="TIME">hours</TIMEX> for complete absorption (fig. 6B). <ENAMEX TYPE="ORGANIZATION">Levitt et al.</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">31</NUMEX> ] simultaneously measured the rate of human gastric
+          <ENAMEX TYPE="PERSON">emptying</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">ethanol blood</ENAMEX> concentration with and without
+          a <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX> and concluded that the rate of ethanol absorption
+          was primarily limited by the rate of gastric emptying.
+          The similarity between the time course of ethanol
+          absorption seen in <TIMEX TYPE="DATE">figs. 6Band 7Band</TIMEX> the gastric emptying
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> course observed by <ENAMEX TYPE="PERSON">Levitt</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] supports
+          this conclusion.
+        
+        
+          Simulation of <ENAMEX TYPE="SUBSTANCE">ethanol blood</ENAMEX> levels after oral
+          intake
+          Another feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is that it provides a
+          simple interface that can be used to make quantitative
+          predictions of the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels produced by different
+          oral doses. As shown in <TIMEX TYPE="DATE">figs. 4B</TIMEX>, <ENAMEX TYPE="PRODUCT">6Band 7B</ENAMEX>, PKQuest
+          routinely fits the time course of the intestinal
+          absorption with a <NUMEX TYPE="CARDINAL">3</NUMEX> parameter <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> type equation
+          (<ENAMEX TYPE="ORGANIZATION">Absorption</ENAMEX> at time t = A [<ENAMEX TYPE="ORGANIZATION">t H/</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t H+T H</ENAMEX>)] where <ENAMEX TYPE="PER_DESC">A</ENAMEX> = total
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">H = Hill</ENAMEX> exponent, <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = <NUMEX TYPE="CARDINAL">half</NUMEX> time). This 3
+          parameter input function can then be used as the input
+          into <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. For example, the intestinal absorption
+          input function that was determined for the <NUMEX TYPE="CARDINAL">0.3</NUMEX> <ENAMEX TYPE="ORGANIZATION">gm/Kg</ENAMEX> dose
+          of <ENAMEX TYPE="SUBSTANCE">ethanol ingested</ENAMEX> with a meal (see fig. 6B) can be used
+          for a model simulation using the following settings for
+          finput:
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>;findabs:=<NUMEX TYPE="CARDINAL">0</NUMEX>;finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :=
+          table([organ=liver, type=<NUMEX TYPE="CARDINAL">3</NUMEX>, rate=<NUMEX TYPE="CARDINAL">524</NUMEX>, <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>,
+          tend=<NUMEX TYPE="CARDINAL">48.28</NUMEX>, <ENAMEX TYPE="PER_DESC">hn</ENAMEX>=<NUMEX TYPE="CARDINAL">1.87</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>
+          This corresponds to a total input of <NUMEX TYPE="CARDINAL">524</NUMEX> millimoles
+          into the portal vein ("organ = liver") with a <ENAMEX TYPE="PERSON">Hill</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">coefficient</ENAMEX> (<ENAMEX TYPE="WORK_OF_ART">"hn"</ENAMEX>) of <NUMEX TYPE="CARDINAL">1.87</NUMEX> and <TIMEX TYPE="TIME">a half time</TIMEX> ("tend") of
+          <TIMEX TYPE="TIME">48.28 minutes</TIMEX>. Figure <TIMEX TYPE="DATE">8shows</TIMEX> that the simulated blood
+          level for this input function (solid line) slightly
+          underestimates the peak value, but otherwise is in good
+          agreement with the experimental data (squares) that was
+          used to determine this input function. In Figure 9this
+          feature is used to illustrate the dramatic effect of a
+          concomitant meal on the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels resulting from an
+          oral intake. The figure shows the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels for an
+          oral intake of <NUMEX TYPE="CARDINAL">260</NUMEX> millimoles of <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> (red line,
+          <NUMEX TYPE="CARDINAL">roughly</NUMEX> equivalent to <NUMEX TYPE="QUANTITY">one 12 ounce</NUMEX> can of <ENAMEX TYPE="SUBSTANCE">beer</ENAMEX>); and <NUMEX TYPE="CARDINAL">2</NUMEX>
+          (green) or <NUMEX TYPE="MONEY">3</NUMEX> (blue) times this dose, all ingested for a
+          <TIMEX TYPE="TIME">20 minute</TIMEX> time period either with ("fed") or without
+          ("fasted") a meal. The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> results for the "fed" case
+          (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>, left) used the above rate of intestinal
+          absorption determined from the data in fig. 6B. The
+          "fasted" case (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>, right) used the intestinal
+          absorption rate determined for the fasting data in fig.
+          7B(<ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> <TIMEX TYPE="DATE">coefficient</TIMEX> = <NUMEX TYPE="CARDINAL">2.6</NUMEX>; <NUMEX TYPE="CARDINAL">half</NUMEX> time = <NUMEX TYPE="CARDINAL">26.84</NUMEX> <TIMEX TYPE="TIME">minutes</TIMEX>). In
+          addition, the corresponding values of <ENAMEX TYPE="SUBSTANCE">liver Vm</ENAMEX> and portal
+          blood flow for the fed and fasting conditions are used in
+          this simulation. The influence of a meal on <ENAMEX TYPE="SUBSTANCE">ethanol blood</ENAMEX>
+          levels is especially dramatic at the low intake dose,
+          decreasing the peak blood level by <NUMEX TYPE="CARDINAL">about 4</NUMEX> fold.
+        
+      
+      
+        Competing interests
+        None declared.
+      
+    
+  

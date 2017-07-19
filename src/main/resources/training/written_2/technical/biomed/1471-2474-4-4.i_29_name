@@ -1,0 +1,398 @@
+
+  
+    
+      
+        Background
+        In the past, animal <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> in the study of disc
+        degeneration have most commonly involved <ENAMEX TYPE="ANIMAL">dogs</ENAMEX>, <ENAMEX TYPE="ANIMAL">monkeys</ENAMEX>, and
+        <ENAMEX TYPE="PERSON">sheep</ENAMEX>, but in <TIMEX TYPE="DATE">recent years</TIMEX> the sand <ENAMEX TYPE="ANIMAL">rat</ENAMEX> ( 
+        Psammomys obesus ) has been used
+        because of the economic advantages of rodent <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>. The
+        spontaneous age-related degeneration of the sand rat spine
+        avoids the need for chemonucleolysis or surgical injury to
+        induce disc degeneration. The age-related disc degeneration
+        in the sand <ENAMEX TYPE="ANIMAL">rat</ENAMEX> has been shown to be reliable and
+        predictable, and has been well characterized in previous
+        <ENAMEX TYPE="ORGANIZATION">radiologic</ENAMEX> studies [ <NUMEX TYPE="CARDINAL">1 2 3 4 5 6 7 8 9</NUMEX> ] . The present work
+        extends the previous radiological studies in [ <ENAMEX TYPE="LAW">1</ENAMEX> ] to
+        develop an automated computer-assisted procedure that
+        <ENAMEX TYPE="DISEASE">analyses digitized lateral x-rays</ENAMEX> of the sand rat
+        <ENAMEX TYPE="PERSON">spine</ENAMEX>.
+        To create such a system, the task of locating the
+        <ENAMEX TYPE="ORGANIZATION">vertebrae</ENAMEX> in the image is vital. For this task, previous
+        works in x-ray analysis were consulted and several
+        possibilities were initially considered. The main
+        techniques in previous research used active shape models,
+        both customized and deformable. Extensive research has been
+        done by <ENAMEX TYPE="GPE">Long</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX> ] to automatically identify and
+        classify spinal vertebrae. Others whose work includes the
+        use of active shape models for vertebrae analysis are Smyth
+        [ <TIMEX TYPE="DATE">13</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Zamor</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX> ] . Although the adaptability of
+        active shape <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> is important, b-spline techniques are
+        also valuable [ <TIMEX TYPE="DATE">15</TIMEX> ] . These techniques (which are adequate
+        in the analysis of human <ENAMEX TYPE="SUBSTANCE">spines</ENAMEX>) were not selected in the
+        present study because they still require <ENAMEX TYPE="PER_DESC">user</ENAMEX> intervention,
+        and our objective was to develop a completely automated
+        approach to the study of <ENAMEX TYPE="DISEASE">lateral</ENAMEX> films.
+        The specific goal of this study was to create an
+        efficient automated method of identifying the overall angle
+        of curvature of the spine, the angles between individual
+        vertebrae, the distance between vertebrae, and a scoring
+        index for <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> present in the vertebral end plates
+        (which may be a major factor in reducing the nutrition
+        available to the aging disc). <ENAMEX TYPE="ORGANIZATION">Resultant</ENAMEX> <ENAMEX TYPE="PER_DESC">representative</ENAMEX> data
+        are presented both graphically and numerically to
+        illustrate the computer methods which are utilized. The
+        major emphasis of this <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> study was to accurately
+        identify each of the vertebrae and then to obtain selected
+        measurements. The techniques presented here may have
+        potential to produce quantitative algorithms that create
+        more accurate and informative studies and measurements in a
+        time efficient manner.
+      
+      
+        Methods
+        
+          Finding the <ENAMEX TYPE="ORGANIZATION">Location of the Spine</ENAMEX> in the
+          Image
+          In order to analyse the vertebrae, first the location
+          of the spine in the image must be found. In each of the
+          images, the location and angle of the spine can be
+          clearly detected by finding the well-defined soft-tissue
+          boundary of the <ENAMEX TYPE="ORG_DESC">body</ENAMEX> itself. The <NUMEX TYPE="ORDINAL">first</NUMEX> step in finding
+          this boundary was to <ENAMEX TYPE="GPE">de</ENAMEX>-noise the image using an adaptive
+          Wiener filter [ <NUMEX TYPE="CARDINAL">16 17 18</NUMEX> ] . The goal was to minimize the
+          amount of noise in the black area corresponding to the
+          area outside the <ENAMEX TYPE="ORG_DESC">body</ENAMEX>. Next, Canny edge detection [ <TIMEX TYPE="DATE">19</TIMEX> ]
+          was applied to obtain a binary image representing the
+          edges in the X-ray. The reason the Canny edge detector
+          was chosen over other edge detectors is because it is
+          still a basic filter, but also applies a Gaussian
+          smoothing filter before its edge detection algorithm. The
+          strength of the edges detected is also controlled with
+          this detection system, which helps to enhance precision.
+          The Canny edge detector can be briefly described using
+          <ENAMEX TYPE="CONTACT_INFO">Equation 1</ENAMEX> developed to detect the local maxima in the
+          direction perpendicular to the edge.
+          
+          In <ENAMEX TYPE="LAW">Equation 1, ƒ</ENAMEX> represents the image, 
+          G is a 2D <ENAMEX TYPE="ORGANIZATION">Gaussian</ENAMEX> filleting
+          operation, and the <NUMEX TYPE="ORDINAL">second</NUMEX> directional derivative is taken
+          along the normal vector 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . Using this edge-detected image,
+          the boundary was traced and the angles of its curvature
+          recorded, as shown in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          The process to this point generated <NUMEX TYPE="CARDINAL">two</NUMEX> important sets
+          of information. First, a set of points along the <ENAMEX TYPE="ORG_DESC">body</ENAMEX>'s
+          <ENAMEX TYPE="PERSON">boundary</ENAMEX> was obtained, which gives a good estimate for
+          locating the vertebrae. <NUMEX TYPE="ORDINAL">Second</NUMEX>, a set of angles that
+          gives an estimate of how the underlying vertebrae are
+          oriented was obtained.
+        
+        
+          Segmenting the Image
+          Next, with the data that provided the position and
+          orientation of the spine, it was necessary to segment the
+          image based on orientation. The purpose of this
+          <ENAMEX TYPE="PERSON">segmentation</ENAMEX> was <NUMEX TYPE="CARDINAL">two</NUMEX>-fold. First, the image must be
+          broken into smaller portions for histogram equalization
+          and contrast adjustment. Because the image varies in
+          quality and clarity in different portions of the image,
+          details visible in one portion of the image may not be
+          clearly identifiable in other portions. The <NUMEX TYPE="ORDINAL">second</NUMEX>
+          purpose segmentation served was to limit the search space
+          for <ENAMEX TYPE="PER_DESC">line segments</ENAMEX> (see below).
+          The boundary points from the previous step were used
+          to determine where the image was to be segmented. The
+          locations of these points for segmentation and their
+          angles of curvature are shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+          Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the results of Canny edge detection [ <NUMEX TYPE="CARDINAL">19</NUMEX>
+          ] before the image was segmented. The edges of the end
+          plates were not clearly visible because different
+          threshold values needed to be used for separate portions
+          of the image. A threshold value applied to the entire
+          image can neglect needed information and may detect more
+          noise than the true edges.
+          The image was segmented in locations where the change
+          in orientation of the detected boundary became greater
+          than <TIMEX TYPE="TIME">twenty degrees</TIMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). A <NUMEX TYPE="CARDINAL">ten</NUMEX>-pixel overlap
+          between <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> was used to avoid accidentally missing
+          features that lie near segment boundaries. From this
+          point, each <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> was processed independently (Figure
+          <NUMEX TYPE="CARDINAL">5</NUMEX>).
+        
+        
+          Reductions or Elimination of Segment
+          Background
+          In order to obtain an image where the vertebrae were
+          clearly defined, it was necessary to eliminate as much of
+          the background noise and other <ENAMEX TYPE="PER_DESC">objects</ENAMEX> in the image as
+          possible. High-boost filters as well as histogram
+          <ENAMEX TYPE="ORGANIZATION">equalization</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] were both tested for this process.
+          While both techniques required some logic to determine
+          the best values for filtering the image, histogram
+          <ENAMEX TYPE="ORGANIZATION">equalization</ENAMEX> appeared to be the stronger of the two
+          techniques as it allowed an analysis of the distribution
+          of intensities in the image and adjusted the histogram
+          accordingly. Histogram equalization can be briefly
+          described using <ENAMEX TYPE="SUBSTANCE">Equation 2</ENAMEX>:
+          
+          where 
+          g is the original grey level, <NUMEX TYPE="MONEY">ƒ</NUMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> ) is the equalized 
+          G 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           is the maximum grey level, 
+          A 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is the area of the image and 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) is the histogram.
+          Figure <NUMEX TYPE="CARDINAL">6shows</NUMEX> the effects of the histogram
+          <ENAMEX TYPE="ORGANIZATION">equalization</ENAMEX>. The equalization highlighted the
+          distinction of vertebrae vs. the surrounding tissues,
+          making the vertebrae more visible and the boundaries more
+          identifiable. This step also normalized the images,
+          reducing the variance among the images for the measuring
+          of <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX>, and helped increase the accuracy of the
+          edge detection, <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform [ <TIMEX TYPE="DATE">21</TIMEX> ] discussed
+          below.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Locating Vertebral End</ENAMEX> Plates
+          The image was segmented such that each segment
+          contained vertebrae of similar orientation. Each
+          segment's histogram was also manipulated such that the
+          vertebrae were well defined. The remaining processing
+          steps can be described as follows:
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. First, Canny edge detection [ <TIMEX TYPE="DATE">19</TIMEX> ] was performed on
+          the image <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>. This time, threshold values that
+          specifically eliminated the false edges were used. The
+          false edges were a result of noise and other edges in the
+          image that were not part of the spine. These threshold
+          values were based on the <ENAMEX TYPE="ORG_DESC">segment</ENAMEX>'s histogram from the
+          previous step. The objective was to preserve the edges of
+          the end plates while at the same time eliminating as many
+          of the other extraneous edges as possible.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. Once the edge image was produced, it underwent a
+          Radon transform [ <TIMEX TYPE="DATE">22</TIMEX> ] . The <ENAMEX TYPE="ORGANIZATION">Radon</ENAMEX> transform of a binary
+          image is essentially a <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform [ <TIMEX TYPE="DATE">21</TIMEX> ] . The Hough
+          transform (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>) gives an idea of where lines are
+          located in an image by counting consecutive points in
+          each direction. The <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform was used because it
+          was originally designed to detect straight lines with no
+          prior knowledge of the region being necessary. The theory
+          behind the <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform is as follows [ <TIMEX TYPE="DATE">19</TIMEX> ] . All
+          lines going through a given point can be represented by
+          one equation
+          
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <TIMEX TYPE="DATE">1</TIMEX> = 
+          kx 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          q 
+          <ENAMEX TYPE="CONTACT_INFO">Equation 3</ENAMEX> 
+          for some values of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> and 
+          q . Meaning that <ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX> can be taken
+          as an equation in the parameter space 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, q , thus all the lines through a
+          given point A can be represented by
+          
+          <ENAMEX TYPE="CONTACT_INFO">q = -</ENAMEX> 
+          x 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">Equation 4</ENAMEX> 
+          and all the <ENAMEX TYPE="PRODUCT_DESC">lines</ENAMEX> passing through a given point B can
+          be represented by
+          
+          <ENAMEX TYPE="CONTACT_INFO">q = -</ENAMEX> 
+          x 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">Equation 5</ENAMEX> 
+          Then the only common point on both lines in the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, q parameter space is the point
+          in the image that represents the only existing line
+          between points A and B. The goal is to determine all
+          possible line pixels, and transform the lines that go
+          through the pixels into points in 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, q space, and to detect the
+          points ( 
+          a , 
+          b ) that result from the Hough
+          transform of lines 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = 
+          ax + 
+          b in the image.
+          The directions searched in the <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform were
+          constrained by using the angles that provided the basis
+          for segmentation. This eliminated many of the false line
+          detections by limiting the orientations allowed.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. The best <ENAMEX TYPE="PER_DESC">line candidates</ENAMEX> of all those produced by
+          the <ENAMEX TYPE="ORGANIZATION">Hough</ENAMEX> transform were selected (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>). These lines
+          matched the location and orientation of each of the
+          vertebral end plates. The <ENAMEX TYPE="PER_DESC">line candidates</ENAMEX> located near
+          each selected <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> intersect near or at the midpoint
+          of the end plate edge. This allowed accurate estimation
+          of the midpoint of each end plate. These midpoints were
+          then used for accurately finding the orientation and
+          location of individual vertebrae.
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. A new index of <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> to describe the amount of
+          calcification on each vertebra was introduced as:
+          
+          This index is a relation between the intensity of the
+          vertebra at an end plate, and the intensity of the
+          vertebra at the <ENAMEX TYPE="FAC_DESC">center</ENAMEX>. In the image, the higher the
+          intensity value, the more bony <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> is present
+          (i.e., the degree of <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> is greater). As a note,
+          this index is only a measurement; no interpretations are
+          made at this point.
+        
+      
+      
+        Results
+        
+          Overall Curvature
+          Overall curvature was determined as the difference
+          between the orientations of the beginning and ending
+          <ENAMEX TYPE="ORGANIZATION">vertebra</ENAMEX> and is shown in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. (This measurement could
+          have also been modelled with <ENAMEX TYPE="FAC_DESC">circle detection</ENAMEX> where the
+          spine represents a segment of the circle.)
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Angles of Individual</ENAMEX> Vertebra
+          An estimation of this measurement was obtained by
+          using the output of the line detection method described
+          in <ENAMEX TYPE="LAW">section 2</ENAMEX> and shown in Figure <NUMEX TYPE="CARDINAL">9</NUMEX>. This gives an
+          indication of the midpoints of the end plates as well as
+          the orientation of those end plates. This information
+          resulted to the slope from the midpoint of one end plate
+          to the midpoint of the other. The angles of the vertebrae
+          are given by the <ENAMEX TYPE="WORK_OF_ART">'Orientation Angle"</ENAMEX> column, in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+          Since not every end plate could be found with the line
+          detection method, the shape detection methods provide a
+          more reliable basis for this measurement.
+        
+        
+          <ENAMEX TYPE="PERSON">Distances Between Vertebras</ENAMEX>
+          The distance between the vertebrae was determined by
+          finding the pixel length of the vertebrae and the pixel
+          length of the gap between their left neighbouring
+          <ENAMEX TYPE="ORGANIZATION">vertebrae</ENAMEX>. In <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, the vertebral length and the pixel
+          space between <ENAMEX TYPE="PER_DESC">vertebrae</ENAMEX> are given by the 'Vertebra
+          Length' and <ENAMEX TYPE="FAC">'Space'</ENAMEX>, respectively.
+        
+        
+          Index of <ENAMEX TYPE="DISEASE">Sclerosis</ENAMEX> at <ENAMEX TYPE="ORGANIZATION">End</ENAMEX> Plates
+          This measurement of <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> was a ratio between the
+          average pixel intensity near the center of a vertebra and
+          the pixel intensity at each end plate (Figure <NUMEX TYPE="CARDINAL">10</NUMEX>)
+          <ENAMEX TYPE="PRODUCT">calculated by Equation 1</ENAMEX>. The histogram equalization was
+          essential for these calculations, so there will not be a
+          high degree of variance between subsequent images. The
+          index value for the left end cap compared to the center
+          is the 'Sclerosis <ENAMEX TYPE="ORGANIZATION">Upper Index</ENAMEX>' column, and the index
+          value for the right end cap compared to the <ENAMEX TYPE="FAC_DESC">center</ENAMEX> is the
+          <ENAMEX TYPE="ORGANIZATION">'Sclerosis Lower Index</ENAMEX>' column in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+        
+      
+      
+        Discussion
+        The results generated from this new application of
+        computer analysis applied to a small <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+        representative x-rays indicate that the computer-aided
+        method developed here is practical for automated
+        calculation and analysis of the overall curvature of the
+        <ENAMEX TYPE="PERSON">spine</ENAMEX>, individual vertebra angles, vertebral spacing, and
+        <ENAMEX TYPE="DISEASE">sclerosis measurement</ENAMEX>. The computational techniques can
+        also provide quantitative means that can then be used to
+        explore the relation between age and conformation of the
+        <ENAMEX TYPE="ORGANIZATION">vertebrae</ENAMEX>. The <NUMEX TYPE="CARDINAL">two</NUMEX> most important steps in the process
+        reported here are the location of the edges of the
+        <ENAMEX TYPE="ORGANIZATION">vertebrae</ENAMEX> and the location of the midpoints of the end
+        <ENAMEX TYPE="ORGANIZATION">plates</ENAMEX>. Future applications of the techniques developed
+        here could potentially be applied to either human or large
+        <ENAMEX TYPE="ANIMAL">animal radiographs</ENAMEX>. The proposed method can be applied to
+        further our methods of analysis in animal models of
+        important features of spine aging such as <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> of the
+        vertebral end plates.
+        <ENAMEX TYPE="ORGANIZATION">Bernick</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Cailliet</ENAMEX> have suggested that <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> of
+        the end plate may act to impede nutrient flow into the disc
+        [ <TIMEX TYPE="DATE">23</TIMEX> ] , and that progressive end plate <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX> with
+        <ENAMEX TYPE="PERSON">aging</ENAMEX> contributed to disc degeneration. <ENAMEX TYPE="CONTACT_INFO">Concomitantly,</ENAMEX>
+        however, disc degeneration, by changing stress patterns on
+        end plate bone, may also cause increases in bone density in
+        parts of the end plate subjected to greater stress [ <NUMEX TYPE="CARDINAL">24 25</NUMEX>
+        <NUMEX TYPE="CARDINAL">26 27</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Modic et al</ENAMEX> have provided the major clinical
+        study of end plates in degenerating discs [ <TIMEX TYPE="DATE">28</TIMEX> ] . They
+        reported that discs which showed in an MRI a decrease in
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity on <NUMEX TYPE="CARDINAL">T1</NUMEX>-weighted spin-echo images and
+        increased signal intensity on <NUMEX TYPE="CARDINAL">T2</NUMEX>-weighted images (Modic
+        <ENAMEX TYPE="CONTACT_INFO">type 1</ENAMEX>) exhibited disruption and fissuring of the end
+        <ENAMEX TYPE="ORGANIZATION">plates</ENAMEX>. Endplates showed woven bone, thick trabeculae with
+        active bone remodeling, and fibrous <ENAMEX TYPE="SUBSTANCE">marrow</ENAMEX>. Modic type 2
+        MRI changes, characterized by increased signal intensity on
+        T1-weighted images and isointense or slightly increased
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity on <NUMEX TYPE="CARDINAL">T2</NUMEX>-weighted images), showed a
+        <ENAMEX TYPE="ORGANIZATION">progression</ENAMEX> to disrupted end plates and reactive bone
+        tissue and the presence of <ENAMEX TYPE="SUBSTANCE">fatty marrow</ENAMEX>.
+      
+      
+        Conclusions
+        Performing accurate analysis of vertebrae based on
+        radiographic images is a challenging image processing task.
+        The automated system presented here applies robust image
+        processing techniques to find important measures of
+        <ENAMEX TYPE="ORGANIZATION">degeneration</ENAMEX> in the aging spine, such as separation and
+        angle between vertebrae, measurement of <ENAMEX TYPE="DISEASE">sclerosis</ENAMEX>, and
+        orientation of vertebrae. The main advantages of this
+        method are that unlike <ENAMEX TYPE="PER_DESC">humans</ENAMEX>, the computer can make exact
+        quantitative measurements, the computer is not subjective
+        (does not depend on the <ENAMEX TYPE="PER_DESC">investigator</ENAMEX>), it provides faster
+        analysis, and the image quality can be improved before
+        analysis to allow more accurate measurements. The main
+        disadvantages are that the X-ray must be digitized
+        producing extra costs and complexity, and <ENAMEX TYPE="PER_DESC">humans</ENAMEX> might use
+        certain heuristics that cannot be directly translated into
+        mathematical methods for the computer to imitate.
+        Some limitations to the method include, that the overall
+        accuracy is dependant on the quality of data used, the
+        orientation of the spine in the image must be within a
+        certain degree to be analyzed, and a large data set is
+        necessary to be able to usefully interpret the measurements
+        generated. The main <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error that were identified
+        are the fact that the lower the quality of the input image,
+        the higher the chance for miss-measurements because the
+        identification of the landmark features may be incorrect,
+        and that the overall orientation measurements can be
+        incorrect due to the orientation and location of the spine
+        in the images. In addition, the method can be used to
+        <ENAMEX TYPE="ORGANIZATION">quantitatively</ENAMEX> study the relation between the age and
+        <ENAMEX TYPE="ORGANIZATION">vertebral</ENAMEX> changes. This automated system can greatly
+        enhance the research on spine and disc degeneration in sand
+        <ENAMEX TYPE="ANIMAL">rats</ENAMEX> and other rodent <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> that provide an economically
+        attractive alternative to large <ENAMEX TYPE="ANIMAL">animal</ENAMEX> studies.
+      
+      
+        Competing interests
+        None declared.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' Contributions
+        <ENAMEX TYPE="ORGANIZATION">CW</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DB</ENAMEX> developed and implemented the process as well
+        as wrote the manuscript. <ENAMEX TYPE="ORGANIZATION">KN</ENAMEX> supervised development and
+        implementation and sponsored the project. <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX> provided the
+        X-ray images, evaluated the developed process, provided
+        expertise on the biological aspects and assisted with
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX> writing. <ENAMEX TYPE="ORGANIZATION">EH</ENAMEX> provided the clinical insight to the
+        usage of the technique. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the
+        final manuscript.
+      
+    
+  

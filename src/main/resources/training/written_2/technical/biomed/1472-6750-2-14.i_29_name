@@ -1,0 +1,806 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> have been widely adopted in genomics
+        because of the their ability to simultaneously examine the
+        expression levels of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes. As a result, the
+        scope of applications for microarrays has broadened
+        rapidly, from drug discovery [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , to classification of
+        <ENAMEX TYPE="DISEASE">cancers</ENAMEX> [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] and analysis of splice variants [ <ENAMEX TYPE="LAW">5</ENAMEX> ] .
+        Novel analytical tools have been constructed to address
+        every component of the microarray experiment and optimize
+        performance [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . However, ideal systems with maximized
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and data reproducibility have not been
+        achieved. One approach to enhance sensitivity in
+        microarrays, using a novel signal amplification technique,
+        has recently been reported [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . Another approach is to
+        increase the affinity of a <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">nucleic acid</ENAMEX> present on
+        the array) for its <ENAMEX TYPE="ORG_DESC">target</ENAMEX> through modifications to the
+        length [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , chemistry [ <ENAMEX TYPE="LAW">9</ENAMEX> ] , or physical structure [ <NUMEX TYPE="CARDINAL">10</NUMEX>
+        ] of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>.
+        Naturally occurring analogs of purine and pyrimidine
+        bases have been examined extensively for their ability to
+        increase the thermodynamic stability of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">duplexes</ENAMEX> [ <NUMEX TYPE="CARDINAL">11 12 13 14 15</NUMEX> ] . Among these are
+        <NUMEX TYPE="CARDINAL">2</NUMEX>-aminoadenine also known as diaminopurine (DAP), which is
+        found in <ENAMEX TYPE="PRODUCT">S-2L</ENAMEX> cyanophage <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] , <NUMEX TYPE="CARDINAL">5</NUMEX>-<ENAMEX TYPE="SUBSTANCE">methyl</ENAMEX> uracil
+        (<ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX>), and <NUMEX TYPE="CARDINAL">5</NUMEX>-<ENAMEX TYPE="SUBSTANCE">methyl cytidine</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX>). Previous studies have
+        shown the ribonucleoside <ENAMEX TYPE="SUBSTANCE">triphosphate</ENAMEX> derivatives of
+        modified bases to be effectively incorporated by <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">polymerases</ENAMEX> [ <NUMEX TYPE="CARDINAL">17 18</NUMEX> ] , which make them an excellent
+        substrate for use in microarray sample preparations
+        requiring amplification through 
+        in vitro transcriptions (IVTs).
+        Due to their effects on <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> stability and secondary
+        structures and their lack of replication by DNA
+        polymerases, modified nucleotides have recently been
+        exploited in a variety of technologies in molecular biology
+        and genomics. For example, <NUMEX TYPE="CARDINAL">2</NUMEX>'-<ENAMEX TYPE="PERSON">O</ENAMEX>-<ENAMEX TYPE="SUBSTANCE">methyl ribonucleotides</ENAMEX> and
+        <NUMEX TYPE="CARDINAL">5</NUMEX>-(<ENAMEX TYPE="CONTACT_INFO">1-propynyl</ENAMEX>)pyrimidines have been chemically incorporated
+        into oligonucleotides which were used to detect telomeric
+        repeat <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> in fluorescence 
+        in situ hybridization (<ENAMEX TYPE="ORGANIZATION">FISH</ENAMEX>) assays [
+        <NUMEX TYPE="CARDINAL">19</NUMEX> ] . Furthermore, chimeric primers containing
+        <ENAMEX TYPE="ORGANIZATION">deoxynucleotides</ENAMEX> and <ENAMEX TYPE="PRODUCT">2</ENAMEX>'-<ENAMEX TYPE="PERSON">O</ENAMEX>-<ENAMEX TYPE="SUBSTANCE">methyl ribonucleotides</ENAMEX> have been
+        used to eliminate artifacts, produced by exponential
+        amplification of minor side-products, in cycle sequencing [
+        <NUMEX TYPE="CARDINAL">20</NUMEX> ] .
+        Recently, studies employing <ENAMEX TYPE="SUBSTANCE">DNA arrays</ENAMEX> have also
+        examined the use of modified nucleotides such as <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>,
+        <TIMEX TYPE="TIME">5-bromodeoxyuridine</TIMEX>, and <ENAMEX TYPE="PRODUCT">2</ENAMEX>'-<ENAMEX TYPE="PERSON">O</ENAMEX>-methylthymidine in the probe
+        [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ] . An alternative method to increase the
+        probe-target affinity is to incorporate the modified
+        ribonucleotide, as the triphosphate derivative, during the
+        IVT process so that the cRNA produced has the desired level
+        of substitution of the corresponding unmodified nucleotide.
+        Such an approach has been demonstrated in a study which
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> these modified cRNA products to high density
+        oligonucleotide arrays [ <TIMEX TYPE="DATE">23</TIMEX> ] . However, that study
+        measured the signal when amplifying a specific gene rather
+        than a genome-wide approach. A genome-wide amplification,
+        coupled with the incorporation of modified nucleotides,
+        permits measurement of every transcript in the sample. To
+        our knowledge, no systematic studies have been performed
+        examining the incorporation of modified ribonucleotide
+        triphosphates into cRNA, yield of amplified material,
+        effects on hybridization intensities and reproducibility,
+        and the impact on the differential expression ratios. It
+        will not be possible to gauge the full potential,
+        advantages, and disadvantages until such studies have been
+        completed.
+        In this study, we investigated the possibility that
+        incorporation of modified nucleotides into complementary
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (cRNA) target samples could increase signal intensity
+        on the <ENAMEX TYPE="ORGANIZATION">Motorola Codelink™ Expression</ENAMEX> microarray platform.
+        The ratios of modified to unmodified nucleoside
+        <ENAMEX TYPE="ORGANIZATION">triphosphates</ENAMEX> (NTPs) were varied in each target synthesis
+        in order to measure the range of effects on cRNA yield,
+        specific activity of target sample, hybridization signals,
+        and differential expression ratios. Our results suggest
+        that incorporation of <NUMEX TYPE="CARDINAL">2</NUMEX>-aminoadenosine (DAP) triphosphate
+        into target cRNA samples may increase hybridization signal
+        intensity for a wide variety of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> hybrid <ENAMEX TYPE="SUBSTANCE">duplexes</ENAMEX>. In
+        contrast, <NUMEX TYPE="CARDINAL">5</NUMEX>-methyluridine and <NUMEX TYPE="QUANTITY">5-methylcytidine</NUMEX> had
+        detrimental effects on signal intensities. Hybridization
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> was dependent on both target sequence and
+        extent of substitution with the modified nucleotide.
+        Concurrent incorporation of modified and unmodified <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> in
+        a <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> ratio resulted in significantly greater numbers of
+        above-threshold ratio calls across tissues, while
+        preserving ratio integrity and reproducibility.
+      
+      
+        Results
+        
+          Effect of modified nucleotides on cRNA yield and
+          assessment of their incorporation and biotin-<NUMEX TYPE="CARDINAL">11</NUMEX>-UTP
+          incorporation
+          Although <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>, <ENAMEX TYPE="GPE">MeC</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX> were tolerated by <ENAMEX TYPE="SUBSTANCE">T7 RNA</ENAMEX>
+          <ENAMEX TYPE="PERSON">polymerase</ENAMEX>, incorporation of these analogs into our IVT
+          reaction <ENAMEX TYPE="PRODUCT_DESC">cocktails</ENAMEX> reduced the yields of amplified cRNA.
+          The magnitude of the decrease was <NUMEX TYPE="PERCENT">20-30%</NUMEX> and depended on
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> tissue <ENAMEX TYPE="ORG_DESC">source</ENAMEX> and the NTP modification. However,
+          within the context of our pre-established assay
+          conditions (a single color, single sample per array
+          system using <NUMEX TYPE="CARDINAL">ten</NUMEX> micrograms of cRNA), enough cRNA was
+          generated from each <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> reaction to perform
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> in triplicate. Thus, we were able to
+          normalize input amounts of cRNA for each condition tested
+          in order to quantitatively compare relative changes due
+          to each respective modification. In these experiments, we
+          generated cRNA from <NUMEX TYPE="MONEY">five micrograms</NUMEX> of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> and did
+          not explore the impact on yield when smaller or larger
+          amounts of input total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> are used.
+          We next determined how well the modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> were
+          incorporated by the <ENAMEX TYPE="SUBSTANCE">T7 RNA polymerase</ENAMEX> and whether
+          incorporation of biotinylated <ENAMEX TYPE="ORGANIZATION">UTP</ENAMEX> was altered due to the
+          presence of these modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX>. To address these
+          questions, we used an analytical method developed in our
+          laboratory and described in a previous study [ <TIMEX TYPE="DATE">24</TIMEX> ] .
+          Briefly, the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> cRNA is digested with <ENAMEX TYPE="PRODUCT">P1</ENAMEX> nuclease
+          and calf intestinal phosphatase and applied to a high
+          performance liquid chromatography (HPLC) column to
+          separate the nucleosides, followed by an absorbance
+          measurement at <NUMEX TYPE="CARDINAL">260</NUMEX> nm. As seen in Figure <TIMEX TYPE="DATE">1A</TIMEX>, when only
+          the unmodified NTPs are incorporated during the <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX>,
+          there is good separation of the individual nucleosides.
+          Furthermore, as reported earlier [ <TIMEX TYPE="DATE">24</TIMEX> ] , using the
+          extinction coefficients and integrating the area under
+          these peaks, there are approximately equal amounts of
+          each of the <NUMEX TYPE="CARDINAL">four</NUMEX> nucleosides. When <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> was added at a <ENAMEX TYPE="CONTACT_INFO">1:1</ENAMEX>
+          molar ratio to the adenosine, the chromatogram showed
+          incorporation of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> into the cRNA, and this level of
+          <ENAMEX TYPE="PERSON">incorporation</ENAMEX> appeared to be equivalent to the level of
+          incorporation of adenosine (Figure <NUMEX TYPE="CARDINAL">1B</NUMEX>). Moreover, when
+          the adenosine was fully substituted by the <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> in the IVT
+          reaction cocktail, only a peak corresponding to the DAP
+          was detected (Figure <NUMEX TYPE="CARDINAL">1C</NUMEX>), and this peak was approximately
+          equal in area to that of the adenosine in the control
+          situation. Similarly, when <ENAMEX TYPE="PERSON">MeC</ENAMEX> was fully substituted for
+          <ENAMEX TYPE="ORGANIZATION">cytidine</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> reaction cocktail, only a peak
+          corresponding to the <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> was detected (Figure <NUMEX TYPE="CARDINAL">1D</NUMEX>), and
+          this peak was approximately equal in area to that of the
+          <ENAMEX TYPE="ORGANIZATION">cytidine</ENAMEX> in the control situation. In contrast, we were
+          unable to examine incorporation levels of the <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX> because
+          the <ENAMEX TYPE="EVENT">MeU</ENAMEX> peak was eluted at approximately the same time as
+          the guanosine peak (data not shown). It is important to
+          note that these analyses used the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> cRNA and
+          represent a global, average view of the incorporation.
+          <ENAMEX TYPE="PERSON">Incorporation</ENAMEX> may differ somewhat depending on the
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, structure, or expression level of the nascent
+          <ENAMEX TYPE="SUBSTANCE">RNA transcript</ENAMEX>. We therefore incorporated each of these
+          modified nucleotides into a unique bacterial transcript,
+          generated by run off transcription from a plasmid into
+          which the gene was cloned. When this transcript was
+          <ENAMEX TYPE="PERSON">digested</ENAMEX> and applied to the <ENAMEX TYPE="ORGANIZATION">HPLC</ENAMEX>, we found similar
+          results as seen with the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> cRNA (data not shown).
+          We conclude that these modified nucleotides are
+          incorporated during the <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> reaction at ratios which are
+          reflective of the input ratio to the unmodified
+          <ENAMEX TYPE="PER_DESC">counterpart</ENAMEX>.
+          Because the sensitivity and reproducibility of
+          microarrays depends on the specific activity of target
+          cRNA, we also wanted to determine if adding modified NTPs
+          to the <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> changed the incorporation rate of
+          biotin-<NUMEX TYPE="CARDINAL">11</NUMEX>-UTP. This biotinylated nucleotide is used in
+          our biotin-<NUMEX TYPE="CARDINAL">streptavidin</NUMEX>-<NUMEX TYPE="CARDINAL">Alexa647</NUMEX> conjugate detection
+          system. We found that the level of biotinylated uridine,
+          detected at <TIMEX TYPE="TIME">294 nm</TIMEX> after digestion and application to the
+          <ENAMEX TYPE="ORGANIZATION">HPLC</ENAMEX>, was unaffected by the presence of any of the
+          <ENAMEX TYPE="ORGANIZATION">modified NTPs</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> reaction cocktail (data not
+          shown). Moreover, analysis of individual transcripts,
+          which were enzymatically digested into mononucleosides,
+          showed equivalent incorporation rates of biotin-<NUMEX TYPE="CARDINAL">11</NUMEX>-UTP
+          for both control samples and target <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> containing
+          <ENAMEX TYPE="ORGANIZATION">modified ATP</ENAMEX>.
+          Lastly, we examined what effect, if any, incorporation
+          of modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> had on the length of the amplified cRNA.
+          Transcript size was determined by running <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> on an
+          Agilent <TIMEX TYPE="DATE">2100</TIMEX> <ENAMEX TYPE="PRODUCT">BioAnalyzer</ENAMEX>. No difference was observed for
+          either individual transcripts or complex samples in
+          modified versus unmodified <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> samples (data not
+          shown).
+        
+        
+          Effect of modified nucleotides on hybridization
+          signals and specificity
+          We next determined the effect of these modified NTPs
+          on hybridization intensities. After hybridization,
+          scatter plots of hybridization intensities were generated
+          comparing those intensities generated from unmodified
+          <ENAMEX TYPE="ORGANIZATION">cRNA</ENAMEX> (control) to either the duplicate control
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> or to intensities generated from cRNA where
+          <NUMEX TYPE="CARDINAL">one</NUMEX> of the modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> was incorporated. The comparison
+          of control versus control (Figure <NUMEX TYPE="CARDINAL">2A</NUMEX>) illustrates that,
+          if hybridization intensities are equal in the two
+          conditions, the points should lie on the diagonal.
+          Complete substitution of unmodified <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> (Figure
+          2B) produced greater increases overall in individual
+          probe signals than the target sample containing a <ENAMEX TYPE="CONTACT_INFO">1:1</ENAMEX>
+          ratio of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> to unmodified <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2C</NUMEX>), as would be
+          expected if DAP incorporation increased the <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="PERSON">hybrid</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> stability. A quantitative estimation of
+          assay performance increase can be derived from the median
+          probe signal on each microarray. Although Figure 2Band
+          2Cshow that increases in signal intensity are not linear
+          for all <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences, median slide intensity across
+          sets of duplicate hybridizations for <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX> (human embryonic kidney and <ENAMEX TYPE="ORGANIZATION">Burkitt</ENAMEX>'s lymphoma)
+          increased an average of <NUMEX TYPE="PERCENT">40%</NUMEX> +/- <NUMEX TYPE="PERCENT">7% and 99%</NUMEX> +/- <NUMEX TYPE="PERCENT">6%</NUMEX> for the
+          <TIMEX TYPE="TIME">1:1 DAP</TIMEX>:A and all DAP conditions, respectively, over the
+          unmodified control sample. However, Figure <NUMEX TYPE="CARDINAL">2Balso</NUMEX> shows
+          that full substitution of adenosine by <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> reduced the
+          hybridization signals for many of the probes, generating
+          a bowing towards the unmodified control condition and
+          suggesting a <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> destabilizing effect of complete DAP
+          substitution in certain sequence contexts [ <NUMEX TYPE="CARDINAL">11 23</NUMEX> ] . On
+          a global scale, such a high incidence of probes with
+          reduced hybridization signals may limit the usefulness of
+          the complete DAP substitution. Of particular interest is
+          the observation that the number of probes which have
+          increased signal and the degree to which their signals
+          are increased are highest at the lower end of the signal
+          range. In contrast, both of the modified pyrimidine
+          <ENAMEX TYPE="ORGANIZATION">triphosphates</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX>) tested resulted in a decrease
+          in overall signal intensities for nearly all of the
+          probes tested when compared against unmodified control
+          <ENAMEX TYPE="PERSON">samples</ENAMEX> (Figures <ENAMEX TYPE="PRODUCT">2D& 2E</ENAMEX>). However, data points on the
+          right of the diagonal in figures 2Dand 2Ealso show that
+          for a fractional set of target-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs, substitution
+          with <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX> increased hybridization signal relative
+          to the unmodified control. Those probes whose signal
+          intensities were increased <NUMEX TYPE="CARDINAL">at least two</NUMEX>-fold are
+          summarized in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. As <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX>, for a number of
+          transcripts substitution with <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX> may potentially
+          augment hybridization signals more so than even <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>. This
+          may prove useful for target <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> containing very low
+          concentrations of these particular transcripts.
+          Nevertheless, because our goal was to utilize
+          modifications that would increase hybridization signals
+          for the vast majority of target-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> duplexes, we
+          subsequently focused our efforts on the samples
+          containing <ENAMEX TYPE="SUBSTANCE">DAP</ENAMEX>.
+          We next determined whether the increases in signal
+          <ENAMEX TYPE="PERSON">intensity</ENAMEX> observed with <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> substitution were similar in
+          magnitude to those observed when the hybridization time
+          is increased. We therefore hybridized <NUMEX TYPE="CARDINAL">two</NUMEX> micrograms of
+          cRNA with no modifications or <NUMEX TYPE="CARDINAL">two</NUMEX> micrograms with <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> at
+          a <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> molar ratio to adenosine for <TIMEX TYPE="TIME">18 hours</TIMEX> and
+          hybridized <NUMEX TYPE="CARDINAL">two</NUMEX> micrograms of cRNA with no modifications
+          for <TIMEX TYPE="TIME">42 hours</TIMEX>. We generated <NUMEX TYPE="CARDINAL">two</NUMEX> scatterplot and overplayed
+          these scatterplot on each other (Figure <NUMEX TYPE="CARDINAL">3A</NUMEX>). The first
+          <ENAMEX TYPE="PERSON">scatterplot</ENAMEX> compares the intensities of the <TIMEX TYPE="TIME">18 hour</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> with those of the <TIMEX TYPE="TIME">42 hour</TIMEX> control (orange
+          signals). The <NUMEX TYPE="ORDINAL">second</NUMEX> scatterplot compares the intensities
+          of the <TIMEX TYPE="TIME">18 hour</TIMEX> control with those of the DAP-modified
+          <ENAMEX TYPE="ORGANIZATION">cRNA</ENAMEX> (blue signals). The <TIMEX TYPE="TIME">longer hybridization time</TIMEX>
+          increases the median signal intensity by <NUMEX TYPE="PERCENT">47%</NUMEX> +/- <NUMEX TYPE="PERCENT">2%</NUMEX>. The
+          increase is more pronounced for the medium and high
+          signals. As shown before, the DAP-modified cRNA generated
+          hybridization signals which were also increased relative
+          to the <TIMEX TYPE="TIME">18 hour</TIMEX> control hybridization. However, the
+          increase seemed more pronounced for the low and medium
+          signals. We conclude that both DAP modification and an
+          increased hybridization time can affect the hybridization
+          reaction but in very different ways.
+          Because of the differential effects of increased
+          hybridization time and <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> substitution on low and high
+          expressers, we wanted determine whether the increases
+          seen of using both DAP modification and an extended
+          hybridization time could be <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>. We therefore
+          hybridized unmodified (control) cRNA for <TIMEX TYPE="TIME">18 hours</TIMEX> and a
+          DAP-modified cRNA for <TIMEX TYPE="TIME">42 hours</TIMEX> (Figure <NUMEX TYPE="CARDINAL">3B</NUMEX>). The median
+          slide intensity increased by <NUMEX TYPE="PERCENT">110%</NUMEX> +/- <NUMEX TYPE="PERCENT">17%</NUMEX>, which is
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> double the increase seen with either the
+          <TIMEX TYPE="TIME">1:1 DAP</TIMEX>:A or the <TIMEX TYPE="TIME">longer hybridization time</TIMEX> by themselves.
+          When all of the <NUMEX TYPE="CARDINAL">approximately 9,000</NUMEX> probes are divided
+          into <NUMEX TYPE="CARDINAL">three</NUMEX> equally sized bins representing low, <ENAMEX TYPE="PER_DESC">medium</ENAMEX>,
+          and high expressers according to their respective signal
+          intensities, the effects of increased hybridization time
+          and <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> become very evident (Figure <NUMEX TYPE="CARDINAL">3C</NUMEX>). Figure 3Cshows
+          that the relative increases in signal intensities due to
+          increased hybridization time are biased towards the
+          medium and high expressers, with signals increasing an
+          average of <NUMEX TYPE="PERCENT">48% and 84%</NUMEX>, respectively, whereas increases
+          due to <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> substitution are more pronounced for low and
+          medium expressers (<NUMEX TYPE="PERCENT">57% and 81%</NUMEX> increase, respectively).
+          Together, the <NUMEX TYPE="CARDINAL">two</NUMEX> modifications of increased
+          hybridization time and <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> substitution can be used in
+          concert to amplify signal intensities for the entire
+          range of probe signals, and as figure <TIMEX TYPE="DATE">3Cindicates</TIMEX>, these
+          boosts in signals are approximately <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> for the <NUMEX TYPE="CARDINAL">42</NUMEX>
+          <TIMEX TYPE="TIME">hour</TIMEX>, <ENAMEX TYPE="SUBSTANCE">DAP-containing samples</ENAMEX>.
+          We next determined the effect of modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> on
+          hybridization specificity (the ability to distinguish
+          sequences up to a certain homology). We addressed this
+          issue by designing probes which had <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">four</NUMEX> adjacent,
+          centrally located mismatches and comparing hybridization
+          signals generated from these mismatched probes to signals
+          generated from their corresponding perfect matches. In
+          the control situation (hybridization of unmodified cRNA),
+          the hybridization intensity decreased as the number of
+          mismatches increased, with <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">mismatches</ENAMEX> generally
+          destabilizing the <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> sufficiently to reduce the
+          hybridization signal to <NUMEX TYPE="PERCENT">0%</NUMEX> of the parent signal. There
+          was <NUMEX TYPE="CARDINAL">one</NUMEX> exception (Figure <NUMEX TYPE="CARDINAL">4C</NUMEX>) where, even in the presence
+          of <NUMEX TYPE="CARDINAL">four</NUMEX> mismatches, the signal was not reduced below <NUMEX TYPE="PERCENT">60%</NUMEX>
+          of the parent signal. This signal was low in the perfect
+          match and, therefore, this situation most likely reflects
+          a lowering to the noise levels. In fact, the signal was
+          lowered to below threshold levels in the presence of
+          <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX>. When equimolar ratios of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> and unmodified
+          <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> were incorporated into the cRNA target (<ENAMEX TYPE="CONTACT_INFO">1:1</ENAMEX> DAP:A),
+          <ENAMEX TYPE="PERSON">specificity</ENAMEX> was not significantly affected in <NUMEX TYPE="CARDINAL">two</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences (Figure <ENAMEX TYPE="PRODUCT">4Aand 4B</ENAMEX>). However, in one
+          probe sequence (Figure <NUMEX TYPE="CARDINAL">4C</NUMEX>), specificity was enhanced. For
+          this test probe, the unmodified sample produced unusually
+          high signals for base mismatches. Nevertheless, other
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> have seen similar improvements in mismatch
+          discrimination with diaminopurine-containing oligo mers
+          for different applications [ <TIMEX TYPE="DATE">13</TIMEX> ] . A <NUMEX TYPE="ORDINAL">fourth</NUMEX> probe
+          sequence demonstrated a smaller destabilizing effect of a
+          single mismatch with the partially modified cRNA compared
+          to the control (Figure <NUMEX TYPE="CARDINAL">4D</NUMEX>). In this sequence, the
+          hybridization was reduced to the same extent with <NUMEX TYPE="CARDINAL">three</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX> using either the control or partially modified
+          <ENAMEX TYPE="ORGANIZATION">cRNA</ENAMEX>. <TIMEX TYPE="DATE">Full</TIMEX> substitution of adenosine by <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> showed varied
+          effects on specificity in the <NUMEX TYPE="CARDINAL">four</NUMEX> different probe
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. In <NUMEX TYPE="CARDINAL">two</NUMEX> of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences, the fully
+          modified cRNA behaved similarly to the control cRNA
+          (Figures <ENAMEX TYPE="PRODUCT">4Aand 4B</ENAMEX>). In a <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequence, the
+          specificity improved for the fully modified cRNA, as it
+          did for the partially modified cRNA (Figure <NUMEX TYPE="CARDINAL">4C</NUMEX>). The
+          improvement in specificity for this probe depended on the
+          extent of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> modification. In a <NUMEX TYPE="ORDINAL">fourth</NUMEX> probe sequence,
+          the fully modified cRNA showed a dramatic decrease in
+          specificity with <NUMEX TYPE="CARDINAL">one</NUMEX>- or <NUMEX TYPE="CARDINAL">two</NUMEX>-base mismatches, although
+          <NUMEX TYPE="CARDINAL">three</NUMEX> mismatches reduced the hybridization intensity to
+          ~<NUMEX TYPE="PERCENT">10%</NUMEX> of that of the perfect match. The loss in
+          specificity for this probe sequence also depended on the
+          extent of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> modification, with <NUMEX TYPE="CARDINAL">one</NUMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX>, or three
+          <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX> required to reduce the hybridization intensity
+          to ~ <NUMEX TYPE="PERCENT">10%</NUMEX> for the control, partially modified, and fully
+          <ENAMEX TYPE="PERSON">modified</ENAMEX>, respectively, cRNA. A <NUMEX TYPE="ORDINAL">fifth</NUMEX> test probe showed
+          hybridization signal intensity below the negative control
+          threshold in both the control and modified <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> samples,
+          suggesting either an absence of the transcript from the
+          target sample or abundance too low to quantify (data not
+          shown). Repeat experiments with cRNA containing modified
+          <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> supported the general specificity trend: unmodified
+          <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> > <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A > all <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> (data not shown).
+          Attempts to increase specificity in the all DAP condition
+          by raising the temperature during hybridization from 37°C
+          to 42°C or <TIMEX TYPE="DATE">47°C</TIMEX> were unsuccessful (data not shown).
+          Others have been able to distinguish sequences of <NUMEX TYPE="QUANTITY">up to</NUMEX>
+          <NUMEX TYPE="PERCENT">90%</NUMEX> homology [ <ENAMEX TYPE="LAW">6</ENAMEX> ] using the same <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> (<NUMEX TYPE="CARDINAL">3</NUMEX>-base
+          <ENAMEX TYPE="CONTACT_INFO">mismatch/ 30</ENAMEX>-mer oligonucleotide signal near or below
+          negative control threshold), and we support their
+          findings here with the control and <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A condition.
+          The fully MeC-substituted cRNA targets were examined with
+          respect to specificity in <NUMEX TYPE="CARDINAL">two</NUMEX> test sequences (Figures
+          4Band <ENAMEX TYPE="ORGANIZATION">4D</ENAMEX>). In <NUMEX TYPE="CARDINAL">one</NUMEX> test sequence (Figure <ENAMEX TYPE="ORGANIZATION">B</ENAMEX>), the fully
+          MeC-substituted cRNA targets behaved nearly identically
+          to the partially DAP-substituted <ENAMEX TYPE="ORG_DESC">targets</ENAMEX>. In the other
+          test sequence (Figure <NUMEX TYPE="CARDINAL">4D</NUMEX>), the <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX>-substituted cRNA
+          behaved nearly identically to the unmodified cRNA target
+          and showed better specificity than that of the partially
+          <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>-substituted cRNA <ENAMEX TYPE="ORG_DESC">target</ENAMEX> with respect to the effect of
+          one mismatch. We conclude that the specificity of fully
+          MeC-substituted cRNA and partially DAP-substituted cRNA
+          targets are, for the most part, equivalent and
+          essentially no loss in specificity (as determined by the
+          effect of <NUMEX TYPE="CARDINAL">two</NUMEX> mismatches) is observed with these modified
+          targets.
+          An additional metric of specificity on the Codelink
+          <ENAMEX TYPE="ORGANIZATION">bioarrays</ENAMEX> is the use of <NUMEX TYPE="PERCENT">54 negative</NUMEX> control bacterial
+          probes spotted in <TIMEX TYPE="DATE">4X</TIMEX> redundancy, which were designed and
+          empirically shown not to cross hybridize to human
+          transcripts [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . While the all DAP condition resulted
+          in an increase in the hybridization intensity for <TIMEX TYPE="TIME">three</TIMEX>
+          of the negative control probes, the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A condition
+          produced lower background signals similar to those of the
+          unmodified control (data not shown). Thus, increases in
+          hybridization signal intensities in the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A
+          condition are attributable to specific modified cRNA
+          target/DNA probe interactions. We conclude that partial
+          substitution of adenosine with <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> does not significantly
+          compromise specificity and was, therefore, investigated
+          further.
+        
+        
+          Effect of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> incorporation on differential
+          expression ratios
+          Ultimately, the goal of any global expression
+          <ENAMEX TYPE="ORGANIZATION">profiling</ENAMEX> system measuring relative transcript abundance
+          is to accurately and reproducibly determine the changes
+          in expression levels between different target samples. We
+          therefore determined if the increases in signal intensity
+          caused by <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> incorporation had an effect on differential
+          ratio calls. Kidney and lymphoma <ENAMEX TYPE="SUBSTANCE">cRNA samples</ENAMEX> containing
+          either no modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> or <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A were hybridized in
+          <ENAMEX TYPE="WORK_OF_ART">duplicate to Human Uniset</ENAMEX> I arrays; average kidney to
+          lymphoma ratios were calculated and plotted (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>)
+          after removing signal outliers defined as a <NUMEX TYPE="CARDINAL">two</NUMEX>-fold
+          difference between replicates. Differential expression
+          ratios demonstrate very good correlation between the
+          unmodified control sample and the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A sample (r =
+          <NUMEX TYPE="MONEY">0.95</NUMEX>) on the <ENAMEX TYPE="ORGANIZATION">Human Uniset</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX> microarray.
+          In addition to investigating the correlation of the
+          differential expression ratios generated from modified
+          and unmodified targets, we determined whether DAP
+          incorporation affected the variability of the ratio
+          calls. One method to measure microarray reproducibility
+          is by calculating the coefficients of variation (CVs) for
+          each replicate probe across arrays. Likewise, <ENAMEX TYPE="ORGANIZATION">CVs</ENAMEX> can
+          also be calculated for multiple ratio calculations across
+          different tissue samples. Figure 6shows a plot of the CVs
+          of the ratios as a function of the mean ratios for all of
+          the data points, 
+          regardless of the intensity level of
+          the probe . Consistent with earlier findings [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ,
+          the majority of the <ENAMEX TYPE="ORGANIZATION">CVs</ENAMEX> in the of the kidney to lymphoma
+          ratios are below <NUMEX TYPE="PERCENT">30%</NUMEX>, with an average of <NUMEX TYPE="PERCENT">13.2%</NUMEX>, and the
+          variability increases as the ratio approaches unity for
+          the unmodified targets (Figure <NUMEX TYPE="CARDINAL">6A</NUMEX>). Figure <TIMEX TYPE="DATE">6Bshows</TIMEX> that
+          the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A condition produces ratios with similar
+          overall variability (average CV of <NUMEX TYPE="PERCENT">12.4%</NUMEX>) compared to the
+          unmodified control targets. When the <ENAMEX TYPE="ORGANIZATION">CVs</ENAMEX> in the ratios
+          generated using either the control or partially modified
+          cRNA are binned according to the magnitude of the <ENAMEX TYPE="ORGANIZATION">CV</ENAMEX>, the
+          partially modified cRNA generates more CVs in the less
+          than <NUMEX TYPE="PERCENT">20%</NUMEX> bins (Figure <NUMEX TYPE="CARDINAL">6C</NUMEX>). These data demonstrate that
+          the low variability in ratio calls that we are able to
+          routinely obtain [ <ENAMEX TYPE="LAW">6</ENAMEX> ] are maintained during DAP
+          <ENAMEX TYPE="PERSON">incorporation</ENAMEX>. However, a closer inspection of the ratios
+          in Figures <TIMEX TYPE="DATE">6Aand 6Breveals</TIMEX> that a possible caveat of DAP
+          use is a slight compression of ratios along the entire
+          range of calls. This compression is also observed when
+          the observed ratio is binned according to the magnitude
+          of the fold change (Figure <NUMEX TYPE="CARDINAL">6D</NUMEX>). The partially modified
+          cRNA generates more ratios in the <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">1.5</NUMEX> fold change
+          <ENAMEX TYPE="PERSON">bin</ENAMEX> and fewer ratio changes in the other bins. This
+          <ENAMEX TYPE="ORGANIZATION">compression</ENAMEX> is not significant but also manifests itself
+          in the slope of the correlation line in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. The
+          slope of this line was found to be greater than
+          unity.
+          The differential expression ratios calculated when
+          using <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> (Figures <NUMEX TYPE="CARDINAL">5and 6</NUMEX>) suggest that incorporation of
+          <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> has little effect on correlation and reproducibility
+          of ratio calls between tissues. However, the ability to
+          accurately discriminate between signals due to true
+          hybridization events and what may be considered
+          background noise is paramount to making accurate
+          differential assessments. A lower limit of detection was
+          previously defined using our <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> by developing a
+          negative control threshold in order to assign a
+          confidence level to such signal or noise queries [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+          Briefly, this threshold was determined by taking the mean
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> of bacterial negative control probes mentioned
+          above (<NUMEX TYPE="MONEY">minus</NUMEX> a <NUMEX TYPE="PERCENT">10%</NUMEX> trim to account for weak cross
+          hybridization of high expressers or for true
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> to sequences not in the database) and
+          adding <NUMEX TYPE="CARDINAL">three</NUMEX> standard deviations (<NUMEX TYPE="PERCENT">99.7%</NUMEX> confidence).
+          Using only probes that were at or above the negative
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> threshold in both tissues, we observed a
+          significantly greater number of probes in the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A
+          sample for which we could confidently assign a ratio
+          (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). As Figure <TIMEX TYPE="DATE">7shows</TIMEX>, <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> containing DAP
+          generated over <NUMEX TYPE="CARDINAL">400</NUMEX> more above-threshold ratios than the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> containing only unmodified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX>. Most of
+          these ratios identified only in the <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A sample were
+          small in magnitude, with fold changes between <NUMEX TYPE="CARDINAL">1.1</NUMEX> and
+          1.9.
+        
+      
+      
+        Discussion
+        
+          The effect of modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> on hybridization
+          intensities
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> important issues for identifying differentially
+          expressed genes using <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> are <NUMEX TYPE="CARDINAL">1</NUMEX>) methods to
+          increase signal intensity and <NUMEX TYPE="CARDINAL">2</NUMEX>) the ability to
+          accurately separate true hybridization signals from
+          background noise at the low end of the signal dynamic
+          range. In this study, we utilized modified nucleoside
+          triphosphates with the aim of enhancing hybridization
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity across a wide range of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences.
+          Modified ribo- and deoxyribonucleoside analogs have been
+          used in a variety of applications [ <NUMEX TYPE="CARDINAL">12 13 14</NUMEX> ] , but
+          their use has been limited in the field of <ENAMEX TYPE="SUBSTANCE">microarrays</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">23</NUMEX> ] . We demonstrate that <NUMEX TYPE="CARDINAL">2</NUMEX>-aminoadenosine or
+          <NUMEX TYPE="CARDINAL">2,6</NUMEX>-diaminopurine (DAP), an analog of adenosine,
+          significantly increases signal intensity for a wide range
+          of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences, whereas <ENAMEX TYPE="PRODUCT">C-5</ENAMEX> methylated pyrimidine
+          analogs of cytosine and <ENAMEX TYPE="FAC_DESC">uridine</ENAMEX> decreased signal
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> across the entire range of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences on
+          our <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          Although incorporation of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> did not uniformly
+          increase the hybridization stability for all target-probe
+          duplexes, even moderate incorporation of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1:1</ENAMEX> DAP:A)
+          resulted in signal intensity increases (<NUMEX TYPE="CARDINAL">up to 30-fold</NUMEX>)
+          for the majority of probes on our <ENAMEX TYPE="FAC_DESC">platform</ENAMEX>. More
+          <ENAMEX TYPE="PERSON">importantly</ENAMEX>, a significant number of probes that went
+          previously undetected (i.e., below a negative control
+          threshold; [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ) in the control sample exhibited signal
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> above this threshold in DAP-modified samples.
+          Utilization of such a modification may prove especially
+          valuable for low abundant transcripts which may be
+          difficult to quantify because of weak hybridization
+          <ENAMEX TYPE="ORGANIZATION">kinetics</ENAMEX>. As shown in Figures <TIMEX TYPE="DATE">2Band 2C</TIMEX>, the largest
+          increases in signal intensities occurred for low and
+          medium expressers relative to the unmodified control
+          sample. It is apparent that the effect of DAP depends not
+          only on the sequence compositions of <ENAMEX TYPE="ORG_DESC">target</ENAMEX> and <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>,
+          but also on the absolute abundance of specific
+          transcripts in the target sample.
+          It is of interest to note that the results we report
+          here differ from those obtained by others [ <TIMEX TYPE="DATE">23</TIMEX> ] . Those
+          studies reported increases in signal intensity for
+          targets containing <NUMEX TYPE="CARDINAL">5</NUMEX>-<ENAMEX TYPE="SUBSTANCE">methyl UTP</ENAMEX> while completely
+          substituted <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> containing <ENAMEX TYPE="SUBSTANCE">DAP</ENAMEX> had the opposite or no
+          effect. Although we cannot completely account for the
+          disparity of the results, <NUMEX TYPE="CARDINAL">one</NUMEX> key difference in
+          methodology between the studies is that their <ENAMEX TYPE="ORG_DESC">group</ENAMEX> was
+          not able to normalize concentrations for modified and
+          <ENAMEX TYPE="ORGANIZATION">unmodified ATP</ENAMEX> targets because of dramatic differences in
+          <ENAMEX TYPE="ORGANIZATION">cRNA</ENAMEX> yield. Therefore, mass input of cRNA target samples
+          were much greater for unmodified samples compared to the
+          <ENAMEX TYPE="SUBSTANCE">DAP-containing samples</ENAMEX>. Because the sample preparation
+          used in this protocol is highly robust and reproducible [
+          <NUMEX TYPE="CARDINAL">24</NUMEX> ] , we were able to use equivalent mass inputs of all
+          modified and unmodified targets during <TIMEX TYPE="DATE">hybridization</TIMEX>,
+          allowing us to present our results quantitatively rather
+          than qualitatively. However, we agree that complete
+          substitution of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> for adenosine may cause specificity
+          to decline in certain sequence contexts, which may limit
+          its usefulness in microarray applications. However, we
+          have found that reducing the proportion of DAP
+          incorporated into target samples (e.g., incorporating a
+          <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> ratio of DAP:adenosine) is one approach to avoid such
+          decreases in specificity. Other factors that may
+          contribute to the dissimilarity of the results include
+          differences in probe sequence and size, microarray
+          <ENAMEX TYPE="CONTACT_INFO">fabrication/chemistries, labeling/detection</ENAMEX> methods, and
+          the vigorous mixing that is employed in our microarray
+          experiments. We have previously shown the dramatic impact
+          of mixing on hybridization signal intensities [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+          Presumably, this impact is due to the effect of three
+          dimensional diffusion of the target molecules and to the
+          effect on how many probes reach equilibrium in the
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>. It is possible that the degree of mixing
+          during the hybridization can affect the number of probes
+          which show a difference in intensity with substitution of
+          <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> for adenosine as well as the magnitude of this
+          difference. Given these differences, it is not surprising
+          that our results are not in line with those previously
+          reported.
+          The results in our study are in good agreement with
+          previous reports which include a wide variety of
+          interaction types, including <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, and
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>:<ENAMEX TYPE="ORGANIZATION">PNA</ENAMEX> interactions. [ <NUMEX TYPE="CARDINAL">11 12 13 25</NUMEX> ] . These studies
+          have shown that <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> substitution in oligonucleotide
+          probes can increase thermodynamic affinities as reported
+          directly by increases in T 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> and indirectly through increases in
+          hybridization intensities.
+        
+        
+          Biophysical considerations in using modified
+          NTPs
+          Modified nucleotides appear to drive the equilibrium
+          (particularly for low copy transcripts binding with their
+          <ENAMEX TYPE="ORGANIZATION">targets</ENAMEX>) towards <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> formation. These findings suggest
+          that DAP use could be exploited in <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> that are
+          <ENAMEX TYPE="ORGANIZATION">limited</ENAMEX>, such as tumor biopsies. Based on our experiments
+          with extended hybridization times (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), use of DAP
+          may prove to be a useful alternative to increase array
+          sensitivity for studies that are unable to generate
+          enough target to hybridize or are unable to increase
+          <NUMEX TYPE="CARDINAL">hybridization</NUMEX> times because of throughput
+          constraints.
+          Why do we see differential effects of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>, <ENAMEX TYPE="GPE">MeC</ENAMEX>, and
+          MeU on hybridization intensities? The fact that <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> was
+          able to increase hybridization intensities while <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and
+          <ENAMEX TYPE="FAC_DESC">MeU</ENAMEX> decreased hybridization intensities (Figures 2Dand
+          2E) is interesting in light of the fact that <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> is a
+          purine incorporated into an <ENAMEX TYPE="SUBSTANCE">RNA strand</ENAMEX> while <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and MeU
+          are pyrimidines incorporated into an <ENAMEX TYPE="SUBSTANCE">RNA strand</ENAMEX>. Many
+          studies have shown that a ribopurine rich strand bound to
+          a deoxypyrimidine rich strand has a higher stability than
+          the corresponding all deoxy strands which, in turn, have
+          a higher stability than a deoxypurine rich strand bound
+          to a ribopyrimidine rich strand [ <NUMEX TYPE="CARDINAL">26 27</NUMEX> ] . These
+          differences also suggest that further studies examining
+          <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> or MeC incorporation into <NUMEX TYPE="ORDINAL">first</NUMEX> strand cDNA, followed
+          by formation of a <ENAMEX TYPE="SUBSTANCE">DNA-DNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX>, may not necessarily
+          show the same effects as incorporation of these modified
+          nucleotides into cRNA. Finally, earlier studies have
+          noted that methylation of cytosines (generating <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX>) in
+          ribopolynucleotides stabilizes duplexes to the same
+          extent as substitution of thymine (<ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX>) for uracil [ <TIMEX TYPE="DATE">28</TIMEX> ]
+          . Thus, although it is still surprising that <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and MeU
+          decrease hybridization intensities, it is not surprising
+          that the magnitude of the effects generated by <ENAMEX TYPE="ORGANIZATION">MeC</ENAMEX> and
+          MeU <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are similar.
+          Could the differential effects of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> versus <ENAMEX TYPE="PERSON">MeC</ENAMEX> or
+          <ENAMEX TYPE="ORGANIZATION">MeU</ENAMEX> or the differential effects of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> on different probe
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> also be related to structural consequences?
+          Earlier studies have shown that <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX>, in <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> fragments,
+          can widen the minor groove, as detected by reactivity
+          towards uranyl nitrate or susceptibility to Dnase
+          <ENAMEX TYPE="ORGANIZATION">cleavage</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] , and can relieve compressions in the
+          minor groove associated with A-tracts [ <TIMEX TYPE="DATE">30</TIMEX> ] . In
+          contrast, <ENAMEX TYPE="ORGANIZATION">NMR</ENAMEX> and molecular modeling studies of an
+          <ENAMEX TYPE="PERSON">oligonucleotide</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> containing <ENAMEX TYPE="SUBSTANCE">MeC</ENAMEX> have demonstrated
+          that, while this <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> still has a B-<ENAMEX TYPE="SUBSTANCE">DNA conformation</ENAMEX>,
+          there are differences in the structural parameters and
+          thermal stability relative to the unmodified <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> [ <NUMEX TYPE="CARDINAL">31</NUMEX>
+          ] . An earlier study also found, in <NUMEX TYPE="CARDINAL">two</NUMEX> closely related
+          octanucleotide duplexes, that although the methylated
+          <ENAMEX TYPE="PERSON">duplexes</ENAMEX> retained their B-<ENAMEX TYPE="SUBSTANCE">DNA conformation</ENAMEX>, different
+          structural and thermal stability effects were seen [ <TIMEX TYPE="DATE">32</TIMEX> ]
+          . Although these studies have been carried out with
+          <ENAMEX TYPE="SUBSTANCE">DNA-DNA</ENAMEX> and not <ENAMEX TYPE="SUBSTANCE">DNA-RNA duplexes</ENAMEX>, it is possible that MeC
+          <ENAMEX TYPE="PERSON">substitution</ENAMEX> may have different structural consequences
+          than DAP substitution.
+          We have shown that while complete substitution of DAP
+          for <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> may cause decreased base mismatch discrimination
+          in certain sequence contexts, equimolar ratios of
+          <ENAMEX TYPE="ORGANIZATION">adenosine</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> in cRNA target samples did not have
+          significant detrimental effects on specificity (Figure
+          <NUMEX TYPE="CARDINAL">4</NUMEX>). <ENAMEX TYPE="PERSON">Remarkably</ENAMEX>, in one sequence context, the DAP
+          modification enhanced specificity against mismatches.
+          Enhanced specificity against mismatches has also been
+          observed by other <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> when <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> is incorporated into
+          <ENAMEX TYPE="ORGANIZATION">PNA</ENAMEX> <ENAMEX TYPE="PER_DESC">oligomers</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ] and after C5-(<ENAMEX TYPE="CONTACT_INFO">1-propynyl</ENAMEX>)ation of
+          <ENAMEX TYPE="ORGANIZATION">pyrimidines</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">DNA-RNA duplexes</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] .
+        
+        
+          The effect of modified <ENAMEX TYPE="ORGANIZATION">NTPs</ENAMEX> on differential
+          expression ratios
+          The use of <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> to increase hybridization signals is
+          supported by the results that show equivalency of both
+          ratio calls and ratio variability in <TIMEX TYPE="DATE">1</TIMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> DAP:A and
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> (Figures <NUMEX TYPE="CARDINAL">5and 6</NUMEX>). When all data points
+          are considered in the differential expression ratio
+          <ENAMEX TYPE="PERSON">analyses</ENAMEX>, the two methods appear equivalent. However,
+          when only those data points which are above a threshold
+          value [ <ENAMEX TYPE="LAW">6</ENAMEX> ] are used, ensuring a higher confidence that
+          these intensities represent true expression levels and
+          not noise or weak cross hybridization, the DAP-modified
+          cRNA enabled an ~ <NUMEX TYPE="PERCENT">10%</NUMEX> increase in the number of ratios
+          that could be generated (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). Such increases are
+          critical in order to sample as many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as possible in
+          any given microarray experiment. For example, some
+          <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> have analyzed only data for which the
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity is greater than <NUMEX TYPE="PERCENT">approximately 0.4%</NUMEX> of
+          the total signal range in both <ENAMEX TYPE="ORG_DESC">channels</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] . Although
+          this method minimizes the variance associated with the
+          ratios, many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and their expression changes are
+          missed. Other <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> use a minimal intensity level to
+          determine whether a gene is present or absent, prior to
+          including this gene in expression analyses [ <TIMEX TYPE="DATE">35</TIMEX> ] . It is
+          plausible that <ENAMEX TYPE="ORGANIZATION">DAP</ENAMEX> modification, by increasing intensity
+          levels, particularly for low expressors, could enable
+          wider coverage in genome-wide expression analyses.
+          In summary, incorporation of modified nucleotides may
+          not only lead to discovery and better quantitation of
+          rare expressers in complex samples but also impact other
+          aspects of the microarray experiment such as probe design
+          prior to array fabrication and the statistical design of
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments. The target preparation procedure
+          (generation of amplified cRNA or of <NUMEX TYPE="ORDINAL">first</NUMEX> strand cDNA)
+          and the subsequent <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> formation may dictate the
+          choice of which modified nucleotide to use, as we and
+          others have found differential effects with various
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>. We believe further investigation in this
+          area could be fruitful.
+        
+      
+      
+        Methods
+        
+          Target preparation
+          <NUMEX TYPE="CARDINAL">Five</NUMEX> μgs of human embryonic kidney or <ENAMEX TYPE="ORGANIZATION">Burkitt</ENAMEX>'s
+          <ENAMEX TYPE="ORGANIZATION">lymphoma</ENAMEX> total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Ambion, Inc.</ENAMEX>, <ENAMEX TYPE="GPE">Austin</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TX</ENAMEX>) were added
+          to a reaction mix in a final volume of <NUMEX TYPE="QUANTITY">12 μl</NUMEX>, containing
+          <NUMEX TYPE="QUANTITY">0.5 pmol</NUMEX> T7-(dT) 
+          <NUMEX TYPE="CARDINAL">24</NUMEX> oligonucleotide primer. The mixture
+          was incubated for <TIMEX TYPE="TIME">10 minutes</TIMEX> at <TIMEX TYPE="DATE">70°C</TIMEX> and chilled on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX>.
+          With the mixture remaining on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX>, <NUMEX TYPE="QUANTITY">4 μl</NUMEX> of 5X
+          <NUMEX TYPE="ORDINAL">first</NUMEX>-strand buffer, <ENAMEX TYPE="PRODUCT">2 μl 0.1 M DTT</ENAMEX>, <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <NUMEX TYPE="CARDINAL">10</NUMEX> mM dNTP
+          <ENAMEX TYPE="PRODUCT">mix and 1 μl Superscript™ II</ENAMEX> RNaseH -reverse
+          <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">200 U/μl</ENAMEX>) was added to make a final volume
+          of <NUMEX TYPE="QUANTITY">20 μl</NUMEX>, and the mixture incubated for <TIMEX TYPE="TIME">one hour</TIMEX> in a
+          42°C water bath. <NUMEX TYPE="ORDINAL">Second</NUMEX>-strand cDNA was synthesized in a
+          final volume of <NUMEX TYPE="QUANTITY">150 μl</NUMEX>, in a mixture containing <NUMEX TYPE="QUANTITY">30 μl</NUMEX> of
+          5X <NUMEX TYPE="ORDINAL">second</NUMEX>-strand buffer, <NUMEX TYPE="QUANTITY">3 μl</NUMEX> of <NUMEX TYPE="CARDINAL">10</NUMEX> mM dNTP mix, <NUMEX TYPE="QUANTITY">4 μl</NUMEX> of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli DNA</ENAMEX> polymerase I (<NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="ORGANIZATION">U/μl</ENAMEX>)
+          and <NUMEX TYPE="QUANTITY">1 μl</NUMEX> of <ENAMEX TYPE="ORGANIZATION">RNase H</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2 U/μl</ENAMEX>) for <TIMEX TYPE="TIME">2 hours</TIMEX> at <TIMEX TYPE="DATE">16°C</TIMEX>. The
+          cDNA was purified using a <ENAMEX TYPE="ORGANIZATION">Qiagen QIAquick</ENAMEX> purification
+          <ENAMEX TYPE="PERSON">kit</ENAMEX>, dried down, and resuspended in <ENAMEX TYPE="ORGANIZATION">IVT</ENAMEX> reaction mix,
+          containing <NUMEX TYPE="QUANTITY">3.0 μl</NUMEX> nuclease-free <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, <NUMEX TYPE="QUANTITY">4.0 μl</NUMEX> 10X
+          reaction buffer, <NUMEX TYPE="QUANTITY">4.0 �</NUMEX>�l <NUMEX TYPE="CARDINAL">75</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>, <NUMEX TYPE="QUANTITY">4.0 μl 75 mM</NUMEX> GTP <NUMEX TYPE="CARDINAL">3.0</NUMEX>
+          <ENAMEX TYPE="PERSON">μl</ENAMEX> <NUMEX TYPE="CARDINAL">75</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">CTP</ENAMEX>, <NUMEX TYPE="QUANTITY">3.0 μl 75 mM</NUMEX> UTP, <NUMEX TYPE="QUANTITY">7.5 �</NUMEX>�l <NUMEX TYPE="CARDINAL">10</NUMEX> mM
+          Biotin-<NUMEX TYPE="CARDINAL">11</NUMEX>-CTP, <NUMEX TYPE="QUANTITY">7.5 �</NUMEX>�l <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">Biotin</ENAMEX> <NUMEX TYPE="CARDINAL">11</NUMEX>-<ENAMEX TYPE="ORGANIZATION">UTP</ENAMEX> and <NUMEX TYPE="QUANTITY">4.0 �</NUMEX>�l
+          enzyme <ENAMEX TYPE="SUBSTANCE">mix</ENAMEX> (unmodified control condition). Commercially
+          available <TIMEX TYPE="TIME">2-aminoadenosine-5</TIMEX>'-triphosphate,
+          <ENAMEX TYPE="CONTACT_INFO">5-methylcytidine-5</ENAMEX>'-triphosphate, and
+          <ENAMEX TYPE="CONTACT_INFO">5-methyluridine-5</ENAMEX>'-triphosphate (<ENAMEX TYPE="ORGANIZATION">TriLink Biotechnologies</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Inc.</ENAMEX>, <ENAMEX TYPE="GPE">San Diego</ENAMEX>, CA) were substituted for <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CTP</ENAMEX>, and
+          <ENAMEX TYPE="ORGANIZATION">UTP</ENAMEX>, respectively, in separate reactions containing
+          either complete substitution, <ENAMEX TYPE="CONTACT_INFO">1:1</ENAMEX>, or <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">3</NUMEX> ratio of
+          modified: unmodified <ENAMEX TYPE="ORGANIZATION">NTP</ENAMEX>, keeping molar input of
+          nucleotide constant. The reaction mix was incubated for
+          <TIMEX TYPE="TIME">14 hours</TIMEX> at <TIMEX TYPE="DATE">37°C</TIMEX> and cRNA target purified using an RNeasy
+          <ENAMEX TYPE="ORGANIZATION">®Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">cRNA</ENAMEX> yield was quantitated by measuring
+          the <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> absorbance at <NUMEX TYPE="CARDINAL">260</NUMEX> nm, and fragmented in <TIMEX TYPE="DATE">40</TIMEX> mM
+          Tris-acetate (<ENAMEX TYPE="ORGANIZATION">TrisOAc</ENAMEX>), pH <NUMEX TYPE="CARDINAL">7.9</NUMEX>, <NUMEX TYPE="CARDINAL">100</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">KOAc</ENAMEX>, and <NUMEX TYPE="CARDINAL">31.5</NUMEX> mM
+          MgOAc, at <TIMEX TYPE="DATE">94°C</TIMEX>, for <TIMEX TYPE="TIME">20 minutes</TIMEX>. This typically resulted
+          in fragmented <ENAMEX TYPE="ORG_DESC">target</ENAMEX> with a size range between <NUMEX TYPE="CARDINAL">100</NUMEX>-200
+          bases.
+        
+        
+          Array hybridization
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> μg of fragmented target cRNA was used for
+          hybridization of each <ENAMEX TYPE="WORK_OF_ART">UniSet Human I Expression</ENAMEX> Bioarray
+          (<ENAMEX TYPE="ORGANIZATION">Motorola Life Sciences</ENAMEX>) containing <TIMEX TYPE="DATE">9589</TIMEX> probes
+          (representing <NUMEX TYPE="CARDINAL">9,203</NUMEX> unique accession numbers (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>),
+          corresponding to <NUMEX TYPE="CARDINAL">approximately 8,935</NUMEX> unique clusters and
+          <NUMEX TYPE="CARDINAL">386</NUMEX> control probes, selected initially from GenBank
+          <ENAMEX TYPE="ORGANIZATION">Unigene</ENAMEX> build <NUMEX TYPE="MONEY">#125</NUMEX>) or for hybridization to a microarray
+          containing probes corresponding to <NUMEX TYPE="CARDINAL">1100</NUMEX> human genes, each
+          spotted <NUMEX TYPE="CARDINAL">6</NUMEX> times per array. All probes on these
+          microarrays are <NUMEX TYPE="CARDINAL">30</NUMEX>-mer <ENAMEX TYPE="PER_DESC">oligonucleotides</ENAMEX> spotted by
+          piezoelectric technologies and <ENAMEX TYPE="ANIMAL">covalently</ENAMEX> attached to a
+          polymeric matrix [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . These microarrays were
+          hybridized, washed, and processed using a direct
+          detection method of the biotin-containing transcripts by
+          a <ENAMEX TYPE="PRODUCT">Streptavidin-Alexa647</ENAMEX> conjugate as previously described
+          [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . Processed slides were scanned using an Axon
+          <ENAMEX TYPE="ORGANIZATION">GenePix Scanner</ENAMEX> with the laser set to <NUMEX TYPE="CARDINAL">635</NUMEX> nm, a PMT
+          voltage of <NUMEX TYPE="CARDINAL">600</NUMEX>, and a scan resolution of <NUMEX TYPE="CARDINAL">10</NUMEX> microns.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> analysis
+          Slides were scanned and images for each slide were
+          <ENAMEX TYPE="ORGANIZATION">quantitated</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">CodeLink Scanning and Analysis Software</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">Motorola Life Sciences</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> intensities for each
+          spot were calculated by summation of the pixel
+          intensities for each spot, followed by local background
+          <ENAMEX TYPE="PERSON">subtraction</ENAMEX> (based on the median pixel intensity of the
+          area surrounding each spot). Whole array data
+          normalization, when used, was performed independently for
+          each slide by dividing each spot's intensity (after
+          background subtraction) by the median signal intensity of
+          all test probes. All false positives, determined by
+          visual inspection of the images, which were greater than
+          <NUMEX TYPE="CARDINAL">2</NUMEX>-fold different between duplicate arrays were
+          removed.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Digestion</ENAMEX> and chromatography of cRNA
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> units of <ENAMEX TYPE="PRODUCT">P1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">nuclease</ENAMEX> were used to digest <NUMEX TYPE="CARDINAL">20-50</NUMEX> μg
+          of cRNA to generate nucleotide monophosphates. The enzyme
+          was incubated with the cRNA at <TIMEX TYPE="DATE">55°C</TIMEX> for <TIMEX TYPE="TIME">6 hours</TIMEX>, then for
+          <TIMEX TYPE="TIME">6 hours</TIMEX> at <NUMEX TYPE="ORDINAL">37°C</NUMEX> in the presence of <NUMEX TYPE="CARDINAL">10</NUMEX> units of calf
+          intestine alkaline phosphatase to generate the
+          <ENAMEX TYPE="ORGANIZATION">nucleosides</ENAMEX>. The digested products were purified using
+          <ENAMEX TYPE="ORGANIZATION">Microcon</ENAMEX> <ENAMEX TYPE="PRODUCT">YM-3</ENAMEX> columns followed by centrifugation at 8000 
+          g for <TIMEX TYPE="TIME">30-60 minutes</TIMEX>. The mix was
+          then concentrated using a <ENAMEX TYPE="ORGANIZATION">SpeedVac</ENAMEX> to <NUMEX TYPE="QUANTITY">100 μl</NUMEX>. This
+          solution was analyzed on an <ENAMEX TYPE="ORGANIZATION">HPLC</ENAMEX> column equilibrated with
+          <ENAMEX TYPE="PRODUCT">0.03 M TEAA</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Solvent A</ENAMEX>) at a flow rate of <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="PER_DESC">ml</ENAMEX>/min. The
+          following gradient was used: <NUMEX TYPE="PERCENT">0-1%</NUMEX> Solvent B (<NUMEX TYPE="PERCENT">95%</NUMEX> <ENAMEX TYPE="ORGANIZATION">AcCN</ENAMEX>, <NUMEX TYPE="PERCENT">5%</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">Solvent A1</ENAMEX>) over <TIMEX TYPE="TIME">5 minutes</TIMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX>-<NUMEX TYPE="PERCENT">15%</NUMEX> <ENAMEX TYPE="ORGANIZATION">Solvent B</ENAMEX> over the next
+          <TIMEX TYPE="TIME">15 minutes</TIMEX>, <NUMEX TYPE="PERCENT">15-45%</NUMEX> <ENAMEX TYPE="ORGANIZATION">Solvent B</ENAMEX> over <TIMEX TYPE="TIME">the next 30 minutes</TIMEX>,
+          <NUMEX TYPE="PERCENT">45-100%</NUMEX> <ENAMEX TYPE="ORGANIZATION">Solvent B</ENAMEX> over <TIMEX TYPE="TIME">the next 20 minutes</TIMEX>, and hold at
+          <NUMEX TYPE="PERCENT">100%</NUMEX> B for <TIMEX TYPE="TIME">2 minutes</TIMEX>. The concentration of the
+          heterocycles was determined by the absorbance values at
+          <TIMEX TYPE="TIME">260 nm</TIMEX> (the wavelength where maximal absorption occurs
+          for the heterocycles) and the biotin-containing
+          nucleoside concentrations were determined by the
+          <ENAMEX TYPE="ORGANIZATION">absorbance</ENAMEX> values at <NUMEX TYPE="MONEY">294 nm</NUMEX> (the wavelength where maximal
+          absorption occurs for biotinylated cytosine and
+          biotinylated uridine). The biotin-<NUMEX TYPE="CARDINAL">11</NUMEX>-UTP peak was
+          measured at an absorbance of <NUMEX TYPE="CARDINAL">294</NUMEX> nm with the extinction
+          <ENAMEX TYPE="PER_DESC">coefficient</ENAMEX> = <NUMEX TYPE="CARDINAL">13000</NUMEX> <ENAMEX TYPE="PRODUCT">M -1cm -1</ENAMEX>. The <NUMEX TYPE="CARDINAL">2</NUMEX>-amino <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> was
+          measured at an absorbance of <NUMEX TYPE="CARDINAL">260</NUMEX> nm with the extinction
+          <ENAMEX TYPE="PER_DESC">coefficient</ENAMEX> = <TIMEX TYPE="DATE">9894</TIMEX> <ENAMEX TYPE="PRODUCT">M -1cm -1</ENAMEX>.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        AN performed the target preparations, microarray
+        hybridizations, and data analyses, and drafted the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>. <ENAMEX TYPE="GPE">CZ</ENAMEX> performed the digestion and chromatography
+        of the cRNAs. <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> participated in design of the study and
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> analyses. AM conceived the study, participated in its
+        design and coordination, and aided in drafting the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

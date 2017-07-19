@@ -1,0 +1,1209 @@
+
+  
+    
+      
+        Background
+        Genomics sequencing projects have rapidly generated
+        tremendous amount of information. At the time of writing,
+        the <ENAMEX TYPE="ORGANIZATION">NCBI UniGene</ENAMEX> database [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">ncbi</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/UniGenecontained 96,109 Homo</ENAMEX>
+        sapiens clusters and <NUMEX TYPE="CARDINAL">85,047</NUMEX> <ENAMEX TYPE="NATIONALITY">Mus</ENAMEX> musculus clusters.
+        Predictions from the <ENAMEX TYPE="ORGANIZATION">Human Genome Project</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] and Celera
+        <ENAMEX TYPE="ORGANIZATION">Genomics</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] suggest there are <NUMEX TYPE="CARDINAL">about 26,000</NUMEX>-<NUMEX TYPE="CARDINAL">40,000</NUMEX> human
+        genes. Other recent studies suggest that these numbers may
+        be an underestimation and that the human genome appears
+        more complicated [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . Understanding the functions of
+        such a large number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> has been an unprecedented
+        challenge for functional genomics research. As the array of
+        hope in <TIMEX TYPE="DATE">recent years</TIMEX>, gene expression array technology has
+        quickly grown into a powerful tool to chart a gene atlas in
+        various biological <ENAMEX TYPE="PER_DESC">sources</ENAMEX> and under various conditions in
+        a massively parallel manner [ <NUMEX TYPE="CARDINAL">5 6 7</NUMEX> ] . Facing the
+        challenge of annotating such a huge amount of genomic data,
+        increasing array information density and improving analysis
+        algorithms have become <NUMEX TYPE="CARDINAL">two</NUMEX> critical research areas to
+        ensure that gene expression profiling proceeds in an
+        efficient and cost effective manner.
+        Take an <ENAMEX TYPE="GPE">Affymetrix</ENAMEX> high-density oligonucleotide GeneChip
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">affymetrix</ENAMEX>.comfor example. Firstly, its human
+        U95 <ENAMEX TYPE="PRODUCT">series</ENAMEX> chip consists of <ENAMEX TYPE="PRODUCT">5</ENAMEX> chip types with <NUMEX TYPE="CARDINAL">12,000</NUMEX> coding
+        clusters each, which makes it expensive to profile all the
+        human <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in samples of interest. Can a gene chip take
+        more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>? Comparing its <ENAMEX TYPE="PRODUCT">U95</ENAMEX> chip and <ENAMEX TYPE="PRODUCT">Human 6800</ENAMEX> chip,
+        <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> has already increased chip information density
+        by <NUMEX TYPE="PERCENT">20%</NUMEX> by reducing the number of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs per gene from
+        <TIMEX TYPE="DATE">20 to 16</TIMEX>. Since demand for higher information density has
+        still not been met, it is of interest to study the probe
+        number effect in detail. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, most optional research
+        efforts focus on the downstream statistical and clustering
+        analysis. However, on the upstream side, <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> chip
+        <ENAMEX TYPE="PER_DESC">users</ENAMEX> are still dependent on the <ENAMEX TYPE="PRODUCT">Microarray Suite</ENAMEX> ®software
+        that comes with the measurement system to interpret raw
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> algorithm implemented in its
+        <ENAMEX TYPE="PRODUCT">Microarray Suite 4.0</ENAMEX> package (referred hereafter as <ENAMEX TYPE="PRODUCT">MAS4</ENAMEX>)
+        uses empirical rules derived from its internal research
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> to assign absolute calls for the significance of gene
+        presence and assign fold change calls for the significance
+        of expression variations. Such discrete categorizations are
+        not the most appropriate language to describe quantities of
+        continuous nature. Although it is well known that fold
+        change numbers have defined behaviors of uncertainty, there
+        are very few studies in this area. How does one assign
+        statistical significance to expression analysis results?
+        This work presents our preliminary research results for the
+        <NUMEX TYPE="CARDINAL">two</NUMEX> questions raised above.
+        The Affymetrix gene chip layout used in this study
+        contains the same number of perfect match (PM) probes and
+        <ENAMEX TYPE="PERSON">mismatch</ENAMEX> (MM) probes. MAS4 uses differences between these
+        <NUMEX TYPE="CARDINAL">two</NUMEX> types of probes for gene expression signals. The
+        primary goal of <ENAMEX TYPE="EVENT">Match-Only Integral Distribution</ENAMEX> (MOID)
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> is to discard mismatch information, which allows
+        immediate doubling of the chip information density. In this
+        study, the performance of both algorithms were benchmarked
+        using <NUMEX TYPE="CARDINAL">366</NUMEX> known fold change values derived from <NUMEX TYPE="CARDINAL">34</NUMEX> spiking
+        experiments. Their false positive tendencies were assessed
+        by no-change expression experiments. Computer simulations
+        were used to study their noise tolerances, and to determine
+        the minimum number of probes required for chip
+        analysis.
+        The idea of using PM-only information is based on the
+        following observations: <ENAMEX TYPE="ORGANIZATION">MAS4</ENAMEX> essentially discards the
+        <NUMEX TYPE="CARDINAL">one</NUMEX>-<NUMEX TYPE="CARDINAL">one</NUMEX> correspondence between a <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and its <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> <ENAMEX TYPE="PER_DESC">partner</ENAMEX> (for
+        details, see materials and methods on <TIMEX TYPE="DATE">MAS4</TIMEX> algorithm for
+        absolute analysis) and still gives satisfactory
+        interpretation, which suggests the contribution of MM
+        probes might be approximated in a nonspecific manner
+        overall. After we designed the first mismatch-free gene
+        <ENAMEX TYPE="PERSON">chip</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GNF</ENAMEX><ENAMEX TYPE="PRODUCT">-HS1</ENAMEX>) in <TIMEX TYPE="DATE">July 1999</TIMEX>, the match-only expression
+        analysis idea was proposed in other independent studies as
+        well. <ENAMEX TYPE="PERSON">Li</ENAMEX> (submitted, <TIMEX TYPE="DATE">2001</TIMEX>) adjusted their previous
+        model-based analysis of oligonucleotide arrays [ <ENAMEX TYPE="LAW">8</ENAMEX> ] to
+        PM-<NUMEX TYPE="CARDINAL">only</NUMEX> calculations and found their results correlate well
+        with that of using <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> information. In addition, the
+        idea is endorsed by recent studies of Naef 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] and Irizarry 
+        <ENAMEX TYPE="PERSON">et al</ENAMEX> (<TIMEX TYPE="DATE">2002</TIMEX>, in prepare)
+        <ENAMEX TYPE="CONTACT_INFO">http://biosun01.</ENAMEX><ENAMEX TYPE="ORGANIZATION">biostat</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">jhsph</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/~ririzarr/papers/.</ENAMEX>
+        One difficulty in comparing algorithms for gene
+        expression analysis is the lack of "known" results. Here we
+        overcome the problem by resorting to a spiking set and set
+        of no-change experiments, where results are unambiguous.
+        Model-based methods [ <ENAMEX TYPE="LAW">8</ENAMEX> ] generally require a reasonable
+        numbers of training experiments of the same chip type,
+        among which probes under study give significantly large
+        signals in at least some experiments. Considering the fact
+        that the <NUMEX TYPE="CARDINAL">34</NUMEX> spiking experiments used were obtained by <TIMEX TYPE="TIME">three</TIMEX>
+        different chip types, and in addition some experiments are
+        replicates under different concentrations and hybridization
+        conditions, it is impractical to sufficiently train
+        model-based algorithms in this study. We limit our study to
+        <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> and <ENAMEX TYPE="PRODUCT">MAS4</ENAMEX>, where training is not required.
+        In the materials and methods section, we summarize
+        Affymetrix chip technologies and describe the MOID
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> in detail. MAS4 <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> for both absolute
+        expression analysis and comparison analysis are included
+        afterwards. The benchmarks used for algorithm comparison
+        were explained and comparison results were shown in the
+        results session. Issues such as noise-tolerance of both
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> and further reduction of the probe set size are
+        also included. We discuss generalization of the
+        normalization algorithm, which may be of interest to other
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>. Finally, the main differences between <TIMEX TYPE="DATE">MAS4</TIMEX> and
+        <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> are summarized in a tabular form as conclusions.
+      
+      
+        Results and Discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">Spiking</ENAMEX> experiments
+          <ENAMEX TYPE="ORGANIZATION">Spiking</ENAMEX> experiments were done by adding to tissue
+          samples a certain number of control genes with known
+          concentrations. Since signal intensity is not exactly
+          proportional to gene concentration across different probe
+          sets, only the fold change values of each gene between
+          comparisons are considered reliable and used to benchmark
+          both algorithms. We are fortunate to have access to <NUMEX TYPE="CARDINAL">34</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">spiking</ENAMEX> experiments done previously in <ENAMEX TYPE="ORGANIZATION">GNF</ENAMEX> for a
+          hybridization protocol study, where <NUMEX TYPE="CARDINAL">366</NUMEX> independent known
+          fold change numbers were derived. These experiments
+          covered <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> chip <ENAMEX TYPE="ORG_DESC">types</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">Hu35kSubA, Hu6800,</ENAMEX>
+          and <TIMEX TYPE="DATE">Mu11kSubA</TIMEX>. True experimental fold change values, 
+          f 
+          exp , range from <NUMEX TYPE="CARDINAL">1.0</NUMEX> to <NUMEX TYPE="CARDINAL">10.0</NUMEX>. The raw
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (<NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="ORGANIZATION">CEL</ENAMEX> files) and experimental fold change values
+          are available from
+          <ENAMEX TYPE="CONTACT_INFO">http://</ENAMEX><ENAMEX TYPE="ORG_DESC">carrier</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">gnf</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/publications/MOID</ENAMEX>.
+          We applied both algorithms to these array data and the
+          fold change numbers calculated were compared to known
+          experimental values. Because of the way we defined the
+          base and experiment, 
+          f 
+          exp are always no less than <NUMEX TYPE="CARDINAL">1.0</NUMEX>. For
+          MAS4, we used all the default parameters used by the
+          <ENAMEX TYPE="PRODUCT">Microarray Suite 4.0</ENAMEX> program in the calculation. For
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX>, we found using <NUMEX TYPE="CARDINAL">70</NUMEX> percentile for 
+          both pct and 
+          pct 
+          
+            f 
+           (defined in materials and methods) gave optimal
+          performance. Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the comparison results (data
+          available from <ENAMEX TYPE="CONTACT_INFO">http://</ENAMEX><ENAMEX TYPE="ORG_DESC">carrier</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">gnf</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/publications/MOID</ENAMEX>).
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> algorithms give virtually similar performance.
+          In the comparison, we defined relative error, 
+          R 
+          <ENAMEX TYPE="PERSON">err</ENAMEX> , as the following to benchmark
+          each <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX>,
+          
+          R 
+          err1 = <|( 
+          f 
+          calc - 
+          f 
+          <ENAMEX TYPE="ORGANIZATION">exp></ENAMEX> )/ 
+          f 
+          exp |> 
+          <NUMEX TYPE="CARDINAL">all</NUMEX> pairs ,
+          
+          R 
+          err2 = <|(<NUMEX TYPE="CARDINAL">1/</NUMEX> 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">calc - 1</ENAMEX>)/ 
+          f 
+          <ENAMEX TYPE="ORGANIZATION">exp</ENAMEX> ) · 
+          f 
+          exp |> 
+          <NUMEX TYPE="CARDINAL">all</NUMEX> pairs ,
+          and
+          
+          R 
+          <ENAMEX TYPE="PERSON">err = <|</ENAMEX>( 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">exp /</ENAMEX> 
+          f 
+          calc - 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">calc /</ENAMEX> 
+          f 
+          <ENAMEX TYPE="ORGANIZATION">exp</ENAMEX> )|> 
+          <NUMEX TYPE="CARDINAL">all</NUMEX> pairs .
+          Where 
+          f 
+          <ENAMEX TYPE="ORGANIZATION">exp</ENAMEX> and 
+          f 
+          calc are fold change values from
+          experiment and calculation, respectively. 
+          R 
+          err1 and 
+          R 
+          err2 are defined symmetrically for
+          relative errors of 
+          f 
+          <ENAMEX TYPE="ORGANIZATION">exp</ENAMEX> and <NUMEX TYPE="CARDINAL">1/</NUMEX> 
+          f 
+          exp , reflecting the fact that base
+          and experiment can be defined arbitrarily, and the final 
+          R 
+          <ENAMEX TYPE="PERSON">err</ENAMEX> is defined as the average of the
+          <NUMEX TYPE="CARDINAL">two</NUMEX>. Each relative error number is an average over all
+          the <ENAMEX TYPE="PRODUCT">366</ENAMEX> data points.
+          It seems the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">algorithms</ENAMEX> have very close
+          performance <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. They all have greater error margins
+          for calculating down-regulated fold changes (captured by 
+          R 
+          err2 ) than up-regulated ones
+          (captured by 
+          R 
+          err1 ). MAS4 is more asymmetric than
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> in this aspect.
+        
+        
+          No-Change experiments
+          Another set of experiments used for benchmarking
+          <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> is the comparison between <NUMEX TYPE="CARDINAL">two</NUMEX> experiments
+          where <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX> prepared from the same tissue sample was
+          hybridized twice under slightly different conditions.
+          Those fold change numbers that deviate largely from <NUMEX TYPE="CARDINAL">1.0</NUMEX>
+          are considered to be false positives. When we applied the
+          <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> to <NUMEX TYPE="CARDINAL">ten</NUMEX> experiments done with either human
+          brain or human lung replicate samples (same mRNA,
+          slightly different hybridization conditions), the results
+          were all similar. Figure 2shows one of the typical
+          comparison results. When only "<ENAMEX TYPE="WORK_OF_ART">Present</ENAMEX>" <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (defined by
+          MAS4) were taken into account, <NUMEX TYPE="PERCENT">80%</NUMEX> of fold change numbers
+          were spread across <NUMEX TYPE="MONEY">0.54</NUMEX> for <TIMEX TYPE="DATE">MAS4</TIMEX> and <NUMEX TYPE="CARDINAL">only 0.30</NUMEX> for <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX>.
+          Clearly MOID assigns much less false positive fold
+          changes than <TIMEX TYPE="DATE">MAS4</TIMEX> does in this comparison. If all the
+          genes were counted, the spreads of <ENAMEX TYPE="SUBSTANCE">MAS4</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> results
+          would be <NUMEX TYPE="MONEY">0.89 and 0.29</NUMEX> for the same data sets. This test
+          suggests <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> is more robust than <TIMEX TYPE="DATE">MAS4</TIMEX>.
+        
+        
+          <ENAMEX TYPE="PRODUCT">Reduced Probe Set</ENAMEX> Simulation
+          In the studies above, we demonstrated the feasibility
+          of a match-only gene chip design based on the MOID
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>. In order to further increase chip information
+          <ENAMEX TYPE="PERSON">density</ENAMEX>, it is of common interest to understand how many
+          probes are sufficient for expression analysis and push
+          for the lower limit of the size of a probe set. This is
+          done via computer simulations.
+          In the simulation, for each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set, a subset of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            r 
+           probes were randomly chosen to be used in the
+          calculation. Both the spiking and no-change calculations
+          presented above were repeated with the selected subset,
+          as we gradually reduced 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            r 
+           . Figure <TIMEX TYPE="DATE">3and</TIMEX> figure 4show the results for the
+          spiking calculation and no-change calculation,
+          respectively. As the graph suggested, accuracy of <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> is
+          essentially unaffected while reducing the number of
+          probes down to <NUMEX TYPE="CARDINAL">ten</NUMEX>. This result enables us to almost
+          triple the amount of clusters one can put on a gene chip
+          using <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> design. Combined with other new design ideas,
+          <ENAMEX TYPE="PERSON">MOID</ENAMEX> lays the foundation for the <NUMEX TYPE="ORDINAL">first</NUMEX> universal human
+          chip that contains <NUMEX TYPE="CARDINAL">75,000</NUMEX> UniGene clusters (<TIMEX TYPE="DATE">release 116</TIMEX>).
+          The results have recently been validated and led to many
+          interesting discoveries, which provides indirect support
+          for <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> (to be submitted).
+        
+        
+          <ENAMEX TYPE="PERSON">Noise Tolerance</ENAMEX> of both Algorithms
+          Computer simulations also enable us to study the
+          behaviors of both algorithms under noise disturbance. In
+          <ENAMEX TYPE="PERSON">simulations</ENAMEX>, a subset of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           probes were randomly chosen, their <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> values were
+          multiplied by <NUMEX TYPE="CARDINAL">ten</NUMEX> to mimic the effect of serious noise
+          effect. We repeated the calculations for both spiking
+          experiments and no-change experiments, while gradually
+          increasing 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           . Figure <TIMEX TYPE="DATE">5and</TIMEX> figure 6show the results for spiking
+          calculation and no-change calculation, respectively. As
+          the graph suggested, both <ENAMEX TYPE="SUBSTANCE">MAS4</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> can resist noise
+          perturbation <NUMEX TYPE="CARDINAL">up to 2</NUMEX> cells out of <NUMEX TYPE="CARDINAL">16</NUMEX>, the test favors
+          MOID slightly.
+        
+        
+          Probe-Specific Effect
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> is based on the assumption that the background
+          for probes is mainly non-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific. The results
+          indicate that this assumption is sound overall. However,
+          it is clear that by better understanding probe-specific
+          <ENAMEX TYPE="PERSON">behaviors</ENAMEX>, the analysis accuracy can be further improved.
+          For instance, probe response factors might be derived by
+          <ENAMEX TYPE="PERSON">accumulating</ENAMEX> and studying many experiments. If there are
+          a sufficient number of experiments, where the target gene
+          is significantly present, probe response factors may be
+          retrieved by some statistical modeling. A recent study [
+          <NUMEX TYPE="CARDINAL">8</NUMEX> ] provides an important example in this direction.
+          <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> at <ENAMEX TYPE="CONTACT_INFO">Corimbia http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">corimbia</ENAMEX>.comalso
+          developed some proprietary methods to identify "good"
+          probes and assign different weights to them to improve
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> analysis. Efforts can be made along similar lines
+          with the <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm in the future. If probe response
+          factors can be calculated, the "bad" but "stable" probes
+          can be scaled, and the distribution may be expected to be
+          closer to normal, therefore expression levels and their
+          uncertainties can be calculated in a more statistically
+          sound manner.
+          Future studies for more accurate background
+          <ENAMEX TYPE="PRODUCT">subtraction</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> may also improve the fold change
+          distribution; therefore yield better statistics for fold
+          change evaluation as well. The relative error in spiking
+          experiments (<NUMEX TYPE="PERCENT">28%</NUMEX>) suggests that there is room for future
+          improvement.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">LogP</ENAMEX> and <ENAMEX TYPE="PERSON">Absolute Calls</ENAMEX>
+          In the derivation of <ENAMEX TYPE="ORGANIZATION">LogP</ENAMEX> (see materials and methods,
+          Figure <NUMEX TYPE="CARDINAL">7</NUMEX>), it is assumed that the statistics of any
+          absent <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> can be described by the general background
+          curve 
+          <ENAMEX TYPE="PERSON">B. The</ENAMEX> 
+          P value should not be literally
+          interpreted as accurate probabilities, since it is only
+          as good as the underlining assumption. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> should also
+          <ENAMEX TYPE="ORGANIZATION">bear</ENAMEX> in mind that a 
+          P value is for the null hypothesis
+          that the discrepancy between observables and generic
+          <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX> is generated by noise, which is different from
+          the likelihood of gene presence conditioned on the
+          observed discrepancy. However, <ENAMEX TYPE="PERSON">LogP</ENAMEX> values more or less
+          serve as a statistical indicator for the sorting of genes
+          by their significance. The discrete absolute calls in
+          MAS4 are determined in a completely different empirically
+          manner. Although higher <ENAMEX TYPE="ORGANIZATION">LogP</ENAMEX> values have a higher
+          tendency of being assigned "<ENAMEX TYPE="WORK_OF_ART">Absent</ENAMEX>" in <TIMEX TYPE="DATE">MAS4</TIMEX>, the exact
+          correspondence between the two varies from experiment to
+          experiment. <NUMEX TYPE="CARDINAL">Roughly</NUMEX>, <ENAMEX TYPE="PERSON">LogP</ENAMEX> values above <NUMEX TYPE="PERCENT">-3.0</NUMEX> have a
+          greater chance to be called <ENAMEX TYPE="WORK_OF_ART">"Absent" than "Present</ENAMEX>" by
+          MAS4. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> should be aware not to over interpret this
+          correspondence. One interesting observation we had in
+          this study was that discrete calls by <TIMEX TYPE="DATE">MAS4</TIMEX> are not as
+          stable as <ENAMEX TYPE="PERSON">LogP</ENAMEX> values. Sometimes a gene can be reassigned
+          to "<ENAMEX TYPE="WORK_OF_ART">Present" from "Absent</ENAMEX>" by <TIMEX TYPE="DATE">MAS4</TIMEX> due to a small
+          <ENAMEX TYPE="ORGANIZATION">perturbation</ENAMEX> in the underlying quantities without going
+          through a "<ENAMEX TYPE="WORK_OF_ART">Marginal</ENAMEX>" transitional stage.
+        
+        
+          <ENAMEX TYPE="PERSON">Curve Normalization</ENAMEX>
+          It is clear by observing various experiments that the
+          response of intensity to signal varies in different
+          intensity regions. Occasionally, the normalization
+          constant 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            f 
+           does not cover well for all intensity values. A more
+          generalized normalization procedure should use a
+          normalization curve instead of a constant factor. The
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> normalization algorithm can be easily modified to
+          the following (see [ <TIMEX TYPE="DATE">10</TIMEX> ] for a similar approach):
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>: include all genes in the normalization gene
+          list.
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>: using the 
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           values for all the genes in the list, generate
+          integral intensity distributions for both experiments. A
+          normalization curve 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX>(I) is constructed in such a way
+          that the two integral distributions are identical after
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX>.
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>: normalize the data sets using 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX> obtained in the previous step;
+          refine the gene list by further excluding those genes
+          whose intensity values changed by more than a certain
+          <ENAMEX TYPE="PERSON">fold</ENAMEX>, > 
+          f 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> or <NUMEX TYPE="CARDINAL">< 1/</NUMEX> 
+          f 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , between the two data sets.
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>: repeat Step <NUMEX TYPE="CARDINAL">2</NUMEX> and update 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX> to 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX>', until one of the following
+          conditions is met:
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) the maximum number of iterations, 
+          Itr 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , is reached;
+          <NUMEX TYPE="CARDINAL">2</NUMEX>) <ENAMEX TYPE="PERSON">max</ENAMEX>(| 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX> ( 
+          I )/ 
+          <ENAMEX TYPE="ORGANIZATION">NF</ENAMEX> '( 
+          I ) - <NUMEX TYPE="CARDINAL">1|</NUMEX>) ≤ 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , where 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> is a small predefined
+          threshold;
+          <NUMEX TYPE="CARDINAL">3</NUMEX>) size of the normalization gene list drops below a
+          predefined threshold, 
+          Sz 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> .
+          This algorithm offers a chance to correct
+          <ENAMEX TYPE="ORGANIZATION">non-linearity</ENAMEX> in the chip system to a certain extent. To
+          demonstrate the algorithm, we applied the procedure to
+          <NUMEX TYPE="CARDINAL">two</NUMEX> measurements, where <ENAMEX TYPE="SUBSTANCE">genomics DNA</ENAMEX> sample of yeast
+          s288c strain were hybridized onto <ENAMEX TYPE="ORGANIZATION">Affymetrix YG</ENAMEX>_S98
+          <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> experiment was a repeat of the first
+          <NUMEX TYPE="CARDINAL">one</NUMEX> after <TIMEX TYPE="DATE">about 50 days</TIMEX>, where some of hybridization and
+          scanning parameters had been changed over the course. It
+          is shown in Figure <NUMEX TYPE="CARDINAL">8that</NUMEX> the curve normalization
+          procedure out-performed constant normalization as
+          expected.
+        
+      
+      
+        Conclusions
+        <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm allows at least double or even triple the
+        information density of current (<NUMEX TYPE="CARDINAL">U95</NUMEX> human chip) Affymetrix
+        high-density oligo nucleotide arrays without compromising
+        analysis accuracy. Table <TIMEX TYPE="DATE">2summarizes</TIMEX> feature comparisons
+        between <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> and <TIMEX TYPE="DATE">MAS4</TIMEX>.
+        It should be noted that at the time of this study,
+        <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">U95</ENAMEX> chip uses <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs per set. As
+        <ENAMEX TYPE="ORGANIZATION">Affymetirx</ENAMEX> is planning on further reducing probe set size
+        in their next design, the density improvement by using MOID
+        may be less than the estimation given above.
+      
+      
+        Materials and Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix Oligonucleotide Chip</ENAMEX>
+          At the time of this study, <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> synthesizes
+          <NUMEX TYPE="CARDINAL">25</NUMEX>-mer oligonucleotides on a <ENAMEX TYPE="CONTACT_INFO">640 × 640</ENAMEX> array with <NUMEX TYPE="QUANTITY">20 �</NUMEX>�m
+          feature size using photolithographic fabrication
+          techniques (some data used in this study were collected
+          from some previous <ENAMEX TYPE="PER_DESC">generation</ENAMEX> arrays of <NUMEX TYPE="CARDINAL">540</NUMEX> × <NUMEX TYPE="CARDINAL">540</NUMEX> cells
+          and <NUMEX TYPE="QUANTITY">24 �</NUMEX>�m feature size). Each <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> (also called a <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>)
+          in the array contains the same oligonucleotide sequences.
+          As shown in Figure <NUMEX TYPE="CARDINAL">9</NUMEX>, typically a set of <NUMEX TYPE="CARDINAL">16-20</NUMEX> probes are
+          designed for each targeting cluster (called a probe set,
+          or sometimes a "gene".). An expression value will be
+          derived per probe set as the result of analysis. Probes
+          taken as fragments from a target sequence are called
+          perfect matches (PM). Multiple matches per set serve as
+          independent signal detectors and provide a possibility to
+          capture statistical uncertainties. For each match, there
+          is also a corresponding mismatch (MM) probe, whose
+          <ENAMEX TYPE="PRODUCT">sequence</ENAMEX> differs from its match by a single <ENAMEX TYPE="FAC_DESC">base</ENAMEX> in the
+          middle. Mismatches are meant to detect cross
+          hybridization components of their corresponding matches,
+          and are used by <TIMEX TYPE="DATE">MAS4</TIMEX> for <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific background
+          <ENAMEX TYPE="PERSON">subtraction</ENAMEX>. There are also several <ENAMEX TYPE="NATIONALITY">Affymetrix</ENAMEX> control
+          sets on each chip used for quality references, which were
+          used in the <ENAMEX TYPE="SUBSTANCE">spiking</ENAMEX> experiments to validate and refine
+          hybridization protocols.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Intensity Distribution</ENAMEX>
+          In an ideal case, all the probes in a set should give
+          similar signals and serve as replicate measurements. One
+          common rule in probe design is to select probes with
+          similar melting temperatures to minimize the variances
+          among probes. The chemistry involved in a hybridization
+          experiment is often too complicated to be predicted
+          computationally at the current stage, therefore in
+          reality probe intensity distribution for a set is usually
+          fairly wide and has a long tail, which causes all kinds
+          of difficulty for data analysis.
+          One usual attraction in expression analysis is to
+          assume a normal distribution for <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> intensities. This
+          <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX> can be examined by the following calculation.
+          For each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set, we applied a linear transformation to
+          probe intensities, so that the mean and the standard
+          deviation of the intensities in the set were normalized
+          to <NUMEX TYPE="CARDINAL">zero</NUMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX>, respectively. Then all the resulting
+          match intensities were used to generate an overall
+          distribution. Our calculation shows the normal
+          distribution assumption is not an appropriate one. When
+          similar analysis was applied to mismatch intensities and
+          mismatch-subtracted match intensities, the conclusion
+          stays more or less the same.
+          Despite the fact that the intensity distribution of a
+          set is non-<ENAMEX TYPE="GPE">Gaussian</ENAMEX>, it is still crucial to find out the
+          distribution function for match or mismatch intensities
+          to generate meaningful statistics tests, if such
+          distributions actually exist. The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> tried several
+          analytical functions on match and mismatch probe
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>. Unfortunately, the distributions seemed to
+          be quite "bad", the tail portions even fade out slower
+          than the extreme value distribution. It was found that
+          distributions of mismatch signals also significantly
+          depended on the sample and experimental conditions. One
+          may reasonably suspect that cross hybridization,
+          intensity saturation, overall sample concentration, chip
+          production irregularities, and miscellaneous noise may
+          all cause a change in the signal distribution. The study
+          seems to suggest the distribution of cross hybridization
+          should be taken from each experiment as a result of
+          measurement instead of using an 
+          a priori determined analytical
+          expression. This guideline is used in <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm: hypothesis and principles
+          As mentioned in the intensity distribution analysis,
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> assumes cross hybridization behavior of probes is
+          mainly non-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific, and therefore all the match
+          cells can share the same cross hybridization background.
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> primarily aims at saving <NUMEX TYPE="PERCENT">50%</NUMEX> of the chip space
+          currently dedicated to mismatch cells in the Affymetrix
+          design under this study. It was also discussed before
+          that cross hybridization distributions should be taken
+          from experimental data instead of from some analytical
+          function. Based upon the general belief that there is
+          always a significant amount of genes unexpressed in any
+          <ENAMEX TYPE="PERSON">mRNA</ENAMEX> experiment, we will use the match cell signals from
+          the <NUMEX TYPE="PERCENT">5%</NUMEX> darkest <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> in the current public
+          Affymetrix arrays to prove the point that it is possible
+          for <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> not to use any mismatch signal. For the next
+          generation gene chip designed based on MOID algorithm,
+          some designated probes may be used as generic mismatches
+          to collect non-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific cross hybridization data.
+          In fact, on <ENAMEX TYPE="ORGANIZATION">GNF</ENAMEX><ENAMEX TYPE="PRODUCT">-HS1</ENAMEX>, <NUMEX TYPE="CARDINAL">16,460</NUMEX> probes from <NUMEX TYPE="CARDINAL">476</NUMEX> viral genes
+          are used for such a purpose.
+          As discussed, the distributions of quantities in
+          expression analysis are usually asymmetric and contain a
+          long tail, regardless whether it is match intensity,
+          mismatch intensity, or average intensity difference. For
+          such abnormal distributions, concepts like mathematical
+          average and standard deviation are not the most
+          appropriate statistical terms to use. Pre-filtering the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, like what MAS4 does, certainly helps reshape the
+          distribution, but by no means this can bring the
+          distribution back to normal without throwing out a
+          significant portion of measurements. The <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm
+          is specifically designed to avoid these problems by using
+          <ENAMEX TYPE="ORGANIZATION">percentile</ENAMEX> instead of mean and using confidence intervals
+          instead of standard deviation in all possible cases.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm for significance of gene
+          presence
+          A non-<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific integral background distribution
+          (representing noise, cross hybridization, and possible
+          other factors), 
+          B ( 
+          I ), is derived from the
+          intensities of the <NUMEX TYPE="PERCENT">5%</NUMEX> darkest <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> (or from generic
+          <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX> in the future). 
+          I stands for intensity; 
+          B satisfies boundary conditions: 
+          B (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>) = <NUMEX TYPE="CARDINAL">0</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">B (∞</ENAMEX>) = <NUMEX TYPE="CARDINAL">1</NUMEX>. For each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, the match signals are sorted and
+          the integral distribution, 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          I ), is generated as well. Figure
+          7is a schematic diagram.
+          If the gene represented by a probe set is absent, the
+          intensity data from matches are due to pure background
+          contribution, therefore 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           is likely to be close to 
+          B. We choose the <ENAMEX TYPE="GPE">Kolmogorov</ENAMEX>-Smirnov
+          test to determine likelihood that the observed signal
+          distribution, 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , could be explained by 
+          B. If we define 
+          d 
+          
+          <ENAMEX TYPE="ORGANIZATION">k max</ENAMEX> as the maximum vertical
+          distance between 
+          B and 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , according to <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX> statistics, the probability of
+          observing discrepancies greater than 
+          d 
+          
+          <ENAMEX TYPE="ORGANIZATION">k max</ENAMEX> is determined by a P
+          value [ <TIMEX TYPE="DATE">11</TIMEX> ] ,
+          
+          where
+          
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           is the effective number of data points in the <ENAMEX TYPE="ORGANIZATION">K-S</ENAMEX>
+          statistics, which is the number of <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> for gene 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> in our case. 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> carries the meaning of
+          <ENAMEX TYPE="PERSON">probability</ENAMEX>, therefore is a number <NUMEX TYPE="CARDINAL">between 0 and 1</NUMEX>.
+          Practically, <ENAMEX TYPE="ORGANIZATION">Log</ENAMEX> 
+          10 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> , a negative value, is used as
+          our final representation. In this way, <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> uses a
+          <ENAMEX TYPE="PERSON">continuous LogP</ENAMEX> criterion to replace MAS4 absolute calls.
+          Those signal sets that can be easily explained by noise
+          are assigned a LogP value closer to <NUMEX TYPE="CARDINAL">zero</NUMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm for expression level
+          calculation
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> uses the horizontal distance between 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           and 
+          B to represent gene expression
+          level (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). Since the darkest probes may be more
+          likely caused by their poor binding properties to the
+          target gene, and the brightest probes may be more likely
+          caused by serious cross hybridization issues, different
+          parts of the integral distribution tend to have different
+          qualities. Therefore, the <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm uses the
+          horizontal distance measured at a certain percentile, 
+          pct, instead of the whole curve.
+          Based on the analysis of the <ENAMEX TYPE="SUBSTANCE">spiking</ENAMEX> experiments
+          discussed later, it is empirically determined that <NUMEX TYPE="PERCENT">70%</NUMEX> is
+          the optimal percentile for signal retrieval. We also
+          tried to use the average of horizontal distances from
+          several 
+          pct, but without significant
+          improvement. Therefore the expression level 
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , related to gene concentration for gene 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, is defined as
+          
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="PERSON">= max</ENAMEX>( 
+          I | 
+          
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = 
+          pct  - 
+          I | 
+          
+          B = 
+          pct  , <NUMEX TYPE="CARDINAL">0</NUMEX>).
+          Instead of using the standard deviation, we take
+          confidence intervals directly from the distribution curve
+          
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , with the background subtracted. E.g., <NUMEX TYPE="PERCENT">80%</NUMEX>
+          confidence intervals can be represented by a lower bound
+          ( 
+          E 
+          
+            kl 
+           ) at <NUMEX TYPE="CARDINAL">10</NUMEX> percentile and an upper bound ( 
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">ku</ENAMEX> 
+           ) at <NUMEX TYPE="CARDINAL">90</NUMEX> percentile of the distribution, i.e.,
+          
+          E 
+          
+            kl 
+           <NUMEX TYPE="CARDINAL">0</NUMEX>(<NUMEX TYPE="MONEY">0.1</NUMEX>) = <ENAMEX TYPE="PERSON">max</ENAMEX> ( 
+          I | 
+          
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">0.1</NUMEX> - 
+          I | 
+          
+          B = 
+          pct  , <NUMEX TYPE="CARDINAL">0</NUMEX>)
+          and
+          
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">ku</ENAMEX> 
+           <NUMEX TYPE="CARDINAL">0</NUMEX>(<NUMEX TYPE="MONEY">0.9</NUMEX>) = <ENAMEX TYPE="PERSON">max</ENAMEX> ( 
+          I | 
+          
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">0.9</NUMEX> - 
+          I | 
+          
+          B = 
+          pct  , <NUMEX TYPE="CARDINAL">0</NUMEX>).
+          As one might expect, increment of the probe set size
+          helps narrowing down the confidence intervals in a manner
+          determined by the statistics of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> distribution.
+          However, this piece of information is unknown and we took
+          an 
+          ad hoc approach by modifying the
+          boundaries formulae as the following:
+          
+          and
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm for normalization
+          The most common way of understanding gene functions by
+          expression profiling is to study the change of their
+          expression levels in various disease <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and cellular
+          environments. The observed expression level is a product
+          of complicated protocols, and is subjected to various
+          factors from sample preparation to final image scanning.
+          Therefore, it is a common practice to normalize
+          expression data drawn from multiple profiles before
+          making any reliable interpretation.
+          The normalization procedure in <TIMEX TYPE="DATE">MAS4</TIMEX> aims at
+          normalizing the average intensities of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets
+          (excluding the top and bottom <NUMEX TYPE="PERCENT">2%</NUMEX>). To avoid possible
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> contamination, MOID takes similar approach by
+          normalizing the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> between <NUMEX TYPE="CARDINAL">10 and 90</NUMEX> percentiles.
+          However, it is noticed that an ideal normalization factor
+          should be derived from only those genes that do not
+          change their expression levels between the two
+          experiments. MAS software provides the possibility to use
+          a list of <ENAMEX TYPE="SUBSTANCE">housekeeping genes</ENAMEX> for such purposes; however,
+          it certainly requires careful downstream research to
+          validate any such a list. Some common normalization
+          criteria were summarized in a recent study by <ENAMEX TYPE="ORGANIZATION">Zien et</ENAMEX> al.
+          [ <TIMEX TYPE="DATE">12</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> uses a heuristic bootstrap method to
+          identify an approximate list of unchanged genes between
+          <NUMEX TYPE="CARDINAL">two</NUMEX> data sets:
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>: include all genes as the normalization gene
+          list.
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>: sort the 
+          E 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           values (already background subtracted) for all the
+          genes in the list; the interesting portion of expression
+          values (<NUMEX TYPE="PERCENT">between 10% and 90%</NUMEX> in our case) is retrieved and
+          average intensity is calculated for each experiment,
+          respectively. The initial normalization factor 
+          <ENAMEX TYPE="ORGANIZATION">nf</ENAMEX> is calculated by the ratio of
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> average intensities.
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>: normalize the data sets using 
+          nf obtained in the previous step;
+          refine the gene list by further excluding those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          whose intensity values changed by more than a certain
+          <ENAMEX TYPE="PERSON">fold</ENAMEX>, > 
+          f 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> or <NUMEX TYPE="CARDINAL">< 1/</NUMEX> 
+          f 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , between the two data sets.
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>: repeat Step <NUMEX TYPE="CARDINAL">2</NUMEX> and update 
+          <ENAMEX TYPE="ORGANIZATION">nf</ENAMEX> to 
+          <ENAMEX TYPE="ORGANIZATION">nf'</ENAMEX>, until one of the following
+          conditions is met:
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) the maximum number of iterations, 
+          Itr 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , is reached;
+          <NUMEX TYPE="CARDINAL">2</NUMEX>) | 
+          <ENAMEX TYPE="CONTACT_INFO">nf/nf' - 1| ≤</ENAMEX> 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> , where 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> is a small predefined
+          threshold;
+          <NUMEX TYPE="CARDINAL">3</NUMEX>) size of the normalization gene list drops below a
+          predefined threshold, 
+          Sz 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> .
+          In practice, a single iteration is usually sufficient
+          for most comparisons. <ENAMEX TYPE="PER_DESC">User</ENAMEX> can adjust threshold
+          parameters towards their preferred stringent levels. In
+          this study we use 
+          f 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> = <NUMEX TYPE="CARDINAL">2.0</NUMEX>, 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> = <NUMEX TYPE="CARDINAL">0.05</NUMEX>, 
+          Itr 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX>, 
+          Sz 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> = <TIMEX TYPE="DATE">1000</TIMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm for comparison analysis
+          Different probes within the same probe set generally
+          respond very differently to mRNA sample fragments. We
+          examined various <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> properties such as melting
+          <ENAMEX TYPE="PERSON">temperature</ENAMEX>, nucleotide base composition, possible
+          sequence motifs, and potential <NUMEX TYPE="ORDINAL">secondary</NUMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in
+          order to understand the cause of such diverse response
+          properties. That study did not find any conclusive factor
+          that explains observed probe signal distribution
+          satisfactory. Although it seems rather difficult to
+          pre-compute and predict probe responses, it is possible
+          to derive some features afterwards for a <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> based on a
+          significant amount of expression data where the target
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> of interest is present [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . Instead of using a
+          modeling approach to explain various signal
+          contributions, <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> uses a new approach to avoid the
+          affect of diversities of probe response factors in
+          calculating expression fold changes.
+          Let us assume any <NUMEX TYPE="CARDINAL">two</NUMEX> probes in a probe set 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> of size 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           always respond to their target gene concentration
+          with factor 
+          r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , respectively. That is, if the gene
+          is present at concentration 
+          c 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          c 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> in <TIMEX TYPE="DATE">two hybridizations</TIMEX>, the two
+          probes in average give signal intensities 
+          r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          c 
+          <TIMEX TYPE="TIME">1 in the first</TIMEX> experiment, 
+          r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> and 
+          r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          c 
+          <TIMEX TYPE="TIME">2 in the second</TIMEX> experiment. As in
+          MAS4, fold change is calculated by the ratio between 
+          r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> + 
+          r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> and 
+          r 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          r 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , where the result is essentially
+          dominated by the probes with the largest response
+          factors, and the statistics of the ratio becomes
+          difficult to estimate. However, we observe that by taking
+          the ratio of the two signals for each probe individually,
+          <NUMEX TYPE="CARDINAL">one</NUMEX> essentially is looking at 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           independent measurements of 
+          c 
+          <ENAMEX TYPE="CONTACT_INFO">2 /</ENAMEX> 
+          c 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> for that probe set. This opens a
+          possibility for obtaining a distribution of fold change
+          values.
+          If one assumes most probes have a rather stable
+          intrinsic response factor, 
+          r, a fold change number can be
+          calculated from each probe 
+          i in the set independently, which
+          hopefully removes the affect of the unknown response
+          factors 
+          r 
+          
+            i 
+           . However, it seems the response factor of each
+          probe has a non-negligible intrinsic spread as well; this
+          may be further complicated by alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> and
+          tissue-specific cross hybridization issues. In addition,
+          the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">ratio</ENAMEX> numbers calculated for a probe set are not
+          normally distributed (it is well known that even the
+          ratio of <NUMEX TYPE="CARDINAL">two</NUMEX> normally distributed values is no longer
+          normally distributed). The current background subtraction
+          algorithm may not take fully into account response
+          factor-unrelated signals, therefore could further
+          increase the non-normal component. To overcome this
+          difficulty, <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> uses a percentile, 
+          pct 
+          
+            f 
+           , of the integral distribution formed by the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           fold change numbers, 
+          F 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          f ), which satisfied the boundary
+          conditions: 
+          F (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>) = <NUMEX TYPE="CARDINAL">0</NUMEX> and 
+          <ENAMEX TYPE="PRODUCT">F (∞</ENAMEX>) = <NUMEX TYPE="CARDINAL">1</NUMEX>. Empirically, <NUMEX TYPE="PERCENT">70%</NUMEX> is used
+          for 
+          pct 
+          
+            f 
+           as determined by <ENAMEX TYPE="SUBSTANCE">spiking</ENAMEX> experiments discussed
+          later. The confidence intervals are also directly taken
+          from relevant <ENAMEX TYPE="SUBSTANCE">percentiles</ENAMEX> in the distribution
+          corresponding to the lower bound and upper bound,
+          respectively. The effect of the number 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           is taken into account in the same heuristic manner
+          as we did previously for absolute analysis. The final
+          formulae are:
+          
+        
+        
+          MAS4 <ENAMEX TYPE="ORGANIZATION">Algorithm for Absolute Analysis</ENAMEX>
+          After a sample is hybridized to probes on a chip, the
+          chip is scanned and fluorescent signals are collected and
+          stored in an <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> DAT file. For cell 
+          i, after filtering out boundary
+          pixels, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            i 
+           numbers of pixels are used to calculate an average
+          intensity value 
+          I 
+          
+            i 
+           and standard deviation σ 
+          
+            i 
+           . Hereafter we index a probe set by 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, which contains 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           probe pairs. The calculated intensity values for the
+          
+          <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set are denoted as 
+          PM 
+          
+            kj 
+           for <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and 
+          MM 
+          
+            kj 
+           for <ENAMEX TYPE="ORGANIZATION">MM.</ENAMEX> Background intensity, 
+          bg, is derived from the average
+          intensity of the <NUMEX TYPE="PERCENT">2%</NUMEX> darkest cells. Noise level, 
+          <ENAMEX TYPE="PERSON">Q</ENAMEX>, is determined as
+          
+          where average is done over all background cells.
+          MAS4 assumes that the cross hybridization component of
+          a match is captured by its mismatch <ENAMEX TYPE="PER_DESC">companion</ENAMEX>, therefore
+          the difference, 
+          PM 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           - 
+          MM 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , is used to derive expression levels. MAS4 also
+          uses a "<ENAMEX TYPE="EVENT">super-Olympic</ENAMEX> scoring" procedure to iteratively
+          filter out outliers, defined as those <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs with
+          difference values <NUMEX TYPE="CARDINAL">more than three</NUMEX> times the standard
+          deviation away from the mean. After filtering, the
+          average difference value for a probe set, 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , is used to represent the expression level of that
+          particular gene.
+          The significance of gene presence is determined by an
+          empirical absolute call decision matrix coupled with
+          <ENAMEX TYPE="PRODUCT">proprietary MAS4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">algorithms</ENAMEX>, parts of which are described
+          in the <ENAMEX TYPE="WORK_OF_ART">Microarray Suite documentation</ENAMEX>. As the result, a
+          probe set is marked as either "<ENAMEX TYPE="WORK_OF_ART">Present"</ENAMEX>, "<ENAMEX TYPE="WORK_OF_ART">Absent"</ENAMEX>, or
+          "<ENAMEX TYPE="WORK_OF_ART">Marginal"</ENAMEX>.
+          MAS4 calculates average difference by
+          
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= <</ENAMEX> 
+          PM 
+          
+            kj 
+           - 
+          MM 
+          
+            kj 
+           > 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           ,
+          which is essentially
+          
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= <</ENAMEX> 
+          PM 
+          
+            kj 
+           > 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           - < 
+          MM 
+          
+            kj 
+           > 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           ,
+          where the average is taken over all the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs
+          surviving the <ENAMEX TYPE="EVENT">super-Olympic</ENAMEX> filtering process mentioned
+          above. Based on this observation, the <NUMEX TYPE="CARDINAL">one</NUMEX>-<NUMEX TYPE="CARDINAL">one</NUMEX>
+          correspondences between 
+          PM 
+          
+            kj 
+           and 
+          MM 
+          
+            kj 
+           , typically with an average correlation coefficient
+          around <NUMEX TYPE="MONEY">0.8</NUMEX>, are essentially lost during such averaging.
+          Since <TIMEX TYPE="DATE">MAS4</TIMEX> is successful in various applications despite
+          the fact it averages out <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>-specific mismatch signals,
+          we hypothesize that contributions of the mismatch probes
+          are mainly probe-nonspecific, if the pairwise
+          correspondence between 
+          PM 
+          
+            kj 
+           and 
+          MM 
+          
+            kj 
+           are not enforced. This observation led to the idea
+          of only using match probes in the <ENAMEX TYPE="ORGANIZATION">MOID</ENAMEX> algorithm
+          discussed above.
+        
+        
+          MAS4 <ENAMEX TYPE="ORGANIZATION">Algorithm</ENAMEX> for Normalization
+          MAS4 introduces a normalization factor (a scaling
+          factor in <TIMEX TYPE="DATE">MAS4</TIMEX> serves the same purpose). The goal of
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> is to reduce false positives in the
+          expression fold change calculation and ensure
+          housekeeping genes are marked as unchanged. Since it is
+          usually unknown 
+          a priori what genes sustain their
+          expression level during the <NUMEX TYPE="CARDINAL">two</NUMEX> experiments, different
+          heuristic normalization schemes may be adopted and it is
+          unclear at this point which particular approach is
+          <ENAMEX TYPE="ORGANIZATION">optimal</ENAMEX>. MAS4 normally derives the normalization factor
+          by scaling average 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           for all genes with expression levels within the
+          central <NUMEX TYPE="PERCENT">96%</NUMEX> to a certain target intensity constant. This
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> is based on the assumption that the total copy
+          of <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX> per <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> is a conserved number among
+          experiments.
+        
+        
+          MAS4 <ENAMEX TYPE="ORGANIZATION">Algorithm for Comparison Analysis</ENAMEX>
+          In comparison of <NUMEX TYPE="CARDINAL">two</NUMEX> chips, we follow Affymetrix
+          convention of calling the reference chip measurement as
+          the base ( 
+          b ), the other <NUMEX TYPE="CARDINAL">one</NUMEX> as the
+          experiment ( 
+          e ). After the above normalization
+          procedure, the fold change value for gene 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, f 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , is essentially calculated by dividing 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          e ) with 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          b ). MAS4 uses a filtering process
+          to ensure that a common subset of "good" probe pairs
+          between 
+          b and 
+          e are used to recalculate 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           . Very weak expression signals (sometimes negative)
+          are rounded to the noise level mentioned before. The
+          final formula for 
+          f is:
+          
+          f 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = [ 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          e ) + <ENAMEX TYPE="PERSON">max</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">Q -</ENAMEX> 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          b ), <NUMEX TYPE="CARDINAL">0</NUMEX>)] / <ENAMEX TYPE="PERSON">max</ENAMEX> ( 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          b ), 
+          <ENAMEX TYPE="ORGANIZATION">Q</ENAMEX> ), if 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          e ) ≥ 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          b ),
+          or
+          
+          f 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="PERSON">= max</ENAMEX> ( 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          e ), 
+          <ENAMEX TYPE="ORGANIZATION">Q</ENAMEX> ) / [ 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          b ) + <ENAMEX TYPE="PERSON">max</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">Q -</ENAMEX> 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          e ), <NUMEX TYPE="CARDINAL">0</NUMEX>)], otherwise.
+          An empirical difference call decision matrix and a
+          <ENAMEX TYPE="PRODUCT">proprietary MAS4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">algorithm</ENAMEX>, partly described in the
+          <ENAMEX TYPE="PRODUCT">Microarray Suite 4.0</ENAMEX> documentation, determine the
+          significance of the fold change. As a result, the probe
+          set is marked as "<ENAMEX TYPE="WORK_OF_ART">Increase"</ENAMEX>, "<ENAMEX TYPE="WORK_OF_ART">No Change"</ENAMEX>, "<ENAMEX TYPE="WORK_OF_ART">Decrease"</ENAMEX>,
+          "<ENAMEX TYPE="WORK_OF_ART">Marginally Increase"</ENAMEX>, or "<ENAMEX TYPE="WORK_OF_ART">Marginally Decrease"</ENAMEX>. It is
+          obvious that the fold change number is only meaningful if
+          the probe set is clearly present at a level above the
+          noise in both data sets.
+        
+      
+      
+        List of Abbreviations
+        MOID - match-only integral distribution
+        MAS4 - Affymetrix algorithms implemented in its
+        <ENAMEX TYPE="PRODUCT">Microarray Suit 4.0</ENAMEX> software
+        PM - perfect match
+        DMM - mismatch
+      
+    
+  

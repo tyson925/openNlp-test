@@ -1,0 +1,364 @@
+
+  
+    
+      
+        Background
+        The human immunodeficiency virus type <NUMEX TYPE="CARDINAL">1</NUMEX> aspartic
+        <ENAMEX TYPE="ORGANIZATION">protease</ENAMEX> (HIV-1 <ENAMEX TYPE="ORGANIZATION">PR</ENAMEX>) is an important enzyme due to its key
+        role in viral <ENAMEX TYPE="SUBSTANCE">maturation</ENAMEX>. Inactivation of the enzyme causes
+        the production of immature, noninfectious viral <ENAMEX TYPE="SUBSTANCE">particles</ENAMEX>.
+        The enzyme therefore is an attractive target in anti-AIDS
+        drug design, and the effect of binding various <ENAMEX TYPE="SUBSTANCE">inhibitors</ENAMEX>
+        on the protease structure is currently the focus of
+        intensive research [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] .
+        To obtain information about the position and energy of
+        binding between an inhibitor and the corresponding <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>,
+        several automated docking programs have been developed [ <NUMEX TYPE="CARDINAL">4</NUMEX>
+        <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] . Given recent improvements in search algorithms and
+        energy functions, computational docking methods have become
+        a valuable tool to probe the interaction between an enzyme
+        and its <ENAMEX TYPE="SUBSTANCE">inhibitors</ENAMEX>. These methods can contribute
+        significantly to the understanding of structural and
+        energetic basis of enzyme-substrate interactions [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ]
+        .
+        <ENAMEX TYPE="SUBSTANCE">Protein</ENAMEX>-ligand docking methods aim to predict the
+        binding energy of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-ligand complex given the
+        atomic coordinates. In such calculations, both the protein
+        and <ENAMEX TYPE="PER_DESC">ligand</ENAMEX> can be treated as rigid <ENAMEX TYPE="PER_DESC">bodies</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 11</NUMEX> ] ;
+        alternately, the ligand, the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, or both molecules,
+        can be completely or partially flexible [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] .
+        <NUMEX TYPE="CARDINAL">One</NUMEX> advantage of incorporating flexibility is that it
+        enables a search without bias introduced by the initial
+        model. This bias normally influences both the orientation
+        and conformation of the ligand in the active site, which
+        usually represents a local minimum conformation [ <TIMEX TYPE="DATE">14</TIMEX> ] .
+        More importantly, the lock and key concepts used to
+        evaluate enzyme-substrate binding, in reality, refer to
+        flexible locks and keys that are both in constant dynamic
+        (thermal) motion [ <TIMEX TYPE="DATE">15</TIMEX> ] . For example, an analysis of
+        <ENAMEX TYPE="ORGANIZATION">conformational</ENAMEX> changes upon complex formation for a
+        <ENAMEX TYPE="PER_DESC">representative</ENAMEX> set of <NUMEX TYPE="CARDINAL">39</NUMEX> pairs of ligand-free and
+        ligand-bound <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> showed that <NUMEX TYPE="PERCENT">50%</NUMEX> of these proteins
+        undergo substantial main<ENAMEX TYPE="ORG_DESC">-chain</ENAMEX> and <ENAMEX TYPE="PER_DESC">side</ENAMEX> chain
+        <ENAMEX TYPE="ORGANIZATION">conformational</ENAMEX> changes when the ligand is bound [ <TIMEX TYPE="DATE">15</TIMEX> ]
+        .
+        Several techniques have been developed to predict the
+        binding energies of <NUMEX TYPE="QUANTITY">HIV-1 protease-inhibitor</NUMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> [ <NUMEX TYPE="CARDINAL">16</NUMEX>
+        <NUMEX TYPE="CARDINAL">17 18 19 20 21</NUMEX> ] . <ENAMEX TYPE="PER_DESC">Head</ENAMEX> <ENAMEX TYPE="PERSON">RD</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al .</ENAMEX>, <TIMEX TYPE="DATE">1996</TIMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] used an approach
+        that calculates physicochemical <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> of the ligands
+        and the <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>-ligand <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> to estimate the free
+        energy of binding. The enthalpy of binding is calculated by
+        molecular <ENAMEX TYPE="PER_DESC">mechanics</ENAMEX>, while properties such as complementary
+        hydrophobic surface area are used to estimate the entropy
+        of binding through heuristics. Gohlke H 
+        <ENAMEX TYPE="ORGANIZATION">et al .</ENAMEX>, <TIMEX TYPE="DATE">2000</TIMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] developed
+        DrugScore, a knowledge-based scoring function, to
+        discriminate between well-docked ligand binding modes and
+        those largely deviating from the native structure.
+        <ENAMEX TYPE="PERSON">Schapira M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al .</ENAMEX>, <TIMEX TYPE="DATE">1999</TIMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] used the finite
+        <ENAMEX TYPE="PERSON">difference Poisson-Boltzmann</ENAMEX> implementation of the
+        electrostatic term, in conjunction with appropriate surface
+        and entropy terms to predict the binding energy of <NUMEX TYPE="CARDINAL">13</NUMEX> HIV-1
+        protease-inhibitor <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>. The predicted binding
+        <ENAMEX TYPE="PERSON">energies</ENAMEX> had a correlation coefficient of <NUMEX TYPE="CARDINAL">0.66</NUMEX> with the
+        experimental data. Recently, Österberg F 
+        <ENAMEX TYPE="ORGANIZATION">et al .</ENAMEX>, <TIMEX TYPE="DATE">2002</TIMEX> used <ENAMEX TYPE="PRODUCT">AutoDock 3.0</ENAMEX>, a
+        ligand flexible docking program, together with combining <NUMEX TYPE="CARDINAL">21</NUMEX>
+        protease <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> into a single <ENAMEX TYPE="PER_DESC">representative</ENAMEX> grid of
+        interaction energies for incorporating the side chain
+        motion into a docking simulation protocol [ <TIMEX TYPE="DATE">21</TIMEX> ] . The
+        correlation coefficient between experimental and calculated
+        binding energies produced by this technique was <NUMEX TYPE="CARDINAL">0.79</NUMEX>.
+        Since most current docking programs treat the receptor
+        and/or ligand as rigid objects, this represents an
+        important cause of failure to predict the correct binding
+        enzyme-substrate energies [ <TIMEX TYPE="DATE">18</TIMEX> ] . We address this problem
+        by performing <ENAMEX TYPE="ORGANIZATION">Molecular Dynamic</ENAMEX> (<ENAMEX TYPE="PRODUCT">MD</ENAMEX>) simulations on HIV-1
+        protease-inhibitor complexed and using the resulting
+        structures to calculate the binding energies by <ENAMEX TYPE="PERSON">AutoDock</ENAMEX>, a
+        ligand flexible docking program.
+      
+      
+        Results and discussion
+        
+          Correlation between experimentally determined and
+          calculated binding energy
+          The primary objective of this study was to determine
+          whether <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> relaxation would improve prediction of
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-ligand binding energies. <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> that the
+          correlation coefficient of the experimentally determined
+          and calculated binding energies from <ENAMEX TYPE="ORGANIZATION">AutoDock</ENAMEX> for the
+          <NUMEX TYPE="CARDINAL">twenty-five</NUMEX> protease-inhibitor <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> after
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-rigid docking was <NUMEX TYPE="CARDINAL">0.38</NUMEX>. The correlations after
+          <NUMEX TYPE="CARDINAL">0.01</NUMEX>, <NUMEX TYPE="CARDINAL">0.1</NUMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX>, and <NUMEX TYPE="CARDINAL">10</NUMEX> picoseconds (<ENAMEX TYPE="ORGANIZATION">ps</ENAMEX>) of <ENAMEX TYPE="PRODUCT">MD</ENAMEX> simulations
+          were <NUMEX TYPE="MONEY">0.53</NUMEX>, <NUMEX TYPE="CARDINAL">0.87</NUMEX>, <NUMEX TYPE="CARDINAL">0.79</NUMEX>, and <NUMEX TYPE="MONEY">0.74</NUMEX> respectively. These
+          correlations are plotted in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> outlier (from
+          1hvi) was noticed in Figure <TIMEX TYPE="DATE">1B</TIMEX>; after it is eliminated,
+          the correlation coefficient changes from <NUMEX TYPE="CARDINAL">0.53</NUMEX> to <NUMEX TYPE="CARDINAL">0.72</NUMEX>
+          after <TIMEX TYPE="TIME">0.01 ps</TIMEX> of simulation.
+          All these correlations represent a significant
+          improvement over the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-rigid docking results. The
+          best results were obtained from the <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> at the <NUMEX TYPE="CARDINAL">0.1</NUMEX>
+          <ENAMEX TYPE="PRODUCT">ps MD simulation</ENAMEX> time point. These <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> also have
+          low (≅ <NUMEX TYPE="QUANTITY">0.3 Å</NUMEX>) average all-atom root mean square
+          <ENAMEX TYPE="PERSON">deviations</ENAMEX> (RMSD) relative to the experimental results.
+          <ENAMEX TYPE="PRODUCT">Table 2shows</ENAMEX> the <TIMEX TYPE="TIME">all-atom RMSD</TIMEX> between each simulated
+          complex and the corresponding protease-inhibitor x-ray
+          structure. The average all-atom <ENAMEX TYPE="ORGANIZATION">RMSD</ENAMEX> for the complexes
+          increases from <NUMEX TYPE="QUANTITY">0.18 Å</NUMEX> at <NUMEX TYPE="QUANTITY">0.01 ps to 2.92 Å</NUMEX> at <TIMEX TYPE="TIME">the end of</TIMEX>
+          <TIMEX TYPE="TIME">10 ps of simulation time</TIMEX>. Similar results are
+          consistently observed regardless of the <NUMEX TYPE="CARDINAL">five</NUMEX> starting
+          <ENAMEX TYPE="SUBSTANCE">seeds</ENAMEX> used in the <ENAMEX TYPE="PRODUCT">MD simulations</ENAMEX>.
+          When a constant value of <NUMEX TYPE="CARDINAL">6.5</NUMEX> is subtracted from the
+          predicted energies after <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PRODUCT">ps MD</ENAMEX>, the binding energies
+          of almost all of the predictions were within <NUMEX TYPE="QUANTITY">2.0 kcal</NUMEX>/mol
+          of the experimental values. <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>, <TIMEX TYPE="DATE">1hvi</TIMEX>, <TIMEX TYPE="DATE">1hvr</TIMEX>,
+          and 1hte had poor predicted energies, with an average
+          error of <NUMEX TYPE="MONEY">4.34</NUMEX>, <NUMEX TYPE="CARDINAL">4.31</NUMEX>, and <NUMEX TYPE="CARDINAL">5.09</NUMEX> <ENAMEX TYPE="PER_DESC">kcal</ENAMEX>/mol, respectively.
+          Among these, <NUMEX TYPE="CARDINAL">one</NUMEX> (<NUMEX TYPE="MONEY">1hvi</NUMEX>) had better predicted energies
+          when compared to the results of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-rigid
+          <ENAMEX TYPE="ORGANIZATION">docking</ENAMEX>.
+        
+        
+          Influence of the protease flap movement on
+          calculated binding energy
+          The beta-strand flap is the most flexible region in
+          the <NUMEX TYPE="ORDINAL">HIV-1</NUMEX> protease. It is normally <NUMEX TYPE="CARDINAL">7</NUMEX> Å RMSD from the
+          active site and is in an open conformation in the native
+          state [ <NUMEX TYPE="CARDINAL">22 23</NUMEX> ] . The protease undergoes significant
+          structural changes on binding to an inhibitor. The <NUMEX TYPE="CARDINAL">two</NUMEX>
+          flaps fold over the inhibitor to form a <ENAMEX TYPE="FAC_DESC">tunnel</ENAMEX>-shaped
+          active site and are held in this close position by
+          hydrogen bonding from <TIMEX TYPE="DATE">Ile50 and Ile50</TIMEX>' <ENAMEX TYPE="ORGANIZATION">NH</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">enzyme</ENAMEX> to a water molecule, which in turn is hydrogen
+          bonded to <TIMEX TYPE="DATE">the P2 and P1</TIMEX>' <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> groups of the inhibitor [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          ] . The bonding stabilizes the flaps in a closed position
+          and inhibits the activities of the enzyme.
+          <ENAMEX TYPE="PRODUCT">MD simulation</ENAMEX> has been used to study the movement of
+          the flap region of <ENAMEX TYPE="PRODUCT">HIV-1</ENAMEX> protease with a ligand [ <NUMEX TYPE="CARDINAL">25 26</NUMEX>
+          <NUMEX TYPE="CARDINAL">27 28 29 30</NUMEX> ] . The flaps initially opened to an all-atom
+          <ENAMEX TYPE="ORGANIZATION">RMSD</ENAMEX> of <NUMEX TYPE="CARDINAL">25</NUMEX> Å within <TIMEX TYPE="TIME">200 ps</TIMEX> and became completely open at
+          the end of a <NUMEX TYPE="CARDINAL">10</NUMEX> ns simulation. In this study (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>),
+          the flaps opened up and moved away from the x-ray
+          structure from <NUMEX TYPE="QUANTITY">0.54 Å</NUMEX> at <NUMEX TYPE="QUANTITY">0.1 ps to 3.30 Å</NUMEX> RMSD at <NUMEX TYPE="CARDINAL">10</NUMEX> ps
+          (the flap <ENAMEX TYPE="ORGANIZATION">RMSD</ENAMEX> was calculated from residue <NUMEX TYPE="CARDINAL">40 to 60</NUMEX> of
+          each protein <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>). These movements, after <TIMEX TYPE="TIME">0.1 ps of</TIMEX>
+          <ENAMEX TYPE="PERSON">simulation</ENAMEX>, are inversely correlated with the quality of
+          the binding energy prediction. As shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, the
+          correlation coefficient significantly decreased from <NUMEX TYPE="CARDINAL">0.87</NUMEX>
+          at <NUMEX TYPE="CARDINAL">0.1</NUMEX> ps to <NUMEX TYPE="CARDINAL">0.74</NUMEX> at <TIMEX TYPE="TIME">10 ps</TIMEX> as the <NUMEX TYPE="CARDINAL">all</NUMEX>-atom flap RMSD
+          increased from <NUMEX TYPE="CARDINAL">0.54</NUMEX> to <NUMEX TYPE="CARDINAL">3.30</NUMEX> at <NUMEX TYPE="CARDINAL">0.1</NUMEX> and <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="ORGANIZATION">ps</ENAMEX>,
+          respectively.
+          Complementarity between the ligand and the binding
+          site is the basic concept behind ligand binding. This is
+          manifest as steric complementarity, i.e. the shape of the
+          <ENAMEX TYPE="ORGANIZATION">ligand</ENAMEX> is mirrored in the shape of the binding site,
+          allowing molecular interactions between <NUMEX TYPE="CARDINAL">two</NUMEX> molecules [
+          <NUMEX TYPE="CARDINAL">31</NUMEX> ] . <ENAMEX TYPE="PRODUCT">MD</ENAMEX> simulations allow rearrangement of the protease
+          side <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>, especially on the active site surface, which
+          improves the interacting surface complementarities of the
+          complex. As shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, after <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="ORGANIZATION">ps</ENAMEX>, the time
+          scale that produced the best correlation coefficient, the
+          average <TIMEX TYPE="TIME">all-atom RMSD</TIMEX> of the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> was <NUMEX TYPE="QUANTITY">only 0.35 Å</NUMEX>,
+          while the average <TIMEX TYPE="TIME">all-atom RMSD</TIMEX> of the flap region was
+          <NUMEX TYPE="QUANTITY">0.54 Å</NUMEX>.
+        
+        
+          Influence of <ENAMEX TYPE="PRODUCT">MD</ENAMEX> simulation duration on ligand
+          binding
+          Ligand docking revealed a consistent set of recurring
+          binding modes. For all <ENAMEX TYPE="PRODUCT">MD</ENAMEX> time scales, well-clustered
+          docking results could be obtained. Generally, the lowest
+          binding energy clusters are associated with the lowest
+          <NUMEX TYPE="CARDINAL">all</NUMEX>-atom <ENAMEX TYPE="ORGANIZATION">RMSDs</ENAMEX> of the ligands. The best results in terms
+          of lowest binding energy are located in a similar
+          position of the <ENAMEX TYPE="FAC_DESC">x-ray structure</ENAMEX> at the active site. Table
+          3shows the number of <ENAMEX TYPE="SUBSTANCE">docking solutions</ENAMEX> in a cluster ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ) along with the <NUMEX TYPE="CARDINAL">all</NUMEX>-atom ligand
+          <ENAMEX TYPE="ORGANIZATION">RMSD</ENAMEX> for each <ENAMEX TYPE="PRODUCT">MD</ENAMEX> time scale.
+          A small 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> value indicates strong
+          specificity of binding, with all of the solutions
+          resembling one of only a small number of binding
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> and orientations. On the other hand, if 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is large, the experiment
+          indicates a low specificity of binding, since the
+          solutions are composed of many different binding
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> or orientations.
+          In this study, the clustering result of ligands had an
+          average 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> of <NUMEX TYPE="MONEY">10.72</NUMEX> for docking without any
+          <ENAMEX TYPE="PRODUCT">MD</ENAMEX>, <NUMEX TYPE="CARDINAL">8.36</NUMEX>, <NUMEX TYPE="CARDINAL">4.12</NUMEX>, <NUMEX TYPE="CARDINAL">5.88</NUMEX>, and <NUMEX TYPE="CARDINAL">7.16</NUMEX> for docking with <NUMEX TYPE="CARDINAL">0.01</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.1</NUMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX>, and <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PRODUCT">ps MD simulation</ENAMEX>, respectively. On
+          average, the lower number of <ENAMEX TYPE="SUBSTANCE">docking solutions</ENAMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> for all <ENAMEX TYPE="PRODUCT">MD simulation</ENAMEX> time scales indicates that
+          the ligands bind to their binding pocket with high
+          <ENAMEX TYPE="PERSON">specificity</ENAMEX>. The docked ligands after <TIMEX TYPE="DATE">10</TIMEX> <ENAMEX TYPE="PRODUCT">ps MD</ENAMEX> simulation
+          exhibited a wide range of <ENAMEX TYPE="ORGANIZATION">RMSDs</ENAMEX> (<NUMEX TYPE="QUANTITY">0.87 Å to 3.86 Å</NUMEX>) with
+          an average RMSD of <NUMEX TYPE="QUANTITY">2.52 Å</NUMEX>, which indicates the failure of
+          the ligands to recognize and specifically bind to the
+          binding site with the protease flaps open.
+        
+      
+      
+        Conclusions
+        In this study, we illustrate the importance of taking
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> into account to predict the structure and
+        energetics of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-ligand interactions. It is clear that
+        relaxation of <ENAMEX TYPE="PRODUCT">HIV-1</ENAMEX> protease for <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PRODUCT">ps MD simulations</ENAMEX> is
+        enough for rearrangement of the surface-binding pocket to
+        produce good correlations between calculated and
+        experimental binding energies. The binding energies of all
+        <ENAMEX TYPE="DISEASE">protease</ENAMEX> molecules bound to different <ENAMEX TYPE="SUBSTANCE">inhibitors</ENAMEX> were
+        influenced by the movement of the flap regions with the
+        correlation coefficient decreasing as the flaps moved away
+        from the experimental structure. The differences in these
+        correlations may reflect biological features of the
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> of <NUMEX TYPE="QUANTITY">HIV-1 protease-inhibitor</NUMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>.
+        Future work with larger data sets, different energy
+        functions, different docking and binding energy evaluation
+        methods, and more starting <ENAMEX TYPE="SUBSTANCE">seeds</ENAMEX>, is necessary to determine
+        the optimal parameters to robustly predict
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-substrate binding energies 
+        in silico .
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Molecular Dynamics</ENAMEX> simulations
+          <ENAMEX TYPE="PRODUCT">MD</ENAMEX> simulations of all <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> were carried out with
+          the NAMD software version 2.5b1 [ <TIMEX TYPE="DATE">53</TIMEX> ] using the <ENAMEX TYPE="LAW">X</ENAMEX>-PLOR
+          force field [ <TIMEX TYPE="DATE">54</TIMEX> ] . Missing atoms in <TIMEX TYPE="DATE">1heg</TIMEX>, <ENAMEX TYPE="PRODUCT">1hte</ENAMEX> and 5hvp
+          were added by using the guesscoord command in <ENAMEX TYPE="ORGANIZATION">NAMD</ENAMEX>. The
+          <ENAMEX TYPE="PERSON">van der Waals</ENAMEX>, bond, angle, dihedral, and improper
+          dihedral parameters for all the ligands were adopted from
+          the <ENAMEX TYPE="LAW">Hetero-compound Information Centre-Uppsala</ENAMEX> HIC-Up
+          <ENAMEX TYPE="CONTACT_INFO">http://xray.</ENAMEX><ENAMEX TYPE="ORGANIZATION">bmc</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">uu</ENAMEX>.<ENAMEX TYPE="PRODUCT">se/hicup</ENAMEX> [ <TIMEX TYPE="DATE">55</TIMEX> ] . The <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> molecule
+          under the flaps present in all <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> was included in
+          all steps throughout this study except for <TIMEX TYPE="DATE">1hvr</TIMEX>, where
+          the structural <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> was removed in the preparation of
+          the protease to be docked with the ligand (the ligand of
+          1hvr, which is a urea-based inhibitor, does not bind a
+          water molecule in this position). The water molecules
+          were added to the binding site of <TIMEX TYPE="DATE">1hvs</TIMEX> because all the
+          water molecules were absent in the experimental
+          structure. <ENAMEX TYPE="SUBSTANCE">Protein protonation</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> were modeled as in
+          the related HIV-1 <ENAMEX TYPE="DISEASE">protease MD simulation</ENAMEX> study [ <TIMEX TYPE="DATE">56</TIMEX> ] .
+          All <ENAMEX TYPE="SUBSTANCE">protein residues</ENAMEX> were modeled in their charged state
+          except for one of the <NUMEX TYPE="CARDINAL">two</NUMEX> aspartic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (Asp 25
+          and <ENAMEX TYPE="PRODUCT">Asp 25</ENAMEX>') in the active site since previous studies [
+          <NUMEX TYPE="CARDINAL">57 58 59</NUMEX> ] have shown that <NUMEX TYPE="CARDINAL">at least one</NUMEX> of these two
+          aspartic <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> is protonated. We used a protonated Asp
+          <TIMEX TYPE="DATE">25</TIMEX>' and deprotonated <ENAMEX TYPE="PERSON">Asp</ENAMEX> <NUMEX TYPE="CARDINAL">25</NUMEX> for all <ENAMEX TYPE="PRODUCT">HIV-1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">protease</ENAMEX>-ligand
+          <ENAMEX TYPE="PERSON">complexes</ENAMEX>. The <ENAMEX TYPE="FAC_DESC">terminal residues</ENAMEX> of both monomers were
+          also protonated (<ENAMEX TYPE="WORK_OF_ART">Pro 1, Pro 1'</ENAMEX>, <ENAMEX TYPE="LAW">Phe 99 and Phe 99</ENAMEX>').
+          The <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> were immersed in a <NUMEX TYPE="QUANTITY">20 Å</NUMEX> radius sphere of
+          TIP3-water using the program SOLVATE [ <TIMEX TYPE="DATE">60</TIMEX> ] to allow the
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-ligand <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> to relax in an aqueous
+          environment. <NUMEX TYPE="CARDINAL">One hundred</NUMEX> steps of energy minimization of
+          the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-<NUMEX TYPE="CARDINAL">ligand</NUMEX>-water <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> were initially
+          performed, followed by <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PRODUCT">ps MD simulation</ENAMEX> at <NUMEX TYPE="CARDINAL">300</NUMEX> <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>, with
+          an atom-based shifted distance-dependent dielectric
+          <ENAMEX TYPE="PERSON">constant</ENAMEX>, <ENAMEX TYPE="PER_DESC">ε</ENAMEX> = 4r; a switch function on van der Waals
+          interaction, and a time step of <NUMEX TYPE="MONEY">1 femtosecond</NUMEX> (fs). The
+          nonbonded interaction list was updated every <NUMEX TYPE="CARDINAL">20</NUMEX> time
+          steps. The <ENAMEX TYPE="PRODUCT_DESC">van der</ENAMEX> <ENAMEX TYPE="PRODUCT">Waals</ENAMEX> interactions were truncated at a
+          distance of <NUMEX TYPE="QUANTITY">12 Å</NUMEX>. The simulations were repeated with <NUMEX TYPE="CARDINAL">five</NUMEX>
+          different starting <ENAMEX TYPE="SUBSTANCE">seeds</ENAMEX>. The <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> at <NUMEX TYPE="CARDINAL">0.01</NUMEX> <ENAMEX TYPE="ORGANIZATION">ps</ENAMEX>, <NUMEX TYPE="CARDINAL">0.1</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">ps</ENAMEX>, <ENAMEX TYPE="PRODUCT">1 ps and 10 ps</ENAMEX> were recorded and processed in the
+          docking step.
+        
+        
+          Preparation of protease-inhibitor complexes
+          To calculate the binding energy with <ENAMEX TYPE="ORGANIZATION">AutoDock</ENAMEX>, we
+          <NUMEX TYPE="ORDINAL">first</NUMEX> prepared the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> by separating each
+          snapshot recorded from <ENAMEX TYPE="PRODUCT">MD simulations</ENAMEX> into one file
+          containing the protease and the water molecules, and one
+          file containing only the ligand. Polar hydrogens were
+          then added to the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> coordinates with the PROTONATE
+          utility from <ENAMEX TYPE="PRODUCT">AMBER</ENAMEX> [ <TIMEX TYPE="DATE">61</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">AMBER united</ENAMEX> atom force field
+          charges were assigned, and solvation parameters were
+          added using the <ENAMEX TYPE="ORGANIZATION">ADDSOL</ENAMEX> <ENAMEX TYPE="ORG_DESC">utility</ENAMEX>. The <NUMEX TYPE="ORDINAL">3D</NUMEX> affinity grid
+          fields were created using the auxiliary program <ENAMEX TYPE="PER_DESC">AutoGrid</ENAMEX>.
+          The center of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> mass was chosen as the grid <ENAMEX TYPE="FAC_DESC">center</ENAMEX>.
+          In this stage, the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> was embedded in <TIMEX TYPE="DATE">the 3D</TIMEX> grid
+          and a <ENAMEX TYPE="PRODUCT_DESC">probe atom</ENAMEX> was placed at each grid point. The
+          <ENAMEX TYPE="PERSON">affinity</ENAMEX> and electrostatic potential grid was calculated
+          for each type of atom in the protease molecule. The
+          number of grid points in <ENAMEX TYPE="LAW">x, y</ENAMEX>, z-axis was <NUMEX TYPE="QUANTITY">60 × 110 ×</NUMEX> 60
+          with grid points separated by <NUMEX TYPE="QUANTITY">0.375 Å</NUMEX>.
+          Ligands that had a peptide-like <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>- or <ENAMEX TYPE="PRODUCT">C-</ENAMEX>terminal end
+          were assigned a charge. Hydrogen atoms were added to fill
+          all empty <ENAMEX TYPE="FAC_DESC">valences</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Kollman united</ENAMEX>-atom charges [ <NUMEX TYPE="CARDINAL">62</NUMEX>
+          ] were also assigned to the ligands. Rotatable dihedrals
+          in the ligands were assigned using the program AutoTors
+          and were allowed to rotate freely. The nonpolar hydrogens
+          were removed and the partial charges from these were
+          added to the <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX> that held the hydrogen. The atom type
+          for the aromatic carbons was reassigned to be handled by
+          the aromatic carbon grid map. These preparations were
+          done for each ligand using the <ENAMEX TYPE="ORGANIZATION">AutoTors</ENAMEX> module.
+        
+        
+          Automated docking
+          Docking calculations were carried out using <ENAMEX TYPE="ORGANIZATION">AutoDock</ENAMEX>,
+          version 3.0.5 [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . <NUMEX TYPE="CARDINAL">Three</NUMEX> binding energy terms were
+          taken into account in the docking step: the van der Waals
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> represented as a <ENAMEX TYPE="GPE">Lennard</ENAMEX>-<ENAMEX TYPE="PERSON">Jones</ENAMEX> <NUMEX TYPE="CARDINAL">12</NUMEX>-6
+          <ENAMEX TYPE="CONTACT_INFO">dispersion/repulsion</ENAMEX> term, the hydrogen bonding
+          represented as a directional <NUMEX TYPE="CARDINAL">12-10</NUMEX> term, and the
+          Coulombic electrostatic potential.
+          Docking runs were performed using the Larmarckian
+          genetic algorithm (LGA) [ <ENAMEX TYPE="LAW">4</ENAMEX> ] as previously described [
+          <NUMEX TYPE="CARDINAL">63 64</NUMEX> ] with some modifications of the docking
+          parameters. The <ENAMEX TYPE="LAW">LGA</ENAMEX> describes the relationship between
+          the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and the ligand by the translation,
+          <ENAMEX TYPE="PERSON">orientation</ENAMEX>, and conformation of the ligand. These "state
+          variables" are the <ENAMEX TYPE="ORG_DESC">ligand</ENAMEX>'s genotype, and the resulting
+          atomic coordinates together with the interaction and
+          intermolecular energies are the <ENAMEX TYPE="ORG_DESC">ligand</ENAMEX>'s phenotype. The
+          environmental adaptation of the <ENAMEX TYPE="ORG_DESC">ligand</ENAMEX>'s phenotype was
+          reverse transcribed into its genotype and became
+          heritable traits.
+          <ENAMEX TYPE="ORGANIZATION">Docking</ENAMEX> began with a <ENAMEX TYPE="PER_DESC">population</ENAMEX> of random ligand
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> in random orientations and at random
+          translations. Each <ENAMEX TYPE="PER_DESC">docking</ENAMEX> experiment was derived from
+          <NUMEX TYPE="CARDINAL">100</NUMEX> different runs that was set to terminate after a
+          maximum of <NUMEX TYPE="CARDINAL">1,500,000</NUMEX> energy evaluations or <NUMEX TYPE="CARDINAL">27,000</NUMEX>
+          <ENAMEX TYPE="PER_DESC">generations</ENAMEX>, yielding <NUMEX TYPE="CARDINAL">100</NUMEX> docked conformations. The
+          population size was set to <NUMEX TYPE="CARDINAL">50</NUMEX>. The elitism number, the
+          rate of gene mutation and the rate of gene crossover were
+          <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="MONEY">0.02 and 0.8</NUMEX> respectively. A <ENAMEX TYPE="GPE">pseudo-Solis</ENAMEX> and Wets
+          local search was then used to minimize energy of the
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX>. The probability that docking solution in the
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX> would undergo a local search was set to <NUMEX TYPE="CARDINAL">0.06</NUMEX>
+          and the constraint was set to a maximum of <NUMEX TYPE="CARDINAL">300</NUMEX> iterations
+          per search. The maximum number of successes or failures
+          before changing the size of local search space (rho) were
+          both set to <NUMEX TYPE="CARDINAL">4</NUMEX>. The starting conformations of the ligand
+          were set to random positions. Translations were set to
+          have a maximum limit of <NUMEX TYPE="CARDINAL">2</NUMEX> Å/step and the orientation step
+          size for the angular component and the <ENAMEX TYPE="ORG_DESC">torsions</ENAMEX> had a
+          maximum limit at <NUMEX TYPE="QUANTITY">50 degrees</NUMEX>/step.
+          At the end of a docking job with multiple runs,
+          <ENAMEX TYPE="PERSON">AutoDock</ENAMEX> performed cluster analysis. Docking solutions
+          with ligand all-atom <ENAMEX TYPE="ORGANIZATION">RMSDs</ENAMEX> within <NUMEX TYPE="QUANTITY">1.0 Å</NUMEX> of each other
+          were clustered together and ranked by the lowest energy
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX>. The lowest-energy solution of the lowest
+          ligand all-atom RMSD cluster was accepted as the
+          calculated binding energy.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Author</ENAMEX>'s contributions
+        <ENAMEX TYPE="GPE">EJ</ENAMEX> performed <ENAMEX TYPE="ORGANIZATION">Molecular Dynamics</ENAMEX> simulations, docking,
+        evaluated the results, and drafted the manuscript. RS
+        helped with evaluation of the results produced, refining
+        the manuscript, and provided intellectual guidance and
+        <ENAMEX TYPE="ORGANIZATION">mentorship</ENAMEX>. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

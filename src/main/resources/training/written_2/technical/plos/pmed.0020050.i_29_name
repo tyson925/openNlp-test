@@ -1,0 +1,384 @@
+
+  
+    
+      
+        Introduction
+        The <ENAMEX TYPE="DISEASE">HIV</ENAMEX>/<ENAMEX TYPE="DISEASE">AIDS</ENAMEX> epidemic is having a devastating impact in sub-Saharan <ENAMEX TYPE="LOCATION">Africa</ENAMEX> and other
+        <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX>-constrained regions. Recently, the <ENAMEX TYPE="ORGANIZATION">World Health Organization</ENAMEX> and other
+        <ENAMEX TYPE="ORGANIZATION">organizations</ENAMEX> have committed to expand access to antiretrovirals (ARVs) in the developing
+        world, the <ENAMEX TYPE="GPE">United States</ENAMEX> <ENAMEX TYPE="ORG_DESC">government</ENAMEX> has pledged to provide <NUMEX TYPE="MONEY">$15 billion</NUMEX> for <ENAMEX TYPE="DISEASE">AIDS</ENAMEX> in <ENAMEX TYPE="LOCATION">Africa</ENAMEX>
+        and the <ENAMEX TYPE="ORGANIZATION">Carribean</ENAMEX>, and <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> prices have fallen [<ENAMEX TYPE="LAW">1</ENAMEX>]. However, even if these resources are
+        provided for the global treatment of <ENAMEX TYPE="DISEASE">HIV</ENAMEX>, the number of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in need of treatment
+        will far exceed the supply of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> [<ENAMEX TYPE="LAW">1</ENAMEX>]. Thus, difficult decisions will have to be made as
+        to how to design <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treatment strategies with these scarce resources. Resource allocation
+        decisions can be made on the basis of many different epidemiological, ethical, or
+        preferential treatment priority criteria. Many diverse <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> have been suggested for
+        treatment priority in resource-limited regions, including the following: only <ENAMEX TYPE="PER_DESC">men</ENAMEX>, pregnant
+        <ENAMEX TYPE="PER_DESC">women</ENAMEX>, <ENAMEX TYPE="PER_DESC">children</ENAMEX>, the sickest, the most economically productive, <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in the
+        military, or even <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> of the dominant ethnic group [<ENAMEX TYPE="LAW">2</ENAMEX>]. It has also been proposed
+        that a lottery would be the only fair approach to allocating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> [<ENAMEX TYPE="LAW">3</ENAMEX>]. Only a limited
+        number of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> will be available, and only a fixed number of health-care <ENAMEX TYPE="FAC_DESC">facilities</ENAMEX> (HCFs)
+        can be used for <ENAMEX TYPE="SUBSTANCE">ARV</ENAMEX> distribution. Thus, the resource allocation decisions that need to be
+        made are extremely complex.
+        Here, we use operations research to address this important resource allocation problem
+        and to design ARV allocation strategies that are rational and equitable. The allocation
+        decisions that we make here are based on ethical criteria, and not on epidemiological or
+        preferential treatment priority criteria. Specifically, we determine the optimal allocation
+        strategy that would ensure that each individual with <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> has an equal chance of receiving
+        <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>. We present a novel spatial mathematical model of treatment accessibility that we use
+        in conjunction with an equity objective function to determine an optimal equitable
+        allocation strategy (OEAS) for <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> in a resource-constrained region. We quantify how
+        changing the size of the catchment region surrounding each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>, and the number of HCFs
+        utilized for <ENAMEX TYPE="SUBSTANCE">ARV</ENAMEX> distribution, alters the <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>. Specifically, we use data from the detailed
+        <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout plan designed by the <ENAMEX TYPE="ORG_DESC">government</ENAMEX> of <ENAMEX TYPE="GPE">South Africa</ENAMEX> to determine an OEAS (based
+        upon a variety of assumptions) for the <ENAMEX TYPE="GPE_DESC">province</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">KwaZulu‚ÄìNatal.</ENAMEX> We also discuss how our
+        proposed <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> allocation strategy differs from the currently proposed plan.
+        Our current analysis is applied to the <ENAMEX TYPE="NATIONALITY">South African</ENAMEX> <ENAMEX TYPE="GPE_DESC">province</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">KwaZulu‚ÄìNatal</ENAMEX>, although
+        our methodology could be applied to any resource-constrained setting. KwaZulu‚ÄìNatal is the
+        largest <ENAMEX TYPE="GPE_DESC">province</ENAMEX> in <ENAMEX TYPE="GPE">South Africa</ENAMEX> with a <ENAMEX TYPE="PER_DESC">population</ENAMEX> of approximately <NUMEX TYPE="MONEY">9.4 million</NUMEX> and has
+        more <ENAMEX TYPE="PER_DESC">people</ENAMEX> infected with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> than any other <ENAMEX TYPE="GPE_DESC">province</ENAMEX> (<NUMEX TYPE="PERCENT">approximately 21%</NUMEX> of all cases in
+        <ENAMEX TYPE="GPE">South Africa</ENAMEX> [<ENAMEX TYPE="LAW">4</ENAMEX>]). We use data from <NUMEX TYPE="CARDINAL">51</NUMEX> <ENAMEX TYPE="PER_DESC">communities</ENAMEX> (<ENAMEX TYPE="GPE_DESC">cities</ENAMEX>, <ENAMEX TYPE="GPE_DESC">towns</ENAMEX>, and <ENAMEX TYPE="FAC_DESC">villages</ENAMEX>) in the
+        <ENAMEX TYPE="GPE_DESC">province</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">KwaZulu‚ÄìNatal</ENAMEX>; we exclude <ENAMEX TYPE="PER_DESC">communities</ENAMEX> with a <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <NUMEX TYPE="CARDINAL">less than 500</NUMEX>
+        <ENAMEX TYPE="PER_DESC">people</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> are not available on the number of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in each specific
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>, and thus we use the estimated <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> prevalence in the <ENAMEX TYPE="LOCATION">region</ENAMEX> (<NUMEX TYPE="PERCENT">approximately 13%</NUMEX> in
+        <ENAMEX TYPE="ORGANIZATION">urban</ENAMEX> areas and <NUMEX TYPE="PERCENT">9%</NUMEX> in rural areas [<ENAMEX TYPE="LAW">4</ENAMEX>]) to estimate the number of infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> in each
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>. See Figure <NUMEX TYPE="CARDINAL">1</NUMEX> and <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> for the population sizes and spatial locations of each
+        of the <NUMEX TYPE="CARDINAL">51</NUMEX> <ENAMEX TYPE="PER_DESC">communities</ENAMEX> used in our analysis. For our analysis the quantity of ARVs available
+        for distribution to the <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> is sufficient to treat <NUMEX TYPE="PERCENT">10%</NUMEX> of the total number of infected
+        <ENAMEX TYPE="PER_DESC">people</ENAMEX>, which is a realistic level during the incremental scale-up of <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> therapy over the
+        <TIMEX TYPE="DATE">next few years</TIMEX>. The <ENAMEX TYPE="ORG_DESC">government</ENAMEX> of <ENAMEX TYPE="GPE">South Africa</ENAMEX> has selected <NUMEX TYPE="CARDINAL">17</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> to participate in the
+        <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout that began in <TIMEX TYPE="DATE">April 2004</TIMEX>. These <NUMEX TYPE="CARDINAL">17</NUMEX> HCFs are distributed throughout the <ENAMEX TYPE="GPE_DESC">province</ENAMEX>
+        (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX> and <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Some <ENAMEX TYPE="PER_DESC">communities</ENAMEX> are close to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>, whilst others are a great
+        distance from any <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>, with a range of <NUMEX TYPE="QUANTITY">0‚Äì90 km</NUMEX> (Figure <NUMEX TYPE="CARDINAL">2A</NUMEX>). Hence, this spatial
+        distribution of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> produces large heterogeneity in accessibility to treatment. Inequality
+        in access to health care is a common characteristic of resource-constrained regions
+        [<NUMEX TYPE="CARDINAL">5,6,7,8,9,10</NUMEX>]. We explicitly consider heterogeneity in treatment accessibility in our
+        analysis of <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> allocation strategies.
+        We have developed a novel spatial mathematical model of treatment accessibility that we
+        use to determine an OEAS for <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> in a resource-constrained region. To the best of our
+        knowledge, this is the <NUMEX TYPE="ORDINAL">first</NUMEX> analysis to address how to deal with the extremely difficult
+        problem of allocating a scarce supply of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> in order to design a rational and equitable
+        allocation strategy. We model the ‚Äúspatial diffusion of treatment‚Äù to the locations of
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>, rather than modeling the ‚Äúspatial diffusion of <ENAMEX TYPE="DISEASE">disease</ENAMEX>,‚Äù which is the conventional
+        approach [<NUMEX TYPE="CARDINAL">11,12,13,14,15,16</NUMEX>]. Our spatial model includes <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> and the HIV-infected
+        <ENAMEX TYPE="PER_DESC">communities</ENAMEX> surrounding these HCFs; we refer to the <ENAMEX TYPE="LOCATION">region</ENAMEX> around each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> as the catchment
+        region. Thus, the radius of the catchment region specifies the approximate maximum distance
+        that we assume infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> would be willing (or able) to travel for treatment. Each HCF
+        can serve many <ENAMEX TYPE="PER_DESC">communities</ENAMEX>, and some <ENAMEX TYPE="PER_DESC">communities</ENAMEX> can access multiple <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>; our model sums
+        the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>'s catchment region who could potentially travel
+        to the <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> to receive <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> (we define this number as the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> on that
+        specific <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>). Thus, the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> on each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> is a direct function of the number
+        of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in the catchment region, weighted by their distance from the <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>.
+        By including a weighting function we explicitly model heterogeneity in accessibility to
+        treatment based on distance from the <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>. Here, the distance from a <ENAMEX TYPE="PRODUCT">HCF</ENAMEX> becomes the main
+        determinant influencing whether or not an individual with <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> has access to treatment.
+        We developed an equity objective function to assess how the limited supply of ARVs
+        should be allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> to ensure that an equal proportion of infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> in
+        each <ENAMEX TYPE="PER_DESC">community</ENAMEX> receive treatment. To apply our theoretical framework to <ENAMEX TYPE="ORGANIZATION">KwaZulu‚</ENAMEX>ÄìNatal we
+        model the specific location of the <NUMEX TYPE="CARDINAL">17</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> and the <NUMEX TYPE="CARDINAL">51</NUMEX> <ENAMEX TYPE="PER_DESC">communities</ENAMEX> of <NUMEX TYPE="CARDINAL">500</NUMEX> or more
+        <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>); for these conditions we determine an <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>. We compared our OEAS
+        with <NUMEX TYPE="CARDINAL">two</NUMEX> other allocation strategies: (i) allocating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> only to <ENAMEX TYPE="PERSON">Durban</ENAMEX>, the major urban
+        area (i.e., concentrating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> where there is the best health-care infrastructure) and (<ENAMEX TYPE="DISEASE">ii</ENAMEX>)
+        <ENAMEX TYPE="ORGANIZATION">allocating ARVs</ENAMEX> equally to <NUMEX TYPE="CARDINAL">all 17</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>. We conduct our analysis assuming <NUMEX TYPE="CARDINAL">three</NUMEX> different
+        radii of catchment regions: <NUMEX TYPE="QUANTITY">20 km, 40 km</NUMEX>, and <NUMEX TYPE="QUANTITY">60 km.</NUMEX> We then extend this analysis and
+        recalculate the OEAS assuming that <NUMEX TYPE="CARDINAL">more than 17</NUMEX> HCFs are available to distribute <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>. This
+        analysis is useful because there is a second potential pool of <NUMEX TYPE="CARDINAL">27</NUMEX> ARV-implementation HCFs
+        in the <ENAMEX TYPE="NATIONALITY">South African</ENAMEX> operational plan for <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> <ENAMEX TYPE="PER_DESC">rollout</ENAMEX> [<TIMEX TYPE="DATE">17</TIMEX>]. We analyze this case, in which
+        <NUMEX TYPE="CARDINAL">27</NUMEX> HCFs are utilized in the <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout, and we also analyze how optimal ARV allocation
+        would change if all <NUMEX TYPE="CARDINAL">54</NUMEX> <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> in <ENAMEX TYPE="GPE">KwaZulu‚</ENAMEX>ÄìNatal were operational for the rollout of
+        <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>.
+      
+      
+        Methods
+        
+          Calculating Demand and Treatment Access
+          We assume that the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> who will travel to a specific <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> is
+          directly proportional to the number of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in that particular <ENAMEX TYPE="GPE_DESC">community</ENAMEX>,
+          but that the probability of an <ENAMEX TYPE="PER_DESC">individual</ENAMEX> traveling to receive <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> (i.e., the treatment
+          <ENAMEX TYPE="ORGANIZATION">accessibility</ENAMEX>) decreases with distance from the <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>. We define 
+          d
+          i,j as the distance from community 
+          i to HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>, f (
+          d
+          i,j ) as a weighting function that determines the treatment
+          <ENAMEX TYPE="ORGANIZATION">accessibility</ENAMEX> to a <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> based upon distance 
+          d
+          i,j , and 
+          I
+          i as the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in community 
+          i . The distance, 
+          d
+          ij , between community 
+          i and HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> is based on the longitude (lon) and latitude (lat) of each location
+          and is determined by
+          
+          where 
+          R is the radius of the <ENAMEX TYPE="LOCATION">earth</ENAMEX>, taken to be <NUMEX TYPE="QUANTITY">6,371 km</NUMEX>, and the angles are
+          in radian measure. We calculate the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> of community 
+          i on HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> to be the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in community 
+          i that will travel to HCF 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> regimes, namely, 
+          f (
+          d
+          i,j )
+          I
+          i . Thus, demand on HCFs for <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> is reduced by the treatment
+          accessibility function. Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is conceptually similar to the <ENAMEX TYPE="PRODUCT">‚Äúgravity‚Äù</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> that
+          have been used to predict retail travel [<TIMEX TYPE="DATE">18</TIMEX>], plan land use [<TIMEX TYPE="DATE">19</TIMEX>], and determine
+          accessibility of primary care [<TIMEX TYPE="DATE">20</TIMEX>]. However, this is to our knowledge the <NUMEX TYPE="ORDINAL">first</NUMEX> time this
+          approach has been used to calculate <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> allocations. We use a <ENAMEX TYPE="ORGANIZATION">Gaussian</ENAMEX> to model treatment
+          accessibility, 
+          f (
+          d ) = <ENAMEX TYPE="PER_DESC">exp</ENAMEX>(‚àí
+          kd
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ), where 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is a dispersal length scale parameter determining the radius of the
+          catchment region. The size of the actual catchment regions is unknown, but based upon
+          distances from <ENAMEX TYPE="PER_DESC">communities</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> in <ENAMEX TYPE="GPE">KwaZulu‚ÄìNatal</ENAMEX> (see Figure <NUMEX TYPE="CARDINAL">2A</NUMEX>) we assume that
+          <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> are likely to travel a maximum distance of approximately <NUMEX TYPE="QUANTITY">40 km</NUMEX> to a <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> (
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">0.003786</NUMEX>). We vary the catchment region by considering a <TIMEX TYPE="TIME">20-km</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">radius</ENAMEX> (
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">0.0151</NUMEX>) and a <NUMEX TYPE="QUANTITY">60-km radius</NUMEX> (
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">0.00168</NUMEX>). The different catchment regions that we simulate (with
+          radii of <NUMEX TYPE="QUANTITY">20 km, 40 km</NUMEX>, and <NUMEX TYPE="QUANTITY">60 km</NUMEX>) for each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> are illustrated in Figure <TIMEX TYPE="DATE">2B‚Äì2D</TIMEX>. The
+          number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> throughout the <ENAMEX TYPE="GPE_DESC">province</ENAMEX> that have access to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> is
+          <NUMEX TYPE="PERCENT">approximately 86%</NUMEX> of the total number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> for the case of a <TIMEX TYPE="TIME">20-km</TIMEX>
+          catchment region, <NUMEX TYPE="PERCENT">89%</NUMEX> for a <NUMEX TYPE="QUANTITY">40-km</NUMEX> catchment region, and <NUMEX TYPE="PERCENT">93%</NUMEX> for a <NUMEX TYPE="QUANTITY">60-km</NUMEX> catchment
+          region.
+        
+        
+          Modeling the <ENAMEX TYPE="ORGANIZATION">Distribution of Treatment</ENAMEX>
+          To determine how many ARVs should be allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>, we first calculate how a
+          given supply of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> will be distributed from each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> to the surrounding <ENAMEX TYPE="PER_DESC">communities</ENAMEX> in
+          the catchment region. We calculate the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> on HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>, D
+          <ENAMEX TYPE="PERSON">j</ENAMEX> , to be
+          
+          which sums the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> of all <ENAMEX TYPE="PER_DESC">communities</ENAMEX> on HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> (where there are 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> <ENAMEX TYPE="PER_DESC">communities</ENAMEX>). Then, we model the distribution of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> from a <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> to
+          each <ENAMEX TYPE="PER_DESC">community</ENAMEX> within the catchment region as the proportion of the <ENAMEX TYPE="ANIMAL">‚Äúeffective demand‚Äù</ENAMEX> on
+          HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> that is contributed by the respective <ENAMEX TYPE="PER_DESC">community</ENAMEX>. Accordingly, ARVs
+          will be distributed from <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>, 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>, to each <ENAMEX TYPE="GPE_DESC">community</ENAMEX> as the ratio
+          
+          Therefore, the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> treated in community 
+          i by the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> supply allocated to HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> is
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+          <ENAMEX TYPE="PERSON">j</ENAMEX> is the number of regimes allocated to HCF 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . Hence, the total number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treated in community 
+          i,T
+          i , summing over all 
+          <ENAMEX TYPE="ORGANIZATION">n HCFs</ENAMEX> is
+          
+        
+        
+          The <ENAMEX TYPE="ORGANIZATION">Equity Objective Function</ENAMEX>
+          We establish an equity objective function to determine the optimal equitable
+          allocation of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> so that all <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> have an equal chance of
+          receiving treatment. To obtain the same fraction of treated <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in each
+          <ENAMEX TYPE="ORGANIZATION">community</ENAMEX>, given that there are 
+          A <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> regimes for a total of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX>, the resulting
+          objective function to minimize (based on <NUMEX TYPE="QUANTITY">least</NUMEX> squares) becomes
+          
+          Our goal is to minimize 
+          E, by solving for the number of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to be allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> (
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">2 ,‚Ä¶,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ), whilst enforcing the following <NUMEX TYPE="CARDINAL">three</NUMEX> constraints: (i) ensure that
+          the total number of ARVs available is equal to the sum of the supply allocated to all
+          <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>,
+          
+          (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) ensure that only a positive number of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> are allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> (
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">j ‚â• 0,</ENAMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1‚</NUMEX>Ä¶
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ); and (<ENAMEX TYPE="ORGANIZATION">iii</ENAMEX>) ensure that the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> treated in each
+          <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> is not greater than the number of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in the <ENAMEX TYPE="GPE_DESC">community</ENAMEX> (
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX>
+          i ‚â§ 
+          I
+          i , i = <NUMEX TYPE="CARDINAL">1‚</NUMEX>Ä¶
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> ). We note that if a different objective is required, then all of our
+          preceding analysis still holds and only the functional form of the objective function
+          needs to be altered. To solve the problem, and determine the <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>, we used successive
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> programming <ENAMEX TYPE="ORG_DESC">operations</ENAMEX> research techniques [<TIMEX TYPE="DATE">21</TIMEX>].
+        
+      
+      
+        Results
+        The <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> in <ENAMEX TYPE="GPE">KwaZulu‚</ENAMEX>ÄìNatal that we determined is complex (see Figure <TIMEX TYPE="DATE">3A and 3B</TIMEX>).
+        According to our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>, the majority of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> should be allocated to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> in <ENAMEX TYPE="GPE">Durban</ENAMEX>, and the
+        remaining <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> should be allocated to the other <ENAMEX TYPE="SUBSTANCE">HCFs</ENAMEX> throughout the <ENAMEX TYPE="GPE_DESC">province</ENAMEX> (with <NUMEX TYPE="CARDINAL">two</NUMEX>
+        <ENAMEX TYPE="PERSON">non-Durban HCFs</ENAMEX> receiving <NUMEX TYPE="CARDINAL">5</NUMEX>%‚<NUMEX TYPE="PERCENT">Äì15%</NUMEX> of the total <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> and the remaining non-<ENAMEX TYPE="ORGANIZATION">Durban HCFs</ENAMEX> each
+        receiving <NUMEX TYPE="PERCENT">less than 5%</NUMEX> of the total ARVs available). We note that our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX> does not produce
+        perfect equality; however, our optimal strategy significantly improves equality in
+        obtaining treatment over the <NUMEX TYPE="CARDINAL">two</NUMEX> other allocation strategies that we analyzed for
+        comparison: (i) <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> allocated only to <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> (in the largest <ENAMEX TYPE="GPE_DESC">city</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Durban</ENAMEX>) (see Figure 3D
+        and <ENAMEX TYPE="PRODUCT">3E</ENAMEX>), and (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) equal quantities of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> throughout the <ENAMEX TYPE="GPE_DESC">province</ENAMEX>
+        (see Figure <TIMEX TYPE="DATE">3G and 3H</TIMEX>). For comparison of allocation strategies (in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) we used an
+        effective catchment radius of <NUMEX TYPE="QUANTITY">40 km</NUMEX> (
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">0.003786</NUMEX>). The proportion of infected <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> that are treated at
+        each location is displayed graphically in Figure <NUMEX TYPE="CARDINAL">3</NUMEX> for our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3C</NUMEX>) and the two
+        comparison allocation strategies (Figure <TIMEX TYPE="DATE">3F and 3I</TIMEX>). The best achievable outcome, given the
+        limited treatment resources available, is that <NUMEX TYPE="PERCENT">10%</NUMEX> of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> are treated in each
+        <ENAMEX TYPE="PER_DESC">community</ENAMEX> throughout the <ENAMEX TYPE="GPE_DESC">province</ENAMEX>, yielding the map shown in Figure <TIMEX TYPE="DATE">3C</TIMEX>, <TIMEX TYPE="DATE">3F</TIMEX>, and <ENAMEX TYPE="PRODUCT">3I</ENAMEX>, but
+        with dark blue/magenta over the entire <ENAMEX TYPE="GPE_DESC">province</ENAMEX>. Whilst our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX> does not fully achieve
+        this, it is considerably better than both of the comparison ARV allocation strategies.
+        Furthermore, the equity objective function evaluates to 
+        E = <NUMEX TYPE="CARDINAL">0.27</NUMEX> for our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>, compared with (i) 
+        E = <NUMEX TYPE="CARDINAL">0.50</NUMEX> and (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) 
+        E = <NUMEX TYPE="CARDINAL">133.88</NUMEX> for the comparison allocation strategies. There is large
+        diversity in the fraction of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treated per <ENAMEX TYPE="PER_DESC">community</ENAMEX> when equal
+        quantities of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> are given to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>, evidenced by an <NUMEX TYPE="QUANTITY">inter-quartile</NUMEX> range of
+        <NUMEX TYPE="PERCENT">0.025%‚Äì41.746%</NUMEX> compared with inter-<ENAMEX TYPE="PRODUCT_DESC">quartile</ENAMEX> ranges of <NUMEX TYPE="CARDINAL">0</NUMEX>%‚<NUMEX TYPE="PERCENT">Äì0% and 0.011%‚Äì9.982%</NUMEX> for the first
+        comparison strategy and our <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>, respectively. Therefore, equal access is not obtained if
+        equal quantities of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> are allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX>. Obviously, allocating to <NUMEX TYPE="CARDINAL">only one</NUMEX> HCF
+        (the first comparison strategy) could also be considered unequal because although the
+        <ENAMEX TYPE="ORGANIZATION">inter</ENAMEX>-quartile range is minimal, effectively <NUMEX TYPE="CARDINAL">only one</NUMEX> <ENAMEX TYPE="PER_DESC">community</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Durban</ENAMEX>) receives <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>. Our
+        <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>, while not perfect, achieves the best equality possible given the accessibility
+        constraints and limited ARV supply.
+        The catchment region for <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> is a factor of large uncertainty. We considered three
+        catchment region sizes: radii of <NUMEX TYPE="QUANTITY">20 km, 40 km</NUMEX>, and <NUMEX TYPE="QUANTITY">60 km.</NUMEX> We also simulated <NUMEX TYPE="CARDINAL">two</NUMEX> additional
+        cases with increased numbers and locations of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> (<NUMEX TYPE="CARDINAL">27</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> as suggested in <ENAMEX TYPE="GPE">South Africa</ENAMEX>'s
+        official <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout operational plan [<TIMEX TYPE="DATE">17</TIMEX>]; and all <NUMEX TYPE="CARDINAL">54</NUMEX> <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> in <ENAMEX TYPE="GPE">KwaZulu‚ÄìNatal</ENAMEX>). In
+        Figure <NUMEX TYPE="CARDINAL">4</NUMEX> we present box plots of the percentage of infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> that obtain treatment
+        per <ENAMEX TYPE="PER_DESC">community</ENAMEX> for the <NUMEX TYPE="CARDINAL">three</NUMEX> sets of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> and the <NUMEX TYPE="CARDINAL">three</NUMEX> catchment region sizes we simulate.
+        For each specified condition we calculate the <ENAMEX TYPE="ORGANIZATION">OEAS</ENAMEX>. It is apparent that equality in access
+        to <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> is improved substantially if the radius of each catchment region is increased
+        and/or the number of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> is increased (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). Our results show that the number of HCFs
+        <ENAMEX TYPE="PERSON">utilized</ENAMEX> is of greater importance than the size of the catchment region. If <NUMEX TYPE="CARDINAL">54</NUMEX> HCFs are
+        used, then even a (small) catchment radius of <NUMEX TYPE="QUANTITY">20 km</NUMEX> results in the ideal median proportion
+        of <NUMEX TYPE="PERCENT">10%</NUMEX> of <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in each <ENAMEX TYPE="PER_DESC">community</ENAMEX> receiving <ENAMEX TYPE="SUBSTANCE">ARVs</ENAMEX>. In the case of <NUMEX TYPE="CARDINAL">27</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>, <NUMEX TYPE="PERCENT">88%</NUMEX> of
+        all <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> have access to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> for a <NUMEX TYPE="QUANTITY">20-km</NUMEX> catchment region, <NUMEX TYPE="PERCENT">91%</NUMEX> for a <TIMEX TYPE="TIME">40-km</TIMEX>
+        catchment region, and <NUMEX TYPE="PERCENT">96%</NUMEX> for a <NUMEX TYPE="QUANTITY">60-km</NUMEX> catchment region. In the case of <NUMEX TYPE="CARDINAL">54</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>, <NUMEX TYPE="PERCENT">90%</NUMEX> of all
+        <ENAMEX TYPE="PER_DESC">people</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in the <ENAMEX TYPE="GPE_DESC">province</ENAMEX> have access to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> for a <NUMEX TYPE="QUANTITY">20-km</NUMEX> catchment region, <NUMEX TYPE="PERCENT">94%</NUMEX> for a
+        <TIMEX TYPE="TIME">40-km</TIMEX> catchment region, and <NUMEX TYPE="PERCENT">99%</NUMEX> for a <NUMEX TYPE="QUANTITY">60-km</NUMEX> catchment region. Therefore, increasing the
+        number of HCFs available for an ARV rollout is effective in significantly increasing
+        equality in treatment accessibility as shown in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. Furthermore, if catchment regions
+        actually have a radius of <NUMEX TYPE="QUANTITY">60 km</NUMEX>, or can be increased to this size through improvements in
+        <ENAMEX TYPE="ORGANIZATION">transportation</ENAMEX>, this would enable access to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> for almost all <ENAMEX TYPE="PER_DESC">people</ENAMEX> in the <ENAMEX TYPE="GPE_DESC">province</ENAMEX>, as
+        shown in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. The actual HCF allocations determined by our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and optimization for
+        the cases of <TIMEX TYPE="DATE">17, 27</TIMEX>, and <NUMEX TYPE="CARDINAL">54</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> (and for all catchment sizes we consider) are presented as
+        pie charts in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. It is clear from our analysis that the equality criterion, such
+        that each individual with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> in <ENAMEX TYPE="GPE">KwaZulu‚ÄìNatal</ENAMEX> has an equal chance of receiving <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>, can
+        best be satisfied by utilizing all <NUMEX TYPE="CARDINAL">54</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> for <ENAMEX TYPE="SUBSTANCE">ARV</ENAMEX> distribution and ensuring that each HCF
+        serves a catchment region of <NUMEX TYPE="CARDINAL">40</NUMEX> to <NUMEX TYPE="QUANTITY">60 km.</NUMEX>
+      
+      
+        Discussion
+        We have established an elegant and simple theoretical framework for determining an
+        <ENAMEX TYPE="ORGANIZATION">equitable</ENAMEX> and rational allocation of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> in resource-constrained <ENAMEX TYPE="GPE_DESC">countries</ENAMEX>. To the
+        best of our knowledge, this is the <NUMEX TYPE="ORDINAL">first</NUMEX> analysis to address this very difficult problem.
+        We determined that increasing the size of the catchment region of each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> can improve
+        access to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> considerably for rural <ENAMEX TYPE="PER_DESC">populations</ENAMEX>. We suggest that studies be performed to
+        collect data on the distance that <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> are willing and able to travel for
+        treatment. This will facilitate discussions of this important issue, which must be
+        considered in the making of policy decisions. A database consisting of such information has
+        been proposed for <ENAMEX TYPE="GPE">South Africa</ENAMEX> [<TIMEX TYPE="DATE">22</TIMEX>]. In an effort to provide equal access to communities
+        with relatively little access to <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> therapy, the concept of a mobile <ENAMEX TYPE="ORG_DESC">clinic</ENAMEX> that would
+        travel between <ENAMEX TYPE="PER_DESC">communities</ENAMEX> to take health-care <ENAMEX TYPE="PER_DESC">workers</ENAMEX> and resources to the location of the
+        demand is a new initiative in <ENAMEX TYPE="GPE">Nigeria</ENAMEX> (<ENAMEX TYPE="PERSON">S. Agwale</ENAMEX>, personal communication) that could also
+        be considered in other regions.
+        We calculated the optimal allocation of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to available <ENAMEX TYPE="SUBSTANCE">HCFs</ENAMEX> so that all infected
+        <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> will have as close as possible to an equal chance of obtaining treatment. We
+        have shown that increasing the number of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> involved in <ENAMEX TYPE="SUBSTANCE">ARV</ENAMEX> distribution can improve
+        equality of access to ARVs substantially. The current plan in <ENAMEX TYPE="GPE">KwaZulu‚</ENAMEX>ÄìNatal is to use only
+        <TIMEX TYPE="TIME">17 HCFs</TIMEX>. However, our results clearly show that in order to achieve an optimal equitable
+        allocation strategy, all existing infrastructure (i.e., all <NUMEX TYPE="CARDINAL">54</NUMEX> HCFs) should be used. The
+        strategy that we are advising may be fairly easy to accomplish at the policy level because
+        the health-care infrastructure (specifically these HCFs) already exists, although
+        consideration must be made for issues such as the training and transportation that is
+        necessary, which may be costly. In contrast, increasing the size of catchment regions may
+        be very difficult. Obviously, increasing both the number of <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> and the size of the
+        catchment region each <ENAMEX TYPE="ORG_DESC">services</ENAMEX> would substantially increase equality of access to health
+        <ENAMEX TYPE="ORGANIZATION">care</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">KwaZulu‚ÄìNatal.</ENAMEX>
+        Future modeling studies could extend our work by not making the simplifying assumption
+        that all <ENAMEX TYPE="PER_DESC">patients</ENAMEX> have similar ease of travel over the same distance and by including
+        weighting functions on distance impedance for different <ENAMEX TYPE="GPE_DESC">communities</ENAMEX> (based on the quality
+        of the road infrastructure, for example, and the availability of transportation) (<ENAMEX TYPE="NATIONALITY">D.</ENAMEX> P.
+        <ENAMEX TYPE="PERSON">Wilson</ENAMEX>, <ENAMEX TYPE="PERSON">J. O. Kahn</ENAMEX>, <ENAMEX TYPE="PERSON">S. M. Blower</ENAMEX>, unpublished data). Here, we have shown how to calculate
+        <ENAMEX TYPE="ORGANIZATION">optimal</ENAMEX> ARV allocation strategies based upon the principle of equity. Future research is
+        necessary to compare ARV allocation strategies based upon the principle of efficiency
+        (i.e., allocating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to maximize epidemic reduction) in order to determine whether
+        utilizing different principles for optimization would result in similar (or different)
+        allocation strategies.
+        The <ENAMEX TYPE="ORGANIZATION">World Health Organization</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">Joint United Nations Programme</ENAMEX> on <ENAMEX TYPE="DISEASE">HIV</ENAMEX>/<ENAMEX TYPE="DISEASE">AIDS</ENAMEX> have
+        identified <NUMEX TYPE="CARDINAL">three</NUMEX> core principles that should underlie the effort to fairly distribute <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX>,
+        namely: urgency, equity, and sustainability [<TIMEX TYPE="DATE">23</TIMEX>]. They state that policy decisions for the
+        <ENAMEX TYPE="ORGANIZATION">fair</ENAMEX> distribution of <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> should be based upon the following ethical principles: (i) the
+        principle that like cases should be treated alike, (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) the utilitarian principles of
+        maximizing overall societal benefits, (<ENAMEX TYPE="ORGANIZATION">iii</ENAMEX>) the egalitarian principles of equity
+        (distributing resources, such as health care, equally among different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>), and (<ENAMEX TYPE="PRODUCT">iv</ENAMEX>) the
+        Maximin principle (which prioritizes <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> that are the least advantaged) [<TIMEX TYPE="DATE">24</TIMEX>]. Here,
+        we investigated the level of decision-making associated with allocating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX>, and
+        we have applied the egalitarian principle of equity with respect to access to health care.
+        We suggest that allocating <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">HCFs</ENAMEX> to achieve equality in accessibility could be
+        carried out, and then individual-level ethical considerations could be thought out at the
+        next level of deliberation. Future research is necessary to identify alternative (and more
+        detailed) ethical ARV allocation strategies.
+        Although we have focused on <NUMEX TYPE="CARDINAL">one</NUMEX> equitable strategy, there are many other <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> allocation
+        strategies that are ethical. Uneven access to <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treatment has the very real potential to
+        fracture social and political structures and could lead to intrastate and/or interstate
+        conflict [<ENAMEX TYPE="LAW">2</ENAMEX>]. Government decisions on ARV allocation have potentially socially
+        destabilizing ramifications because essentially the decisions determine who lives and who
+        dies. Resource allocation decisions will have to be made at a number of levels: it must be
+        decided what proportion of the available <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> should be allocated to each <ENAMEX TYPE="GPE_DESC">province</ENAMEX>; then it
+        must be decided how many ARVs should be allocated to each <ENAMEX TYPE="ORGANIZATION">HCF</ENAMEX> within each <ENAMEX TYPE="GPE_DESC">region</ENAMEX>; and
+        finally, particular <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> may be chosen to have treatment priority.
+        Treatment priority decisions for <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> could be based on many different criteria,
+        including disease progression (<ENAMEX TYPE="FAC">CD4</ENAMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> counts and viral load), socioeconomic status,
+        <ENAMEX TYPE="PERSON">ethnicity</ENAMEX>, and who is thought to have the greatest risk of transmitting infections (for
+        example, pregnant <ENAMEX TYPE="PER_DESC">women</ENAMEX> with <ENAMEX TYPE="DISEASE">HIV</ENAMEX> or female sex <ENAMEX TYPE="PER_DESC">workers</ENAMEX>). Although it could be argued that
+        behavioral core <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> should be targeted to receive <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> because this may have the
+        greatest epidemiological impact, such an allocation strategy would be neither feasible nor
+        practical to implement. For example, sex <ENAMEX TYPE="PER_DESC">workers</ENAMEX> are an obvious behavioral core <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, but
+        many <ENAMEX TYPE="PER_DESC">women</ENAMEX> would likely claim to be sex <ENAMEX TYPE="PER_DESC">workers</ENAMEX> if they knew that <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> were only available
+        to sex <ENAMEX TYPE="PER_DESC">workers</ENAMEX>. Additionally, the ethics of targeting such <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in favor of other
+        societal <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> must be questioned. It could also be argued that, to maximize the
+        preventative effect of <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> therapy, <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> should be concentrated in virological core groups
+        (i.e., <ENAMEX TYPE="PER_DESC">people</ENAMEX> with the highest viral load) [<NUMEX TYPE="CARDINAL">25,26</NUMEX>]; this novel approach of targeting the
+        virological core <ENAMEX TYPE="ORG_DESC">group</ENAMEX> has recently been proposed for controlling <ENAMEX TYPE="SUBSTANCE">HSV-2</ENAMEX> epidemics [<TIMEX TYPE="DATE">27</TIMEX>].
+        Identifying <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in the virological core <ENAMEX TYPE="ORG_DESC">group</ENAMEX> would be far easier than identifying
+        <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in the behavioral core <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. These <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> are likely to be the sickest
+        and those with evidence of <ENAMEX TYPE="DISEASE">disease</ENAMEX>-related symptoms. Treatment allocation strategies could
+        also be designed based on reducing the future epidemic impact and disregarding treatment
+        equality amongst currently infected <ENAMEX TYPE="PER_DESC">people</ENAMEX>. Such strategies place different social value on
+        currently infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> in comparison with future infected <ENAMEX TYPE="PER_DESC">people</ENAMEX>; such strategies
+        therefore may not be ethical even though they may be epidemiologically sound (also, it is
+        important to note that any epidemic predictions have large uncertainty ranges [<NUMEX TYPE="CARDINAL">28,29</NUMEX>]).
+        Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> has been applied to the <ENAMEX TYPE="NATIONALITY">South African</ENAMEX> <ENAMEX TYPE="GPE_DESC">province</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">KwaZulu‚ÄìNatal</ENAMEX>, but it can be
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> by government health <ENAMEX TYPE="PER_DESC">officials</ENAMEX> in any resource-constrained <ENAMEX TYPE="GPE_DESC">country</ENAMEX>. In many of the
+        <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> worst affected by the <ENAMEX TYPE="DISEASE">HIV pandemic</ENAMEX>, scarcity of resources will mean that not
+        everyone that could potentially benefit from <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> will be able to access them. Many of the
+        decisions that must be made to develop an effective response to the <ENAMEX TYPE="DISEASE">HIV</ENAMEX>/<ENAMEX TYPE="DISEASE">AIDS</ENAMEX> epidemic are
+        inevitably underpinned by ethical considerations. <ENAMEX TYPE="PER_DESC">Leadership</ENAMEX> in most resource-constrained
+        regions cannot avoid these decisions. Whilst there has been considerable attention given to
+        <ENAMEX TYPE="GPE">South Africa</ENAMEX>, many other <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> worldwide either have plans in place (e.g., <ENAMEX TYPE="GPE">Brazil</ENAMEX>,
+        <ENAMEX TYPE="GPE">Thailand</ENAMEX>, and <ENAMEX TYPE="GPE">Botswana</ENAMEX>) or are in the process of developing national programs for ARV
+        distribution through the public health system (e.g., <ENAMEX TYPE="GPE">Mozambique</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Malawi</ENAMEX>, and <ENAMEX TYPE="GPE">Kenya</ENAMEX>) [<ENAMEX TYPE="LAW">1</ENAMEX>].
+        Legitimate <ENAMEX TYPE="PER_DESC">authorities</ENAMEX> in each <ENAMEX TYPE="GPE_DESC">nation</ENAMEX> must come to their own consensus on the priorities
+        and objectives of an ARV rollout, which is not a trivial matter [<NUMEX TYPE="CARDINAL">1,30</NUMEX>]. Our objective
+        function and <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be used to calculate allocation strategies that provide equity in
+        access (compensating for geographical isolation), but if <ENAMEX TYPE="PER_DESC">authorities</ENAMEX> in a given nation
+        prioritize a different goal for <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout, then an objective function to optimize can be
+        formulated to reflect the specific national policy goal. Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be used by policy
+        <ENAMEX TYPE="PER_DESC">makers</ENAMEX> to determine an optimal scientifically based allocation strategy, based upon the
+        specific objective function. As the <ENAMEX TYPE="ORGANIZATION">ARV</ENAMEX> rollout commences in <ENAMEX TYPE="GPE">KwaZulu‚ÄìNatal</ENAMEX>, difficult
+        decisions will have to be made as to how to allocate scarce resources. We have shown that
+        it is possible to obtain a mathematical solution to an equity problem. We suggest that our
+        novel approach could be used to determine optimal equitable allocation strategies for many
+        other resource-constrained <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> that are just beginning to receive <ENAMEX TYPE="ORGANIZATION">ARVs</ENAMEX> [<TIMEX TYPE="DATE">31</TIMEX>].
+      
+    
+  

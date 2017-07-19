@@ -1,0 +1,518 @@
+
+  
+    
+      
+        Background
+        
+          Nomenclature
+          In recent publications involving bioinformatic
+          analysis of aromatic amino<ENAMEX TYPE="SUBSTANCE">-acid biosynthesis</ENAMEX> [ <TIMEX TYPE="DATE">9, 10, 11</TIMEX>,
+          <TIMEX TYPE="DATE">12, 13, 14</TIMEX>], we have implemented a nomenclature that
+          attempts logical and consistent naming of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and their
+          gene products for different <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. The problem is
+          exemplified by the contemporary naming in <NUMEX TYPE="CARDINAL">two</NUMEX> model
+          <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> of <ENAMEX TYPE="CONTACT_INFO">3-deoxy-D-</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">arabino -heptulosonate 7-phosphate</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">DAHP</ENAMEX>) synthase, the initial enzyme step of aromatic
+          <ENAMEX TYPE="SUBSTANCE">amino-acid biosynthesis</ENAMEX>. In 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> the gene,
+          appropriately enough, has been named 
+          aroA, but in 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> the equivalent
+          function is represented by <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> encoding three
+          differentially regulated paralogs. These 
+          <ENAMEX TYPE="SUBSTANCE">E. coli genes</ENAMEX> have been named 
+          aroF, aroG and 
+          <ENAMEX TYPE="ORGANIZATION">aroH</ENAMEX>. In 
+          B. subtilis these latter <NUMEX TYPE="CARDINAL">three</NUMEX> gene
+          designations refer to <ENAMEX TYPE="CONTACT_INFO">5-enolpyruvylshikimate-3-phosphate</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">synthase</ENAMEX> (step <NUMEX TYPE="CARDINAL">6</NUMEX> of chorismate synthesis), chorismate
+          <ENAMEX TYPE="ORGANIZATION">synthase</ENAMEX> (step <NUMEX TYPE="CARDINAL">7</NUMEX>) and chorismate mutase (initial step of
+          <ENAMEX TYPE="ORGANIZATION">phenylalanine</ENAMEX> and tyrosine biosynthesis). Even in 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX>, where the naming was
+          intended to follow an orderly progression in terms of
+          order of reaction steps, there is the complication that
+          <ENAMEX TYPE="ORGANIZATION">DAHP</ENAMEX> synthase is expressed as a fusion of <NUMEX TYPE="CARDINAL">two</NUMEX> catalytic
+          domains, one being a class of chorismate mutase called
+          <ENAMEX TYPE="ORGANIZATION">AroQ</ENAMEX>. This requires naming at the level of domain and the
+          designation 
+          <ENAMEX TYPE="SUBSTANCE">aroQ• aroA</ENAMEX> was implemented to
+          denote such a fusion [ <TIMEX TYPE="DATE">9, 10, 11, 12</TIMEX>]. Thus, a single
+          enzymatic function in <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> is accommodated
+          through the cumulative expression of <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">paralog genes</ENAMEX>,
+          but in another <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> is only encoded by a portion of a
+          single gene. A universal nomenclature is needed that
+          labels at the level of domain, that labels in synchrony
+          with order of reaction steps as much as possible, and
+          that labels isofunctional paralogs at the same
+          hierarchical level but with discriminating
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX>.
+          The status of nomenclature for the tryptophan pathway
+          is not so chaotic as the genes in almost all prokaryotes
+          have been named in line with 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, but even here distinct
+          problems have arisen because gene fusions that exist in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> are often absent elsewhere.
+          Much of the literature <TIMEX TYPE="DATE">up to at least 1996</TIMEX> used <NUMEX TYPE="CARDINAL">five</NUMEX> gene
+          designations for the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>]. In 
+          B. subtilis these <NUMEX TYPE="CARDINAL">seven</NUMEX> protein
+          domains are encoded by separate genes [ <TIMEX TYPE="DATE">16</TIMEX>]. Thus, 
+          <ENAMEX TYPE="SUBSTANCE">E. coli trpD</ENAMEX> encodes the equivalent
+          of 
+          <ENAMEX TYPE="PERSON">B. subtilis TrpG</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrpD</ENAMEX>. The 
+          <ENAMEX TYPE="SUBSTANCE">E. coli gene</ENAMEX> fusion has been
+          <ENAMEX TYPE="ORGANIZATION">re</ENAMEX>-designated with the convention of a bullet to
+          represent a fusion: 
+          <ENAMEX TYPE="SUBSTANCE">trpG• trpD</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>]. Likewise, the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli trpC</ENAMEX> encodes the equivalent
+          of 
+          <ENAMEX TYPE="PERSON">B. subtilis TrpC</ENAMEX> and <ENAMEX TYPE="PERSON">TrpF</ENAMEX>, and the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli gene</ENAMEX> fusion has been
+          <ENAMEX TYPE="ORGANIZATION">re</ENAMEX>-designated 
+          <ENAMEX TYPE="PERSON">trpC•</ENAMEX> trpF. The nomenclature we
+          advocate is more easily remembered because genes are
+          named in the order of pathway reaction. Subunits for a
+          given reaction are named at the same hierarchical level:
+          anthranilate synthase (first reaction) consists of TrpAa
+          and <ENAMEX TYPE="PERSON">TrpAb</ENAMEX>, and tryptophan synthase (<NUMEX TYPE="ORDINAL">fifth</NUMEX> reaction)
+          consists of <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX>. The implementation of a
+          logical and consistent nomenclature, as illustrated in
+          Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, should be most helpful in the long term.
+        
+      
+      
+        Results and discussion
+        
+          Phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> construction
+          Initial amino<ENAMEX TYPE="SUBSTANCE">-acid alignments</ENAMEX> were generated using
+          ClustalW software, version 1.4 [ <TIMEX TYPE="DATE">18</TIMEX>]. Manual adjustments
+          were made through visual inspection to bring conserved
+          <ENAMEX TYPE="PERSON">motifs</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> into register. This was implemented
+          by use of the <ENAMEX TYPE="ORGANIZATION">BioEdit</ENAMEX> multiple alignment tool [ <TIMEX TYPE="DATE">19</TIMEX>].
+          Inferences about the evolutionary relationships within
+          the <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX> protein <ENAMEX TYPE="PER_DESC">families</ENAMEX> were made using the
+          <ENAMEX TYPE="GPE">PHYLIP</ENAMEX> package of programs [ <TIMEX TYPE="DATE">20</TIMEX>]. The <ENAMEX TYPE="ORGANIZATION">Protpars</ENAMEX> program
+          was used to generate a maximum parsimony <ENAMEX TYPE="PLANT">tree</ENAMEX>, and the
+          neighbor-joining and <ENAMEX TYPE="ORGANIZATION">Fitch</ENAMEX> <ENAMEX TYPE="ORG_DESC">programs</ENAMEX> were used to generate
+          a distance-based <ENAMEX TYPE="PLANT">tree</ENAMEX>. The distance matrix used in the
+          latter programs was produced using the program Protdist
+          with a <ENAMEX TYPE="ANIMAL">Dayoff PAM matrix</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Seqboot</ENAMEX> and Consense
+          programs were then used to assess the statistical
+          strength of the <ENAMEX TYPE="PLANT">tree</ENAMEX> using bootstrap resampling.
+          Neighbor-joining (PHYLIP), <ENAMEX TYPE="ORGANIZATION">Fitch</ENAMEX> and <ENAMEX TYPE="PERSON">Margolash</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Fitch</ENAMEX> in
+          <ENAMEX TYPE="ORGANIZATION">PHYLIP</ENAMEX>), and maximum parsimony methods [ <TIMEX TYPE="DATE">21</TIMEX>] all produced
+          <ENAMEX TYPE="PLANT">trees</ENAMEX> consistent with one another. Despite low bootstrap
+          values at many individual internal nodes, the clusters
+          formed and arrangement of taxa within them were largely
+          identical. <ENAMEX TYPE="PERSON">Ninety TrpEb</ENAMEX> and <NUMEX TYPE="CARDINAL">63</NUMEX> <ENAMEX TYPE="NATIONALITY">TrpEa</ENAMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> were
+          analyzed.
+        
+        
+          Distinctly different types of TrpEb
+          TrpEb <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> divide into <NUMEX TYPE="CARDINAL">two</NUMEX> distinctly different
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, as illustrated by <TIMEX TYPE="DATE">the unrooted</TIMEX> tree shown in
+          Figure <NUMEX TYPE="CARDINAL">2</NUMEX>. The major <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, denoted <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, includes the
+          well-studied enzymes from such <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> as 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Salmonella</ENAMEX>
+          typhimurium, and 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX>. The minor <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+          <ENAMEX TYPE="PERSON">denoted TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, is represented heavily, but not
+          exclusively, by archaeal <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Among the current
+          inventory of completed archaeal genomes, only 
+          <ENAMEX TYPE="ORGANIZATION">Methanococcus</ENAMEX> <ENAMEX TYPE="ORG_DESC">jannaschii</ENAMEX> lacks
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. <NUMEX TYPE="CARDINAL">Seven</NUMEX> archaeal <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> possess both <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Methanosarcina barkeri</ENAMEX> possesses
+          <NUMEX TYPE="CARDINAL">two</NUMEX> paralogs of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> in addition to one species of
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>). <NUMEX TYPE="CARDINAL">Six</NUMEX> archaeal <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> possess <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, but not
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>.
+          <ENAMEX TYPE="PERSON">Bacterial TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are thus far limited to 
+          Aquifex, <ENAMEX TYPE="ORGANIZATION">Thermotoga, Mycobacterium</ENAMEX>,
+          Geobacter, <ENAMEX TYPE="ORGANIZATION">Chlorobium</ENAMEX> and 
+          Rhodopseudomonas genera. In
+          addition, one of the multiple TrpEb <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> present in
+          the higher <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>, 
+          Arabidopsis thaliana, belongs to
+          the <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2 subfamily.</ENAMEX> In view of the distinct divergence
+          of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> from <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, one might expect that either
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> has lost the ability to interact allosterically
+          with <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX>, or perhaps that a divergent subgroup of TrpEa
+          has coevolved with <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. Multiple copies of <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX> are
+          often present in genomes. Examples include cases where
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ANIMAL">species coexist</ENAMEX>, where <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2 species</ENAMEX>
+          coexist, or where <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> coexist in the same
+          <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>. A number of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> ( 
+          <ENAMEX TYPE="PERSON">M. barkeri</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Rhodobacter</ENAMEX> capsulatus,
+          Chlamydia psittaci, and 
+          Corynebacterium diphtheriae )
+          possess <NUMEX TYPE="CARDINAL">two</NUMEX> copies of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. In each case the 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX> copy that is linked to 
+          <ENAMEX TYPE="ORGANIZATION">trpEa</ENAMEX> is highly conserved, whereas
+          the remaining copy has diverged to the extent that it may
+          be a pseudogene (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). The <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">1</ENAMEX> products of these
+          probable pseudogenes have elongated <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> (highlighted
+          <ENAMEX TYPE="ORGANIZATION">yellow</ENAMEX>) on the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> tree shown in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          It is noteworthy that cyanobacterial and higher plant
+          <ENAMEX TYPE="SUBSTANCE">amino-acid</ENAMEX> sequences form a cohesive cluster for <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX>
+          as shown in phylogram form in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>(left <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>). An
+          analysis of <ENAMEX TYPE="SUBSTANCE">TrpEa proteins</ENAMEX> from the same organisms yields
+          a very similar phylogram output (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, right <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>).
+          This higher <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>/cyanobacteria relationship is
+          pleasingly consistent with the endosymbiotic hypothesis
+          of organelle evolution. In each case 
+          Prochlorococcus marinus and 
+          Synechococcus <ENAMEX TYPE="ANIMAL">species</ENAMEX> are the
+          outlying sequence <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, with the other cyanobacterial
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> ( 
+          Nostoc punctiforme and 
+          Anabaena <ENAMEX TYPE="ANIMAL">species</ENAMEX>) being closer to
+          the higher <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> sequences from 
+          A. thaliana and <ENAMEX TYPE="SUBSTANCE">corn</ENAMEX> ( 
+          <ENAMEX TYPE="PERSON">Zea mays</ENAMEX> ). The order of branching
+          shown is supported by very high bootstrap values. Zma-3
+          is the <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> that has been proposed [ <TIMEX TYPE="DATE">22</TIMEX>] to
+          function independently of a <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX> <ENAMEX TYPE="PER_DESC">partner</ENAMEX>, producing
+          indole for entry into a pathway other than tryptophan. In
+          this case indole serves as a precursor for a defense
+          metabolite that is active against <ENAMEX TYPE="ANIMAL">insects</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and
+          <ENAMEX TYPE="PERSON">fungi</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> in <ENAMEX TYPE="ANIMAL">organisms lacking TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>
+          <NUMEX TYPE="CARDINAL">Six</NUMEX> <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> (all <ENAMEX TYPE="ORGANIZATION">Archaea</ENAMEX>) possess intact tryptophan
+          pathways, but they lack <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX> in 
+          Thermoplasma volcanii, <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX>
+          acidophilum, and 
+          Ferroplasma acidarmanus is
+          represented only by a single species of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. Although
+          
+          Sulfolobus solfataricus, Aeropyrum
+          <ENAMEX TYPE="ORGANIZATION">pernix</ENAMEX> and 
+          Pyrobaculum aerophilum all possess
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">TrpEb</ENAMEX>, both are the <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> variety. Thus,
+          in <NUMEX TYPE="CARDINAL">all six</NUMEX> of these lineages <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> either might be unable
+          to form a tight complex with <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, or might have
+          evolved different <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> contacts. In the latter
+          case, distinct <ENAMEX TYPE="PERSON">TrpEa</ENAMEX> subgroupings might be expected in
+          parallel with the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="NATIONALITY">TrpEb</ENAMEX> subgroupings. On the
+          contrary, all TrpEa sequences fall into a single group
+          (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). However, in contrast to sequences present in
+          those <ENAMEX TYPE="ORGANIZATION">Archaea</ENAMEX> that do possess <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> (for example, 
+          Archaeoglobus, species of 
+          Pyrococcus, <ENAMEX TYPE="GPE">Methanococcus</ENAMEX>,
+          Methanobacterium, <ENAMEX TYPE="ORGANIZATION">Methanosarcina</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Halobacterium</ENAMEX> ), the <NUMEX TYPE="CARDINAL">six</NUMEX> archaeal
+          lineages that possess only <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> have very distinctive
+          <ENAMEX TYPE="ORGANIZATION">elongated</ENAMEX> <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> on the <ENAMEX TYPE="PLANT">TrpEa tree</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). This
+          suggests an elevated rate of evolutionary divergence, due
+          either to selection for new productive <ENAMEX TYPE="PER_DESC">contacts</ENAMEX> of TrpEa
+          with <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> or to lack of constraint to maintain TrpEa
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> previously important for contacts with
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>.
+          The long <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> sequence of 
+          Chlamydia trachomatis reflects its
+          likely status as a pseudogene. This is consistent with
+          the observation that 
+          <ENAMEX TYPE="PERSON">C. trachomatis TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>)
+          also seems to be a pseudogene. <NUMEX TYPE="CARDINAL">One</NUMEX> does not expect
+          positive selection for maintenance of function in 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> trachomatis as it lacks an
+          intact tryptophan pathway. Indeed, the alteration in 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> trachomatis of many otherwise
+          invariant amino<ENAMEX TYPE="SUBSTANCE">-acid residues</ENAMEX> is evident from the
+          information given in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+        
+        
+          Overview comparison of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>
+          Figure 5shows an alignment of the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> sequence
+          of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> from 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> typhimurium with <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> from 
+          P. furiosus. Each sequence is shown
+          as a template for its own subfamily, as extracted from a
+          refined multiple alignment. Conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> deduced
+          from a full multiple alignment (available from the author
+          on request) are indicated, as are the gap positions
+          present in the full alignment. Functional roles in
+          <ENAMEX TYPE="ORGANIZATION">catalysis</ENAMEX> and allosteric regulation are indicated for the
+          
+          <ENAMEX TYPE="PERSON">S. typhimurium TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> sequence in
+          order to compare similarities and differences between
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">Residues</ENAMEX> that are ligands
+          of <ENAMEX TYPE="SUBSTANCE">pyridoxal phosphate</ENAMEX> or that interact with pyridoxal
+          <ENAMEX TYPE="ORGANIZATION">phosphate</ENAMEX> are scattered throughout the sequences,
+          including the catalytic <TIMEX TYPE="DATE">K87</TIMEX>, and are highly conserved.
+          <ENAMEX TYPE="SUBSTANCE">Residue E109</ENAMEX> has been shown to render indole more
+          nucleophilic via proton abstraction from N1 [ <TIMEX TYPE="DATE">23</TIMEX>]. The
+          serine substrate-binding region is highly conserved, as
+          is a monovalent cation (MVC) binding <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>]
+          <ENAMEX TYPE="PRODUCT">coordinating with G232</ENAMEX>, <ENAMEX TYPE="PRODUCT">F/Y306</ENAMEX>, and <ENAMEX TYPE="PRODUCT">G/A/S308</ENAMEX>. A number of
+          <ENAMEX TYPE="ORGANIZATION">indels</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">insertions/deletions</ENAMEX>) distinguish <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, and <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">2</ENAMEX> is <NUMEX TYPE="CARDINAL">about 50</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> longer overall
+          than <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. In addition to other <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> conserved
+          between both <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, each subgroup has its
+          own repertoire of uniquely <ENAMEX TYPE="SUBSTANCE">conserved residues</ENAMEX>. The COMM
+          domain [ <TIMEX TYPE="DATE">24</TIMEX>], a rigid but mobile domain as originally
+          defined with 
+          <ENAMEX TYPE="PERSON">S. typhimurium TrpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">1</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>],
+          differs from the corresponding region of the <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>
+          subfamily by the presence of an indel. Key <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>
+          regulatory <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">R141, K167</ENAMEX>) within this region as
+          well as one residue near the <ENAMEX TYPE="ORGANIZATION">MVC</ENAMEX> site (<NUMEX TYPE="MONEY">D305</NUMEX>) are not
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in the <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2 subgroup.</ENAMEX>
+        
+        
+          Loss of intersubunit contacts in <ENAMEX TYPE="GPE">TrpEa-TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>
+          systems
+          The tryptophan synthase of 
+          <ENAMEX TYPE="PERSON">S. typhimurium</ENAMEX> is a rigorously
+          documented example of substrate channeling in which
+          <ENAMEX TYPE="ORGANIZATION">indole</ENAMEX> generated as an intermediate is passed through an
+          internalized <ENAMEX TYPE="FAC_DESC">tunnel</ENAMEX> ([ <ENAMEX TYPE="LAW">7</ENAMEX>] and references therein). Ligand
+          binding at the α-site and covalent transformations at the
+          β-site accomplish mutually reinforcing overall allostery.
+          The movable COMM domain is comprised of <ENAMEX TYPE="SUBSTANCE">residues G102</ENAMEX> to
+          G189 in 
+          <ENAMEX TYPE="PERSON">S. typhimurium TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. COMM
+          interacts with both the β-active site and with α-subunit
+          <ENAMEX TYPE="CONTACT_INFO">loops 2</ENAMEX> and <NUMEX TYPE="CARDINAL">6</NUMEX> in response to allosteric signals. Within
+          the COMM domain of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1, S178</ENAMEX> participates in
+          intersubunit signaling with <NUMEX TYPE="QUANTITY">G181</NUMEX> of <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX>. Competing
+          allosteric conformations are mediated by alternative salt
+          <ENAMEX TYPE="CONTACT_INFO">bridges</ENAMEX> <TIMEX TYPE="TIME">between K167</TIMEX> of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <NUMEX TYPE="QUANTITY">D305</NUMEX> of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX> on
+          the one hand, or <NUMEX TYPE="QUANTITY">between K167</NUMEX> of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> and <NUMEX TYPE="QUANTITY">D56</NUMEX> of
+          TrpEa, on the other. When D305 of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">1</ENAMEX> is not occupied
+          with <TIMEX TYPE="DATE">K167</TIMEX>, it forms an alternative salt <ENAMEX TYPE="FAC_DESC">bridge</ENAMEX> with <TIMEX TYPE="DATE">R141</TIMEX>,
+          as shown in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>.
+          As intersubunit signaling between <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> is
+          either lacking or involves different <ENAMEX TYPE="PER_DESC">contacts</ENAMEX>, one might
+          expect the important catalytic <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, but not the
+          allosteric <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, to be conserved in comparison of
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> with <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. This comparison is shown in Figure
+          <NUMEX TYPE="CARDINAL">5</NUMEX>. Likewise, in those <ENAMEX TYPE="PRODUCT">TrpEa</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that lack a <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>
+          <ENAMEX TYPE="PER_DESC">partner</ENAMEX>, instead being forced to function in concert with
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, one might expect retention of catalytic residues
+          but loss of <ENAMEX TYPE="SUBSTANCE">allosteric residues</ENAMEX>. This comparison is shown
+          in Figure <NUMEX TYPE="CARDINAL">6</NUMEX>. Of the intersubunit signaling pair <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>
+          S178<ENAMEX TYPE="ORGANIZATION">/TrpEa</ENAMEX> <ENAMEX TYPE="PRODUCT">G181</ENAMEX>, <ENAMEX TYPE="PRODUCT">S178</ENAMEX> is not conserved within its own
+          <ENAMEX TYPE="ORGANIZATION">subfamily</ENAMEX> and equivalent <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> seem to exist [ <TIMEX TYPE="DATE">26</TIMEX>]. It
+          is, however, striking that <ENAMEX TYPE="PRODUCT">G181</ENAMEX> is invariant in all TrpEa
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, except for those belonging to the <NUMEX TYPE="CARDINAL">six</NUMEX> archaeal
+          <ENAMEX TYPE="ORG_DESC">lineages</ENAMEX> lacking <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. It is even more striking that
+          K167, which participates in the alternative β-β or <NUMEX TYPE="MONEY">β</NUMEX>-α
+          <ENAMEX TYPE="GPE">salt</ENAMEX> <ENAMEX TYPE="FAC_DESC">bridges</ENAMEX> is invariant in <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, but absent in
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. Likewise, the <ENAMEX TYPE="SUBSTANCE">salt</ENAMEX>-bridge <ENAMEX TYPE="PER_DESC">partner</ENAMEX> <ENAMEX TYPE="PERSON">D305</ENAMEX> is
+          <ENAMEX TYPE="ORGANIZATION">invariant</ENAMEX> in <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, but absent in <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. The
+          <ENAMEX TYPE="GPE">salt</ENAMEX>-bridge partner <NUMEX TYPE="ORDINAL">D56</NUMEX> in <ENAMEX TYPE="GPE">TrpEa</ENAMEX> is invariant except for
+          the <NUMEX TYPE="CARDINAL">six</NUMEX> archaeal lineages that lack <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>. Figure
+          5shows that <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> sequences carry an insertion of <NUMEX TYPE="CARDINAL">16</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the general region corresponding to the COMM
+          domain of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        
+        
+          Tryptophan gene <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> in <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>-containing
+          genomes
+          The <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> of tryptophan-pathway <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> archaeal genomes and <NUMEX TYPE="CARDINAL">six</NUMEX> bacterial genomes that are
+          thus far known to possess <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> are displayed on a 16S
+          rRNA <ENAMEX TYPE="PLANT">tree</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>. 
+          Pyrococcus horikoshii has lost the
+          entire pathway, and only 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">2</ENAMEX> is present. In 
+          <ENAMEX TYPE="ORGANIZATION">Aquifex</ENAMEX> and 
+          Chlorobium all 
+          trp genes are dispersed, and 
+          <ENAMEX TYPE="ORGANIZATION">trpEa</ENAMEX> is not linked to either 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> or 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. In <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX> and Archaea
+          the gene order 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> → trpEa is one of the most
+          highly conserved of genomic gene arrangements. Often
+          translational coupling exists, as seen in Figure 7for 
+          <ENAMEX TYPE="CONTACT_INFO">P. furiosus, P. abyssi</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">M.</ENAMEX>
+          thermoautotrophicum, <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> volcanium, Archaeoglobus
+          <ENAMEX TYPE="ORGANIZATION">fulgidus</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima. In each of the latter
+          genomes 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">2</ENAMEX> is outside the 
+          trp operon. Both species of 
+          <ENAMEX TYPE="PER_DESC">Thermoplasma</ENAMEX> possess an otherwise
+          intact 
+          trp operon that lacks 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> (also not present elsewhere
+          in the genome). Hence, by default it appears that the
+          unlinked 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> must function for
+          tryptophan biosynthesis in these <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. In 
+          A. pernix and 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> solfataricus all of the 
+          trp genes are adjacent, but 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> flanks 
+          trpEa, and 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">1</ENAMEX> is absent from these
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. In each case, a second unlinked copy of 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">2</ENAMEX> is present. In 
+          Geobacter sulfurreducens, both 
+          <ENAMEX TYPE="ORGANIZATION">trpEa</ENAMEX> and 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> (presumably partnered based
+          on the results shown in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) are unlinked to one
+          another, and both are outside an otherwise intact 
+          trp operon. In this case it seems
+          curious indeed that the operon contains 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>. 
+          A snapshot of the incredibly dynamic alteration of
+          tryptophan gene <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> in prokaryotes is apparent
+          from Figure <NUMEX TYPE="CARDINAL">7</NUMEX>. Of the organisms shown in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>, the
+          most consistent linkage is that of 
+          <ENAMEX TYPE="ORGANIZATION">trpAa</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">trpAb</ENAMEX>. In 
+          A. fulgidus trpD and 
+          trpB are fused, whereas in 
+          Rhodopseudomonas palustris
+          <ENAMEX TYPE="ORGANIZATION">trpAa</ENAMEX> and 
+          trpAb are fused. Operons are
+          sometimes incomplete as with 
+          P. aerophilum and 
+          <ENAMEX TYPE="PERSON">G. sulfurreducens</ENAMEX>, or fragmented,
+          as with 
+          <ENAMEX TYPE="NATIONALITY">R.</ENAMEX> palustris. In 
+          A. pernix an inverted arrangement
+          yields a divergent transcription of 
+          trpEa → trpEb_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> → trpC → trpD and 
+          <ENAMEX TYPE="DISEASE">trpB → trpAa → trpAb</ENAMEX>. This is also
+          <NUMEX TYPE="CARDINAL">one</NUMEX> of the very few cases where the order is 
+          trpEa → trpEb instead of the usual 
+          trpEb → trpEa. 
+          The 
+          Ferroplasma genome illustrates a
+          case where a non-tryptophan pathway gene, 
+          aroA encoding DAHP synthase, is a
+          <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the operon (translationally coupled). The
+          implied transcriptional control of <ENAMEX TYPE="ORGANIZATION">DAHP</ENAMEX> synthase by
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-tryptophan potentially could produce growth inhibition
+          by <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-tryptophan because of limitation of precursors
+          needed for <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-phenylalanine and <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-tyrosine biosynthesis.
+          This is because no other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> encoding DAHP synthase
+          appear to be present in the genome. It would be
+          interesting to know whether the 
+          <ENAMEX TYPE="ORGANIZATION">Ferroplasma DAHP</ENAMEX> synthase is
+          sensitive to allosteric control or not. The phenomenon of
+          growth inhibition triggered by exogenous amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> is
+          exemplified by the effect of exogenous L-phenylalanine
+          upon <ENAMEX TYPE="ORGANIZATION">DAHP</ENAMEX> synthase in 
+          Neisseria gonorrhoeae [ <TIMEX TYPE="DATE">27</TIMEX>] and in
+          other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> ([ <TIMEX TYPE="DATE">27</TIMEX>] and references therein).
+          What is the function of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX>? As previously
+          discussed, it seems clear that <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> has sometimes been
+          pressed into service with <ENAMEX TYPE="ORGANIZATION">TrpEa</ENAMEX> to function as tryptophan
+          <ENAMEX TYPE="ORGANIZATION">synthase</ENAMEX>. What might be its function in those situations
+          where 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">2</ENAMEX> is isolated away from a
+          typical tryptophan operon, which possesses closely linked
+          or translationally coupled genes specifying 
+          <ENAMEX TYPE="ORGANIZATION">trpEa</ENAMEX> and 
+          <ENAMEX TYPE="GPE">trpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX>? 
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> from 
+          <ENAMEX TYPE="PERSON">S. typhimurium</ENAMEX> is the prototype
+          <ENAMEX TYPE="PER_DESC">member</ENAMEX> of a superfamily of pyridoxal phosphate
+          (<ENAMEX TYPE="ORGANIZATION">PLP</ENAMEX>)-dependent enzymes that are of remote relationship
+          and that catalyze β-<ENAMEX TYPE="PER_DESC">replacement</ENAMEX> and β-elimination
+          reactions [ <TIMEX TYPE="DATE">28, 29, 30</TIMEX>]. These include 
+          <ENAMEX TYPE="PERSON">O</ENAMEX> -acetylserine sulfhydrylase,
+          threonine deaminase, threonine synthase, cystathionine
+          β-synthase, <NUMEX TYPE="QUANTITY">1-aminocyclopropane-1-carboxylate</NUMEX> deaminase,
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-serine dehydratase, and <ENAMEX TYPE="NATIONALITY">D</ENAMEX>-serine dehydratase. Isolated
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="PRODUCT">1</ENAMEX> does catalyze the reaction of <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-serine
+
+          <ENAMEX TYPE="ORGANIZATION">dehydratase</ENAMEX> (deaminase) 
+          in vitro, but does not support
+          significant levels of the other activities. It does not
+          seem likely that <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> catalyzes the latter reactions
+          either, as <ENAMEX TYPE="PRODUCT">Psi-Blast of TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> did not return
+          hits for them any more avidly than was the case for
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX> queries.
+          Perhaps the most likely 'alternative' function of
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> is a catalytic activity already
+          established as an 
+          in vitro activity of isolated
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, of which there are <NUMEX TYPE="CARDINAL">two</NUMEX>. The <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-<NUMEX TYPE="CARDINAL">serine</NUMEX> + <NUMEX TYPE="CARDINAL">indole</NUMEX> →
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O + L</ENAMEX>-tryptophan reaction might
+          function alone for tryptophan biosynthesis in cells that
+          acquire indole from the environment. Little information
+          about the availability and utilization of indole in
+          nature seems to exist. Model organisms such as 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX> transport indole poorly
+          and it tends to be toxic, but these <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> lack
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>.
+          As stated above, the <NUMEX TYPE="ORDINAL">second</NUMEX> established 
+          in vitro activity of isolated
+          <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">1</NUMEX> dimers is L-serine dehydratase (deaminase):
+          <ENAMEX TYPE="PRODUCT">L-</ENAMEX><ENAMEX TYPE="PRODUCT_DESC">serine → pyruvate</ENAMEX> + ammonia. It is indeed suggestive
+          that the presence of <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> correlates almost perfectly
+          with the absence of the primary L-serine deaminase
+          (<NUMEX TYPE="MONEY">COG1760</NUMEX>) used in nature (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). This <ENAMEX TYPE="NATIONALITY">SdaA</ENAMEX> class of
+          serine deaminase is an iron-<ENAMEX TYPE="SUBSTANCE">sulfur protein</ENAMEX>, not a
+          <ENAMEX TYPE="PRODUCT">pyridoxal 5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">phosphate protein</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX>]. It is absent from
+          the <ENAMEX TYPE="ORGANIZATION">Archaea</ENAMEX>. Although widely distributed in the <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX>,
+          it is not present in 
+          Thermotoga, <ENAMEX TYPE="ORGANIZATION">Aquifex, Chlorobium</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Geobacter</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Rhodopseudomonas</ENAMEX>. Mycobacterium
+          <ENAMEX TYPE="ORGANIZATION">smegmatis</ENAMEX> is the only <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>-containing <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> to
+          possess an <ENAMEX TYPE="NATIONALITY">SdaA</ENAMEX> homolog.
+          There are other <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for carrying out the serine
+          <ENAMEX TYPE="ORGANIZATION">deaminase</ENAMEX> reaction. A serine deaminase that is
+          <ENAMEX TYPE="ORGANIZATION">PLP</ENAMEX>-dependent exists in eukaryotes, but seems to be
+          absent or rare in prokaryotes. Threonine dehydratase has
+          a lesser capability to carry out the serine dehydratase
+          reaction 
+          in vitro. 'Biosynthetic' (<ENAMEX TYPE="ORGANIZATION">IlvA</ENAMEX>) and
+          <ENAMEX TYPE="ORGANIZATION">'catabolic'</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">TdcA</ENAMEX>) threonine deaminase are homologs,
+          except that <ENAMEX TYPE="ORGANIZATION">IlvA</ENAMEX> has a unique carboxy-terminal extension
+          that provides an allosteric module. Most archaea lack 
+          ilvA, and only a limited number
+          possess catabolic threonine dehydratase.
+          If archaea lack 
+          ilvA, what is the source of
+          α-ketobutyrate for isoleucine biosynthesis? It appears
+          likely that α-ketobutyrate is generated instead by the
+          <ENAMEX TYPE="ORGANIZATION">'pyruvate</ENAMEX>' pathway in which citramalate is generated as
+          the initial intermediate. A few tracer studies in the
+          older literature have indicated derivation of
+          α-ketobutyrate from pyruvate rather than from threonine [
+          <TIMEX TYPE="DATE">32, 33</TIMEX>], and (<ENAMEX TYPE="NATIONALITY">R</ENAMEX>)-citramalate synthase activity has been
+          shown recently in 
+          <ENAMEX TYPE="PERSON">M. jannaschii</ENAMEX> (<NUMEX TYPE="MONEY">MJ1392</NUMEX>) [ <TIMEX TYPE="DATE">34</TIMEX>]. This
+          pathway was initially shown to exist in 
+          <ENAMEX TYPE="ORGANIZATION">Leptospira</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>], and it seems
+          likely that more examples will surface. Indeed, it is
+          interesting that an enteric <ENAMEX TYPE="SUBSTANCE">bacterium</ENAMEX> has a latent
+          potential to replace the threonine deaminase step with a
+          pyruvate-derived pathway under appropriate selective
+          conditions [ <TIMEX TYPE="DATE">36</TIMEX>]. The citramalate pathway for conversion
+          of pyruvate to <NUMEX TYPE="CARDINAL">2</NUMEX>-ketobutyrate involves a carbon-chain
+          elongation mechanism that uses an initial step of
+          condensation with acetyl-CoA, followed by rearrangement,
+          <ENAMEX TYPE="ORGANIZATION">oxidation</ENAMEX> and elimination of a carbon to produce a keto
+          acid differing from the original substrate by the
+          presence of an additional <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX>. This mechanism is
+          familiar in nature, analogous steps being used in the TCA
+          cycle, the ketoadipate pathway of lysine biosynthesis,
+          and in leucine biosynthesis. These analogous steps in
+          different pathways were originally used in formulating
+          the recruitment hypothesis for evolutionary acquisition
+          of new function [ <TIMEX TYPE="DATE">37</TIMEX>], and it is interesting that the
+          citramalate synthase gene shown in 
+          <ENAMEX TYPE="PERSON">M. jannaschii</ENAMEX> had previously been
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> <NUMEX TYPE="MONEY">as α-isopropylmalate synthase</NUMEX> (which catalyzes
+          the initial step of leucine biosynthesis).
+          Overall, the cumulative evidence indicates that
+          established sources of <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-serine dehydratase are low or
+          absent in <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> that possess <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>, and therefore
+          points to a plausible role for <ENAMEX TYPE="GPE">TrpEb</ENAMEX>_<NUMEX TYPE="CARDINAL">2</NUMEX> as <ENAMEX TYPE="ORGANIZATION">L</ENAMEX>-serine
+          <ENAMEX TYPE="ORGANIZATION">dehydratase</ENAMEX>.
+        
+      
+    
+  

@@ -1,0 +1,217 @@
+
+  
+    
+      
+        Introduction
+        For <TIMEX TYPE="DATE">many years</TIMEX>, <ENAMEX TYPE="PER_DESC">scientists</ENAMEX> believed that point mutations
+        in genes are the genetic switches for somatic and inherited
+        diseases such as cystic fibrosis, <ENAMEX TYPE="SUBSTANCE">phenylketonuria</ENAMEX> and
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. For this to be the case, <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated amino
+        <ENAMEX TYPE="SUBSTANCE">acid substitutions</ENAMEX> should occur in functionally important
+        regions of the <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> of genes. While it has been
+        shown in specific cases that <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        substitutions affect protein function, until now few
+        studies have examined this across many genes. Here we
+        provide direct evidence that <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated point
+        mutations occur in functionally important regions of the
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> and are not distributed equally across the coding
+        regions of genes. This work supports recent efforts to
+        collect disease associated mutational data in databases and
+        suggests that many of the mutations represented in those
+        databases are the likely underlying molecular cause of
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>.
+        Recently there have been a number of commercial and
+        public projects aimed at collecting and understanding human
+        <ENAMEX TYPE="ORGANIZATION">genomic</ENAMEX> variation [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . The goal of these projects is to
+        provide an understanding of how genotype is associated with
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>, how it affects our response to <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> and how it
+        affects the <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> of genes. Examples of these
+        <ENAMEX TYPE="FAC_DESC">projects</ENAMEX> include the <ENAMEX TYPE="ORGANIZATION">SNP Consortium</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">Human</ENAMEX> Genome
+        <ENAMEX TYPE="PRODUCT">Mutation Database</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , many gene specific databases ( [
+        <NUMEX TYPE="CARDINAL">3 4</NUMEX> ] , for example), and both public and private genome
+        <ENAMEX TYPE="ORGANIZATION">sequencing</ENAMEX> efforts [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . Much of the data that is being
+        collected are mutations annotated with their observed
+        <ENAMEX TYPE="ORGANIZATION">phenotype</ENAMEX>. Automated annotation methods based on structural
+        and evolutionary parameters can lead to insight into the
+        molecular basis of <ENAMEX TYPE="DISEASE">disease</ENAMEX>.
+        With <NUMEX TYPE="CARDINAL">more than 4,000,000</NUMEX> identified variations and with
+        over <NUMEX TYPE="CARDINAL">20,000</NUMEX> of them annotated with a phenotype, we are
+        facing the problem of having many uncharacterized
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>. Algorithms are needed for automatically
+        annotating these gene variations to gain insight into how
+        they affect the gene's regulation and/or function of its
+        <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX>. Using many collection technologies,
+        <ENAMEX TYPE="ORGANIZATION">uncharacterized SNP</ENAMEX> data is being placed in public
+        databases such as the <ENAMEX TYPE="WORK_OF_ART">Human Genome Mutation Database</ENAMEX> (over
+        <NUMEX TYPE="CARDINAL">20,000</NUMEX> entries) [ <ENAMEX TYPE="LAW">2</ENAMEX> ] and the <ENAMEX TYPE="ORGANIZATION">National Cancer Institute</ENAMEX>'s
+        <ENAMEX TYPE="ORGANIZATION">CGAP-GAI</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Cancer Genome Anatomy Project Genetic</ENAMEX> Annotation
+        Initiative) [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . The <ENAMEX TYPE="ORGANIZATION">CGAP-GAI</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> has identified
+        <NUMEX TYPE="CARDINAL">10,243</NUMEX> <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> by examining publicly available <TIMEX TYPE="TIME">EST</TIMEX> (Expressed
+        <ENAMEX TYPE="PERSON">Sequence Tag</ENAMEX>) chromatograms.
+        Software for analyzing unannotated <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> in known disease
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will be especially useful when previously
+        unobserved mutations are discovered. Every human has
+        genotypic differences from the standard genome
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">every thousand</TIMEX> base pairs [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] . Given
+        knowledge of how a genotype differs from the standard, it
+        is important to be able to predict which of the variations
+        are likely to be the cause of <ENAMEX TYPE="DISEASE">disease</ENAMEX> or other phenotypic
+        differences. Evolutionary information about regulatory and
+        coding regions of genes can be used to highlight certain
+        mutations or <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of mutations that are attributable to a
+        <ENAMEX TYPE="ORGANIZATION">phenotype</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX> ] .
+        Early tools using phylogenetic and structural
+        information have shown promise in predicting the functional
+        consequences of a mutation [ <TIMEX TYPE="DATE">13</TIMEX> ] . These reports predict
+        that anywhere between <NUMEX TYPE="PERCENT">20-36%</NUMEX> of non-synonymous SNPs alter
+        the function of a gene's <ENAMEX TYPE="SUBSTANCE">protein product</ENAMEX>. In the report by
+        <ENAMEX TYPE="ORGANIZATION">Chasman</ENAMEX> and <ENAMEX TYPE="PERSON">Adams</ENAMEX>, evolutionary information was predicted
+        to be a useful component in determining whether a mutation
+        is deleterious [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . Disease causing mutations are
+        also likely structurally perturbing at the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> level [
+        <NUMEX TYPE="CARDINAL">15</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Ng</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Henikoff</ENAMEX> have introduced <ENAMEX TYPE="PRODUCT">SIFT</ENAMEX>, a method for
+        predicting functional <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> from a database of unannotated
+        <ENAMEX TYPE="ORGANIZATION">polymorphisms</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 17</NUMEX> ] .
+        The relationship between disease-associated mutation
+        positions and evolutionary conservation has been reported
+        in specific cases. An analysis of the <ENAMEX TYPE="DISEASE">breast</ENAMEX> and ovarian
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> susceptibility gene, <TIMEX TYPE="DATE">BRCA1</TIMEX>, showed that
+        disease-associated mutations tend to occur in highly
+        conserved regions [ <TIMEX TYPE="DATE">18</TIMEX> ] . An analysis of homologous
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">androgen receptor</ENAMEX> has shown similar
+        results [ <TIMEX TYPE="DATE">10</TIMEX> ] . Keratin <TIMEX TYPE="DATE">12, KRT12</TIMEX>, is associated with
+        <ENAMEX TYPE="PERSON">Meesmann Corneal Epithelial Dystrophy</ENAMEX> (MCD). Reported
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> often occur in the highly conserved
+        <ENAMEX TYPE="ORGANIZATION">alpha</ENAMEX>-helix-initiation motif of rod domain 1A or in the
+        <ENAMEX TYPE="ORGANIZATION">alpha</ENAMEX>-helix-termination motif of rod domain 2B [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+        Structure based analysis methods have also been used to
+        <ENAMEX TYPE="PERSON">analyze Osteogenesis</ENAMEX> imperfecta associated COL1A1 mutations
+        and <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated P53 mutations (<ENAMEX TYPE="ORGANIZATION">Mooney</ENAMEX> and <ENAMEX TYPE="PERSON">Klein</ENAMEX>,
+        unpublished), [ <TIMEX TYPE="DATE">20</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Miller and Kumar</ENAMEX> have reported that
+        disease-associated mutations are conserved in <NUMEX TYPE="CARDINAL">seven</NUMEX> model
+        genes [ <TIMEX TYPE="DATE">21</TIMEX> ] .
+        To determine the degree to which mutation positions
+        differ evolutionarily from other <ENAMEX TYPE="PER_DESC">positions</ENAMEX>, we have built
+        alignments of <ENAMEX TYPE="SUBSTANCE">homologous genes</ENAMEX> for <NUMEX TYPE="CARDINAL">231</NUMEX> disease-associated
+        genes. These <ENAMEX TYPE="DISEASE">multiple alignments</ENAMEX> have then been used to
+        assess the difference in evolutionary conservation for
+        positions that are both <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated and not
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX>. The results show that, in general, positions
+        with <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated mutations are conserved more than
+        the average position in the alignment. This suggests the
+        most conserved mutations are likely to be the causative
+        <ENAMEX TYPE="PER_DESC">agents</ENAMEX> of <ENAMEX TYPE="DISEASE">disease</ENAMEX>, and our data set identifies these
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>.
+      
+      
+        Results and Discussion
+        Our method compares the negative entropy of
+        disease-associated columns within an alignment to other
+        columns in that alignment. The goal of this work is to
+        build these alignments, map the mutations to them, and show
+        that disease-associated positions are, in general,
+        <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX>. The analysis was performed on the built
+        <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> and the results are shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+        To collect the mutation data, <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were used for
+        the analysis. They were chosen because they had a reported
+        cDNA sequence, <ENAMEX TYPE="DISEASE">disease</ENAMEX>-associated mutations and homologs in
+        <ENAMEX TYPE="ORGANIZATION">SWISSPROT</ENAMEX>. These genes are listed in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Each
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> consists of all the homologs in <ENAMEX TYPE="ORGANIZATION">SWISSPROT</ENAMEX> as
+        determined by a BLAST search with an e-value threshold of
+        10e-<NUMEX TYPE="CARDINAL">15</NUMEX>. For each alignment the negative entropy for each
+        column was calculated.
+        The conservation ratio parameter is defined as the
+        average negative entropy of analyzable positions with
+        reported mutations divided by the average negative entropy
+        of every analyzable position in the gene sequence. Analysis
+        was performed on <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <TIMEX TYPE="DATE">6185</TIMEX> mutations and of those
+        we found that <NUMEX TYPE="PERCENT">84.0%</NUMEX> had conservation ratios <NUMEX TYPE="CARDINAL">less than one</NUMEX>.
+        From those, <NUMEX TYPE="CARDINAL">139</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> had <NUMEX TYPE="CARDINAL">more than ten</NUMEX> analyzable
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> and, of those, <NUMEX TYPE="PERCENT">88.0%</NUMEX> had conservation ratios less
+        than <NUMEX TYPE="CARDINAL">one</NUMEX>.
+        Use of evolutionary information is a promising approach
+        to automated characterization of mutations. These results
+        show that although conservation alone is not a perfect
+        predictive measure, there is useful information contained
+        in sequence alignments containing <ENAMEX TYPE="SUBSTANCE">homologous genes</ENAMEX>.
+        Approaches using conservation in a multiple alignment
+        should work better when associated with other methods such
+        as structural analysis, population analysis and
+        experimental data. Knowledge of how the sequence pool
+        clusters into <ENAMEX TYPE="PER_DESC">families</ENAMEX> may increase the sensitivity of the
+        method.
+        Our measured parameter, the conservation ratio, is a
+        quantity that measures the usefulness of a multiple
+        alignment for characterizing mutations in a gene sequence.
+        Knowledge of more mutations in a gene does not necessarily
+        lower the conservation ratio. We expect that knowledge of
+        more mutations in a gene will increase the statistical
+        significance of the conservation ratio. This is the likely
+        underlying cause of the result showing that genes with <NUMEX TYPE="CARDINAL">10</NUMEX>
+        or mutations increases are more likely to have a
+        conservation ratio <NUMEX TYPE="CARDINAL">less than one</NUMEX>.
+        The alignments and BLAST searches are integrated on the
+        <ENAMEX TYPE="CONTACT_INFO">website, http://</ENAMEX><ENAMEX TYPE="DISEASE">cancer</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">stanford</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/mut-paper/.</ENAMEX>
+      
+      
+        Conclusions
+        In conclusion, there are estimated to be <NUMEX TYPE="CARDINAL">30,000</NUMEX>
+        non-synonymous differences between an individual and the
+        draft <ENAMEX TYPE="PER_DESC">genome</ENAMEX> [ <NUMEX TYPE="CARDINAL">23 5 7 8 9</NUMEX> ] . Determination of which
+        positions are likely to be disease associated is a
+        challenging and important problem. The finding that
+        disease-associated mutations occur in positions of
+        functional importance supports recent efforts for the
+        building of methods to predict which <ENAMEX TYPE="PER_DESC">positions</ENAMEX> are likely
+        to be disease associated [ <NUMEX TYPE="CARDINAL">14 13 16 17</NUMEX> ] . These methods
+        are likely to incorporate protein structure, the amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        identity of the mutation and phylogenetic information. In
+        an interesting twist, this observation also suggests that
+        this data may be useable as a functional genomics tool for
+        understanding the function of the <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> of genes
+        on a molecular level. Such a method would use the inherent
+        functional information contained in a phenotypically
+        annotated polymorphism to infer functional importance
+        within a gene.
+      
+      
+        Methods
+        Non-synonymous mutations were acquired from the <ENAMEX TYPE="ORGANIZATION">Human</ENAMEX>
+        <ENAMEX TYPE="PERSON">Genome Mutation Database</ENAMEX>
+        <ENAMEX TYPE="CONTACT_INFO">http://archive.</ENAMEX><ENAMEX TYPE="ORGANIZATION">uwcm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">ac</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">uk/uwcm/mg/hgmd0.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>. <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        were chosen with known disease-<ENAMEX TYPE="ORG_DESC">association</ENAMEX> each having
+        <ENAMEX TYPE="ORGANIZATION">SWISSPROT</ENAMEX> homologs, a cDNA sequence and mutations in the
+        coding region. For each of those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, all known
+        non-synonymous mutations were then downloaded with the cDNA
+        sequence for that gene.
+        Each cDNA sequence was then translated and placed in a
+        <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX> formatted file. For each of the resultant files a
+        BLAST [ <TIMEX TYPE="DATE">24</TIMEX> ] search was performed against the SwissProt
+        database. All sequences from the returned hits were then
+        stored in FASTA format files. For each of the genes that
+        returned BLAST results with e-value scores smaller than
+        1e-<NUMEX TYPE="CARDINAL">15</NUMEX>, <ENAMEX TYPE="GPE">ClustalW</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] was used to build a sequence
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>.
+        For each amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> in the position of interest, the
+        negative entropy was determined using the following formula
+        [ <TIMEX TYPE="DATE">26</TIMEX> ] :
+        
+        Where the P 
+        i are the probabilities of finding a
+        particular amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> at that position. For this analysis,
+        <ENAMEX TYPE="ORGANIZATION">gapped</ENAMEX> positions, "-", were considered independent amino
+        <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>.
+        For each known mutation, the negative entropy of the
+        column it occupies was tabulated. The average negative
+        entropy for each mutation within a gene was compared to the
+        average entropy of all columns satisfying the criteria for
+        analysis. Mutations outside of the coding region or
+        mutations encoding termination codons were discarded.
+        The list of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was then sorted by average negative
+        entropy of the mutations. We then calculated the
+        conservation entropy, <ENAMEX TYPE="ORGANIZATION">CE</ENAMEX>, using:
+        <ENAMEX TYPE="ORGANIZATION">CE</ENAMEX> = average NE of mutation positions/average NE of all
+        positions in the gene sequence
+      
+    
+  

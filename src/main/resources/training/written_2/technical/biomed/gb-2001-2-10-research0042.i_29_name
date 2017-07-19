@@ -1,0 +1,840 @@
+
+  
+    
+      
+        Background
+        Genome-wide expression data such as that obtained with
+        microarrays presents a significant challenge for analysis.
+        A frequent goal of expression analysis is to identify genes
+        whose expression is altered by an experimental condition.
+        In general, automated methods are needed to accomplish this
+        task owing to the large amount of data involved. A good
+        example of an expression dataset requiring detailed,
+        complex analysis comes from the work of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. In their study, the
+        expression of <NUMEX TYPE="CARDINAL">13,067</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and expressed sequence tags
+        (<ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>) was assayed using oligonucleotide arrays [ <ENAMEX TYPE="LAW">2</ENAMEX>] for
+        each of <NUMEX TYPE="CARDINAL">six</NUMEX> brain regions in <NUMEX TYPE="CARDINAL">two</NUMEX> different inbred strains
+        of <ENAMEX TYPE="ANIMAL">mice</ENAMEX>, with each condition measured twice. This data is a
+        potentially rich source of targets for investigting
+        <ENAMEX TYPE="ORGANIZATION">behavioral</ENAMEX> and neurophysiological differences between the
+        mouse strains (<NUMEX TYPE="CARDINAL">C57B1/6</NUMEX> and <ENAMEX TYPE="PRODUCT">129SvEv</ENAMEX>), as well as structural
+        and functional differences among brain regions.
+        Both regional and strain variations in gene expression
+        are relevant to questions in neuroscience. <ENAMEX TYPE="PER_DESC">Inbred</ENAMEX> mouse
+        <ENAMEX TYPE="PLANT">strains</ENAMEX> are used in many studies relating to human
+        <ENAMEX TYPE="PERSON">neurological</ENAMEX> and neuropsychiatric disorders such as stroke
+        and <ENAMEX TYPE="DISEASE">alcoholism</ENAMEX>; however, it has long been recognized that
+        different strains vary significantly in the results
+        obtained in such studies [ <ENAMEX TYPE="LAW">3</ENAMEX>]. Expression analysis is one
+        approach to exploring the underlying molecular causes of
+        these differences. Similarly, expression analysis can
+        provide insight into <NUMEX TYPE="CARDINAL">one</NUMEX> potential source of functional
+        differences between brain regions. Traditional expression
+        analysis (for example, northern blots and 
+        in situ hybridization) can be used to
+        uncover such expression patterns <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> at a time, but
+        the high-throughput nature of array technology allows
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to take a much wider view.
+        Given the data of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, and the questions one can
+        address with it, the issue becomes how to proceed with the
+        analysis. Many <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> use an 
+        'ad hoc' approach: for example, the
+        'fold change' for each gene is considered, where fold
+        change is defined as the ratio of gene expression in a test
+        condition to that in a control condition. Changes in
+        expression above a certain fold-change threshold are deemed
+        to be significant. The problem with such methods is that
+        they typically do not take into account the variability of
+        the measurements being considered. When using the
+        <ENAMEX TYPE="ORGANIZATION">Microarray Analysis Suite</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>), one also has the
+        option of using the 'absent/present' calls, determined by
+        the software, to make discriminations as to whether a gene
+        is expressed in <NUMEX TYPE="CARDINAL">one</NUMEX> set of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> and not others. The
+        trouble with this method is that the absent/present
+        threshold is essentially arbitrary, and there is no easy
+        <ENAMEX TYPE="PERSON">way</ENAMEX> to estimate the numbers of false positives and false
+        negatives obtained. Typically in such studies, genes are
+        identified as 'changed' or 'not changed', often without a
+        quantitative estimate of the statistical confidence in that
+        conclusion.
+        Because of the shortcomings of 
+        ad hoc methods, some <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> have
+        tackled the problem of how to apply more robust statistical
+        methods to the problem of identifying changed genes in a
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> [ <ENAMEX TYPE="LAW">4, 5, 6</ENAMEX>]. Most such methods deal with the case of
+        a two-way comparison, for example between a wild-type
+        <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> and one that is mutant in a gene of interest. But,
+        many <ENAMEX TYPE="PER_DESC">experimenters</ENAMEX> are studying complex systems and
+        generate large datasets with <NUMEX TYPE="CARDINAL">more than one</NUMEX> experimental
+        variable. Such is the case for <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>], where both strain and
+        brain <ENAMEX TYPE="LOCATION">region</ENAMEX> were varied in the same experiment. Here, we
+        investigate methods appropriate for analyzing this type of
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> and determine how the methods affect the
+        interpretation of the data of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="CONTACT_INFO">et al.</ENAMEX> 
+        There are several desirable properties of a method for
+        analysis of microarray data. First, it should provide an
+        estimate of the confidence that the gene-expression pattern
+        observed would occur by chance, that is, a 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value. Failing the ability to
+        generate accurate 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values, the method should at least
+        automatically rank the genes in order of interest. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+        the method should be flexible enough to allow for complex
+        experimental designs. Methods that permit us to compare
+        <NUMEX TYPE="CARDINAL">only two</NUMEX> conditions are insufficient. Finally, an ideal
+        method is computationally simple and fast. Mathematical
+        <ENAMEX TYPE="PERSON">simplicity</ENAMEX> and familiarity are also advantages when the
+        methods must be used and interpreted by <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> with
+        little statistical background.
+        A standard technique for analyzing such multivariate
+        datasets, which fulfills the above criteria, is analysis of
+        <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> (ANOVA) [ <ENAMEX TYPE="LAW">7</ENAMEX>]. For the data of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, the appropriate method is a
+        <ENAMEX TYPE="ORGANIZATION">two-way ANOVA</ENAMEX> because <NUMEX TYPE="CARDINAL">two</NUMEX> variables - strain and region -
+        were involved. <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> is a well understood and powerful
+        method, but has <NUMEX TYPE="CARDINAL">two</NUMEX> drawbacks that can make its application
+        difficult in practice. First, when <NUMEX TYPE="CARDINAL">more than two</NUMEX> categories
+        are present for a variable, as in the case of the work of
+        <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, where <NUMEX TYPE="CARDINAL">six</NUMEX> brain regions were
+        studied, additional work must be done to determine which
+        categories underlie the effects observed. Another drawback
+        of <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> is that in its standard form, the number of
+        replicates of each condition should be equal. Adjustments
+        can be made when small differences in the number of
+        replicates occur, but large deviations are difficult to
+        correct for.
+        We note that some <ENAMEX TYPE="PER_DESC">workers</ENAMEX> have previously applied
+        <ENAMEX TYPE="ORGANIZATION">one-way ANOVA</ENAMEX> to expression data [ <ENAMEX TYPE="LAW">8</ENAMEX>], and that the use of 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -tests, which is one-way <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> for
+        the limiting case of <NUMEX TYPE="CARDINAL">two</NUMEX> replicated conditions, is becoming
+        a more common method for analyzing expression data [ <ENAMEX TYPE="LAW">6</ENAMEX>].
+        <ENAMEX TYPE="ORGANIZATION">Kerr</ENAMEX> 
+        et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>] applied <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> to
+        <NUMEX TYPE="CARDINAL">two</NUMEX>-color cDNA arrays in an experiment involving a single
+        biological variable (tissue type). Their model encompassed
+        all the genes on the array, as well as experimental factors
+        such as dye and array effects. Their complex model differs
+        from the gene-specific application for experiments with
+        <NUMEX TYPE="CARDINAL">more than one</NUMEX> biological variable that we discuss here.
+        An alternative way of approaching the analysis problem
+        is to view it as one of feature selection. In machine
+        learning, feature selection seeks to identify the data
+        points (here, expression profiles) that are most
+        informative when trying to learn a classification problem.
+        In the context of the data of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, we are seeking genes that
+        differentiate between the genotypes and/or brain regions in
+        our samples. While learning to predict this classification
+        is not relevant here, the underlying task is effectively
+        <NUMEX TYPE="CARDINAL">one</NUMEX> of feature selection. The features in this situation
+        are the individual samples (arrays). A recent application
+        of feature selection to microarray data was described by
+        Golub 
+        et al. [ <TIMEX TYPE="DATE">10</TIMEX>]. They sought to identify
+        genes that best differentiated between <NUMEX TYPE="CARDINAL">two</NUMEX> types of <ENAMEX TYPE="DISEASE">tumor</ENAMEX>.
+        Because feature selection methods can be quite simple, can
+        be used to differentiate between any number of categories,
+        and permit ranking genes in accordance with how well they
+        differentiate between <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> or strains, feature selection
+        fulfills <NUMEX TYPE="CARDINAL">all three</NUMEX> criteria for a suitable analysis method.
+        A similar method was used by Chu 
+        et al. [ <TIMEX TYPE="DATE">11</TIMEX>] to perform clustering:
+        they created a set of idealized expression patterns based
+        on the data from hand-selected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and identified
+        additional genes that were similar to the desired
+        patterns.
+        <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+        <ENAMEX TYPE="SUBSTANCE">et al.</ENAMEX> used criteria based on
+        absent/present calls and fold-change thresholds for their
+        analysis, and applied multiple 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -tests to each gene to detect
+        additional regional variations in expression [ <ENAMEX TYPE="LAW">1, 12</ENAMEX>]. With
+        these methods they identified <NUMEX TYPE="CARDINAL">24</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> showing strain
+        <ENAMEX TYPE="PERSON">variation</ENAMEX>, and <NUMEX TYPE="CARDINAL">about 240</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> showing some type of
+        regional variation. An examination of the data and
+        experimental design suggests that methods such as <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> and
+        feature selection could be profitably applied. Here we
+        describe the identification of additional genes showing
+        possible strain- and <ENAMEX TYPE="LOCATION">region</ENAMEX>-dependent patterns of
+        expression from the data of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+        et al. We find that <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> and feature
+        selection are complementary, and can be combined to form a
+        powerful method for detecting interesting genes in a
+        complex dataset.
+      
+      
+        Results
+        
+          Strain-specific expression
+          At a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value cut-off of <NUMEX TYPE="PERCENT">10 -5</NUMEX>, we found
+          <NUMEX TYPE="CARDINAL">about 65</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> that show strain-specific variation
+          in expression across all areas, compared to <NUMEX TYPE="CARDINAL">24</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          showing overall differences between strains identified by
+          <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> near the top
+          of our ranking include many of those chosen by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>], and all <NUMEX TYPE="CARDINAL">24</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> identified by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> have 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values <TIMEX TYPE="DATE">less than 10 -3by</TIMEX> either
+          <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>, template match, or both. <NUMEX TYPE="CARDINAL">Two</NUMEX> examples of
+          strain-specific genes not identified in the previous work
+          are shown in more detail Figure <TIMEX TYPE="DATE">4a</TIMEX>. The <NUMEX TYPE="ORDINAL">first</NUMEX> is
+          <ENAMEX TYPE="CONTACT_INFO">Sparc/osteonectin</ENAMEX> (testican), which was detected at lower
+          levels in <TIMEX TYPE="DATE">the C57B16</TIMEX> strain. The <NUMEX TYPE="ORDINAL">second</NUMEX> is phosphatase
+          <ENAMEX TYPE="CONTACT_INFO">ACP1/ACP2</ENAMEX>, with the opposite expression pattern. We rank
+          <ENAMEX TYPE="CONTACT_INFO">ACP1/ACP2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Sparc/</ENAMEX>osteonectin as having <TIMEX TYPE="DATE">the 9th</TIMEX> and
+          23rd strongest strain differences, respectively (both
+          <ENAMEX TYPE="CONTACT_INFO">ACP1/ACP2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Sparc/</ENAMEX><ENAMEX TYPE="PRODUCT_DESC">osteonectin</ENAMEX> are also shown in Figure
+          <NUMEX TYPE="CARDINAL">3</NUMEX>). For comparison, Figure <NUMEX TYPE="CARDINAL">4bshows</NUMEX> Î²-globin, which was
+          identified in [ <ENAMEX TYPE="LAW">1</ENAMEX>] and was ranked <NUMEX TYPE="ORDINAL">67th</NUMEX> by template match.
+          Overall, we rank <NUMEX TYPE="CARDINAL">46</NUMEX> previously unrecognized genes as
+          having stronger strain differences than Î²-globin.
+          <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] also identified an
+          additional <NUMEX TYPE="CARDINAL">49</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that varied between strains for
+          particular <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>. We have not specifically searched for
+          such <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>; the <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> interaction effects would
+          correspond most closely to such a category, but very few
+          genes were found to have significant interaction effects
+          (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Preliminary results (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods: <ENAMEX TYPE="PERSON">Availability</ENAMEX> of data and software) using
+          templates that select specifically for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed in
+          <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="LOCATION">region</ENAMEX> in one strain suggest that this strategy will
+          be useful for identifying more complex expression
+          patterns as well as the simple ones we describe in detail
+          here.
+        
+        
+          Region-specific expression
+          As with the strain-specific genes, we identify a
+          number of putative region-specific genes in addition to
+          those identified by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. The <NUMEX TYPE="CARDINAL">two</NUMEX> methods lead
+          to an estimate that, at a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of <NUMEX TYPE="PERCENT">10 -5</NUMEX>, up to
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">600</TIMEX> genes show variability of expression
+          with respect to brain region (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), or <NUMEX TYPE="PERCENT">around 6%</NUMEX> of
+          the total, compared to the <NUMEX TYPE="CARDINAL">242</NUMEX> region-specific genes
+          identified by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>] and <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. As for the
+          strain-specific genes, some genes identified in [ <ENAMEX TYPE="LAW">1</ENAMEX>] do
+          not receive particularly high scores in our assays
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, and see Additional data files). For example,
+          both <ENAMEX TYPE="SUBSTANCE">hippocampal genes</ENAMEX> identified in [ <ENAMEX TYPE="LAW">1</ENAMEX>] have 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values greater than <NUMEX TYPE="CARDINAL">0.001</NUMEX> and do
+          not appear in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. In general, however, most of the
+          genes selected in [ <ENAMEX TYPE="LAW">1</ENAMEX>] appear fairly high on our lists,
+          although additional genes are often given even higher
+          scores by our assays.
+          In agreement with <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>], we find that the
+          <ENAMEX TYPE="ORGANIZATION">cerebellum</ENAMEX> is by far the most distinct of the brain
+          regions studied. The bulk of the genes identified as
+          showing region-specific effects appear to be due to
+          cerebellum enrichment or depletion (<NUMEX TYPE="CARDINAL">339</NUMEX> out of <NUMEX TYPE="CARDINAL">595</NUMEX> at
+          template-match 
+          <ENAMEX TYPE="CONTACT_INFO">p < 10 -5</ENAMEX>). The midbrain was the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> most distinct single <ENAMEX TYPE="GPE_DESC">region</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). In
+          contrast, the <ENAMEX TYPE="ORG_DESC">cortex</ENAMEX> had the least distinct expression
+          pattern, being very similar to other forebrain regions,
+          as pointed out by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. When considered together,
+          the forebrain (represented by cortex, amygdala,
+          <ENAMEX TYPE="ORGANIZATION">hippocampus</ENAMEX> and entorhinal cortex) has many genes that
+          distinguish it from the midbrain and cerebellum (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">1</NUMEX>). Taken separately, the cortex, amygdala, hippocampus
+          and entorhinal cortex had relatively few genes with
+          distinct patterns (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). The single
+          amygdala-specific <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> (ARP-<NUMEX TYPE="CARDINAL">1</NUMEX>) identified by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> appears at the top of our
+          list of amygdala-specific genes, and although we identify
+          a few other high-scoring genes in that category, none
+          approaches the specificity of <ENAMEX TYPE="SUBSTANCE">ARP-1</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Details
+          of <NUMEX TYPE="CARDINAL">a few</NUMEX> examples of high-scoring genes we identified for
+          <ENAMEX TYPE="ORGANIZATION">hippocampus</ENAMEX> and midbrain are shown in Figure 4cand <ENAMEX TYPE="PERSON">d</ENAMEX>,
+          respectively.
+          In many cases, the expression patterns we report seem
+          to be novel, but in others supporting evidence is found
+          in the literature. We did not attempt a comprehensive
+          literature survey for each gene, but support was readily
+          found for the hippocampus enrichment of copine <NUMEX TYPE="CARDINAL">6</NUMEX> [ <TIMEX TYPE="DATE">13</TIMEX>],
+          <ENAMEX TYPE="ORGANIZATION">neuropeptide Y</ENAMEX> receptor Y2 [ <TIMEX TYPE="DATE">14</TIMEX>], <ENAMEX TYPE="PRODUCT">Atonal 2</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>], and
+          <ENAMEX TYPE="ORGANIZATION">kallikrein</ENAMEX> 8 (neuropsin) [ <TIMEX TYPE="DATE">16</TIMEX>]. The same can be said for
+          the midbrain enrichment of <ENAMEX TYPE="ORGANIZATION">Rin</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>], <ENAMEX TYPE="PRODUCT">Peg3</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>], and
+          <ENAMEX TYPE="ORGANIZATION">nexin</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX>]. Some cerebellar-enriched <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which we
+          found supporting evidence include calsequestrin [ <TIMEX TYPE="DATE">20, 21</TIMEX>]
+          and aldolase <NUMEX TYPE="CARDINAL">3</NUMEX> (zebrin) [ <TIMEX TYPE="DATE">22</TIMEX>].
+        
+      
+      
+        Discussion
+        
+          Evaluation of methodology
+          The difference in the genes we selected compared to
+          <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] seems to depend on <NUMEX TYPE="CARDINAL">two</NUMEX>
+          factors: ignoring the absent/present calls, and using
+          statistical methods that provide a score for each gene,
+          rather than simply choosing to assign genes to the group
+          of 'changed' genes. <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> appear to have used criteria
+          that were conservative given the measures used (that is,
+          <NUMEX TYPE="CARDINAL">three</NUMEX> out of <NUMEX TYPE="CARDINAL">four</NUMEX> absent/present calls must be 'present'
+          to consider a gene expressed). But, the fact that the
+          <ENAMEX TYPE="ORGANIZATION">standard ANOVA</ENAMEX> often does not support the evaluation
+          based on absent/present calls supports the idea that
+          absent/present calls, even if used conservatively, are
+          neither specific nor sensitive enough.
+          There are <NUMEX TYPE="CARDINAL">two</NUMEX> particular drawbacks to using
+          absent/present calls for this type of analysis. Most
+          important, each absent/present call is based on only a
+          single array. If one has only a single array, such a
+          guideline for the ability to detect a given gene may be
+          useful. When multiple measurements are made, however, as
+          in the dataset considered here, there is no set method
+          for evaluating the data. Is a gene 'present' in the
+          experiment when it is 'present' on <NUMEX TYPE="CARDINAL">three</NUMEX> of <NUMEX TYPE="CARDINAL">four</NUMEX> arrays,
+          or are <NUMEX TYPE="CARDINAL">two</NUMEX> out of <NUMEX TYPE="CARDINAL">four</NUMEX> arrays sufficient? Instead of such
+          
+          ad hoc criteria, we used
+          statistical comparisons of the samples. This means that
+          low-magnitude signals, which might have been called
+          <ENAMEX TYPE="ORGANIZATION">'absent'</ENAMEX>, can turn out to be reliable and meaningful when
+          several observations are made. A <NUMEX TYPE="ORDINAL">second</NUMEX> problem with the
+          absent/present calls is that they are based on
+          essentially arbitrary thresholds, with no simple estimate
+          of the risk of false positives or false negatives. The
+          use of methods that provide 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values allows a much
+          finer-grained analysis. For these reasons, we feel that
+          absent/present calls should generally not be used to
+          analyze experiments where <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> were performed.
+          Despite the advantages of ignoring absent/present
+          calls, the 'absolute difference' expression value
+          provided by the <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> software is not ideal. In
+          particular, large negative values occur at a much higher
+          rate than expected (data not shown). These negative
+          values are probably due to problems with mismatch probes,
+          as described in the <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods section. A more
+          thorough analysis would remove, or otherwise correct for,
+          probe pairs containing such problematic probes from the
+          raw data, which we did not have access to here. At least
+          <NUMEX TYPE="CARDINAL">two</NUMEX> groups have described alternative methods that start
+          with the 'perfect match/mismatch' pair data [ <TIMEX TYPE="DATE">23, 24</TIMEX>],
+          which may be better at identifying and eliminating such
+          troublesome data points.
+          The region-specific genes listed in Figure 2reflect a
+          combination of the two methods we used. This combination
+          takes advantage of desirable features of both methods:
+          <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> can detect any effect of region on expression,
+          whereas template matching looks specifically for one
+          pattern at a time. By sorting <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> hits into regions
+          based on template-match 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values, we identify some genes
+          that were missed by template matching. In general, this
+          is caused by the ability of <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> to detect significant
+          expression patterns that do not fit any particular
+          template very well, but when examined manually reveal
+          interesting patterns related to the template. We note
+          that other methods of 
+          post hoc testing <ENAMEX TYPE="PRODUCT">ANOVA</ENAMEX> data exist [
+          <NUMEX TYPE="CARDINAL">7</NUMEX>]. A benefit of the template-match method is that it is
+          very simple to apply, and we believe we found some
+          patterns that would be fairly difficult to find using
+          other methods. Thus we consider the template-match method
+          a useful complement to standard 
+          post hoc tests.
+          In the search for region-specific genes, <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> tended
+          to be more conservative than template matching. This is
+          probably because <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> retains information about the
+          experimental design; for the example of synuclein given
+          in the results, it 'knows' that there is a large
+          disagreement between <NUMEX TYPE="CARDINAL">two</NUMEX> matched replicates in the
+          midbrain <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, whereas the template match based on the
+          <ENAMEX TYPE="PERSON">correlation coefficient</ENAMEX> considers all variations to be
+          essentially equivalent. The fact that there are <TIMEX TYPE="TIME">only four</TIMEX>
+          samples for each tissue, while there are twelve for each
+          strain, means that tests for tissue-specific genes are
+          even more susceptible to the effect of noise in the data.
+          This helps explain why the discrepancies between template
+          match and <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> was larger for the region-specific genes
+          than for strain-specific genes.
+          The methods we describe have some limitations. ANOVA
+          loses power when the number of replicates is not the same
+          for all the conditions, and the experiment must also
+          follow a complete block design, where all possible
+          combinations of factors are tested. Even in cases where
+          these conditions are not adhered to, multiple 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -tests (which are generally
+          <ENAMEX TYPE="ORGANIZATION">proscribed</ENAMEX> in multivariate statistics in favor of <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>)
+          would be preferable to resorting to 
+          ad hoc methods for assessing
+          statistical significance of the results. The
+          template-match method has the potential drawback that if
+          used alone, one would miss potentially interesting
+          patterns that do not resemble the template(s) being
+          tested. This may be acceptable if there is a clear idea
+          of what is being sought in the experiment, but is
+          possibly detrimental in studies relying on exploration
+          and serendipity to find patterns. The
+          <ENAMEX TYPE="CONTACT_INFO">ANOVA/template-</ENAMEX>match combination ameliorates this problem
+          as one can choose to be guided primarily by the ANOVA 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value (which is not pattern
+          specific) while using the template to reduce the
+          complexity of the analysis by partitioning the data into
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> based on interesting patterns.
+        
+        
+          Biological significance
+          Our results resemble those of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] in that many of the
+          genes given high <ENAMEX TYPE="PER_DESC">scores</ENAMEX> have previously defined roles in
+          the function of the nervous system. At the same time,
+          many of the high scoring genes have 'housekeeping' roles
+          or more general cellular functions that are not specific
+          to the nervous system. Currently this conclusion is based
+          on a manual examination of the annotations and the
+          literature associated with top-scoring genes. In the
+          future, as annotations improve, we hope to be able to
+          perform such assessments quantitatively and objectively.
+          Clearly, the ranked list of genes we provide can only act
+          as an input to further studies of nervous system
+          function, and does not provide any ready answers to
+          questions about behavioral or functional differences.
+          As already indicated, another general conclusion from
+          our study is that the variation between <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> and
+          strains appears to be greater than originally indicated
+          by the analysis of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. In a commentary on the
+          original study, <ENAMEX TYPE="GPE">Geschwind</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] sought explanations for
+          the apparent paucity of region-specific and
+          strain-specific gene expression. Although the sensitivity
+          of the microarray assay itself may be at issue, our
+          results clearly show that the use of different
+          computational analysis methods has a dramatic effect on
+          the interpretation of the data. <ENAMEX TYPE="ORGANIZATION">Geschwind</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] also
+          expressed surprise that the cerebellum, which is
+          histologically more homogeneous than the other brain
+          regions assayed, was discovered to have the largest
+          number of uniquely expressed genes. This interpretation
+          of the data assumes that the other regions such as cortex
+          and hippocampus, being more complex and heterogeneous,
+          should have more differences between each other as well
+          as from the cerebellum. However, because hippocampus,
+          <ENAMEX TYPE="ORGANIZATION">neocortex</ENAMEX> and entorhinal cortex are all cortical
+          structures with many cell types in common, it is not
+          surprising that they have similar gene expression
+          profiles. In contrast, the cerebellum has a distinct
+          developmental origin, as well as a unique cellular
+          <ENAMEX TYPE="PERSON">composition</ENAMEX>, compared to all the other regions assayed.
+          Thus it is not at all surprising that the cerebellum is
+          the most distinct region. In agreement with this line of
+          logic, <TIMEX TYPE="DATE">the mid-</TIMEX>brain, which is histologically and
+          developmentally distinct from the cortex and cerebellum,
+          was the next most distinct region. We also note that,
+          contrary to the suggestion of <ENAMEX TYPE="ORGANIZATION">Geschwind</ENAMEX>, the fact that
+          the <ENAMEX TYPE="ORG_DESC">cerebellum</ENAMEX> had the largest number of 'uniquely
+          expressed genes' is not equivalent to stating that the
+          <ENAMEX TYPE="ORGANIZATION">cerebellum</ENAMEX> has the highest molecular complexity [ <TIMEX TYPE="DATE">25</TIMEX>]. To
+          assess this type of complexity, the total number of mRNA
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> expressed in the tissue would have to be
+          measured, but such information is not readily available.
+          If we take the number of 'present' calls provided by the
+          Affymetrix software as a <NUMEX TYPE="ORDINAL">first</NUMEX> approximation of a
+          complexity measure, we find no evidence that the
+          <ENAMEX TYPE="PERSON">cerebellum</ENAMEX> expresses more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> than other regions
+          assayed by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> (data not shown).
+          A recent study by Zirlinger 
+          et al. [ <TIMEX TYPE="DATE">26</TIMEX>] also analyzed
+          region-specific gene expression in the amygdala,
+          <ENAMEX TYPE="ORGANIZATION">cerebellum</ENAMEX> and hippocampus, as well as the olfactory bulb
+          and periaqueductal gray, for a single mouse strain. Our
+          results, and those of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, can be compared to theirs,
+          though there were several important differences in their
+          study that need to be taken into account. First, unlike
+          the study of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, no replicates were
+          performed for each <ENAMEX TYPE="GPE_DESC">region</ENAMEX>, although 
+          in situ hybridization was used to
+          confirm some of the array results. In addition, the
+          <ENAMEX TYPE="PERSON">strain Zirlinger</ENAMEX> 
+          <ENAMEX TYPE="SUBSTANCE">et al.</ENAMEX> used was not one used by
+          <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, and there were also
+          differences in the methods for isolating the tissues used
+          by the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Finally, Zirlinger 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> assayed a larger number of
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> (<NUMEX TYPE="CARDINAL">approximately 34,000</NUMEX>) than were in the
+          dataset we studied (<NUMEX TYPE="CARDINAL">approximately 13,000</NUMEX>). Some
+          comparisons can be made, however.
+          In agreement with our results and the results of
+          <ENAMEX TYPE="CONTACT_INFO">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, Zirlinger 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> found that the cerebellum
+          was most distinct from the amygdala and hippocampus. Some
+          of the genes they identified are also given high scores
+          by our tests, adding further support to the validity of
+          our results. Of the cerebellar genes identified by
+          Zirlinger 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, <NUMEX TYPE="CARDINAL">35</NUMEX> of the <NUMEX TYPE="CARDINAL">70</NUMEX> which are on
+          the <NUMEX TYPE="ORDINAL">Mu11K</NUMEX> arrays have ANOVA 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values <NUMEX TYPE="PERCENT">less than 10 -4</NUMEX>, while
+          for the template match the number is <NUMEX TYPE="CARDINAL">39/70</NUMEX>. For the
+          amygdala <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, the numbers are <NUMEX TYPE="MONEY">2/10</NUMEX> (ANOVA) and <NUMEX TYPE="CARDINAL">1/10</NUMEX>
+          (template match). (None of the hippocampal <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> they
+          identified appears to be on <TIMEX TYPE="DATE">the Mu11K</TIMEX> arrays.) One
+          possible source of discrepancies here is that Zirlinger 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> did not assay neocortex,
+          <ENAMEX TYPE="ORGANIZATION">midbrain</ENAMEX> or entorhinal cortex. Expression in these
+          regions would decrease their significance in our assays
+          but would not affect their results. The differences in
+          our results suggest that caution is advisable in making
+          broad interpretations based on large-scale gene
+          expression data from a limited sample of tissues and
+          genetic backgrounds, and that confirmation by another
+          method is desirable.
+          In summary, our results expand the number of candidate
+          genes for investigation of the genetic basis of
+          behavioral differences between the <NUMEX TYPE="CARDINAL">C57BL/6</NUMEX> and 129SvEv
+          <ENAMEX TYPE="PLANT">mouse strains</ENAMEX>, as well as the number of genes that might
+          be responsible for structural and functional differences
+          between brain regions in the mouse. More sophisticated
+          methods than ours could be envisioned, but <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> and
+          template matching have much to recommend them. They yield
+          results with high sensitivity and selectivity, and are
+          fast, simple and based on commonly understood statistical
+          principles. They should also be readily applicable to
+          other complex expression datasets.
+        
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX>
+          Expression data was downloaded from the <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site
+          established by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>]. The data had already
+          been normalized and analyzed using the Affymetrix
+          software. Affymetrix arrays use sets of around <NUMEX TYPE="CARDINAL">20</NUMEX> pairs
+          of oligonucleotide probes to represent a single gene or
+          EST. Each pair consists of a 'perfect-match' primer and a
+          <ENAMEX TYPE="ORGANIZATION">'mismatch</ENAMEX>' primer that has a single base change from the
+          perfect match and is meant to control for nonspecific
+          hybridization effects. For each gene (<ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set), the
+          Affymetrix software calculates an 'average difference'
+          between the intensities of the perfect-match and mismatch
+          primers, and additionally makes an overall determination
+          as to the absence or presence of a gene (absent/present
+          call) in the sample. For our methods, we used only the
+          average difference measures. We assembled the average
+          difference data for the <NUMEX TYPE="CARDINAL">24</NUMEX> arrays into a single matrix of
+          24 columns and <NUMEX TYPE="CARDINAL">13,067</NUMEX> rows. Updated annotations for the
+          sequences on the arrays were obtained from the <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">27</NUMEX>] and the <ENAMEX TYPE="ORGANIZATION">FANTOM</ENAMEX> [ <TIMEX TYPE="DATE">28, 29</TIMEX>] <ENAMEX TYPE="PRODUCT_DESC">databases</ENAMEX>.
+        
+        
+          Feature selection
+          A simple method of selecting genes that display
+          particular characteristics across 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> experiments is to compare each
+          profile to a <ENAMEX TYPE="PER_DESC">template</ENAMEX> representing the pattern being
+          sought. We define a template as a binary vector of length
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> with a value of o corresponding
+          to one expression value, and a value of <NUMEX TYPE="CARDINAL">1</NUMEX> corresponding
+          to a contrasting expression value. For example, a search
+          for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> showing strain-specific variation in expression
+          could be performed by comparing each profile to the
+          following template, given that the data columns are
+          grouped by strain (<NUMEX TYPE="MONEY">12</NUMEX> in <TIMEX TYPE="DATE">129SvEv</TIMEX>, followed by <NUMEX TYPE="CARDINAL">12</NUMEX> in
+          C57BL<NUMEX TYPE="CARDINAL">/6</NUMEX>):
+          <NUMEX TYPE="CARDINAL">0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1</NUMEX>
+          The <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation coefficient of the profile
+          with the template was used as a simple measure of the
+          agreement of the profile with the pattern. For <TIMEX TYPE="TIME">two</TIMEX>
+          profiles 
+          X and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX>, the correlation coefficient 
+          r is calculated using the
+          formula
+          
+          where and are the means of each profile, and sums are
+          taken for 
+          i ranging over all 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> values in each profile. If in the
+          template a value of o is interpreted as low expression
+          and <NUMEX TYPE="CARDINAL">1</NUMEX> as high expression, the example pattern would
+          identify samples with lower expression in the 129SvEv
+          than <NUMEX TYPE="CARDINAL">C57BL/6</NUMEX>. The correlation is only sensitive to the
+          shape of the profile, not the amplitude, so all profiles
+          having a shape like the template will be given higher
+          scores regardless of the actual expression values. To
+          allow both matches and 'anti-matches', in some cases we
+          used the absolute value of the correlation coefficient,
+          effectively allowing the meanings of ones and zeroes in
+          the template to be reversed for any particular
+          comparison. We note that templates that contain
+          continuous values instead of binary ones could be applied
+          in the same way, allowing <NUMEX TYPE="CARDINAL">one</NUMEX> to search for specific
+          patterns of greater complexity, but binary vectors were
+          sufficient for the purposes of this study. High
+          correlation values correspond to a good match. The 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values were calculated using a 
+          <ENAMEX TYPE="PRODUCT">t</ENAMEX> test on the correlation
+          <ENAMEX TYPE="ORGANIZATION">coefficient</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]. We prepared templates corresponding to
+          each of the regions assayed by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX>, as well as using the
+          strain-distinguishing template shown in the example
+          above.
+        
+        
+          Analysis of variance (ANOVA) and combining ANOVA
+          with feature selection
+          A standard linear two-way analysis of <ENAMEX TYPE="SUBSTANCE">variance</ENAMEX> [ <ENAMEX TYPE="CONTACT_INFO">7,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">30</NUMEX>] was performed independently on the data for each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. The effects examined for each gene were strain,
+          region, and interactions between strain and <ENAMEX TYPE="LOCATION">region</ENAMEX>. This
+          is expressed by the following linear equation:
+          
+          where 
+          E 
+          <ENAMEX TYPE="ORGANIZATION">ijk</ENAMEX>  is the measured expression
+          level of the gene in replicate 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> from one of <NUMEX TYPE="CARDINAL">six</NUMEX> regions 
+          i in one of <NUMEX TYPE="CARDINAL">two</NUMEX> strains 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> , Î¼ is the overall mean
+          expression level of the gene, and 
+          R and 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> are effects due to <ENAMEX TYPE="LOCATION">region</ENAMEX> and
+          strain, respectively. The 
+          RÂ·S term represents interactions
+          between strain and <ENAMEX TYPE="LOCATION">region</ENAMEX>, which might be detected if a
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is expressed only in specific <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> in only one
+          strain, for example. The error term (Îµ) accounts for
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> variation from replicate to replicate; that is,
+          any effect not accounted for by the other terms in the
+          model. Thus this model assumes that the measured
+          expression level of a gene can be described as a linear
+          combination of effects due to measurement error, strain,
+          region, and interactions between strain and <ENAMEX TYPE="LOCATION">region</ENAMEX>. The
+          null hypothesis is that a given factor does not have an
+          effect on expression, meaning that the corresponding term
+          in the equation is <NUMEX TYPE="CARDINAL">zero</NUMEX>. The extent to which the fitted
+          parameters 
+          R , 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> and 
+          RÂ·S for a gene are non-zero
+          provides the basis of the <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>. We generated 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for each of the three
+          effects for each gene using a standard <ENAMEX TYPE="PRODUCT">F-</ENAMEX>test [ <ENAMEX TYPE="LAW">7</ENAMEX>].
+          As discussed, <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> does not allow <NUMEX TYPE="CARDINAL">one</NUMEX> to directly
+          distinguish between effects due to particular levels of
+          <NUMEX TYPE="CARDINAL">one</NUMEX> parameter. Specifically, <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> might indicate that
+          there was a significant effect of region on expression,
+          but does not directly reveal which regions show different
+          expression from any others. Thus, one needs to apply a 
+          post hoc test to the <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> results
+          to determine which regions, if any, show differences from
+          others. Typically this type of multiple comparison is
+          done using statistical tests such as the <ENAMEX TYPE="ORGANIZATION">Tukey</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">ScheffÃ</ENAMEX>©
+          methods [ <ENAMEX TYPE="LAW">7</ENAMEX>]. In our study, each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> must be compared
+          to each other <ENAMEX TYPE="GPE_DESC">region</ENAMEX>, so <NUMEX TYPE="CARDINAL">15</NUMEX> comparisons must be made in
+          total for each gene. In practice, however, interpretation
+          of these results is more complicated: an additional stage
+          of analysis must be performed to generate, for example,
+          genes expressed at higher levels in the cerebellum than
+          in all other regions, as opposed to any <NUMEX TYPE="CARDINAL">one</NUMEX> other region
+          (as is given by <ENAMEX TYPE="ORGANIZATION">Tukey</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">ScheffÃ</ENAMEX>© methods). For our study
+          we used a simple strategy suggested by the idea of
+          template matching: we choose genes fitting a pattern in
+          which we are interested from a subset of genes with low
+          ANOVA 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for region effects.
+          Specifically, we first selected all genes which had
+          region-effect ANOVA 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values <NUMEX TYPE="MONEY">< 0.001</NUMEX>, and then
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> template matching to this set to select genes
+          which fit a particular pattern as described above, at a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of <NUMEX TYPE="CARDINAL">0.0001</NUMEX> or less. These
+          <ENAMEX TYPE="PERSON">arbitrary</ENAMEX>, and fairly lax, thresholds were used because
+          they proved to give reasonable numbers of genes in each
+          <ENAMEX TYPE="ORGANIZATION">partition</ENAMEX>. The resulting <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes can then be
+          ranked according to either their ANOVA 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value or by the correlation with
+          the template.
+        
+        
+          Interpretation of <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-values
+          An important issue in interpreting the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values generated by tests on
+          single genes is the effect of multiple tests.
+          Specifically, a test performed with a chosen 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value cut-off of <NUMEX TYPE="MONEY">0.01</NUMEX>, repeated
+          <NUMEX TYPE="CARDINAL">13,000</NUMEX> times, will on average generate <NUMEX TYPE="CARDINAL">130</NUMEX> false
+          <ENAMEX TYPE="ORGANIZATION">positives</ENAMEX> if each test is independent. Corrections for
+          this multiple testing problem are well known in
+          statistics but are somewhat controversial [ <TIMEX TYPE="DATE">31</TIMEX>]. Methods
+          used by Tusher 
+          et al. [ <ENAMEX TYPE="LAW">4</ENAMEX>] and Callow 
+          et al. [ <ENAMEX TYPE="LAW">5</ENAMEX>] attempt to provide
+          appropriate corrections for <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments, but
+          there is, as yet, no consensus on which methods to apply.
+          For the purposes of presenting our data here we report
+          results at <NUMEX TYPE="CARDINAL">three</NUMEX> different thresholds, which would, by
+          the <ENAMEX TYPE="GPE">Bonferroni</ENAMEX> criteria, yield on average <TIMEX TYPE="DATE">about 13</TIMEX>, <NUMEX TYPE="CARDINAL">0.13</NUMEX>,
+          or <NUMEX TYPE="MONEY">0.013</NUMEX> experiment-wide false positives under the
+          assumptions of our tests (that is, 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values of <NUMEX TYPE="MONEY">0.001</NUMEX>, <NUMEX TYPE="CARDINAL">10</NUMEX> -5and <NUMEX TYPE="PERCENT">10 -6</NUMEX>,
+          respectively). Because these cut-offs assume that each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is independent, which is clearly not the case, these
+          false positive estimates are probably conservative with
+          respect to the multiple testing issue. Because we assume
+          here that the standard F and 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> distributions are adequate for
+          describing the statistics we use, however, using a
+          conservative <ENAMEX TYPE="PER_DESC">cut-off</ENAMEX> provides some additional protection
+          from type I errors due to potential inaccuracy of the
+          uncorrected 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values.
+        
+        
+          Filtering selected genes
+          All the analysis described above was performed without
+          adjusting or filtering the raw average difference values.
+          But, a difficulty one commonly encounters with Affymetrix
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is that many <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets yield large negative
+          <ENAMEX TYPE="PERSON">expression</ENAMEX> (average difference) measures. Large negative
+          expression values occur when one or more mismatch primers
+          in a probe set have much higher intensities than their
+          corresponding perfect match primers. This may occur
+          because the mismatch primer is binding to some other
+          <ENAMEX TYPE="ORGANIZATION">nucleotide</ENAMEX> in the sample which does not represent the
+          gene for which a measurement is indented. Because the
+          Affymetrix <ENAMEX TYPE="ORG_DESC">software</ENAMEX> determines the presence or absence of
+          expression of a gene in part on the basis of how many
+          probe pairs give high intensities, not just the average
+          across the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs, some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may be flagged as
+          present despite having negative average differences.
+          Obviously this is not desirable; one would like to
+          correct for problematic mismatch probes before
+          calculating the average difference. A stop-gap measure,
+          which we used here as we did not have access to the
+          original raw data files, is to remove from consideration
+          entire probe sets which have this problem. Specifically,
+          genes with <NUMEX TYPE="CARDINAL">more than 6</NUMEX> values out of <NUMEX TYPE="CARDINAL">24</NUMEX> that were less
+          than <NUMEX TYPE="PERCENT">-20</NUMEX> were rejected; in practice this method is quite
+          conservative, removing only the most problematic genes.
+          We note that a few <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="CARDINAL">about 20</NUMEX> of <NUMEX TYPE="CARDINAL">approximately 240</NUMEX>)
+          selected by <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> would be removed from
+          consideration by our filter.
+        
+        
+          Comparison with the results of <ENAMEX TYPE="ORGANIZATION">Sandberg et al.</ENAMEX>[
+          <NUMEX TYPE="CARDINAL">1</NUMEX>]
+          A list of the genes identified in the previous work on
+          this dataset were obtained from Tables 1and <NUMEX TYPE="CARDINAL">2</NUMEX> of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX>
+          
+          et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] and <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX> of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX>
+          [ <TIMEX TYPE="DATE">12</TIMEX>]. A few <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of genes referred to in these studies
+          are not specifically identified in the <ENAMEX TYPE="ORG_DESC">publications</ENAMEX>: the
+          selection of <NUMEX TYPE="MONEY">eight hippocampus-enriched</NUMEX>, two
+          amygdala-decreased, <NUMEX TYPE="CARDINAL">five</NUMEX> entorhinal cortex-enriched and
+          <NUMEX TYPE="CARDINAL">three</NUMEX> entorhinal cortex-decreased genes is mentioned, but
+          the genes are not specifically identified in [ <ENAMEX TYPE="LAW">1</ENAMEX>]. From
+          our other comparisons, it is fairly likely that some of
+          these <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were given high scores in our analysis, so
+          our comparison to the results of <ENAMEX TYPE="PERSON">Sandberg</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> for those areas should be
+          regarded as incomplete.
+        
+        
+          Visualization of the data
+          In several of our figures, microarray data is
+          displayed as a matrix of rectangles, each corresponding
+          to an individual measurement of <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set/gene (rows)
+          in one sample (columns). The color, using a 'black-<ENAMEX TYPE="PER_DESC">body</ENAMEX>'
+          scale (from low values represented by black to dark red
+          to orange to yellow to high values represented by white)
+          indicates the relative level of expression of the gene
+          across the different conditions. The values for each gene
+          have been adjusted to a mean of <NUMEX TYPE="CARDINAL">zero</NUMEX> and a variance of
+          <NUMEX TYPE="CARDINAL">one</NUMEX> to facilitate comparisons between genes, and values
+          <ENAMEX TYPE="ORGANIZATION">></ENAMEX> 1 (or <ENAMEX TYPE="CONTACT_INFO">< -1</ENAMEX>) have been adjusted to <NUMEX TYPE="MONEY">1</NUMEX> (or <NUMEX TYPE="PERCENT">-1</NUMEX>),
+          increasing the contrast of the images.
+        
+        
+          Availability of software
+          The software used to create the visualizations of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and to perform template matching and <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> is
+          available on request from the <ENAMEX TYPE="PER_DESC">authors</ENAMEX>.
+        
+      
+      
+        Additional data files
+        The following text files containing the results of our
+        analyses are available with this article:
+        Anova results(the <NUMEX TYPE="ORDINAL">first</NUMEX> column is the probe name and the
+        final results are listed as "ff" (<NUMEX TYPE="ORDINAL">first</NUMEX> factor) "<ENAMEX TYPE="WORK_OF_ART">sf</ENAMEX>"
+        (<NUMEX TYPE="ORDINAL">second</NUMEX> factor) and fxsf (interaction); the <NUMEX TYPE="ORDINAL">first</NUMEX> factor is
+        strain, the <NUMEX TYPE="ORDINAL">second</NUMEX> is region. The numbers in those columns
+        are F values; the other columns are intermediate values
+        used to calculate F). This file may take some time to
+        open.
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results (each file contains <NUMEX TYPE="QUANTITY">three</NUMEX>
+        columns. The <NUMEX TYPE="ORDINAL">first</NUMEX> column is the probe name, the <NUMEX TYPE="ORDINAL">second</NUMEX> is
+        the correlation coefficient with the template. The <NUMEX TYPE="ORDINAL">third</NUMEX>
+        column is the 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value): cerebellum; hippocampus;
+        <ENAMEX TYPE="ORGANIZATION">midbrain</ENAMEX>; cortex; fore-brain; entorhinal cortex; amygdala;
+        strain.
+        All data and results, including detailed browseable
+        tables of the selected genes, and supplementary data and
+        information, are also available from our website [ <TIMEX TYPE="DATE">32</TIMEX>].
+        Additional data file 1
+        Anova results
+        Anova results
+        Click here for additional data file
+        Additional data file 2
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: cerebellum
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: cerebellum
+        Click here for additional data file
+        Additional data file 3
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: hippocampus
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: hippocampus
+        Click here for additional data file
+        Additional data file 4
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: midbrain
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: midbrain
+        Click here for additional data file
+        Additional data file 5
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: cortex
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: cortex
+        Click here for additional data file
+        Additional data file 6
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: fore-brain
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: fore-brain
+        Click here for additional data file
+        Additional data file 7
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: entorhinal cortex
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: entorhinal cortex
+        Click here for additional data file
+        Additional data file 8
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: amygdala
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: amygdala
+        Click here for additional data file
+        Additional data file 9
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: strain
+        <ENAMEX TYPE="ORGANIZATION">Template</ENAMEX> match results: strain
+        Click here for additional data file
+      
+    
+  

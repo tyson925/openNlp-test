@@ -1,0 +1,678 @@
+
+  
+    
+      
+        Background
+        Retrotransposons are mobile genetic elements that make
+        up a large fraction of most eukaryotic genomes. They are
+        particularly abundant in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>, where they are often a
+        principal component of nuclear <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. In <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX> <NUMEX TYPE="PERCENT">50-80%</NUMEX>, and in
+        wheat fully <NUMEX TYPE="PERCENT">90%</NUMEX>, of the genome is made up of
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. In <ENAMEX TYPE="ANIMAL">animals</ENAMEX> this percentage is
+        generally lower than in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> but can still be large. For
+        example, <NUMEX TYPE="PERCENT">more than 40%</NUMEX> of the human <ENAMEX TYPE="SUBSTANCE">genome</ENAMEX> is now known to
+        be composed of <ENAMEX TYPE="SUBSTANCE">retroelements</ENAMEX> [ <ENAMEX TYPE="LAW">3, 4</ENAMEX>].
+        All retrotransposons are distinguished by a life cycle
+        involving an <ENAMEX TYPE="SUBSTANCE">RNA intermediate</ENAMEX>. The <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> genome of a
+        <ENAMEX TYPE="ORGANIZATION">retroelement</ENAMEX> is copied into a double-stranded DNA molecule
+        by reverse transcriptase and is subsequently integrated
+        into the <ENAMEX TYPE="PER_DESC">host</ENAMEX>'s genome. <ENAMEX TYPE="ORGANIZATION">Retrotransposons</ENAMEX> fall into <NUMEX TYPE="CARDINAL">two</NUMEX> main
+        categories, those with long terminal repeats (LTRs), such
+        as retroviruses and <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons, and those that
+        lack such repeats, (for example, long interspersed nuclear
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">LINEs</ENAMEX>).
+        Our <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> is in the process of screening the
+        GenBank <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> ( 
+        Oryza sativa ) database (GBRD) and
+        the <ENAMEX TYPE="ORGANIZATION">Monsanto</ENAMEX> <ENAMEX TYPE="SUBSTANCE">rice dataset</ENAMEX> (MRD) for the presence of LTR
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX>. We have chosen to scan the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> genome
+        because, as the most important <ENAMEX TYPE="SUBSTANCE">food</ENAMEX> <ENAMEX TYPE="PLANT">crop</ENAMEX> in the world, much
+        of its sequence data is already available. With a haploid
+        content of <NUMEX TYPE="MONEY">430 million</NUMEX> <ENAMEX TYPE="ORG_DESC">base</ENAMEX> pairs (<ENAMEX TYPE="ORGANIZATION">Mbp</ENAMEX>), the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> is
+        the smallest among cultivated <ENAMEX TYPE="SUBSTANCE">cereals</ENAMEX> [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>] and only
+        <NUMEX TYPE="CARDINAL">about three</NUMEX> times larger than the smallest known genome
+        among angiosperms, that of 
+        Arabidopsis thaliana (<NUMEX TYPE="MONEY">~130 Mbp</NUMEX>). 
+        <ENAMEX TYPE="PERSON">O. sativa</ENAMEX> has one of the smallest
+        genomes among grasses as a whole [ <ENAMEX TYPE="LAW">6</ENAMEX>]. Genomes of other
+        <ENAMEX TYPE="SUBSTANCE">cereals</ENAMEX> are far larger. For example, the <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX> ( 
+        <ENAMEX TYPE="PERSON">Zea mays</ENAMEX> ) genome is <NUMEX TYPE="CARDINAL">2,500</NUMEX> million
+        base pairs (<NUMEX TYPE="CARDINAL">2.5</NUMEX> <ENAMEX TYPE="ORGANIZATION">Gbp</ENAMEX>) and that of <ENAMEX TYPE="SUBSTANCE">wheat</ENAMEX> ( 
+        Triticum aestivum ), <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="ORGANIZATION">Gbp</ENAMEX>. The
+        molecular genetic resources for <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> are excellent,
+        including detailed physical and genetic maps, large <ENAMEX TYPE="ORGANIZATION">YAC</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">BAC</ENAMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, an efficient transformation system, and an
+        extensive collection of expressed sequence tags (ESTs).
+        We have used a new search program, <ENAMEX TYPE="ORGANIZATION">LTR_STRUC</ENAMEX> (LTR
+        retrotransposon structure program; <ENAMEX TYPE="PERSON">E.M.M. and J.F.M.</ENAMEX>,
+        unpublished work), as the initial data-mining tool in our
+        survey. Structural features important to the algorithm on
+        which <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC is based include <NUMEX TYPE="CARDINAL">two</NUMEX> sites critical to
+        <ENAMEX TYPE="PERSON">replication</ENAMEX>, the primer-binding site (<ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>) and polypurine
+        <ENAMEX TYPE="PERSON">tract</ENAMEX> (PPT), as well as the presence of canonical
+        dinucleotides at the ends of each <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> (typically <ENAMEX TYPE="ORGANIZATION">TG</ENAMEX> and
+        CA). Particularly important are the direct or 'target-site'
+        <ENAMEX TYPE="PERSON">repeats</ENAMEX> (TSRs). When an LTR retrotransposon inserts itself
+        into host <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, a short (usually <ENAMEX TYPE="CONTACT_INFO">4-6 bp</ENAMEX>) segment of <ENAMEX TYPE="PER_DESC">host</ENAMEX> DNA
+        is replicated at the site of insertion. This feature allows
+        <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC to make an exact demarcation of the limits of a
+        putative element. Because it searches for retroelements on
+        the basis of their generic structure, <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC eliminates
+        much of the bias inherent in BLAST searches based on a
+        known retroelement query. After <ENAMEX TYPE="PER_DESC">elements</ENAMEX> were initially
+        identified using <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC, sequence analyses were carried
+        out to identify open reading frames (ORFs) encoding reverse
+        <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX> (RT) and other retrotransposon <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        Subsequent RT sequence alignments were carried out,
+        followed by construction of phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> from elements identified in our survey fall into
+        numerous distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX>, where 'family' is defined as a
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> of <ENAMEX TYPE="PER_DESC">elements</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> having mutual similarity of at
+        least <NUMEX TYPE="PERCENT">90%</NUMEX> at the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> level [ <ENAMEX TYPE="LAW">7</ENAMEX>]. In addition, <NUMEX TYPE="CARDINAL">four</NUMEX>
+        types of non-autonomous elements discussed here lack RT
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> ( 
+        Osr25, <ENAMEX TYPE="CONTACT_INFO">Osr37/Rire4</ENAMEX>, <TIMEX TYPE="DATE">Osr43</TIMEX> , and 
+        Osr44 ), and were classified as
+        distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX> on the basis of their unique structures
+        (see below).
+        Currently, there is no consensus with respect to <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+        retrotransposon nomenclature. In our method of
+        nomenclature, <ENAMEX TYPE="SUBSTANCE">rice LTR</ENAMEX> retrotransposons are specified by
+        the appellation 
+        <ENAMEX TYPE="ORGANIZATION">Osr</ENAMEX> ( 
+        Oryza sativa retrotransposon).
+        Distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX> are indicated by number (for example, 
+        Osr1, <TIMEX TYPE="DATE">Osr2</TIMEX>, <TIMEX TYPE="DATE">Osr3</TIMEX> , . . .). There have
+        been <NUMEX TYPE="CARDINAL">four</NUMEX> different nomenclatures previously used in
+        reference to <ENAMEX TYPE="SUBSTANCE">rice LTR retrotransposons</ENAMEX>: 
+        <ENAMEX TYPE="ORGANIZATION">Tos</ENAMEX> (transposon 
+        Oryza sativa ) [ <ENAMEX TYPE="LAW">8</ENAMEX>], 
+        <ENAMEX TYPE="ORGANIZATION">Rire</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">rice retrotransposon</ENAMEX>) [ <ENAMEX TYPE="LAW">9</ENAMEX>] 
+        <ENAMEX TYPE="ORGANIZATION">Rrt</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">rice retrotransposon</ENAMEX>) (<ENAMEX TYPE="ORGANIZATION">S. Wang</ENAMEX>,
+        submission to <ENAMEX TYPE="ORGANIZATION">EMBL</ENAMEX> database: 
+        Rtr3 (accession number <NUMEX TYPE="CARDINAL">T03666</NUMEX>), 
+        Rrt5 (<NUMEX TYPE="MONEY">T03669</NUMEX>), and 
+        Rrt8 (<NUMEX TYPE="MONEY">T03671</NUMEX>)), and 
+        <ENAMEX TYPE="ORGANIZATION">Osr</ENAMEX> ( 
+        Oryza sativa retrotransposon) (<ENAMEX TYPE="ORGANIZATION">N.</ENAMEX>
+        Jwa, submission to <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>: 
+        Osr1 (<NUMEX TYPE="MONEY">AB046118</NUMEX>)). We have chosen to
+        adopt the 
+        Osr nomenclature in this study
+        because it is consistent with the systematic logic
+        (indicative of genus and species of host <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>) used in
+        previous genomic studies of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons and
+        includes the letter 'r' to indicate retrotransposon.
+        However, in every case where we use the 
+        Osr acronym in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> to refer to
+        a previously named <ENAMEX TYPE="PER_DESC">family</ENAMEX>, we also include any pre-existing
+        name(s) for the <ENAMEX TYPE="PER_DESC">family</ENAMEX> (for example, 
+        <ENAMEX TYPE="CONTACT_INFO">Osr15/Tos12, Osr26/Rire2</ENAMEX> ).
+      
+      
+        Results and discussion
+        
+          Intra-element percent <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> nucleotide
+          identity
+          Because of the replication process characteristic of
+          <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons, the <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> of a given retroelement
+          are sequentially identical at the time the element
+          inserts into the <ENAMEX TYPE="PER_DESC">host genome</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>]. Thereafter, as an
+          element accumulates mutations, its LTRs become increasing
+          different from each other as substitutions specific for
+          each of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> increase in number. The level of
+          <ENAMEX TYPE="NATIONALITY">nucleotide</ENAMEX> identity seen between <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> of a particular
+          element, usually referred to as intra-element percent LTR
+          <ENAMEX TYPE="NATIONALITY">nucleotide</ENAMEX> identity (<NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX>), can be used in determining
+          the relative ages of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposon <ENAMEX TYPE="PER_DESC">families</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>].
+          In <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>, comparison of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> of the same element
+          often showed the presence of a <TIMEX TYPE="DATE">10 to 30</TIMEX> bp regional
+          duplication present in <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> but not the other. In
+          calculating <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX>, we have considered such duplications as
+          single mutation events.
+          As the neutral nucleotide substitution rate has yet to
+          be computed for <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>, we cannot presently equate <NUMEX TYPE="PERCENT">%</NUMEX>LNI
+          with a divergence time in <TIMEX TYPE="DATE">years</TIMEX>. However, the generally
+          low level of sequence divergence between flanking <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> of
+          <ENAMEX TYPE="PERSON">rice LTR</ENAMEX> retrotransposons (<NUMEX TYPE="PERCENT">1.7%</NUMEX>) indicates that most of
+          the euchromatic full-length <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons in <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          are relatively young, although significantly older
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> were also identified. The seeming preponderance
+          of young full-length <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons in the
+          euchromatin of <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> is similar to previous reports on
+          yeast [ <TIMEX TYPE="DATE">19, 20</TIMEX>], 
+          Caenorhabditis elegans [ <ENAMEX TYPE="LAW">7</ENAMEX>], 
+          A. thaliana [ <TIMEX TYPE="DATE">21</TIMEX>] and 
+          Drosophila melanogaster [ <TIMEX TYPE="DATE">12</TIMEX>]. This
+          contrasts with findings in 
+          <ENAMEX TYPE="PERSON">Z. mays</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>] and <ENAMEX TYPE="PER_DESC">humans</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>].
+        
+        
+          Copia-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          To date, <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> of 
+          copia -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> have been
+          reported for <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">S. Wang</ENAMEX>, submission to <ENAMEX TYPE="ORGANIZATION">EMBL</ENAMEX>, <ENAMEX TYPE="PERSON">N. Jwa</ENAMEX>,
+          submission to <ENAMEX TYPE="PERSON">GenBank</ENAMEX>, and [ <ENAMEX TYPE="LAW">8, 9, 19</ENAMEX>, <TIMEX TYPE="DATE">23, 24</TIMEX>]). Several
+          have been described under <NUMEX TYPE="CARDINAL">more than one</NUMEX> name. For
+          example, the amino<ENAMEX TYPE="SUBSTANCE">-acid sequence</ENAMEX> given for 
+          Tos4 in Hirochika 
+          et al. [ <TIMEX TYPE="DATE">23</TIMEX>] is the same as that
+          given for 
+          Tos1 in <ENAMEX TYPE="GPE">GenBank</ENAMEX> (accession number
+          S22455) so they are really the same. 
+          Rire5 described by Kumekawa 
+          et al. [ <TIMEX TYPE="DATE">25</TIMEX>] is the same <ENAMEX TYPE="PER_DESC">family</ENAMEX> as 
+          Tos14 previously described by
+          Hirochika 
+          et al. [ <TIMEX TYPE="DATE">23</TIMEX>]. The equivalence
+          between 
+          Tos14 and 
+          Rire5 became evident when we found
+          the LTR sequence reported by Kumekawa 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> in elements that also
+          contained the RT sequence given by <ENAMEX TYPE="ORGANIZATION">Hirochika</ENAMEX> for 
+          Tos14. In our survey of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">MRDB</ENAMEX>, we have identified <NUMEX TYPE="CARDINAL">an additional 16</NUMEX> 
+          copia -like <ENAMEX TYPE="PER_DESC">families</ENAMEX> that have not
+          been described by previous <ENAMEX TYPE="PER_DESC">workers</ENAMEX>. In addition,
+          exemplars for each of the previously identified families
+          were found (except in the case of certain <ENAMEX TYPE="PER_DESC">families</ENAMEX> that
+          exist at such low copy numbers that no full-length
+          element exists in <ENAMEX TYPE="GPE">GenBank</ENAMEX> or MRDB).
+        
+        
+          The largest copia-like family
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the most interesting new finds in our survey
+          was 
+          Osr8 , one of the oldest <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons in the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>. On the basis
+          of a survey of the available portion of the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX>,
+          we estimate the copy number of 
+          Osr8 to be around <NUMEX TYPE="MONEY">1,100</NUMEX> (more than
+          any other 
+          copia -like <ENAMEX TYPE="PER_DESC">family</ENAMEX>). 
+          Osr8 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> exist far more
+          frequently as fragments (ratio of <NUMEX TYPE="CARDINAL">10</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) and they display
+          relatively low levels of <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX> in their full-length copies
+          (mean <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX> for the <NUMEX TYPE="CARDINAL">five</NUMEX> full-length 
+          Osr8 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> present in the GBRD
+          is <NUMEX TYPE="PERCENT">97.2%</NUMEX>). The <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> of 
+          Osr8 is <NUMEX TYPE="PERCENT">60%</NUMEX> similar to an unnamed
+          <ENAMEX TYPE="ORGANIZATION">polyprotein</ENAMEX> in 
+          <ENAMEX TYPE="PERSON">Z. mays</ENAMEX> (<NUMEX TYPE="MONEY">AAD20307</NUMEX>). A closely
+          related <ENAMEX TYPE="PER_DESC">family</ENAMEX>, 
+          Osr10 has <NUMEX TYPE="CARDINAL">two</NUMEX> full-length copies in
+          the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> but scans of the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> suggest this element, also
+          previously unrecognized, has the <NUMEX TYPE="ORDINAL">third</NUMEX> highest copy
+          number (<NUMEX TYPE="MONEY">~400</NUMEX>) among 
+          copia -like elements. Outside <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>,
+          the <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> of 
+          Osr10 shows highest similarity
+          (~<NUMEX TYPE="PERCENT">65%</NUMEX>) to that of the <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX> retrotransposon 
+          Opie-2 (<NUMEX TYPE="MONEY">T04112</NUMEX>). The broader clade
+          that includes 
+          Osr7, <TIMEX TYPE="DATE">Osr8</TIMEX>, <TIMEX TYPE="DATE">Osr9</TIMEX> , and 
+          Osr10 is closely related to 
+          Endovir1-1 (<NUMEX TYPE="MONEY">AAG52949</NUMEX>) of 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          These <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are also related (~<NUMEX TYPE="PERCENT">60%</NUMEX> similar) to <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX>'s
+          
+          <ENAMEX TYPE="SUBSTANCE">PREM-2</ENAMEX> as well as to tomato's 
+          ToRTL1. Both 
+          Osr7 and 
+          Osr9 are present in very low copy
+          number (one full-length and a few fragments in the
+          <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="CONTACT_INFO">Osr14/Tos1/Tos4, Osr15/Tos12and Osr53/</ENAMEX>Tos18
+          Although it is present at <NUMEX TYPE="CARDINAL">only about a quarter</NUMEX> of the
+          copy number of 
+          Osr8 , the unrelated 
+          <ENAMEX TYPE="CONTACT_INFO">Osr14/Tos1/Tos4</ENAMEX> is also composed
+          primarily of highly fragmented elements. Those that are
+          <TIMEX TYPE="DATE">full</TIMEX> length have <NUMEX TYPE="PERCENT">low %</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX> (family mean <NUMEX TYPE="PERCENT">97.6%</NUMEX>). Thus, 
+          <ENAMEX TYPE="CONTACT_INFO">Osr14/Tos1/Tos4</ENAMEX> and 
+          Osr8 seem to be of similar age and
+          to have followed a similar evolutionary pattern, albeit
+          with less intense amplification in the case of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr14/Tos1/Tos4.</ENAMEX> <ENAMEX TYPE="CONTACT_INFO">Osr14/Tos1/Tos4,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">Osr15/Tos12</ENAMEX> , and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr53/Tos18</ENAMEX> form a well defined
+          <ENAMEX TYPE="ORGANIZATION">clade</ENAMEX> and are more closely related to 
+          Ta1-2 (<NUMEX TYPE="MONEY">S23315</NUMEX>) of 
+          Arabidopsis than to any other <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          <ENAMEX TYPE="PERSON">retroelement</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> outside their clade (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">2</NUMEX>). 
+          <ENAMEX TYPE="CONTACT_INFO">Osr15/Tos12</ENAMEX> and 
+          Osr53 are only just sufficiently
+          different to constitute distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        
+        
+          A <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> of closely allied families
+          
+          <ENAMEX TYPE="CONTACT_INFO">Osr1/Tos14/Rire5, Osr13/Tos5,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">Osr51/Tos15</ENAMEX> , and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr52/Tos16</ENAMEX> have been described as
+          distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX> but, inasmuch as their <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> are all <NUMEX TYPE="PERCENT">85%</NUMEX>
+          similar to each other, these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are only marginally
+          distinct. Searches of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> show that <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in this
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> are much more closely related to (<NUMEX TYPE="PERCENT">75-80%</NUMEX> at the
+          <ENAMEX TYPE="SUBSTANCE">amino-acid</ENAMEX> level) to <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX> retrotransposon 
+          <ENAMEX TYPE="ORGANIZATION">Fourf</ENAMEX> (<NUMEX TYPE="MONEY">AAK73108</NUMEX>) than to any <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposon outside their clade. If the elements
+          belonging to this group were considered to be a single
+          family, it would be almost as large (<NUMEX TYPE="MONEY">~900</NUMEX> elements) as 
+          Osr8. In the GBRD the majority of
+          these <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are fragmentary, but the estimated copy
+          number of full-length elements in the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> for
+          this <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> still exceeds <NUMEX TYPE="CARDINAL">100</NUMEX>.
+        
+        
+          A <ENAMEX TYPE="GPE">Hopscotch</ENAMEX>-like clade of fragmented
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>
+          
+          Osr18, <TIMEX TYPE="DATE">Osr19</TIMEX>, <TIMEX TYPE="DATE">Osr20</TIMEX>, <TIMEX TYPE="DATE">Osr22</TIMEX>, <TIMEX TYPE="DATE">Osr23</TIMEX>,
+          Osr24, <ENAMEX TYPE="CONTACT_INFO">Osr45/Tos7</ENAMEX> , and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr46/Tos8</ENAMEX> form a clade of low copy
+          <ENAMEX TYPE="PER_DESC">number families</ENAMEX> composed primarily of fragmentary copies.
+          Our results suggest that each of these <ENAMEX TYPE="PER_DESC">families</ENAMEX> has a
+          copy number in the range of <NUMEX TYPE="CARDINAL">50</NUMEX>-100 elements. <ENAMEX TYPE="PER_DESC">Members</ENAMEX> of
+          this clade are closely related to <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX>'s 
+          Hopscotch element (<NUMEX TYPE="MONEY">T04112</NUMEX>) (Figure
+          <NUMEX TYPE="CARDINAL">1</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+        
+        
+          Low copy number copia-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          
+          Osr2 and 
+          Osr12 are low-copy <ENAMEX TYPE="PER_DESC">families</ENAMEX> and are
+          represented in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> by <NUMEX TYPE="CARDINAL">two</NUMEX> and <NUMEX TYPE="CARDINAL">three</NUMEX> copies
+          respectively, all of which are full length (although one
+          copy of 
+          Osr12 contains a large internal
+          <ENAMEX TYPE="ORGANIZATION">deletion</ENAMEX>), suggesting that these <ENAMEX TYPE="PER_DESC">elements</ENAMEX> may have
+          recently invaded the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>. The high level of LTR
+          <ENAMEX TYPE="NATIONALITY">nucleotide</ENAMEX> identity (≥ <NUMEX TYPE="PERCENT">99%</NUMEX>) seen in these <ENAMEX TYPE="PER_DESC">elements</ENAMEX> is
+          consistent with this recent invasion hypothesis. <ENAMEX TYPE="PER_DESC">Members</ENAMEX>
+          of 
+          Osr12 and 
+          Osr2 are potentially active because
+          they have large, intact polyprotein <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>, usually in
+          excess of <NUMEX TYPE="CARDINAL">1,000</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. <NUMEX TYPE="CARDINAL">All three</NUMEX> 
+          Osr12 elements detected in the GBRD
+          are on chromosome <NUMEX TYPE="CARDINAL">10</NUMEX>. Similarly, both 
+          Osr2 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are inserted within
+          <TIMEX TYPE="TIME">50 kb</TIMEX> of each other on chromosome <NUMEX TYPE="CARDINAL">4</NUMEX>. Nonetheless, these
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> are not closely related (their RT sequences
+          are only ~<NUMEX TYPE="PERCENT">50%</NUMEX> similar at the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> level). 
+          Osr12 <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> differ from those of all
+          other <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> 
+          copia -like elements by <NUMEX TYPE="PERCENT">50%</NUMEX>. And
+          yet <ENAMEX TYPE="LAW">RT</ENAMEX> sequences of <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in 
+          Osr12 are <NUMEX TYPE="PERCENT">60%</NUMEX> similar to certain
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">maize genome</ENAMEX> ( 
+          Zmr1 (<NUMEX TYPE="MONEY">S27768</NUMEX>) and 
+          <ENAMEX TYPE="ORGANIZATION">mzecopia</ENAMEX> (<NUMEX TYPE="MONEY">M94481.1</NUMEX>)).
+          One full-length, and one fragmented copy of 
+          Osr6 are present in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>. 
+          Osr5 is slightly more common than 
+          Osr6 , to which it is most closely
+          related, but it is currently represented in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> by
+          only a single full-length copy and a few fragments. 
+          Osr5 is <NUMEX TYPE="PERCENT">60%</NUMEX> similar to the tobacco
+          retrotransposon 
+          Tnt1-<NUMEX TYPE="CARDINAL">94</NUMEX> at the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> level (RT
+          comparison). 
+          Osr4 is another low-copy <ENAMEX TYPE="PER_DESC">family</ENAMEX>. It
+          has several fragmented <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>, and
+          is probably somewhat older than 
+          Osr12 and 
+          Osr2 , but it has <NUMEX TYPE="CARDINAL">only three</NUMEX>
+          <ENAMEX TYPE="PERSON">full-length</ENAMEX> copies in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>, 
+          Osr4 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> have an exceptionally
+          large polyprotein <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> (<NUMEX TYPE="MONEY">~1,600</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>). The <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> of 
+          Osr4 shows <NUMEX TYPE="PERCENT">50%</NUMEX> similarity to that
+          of retroelements in the 
+          Arabidopsis genome (for example,
+          BAB01972, <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">175303</ENAMEX>).
+          Although the <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> of 
+          Osr3 was detected during our
+          survey, <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in this <ENAMEX TYPE="PER_DESC">family</ENAMEX> are fragments with ill
+          <ENAMEX TYPE="ORGANIZATION">defined LTRs</ENAMEX>. <ENAMEX TYPE="PERSON">TBLASTN</ENAMEX> reveals the <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> of 
+          Osr3 to be the single
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of its type in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>. Both 
+          Osr3 and the equally aberrant 
+          <ENAMEX TYPE="CONTACT_INFO">Osr21/Tos17</ENAMEX> differ from those of
+          other 
+          copia -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> found in our
+          study by <NUMEX TYPE="PERCENT">about 55%</NUMEX>. 
+          <ENAMEX TYPE="CONTACT_INFO">Osr11/Rire1</ENAMEX> is a low-copy family
+          closely related (<NUMEX TYPE="PERCENT">75%</NUMEX> similarity) to a retroelement in the
+          
+          Arabidopsis genome ( 
+          <ENAMEX TYPE="CONTACT_INFO">Atr-2 , T01860</ENAMEX>). <NUMEX TYPE="CARDINAL">Two</NUMEX> other closely
+          related <ENAMEX TYPE="PER_DESC">families</ENAMEX> are 
+          <ENAMEX TYPE="CONTACT_INFO">Osr16/Tos6</ENAMEX> and 
+          Osr17 , both of which are similar
+          to 
+          Sto-4 (<NUMEX TYPE="MONEY">T17429</NUMEX>) of <ENAMEX TYPE="SUBSTANCE">maize</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>,
+          <ENAMEX TYPE="CONTACT_INFO">Table 2</ENAMEX>). <NUMEX TYPE="CARDINAL">Nine</NUMEX> additional low-copy <ENAMEX TYPE="PER_DESC">families</ENAMEX> identified by
+          earlier <ENAMEX TYPE="PER_DESC">workers</ENAMEX> are 
+          <ENAMEX TYPE="CONTACT_INFO">Osr47/Tos9 ,</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">Osr48/Tos10, Osr49/Tos11, Osr50/Tos13,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">Osr54/Tos19, Osr55/Tos20, Osr57/Rtr3, Osr58/Rrt5 ,</ENAMEX>
+          and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr59/Rrt8.</ENAMEX> Source references for
+          each of these <NUMEX TYPE="CARDINAL">nine</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> are given in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">Gypsy</ENAMEX>-like <ENAMEX TYPE="PER_DESC">families</ENAMEX> predominate in <ENAMEX TYPE="PERSON">O.</ENAMEX> sativa
+          
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>] is the third
+          largest <ENAMEX TYPE="PER_DESC">family</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>, with an estimated copy
+          number of <NUMEX TYPE="CARDINAL">900</NUMEX> elements, mostly full length. <ENAMEX TYPE="PERSON">Li</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">26</TIMEX>] estimated the copy
+          number of this <ENAMEX TYPE="PER_DESC">family</ENAMEX> at <NUMEX TYPE="CARDINAL">1,600</NUMEX>. The typical 
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9</ENAMEX> element is quite large
+          (<NUMEX TYPE="MONEY">~12.8 kb</NUMEX> total length). Having intact polyprotein ORFs
+          and high mean <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX> (<NUMEX TYPE="PERCENT">99%</NUMEX>), these <ENAMEX TYPE="PER_DESC">elements</ENAMEX> probably are, or
+          recently have been, actively transposing. Yet the
+          presence of a few <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this <ENAMEX TYPE="PER_DESC">family</ENAMEX> that are more
+          <ENAMEX TYPE="PERSON">mutated</ENAMEX> (short <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>, low LTR-LTR nucleotide identity)
+          suggests that this may also be an ancient <ENAMEX TYPE="PER_DESC">family</ENAMEX>. Two
+          other <ENAMEX TYPE="PER_DESC">families</ENAMEX>, 
+          Osr40 and 
+          Osr41 , are also <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          same clade as 
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9, Osr25</ENAMEX> and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2</ENAMEX> ( 
+          Osr25 and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2</ENAMEX> are discussed below),
+          but both have <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> that are <NUMEX TYPE="PERCENT">about 30%</NUMEX> different from those
+          of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2</ENAMEX> and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9.</ENAMEX> Neither 
+          Osr40 nor 
+          Osr41 has been previously
+          identified, but with approximate copy numbers of <NUMEX TYPE="CARDINAL">600</NUMEX> and
+          <NUMEX TYPE="CARDINAL">300</NUMEX>, respectively, these are both large <ENAMEX TYPE="PER_DESC">families</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX>
+          of <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this clade show <NUMEX TYPE="PERCENT">about 60%</NUMEX> similarity to
+          that of 
+          Retrosor1 ( 
+          <ENAMEX TYPE="SUBSTANCE">Sorghum bicolor</ENAMEX> , <TIMEX TYPE="DATE">AAD19359</TIMEX>).
+          With <NUMEX TYPE="CARDINAL">approximately 1,500</NUMEX> elements, 
+          Osr30 constitutes <NUMEX TYPE="PERCENT">14%</NUMEX> of all LTR
+          <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>. Although 
+          Osr30 is the largest <ENAMEX TYPE="PER_DESC">family</ENAMEX> of LTR
+          <ENAMEX TYPE="ORGANIZATION">retroelements</ENAMEX> in the genome, it has not been previously
+          named. These <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are slightly larger (<NUMEX TYPE="MONEY">~13.1 kb</NUMEX>) than
+          those of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9.</ENAMEX> A higher proportion of
+          fragmented copies and lower level of <ENAMEX TYPE="ORGANIZATION">LTR-LTR</ENAMEX> nucleotide
+          identity suggest that 
+          Osr30 is older than 
+          <ENAMEX TYPE="CONTACT_INFO">Osr27/Rire9 .</ENAMEX> 
+          Osr29 , which is closely allied to 
+          Osr30 , is also a large <ENAMEX TYPE="PER_DESC">family</ENAMEX> with
+          <NUMEX TYPE="CARDINAL">more than 500</NUMEX> member elements. Taken together, the
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> of the 
+          Osr29 and 
+          Osr30 <ENAMEX TYPE="PER_DESC">clade</ENAMEX> are unusual, because
+          they are as closely related to other major <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> clades as
+          they are to any elements outside <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>. 
+          Osr28 is a low-copy <ENAMEX TYPE="PER_DESC">family</ENAMEX> that is
+          most closely related to 
+          Osr29 and 
+          Osr30 (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> other large 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like <ENAMEX TYPE="PER_DESC">families</ENAMEX> are 
+          <ENAMEX TYPE="CONTACT_INFO">Osr33/Rire8</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] and 
+          Osr34. These <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> each have
+          <ENAMEX TYPE="CONTACT_INFO">copy</ENAMEX> numbers of <NUMEX TYPE="CARDINAL">approximately 500</NUMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> low-copy families
+          belonging to the same clade are 
+          Osr32 and 
+          <ENAMEX TYPE="CONTACT_INFO">Osrs6/Rire3</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>] (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          <ENAMEX TYPE="PER_DESC">Members</ENAMEX> of these <ENAMEX TYPE="PER_DESC">families</ENAMEX> have large <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>, typically in
+          the range <NUMEX TYPE="QUANTITY">3,000-3,500 bp</NUMEX>. <ENAMEX TYPE="ORGANIZATION">RTs</ENAMEX> of <ENAMEX TYPE="PER_DESC">families</ENAMEX> in this clade
+          show high sequence similarity to an LTR retrotransposon
+          in <ENAMEX TYPE="SUBSTANCE">pineapple</ENAMEX> (~<NUMEX TYPE="PERCENT">70%</NUMEX> to 
+          Acr-<NUMEX TYPE="CARDINAL">1</NUMEX>; <ENAMEX TYPE="PRODUCT">CAA73042</ENAMEX>) and to <NUMEX TYPE="CARDINAL">one</NUMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">Sorghum bicolor</ENAMEX> (~<NUMEX TYPE="PERCENT">77%</NUMEX> to 
+          Retrosor3 , <TIMEX TYPE="DATE">AAD221153</TIMEX>) (Figure
+          <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        
+        
+          Low-copy <ENAMEX TYPE="PER_DESC">gypsy</ENAMEX>-like elements
+          
+          <ENAMEX TYPE="CONTACT_INFO">Osr31/Rire7</ENAMEX> is an aberrant low-copy
+          family that is much more closely related (<NUMEX TYPE="PERCENT">77%</NUMEX> similarity)
+          to an 
+          Arabidopsis element, 
+          Atr-4 (see <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>), than to any
+          other <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retroelement <ENAMEX TYPE="PER_DESC">families</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> genome
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). In the clade of <NUMEX TYPE="CARDINAL">five</NUMEX> low-copy <ENAMEX TYPE="PER_DESC">families</ENAMEX>,
+          composed of 
+          Osr35, <TIMEX TYPE="DATE">Osr36</TIMEX>, <TIMEX TYPE="DATE">Osr38</TIMEX>, <TIMEX TYPE="DATE">Osr39</TIMEX> , and 
+          Osr42 , an RT was found in the GBRD
+          for <NUMEX TYPE="CARDINAL">only two</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, 
+          Osr35 and 
+          Osr36. The other <ENAMEX TYPE="PER_DESC">elements</ENAMEX> were
+          identified in scans of the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> and their full sequences
+          have since been submitted to <ENAMEX TYPE="PERSON">GenBank</ENAMEX> (for accession
+          numbers, see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). This clade is closely related to 
+          Arabidopsis element 
+          Atr-5 (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="PER_DESC">Families</ENAMEX> of non-autonomous elements
+          <ENAMEX TYPE="PER_DESC">Members</ENAMEX> of family 
+          Osr25 are all internally deleted
+          and thus non-autonomous (mean length <NUMEX TYPE="MONEY">4.3 kb</NUMEX>). Although 
+          Osr25 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> have typical <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">PPT</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">inter-LTR</ENAMEX> region contains only
+          non-coding, repetitive <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> of 
+          Osr25 display <NUMEX TYPE="PERCENT">65-70%</NUMEX> sequence
+          similarity to the autonomous elements of the 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like family 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2.</ENAMEX> <ENAMEX TYPE="PER_DESC">Elements</ENAMEX> with LTRs
+          having such a high degree of similarity are usually
+          considered <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the same <ENAMEX TYPE="PER_DESC">family</ENAMEX>. Nevertheless,
+          because <ENAMEX TYPE="PER_DESC">members</ENAMEX> of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2</ENAMEX> have the usual coding
+          structure typical of other 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like elements (while 
+          Osr25 elements entirely lack
+          typical retroviral <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) and <ENAMEX TYPE="PER_DESC">members</ENAMEX> of these two
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> fall into <NUMEX TYPE="CARDINAL">two</NUMEX> sharply distinct, non-overlapping
+          clades, we report these <NUMEX TYPE="CARDINAL">two</NUMEX> types of elements as separate
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Estimates based on scans of the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> and the
+          <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> suggest that the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> contains <NUMEX TYPE="CARDINAL">about 500</NUMEX>
+          copies each of 
+          Osr25 and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2 .</ENAMEX> 
+          Osr25 and 
+          <ENAMEX TYPE="CONTACT_INFO">Osr26/Rire2</ENAMEX> display <NUMEX TYPE="PERCENT">98.9 and 97.9%</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">LNI</ENAMEX> respectively.
+          
+          <ENAMEX TYPE="CONTACT_INFO">Osr37/Rire4</ENAMEX> is also aberrant
+          compared to other <ENAMEX TYPE="SUBSTANCE">rice LTR</ENAMEX> retrotransposon <ENAMEX TYPE="PER_DESC">families</ENAMEX>. The
+          typical element in this <ENAMEX TYPE="PER_DESC">family</ENAMEX> is <NUMEX TYPE="QUANTITY">4.4 kb long</NUMEX>, about the
+          same length as 
+          Osr25 <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. <ENAMEX TYPE="PER_DESC">Members</ENAMEX> of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr37/Rire4</ENAMEX> usually carry a large
+          <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> (<NUMEX TYPE="CARDINAL">up to 600</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>) just upstream of the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>.
+          This <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> shows no significant similarity to any known RT
+          sequence. Up to the present in the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>, where these ORFs
+          are generally identified simply as hypothetical <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>,
+          the large <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr37/Rire4</ENAMEX> seems not to have been
+          recognized as a retroviral gene. This <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> may serve an
+          integrase function as BLAST searches show that it has low
+          <ENAMEX TYPE="ORGANIZATION">homology</ENAMEX> to a putative integrase in 
+          A. thaliana (<NUMEX TYPE="PERCENT">28%</NUMEX>; <ENAMEX TYPE="PRODUCT">AC005171</ENAMEX>). There
+          are <NUMEX TYPE="CARDINAL">about 600</NUMEX> copies of 
+          <ENAMEX TYPE="CONTACT_INFO">Osr37/Rire4</ENAMEX> in the entire <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>.
+          In addition to the foregoing 
+          copia - and 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like <ENAMEX TYPE="PER_DESC">families</ENAMEX>, our scans
+          identified <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, 
+          Osr43 and 
+          Osr44 , of small <ENAMEX TYPE="PER_DESC">elements</ENAMEX> (overall
+          <ENAMEX TYPE="CONTACT_INFO">length < 2,000 bp</ENAMEX>). With LTRs <NUMEX TYPE="QUANTITY">only 148 bp</NUMEX> long and an
+          overall length of <NUMEX TYPE="QUANTITY">1,207 bp</NUMEX>, 
+          Osr44 <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are especially
+          small. <ENAMEX TYPE="PER_DESC">Members</ENAMEX> of 
+          Osr43 and 
+          Osr44 are unique because, although
+          they possess all of the canonical LTR-retrotransposon
+          structural features (<ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PPT</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">TSRs</ENAMEX>), they are
+          internally deleted and either completely lack or encode
+          only very small <ENAMEX TYPE="PER_DESC">ORFs</ENAMEX> with no similarity to any known
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. Both <ENAMEX TYPE="PER_DESC">families</ENAMEX> contain on the order of <NUMEX TYPE="CARDINAL">100</NUMEX> copies
+          genome-wide.
+        
+      
+      
+        Conclusions
+        <ENAMEX TYPE="PERSON">Rice LTR</ENAMEX> retrotransposons are a significant component of
+        the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>. We estimate that <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons
+        constitute <NUMEX TYPE="PERCENT">at least 17%</NUMEX> of the 
+        <ENAMEX TYPE="CONTACT_INFO">O. sativa genome.</ENAMEX> Although this value
+        is lower than the estimated percentage of LTR
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX> in the genomes of other cereal <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> [ <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">12</NUMEX>], it is more than tenfold greater than the estimated
+        percentage of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons in 
+        A. thaliana , a <ENAMEX TYPE="ANIMAL">species</ENAMEX> with a genome
+        one-third the size of the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]. This
+        disproportionate increase in the percentage of LTR
+        retrotransposons as a function of genome size is consistent
+        with the view that genome size variability in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> is
+        often heavily dependent on variation in <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposon
+        content [ <TIMEX TYPE="DATE">27, 28</TIMEX>].
+        We have determined that individual full-length
+        LTR-retrotransposons present in the sequenced euchromatic
+        regions of the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> are all relatively young,
+        <ENAMEX TYPE="PERSON">displaying</ENAMEX>, on average, <NUMEX TYPE="PERCENT">greater than 98%</NUMEX> sequence identity
+        between their <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>. Comparative genomic studies of LTR
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX> in both <ENAMEX TYPE="PLANT">plants</ENAMEX> and <ENAMEX TYPE="ANIMAL">animals</ENAMEX> have revealed
+        that <ENAMEX TYPE="ANIMAL">species</ENAMEX> with smaller <ENAMEX TYPE="ORG_DESC">genomes</ENAMEX> [ <TIMEX TYPE="DATE">7, 10, 19, 20, 21</TIMEX>] do
+        not harbor older <ENAMEX TYPE="PER_DESC">families</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons, as do
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> with larger <ENAMEX TYPE="ORG_DESC">genomes</ENAMEX> [ <TIMEX TYPE="DATE">12, 22</TIMEX>]. It has been
+        hypothesized that the rate of turnover of retroelements may
+        be higher in small genomes as a result of the presence of
+        less effective epigenetic silencing mechanisms [ <TIMEX TYPE="DATE">10</TIMEX>]. It
+        remains to be determined whether or not this hypothesis is
+        an adequate explanation of the apparent lack of older
+        <ENAMEX TYPE="ORGANIZATION">full-length LTR</ENAMEX> retrotransposons in the euchromatic portion
+        of the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX>.
+        In general, the major clades of <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> LTR
+        retrotransposons are more closely related to elements
+        present in other <ENAMEX TYPE="ANIMAL">species</ENAMEX> than to the other clades of <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX>, suggesting that horizontal transfer may have
+        occurred over the evolutionary history of <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> LTR
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX>. Further analysis is required to
+        definitively test the horizontal transfer hypothesis.
+        The newly developed search algorithm (<ENAMEX TYPE="ORGANIZATION">LTR_STRUC</ENAMEX>) we have
+        used in this study to initially identify LTR
+        <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice genome</ENAMEX> is not dependent upon
+        sequence homology as are standard search methods such as
+        BLAST. As a consequence, we identified several previously
+        unreported <ENAMEX TYPE="PER_DESC">families</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">rice LTR</ENAMEX> retrotransposons consisting
+        of non-coding and, in some cases, repeating, sequence
+        motifs. <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons of similar structure have
+        recently been identified within the genomes of both
+        <ENAMEX TYPE="ORGANIZATION">monocotyledonous</ENAMEX> and dicotyledonous <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>].
+        Preliminary evidence suggests that these <ENAMEX TYPE="PER_DESC">elements</ENAMEX> may have
+        a significant role in restructuring plant genomes over
+        evolutionary time [ <TIMEX TYPE="DATE">29</TIMEX>].
+      
+      
+        Materials and methods
+        
+          Automated characterization of <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> retrotransposons
+          using <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC
+          <ENAMEX TYPE="PERSON">LTR_STRUC</ENAMEX> identifies new LTR retrotransposons on the
+          basis of the presence of characteristic retroelement
+          features (<ENAMEX TYPE="PERSON">E.M.M. and J.F.M.</ENAMEX>, unpublished work). It scans
+          nucleotide sequence data for putative <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX> pairs, aligns
+          the putative pairs, and scores them on the basis of the
+          presence/absence of expected motifs such as <ENAMEX TYPE="ORGANIZATION">TSRs</ENAMEX>,
+          canonical dinucleotides, <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PPT</ENAMEX>, and so on. When a
+          given <ENAMEX TYPE="PER_DESC">pair</ENAMEX> receives a score above a (<ENAMEX TYPE="PER_DESC">user</ENAMEX>-specified)
+          cut-off, an output record is generated that specifies
+          <ENAMEX TYPE="ORGANIZATION">salient</ENAMEX> information about the putative element, such as
+          the length of the transposon and its <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>, its position
+          within the contig, an alignment of its <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX>, the
+          nucleotide sequence of the transposon, its <ENAMEX TYPE="ORGANIZATION">LTRs</ENAMEX> and
+          <ENAMEX TYPE="FAC">target-</ENAMEX>site repeats, as well as a file listing all <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>.
+          In our study, once putative <ENAMEX TYPE="PER_DESC">elements</ENAMEX> were identified,
+          sequence analysis was carried out on the individual
+          output files to identify those that described actual LTR
+          <ENAMEX TYPE="ORGANIZATION">retrotransposons</ENAMEX>. Additional elements were identified by
+          BLAST searches using elements located by <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC as
+          queries.
+        
+        
+          Datasets scanned
+          Initial scans with <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC were conducted on a
+          dataset consisting of the <ENAMEX TYPE="PRODUCT">29.8 Mb</ENAMEX> of 
+          <ENAMEX TYPE="PERSON">O.</ENAMEX> sativa <ENAMEX TYPE="SUBSTANCE">BAC-</ENAMEX>derived sequence data
+          available in <ENAMEX TYPE="GPE">GenBank</ENAMEX> at the time of the initial scan
+          (<TIMEX TYPE="DATE">December 2000</TIMEX>). This dataset (TDS) was obtained from the
+          <ENAMEX TYPE="PERSON">TIGR</ENAMEX> website [ <TIMEX TYPE="DATE">30</TIMEX>]. Subsequently, <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC was used to
+          scan the non-redundant <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX>, a product of the <ENAMEX TYPE="ORGANIZATION">Monsanto</ENAMEX>
+          <ENAMEX TYPE="PERSON">Rice Genome Sequencing</ENAMEX> Project. The <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> is based on an
+          initial dataset of <NUMEX TYPE="CARDINAL">3,391</NUMEX> <ENAMEX TYPE="ORGANIZATION">BACs</ENAMEX> distributed across the
+          genome of 
+          <ENAMEX TYPE="CONTACT_INFO">O. sativa cv.</ENAMEX> Nipponbare - the same
+          <ENAMEX TYPE="ORGANIZATION">cultivar</ENAMEX> used by the <ENAMEX TYPE="ORGANIZATION">International Rice Genome</ENAMEX> Sequencing
+          Project. Removal of contaminants and redundancies from
+          this initial dataset produced the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> (consisting of
+          52,202 contigs, totaling <NUMEX TYPE="CARDINAL">259</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> of the <ENAMEX TYPE="PRODUCT">430-Mb</ENAMEX> <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>). More recently, in an effort to determine the
+          relative copy numbers of the various <ENAMEX TYPE="PER_DESC">families</ENAMEX> and
+          identify additional elements not picked up in our initial
+          survey with <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC, we have used representative
+          sequences from each retrotransposon <ENAMEX TYPE="PER_DESC">family</ENAMEX> identified in
+          this study as queries to conduct BLAST searches against
+          both the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>. Thus, the results reported
+          here constitute a reasonably unbiased survey of
+          LTR-retrotransposon diversity in <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>. Both the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> are heavily weighted toward euchromatic sequences.
+          The amount of data scanned was significantly less than
+          the total amount of nucleotide sequence contained in the
+          <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>. Much of the <ENAMEX TYPE="ORGANIZATION">MRD</ENAMEX> (~<NUMEX TYPE="PERCENT">36%</NUMEX>) is composed of
+          contigs that are less than <NUMEX TYPE="QUANTITY">10 kb long</NUMEX> and are therefore
+          of limited <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> for the <ENAMEX TYPE="ORGANIZATION">LTR</ENAMEX>_STRUC program, which finds
+          only full-length elements (<ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> are typically
+          longer <TIMEX TYPE="TIME">than 10 kb</TIMEX> and are not entirely contained in such
+          short contigs). In the case of the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX>, the amount of
+          <ENAMEX TYPE="PERSON">rice</ENAMEX> nucleotide sequence available for search was less
+          than <NUMEX TYPE="CARDINAL">one-third</NUMEX> of the <ENAMEX TYPE="PRODUCT">174 Mb</ENAMEX> released to the public
+          (because of <NUMEX TYPE="PERCENT">15%</NUMEX> redundancy, the <ENAMEX TYPE="ORGANIZATION">GBRD</ENAMEX> sequences amounted
+          to a total of <NUMEX TYPE="CARDINAL">only about 150</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX>, of which only <NUMEX TYPE="CARDINAL">some 50</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX>
+          were actually available for BLAST search because most of
+          these sequences were in the process of being 'finished').
+          <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> sequences were identified according to previously
+          described criteria [ <TIMEX TYPE="DATE">31, 32</TIMEX>].
+        
+        
+          Multiple sequence alignments and phylogenetic
+          analyses
+          The <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> domains of the 
+          Osr <ENAMEX TYPE="PER_DESC">elements</ENAMEX> were aligned with
+          previously reported <ENAMEX TYPE="ORGANIZATION">RT</ENAMEX> sequences (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). The ClustalW
+          analysis [ <TIMEX TYPE="DATE">33</TIMEX>] extension to <NUMEX TYPE="MONEY">MacVector 7.0</NUMEX> was used to
+          generate <NUMEX TYPE="CARDINAL">two</NUMEX> amino<ENAMEX TYPE="SUBSTANCE">-acid alignments</ENAMEX>, one for 
+          <ENAMEX TYPE="PERSON">gypsy</ENAMEX> -like, and one for 
+          copia -like elements. <ENAMEX TYPE="PRODUCT">Draw N-J Tree</ENAMEX>
+          and <ENAMEX TYPE="PRODUCT">Bootstrap N-J commands of ClustalW</ENAMEX> were then used to
+          generate non-bootstrapped and bootstrapped <ENAMEX TYPE="PLANT">trees</ENAMEX>,
+          respectively.
+        
+      
+    
+  

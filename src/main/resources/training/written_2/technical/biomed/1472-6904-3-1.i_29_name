@@ -1,0 +1,1166 @@
+
+  
+    
+      
+        Background
+        
+          <ENAMEX TYPE="SUBSTANCE">Gamma</ENAMEX> distribution Input
+          The use of a predetermined parametric function for
+          I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is the most direct approach. It is shown below that
+          a good fit to a variety of experimental intestinal
+          absorption processes is provided by the <NUMEX TYPE="CARDINAL">3</NUMEX> parameter
+          (A,a,b) <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution:
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) 
+          I ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = 
+          <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> 
+          a 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          a -1exp(- 
+          <ENAMEX TYPE="ORGANIZATION">bt</ENAMEX> )/<NUMEX TYPE="MONEY">Γ</NUMEX>( 
+          a )
+          where A is the total amount reaching the systemic
+          circulation, Γ is the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> function, a is the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          number (usually <NUMEX TYPE="MONEY">between 1.0 and 6.0</NUMEX>) and b has units of
+          inverse time. The <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution is clearly superior
+          to poly-exponential functions for fitting the initial
+          time delay in absorption associated with gastric
+          <ENAMEX TYPE="PERSON">emptying</ENAMEX>. The use of a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution to model
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> was first suggested by <ENAMEX TYPE="ORGANIZATION">Debord et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+          The <NUMEX TYPE="CARDINAL">3</NUMEX> parameters are determined by the use of global
+          (simulated annealing) and local (<ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX>) non-linear
+          <ENAMEX TYPE="ORGANIZATION">optimization</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Analytical</ENAMEX> Deconvolution
+          In this approach, c(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) (eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) is approximated by an
+          <ENAMEX TYPE="ORGANIZATION">interpolating</ENAMEX> or smoothed spline function and the
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> uses the analytic approach of <ENAMEX TYPE="PERSON">Veng-Pedersen</ENAMEX>
+          [ <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] and <ENAMEX TYPE="ORGANIZATION">Gilespie</ENAMEX> and <ENAMEX TYPE="PERSON">Veng-Pedersen</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . This
+          approach is used in the freely distributed program PCDCON
+          written by <ENAMEX TYPE="PERSON">Gillespie</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">http://anesthesia.</ENAMEX><ENAMEX TYPE="ORGANIZATION">stanford</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/pkpdand</ENAMEX> is the most widely
+          used experimental deconvolution technique [ <NUMEX TYPE="CARDINAL">16 17 18 19</NUMEX>
+          <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] .
+        
+        
+          <ENAMEX TYPE="PERSON">Spline Function Input</ENAMEX>
+          This method uses the approach of <ENAMEX TYPE="ORGANIZATION">Verotta</ENAMEX> [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] in
+          which the input I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is parameterized by a general
+          B-<NUMEX TYPE="CARDINAL">spline</NUMEX> function and the deconvolution is obtained using
+          constrained regression.
+        
+        
+          Uniform Input
+          In this approach the function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is estimated on a
+          <ENAMEX TYPE="PERSON">dense</ENAMEX>, uniform sequence of time points and the stochastic
+          regularization procedure of <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ] and
+          <ENAMEX TYPE="ORGANIZATION">Sparacino et</ENAMEX>. al. [ <NUMEX TYPE="CARDINAL">22 23</NUMEX> ] is used for the
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX>.
+          Since each of these approaches has been extensively
+          described and compared previously, what justifies the new
+          treatment in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>? There are <NUMEX TYPE="CARDINAL">3</NUMEX> new features:
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) The <NUMEX TYPE="CARDINAL">four</NUMEX> above mathematical approaches to the
+          deconvolution problem are implemented in the software
+          package <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. This software has a simple user
+          <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX>, and automatically plots the results in a
+          variety of formats. This easy to use, freely distributed
+          program <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.comallows anyone to use and
+          compare the different approaches for different
+          experimental data sets.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>) The last <NUMEX TYPE="CARDINAL">3</NUMEX> approaches are characterized by a number
+          of user input parameters whose values are not known a
+          <ENAMEX TYPE="PERSON">priori</ENAMEX>. In the previous applications of these routines,
+          these parameters had to be varied and the "best" value
+          found either based on the subjective judgment of the user
+          about the "quality" of the fit, or by a semi-empirical
+          optimization procedure. This represents the major
+          limitation of these techniques. In this paper a new
+          method is introduced for determining the value of these
+          parameters for the last <NUMEX TYPE="CARDINAL">two</NUMEX> methods ("<ENAMEX TYPE="PERSON">Spline</ENAMEX> function"
+          and "<ENAMEX TYPE="WORK_OF_ART">Uniform"</ENAMEX>) based on the use of a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          approximation for I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>).
+          <NUMEX TYPE="CARDINAL">3</NUMEX>) Previous tests of the different approaches have
+          used either idealized model data or experimental data in
+          which the true values of the bolus input function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          and the systemic input function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) were not known. In
+          contrast, in the analysis described here, the different
+          methods will be tested using the same PBPK <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> that was
+          used to determine r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). In general, all the methods work
+          well if accurate experimental data are used (see below).
+          The most stringent test of the different methods is under
+          conditions when there is random error in the data points
+          and sampling frequency is limited, as is often the case
+          for the experimental data. This latter case is
+          investigated in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>.
+        
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="PER_DESC">Generation</ENAMEX> of <ENAMEX TYPE="PRODUCT">PBPK Model Venous Concentration</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX>
+          The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> venous concentration data for the
+          <ENAMEX TYPE="PERSON">intravenous</ENAMEX> (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>) and intestinal input are generated using
+          the PKQuest <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.comPBPK software. The
+          "standard human" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> organ weights and blood flows are
+          listed in <ENAMEX TYPE="PRODUCT">Table I.</ENAMEX> These are the same values that have
+          been used previously to model the pharmacokinetics of D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] , toluene and
+          the volatile anesthetics [ <TIMEX TYPE="DATE">25</TIMEX> ] , propranolol [ <TIMEX TYPE="DATE">26</TIMEX> ] and
+          <ENAMEX TYPE="ORGANIZATION">inulin</ENAMEX> and protein bound antibiotics [ <TIMEX TYPE="DATE">27</TIMEX> ] . Two
+          different <ENAMEX TYPE="PRODUCT_DESC">PBPK models</ENAMEX> are used. In the <NUMEX TYPE="ORDINAL">first</NUMEX> model
+          (referred to as "simple") the solute distributes with
+          flow-limited kinetics in all the body water and there is
+          no solute binding. In the <NUMEX TYPE="ORDINAL">second</NUMEX> model (referred to as
+          "binding") the different tissues bind the solute with a
+          tissue/plasma equilibrium partition coefficient of <NUMEX TYPE="MONEY">10</NUMEX> for
+          all tissues except muscle (where it is <NUMEX TYPE="CARDINAL">3.62</NUMEX>) and fat
+          (where it is <NUMEX TYPE="CARDINAL">2.42</NUMEX>). This <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is similar to that used to
+          describe human <ENAMEX TYPE="SUBSTANCE">propranolol pharmacokinetics</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ] . The
+          model input goes directly into the venous compartment,
+          bypassing the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>, and the solute clearance is produced
+          entirely by <ENAMEX TYPE="DISEASE">renal</ENAMEX> secretion so that the input function
+          ("absorption" rate) is equal to the systemic
+          availability.
+        
+        
+          Determination of <ENAMEX TYPE="ORGANIZATION">Poly-exponential Bolus Response</ENAMEX>
+          Function
+          The standard approach is used for determining the
+          <ENAMEX TYPE="ORGANIZATION">bolus</ENAMEX> response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). It is assumed that r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is
+          described by a polyexponentials function:
+          
+          The optimum values for the parameters (a 
+          i , T 
+          i ) are determined by using the <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          implementation of the non-linear <ENAMEX TYPE="ORGANIZATION">Levenberg</ENAMEX> and Marquardt
+          method (nlfit,
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX>math.<ENAMEX TYPE="ORGANIZATION">villanova</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/archives/maple/misc</ENAMEX>). Some
+          <ENAMEX TYPE="ORGANIZATION">care</ENAMEX> must be used in the application of this technique
+          because, if the initial estimates of a 
+          i and T 
+          i are far from the correct values
+          then, for the <NUMEX TYPE="CARDINAL">3</NUMEX>-exponential case, it is possible for the
+          solution to become stuck in a local minimum, far from the
+          global minimum. In the implementation in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a <ENAMEX TYPE="CONTACT_INFO">2-</ENAMEX>
+          <ENAMEX TYPE="PER_DESC">exponential</ENAMEX> fit is found <NUMEX TYPE="ORDINAL">first</NUMEX>, and this fit is used to
+          estimate the initial values for the <NUMEX TYPE="CARDINAL">3</NUMEX>-exponential fit.
+          This procedure seems to be quite robust.
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">Gamma</ENAMEX> distribution Deconvolution
+          It is assumed that the input function can be described
+          by a <NUMEX TYPE="MONEY">3 parameter</NUMEX> (A,a,b) <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution (eq. <NUMEX TYPE="CARDINAL">2</NUMEX>). The
+          <NUMEX TYPE="CARDINAL">3</NUMEX> parameters are chosen by minimizing the error
+          function:
+          
+          where the sum is over all the data points, ydat 
+          i is the experimental venous
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX>, and ygam 
+          i is the venous concentration
+          determined by convoluting the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution input
+          (eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) with the polyexponential bolus response function
+          r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) (eq. <NUMEX TYPE="CARDINAL">3</NUMEX>). The parameter "noise" determines the
+          relative weighting of each data point. If noise = <NUMEX TYPE="CARDINAL">0</NUMEX>, then
+          the error is proportional to the sum of the fractional
+          error ((<NUMEX TYPE="MONEY">ygam-ydat</NUMEX>)/ydat) of each point, while for
+          <ENAMEX TYPE="PERSON">noise>></ENAMEX>ydat, the error is proportional to the sum
+          of the absolute error (<NUMEX TYPE="MONEY">ygam-ydat</NUMEX>) of each point. In the
+          current implementation, noise is assumed to be equal to
+          <NUMEX TYPE="PERCENT">10%</NUMEX> of the value of average venous concentration (ydat 
+          i ). Since the convolution of the
+          <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution with r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is a highly non-linear
+          function, it is essential to use a robust optimization
+          procedure to avoid local minimums. In the implementation
+          in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a global annealing procedure [ <TIMEX TYPE="DATE">28</TIMEX> ] is
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> first, followed by <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] non-linear
+          <ENAMEX TYPE="ORGANIZATION">minimization</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Analytical</ENAMEX> Deconvolution
+          The approach described originally by <ENAMEX TYPE="ORGANIZATION">Veng-Pederesen</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] is followed. The discrete venous concentration
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (c [i], eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) is fit with either an interpolating
+          (which goes through each data point) or <NUMEX TYPE="QUANTITY">a smoothing cubic</NUMEX>
+          spline function, and then the deconvolution is obtained
+          <ENAMEX TYPE="ORGANIZATION">analytically</ENAMEX> using this spline function. The spline
+          fitting algorithms of <ENAMEX TYPE="ORGANIZATION">Spath</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] were used for both the
+          <ENAMEX TYPE="ORGANIZATION">interpolating</ENAMEX> ("cub2r7") and smoothing ("cubsm1")
+          conditions. In the smoothing algorithm the spline points
+          differ from the experimental data points by an amount
+          that is proportional to the jump in the <NUMEX TYPE="ORDINAL">third</NUMEX> derivative
+          of the cubic spline function. The proportionality
+          <ENAMEX TYPE="PERSON">constant</ENAMEX> is assumed to be the same for each data point
+          and is set by a user input "smoothing parameter" that
+          varies from <NUMEX TYPE="MONEY">0</NUMEX> (interpolating case) to infinity. This
+          implementation is not identical to that used in program
+          the PCDCON written by <ENAMEX TYPE="PERSON">W. R. Gillespie</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">http://anesthesia.</ENAMEX><ENAMEX TYPE="ORGANIZATION">stanford</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/pkpd.</ENAMEX> However, when the
+          same input was used for <ENAMEX TYPE="ORGANIZATION">PCDCON</ENAMEX> and the current
+          implementation, the results were very similar.
+        
+        
+          <ENAMEX TYPE="PERSON">Spline Function Deconvolution</ENAMEX>
+          The deconvolution approach of <ENAMEX TYPE="ORGANIZATION">Verotta</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] is used.
+          The input function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is parameterized by a B-spline
+          function characterized by the number and position of the
+          "breakpoints" and the order of the spline function. An
+          order of <NUMEX TYPE="CARDINAL">3</NUMEX> is assumed. The deconvolution is obtained
+          using the "<ENAMEX TYPE="WORK_OF_ART">Penalized Least_Squares</ENAMEX>" regularization
+          approach [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , where the regularization parameter
+          (referred to here as a "smoothing parameter") limits the
+          roughness of the B-<NUMEX TYPE="CARDINAL">spline</NUMEX> function. The input rate I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          is constrained to non-negative values by using the
+          constrained conjugate gradient algorithm (<NUMEX TYPE="MONEY">11.4</NUMEX>) of
+          <ENAMEX TYPE="ORGANIZATION">Hestenes</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+          The quality of the deconvolution solution is
+          critically dependent on the number and position of the
+          break points (see Results Section). In the implementation
+          in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a number of alternative options are allowed
+          for choosing or inputting the break points. Since this
+          method is a generalized parametric approach, one would
+          like to use the smallest number of breakpoints (and,
+          therefore, the fewest adjustable parameters) that are
+          compatible with the input function. A new feature that is
+          introduced here is the use of the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          input approximation to automatically select the
+          <ENAMEX TYPE="ORGANIZATION">breakpoints</ENAMEX> (this is the default option in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>). This
+          method <NUMEX TYPE="ORDINAL">first</NUMEX> chooses the breakpoints that provide a good
+          fit to the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution, and then supplements these
+          breakpoints with additional points (at <TIMEX TYPE="TIME">1 hour</TIMEX> intervals)
+          at long times when the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution is small. By
+          trial and error it was found that the minimum number of
+          break points that provided a good fit to the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution were located at the times the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution concentration equaled <NUMEX TYPE="CARDINAL">0.05</NUMEX>, <NUMEX TYPE="CARDINAL">0.7</NUMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">0.55</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.1</NUMEX> and <NUMEX TYPE="CARDINAL">0.0012</NUMEX> times the maximum <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          value. As shown in the Results Section, this procedure
+          works well for the typical intestinal absorption input
+          functions.
+        
+        
+          <ENAMEX TYPE="PERSON">Uniform Input Deconvolution</ENAMEX>
+          The method of <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ] which solves
+          for the values of the input function on a uniform, dense
+          set of time points is used. Only the constrained option [
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ] is used since it is essential to limit the input
+          function to non-negative values. <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          describe a sophisticated mathematical approach using the
+          fast fourier transform (FFT). However, in the
+          implementation in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> (using <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>) it was observed
+          that the overhead required to set up the <ENAMEX TYPE="ORGANIZATION">FFT</ENAMEX> approach
+          used more <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time than the more direct implementation
+          that was finally adopted.
+          This approach is critically dependent on the
+          "regularization" parameter (referred to in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> as
+          "smoothing parameter") and <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          described a number of criteria for choosing the "best"
+          value of this parameter. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a new option is
+          introduced that uses the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution input
+          function to obtain a default value of the smoothing
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX>. The error function that is minimized to
+          determine the input vector <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> is the sum of <NUMEX TYPE="CARDINAL">two</NUMEX> terms [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+          ] :
+          (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) 
+          <ENAMEX TYPE="PERSON">Error Function =</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">Y -</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">Y -</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> ) + γ 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> ( 
+          F 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          F ) 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> 
+          In the <NUMEX TYPE="ORDINAL">first</NUMEX> term the matrix (<ENAMEX TYPE="ORGANIZATION">Y-GU</ENAMEX>) is a measure of
+          the error difference between the experimental venous
+          <ENAMEX TYPE="PERSON">concentrations</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Y</ENAMEX>) and the model values given by the
+          convolution of the input vector (<ENAMEX TYPE="ORGANIZATION">U</ENAMEX>) and bolus input
+          function <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">G</ENAMEX>). The <NUMEX TYPE="ORDINAL">second</NUMEX> term is a measure of
+          the roughness of the data where γ is the smoothing
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> and <ENAMEX TYPE="PRODUCT">F</ENAMEX> is the <NUMEX TYPE="ORDINAL">second</NUMEX> difference matrix. The new
+          procedure that is used to estimate the smoothing
+          <ENAMEX TYPE="ORGANIZATION">parameter (γ</ENAMEX>) is to set the input vector <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> equal to the
+          approximate gamma input function and solve for the value
+          of γ that makes the two terms in eq. <NUMEX TYPE="CARDINAL">5</NUMEX> have equal weight.
+          This calculation of γ is limited to time points where the
+          value of the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution is greater than <NUMEX TYPE="PERCENT">1%</NUMEX> of the
+          peak value of the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution - that is, points
+          where the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution provides a good
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX>. Although this choice of equal weights is
+          <ENAMEX TYPE="PERSON">empirical</ENAMEX> and was based on trial and error on <NUMEX TYPE="CARDINAL">one</NUMEX> set of
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, it seems to work well for a large range of
+          experimental data, even when the actual input differs
+          significantly from a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution (see Results
+          <ENAMEX TYPE="LAW">Section</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">PKQuest Implementation</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">User Interface</ENAMEX> and
+          Graphical Output
+          All the deconvolution procedures and the software code
+          used in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are freely available on the web
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. The complete deconvolution
+          procedure is called by a short <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> worksheet. One
+          simple example is shown below:
+          
+            <ENAMEX TYPE="PERSON">sample_deconv</ENAMEX>:proc() 
+          
+          
+            <NUMEX TYPE="MONEY">#</NUMEX> The following ivinput is for a <NUMEX TYPE="CARDINAL">10</NUMEX>
+            <ENAMEX TYPE="PERSON">minute IV</ENAMEX> infusion of <TIMEX TYPE="DATE">1000</TIMEX> micromoles ninput:<NUMEX TYPE="CARDINAL">1</NUMEX>; 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">ivinput</ENAMEX>[<ENAMEX TYPE="LAW">1</ENAMEX>]:table([type = <TIMEX TYPE="DATE">1,amount</TIMEX> =
+            1000,tbeg = <TIMEX TYPE="DATE">0,tend</TIMEX> = <NUMEX TYPE="CARDINAL">10</NUMEX>]); 
+          
+          
+            <NUMEX TYPE="MONEY">#</NUMEX> Venous concentration data [time,
+            <ENAMEX TYPE="ORGANIZATION">conc</ENAMEX>] resulting from above <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input: 
+          
+          
+            ivdata: [<NUMEX TYPE="CARDINAL">0.000,0.0000</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">2.500,18.3743</NUMEX>], [<NUMEX TYPE="CARDINAL">5.000,20.0258</NUMEX>],[<NUMEX TYPE="CARDINAL">10.000,22.137</NUMEX> 
+          
+          
+            <NUMEX TYPE="CARDINAL">9</NUMEX>], [<NUMEX TYPE="CARDINAL">15.000,4.1428</NUMEX>]; [<NUMEX TYPE="CARDINAL">20.000,3.9987</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">25.000,3.8501</NUMEX>], [<NUMEX TYPE="CARDINAL">30.000,3.6699</NUMEX>], [<NUMEX TYPE="CARDINAL">60.000,2.6839</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">90.000,2.1099</NUMEX>], [<NUMEX TYPE="CARDINAL">120.000,1.7697</NUMEX>], [<NUMEX TYPE="CARDINAL">180.000,1.3768</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">300.000,.9629</NUMEX>], [<NUMEX TYPE="CARDINAL">480.000,.6157</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">720.000,.3499</NUMEX>]]; 
+          
+          
+            <NUMEX TYPE="MONEY">#</NUMEX> Venous concentration data following
+            an unknown input 
+          
+          
+            absdata: [<NUMEX TYPE="CARDINAL">0.000,0.0000</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">2.500,.0001</NUMEX>], [<NUMEX TYPE="CARDINAL">5.000,.0016</NUMEX>], [<NUMEX TYPE="CARDINAL">10.000,.0223</NUMEX>],[<NUMEX TYPE="CARDINAL">1</NUMEX> 
+          
+          
+            <NUMEX TYPE="CARDINAL">5.000,.0909</NUMEX>], [<NUMEX TYPE="CARDINAL">20.000,.2265</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">25.000,.4339</NUMEX>], [<NUMEX TYPE="CARDINAL">30.000,.7055</NUMEX>], [<NUMEX TYPE="CARDINAL">60.000,2.7337</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">90.000,3 .6826</NUMEX>], [<NUMEX TYPE="CARDINAL">120.000,3.4554</NUMEX>], [<NUMEX TYPE="CARDINAL">180.000,2.2889</NUMEX>],
+            [<NUMEX TYPE="CARDINAL">300.000,1.2593</NUMEX>], [<NUMEX TYPE="CARDINAL">480.000,.7631</NUMEX>], 
+          
+          
+            [<NUMEX TYPE="CARDINAL">720.000,.4298</NUMEX>]]; 
+          
+          
+            deconvolution:table([<ENAMEX TYPE="PER_DESC">usedata</ENAMEX> =
+            3,fitfunc = <TIMEX TYPE="DATE">2,plotinput</TIMEX> = <TIMEX TYPE="DATE">1,Nexp</TIMEX> = <TIMEX TYPE="DATE">3,breakpoint</TIMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX>,
+            <ENAMEX TYPE="PERSON">scale_smooth</ENAMEX>= <NUMEX TYPE="CARDINAL">1</NUMEX>]); 
+          
+          
+            
+            <ENAMEX TYPE="ORGANIZATION">convolve</ENAMEX>(writedir,cunit,ivinput,ivdata,absdata,syspar,gammapar,gammaparmod,
+            <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX>); 
+          
+          
+            end proc: 
+          
+          The amount and time course of the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input that is
+          used for the calculation of the bolus response function
+          r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is characterized by the <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> table 
+          <ENAMEX TYPE="ORGANIZATION">ivinput</ENAMEX> . The venous concentration
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is described by the parameters 
+          <ENAMEX TYPE="ORGANIZATION">ivdata</ENAMEX> (used to determine r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)) and
+          
+          <ENAMEX TYPE="ORGANIZATION">absdata</ENAMEX> (venous concentration
+          resulting from unknown input). The data can also,
+          optionally, be read in from a data file. The parameter 
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> is a <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> table
+          characterizing the type of deconvolution calculation: 
+          <ENAMEX TYPE="ORG_DESC">usedata</ENAMEX> determines whether the
+          <ENAMEX TYPE="ORGANIZATION">bolus</ENAMEX> response function, the input function, or both
+          functions are found, 
+          <ENAMEX TYPE="ORG_DESC">fitfunc</ENAMEX> determines the
+          <ENAMEX TYPE="PERSON">deconvolution</ENAMEX> technique that is used, 
+          plotinput specifies the graphical
+          output, 
+          <ENAMEX TYPE="ORGANIZATION">Nexp</ENAMEX> is the number of exponentials
+          in the bolus response function, 
+          <ENAMEX TYPE="ORGANIZATION">breakpoint</ENAMEX> is either the type of
+          procedure used to determine the breakpoints for the
+          spline deconvolution, or the time interval for the
+          uniform deconvolution and 
+          scale_smooth scales the smoothing
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX>. The deconvolution procedure is run by the call
+          to the 
+          <ENAMEX TYPE="ORGANIZATION">convolve</ENAMEX>() procedure. In addition
+          to the above parameters, a number of optional parameters
+          can be entered: 
+          <ENAMEX TYPE="ORGANIZATION">writedir</ENAMEX> is the directory where the
+          input function is written, 
+          <ENAMEX TYPE="ORGANIZATION">cunit</ENAMEX> (<ENAMEX TYPE="PER_DESC">e.g</ENAMEX> = "micromoles") is the
+          amount <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> used in the output plots, 
+          <ENAMEX TYPE="ORGANIZATION">gammapar</ENAMEX> and 
+          gammaparmod are the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> parameter
+          input and model function parameters and 
+          <ENAMEX TYPE="ORGANIZATION">syspar</ENAMEX> is the bolus response
+          function parameters (these <NUMEX TYPE="CARDINAL">3</NUMEX> inputs are optional,
+          depending on the type of calculation and graphical
+          output). Sample deconvolution procedures and a detailed
+          <ENAMEX TYPE="PERSON">Manual</ENAMEX> and Help pages can be downloaded from the PKQuest
+          web site.
+          When the above procedure is run, a large number of
+          different graphical plots are output. The calculations of
+          the bolus response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) are routinely described
+          by the following <NUMEX TYPE="CARDINAL">four</NUMEX> plots that compare the venous
+          concentration determined from r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) versus the
+          experimental data: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)the <TIMEX TYPE="TIME">early time</TIMEX> points, <NUMEX TYPE="CARDINAL">2</NUMEX>) the late
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points, <NUMEX TYPE="CARDINAL">3</NUMEX>) a semi-log plot of all the time points,
+          and <NUMEX TYPE="CARDINAL">4</NUMEX>) all the time points. <NUMEX TYPE="CARDINAL">Three</NUMEX> of these plots are
+          shown in figs. <ENAMEX TYPE="PRODUCT">2to 9</ENAMEX>. <NUMEX TYPE="CARDINAL">Three</NUMEX> different statistical tests
+          are applied to the r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) calculation so that the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can
+          determine whether a <NUMEX TYPE="CARDINAL">2</NUMEX> or <NUMEX TYPE="CARDINAL">3</NUMEX> exponential function should be
+          used [ <TIMEX TYPE="DATE">32</TIMEX> ] .
+          The deconvolution calculation of the unknown input
+          function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is routinely described by the following
+          <NUMEX TYPE="CARDINAL">three</NUMEX> plots: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) Plot of the calculated I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) versus time,
+          along with a comparison with the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> (optional) and the model <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          <ENAMEX TYPE="PERSON">input</ENAMEX> (optional), <NUMEX TYPE="CARDINAL">2</NUMEX>) Comparison of the calculated
+          deconvolution venous concentration with the experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, and <NUMEX TYPE="CARDINAL">3</NUMEX>) Plot of the total amount of absorption
+          versus time. Examples of plots <NUMEX TYPE="MONEY">#1 and #2</NUMEX> are shown in
+          <ENAMEX TYPE="ORGANIZATION">figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">9and 10</ENAMEX>. In addition, if 
+          <ENAMEX TYPE="ORGANIZATION">writedir</ENAMEX> is specified, then a text
+          file describing I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is written. All of the plots shown
+          in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are copied directly from the standard
+          <ENAMEX TYPE="GPE">PKQuest</ENAMEX> output.
+        
+        
+          <ENAMEX TYPE="PERSON">Detailed Description</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">Deconvolution Data Test</ENAMEX>
+          Sets
+          The tests of the deconvolution procedure in this paper
+          are based on <NUMEX TYPE="CARDINAL">two</NUMEX> sets of data: <NUMEX TYPE="CARDINAL">one</NUMEX> with a single gamma
+          distribution input and <NUMEX TYPE="CARDINAL">one</NUMEX> with this same <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution plus a delayed, smaller <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          input. In this section a detailed description of these
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> sets is provided so that other <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> can use
+          this data as deconvolution test cases.
+          For both sets of data the <ENAMEX TYPE="ORG_DESC">system unit</ENAMEX> bolus response
+          function was:
+          (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) 
+          r ( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) = <NUMEX TYPE="CARDINAL">0.259</NUMEX> 
+          e -1.466 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> + <NUMEX TYPE="CARDINAL">0.00188</NUMEX> 
+          e -0.00235 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> + <NUMEX TYPE="CARDINAL">0.00287</NUMEX> 
+          e -0.0184 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          The single input was a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution (eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) with
+          A= <NUMEX TYPE="CARDINAL">1</NUMEX> mm; a = <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b = <NUMEX TYPE="QUANTITY">0.0534 min -1that</NUMEX> started at time
+          <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>. For the two input case a second <ENAMEX TYPE="SUBSTANCE">gamma input</ENAMEX> was
+          added with A = <NUMEX TYPE="CARDINAL">0.2</NUMEX> mm; a = <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b = <NUMEX TYPE="CARDINAL">0.0269</NUMEX> min -1that
+          started at t = <TIMEX TYPE="TIME">120 minutes</TIMEX>. For the single input, the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> was sampled at <NUMEX TYPE="CARDINAL">10</NUMEX>, <NUMEX TYPE="CARDINAL">20,30,60,90,120,180,300,480</NUMEX> and
+          <TIMEX TYPE="TIME">720 minutes</TIMEX>. The exact venous concentration
+          (<ENAMEX TYPE="CONTACT_INFO">micromole/liter</ENAMEX>) data for the single input at these
+          times was: <NUMEX TYPE="CARDINAL">0.0223</NUMEX>, <NUMEX TYPE="CARDINAL">0.2265</NUMEX>, <NUMEX TYPE="CARDINAL">0.7055,2.7337,3.6826</NUMEX>, <NUMEX TYPE="CARDINAL">3.4554</NUMEX>,
+          <NUMEX TYPE="CARDINAL">2.2889</NUMEX>, <NUMEX TYPE="CARDINAL">1.2593</NUMEX>, <NUMEX TYPE="CARDINAL">0.7631</NUMEX>, <NUMEX TYPE="CARDINAL">0.4298</NUMEX>. The corresponding data
+          for the <NUMEX TYPE="CARDINAL">three</NUMEX> noisy data sets was: Noisy <NUMEX TYPE="MONEY">#1</NUMEX>: <NUMEX TYPE="CARDINAL">0.0277</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.1263</NUMEX>, <NUMEX TYPE="CARDINAL">0.8041</NUMEX>, <NUMEX TYPE="CARDINAL">2.7568</NUMEX>, <NUMEX TYPE="CARDINAL">3.1491</NUMEX>, <NUMEX TYPE="CARDINAL">3.9856</NUMEX>, <NUMEX TYPE="CARDINAL">2.0443</NUMEX>, <NUMEX TYPE="CARDINAL">1.2508</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.7204</NUMEX>, <NUMEX TYPE="CARDINAL">0.3856</NUMEX>; Noisy <NUMEX TYPE="MONEY">#2</NUMEX>: <NUMEX TYPE="CARDINAL">0.0216</NUMEX>, <NUMEX TYPE="CARDINAL">0.1794</NUMEX>, <NUMEX TYPE="CARDINAL">0.6865</NUMEX>, <NUMEX TYPE="CARDINAL">2.664</NUMEX>,
+          <NUMEX TYPE="CARDINAL">3.643</NUMEX>, <NUMEX TYPE="CARDINAL">2.966</NUMEX>, <NUMEX TYPE="CARDINAL">1.891</NUMEX>, <NUMEX TYPE="CARDINAL">0.8765</NUMEX>, <NUMEX TYPE="CARDINAL">0.7297</NUMEX>; Noisy <NUMEX TYPE="MONEY">#3</NUMEX>: <NUMEX TYPE="CARDINAL">0.0743</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.1469</NUMEX>, <NUMEX TYPE="CARDINAL">0.8238</NUMEX>, <NUMEX TYPE="CARDINAL">2.6195</NUMEX>, <NUMEX TYPE="CARDINAL">4.3413</NUMEX>, <NUMEX TYPE="CARDINAL">2.9676</NUMEX>, <NUMEX TYPE="CARDINAL">2.628</NUMEX>, <NUMEX TYPE="CARDINAL">1.224</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.8350</NUMEX>, <NUMEX TYPE="CARDINAL">0.4913</NUMEX>. The <NUMEX TYPE="CARDINAL">two</NUMEX> input data was sampled at <TIMEX TYPE="DATE">10, 20</TIMEX>,
+          <TIMEX TYPE="DATE">30, 60, 90, 120, 180</TIMEX>, <NUMEX TYPE="CARDINAL">240,300</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">360, 420, 480</ENAMEX> and <NUMEX TYPE="CARDINAL">720</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>. The exact venous concentration data at these
+          times was <NUMEX TYPE="CARDINAL">0.0223,0.2265,0.7055</NUMEX>, <NUMEX TYPE="CARDINAL">2.7337,3.6826</NUMEX>, <NUMEX TYPE="CARDINAL">3.455</NUMEX>,
+          <NUMEX TYPE="CARDINAL">2.374</NUMEX>, <NUMEX TYPE="CARDINAL">1.957,1.751</NUMEX>, <NUMEX TYPE="CARDINAL">1.511</NUMEX>, <NUMEX TYPE="CARDINAL">1.270</NUMEX>, <NUMEX TYPE="CARDINAL">1.066</NUMEX>, <NUMEX TYPE="CARDINAL">0.5747</NUMEX>. The
+          corresponding data for the <NUMEX TYPE="CARDINAL">three</NUMEX> noisy data sets was:
+          Noisy <NUMEX TYPE="MONEY">#1</NUMEX>: <NUMEX TYPE="CARDINAL">0.029</NUMEX>, <NUMEX TYPE="CARDINAL">0.1572</NUMEX>, <NUMEX TYPE="CARDINAL">0.7951</NUMEX>, <NUMEX TYPE="CARDINAL">2.777</NUMEX>, <NUMEX TYPE="CARDINAL">3.1268</NUMEX>, <NUMEX TYPE="CARDINAL">3.9608</NUMEX>,
+          <NUMEX TYPE="CARDINAL">2.1788</NUMEX>, <NUMEX TYPE="CARDINAL">1.981,1.567</NUMEX>, <NUMEX TYPE="CARDINAL">1.313</NUMEX>, <NUMEX TYPE="CARDINAL">1.294</NUMEX>, <NUMEX TYPE="CARDINAL">1.166</NUMEX>, <NUMEX TYPE="CARDINAL">0.6495</NUMEX>; <ENAMEX TYPE="ORGANIZATION">Noisy</ENAMEX>
+          <NUMEX TYPE="MONEY">#2</NUMEX>: <NUMEX TYPE="CARDINAL">0.0395</NUMEX>, <NUMEX TYPE="CARDINAL">0.356</NUMEX>, <NUMEX TYPE="CARDINAL">0.6521</NUMEX>, <NUMEX TYPE="CARDINAL">2.495</NUMEX>, <NUMEX TYPE="CARDINAL">3.587</NUMEX>, <NUMEX TYPE="CARDINAL">2.9813</NUMEX>, <NUMEX TYPE="CARDINAL">2.0294</NUMEX>,
+          <NUMEX TYPE="CARDINAL">1.4484</NUMEX>, <NUMEX TYPE="CARDINAL">1.705</NUMEX>, <NUMEX TYPE="CARDINAL">1.4749</NUMEX>, <NUMEX TYPE="CARDINAL">1.0513</NUMEX>, <NUMEX TYPE="CARDINAL">1.1566</NUMEX>, <NUMEX TYPE="CARDINAL">0.4995</NUMEX>; Noisy <NUMEX TYPE="MONEY">#3</NUMEX>:
+          <NUMEX TYPE="CARDINAL">0.0613</NUMEX>, <NUMEX TYPE="CARDINAL">0.1311</NUMEX>, <NUMEX TYPE="CARDINAL">0.8173</NUMEX>, <NUMEX TYPE="CARDINAL">2.6478</NUMEX>, <NUMEX TYPE="CARDINAL">4.287</NUMEX>, <NUMEX TYPE="CARDINAL">2.998</NUMEX>, <NUMEX TYPE="CARDINAL">2.721</NUMEX>,
+          <NUMEX TYPE="CARDINAL">1.881</NUMEX>, <NUMEX TYPE="CARDINAL">1.971</NUMEX>, <NUMEX TYPE="CARDINAL">1.9528</NUMEX>, <NUMEX TYPE="CARDINAL">1.3802</NUMEX>, <NUMEX TYPE="CARDINAL">1.2038</NUMEX>, <NUMEX TYPE="CARDINAL">0.6266</NUMEX>.
+        
+      
+      
+        Results
+        
+          Use of a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution to describe the rate of
+          intestinal absorption
+          In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a recently introduced PBPK software
+          routine, a new approach is introduced that provides a
+          direct measure of the rate of intestinal absorption of a
+          <ENAMEX TYPE="ORGANIZATION">solute</ENAMEX> if the <ENAMEX TYPE="ORGANIZATION">PPBK</ENAMEX> parameters are known. Figure 1shows
+          the result of applying this technique to experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> for <NUMEX TYPE="CARDINAL">three</NUMEX> different solutes in <ENAMEX TYPE="PER_DESC">humans</ENAMEX>: <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          ] (with or without a meal), standard propranolol [ <TIMEX TYPE="DATE">26</TIMEX> ]
+          and a long acting form of <ENAMEX TYPE="SUBSTANCE">propranolol</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ] . The
+          squares in these figures describe the time course of the
+          total absorption as determined by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The solid line
+          is the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution fit (eq. <NUMEX TYPE="CARDINAL">2</NUMEX>) to the squares. It
+          can be seen that in all cases the <NUMEX TYPE="CARDINAL">3</NUMEX>-parameter <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution provides a good fit to the experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The standard propranolol absorption rate (fig. <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX>
+          lower left <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>) has a long initial time delay followed
+          by a steep rise - a time course that is especially
+          difficult to fit with other functions (e.g. exponential,
+          <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> equation) but is closely fit by the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution. For this reason, the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution has
+          been chosen in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> as the function of choice to
+          model intestinal absorption data. It also provides a good
+          fit to absorption from other sites, e.g. skin,
+          <ENAMEX TYPE="ORGANIZATION">intramuscular</ENAMEX> and intraperitoneal.
+        
+        
+          Use of a <ENAMEX TYPE="PRODUCT">PBPK Model</ENAMEX> to <ENAMEX TYPE="WORK_OF_ART">Evaluate the Accuracy of the</ENAMEX>
+          Determination of the <ENAMEX TYPE="ORGANIZATION">Bolus Input Function r</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          The accuracy of the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) will be
+          evaluated <NUMEX TYPE="CARDINAL">2</NUMEX> different ways. In the <NUMEX TYPE="ORDINAL">first</NUMEX> test, a
+          continuous venous concentration curve will be generated
+          using a known constant <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input to the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. This
+          continuous curve will then be sampled at varying discrete
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points which will be used to determine r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>).
+          Comparing the venous concentration curve determined using
+          this r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) with the original <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> venous data provides a
+          direct test of the accuracy of r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). In the <NUMEX TYPE="ORDINAL">second</NUMEX> test,
+          this r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) will be used to calculate I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) by applying eq.
+          <NUMEX TYPE="CARDINAL">1</NUMEX> to the venous concentration data produced by a known
+          <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution input to the same PBPK <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+          Comparison of the deconvolution I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) versus the actual
+          model input provides another indication of the accuracy
+          of r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> intestinal input <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          parameters are similar to the absorption parameters for
+          the standard propranolol shown in fig. <NUMEX TYPE="CARDINAL">1</NUMEX>(A = <NUMEX TYPE="CARDINAL">1</NUMEX> millimole;
+          a = <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b = <NUMEX TYPE="QUANTITY">0.0534 min -1</NUMEX>).
+          The results will be presented for the <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> models: a) the solute distributes in all the tissue
+          water with no tissue binding (referred to as "simple"
+          model); and b) there is tissue binding of the solute,
+          similar to what is observed for propranolol (referred to
+          as "binding" model) (see <ENAMEX TYPE="LOCATION">Methods</ENAMEX> section for a detailed
+          <ENAMEX TYPE="ORGANIZATION">description</ENAMEX>). In both <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, it is assumed that the
+          <ENAMEX TYPE="GPE">solute</ENAMEX> clearance is produced only by <ENAMEX TYPE="DISEASE">renal secretion</ENAMEX> and
+          the model input is directly into a systemic vein..
+          Results will be shown for a <NUMEX TYPE="CARDINAL">2</NUMEX> or <NUMEX TYPE="CARDINAL">3</NUMEX> exponential response
+          function for venous concentration data sampled at "high"
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> (<NUMEX TYPE="MONEY">2.5</NUMEX>, <TIMEX TYPE="DATE">5, 10, 15, 20, 25, 30, 60, 90</TIMEX>, <ENAMEX TYPE="CONTACT_INFO">120, 180,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">300</NUMEX>, <TIMEX TYPE="TIME">480 and 720 minutes</TIMEX>) and "low" resolution (<TIMEX TYPE="DATE">10, 20</TIMEX>,
+          <TIMEX TYPE="DATE">30, 60, 90, 120, 180, 300</TIMEX>, <TIMEX TYPE="TIME">480 and 720 minutes</TIMEX>). The
+          <NUMEX TYPE="ORDINAL">first</NUMEX> time point for the high resolution data is at <NUMEX TYPE="CARDINAL">2.5</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX> and, considering the experimental mixing and
+          delay artifacts, one probably cannot expect to be able
+          make accurate measurements at times before this. For each
+          case, the results of a <TIMEX TYPE="TIME">10-minute</TIMEX> constant infusion will
+          be compared with a <TIMEX TYPE="TIME">30-second</TIMEX> constant infusion. The
+          <TIMEX TYPE="TIME">30-second</TIMEX> infusion is meant to mimic an experimental
+          "bolus" input.
+          Figures 2to <TIMEX TYPE="DATE">8quantitate</TIMEX> the accuracy of the
+          determination of the bolus response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) under
+          various conditions. In each <ENAMEX TYPE="PER_DESC">figure</ENAMEX>, the black line is the
+          exact model venous concentration resulting from either a
+          <TIMEX TYPE="TIME">30-second</TIMEX> (left column) or <TIMEX TYPE="TIME">10-minute</TIMEX> (right column)
+          <ENAMEX TYPE="PERSON">constant IV</ENAMEX> infusion into the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model system. The
+          black squares are the discrete venous concentration data
+          points that were used to determine r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). The red lines in
+          these figures are the venous concentration curves
+          resulting from convolution of the calculated bolus
+          response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) with the model input function. The
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <TIMEX TYPE="DATE">row</TIMEX> shows the fit for the <TIMEX TYPE="TIME">early time</TIMEX> points; the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> row for the long time points, and <TIMEX TYPE="DATE">the third row</TIMEX> is
+          a semi-log plot for all the data. The bottom row compares
+          the true model intestinal <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> input function (green)
+          with the intestinal input rate determined by the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution deconvolution method (see below) using this
+          r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) (black).
+          Figures 2and <TIMEX TYPE="DATE">3show</TIMEX> the results for the "simple" PBPK
+          model using a <NUMEX TYPE="QUANTITY">2-exponential</NUMEX> bolus input function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) for
+          the high (fig. <NUMEX TYPE="CARDINAL">2</NUMEX>) and low (fig. <NUMEX TYPE="CARDINAL">3</NUMEX>) time resolution data.
+          For a <TIMEX TYPE="TIME">10-minute</TIMEX> constant <ENAMEX TYPE="PRODUCT">IV</ENAMEX> infusion (right column, figs.
+          2and <NUMEX TYPE="CARDINAL">3</NUMEX>), the venous concentration calculated using the
+          <NUMEX TYPE="CARDINAL">2</NUMEX>-expononential r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) (red line) provides a good fit to
+          the entire time course of the model venous concentration
+          (black <ENAMEX TYPE="PER_DESC">line</ENAMEX>). As expected for this good estimate of r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>),
+          the deconvolution intestinal absorption rate determined
+          using this r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) (bottom row, black <ENAMEX TYPE="PER_DESC">line</ENAMEX>, right column) is
+          very close to the true, model input function (green
+          line).
+          For <TIMEX TYPE="TIME">the 30-second</TIMEX> constant infusion (left hand column)
+          there is a sharp early spike in the venous concentration
+          which must be fit by extrapolation of the venous data
+          points back from the first data point at either <NUMEX TYPE="CARDINAL">2.5</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX> (high resolution, fig. <NUMEX TYPE="CARDINAL">2</NUMEX>) or <TIMEX TYPE="TIME">10 minutes</TIMEX> (low
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>, fig. <NUMEX TYPE="CARDINAL">3</NUMEX>). In each case, this extrapolated
+          venous concentration (red line) is a poor approximation
+          to the true model venous concentration (black). The
+          bottom row in these figures quantitates the influence of
+          this early time error on the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of the
+          intestinal absorption rate by deconvolution by comparing
+          the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> rate (green) versus the deconvolution rate
+          (black). It can be seen that for this "simple" model the
+          error in the deconvolution intestinal absorption rate is
+          quite small, despite the large early error in the venous
+          concentration.
+          Figures 4to 8show a similar set of results for the
+          "binding" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. The tissue binding increases the
+          volume of distribution and results in a more
+          "complicated" venous concentration time course. One
+          indication of this "complicated" times course is that a
+          <NUMEX TYPE="CARDINAL">2</NUMEX>-exponential bolus response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) no longer
+          provides an accurate description of the venous
+          concentration for the high resolution exact data (fig. <ENAMEX TYPE="CONTACT_INFO">4,</ENAMEX>
+          right column). In contrast, a <NUMEX TYPE="CARDINAL">3</NUMEX>-exponential r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) provides
+          a nearly perfect fit (fig. <NUMEX TYPE="CARDINAL">6</NUMEX>). Surprisingly, despite the
+          poor fit to the venous data using the <NUMEX TYPE="CARDINAL">2</NUMEX>-exponential r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          for <TIMEX TYPE="TIME">the 10 minute</TIMEX> infusion, the intestinal absorption
+          rate (fig. <NUMEX TYPE="CARDINAL">4</NUMEX>, bottom row, right) determined by
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> using this r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) is in good agreement with
+          the model input (green).
+          For <TIMEX TYPE="TIME">the 30-second</TIMEX> constant infusion using the binding
+          model (left hand column, <ENAMEX TYPE="CONTACT_INFO">figs. 4to 8</ENAMEX>), the venous
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> predicted using r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) for the times
+          preceding the <NUMEX TYPE="ORDINAL">first</NUMEX> experimental time point (<TIMEX TYPE="TIME">2.5 minutes</TIMEX>
+          for high resolution, <TIMEX TYPE="TIME">10 minutes</TIMEX> for low resolution)
+          differs markedly from the true, model venous
+          concentration. The corresponding error in the intestinal
+          absorption rate is small when the first data point is at
+          <TIMEX TYPE="TIME">2.5 minutes</TIMEX> (high resolution data, <ENAMEX TYPE="CONTACT_INFO">figs. 4and 6</ENAMEX>), but
+          becomes large when the <NUMEX TYPE="ORDINAL">first</NUMEX> point is at <TIMEX TYPE="TIME">10 minutes</TIMEX> (low
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> data, <ENAMEX TYPE="CONTACT_INFO">figs. 5and 7</ENAMEX>).
+          For <TIMEX TYPE="TIME">the 10-minute</TIMEX> constant infusion, an accurate
+          determination of both the bolus response function and the
+          input can be obtained when the <NUMEX TYPE="ORDINAL">first</NUMEX> venous sample is at
+          <TIMEX TYPE="TIME">10 minutes</TIMEX> (fig. <NUMEX TYPE="CARDINAL">7</NUMEX>, right column). This illustrates the
+          importance of adjusting the sample times to the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input
+          conditions. Figure 8shows a similar result for a
+          <TIMEX TYPE="TIME">30-minute</TIMEX> constant infusion with the first sample point
+          at <TIMEX TYPE="TIME">30 minutes</TIMEX>. This suggests, as a general rule, that an
+          accurate determination of the response function only
+          requires that the first sample point be obtained at or
+          before the end of the constant infusion.
+          It is clear from these results that one cannot judge
+          the accuracy of the response function from the agreement
+          <TIMEX TYPE="DATE">between the model</TIMEX> (i.e. experimental) data points
+          (squares) and the calculated venous concentration using
+          this response function. For example, the poorest fit to
+          the intestinal absorption function is for the low
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>, <TIMEX TYPE="TIME">30-second</TIMEX> input (fig. <NUMEX TYPE="CARDINAL">5</NUMEX>, left column), even
+          though there is nearly perfect agreement between the data
+          points and the predicted venous concentration using the
+          <NUMEX TYPE="CARDINAL">2</NUMEX>-exponential r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). The error results from the incorrect
+          predicted venous concentrations for the times preceding
+          the first data point at <TIMEX TYPE="TIME">10 minutes</TIMEX>.
+        
+        
+          Evaluation of <ENAMEX TYPE="ORGANIZATION">Deconvolution Procedures</ENAMEX>
+          In this section the <NUMEX TYPE="CARDINAL">four</NUMEX> different techniques
+          described in the background section will be used to
+          determine the intestinal absorption function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) by
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> (see eq. <NUMEX TYPE="CARDINAL">1</NUMEX>). The accuracy of the different
+          methods will be tested by the use of a known intestinal
+          input to the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to generate the absorption venous
+          concentration data. The <ENAMEX TYPE="FAC">I</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) determined by deconvolution
+          of eq. <ENAMEX TYPE="PRODUCT">1</ENAMEX> using this data and the previously determined
+          bolus input function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) will then be compared with the
+          actual model input. Results will be shown only for the
+          "binding" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. The bolus input function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) used
+          in this section is the <NUMEX TYPE="CARDINAL">3</NUMEX> exponential function determined
+          for the "binding" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> using a <TIMEX TYPE="TIME">10 minute</TIMEX> constant
+          <ENAMEX TYPE="PRODUCT">IV infusion</ENAMEX> and the high resolution venous sampling.
+          Since this r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) provides a nearly perfect kinetic
+          description of this system (see fig. <NUMEX TYPE="CARDINAL">6</NUMEX>, right column),
+          any errors in the intestinal input function I(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) must
+          result from the deconvolution procedure. The
+          <ENAMEX TYPE="ORGANIZATION">deconvolution</ENAMEX> procedures will first be tested for an
+          intestinal input rate described by the same <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution used above for figs. <ENAMEX TYPE="CONTACT_INFO">2, 3, 4, 5, 6, 7,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">8</NUMEX>(<ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution parameters: A= <NUMEX TYPE="CARDINAL">1</NUMEX> millimole; a =
+          <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b = <NUMEX TYPE="QUANTITY">0.0534 min -1</NUMEX>). In order to evaluate the
+          deconvolution methods for a more general input function
+          that cannot be described by a single <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution,
+          the procedures will also be tested for the case where the
+          input consists of <NUMEX TYPE="CARDINAL">two</NUMEX> distinct <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution, a
+          large standard input and an additional smaller, delayed
+          component. This input mimics the case of an intestinally
+          absorbed solute that is excreted by the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> and then
+          <ENAMEX TYPE="ORGANIZATION">reabsorbed</ENAMEX> (enterohepatic circulation). Only the "low
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>" time points (<TIMEX TYPE="DATE">10, 20, 30, 60, 90</TIMEX>, <ENAMEX TYPE="CONTACT_INFO">120, 180,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">300</NUMEX>, <TIMEX TYPE="TIME">480 and 720 minutes</TIMEX>) will be used in this section.
+          The "high resolution" time points used above do not
+          improve the estimate of the absorption rate since the
+          additional points are at <TIMEX TYPE="TIME">early</TIMEX> times before any
+          significant absorption occurs. Although these "low
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>" time points are quite sparse, they are
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of the limited sampling rate that is
+          experimentally available.
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">Gamma</ENAMEX> distribution <ENAMEX TYPE="PERSON">Input Deconvolution</ENAMEX>
+          This is the approach that was used above in figs. <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">3, 4, 5, 6, 7, 8</ENAMEX>(bottom row) to determine the intestinal
+          absorption function. As shown in those figures, when an
+          accurate bolus response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) was used (<ENAMEX TYPE="SUBSTANCE">e.g. fig</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">6</NUMEX>), this method returned a nearly perfect fit to the
+          model input function. This is not surprising since the
+          model input was also a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution. Figure 9shows
+          another test of this deconvolution method using "noisy"
+          venous concentration data. The noisy data is generated by
+          adding random noise to each venous concentration data
+          point (c [i], eq. <NUMEX TYPE="CARDINAL">1</NUMEX>) generated using the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution input to the "binding" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>:
+          (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) 
+          c [ 
+          i ] = 
+          c [ 
+          i ] + 
+          R [ 
+          i ] * 
+          c [ 
+          i ] + 
+          Noise [ 
+          i ]
+          where <ENAMEX TYPE="NATIONALITY">R</ENAMEX> [i] and <ENAMEX TYPE="PRODUCT">Noise</ENAMEX> [i] are normally distributed
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> variables with a mean of <NUMEX TYPE="CARDINAL">0</NUMEX> and standard deviations
+          of <NUMEX TYPE="CARDINAL">0.1</NUMEX> and <NUMEX TYPE="CARDINAL">0.05</NUMEX> <ENAMEX TYPE="PER_DESC">millimoles</ENAMEX>/liter, respectively. This adds
+          a random error of <NUMEX TYPE="PERCENT">10%</NUMEX> to each point and an additional
+          absolute noise with a mean error of <NUMEX TYPE="CARDINAL">0.05</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">millimoles/liter.</ENAMEX>
+          Each row in fig. 9shows the results for a different
+          set of random noisy data. The left hand column compares
+          the deconvolution intestinal absorption rate (black <ENAMEX TYPE="PER_DESC">line</ENAMEX>)
+          with the model input rate (green line). The right hand
+          column compares the corresponding deconvolution based
+          venous concentrations (red line) with the "noisy" data
+          points (squares) that were used to calculate the
+          deconvolution input. The calculated intestinal absorption
+          rate provides a good approximation to the actual input
+          for each noisy data set. The total intestinal absorption
+          calculation from the deconvolution varies from <NUMEX TYPE="CARDINAL">0.863</NUMEX>
+          (<TIMEX TYPE="DATE">middle row</TIMEX>) to <NUMEX TYPE="MONEY">1.089</NUMEX> (bottom) compared to the actual
+          input of <NUMEX TYPE="CARDINAL">1</NUMEX> millimole. This approach is inherently robust
+          since there are <TIMEX TYPE="DATE">only 3</TIMEX> adjustable parameters and the
+          shape must be a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Analytical</ENAMEX> Deconvolution
+          In this approach, the venous concentration data are
+          fit with a spline function, which is then used for an
+          <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> deconvolution. The spline fit can either be an
+          exact interpolated fit that passes through each data
+          point, or a smoothed fit that limits the degree of
+          <ENAMEX TYPE="ORGANIZATION">curvature</ENAMEX> allowed in fitting the points (see Methods for
+          details). This latter case is essential when fitting
+          noisy data. In the implementation of this method in
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> sets a "smoothing" parameter that
+          varies from <NUMEX TYPE="MONEY">0</NUMEX> (interpolating spline) to infinity. The
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> has been scaled so that, for each deconvolution
+          method, a value of <ENAMEX TYPE="PER_DESC">smoothing</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> provides a good first
+          estimate.
+          Figure <NUMEX TYPE="CARDINAL">10shows</NUMEX> the result of applying this approach to
+          the exact venous data for <NUMEX TYPE="CARDINAL">4</NUMEX> different values of
+          <ENAMEX TYPE="ORGANIZATION">smoothing</ENAMEX>. Using an interpolating spline (<ENAMEX TYPE="PER_DESC">smoothing</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>)
+          provides a nearly perfect fit to the model data. For
+          <ENAMEX TYPE="ORGANIZATION">smoothing</ENAMEX> values of <NUMEX TYPE="CARDINAL">1</NUMEX> or greater, the deconvolution
+          results differ significantly from the model data. Despite
+          the error in the shape of the curve, the deconvolution
+          estimate of the total absorption remains accurate. For
+          example, for the <ENAMEX TYPE="PER_DESC">smoothing</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> curve, the total
+          calculated absorption is <NUMEX TYPE="MONEY">1.013</NUMEX> compared to model input of
+          <TIMEX TYPE="TIME">1 millimole.</TIMEX>
+          Figure <NUMEX TYPE="CARDINAL">11shows</NUMEX> the analytical deconvolution results
+          using the same <NUMEX TYPE="CARDINAL">3</NUMEX> sets of noisy data that were used in
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. 9for the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> input deconvolution method. Each
+          panel in fig. 11compares the intestinal input rate
+          determined by this method (black) with the exact model
+          input intestinal absorption rate (green) and the rate
+          determined by the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> input method in fig. <NUMEX TYPE="CARDINAL">9</NUMEX>(red). Each
+          column in fig. 11is for <NUMEX TYPE="CARDINAL">one</NUMEX> set of noisy data, and the
+          results for <NUMEX TYPE="CARDINAL">3</NUMEX> different values of the smoothing parameter
+          are shown in the <NUMEX TYPE="CARDINAL">3</NUMEX> rows. The "best" fits for the three
+          sets (columns) of noisy data are for a smoothing
+          parameter of <NUMEX TYPE="MONEY">3</NUMEX> (<NUMEX TYPE="ORDINAL">first</NUMEX> column), <NUMEX TYPE="MONEY">0.1</NUMEX> (<NUMEX TYPE="ORDINAL">second</NUMEX> column) and <NUMEX TYPE="CARDINAL">1</NUMEX>
+          (<NUMEX TYPE="ORDINAL">third</NUMEX> column), although this choice is clearly
+          subjective. This figure illustrates that for this method
+          the intestinal absorption rate may have non-physical
+          negative values. (The negative region decreases as the
+          smoothing parameter is increased). This is one of the
+          major limitations of this approach. The other <NUMEX TYPE="CARDINAL">3</NUMEX> methods
+          can be constrained (see Methods for details) to prevent
+          this.
+        
+        
+          <ENAMEX TYPE="PERSON">Spline Function Input</ENAMEX>
+          This method uses the approach of <ENAMEX TYPE="ORGANIZATION">Verotta</ENAMEX> [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] in
+          which the input is parameterized by a general B-spline
+          function and the deconvolution is obtained using a
+          constrained regression method that prevents the input
+          rate from having negative (non-physical) values. There
+          are <NUMEX TYPE="CARDINAL">two</NUMEX> sets of <ENAMEX TYPE="PER_DESC">user</ENAMEX> input adjustable parameters for this
+          method: the choice of the time "breakpoints" for the
+          B-<NUMEX TYPE="CARDINAL">spline</NUMEX> function, and the value of the smoothing
+          parameter that "penalizes" the fits that have too sharp a
+          <ENAMEX TYPE="ORGANIZATION">curvature</ENAMEX> (see Methods for details). As was the case for
+          the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution and analytical deconvolution
+          techniques, this method also returns a nearly perfect fit
+          to the model data when applied to the exact data (not
+          shown).
+          Figure <NUMEX TYPE="CARDINAL">12shows</NUMEX> the results of the application of this
+          deconvolution method to one of the noisy data sets used
+          in fig. <NUMEX TYPE="CARDINAL">9</NUMEX>(<TIMEX TYPE="DATE">first row</TIMEX>) and fig. <TIMEX TYPE="DATE">11</TIMEX>(<NUMEX TYPE="ORDINAL">first</NUMEX> column). The <NUMEX TYPE="CARDINAL">two</NUMEX>
+          columns in fig. 12correspond to the results for <TIMEX TYPE="TIME">two</TIMEX>
+          different sets of breakpoints and the different rows are
+          for different values of the smoothing parameter. These
+          results show the critical dependence of this method on
+          the choice of time points used for the breakpoints. The
+          excellent fit on the left uses breakpoints at <NUMEX TYPE="CARDINAL">0</NUMEX>, <TIMEX TYPE="DATE">14, 42</TIMEX>,
+          <TIMEX TYPE="DATE">68</TIMEX>, <NUMEX TYPE="CARDINAL">115,173</NUMEX>, <NUMEX TYPE="CARDINAL">290</NUMEX>, <TIMEX TYPE="TIME">400 and 720 minutes</TIMEX>. The <ENAMEX TYPE="PER_DESC">poor</ENAMEX> fit on
+          the right has <NUMEX TYPE="CARDINAL">2</NUMEX> additional breakpoints, at <NUMEX TYPE="CARDINAL">90 and 140</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>.
+          The choice of time points for the good fit in the left
+          column of <ENAMEX TYPE="SUBSTANCE">fig</ENAMEX>. 12is based on the application of the new
+          approach introduced here. If one knows, a priori, that
+          the absorption rate approximates a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution,
+          then the spline break points can be chosen to provide an
+          <ENAMEX TYPE="PER_DESC">optimal</ENAMEX> fit to this <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution (see Methods for
+          details). In the implementation of the spline function
+          approach in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, there are a number of options for
+          choosing the breakpoints. <NUMEX TYPE="CARDINAL">One</NUMEX> of these options is based
+          on <NUMEX TYPE="ORDINAL">first</NUMEX> finding the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution approximation to
+          the intestinal absorption (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>) and then using this
+          function to select the break points.
+          The left hand column in fig. 12also illustrates that,
+          if this optimal set of breakpoints is used, the quality
+          of the fit is relatively independent of the value chosen
+          for the smoothing parameter. This is a major advantage of
+          this approach because it means that an accurate estimate
+          of the intestinal absorption can be obtained using the
+          default set of parameters, without any subjective user
+          decisions.
+          Figure <NUMEX TYPE="CARDINAL">13shows</NUMEX> the fit using this default set of
+          <ENAMEX TYPE="ORGANIZATION">breakpoints</ENAMEX> (using the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution approximation)
+          and smoothing parameter ( = <NUMEX TYPE="CARDINAL">1</NUMEX>) for the same <NUMEX TYPE="CARDINAL">3</NUMEX> noisy data
+          sets that were used for the analytical (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>) and
+          spline function (fig. <NUMEX TYPE="CARDINAL">11</NUMEX>) deconvolution methods. The
+          intestinal absorption rate determined using this approach
+          is as good as the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution approach. This may
+          not surprising since the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution has been used
+          to choose the break points. A better test of this
+          approach to choosing the breakpoints is described below
+          where an input that is clearly not a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          is used.
+        
+        
+          Uniform Input
+          In this approach the intestinal absorption function is
+          determined on a uniform, dense sequence of time points
+          and the stochastic regularization procedure of Nicolao
+          <ENAMEX TYPE="ORGANIZATION">et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">Sparacino et</ENAMEX>. al. [ <NUMEX TYPE="CARDINAL">22 23</NUMEX> ] is used for
+          the deconvolution. This approach also constrains the
+          solution so that the input rate cannot be negative. In
+          this approach one solves for the concentration at many
+          more time points then there are data points and the
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> is highly underdetermined. The system becomes
+          solvable by adding a constraint on the smoothness
+          ("regularization") of the solution. This means that the
+          solution is strongly dependent on the <ENAMEX TYPE="PER_DESC">user</ENAMEX> input
+          "smoothing parameter" which can vary over a wide range
+          depending on the time interval, number of points and
+          experimental data. This is the main limitation of this
+          approach. <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ] have discussed several
+          different criterion for choosing the "best" value of this
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX>. These criteria are quite CPU intensive because
+          they involve the repeated determination of the fits for a
+          large number of different values of the "smoothing
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX>" and then using statistical tests to select the
+          "best" value. In this paper a new, simpler, approach is
+          used to estimate the value of this smoothing parameter,
+          again based on the assumption that the intestinal
+          absorption rate can be approximated by a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution (see Methods for details). Another user
+          adjustable parameter for this method is the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> time
+          interval tdel (the corresponding time points where the
+          solution is obtained are at <NUMEX TYPE="CARDINAL">0</NUMEX>, tdel, <TIMEX TYPE="TIME">2*</TIMEX><TIMEX TYPE="DATE">tdel</TIMEX>, <TIMEX TYPE="TIME">3*tdel</TIMEX>....).
+          There are several constraints on the choice of tdel. This
+          <ENAMEX TYPE="PERSON">interval</ENAMEX> should be a common divisor of all the
+          experimental time points, so that the experimental points
+          fall on the uniform time grid. The implementation in
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> rounds the experimental points to the nearest
+          uniform point and, if the rounding only amounts to a few
+          percent, the error will be negligible. The other
+          constraint on the time points is that the <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time for
+          the constrained, non-negative, solution in the PKQuest
+          implementation scales roughly as the <ENAMEX TYPE="FAC_DESC">square</ENAMEX> of the number
+          of time points and, thus, <ENAMEX TYPE="PRODUCT">CPU</ENAMEX> time constraints limit the
+          size of the time interval. Since solute absorption is, in
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, a slowly varying and smooth process, relatively
+          long time intervals can be used and this latter
+          <ENAMEX TYPE="PERSON">constraint</ENAMEX> is not usually limiting.
+          Figure <NUMEX TYPE="CARDINAL">14shows</NUMEX> the intestinal absorption rate
+          determined with this approach for the exact data and the
+          same <NUMEX TYPE="CARDINAL">3</NUMEX> noisy data sets that were used in figs. <ENAMEX TYPE="CONTACT_INFO">9,</ENAMEX> 11and
+          <TIMEX TYPE="DATE">13</TIMEX>. (A time interval of <TIMEX TYPE="TIME">5 minutes</TIMEX> was used for these
+          results). The values of the intestinal absorption rate
+          determined by this method at the uniform set of time
+          points (open squares) is compared with the model input
+          (green) and <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution deconvolution result
+          (red). All the fits use the default smoothing parameter
+          determined from the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution fit to this same
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>). Although the fit is very good for the
+          exact data using this default smoothing parameter, a
+          better (nearly perfect) fit to the model rate is obtained
+          (not shown) using a smaller (<NUMEX TYPE="MONEY">1/10</NUMEX>) smoothing parameter.
+          For the <NUMEX TYPE="CARDINAL">3</NUMEX> noisy data sets, the default value corresponds
+          to the "best" fit. Although the intestinal absorption
+          rate determined with this method for the first noisy data
+          set is slightly worse than the other methods, the fits
+          for the other <NUMEX TYPE="CARDINAL">2</NUMEX> noisy sets is as good, or better, than
+          the other methods (compare figs. <ENAMEX TYPE="CONTACT_INFO">9, 11and 13</ENAMEX>).
+        
+        
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> <ENAMEX TYPE="FAC">Component Intestinal Input - Comparison</ENAMEX> of
+          Different <ENAMEX TYPE="ORGANIZATION">Deconvolution Methods</ENAMEX>
+          In this section a more complicated model intestinal
+          input function is used in which a small delayed component
+          is added to the major <ENAMEX TYPE="ORG_DESC">component</ENAMEX>. The major <ENAMEX TYPE="ORG_DESC">component</ENAMEX> is
+          started at <NUMEX TYPE="CARDINAL">zero</NUMEX> time and is a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution that is
+          identical to that used in <TIMEX TYPE="DATE">figs. 9, 10, 11, 12, 13, 14</TIMEX>(A =
+          <NUMEX TYPE="CARDINAL">1</NUMEX> mm; a = <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b= <NUMEX TYPE="QUANTITY">0.0534 min -1</NUMEX>). The <NUMEX TYPE="ORDINAL">second</NUMEX> component
+          is a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution that has parameters: A= <NUMEX TYPE="CARDINAL">0.2</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">millimoles</ENAMEX>; a = <NUMEX TYPE="CARDINAL">4.85</NUMEX>; b= <NUMEX TYPE="CARDINAL">0.0269</NUMEX> <ENAMEX TYPE="SUBSTANCE">min -1and</ENAMEX> that begins at
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> = <TIMEX TYPE="TIME">120 minutes</TIMEX>. This <NUMEX TYPE="ORDINAL">second</NUMEX> component has a total
+          input of <NUMEX TYPE="CARDINAL">0.2</NUMEX> millimoles, <NUMEX TYPE="PERCENT">20 %</NUMEX> of the major input, and a
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> course that is spread over twice the time of the
+          major input. The venous concentration for this 2 input
+          case is sampled at <NUMEX TYPE="CARDINAL">three</NUMEX> additional time points (at <ENAMEX TYPE="CONTACT_INFO">240,</ENAMEX>
+          <TIMEX TYPE="TIME">360 and 420 minutes</TIMEX>) in order to resolve the delayed
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> (<TIMEX TYPE="TIME">time</TIMEX> points = <NUMEX TYPE="CARDINAL">10</NUMEX>, <TIMEX TYPE="DATE">20, 30, 60, 90</TIMEX>, <ENAMEX TYPE="CONTACT_INFO">120, 180,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">240,300</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">360, 420, 480</ENAMEX> and <TIMEX TYPE="TIME">720 minutes</TIMEX>). This input
+          mimics the situation of an orally administered <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> that
+          is excreted by the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> and then reabsorbed. The ability
+          of the deconvolution techniques to identify this second
+          component using noisy data presents a difficult
+          challenge.
+          Figure <NUMEX TYPE="CARDINAL">15compares</NUMEX> the deconvolution calculation of the
+          intestinal absorption (black) versus the actual model
+          <ENAMEX TYPE="PERSON">input</ENAMEX> (green) for the <NUMEX TYPE="CARDINAL">four</NUMEX> deconvolution methods using
+          the exact venous concentration data. The "gamma
+          distribution" fit is poor because it assumes that the
+          input can be described by a single <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution.
+          The fits for the other <NUMEX TYPE="CARDINAL">3</NUMEX> methods are very good. The
+          "spline function" (bottom row, left) and "uniform"
+          (bottom row, right) deconvolution methods use the default
+          input parameters (smoothing and breakpoints) determined
+          using the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution fit to this data (top row,
+          left) (see Methods). As described above, for the
+          <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> approach the smoothing parameter must be
+          adjusted by the <ENAMEX TYPE="PER_DESC">user</ENAMEX> for each experimental situation to
+          determine the "best" fit. In fig. <TIMEX TYPE="DATE">18</TIMEX>, for this exact
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, a smoothing <ENAMEX TYPE="PER_DESC">parameter</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> is used, corresponding to
+          the interpolating spline fit. The total amount of
+          absorption determined using the <NUMEX TYPE="CARDINAL">4</NUMEX> methods is (actual
+          input = <NUMEX TYPE="CARDINAL">1.2</NUMEX>): <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution, <NUMEX TYPE="CARDINAL">1.16</NUMEX>; analytical,
+          <NUMEX TYPE="CARDINAL">1.203</NUMEX>; spline, <NUMEX TYPE="CARDINAL">1.204</NUMEX>; and uniform, <NUMEX TYPE="CARDINAL">1.199</NUMEX>.
+          Each column in figure 16compares the results of the <NUMEX TYPE="CARDINAL">3</NUMEX>
+          general deconvolution methods applied to same <NUMEX TYPE="CARDINAL">3</NUMEX> sets of
+          "noisy" data (rows). As before, the noisy data is
+          generated by applying eq. (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) to each exact venous data
+          point c [i], with <ENAMEX TYPE="NATIONALITY">R</ENAMEX> [i] and <ENAMEX TYPE="PRODUCT">Noise</ENAMEX> [i] normally
+          distributed random variables with a mean of <NUMEX TYPE="CARDINAL">0</NUMEX> and
+          standard deviations of <NUMEX TYPE="MONEY">0.1</NUMEX> (corresponding to <NUMEX TYPE="PERCENT">10%</NUMEX> of the
+          absolute value) and <NUMEX TYPE="CARDINAL">0.05</NUMEX> <ENAMEX TYPE="PER_DESC">millimoles</ENAMEX>/liter, respectively.
+          For the results in this figure it is assumed that the
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> has no a priori information about the correct value
+          and, therefore, is required to use the previously
+          determined default values for the <ENAMEX TYPE="PER_DESC">user</ENAMEX> input parameters.
+          For the analytical deconvolution, this is a smoothing
+          parameter of <NUMEX TYPE="CARDINAL">1</NUMEX>. For the spline and uniform methods, this
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the default value determined (see Methods)
+          using the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> input function for this same noisy data
+          set. <NUMEX TYPE="CARDINAL">All 3</NUMEX> methods indicate, qualitatively, that there is
+          a <NUMEX TYPE="ORDINAL">second</NUMEX> component. Overall, the spline function method
+          seems to be superior, at least for inputs with this time
+          course.
+        
+      
+      
+        Discussion and Conclusions
+        
+          Use of a <ENAMEX TYPE="PRODUCT">PBPK Model</ENAMEX> to <ENAMEX TYPE="WORK_OF_ART">Evaluate the Accuracy of the</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Bolus Input Function r</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          For the "simple" <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model in which the solute
+          distributes in all the cell <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> with no binding, the
+          <ENAMEX TYPE="ORGANIZATION">bolus</ENAMEX> response function is accurately described by a
+          simple <NUMEX TYPE="CARDINAL">two exponential</NUMEX> function (fig. <NUMEX TYPE="CARDINAL">2</NUMEX>). The average
+          fractional error for the data in the right column of <ENAMEX TYPE="SUBSTANCE">fig</ENAMEX>.
+          2is <NUMEX TYPE="CARDINAL">0.013</NUMEX>, an error that would certainly be swamped by
+          experimental error. This result is consistent with the
+          fact that a <NUMEX TYPE="CARDINAL">2</NUMEX>-<NUMEX TYPE="CARDINAL">exponential</NUMEX> function is used in most of the
+          recent experimental applications of <ENAMEX TYPE="SUBSTANCE">deconvolution</ENAMEX> [ <NUMEX TYPE="CARDINAL">18 33</NUMEX>
+          <NUMEX TYPE="CARDINAL">34</NUMEX> ] . For the more "complicated" pharmacokinetic PBPK
+          model where there is extensive tissue binding (similar to
+          that for propranolol), a <NUMEX TYPE="CARDINAL">2</NUMEX>-<NUMEX TYPE="CARDINAL">exponential</NUMEX> function fit is no
+          longer adequate (fig. <NUMEX TYPE="CARDINAL">4</NUMEX>, right column, average fractional
+          error = <NUMEX TYPE="CARDINAL">.041</NUMEX>) while a <NUMEX TYPE="CARDINAL">3</NUMEX> exponential function provides a
+          nearly perfect fit (fig. <NUMEX TYPE="CARDINAL">6</NUMEX>, right column, average
+          fractional error = <NUMEX TYPE="CARDINAL">0.0024</NUMEX>). It is surprising that the
+          complicated <NUMEX TYPE="CARDINAL">11</NUMEX>-compartment <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> pharmacokinetics can be
+          fit with this degree of accuracy using a <NUMEX TYPE="CARDINAL">2</NUMEX> or
+          <NUMEX TYPE="CARDINAL">3</NUMEX>-<NUMEX TYPE="CARDINAL">exponential</NUMEX> function.
+          Although it seems obvious that one should try to make
+          the venous concentration measurements as early as
+          possible in order to accurately determine the bolus
+          response function, the results shown in figs. <ENAMEX TYPE="CONTACT_INFO">2, 3, 4, 5,</ENAMEX>
+          <TIMEX TYPE="DATE">6, 7, 8provide</TIMEX> the first quantitative analysis of this
+          relationship. Based on the results for the <TIMEX TYPE="TIME">10 minute</TIMEX>
+          (fig. <NUMEX TYPE="CARDINAL">7</NUMEX>, right column) and <TIMEX TYPE="TIME">30 minute</TIMEX> (fig. <NUMEX TYPE="CARDINAL">8</NUMEX>) constant
+          <ENAMEX TYPE="PERSON">infusion</ENAMEX>, the following simple rule can be inferred: an
+          accurate determination of the response function requires
+          that the first sample point be obtained at or before the
+          end of the constant infusion. Intuitively, one might
+          assume that a true bolus <ENAMEX TYPE="PRODUCT">IV</ENAMEX> injection should provide the
+          best estimate of the bolus response function. However,
+          this is not correct because of the unavoidable
+          <ENAMEX TYPE="ORGANIZATION">circulatory</ENAMEX> and mixing and <TIMEX TYPE="TIME">time</TIMEX> delays which make venous
+          concentration measurements for time points <TIMEX TYPE="DATE">earlier than 2</TIMEX>
+          or <TIMEX TYPE="TIME">3 minutes</TIMEX> unreliable. For this reason, a relatively
+          long constant infusion (e.g. <TIMEX TYPE="TIME">10 minutes</TIMEX>) is superior to a
+          bolus infusion. This is best illustrated by comparing the
+          left hand column if fig. 6with the right hand column in
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. <TIMEX TYPE="TIME">7: the 30-second</TIMEX> infusion with the first data point
+          as early as <TIMEX TYPE="TIME">2.5 minutes</TIMEX> does not provide as accurate an
+          estimate of r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) as the <TIMEX TYPE="TIME">10-minute</TIMEX> infusion with the first
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> point at <TIMEX TYPE="TIME">10 minutes</TIMEX>.
+          In the experimental application of the deconvolution
+          method it is a common procedure to evaluate the accuracy
+          of the bolus response function r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) by comparing the
+          venous concentration determined from r(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) with the actual
+          experimental venous concentration data. This analysis
+          shows that this may not be a reliable procedure. For
+          example, as shown in the left column of <ENAMEX TYPE="SUBSTANCE">fig</ENAMEX>. <NUMEX TYPE="CARDINAL">7</NUMEX>, there is
+          a large error in the bolus response function (and the
+          corresponding calculation of the input function)
+          determined using the <TIMEX TYPE="TIME">30-second</TIMEX> input even though the
+          response function provides a nearly perfect fit to the
+          <ENAMEX TYPE="PRODUCT">discrete</ENAMEX> model data. This error results from the very
+          poor fit to the venous concentration at times preceding
+          the first data point at <TIMEX TYPE="TIME">10 minutes</TIMEX>.
+        
+        
+          Comparison of the <ENAMEX TYPE="ORGANIZATION">Four Deconvolution Methods</ENAMEX>
+          Figures <NUMEX TYPE="CARDINAL">9</NUMEX>, <TIMEX TYPE="DATE">10, 11, 12, 13, 14, 15</TIMEX>, 16quantitatively
+          compare the accuracy of the intestinal input determined
+          by deconvolution with the actual model input. Any
+          differences in these <NUMEX TYPE="CARDINAL">two</NUMEX> input rates must be the result
+          of errors in the deconvolution process since the bolus
+          response function that is used in these calculations
+          provides a nearly perfect description of the system
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> (see fig. <NUMEX TYPE="CARDINAL">6</NUMEX>, right column). As shown in
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, the <NUMEX TYPE="CARDINAL">3</NUMEX>-parameter <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution provides a
+          <ENAMEX TYPE="PERSON">versatile</ENAMEX> and accurate description of a number of
+          different intestinal input functions. <NUMEX TYPE="CARDINAL">One</NUMEX> would expect
+          that, in most cases, intestinal absorption (and
+          absorption from skin, intramuscular and intraperitoneal)
+          could be approximated by a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution. For these
+          cases the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution deconvolution is obviously
+          the method of choice because it has <NUMEX TYPE="CARDINAL">only 3</NUMEX> adjustable
+          parameters and the fitting process averages out most of
+          the error in "noisy" data (fig. <NUMEX TYPE="CARDINAL">9</NUMEX>). Another major
+          advantage of the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution approach is that
+          there are no <ENAMEX TYPE="PER_DESC">user</ENAMEX> adjustable input parameters (e.g.
+          smoothing parameter), eliminating any <ENAMEX TYPE="PER_DESC">user</ENAMEX> bias.
+          If the input cannot be described by a single gamma
+          distribution then one of the other <NUMEX TYPE="CARDINAL">three</NUMEX>, more general,
+          <ENAMEX TYPE="PER_DESC">deconvolution</ENAMEX> approaches must be used (i.e. "<ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX>",
+          "spline" and "uniform"). <NUMEX TYPE="CARDINAL">All three</NUMEX> of these methods can,
+          potentially, provide a nearly perfect fit to the
+          absorption rate if the exact venous concentration data is
+          used (figs. <TIMEX TYPE="DATE">10, 12, 14</TIMEX>). An important qualification of
+          this statement is that this nearly perfect fit depends on
+          the right choice of the <ENAMEX TYPE="PER_DESC">user</ENAMEX> input parameters. <NUMEX TYPE="CARDINAL">All 3</NUMEX>
+          methods are dependent on the "smoothing" parameter that
+          limits the "roughness" of the absorption rate. In
+          addition, the "spline" deconvolution method is strongly
+          dependent on the choice of "breakpoints" (see fig. <NUMEX TYPE="CARDINAL">12</NUMEX>).
+          An important criterion for evaluating the different
+          methods is whether the "best" value of the parameters can
+          be determined objectively, without any <ENAMEX TYPE="PER_DESC">user</ENAMEX> bias. Verotta
+          [ <ENAMEX TYPE="LAW">4</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">De Nicolao et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">1</ENAMEX> ] discuss a number of
+          different criteria for choosing these parameters,
+          including the <ENAMEX TYPE="ORGANIZATION">Akaike</ENAMEX> criterion [ <TIMEX TYPE="DATE">35</TIMEX> ] and the
+          "<ENAMEX TYPE="WORK_OF_ART">Generalized Cross Validation</ENAMEX>" [ <TIMEX TYPE="DATE">36</TIMEX> ] . However, all of
+          these criteria are semi-empirical and the different
+          criteria yield different "best" values. In addition, in
+          order to apply these criteria, the deconvolutions must be
+          run many times, greatly increasing the time of the
+          calculations.
+          A new approach for determining these <ENAMEX TYPE="PER_DESC">user</ENAMEX> parameters
+          for the "spline" and "uniform" deconvolution methods is
+          introduced in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. A "default" set of parameters
+          is determined without any <ENAMEX TYPE="PER_DESC">user</ENAMEX> input, based on the
+          assumption that the input function can be roughly
+          approximated by a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution. This new approach
+          works well for the single <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution input case,
+          with these "default" parameters providing "best" fits for
+          both the exact and noisy data sets (figs. <TIMEX TYPE="DATE">14, 15, 16</TIMEX>). It
+          is, perhaps, not surprising that it works for this case
+          since the input is close to a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution. A more
+          discriminating test of this approach is for the two input
+          case, when a <NUMEX TYPE="ORDINAL">second</NUMEX>, smaller, delayed <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution
+          is added. Although this input differs significantly from
+          a single <ENAMEX TYPE="SUBSTANCE">gamma input</ENAMEX> (fig. <TIMEX TYPE="DATE">18</TIMEX>, top left) this approach
+          for choosing the input parameters still provided good
+          fits for the exact (fig. <NUMEX TYPE="CARDINAL">15</NUMEX>) and noisy (fig. <NUMEX TYPE="CARDINAL">16</NUMEX>) data
+          sets for the "spline" and "uniform" approach. Of course,
+          if the input function has no relation to a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+          distribution, one would expect this method to breakdown.
+          However, most physiological intestinal, skin,
+          <ENAMEX TYPE="ORGANIZATION">intramuscular</ENAMEX> or intraperitoneal absorption processes
+          should resemble a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution and this method
+          should be applicable.
+          As discussed in the background section, the
+          "analytical" deconvolution method of <ENAMEX TYPE="PERSON">Veng-Pedersen</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ]
+          is the most commonly used experimental approach. It has
+          the advantage that is the fastest of the different
+          methods and for exact data it provides a good estimate of
+          the absorption rate (fig. <NUMEX TYPE="CARDINAL">10</NUMEX>). However, this method has <NUMEX TYPE="CARDINAL">2</NUMEX>
+          major handicaps. The <NUMEX TYPE="ORDINAL">first</NUMEX> is that it is strongly
+          dependent on the value chosen for the "smoothing"
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> and there is no direct technique that can be
+          used to objectively determine this parameter. Even
+          knowing the standard deviation of the experimental data
+          (which is rarely the case) is not enough to determine the
+          "best" value of this parameter. As shown in fig 11for
+          <NUMEX TYPE="CARDINAL">three</NUMEX> different sets of noisy data, all generated using
+          the same random error parameters (eq. (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>)), the "best"
+          fit has smoothing parameters varying from <NUMEX TYPE="MONEY">0.1</NUMEX> (middle
+          column) to <NUMEX TYPE="MONEY">3</NUMEX> (left column). The <NUMEX TYPE="ORDINAL">second</NUMEX> problem is that
+          for the noisy data sets tested here (fig. <NUMEX TYPE="CARDINAL">11</NUMEX>) this method
+          provides fits to the absorption rate that, subjectively,
+          seem inferior to those determined by the other two
+          general deconvolution approaches ("spline" and
+          "uniform"). Also, unlike the other approaches, the
+          <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> approach cannot be constrained from reaching
+          non-physical negative values for the absorption rate
+          (fig. <NUMEX TYPE="CARDINAL">11</NUMEX>).
+          <ENAMEX TYPE="ORGANIZATION">Comprehensive</ENAMEX> quantitative evaluations of different
+          <ENAMEX TYPE="PER_DESC">deconvolution</ENAMEX> approaches have been described previously [
+          <NUMEX TYPE="CARDINAL">7 11 22</NUMEX> ] . The evaluation in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> is not
+          <ENAMEX TYPE="ORGANIZATION">comprehensive</ENAMEX>, using a single typical human bolus
+          response function and just <NUMEX TYPE="CARDINAL">two</NUMEX> different input functions
+          (<NUMEX TYPE="CARDINAL">one and two</NUMEX> component) that are <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of human
+          intestinal absorption rates. For this reason, the above
+          conclusions about the relative merits of the different
+          methods are quite limited. A major advantage of having
+          the <NUMEX TYPE="CARDINAL">four</NUMEX> methods and the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model available in a
+          single, <ENAMEX TYPE="PER_DESC">user</ENAMEX> friendly, software package is that it allows
+          other <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> to carry out similar evaluations
+          using their particular input and response functions.
+          All of the procedures described in the <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are
+          implemented in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> (freely distributed at
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>). This software routine has a
+          simple user interface and the output is displayed in a
+          series of graphical plots, some of which are illustrated
+          by the figures in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>.
+        
+      
+    
+  

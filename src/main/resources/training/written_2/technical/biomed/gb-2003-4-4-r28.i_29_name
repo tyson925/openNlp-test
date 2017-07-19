@@ -1,0 +1,510 @@
+
+  
+    
+      
+        Rationale
+        <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression profiling and other forms of
+        high-throughput genomic and proteomic studies are
+        revolutionizing biology. That much is universally agreed.
+        But the new technologies pose new challenges. The <NUMEX TYPE="ORDINAL">first</NUMEX> is
+        the experiment itself, the <NUMEX TYPE="ORDINAL">second</NUMEX> is statistical analysis
+        of results, the <NUMEX TYPE="ORDINAL">third</NUMEX> is biological interpretation. That
+        <NUMEX TYPE="ORDINAL">third</NUMEX> challenge is often the most vexing and
+        time-consuming. In gene-expression microarray studies, for
+        example, one generally obtains a list of <NUMEX TYPE="CARDINAL">dozens</NUMEX> or <NUMEX TYPE="QUANTITY">hundreds</NUMEX>
+        of genes that differ in expression between samples and then
+        asks: 'What does all of this mean biologically?' The work
+        of the <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Consortium</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] provides a way
+        to address that question. GO organizes <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into
+        hierarchical categories based on biological process,
+        molecular function and subcellular localization. In the
+        past, this GO information was queried <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> at a time.
+        Recently, batch processing has been introduced [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , but
+        with a flat-format output that does not communicate the
+        <ENAMEX TYPE="ORGANIZATION">richness of GO</ENAMEX>'s hierarchical structure.
+        We have developed, and present here, the program package
+        GoMiner as a freely available computer resource that fully
+        incorporates the hierarchical structure of the <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Ontology</ENAMEX> to automate the functional <ENAMEX TYPE="PER_DESC">categorization</ENAMEX> of gene
+        lists of any length. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is downloadable free of charge
+        from [ <ENAMEX TYPE="LAW">3</ENAMEX> ] or [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . GoMiner was developed particularly
+        for biological interpretation of microarray data; one can
+        input a list of <NUMEX TYPE="CARDINAL">under</NUMEX>- and overexpressed <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and a list
+        of all genes on the array, and then calculate enrichment or
+        depletion of categories with genes that have changed
+        expression. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> thus facilitates analysis and
+        <ENAMEX TYPE="ORGANIZATION">organization</ENAMEX> of the results for rapid interpretation of
+        <ENAMEX TYPE="ORGANIZATION">'omic</ENAMEX>' [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] data. For concreteness, the descriptions in
+        this article will focus on applications to microarray data,
+        but the range of uses is obviously much broader.
+      
+      
+        Overview of GoMiner
+        <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> takes as input <NUMEX TYPE="CARDINAL">two</NUMEX> lists of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>: the total set
+        on the array and the subset that the <ENAMEX TYPE="PER_DESC">user</ENAMEX> flags as
+        interesting (for example, altered in expression level).
+        GoMiner displays the genes within the framework of the <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Ontology hierarchy, both as a directed acyclic graph (DAG)
+        and as the equivalent tree structure. The latter is similar
+        in format to the visualization in the <ENAMEX TYPE="ORGANIZATION">AmiGO</ENAMEX> browser display
+        [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . However, each category is annotated to reflect the
+        number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s experiment assigned to that
+        category plus the number assigned to its progeny categories
+        (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). This computation does not double-count genes
+        that appear more than once along the traversal. The user
+        has the option of designating each gene within the
+        'interesting <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>' list as exhibiting under- or
+        <ENAMEX TYPE="ORGANIZATION">overexpression</ENAMEX>. If that is done, genes displayed in the
+        tree-like view are tagged with green down-arrows or red
+        <NUMEX TYPE="CARDINAL">up</NUMEX>-arrows, respectively.
+        The most important parameter for purposes of
+        interpretation is the enrichment (or depletion) of a
+        category with respect to flagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (relative to what
+        would have been expected by chance alone). This parameter
+        will be discussed more extensively and more mathematically
+        in the section on 'Statistical considerations'. In Figure
+        1a, the relative enrichment is indicated by blue numbers
+        for total flagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and by red and green numbers for
+        <NUMEX TYPE="CARDINAL">over</NUMEX>- and underexpressed <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, respectively. The last
+        number (blue) for each category is a <NUMEX TYPE="CARDINAL">two</NUMEX>-sided 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value from <ENAMEX TYPE="PERSON">Fisher</ENAMEX>'s exact
+        test.
+        In <ENAMEX TYPE="GPE">GoMiner</ENAMEX>, clicking on a gene of interest in the
+        <ENAMEX TYPE="PLANT">tree</ENAMEX>-structure opens a menu that can be used to submit that
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> as a query to an external data resource. The number of
+        such links is being expanded rapidly, but currently
+        included are <ENAMEX TYPE="PRODUCT">LocusLink</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ] , <ENAMEX TYPE="GPE">PubMed</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , <ENAMEX TYPE="GPE">MedMiner</ENAMEX> [ <NUMEX TYPE="CARDINAL">9</NUMEX>
+        <NUMEX TYPE="CARDINAL">10</NUMEX> ] , <ENAMEX TYPE="GPE">GeneCards</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] , the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>'s <ENAMEX TYPE="PRODUCT">Structure Database</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">12</NUMEX> ] , and <ENAMEX TYPE="ORGANIZATION">BioCarta</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> pathway maps as implemented by
+        the <ENAMEX TYPE="ORGANIZATION">NCI Cancer Genome Anatomy Project</ENAMEX> (CGAP) [ <TIMEX TYPE="DATE">13</TIMEX> ] . These
+        external databases provide <ENAMEX TYPE="GPE">GoMiner</ENAMEX> with a rich set of
+        <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX> for bioinformatic integration. For example, the
+        links with <ENAMEX TYPE="ORGANIZATION">CGAP</ENAMEX> and <ENAMEX TYPE="GPE">LocusLink</ENAMEX> provide interaction with
+        pathway maps, chromosome visualizations, a database of
+        single nucleotide polymorphism (SNP), and the <ENAMEX TYPE="ORGANIZATION">Mammalian</ENAMEX>
+        <ENAMEX TYPE="PERSON">Gene Collection</ENAMEX> (MGC).
+        In <ENAMEX TYPE="GPE">GoMiner</ENAMEX>, clicking on a category instead of a gene
+        brings up a <NUMEX TYPE="ORDINAL">second</NUMEX> visualization (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>), a DAG
+        programmed as a scalable vector graphic (SVG) that can be
+        navigated fluently. Any of its nodes can be moused-over to
+        list the flagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or clicked to highlight multiple
+        <ENAMEX TYPE="FAC_DESC">pathways</ENAMEX> connecting it to the root. Detailed quantitative
+        and statistical results are downloadable in several
+        tab-delimited formats that can be read directly into a text
+        file or a spreadsheet program for further analysis. For
+        example, the spreadsheet data can be sorted by enrichment
+        factor or 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value to focus attention on
+        potentially interesting categories.
+      
+      
+        Development of GoMiner
+        <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is based on a variety of open-<ENAMEX TYPE="PER_DESC">source</ENAMEX> Java
+        classes and <ENAMEX TYPE="PER_DESC">developer</ENAMEX> tools, plus substantial in-house
+        custom software engineering (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). We chose <ENAMEX TYPE="PERSON">Java</ENAMEX> to
+        achieve independence of operating system so that more
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> could use the tool. A custom graphical user
+        <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> (GUI) provides the <ENAMEX TYPE="PER_DESC">user</ENAMEX> with flexibility and an
+        intuitive view of biological relationships (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). A
+        complementary command-line version of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> allows
+        high-throughput applications and fluent integration with
+        other programs.
+        The heart of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is its processing engine (Figure
+        <NUMEX TYPE="CARDINAL">2</NUMEX>), which parses input gene lists and retrieves database
+        entries for association with GO categories (also called
+        <ENAMEX TYPE="ORGANIZATION">'terms'</ENAMEX>). The GO categories and gene <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> are
+        stored in a relational database. To enhance the speed of
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> manipulation, we model the information in memory using
+        a <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> data structure. The root is the topmost node: 'Gene
+        <ENAMEX TYPE="ORGANIZATION">Ontology'</ENAMEX>. The other nodes represent gene categories, and
+        the connections represent relationships between categories.
+        Each category-<ENAMEX TYPE="PER_DESC">node</ENAMEX> object contains its associated genes,
+        functionality for counting genes, a flag for dereplication
+        during counting, and results of statistical analyses. The
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-category <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> are displayed in the form of a
+        <ENAMEX TYPE="PERSON">tree</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>) or, alternatively, in the form of a DAG
+        (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>).
+        We have developed <ENAMEX TYPE="PERSON">GoMiner</ENAMEX> as a <ENAMEX TYPE="PER_DESC">client</ENAMEX>-server
+        application. The <ENAMEX TYPE="ORG_DESC">client</ENAMEX>, a <ENAMEX TYPE="NATIONALITY">Java</ENAMEX> application, communicates
+        with a server-side database through <ENAMEX TYPE="ORGANIZATION">JDBC</ENAMEX>. The <ENAMEX TYPE="ORG_DESC">client</ENAMEX> can
+        run on <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> run-time environment version <NUMEX TYPE="CARDINAL">1.3</NUMEX>
+        or higher. The primary <ENAMEX TYPE="ORG_DESC">client</ENAMEX>-<ENAMEX TYPE="PER_DESC">user</ENAMEX> GUI, written using the
+        <ENAMEX TYPE="ORGANIZATION">Java Swing API</ENAMEX>, takes the form of a <NUMEX TYPE="CARDINAL">three</NUMEX>-panel window in
+        which the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can inspect GO categories and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. The
+        <ENAMEX TYPE="ORGANIZATION">left-hand</ENAMEX> <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> lists the genes, the databases from which
+        their identities were derived, and optional up- and
+        down-arrows to indicate under- or <NUMEX TYPE="CARDINAL">over</NUMEX>-expression; the
+        <ENAMEX TYPE="ORGANIZATION">middle</ENAMEX> <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> shows a tree visualization of categories in
+        the style of the <ENAMEX TYPE="ORGANIZATION">AmiGO</ENAMEX> <ENAMEX TYPE="PER_DESC">browser</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] and, in addition,
+        provides a visualization of the flagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the
+        particular microarray experiment. The right-hand panel
+        shows all appearances within the GO hierarchy of any gene
+        selected from the left or middle <ENAMEX TYPE="PER_DESC">panel</ENAMEX>. The gene and
+        category names are implemented as links to facilitate
+        <ENAMEX TYPE="ORGANIZATION">navigation</ENAMEX> of the data structures and access to public
+        <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX>.
+        A <NUMEX TYPE="ORDINAL">second</NUMEX> type of visualization, the <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> (programmed as
+        an SVG) shows in compact form the spanning hierarchy for
+        all <ENAMEX TYPE="SUBSTANCE">flagged genes</ENAMEX>. Optionally, it can include only nodes
+        below a specified level if the entire <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> would be too
+        large for easy visualization. The <ENAMEX TYPE="ORG_DESC">client</ENAMEX> application uses
+        several open source components: the <ENAMEX TYPE="ORGANIZATION">Berkeley</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila Genome Project</ENAMEX> (BDGP) Java
+        <ENAMEX TYPE="ORGANIZATION">Toolkit</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX> ] for <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> classes; <ENAMEX TYPE="ORGANIZATION">Browser Launcher</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ]
+        for cross-platform web browser integration; <ENAMEX TYPE="GPE">Jakarta</ENAMEX>-<ENAMEX TYPE="GPE">ORO</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">16</NUMEX> ] for text processing; the <ENAMEX TYPE="GPE">Jena Semantic</ENAMEX> Web <ENAMEX TYPE="ORGANIZATION">Toolkit</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">17</NUMEX> ] for manipulating <ENAMEX TYPE="ORGANIZATION">RDF</ENAMEX> models; <ENAMEX TYPE="PRODUCT">MySQL Connector/J</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ]
+        for database connectivity; and <ENAMEX TYPE="ORGANIZATION">Xerces</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] for parsing
+        <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX>. The back-end is a relational database server, which
+        <ENAMEX TYPE="ORG_DESC">stores</ENAMEX> all gene ontology data. It includes an
+        implementation in <ENAMEX TYPE="GPE">MySQL</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] of the <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX>
+        database.
+        In addition to the deployed components, we have
+        introduced a number of open-source tools to enhance the
+        development environment. In particular, the <ENAMEX TYPE="ORGANIZATION">Concurrent</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Versions System</ENAMEX> (CVS) tool [ <TIMEX TYPE="DATE">21</TIMEX> ] coordinates program
+        development at the <ENAMEX TYPE="ORGANIZATION">Georgia Institute of Technology</ENAMEX> with
+        that at the <ENAMEX TYPE="ORGANIZATION">NCI</ENAMEX>, and also coordinates development within
+        each of the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">jUnit</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] automates unit- and
+        system-level testing of the application.
+      
+      
+        Statistical considerations
+        
+          <ENAMEX TYPE="ORGANIZATION">Random</ENAMEX> experimental and categorization error
+          Experimental error and any uncertainties in the
+          classification of genes in GO are not included in the
+          <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. Perhaps, given enough information
+          (which we essentially never have) about those <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+          error, they could be included in the statistical model,
+          for example through a resampling technique.
+        
+        
+          Gene representation bias
+          The microarray gene set (or set from some other type
+          of genomic or proteomic experiment) will generally be a
+          biased representation of all genes. Therefore,
+          <ENAMEX TYPE="ORGANIZATION">enrichments</ENAMEX> and depletions, of necessity defined in terms
+          of the genes studied, may be biased with respect to
+          biological significance as well. An alternative is to
+          replace the list of the total set of genes on the
+          microarray with a list of the total set of genes in the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> (or a representative sample), but that approach
+          introduces another source of bias: <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> not on the
+          microarray are counted in determining 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> but have no chance to be
+          <ENAMEX TYPE="ORGANIZATION">flagged</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">GO</ENAMEX> <ENAMEX TYPE="ORG_DESC">consortium</ENAMEX> database bias for human gene
+          associations
+          The <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] provides a set of flat files
+          that indicate the association between gene names and GO
+          categories for several species [ <TIMEX TYPE="DATE">27</TIMEX> ] . Although the flat
+          files for human are quite comprehensive, we found a low
+          hit rate for GO annotation of human genes using the
+          database created by the <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX>'s downloaded MySQL
+          script files [ <TIMEX TYPE="DATE">28</TIMEX> ] . The hit rates were low both when
+          the gene names were used in the format of <ENAMEX TYPE="EVENT">HUGO</ENAMEX> names and
+          when the gene names were used in the format of
+          <ENAMEX TYPE="ORGANIZATION">'HUGO_HUMAN</ENAMEX>.' We tried the latter format because the flat
+          files often contained '_HUMAN' appended to the human gene
+          names. In contrast, when we used a combination of mouse
+          (<ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>) and <ENAMEX TYPE="ANIMAL">rat</ENAMEX> (RGD) <ENAMEX TYPE="ORG_DESC">association</ENAMEX> files, there were
+          <ENAMEX TYPE="CONTACT_INFO">reasonable</ENAMEX> numbers of hits. Therefore, we now routinely
+          use mouse and <ENAMEX TYPE="ANIMAL">rat annotations</ENAMEX> for human data. We are
+          currently augmenting the human <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> in the GO
+          Consortium database to provide a richer annotation of
+          human gene names. This goal will be achieved by using the
+          MatchMiner database to integrate the information in the
+          <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX> database [ <TIMEX TYPE="DATE">27</TIMEX> ] and the <ENAMEX TYPE="NATIONALITY">Swiss</ENAMEX>-<ENAMEX TYPE="GPE">Prot</ENAMEX>, TrEMBL
+          and <ENAMEX TYPE="ORGANIZATION">TrEMBLnew</ENAMEX> <ENAMEX TYPE="PER_DESC">databases</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] , and <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> will
+          implement this database for human data in the near term.
+          The <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> script files will be freely available and
+          should represent an improvement over what is currently
+          available to program <ENAMEX TYPE="PER_DESC">developers</ENAMEX> and end-<ENAMEX TYPE="PER_DESC">users</ENAMEX>.
+        
+        
+          Non-independence of gene data
+          <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression values within a category may be
+          correlated for any of several reasons. They may represent
+          the same gene, close family <ENAMEX TYPE="PER_DESC">members</ENAMEX> with similar
+          functions, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the same pathway or genes in
+          alternative pathways for performing a biological
+          function. Gene classifications in GO may be correlated
+          for analogous reasons. How do such relationships affect
+          the statistics? The answer is most easily seen by
+          imagining a category containing nothing but <NUMEX TYPE="CARDINAL">five</NUMEX>
+          instances of the same gene (perhaps because <NUMEX TYPE="CARDINAL">five</NUMEX>
+          different identifiers were used and not recognized as
+          representing the same gene). That category might appear
+          either to be strikingly enriched (with <NUMEX TYPE="CARDINAL">five</NUMEX> out of <NUMEX TYPE="CARDINAL">five</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">genes flagged</ENAMEX>) or strikingly depleted (with none out of
+          <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes flagged</ENAMEX>). But the appropriate value of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> for determining statistical
+          significance in those cases would be <NUMEX TYPE="CARDINAL">1</NUMEX>, not <NUMEX TYPE="CARDINAL">5</NUMEX>. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>'s
+          <ENAMEX TYPE="ORGANIZATION">companion program MatchMiner</ENAMEX> [ <NUMEX TYPE="CARDINAL">30 31</NUMEX> ] handles this
+          problem by identifying <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> of the same gene, even
+          if they are represented by different identifiers.
+          What about possible <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of correlation other than
+          'same-gene'? Do we want to dereplicate them as well?
+          Generally, the answer is 'no'. Correlation of genes in
+          the same pathway is precisely the phenomenon we are often
+          trying to identify. We would not want a statistical test
+          to adjust for (and, in effect, null out) the effect of
+          such relationships. Close family <ENAMEX TYPE="PER_DESC">members</ENAMEX> might be
+          considered an intermediate case. The statistical model
+          implemented in <ENAMEX TYPE="GPE">GoMiner</ENAMEX> assumes, as our <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of prior
+          knowledge, that we know when <NUMEX TYPE="CARDINAL">two</NUMEX> 'genes' are identical
+          but nothing about their relationship if they are not
+          identical. That seems the only available course. However,
+          for each category, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> provides the gene identities
+          and the numbers given in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>- sufficient information
+          for the knowledgeable <ENAMEX TYPE="PER_DESC">user</ENAMEX> to decide to eliminate close
+          family <ENAMEX TYPE="PER_DESC">members</ENAMEX> or pathway <ENAMEX TYPE="ORG_DESC">partners</ENAMEX> if desired.
+        
+        
+          The multiple comparisons problem
+          If one has not decided before analysis which
+          particular gene category is to be examined, a correction
+          should be made for the multiple opportunities to obtain a
+          
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value indicating statistically
+          significant enrichment or depletion. For example, with
+          <NUMEX TYPE="CARDINAL">1,000</NUMEX> categories, we would expect <NUMEX TYPE="CARDINAL">approximately 1,000</NUMEX> ×
+          <NUMEX TYPE="CARDINAL">0.05</NUMEX> = <NUMEX TYPE="CARDINAL">50</NUMEX> false positives simply by chance if we set the
+          critical value at 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.05</NUMEX>. The most common way to
+          correct for this problem is that of <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> (see, for
+          example [ <TIMEX TYPE="DATE">32</TIMEX> ] ), in which the critical value is divided
+          by the number of trials (in this case, <NUMEX TYPE="CARDINAL">1,000</NUMEX>). However,
+          that approach assumes independence of categories and is
+          so conservative that it becomes extremely hard to detect 
+          true positives. A number of less
+          conservative statistical methods have also been
+          developed, but it is beyond the scope of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> to
+          review them here. An approach based on resampling will be
+          incorporated into <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> in <TIMEX TYPE="DATE">the coming months</TIMEX>.
+          Overall, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values quoted should be
+          considered as heuristic measures, useful as indicators of
+          possible statistical significance, rather than as the
+          results of formal inference. The 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values can be used, for example,
+          to sort categories to identify those of the most
+          potential interest.
+          As another useful measure, we have calculated the
+          relative enrichment factor, 
+          R 
+          e , defined as
+          
+          R 
+          e = ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          f / 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> )/( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          f / 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> )
+          and shown as blue numbers in Figure <TIMEX TYPE="DATE">1a</TIMEX>. The analogous
+          quantities for overexpressed (red numbers) and
+          <ENAMEX TYPE="ORGANIZATION">underexpressed</ENAMEX> (green numbers) are also shown. Depletion
+          is, of course, represented by an enrichment factor less
+          than unity.
+        
+      
+      
+        <ENAMEX TYPE="PERSON">Benchmarking GoMiner</ENAMEX> on a biological problem
+        As a test, <ENAMEX TYPE="PERSON">GoMiner</ENAMEX> was applied to the results of our
+        cDNA microarray study of the molecular mechanisms by which
+        drug <ENAMEX TYPE="ORG_DESC">resistance</ENAMEX> develops [ <TIMEX TYPE="DATE">33</TIMEX> ] . The DAG shown in Figure
+        1awas generated from that study, which used quadruplicate
+        <ENAMEX TYPE="ORGANIZATION">'Oncochip</ENAMEX>' microarrays (<ENAMEX TYPE="ORGANIZATION">Microarray Facility</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Advanced</ENAMEX>
+        Technology <ENAMEX TYPE="ORG_DESC">Center</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NCI</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] ) to compare gene expression
+        profiles in a prostate cancer cell line (<NUMEX TYPE="MONEY">DU145</NUMEX>) and a
+        <ENAMEX TYPE="ORGANIZATION">subline</ENAMEX> (<NUMEX TYPE="MONEY">RC0.1</NUMEX>) selected from it for resistance to the
+        topoisomerase <NUMEX TYPE="QUANTITY">1-inhibitor 9-nitro-camptothecin</NUMEX>. The
+        microarray included <NUMEX TYPE="CARDINAL">1,399</NUMEX> cancer-interesting genes. <NUMEX TYPE="CARDINAL">181</NUMEX> of
+        those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> differed in expression according to a threshold
+        <ENAMEX TYPE="PERSON">criterion</ENAMEX> (<NUMEX TYPE="MONEY">>1.5</NUMEX>-fold difference). MatchMiner was used to
+        translate IMAGE clone <ENAMEX TYPE="ORGANIZATION">Ids</ENAMEX> for the <NUMEX TYPE="CARDINAL">1,399</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into <ENAMEX TYPE="EVENT">HUGO</ENAMEX>
+        names for input to <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>. Figure <TIMEX TYPE="DATE">1ashows</TIMEX> that the
+        category 'apoptosis <ENAMEX TYPE="PER_DESC">regulator</ENAMEX>' was enriched <NUMEX TYPE="CARDINAL">2.4</NUMEX>-fold in
+        genes with altered expression levels. More specifically, it
+        was enriched <NUMEX TYPE="CARDINAL">3.2</NUMEX>-fold with <ENAMEX TYPE="SUBSTANCE">underexpressed genes</ENAMEX> and
+        <NUMEX TYPE="CARDINAL">2.0</NUMEX>-fold with <ENAMEX TYPE="SUBSTANCE">overexpressed genes</ENAMEX>. Flow cytometric annexin
+        <ENAMEX TYPE="PERSON">V</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TUNEL</ENAMEX> assays verified important differences in
+        apoptotic potential between the cell lines, and analysis
+        generated a novel hypothesis (the 'permissive
+        apoptosis-<ENAMEX TYPE="ORG_DESC">resistance</ENAMEX>' hypothesis) for the relationship
+        between apoptotic and <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>-proliferation pathways in the
+        development of drug <ENAMEX TYPE="ORG_DESC">resistance</ENAMEX>. Figure <NUMEX TYPE="CARDINAL">1aprovides</NUMEX> more
+        detailed information, indicating that these differences
+        were focused in particular subcategories of apoptosis.
+        Thus, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> can help the <ENAMEX TYPE="PER_DESC">user</ENAMEX> in <NUMEX TYPE="CARDINAL">at least two</NUMEX> ways: it
+        identifies categories enriched in, or depleted of, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> of
+        interest; and it generates hypotheses to guide further
+        research.
+        Unfortunately for us, interpretive analysis of the
+        <ENAMEX TYPE="CONTACT_INFO">DU145/</ENAMEX>RC0.1 study was initially done <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> at a time
+        before development of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> (and, in fact, motivated that
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>). Performing the GO analysis <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> at a time
+        would have taken <TIMEX TYPE="TIME">more than two solid hours</TIMEX> at the computer
+        for the <NUMEX TYPE="CARDINAL">181</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> before getting to the much harder parts
+        of the task: doing the same for the entire array (nominally
+        > <TIMEX TYPE="TIME">15 hours</TIMEX>), then collating and organizing the
+        information for each GO category. In contrast, operating on
+        a <NUMEX TYPE="CARDINAL">266</NUMEX> <ENAMEX TYPE="ORGANIZATION">MHz</ENAMEX> PC with <ENAMEX TYPE="PRODUCT">250 MB RAM</ENAMEX>, it took <TIMEX TYPE="TIME">90 seconds</TIMEX> to browse
+        for and load the files, then <TIMEX TYPE="TIME">30 seconds</TIMEX> for <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> to
+        process the entire array of <NUMEX TYPE="CARDINAL">1,399</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and display the
+        <ENAMEX TYPE="ORGANIZATION">flagged</ENAMEX> and unflagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in their hierarchical context.
+        In another test, running <NUMEX TYPE="CARDINAL">900</NUMEX> flagged <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and all of <ENAMEX TYPE="EVENT">HUGO</ENAMEX>
+        (<NUMEX TYPE="CARDINAL">15,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) took <TIMEX TYPE="TIME">4 minutes and 40 seconds</TIMEX> on the same
+        computer. Overall, the processing time was essentially
+        <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> with respect to the total number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (time in
+        <TIMEX TYPE="TIME">minutes</TIMEX> = <NUMEX TYPE="CARDINAL">0.0003</NUMEX> × <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> + <NUMEX TYPE="CARDINAL">0.0656</NUMEX>; 
+        R <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.998</NUMEX>).
+      
+      
+        Comparison of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> with related programs
+        Several other programs related to <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> have recently
+        appeared. These include <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> [ <NUMEX TYPE="CARDINAL">35 36</NUMEX> ] , <ENAMEX TYPE="GPE">FatiGO</ENAMEX> [ <NUMEX TYPE="CARDINAL">37</NUMEX>
+        ] , <ENAMEX TYPE="PRODUCT">Onto-Express</ENAMEX> [ <ENAMEX TYPE="LAW">2 38</ENAMEX> ] , and <ENAMEX TYPE="ORGANIZATION">GoSurfer</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX> ] . The
+        following represents our best attempt at comparison, based
+        on review of the available implementations and associated
+        documentation as of <TIMEX TYPE="DATE">January 2003</TIMEX>.
+        <ENAMEX TYPE="ORGANIZATION">FatiGO</ENAMEX> is a web application. The current implementation
+        is very restrictive in that the <ENAMEX TYPE="PER_DESC">user</ENAMEX> must specify ahead of
+        time one particular level of the GO hierarchy that is to be
+        used for analysis of the data. The other available
+        applications, including <ENAMEX TYPE="PERSON">GoMiner</ENAMEX>, process data for the
+        entire GO hierarchy and allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to select views of
+        the results dynamically. In a trial using <ENAMEX TYPE="ORGANIZATION">FatiGO</ENAMEX>'s
+        recommended search criteria with our standard test gene
+        files, <ENAMEX TYPE="PERSON">FatiGO</ENAMEX> did not find any GO categories with clusters
+        of <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes.
+        <ENAMEX TYPE="ORGANIZATION">Onto-Express</ENAMEX> is also implemented as a web application.
+        Although more flexible than <ENAMEX TYPE="PERSON">FatiGO</ENAMEX>, it is largely limited
+        to a flat view of the biological world. Whereas GoMiner
+        provides both <ENAMEX TYPE="PLANT">tree</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> views of the genes embedded
+        within the GO hierarchy, <ENAMEX TYPE="PRODUCT">Onto-Express</ENAMEX> does not provide any
+        <ENAMEX TYPE="FAC">hierarchical</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> (the fundamental defining feature of
+        <ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">Onto-Express</ENAMEX> lists enriched and depleted categories,
+        but it does not provide a statistical analysis of the
+        results to aid understanding. 'Version <NUMEX TYPE="CARDINAL">2</NUMEX>,' recently
+        announced (at a price of <NUMEX TYPE="MONEY">$1,500 - $5,000</NUMEX>), provides a 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value (computed by a method not
+        specified in the announcement).
+        <ENAMEX TYPE="ORGANIZATION">GoSurfer</ENAMEX> is implemented as a Windows application. As
+        such, it lacks the flexibility of <ENAMEX TYPE="FAC_DESC">platform</ENAMEX>-independence
+        that <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> confers upon <ENAMEX TYPE="PERSON">GoMiner</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GoSurfer</ENAMEX> is also rather
+        <ENAMEX TYPE="ORGANIZATION">inflexible</ENAMEX> in that the input identifiers are required to be
+        specific <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>. It is not clear whether
+        other identifier types suggested in a figure on the web
+        site have been implemented. In contrast, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> uses <ENAMEX TYPE="EVENT">HUGO</ENAMEX>
+        gene names as input. These gene names are more convenient
+        for human interpretation, and <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>'s companion program
+        <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> [ <NUMEX TYPE="CARDINAL">30 31</NUMEX> ] allows many other types of identifiers
+        (listed at the end of this section) to be converted easily
+        into <ENAMEX TYPE="EVENT">HUGO</ENAMEX> gene names. The visual output of <ENAMEX TYPE="ORGANIZATION">GoSurfer</ENAMEX> is in
+        the form of a <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> uses a text-based <ENAMEX TYPE="PLANT">tree</ENAMEX> as its
+        primary visual output because the nodes of the <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> are
+        inherently more difficult to label without creating
+        unacceptable screen clutter. The <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> gives an intuitive
+        feel for the overall complexity of the categorizations, but
+        it is not particularly useful for detailed dynamic
+        <ENAMEX TYPE="ORGANIZATION">navigation</ENAMEX> or for examination of categorized genes. The
+        tabular output of <ENAMEX TYPE="ORGANIZATION">GoSurfer</ENAMEX> does not include the <ENAMEX TYPE="EVENT">HUGO</ENAMEX> names,
+        which we consider to be the most useful key to gene
+        identity. In contrast to <ENAMEX TYPE="PERSON">GoMiner</ENAMEX>, it appears that GoSurfer
+        does not provide complete quantitative and statistical
+        summary data.
+        <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> is a pioneering project that integrates GO
+        analysis and biological pathway maps. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> also provides
+        the potential for this type of integration, since each gene
+        in the <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> tree classification is dynamically linked to
+        the corresponding set of <ENAMEX TYPE="ORGANIZATION">BioCarta</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> biological
+        pathway maps. In addition to providing integration with
+        biological pathway maps, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> provides integration with
+        <ENAMEX TYPE="ORGANIZATION">chromosomal</ENAMEX> information via dynamic linking to <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX>'s
+        chromosome viewer. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> also provides dynamic linking to
+        <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MGC</ENAMEX> databases via <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> provides
+        the fundamental tree representation of the GO hierarchy,
+        with summary and statistical data in line with each
+        category. However, unlike the <ENAMEX TYPE="PLANT">tree</ENAMEX> implementation in
+        GoMiner, it shows only the categories; the genes themselves
+        are shown in an auxiliary table. In <ENAMEX TYPE="GPE">GoMiner</ENAMEX>, both the
+        categories and the genes are seamlessly shown as integral
+        components of the <ENAMEX TYPE="PLANT">tree</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> does not appear to include a DAG
+        representation. In <ENAMEX TYPE="GPE">GoMiner</ENAMEX>, the DAG view provides a
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> and quantitative picture of the often-complex,
+        multiple parenthood of some categories. In our opinion,
+        this type of visualization is complementary to the tree
+        form and important to an appreciation of the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>,
+        highly nonlinear relationships within biological systems
+        and gene networks. This complexity is not easy for a human
+        to infer from the <ENAMEX TYPE="PLANT">tree</ENAMEX> representation. The GO consortium
+        selected the <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> as its fundamental data structure (though
+        not its visualization), in part because it includes the
+        characteristics of a network that are not included in a
+        <ENAMEX TYPE="PLANT">tree</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> is written in <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s <ENAMEX TYPE="PRODUCT">Visual Basic</ENAMEX> and is
+        therefore restricted to running on <ENAMEX TYPE="ORGANIZATION">PCs</ENAMEX> under <ENAMEX TYPE="LAW">Windows</ENAMEX>. In
+        contrast, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is written in <ENAMEX TYPE="GPE">Java</ENAMEX> and runs on multiple
+        operating systems. We have tested it on <ENAMEX TYPE="ORGANIZATION">Windows XP</ENAMEX>, <TIMEX TYPE="DATE">2000</TIMEX>,
+        <ENAMEX TYPE="ORGANIZATION">NT</ENAMEX>, and <NUMEX TYPE="CARDINAL">98</NUMEX>, as well as on <ENAMEX TYPE="ORGANIZATION">Mac</ENAMEX> OS <ENAMEX TYPE="LAW">X</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Solaris, Linux</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Red Hat</ENAMEX>
+        distribution), <ENAMEX TYPE="ORGANIZATION">IRIX</ENAMEX> (SGI), and <ENAMEX TYPE="ORGANIZATION">FreeBSD</ENAMEX>. See the GoMiner
+        website for specific operating-system issues.
+        We recently implemented an alternative command-line
+        <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> (<ENAMEX TYPE="PERSON">S.N.</ENAMEX>, <ENAMEX TYPE="GPE">M.S.</ENAMEX>, <ENAMEX TYPE="PERSON">D.W.K. and B.R.Z.</ENAMEX>,
+        unpublished work) to complement the <ENAMEX TYPE="ORGANIZATION">GUI</ENAMEX> version. The
+        <ENAMEX TYPE="ORGANIZATION">command</ENAMEX>-line interface allows <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> to be integrated with
+        other tools via scripts or pipes. Our website will post
+        updated versions of the documentation and program as soon
+        as comprehensive testing of this interface has been
+        completed. In preliminary trials with the new interface we
+        have routinely processed <NUMEX TYPE="QUANTITY">more than 2,000 datasets</NUMEX> at a time
+        through <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>. This high-throughput capability has made
+        <NUMEX TYPE="CARDINAL">two</NUMEX> further developments possible: <NUMEX TYPE="ORDINAL">first</NUMEX>, randomization
+        studies are being done to address the multiple-comparisons
+        problem (that is, to estimate the fraction of false
+        positives among the selected categories); <NUMEX TYPE="ORDINAL">second</NUMEX>, the
+        output data stream is being coupled with integrated
+        downstream analysis for automated recognition of
+        interesting results buried within a large number of
+        exploratory experiments. The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can explore and visualize
+        these interesting results with <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>'s graphical user
+        <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX>.
+        The <ENAMEX TYPE="ORG_DESC">command</ENAMEX>-line interface also allows <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> to
+        interact flexibly with its <ENAMEX TYPE="PER_DESC">companion</ENAMEX> program <ENAMEX TYPE="PER_DESC">MatchMiner</ENAMEX>.
+        With <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> as a <ENAMEX TYPE="FAC">'preprocessor'</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> can take input
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> organized on the basis of 'omic' identifiers other
+        than the <ENAMEX TYPE="EVENT">HUGO</ENAMEX> names central to GO. <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> currently
+        <ENAMEX TYPE="DISEASE">resolves IMAGE clone ids</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> clusters, GenBank
+        <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers, <ENAMEX TYPE="ORGANIZATION">Affymetrix ids</ENAMEX>, chromosome locations,
+        gene common names, and <ENAMEX TYPE="ANIMAL">FISH clone ids</ENAMEX>, and greatly
+        facilitates the preparation of microarray data for analysis
+        in <ENAMEX TYPE="GPE">GoMiner</ENAMEX>.
+        In conclusion, <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> will continue in development with
+        a view to integration with other bioinformatic resources
+        being generated by the <ENAMEX TYPE="ORGANIZATION">NCI</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">NIH</ENAMEX> for use by the
+        biomedical research <ENAMEX TYPE="PER_DESC">community</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is flexible both
+        because it is coded in <ENAMEX TYPE="GPE">Java</ENAMEX> to be platform-independent and
+        because it can accommodate either the default GO hierarchy
+        and gene <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> or customized versions. The default
+        is the <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX>'s database of categories and gene
+        <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> as implemented on our server. However, the
+        <ENAMEX TYPE="PER_DESC">user</ENAMEX> can, if desired, edit categories and gene memberships
+        using <ENAMEX TYPE="ORGANIZATION">DAG-Edit</ENAMEX>, the BDGP <ENAMEX TYPE="PERSON">Gene Ontology Editor Tool</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] .
+        The edited database can then be accessed by <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> from a
+        local server to accommodate domain- and expertise-specific
+        applications. Another important type of flexibility is the
+        wide range of uses. In this report, we have presented
+        <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> in the context of microarray data, but the variety
+        of applications is clearly much broader; it embraces the
+        <TIMEX TYPE="DATE">full</TIMEX> range of genomic and proteomic studies.
+      
+    
+  

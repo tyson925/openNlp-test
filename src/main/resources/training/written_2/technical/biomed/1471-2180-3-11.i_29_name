@@ -1,0 +1,946 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="SUBSTANCE">RNA viruses</ENAMEX> are important pathogens in <ENAMEX TYPE="PER_DESC">humans</ENAMEX>, <ENAMEX TYPE="ANIMAL">animals</ENAMEX>,
+        and <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>. Their short <ENAMEX TYPE="PER_DESC">generation</ENAMEX> time and high mutation
+        rates allow them to adapt rapidly to changing environmental
+        conditions, and make them ever-changing targets for
+        anti-viral therapies or vaccinations. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> viruses form
+        highly polymorphic clouds of mutants, so-called
+        <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] . At viral loads of <NUMEX TYPE="CARDINAL">10</NUMEX> 8or more
+        <ENAMEX TYPE="ORGANIZATION">virions</ENAMEX> in an infected <ENAMEX TYPE="PER_DESC">host</ENAMEX>, viral quasispecies 
+        in vivo often contain all possible
+        single-point mutants from the consensus sequence, as well
+        as a sizeable fraction of <NUMEX TYPE="CARDINAL">two</NUMEX>- <NUMEX TYPE="CARDINAL">or three</NUMEX>-point mutants [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+        . Besides their importance as pathogens, <ENAMEX TYPE="SUBSTANCE">RNA viruses</ENAMEX> have
+        in <TIMEX TYPE="DATE">recent years</TIMEX> also become one of the main tools for
+        experimental verification of theoretical population
+        <ENAMEX TYPE="ORGANIZATION">genetics</ENAMEX> and evolutionary theory in general (reviewed in [
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ] ). This line of research can draw on a substantial body
+        of literature on the theory of quasispecies dynamics and
+        its relation to standard population genetics [ <NUMEX TYPE="CARDINAL">5 6 7 8 9 10</NUMEX>
+        <NUMEX TYPE="CARDINAL">11 12 13 14 15 16</NUMEX> ] .
+        The quasispecies theory has been useful to understand
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> virus evolution, but the assumptions underlying the
+        model do not always reflect the biology of <ENAMEX TYPE="SUBSTANCE">RNA viruses</ENAMEX>. In
+        some instances the original model has been corrected to
+        account for discrepancies, such as <ENAMEX TYPE="PER_DESC">infinite</ENAMEX> vs. finite
+        population sizes [ <NUMEX TYPE="CARDINAL">7 9 16</NUMEX> ] . However, other factors need
+        to be considered as well. For instance, the standard
+        <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> model assumes low multiplicity of infection
+        (<ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>), that is, each cell is assumed to be infected by
+        at most one virion. At high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, when several virions
+        coinfect a single cell, the virions can recombine [ <NUMEX TYPE="CARDINAL">17 18</NUMEX>
+        <NUMEX TYPE="CARDINAL">19</NUMEX> ] or reassort (for segmented viruses) [ <NUMEX TYPE="CARDINAL">20 21 22 23 24</NUMEX>
+        <NUMEX TYPE="CARDINAL">25</NUMEX> ] . <NUMEX TYPE="ORDINAL">Second</NUMEX>, the model assumes that the genotype of a
+        <ENAMEX TYPE="ORGANIZATION">virion</ENAMEX> fully determines its fitness. However, this
+        assumption is not always justified, since many viral
+        functions can be provided in trans - an effect referred to
+        as complementation. Thus, the phenotype of a virion may not
+        reflect its genotype [ <NUMEX TYPE="CARDINAL">26 27 28 29</NUMEX> ] . Phenotypic mixing
+        and hiding is a particular case of complementation
+        involving surface <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (above citations). It occurs
+        either at high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, when <NUMEX TYPE="CARDINAL">two or more</NUMEX> different mutants
+        or virus strains freely exchange genetic sequences and
+        surface <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> inside a cell, or at low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, when a
+        mutant offspring is encapsidated by its <ENAMEX TYPE="ORG_DESC">parent</ENAMEX>'s
+        <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        No general theory is available for the evolutionary
+        dynamic of a viral <ENAMEX TYPE="SUBSTANCE">quasispecies</ENAMEX> under the influence of
+        virus density as it changes with changing <ENAMEX TYPE="PERSON">m.o.i. However</ENAMEX>,
+        some particular cases have been studied [ <NUMEX TYPE="CARDINAL">30 31 32</NUMEX> ] ,
+        mostly related to recombination and reassortment [ <NUMEX TYPE="CARDINAL">33 34 35</NUMEX>
+        <NUMEX TYPE="CARDINAL">36</NUMEX> ] and to the dynamic of defective interfering particles
+        [ <NUMEX TYPE="CARDINAL">37 38 39 40 41</NUMEX> ] . In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we modify the
+        <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> by incorporating phenotypic hiding
+        between wild-type virus and a deleterious mutant. We assume
+        that the mutant differs from the wild type in a surface
+        protein necessary for cell entry, so that the fitness
+        difference between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">virions</ENAMEX> is solely determined by the
+        surface <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and not by the particular genomes they
+        carry. We show that phenotypic hiding of the mutant genome
+        behind wild-type capsids increases the mutant frequency
+        above the level predicted by the standard quasispecies
+        model. This increase in mutant frequency is most pronounced
+        at high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, but exists also at very low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+        Moreover, we show that the decrease of mutant frequency
+        from an initially high level down to the level of
+        mutation-selection balance is slowed down substantially at
+        high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> because of phenotypic hiding.
+        We propose that our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> may explain some of the
+        quantitative differences observed between theoretical
+        predictions of the quasispecies <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and experimental data
+        published in the literature [ <NUMEX TYPE="CARDINAL">42 43 44 45</NUMEX> ] .
+        <ENAMEX TYPE="PERSON">Foot</ENAMEX>-and-mouth <ENAMEX TYPE="DISEASE">disease</ENAMEX> virus (FMDV) has been one of the
+        most productive <ENAMEX TYPE="PER_DESC">models</ENAMEX> of viral quasispecies dynamics
+        (reviewed in [ <TIMEX TYPE="DATE">46</TIMEX> ] ). <ENAMEX TYPE="ORGANIZATION">FMDV</ENAMEX> belongs to the Picornaviridea
+        family. It has a non-segmented, positive strand genome of
+        <NUMEX TYPE="PERCENT">approximately 8.5 Kb</NUMEX> encapsidated by viral <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, <TIMEX TYPE="DATE">VP1</TIMEX>,
+        VP2, <TIMEX TYPE="DATE">VP3 and VP4</TIMEX>. A conserved Arginine-Glycine-Aspartic
+        <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> (RGD) triplet in βG-βH loop of <TIMEX TYPE="DATE">VP1</TIMEX> recognizes the
+        αvβ3, <TIMEX TYPE="DATE">αvβ6</TIMEX> or <NUMEX TYPE="ORDINAL">αvβ1</NUMEX> integrin as viral <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> (reviewed in
+        <ENAMEX TYPE="ORGANIZATION">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX> ] ), the first necessary step for virus entry.
+        Work carried out with different RGD <ENAMEX TYPE="DISEASE">virus mutants</ENAMEX> and mimic
+        <ENAMEX TYPE="ORGANIZATION">peptides</ENAMEX> [ <NUMEX TYPE="CARDINAL">48 49 50 51 52</NUMEX> ] clearly demonstrates the
+        critical role that the <ENAMEX TYPE="ORGANIZATION">RGD</ENAMEX> triplet has in virus entry, and
+        its little tolerance to variation. Among the few RGD
+        mutants that have been isolated, on is <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX>, a low fitness
+        <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> in which the glycine is replace by glutamic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">53</NUMEX> ] . <ENAMEX TYPE="PERSON">Ruíz-Jarabo</ENAMEX> and <ENAMEX TYPE="PER_DESC">co-workers</ENAMEX> found that after
+        <ENAMEX TYPE="ORGANIZATION">revertant RGD</ENAMEX> genomes became dominant, and mutant genomes
+        were no longer detected in the consensus sequence, <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX> was
+        able to remain in the <ENAMEX TYPE="PER_DESC">population</ENAMEX> for very long times and at
+        surprisingly high frequencies [ <NUMEX TYPE="CARDINAL">42 43 44 45</NUMEX> ] . There is a
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> agreement between the predictions of the
+        <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and this result, but there is also a
+        quantitative discrepancy. <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX> memory genomes can be
+        observed at much higher frequency than expected. However,
+        phenotypic hiding promotes a decelerated decay of mutant
+        <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> in the <ENAMEX TYPE="PER_DESC">population</ENAMEX>, and this decelerated decay could
+        be interpreted as a memory effect, in agreement with the
+        results by <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et</ENAMEX> al. The research design of the
+        original work [ <NUMEX TYPE="CARDINAL">42 43 44 45</NUMEX> ] does not allow us to
+        conclusively accept or reject our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> as the correct
+        explanation for their observations, but the values of
+        mutant frequencies predicted by our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are consistent
+        with the experimental data.
+      
+      
+        Model
+        We assume that the virus is propagated under serial
+        transfer, and model the change in mutant concentrations
+        from passage to passage. We assume that the difference
+        between wild type and mutant lies in the capsid <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>,
+        such that the mutation affects the ability of the virus to
+        enter a cell, but not the viability of the virus inside the
+        cell. Under phenotypic mixing and hiding, there are <NUMEX TYPE="CARDINAL">four</NUMEX>
+        types of virions that can occur: wild-type genotype with
+        wild-type phenotype, wild-type genotype with mutant
+        phenotype, mutant genotype with wild-type phenotype, and
+        <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> genotype with mutant phenotype. We will call virions
+        whose genotype coincides with their phenotype as pure, and
+        virions for which genotype and phenotype do not coincide as
+        mixed. In the following paragraphs, we outline the
+        derivation of a set of deterministic equations that
+        describe the change in relative concentrations of the
+        different pure and mixed virions in an infinite virus
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX>. More details are given in the <ENAMEX TYPE="LOCATION">Methods</ENAMEX> section.
+        Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is similar to <ENAMEX TYPE="PER_DESC">models</ENAMEX> studied by <ENAMEX TYPE="ORGANIZATION">Szathmáry</ENAMEX> [ <NUMEX TYPE="CARDINAL">38 39</NUMEX>
+        ] .
+        The probability 
+        p 
+        
+          ww 
+         that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is pure wild type is 
+        p 
+        
+          ww 
+         <ENAMEX TYPE="PERSON">=</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        r ) 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        r [<ENAMEX TYPE="LAW">Methods section, Eq</ENAMEX>. (<NUMEX TYPE="MONEY">14</NUMEX>)], where 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         is the probability with which a particular virion that
+        infects a cell contains the wild-type genome, and 
+        r is a parameter related to the
+        multiplicity of infection. Likewise, the probabilities 
+        p 
+        
+          wm 
+         and 
+        p 
+        
+          mw 
+         that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is mixed of either type are 
+        p 
+        
+          wm 
+         = 
+        p 
+        
+          mw 
+         = 
+        rx 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         [<ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. (<NUMEX TYPE="MONEY">15</NUMEX>)], where 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= 1 -</ENAMEX> 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         , and the probability 
+        p 
+        
+          mm 
+         that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is pure mutant is 
+        p 
+        
+          mm 
+         <ENAMEX TYPE="PERSON">=</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        r ) 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        r . The formula that relates the
+        parameter 
+        r to the multiplicity of infection,
+        <ENAMEX TYPE="ORGANIZATION">Eq</ENAMEX>. (<NUMEX TYPE="MONEY">13</NUMEX>), is somewhat unwieldy. For reference, and in order
+        to provide an intuitive meaning for 
+        r , we have tabulated 
+        r (which we will call in the
+        following also the mixing parameter) versus the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> in
+        <ENAMEX TYPE="CONTACT_INFO">Table 1</ENAMEX>.
+        The probabilities 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         and 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         depend on the composition of the types of free virions
+        on infection. Assume that 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          ww 
+         is the concentration of pure wild-type virions at
+        passage 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> , 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          wm 
+         that of mixed virions with wild-type genotype and
+        <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> phenotype, 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          mw 
+         that of mixed virions with mutant genotype and
+        wild-type phenotype, and 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          mm 
+         that of pure mutant virions. Further, assume that
+        virions with wild-type phenotype infect cells at a rate γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         , while virions with mutant phenotype infect at a rate
+        γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         < γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         . Then, the total rate at which cells are infected
+        with wild-type genomes is γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          ww 
+         <ENAMEX TYPE="CONTACT_INFO">+ γ</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          wm 
+         . Likewise, the total rate at which cells are infected
+        with mutant genomes is γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          mw 
+         <ENAMEX TYPE="CONTACT_INFO">+ γ</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          mm 
+         . Therefore, we have 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= (γ</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          ww 
+         <ENAMEX TYPE="CONTACT_INFO">+ γ</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          wm 
+         )/[γ 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          wm 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+        
+          mm 
+         )]. The probability 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         follows from 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= 1 -</ENAMEX> 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         .
+        Using the various formulas given in the previous two
+        <ENAMEX TYPE="PERSON">paragraphs</ENAMEX>, we find that the virion concentrations at
+        passage 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> (primed quantities) are given
+        by
+        
+        We now introduce mutations into this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. We assume
+        that the wild type mutates into the mutant with probability
+        <ENAMEX TYPE="ORGANIZATION">μ.</ENAMEX> For simplicity, we assume that back mutations occur at
+        the same rate. (It is safe to make this assumption, because
+        the rate of back mutations from deleterious to advantageous
+        <ENAMEX TYPE="PERSON">mutants</ENAMEX> tends to have little effect on mutation-selection
+        balance.) <ENAMEX TYPE="PERSON">Mutations</ENAMEX> will typically not affect the phenotype
+        of the <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX>, which is determined by the
+        distribution of mutant or wild-type <ENAMEX TYPE="SUBSTANCE">capsid proteins</ENAMEX> in the
+        cell. The extended <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with mutations therefore
+        becomes
+        
+      
+      
+        Results
+        
+          Extinction of mutant for μ = <NUMEX TYPE="CARDINAL">0</NUMEX>
+          In order to evaluate whether the mutant can coexist
+          with the wild type or will ultimately go extinct if it is
+          not constantly regenerated through mutations, we have to
+          analyze the fixed points of <ENAMEX TYPE="ORGANIZATION">Eqs</ENAMEX>. (<NUMEX TYPE="MONEY">1a</NUMEX>)-(<NUMEX TYPE="MONEY">1d</NUMEX>). There are two
+          trivial fixed points, corresponding to the cases in which
+          all virions are either pure wild-type or pure mutant. We
+          could not find any non-trivial fixed points. Since the
+          expressions involved are extremely unwieldy, we searched
+          for non-trivial fixed points only numerically (using the
+          <ENAMEX TYPE="ORGANIZATION">function NSolve of Mathematica</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ] ).
+          A linear expansion around the fixed points tells us
+          whether the mutant can invade an established wild-type
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX> or vice versa. If we introduce a small amount
+          ε of mutant virions into an established wild-type
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>, the total amounts of wild-type genomes 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            ww 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            wm 
+           and mutant genomes 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mm 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mw 
+           after the next passage become to <NUMEX TYPE="ORDINAL">first</NUMEX> order in
+          ε:
+          
+          As long as γ 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION"><</ENAMEX> 1 (as we assume throughout this paper), the
+          amount of mutant genomes in the population decreases in
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> passage, which implies that the mutant cannot
+          invade. Likewise, if we introduce a small amount ε of
+          wild-type virions into an established mutant <ENAMEX TYPE="PER_DESC">population</ENAMEX>,
+          the total amounts of mutant and wild-type genomes after
+          the next passage become to <NUMEX TYPE="ORDINAL">first</NUMEX> order in <TIMEX TYPE="DATE">ε</TIMEX>:
+          
+          In this case, the amount of the invading wild-type
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> in the population increases, which implies that
+          the wild-type can invade an established mutant
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX>. The invasion of a mutant <ENAMEX TYPE="PER_DESC">population</ENAMEX> by a
+          small amount of wild-type virions is shown in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          The preceeding analysis shows that <ENAMEX TYPE="ORGANIZATION">Eqs</ENAMEX>. (<NUMEX TYPE="MONEY">1a</NUMEX>)-(<NUMEX TYPE="MONEY">1d</NUMEX>) have
+          only a single stable fixed point, the <NUMEX TYPE="CARDINAL">one</NUMEX> in which the
+          whole <ENAMEX TYPE="PER_DESC">population</ENAMEX> consists of pure wild-type virions. The
+          <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> will therefore always go extinct eventually.
+          The rate at which the mutant disappears depends on the
+          <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> Figure <NUMEX TYPE="CARDINAL">2shows</NUMEX> the ratio between mutant and
+          wild-type concentrations as a function of passage, for
+          various <ENAMEX TYPE="PERSON">m.o.i. Concentrations</ENAMEX> are measured with respect
+          to the genotype, that is, mutant and wild-type
+          concentrations are 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           , respectively. In the example given, we have γ 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">0.3</NUMEX>. At low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, the mutant-to-wild-type ratio
+          drops from <NUMEX TYPE="CARDINAL">1</NUMEX> at passage <NUMEX TYPE="CARDINAL">zero</NUMEX> to values of <NUMEX TYPE="CARDINAL">10 -2and</NUMEX> lower
+          after <NUMEX TYPE="CARDINAL">four</NUMEX> passages. At high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, the reduction in
+          mutant concentration proceeds much slower. For example,
+          at an <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> of <NUMEX TYPE="CARDINAL">three</NUMEX>, the mutant-to-wild-type ratio is
+          <NUMEX TYPE="CARDINAL">only 10</NUMEX> -1after four passages. An interesting aspect of
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2is that the reduction in mutant frequency during
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> passage is independent of the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> This
+          effect is a consequence of our assumption that the mutant
+          has impaired ability of cell entry. In the <NUMEX TYPE="ORDINAL">first</NUMEX> round of
+          infection, when all virions are pure wild type or pure
+          <ENAMEX TYPE="PRODUCT">mutant</ENAMEX>, the mutant <ENAMEX TYPE="PER_DESC">virions</ENAMEX> cannot benefit from phenotypic
+          hiding. Therefore, their frequency will decrease
+          corresponding to the true fitness difference to the wild
+          type, independent of the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> From the <NUMEX TYPE="ORDINAL">second</NUMEX> passage
+          onward, the balance between pure and mixed virions is
+          established, and further reduction of the mutant
+          frequency is slowed down at high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+          Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the individual concentrations of the
+          various pure and mixed virions at an <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> of <NUMEX TYPE="CARDINAL">five</NUMEX>. We
+          observe that the concentration of pure mutant virions
+          decreases much faster than that of mixed virions with
+          <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> genomes. After <NUMEX TYPE="CARDINAL">ten</NUMEX> passages both concentrations
+          are equal, and after fifty passages, there are more than
+          twice as many mixed virions with mutant genomes than
+          there are pure mutant virions. When the mutant is rare,
+          it is mostly hiding behind wild-type capsids, which slows
+          down its extinction. Interestingly, the <TIMEX TYPE="TIME">fraction of</TIMEX>
+          <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> genomes encapsidated with wild-type <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is
+          equal to the fraction of wild-type genomes encapsidated
+          with mutant <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> at <NUMEX TYPE="CARDINAL">zero</NUMEX> mutation rate. This symmetry
+          is a consequence of the symmetry of equations (<NUMEX TYPE="MONEY">1b</NUMEX>) and
+          (<NUMEX TYPE="MONEY">1c</NUMEX>), and disappears for �<ENAMEX TYPE="CONTACT_INFO">� > 0</ENAMEX>.
+        
+        
+          Mutation-selection balance for positive μ
+          We now turn to the general case of a positive mutation
+          rate μ. We first consider the case of vanishingly low
+          <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, 
+          r = <NUMEX TYPE="CARDINAL">0</NUMEX>. When we set 
+          r = <NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="GPE">Eq</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) becomes the
+          discrete-time version of a model of maternal effects in
+          quasispecies evolution [ <TIMEX TYPE="DATE">55</TIMEX> ] . In <ENAMEX TYPE="GPE">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">55</TIMEX> ] , the
+          fitness of a virion is assumed to be the product of a
+          contribution from the genotype of the <ENAMEX TYPE="ORG_DESC">virion</ENAMEX>'s <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">one</NUMEX> from the <ENAMEX TYPE="ORG_DESC">virion</ENAMEX>'s own genotype. The situation here is
+          simpler, because we assume that fitness is only
+          determined by the phenotype (efficiency of cell entry).
+          In the language of <ENAMEX TYPE="ORGANIZATION">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">55</TIMEX> ] , this means we have 
+          b 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">= 1</ENAMEX> for all genotypes 
+          <ENAMEX TYPE="PERSON">i. From Eqs</ENAMEX>. (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) and (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) in <ENAMEX TYPE="GPE">Ref.</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">55</NUMEX> ] , we obtain the steady-state concentrations of pure
+          and mixed virions (neglecting back mutations from mutant
+          to wild type):
+          
+          We mentioned in the previous section that 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            wm 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mw 
+           for <NUMEX TYPE="MONEY">�</NUMEX>� = <NUMEX TYPE="CARDINAL">0</NUMEX>. Clearly, this symmetry does not exist for
+          <ENAMEX TYPE="CONTACT_INFO">μ > 0</ENAMEX>. For <ENAMEX TYPE="PRODUCT">0 < μ << 1</ENAMEX>, the ratio in
+          concentration of the <NUMEX TYPE="CARDINAL">two</NUMEX> classes of mixed virions is 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mw 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            wm 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 - μ - γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           )<ENAMEX TYPE="PRODUCT">/μ ≈ 1/μ</ENAMEX>. There will typically be several orders of
+          magnitude more mutant genomes encapsidated in wild-type
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> than wild-type genomes encapsidated in mutant
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. Note, however, that this result holds only under
+          the assumption of vanishingly low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> As the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+          increases, the mixed virions with mutant genomes will
+          still be at higher concentration than the mixed virions
+          with wild-type genomes, but the ratio between the two
+          will be much smaller than <NUMEX TYPE="CARDINAL">1/μ</NUMEX>. The ratio of mixed virions
+          with mutant genomes to pure mutant virions is 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mw 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            mm 
+           <ENAMEX TYPE="CONTACT_INFO">≈ 1 - γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           < <NUMEX TYPE="CARDINAL">1</NUMEX> at low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, that is, there are more pure
+          virions than mixed virions with mutant genomes in
+          equilibrium. We found numerically that at high <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>,
+          this relationship is reversed, and there are
+          substantially more mixed than pure mutants.
+          For the total amount of mutant genomes in the
+          <ENAMEX TYPE="ORGANIZATION">population</ENAMEX>, we obtain after summing <ENAMEX TYPE="ORGANIZATION">Eqs</ENAMEX>. (<NUMEX TYPE="MONEY">5c</NUMEX>) and
+          (<NUMEX TYPE="MONEY">5d</NUMEX>):
+          
+          For comparison, the standard quasispecies model
+          (without phenotypic hiding) predicts:
+          
+          This expression is equivalent to the one given by
+          <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et al.</ENAMEX> in their analysis of quasispecies
+          memory [ <TIMEX TYPE="DATE">44</TIMEX> ] . <ENAMEX TYPE="PERSON">Equations</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) and (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) differ only in the
+          factor 2(<ENAMEX TYPE="CONTACT_INFO">1 - μ</ENAMEX>) - γ 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           . This factor is larger than <NUMEX TYPE="CARDINAL">one</NUMEX> for small mutation
+          rates, that is, as long as
+          <ENAMEX TYPE="PERSON">μ <</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 - γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           )<TIMEX TYPE="DATE">/2</TIMEX>. (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>)
+          If the mutant has a substantial fitness disadvantage
+          in comparison to the wild type (say <NUMEX TYPE="PERCENT">at least 10%</NUMEX>), then μ
+          will always be small enough to satisfy this condition.
+          Therefore, phenotypic hiding will lead to an increase in
+          <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> genomes even at low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> The increase is at most
+          a factor of <NUMEX TYPE="CARDINAL">two</NUMEX> (for <ENAMEX TYPE="PRODUCT">μ << 1</ENAMEX> and γ 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/γ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO"><< 1</ENAMEX>) in comparison to the prediction of the
+          standard quasispecies model.
+          For the case of positive mutation rate and high
+          <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, there is no analytic solution available, and we
+          have to resort to numerical simulations. Figure 4shows
+          the decay of mutant genomes over time, starting from an
+          initial <ENAMEX TYPE="GPE_DESC">state</ENAMEX> where mutant and wild type are present in
+          equal concentrations. We have displayed trajectories for
+          a wide range of <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, and we have also displayed the
+          corresponding trajectory generated by the standard
+          <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. All trajectories show the same
+          qualitative behavior: The mutant frequency decays quickly
+          during the initial passages, and then levels off in
+          mutation-selection balance. As discussed in the previous
+          <ENAMEX TYPE="PERSON">paragraphs</ENAMEX>, the level of mutant genomes in
+          mutation-selection balance is always higher in our model
+          than in the standard quasispecies model. Moreover, the
+          level of mutant genomes increases with increasing <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+          The initial decay of mutant genomes is also influenced by
+          the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, and slows down with increasing <ENAMEX TYPE="PERSON">m.o.i. In</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, the initial decay of mutant genomes for �<ENAMEX TYPE="CONTACT_INFO">� > 0</ENAMEX>
+          is identical to the one for μ = <NUMEX TYPE="CARDINAL">0</NUMEX>, as described in the
+          previous subsection. It is interesting to note that
+          phenotypic hiding influences the equilibrium
+          concentration of mutant genomes at low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, but not
+          the speed at which equilibrium is attained. The initial
+          decay of mutant genomes is identical for our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> at low
+          <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> and for the standard quasispecies model.
+        
+      
+      
+        Discussion
+        <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et</ENAMEX> al. measured the frequency of the
+        <ENAMEX TYPE="ORGANIZATION">minority FMDV RED</ENAMEX> mutant up to passage <TIMEX TYPE="DATE">50</TIMEX>, and found that
+        the frequency was still declining at passage <TIMEX TYPE="DATE">50</TIMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] .
+        They observed mutant frequencies at passage <NUMEX TYPE="CARDINAL">50 between 6.6</NUMEX>
+        <ENAMEX TYPE="CONTACT_INFO">× 10 -4and 10 -3.</ENAMEX> These results are in agreement with our
+        model of phenotypic hiding if we use a relative fitness of
+        <NUMEX TYPE="MONEY">0.4</NUMEX> for the <ENAMEX TYPE="PRODUCT">RED mutant</ENAMEX> as compared to the wild type [ <NUMEX TYPE="CARDINAL">42 44</NUMEX>
+        ] , and assume that (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the fitness disadvantage is fully
+        explained by impaired entry, (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) the mutation rate is μ =
+        <NUMEX TYPE="PERCENT">10 -4</NUMEX>, and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> is <NUMEX TYPE="CARDINAL">approximately five</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>).
+        The <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> in <ENAMEX TYPE="GPE">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] was <NUMEX TYPE="CARDINAL">between one and five</NUMEX>.
+        <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et al.</ENAMEX> noted that mutant concentrations around
+        <NUMEX TYPE="CARDINAL">10</NUMEX> -3would follow from equilibrium state of the standard
+        <ENAMEX TYPE="ORGANIZATION">quasispecies</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> if the mutation rate were μ = <NUMEX TYPE="CARDINAL">10</NUMEX>
+        -3rather <ENAMEX TYPE="PERSON">than μ</ENAMEX> = <NUMEX TYPE="PERCENT">10 -4</NUMEX>. However, the standard quasispecies
+        model predicts that the mutation-selection balance should
+        be reached around passage <TIMEX TYPE="DATE">10</TIMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>), which is at odds
+        with the observation that the frequency of <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX> mutants
+        continued to decline up to passage <TIMEX TYPE="DATE">50</TIMEX>.
+        It is important to note that capsid <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> can be
+        provided in trans during the production of infectious FMDV
+        <ENAMEX TYPE="ORGANIZATION">particles</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX> ] , and phenotypic hiding has been known for
+        many <TIMEX TYPE="DATE">years</TIMEX> in a variety of <ENAMEX TYPE="SUBSTANCE">picornaviruses</ENAMEX> [ <NUMEX TYPE="CARDINAL">56 57 58</NUMEX> ] .
+        Other factors may enhance or reduce the effects of
+        <ENAMEX TYPE="ORGANIZATION">complementation</ENAMEX>. For instance, compartimentalization or
+        physical localization should prevent to some degree the
+        free <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> of genomes and products.
+        In order to test fully the predictions of our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, we
+        would need data on the decay of the mutant frequency from
+        replicate <ENAMEX TYPE="PER_DESC">populations propagated</ENAMEX> at different <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+        Unfortunately, such data does not exist. Although
+        <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et al.</ENAMEX> propagated their <ENAMEX TYPE="PER_DESC">populations</ENAMEX> at an
+        <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> of <NUMEX TYPE="MONEY">0.1</NUMEX> in their initial study [ <TIMEX TYPE="DATE">42</TIMEX> ] and at an
+        <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> between <NUMEX TYPE="CARDINAL">one and five</NUMEX> in their follow-up study [ <TIMEX TYPE="DATE">44</TIMEX> ]
+        , we cannot compare the mutant frequencies reported in
+        these <NUMEX TYPE="CARDINAL">two</NUMEX> studies, because the method of screening for <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX>
+        mutants was changed in the follow-up study ( [ <TIMEX TYPE="DATE">44</TIMEX> ] , <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+        <NUMEX TYPE="CARDINAL">1</NUMEX>, Note b). Moreover, a caveat applies to the comparison of
+        the experimental data to our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Ruíz-Jarabo et</ENAMEX> al.
+        determined the frequency of <ENAMEX TYPE="SUBSTANCE">RED mutants</ENAMEX> by <NUMEX TYPE="ORDINAL">first</NUMEX> screening
+        for <ENAMEX TYPE="SUBSTANCE">monoclonal antibody</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MAb</ENAMEX> <ENAMEX TYPE="PRODUCT">SD6</ENAMEX>) resistant virions, and
+        then determining the fraction of <ENAMEX TYPE="SUBSTANCE">RED mutants</ENAMEX> among them
+        from sequence data. While this method successfully prevents
+        against counting MAb-resistant mutants that are not <ENAMEX TYPE="SUBSTANCE">RED</ENAMEX>, it
+        does not measure the fraction of <ENAMEX TYPE="SUBSTANCE">RED mutants</ENAMEX> that hide
+        behind <ENAMEX TYPE="ORGANIZATION">RGD</ENAMEX> capsids. If phenotypic hiding plays an important
+        role in this system, then the fraction of hiding <ENAMEX TYPE="ORGANIZATION">RED</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">mutants</ENAMEX> could be substantial, and the reported mutant
+        <ENAMEX TYPE="PERSON">frequencies</ENAMEX> would likely represent underestimates. In
+        <ENAMEX TYPE="PERSON">summary</ENAMEX>, the experimental data are consistent with our
+        model, but do not allow us to either accept or reject it
+        with certainty. We have shown in the present paper that
+        phenotypic hiding can increase equilibrium frequencies by
+        factors of <NUMEX TYPE="CARDINAL">two to five</NUMEX>, or even higher, for high <ENAMEX TYPE="PERSON">m.o.i. It</ENAMEX>
+        is conceivable that other types of complementation can have
+        similar effects [ <TIMEX TYPE="DATE">59</TIMEX> ] .
+        Phenotypic hiding can bias fitness determinations if the
+        phenotype, rather than the genotype, is quantified. This
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> occurs simply because a fraction of mutant genomes
+        will hide behind wild-type envelopes and will be missed, an
+        effect that has been previously reported [ <NUMEX TYPE="CARDINAL">29 60</NUMEX> ] . As a
+        byproduct of our study, we predict <NUMEX TYPE="CARDINAL">two</NUMEX> phases of mutant
+        frequency decay specific to phenotypic hiding. In the first
+        round of infection, all virions are pure wild type or pure
+        <ENAMEX TYPE="PRODUCT">mutant</ENAMEX>, so that the mutant <ENAMEX TYPE="PER_DESC">virions</ENAMEX> cannot benefit from
+        <ENAMEX TYPE="ORGANIZATION">complementation</ENAMEX>. Therefore, their frequency will decrease
+        corresponding to their true fitness and independently of
+        the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> From the <NUMEX TYPE="ORDINAL">second</NUMEX> passage onward, the balance
+        between pure and mixed virions is established, and further
+        reduction of the mutant frequency proceeds much slower if
+        the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> is sufficiently high, as illustrated in Figure
+        <NUMEX TYPE="CARDINAL">2</NUMEX>. As a consequence, if fitness competitions are halted
+        after the first passage, measurements of the phenotype will
+        not bias fitness determinations. These effect should not be
+        observed in other forms of complementation, but should be
+        characteristic of any situation in which the phenotype is
+        determined by envelope <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. <ENAMEX TYPE="PER_DESC">Host</ENAMEX> range will often
+        belong to this category, since <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> recognition is one
+        of its main determinants. Other examples include antibody
+        resistant mutants and escape mutants when the antiviral
+        drug <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> entry, such as rimantidine and
+        amantidine-resistant <ENAMEX TYPE="DISEASE">influenza</ENAMEX> strains or WIN
+        compound-resistant picornaviruses [ <TIMEX TYPE="DATE">61</TIMEX> ] . Thus, phenotypic
+        hiding can keep a relatively large frequency of mutants in
+        the absence of selective pressure that can provide a quick
+        response when such selective pressure is restored.
+        <ENAMEX TYPE="ORGANIZATION">Complementation</ENAMEX> can also complicate the interpretation
+        of other experimental results involving competition between
+        <NUMEX TYPE="CARDINAL">two</NUMEX> (or more) strains. For instance, <ENAMEX TYPE="ORGANIZATION">Miralles et al.</ENAMEX> [ <NUMEX TYPE="CARDINAL">62</NUMEX>
+        <NUMEX TYPE="CARDINAL">63</NUMEX> ] tested the effect of clonal interference in VSV
+        <ENAMEX TYPE="PER_DESC">populations</ENAMEX> by changing the <ENAMEX TYPE="PER_DESC">population</ENAMEX> size in competitions
+        between wild type and a MARM mutant. This MARM mutant
+        carries a point mutation that confers resistance to I1 <ENAMEX TYPE="ORGANIZATION">Mab</ENAMEX>,
+        but it is neutral otherwise [ <TIMEX TYPE="DATE">64</TIMEX> ] . Clonal interference
+        occurs in asexual <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> when <ENAMEX TYPE="PER_DESC">population</ENAMEX> sizes are large
+        enough to allow the simultaneous generation of more than
+        one advantageous mutation, so that the best mutation has to
+        compete not only with an inferior wild type but also with
+        the other fitter mutants [ <TIMEX TYPE="DATE">65</TIMEX> ] . Thus, while the best
+        possible mutation should always be the one becoming
+        dominant, the rate at which it does so should be slowed
+        down in large <ENAMEX TYPE="PER_DESC">populations</ENAMEX>. The VSV competition experiments
+        were carried out at increasing viral population sizes, but
+        the number of infected cells was held constant, that is,
+        the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> was increased alongside the <ENAMEX TYPE="PER_DESC">population</ENAMEX> size.
+        Therefore, complementation may also have contributed to the
+        slowdown of the speed of adaptation at large population
+        <ENAMEX TYPE="PERSON">sizes</ENAMEX>, and the relative contributions of complementation
+        and clonal interference to the slowdown would be hard to
+        <ENAMEX TYPE="PERSON">disentangle</ENAMEX>. The only phenotypic hiding effect that the
+        <ENAMEX TYPE="PER_DESC">authors</ENAMEX> could avoid were related to the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of
+        changes in MARM C frequencies, and these only correlate to
+        the changes in beneficial mutation frequencies if the
+        <ENAMEX TYPE="ORGANIZATION">beneficial</ENAMEX> mutation mapped to the <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> glycoprotein.
+        Many infections in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> and <ENAMEX TYPE="ANIMAL">animals</ENAMEX> are probably
+        initiated by <NUMEX TYPE="CARDINAL">one</NUMEX> or few viral <ENAMEX TYPE="SUBSTANCE">particles</ENAMEX>, thus corresponding
+        to a situation of low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX> As replication proceeds and
+        titers rise, the likelyhood of coinfection increases. The
+        best evidence for multiple infections 
+        in vivo comes from the observation of
+        natural <ENAMEX TYPE="SUBSTANCE">recombinants</ENAMEX>. In the case of <TIMEX TYPE="DATE">HIV-1</TIMEX>, for instance,
+        rampant recombination has been reported, even among
+        different <ENAMEX TYPE="SUBSTANCE">subtypes</ENAMEX> [ <NUMEX TYPE="CARDINAL">66 67</NUMEX> ] , and the number of proviruses
+        per cell was estimated to be <NUMEX TYPE="CARDINAL">approximately three</NUMEX>. Another
+        well known example is <ENAMEX TYPE="DISEASE">influenza</ENAMEX> virus, for which
+        <ENAMEX TYPE="ORGANIZATION">reassortment</ENAMEX> is a major mechanism of evolutionary change [
+        <NUMEX TYPE="CARDINAL">68</NUMEX> ] . As in the case of <ENAMEX TYPE="DISEASE">HIV</ENAMEX>, reassortment depends of
+        coinfection, and once coinfection occurs, complementation
+        is as likely to ensue as reassortment.
+      
+      
+        Conclusions
+        We have shown that phenotypic hiding has substantial
+        influence on the equilibrium frequencies of mutants in
+        selection-mutation balance, and on the speed at which
+        deleterious mutants are lost from the <ENAMEX TYPE="PER_DESC">population</ENAMEX>. Our
+        theory makes <NUMEX TYPE="CARDINAL">five</NUMEX> predictions that can be tested
+        <ENAMEX TYPE="CONTACT_INFO">experimentally:</ENAMEX>
+        <NUMEX TYPE="CARDINAL">1</NUMEX>. The rate at which the mutant disappears should
+        decrease and the equilibrium concentration of the mutant
+        should increase with increasing <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX>. A substantial fraction of mutant genomes should be
+        encapsidated with wild-type <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">3</NUMEX>. The ratio of mutant genomes encapsidated in wild-type
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> to wild-type genomes encapsidated in mutant protein
+        should decrease with increasing <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+        <NUMEX TYPE="CARDINAL">4</NUMEX>. Even at low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, the fraction of mutant present in
+        mutation-selection balance should be larger (up to a factor
+        of <NUMEX TYPE="CARDINAL">two</NUMEX>) than predicted by the standard quasispecies model
+        if the mutant fitness is low compared to the wild-type
+        <ENAMEX TYPE="ORGANIZATION">fitness</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">5</NUMEX>. The decrease of mutant frequency during the first
+        passage should be independent of the <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>, and equal to
+        that measured for later passages at very low <ENAMEX TYPE="PERSON">m.o.i.</ENAMEX>
+        Future experiments can be designed to test these
+        predictions, and can thereby clarify whether phenotypic
+        hiding is a major contributor to viral memory and elevated
+        equilibrium frequencies of mutants.
+      
+      
+        Methods
+        In this section, we present some calculations that form
+        the basis of the derivation of our model equations.
+        We first calculate the probability that a virion
+        produced by an 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> -fold coinfected <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> is pure.
+        Assume a cell is infected by 
+        <ENAMEX TYPE="ORGANIZATION">k virions</ENAMEX> with wild-type genotype,
+        and by 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> - 
+        <ENAMEX TYPE="ORGANIZATION">k virions</ENAMEX> with mutant genotype. Then,
+        the probability that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is pure wild-type
+        is the probability that it has wild-type genotype, which is
+        
+        <ENAMEX TYPE="ORGANIZATION">k /</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , times the probability that it has
+        wild-type phenotype, which is again 
+        <ENAMEX TYPE="ORGANIZATION">k /</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . Thus, the total probability is ( 
+        <ENAMEX TYPE="ORGANIZATION">k /</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) <NUMEX TYPE="CARDINAL">2</NUMEX>. If we want to know the
+        probability that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is pure for a number
+        of coinfected cells with different ratios in their
+        multiplicity of infection of wild-type and mutant
+        genotypes, then we have to sum over the different
+        contributions of all the individual cells. In practice, we
+        will not know exactly which cells are infected with what
+        <ENAMEX TYPE="ORGANIZATION">virions</ENAMEX>. However, it is reasonable to assume that we know
+        the overall probabilities with which cells are infected
+        with either mutant or wild-type genotype. Assume that 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         is the probability that a cell is infected with
+        wild-type genotype, and 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= 1 -</ENAMEX> 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         likewise for the mutant genotype. Then, the number of
+        wild-type genomes 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> in a cell is binomially
+        distributed, and therefore the overall probability ξ 
+        
+          ww 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> from a
+        cell infected by 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> virions is pure wild-type becomes [
+        <NUMEX TYPE="CARDINAL">38</NUMEX> ]
+        
+        Likewise, we find for the probability ξ 
+        
+          mm 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is pure
+        <ENAMEX TYPE="PRODUCT">mutant �</ENAMEX>� 
+        
+          mm 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) = 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> + .
+        Now we consider mixed virions. Assume again that a cell
+        is infected by 
+        <ENAMEX TYPE="ORGANIZATION">k virions</ENAMEX> with wild-type genotype,
+        and by 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> - 
+        <ENAMEX TYPE="ORGANIZATION">k virions</ENAMEX> with mutant genotype. In
+        analogy to the considerations for a pure virion, we find
+        that the probability of a mixed virion is 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> - 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> )/ 
+        <ENAMEX TYPE="ORGANIZATION">n 2</ENAMEX>, regardless of whether the
+        <ENAMEX TYPE="ORGANIZATION">genotype</ENAMEX> is wild-type and the phenotype is mutant or vice
+        versa. The probabilities ξ 
+        
+          wm 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) and ξ 
+        
+          mw 
+         ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) that an <ENAMEX TYPE="PER_DESC">offspring virion</ENAMEX> is mixed
+        of either type are then
+        
+        <ENAMEX TYPE="PERSON">Equations</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>) and (<NUMEX TYPE="MONEY">10</NUMEX>) are valid if all cells have
+        exactly the same multiplicity of infection. However,
+        infection is a Poisson process, and some <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> will end up
+        being infected by more virions than other cells. Assume
+        that λ is the multiplicity of infection of the whole
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX>. Then, the probability that a single infected
+        cell is infected by 
+        <ENAMEX TYPE="ORGANIZATION">k virions</ENAMEX> is 
+        e -λλ 
+        <ENAMEX TYPE="ORGANIZATION">k /</ENAMEX>[(<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        e -λ) 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> !]. The factor <NUMEX TYPE="CARDINAL">1</NUMEX> - 
+        e -λin the denominator corrects for
+        the 
+        e -λcells that will not be infected
+        at all. We obtain the overall probabilities to find a pure
+        or mixed offspring virion by summing over all possible
+        combinations of infections, with their respective
+        <ENAMEX TYPE="PERSON">probabilities</ENAMEX>. For example:
+        
+        After taking the sum, we find:
+        
+        p 
+        
+          ww 
+         = + 
+        cx 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         , (<NUMEX TYPE="MONEY">12</NUMEX>)
+        where the constant 
+        c is given by
+        
+        Here, <ENAMEX TYPE="PERSON">Ei</ENAMEX>( 
+        z ) is the exponential integral, <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX>
+        and γ is the <ENAMEX TYPE="ORGANIZATION">Euler</ENAMEX> constant, γ �<NUMEX TYPE="MONEY">�� 0.577216</NUMEX>. Finally, by
+        making use of 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">= 1 -</ENAMEX> 
+        x 
+        
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+         ; we arrive at
+        
+        p 
+        
+          mm 
+         = 
+        cx 
+        
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+         <ENAMEX TYPE="PERSON">+</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        c ) . (<NUMEX TYPE="MONEY">14</NUMEX>)
+        Similarly, for a mixed virion, we find
+        
+        We obtain 
+        p 
+        
+          mm 
+         and 
+        p 
+        
+          mw 
+         from <ENAMEX TYPE="GPE">Eqs</ENAMEX>. (<NUMEX TYPE="MONEY">14</NUMEX>) and (<NUMEX TYPE="MONEY">15</NUMEX>) by interchanging w and m in
+        all subscripts. <ENAMEX TYPE="PERSON">Equations</ENAMEX> (<NUMEX TYPE="MONEY">14</NUMEX>) and (<NUMEX TYPE="MONEY">15</NUMEX>) show that the
+        mixing parameter 
+        r used in the main <ENAMEX TYPE="ORG_DESC">body</ENAMEX> of this paper
+        is related to 
+        c via 
+        r = <NUMEX TYPE="CARDINAL">1</NUMEX> - 
+        c .
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ANIMAL">COW</ENAMEX> was responsible for the analytic calculations. Both
+        <ENAMEX TYPE="PERSON">authors</ENAMEX> contributed substantially to the design of the
+        study and the writing of the manuscript. Both <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read
+        and approved the final manuscript.
+      
+    
+  

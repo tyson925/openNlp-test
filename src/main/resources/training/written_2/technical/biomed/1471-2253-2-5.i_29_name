@@ -1,0 +1,943 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is a new generic "physiologically based
+        <ENAMEX TYPE="ORGANIZATION">pharmacokinetic</ENAMEX> model" (PBPK) [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . A <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> provides an
+        approach to modeling <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> distribution and metabolism that
+        is based on the use of a physiologically realistic model of
+        the <ENAMEX TYPE="ANIMAL">animal</ENAMEX>. This new <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> has been designed to provide a
+        rigorous mathematical treatment that takes into
+        consideration all the different biochemical and
+        <ENAMEX TYPE="ORGANIZATION">physiological</ENAMEX> properties that a <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> may have, and yet be
+        very simple to use. Other <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> in this series have
+        described the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to propranolol, D 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, inulin and protein bound
+        <ENAMEX TYPE="ORGANIZATION">antibiotics</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] . This <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> will describe the
+        application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to volatile solutes, with particular
+        emphasis on anesthetics.
+        The use of a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> to model pharmacokinetics requires
+        detailed information about the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-tissue partition
+        coefficient for each organ. This is the feature that has
+        limited the applications of <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> to human studies since it
+        is normally assumed that these tissue partition
+        coefficients must be determined for each specific solute
+        that is studied. The major design philosophy behind PKQuest
+        is to increase the predictive power of the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> so that it
+        can applied to a large variety of solutes without the need
+        for this specific information. This is accomplished by
+        preprogramming a "standard human" data set that contains
+        most of the information that is required to model the
+        different solutes. The new approach for the volatile
+        solutes that is developed in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> is to assume that
+        the tissue partition of these solutes is determined
+        entirely by a) the oil/water partition coefficient and b)
+        the fraction of lipid in the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and each organ i (klip
+        [i]). A set of "standard human" values for klip [i] is
+        assigned for each organ. Using this assumption, the
+        pharmacokinetics of any inert volatile solute is completely
+        determined (as a <NUMEX TYPE="ORDINAL">first</NUMEX> approximation) by <NUMEX TYPE="CARDINAL">just 2</NUMEX> parameters:
+        the <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>/air (<ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX>) and oil/<ENAMEX TYPE="SUBSTANCE">water</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX>) partition
+        <ENAMEX TYPE="ORGANIZATION">coefficients</ENAMEX>. This allows <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to be used to predict the
+        pharmacokinetics of any inert volatile solute for which
+        experimental values for these simple physical chemical
+        parameters are available. If the solute is metabolized (as
+        is the case for halothane and toluene) then additional
+        adjustable parameters (e.g., metabolic <ENAMEX TYPE="SUBSTANCE">liver Km</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vmax</ENAMEX>)
+        must be added.
+        As a test of this approach to modeling volatile solutes,
+        <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> was applied to the simultaneous uptake and washout
+        measurements of <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] and <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. [
+        <NUMEX TYPE="CARDINAL">5</NUMEX> ] for <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>, enflurane, halothane, and
+        <ENAMEX TYPE="ORGANIZATION">methoxyflurane</ENAMEX>. Application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to these
+        simultaneous anesthetic measurements provides a stringent
+        test of the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> assumptions because only the specific
+        partition coefficients (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX>, etc) vary for the different
+        <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> while all the other parameters (e.g. percent body
+        fat, klip, fat blood flow, ventilation, etc.) must be
+        identical. In addition, using the same set of parameters to
+        fit the <NUMEX TYPE="CARDINAL">roughly 20</NUMEX> fold difference in concentration between
+        the <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> and <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. data provides
+        another test. Finally, to show that the validity of this
+        approach extended beyond the anesthetics, it was also
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to toluene, a volatile solute for which detailed
+        <ENAMEX TYPE="ORGANIZATION">human PBPKs</ENAMEX> are already available. Since the value of the
+        oil/water partition coefficient varies from <NUMEX TYPE="MONEY">3</NUMEX> for nitrous
+        oxide to <NUMEX TYPE="CARDINAL">120</NUMEX> for toluene, the ability of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to model
+        these different solutes using a single set of organ fat
+        <ENAMEX TYPE="PERSON">fractions</ENAMEX> (klip) demonstrates the generality of this
+        approach.
+        Anesthesiologists have used physiological models
+        incorporating air/water partition coefficients and volumes
+        of distribution to predict the kinetics for <TIMEX TYPE="DATE">more than a 150</TIMEX>
+        <TIMEX TYPE="DATE">years</TIMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . However, there have been only a few
+        applications of detailed, organ specific <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> to
+        <ENAMEX TYPE="ORGANIZATION">anesthetics</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Mapleson</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> developed a detailed
+        <ENAMEX TYPE="ORGANIZATION">anesthetic PBPK</ENAMEX> [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] and measured the relevant PBPK
+        parameters [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX> ] . <ENAMEX TYPE="PERSON">Smith</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ]
+        and <ENAMEX TYPE="ORGANIZATION">Fukui</ENAMEX> and <ENAMEX TYPE="PERSON">Smith</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16</NUMEX> ] have developed complex PBPKs
+        in which the anesthetic interacts with and modifies the
+        organ parameters. The primary application of these models
+        has been to illustrate the theoretical importance of the
+        different model components. The only detailed attempts to
+        fit human data with a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> are for <ENAMEX TYPE="SUBSTANCE">nitrous oxide</ENAMEX> in <ENAMEX TYPE="PER_DESC">man</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">17</NUMEX> ] and halothane in <ENAMEX TYPE="PER_DESC">infants</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] . Allott, <ENAMEX TYPE="ORGANIZATION">Steward</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Mapleson</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] also fit a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> to the experimental data
+        for halothane in the <ENAMEX TYPE="ANIMAL">dog</ENAMEX>. Both of these halothane studies
+        were incomplete because they did not account for
+        <ENAMEX TYPE="PERSON">metabolism</ENAMEX>. The most complete <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> for halothane is the rat
+        study of <ENAMEX TYPE="ORGANIZATION">Loizou et al.</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] which includes a metabolic
+        component that is saturable and inactivates. There have
+        been no previous attempts to use a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> to model multiple,
+        simultaneously measured anesthetics such as is described in
+        this paper.
+        In contrast to the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> model of <ENAMEX TYPE="ORGANIZATION">Mapleson</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ] ,
+        <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> does not model the <TIMEX TYPE="TIME">vascular time</TIMEX> delays and
+        therefore is not applicable to short time kinetics (less
+        than a minute). However, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> does incorporate a number
+        of features that are not present in <ENAMEX TYPE="GPE">Mapleson</ENAMEX>'s <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>,
+        including tissue metabolism, capillary limitation (either
+        in the <ENAMEX TYPE="DISEASE">lung</ENAMEX> or tissue) and ventilation-perfusion
+        mismatch.
+        The PKQuest program and all the examples used here are
+        freely available on the <ENAMEX TYPE="ORGANIZATION">WEB</ENAMEX> at <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. The reader
+        is encouraged to download these routines and try them
+        out.
+      
+      
+        Methods
+        
+          PBPK program and its assumptions
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] was used for all the analysis in this
+          paper. All the figures shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are direct
+          copies (in jpeg format) of standard PKQuest output.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> makes several simplifying assumptions (see [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          ). It is assumed that each organ can be modeled as a
+          single well-stirred compartment. For the volatile solutes
+          studied here, it is also assumed that the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-tissue
+          <ENAMEX TYPE="ORGANIZATION">exchange</ENAMEX> is flow limited so that the partial pressure in
+          the tissue is equal to that in the vein leaving the
+          tissue. This is clearly an approximation and effects such
+          a diffusion gradients, countercurrent <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> and
+          heterogeneous organ blood flows [ <NUMEX TYPE="CARDINAL">21 22 23</NUMEX> ] will produce
+          small deviations from this assumption. It is also assumed
+          that the influence of the anesthesia in the <ENAMEX TYPE="ORGANIZATION">Carpenter et</ENAMEX>
+          al. studies on the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters can be neglected [ <NUMEX TYPE="CARDINAL">14</NUMEX>
+          <NUMEX TYPE="CARDINAL">24</NUMEX> ] . Although these solutes may consist of stereo
+          enantiomers, it is assumed that there is no significant
+          difference in the pharmacokinetics of the enantiomers,
+          which is supported by experiment [ <NUMEX TYPE="CARDINAL">25 26</NUMEX> ] . It is
+          assumed that the metabolism of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> and enflurane is negligible [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          <NUMEX TYPE="CARDINAL">27 28</NUMEX> ] , and that the loss through the skin can be
+          neglected [ <TIMEX TYPE="DATE">29</TIMEX> ] .
+          The free water concentration (C 
+          <ENAMEX TYPE="ORGANIZATION">free</ENAMEX> ) plays a central role in the
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> calculations (see [ <ENAMEX TYPE="LAW">1</ENAMEX> ] for details). For the
+          <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> or any organ, the free concentration can be related
+          to the total (measured) concentration (<ENAMEX TYPE="ORGANIZATION">Ctot</ENAMEX>) by the
+          relation C 
+          <ENAMEX TYPE="PER_DESC">tot</ENAMEX> = C 
+          free <ENAMEX TYPE="PER_DESC">wfract</ENAMEX>/fw where wfract is the
+          water fraction in the organ and fw is the fraction of the
+          solute that is free in the water phase. The parameter fw
+          [i], the fraction free in organ i (including vascular
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX>), characterizes the fraction free (and
+          bound) and the corresponding tissue/blood partition
+          <ENAMEX TYPE="ORGANIZATION">coefficients</ENAMEX>. In general, this parameter must be
+          experimentally determined for each solute (and organ).
+          However, for these volatile solutes it is assumed that
+          the "bound" solute is equal to the solute dissolved in
+          the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> or tissue lipid. For this case, the parameter
+          <ENAMEX TYPE="ORGANIZATION">fw</ENAMEX> [i] is completely determined by <ENAMEX TYPE="PERSON">Kfwat</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">oil</ENAMEX>/water
+          partition coefficient) and klip[i] (the fraction of lipid
+          in each organ):
+          <ENAMEX TYPE="ORGANIZATION">fw</ENAMEX>[i] = <ENAMEX TYPE="PER_DESC">wfract</ENAMEX>[i]/(wfract[i] + <ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX>*klip[i])
+          Although <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> uses only <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">water</ENAMEX>/air
+          <ENAMEX TYPE="ORGANIZATION">partition</ENAMEX>), <ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX> and klip[i] for the actual
+          calculations, a variety of combinations of <ENAMEX TYPE="ORGANIZATION">Kfwat, Kwair</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>/air partition), <ENAMEX TYPE="PERSON">Kbwat</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>/water
+          <ENAMEX TYPE="ORGANIZATION">partition</ENAMEX>), etc. can be entered. For example, for the
+          <ENAMEX TYPE="ORG_DESC">anesthetics</ENAMEX> investigated here, the <NUMEX TYPE="CARDINAL">3</NUMEX> parameters <ENAMEX TYPE="PERSON">Kbair</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX> are known experimentally and are entered.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> then uses these <NUMEX TYPE="CARDINAL">3</NUMEX> parameters to calculate the
+          corresponding value for klip [<ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>] and replaces the
+          default "standard human" value by this experimental
+          value.
+        
+        
+          Experimental pharmacokinetic data
+          The experimental data was obtained from previous
+          <ENAMEX TYPE="ORGANIZATION">publications</ENAMEX>. The anesthetic data was based on the
+          results in the <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> by <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] and
+          <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . Both of these studies determined
+          the simultaneous uptake and washout of <ENAMEX TYPE="SUBSTANCE">nitrous oxide</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>), enflurane, halothane, and
+          <ENAMEX TYPE="ORGANIZATION">methoxyflurane</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> used low, sub-anesthetic
+          concentrations of all <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> with a total inhaled
+          concentration of <NUMEX TYPE="PERCENT">about 2%</NUMEX> so that the <NUMEX TYPE="ORDINAL">second</NUMEX> gas effect [
+          <NUMEX TYPE="CARDINAL">30</NUMEX> ] was negligible. <ENAMEX TYPE="ORGANIZATION">Carpenter et al.</ENAMEX> first induced
+          anesthesia with high (<NUMEX TYPE="PERCENT">65-70%</NUMEX>) concentrations of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> and then, after the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> had equilibrated, added the other
+          <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> at concentrations <NUMEX TYPE="CARDINAL">about 20</NUMEX> times higher than that
+          of <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> (at a total inhaled concentration of
+          less than <NUMEX TYPE="PERCENT">2%</NUMEX>) and then washed them out while maintaining
+          <ENAMEX TYPE="ORGANIZATION">constant N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> levels. Thus, the <NUMEX TYPE="ORDINAL">second</NUMEX> gas
+          effect can also be neglected for the data of <ENAMEX TYPE="ORGANIZATION">Carpenter et</ENAMEX>
+          al. for enflurane, halothane, and methoxyflurane (but not
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>). The experimental data points
+          were obtained by using <ENAMEX TYPE="ORGANIZATION">UN-SCAN</ENAMEX>-IT (<ENAMEX TYPE="ORGANIZATION">Silk Scientific</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Corporation</ENAMEX>) to read the data from the published figures
+          (<ENAMEX TYPE="CONTACT_INFO">figs. 2and 3</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Munson et al.; figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">1and 2</ENAMEX>, <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et
+          <ENAMEX TYPE="ORGANIZATION">al.</ENAMEX>).
+          The <ENAMEX TYPE="ORGANIZATION">Munson et al</ENAMEX> data [ <ENAMEX TYPE="LAW">4</ENAMEX> ] represents the mean value
+          for <NUMEX TYPE="CARDINAL">6</NUMEX> healthy fasted unanesthetized <ENAMEX TYPE="PER_DESC">males</ENAMEX> breathing for
+          <TIMEX TYPE="TIME">30 minutes</TIMEX> a <ENAMEX TYPE="SUBSTANCE">gas</ENAMEX> containing <NUMEX TYPE="PERCENT">0.0069 %</NUMEX> methoxyflurane;
+          <NUMEX TYPE="PERCENT">0.0136 %</NUMEX> halothane; <NUMEX TYPE="PERCENT">0.0186 %</NUMEX> enflurane; and <NUMEX TYPE="PERCENT">1.88%</NUMEX> <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> The <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. data [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+          represents the mean values for <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">male</ENAMEX> and <NUMEX TYPE="CARDINAL">5</NUMEX> female
+          healthy subjects undergoing <ENAMEX TYPE="PER_DESC">donor</ENAMEX> nephrectomy. The
+          <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were administered <NUMEX TYPE="PERCENT">65-70%</NUMEX> <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> for <TIMEX TYPE="TIME">30 minutes</TIMEX> and then a mixture
+          of <NUMEX TYPE="PERCENT">0.348%</NUMEX> isoflurane, <NUMEX TYPE="PERCENT">0.518 %</NUMEX> enflurane, <NUMEX TYPE="CARDINAL">0.226</NUMEX> halothane
+          and <NUMEX TYPE="PERCENT">0.0469 %</NUMEX> methoxyflurane was administered for <TIMEX TYPE="TIME">2 hours</TIMEX>.
+          After discontinuing these <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX>, anesthesia was
+          maintained with fentanyl, thiopental and <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> for the duration of the operation.
+          The <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. washout data was collected at
+          intervals during <TIMEX TYPE="DATE">the first day</TIMEX>, and once a day for the
+          <TIMEX TYPE="DATE">next 5 to 8 days</TIMEX>. Since <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> became ambulatory upon
+          recovering from surgery with the associated changes in
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters (eg. muscle blood flow, ventilation) only
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> out to <TIMEX TYPE="TIME">15 hours</TIMEX> was used. In fitting this data it is
+          assumed that using the mean values of the concentration
+          versus time averaged over a <ENAMEX TYPE="PER_DESC">population</ENAMEX> is equivalent to
+          treating these values as <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of a single
+          "average" <ENAMEX TYPE="PER_DESC">person</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] . For this data with its
+          relatively small standard error (typically ± <NUMEX TYPE="PERCENT">2 to 3 %</NUMEX> of
+          the inspired concentration), this should be a reasonably
+          accurate assumption.
+          The toluene data was based on the published
+          investigation of <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. [ <TIMEX TYPE="DATE">32</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Pierce et al.</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">32</NUMEX> ] exposed <NUMEX TYPE="CARDINAL">26</NUMEX> male <ENAMEX TYPE="PER_DESC">Caucasian subjects</ENAMEX> to <NUMEX TYPE="MONEY">50 ppm</NUMEX> each of
+          1H8-toluene and <NUMEX TYPE="CARDINAL">2H8</NUMEX>-toluene for <TIMEX TYPE="TIME">two hours</TIMEX> at rest, and
+          collected venous <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and alveolar breath <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> for up
+          to <TIMEX TYPE="TIME">120 hours</TIMEX>. Their subject-specific <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> explained <NUMEX TYPE="PERCENT">91%</NUMEX>
+          of the observed data variability and found
+          interindividual toxicokinetic differences. All the data
+          for each individual in this series was generously
+          provided by <ENAMEX TYPE="PERSON">C.H. Pierce</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> different <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">Pierce et al.</ENAMEX> series were chosen to be modeled by
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (subjects <TIMEX TYPE="DATE">5a and 15</TIMEX> in <ENAMEX TYPE="PRODUCT">Table I</ENAMEX>
+          of <ENAMEX TYPE="ORGANIZATION">Pierce et al.</ENAMEX>) were chosen because they had large
+          differences in percent <ENAMEX TYPE="SUBSTANCE">fat</ENAMEX> content (<NUMEX TYPE="PERCENT">38%</NUMEX> versus <NUMEX TYPE="PERCENT">22%</NUMEX>) and
+          corresponding differences in toluene kinetics.
+        
+        
+          Experimental partition coefficients
+          The partition coefficients were based on previous
+          published data. The values of <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> for the anesthetics
+          (enflurane <NUMEX TYPE="CARDINAL">0.7</NUMEX>; halothane <NUMEX TYPE="CARDINAL">0.8</NUMEX>; <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O 0.47</ENAMEX>; methoxyflurane <NUMEX TYPE="CARDINAL">4.33</NUMEX>) were
+          from the review by <ENAMEX TYPE="ORGANIZATION">Steward et al.</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] . The average
+          values of blood/air partition coefficient for the Munson
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> ( [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , <ENAMEX TYPE="PRODUCT">Table II</ENAMEX>) were used for the
+          <ENAMEX TYPE="ORGANIZATION">anesthetics</ENAMEX> (enflurane <NUMEX TYPE="CARDINAL">2.0</NUMEX>; halothane <NUMEX TYPE="CARDINAL">2.32</NUMEX>; <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O 0.418</ENAMEX>; methoxyflurane <NUMEX TYPE="CARDINAL">13.9</NUMEX>). The
+          value of <ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX> was obtained from different sources
+          (<ENAMEX TYPE="SUBSTANCE">enflurane 130</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] , <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O 2.97</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] , halothane <NUMEX TYPE="CARDINAL">170</NUMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ]
+          , methoxyflurane <NUMEX TYPE="CARDINAL">208</NUMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] ) Identical values were used
+          for modeling the <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> and <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al.
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+          For the toluene data, the value of the blood/air
+          partition coefficient was measured for each of the two
+          subjects that were modeled (<ENAMEX TYPE="PRODUCT">Table I</ENAMEX>, [ <TIMEX TYPE="DATE">32</TIMEX> ] ). The value
+          of the lipid/air partition coefficient was based on the
+          average value reported by <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. [ <TIMEX TYPE="DATE">35</TIMEX> ] .
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Standard Human</ENAMEX> parameters
+          The default standard values are stored as a <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          procedure in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The values used for organ flows,
+          volumes, etc. are identical to those used in all the
+          other applications of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] . A list of some
+          of the parameters is included in additional file <NUMEX TYPE="CARDINAL">1</NUMEX>. For a
+          complete listing, see the routine on the web site
+          <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>.
+          Additional files
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> information: I) Selected "standard
+          human" values; and <ENAMEX TYPE="PRODUCT">II</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">PKQuest Maple</ENAMEX> procedures
+          describing each solute.
+          Click here for file
+          The critical new parameter set required for this
+          application is the value of <ENAMEX TYPE="SUBSTANCE">klip</ENAMEX> [i], the <TIMEX TYPE="TIME">fraction of</TIMEX>
+          lipid in each organ i. This parameter (along with <ENAMEX TYPE="ORGANIZATION">Kfwat</ENAMEX>)
+          determines the tissue/water partition. This parameter set
+          was determined by finding values of klip that would
+          reproduce the tissue/air partition coefficients reported
+          by <ENAMEX TYPE="ORGANIZATION">Zhou et</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] for a number of anesthetic solutes for
+          human heart, brain, liver, muscle and fat and assuming
+          that the other organs (skin, intestine, kidney) had
+          similar values. The values of klip chosen for each organ
+          are: liver <NUMEX TYPE="CARDINAL">0.028</NUMEX>; intestines <NUMEX TYPE="CARDINAL">0.02</NUMEX>; kidney <NUMEX TYPE="CARDINAL">0.028</NUMEX>; and all
+          other organs <NUMEX TYPE="CARDINAL">0.017</NUMEX>. The only other parameter that was
+          adjusted to fit the data for these solutes was the fat
+          blood flow. The <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> global (simulated annealing) and
+          local (<ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX>) optimization routines were used to select
+          the fat blood flow that provided the best fit to the
+          enflurane data. This value was then used for all the
+          other solutes that were investigated.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">PKQuest Maple</ENAMEX> input procedure
+          The pharmacokinetics for each of the solutes is
+          completely characterized by the <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> input procedure for
+          that solute. The complete procedures are available on the
+          <ENAMEX TYPE="ORGANIZATION">web</ENAMEX> ( <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>). A slightly abbreviated listing of
+          the procedures for each of the solutes used in this paper
+          is included in additional file 1.
+        
+      
+      
+        Results
+        
+          Enfluane
+          As described previously [ <ENAMEX TYPE="LAW">1</ENAMEX> ] , each compound modeled
+          by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is completely characterized by a short <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> (
+          <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">maplesoft</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>) procedure that lists the PKQuest
+          parameters that are unique for that solute. The <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          procedure for enflurane for the data of <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al.
+          [ <ENAMEX TYPE="LAW">5</ENAMEX> ] is listed here:
+          enflurane:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>():
+          Wtot:=<NUMEX TYPE="CARDINAL">70.0</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>Body weight
+          <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>);
+          Fat:=<NUMEX TYPE="CARDINAL">0.25</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>average value for <ENAMEX TYPE="PER_DESC">men</ENAMEX> and women
+          cunit:="<NUMEX TYPE="CARDINAL">10</NUMEX> ml";
+          Kbair:=<NUMEX TYPE="CARDINAL">2.0</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> blood/air partition coefficient - value
+          for <ENAMEX TYPE="ORGANIZATION">Munson</ENAMEX> fasted <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>.
+          Kwair:=<NUMEX TYPE="CARDINAL">0.75</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX>water/air partition coefficient -
+          standard reference value
+          Kfair:=<NUMEX TYPE="CARDINAL">98</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX>fat/air partition coefficient - literature
+          value
+          Kfwat:=<ENAMEX TYPE="ORGANIZATION">Kfair/Kwair</ENAMEX>;
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>; finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :=table([organ=lung, type=<NUMEX TYPE="CARDINAL">1</NUMEX>,
+          rate=<NUMEX TYPE="CARDINAL">0.518</NUMEX>, <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>,
+          tend=<NUMEX TYPE="CARDINAL">120</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);<NUMEX TYPE="MONEY">#2</NUMEX> hour constant lung
+          input
+          The <ENAMEX TYPE="ORG_DESC">body</ENAMEX> weight was set arbitrarily to the standard
+          value of <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="PRODUCT">Kg</ENAMEX> since the input dose should scale with
+          body weight through the alveolar ventilation parameter.
+          The fraction body fat (= <ENAMEX TYPE="EVENT">Fat</ENAMEX>) was chosen based on the
+          standard literature average value [ <TIMEX TYPE="DATE">36</TIMEX> ] for the <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">men</ENAMEX>
+          and <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">women</ENAMEX> studied by <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. Since PKQuest
+          always uses units of liters, <TIMEX TYPE="TIME">minutes</TIMEX> and <ENAMEX TYPE="PERSON">Kg</ENAMEX>, the
+          concentration of ml anesthetic<NUMEX TYPE="CARDINAL">/100</NUMEX> ml total volume
+          (abbreviated <NUMEX TYPE="PERCENT">as %</NUMEX>) used by <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. corresponds
+          to a "cunit" of <NUMEX TYPE="QUANTITY">10 ml</NUMEX> per liter (this parameter is only
+          used for display of output and does not directly enter
+          the calculations). The value of <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> is the average
+          <ENAMEX TYPE="ORGANIZATION">value</ENAMEX> reported by <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] for the fasting
+          subjects. The value of <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> is from the standard
+          reference [ <TIMEX TYPE="DATE">10</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Kfair</ENAMEX> is based on measurements of
+          <ENAMEX TYPE="ORGANIZATION">solubility</ENAMEX> in olive <ENAMEX TYPE="SUBSTANCE">oil</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] and in human fat tissue [
+          <NUMEX TYPE="CARDINAL">33</NUMEX> ] . The input was a constant <TIMEX TYPE="TIME">120 minute</TIMEX> inhaled
+          concentration of <NUMEX TYPE="PERCENT">0.518%</NUMEX>. Note that all the parameters
+          required to characterize enflurane are direct
+          experimental measurements so that there are no adjustable
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX> (see Discussion Section for further discussion
+          of this point).
+          It should be emphasized that the above short procedure
+          completely characterizes the enflurane <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. All the
+          other parameters are determined by the default values set
+          by the calls to defaultpar() and standardhuman(). (The
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> can override the default values and input an
+          arbitrary value for any parameter.). The partition
+          coefficients for the individual organs are determined by
+          the default value for the fraction of lipid in each organ
+          i (klip[i]).
+          The <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output using this "enflurane" input
+          procedure is shown in the left hand column of fig 1along
+          with the experimental data (squares) of <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al.
+          [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . The top <ENAMEX TYPE="PER_DESC">figure</ENAMEX> shows the results during uptake
+          and washout and the figures in the <NUMEX TYPE="ORDINAL">second</NUMEX> and <NUMEX TYPE="ORDINAL">third</NUMEX> rows
+          show the semi log plots of the uptake and washout,
+          respectively. All the figures shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are
+          copied directly from the standard PKQuest output.
+          The corresponding plot for the enflurane data of
+          <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] is shown in the right hand column of
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>. Exactly the same set of parameters were used
+          except that: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the fraction of body fat was reduced to
+          <NUMEX TYPE="CARDINAL">0.16</NUMEX>, the standard literature average value [ <TIMEX TYPE="DATE">36</TIMEX> ] for
+          the <NUMEX TYPE="CARDINAL">12</NUMEX> young male <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> used in this study; and <NUMEX TYPE="CARDINAL">2</NUMEX>) the
+          experimental inhaled enflurane concentration was <NUMEX TYPE="PERCENT">0.0186 %</NUMEX>
+          for <TIMEX TYPE="TIME">30 minutes</TIMEX> (versus <NUMEX TYPE="PERCENT">0.518%</NUMEX> for <TIMEX TYPE="TIME">120 minutes</TIMEX> for
+          <ENAMEX TYPE="ORGANIZATION">Carpenter et al</ENAMEX>). The fact that both sets of data can be
+          fit using an identical parameter set, even though the
+          concentrations differ by a factor of <NUMEX TYPE="CARDINAL">28</NUMEX>, indicates that
+          the enflurane pharmacokinetics must be linear over a
+          large concentration range.
+        
+        
+          Nitrous oxide
+          Figure <NUMEX TYPE="CARDINAL">2compares</NUMEX> the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output with the
+          experimental data of <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] for <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> (The <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> data of <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. could not
+          be used because of the large second gas effect.). The
+          partition coefficients used for this calculation are the
+          <ENAMEX TYPE="ORGANIZATION">standard N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> literature values: <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX>=<NUMEX TYPE="CARDINAL">0.47</NUMEX> [ <NUMEX TYPE="CARDINAL">10</NUMEX>
+          ] ; <ENAMEX TYPE="PERSON">Kfair</ENAMEX>=<NUMEX TYPE="CARDINAL">1.4</NUMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX>=<NUMEX TYPE="CARDINAL">0.418</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+          , <ENAMEX TYPE="PER_DESC">fasting subjects</ENAMEX>). All the other parameters are
+          identical to those used for the <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> enflurane
+          <ENAMEX TYPE="ORGANIZATION">data..</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">See</ENAMEX> additional file 1for the complete <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O Maple</ENAMEX> procedure). The agreement
+          between the PKQuest predictions and experiment is
+          excellent for the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> uptake. However, there is a
+          significant deviation between the predictions and the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> during the washout that is especially apparent in
+          the semi log plot. There is no obvious explanation for
+          this discrepancy and it may be artifactual (see
+          <ENAMEX TYPE="ORGANIZATION">Discussion Section</ENAMEX>).
+        
+        
+          Halothane
+          There is an additional complication when modeling the
+          halothane data because a significant fraction of the
+          halothane disappearance is the result of metabolism [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          <NUMEX TYPE="CARDINAL">27 28 37 38 39 40 41</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Loizou et al.</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] developed a
+          detailed <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> with the halothane metabolism
+          described by a <NUMEX TYPE="CARDINAL">4</NUMEX> parameter function that included both
+          Michaelis-<ENAMEX TYPE="GPE">Menten</ENAMEX> and inactivation components. Although
+          there is qualitative evidence that halothane metabolism
+          in <ENAMEX TYPE="PER_DESC">humans</ENAMEX> is non-linear, saturating at higher
+          concentrations [ <TIMEX TYPE="DATE">27</TIMEX> ] , the quantitative aspects of
+          halothane metabolism are poorly characterized in the
+          <ENAMEX TYPE="ORGANIZATION">human</ENAMEX>. Probably the most relevant data is provided by
+          investigations in miniature <ENAMEX TYPE="ANIMAL">swine</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Sawyer et al.</ENAMEX> [ <TIMEX TYPE="DATE">38</TIMEX> ]
+          reported that the percent liver clearance during the
+          halothane washout in miniature <ENAMEX TYPE="ANIMAL">swine</ENAMEX> was <NUMEX TYPE="PERCENT">77%</NUMEX> at an
+          alveolar concentrations of <NUMEX TYPE="PERCENT">0.0026%</NUMEX> and fell to <NUMEX TYPE="PERCENT">5%</NUMEX> at an
+          alveolar concentration of <NUMEX TYPE="PERCENT">1%</NUMEX>. <ENAMEX TYPE="ORGANIZATION">Halsey et al.</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX> ] found
+          that <NUMEX TYPE="PERCENT">35%</NUMEX> of the halothane entering the miniature swine
+          liver was metabolized at a steady state alveolar
+          concentration of <NUMEX TYPE="PERCENT">0.0065%</NUMEX>.
+          For this study it was assumed that the halothane
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX> could be described by a <NUMEX TYPE="CARDINAL">two</NUMEX> parameter
+          Michaelis-<ENAMEX TYPE="PERSON">Menten</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Km</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Vmax</ENAMEX>) liver component. The <NUMEX TYPE="CARDINAL">two</NUMEX>
+          parameters were adjusted to so that they a) provided a
+          good fit to the experimental halothane data of both
+          <ENAMEX TYPE="ORGANIZATION">Carpenter et al.</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] (inhaled concentration of <NUMEX TYPE="PERCENT">0.226%</NUMEX>)
+          and <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] (inhaled concentration of
+          <NUMEX TYPE="PERCENT">0.0135%</NUMEX>) and b) were roughly consistent with the
+          <ENAMEX TYPE="ANIMAL">miniature swine</ENAMEX> data. The final values in partial
+          pressure <ENAMEX TYPE="ORG_DESC">units</ENAMEX> were <ENAMEX TYPE="PERSON">Km</ENAMEX> = <NUMEX TYPE="CARDINAL">0.01 ml/100</NUMEX> ml and <ENAMEX TYPE="ORGANIZATION">Vmax</ENAMEX> = <NUMEX TYPE="CARDINAL">0.6</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">ml/min</ENAMEX> for <TIMEX TYPE="DATE">the standard 70 Kg human</TIMEX>. This corresponds to
+          a water concentration for <NUMEX TYPE="QUANTITY">Km of 3.57 �</NUMEX>�mole/liter and a Vm
+          of <NUMEX TYPE="QUANTITY">21.4 �</NUMEX>�mole/min. This <ENAMEX TYPE="ORGANIZATION">Km</ENAMEX> is similar to the <ENAMEX TYPE="PERSON">Km</ENAMEX> of <NUMEX TYPE="CARDINAL">2.03</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">μmole/liter</ENAMEX> in the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] . Given the limited human
+          quantitative data that is available, these human
+          metabolic parameters should be regarded only as a first
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX>. Figure <TIMEX TYPE="DATE">3shows</TIMEX> that this set of metabolic
+          <ENAMEX TYPE="ORGANIZATION">constants</ENAMEX> provided a good fit to the <NUMEX TYPE="CARDINAL">17</NUMEX> fold range of
+          inhaled halothane concentrations used in the <ENAMEX TYPE="ORGANIZATION">Carpenter et</ENAMEX>
+          <ENAMEX TYPE="PERSON">al.</ENAMEX> (<NUMEX TYPE="PERCENT">0.226 %</NUMEX> concentration) and <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> (<NUMEX TYPE="PERCENT">0.0136 %</NUMEX>
+          concentration) experiments. The partition coefficients
+          used in these calculations were the standard literature
+          values: <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">2.32</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Munsen et al.</ENAMEX> fasted subject);
+          <ENAMEX TYPE="PER_DESC">Kwair</ENAMEX> = <NUMEX TYPE="CARDINAL">0.8</NUMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Kfair</ENAMEX> = <NUMEX TYPE="CARDINAL">137</NUMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] . (See
+          additional file 1for the complete halothane <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          procedure). For these parameters, the percent liver
+          <ENAMEX TYPE="GPE">halothane</ENAMEX> clearance varied from <NUMEX TYPE="PERCENT">48%</NUMEX> at an alveolar
+          concentration of <NUMEX TYPE="PERCENT">0.0002%</NUMEX>; to <NUMEX TYPE="PERCENT">30%</NUMEX> at a concentration of
+          <NUMEX TYPE="PERCENT">0.07%</NUMEX>; <NUMEX TYPE="PERCENT">to 7%</NUMEX> at a concentration of <NUMEX TYPE="PERCENT">0.26%</NUMEX> - similar to the
+          <ENAMEX TYPE="ORGANIZATION">swine</ENAMEX> data. Using the <ENAMEX TYPE="ORGANIZATION">PKQuest PBPK</ENAMEX> results, <NUMEX TYPE="PERCENT">65%</NUMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">halothane</ENAMEX> should have been recovered during a <TIMEX TYPE="TIME">5 day</TIMEX>
+          <TIMEX TYPE="DATE">washout</TIMEX> period relative to the total uptake. This is
+          somewhat greater than the <NUMEX TYPE="PERCENT">55%</NUMEX> recovery directly estimated
+          for this same data by measuring the mixed expired
+          halothane concentration and ventilation rate once per day
+          for <TIMEX TYPE="DATE">5 days</TIMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ] . The standard output of PKQuest
+          provides all the above information (fractional liver
+          clearance, recovery during <TIMEX TYPE="DATE">washout</TIMEX>, etc.).
+        
+        
+          Methoxyflurane
+          As shown by the results in figs. <ENAMEX TYPE="PRODUCT">1-3</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> provides
+          an accurate description of the human pharmacokinetics of
+          the uptake and washout of enflurane and halothane and the
+          uptake of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> In contrast, the PKQuest
+          predictions are clearly incorrect for methoxyflurane.
+          Figures 4show the PKQuest predictions for the alveolar
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (solid line) compared with the experimental
+          <ENAMEX TYPE="ORGANIZATION">data of Carpenter et al.</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">fig 4</ENAMEX>, left column) and Monson
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> (fig. <NUMEX TYPE="CARDINAL">4</NUMEX>, right column). (See the additional file
+          1for the complete methoxyflurane <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> procedure). The
+          partition coefficients used for these figures are the
+          standard literature values: <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">13.9</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">4</NUMEX> ] <ENAMEX TYPE="PER_DESC">fasted subjects</ENAMEX>); <ENAMEX TYPE="PERSON">Kfwat</ENAMEX> = <NUMEX TYPE="CARDINAL">208</NUMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] ; <ENAMEX TYPE="PERSON">Kwair</ENAMEX> = <NUMEX TYPE="CARDINAL">4.0</NUMEX> [
+          <NUMEX TYPE="CARDINAL">42</NUMEX> ] . It can be seen that the PKQuest concentrations
+          during uptake are <NUMEX TYPE="PERCENT">about 30%</NUMEX> less than the experimental
+          values. The actual error is even worse than this because
+          these PKQuest predictions ignore metabolism, which can
+          account for <NUMEX TYPE="PERCENT">as much as 70%</NUMEX> of the total removal [ <NUMEX TYPE="CARDINAL">24 27</NUMEX>
+          <NUMEX TYPE="CARDINAL">28 37 43</NUMEX> ] . Including metabolism would increase the
+          difference between the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> and experimental results
+          during <TIMEX TYPE="DATE">uptake</TIMEX>. The explanation for this <ENAMEX TYPE="PER_DESC">poor</ENAMEX> fit is
+          provided in the <ENAMEX TYPE="LOCATION">Discussion</ENAMEX> section.
+        
+        
+          Toluene
+          Some of the most comprehensive and sophisticated human
+          <ENAMEX TYPE="ORGANIZATION">PBPKs</ENAMEX> have been developed to describe the
+          pharmacokinetics of volatile toxic <ENAMEX TYPE="SUBSTANCE">solvents</ENAMEX> such as
+          <ENAMEX TYPE="ORGANIZATION">toluene</ENAMEX> [ <NUMEX TYPE="CARDINAL">32 44 45</NUMEX> ] , styrene [ <NUMEX TYPE="CARDINAL">46 47</NUMEX> ] , and <ENAMEX TYPE="SUBSTANCE">methyl</ENAMEX>
+          chloride [ <TIMEX TYPE="DATE">48</TIMEX> ] . The most involved models incorporate
+          several different fat and muscle compartments with
+          different flows and allow for changes with time in the
+          blood flows as the subject's exercise level varies [ <NUMEX TYPE="CARDINAL">45</NUMEX>
+          <NUMEX TYPE="CARDINAL">47 48</NUMEX> ] . These studies have also introduced a Bayesian
+          approach to determine the population distribution of the
+          <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters [ <NUMEX TYPE="CARDINAL">45 47</NUMEX> ] . <ENAMEX TYPE="GPE">PKQuest</ENAMEX> cannot complete with
+          these <ENAMEX TYPE="ORGANIZATION">PBPKs</ENAMEX> for this class of solutes. The only purpose
+          of applying <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to toluene is to show that the new
+          approach developed here of using just klip and the
+          oil/water partition coefficient to characterize the
+          tissue partition is valid for a wider class of solutes
+          than just the anesthetics <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> (at least as a first
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> was applied to data for <TIMEX TYPE="TIME">two</TIMEX>
+          <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> (subjects <TIMEX TYPE="DATE">5a and 15</TIMEX>) that were chosen from
+          the detailed investigations of <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. [ <TIMEX TYPE="DATE">32</TIMEX> ]
+          because they had large differences in percent <ENAMEX TYPE="SUBSTANCE">fat</ENAMEX> content
+          (<NUMEX TYPE="PERCENT">38%</NUMEX> versus <NUMEX TYPE="PERCENT">22%</NUMEX>) and corresponding differences in toluene
+          <ENAMEX TYPE="ORGANIZATION">kinetics</ENAMEX>.
+          The <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> input procedure for subject <TIMEX TYPE="DATE">15</TIMEX> is:
+          <ENAMEX TYPE="GPE">toluene</ENAMEX>_<NUMEX TYPE="CARDINAL">15</NUMEX>:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>():
+          Wtot:=<NUMEX TYPE="CARDINAL">86.2</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>Body weight
+          <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>);
+          Fat:=<NUMEX TYPE="CARDINAL">0.22</NUMEX>;<ENAMEX TYPE="PERSON"># Fraction</ENAMEX> of body weight that is fat for
+          subject <NUMEX TYPE="CARDINAL">15</NUMEX>
+          cunit:="micromole"; <NUMEX TYPE="MONEY">#</NUMEX> concentration in units of
+          <ENAMEX TYPE="CONTACT_INFO">micromole/liter</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :<NUMEX TYPE="CARDINAL">2</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> experimental output = whole blood
+          conc
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>; finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :=table([organ=lung, type=<NUMEX TYPE="CARDINAL">1</NUMEX>,
+          rate=<NUMEX TYPE="CARDINAL">2.0</NUMEX>, <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>,
+          tend=<NUMEX TYPE="CARDINAL">120</NUMEX>, <ENAMEX TYPE="PER_DESC">csteady</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>, <ENAMEX TYPE="PER_DESC">padjust</ENAMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]); <NUMEX TYPE="MONEY">#2</NUMEX> hour constant
+          input to the lung of <NUMEX TYPE="QUANTITY">2 �</NUMEX>�M
+          Kfair:=<NUMEX TYPE="CARDINAL">962</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> fat/air partition coefficient
+          Kbair:=<NUMEX TYPE="CARDINAL">22.2</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> blood/air partition coefficient for
+          subject <NUMEX TYPE="CARDINAL">15</NUMEX>
+          Kfbld:=<ENAMEX TYPE="ORGANIZATION">Kfair/Kbair</ENAMEX>; <NUMEX TYPE="MONEY">#</NUMEX>Calculated fat/blood partition
+          coefficient
+          alvent:=<NUMEX TYPE="CARDINAL">6.07</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> alveolar ventilation for subject
+          15
+          <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]:=<NUMEX TYPE="CARDINAL">25.0</NUMEX>;<ENAMEX TYPE="GPE">#Liver</ENAMEX> clearance optimized to
+          provides best fit to data
+          The total body weight (<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>), body fat fraction (<ENAMEX TYPE="ORGANIZATION">Fat</ENAMEX>),
+          blood/air partition coefficient (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX>) and alveolar
+          <ENAMEX TYPE="PERSON">ventilation</ENAMEX> (alvent) were measured for each individual
+          subject (see <ENAMEX TYPE="PRODUCT">Table I</ENAMEX>, <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. [ <TIMEX TYPE="DATE">32</TIMEX> ] ) and these
+          values were used as input. The value of the lipid/air
+          partition coefficient (<ENAMEX TYPE="ORGANIZATION">Kfair</ENAMEX>) was set equal to the
+          average value determined by <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. [ <TIMEX TYPE="DATE">35</TIMEX> ] . Since
+          <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> is not input, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> estimates <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> using Kbair
+          and <ENAMEX TYPE="ORGANIZATION">Kfbld</ENAMEX> and the default fat content of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> (klip
+          [vein]). The input function was a <NUMEX TYPE="QUANTITY">2 hour</NUMEX> inhalation of
+          toluene at a constant gas concentration of <NUMEX TYPE="QUANTITY">2 μM</NUMEX>. The only
+          adjustable parameters are the metabolic kinetic
+          <ENAMEX TYPE="ORGANIZATION">constants</ENAMEX>. The <ENAMEX TYPE="ANIMAL">rat liver</ENAMEX> has a number of enzymes involved
+          in toluene metabolism [ <TIMEX TYPE="DATE">49</TIMEX> ] . Since the <ENAMEX TYPE="ORGANIZATION">Km</ENAMEX> for all of
+          these enzymes is in the mM range, while the blood toluene
+          concentrations for this data are in the μM range, it was
+          assumed that the metabolism is linear which, in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>,
+          is indicated by using <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> (in place of <ENAMEX TYPE="ORGANIZATION">Vm and Km</ENAMEX>). The
+          value of <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> was obtained by using the <ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX>
+          minimization routine that is built into <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to
+          optimize the fit to the blood data. <ENAMEX TYPE="ORGANIZATION">Pierce et al.</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ]
+          divided the metabolism between the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> and lung.
+          However, since there is little direct information about
+          human lung metabolism of toluene, it was assumed here
+          that only the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> was involved in the metabolism.
+          Subject 5a was modeled using the same procedure using
+          the <ENAMEX TYPE="ORG_DESC">body</ENAMEX> weight (<ENAMEX TYPE="CONTACT_INFO">121 Kg</ENAMEX>), fat fraction (<NUMEX TYPE="MONEY">0.38</NUMEX>) alveolar
+          <ENAMEX TYPE="PERSON">ventilation</ENAMEX>, and <ENAMEX TYPE="PRODUCT">Kbair</ENAMEX> measured for this subject. (See
+          the additional file 1for the complete subject 5a <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          procedure). The value of <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> for subject 5a was set
+          equal to the <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> of subject <NUMEX TYPE="CARDINAL">15</NUMEX> scaled by body weight.
+          All the other parameters were identical to those for
+          subject <NUMEX TYPE="CARDINAL">15</NUMEX>.
+          Figure <NUMEX TYPE="CARDINAL">5shows</NUMEX> the agreement between the PKQuest
+          predictions for the arterial (black) and venous (red)
+          blood concentration and the experimental data for subject
+          5a (left hand column) and <TIMEX TYPE="DATE">15</TIMEX> (right hand column) during
+          the time course of toluene washout. (<ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> allows an
+          <ENAMEX TYPE="CONTACT_INFO">arbitrary</ENAMEX> number of different organ concentrations to be
+          simultaneously displayed). <ENAMEX TYPE="ORGANIZATION">Pierce et</ENAMEX> <ENAMEX TYPE="PER_DESC">al.</ENAMEX> sampled
+          "arterialized" venous <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>. Since the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> venous and
+          arterial concentrations are identical at the time points
+          of the experimental data (fig. <NUMEX TYPE="CARDINAL">5</NUMEX>), the distinction
+          between artery and vein is not significant. Figures 6show
+          the corresponding fits for the alveolar gas
+          concentration. It can be seen that the agreement is quite
+          good and the differences in the pharmacokinetics for the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> can be explained by differences in the fat
+          fraction. It should be emphasized that there is only one
+          adjustable parameter for these <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PER_DESC">subjects - the Tclr</ENAMEX> of
+          subject <NUMEX TYPE="CARDINAL">15</NUMEX>.
+        
+        
+          <ENAMEX TYPE="CONTACT_INFO">Perfusion-Ventilation Mismatch</ENAMEX>
+          A unique feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is that it provides a
+          direct simulation of the mismatch between perfusion and
+          ventilation. A detailed description of the equations and
+          procedures used for this simulation is provided in the
+          original paper [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Briefly, the <ENAMEX TYPE="DISEASE">lung</ENAMEX> is divided into
+          Nlung equal volume compartments, with the blood flow (Q)
+          and ventilation (<ENAMEX TYPE="PRODUCT">V</ENAMEX>) to each compartment determined by a
+          bivariate, uncorrelated, log-normal function [ <TIMEX TYPE="DATE">50</TIMEX> ] ;
+          
+          The value of <ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX> is determined by the <ENAMEX TYPE="PER_DESC">user</ENAMEX> input
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> <ENAMEX TYPE="PRODUCT">N1dim</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX> = (<TIMEX TYPE="TIME">2*N1dim</TIMEX>) <NUMEX TYPE="CARDINAL">2</NUMEX>). The <NUMEX TYPE="CARDINAL">two</NUMEX> parameters
+          σ 
+          <ENAMEX TYPE="PERSON">Q</ENAMEX> and σ 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> (the "log standard deviation")
+          characterize the distribution of the <ENAMEX TYPE="SUBSTANCE">blood perfusion</ENAMEX> (σ 
+          <ENAMEX TYPE="ORGANIZATION">Q</ENAMEX> ) and the ventilation (σ 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ) to the different compartments of
+          the <ENAMEX TYPE="DISEASE">lung</ENAMEX>. The default values of σ 
+          <ENAMEX TYPE="PERSON">Q</ENAMEX> and σ 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> of <NUMEX TYPE="CARDINAL">0.4</NUMEX> were determined by applying
+          the analysis of <ENAMEX TYPE="ORGANIZATION">Wilson</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Beck</ENAMEX> [ <TIMEX TYPE="DATE">50</TIMEX> ] to the
+          ventilation-perfusion ratio distribution for normal young
+          <ENAMEX TYPE="PER_DESC">men</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX> ] . The rates of perfusion and ventilation to
+          each lung compartment are assumed to be uncorrelated (see
+          [ <ENAMEX TYPE="LAW">1</ENAMEX> ] for details). This assumption is consistent with
+          recent direct measurements of regional perfusion and
+          ventilation [ <NUMEX TYPE="CARDINAL">52 53</NUMEX> ] . Results will be shown here for
+          the case where the <ENAMEX TYPE="DISEASE">lung</ENAMEX> is divided into <NUMEX TYPE="CARDINAL">16</NUMEX> equal volume
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX> (<TIMEX TYPE="DATE">N1dim</TIMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, <ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX> = <NUMEX TYPE="CARDINAL">16</NUMEX>). This provides a
+          good test of the importance of perfusion-ventilation
+          mismatch. (<ENAMEX TYPE="PRODUCT">Increasing N1dim</ENAMEX> to <NUMEX TYPE="CARDINAL">3</NUMEX>, corresponding to <NUMEX TYPE="CARDINAL">36</NUMEX>
+          lung <ENAMEX TYPE="DISEASE">compartments</ENAMEX>, changes the results by <NUMEX TYPE="PERCENT">less than 2%</NUMEX>).
+          Using the default values of σ 
+          <ENAMEX TYPE="PERSON">Q</ENAMEX> and σ 
+          V the fraction of total flow and total
+          ventilation assigned to each of the <NUMEX TYPE="CARDINAL">16</NUMEX> compartments is
+          (flow fraction, ventilation fraction): (<NUMEX TYPE="MONEY">.0432</NUMEX>, <NUMEX TYPE="CARDINAL">.0423</NUMEX>);
+          (<NUMEX TYPE="MONEY">.0423</NUMEX>, <NUMEX TYPE="CARDINAL">.0549</NUMEX>); (<NUMEX TYPE="MONEY">.0423</NUMEX>, <NUMEX TYPE="CARDINAL">.0659</NUMEX>); (<NUMEX TYPE="CARDINAL">.0423</NUMEX>; <NUMEX TYPE="MONEY">.0869</NUMEX>); (<NUMEX TYPE="MONEY">.0549</NUMEX>,
+          <NUMEX TYPE="MONEY">.0423</NUMEX>); (<NUMEX TYPE="MONEY">.0549</NUMEX>, <NUMEX TYPE="CARDINAL">.0549</NUMEX>); (<NUMEX TYPE="MONEY">.0549</NUMEX>,<NUMEX TYPE="CARDINAL">.0659</NUMEX>); (<NUMEX TYPE="MONEY">.0549</NUMEX>, <NUMEX TYPE="CARDINAL">.0869</NUMEX>);
+          (<NUMEX TYPE="MONEY">.0659</NUMEX>, <NUMEX TYPE="CARDINAL">.0423</NUMEX>); (<NUMEX TYPE="MONEY">.0659</NUMEX>, <NUMEX TYPE="CARDINAL">.0549</NUMEX>); (<NUMEX TYPE="MONEY">.0659</NUMEX>, <NUMEX TYPE="CARDINAL">.0659</NUMEX>); (<NUMEX TYPE="MONEY">.0659</NUMEX>,
+          <NUMEX TYPE="MONEY">.0869</NUMEX>); (<NUMEX TYPE="MONEY">.0869</NUMEX>, <NUMEX TYPE="CARDINAL">.0423</NUMEX>); (<NUMEX TYPE="MONEY">.0869</NUMEX>, <NUMEX TYPE="CARDINAL">.0549</NUMEX>); (<NUMEX TYPE="MONEY">.0869</NUMEX>, <NUMEX TYPE="CARDINAL">.0659</NUMEX>);
+          (<NUMEX TYPE="MONEY">.0859</NUMEX>, <NUMEX TYPE="CARDINAL">.0869</NUMEX>).
+          Figure <NUMEX TYPE="CARDINAL">7shows</NUMEX> the influence of perfusion-ventilation
+          mismatch on the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> results for the enflurane data of
+          <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . The predicted alveolar
+          concentration is shown for a) the <NUMEX TYPE="CARDINAL">1</NUMEX> compartment
+          homogenous lung model (black); and the <NUMEX TYPE="CARDINAL">16</NUMEX> compartment
+          model with b) the default (normal) values for sig_v and
+          <ENAMEX TYPE="PERSON">sig_f</ENAMEX> (red); c) twice the normal values of sig_v and
+          <ENAMEX TYPE="PERSON">sig_f</ENAMEX> (green); and <ENAMEX TYPE="GPE">d</ENAMEX>) <NUMEX TYPE="CARDINAL">three</NUMEX> times the normal values of
+          <ENAMEX TYPE="PERSON">sig_v</ENAMEX> and sig_f (blue). It can be seen that the <NUMEX TYPE="CARDINAL">16</NUMEX>
+          <ENAMEX TYPE="PRODUCT">compartment</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with normal sig_v and sig_f (red) is
+          almost indistinguishable from the homogeneous <NUMEX TYPE="CARDINAL">1</NUMEX>
+          <ENAMEX TYPE="PRODUCT">compartment</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (black). Thus, normal values of
+          perfusion-ventilation mismatch have no significant effect
+          on the uptake and washout of enflurane. It is not until
+          the normal values of sig_v and sig_f are increased by a
+          factor of <NUMEX TYPE="CARDINAL">about 3</NUMEX> that differences become
+          significant.
+          Although the effect of the perfusion-ventilation
+          <ENAMEX TYPE="PERSON">mismatch</ENAMEX> is small, it can be important for some
+          experimental measurements. Figure <NUMEX TYPE="CARDINAL">8shows</NUMEX> the alveolar
+          (black), arterial (red) and venous (green) <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> concentration using the <NUMEX TYPE="CARDINAL">16</NUMEX>
+          <ENAMEX TYPE="PRODUCT">compartment</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and the default (normal) of values of
+          <ENAMEX TYPE="PERSON">sig_v</ENAMEX> and sig_f for the conditions of <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+          - with all concentrations expressed in terms of the
+          partial pressure gas concentration. It can be seen that
+          the perfusion-ventilation mismatch produces a small
+          difference in the alveolar and arterial concentrations
+          during <TIMEX TYPE="DATE">uptake</TIMEX> (for the <NUMEX TYPE="CARDINAL">1</NUMEX> compartment lung model, alveolar
+          and arterial concentrations would be identical). This
+          result is in quantitative agreement with the experimental
+          measurements of <ENAMEX TYPE="ORGANIZATION">Eger et al</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ] in conscious <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>:
+          At <TIMEX TYPE="TIME">1.5 minutes</TIMEX>, <ENAMEX TYPE="ORGANIZATION">PKQuest P</ENAMEX> 
+          art /P 
+          <ENAMEX TYPE="PER_DESC">alv</ENAMEX> = <NUMEX TYPE="CARDINAL">0.92</NUMEX>; experimental P 
+          art /P 
+          <ENAMEX TYPE="PER_DESC">endtidal</ENAMEX> = <NUMEX TYPE="CARDINAL">0.92</NUMEX>; At <TIMEX TYPE="TIME">8 minutes</TIMEX>: PKQuest
+          = <NUMEX TYPE="CARDINAL">0.98</NUMEX> l experimental = <NUMEX TYPE="CARDINAL">0.98</NUMEX>.
+        
+      
+      
+        Discussion and conclusions
+        
+          Enflurane, <ENAMEX TYPE="SUBSTANCE">nitrous oxide</ENAMEX>, halothane and
+          toluene
+          The simple <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> approach of using a single set of
+          "standard human" values for the lipid fraction of each
+          <ENAMEX TYPE="PERSON">organ</ENAMEX> (klip) to predict tissue/blood partition provides
+          an accurate prediction of the pharmacokinetics of these <NUMEX TYPE="CARDINAL">4</NUMEX>
+          volatile solute. The word "prediction" (and not
+          "description") is purposely used here because most of the
+          parameters are based on the default, previously
+          determined set of <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> data and there is a minimum of
+          adjustable parameters. For example, in the PKQuest input
+          for the enflurane pharmacokinetics (fig. <NUMEX TYPE="CARDINAL">1</NUMEX>) there are no
+          adjustable parameters. Every constant in the procedure
+          <ENAMEX TYPE="ORGANIZATION">enflurane</ENAMEX>() listed above is pre-determined from previous
+          measurements. In this sense, the time dependence of the
+          alveolar enflurane concentration during washin and
+          washout shown in fig. 1is a true prediction, based on
+          previous measurements.
+          This example for enflurane is slightly misleading
+          because the default blood flow in "standard human" was
+          adjusted to give the best fit to the enflurane data. The
+          fat blood flow parameter plays an important role in
+          determining the accuracy of the fit to the experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Figure <NUMEX TYPE="CARDINAL">9compares</NUMEX> the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output for enflurane
+          using the default fat blood flow (<ENAMEX TYPE="CONTACT_INFO">0.056 liters/min/Kg</ENAMEX>;
+          <ENAMEX TYPE="ORGANIZATION">black</ENAMEX>) and twice the default value (red). The generality
+          of this fat blood flow value is evidenced by the good fit
+          that was obtained when it was used in the modeling of the
+          <ENAMEX TYPE="ORGANIZATION">Munson et al.</ENAMEX> and <ENAMEX TYPE="PERSON">Carpenter</ENAMEX> et al. data for halothane
+          (fig. <NUMEX TYPE="CARDINAL">3</NUMEX>) and the <ENAMEX TYPE="PERSON">Pierce</ENAMEX> et al. data for toluene (figs.
+          5and <NUMEX TYPE="CARDINAL">6</NUMEX>), solutes for which the fat blood flow has a
+          larger influence because of the larger value of the
+          oil/water partition coefficient.
+          This use of the enflurane data to determine the fat
+          blood flow illustrates one of the main advantages of
+          having a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="ORG_DESC">program</ENAMEX> such as <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> that is general
+          enough that it can be applied to a large variety of
+          <ENAMEX TYPE="ORGANIZATION">solutes</ENAMEX>. Since different solutes have different
+          sensitivities to the different PBPK parameters, using a
+          variety of solutes to optimize the parameters increases
+          the validity of the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. Other examples of PKQuest
+          standard human parameters that were optimized this way
+          are the muscle blood flow (optimized using human D 
+          <ENAMEX TYPE="PRODUCT">2 O pharmacokinetics</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] ) and the
+          <ENAMEX TYPE="PRODUCT">extracellular</ENAMEX> space (optimized using human inulin
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] ).
+          The single most important difference between <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>
+          and other <ENAMEX TYPE="SUBSTANCE">PBPKs</ENAMEX> that have been applied to these solutes
+          is the way the tissue/blood partition coefficient is
+          handled. The conventional approach is to directly measure
+          this partition coefficient for each solute in various
+          classes of tissue in <ENAMEX TYPE="ANIMAL">animals</ENAMEX>, and then use these values
+          in the human model. In contrast, in PKQuest this
+          partition coefficient is determined just from the value
+          of the oil/water partition coefficient (along with the
+          default value of the organ and blood lipid content).
+          Since this partition coefficient is a simple physical
+          chemical value and is usually available in the
+          literature, this means that one can apply <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to
+          solutes even when no animal tissue partition data is
+          available. The ability of this approach to describe the
+          pharmacokinetics of solutes with an oil/water partition
+          varying from <NUMEX TYPE="MONEY">3</NUMEX> (<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>) to <NUMEX TYPE="MONEY">120</NUMEX> (toluene) demonstrates the
+          large range of its validity.
+          The pharmacokinetic approach that seems to be
+          currently favored for anesthetics is to use a general
+          multi-compartment fit rather than a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> [ <NUMEX TYPE="CARDINAL">41 55</NUMEX> ] . In
+          this approach, the data is <NUMEX TYPE="ORDINAL">first</NUMEX> fit with a
+          multi-<NUMEX TYPE="CARDINAL">exponential</NUMEX> function that is then interpreted in
+          terms of exchanges between a central compartment (the
+          <ENAMEX TYPE="ORGANIZATION">vascular</ENAMEX> <ENAMEX TYPE="ORG_DESC">system</ENAMEX>) and an adjustable number of peripheral
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX> (a "mammillary" system). Although this
+          approach may be mathematically similar to a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>, it is
+          completely different philosophically. The advantage of
+          the multi-compartment approach is that it is completely
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX> and puts no restrictions or previous assumptions
+          on the pharmacokinetic model. This advantage is also its
+          main disadvantage. For example in a multi-compartment
+          analysis of anesthetics by <ENAMEX TYPE="ORGANIZATION">Yasuda et al.</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX> ] there are
+          <NUMEX TYPE="CARDINAL">10</NUMEX> different rate constants that are optimized for each
+          different anesthetic and these constants are then
+          interpreted in terms of compartments and flows. In
+          contrast, the major design feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is to have
+          <NUMEX TYPE="CARDINAL">as many</NUMEX> parameters as possible set by default based on
+          previously determined measurements, with the amount of
+          user input reduced to its absolute minimum. For the case
+          of the typical volatile solute described here, the user
+          only needs to input the water/air and oil/water partition
+          <ENAMEX TYPE="ORGANIZATION">coefficients</ENAMEX> and the metabolic parameters. All the other
+          parameters required for the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> (organ volumes, blood
+          flows, alveolar ventilation, organ/<ENAMEX TYPE="SUBSTANCE">blood partition</ENAMEX> and
+          volume, etc.) are determined simply by a call to
+          "standardhuman". By using all the previous information
+          that is available to restrict the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and minimize the
+          number of adjustable parameters, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> greatly
+          increases the predictive power of the analysis.
+          The <NUMEX TYPE="CARDINAL">one</NUMEX> exception to the generally good agreement
+          between the PKQuest predictions and the experimental data
+          for these solutes is for the washout of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> (fig. <NUMEX TYPE="CARDINAL">2</NUMEX>). Although the differences
+          between the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> and experimental data are small in
+          absolute value, they represent large relative values. For
+          example, for the last data point (<TIMEX TYPE="TIME">60 minutes</TIMEX>), the
+          PKQuest prediction for the end expired gas concentration
+          is <NUMEX TYPE="PERCENT">0.067%</NUMEX> while the experimental value is <NUMEX TYPE="PERCENT">0.026%</NUMEX> (for an
+          inhaled concentration of <NUMEX TYPE="PERCENT">1.88%</NUMEX>). (This difference is
+          larger than the standard error of the last data point.)
+          This difference may be artifactual. For example, the
+          <ENAMEX TYPE="ORGANIZATION">experimental N</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> data (fig. <NUMEX TYPE="CARDINAL">2</NUMEX>) has a marked
+          difference in the degree of equilibrium reached during
+          <ENAMEX TYPE="ORGANIZATION">uptake</ENAMEX> (<NUMEX TYPE="PERCENT">93%</NUMEX>) versus washout (<NUMEX TYPE="PERCENT">98.7%</NUMEX>). This result is not
+          expected theoretically and is not consistent with the
+          detailed experimental results of <ENAMEX TYPE="ORGANIZATION">Salamitre et al.</ENAMEX> [ <TIMEX TYPE="DATE">56</TIMEX> ]
+          who found approximately equal equilibration times during
+          <ENAMEX TYPE="ORGANIZATION">uptake</ENAMEX> and washout of sub anesthetic doses of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX> Another indication of the problem
+          presented by this discrepancy is that it was not possible
+          to significantly improve the fit by adjusting any or all
+          of the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> parameters. Any parameter change that
+          improved the fit for the washout, significantly worsened
+          the fit for the uptake and the addition of a
+          perfusion-ventilation mismatch did not improve the fit.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> possible explanation is a small error in the
+          quantitative measurements (made in <TIMEX TYPE="DATE">1977</TIMEX>) of <ENAMEX TYPE="ORGANIZATION">Munsen et al</ENAMEX>
+          [ <ENAMEX TYPE="LAW">4</ENAMEX> ] at low <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX> concentrations. Other
+          possibilities are a difference in some physiological
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX> (e.g. ventilation) during uptake and washout
+          or an error in reading the data off the published linear
+          plot.
+        
+        
+          Methoxyflurane
+          <ENAMEX TYPE="ORGANIZATION">Methoxyflurane</ENAMEX> is a notable exception to the generally
+          good agreement between the <ENAMEX TYPE="ORGANIZATION">PKQuest PBPK</ENAMEX> and the
+          experimental data. For methoxyflurane, the experimental
+          end tidal partial pressure (squares, fig. <NUMEX TYPE="CARDINAL">4</NUMEX>) is <NUMEX TYPE="PERCENT">about 30%</NUMEX>
+          greater than the PKQuest prediction during <TIMEX TYPE="DATE">uptake</TIMEX> (line,
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). It is assumed in the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> that the
+          arterial <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and alveolar gas partial pressures are
+          equal and correspond to the experimentally measured end
+          tidal gas partial pressure. Thus the error in fig. 4is
+          equivalent to the statement that "the arterial partial
+          pressure is significantly less than the end tidal partial
+          pressure". This discrepancy for methoxyflurane had been
+          noted previously in the older literature. <ENAMEX TYPE="ORGANIZATION">Holaday et</ENAMEX> al.
+          [ <TIMEX TYPE="DATE">57</TIMEX> ] reported that during methoxyflurane uptake, the
+          arterial partial pressure was <NUMEX TYPE="PERCENT">only about 50%</NUMEX> of the end
+          expired value. Similarly, <ENAMEX TYPE="GPE">Stoelting</ENAMEX> [ <TIMEX TYPE="DATE">58</TIMEX> ] observed that
+          at the end of the methoxyflurane uptake, the arterial
+          partial pressure was <NUMEX TYPE="PERCENT">60%</NUMEX> of the end expired, while during
+          washout, the two values were nearly identical. Despite
+          these clear indications that there was something
+          anomalous about methoxyflurane, this problem seems to
+          have been generally ignored in the recent literature.
+          This inequality is almost certainly caused by the
+          classic "washin-washout" artifact that has been described
+          for <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> with large blood/air partition (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">coefficients</ENAMEX> [ <NUMEX TYPE="CARDINAL">47 59 60 61 62 63 64 65</NUMEX> ] . This artifact
+          is created when, during inspiration, the high
+          concentration gas dissolves in the tissues of the
+          <ENAMEX TYPE="PLANT">bronchial tree</ENAMEX>, and then, during <TIMEX TYPE="DATE">expiration</TIMEX>, moves back
+          into the air, raising the end tidal concentration above
+          the alveolar values. For extremely soluble <ENAMEX TYPE="SUBSTANCE">solutes</ENAMEX> such
+          as <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <TIMEX TYPE="DATE">1756</TIMEX>), the expired gas concentration
+          is dominated by exchange with the conducting airway and
+          is almost independent of the alveolar concentration [ <NUMEX TYPE="CARDINAL">63</NUMEX>
+          <NUMEX TYPE="CARDINAL">65</NUMEX> ] . For <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> of intermediate solubility, such as
+          <ENAMEX TYPE="ORGANIZATION">styrene</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">48</NUMEX>) or toluene (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">18</NUMEX>) the effect
+          is less dramatic and has often been overlooked. This
+          analysis provides a good example of the advantage of a
+          <ENAMEX TYPE="SUBSTANCE">PBPK</ENAMEX> such as <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> over the more general compartmental
+          (<NUMEX TYPE="MONEY">mamillary</NUMEX>) model. It is obvious from the PKQuest
+          analysis (see fig. <NUMEX TYPE="CARDINAL">4</NUMEX>) that some model assumption must be
+          wrong. In contrast, in a detailed compartmental
+          (<NUMEX TYPE="MONEY">mammillary</NUMEX>) model analysis of the simultaneous uptake
+          and washout of methoxyflurane and other <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX> it was
+          recognized that methoxyflurane was different, but the
+          "reason for this discrepancy is not clear" [ <TIMEX TYPE="DATE">66</TIMEX> ] .
+          The strongest evidence supporting this explanation for
+          the discrepancy in the methoxyflurane data is provided by
+          a comparison with toluene. Since the blood/air partition
+          coefficients are similar for toluene (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">18</NUMEX>) and
+          <ENAMEX TYPE="ORGANIZATION">methoxyflurane</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> = <NUMEX TYPE="CARDINAL">13.9</NUMEX>), this artifact should be of
+          similar magnitude for <TIMEX TYPE="DATE">these two solutes</TIMEX>. During the
+          uptake of toluene in resting <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>, the end tidal
+          partial pressure is <NUMEX TYPE="CARDINAL">only about 1/2</NUMEX> the arterial value [
+          <NUMEX TYPE="CARDINAL">67</NUMEX> ] , similar to what is observed for methoxyflurane ( [
+          <NUMEX TYPE="CARDINAL">57 68</NUMEX> ] , and see fig. <NUMEX TYPE="CARDINAL">4</NUMEX>). However, when these same
+          subjects begin to exercise, increasing the ventilatory
+          rate by a factor of <NUMEX TYPE="MONEY">2.5</NUMEX>, the arterial and end tidal gas
+          concentrations become approximately equal [ <TIMEX TYPE="DATE">67</TIMEX> ] .
+          Presumably, at the higher rates of ventilation, there is
+          relatively less time for exchange with the <ENAMEX TYPE="ORGANIZATION">airways</ENAMEX>, and
+          the artifact decreases. This suggests that solutes such
+          as methoxyflurane or toluene are right on the boundary of
+          where this artifact becomes important. The artifact
+          becomes negligible for halothane with a <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> of <NUMEX TYPE="CARDINAL">2.2</NUMEX> as
+          indicated by the nearly identical end tidal and arterial
+          partial pressures [ <TIMEX TYPE="DATE">58</TIMEX> ] , and the good agreement between
+          the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> results and the experimental data (see fig.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          For solutes such as <ENAMEX TYPE="PER_DESC">toluene</ENAMEX> [ <NUMEX TYPE="CARDINAL">45 67</NUMEX> ] , styrene [ <TIMEX TYPE="DATE">47</TIMEX> ]
+          and <ENAMEX TYPE="SUBSTANCE">methoxyflurane</ENAMEX> [ <TIMEX TYPE="DATE">58</TIMEX> ] there is, at <NUMEX TYPE="ORDINAL">first</NUMEX> glance, a
+          peculiar asymmetry in the data that has caused some
+          confusion: during uptake there is a large difference in
+          the end tidal and arterial partial pressures, while,
+          during <TIMEX TYPE="DATE">washout</TIMEX>, there is only a small or negligible
+          difference. However, this <ENAMEX TYPE="PER_DESC">asymmetry</ENAMEX> disappears if the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is reexamined as follows: For the resting toluene
+          <ENAMEX TYPE="ORGANIZATION">data of Carlsson et al.</ENAMEX> [ <TIMEX TYPE="DATE">67</TIMEX> ] during uptake the inspired
+          concentration is <ENAMEX TYPE="CONTACT_INFO">300 mg/m 3</ENAMEX>, the end tidal concentration
+          is <NUMEX TYPE="QUANTITY">72 mg</NUMEX><ENAMEX TYPE="PRODUCT">/m 3</ENAMEX>, and the arterial concentration is <ENAMEX TYPE="CONTACT_INFO">585 mg/m</ENAMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>. Assuming a <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> of <NUMEX TYPE="CARDINAL">18</NUMEX>, this arterial concentration
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to a gas concentration of <NUMEX TYPE="QUANTITY">32 mg</NUMEX><ENAMEX TYPE="PRODUCT">/m 3</ENAMEX>, an end
+          tidal - arterial difference of <NUMEX TYPE="PERCENT">55%</NUMEX>. If the artifact were
+          not present and the end tidal equaled the arterial, then
+          the end tidal concentration should have been <NUMEX TYPE="CARDINAL">32</NUMEX> mg<ENAMEX TYPE="CONTACT_INFO">/m 3</ENAMEX>.
+          Thus, the net rate of gas uptake (inspired - end tidal)
+          is decreased <NUMEX TYPE="PERCENT">about 13%</NUMEX> (= (<NUMEX TYPE="CARDINAL">72-32</NUMEX>)<NUMEX TYPE="CARDINAL">/300</NUMEX>) by the artifact.
+          If a symmetrical error was present during <TIMEX TYPE="DATE">washout</TIMEX>, the
+          washout rate should also be decreased by <NUMEX TYPE="PERCENT">13%</NUMEX> by the
+          artifact. Since, during <TIMEX TYPE="DATE">washout</TIMEX>, the inspired
+          concentration is <NUMEX TYPE="CARDINAL">zero</NUMEX>, this means that the washout end
+          tidal concentration should be <NUMEX TYPE="PERCENT">13%</NUMEX> less than the arterial
+          partial pressure. Thus, if the artifact was symmetrical,
+          the difference between the end tidal and arterial partial
+          pressure during washout should be <NUMEX TYPE="CARDINAL">only about 1/5</NUMEX> of the
+          difference during <TIMEX TYPE="DATE">uptake</TIMEX> (<NUMEX TYPE="PERCENT">13%</NUMEX> versus <NUMEX TYPE="PERCENT">55%</NUMEX> difference).
+          Errors of this magnitude (<NUMEX TYPE="PERCENT">13%</NUMEX>) can be swamped by the
+          normal variations in <ENAMEX TYPE="GPE">Kbair</ENAMEX> that result from variations in
+          the <ENAMEX TYPE="SUBSTANCE">blood fat</ENAMEX> content.
+          The observant <ENAMEX TYPE="PER_DESC">reader</ENAMEX> should, at this point, be asking
+          why toluene can be modeled by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">figs. 5and 6</ENAMEX>) if
+          it has a similar <ENAMEX TYPE="LAW">Kbair and</ENAMEX>, therefore, similar
+          washin-washout artifact as methoxyflurane. There are <NUMEX TYPE="CARDINAL">2</NUMEX>
+          reasons: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) Only the washout data was modeled so that one
+          would expect only a small (<NUMEX TYPE="PERCENT">13%</NUMEX>) error; and <NUMEX TYPE="CARDINAL">2</NUMEX>) This small
+          error in the washout data was not present because the
+          value of <ENAMEX TYPE="ORGANIZATION">Kbair</ENAMEX> that was used for this modeling (<ENAMEX TYPE="PRODUCT">Table I</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Pierce et al</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ] ) was determined from the
+          experimental ratios of the blood/end tidal air for each
+          subject, and, thus, automatically compensated for this
+          artifact. The fact that the average value of this "in
+          <ENAMEX TYPE="ORGANIZATION">vivo</ENAMEX>" <ENAMEX TYPE="PERSON">Kbair</ENAMEX> was <NUMEX TYPE="PERCENT">about 10%</NUMEX> larger than the "in vitro"
+          value [ <TIMEX TYPE="DATE">32</TIMEX> ] is consistent with an end tidal partial
+          pressure that is <NUMEX TYPE="PERCENT">10%</NUMEX> less than the arterial partial
+          pressure.
+        
+      
+      
+        Competing interests
+        None declared.
+      
+    
+  

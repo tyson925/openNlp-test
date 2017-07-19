@@ -1,0 +1,594 @@
+
+  
+    
+      
+        Background
+        Microarrays are a powerful tool to investigate
+        differential gene expression of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes of a
+        cell type, tissue, or <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . While traditional
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments strive to establish the 'global
+        view' of the activity of 
+        all <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (i.e., the genome) in
+        response to environmental conditions, they may also be used
+        to characterize and <ENAMEX TYPE="PER_DESC">quantitatively</ENAMEX> describe gene expression
+        behavior of a selected set of genes as a true genotypic
+        correlate of a particular phenotype. Application-targeted
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX> and array reagents are already commercially
+        available (<ENAMEX TYPE="ORGANIZATION">Operon, Clontech, Incyte Pharmaceuticals</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>) for research in diverse areas such as <ENAMEX TYPE="DISEASE">cancer</ENAMEX>,
+        <ENAMEX TYPE="DISEASE">stress</ENAMEX> and aging, toxicology, hematology, cell cycle,
+        <ENAMEX TYPE="ORGANIZATION">neurology</ENAMEX> and apoptosis. Contrary to 'genome-wide' chips,
+        <ENAMEX TYPE="ORGANIZATION">custom</ENAMEX>-fabricated microarrays are less expensive and more
+        readily adapted to the economically sensitive environment
+        of the molecular diagnostics <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX>, where relatively
+        few <ENAMEX TYPE="PER_DESC">interrogations</ENAMEX> are relevant for clinical investigation
+        of a <ENAMEX TYPE="PER_DESC">patient</ENAMEX> specimen.
+        Because typical microarray results are usually burdened
+        with substantial amounts of noise [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , rigorous
+        statistical methods must be applied to interpretation of
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Methods for systematically addressing noise in the
+        analysis of the microarray data are only beginning to be
+        described [ <NUMEX TYPE="CARDINAL">4 5 6 7 8 9 10</NUMEX> ] . Such noise in microarray
+        experiments may arise from non-specific hybridization of
+        the labeled samples to elements printed on the microarray,
+        print-tip effects, slide inhomogeneities, and variability
+        in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> isolation, purity, labeling and detection [ <NUMEX TYPE="CARDINAL">6 9 10</NUMEX>
+        <NUMEX TYPE="CARDINAL">11 12</NUMEX> ] . Among these, hybridization variance contributes
+        most significantly to the overall variation [ <TIMEX TYPE="DATE">12</TIMEX> ] .
+        Non-specific hybridization can be measured through the
+        use of specificity controls on the microarray and addressed
+        as a statistical problem [ <ENAMEX TYPE="LAW">8 13</ENAMEX> ] . The most common
+        strategy in <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments is to focus on
+        fluorescent signal ratios in <NUMEX TYPE="CARDINAL">two</NUMEX>-color competitive
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> experiments. The problem with using ratio
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> alone is that it does not take into account the
+        absolute signal intensity measurements used to calculate
+        the ratios. While this approach may work adequately for
+        ratios of moderate to highly expressed genes that yield
+        bright fluorescent signals, weak signals arising from low
+        transcript levels may be masked or biased by noise
+        (non-specific hybridization). Non-specific hybridization is
+        a characteristic of cDNA microarray hybridization and may
+        be attributed to the uniform hybridization condition
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> for all sequences on the chip [ <NUMEX TYPE="CARDINAL">4 6 7</NUMEX> ] . The
+        frequently used fold change threshold values of <NUMEX TYPE="CARDINAL">2</NUMEX>-<NUMEX TYPE="CARDINAL">3</NUMEX> to
+        define a significant change are often arbitrarily chosen
+        and do not take into account the statistical significance
+        of absolute signal intensity. For example, microarray data
+        showing a <NUMEX TYPE="CARDINAL">4</NUMEX>-fold change derived from low signal intensities
+        may have no statistical significance whereas a <NUMEX TYPE="CARDINAL">1.4</NUMEX> fold
+        change derived from strong signal intensities may be highly
+        significant in terms of reflecting actual changes in mRNA
+        concentration within a biological sample. Thus, focusing on
+        fold-changes alone is insufficient and confidence
+        statements about differential expression must take into
+        account absolute signal intensities [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . In this study
+        we have adapted a statistical method that utilizes absolute
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensities from a reference set of positive
+        controls and negative non-homologous control sequences to
+        determine the absolute intensity range in each <ENAMEX TYPE="ORG_DESC">channel</ENAMEX> that
+        may be used with a certain confidence level on a particular
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> to calculate expression ratios. The method of
+        analysis proposed in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> was originally developed
+        along with radar and detailed results go back to the area
+        of signal processing. <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> <ENAMEX TYPE="PER_DESC">curves</ENAMEX> have been used for many
+        <TIMEX TYPE="DATE">years</TIMEX> in numerous other areas, including psychology [ <NUMEX TYPE="CARDINAL">14 15</NUMEX>
+        ] , and other areas of medical diagnostics [ <TIMEX TYPE="DATE">16</TIMEX> ] . For
+        this purpose, diagnostic accuracy <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> <ENAMEX TYPE="PER_DESC">curves</ENAMEX> have been used
+        to depict the pattern of sensitivities and specificities
+        observed when the performance of a diagnostic test is
+        evaluated at several different thresholds. Here, receiver
+        operating characteristic <ENAMEX TYPE="PER_DESC">curves</ENAMEX> describe the ability of a
+        particular parameter (e.g. fluorescence intensity) to
+        discriminate between <NUMEX TYPE="CARDINAL">two</NUMEX> conditions (e.g specific and
+        non-specific hybridization). We illustrate our approach
+        using gene expression data from a study comparing
+        expression profiles of highly invasive and poorly invasive
+        human melanoma cell lines [ <TIMEX TYPE="DATE">17</TIMEX> ] . The goal of these
+        experiments is to identify <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes that may
+        regulate the invasive behavior of melanoma cells. The area
+        under the ROC curve may be used to assess the quality of
+        individual <ENAMEX TYPE="PER_DESC">microarray</ENAMEX> hybridizations which is particularly
+        important because the quality of microarray hybridization
+        can vary significantly [ <ENAMEX TYPE="LAW">9 12</ENAMEX> ] . The statistical
+        evaluation of a reference set of genes to measure the
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity of each microarray
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> reaction dramatically improves the ability to
+        quality control the resulting data, a key requirement for
+        the use of microarrays in diagnostic applications. Here, we
+        propose the design of a prototype diagnostic microarray
+        with respect to control sequences and we show how a ROC
+        analysis using percentile ranks of specific and
+        non-specific hybridization signals can be used to establish
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> detection thresholds and hybridization quality
+        assessments for each individual <ENAMEX TYPE="PER_DESC">microarray</ENAMEX> experiment.
+      
+      
+        Results
+        The reliability of ratios measured to describe changes
+        in gene expression depends on the absolute signal
+        <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>. While ratios from highly abundant transcripts
+        may be accurate, rare transcripts give absolute intensities
+        that may be obscured by non-specific hybridization. Thus
+        both ratio and absolute signal intensity are important to
+        evaluate differential gene expression properly. Calibrating
+        the appropriate signal and noise intensity thresholds for a
+        given microarray hybridization requires the analysis of a
+        set of positive and negative reference genes. At low signal
+        intensities, both reference groups yield overlapping signal
+        <ENAMEX TYPE="PERSON">distributions</ENAMEX> (Figure <ENAMEX TYPE="PRODUCT">1aand 1b</ENAMEX>). Test signals from array 1
+        and <NUMEX TYPE="CARDINAL">2</NUMEX> falling within the overlap region cannot easily be
+        categorized as either present or absent and calculating
+        ratios may lead to the identification of false positives
+        (or false negatives) (Figure <ENAMEX TYPE="PRODUCT">1cand 1d</ENAMEX>).
+        Traditionally, cut-offs for microarrays have been
+        calculated from negative controls. Here, we compare <NUMEX TYPE="CARDINAL">three</NUMEX>
+        widely used thresholds (<ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+        X = mean <ENAMEX TYPE="ORGANIZATION">; T</ENAMEX> 
+        0.5X = median<ENAMEX TYPE="ORGANIZATION">; T</ENAMEX> 
+        X2SD = mean + <NUMEX TYPE="CARDINAL">2</NUMEX> standard deviations) to
+        the ROC- analyses derived threshold (<ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> = the threshold with maximum
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> and senitivity (<ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> ) obtained as the point of
+        intersection in figure <NUMEX TYPE="CARDINAL">2</NUMEX>) in terms of specificity (<ENAMEX TYPE="PRODUCT">Sp</ENAMEX>) and
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> (<ENAMEX TYPE="PRODUCT">Se</ENAMEX>) (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). For T 
+        X and T 
+        0.5X the <ENAMEX TYPE="PRODUCT">Se</ENAMEX> is ≅ <NUMEX TYPE="PERCENT">100%</NUMEX>, however, the <ENAMEX TYPE="ORGANIZATION">Sp</ENAMEX>
+        would only be ≅ <NUMEX TYPE="PERCENT">50%</NUMEX> indicating that <TIMEX TYPE="TIME">approximately every</TIMEX>
+        second signal would be a false positive arising from
+        non-specific hybridization. As a benefit, however, ><NUMEX TYPE="PERCENT">99%</NUMEX>
+        of test genes would be included in data analyses (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        If T 
+        X2SD or T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> is the desired threshold, the <ENAMEX TYPE="PRODUCT">Sp</ENAMEX> can
+        be increased to ><NUMEX TYPE="PERCENT">95%</NUMEX> with only minor reductions in <ENAMEX TYPE="PRODUCT">Se</ENAMEX>,
+        however, the trade-off is an increase in the number of
+        genes excluded from analyses (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). If <ENAMEX TYPE="PRODUCT">Sp and Se</ENAMEX> are
+        <ENAMEX TYPE="PERSON">plotted</ENAMEX> as a function of the thresholds, the intersection
+        point of the <NUMEX TYPE="CARDINAL">two</NUMEX> curves indicates maximum <ENAMEX TYPE="PRODUCT">Sp and Se</ENAMEX> which
+        can be directly read from the graph (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). As the
+        criterion for a positive test becomes more stringent, the
+        point on the curve corresponding to <ENAMEX TYPE="PRODUCT">Sp and Se</ENAMEX> (point c,
+        Figure <TIMEX TYPE="DATE">3a</TIMEX>; <NUMEX TYPE="PERCENT">point</NUMEX> d, Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>) moves down and to the left
+        (lower <ENAMEX TYPE="PRODUCT">Se</ENAMEX>, higher <ENAMEX TYPE="PRODUCT">Sp</ENAMEX>); if less evidence is required for a
+        positive test, the point on the curve corresponding to <ENAMEX TYPE="ORGANIZATION">Sp</ENAMEX>
+        and <ENAMEX TYPE="PRODUCT">Se</ENAMEX> (point a, Figure <ENAMEX TYPE="PRODUCT">3aand 3b</ENAMEX>) moves up and to the right
+        (lower <ENAMEX TYPE="PRODUCT">Sp</ENAMEX>, higher <ENAMEX TYPE="PRODUCT">Se</ENAMEX>). The <ENAMEX TYPE="GPE_DESC">area</ENAMEX> under the ROC curve (Figure
+        <NUMEX TYPE="CARDINAL">3</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>) is a measure of how well positive and negative
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> can be distinguished in individual microarray
+        experiments and indicates hybridization quality.
+        The discriminatory power of a threshold based on the
+        receiver operating characteristics depends on the proper
+        controls included in the study and this choice will affect
+        the interpretation of the data. Unlike spots containing
+        printed control <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (<ENAMEX TYPE="FAC_DESC">plant</ENAMEX>, bacterial, or viral), blank
+        spots printed with 3X <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> often show strong signals
+        indicating that unusually large amounts of <ENAMEX TYPE="ORG_DESC">label</ENAMEX> are
+        inexplicably deposited on these manifestly blank areas.
+        (The morphology of <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> spots giving relatively high signals
+        are quite distinct from spots where <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> has been deposited,
+        often showing small, highly concentrated areas of
+        <ENAMEX TYPE="ORGANIZATION">fluorescence</ENAMEX>. The cause of this fluorescence is not well
+        understood. Their signal distribution is skewed towards
+        large signals as compared to <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>, bacterial, and viral
+        genes; data not shown). Consequently, the inclusion of SSC
+        spots results in a considerable overlap with positive
+        controls resulting in increased thresholds and a lower
+        overall discriminatory power (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+        To illustrate the importance of signal threshold
+        detection, we categorized differentially expressed genes of
+        the melanoma study [ <TIMEX TYPE="DATE">17</TIMEX> ] according to confidence based on
+        our predictive model (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). For this purpose, we use T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> as the threshold. <ENAMEX TYPE="ORGANIZATION">Group</ENAMEX> A contains
+        gene expression ratios derived from signals that exceed the
+        selected threshold in both <ENAMEX TYPE="ORG_DESC">channels</ENAMEX> and are assigned high
+        confidence ratios. In <ENAMEX TYPE="ORG_DESC">group</ENAMEX> B, either <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> or Cy5 signals
+        were below that threshold, whereas in group C signals from
+        both <ENAMEX TYPE="ORG_DESC">channels</ENAMEX> were below the defined detection limit.
+        <ENAMEX TYPE="ORGANIZATION">'Risky</ENAMEX>' absolute intensities can be flagged and displayed
+        when further processing the data (e.g. clustering
+        analysis).
+      
+      
+        Discussion
+        Microarray data are generated from multi-step
+        biochemical reactions, scanning/data collection, image
+        analysis and data processing. This process is inherently
+        prone to variability that affects the specificity and
+        sensitivity of the assay, thus requiring evaluation of each
+        microarray data set [ <ENAMEX TYPE="LAW">9 10 12</ENAMEX> ] . In order to calibrate the
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity of the output data, appropriate
+        statistical tools applied to reference sequences composed
+        of positive and negative controls may be used to quality
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> data from a given hybridization. We argue that any
+        procedure which uses raw intensity ratios alone to infer
+        differential expression may be inefficient and thus may
+        lead to excessive errors.
+        Since ratios are simply the result of uneven signal
+        distributions between <TIMEX TYPE="DATE">Cy5</TIMEX> and <NUMEX TYPE="CARDINAL">Cy3</NUMEX> channels, analyzing these
+        distributions will help interpret the biological relevance
+        of an observed ratio. Signals are the result of specific
+        and non-specific binding when a complex probe DNA mixture
+        is incubated on the slide surface containing target <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>.
+        The quality of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray data rests on the ability to
+        measure non-specific components of a spot signal and
+        eliminate them from ratio analysis. Such a component
+        analysis on spotted <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> is not possible with
+        <TIMEX TYPE="DATE">today</TIMEX>'s technology and the proportion of non-specific
+        binding will vary for each spot because of competitive
+        binding in the presence of sequence specific hybridization
+        (Note: GeneChip arrays from <ENAMEX TYPE="GPE">Affymetrix</ENAMEX> using perfect vs.
+        mismatch oligonucleotide pairs do, to a certain extent,
+        measure the non-specific binding component of every
+        sequence; see technical note discussing probe length and
+        performance,
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">affymetrix</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/support/technical/technotes/25mer_technote.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pdf</ENAMEX>).
+        Since the influence of non-specific binding is more severe
+        for probes where no or little specific hybridization occurs
+        [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , we treat the problem as one of detecting a
+        threshold value that is both determined by the highest
+        signals attributable to spots representing non-specific
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> and the lowest signals from spots where
+        sequence specific hybridization must be assumed. Simply
+        put, we determine a threshold separating specific from
+        non-specific hybridization assuming that the former usually
+        results in stronger signals than the latter [ <TIMEX TYPE="DATE">18</TIMEX> ] . A
+        similar approach has been reported for <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> GeneChip
+        arrays, so called 'LUT based scoring <ENAMEX TYPE="ORG_DESC">system</ENAMEX>' [ <ENAMEX TYPE="LAW">8</ENAMEX> ] (tables
+        to check noise level of particular chips or noise filtering
+        look up tables).
+        Methods used to determine a signal threshold include the
+        use of arbitrary fluorescence intensities [ <TIMEX TYPE="DATE">19</TIMEX> ] , relative
+        errors in <ENAMEX TYPE="CONTACT_INFO">Cy3/Cy5</ENAMEX> ratios [ <ENAMEX TYPE="LAW">9 20 21</ENAMEX> ] or certain
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>-to-background ratios [ <TIMEX TYPE="DATE">22</TIMEX> ] . However, these methods
+        lack information about the specificity and sensitivity of
+        the threshold, which are crucial parameters for estimation
+        of the diagnostic accuracy of microarray hybridizations. To
+        select a threshold, we have exploited a reference set of
+        positive and negative control <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> based on presence or
+        absence of their <ENAMEX TYPE="PER_DESC">cognate</ENAMEX> labeled cDNAs in the hybridization
+        mix.
+        Positive controls may be spiked <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> from non-homologous
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> or transcripts known to be expressed in the sample
+        i.e. housekeepers [ <NUMEX TYPE="CARDINAL">13 23</NUMEX> ] . Signals from positive
+        controls should cover the range of test signals. This can
+        be achieved by appropriate spiking and/or selection of
+        housekeeping genes that fulfill this criterion.
+        The negative controls should be chosen to lack sequence
+        <ENAMEX TYPE="ORGANIZATION">homology</ENAMEX> to test genes, however, choosing appropriate
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> sequences for a <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> plot analysis is crucial: we
+        conclude that <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> spots show a distinct signal pattern
+        different from <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>, bacterial and viral <ENAMEX TYPE="SUBSTANCE">DNA deposits</ENAMEX>.
+        Unlike spots containing control <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, blank spots are not
+        <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of non-specific hybridization to cellular
+        probe <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, do not behave well as control spots, and should
+        be disregarded for threshold detection on custom
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>.
+        The robustness of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> analysis to yield T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> area values to discriminate
+        <ENAMEX TYPE="PERSON">'good</ENAMEX>' from 'poor' microarray <ENAMEX TYPE="ORG_DESC">hybridizations</ENAMEX> relies on the
+        relative positions of signal ranges from positive and
+        negative controls as well as from target genes. We can
+        imagine <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">szenarios</ENAMEX> making ROC analysis inappropriate for
+        determination of threshold and/or microarray hybridization
+        quality: (i) If the set of positive controls is in the high
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> range, <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> analysis will yield a higher T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> areas close to <NUMEX TYPE="MONEY">1.0</NUMEX> (indicating
+        good microarray hybridization) because positive and
+        negative signals are well separated, irrespective of the
+        distance between the greatest observation in the negative
+        and the lowest observation in the positive sample.
+        Consequently, a large portion of target <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will be
+        discarded because of the relatively high T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> . (<ENAMEX TYPE="PERSON">ii) Alternatively</ENAMEX>, if the positive
+        controls are spiked below the detection limit of
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> (i.e. typically <ENAMEX TYPE="CONTACT_INFO">1:500,000 wt/wt</ENAMEX>), their signal
+        range may resemble the <NUMEX TYPE="CARDINAL">one</NUMEX> from negative controls. This
+        scenario will produce a low T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> areas close to <NUMEX TYPE="CARDINAL">0.5</NUMEX> falsley
+        indicating 'poor' hybridization.
+        The overall performance of individual microarray
+        <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> can be assessed by the position of the
+        receiver operating characteristic line (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) using one
+        single parameter: the area under the ROC curve (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+        Poor microarray hybridizations have lines close to the
+        rising diagonal (or values <NUMEX TYPE="MONEY">~0.5</NUMEX>), whereas the lines for
+        <ENAMEX TYPE="ORGANIZATION">'perfect</ENAMEX>' hybridizations would rise steeply and pass
+        closely to the top left hand corner (or values <NUMEX TYPE="MONEY">~1.0</NUMEX>), where
+        both, the specificity and sensitivity are <NUMEX TYPE="PERCENT">100%</NUMEX>. In
+        high-throughput applications such as routine diagnostic
+        <ENAMEX TYPE="PERSON">examinations</ENAMEX>, where a large number of hybridizations may be
+        performed using a standard microarray-design, the ROC-plot
+        area may be used as a 'hybridization quality <ENAMEX TYPE="PER_DESC">checkpoint</ENAMEX>' to
+        either accept or discard individual microarray
+        <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> (for example <NUMEX TYPE="MONEY">0.990</NUMEX> for array <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX>). The <ENAMEX TYPE="GPE_DESC">area</ENAMEX> under the ROC curve represents a summary
+        statistic of the overall performance of individual
+        microarray hybridizations. A modification of the Wilcoxon
+        <ENAMEX TYPE="ORGANIZATION">rank</ENAMEX>-sum procedure may then be used as a statistical test
+        to determine whether <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves are significantly
+        different [ <TIMEX TYPE="DATE">15</TIMEX> ] .
+        Among <NUMEX TYPE="CARDINAL">25</NUMEX> thresholds calculated here we have compared Sp
+        and <ENAMEX TYPE="PRODUCT">Se of 3</ENAMEX> commonly used cut-offs with the ROC
+        analysis-derived threshold T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The median or mean of a
+        negative control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is regarded an adequate measure for
+        non-specific hybridization [ <TIMEX TYPE="DATE">13</TIMEX> ] , however, due to low
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> (~<NUMEX TYPE="PERCENT">50%</NUMEX>) we conclude that neither thresholds
+        should be used if maximum specificity is required. In such
+        a case, we find that the widely used cut-off value defined
+        as the mean plus <NUMEX TYPE="CARDINAL">two</NUMEX> standard deviations of the negative
+        reference sample may be used adequately for DNA
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. The underlying rationale of using this
+        threshold is to establish a cut-off value providing a
+        specificity of <NUMEX TYPE="PERCENT">97.5%</NUMEX> [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] . In our own example (Figure
+        <NUMEX TYPE="CARDINAL">1</NUMEX>) skewness to the left makes the T 
+        X2SD overly conservative, which will
+        sacrifice sensitivity unnecessarily. Hence, T 
+        X2SD may be inadequate and to adjust the
+        sensitivity one should use T 
+        <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> . Most importantly, the T 
+        X2SD procedure does not account for the
+        sensitivity of the threshold. Although the ROC-analysis
+        derived cut-off resembles closely the cut-off defined as
+        the mean + <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX>, it is entirely possible that choosing a
+        finer-grained partition of the signal space would alter the
+        relative positions of theses <NUMEX TYPE="CARDINAL">two</NUMEX> points. Likewise, this may
+        be a characteristic for the <NUMEX TYPE="CARDINAL">2</NUMEX> exemplary microarrays.
+        Usually, the cut-off selection procedure is an informed
+        decision based on the motivation of the <ENAMEX TYPE="PER_DESC">individual</ENAMEX> to
+        accept false positives (<ENAMEX TYPE="PRODUCT">high Sp</ENAMEX>) or false negatives (high
+        <ENAMEX TYPE="PRODUCT">Se</ENAMEX>) that takes into account whether it is crucial to
+        exclude any false positives (<ENAMEX TYPE="PRODUCT">high Sp</ENAMEX>) or to cover the
+        broadest signal range possible (<ENAMEX TYPE="PRODUCT">high Se</ENAMEX>). Which cutoff to
+        use depends on the objective of the experiment: If one
+        needs to make sure that the 'present' or 'absent' call for
+        a particular gene is correct, a cut-off with high <ENAMEX TYPE="PRODUCT">Sp</ENAMEX> should
+        be chosen, whereas if one is willing to accept
+        false-positives where signals are low, high <ENAMEX TYPE="PRODUCT">Se</ENAMEX> will be the
+        driving force.
+        The signal intensity is the most critical parameter that
+        influences the informative value of ratio estimates [ <TIMEX TYPE="DATE">26</TIMEX> ]
+        . Therefore, ratios should be judged based on the absolute
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity of each gene. To diagnose the metastatic
+        potential of highly versus poorly invasive melanoma cells
+        we compared their gene expression profile with our
+        metastasis chip, which contains genes critical for aspects
+        of the metastatic process, including tumor cell motility
+        and the ability to form primitive tubular <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ <NUMEX TYPE="CARDINAL">17 27</NUMEX>
+        ] . Each ratio was tested for the <ENAMEX TYPE="ORGANIZATION">Null</ENAMEX> hypothesis that
+        there is no difference between the means of the ranks of
+        the <NUMEX TYPE="ORDINAL">Cy5</NUMEX> and <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> signals over <NUMEX TYPE="CARDINAL">6</NUMEX> replicate spots representing
+        a unique sequence. At signal intensities below the
+        threshold with maximum specificity and sensitivity some
+        genes gave a ratio greater than <NUMEX TYPE="CARDINAL">1.6</NUMEX>-fold (at a confidence
+        level of p <NUMEX TYPE="MONEY">< 0.05</NUMEX>). In such a case, however, ratios are
+        not optimal estimators because the low denominator value
+        introduces large artifacts [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . Therefore we sought to
+        determine ratio confidence categories based on the absolute
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensities [ <TIMEX TYPE="DATE">13</TIMEX> ] . Assuming that the ROC-analysis
+        derived threshold is an 'appropriate' cut-off for
+        distinguishing absent/present genes, the proposed
+        <ENAMEX TYPE="ORGANIZATION">'confidence</ENAMEX> categories' may be interpreted as follows:
+        (A) The gene is present in both <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, and this is the
+        best estimate of the true ratio, while further statistical
+        evaluation should be applied to take into account the
+        variability of the measurements.
+        (<ENAMEX TYPE="ORGANIZATION">B</ENAMEX>) The gene is present in one sample and absent in the
+        other. Ratios are meaningless, but this is still an
+        extremely significant biological result!
+        (<NUMEX TYPE="MONEY">C</NUMEX>) The gene is absent in both samples. Not only are the
+        ratios meaningless, but so are the intensity estimates.
+        As a result of threshold setting, certain genes may be
+        falsely included (=false positives) or, less frequently [ <NUMEX TYPE="CARDINAL">5</NUMEX>
+        ] , falsely discarded (=false negatives) from further
+        analysis (i.e. ratio calculations, clustering analysis,
+        <ENAMEX TYPE="ORGANIZATION">etc.</ENAMEX>) as exemplified here with the microarray experiment
+        for investigating invasion in <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. The ROC-derived
+        threshold correctly classifies the signal for <ENAMEX TYPE="PRODUCT">Laminin-5</ENAMEX>, <NUMEX TYPE="CARDINAL">γ2</NUMEX>
+        as 'absent', whereas the mean- or median -derived
+        <ENAMEX TYPE="ORGANIZATION">thresholds</ENAMEX> would produce a false-positive result. Since
+        this gene product plays a significant role in vasculogenic
+        <ENAMEX TYPE="ORGANIZATION">mimicry</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] . Classifying the expression level is
+        biologically crucial. <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> analysis leads to a result (<ENAMEX TYPE="DISEASE">Type</ENAMEX>
+        B, above) that is in line with data obtained otherwise,
+        whereas both mean- or median -derived threshold would have
+        resulted in accepting falsely a change (<ENAMEX TYPE="DISEASE">type A</ENAMEX>, above) in
+        <ENAMEX TYPE="CONTACT_INFO">Laminin-5, γ2</ENAMEX> expression.
+        Collectively, the present study demonstrated that
+        microarray-derived signals from positive and negative
+        controls may be used to compute accurately type I and type
+        II errors for a series of signal thresholds. We have
+        introduced a new model for signal threshold determination
+        for <ENAMEX TYPE="SUBSTANCE">gene expression microarray</ENAMEX> experiments that greatly
+        eases the interpretation and comparison of these data. This
+        model is based on analysis of signal intensities and
+        distributions of a reference set of positive and negative
+        controls included on each microarray. It provides a
+        framework for <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of detection limits, confidence
+        <NUMEX TYPE="CARDINAL">about</NUMEX> fluorescent ratios and for pre-processing data for
+        subsequent data analyses, such as cluster analyses [ <NUMEX TYPE="CARDINAL">23 28</NUMEX>
+        ] .
+      
+      
+        Materials & Methods
+        
+          Synthesis of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products
+          <ENAMEX TYPE="ORGANIZATION">IMAGE cDNA</ENAMEX> clones representing <NUMEX TYPE="CARDINAL">72</NUMEX> human genes involved
+          in cell migration were purchased from <ENAMEX TYPE="ORGANIZATION">Research Genetics</ENAMEX>
+          (<ENAMEX TYPE="GPE">Huntsville</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">AL</ENAMEX>) and sequence verified in-house. <ENAMEX TYPE="ORGANIZATION">Control</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones (<ENAMEX TYPE="ORGANIZATION">GenBank Accession</ENAMEX> numbers are in brackets)
+          from 
+          Arabidopsis thaliana (<ENAMEX TYPE="CONTACT_INFO">T76518,</ENAMEX>
+          T45394, <TIMEX TYPE="DATE">H37673</TIMEX>), human <ENAMEX TYPE="SUBSTANCE">cytomegalovirus</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039949,</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039950</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039952</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039955</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039971</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039974,</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">NP</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">039976</ENAMEX>) 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> (<TIMEX TYPE="DATE">J04423</TIMEX>: <ENAMEX TYPE="ORGANIZATION">BioB, BioC, BioD</ENAMEX>)
+          and 
+          <ENAMEX TYPE="PERSON">B. subtilis</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">X04603, M24537,</ENAMEX>
+          X17013, <TIMEX TYPE="DATE">L38424</TIMEX>) were provided by the <ENAMEX TYPE="ORGANIZATION">Scripps Research</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Institute</ENAMEX>'s microarray <ENAMEX TYPE="FAC_DESC">facility</ENAMEX> and were chosen to lack
+          <ENAMEX TYPE="ORGANIZATION">homology</ENAMEX> to human <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX>. Plasmids were prepared from
+          <ENAMEX TYPE="ORGANIZATION">IMAGE</ENAMEX> clones using <ENAMEX TYPE="ORGANIZATION">Qiagen's</ENAMEX> (<ENAMEX TYPE="GPE">Santa Clara</ENAMEX>, CA) plasmid
+          <ENAMEX TYPE="PERSON">mini</ENAMEX> prep kits following <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s protocols. All
+          plasmid inserts were amplified in <NUMEX TYPE="CARDINAL">100</NUMEX> μl reactions using
+          the following primer sequences:
+          M13 <ENAMEX TYPE="ORGANIZATION">Forward 5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">GTTTTCCCAGTCACGACGTTG-3</ENAMEX>'
+          M13 <ENAMEX TYPE="ORGANIZATION">Reverse 5</ENAMEX>'-TGAGCGGATAACAATTTCACACAG
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reactions were cycled <NUMEX TYPE="CARDINAL">35</NUMEX> times under the following
+          conditions: <NUMEX TYPE="QUANTITY">94 degrees</NUMEX> for <TIMEX TYPE="TIME">30 seconds</TIMEX>, <NUMEX TYPE="QUANTITY">55 degrees</NUMEX> for <NUMEX TYPE="CARDINAL">1</NUMEX>
+          minute and <NUMEX TYPE="QUANTITY">72 degrees</NUMEX> for <TIMEX TYPE="TIME">2 minutes</TIMEX>. All <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products
+          were analyzed by gel electrophoresis to confirm the
+          presence of a single <ENAMEX TYPE="PER_DESC">band</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products showing weak
+          and/or multiple bands were reamplified using variable
+          MgCl 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> concentrations (<NUMEX TYPE="CARDINAL">1.5</NUMEX>-<NUMEX TYPE="CARDINAL">2.5</NUMEX> mM) until
+          single bands were generated. The <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were
+          <ENAMEX TYPE="ORGANIZATION">purified</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>'s <NUMEX TYPE="CARDINAL">96</NUMEX>-well PCR purification kit
+          according to <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s protocols. <ENAMEX TYPE="ORGANIZATION">Purified</ENAMEX> PCR
+          products were dried down and resuspended in <TIMEX TYPE="TIME">80 ul</TIMEX> 3X SSC
+          (standard saline citrate- 1X <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> = <NUMEX TYPE="CARDINAL">150</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">NaCl</ENAMEX>, <NUMEX TYPE="CARDINAL">15</NUMEX> mM
+          sodium <ENAMEX TYPE="SUBSTANCE">citrate</ENAMEX>) with <NUMEX TYPE="PERCENT">0.01%</NUMEX> sodium <ENAMEX TYPE="SUBSTANCE">dodecyl</ENAMEX> sulfate
+          (<ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>).
+        
+        
+          Microarray production
+          Each gene was spotted <NUMEX TYPE="CARDINAL">6</NUMEX> times at various locations
+          across one of the <NUMEX TYPE="CARDINAL">four</NUMEX> subarrays printed on each glass
+          slide. <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was printed on poly-lysine coated slides using
+          a custom built robotic arrayer in the <ENAMEX TYPE="ORGANIZATION">TSRI</ENAMEX>'s DNA
+          <ENAMEX TYPE="ORGANIZATION">Microarray Core Facility</ENAMEX>. This <ENAMEX TYPE="FAC_DESC">facility</ENAMEX> houses a custom
+          made spotter built by <ENAMEX TYPE="PERSON">Robotic Labware Designs</ENAMEX> (<ENAMEX TYPE="GPE">Carlsbad</ENAMEX>,
+          CA). The arraying instrument was conceptually modeled
+          after that of <ENAMEX TYPE="PER_DESC">Dr.</ENAMEX> <ENAMEX TYPE="PERSON">Patrick Brown</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> at
+          <ENAMEX TYPE="ORGANIZATION">Stanford University</ENAMEX> (details can be obtained from:
+          <ENAMEX TYPE="CONTACT_INFO">http://cmgm.</ENAMEX><ENAMEX TYPE="ORGANIZATION">stanford</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/pbrown/array.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>). Spotting
+          <ENAMEX TYPE="PERSON">tips</ENAMEX> (<NUMEX TYPE="MONEY">CMPB2</NUMEX>) are purchased from <ENAMEX TYPE="ORGANIZATION">Telechem International</ENAMEX>
+          (<ENAMEX TYPE="GPE">San Jose</ENAMEX>, CA). Polylysine coated slides were prepared as
+          described in the <ENAMEX TYPE="PERSON">Brown</ENAMEX> lab website (see above).
+        
+        
+          Preparation of <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX> labeled cDNA
+          probes
+          Cy3 and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> -labeled cDNA probes were synthesized as
+          described in (<NUMEX TYPE="MONEY">14</NUMEX>) Briefly, <NUMEX TYPE="QUANTITY">2 μg</NUMEX> mRNA spiked with 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis RNA cocktail</ENAMEX> (described
+          below) at indicated amounts. mRNA was added to <NUMEX TYPE="QUANTITY">4 μg</NUMEX> of
+          <ENAMEX TYPE="ORGANIZATION">oligo</ENAMEX> (<NUMEX TYPE="MONEY">dT21</NUMEX>) primer (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>, <ENAMEX TYPE="GPE">Rockville</ENAMEX>, <ENAMEX TYPE="PRODUCT">MD</ENAMEX>),
+          <ENAMEX TYPE="SUBSTANCE">DEPC water</ENAMEX> was used to bring the volume to <NUMEX TYPE="QUANTITY">27 μl</NUMEX> and the
+          <ENAMEX TYPE="PERSON">mixture</ENAMEX> was incubated at <TIMEX TYPE="DATE">65°C</TIMEX> for <TIMEX TYPE="TIME">10 min</TIMEX> and placed on
+          <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX>. A reaction mixture consisting of mRNA, <NUMEX TYPE="ORDINAL">first</NUMEX>-strand
+          <ENAMEX TYPE="PERSON">buffer</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Life Technologies</ENAMEX>), <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> (<NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>), <ENAMEX TYPE="GPE">d</ENAMEX>(GAT)<ENAMEX TYPE="ORGANIZATION">TP</ENAMEX> (<NUMEX TYPE="CARDINAL">25</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">mM</ENAMEX>), dCTP (<NUMEX TYPE="MONEY">1 mM</NUMEX>), <NUMEX TYPE="CARDINAL">Cy3</NUMEX>-dCTP (<NUMEX TYPE="MONEY">2 mM</NUMEX>)(<ENAMEX TYPE="ORGANIZATION">Amersham</ENAMEX>, <ENAMEX TYPE="GPE">Piscataway</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>) and <ENAMEX TYPE="ORGANIZATION">Superscript</ENAMEX> <ENAMEX TYPE="PRODUCT">RT II</ENAMEX> (<NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX>) were added and
+          incubated at room temperature for <TIMEX TYPE="TIME">10 minutes</TIMEX> and then at
+          42°C for <TIMEX TYPE="TIME">2 hours</TIMEX>. The cDNA:mRNA <ENAMEX TYPE="ORG_DESC">hybrid</ENAMEX> was isolated on a
+          <ENAMEX TYPE="ORGANIZATION">Qiaquick PCR</ENAMEX> purification column (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>) and degraded
+          after addition of <NUMEX TYPE="QUANTITY">2.5 �</NUMEX>�l <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">N NaOH</ENAMEX> for <TIMEX TYPE="TIME">10 minutes</TIMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>.
+          After addition of <NUMEX TYPE="QUANTITY">2.5 �</NUMEX>�l <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">N Tris/HCl</ENAMEX> (pH <NUMEX TYPE="CARDINAL">7.5</NUMEX>), labeled
+          cDNA was concentrated by <ENAMEX TYPE="ORGANIZATION">ETOH</ENAMEX> precipitation and
+          <ENAMEX TYPE="ORGANIZATION">resuspended</ENAMEX> in <NUMEX TYPE="CARDINAL">2</NUMEX> μl <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="PER_DESC">Generation</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> subtilisRNA cocktail
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis clones</ENAMEX> containing
+          engineered polyA tails were purchased as plasmids from
+          <ENAMEX TYPE="ORGANIZATION">ATCC</ENAMEX> (<ENAMEX TYPE="GPE">Manassas</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">VA</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">ATCC</ENAMEX> No. <NUMEX TYPE="CARDINAL">pglbs</NUMEX>-lys, <ENAMEX TYPE="GPE">pglbs-phe</ENAMEX>,
+          pglbs-thr, <ENAMEX TYPE="GPE">pglbs-dap</ENAMEX>). Polyadenylated control <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was
+          prepared from these clones by in-vitro transcription of
+          linearized plasmids using the <ENAMEX TYPE="ORGANIZATION">AmpliScribe</ENAMEX> transcription
+          <ENAMEX TYPE="PERSON">kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Epicenter Technologies</ENAMEX>, <ENAMEX TYPE="GPE">Madison</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">WI</ENAMEX>) following the
+          <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>'s instructions. The 
+          <ENAMEX TYPE="PERSON">B. subtilis</ENAMEX> control cocktail
+          contained equal proportions (<ENAMEX TYPE="CONTACT_INFO">wt/wt</ENAMEX>) of each <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> species
+          and was spiked into cDNA reactions at <NUMEX TYPE="CARDINAL">125 pg/2</NUMEX> ug mRNA in
+          order to normalize <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX> signals after
+          <ENAMEX TYPE="PERSON">scanning</ENAMEX>.
+        
+        
+          Hybridization, image processing and
+          normalization
+          Resuspended probes were mixed with <NUMEX TYPE="QUANTITY">4 μl</NUMEX> of <NUMEX TYPE="CARDINAL">5</NUMEX> ×
+          hybridization buffer (<NUMEX TYPE="CARDINAL">20</NUMEX> × <ENAMEX TYPE="ORGANIZATION">SSX</ENAMEX>, <NUMEX TYPE="PERCENT">1%</NUMEX><ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>), <NUMEX TYPE="QUANTITY">1 �</NUMEX>�l human Cot-1
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">10 μg/μl</ENAMEX>), <NUMEX TYPE="QUANTITY">1 �</NUMEX>�l <ENAMEX TYPE="SUBSTANCE">polyA DNA</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2 μg/μl</ENAMEX>) (<ENAMEX TYPE="ORGANIZATION">Amersham</ENAMEX>) and <NUMEX TYPE="CARDINAL">8</NUMEX>
+          μl formamide (<ENAMEX TYPE="ORGANIZATION">Sigma</ENAMEX>, <ENAMEX TYPE="GPE">St. Louis</ENAMEX>, <ENAMEX TYPE="GPE">MO</ENAMEX>), heated to <NUMEX TYPE="QUANTITY">65°C</NUMEX> for <NUMEX TYPE="CARDINAL">2</NUMEX>
+          <ENAMEX TYPE="PERSON">min</ENAMEX> and then centrifuged briefly. Samples were hybridized
+          to a previously prepared microarray <TIMEX TYPE="TIME">overnight</TIMEX> at <NUMEX TYPE="ORDINAL">42°C</NUMEX> in
+          a humid <ENAMEX TYPE="FAC_DESC">chamber</ENAMEX> in the dark. Following hybridization,
+          slides were washed serially in <NUMEX TYPE="CARDINAL">2×</NUMEX> <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>, once in
+          <NUMEX TYPE="CARDINAL">2×</NUMEX> <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> and once in <NUMEX TYPE="CARDINAL">0.2×</NUMEX> <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> for <TIMEX TYPE="TIME">5 min</TIMEX> at room temperature
+          each. The slides were then air dried and scanned on a
+          ScanArray <TIMEX TYPE="DATE">5000</TIMEX> (<ENAMEX TYPE="ORGANIZATION">GSI Lumonics</ENAMEX>, <ENAMEX TYPE="GPE">Watertown</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX>) using the
+          appropriate excitation and emission filter wavelengths
+          for <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX>. Image files were analyzed using ImaGene
+          <NUMEX TYPE="MONEY">4.0</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Biodiscovery</ENAMEX>). Background subtracted fluorescence
+          intensities were normalized by dividing all signals on
+          the microarray by the median signal generated by the <NUMEX TYPE="CARDINAL">four</NUMEX>
+          
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis genes</ENAMEX> 
+          dap, lys, phe and 
+          <ENAMEX TYPE="ORGANIZATION">thr</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <TIMEX TYPE="DATE">96</TIMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX> × <NUMEX TYPE="CARDINAL">24</NUMEX>) [ <NUMEX TYPE="CARDINAL">29 30 31</NUMEX> ]
+          .; for reviews about current normalization strategies see
+          [ <NUMEX TYPE="CARDINAL">10 23</NUMEX> ] .
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> analysis
+          
+            Steps for construction of the <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves
+            <NUMEX TYPE="CARDINAL">1</NUMEX>: Divide the positive and negative control signals
+            arithmetically into an appropriate number of intervals
+            (<NUMEX TYPE="CARDINAL">e.g. 20-30</NUMEX>) with the resulting limits termed
+            <ENAMEX TYPE="ORGANIZATION">'thresholds'</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> ). Alternatively, each observed
+            measurement point (i.e. signal from positive and
+            negative controls) may be used as <ENAMEX TYPE="ORGANIZATION">Tj</ENAMEX>. (<ENAMEX TYPE="PERSON">Scott</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">DW</ENAMEX>; <TIMEX TYPE="DATE">1976</TIMEX>.
+            <ENAMEX TYPE="WORK_OF_ART">Nonparametric Probability Density Estimation by</ENAMEX>
+            <ENAMEX TYPE="PERSON">Optimization Theoretic Techniques</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Technical</ENAMEX> report
+            <ENAMEX TYPE="CONTACT_INFO">TR476-131-1,</ENAMEX>
+            <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX>stat.<ENAMEX TYPE="PERSON">rice</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/stat/techr.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>)
+            <NUMEX TYPE="CARDINAL">2</NUMEX>: <ENAMEX TYPE="PRODUCT">Specificity Sp</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">j and Sensitivity Se</ENAMEX> 
+            j obtained with each threshold value
+            <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">j</ENAMEX> are calculated as the proportion
+            of positive results in the positive and negative
+            results in the negative reference <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, respectively.
+            Note that these calculations are estimates of type I
+            and <ENAMEX TYPE="DISEASE">type II</ENAMEX> errors (equivalent to α and β errors) for
+            each threshold.
+            <NUMEX TYPE="CARDINAL">3</NUMEX>: Draw a ROC curve by plotting the false positive
+            rate or (<ENAMEX TYPE="CONTACT_INFO">100 - specificity</ENAMEX>) on the <ENAMEX TYPE="LAW">x-</ENAMEX>axis. The y-axis
+            shows the true positive rate or sensitivity. The area
+            under the <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> plot is an estimator of the
+            discriminatory power of selecting a cut-off and varies
+            from array to array. The area of the <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> plot was
+            calculated as the sum of
+            Area = <NUMEX TYPE="CARDINAL">Σ</NUMEX> {[α 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>) - (α 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>+<NUMEX TYPE="CARDINAL">1</NUMEX>) )]/ [<NUMEX TYPE="CARDINAL">1</NUMEX>-β 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>) ]}
+            where t(<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>) denotes the threshold n = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2,...22</NUMEX>, <ENAMEX TYPE="PER_DESC">α</ENAMEX> =
+            alpha error, and <ENAMEX TYPE="PER_DESC">β</ENAMEX>= beta error. (For a detailed
+            description of ROC-area calculation: [ <NUMEX TYPE="CARDINAL">15 16</NUMEX> ] ). A sum
+            of <NUMEX TYPE="CARDINAL">0.5</NUMEX> indicates that negative and positive test groups
+            cannot be distinguished. A <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curve representing a
+            parameter with no discrimination at all is a <NUMEX TYPE="CARDINAL">45°</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">diagonal</ENAMEX> line from the left lower corner (<NUMEX TYPE="PERCENT">0%</NUMEX> true
+            positive rate and <NUMEX TYPE="PERCENT">0%</NUMEX> false positive rate) to the upper
+            right corner (<NUMEX TYPE="PERCENT">100%</NUMEX> true positive rate and <NUMEX TYPE="PERCENT">100%</NUMEX> false
+            positive rate) with an area under the curve of <NUMEX TYPE="CARDINAL">0.5</NUMEX>. A
+            parameter with no overlap between the <NUMEX TYPE="CARDINAL">two</NUMEX> conditions
+            will discriminate perfectly and has an ROC curve
+            passing along the y-axis to the upper left corner (<NUMEX TYPE="PERCENT">100%</NUMEX>
+            true positive rate and <NUMEX TYPE="PERCENT">0%</NUMEX> false positive rate) to end
+            again in the upper right corner with an area under the
+            curve of <NUMEX TYPE="CARDINAL">1.0</NUMEX>. Software for <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> analysis is available
+            commercially or as spreadsheet calculation macros [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+            ] .
+          
+        
+      
+    
+  

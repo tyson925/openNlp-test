@@ -1,0 +1,457 @@
+
+  
+    
+      
+        Introduction
+        <NUMEX TYPE="CARDINAL">More than 35 million</NUMEX> HIV-infected <ENAMEX TYPE="PER_DESC">people</ENAMEX> live in developing <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> with significant
+        resource limitations. Although <NUMEX TYPE="CARDINAL">6 million</NUMEX> <ENAMEX TYPE="PER_DESC">people</ENAMEX> living in developing <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> are in
+        urgent need of antiretroviral therapy, <NUMEX TYPE="CARDINAL">only 700,000</NUMEX> currently receive effective treatment
+        [<ENAMEX TYPE="LAW">1</ENAMEX>]. Global treatment efforts, including the <ENAMEX TYPE="ORGANIZATION">World Health Organization</ENAMEX>'s
+        <ENAMEX TYPE="PRODUCT">â€œ3 by 5â€ Initiative</ENAMEX>, aim to extend therapy to <NUMEX TYPE="CARDINAL">several million</NUMEX>
+        <ENAMEX TYPE="PER_DESC">people</ENAMEX> over <TIMEX TYPE="DATE">the next few years</TIMEX> [<ENAMEX TYPE="LAW">2</ENAMEX>]. While the cost of <ENAMEX TYPE="SUBSTANCE">antiretroviral medications</ENAMEX> has
+        dropped considerably, other <ENAMEX TYPE="ORG_DESC">obstacles</ENAMEX>, including the cost, technical, and operational
+        requirements of <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts, viral loads, and other sophisticated diagnostic tests used to
+        initiate and monitor <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treatment, remain to be addressed.
+        In particular, measurements of CD4
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> <ENAMEX TYPE="PER_DESC">lymphocytes</ENAMEX> are essential for staging <ENAMEX TYPE="ORGANIZATION">HIV-infected</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>,
+        determining their need for <ENAMEX TYPE="SUBSTANCE">antiretroviral medications</ENAMEX>, and monitoring the course of their
+        infection [<ENAMEX TYPE="LAW">3</ENAMEX>]. The <ENAMEX TYPE="PRODUCT">CD4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">countâ€”expressed</ENAMEX> in <ENAMEX TYPE="PER_DESC">adults</ENAMEX> as the absolute number
+        of <ENAMEX TYPE="SUBSTANCE">CD4 cells</ENAMEX> per microliter of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, and in <ENAMEX TYPE="PER_DESC">children</ENAMEX> as a percentage of total lymphocytes
+        or total T lymphocytesâ€”has enormous prognostic and therapeutic
+        implications, and forms the basis for most <ENAMEX TYPE="DISEASE">HIV</ENAMEX> treatment decisions
+        [<NUMEX TYPE="CARDINAL">4â€“6</NUMEX>]. In developed <ENAMEX TYPE="GPE_DESC">countries</ENAMEX>, <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts are typically performed every
+        <TIMEX TYPE="DATE">three to six months</TIMEX> for each <ENAMEX TYPE="PER_DESC">patient</ENAMEX> using the method of flow cytometry. Flow cytometers
+        use lasers to excite fluorescent <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX> probes specific for <TIMEX TYPE="DATE">CD4</TIMEX> and other cell surface
+        markers, to distinguish <NUMEX TYPE="CARDINAL">one</NUMEX> type of lymphocyte from another. Several
+        factorsâ€”including the cost of a flow cytometer (which ranges from
+        <NUMEX TYPE="MONEY">$30,000 to $150,000</NUMEX>), technical and operational complexity, the need for reliable
+        electricity, and the high cost of <ENAMEX TYPE="SUBSTANCE">reagentsâ€”have</ENAMEX> made these instruments
+        <ENAMEX TYPE="PERSON">impractical</ENAMEX> and/or difficult to sustain in resource-scarce settings. The urgent need for
+        affordable and technically simple CD4 diagnostics is widely recognized
+        [<NUMEX TYPE="CARDINAL">7â€“11</NUMEX>].
+        Several efforts have been made to develop alternative, affordable CD4 counting methods
+        for resource-poor settings. Single-purpose flow cytometers have been designed solely for
+        counting CD4 cells, such as the <ENAMEX TYPE="ORGANIZATION">Becton Dickinson FACSCount</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">Partec CyFlow</ENAMEX>, and desktop
+        instruments from <ENAMEX TYPE="ORGANIZATION">Guava</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PointCare Technologies</ENAMEX>. Although these newer versions make flow
+        cytometry more affordable in some settings, reagent costs remain high, and the instruments
+        remain expensive and in most cases, technically complex [<NUMEX TYPE="CARDINAL">7â€“13</NUMEX>]. Low-cost
+        microbead separation of <NUMEX TYPE="CARDINAL">CD4</NUMEX> cells from other blood cells, followed by standard manual cell
+        counting techniques using a light microscope, offers significantly lower reagent costs than
+        flow cytometry. These methods, however, are low throughput and extremely labor intensive,
+        and appear to be less accurate than traditional flow cytometry; thus, they have not been
+        widely adopted [<NUMEX TYPE="CARDINAL">13â€“18</NUMEX>].
+        Less expensive CD4 counting methods that capitalize on low-cost microfabrication,
+        efficient light <ENAMEX TYPE="PER_DESC">sources</ENAMEX>, and affordable microelectronics and digital imaging <ENAMEX TYPE="ORG_DESC">hardware</ENAMEX> have
+        been conceptualized, but never realized [<NUMEX TYPE="CARDINAL">19,20</NUMEX>]. <NUMEX TYPE="CARDINAL">One</NUMEX> of us (JTM) has previously reported
+        the development of a novel microchip-based detection system for measuring analytes such as
+        <ENAMEX TYPE="PERSON">acids</ENAMEX>, <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>, electrolytes, and <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in solution phase [<NUMEX TYPE="CARDINAL">21â€“23</NUMEX>]. This
+        electronic taste chip (<ENAMEX TYPE="ORGANIZATION">ETC</ENAMEX>) system carries out chemical and immunological reactions on
+        <ENAMEX TYPE="ORGANIZATION">microspheres</ENAMEX> positioned in the inverted pyramidal microchamber <ENAMEX TYPE="FAC_DESC">wells</ENAMEX> of a silicon or
+        plastic microchip, which is housed in a miniature flow cell. <ENAMEX TYPE="ORGANIZATION">Microfluidic</ENAMEX> channels deliver
+        a series of small-volume reagents and washes to the flow cell, and hence to the chip and to
+        each <NUMEX TYPE="CARDINAL">one</NUMEX> of the microspheres. Optical signals generated by the reactions on the
+        microspheres are visualized and captured on a charge-coupled device (<ENAMEX TYPE="PRODUCT">CCD</ENAMEX>) with the use of
+        transfer optics and a digital video chip. Using the <ENAMEX TYPE="PRODUCT">ETC</ENAMEX> system, complex immunological
+        assays, such as the ones developed to quantify cardiac risk factors in serum, can be
+        performed with small sample volumes, short analysis times, and markedly reduced reagent
+        costs [<TIMEX TYPE="DATE">22</TIMEX>].
+        Further development of the <ENAMEX TYPE="PRODUCT">ETC</ENAMEX> system has shown that it could be adapted to the
+        detection of <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, spores, and living cells [<TIMEX TYPE="DATE">24</TIMEX>]. We hypothesized that additional
+        modifications could be made to provide accurate, low-cost CD4 counts to monitor <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX>
+        infection in resource-constrained settings. We show that a microchip-based <ENAMEX TYPE="ORG_DESC">system</ENAMEX> can
+        perform CD4 counts from <NUMEX TYPE="QUANTITY">16.5 Î¼l</NUMEX> of whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> rapidly, simply, and with a high
+        degree of accuracy compared to flow cytometry, particularly for <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts
+        <ENAMEX TYPE="CONTACT_INFO">below 500 cells/Î¼l.</ENAMEX> We suggest how this prototype system can be readily
+        developed as a low-cost, portable device for use in resource-poor settings.
+      
+      
+        Methods
+        
+          Flow Cell
+          The <ENAMEX TYPE="PRODUCT">ETC</ENAMEX> system was originally designed for microsphere-based assays
+          [<NUMEX TYPE="CARDINAL">21â€“23</NUMEX>]. The modified version of the flow cell (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>) is
+          enclosed within a <NUMEX TYPE="CARDINAL">three</NUMEX>-piece metal casing with a flat platform permanently affixed to a
+          circular vertical support, which is in turn connected to a screw-on cap. Within the metal
+          casing there are top and bottom plastic inserts made from <ENAMEX TYPE="ORGANIZATION">PMMA</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">Fluids</ENAMEX> are introduced to
+          and drained out of the flow cell through integrated stainless <ENAMEX TYPE="SUBSTANCE">steel</ENAMEX> tubing within the
+          inserts. The bottom PMMA insert also features a plastic screen disc that acts as a
+          support for a <ENAMEX TYPE="PRODUCT">3-Î¼m Nuclepore</ENAMEX> polycarbonate, track-etch filter (<ENAMEX TYPE="ORGANIZATION">Whatman</ENAMEX>,
+          <ENAMEX TYPE="FAC">Florham Park</ENAMEX>, <ENAMEX TYPE="GPE">New Jersey</ENAMEX>, <ENAMEX TYPE="GPE">United States</ENAMEX>), which serves as a lymphocyte capture and red
+          blood cell separation <ENAMEX TYPE="FAC_DESC">membrane</ENAMEX>. A gasket between the membrane and the top insert prevents
+          leaks and ensures that the entire sample is delivered into the flow cell and filtered
+          through the membrane. The top outlet is used with <ENAMEX TYPE="DISEASE">lateral</ENAMEX> flow for the removal of air
+          <ENAMEX TYPE="PERSON">bubbles</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Fluid Delivery System</ENAMEX>
+          In initial studies, we used a single <ENAMEX TYPE="ORG_DESC">peristaltic</ENAMEX> pump to deliver sample and washes to
+          the flow cell. Subsequently, a partially automated fluid delivery system was developed.
+          This functional adaptation uses <NUMEX TYPE="CARDINAL">two</NUMEX> miniature <ENAMEX TYPE="ORGANIZATION">OEM</ENAMEX> peristaltic pumps, each in conjunction
+          with a pinch valve, and <NUMEX TYPE="CARDINAL">0.031</NUMEX>-in. (<NUMEX TYPE="MONEY">0.79</NUMEX><ENAMEX TYPE="PRODUCT">-mm</ENAMEX>) silicone <ENAMEX TYPE="SUBSTANCE">tubing</ENAMEX> capable of delivering flow
+          rates of <ENAMEX TYPE="CONTACT_INFO">46â€“920 Î¼l/min</ENAMEX> to the flow cell. Integrated
+          software (<ENAMEX TYPE="ORGANIZATION">LabVIEW</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">National Instruments</ENAMEX>, <ENAMEX TYPE="GPE">Austin</ENAMEX>, <ENAMEX TYPE="GPE">Texas</ENAMEX>, <ENAMEX TYPE="GPE">United States</ENAMEX>) directs delivery
+          of whole <ENAMEX TYPE="SUBSTANCE">blood samples</ENAMEX> and washes to the flow cell using the appropriate pumps and
+          valves. Sample filtrate, including red blood cells, is captured in a waste reservoir.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Optical Station</ENAMEX> and <ENAMEX TYPE="PERSON">Image Capture</ENAMEX>
+          The flow cell was positioned on the stage of a modified BX2 <ENAMEX TYPE="PERSON">Olympus</ENAMEX> (<ENAMEX TYPE="GPE">Tokyo</ENAMEX>, <ENAMEX TYPE="GPE">Japan</ENAMEX>)
+          compound microscope equipped with a <NUMEX TYPE="CARDINAL">10Ã�</NUMEX>�� objective lens and a high-pressure
+          <NUMEX TYPE="CARDINAL">100</NUMEX> W mercury burner arc lamp as a light <ENAMEX TYPE="PER_DESC">source</ENAMEX>. Focusing was maintained on a fixed plane
+          throughout the duration of the assay. Visualization of <ENAMEX TYPE="GPE">AlexaFluor</ENAMEX>-<NUMEX TYPE="CARDINAL">647</NUMEX>-stained lymphocytes
+          was achieved using a <NUMEX TYPE="QUANTITY">Cy5 filter cube</NUMEX> (<NUMEX TYPE="CARDINAL">620</NUMEX> nm excitation, <NUMEX TYPE="QUANTITY">660 nm long-</NUMEX>pass beam splitter
+          dichroic mirror, and <NUMEX TYPE="CARDINAL">700</NUMEX> nm emission), while AlexaFluor-<NUMEX TYPE="CARDINAL">488</NUMEX>-stained lymphocytes were
+          visualized with a fluoroisothiocyanate (FITC) filter <NUMEX TYPE="QUANTITY">cube</NUMEX> (<NUMEX TYPE="CARDINAL">480</NUMEX> nm excitation, <NUMEX TYPE="CARDINAL">505</NUMEX> nm
+          long-pass beam splitter dichroic mirror, and <NUMEX TYPE="CARDINAL">535</NUMEX> Â± <NUMEX TYPE="CARDINAL">25</NUMEX> nm emission). For each
+          study <ENAMEX TYPE="PER_DESC">participant</ENAMEX>, images were obtained from each of <NUMEX TYPE="CARDINAL">five</NUMEX> nonoverlapping regions of the
+          lymphocyte capture membrane in the flow cell, using a <NUMEX TYPE="QUANTITY">12-bit</NUMEX> <ENAMEX TYPE="PRODUCT">CCD</ENAMEX> digital camera (<ENAMEX TYPE="ORGANIZATION">DVC</ENAMEX>,
+          <ENAMEX TYPE="GPE">Austin</ENAMEX>, <ENAMEX TYPE="GPE">Texas</ENAMEX>, <ENAMEX TYPE="GPE">United States</ENAMEX>) mounted on the microscope. Each imaged region represented
+          <NUMEX TYPE="QUANTITY">0.18 Î¼l</NUMEX> of whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, so that for each assay, cells were counted from a
+          total volume of <NUMEX TYPE="QUANTITY">0.9 Î¼l</NUMEX> of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>. Each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> was imaged serially with both
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> cubes. The corresponding images were stored separately <NUMEX TYPE="QUANTITY">as monochromatic eight-bit</NUMEX>
+          images for subsequent digital image analysis and automated cell counting.
+        
+        
+          Image <ENAMEX TYPE="ORGANIZATION">Analysis</ENAMEX>
+          Images were analyzed using a custom algorithm supported by <ENAMEX TYPE="EVENT">Image-Pro Plus</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Media</ENAMEX>
+          Cybernetics, <ENAMEX TYPE="GPE">Silver Spring</ENAMEX>, <ENAMEX TYPE="GPE">Maryland</ENAMEX>, <ENAMEX TYPE="GPE">United States</ENAMEX>) processing software. An iterative
+          approach allowed for flexible analysis of data acquired under different conditions of
+          <ENAMEX TYPE="PERSON">illumination</ENAMEX>, focus, and sampling. For each iteration, an upper and lower value defined a
+          range of green or red intensities that were then used to segment the image. <ENAMEX TYPE="PER_DESC">Pixels</ENAMEX> whose
+          intensity values fell within the defined range were reassigned values of <NUMEX TYPE="CARDINAL">one</NUMEX>, while all
+          others were set to <NUMEX TYPE="CARDINAL">zero</NUMEX>. The process yielded a binary version of the original <NUMEX TYPE="QUANTITY">eight-bit</NUMEX>
+          image. A lymphocyte selection algorithm was then applied. <ENAMEX TYPE="PERSON">Objects</ENAMEX> (i.e., lymphocytes)
+          were defined as contiguous <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of pixels with values of <NUMEX TYPE="CARDINAL">one</NUMEX>. Object selection was
+          refined by a lymphocyte profile (defined by size, aspect ratio, and uniformity); objects
+          not fitting the profile were not counted. The number of counted objects was recorded for
+          each iteration. From <NUMEX TYPE="CARDINAL">one</NUMEX> iteration to the next, the upper and lower intensity limits used
+          to segment the image were both increased by a single intensity count. The final cell
+          count per image was the maximum object count <NUMEX TYPE="MONEY">over 256 iterations</NUMEX> (upper intensity limits
+          <ENAMEX TYPE="CONTACT_INFO">1â†’255</ENAMEX>) for which the average object roundness fell below a threshold
+          value. In this manner, the software <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> determined the optimal analysis parameters
+          for each image individually, greatly relaxing the stringency of image capture
+          requirements. Cell counts were recorded in a spreadsheet as numbers of CD4
+          + CD3
+          <ENAMEX TYPE="PERSON">âˆ’</ENAMEX> , CD4
+          + CD3
+          <ENAMEX TYPE="PERSON">+</ENAMEX> , CD4
+          <ENAMEX TYPE="CONTACT_INFO">âˆ’</ENAMEX> CD3
+          <ENAMEX TYPE="PERSON">+</ENAMEX> , CD8
+          + CD3
+          <ENAMEX TYPE="PERSON">âˆ’</ENAMEX> , CD8
+          + CD3
+          <ENAMEX TYPE="PERSON">+</ENAMEX> , CD8
+          <ENAMEX TYPE="CONTACT_INFO">âˆ’</ENAMEX> CD3
+          <ENAMEX TYPE="PERSON">+</ENAMEX> , and CD4
+          + CD8
+          + cells, depending on the combination of <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> used. Absolute CD4
+          counts were recorded as the summed number of CD4
+          + CD3
+          + cells counted <NUMEX TYPE="CARDINAL">over five</NUMEX> images, normalized per microliter of imaged
+          <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>. CD4:CD8 ratios were recoded as the ratio of CD4
+          + CD3
+          + cells to CD8
+          + CD3
+          + cells counted <NUMEX TYPE="CARDINAL">over five</NUMEX> images. <ENAMEX TYPE="PRODUCT">Relative CD4</ENAMEX> abundance as a
+          percentage of total T lymphocytes was recorded as <NUMEX TYPE="CARDINAL">100</NUMEX> times the ratio of CD4
+          + CD3
+          + cells to total CD3
+          + cells, with cells counted <NUMEX TYPE="CARDINAL">over five</NUMEX> images.
+        
+        
+          <ENAMEX TYPE="PERSON">Lymphocyte Staining</ENAMEX> and Delivery
+          Antibodies utilized in these studies were stored at <NUMEX TYPE="CARDINAL">4</NUMEX> Â°C and centrifuged to
+          remove precipitated material prior to use. This process ensured removal of fluorescent
+          particulate matter that could be captured by the membrane and might interfere with
+          <ENAMEX TYPE="ORGANIZATION">imaging</ENAMEX>. For the initial dilution control studies, <NUMEX TYPE="CARDINAL">CD4</NUMEX> cells were purified by
+          immunomagnetic separation from <ENAMEX TYPE="PER_DESC">donor</ENAMEX> buffy coats. CD4 cells labeled with
+          AlexaFluor-<NUMEX TYPE="CARDINAL">488</NUMEX>-conjugated anti-CD4 <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> (<ENAMEX TYPE="PRODUCT">A21335</ENAMEX>, clone
+          <NUMEX TYPE="CARDINAL">289â€“14120</NUMEX>, <ENAMEX TYPE="PERSON">Molecular Probes</ENAMEX>, <ENAMEX TYPE="PERSON">Eugene</ENAMEX>, <ENAMEX TYPE="GPE">Oregon</ENAMEX>, <ENAMEX TYPE="GPE">United States</ENAMEX>) were
+          introduced to the flow <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> in amounts ranging from <NUMEX TYPE="CARDINAL">zero</NUMEX> to <NUMEX TYPE="CARDINAL">200,000</NUMEX> cells, and washed
+          with <ENAMEX TYPE="DISEASE">phosphate buffered saline</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>). For whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> studies, <NUMEX TYPE="QUANTITY">33 Î¼l</NUMEX> of whole
+          blood collected by venipuncture was incubated at ambient temperature
+          (<ENAMEX TYPE="CONTACT_INFO">20â€“25 Â°C</ENAMEX>) with <NUMEX TYPE="QUANTITY">3 Î¼l</NUMEX> of <ENAMEX TYPE="PRODUCT">AlexaFluor-488-</ENAMEX> and
+          AlexaFluor-<NUMEX TYPE="CARDINAL">647</NUMEX>-conjugated <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> to <TIMEX TYPE="DATE">CD4 and CD3</TIMEX> (<ENAMEX TYPE="PRODUCT">A21332</ENAMEX>, clone
+          <NUMEX TYPE="CARDINAL">289â€“13801</NUMEX>, <ENAMEX TYPE="PERSON">Molecular Probes</ENAMEX>), respectively, and allowed to react for <NUMEX TYPE="CARDINAL">8</NUMEX>
+          <ENAMEX TYPE="PERSON">min. Similarly</ENAMEX>, for <TIMEX TYPE="DATE">CD8</TIMEX> enumeration, <NUMEX TYPE="QUANTITY">33 Î¼l</NUMEX> of whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> with <NUMEX TYPE="QUANTITY">3 Î�</NUMEX>�l
+          of <ENAMEX TYPE="PRODUCT">AlexaFluor-488- and AlexaFluor-647-</ENAMEX><ENAMEX TYPE="SUBSTANCE">conjugated antibodies</ENAMEX> to CD8 (<ENAMEX TYPE="PRODUCT">A21340</ENAMEX>, clone
+          <NUMEX TYPE="CARDINAL">289â€“13804</NUMEX>, <ENAMEX TYPE="PERSON">Molecular Probes</ENAMEX>) and <ENAMEX TYPE="PRODUCT">CD3</ENAMEX>, respectively, was allowed to
+          react for <TIMEX TYPE="TIME">8 min</TIMEX> at ambient temperature. Stained <ENAMEX TYPE="SUBSTANCE">blood samples</ENAMEX> were brought up to <NUMEX TYPE="CARDINAL">1,000</NUMEX>
+          Î¼l with <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, <NUMEX TYPE="CARDINAL">half</NUMEX> of which was introduced directly into the flow cell
+          (representing <NUMEX TYPE="CARDINAL">16.5</NUMEX> Î¼l of the original sample of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>) and then washed with <NUMEX TYPE="CARDINAL">1</NUMEX>
+          ml of <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>. Because red blood cells are mechanically separated from white blood cells, red
+          blood cell lysis is not necessary. Images of labeled cells captured on the membrane were
+          obtained and analyzed as described above. For <ENAMEX TYPE="ORGANIZATION">SEM</ENAMEX> (scanning electron microscopy), a
+          <ENAMEX TYPE="ORGANIZATION">fixative</ENAMEX> (<NUMEX TYPE="PERCENT">2% paraformaldehyde/2.5%</NUMEX> glutaraldehyde) was added into the flow cell and
+          rinsed with <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>. The filter was removed from the flow cell, fixed for <TIMEX TYPE="DATE">90</TIMEX> s with OsO
+          <NUMEX TYPE="CARDINAL">4</NUMEX> vapor, and then dehydrated with <ENAMEX TYPE="ORGANIZATION">EtOH/HMDS</ENAMEX>. The same SEM protocol was
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to a drop of whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> on a glass slide.
+        
+        
+          Study <ENAMEX TYPE="WORK_OF_ART">Participants and Comparison to Flow</ENAMEX> Cytometry
+          <ENAMEX TYPE="SUBSTANCE">Blood</ENAMEX> was obtained from HIV-1-uninfected control <ENAMEX TYPE="PER_DESC">participants</ENAMEX> and HIV-infected
+          <ENAMEX TYPE="PER_DESC">participants</ENAMEX> at the <ENAMEX TYPE="ORGANIZATION">Massachusetts General Hospital</ENAMEX> in <ENAMEX TYPE="GPE">Boston</ENAMEX>, <ENAMEX TYPE="GPE">Massachusetts</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">United</ENAMEX>
+          <ENAMEX TYPE="GPE_DESC">States</ENAMEX>, and from <ENAMEX TYPE="ORGANIZATION">HIV-infected</ENAMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX> at the <ENAMEX TYPE="ORGANIZATION">Botswana�</ENAMEX>�€“Harvard
+          <ENAMEX TYPE="ORGANIZATION">AIDS Institute HIV Reference Laboratory</ENAMEX> in <ENAMEX TYPE="GPE">Gaborone</ENAMEX>, <ENAMEX TYPE="GPE">Botswana</ENAMEX>. The <ENAMEX TYPE="GPE">Botswana</ENAMEX> samples
+          originated from a study of <ENAMEX TYPE="ORGANIZATION">HIV-infected</ENAMEX> pregnant <ENAMEX TYPE="PER_DESC">women</ENAMEX> attending
+          maternalâ€“child health <ENAMEX TYPE="ORG_DESC">clinics</ENAMEX> in <ENAMEX TYPE="GPE">Gaborone</ENAMEX> or <NUMEX TYPE="CARDINAL">three</NUMEX> nearby <ENAMEX TYPE="GPE_DESC">villages</ENAMEX>,
+          Molepolole, <ENAMEX TYPE="GPE">Mochudi</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Lobatse</ENAMEX>. <NUMEX TYPE="CARDINAL">Six</NUMEX> <ENAMEX TYPE="PER_DESC">infants</ENAMEX> were also included in the study. <TIMEX TYPE="TIME">Three</TIMEX>
+          milliliters of venous whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> was collected from each <ENAMEX TYPE="PER_DESC">participant</ENAMEX> (in EDTA
+          <ENAMEX TYPE="ORGANIZATION">anticoagulant</ENAMEX>). All <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were run on the microchip on <TIMEX TYPE="DATE">the day</TIMEX> of blood collection.
+          <ENAMEX TYPE="SUBSTANCE">Parallel samples</ENAMEX> were processed using standard four-color flow cytometry on a <ENAMEX TYPE="ORGANIZATION">Becton</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Dickinson FACSCalibur</ENAMEX>, using the <ENAMEX TYPE="ORGANIZATION">MultiTEST</ENAMEX> reagents and <ENAMEX TYPE="ORGANIZATION">TruCOUNT</ENAMEX> beads, and analyzed
+          using <ENAMEX TYPE="PRODUCT">MultiSET</ENAMEX> software. All <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were processed by flow cytometry according to
+          standard operating procedure in the <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> reference <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> in <ENAMEX TYPE="GPE">Botswana</ENAMEX>. The majority
+          were processed within <NUMEX TYPE="QUANTITY">24 h</NUMEX> of blood collection, and all were processed and analyzed
+          within <NUMEX TYPE="QUANTITY">72 h</NUMEX> of blood collection. A total of <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX> were enrolled, including <NUMEX TYPE="CARDINAL">64</NUMEX>
+          <ENAMEX TYPE="PER_DESC">adults</ENAMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">infants</ENAMEX>. <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="PER_DESC">adults</ENAMEX> did not have flow cytometry results available,
+          leaving <NUMEX TYPE="CARDINAL">67</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX> for analysis. The study was approved by the institutional review
+          boards of the participating <ENAMEX TYPE="ORG_DESC">institutions</ENAMEX>. For a preliminary assessment of assay
+          variability, <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> from a single study <ENAMEX TYPE="ORG_DESC">participant</ENAMEX> was assayed as described above <NUMEX TYPE="CARDINAL">20</NUMEX>
+          separate times over the course of a single <TIMEX TYPE="TIME">afternoon</TIMEX> by a single <ENAMEX TYPE="ORG_DESC">operator</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Statistical Methods</ENAMEX>
+          The accuracy of the microchip-based CD4 counting system was determined by comparing
+          results directly to parallel samples processed by flow cytometry using
+          <ENAMEX TYPE="PERSON">Passingâ€“Bablok</ENAMEX> regression analysis and the
+          Blandâ€“Altman methods comparisons approach [<NUMEX TYPE="CARDINAL">25,26</NUMEX>]. For assay
+          reproducibility, a coefficient of variance was calculated from <NUMEX TYPE="CARDINAL">20</NUMEX> replicates of a single
+          <ENAMEX TYPE="PER_DESC">participant</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were analyzed and processed using <ENAMEX TYPE="ORGANIZATION">Analyse</ENAMEX>-It software (<ENAMEX TYPE="NATIONALITY">Analyse</ENAMEX>-It
+          Software, <ENAMEX TYPE="ORGANIZATION">Leeds</ENAMEX>, <ENAMEX TYPE="GPE">United Kingdom</ENAMEX>).
+        
+      
+      
+        Results
+        In initial experiments using the original ETC system [<NUMEX TYPE="CARDINAL">21â€“23</NUMEX>],
+        microspheres were coated with <ENAMEX TYPE="SUBSTANCE">monoclonal antibodies</ENAMEX> to the lymphocyte surface <ENAMEX TYPE="SUBSTANCE">markers CD3</ENAMEX>,
+        CD4, or <TIMEX TYPE="DATE">CD8</TIMEX>, followed by microfluidic delivery of <ENAMEX TYPE="PER_DESC">fluorescently</ENAMEX> labeled lymphocytes from
+        whole blood obtained from non-HIV-infected <ENAMEX TYPE="PER_DESC">participants</ENAMEX>. Although lymphocytes were readily
+        captured, precise quantification of cell numbers and <NUMEX TYPE="ORDINAL">CD4</NUMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> counts were not possible
+        using the microsphere as a surface for lymphocyte capture (data not shown). We next
+        modified the flow cells with a disposable, microporous membrane filter for lymphocyte
+        capture. A single polycarbonate, track-etch membrane with <NUMEX TYPE="QUANTITY">3-Î�</NUMEX>�m pores was
+        <ENAMEX TYPE="ORGANIZATION">immobilized</ENAMEX> and secured within the flow cell, creating a lymphocyte capture surface with a
+        surface area of <NUMEX TYPE="CARDINAL">80</NUMEX> mm
+        <NUMEX TYPE="CARDINAL">2</NUMEX> . Whole <ENAMEX TYPE="SUBSTANCE">blood samples</ENAMEX> were delivered to the flow cell from a sample
+        reservoir tube, and the membrane within the flow cell was washed with <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> from a second
+        reservoir. As in the original ETC system, cells were imaged under fluorescence optics using
+        a mercury arc lamp light <ENAMEX TYPE="PER_DESC">source</ENAMEX> and a <ENAMEX TYPE="PRODUCT">CCD</ENAMEX> camera (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        To confirm that cells could be adequately captured, <NUMEX TYPE="QUANTITY">33 Î¼l</NUMEX> of unprocessed
+        whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> from non-HIV-infected <ENAMEX TYPE="PER_DESC">participants</ENAMEX> was incubated for <TIMEX TYPE="TIME">8 min</TIMEX> with
+        fluorophore-conjugated anti-CD4 <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX>, and delivered by a peristaltic pump to the
+        modified microfluidics chip. Red blood cells passed readily through the pores under
+        appropriate fluid flow conditions. In contrast, the majority of white blood cells were
+        captured onto a single imaging focal <ENAMEX TYPE="PRODUCT_DESC">plane</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). This mechanical separation of
+        <ENAMEX TYPE="ORGANIZATION">autofluorescent</ENAMEX> red blood cells allows for the imaging and counting of white blood cells
+        from unprocessed whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> without additional sample processing, such as centrifugation
+        or red blood cell lysis. Using the digital imaging system originally developed for
+        <ENAMEX TYPE="GPE">microsphere</ENAMEX>-based capture in the <ENAMEX TYPE="PRODUCT">ETC</ENAMEX> system, <ENAMEX TYPE="PER_DESC">fluorescently</ENAMEX> labeled white blood cells can
+        then be imaged directly on the chip and counted.
+        To assess the analytical validity of the membrane-based microchip system, we first
+        performed a dilution control study to evaluate the correlation between total fluorescence
+        intensity and the absolute number of <ENAMEX TYPE="SUBSTANCE">purified CD4 cells</ENAMEX> from non-HIV-infected <ENAMEX TYPE="PER_DESC">participants</ENAMEX>
+        (labeled with fluorophore-conjugated anti-CD4 <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX>) captured in the microchamber. The
+        results show a linear correlation between the number of cells in the sample and the
+        intensity of light emitted from the membrane filter (
+        R
+        <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">0.999</NUMEX>) for a range of <ENAMEX TYPE="FAC">CD4</ENAMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> counts relevant to advanced <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">disease</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">0â€“200 CD4 cells/Î�</ENAMEX>�l <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>) (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). This
+        <ENAMEX TYPE="ORGANIZATION">doseâ€“response</ENAMEX> study established proof of the concept that a modified
+        microfluidic flow cell and a digital image analysis system can accurately detect and
+        measure <ENAMEX TYPE="PER_DESC">populations</ENAMEX> of whole <ENAMEX TYPE="SUBSTANCE">blood lymphocytes</ENAMEX> labeled with fluorescent markers.
+        We next quantified the percentages of <TIMEX TYPE="DATE">CD3</TIMEX>, <TIMEX TYPE="DATE">CD4</TIMEX>, and <NUMEX TYPE="ORDINAL">CD8</NUMEX> <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in whole <ENAMEX TYPE="SUBSTANCE">blood samples</ENAMEX>
+        from healthy control <ENAMEX TYPE="PER_DESC">participants</ENAMEX> using this system. Prior to delivery to the flow cell, we
+        labeled a <NUMEX TYPE="QUANTITY">33-Î�</NUMEX>�l whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> sample with <NUMEX TYPE="QUANTITY">3 Î¼l</NUMEX> of
+        fluorophore-conjugated anti-<NUMEX TYPE="CARDINAL">CD3</NUMEX> and anti-CD4 <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> for <NUMEX TYPE="QUANTITY">8 min</NUMEX> off chip, then diluted
+        the sample with <NUMEX TYPE="QUANTITY">961 Î¼l</NUMEX> of <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, and delivered <NUMEX TYPE="CARDINAL">500</NUMEX> Î¼l of the resulting
+        sample (containing <NUMEX TYPE="QUANTITY">16.5 Î¼l</NUMEX> of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>) to the flow cell using a fluidics
+        controller. <ENAMEX TYPE="ORGANIZATION">Digital</ENAMEX> images from one region of the lymphocyte capture membrane were obtained
+        with <NUMEX TYPE="CARDINAL">two</NUMEX> different emission filters, <NUMEX TYPE="CARDINAL">one</NUMEX> specific for the <ENAMEX TYPE="PRODUCT">AlexaFluor-488-</ENAMEX>conjugated
+        <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX> used to stain CD4
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> lymphocytes green (Figure <NUMEX TYPE="CARDINAL">4A</NUMEX>), and the other specific for the
+        AlexaFluor-<NUMEX TYPE="CARDINAL">647</NUMEX>-conjugated <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX> used to stain CD3
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> lymphocytes red (Figure <NUMEX TYPE="CARDINAL">4B</NUMEX>). Automated digital merging of the two
+        images and image processing allowed the system to distinguish the CD3
+        + CD4
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> lymphocytes of interest (i.e., â€œCD4
+        <ENAMEX TYPE="ORGANIZATION">cellsâ€</ENAMEX>), which appear yellow, from the CD4
+        + CD3
+        <ENAMEX TYPE="SUBSTANCE">âˆ’ monocytes</ENAMEX> (green) and the CD3
+        + CD4
+        <ENAMEX TYPE="ORGANIZATION">âˆ’ T</ENAMEX> lymphocytes (red) (Figure <NUMEX TYPE="CARDINAL">4C</NUMEX>).
+        We next developed a custom algorithm for translating these digital images into accurate
+        CD4 and <ENAMEX TYPE="ORGANIZATION">CD8 T</ENAMEX> cell counts using pixel analysis with the aid of a commercial image
+        processing package. Automated counting of the <NUMEX TYPE="CARDINAL">three</NUMEX> subsets of cells was based on object
+        size, aspect ratio, and uniformity, iterated across the range of color intensity levels. As
+        shown in Figure <TIMEX TYPE="DATE">4D</TIMEX>, a binary mask first removes the unwanted cell types, and residual
+        <ENAMEX TYPE="PER_DESC">objects</ENAMEX> representing <ENAMEX TYPE="ORGANIZATION">CD4 T</ENAMEX> cells are counted. A similar protocol was applied to a second
+        aliquot of blood stained with <ENAMEX TYPE="PRODUCT">AlexaFluor-647-conjugated CD3</ENAMEX>-specific <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX> and
+        <ENAMEX TYPE="CONTACT_INFO">AlexaFluor-488-conjugated</ENAMEX> CD8-specific <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX> to visualize and count CD3
+        + CD8
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> lymphocytes.
+        In order to calculate an absolute <NUMEX TYPE="ORDINAL">CD4</NUMEX> count with standard flow cytometry, one of <NUMEX TYPE="CARDINAL">two</NUMEX>
+        measures must be undertaken to calculate a concentration in cells per microliter. Either a
+        standardized reference reagent, such as calibration beads at a known concentration, can be
+        added to the assay (â€œsingle-platformâ€ flow cytometry), or an
+        absolute total lymphocyte count in cells per microliter can be obtained on a hematology
+        <ENAMEX TYPE="CONTACT_INFO">analyzer (â€œdual-platform�</ENAMEX>�€ flow cytometry). The microchip
+        assay we describe here uses a direct volumetric method and functions as a single-platform
+        approach. By delivering a consistent volume of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> to the flow chamber (<NUMEX TYPE="CARDINAL">16.5</NUMEX>
+        Î¼l of stained whole <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, diluted to a total volume of <NUMEX TYPE="QUANTITY">500 Î¼l</NUMEX> of
+        <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>), and calculating the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> volume of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> per digital image (<NUMEX TYPE="QUANTITY">0.18 Î¼l</NUMEX>), we
+        were able to count the total number of CD4
+        + CD3
+        + cells in <NUMEX TYPE="QUANTITY">0.9 Î¼l</NUMEX> of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, and determine the absolute CD4
+        count per microliter.
+        We next tested this rapid, whole <ENAMEX TYPE="SUBSTANCE">blood microchip assay</ENAMEX> in a series of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> acquired
+        in an <ENAMEX TYPE="DISEASE">HIV</ENAMEX> reference <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> in <ENAMEX TYPE="GPE">Botswana</ENAMEX>. <TIMEX TYPE="DATE">Seventy consecutive</TIMEX> HIV-infected <ENAMEX TYPE="PER_DESC">participants</ENAMEX>
+        presenting to the <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> reference laboratory for standard CD4 counting as part of a vertical
+        <ENAMEX TYPE="ORGANIZATION">transmission</ENAMEX> study were enrolled, of whom <NUMEX TYPE="CARDINAL">64</NUMEX> were adult <ENAMEX TYPE="PER_DESC">women</ENAMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> were <ENAMEX TYPE="PER_DESC">infants</ENAMEX>.
+        <ENAMEX TYPE="SUBSTANCE">Parallel samples</ENAMEX> were processed by standard four-color flow cytometry on a <ENAMEX TYPE="ORGANIZATION">Becton Dickinson</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">FACSCalibur</ENAMEX>. The time from blood collection to complete analysis and results reporting
+        using the chip-based assay was <NUMEX TYPE="QUANTITY">approximately 15 min</NUMEX> per sample. <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="PER_DESC">adult participants</ENAMEX>
+        did not have valid flow cytometry results available, leaving <NUMEX TYPE="CARDINAL">61</NUMEX> <ENAMEX TYPE="PER_DESC">adults</ENAMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">infants</ENAMEX> for
+        analysis.
+        Representative processed data images from <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">adult women</ENAMEX> and one
+        <ENAMEX TYPE="PERSON">infant</ENAMEX>, are shown in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. Figure <NUMEX TYPE="CARDINAL">5A</NUMEX> shows a <NUMEX TYPE="ORDINAL">31-y</NUMEX>-old <ENAMEX TYPE="PER_DESC">woman</ENAMEX> with an absolute <NUMEX TYPE="ORDINAL">CD4</NUMEX> count
+        by flow cytometry of <NUMEX TYPE="CARDINAL">83</NUMEX> cells/<ENAMEX TYPE="DISEASE">Î¼l</ENAMEX>. While numerous CD3
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> cells (red) are present as well as scattered monocytes (green), her
+        low <NUMEX TYPE="ORDINAL">CD4</NUMEX> count is reflected in the few double-labeled CD3
+        + CD4
+        <ENAMEX TYPE="ORGANIZATION">+ T</ENAMEX> cells (yellow) seen in the image. Similar representative data images
+        from a young <ENAMEX TYPE="PER_DESC">woman</ENAMEX> with a <NUMEX TYPE="ORDINAL">CD4</NUMEX> count of <NUMEX TYPE="CARDINAL">271</NUMEX> cells/<ENAMEX TYPE="DISEASE">Î¼l</ENAMEX> by flow cytometry and a
+        <NUMEX TYPE="CARDINAL">5</NUMEX>-mo-old <ENAMEX TYPE="PER_DESC">infant</ENAMEX> with a <NUMEX TYPE="CARDINAL">CD4</NUMEX> percentage of <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> lymphocytes of <NUMEX TYPE="CARDINAL">0.39</NUMEX> by flow cytometry are also
+        shown in Figure <TIMEX TYPE="DATE">5B and 5C</TIMEX>, respectively. These images illustrate the dynamic range of the
+        membrane capture and digital image analysis system, including the ability to quantify both
+        absolute CD4 counts and <ENAMEX TYPE="PRODUCT">CD4</ENAMEX> percentages.
+        We compared results from our microchip assay with results available from flow cytometry,
+        the latter obtained on a <ENAMEX TYPE="ORGANIZATION">FACSCalibur</ENAMEX> through standard clinical laboratory operating
+        procedures. The data for adult absolute CD4 counts are plotted in the
+        Blandâ€“Altman methods comparison plot shown in Figure <NUMEX TYPE="CARDINAL">6</NUMEX>. For <TIMEX TYPE="DATE">61</TIMEX> adult
+        <ENAMEX TYPE="PER_DESC">participants</ENAMEX> with <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts ranging from <NUMEX TYPE="CARDINAL">35 to 1,087</NUMEX> cells/<ENAMEX TYPE="DISEASE">Î¼l</ENAMEX> (mean, <NUMEX TYPE="CARDINAL">372</NUMEX>
+        <ENAMEX TYPE="CONTACT_INFO">cells/Î¼l</ENAMEX>) by flow cytometry, results show a good correlation between absolute
+        CD4 counts measured by our microchip assay and those measured by flow cytometry.
+        Blandâ€“Altman methods comparison analysis shows a bias of
+        <ENAMEX TYPE="CONTACT_INFO">âˆ’50 cells/Î¼l</ENAMEX> (<NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval, <ENAMEX TYPE="CONTACT_INFO">âˆ’81</ENAMEX>
+        to <ENAMEX TYPE="CONTACT_INFO">âˆ’20 cells/Î¼l</ENAMEX>), and good <NUMEX TYPE="PERCENT">95%</NUMEX> limits of agreement (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>).
+        Several of the results from <ENAMEX TYPE="PER_DESC">participants</ENAMEX> at the higher end of absolute CD4 counts fall
+        outside the <NUMEX TYPE="PERCENT">95%</NUMEX> limits. For these <ENAMEX TYPE="PER_DESC">participants</ENAMEX>, individual <ENAMEX TYPE="PER_DESC">lymphocytes</ENAMEX> may overlap in the
+        <ENAMEX TYPE="ORGANIZATION">digital</ENAMEX> images (as seen in Figure <NUMEX TYPE="CARDINAL">5C</NUMEX>), which can interfere with the accuracy of the
+        lymphocyte counting algorithm. In resource-limited settings, the primary use of <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts
+        is as a trigger to initiate antiretroviral therapy, which typically occurs at a <NUMEX TYPE="ORDINAL">CD4</NUMEX> count
+        of <ENAMEX TYPE="CONTACT_INFO">200 cells/Î¼l.</ENAMEX> Higher <TIMEX TYPE="DATE">CD4</TIMEX> count thresholds of <NUMEX TYPE="CARDINAL">350 and 500</NUMEX> cells/Î¼l
+        are also used to increase the intensity of monitoring. For these values, the sensitivity
+        and specificity of our method are: <ENAMEX TYPE="CONTACT_INFO">CD4 < 250</ENAMEX>, sensitivity = <NUMEX TYPE="CARDINAL">0.86</NUMEX>, specificity = <NUMEX TYPE="CARDINAL">0.81</NUMEX>;
+        CD4 < <NUMEX TYPE="CARDINAL">350</NUMEX>, sensitivity = <NUMEX TYPE="CARDINAL">0.97</NUMEX>, specificity = <NUMEX TYPE="CARDINAL">0.83</NUMEX>; and <ENAMEX TYPE="PRODUCT">CD4 < 500</ENAMEX>, sensitivity = <NUMEX TYPE="CARDINAL">0.96</NUMEX>,
+        specificity = <NUMEX TYPE="CARDINAL">0.85</NUMEX>.
+        <NUMEX TYPE="CARDINAL">One</NUMEX> important application of our method is in pediatric <ENAMEX TYPE="DISEASE">HIV</ENAMEX> monitoring. The wide range
+        of normal absolute CD4 counts in <ENAMEX TYPE="PER_DESC">infants</ENAMEX> and <ENAMEX TYPE="PER_DESC">children</ENAMEX> requires the use of <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios or
+        CD4 percentages in pediatric infection. Results for <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios and <ENAMEX TYPE="PRODUCT">CD4</ENAMEX> percentages of T
+        lymphocytes for all <NUMEX TYPE="CARDINAL">67</NUMEX> <ENAMEX TYPE="PER_DESC">participants</ENAMEX> (<NUMEX TYPE="CARDINAL">61</NUMEX> <ENAMEX TYPE="PER_DESC">adults</ENAMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">infants</ENAMEX>) are shown in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>.
+        Agreement, bias, and correlations between the microchip method and flow cytometry are
+        excellent for both CD4 percentages of <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> lymphocytes (Figure <TIMEX TYPE="DATE">7A and 7B</TIMEX>) and <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios
+        (Figure <TIMEX TYPE="DATE">7C and 7D</TIMEX>). Blandâ€“Altman plots for both CD4 percentages of T
+        <ENAMEX TYPE="ORGANIZATION">lymphocytes</ENAMEX> and <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios show low proportional bias, with tight <NUMEX TYPE="PERCENT">95%</NUMEX> limits of
+        agreement. Correlations are excellent for both CD4 percentages of <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> lymphocytes (
+        r = <NUMEX TYPE="CARDINAL">0.98</NUMEX>, 
+        p <NUMEX TYPE="MONEY">< 0.0001</NUMEX>) and <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios (
+        r = <NUMEX TYPE="CARDINAL">0.98</NUMEX>, 
+        p <NUMEX TYPE="MONEY">< 0.0001</NUMEX>). Overall, the data show that <NUMEX TYPE="CARDINAL">all three</NUMEX> approaches to
+        measuring CD4 <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> counts can be accurately quantified using the microchip method, and that
+        both <ENAMEX TYPE="PER_DESC">adult</ENAMEX> and pediatric <TIMEX TYPE="DATE">CD4</TIMEX> results can be obtained.
+        To determine assay variability, we examined <NUMEX TYPE="CARDINAL">20</NUMEX> replicate samples of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> from a single
+        <ENAMEX TYPE="PER_DESC">participant</ENAMEX> over the course of <TIMEX TYPE="DATE">one day</TIMEX>, using the established basic protocol. We determined
+        that the coefficient of variance was <NUMEX TYPE="PERCENT">12%</NUMEX> (data not shown), which is similar to other
+        methods of CD4 counting [<TIMEX TYPE="DATE">27</TIMEX>]. Although the assay described here introduced <NUMEX TYPE="CARDINAL">16.5</NUMEX>
+        Î¼l of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> into the system, the actual volume of blood analyzed by digital
+        image analysis is <NUMEX TYPE="QUANTITY">only 0.90 Î¼l</NUMEX>. We have conducted preliminary studies that
+        suggest that we can accurately measure CD4 counts from <NUMEX TYPE="QUANTITY">less than 5 Î¼l</NUMEX> of blood
+        obtained via fingerstick (data not shown); additional studies will be required to assess
+        the correlation between <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts obtained by fingerstick and by venipuncture.
+      
+      
+        Discussion
+        Our results provide proof of principle that low-cost microfluidic structures combined
+        with fluorescence imaging and digital image analysis can be successfully applied to the
+        measurement of <ENAMEX TYPE="FAC">CD4</ENAMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> counts, which are critical to the clinical management of <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX>
+        infection. The method described here can deliver both absolute CD4 counts for adult
+        monitoring, and <ENAMEX TYPE="PRODUCT">CD4</ENAMEX> percentages or <TIMEX TYPE="TIME">CD4:CD8</TIMEX> ratios for pediatric monitoring. Most
+        <ENAMEX TYPE="PERSON">importantly</ENAMEX>, the rapid and accurate CD4 assessments obtained with this method, together
+        with its anticipated low cost relative to flow cytometry, may make this type of approach
+        <ENAMEX TYPE="ORGANIZATION">ideal</ENAMEX> for resource-scarce settings. As our results show, this method may be less accurate
+        at the higher range of <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts, where cells may be more likely to overlap in our digital
+        images. While this may limit its applicability, our method is accurate at <NUMEX TYPE="CARDINAL">CD4</NUMEX> counts below
+        <NUMEX TYPE="CARDINAL">500</NUMEX> cells/<ENAMEX TYPE="DISEASE">Î¼l</ENAMEX>, which represent the clinically relevant <ENAMEX TYPE="SUBSTANCE">CD4</ENAMEX> levels in
+        <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX>-poor settings. In addition, both the bias in the method described here
+        (âˆ�<NUMEX TYPE="CARDINAL">��50</NUMEX> cells) and the accuracy at higher CD4 counts are likely to be
+        improved significantly by the further development of a disposable microfluidic cartridge,
+        where the volume of distribution of the sample will be much smaller, and more accurate
+        volumetric control will be possible.
+        Our study was designed to evaluate the accuracy of our method against the gold standard
+        in a <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <ENAMEX TYPE="PER_DESC">adults</ENAMEX>. During enrollment, a small number of pediatric <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were made
+        available to us by the <ENAMEX TYPE="PER_DESC">staff</ENAMEX> at <ENAMEX TYPE="ORGANIZATION">Princess Marina Hospital</ENAMEX> in <ENAMEX TYPE="GPE">Botswana</ENAMEX>. We chose to include
+        these <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> in the data presented here to provide proof of principle that pediatric CD4
+        percentages can also be assessed with this method. Although <NUMEX TYPE="CARDINAL">only six</NUMEX> pediatric <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were
+        available, limiting claims of statistical significance, we believe the issue of pediatric
+        CD4 <ENAMEX TYPE="PER_DESC">count</ENAMEX> monitoring to be of such importance that the data merited inclusion. Excluding
+        the <NUMEX TYPE="CARDINAL">six</NUMEX> pediatric <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> does not affect the analysis.
+        The results presented here were obtained with a stationary, tabletop monitoring system
+        using a standard epifluorescence microscope and commercial image processing software. While
+        the methods we described provide the basis for a highly portable and flexible miniaturized
+        CD4 counting system, it should be emphasized that a number of additional developments are
+        required to enable the widespread use of this approach in resource-limited settings. With
+        additional engineering of optics, electronics, and mechanical components along with
+        advancements in integrated microfluidic systems, it should be possible to develop a
+        point-of-care instrument that is battery-powered, uses simple light emitting diodes (LEDs),
+        and secures analyzable digital images with affordable video imaging chips. When combined
+        with an embedded microprocessor and disposable assay cartridges for both <ENAMEX TYPE="PER_DESC">adult</ENAMEX> and
+        pediatric monitoring manufactured from injection-molded plastic, it should be possible to
+        create a functional CD4 counting device that can be used at the point of care. Further
+        trials in a larger, more diverse cohort of <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, including adult <ENAMEX TYPE="PER_DESC">men</ENAMEX> and <ENAMEX TYPE="PER_DESC">children</ENAMEX>, will
+        be necessary to confirm the accuracy of the method, including an assessment of assay bias
+        and reproducibility. Such a device is currently in commercial development, and may be
+        available by <TIMEX TYPE="DATE">early 2006</TIMEX>. While it is too early to provide an accurate cost estimate for a
+        portable instrument and disposable plastic <ENAMEX TYPE="SUBSTANCE">CD4 assay</ENAMEX>, we expect the equipment cost would be
+        substantially lower than for flow cytometry, and the assay cost would be similar to assays
+        using existing methods (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        Although several CD4 counting systems are now used in resource-limited settings, they
+        remain suboptimal to meet the needs of <ENAMEX TYPE="DISEASE">HIV</ENAMEX> care and treatment scale-up. None can truly be
+        used at the point of care beyond a district <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> or similar <ENAMEX TYPE="FAC_DESC">facility</ENAMEX>, and either the
+        capital and operating costs remain high, or throughput is low, or both (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Pediatric
+        monitoring using CD4 percentages also remains largely unavailable. The method we describe
+        here addresses several of the limitations of performing diagnostic assays in
+        <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX>-limited settings. First, sample volumes are minimal, so that tests can be
+        performed on fingerstick samples of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>, circumventing the need for venipuncture, and
+        minimizing both medical waste and operator exposure to biohazardous material. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+        <ENAMEX TYPE="ORGANIZATION">reagent</ENAMEX> use is minimized in the microchip system, reducing reagent costs by <NUMEX TYPE="PERCENT">as much as 90%</NUMEX>.
+        <NUMEX TYPE="ORDINAL">Third</NUMEX>, labor- and equipment-intensive sample preparation is eliminated. <NUMEX TYPE="ORDINAL">Fourth</NUMEX>, the
+        <ENAMEX TYPE="PRODUCT">microchip CD4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">assay</ENAMEX> is extremely rapid. CD4 results in the prototype system described here
+        are available in <TIMEX TYPE="DATE">less than 15</TIMEX> min from the time of blood collection. In a mature
+        microfluidic device with push-button operation, results should be available in <TIMEX TYPE="DATE">less than 10</TIMEX>
+        <ENAMEX TYPE="PERSON">min</ENAMEX>, and thus can be used to make real-time clinical decisions at the point of care. <NUMEX TYPE="ORDINAL">Fifth</NUMEX>,
+        the assay is technically simple, analogous to a portable glucometer, and ultimately will be
+        useable by a health-care <ENAMEX TYPE="PER_DESC">worker</ENAMEX> in remote settings with minimal training, extending the
+        reach of <ENAMEX TYPE="PRODUCT">CD4</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">assays</ENAMEX> to district <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> and remote <ENAMEX TYPE="ORG_DESC">clinics</ENAMEX>, and reducing labor costs.
+        <ENAMEX TYPE="PERSON">Sixth</ENAMEX>, both <ENAMEX TYPE="PER_DESC">adult</ENAMEX> and pediatric monitoring are possible.
+        We believe that the future of low-cost diagnostics for use in the developing world lies
+        in the development of new <ENAMEX TYPE="FAC_DESC">lab</ENAMEX>-on-a-chip technologies that integrate sample preparation and
+        sample measurement systems into miniaturized devices with minimal power requirements.
+        Preliminary cost estimates for the instrumentation here described suggest, at a minimum, a
+        <NUMEX TYPE="CARDINAL">10</NUMEX>-fold reduction in the cost for the associated measurement system. Further, reagent
+        consumption for the microchip system can be reduced by a similar factor relative to flow
+        cytometry, while sample storage and shipping costs are expected to be reduced dramatically
+        by virtue of the point-of-care capabilities of this new <ENAMEX TYPE="FAC_DESC">lab</ENAMEX>-on-a-chip <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. The
+        importance of microtechnologies to the realities of laboratory infrastructure worldwide has
+        been recognized previously [<NUMEX TYPE="CARDINAL">28â€“30</NUMEX>]. Although CD4 counting represents the
+        most urgent need in <ENAMEX TYPE="ORGANIZATION">HIV</ENAMEX> diagnostics for resource-poor settings, the microchip <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> is
+        adaptable to other important assays. Through the interface of the lymphocyte capture
+        <ENAMEX TYPE="ORGANIZATION">membrane</ENAMEX> described here with the previously reported microchip arrays, cellular <ENAMEX TYPE="ORG_DESC">assays</ENAMEX> like
+        CD4 counts can be multiplexed with other molecular <ENAMEX TYPE="PER_DESC">biomarker</ENAMEX> measurements (i.e., proteins
+        and <ENAMEX TYPE="SUBSTANCE">nucleic acids</ENAMEX>) on a single miniaturized chip. The rapid extension of the chip-based CD4
+        counting method described here to <ENAMEX TYPE="DISEASE">HIV</ENAMEX> <ENAMEX TYPE="SUBSTANCE">RNA measurements</ENAMEX>, diagnostics for opportunistic
+        <ENAMEX TYPE="PERSON">infections</ENAMEX>, liver enzymes, and other biochemical markers of interest in infectious disease
+        is feasible.
+      
+    
+  

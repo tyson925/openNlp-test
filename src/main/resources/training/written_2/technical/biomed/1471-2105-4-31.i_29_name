@@ -1,0 +1,499 @@
+
+  
+    
+      
+        Background
+        It is not uncommon in many fields to encounter data
+        distributions that are skewed or contain outliers. In those
+        cases, the arithmetic mean may not be an appropriate
+        statistic to represent the center of location of the data.
+        Alternative statistics with less bias are the median and
+        the mode. The median is the value of the variable, in an
+        ordered array, which has an equal number of data points on
+        either side, whereas the mode is the value of the peak of
+        the distribution (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). The mode is biased the least
+        by outliers and contaminants [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] and is used commonly
+        in astronomy [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] and occasionally in other fields,
+        including biology [ <NUMEX TYPE="CARDINAL">6 7 8 9 10</NUMEX> ] . However, calculation of
+        the mode is more difficult than the mean or median and this
+        has limited its widespread application.
+        For discrete data involving a relatively small number of
+        possible values and a large number of data points, the mode
+        is easily calculated as the most frequent value. Otherwise,
+        the most common mode estimation method for discrete or
+        continuous data involves construction of a histogram. The
+        value of the bin with the greatest number of data points is
+        the mode, and this value can be fine-tuned by simple
+        interpolation with adjacent bins [ <TIMEX TYPE="DATE">11</TIMEX> ] . The major
+        drawback of the histogram method is that different modes
+        can be obtained using different bin sizes, although some
+        stability can be gained by using the mean of modes obtained
+        from different bin sizes. For continuous data, <NUMEX TYPE="CARDINAL">two</NUMEX> other
+        simple methods have been proposed. The <ENAMEX TYPE="ORGANIZATION">Dalenius</ENAMEX> method [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        ] is calculated by selecting the interval with the maximum
+        number of data points and using the mean of that interval
+        as the mode. The <ENAMEX TYPE="ORGANIZATION">Grenander</ENAMEX> method [ <TIMEX TYPE="DATE">12</TIMEX> ] uses <NUMEX TYPE="QUANTITY">two</NUMEX>
+        parameters; <NUMEX TYPE="CARDINAL">one</NUMEX> defines an interval by limiting the number
+        of data points in the interval and, the other defines the
+        weight exponent applied as penalty to the range of an
+        interval. However, the former method is sensitive to the
+        size of the interval selected, and the latter method is
+        sensitive to outliers [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+        Several new mode estimation methods have been proposed
+        in <TIMEX TYPE="DATE">recent years</TIMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> related ones are the <NUMEX TYPE="CARDINAL">Half</NUMEX>-<ENAMEX TYPE="PERSON">Sample Mode</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">HSM</ENAMEX>) and <NUMEX TYPE="CARDINAL">Half</NUMEX>-<ENAMEX TYPE="PERSON">Range Mode</ENAMEX> (HRM) [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . The <ENAMEX TYPE="ORGANIZATION">HSM</ENAMEX> uses
+        shortest half samples, in an iterative fashion, to estimate
+        the mode. Similarly, the <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> uses densest half samples to
+        estimate the mode. <NUMEX TYPE="CARDINAL">Two</NUMEX> substantially different methods are
+        the <ENAMEX TYPE="ORGANIZATION">Standard Parametric Mode</ENAMEX> (SPM) and the Robust
+        <ENAMEX TYPE="ORGANIZATION">Parametric Mode</ENAMEX> (RPM) [ <TIMEX TYPE="DATE">13</TIMEX> ] . These methods transform the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> distribution to an approximate normal and use the
+        probability density function of the approximated
+        distribution to estimate the mode. The <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX> uses the mean
+        and standard deviation, whereas the <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> uses the median and
+        the median absolute deviation as the average and variance
+        parameters. Each of these methods has been tested in
+        simulations with normally and asymmetrically distributed
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, with and without contamination [ <TIMEX TYPE="DATE">13</TIMEX> ] . The results
+        showed that different estimators perform better under
+        different conditions, but that the RPM method is perhaps
+        more versatile than the others.
+        Non-normal distributions of divergence time estimates
+        are often obtained in molecular clock studies involving
+        many genes, or with genomic data [ <NUMEX TYPE="CARDINAL">7 8 14</NUMEX> ] . Typically
+        those distributions are right skewed, or have noticeable
+        outliers on the right (older) side. The reason for such
+        non-normal distributions is unclear, but they are
+        consistent with contamination from paralogous comparisons
+        (those involving gene duplications), although other sources
+        of bias have been proposed [ <TIMEX TYPE="DATE">15</TIMEX> ] . (The right-skewed
+        distributions seen in some plots of evolutionary distances
+        are different, because they have not been normalized by a
+        calibration time). It is sometimes difficult to distinguish
+        a paralogous comparison from an orthologous comparison
+        (speciation event) when comparing different <ENAMEX TYPE="ANIMAL">species</ENAMEX>,
+        because of gene loss and incomplete taxon sampling. For
+        these reasons, the mode - as estimated using the histogram
+        method - has been used to avoid the bias of such outliers [
+        <NUMEX TYPE="CARDINAL">7</NUMEX> ] .
+        In this study, we extend the analyses of <ENAMEX TYPE="PERSON">Bickel</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ]
+        to assess the accuracy and precision of mode estimation
+        methods for continuous data using simulations. We evaluate
+        additional types of distributions, the effect of coarse
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (sub peaks), and additional levels and distributions
+        of contamination. Finally, we applied these different
+        estimators to <NUMEX TYPE="CARDINAL">five</NUMEX> published data sets from a molecular
+        clock study. Our immediate goal was to determine the
+        optimal method for use with molecular clock data
+        (divergence times) involving large numbers of genes,
+        although the results are generally applicable.
+      
+      
+        Results
+        
+          <ENAMEX TYPE="ORGANIZATION">General Patterns</ENAMEX>
+          The mode estimators were not biased by randomly
+          distributed contamination, and the cauchy-distributed
+          contamination produced similar results (albeit at higher
+          levels of bias) to the normally distributed
+          contamination. For these reasons, we confine our
+          discussion to results using the normally distributed
+          contamination. Also, simulations using contaminant data
+          located close to the true mode (<NUMEX TYPE="MONEY">67 thpercentile</NUMEX>) showed
+          that mode estimators performed poorly under those
+          conditions, as noted elsewhere [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , especially with
+          the normal and coarse original distributions. In those
+          cases, all estimators (mean and modes) showed similar
+          <ENAMEX TYPE="PERSON">bias</ENAMEX>, being equally misled by the contamination. On the
+          other hand, most mode estimators performed better (lower
+          <ENAMEX TYPE="PERSON">bias</ENAMEX>) than the mean or median in simulations using
+          contamination located at the <NUMEX TYPE="CARDINAL">99</NUMEX> thand twice the <NUMEX TYPE="CARDINAL">99</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">thpercentiles</ENAMEX>. Because we wished to compare the
+          efficiencies of the various mode estimators, we further
+          confine the discussion to results using contamination
+          centered at twice the <NUMEX TYPE="CARDINAL">99</NUMEX> thpercentile (<ENAMEX TYPE="LAW">Figs. 1, 4, 5</ENAMEX>;
+          <ENAMEX TYPE="CONTACT_INFO">Table 1</ENAMEX>).
+          The normal and coarse distributions produced similar
+          results for the different mode estimators, although HRM
+          showed the least bias as contamination level increased
+          (Figure 4e,4i). <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX> showed an increase in bias in
+          a negative direction (away from contamination) as
+          contamination level increased. However, those two
+          <ENAMEX TYPE="PERSON">estimators</ENAMEX> did not show such negative bias with the
+          lognormal distribution (Figure <NUMEX TYPE="CARDINAL">4e</NUMEX>).
+          All estimators of central location (mean, median,
+          <ENAMEX TYPE="PERSON">mode</ENAMEX>) performed well (had little or no bias) when
+          <ENAMEX TYPE="PERSON">contamination</ENAMEX> was absent, at least with the normal and
+          coarse original distributions. <ENAMEX TYPE="PERSON">Bias</ENAMEX> increased as the
+          level of contamination increased, with <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and SPM
+          exhibiting negative bias at higher levels in the normal
+          and coarse original distributions (as noted previously).
+          In almost all cases (at different levels of
+          <ENAMEX TYPE="ORGANIZATION">contamination</ENAMEX>), the mean exhibited the greatest bias,
+          followed by the median and then various mode estimates.
+          The HRM method showed almost no bias at any level of
+          contamination and original distribution type (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          However, the highest levels of contamination (<NUMEX TYPE="PERCENT">40%</NUMEX>)
+          produced a spike in the bias and variance of several mode
+          <ENAMEX TYPE="PERSON">estimators</ENAMEX> (especially <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX>), probably because the
+          <ENAMEX TYPE="PERSON">contamination</ENAMEX> was a significant peak in the distribution,
+          competing with the true mode. The SPM method generally
+          produced the highest bias of the mode estimators, in some
+          cases even performing more poorly than the median. These
+          patterns also are reflected in rankings of the methods
+          (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        
+        
+          Bootstrapping
+          The use of bootstrapping with mode estimation had
+          little or no affect on bias, except that bias increased
+          slightly for the lognormal original distribution (Figure
+          4f,4<ENAMEX TYPE="ORGANIZATION">g</ENAMEX>). On the other hand, bootstrapping lowered the
+          variance of all mode estimators, with <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> showing the
+          greatest improvement and <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> (lognormal) the least
+          improvement (Figure <NUMEX TYPE="QUANTITY">5b,5c,5d,5f,5g,5h,5j,5k,5l</NUMEX>). In
+          effect, <ENAMEX TYPE="PER_DESC">bootstrapping</ENAMEX> eliminated the disparity between
+          <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> in terms of variance, with bootstrapped
+          versions of those estimators having similar low levels of
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">Molecular Clock Analyses</ENAMEX>
+          Analysis of the published molecular clock data for
+          <ENAMEX TYPE="PERSON">fungi</ENAMEX> and <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>) showed that the mean
+          was higher than the median in most cases, indicating
+          asymmetric distributions and supporting the use of the
+          <ENAMEX TYPE="PERSON">mode</ENAMEX>. Although the true modes are not known in these
+          cases, some patterns were evident. Among the mode
+          estimates, those using <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX> often were the lowest and
+          appeared to visually underestimate the center of the
+          distribution. Of the remaining mode estimators, <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> were <NUMEX TYPE="PERCENT">10.1%</NUMEX> different from each other, on average,
+          across the <NUMEX TYPE="CARDINAL">five</NUMEX> sample data sets (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">HRM-BMO</ENAMEX> (mode
+          of the bootstrapped modes) and <ENAMEX TYPE="SUBSTANCE">RPM-BMO</ENAMEX> averaged <NUMEX TYPE="PERCENT">7.2%</NUMEX>
+          different, and <ENAMEX TYPE="ORGANIZATION">HRM-BME</ENAMEX> (mean of the bootstrapped modes)
+          and <ENAMEX TYPE="ORGANIZATION">RPM-BME</ENAMEX> were <NUMEX TYPE="PERCENT">only 1.4%</NUMEX> different. A greater
+          difference was observed between <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> and its bootstrapped
+          estimate (HRM-BME) than between <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RPM-BME</ENAMEX>. All of
+          these results from analyses of real data were consistent
+          with the simulation results (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>).
+          The results of all simulations, and software for
+          estimating the mode and its standard error, are available
+          as <ENAMEX TYPE="ORGANIZATION">Supplementary Data</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">evogenomics</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/publications/data/mode/</ENAMEX>index.<ENAMEX TYPE="CONTACT_INFO">htm.</ENAMEX>
+        
+      
+      
+        Discussion
+        
+          General performance of the mode
+          There were few cases in this study where mode
+          estimates performed worse than the mean in determining
+          the center of location of a data set, suggesting a more
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX> application for the mode. For example, in
+          situations where <ENAMEX TYPE="FAC_DESC">centers</ENAMEX> of location are needed but
+          distributions are not predictably normal, the mode might
+          be used as a routine statistic. In those cases it would
+          produce a similar result to the mean for normal
+          distributions and would estimate the center of location
+          with less bias than the mean for non-normal and
+          contaminated distributions. However, our simulations
+          showed that contamination located close to the true mode
+          will mislead any estimator (mean or mode). In the future,
+          it would be useful to explore the performance of the
+          various mode estimators under a greater diversity of
+          "coarse" data distributions.
+        
+        
+          Negative <ENAMEX TYPE="PERSON">Bias</ENAMEX> of some <ENAMEX TYPE="PERSON">Mode Estimators</ENAMEX>
+          We found that <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX>, the two estimators that use
+          a data transformation method, exhibited increasing
+          negative bias (bias away from the position of
+          <ENAMEX TYPE="ORGANIZATION">contamination</ENAMEX>) as the contamination level increased.
+          Because the contamination was applied to the right side
+          of the distribution, the bias resulted in underestimates
+          of the true mode.
+          This may be attributed to the fact that both
+          estimators are based on the transformation of sample data
+          to conform to a single normal distribution, not to
+          additional secondary distributions often encountered with
+          <ENAMEX TYPE="ORGANIZATION">outliers</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> estimator would appear to be less
+          affected by such secondary distributions and therefore is
+          at an advantage. Compared with the normal original
+          distribution and same location of contamination, the
+          right tail of the lognormal distribution integrates with
+          the outliers to a greater extent and thus obscures more
+          of the secondary peaks. This may explain the lack of a
+          negative bias by <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX> in the lognormal
+          distribution (Figure <NUMEX TYPE="CARDINAL">4e</NUMEX>).
+        
+        
+          Increased Performance of the <ENAMEX TYPE="PERSON">Bootstrapped Mode</ENAMEX>
+          Estimators
+          <ENAMEX TYPE="ORGANIZATION">Bootstrapping</ENAMEX> clearly improved the variance of the
+          mode estimators. Of the <NUMEX TYPE="CARDINAL">two</NUMEX> bootstrap methods tested, the
+          bootstrap mean of the modes (BME) is preferred because it
+          performed substantially better than the bootstrap mode of
+          the modes (BMO) in terms of lowering variance. The better
+          performance of <ENAMEX TYPE="ORGANIZATION">BME</ENAMEX> may result from the lower variance
+          usually associated with the mean. The bootstrapping
+          probably acts to "smooth" the coarseness and irregularity
+          that otherwise might cause inaccurate estimation of the
+          <ENAMEX TYPE="ORGANIZATION">center</ENAMEX> of location. This is important for a statistic
+          (the mode) that relies on the overall shape of a
+          distribution or peak in density.
+          Without bootstrapping, the <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> estimator has a lower
+          variance than the <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>), in part leading to the
+          recommendation of <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> as a general purpose estimator [ <NUMEX TYPE="CARDINAL">13</NUMEX>
+          ] . However, bootstrapping not only lowers the variance
+          of both estimators but it reduces that disparity, with
+          RPM-BME showing only a small improvement in variance over
+          <ENAMEX TYPE="ORGANIZATION">HRM-BME</ENAMEX>. The same pattern was seen in the analysis of
+          divergence times (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>), where <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> mode
+          estimates exhibited a large difference (<NUMEX TYPE="PERCENT">10%</NUMEX>) without
+          <ENAMEX TYPE="ORGANIZATION">bootstrapping</ENAMEX> and a much smaller difference (<NUMEX TYPE="PERCENT">1%</NUMEX>) with
+          <ENAMEX TYPE="ORGANIZATION">bootstrapping</ENAMEX>.
+        
+        
+          Standard <ENAMEX TYPE="WORK_OF_ART">Error and Confidence Interval of the</ENAMEX>
+          Mode
+          Methods for direct calculation of the standard error
+          of the mode have been suggested [ <TIMEX TYPE="DATE">16</TIMEX> ] but are rather
+          complex. Another approach would be to trim the outliers
+          from the distribution and estimate the standard error of
+          the mean of the trimmed data set, assuming that the
+          <ENAMEX TYPE="ORGANIZATION">outliers</ENAMEX> can be identified and the underlying
+          distribution is normal. However, a simpler method, and
+          <NUMEX TYPE="CARDINAL">one</NUMEX> that we recommend, is to estimate the bootstrap <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval (range) and/or bootstrap standard
+          error of the mode. Although bootstrapping already is used
+          to calculate the mode (<ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">HRMB</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">RPMB</ENAMEX> ), that must be considered
+          separately. The error estimation requires that each
+          resampled data set be used to calculate the mode; in this
+          case, each such data set is used as a starting point for
+          further resampling to calculate <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">HRMB</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">RPMB</ENAMEX> . Although a bootstrap standard
+          error can be calculated, it would not be appropriate for
+          skewed distributions where the error is distributed
+          <ENAMEX TYPE="ORGANIZATION">asymmetrically</ENAMEX> around the mode. In those cases, or more
+          generally, we recommend calculating the bootstrap <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval (range).
+        
+      
+      
+        Conclusions
+        The <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> mode methods [ <ENAMEX TYPE="LAW">2 13</ENAMEX> ] both performed
+        reasonably well under a diversity of conditions. However,
+        <ENAMEX TYPE="ORGANIZATION">bootstrapping</ENAMEX> is recommended for both methods because it
+        reduces the variance. Suggested conventions for indicating
+        modes that are estimated using these methods are <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX> for the non-bootstrapped versions
+        and <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">HRMB</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">RPMB</ENAMEX> for the bootstrapped versions. The
+        <ENAMEX TYPE="ORGANIZATION">bootstrapping</ENAMEX> should be accomplished by taking the mean of
+        the bootstrapped mode estimates and by using a relatively
+        large number of replications, such as <NUMEX TYPE="CARDINAL">1,000</NUMEX> or more [ <TIMEX TYPE="DATE">17</TIMEX> ]
+        . In our implementation of the two methods, the <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">RPMB</ENAMEX> estimate takes <NUMEX TYPE="CARDINAL">16</NUMEX> times longer to
+        <ENAMEX TYPE="PERSON">compute</ENAMEX>. In cases where time permits, it might be
+        informative to use and compare both estimators (<ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">HRMB</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">RPMB</ENAMEX> ) and to construct a histogram for
+        visual inspection of the distribution. The RPM method might
+        have a slight advantage in cases where the data form a
+        single, asymmetric (right- or left-skewed) distribution and
+        a disadvantage in some other cases (<ENAMEX TYPE="CONTACT_INFO">Figs 4, 5</ENAMEX>). However,
+        because <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">HRMB</ENAMEX> is simpler, faster to estimate, and
+        does not exhibit negative bias in cases of outlier
+        <ENAMEX TYPE="PERSON">contamination</ENAMEX>, we recommend it as a general-purpose mode
+        estimator, along with a bootstrap standard error or <NUMEX TYPE="PERCENT">95%</NUMEX>
+        confidence interval (range).
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="PERSON">Mode Estimation Methods</ENAMEX>
+          The HSM method [ <ENAMEX TYPE="LAW">2</ENAMEX> ] iteratively divides the data set
+          into samples of <NUMEX TYPE="CARDINAL">half</NUMEX> the size as the original set and
+          uses the <NUMEX TYPE="CARDINAL">half</NUMEX>-sample with the minimum range, where range
+          is defined as the difference between the maximum and the
+          minimum value of the sample. This method terminates when
+          the <NUMEX TYPE="CARDINAL">half</NUMEX>-sample is less than <NUMEX TYPE="CARDINAL">three</NUMEX> data points. An
+          average of these <NUMEX TYPE="CARDINAL">three or</NUMEX> fewer values is the mode. The
+          HRM method [ <ENAMEX TYPE="LAW">2</ENAMEX> ] is similar but uses the sub-sample with
+          the densest <NUMEX TYPE="CARDINAL">half</NUMEX>-range, where range is defined as the
+          absolute difference between the maximum and the minimum
+          values in a sample. Of these <NUMEX TYPE="CARDINAL">two</NUMEX> methods, only the HRM
+          was used in this study because <ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX> has been shown to have
+          lower bias with increasing contamination and asymmetry [
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ] .
+          The parametric methods [ <TIMEX TYPE="DATE">13</TIMEX> ] are based on the idea of
+          transforming the data set to an approximate normal
+          distribution by raising it to a real power. Different
+          values for the exponent are tested and a correlation
+          coefficient between the transformed data and an ideal
+          normal distribution is calculated. The exponent with the
+          maximum correlation coefficient is used to transform the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and approximate it to a normal distribution. For a
+          normal distribution, the mode is the value that maximizes
+          the probability density function. Thus, by equating the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> derivative of the probability density function to
+          zero to find the <ENAMEX TYPE="PRODUCT">maxima</ENAMEX>, the mode can be estimated.
+          Thus,
+          
+          where
+          <ENAMEX TYPE="PER_DESC">α</ENAMEX> = transforming exponent
+          = mean parameter
+          <ENAMEX TYPE="PER_DESC">σ</ENAMEX> = standard deviation parameter
+          In the SPM method [ <TIMEX TYPE="DATE">13</TIMEX> ] , the sample mean and sample
+          standard deviation of the transformed data are used as
+          the mean and standard deviation parameters ( and <NUMEX TYPE="MONEY">σ</NUMEX>) for
+          mode estimation. The correlation coefficient used to
+          estimate the best value of the exponent α in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          is expressed as:
+          
+          with the <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> δ giving the sample standard
+          deviation.
+          In the RPM method [ <TIMEX TYPE="DATE">13</TIMEX> ] , the sample median and the
+          sample standardized median absolute deviation (<ENAMEX TYPE="ORGANIZATION">MAD</ENAMEX>) of
+          the transformed data are used as the mean and standard
+          deviation parameters ( and <NUMEX TYPE="MONEY">σ</NUMEX>) for the mode estimation.
+          The <ENAMEX TYPE="ORGANIZATION">MAD</ENAMEX> is defined as the average difference of each data
+          point from the median. The correlation coefficient used
+          to estimate the best value of the exponent α in (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) is
+          expressed as:
+          
+          with the <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> Δ giving the median absolute
+          deviation.
+        
+        
+          Evaluation of the Methods
+          We designed <NUMEX TYPE="CARDINAL">63</NUMEX> simulated data sets to compare the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> mode estimation methods (<ENAMEX TYPE="ORGANIZATION">HRM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">SPM</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">RPM</ENAMEX>) with
+          the mean and median. Each data set was defined using
+          combinations of the following <NUMEX TYPE="CARDINAL">six</NUMEX> parameters, modeled in
+          part after the study of <ENAMEX TYPE="PERSON">Bickel</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ] but with slightly
+          larger variance (standard deviation <ENAMEX TYPE="PER_DESC">parameter</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>) to
+          more closely approximate real biological data sets [ <NUMEX TYPE="CARDINAL">7 9</NUMEX>
+          ] , additional levels, distributions, and locations of
+          <ENAMEX TYPE="PERSON">contamination</ENAMEX>, and other features: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) <ENAMEX TYPE="DISEASE">Type</ENAMEX> of original
+          distribution: normal (mode = <NUMEX TYPE="CARDINAL">6</NUMEX>), lognormal (mode = <NUMEX TYPE="CARDINAL">1</NUMEX>,
+          median = <NUMEX TYPE="CARDINAL">2.72</NUMEX>), and coarse (mode = <NUMEX TYPE="CARDINAL">6.25</NUMEX>) distributions
+          (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) <ENAMEX TYPE="DISEASE">Type</ENAMEX> of contamination: normal, cauchy,
+          and random (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) <ENAMEX TYPE="PERSON">Level</ENAMEX> of contamination: <NUMEX TYPE="PERCENT">0%</NUMEX>,
+          <NUMEX TYPE="PERCENT">5%</NUMEX>, <NUMEX TYPE="PERCENT">10%</NUMEX>, <NUMEX TYPE="PERCENT">15%</NUMEX>, <NUMEX TYPE="PERCENT">20%</NUMEX>, <NUMEX TYPE="PERCENT">30%</NUMEX>, and <NUMEX TYPE="PERCENT">40%</NUMEX>. (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Location</ENAMEX> of the
+          contaminant: <NUMEX TYPE="CARDINAL">67</NUMEX> thpercentile of the original
+          distribution, <NUMEX TYPE="CARDINAL">99</NUMEX> thpercentile of the original
+          distribution, and "twice the <NUMEX TYPE="CARDINAL">99</NUMEX> thpercentile" (true mode
+          plus twice the distance between the <NUMEX TYPE="ORDINAL">99th</NUMEX> percentile of
+          original distribution and the true mode). (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) Spread of
+          the contaminant: standard deviation = <NUMEX TYPE="CARDINAL">2.0</NUMEX>. (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) Sample
+          size: <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> = <TIMEX TYPE="DATE">20, 100, 1000</TIMEX>. For simulations testing the
+          <ENAMEX TYPE="PERSON">non-bootstrap</ENAMEX> mode methods, <TIMEX TYPE="DATE">1000</TIMEX> replications were used.
+          Additionally, <NUMEX TYPE="CARDINAL">100</NUMEX> replicates were used for simulations
+          testing the use of bootstrapping, with <NUMEX TYPE="CARDINAL">100</NUMEX> bootstrap
+          <ENAMEX TYPE="PERSON">iterations</ENAMEX> performed during each replication. An overview
+          of the simulation design is shown in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>.
+          The coarse original distribution was intended to model
+          the <ENAMEX TYPE="PER_DESC">class</ENAMEX> of real data where there is a central tendency,
+          but there are multiple subpeaks within an otherwise
+          single peak. This may arise from limited sampling, minor
+          clumping of data, or other factors. For the purpose of
+          these simulations, we have modeled the simplest case
+          involving <NUMEX TYPE="CARDINAL">two</NUMEX> subpeaks of a single distribution; it is
+          not intended to be a bimodal distribution. To construct
+          this coarse distribution, we used <NUMEX TYPE="CARDINAL">two</NUMEX> normal
+          <ENAMEX TYPE="PERSON">distributions</ENAMEX>, with <NUMEX TYPE="CARDINAL">one</NUMEX> distribution centered at the <NUMEX TYPE="CARDINAL">60</NUMEX>
+          thpercentile of the other distribution. Thus, the latter
+          distribution is partly to the left of the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">one</NUMEX>. We
+          sampled <NUMEX TYPE="PERCENT">33%</NUMEX> of the data points from the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX>
+          quartiles of the distribution on the left, <NUMEX TYPE="PERCENT">33%</NUMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> points from the last <NUMEX TYPE="CARDINAL">two</NUMEX> quartiles of the
+          distribution on the right, and <NUMEX TYPE="PERCENT">33%</NUMEX> of the data points
+          from the remaining <NUMEX TYPE="CARDINAL">half</NUMEX> portions of both the
+          <ENAMEX TYPE="PERSON">distributions</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). There are many other possible
+          types of coarse distributions, with <ENAMEX TYPE="DISEASE">multiple subpeaks</ENAMEX>,
+          but we considered only this simple case. The cauchy
+          distribution was used as one of the contaminants to model
+          erratic contamination and a high number of outliers
+          (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>).
+          In previous simulations, contamination was applied
+          only at the <NUMEX TYPE="CARDINAL">99.99</NUMEX> thpercentile, and with a narrow
+          standard deviation equal to <NUMEX TYPE="CARDINAL">1/100</NUMEX> thof the interquartile
+          range of the main distribution divided by the
+          <ENAMEX TYPE="ORGANIZATION">interquartile</ENAMEX> range of the standard normal distribution [
+          <NUMEX TYPE="CARDINAL">13</NUMEX> ] . This resulted in a sharp spike (peak) in the tail
+          of the distribution. In real data sets involving
+          distributions of molecular time estimates, outliers more
+          frequently appear removed from the main <ENAMEX TYPE="ORG_DESC">distribution</ENAMEX> and
+          spread broadly rather than focused at <NUMEX TYPE="CARDINAL">one</NUMEX> point (e.g.,
+          Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Therefore, we used contamination locations
+          that were further removed (<NUMEX TYPE="MONEY">twice the 99 thpercentile</NUMEX>) and
+          more broadly distributed (standard deviation = <NUMEX TYPE="CARDINAL">2</NUMEX>). For
+          comparison, we also simulated contamination at the <NUMEX TYPE="CARDINAL">99</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">thpercentile</ENAMEX> and <NUMEX TYPE="CARDINAL">67</NUMEX> thpercentile. We predicted that the
+          mode estimators would perform poorly with contaminants
+          located close to the true mode.
+          We evaluated the bias (the difference between the
+          estimated value and the true mode) and variance of the
+          estimators for each simulation. A ranking system was used
+          to make comparisons of the different methods. Ranking was
+          done individually (each simulation) and in <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, to
+          determine a consensus order. Grouped ranking for a
+          particular simulation run was calculated as the average
+          rank of each estimator for all levels of contamination.
+          The grouping was done by collecting the nodes at the
+          <NUMEX TYPE="ORDINAL">third</NUMEX> and <NUMEX TYPE="ORDINAL">fourth</NUMEX> levels of the <ENAMEX TYPE="PLANT">tree</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. In other
+          words, the ranks for the different types and positions of
+          the contaminants were averaged for a unique combination
+          of the original distribution type and sample size. This
+          was done because the original distribution type and
+          sample size are characteristics that are more easily
+          determined for real data sets, and were therefore of
+          greater interest in this study. Average and individual
+          ranks for particular levels of contamination shown in
+          <ENAMEX TYPE="PRODUCT">Table 1are</ENAMEX> for <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="FAC_DESC">simulation sets</ENAMEX> (normal and
+          <ENAMEX TYPE="ORGANIZATION">lognormal</ENAMEX>), each using normal contamination located at
+          twice the <NUMEX TYPE="CARDINAL">99</NUMEX> thpercentile and with a sample size of <NUMEX TYPE="CARDINAL">100</NUMEX>.
+          This combination of intermediate sample size and
+          contamination location most closely corresponded to real
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> sets involving distributions of time estimates [ <ENAMEX TYPE="LAW">8</ENAMEX> ]
+          .
+          In addition to the non-bootstrapped mode estimate
+          (<ENAMEX TYPE="ORGANIZATION">NBM</ENAMEX>, using original data) for each method, we calculated
+          a <ENAMEX TYPE="PER_DESC">bootstrap</ENAMEX> estimate using the mean (BME) and the mode
+          (<ENAMEX TYPE="ORGANIZATION">BMO</ENAMEX>) of bootstrapped modes. This permitted us to compare
+          <ENAMEX TYPE="PERSON">biases</ENAMEX> and variances associated with bootstrapped and
+          non-bootstrapped versions of each method for each data
+          set. We predicted that bootstrapping [ <TIMEX TYPE="DATE">18</TIMEX> ] might improve
+          <ENAMEX TYPE="PERSON">mode</ENAMEX> estimates because of the smoothing effect of the
+          resampling, emphasizing (by chance) different subpeaks
+          and thus generating different modes centered around a
+          single (overall) peak in the distribution. Therefore, the
+          mean (or mode) of those multiple subpeaks might better
+          represent the central tendency of the overall data
+          set.
+          Finally, we applied these mode estimators to published
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> sets of divergence time estimates of fungi and
+          <ENAMEX TYPE="PLANT">plants</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . The objective was to observe how the
+          different estimators performed with real data and to
+          compare their performance with simulation results to
+          assist in formulating recommendations for mode
+          <ENAMEX TYPE="PERSON">estimation</ENAMEX>.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="PERSON">SBH</ENAMEX> conceived the study; <ENAMEX TYPE="ORGANIZATION">SBH</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> designed the
+        <ENAMEX TYPE="ORGANIZATION">simulations; PS</ENAMEX> carried out the simulations; <ENAMEX TYPE="ORGANIZATION">SBH</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX>
+        drafted the manuscript and both <ENAMEX TYPE="PER_DESC">authors</ENAMEX> approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

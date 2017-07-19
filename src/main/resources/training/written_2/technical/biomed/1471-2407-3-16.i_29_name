@@ -1,0 +1,390 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="DISEASE">Radiotherapy</ENAMEX> treatment planning is, in broad terms, the
+        process of planning the delivery of a prescribed dose to a
+        tumor or target volume while minimizing dose to the
+        surrounding critical structures. Prior to the modern
+        <ENAMEX TYPE="DISEASE">radiotherapy</ENAMEX> treatment planning <TIMEX TYPE="DATE">era</TIMEX>, the 'optimum' plan was
+        decided upon using qualitative criteria, or by estimating
+        the inhomogeneity of the dose in the <ENAMEX TYPE="ORG_DESC">target</ENAMEX> or in critical
+        regions. With the advent of <ENAMEX TYPE="GPE">CT</ENAMEX>-based planning, the planning
+        process could be done with increased precision, as
+        3-dimensional <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> representing the target and
+        critical <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> could be defined more accurately and
+        <ENAMEX TYPE="ORGANIZATION">reproducibly</ENAMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> of the most useful tools which emerged in
+        the <NUMEX TYPE="ORDINAL">3-dimensional</NUMEX> planning <TIMEX TYPE="DATE">era</TIMEX> that could be used in
+        establishing the acceptability or unacceptability of a
+        treatment plan is the dose-volume histogram (DVH) [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+        .
+        The <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> is used ubiquitously and plots delivered dose on
+        the <ENAMEX TYPE="LAW">x-</ENAMEX>axis and percent volume of the structure of interest
+        on the y-axis. The general shape and area under the DVH
+        curve is instrumental in determining adequate coverage and
+        homogeneity of dose in the target volume as well as in
+        determining acceptable dose to critical structures. Indeed,
+        the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> has occupied a central role in modern treatment
+        planning [ <NUMEX TYPE="CARDINAL">2 3 4 5</NUMEX> ] .
+        The <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> is not without its limitations, however. First,
+        there is an inherent loss of spatial information with the
+        construction of a <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> plot. <NUMEX TYPE="ORDINAL">Second</NUMEX>, the dose plotted on the
+        x-axis of a conventional <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> (<ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>) is conventional dose,
+        which does not take into account many factors influencing
+        the effects of the dose on the given tissue. Among them are
+        the <ENAMEX TYPE="CONTACT_INFO">α/β</ENAMEX> of the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> (which can vary considerably for
+        <TIMEX TYPE="DATE">early</TIMEX> vs late reacting tissues and for early vs late
+        reactions within the same tissue), time taken to deliver
+        treatment, fraction size, and length of treatment
+        <ENAMEX TYPE="PERSON">interruptions</ENAMEX>. For this reason, the concept of
+        biological-effective dose (<ENAMEX TYPE="ORGANIZATION">BED</ENAMEX>) was developed [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] and
+        has been studied extensively by the radiobiology community.
+        Because the BED incorporates factors related to delivery of
+        treatment and tissue factors, it is a better representation
+        of the dose delivered to a given tissue than conventional
+        dose [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] .
+        The application of <ENAMEX TYPE="ORGANIZATION">BED</ENAMEX> has particular importance to
+        radiation treatment planning for <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX>. The
+        <ENAMEX TYPE="PERSON">prostate</ENAMEX>, more so than any other <ENAMEX TYPE="DISEASE">disease</ENAMEX> site, has been the
+        focus of advances in treatment delivery technique. The
+        <ENAMEX TYPE="PERSON">prostate</ENAMEX> has been the paradigm site for treatment planning
+        efforts related to conformal therapy [ <ENAMEX TYPE="LAW">9 10 11 12</ENAMEX> ] and
+        intensity modulated radiotherapy (IMRT)/inverse planning [
+        <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . Also, the prostate has been the leading disease
+        site for efforts related to improving <TIMEX TYPE="DATE">daily</TIMEX> setup [ <TIMEX TYPE="DATE">15</TIMEX> ]
+        and incorporating organ motion into the delivery strategy [
+        <NUMEX TYPE="CARDINAL">16</NUMEX> ] . These above efforts have allowed for dose escalation
+        of the prostate while minimizing early and late treatment
+        toxicity [ <NUMEX TYPE="CARDINAL">9 10 11 12 13 14 17</NUMEX> ] .
+        In view of the lead role the prostate has taken in
+        understanding treatment planning, <ENAMEX TYPE="PER_DESC">patient</ENAMEX> setup, and dose
+        <ENAMEX TYPE="PERSON">escalation</ENAMEX>, incorporation of treatment-related information
+        into the DVH - to further facilitate advances in reduction
+        of rectal or urinary toxicity - is highly appropriate. The
+        purpose of the current investigation is to compare <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s
+        of the bladder and rectum in those <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who developed
+        late treatment toxicity versus those <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who did not
+        develop such toxicity, and, using the same <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, to determine whether the biological-effective DVH
+        (<ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>) can potentially serve as a better tool for such
+        toxicity comparisons than the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>.
+      
+      
+        Methods
+        A generalized theoretical model for <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of
+        biological effective dose has been developed and reported
+        extensively [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] . Recently, our <ENAMEX TYPE="ORG_DESC">group</ENAMEX> has applied
+        this model for use with any combination of short-lived
+        interstitial brachytherapy and external beam radiotherapy
+        for <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> (unpublished/submitted data, <TIMEX TYPE="DATE">2003</TIMEX>). For
+        external <ENAMEX TYPE="PRODUCT_DESC">beam radiotherapy</ENAMEX>, the generalized BED model
+        reduces to the familiar equation:
+        BED = [n*d(<ENAMEX TYPE="CONTACT_INFO">1 + d/(α/β</ENAMEX>))] - [(<NUMEX TYPE="CARDINAL">0.693</NUMEX>*<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>)/(α*Tp)] (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+        where n = number of treatments, d = dose per fraction, T
+        = treatment time, <ENAMEX TYPE="CONTACT_INFO">α/β</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PERSON">Gy</ENAMEX>(for late effects), and Tp
+        (potential doubling time) and <NUMEX TYPE="MONEY">α</NUMEX> (linear component of cell
+        killing) were estimated from the published literature [ <NUMEX TYPE="CARDINAL">6 7</NUMEX>
+        <NUMEX TYPE="CARDINAL">8</NUMEX> ] , [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] to be <TIMEX TYPE="DATE">34 days</TIMEX> and <ENAMEX TYPE="PRODUCT">0.3/Gy</ENAMEX>, respectively. The
+        <NUMEX TYPE="ORDINAL">first</NUMEX> term in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) accounts for dose fractionation
+        and the <NUMEX TYPE="ORDINAL">second</NUMEX> <TIMEX TYPE="DATE">term</TIMEX> accounts for repopulation. The <ENAMEX TYPE="PER_DESC">authors</ENAMEX>
+        recognize that there is considerable controversy in the
+        exact values used for <ENAMEX TYPE="PRODUCT">α/β</ENAMEX>, α, and <ENAMEX TYPE="ORGANIZATION">Tp</ENAMEX> for <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> in
+        the reported literature.
+        The charts of <NUMEX TYPE="CARDINAL">190</NUMEX> consecutive <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <ENAMEX TYPE="PRODUCT">T1</ENAMEX> or T2
+        <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX> treated with external <ENAMEX TYPE="PRODUCT_DESC">beam radiotherapy</ENAMEX> at
+        our <ENAMEX TYPE="ORG_DESC">institution</ENAMEX> between <TIMEX TYPE="DATE">1996-1999</TIMEX> were reviewed. During
+        this period, external <ENAMEX TYPE="PRODUCT_DESC">beam radiotherapy</ENAMEX> was delivered using
+        <NUMEX TYPE="CARDINAL">6</NUMEX>-field technique, once <TIMEX TYPE="DATE">daily</TIMEX>, <NUMEX TYPE="CARDINAL">5</NUMEX> times a week, using <NUMEX TYPE="CARDINAL">180</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">cGy</ENAMEX> or <NUMEX TYPE="CARDINAL">200</NUMEX> cGy fractions, to a final dose of <TIMEX TYPE="DATE">7000-7200</TIMEX> cGy
+        (minimum PTV dose). The conformal techniques at our
+        <ENAMEX TYPE="ORGANIZATION">institution</ENAMEX> have been previously reported [ <TIMEX TYPE="DATE">20</TIMEX> ] - the
+        <ENAMEX TYPE="PERSON">prostate</ENAMEX>, seminal vesicles, rectum, and bladder were
+        outlined routinely on all <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, and uniform guidelines
+        were adhered to in order to minimize inter-observer
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in the definition of these <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. In
+        particular, with regard to the rectum, our institution
+        followed routine <ENAMEX TYPE="ORGANIZATION">Radiation Therapy Oncology Group</ENAMEX> (RTOG)
+        guidelines for definition - from the anus at the level of
+        the ischial tuberosities {lower border} to the rectosigmoid
+        junction {upper border} [ <TIMEX TYPE="DATE">21</TIMEX> ] . The bladder was contoured
+        from the apex to the <ENAMEX TYPE="FAC_DESC">dome</ENAMEX>, again as outlined per RTOG
+        guidelines. The planning target volume (PTV) was the
+        prostate + seminal vesicles + <NUMEX TYPE="CARDINAL">1</NUMEX> cm margin for the initial
+        phase; after <TIMEX TYPE="DATE">4500-5000</TIMEX> cGy, the <ENAMEX TYPE="ORGANIZATION">PTV</ENAMEX> was the prostate + <NUMEX TYPE="CARDINAL">1</NUMEX> cm
+        margin. Corresponding <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s were computed for the <ENAMEX TYPE="ORGANIZATION">PTV</ENAMEX>,
+        entire rectum (i.e., not the rectal wall or rectal
+        surface), and entire bladder (again, not the bladder wall
+        or bladder surface). The dose-fractionation and total
+        treatment time for each <ENAMEX TYPE="PER_DESC">patient</ENAMEX> were recorded to obtain
+        values for <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>, <ENAMEX TYPE="GPE">d</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) above.
+        No charts for those <ENAMEX TYPE="PER_DESC">patients</ENAMEX> treated after <TIMEX TYPE="DATE">1999</TIMEX> were
+        reviewed to ensure long minimum follow-up. At <TIMEX TYPE="TIME">each</TIMEX> routine
+        <ENAMEX TYPE="PERSON">follow-up</ENAMEX>, the <ENAMEX TYPE="PER_DESC">GI</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> complications using definitions
+        and grading as stated by the <ENAMEX TYPE="ORGANIZATION">RTOG</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] were recorded.
+        Thus, the charts were reviewed to identify those patients
+        with significant (<ENAMEX TYPE="ORGANIZATION">RTOG</ENAMEX> grade <NUMEX TYPE="CARDINAL">3</NUMEX> or grade <NUMEX TYPE="CARDINAL">4</NUMEX>) late <ENAMEX TYPE="PER_DESC">GI</ENAMEX> (large
+        <ENAMEX TYPE="ORGANIZATION">bowel</ENAMEX>) or GU (bladder) complications.
+        Of the <NUMEX TYPE="CARDINAL">190</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> (<NUMEX TYPE="PERCENT">3.2%</NUMEX>) were found to
+        have late grade <NUMEX TYPE="CARDINAL">3</NUMEX> rectal toxicity and <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> (<NUMEX TYPE="PERCENT">3.2%</NUMEX>)
+        were found to have late grade 3 urinary toxicity. No
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> were found to have grade <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">GI</ENAMEX> or GU toxicity. A
+        matched-<ENAMEX TYPE="PER_DESC">pair group</ENAMEX> of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> (<ENAMEX TYPE="LAW">6 GI and 6</ENAMEX> GU) with grade 0
+        toxicity having similar pretreatment (age, stage, grade,
+        and <ENAMEX TYPE="ORGANIZATION">PSA</ENAMEX>) and treatment (technique and dose) characteristics
+        were identified from the same patient database. The
+        characteristics of the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are shown in comparison with
+        the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> demonstrating toxicity in Tables
+        1and <NUMEX TYPE="CARDINAL">2</NUMEX>. The limitations and potential biases inherent to a
+        matched-pair comparison are well-understood by the <ENAMEX TYPE="PER_DESC">authors</ENAMEX>;
+        however, as these tables demonstrate, there is no
+        difference in the pretreatment and treatment
+        characteristics between the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> demonstrating and not
+        demonstrating <ENAMEX TYPE="PER_DESC">GI</ENAMEX> [<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>] and <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> [<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>] toxicity.
+        The <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s were already constructed (prior to
+        undertaking the current investigation) for the <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in
+        each of the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">groups</ENAMEX> (grade <NUMEX TYPE="CARDINAL">0</NUMEX> - rectal, grade <NUMEX TYPE="CARDINAL">3</NUMEX> -
+        rectal, grade <NUMEX TYPE="CARDINAL">0</NUMEX> - bladder, grade <NUMEX TYPE="CARDINAL">3</NUMEX> - bladder) - these are
+        the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s that were approved by the attending radiation
+        <ENAMEX TYPE="ORGANIZATION">oncologist</ENAMEX> prior to delivering the external beam treatment.
+        Then, these <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s derived from each of the individual
+        dose distributions were averaged over the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in
+        each of the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">groups</ENAMEX> (grade <NUMEX TYPE="CARDINAL">0</NUMEX> - rectal, grade <NUMEX TYPE="CARDINAL">3</NUMEX> -
+        rectal, grade <NUMEX TYPE="CARDINAL">0</NUMEX> - bladder, and grade <NUMEX TYPE="CARDINAL">3</NUMEX> - bladder) to
+        produce average <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s.
+        Using equation (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), the time-dose fractionation
+        parameters were incorporated to transform the conventional
+        dose to BED at each conventional dose level. This allowed
+        for the construction of the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s for all of the
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. Then, in a process similar to that for the
+        C-<ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s, the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s derived from each of the individual
+        dose distributions were averaged over the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in
+        each of the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">groups</ENAMEX> (grade <NUMEX TYPE="CARDINAL">0</NUMEX> - rectal, grade <NUMEX TYPE="CARDINAL">3</NUMEX> -
+        rectal, grade <NUMEX TYPE="CARDINAL">0</NUMEX> - bladder, and grade <NUMEX TYPE="CARDINAL">3</NUMEX> - bladder) to
+        produce average BED-<ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s. The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> are aware of the
+        recent efforts regarding advanced modeling concepts for
+        evaluating the relationship between physical irradiation
+        and biological damage on normal structures - in particular,
+        <ENAMEX TYPE="ORGANIZATION">BED</ENAMEX> provides a measure of biological effect at a point at
+        which it is calculated - measuring the absolute biological
+        effect over a volume having a non-uniform dose distribution
+        formally requires the computation of the equivalent uniform
+        <ENAMEX TYPE="PERSON">dose</ENAMEX> (EUD) [ <TIMEX TYPE="DATE">23</TIMEX> ] . However, this caveat does not apply
+        directly to the current task, because the goal of the
+        current investigation is to use the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> (constructed using
+        either conventional dose or <ENAMEX TYPE="ORGANIZATION">BED</ENAMEX>) as a 
+        relative measure of biological
+        response, not as an absolute measure, and in this context
+        constructing a <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> from <ENAMEX TYPE="DISEASE">BED computations</ENAMEX> and averaging the
+        <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s (both <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s) over a patient
+        <ENAMEX TYPE="ORGANIZATION">population</ENAMEX> was felt to be an appropriate methodology.
+        After construction of the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s, it was
+        clear that the general shape of the <NUMEX TYPE="CARDINAL">two</NUMEX> were slightly
+        different, as would be expected by the non-linear
+        transformation in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) above. In order to perform
+        comparison of the <ENAMEX TYPE="PER_DESC">individual</ENAMEX> matched pairs in an objective,
+        reproducible, and systematic manner, the following measure
+        of normalized difference in the average DVH was
+        computed:
+        
+        <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) represents an attempt to compress the DVH
+        difference information into a single quantity, and was felt
+        to be a valid quantity as the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s did not 'cross' - that
+        is, the grade <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s were above and to the right of the
+        <ENAMEX TYPE="ORGANIZATION">grade 0 DVH</ENAMEX>'s at all dose (or <ENAMEX TYPE="ORGANIZATION">BED</ENAMEX>) levels. Furthermore,
+        this approach was felt to be valid biologically, as
+        integral dose to critical <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> has been correlated by
+        many <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> with late treatment toxicity [ <NUMEX TYPE="CARDINAL">24 25 26</NUMEX>
+        <NUMEX TYPE="CARDINAL">27 28 29 30</NUMEX> ] . The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> are also aware of the special
+        problems related to applying the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> for tubular and
+        surface structures (such as the rectum and bladder) [ <NUMEX TYPE="CARDINAL">28 31</NUMEX>
+        ] . However, because <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s of the whole organs were used
+        as the basis for the original clinical decision making on
+        the <ENAMEX TYPE="PER_DESC">patient population</ENAMEX> under consideration (i.e., those
+        treated before <TIMEX TYPE="DATE">1999</TIMEX>), it was felt that integral dose to the
+        entire rectum and entire bladder would be appropriate as
+        <NUMEX TYPE="CARDINAL">one</NUMEX> measure for clinical comparison of the use of <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s
+        <ENAMEX TYPE="PRODUCT">versus C-DVH</ENAMEX>'s.
+        <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) was applied to compute the δ 
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> 's (both for the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and for the
+        <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s) for each of the <NUMEX TYPE="CARDINAL">six</NUMEX> matched-<ENAMEX TYPE="PER_DESC">patient</ENAMEX> pairs in the
+        rectal toxicity category and to each of the <NUMEX TYPE="CARDINAL">six</NUMEX>
+        matched-<ENAMEX TYPE="PER_DESC">patient</ENAMEX> pairs in the bladder toxicity category. In
+        order to perform a statistical comparison between these
+        matched-pair δ 
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> 's obtained using <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and those
+        obtained using <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s, the <ENAMEX TYPE="PER_DESC">student</ENAMEX>'s t-test was
+        used.
+        Although the treatment decisions were made with
+        knowledge of the integral dose delivered to the critical
+        structures, the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> recognize that there is controversy
+        with regard to the classification of biological response of
+        the normal <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> under study in the current
+        investigation. In particular, many recent reports (e.g., [
+        <NUMEX TYPE="CARDINAL">32</NUMEX> ] ) suggest that the bladder and rectum may be serial
+        rather than parallel <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> with regard to their
+        biological response to radiation injury. Thus, an
+        alternative measure of merit was chosen to complement the
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> analysis above. Specifically, the percent volume
+        receiving above a set high dose level (in this study, <NUMEX TYPE="CARDINAL">60</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">Gy</ENAMEX>) was analyzed. The analogous expression to <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+        is the following:
+        
+        <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) was applied in exactly the same manner as
+        above to compute δ 
+        V60 's for the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s for
+        both the bladder and rectum. It should be noted that when
+        applying <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) to the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s, the <NUMEX TYPE="CARDINAL">60</NUMEX> Gy
+        conventional dose transforms [using <ENAMEX TYPE="ORGANIZATION">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), assuming
+        once-daily <ENAMEX TYPE="PRODUCT">2 Gy</ENAMEX> fractions] to <NUMEX TYPE="CARDINAL">approximately 100</NUMEX> <ENAMEX TYPE="ORGANIZATION">Gy</ENAMEX>; thus,
+        V60 on the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s corresponds to <NUMEX TYPE="CARDINAL">V100</NUMEX> on the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s.
+        The statistical comparison between the matched-pair δ 
+        V60 's obtained between <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and
+        <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s was performed using the <ENAMEX TYPE="PER_DESC">student</ENAMEX>'s t-test.
+      
+      
+        Results
+        As expected, the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s (both <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s) were
+        predictive of rectal and urinary toxicity - that is, those
+        that developed late <ENAMEX TYPE="PER_DESC">GI</ENAMEX> or GU toxicity had <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s that
+        demonstrated more integral dose to the rectum or bladder
+        than those <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who did not develop such toxicity. This
+        reinforces and validates the well-known and widespread use
+        of <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s in evaluating external beam [ <NUMEX TYPE="CARDINAL">5 24 25 26 27 28 29</NUMEX>
+        ] and interstitial [ <TIMEX TYPE="DATE">33</TIMEX> ] treatment plans for prostate
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+        Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the comparison for the case of the
+        conventional <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s of the rectum. In this figure, the
+        average <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX> of the rectum was computed for the <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>
+        in the grade <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> as well as the <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in the grade
+        <NUMEX TYPE="CARDINAL">0</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX>. The average DVH's are displayed - as is
+        demonstrated, the grade 3 curve is to the right of and
+        above the grade 0 curve. Similar analyses were done for the
+        <ENAMEX TYPE="PRODUCT">BED-DVH-Rectum</ENAMEX> (as demonstrated in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), for the
+        C-DVH-<ENAMEX TYPE="PERSON">Bladder</ENAMEX> (as demonstrated in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) and for the
+        <ENAMEX TYPE="PRODUCT">BED-DVH-Bladder</ENAMEX> (as demonstrated in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). It should be
+        noted that in all cases, the average grade <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s -
+        conventional or BED - were consistently above and to the
+        right of the corresponding grade 0 curve at each dose (or
+        <ENAMEX TYPE="ORGANIZATION">BED</ENAMEX>) level from <NUMEX TYPE="CARDINAL">zero</NUMEX> to maximum, again validating the
+        uniform comparison approach summarized in <ENAMEX TYPE="GPE">Equations</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) and
+        (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>).
+        <ENAMEX TYPE="PRODUCT">Table 3shows</ENAMEX> the results of the detailed matched-pair
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> analysis. In this table, the δ 
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> 's obtained using the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and
+        <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s for each of the matched-<ENAMEX TYPE="PER_DESC">patient</ENAMEX> pairs is
+        displayed. The <ENAMEX TYPE="PER_DESC">students</ENAMEX>' t-test was used to obtain a
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>-value for each of the rectal toxicity and bladder
+        toxicity categories. As <ENAMEX TYPE="PRODUCT">Table 3displays</ENAMEX>, the δ 
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> analysis demonstrates a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of
+        <NUMEX TYPE="MONEY">0.036</NUMEX> for the rectal toxicity comparison, and a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of
+        <NUMEX TYPE="MONEY">0.065</NUMEX> for the bladder toxicity comparison, suggesting that
+        [when using <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> as the measure of merit] the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s were
+        significantly better-correlated (than the corresponding
+        C-<ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s) with rectal toxicity, and marginally
+        better-correlated with bladder toxicity.
+        <ENAMEX TYPE="PRODUCT">Table 4displays</ENAMEX> the results of the matched-pair V60
+        analysis. In this table, the δ 
+        V60 's obtained using the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s and
+        <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s for each of the matched-<ENAMEX TYPE="PER_DESC">patient</ENAMEX> pairs is
+        displayed. This table demonstrates a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of <NUMEX TYPE="MONEY">0.021</NUMEX> for
+        the rectal toxicity comparison, and a <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>-value of <NUMEX TYPE="MONEY">0.021</NUMEX> for
+        the bladder toxicity comparison, suggesting that [when
+        using V60 as the measure of merit] the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s were
+        significantly better-correlated (than the corresponding
+        C-<ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s) with rectal toxicity and with bladder
+        toxicity.
+      
+      
+        Conclusions
+        The values for δ 
+        <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> and δ 
+        V60 are higher for the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s of the
+        <ENAMEX TYPE="ORGANIZATION">rectum</ENAMEX> and bladder than for the counterpart <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s.
+        Because the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> and <ENAMEX TYPE="PRODUCT">V60</ENAMEX> are dosimetric endpoints used
+        routinely for the evaluation of radiation treatment plans,
+        this analysis suggests that <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s for the rectum and
+        bladder correlate better with late toxicity than <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX>'s
+        and should be considered when attempting to minimize late
+        <ENAMEX TYPE="PER_DESC">GI</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> toxicity after radiotherapy for <ENAMEX TYPE="DISEASE">prostate cancer</ENAMEX>.
+        Because this analysis was performed with <NUMEX TYPE="CARDINAL">two</NUMEX> independent
+        measures of merit of the <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX>'s - the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> and <TIMEX TYPE="DATE">the V60</TIMEX>, the
+        <TIMEX TYPE="DATE">early</TIMEX> results reported <ENAMEX TYPE="DISEASE">herein</ENAMEX> appear promising for the use
+        of <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s.
+        Because the patient <ENAMEX TYPE="PER_DESC">population</ENAMEX> having late grade 3/4
+        <ENAMEX TYPE="PERSON">toxicity</ENAMEX> (which is a small <ENAMEX TYPE="PER_DESC">population</ENAMEX> but was chosen as the
+        target <ENAMEX TYPE="PER_DESC">population</ENAMEX> that is most likely to benefit from the
+        <ENAMEX TYPE="ORGANIZATION">incorporation of BED-DVH</ENAMEX>'s into the process of treatment
+        <ENAMEX TYPE="ORGANIZATION">planning</ENAMEX>) was the focus of this initial investigation, the
+        number of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in the current study is understandably
+        small. <NUMEX TYPE="CARDINAL">Six</NUMEX> cases of late grade <NUMEX TYPE="CARDINAL">3/4</NUMEX> <ENAMEX TYPE="PER_DESC">GI</ENAMEX> toxicity represent
+        <NUMEX TYPE="PERCENT">approximately 3%</NUMEX> of the study <ENAMEX TYPE="PER_DESC">population</ENAMEX> - this low
+        <ENAMEX TYPE="PERSON">incidence</ENAMEX> also applies to the <NUMEX TYPE="CARDINAL">six</NUMEX> cases of late grade 3/4
+        GU toxicity. Assuming that the same low rate of late
+        toxicity is maintained, the number of cases of such late
+        complications will not increase significantly with a
+        significant increase in size of the study <ENAMEX TYPE="PER_DESC">population</ENAMEX>. Thus,
+        while the results are encouraging for the correlation of
+        <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s to rectal toxicity, the correlation to bladder
+        toxicity using the integral dose/AUC endpoint did not reach
+        statistical significance, likely due to the limitations in
+        sample size. However, because the integral dose/AUC
+        analysis did reach significance for the rectum, and because
+        <TIMEX TYPE="DATE">the V60</TIMEX> analysis did reach statistical significance for
+        both the bladder and rectum, the results of the current
+        investigation represent initial success with the
+        application of the <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX> concept.
+        As one means of avoiding the statistical problems posed
+        by evaluating late toxicity, analyzing early grade 3/4
+        <ENAMEX TYPE="PERSON">toxicity</ENAMEX>, which has a higher incidence, may allow for
+        greater statistical power in validating the BED-DVH
+        concept. However, because the modeling for the <ENAMEX TYPE="ORGANIZATION">Tp</ENAMEX>, alpha,
+        and alpha/beta is altogether different for early vs late
+        structures and because the transformation between late to
+        early parameters in <ENAMEX TYPE="GPE">Equations</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1-2</ENAMEX>) above are nonlinear,
+        the results of the current analysis (and corresponding
+        conclusions) may be completely different from such an early
+        toxicity analysis. For these reasons, the use of <ENAMEX TYPE="ORGANIZATION">BED-DVH</ENAMEX>'s
+        for evaluating and predicting early <ENAMEX TYPE="PER_DESC">GI</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GU</ENAMEX> toxicity will
+        be the subject of a separate communication.
+        The results of the current investigation are encouraging
+        - the well-known conventional <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> can be successfully
+        expanded to include treatment delivery, tissue biology, and
+        <ENAMEX TYPE="ORGANIZATION">time/fractionation</ENAMEX>-related information that better
+        represents the true effect of the treatment on critical
+        structures. Other <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> have expanded the <ENAMEX TYPE="PRODUCT">C-DVH</ENAMEX> to
+        include functional and spatial information [ <ENAMEX TYPE="LAW">4 34 35</ENAMEX> ] ,
+        but 
+        the current investigation is the first
+        report correlating a <ENAMEX TYPE="ORGANIZATION">DVH</ENAMEX> which has been expanded to include
+        BED parameters with late treatment toxicity for prostate
+        <ENAMEX TYPE="DISEASE">cancer irradiation</ENAMEX> .
+        Although the initial focus of this investigation was the
+        study of late radiation effects on the rectum and bladder,
+        there is no conceptual limitation to the use of the
+        techniques described herein to study early effects of
+        treatment (for acute toxicity assessment) or to study
+        target structures (for outcome/survival analysis) at any
+        <ENAMEX TYPE="ORGANIZATION">anatomic</ENAMEX> site. The results of the current investigation,
+        while encouraging, are preliminary and require validation
+        by other <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> - because of the low incidence of
+        late grade 3/4 complications, such an analysis might be
+        better undertaken at a multi-institutional level.
+      
+      
+        Competing interests
+        None Declared
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        ABJ designed and coordinated the investigation and
+        drafted the manuscript. <ENAMEX TYPE="ORGANIZATION">CMH</ENAMEX>, <ENAMEX TYPE="PERSON">CAP</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">JCR</ENAMEX> constructed and
+        implemented the software code for which the dose volume
+        <ENAMEX TYPE="ORGANIZATION">histograms</ENAMEX> could be computed and averaged. <ENAMEX TYPE="ORGANIZATION">LK</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SV</ENAMEX> were
+        responsible for maintaining the patient database - in
+        addition <ENAMEX TYPE="ORGANIZATION">SV</ENAMEX> provided general methodological and clinical
+        <ENAMEX TYPE="ORGANIZATION">guidance</ENAMEX>. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> have read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

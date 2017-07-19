@@ -1,0 +1,476 @@
+
+  
+    
+      
+        Rationale
+        The post-genomic era has introduced high-throughput
+        methodologies that generate experimental data at rates that
+        exceed knowledge growth. In particular, high-density
+        biochips including complementary <ENAMEX TYPE="SUBSTANCE">deoxyribonucleic acid</ENAMEX>
+        (<NUMEX TYPE="MONEY">cDNA</NUMEX>) microarrays, oligonucleotide microarrays, and
+        rapidly evolving proteomics <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> represent modern
+        tools able to interrogate biology on a genome-wide scale
+        and generate <NUMEX TYPE="CARDINAL">tens of thousands</NUMEX> of data points
+        simultaneously [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . While <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> are beginning to
+        appreciate the statistical rigors required for the analysis
+        of genome-scale datasets, a rate-limiting step in knowledge
+        growth occurs at the transition from statistical
+        significance to biological discovery.
+        A number of public efforts are currently focusing on the
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and curation of gene-specific functional data,
+        including <ENAMEX TYPE="ORGANIZATION">LocusLink, Protein Information Resource</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PIR</ENAMEX>),
+        GeneCards, <ENAMEX TYPE="GPE">Proteome</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Kyoto Encyclopedia</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">Genes</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Genomes</ENAMEX> (KEGG), <ENAMEX TYPE="GPE">Ensembl</ENAMEX>, and <ENAMEX TYPE="NATIONALITY">Swiss</ENAMEX>-Prot to name but a few [
+        <NUMEX TYPE="CARDINAL">2 3 4 5 6 7 8</NUMEX> ] . These resources provide exceptional depth
+        and coverage of the functional data available for a given
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>, but are not designed to effectively explore the
+        biological knowledge associated with <NUMEX TYPE="CARDINAL">hundreds</NUMEX> or <NUMEX TYPE="QUANTITY">thousands</NUMEX>
+        of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in parallel. In order to facilitate the functional
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and analysis of large lists of genes we have
+        developed a <ENAMEX TYPE="WORK_OF_ART">Database for Annotation, Visualization</ENAMEX>, and
+        <ENAMEX TYPE="ORGANIZATION">Integrated Discovery</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX>), which provides a set of
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>-mining tools that systematically combine functionally
+        descriptive data with intuitive graphical displays [ <ENAMEX TYPE="LAW">9</ENAMEX> ] .
+        <ENAMEX TYPE="PERSON">DAVID</ENAMEX> provides exploratory visualization tools that promote
+        discovery through functional classification, biochemical
+        pathway maps, and conserved <ENAMEX TYPE="SUBSTANCE">protein domain architectures</ENAMEX>,
+        while simultaneously remaining linked to rich <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+        biological annotation. <ENAMEX TYPE="PERSON">DAVID</ENAMEX> expedites the functional
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and analysis of any list of genes encoded by
+        <ENAMEX TYPE="ORGANIZATION">human</ENAMEX>, <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>, <ENAMEX TYPE="ANIMAL">rat</ENAMEX>, or fly genomes. <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s functionality is
+        demonstrated using the <ENAMEX TYPE="ORGANIZATION">Affymetrix GeneChip</ENAMEX> data of Cicala 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX> ] .
+      
+      
+        System architecture and maintenance
+        
+          Analysis modules
+          <ENAMEX TYPE="PERSON">DAVID</ENAMEX> is composed of <NUMEX TYPE="CARDINAL">four</NUMEX> main modules: Annotation
+          <ENAMEX TYPE="ORGANIZATION">Tool, GoCharts, KeggCharts</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">DomainCharts</ENAMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">Annotation Tool</ENAMEX> is an automated method for the functional
+          annotation of gene lists. Any combination of annotation
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> can be chosen from <NUMEX TYPE="CARDINAL">10</NUMEX> options by selecting the
+          appropriate checkboxes (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). The annotations are
+          added to the submitted gene list by selecting the upload
+          <ENAMEX TYPE="PERSON">button</ENAMEX>, which returns an HTML table containing the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s
+          original list of identifiers appended with the chosen
+          functional annotations. Unannotated genes are included in
+          the output with no appended data for tracking
+          purposes.
+          The <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX> module graphically displays the
+          distribution of differentially expressed genes among
+          functional categories using the controlled vocabulary of
+          the <ENAMEX TYPE="PERSON">Gene Ontology Consortium</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>), which provides a
+          structured language that can be applied to the functions
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in all organisms even as knowledge
+          continues to accumulate and change [ <TIMEX TYPE="DATE">13</TIMEX> ] . The language
+          is structured in a directed acyclic graph (DAG), wherein
+          term specificity increases and genome coverage decreases
+          as <NUMEX TYPE="CARDINAL">one</NUMEX> moves down the hierarchy. In contrast with a true
+          <ENAMEX TYPE="PERSON">hierarchy</ENAMEX>, child terms in a <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> may have <NUMEX TYPE="CARDINAL">more than one</NUMEX>
+          parent term and may have a different class of
+          relationship with its different <ENAMEX TYPE="PER_DESC">parents</ENAMEX>. The <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of
+          GO starts with <NUMEX TYPE="CARDINAL">three</NUMEX> main categories, <ENAMEX TYPE="LAW">Biological Process</ENAMEX>,
+          <ENAMEX TYPE="PERSON">Molecular Function</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Cellular Component</ENAMEX>. Biological
+          Process includes broad biological goals, such as mitosis
+          or purine metabolism, that are accomplished by ordered
+          assemblies of molecular functions. <ENAMEX TYPE="PERSON">Molecular Function</ENAMEX>
+          describes the tasks performed by individual gene
+          products; examples are transcription factor and DNA
+          <ENAMEX TYPE="ORGANIZATION">helicase</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Cellular Component</ENAMEX> classification type
+          involves subcellular structures, locations, and
+          macromolecular <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>; examples include nucleus,
+          telomere, and origin recognition complex. After choosing
+          a classification type, levels that determine list
+          coverage and specificity are chosen by selecting the
+          appropriate radio button. Level <NUMEX TYPE="CARDINAL">1</NUMEX> provides the highest
+          list coverage with the least amount of term specificity.
+          With each increasing level coverage decreases while
+          specificity increases so that level <NUMEX TYPE="CARDINAL">5</NUMEX> provides the least
+          amount of coverage with the highest term specificity.
+          Classification data is displayed as a bar chart, where
+          the length of the <ENAMEX TYPE="ORG_DESC">bar</ENAMEX> represents the number of gene
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX> in each category. The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can set
+          visualization parameters for sorting output data and
+          displaying categories that contain at least a minimum
+          number of genes. Selecting an individual bar opens a new
+          <ENAMEX TYPE="ORGANIZATION">HTML</ENAMEX> table displaying the gene identifier, LocusLink
+          number, gene name, the current classification, and other
+          classifications for each gene in that category. A 'Show
+          All' button opens a new HTML table displaying all
+          classification data and a 'Show <ENAMEX TYPE="ORGANIZATION">Chart Data</ENAMEX>' button opens
+          an HTML table containing the underlying chart data, thus
+          allowing <ENAMEX TYPE="PER_DESC">users</ENAMEX> to recreate customized chart graphics in a
+          spreadsheet program. A new chart can be displayed for any
+          subset of genes by selecting the classification type and
+          level using the checkboxes and radio buttons available
+          within the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s current page that allow for drill-down
+          capabilities. A count of the number of genes annotated is
+          included in the output, and unannotated genes are binned
+          into the 'unclassified' category, thus providing users
+          with an automated tracking system for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> not
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX>.
+          KeggCharts graphically display the distribution of
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes among <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> biochemical
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX>. Each pathway is linked to the <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> pathway map,
+          wherein differentially expressed genes from the original
+          list are highlighted in red. In this view genes are
+          further linked to additional annotations available
+          through <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX>'s DBGET retrieval system [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . As with
+          GoCharts, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can set visualization parameters for
+          sorting output data and displaying categories that
+          contain at least a minimum number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and the
+          KeggCharts visualization inherits all of the dynamic
+          features of <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX>.
+          DomainCharts display the distribution of
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes among <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> domains
+          [ <TIMEX TYPE="DATE">14</TIMEX> ] . Each domain designation is linked to the
+          <ENAMEX TYPE="PERSON">Conserved Domain Database</ENAMEX> (CDD) of the <ENAMEX TYPE="ORGANIZATION">National Center</ENAMEX>
+          for <ENAMEX TYPE="ORGANIZATION">Biotechnology Information</ENAMEX> (NCBI), where details
+          regarding domain function, structure and sequence are
+          readily available. As with <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX> and <ENAMEX TYPE="PERSON">KeggCharts</ENAMEX>, the
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> can set visualization parameters for sorting output
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and displaying categories that contain at least a
+          minimum number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and the DomainCharts
+          visualization inherits all of the dynamic features of
+          <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">KeggCharts</ENAMEX>. For further information
+          regarding the functionality of <ENAMEX TYPE="PERSON">DAVID</ENAMEX> visit the FAQ
+          <ENAMEX TYPE="LANGUAGE">section</ENAMEX> at [ <ENAMEX TYPE="LAW">9</ENAMEX> ] .
+        
+        
+          Using <ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX> to mine functional annotation
+          To demonstrate the functionality of <ENAMEX TYPE="PERSON">DAVID</ENAMEX> we analyzed
+          a list of genes differentially expressed in human
+          peripheral blood mononuclear cells (PBMCs) after
+          incubation with <ENAMEX TYPE="SUBSTANCE">HIV-1 envelope proteins</ENAMEX>. Details of the
+          experimental, <ENAMEX TYPE="SUBSTANCE">RNA preparation</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> hybridization
+          procedures, along with details of the chip-to-chip
+          <ENAMEX TYPE="ORGANIZATION">normalizations</ENAMEX> and statistical analysis of differential
+          gene expression are provided in Cicala 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX> ] . Briefly, primary
+          <ENAMEX TYPE="ORGANIZATION">human PBMCs</ENAMEX> and monocyte-derived macrophages were
+          incubated for <TIMEX TYPE="TIME">16 hours</TIMEX> with HIV-1 envelope protein
+          (<NUMEX TYPE="MONEY">gp120</NUMEX>). High-density oligonucleotide microarrays
+          (<ENAMEX TYPE="PRODUCT">Affymetrix HU-95A GeneChip</ENAMEX>) were used to monitor
+          gp120-induced transcriptional events. This analysis
+          resulted in the identification of <NUMEX TYPE="CARDINAL">402</NUMEX> differentially
+          expressed genes.
+          Whereas <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> modulated by <TIMEX TYPE="DATE">HIV-1 gp120</TIMEX> have
+          previously been associated with <ENAMEX TYPE="DISEASE">HIV replication</ENAMEX> and/or
+          envelope signaling, the remaining genes are of unknown
+          function or have never been associated with <ENAMEX TYPE="PRODUCT">HIV-1</ENAMEX> or
+          gp120. Converting this list of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into biological
+          meaning requires the gathering of pertinent information
+          from several data repositories. For many <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> this
+          process consists of iterative browsing through several
+          databases for each gene, manually gathering gene-specific
+          information regarding sequence, function, pathway, and
+          disease <ENAMEX TYPE="ORG_DESC">association</ENAMEX>. In contrast, the systematic approach
+          of <ENAMEX TYPE="PERSON">DAVID</ENAMEX> simultaneously adds biologically rich
+          information derived from several public data <ENAMEX TYPE="PER_DESC">sources</ENAMEX> to
+          lists of genes in parallel. <ENAMEX TYPE="PERSON">Selecting DAVID</ENAMEX>'s Annotation
+          Tool and uploading the list of <NUMEX TYPE="CARDINAL">402</NUMEX> differentially
+          expressed genes initiates the functional <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> and
+          analysis of the entire dataset. Once submitted, the gene
+          list is stored for the entire analysis session, allowing
+          <ENAMEX TYPE="PER_DESC">users</ENAMEX> to switch between modules without having to
+          resubmit data.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Annotation Tool</ENAMEX>
+          The <ENAMEX TYPE="ORGANIZATION">Annotation Tool</ENAMEX> provides several annotation
+          options and builds a tabular view of the <ENAMEX TYPE="PER_DESC">users</ENAMEX> gene list
+          and the available annotations (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Choosing the
+          annotation fields <ENAMEX TYPE="PERSON">Gene Symbol</ENAMEX>, <ENAMEX TYPE="GPE">LocusLink</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">OMIM</ENAMEX>, <ENAMEX TYPE="GPE">Unigene</ENAMEX>,
+          <ENAMEX TYPE="PERSON">Reference Sequence</ENAMEX>, and <ENAMEX TYPE="PERSON">Gene Name</ENAMEX> followed by selecting
+          the 'Upload' button produces an HTML table in the web
+          <ENAMEX TYPE="SUBSTANCE">browser</ENAMEX> containing all genes and their available
+          annotations, where gene identifiers, descriptive and
+          classification data are pulled from the database and
+          appended to the gene list (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Gene identifiers
+          such as <ENAMEX TYPE="PERSON">Gene Symbol</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX> are hyperlinked to
+          additional gene-specific data available at their original
+          <ENAMEX TYPE="PER_DESC">sources</ENAMEX>, thus providing in-depth gene-specific details
+          and <ENAMEX TYPE="SUBSTANCE">annotation pedigrees</ENAMEX>. Classification data and
+          functional summaries can be used to quickly scan for
+          information relevant to the <ENAMEX TYPE="PER_DESC">researcher</ENAMEX>'s experimental
+          system. The server time required for execution of this
+          module correlates linearly with the size of the gene list
+          and takes <TIMEX TYPE="TIME">less than 45 seconds</TIMEX> for lists of <NUMEX TYPE="CARDINAL">up to 1,000</NUMEX>
+          genes (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, numbers in parentheses represent r
+          2values). These results demonstrate the power and
+          efficiency of an integrated approach to the functional
+          annotation of large datasets.
+        
+        
+          GoCharts
+          Choosing the <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX> module opens a new window with a
+          variety options. Users choose between <NUMEX TYPE="CARDINAL">three</NUMEX> general types
+          of classification (biological process, molecular
+          function, and cellular <ENAMEX TYPE="ORG_DESC">component</ENAMEX>) and <NUMEX TYPE="CARDINAL">five</NUMEX> levels of
+          annotation that represent term coverage and specificity
+          (see <ENAMEX TYPE="ORGANIZATION">Analysis Modules</ENAMEX> section). Any combination of
+          <ENAMEX TYPE="PERSON">classification</ENAMEX> and coverage level can be specified. Also
+          included are options to annotate gene lists with all GO
+          terms available or only the most specific terms, which
+          are referred to as terminal nodes. The option to choose
+          different levels of term specificity provides needed
+          flexibility and thus allows <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to determine
+          dynamically which level of coverage and specificity best
+          suits their data and stage of analysis. For instance,
+          early-stage analyses may consist of annotating gene lists
+          with very general terms in order to gain a broad
+          understanding of the data. In this case, selecting
+          biological process and level 1 classifies genes using
+          general terms such as 'death' and 'cell communication'.
+          Using increased term specificity facilitates the
+          extraction of more detailed functional information. In
+          this case selecting biological process and level 5
+          classifies genes using terms such as 'apoptotic
+          <ENAMEX TYPE="ORGANIZATION">mitochondrial</ENAMEX> changes' and 'chemosensory perception'.
+          However, increased term specificity comes a cost, in
+          that as it increases list coverage decreases (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          In our studies we find that level 2 typically maintains
+          good coverage while also providing meaningful term
+          <ENAMEX TYPE="PERSON">specificity</ENAMEX>. Figure 4aillustrates how the GoCharts
+          <ENAMEX TYPE="ORGANIZATION">visualization</ENAMEX> quickly reveals that <NUMEX TYPE="CARDINAL">35</NUMEX> differentially
+          expressed genes are involved in 'stress responses'. Each
+          GO term can be viewed in the <ENAMEX TYPE="PLANT">tree</ENAMEX> or DAG views by
+          <ENAMEX TYPE="ORGANIZATION">hyperlinks</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">QuickGO</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] .
+          Because HIV-1 has a major impact on the function of
+          cells of the immune system and their ability to carry out
+          stress responses, we selected the histogram bar
+          representing the number of genes involved in stress
+          response, which opens an HTML table containing the
+          Affymetrix identifier, <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX> number, gene name, the
+          current classification, and other classifications for all
+          <NUMEX TYPE="CARDINAL">35</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). Now that we have reduced our gene
+          list to those genes involved in stress responses, we
+          further characterized this subset by repeating the
+          GoCharts procedure available at the top of the
+          stress-response HTML table. Choosing molecular function,
+          level <NUMEX TYPE="CARDINAL">3</NUMEX> produces a new histogram that quickly reveals
+          that <NUMEX TYPE="CARDINAL">nearly half</NUMEX> (<NUMEX TYPE="MONEY">16/35</NUMEX>) of the stress-response genes
+          possess cytokine activity (Figure <NUMEX TYPE="CARDINAL">4c</NUMEX>). Indeed, cytokines
+          have been shown to play an important part in the HIV-1
+          life cycle and the results obtained here suggest that
+          treatment of <ENAMEX TYPE="ORGANIZATION">PBMCs</ENAMEX> with HIV-1 envelope proteins
+          significantly modulates the transcription of numerous
+          cytokine <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. The efficiency with which GoCharts
+          systematically summarized this large dataset with graphic
+          visualizations, while remaining linked to primary data
+          and external resources drastically improved the discovery
+          process.
+        
+        
+          KeggCharts
+          Figure <NUMEX TYPE="CARDINAL">5adepicts</NUMEX> the output of <ENAMEX TYPE="ORGANIZATION">KeggCharts</ENAMEX> with a
+          <ENAMEX TYPE="ORGANIZATION">histogram</ENAMEX> displaying the distribution of differentially
+          expressed genes among biochemical pathways. The chart
+          shows that a <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> pathway of apoptosis includes <NUMEX TYPE="CARDINAL">five</NUMEX>
+          genes induced by <TIMEX TYPE="DATE">HIV-1 gp120</TIMEX>. Selecting the pathway name
+          opens the corresponding <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> biochemical pathway map and
+          highlights in red outline the differentially expressed
+          genes functioning in that pathway (Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>). In this
+          view genes are further linked to additional annotations
+          available through <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX>'s DBGET retrieval system [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+          Note that <NUMEX TYPE="CARDINAL">only four</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> apoptosis pathway
+          are highlighted in red, while the <ENAMEX TYPE="ORGANIZATION">KeggCharts</ENAMEX> tool mapped
+          <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="NATIONALITY">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> to the apoptosis pathway. This
+          difference is due to the fact that <NUMEX TYPE="CARDINAL">two</NUMEX> of the Affymetrix
+          probesets are targeting the same 'TNF-alpha' gene.
+        
+        
+          DomainCharts
+          DomainCharts are operationally akin to both KeggCharts
+          and <ENAMEX TYPE="PERSON">GoCharts</ENAMEX>, except that the results visually depicting
+          the distribution of genes among <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> domains
+          (Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>). The <ENAMEX TYPE="ORGANIZATION">DomainCharts</ENAMEX> histogram identifies <NUMEX TYPE="CARDINAL">16</NUMEX>
+          genes with kinase domains (pkinase), probably reflecting
+          the effects of <ENAMEX TYPE="PRODUCT">HIV-1 gp120</ENAMEX> on the signal transduction
+          <ENAMEX TYPE="ORGANIZATION">machinery</ENAMEX>. The chart also identifies <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with
+          interleukin-<NUMEX TYPE="CARDINAL">8</NUMEX> domains (<ENAMEX TYPE="ORGANIZATION">IL-8</ENAMEX>), a domain that represents a
+          highly conserved motif among stress-response cytokines.
+          Selecting the domain name <ENAMEX TYPE="PRODUCT">'IL8</ENAMEX>' opens the Conserved
+          <ENAMEX TYPE="PERSON">Domain Database</ENAMEX> (CDD) page corresponding to that PFAM
+          <ENAMEX TYPE="PERSON">domain</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6b</NUMEX>). This page provides detailed sequence,
+          structure, and functional information about the <ENAMEX TYPE="ORGANIZATION">IL-8</ENAMEX>
+          domain and the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that contain it.
+        
+      
+      
+        Comparison of <ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX> with related programs
+        
+          Exploratory tools
+          <ENAMEX TYPE="ORGANIZATION">FatiGO</ENAMEX> is a web-accessible application that functions
+          in much the same way as <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX>, including the
+          ability to specify term-specificity level. Unlike <ENAMEX TYPE="PERSON">DAVID</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">FatiGO</ENAMEX> does not allow the setting of a minimum hit
+          threshold for simplified viewing of only the most highly
+          represented functional categories. Likewise, FatiGO
+          limits the graphical output to <NUMEX TYPE="CARDINAL">only one</NUMEX> top-level GO
+          category at a time, whereas <ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX> allows the combined
+          viewing of biological process, molecular function, and
+          cellular <ENAMEX TYPE="ORG_DESC">component annotations</ENAMEX> simultaneously. <ENAMEX TYPE="ORGANIZATION">FatiGO</ENAMEX>'s
+          <ENAMEX TYPE="SUBSTANCE">static barchart</ENAMEX> output looks very similar to <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s
+          <ENAMEX TYPE="ORGANIZATION">GoChart</ENAMEX>; an important distinction is that <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s
+          GoCharts are dynamic, allowing <ENAMEX TYPE="PER_DESC">users</ENAMEX> to drill-down and
+          traverse the GO hierarchy for any subset of genes, view
+          the underlying chart data and associated annotations, and
+          link out to external data repositories including
+          <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">QuickGO</ENAMEX>. As shown in <ENAMEX TYPE="PRODUCT">Table 3the</ENAMEX> majority of
+          accession types accepted and functional annotations
+          offered by <ENAMEX TYPE="PERSON">DAVID</ENAMEX> are not available from <ENAMEX TYPE="GPE">FatiGO</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is a standalone <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> application that requires
+          downloading of the program itself along with <NUMEX TYPE="CARDINAL">at least two</NUMEX>
+          <ENAMEX TYPE="PERSON">auxiliary</ENAMEX> files, one for <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> visualization and another
+          for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structural <ENAMEX TYPE="PER_DESC">visualization</ENAMEX>. The remote database
+          queried by <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is reported to be updated every <TIMEX TYPE="TIME">six</TIMEX>
+          <TIMEX TYPE="DATE">months</TIMEX>. It has been our experience that, to accurately
+          reflect the current knowledge associated with a given
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>, functional annotation data must be updated far more
+          frequently. If <ENAMEX TYPE="PER_DESC">users</ENAMEX> wish to use GoMiner with a local
+          copy of its annotation database, they must also download
+          and install a local copy of the <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> database and the
+          required <ENAMEX TYPE="PER_DESC">drivers</ENAMEX>, a process that may be difficult for
+          inexperienced <ENAMEX TYPE="PER_DESC">users</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX>. In contrast, <ENAMEX TYPE="PERSON">DAVID</ENAMEX> is
+          web-accessible and updated <TIMEX TYPE="DATE">weekly</TIMEX>. The functionality of
+          <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is most similar to <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">GoCharts</ENAMEX> module. An
+          enhanced feature of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is that it provides intuitive
+          <ENAMEX TYPE="PLANT">tree</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DAG</ENAMEX> views of genes embedded within the GO
+          hierarchy. <ENAMEX TYPE="PERSON">DAVID</ENAMEX> has the ability to display such views
+          through hyperlinks of GO terms to <ENAMEX TYPE="ORGANIZATION">QuickGO</ENAMEX>'s <ENAMEX TYPE="PLANT">tree</ENAMEX> and DAG
+          views. A unique function provided by <ENAMEX TYPE="PERSON">DAVID</ENAMEX> is the ability
+          to drill-down and traverse the GO hierarchy for any
+          subset of genes sharing a common classification, as
+          demonstrated by the identification of stress response
+          genes with cytokine activity. Neither the <ENAMEX TYPE="PLANT">tree</ENAMEX> nor DAG
+          view of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> provides this functionality.
+          The <ENAMEX TYPE="ORG_DESC">body</ENAMEX> of biological knowledge associated with any
+          list of genes extends far beyond the structured
+          vocabulary of GO. <ENAMEX TYPE="PERSON">DAVID</ENAMEX> provides, in addition to
+          GoCharts, <NUMEX TYPE="CARDINAL">two</NUMEX> additional analysis modules that utilize
+          <ENAMEX TYPE="SUBSTANCE">PFAM protein</ENAMEX> domain designations and <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> biochemical
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> to graphically summarize the distribution of
+          genes among functional <ENAMEX TYPE="PER_DESC">domains</ENAMEX> and pathways. Moreover,
+          <ENAMEX TYPE="PERSON">DAVID</ENAMEX> highlights pathway <ENAMEX TYPE="PER_DESC">members</ENAMEX> within the biochemical
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> provided by <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX>. Whereas <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> provides
+          <ENAMEX TYPE="ORGANIZATION">hyperlinks</ENAMEX> to pathway databases such as <ENAMEX TYPE="ORGANIZATION">BioCarta</ENAMEX> and KEGG
+          for individual genes, lists of genes can only be batch
+          processed in the context of GO. In addition to providing
+          <ENAMEX TYPE="ORGANIZATION">hyperlinks</ENAMEX> to external data repositories for each gene,
+          <ENAMEX TYPE="PERSON">DAVID</ENAMEX> provides links to primary sequence information
+          available at <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> and human-curated functional summaries
+          parsed from <ENAMEX TYPE="GPE">LocusLink</ENAMEX>. These features are not available
+          in <ENAMEX TYPE="GPE">GoMiner</ENAMEX>. <ENAMEX TYPE="PERSON">DAVID</ENAMEX> can be used to collect, analyze and
+          explore functional annotation associated with human,
+          <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>, <ENAMEX TYPE="ANIMAL">rat</ENAMEX>, and 
+          Drosophila gene lists, whereas
+          <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is restricted to analyzing human data. Another
+          restrictive feature of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> is that it only takes <ENAMEX TYPE="EVENT">HUGO</ENAMEX>
+          gene symbols as input. This is problematic in that many
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and expressed sequence tags (ESTs) do not have <ENAMEX TYPE="EVENT">HUGO</ENAMEX>
+          symbols. Moreover, this restriction requires the
+          translation of every gene list into <ENAMEX TYPE="EVENT">HUGO</ENAMEX> symbols.
+          Like <ENAMEX TYPE="PERSON">GoMiner</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> is a stand-alone, exploratory
+          tool for the analysis of lists of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the
+          context of GO. The downloadable program comes with a copy
+          of the supporting relational database of gene to GO-term
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>. However, as with <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> there are
+          important considerations regarding the installation,
+          support, and updating of the software and underlying
+          <ENAMEX TYPE="PERSON">database</ENAMEX>, as indicated by the documentation and bug
+          reports listed on their website. <ENAMEX TYPE="PERSON">Importantly</ENAMEX>, in addition
+          to the batch processing of gene lists within the context
+          of GO, <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> provides functionality similar to that
+          of <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">KeggCharts</ENAMEX>, providing the ability to view
+          lists of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the context of biochemical
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX>. However, in order to use this functionality
+          through <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>, <ENAMEX TYPE="PER_DESC">users</ENAMEX> must download additional
+          programs and files, including the <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> program and its
+          <ENAMEX TYPE="ORGANIZATION">associated MAPP</ENAMEX> files, whereas the <ENAMEX TYPE="ORGANIZATION">KeggCharts</ENAMEX> module of
+          <ENAMEX TYPE="PERSON">DAVID</ENAMEX> is easily accessible at the click of a button.
+        
+        
+          Annotation tools
+          <ENAMEX TYPE="ORGANIZATION">ENSMART</ENAMEX> is a web-accessible application that
+          integrates an enormous amount of functional annotation
+          for numerous species. ENSMART takes as input lists of
+          several accession types, including <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>,
+          making it quite flexible. Database cross-references
+          provided by <ENAMEX TYPE="ORGANIZATION">ENSMART</ENAMEX> cover a broad spectrum of functional
+          annotations pertaining to gene- and protein-specific
+          attributes as well as <ENAMEX TYPE="DISEASE">disease</ENAMEX> and cross-species
+          attributes. However, <ENAMEX TYPE="PER_DESC">users</ENAMEX> are limited to a maximum of
+          <NUMEX TYPE="CARDINAL">three</NUMEX> cross-references for a given gene list. Unlike
+          <ENAMEX TYPE="PERSON">DAVID</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">ENSMART</ENAMEX> does not provide graphic summaries of GO
+          categories, <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX>, or biochemical pathway
+          membership, nor does ENSMART provide the ability to
+          drill-down within <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes sharing common
+          functional features.
+          <ENAMEX TYPE="ORGANIZATION">GeneLynx</ENAMEX> and <ENAMEX TYPE="PER_DESC">Source</ENAMEX> are highly similar web-accessible
+          annotation tools that provide a wealth of gene-specific
+          information for individual genes and both are flexible in
+          that they take as input several different accession
+          types. However, the rich information and available
+          <ENAMEX TYPE="ORGANIZATION">hyperlinks</ENAMEX> provided in single-gene mode is lost when
+          either <ENAMEX TYPE="PRODUCT">GeneLynx</ENAMEX> or <ENAMEX TYPE="PER_DESC">Source</ENAMEX> are used to batch process lists
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. The output of batch processing with <ENAMEX TYPE="ORGANIZATION">Source</ENAMEX> is a
+          text-style table that is feasible for download and
+          automated processing, but provides little <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> for
+          interactive exploration. Although <ENAMEX TYPE="ORGANIZATION">GeneLynx</ENAMEX> can perform
+          batch searching for a list of genes, functional
+          annotations must be viewed <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> at a time.
+          <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> is a <ENAMEX TYPE="PER_DESC">companion</ENAMEX> program of <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX> that
+          performs the translations of gene accession types into
+          the <ENAMEX TYPE="EVENT">HUGO</ENAMEX> symbols required by <ENAMEX TYPE="ORGANIZATION">GoMiner</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> is
+          simply a web-accessible resource for translating
+          accession types. It takes several accession types but
+          does not take <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX> numbers, and although it was
+          reported to accept identifiers from <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> chip <ENAMEX TYPE="FAC_DESC">sets</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> returned no data for several gene lists
+          composed of <ENAMEX TYPE="PRODUCT">HuFL6800</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>. Notably, <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX> does
+          not provide any functional <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> and is restricted
+          to human data. Thus, within the context of the other
+          <ENAMEX TYPE="PERSON">exploratory</ENAMEX> and annotation tools discussed here,
+          <ENAMEX TYPE="ORGANIZATION">MatchMiner</ENAMEX>'s <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> is limited, or supportive, at
+          best.
+          <ENAMEX TYPE="ORGANIZATION">Resourcerer</ENAMEX> is a web-accessible application for
+          comparing and annotating human, <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>, and <ENAMEX TYPE="ANIMAL">rat</ENAMEX> GeneChip
+          and microarray <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>. A major feature of Resourcerer
+          is its broad coverage of microarray <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and its
+          ability to identify overlapping gene targets between
+          chips, even across technology <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and species
+          barriers. <ENAMEX TYPE="ORGANIZATION">Resourcerer</ENAMEX>'s output is in tabular form and
+          provides hyperlinks to accession cross-references such as
+          <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Resourcerer</ENAMEX> does not provide graphic
+          summaries or annotations from GO, <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX>, or any
+          other resource, thus limiting its utility as a tool for
+          functional annotation.
+        
+      
+      
+        Conclusions
+        In conclusion, the development of any complete, 
+        in-<NUMEX TYPE="CARDINAL">silico</NUMEX> discovery system requires
+        <TIMEX TYPE="DATE">full</TIMEX>, <ENAMEX TYPE="GPE">query</ENAMEX>-based access to an integrated, up-to-date view
+        of all relevant information, regardless of its physical
+        location and content structure. Still in its infancy, <ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX>
+        represents the <ENAMEX TYPE="ORG_DESC">foundation</ENAMEX> of our continued development
+        efforts that aim to integrate information-rich data sources
+        and provide quantitative summaries and analysis methods. In
+        addition to the <ENAMEX TYPE="ORG_DESC">functionality</ENAMEX> reported here, the methods of
+        Hosack 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">24</TIMEX> ] have been incorporated
+        into a <ENAMEX TYPE="ORGANIZATION">DAVID</ENAMEX> analysis module called 
+        <ENAMEX TYPE="ORGANIZATION">EASEonline</ENAMEX> , which allows users to
+        identify statistically over-represented functional
+        categories within a given list of genes. Committed to
+        maintaining a system able to coevolve with technological
+        advances and the new forms of data that are sure to follow,
+        <ENAMEX TYPE="PERSON">DAVID</ENAMEX>'s current design elements provide automated solutions
+        that enable <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to rapidly discover biological
+        themes in large datasets consisting of lists of genes.
+      
+    
+  

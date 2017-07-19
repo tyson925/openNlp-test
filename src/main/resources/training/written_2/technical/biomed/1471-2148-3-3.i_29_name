@@ -1,0 +1,979 @@
+
+  
+    
+      
+        Background
+        Epistatic interactions between mutations in different
+        genes, or different sites within the same gene, can
+        substantially influence the dynamics of evolving
+        <ENAMEX TYPE="PER_DESC">populations</ENAMEX>. Although adaptation by natural selection
+        depends on occasional beneficial mutations, in fact most
+        mutations are neutral or deleterious. Therefore, if
+        mutations are randomly added to an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>'s genome (as
+        opposed to incorporated by natural selection), then fitness
+        tends to decline with mutation number. Mutations whose
+        effects are independent of one another are termed 
+        <ENAMEX TYPE="ORGANIZATION">multiplicative</ENAMEX> . If mutations
+        interact so that their combined effect on fitness is
+        greater than expected from their individual effects, then
+        <ENAMEX TYPE="ORGANIZATION">epistasis</ENAMEX> is said to be 
+        <ENAMEX TYPE="ORGANIZATION">synergistic</ENAMEX> . For deleterious
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>, synergistic epistasis means that the decline in
+        average fitness accelerates as more random mutations are
+        added (such epistasis is termed 
+        negative by <ENAMEX TYPE="ORGANIZATION">Phillips et al.</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] ).
+        By contrast, if deleterious mutations interact so that
+        their combined effect is smaller than expected under the
+        <ENAMEX TYPE="ORGANIZATION">multiplicative</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, then epistasis is called 
+        <ENAMEX TYPE="PERSON">antagonistic</ENAMEX> (or 
+        positive in the terminology of
+        <ENAMEX TYPE="ORGANIZATION">Phillips et al.</ENAMEX>). Antagonistic epistasis therefore implies
+        unexpected robustness to the effects of multiple
+        deleterious mutations [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+        The predicted effects of these various types of
+        mutational interactions on population dynamics are well
+        studied (for reviews, see [ <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] ), but in most models
+        the types of interactions are ad hoc because it is not
+        known how well the assumed interactions reflect reality. In
+        particular, the question of what kinds of interactions are
+        typical, and under what conditions, is addressed only
+        rarely.
+        Recent work has shown that epistatic interactions can be
+        interpreted as curvature in the fitness surface [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ,
+        which implies that geometry imposes limitations on the
+        types of epistasis that can be observed for any given
+        <ENAMEX TYPE="ORGANIZATION">genotype</ENAMEX>. Closely related to this geometric approach is the
+        realization that epistasis must be studied with respect to
+        a particular reference sequence [ <NUMEX TYPE="CARDINAL">7 8 9 10 11</NUMEX> ] , and that
+        the forms of epistatic interactions change when the
+        <ENAMEX TYPE="ORGANIZATION">reference</ENAMEX> is changed. <ENAMEX TYPE="PERSON">Wilke</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Adami</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] proposed that
+        <ENAMEX TYPE="ORGANIZATION">inhomogeneities</ENAMEX> in the distribution of genotypes give rise
+        to directional epistasis (directional epistasis is the net
+        <ENAMEX TYPE="SUBSTANCE">epistasis</ENAMEX> averaged <NUMEX TYPE="CARDINAL">over many</NUMEX> pairs of mutations) among
+        deleterious mutations, and that the sign of directional
+        <ENAMEX TYPE="ORGANIZATION">epistasis</ENAMEX> provides information about the density gradient
+        of high-fitness sequences within a cluster. Hence,
+        evolutionary hypotheses that depend crucially on the sign
+        of epistasis, including certain theories on the evolution
+        of recombination [ <NUMEX TYPE="CARDINAL">12 13 14 15</NUMEX> ] and on the speed of
+        mutation accumulation in asexual <ENAMEX TYPE="PER_DESC">populations</ENAMEX> [ <NUMEX TYPE="CARDINAL">16 17 18</NUMEX> ] ,
+        will also depend on the density distribution of fit
+        genotypes, and on the topology of those <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> of genotype
+        space into which <ENAMEX TYPE="PER_DESC">populations</ENAMEX> move under the pressures of
+        <ENAMEX TYPE="PERSON">mutation</ENAMEX> and selection.
+        The argument relating directional epistasis to the
+        distribution of high-fitness sequences within a cluster of
+        fit sequences goes as follows (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Consider a
+        sequence that lies near the 
+        <ENAMEX TYPE="ORGANIZATION">center</ENAMEX> of a dense cluster of
+        high-fitness sequences. Such a sequence is surrounded by
+        many other high-fitness genotypes, and the average harm
+        done by a single mutation is therefore relatively low. But
+        as more random mutations are added, high-fitness genotypes
+        become less common, and the average harm of multiple
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> is stronger than what the effect of single
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> indicated. This increasingly harmful effect of
+        mutations at greater distances away from the original
+        sequence corresponds to 
+        synergistic epistasis. By contrast,
+        if a sequence is located at the periphery of a high-fitness
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>, or in a region of low density of high-fitness
+        sequences, then this synergistic tendency is lessened, and
+        we might even observe antagonistic epistasis for this
+        sequence. One prediction of this hypothesis of density
+        <ENAMEX TYPE="ORGANIZATION">inhomogeneities</ENAMEX> is that the average fitness effect of
+        single mutations must be correlated with the strength and
+        direction of epistatic interactions at larger mutational
+        <ENAMEX TYPE="PERSON">distances</ENAMEX>. This prediction was confirmed in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary
+        structure folding and in digital organisms [ <TIMEX TYPE="DATE">11</TIMEX> ] . A
+        similar effect was observed for quantitative trait loci in
+        <ENAMEX TYPE="ANIMAL">mice</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+        While the hypothesis of <ENAMEX TYPE="PERSON">Wilke</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Adami</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] explains
+        some of the variation within the observed range of
+        epistatic interactions, it fails to predict whether we
+        should always expect an excess of synergistic epistasis, or
+        whether antagonistic interactions might dominate in certain
+        situations. Recent experiments indicate that synergistic
+        and antagonistic interactions are both common when pairs of
+        mutations are considered, but that, overall, the two types
+        of interactions either roughly cancel each other out or
+        perhaps even produce an excess of antagonistic interactions
+        [ <NUMEX TYPE="CARDINAL">20 21 22 23 24 25 26 27 28 29</NUMEX> ] . <NUMEX TYPE="CARDINAL">Only one</NUMEX> study of this
+        type reported an excess of synergistic interactions [ <TIMEX TYPE="DATE">30</TIMEX> ]
+        . Moreover, <NUMEX TYPE="CARDINAL">two</NUMEX> simple systems with computational
+        <ENAMEX TYPE="PERSON">landscapes</ENAMEX>, self-replicating computer programs [ <ENAMEX TYPE="LAW">2</ENAMEX> ] and
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure folding [ <TIMEX TYPE="DATE">11</TIMEX> ] , both exhibited a
+        clear excess of antagonistic interactions.
+        What factors may explain a tendency toward antagonism?
+        Here are <NUMEX TYPE="CARDINAL">four</NUMEX> possible explanations, and there may be
+        others:
+        <NUMEX TYPE="CARDINAL">1</NUMEX>. Biased recovery: In some experimental systems, it is
+        difficult to isolate genotypes with very low fitness,
+        including non-viable ones. By allowing random mutations to
+        accumulate only in surviving <ENAMEX TYPE="PER_DESC">lineages</ENAMEX>, a <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> may
+        inadvertently bound mean fitness away from <NUMEX TYPE="CARDINAL">zero</NUMEX>, and
+        thereby bias the shape of the fitness function versus
+        <ENAMEX TYPE="CONTACT_INFO">mutation</ENAMEX> number from synergy toward antagonism.
+        <NUMEX TYPE="CARDINAL">2</NUMEX>. Multiple hits: To the extent that multiple mutations
+        hit the same gene or pathway, subsequent mutations will
+        more likely be neutral than initial ones, because the same
+        function cannot be destroyed twice. In effect, one mutation
+        may convert <NUMEX TYPE="CARDINAL">one</NUMEX> or more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into pseudo-genes, or junk
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, in which subsequent mutations have no further harmful
+        effect.
+        <NUMEX TYPE="CARDINAL">3</NUMEX>. Intrinsic or evolved form of interaction: The
+        <ENAMEX TYPE="ORGANIZATION">dynamics</ENAMEX> of metabolic pathways and gene regulation might be
+        <ENAMEX TYPE="PERSON">inherently</ENAMEX> structured to produce more antagonistic than
+        synergistic interactions. Even if there is no necessary
+        biochemical tendency in this direction, it is possible that
+        <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> and their regulation have evolved to promote such
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. While this explanation is vague, a failure to
+        identify any other explanation for observed patterns of
+        mutational interaction would suggest a closer examination
+        of models of metabolic pathways and gene regulation with
+        this issue in mind.
+        <NUMEX TYPE="CARDINAL">4</NUMEX>. Compensatory mutation: Consider a genotype that is on
+        a peak (or plateau) in a fitness landscape, such that all
+        mutations are either deleterious or neutral. As <NUMEX TYPE="CARDINAL">one</NUMEX> moves
+        away from this genotype by adding mutations, imagine that
+        the ratio of deleterious to neutral mutations stays
+        <ENAMEX TYPE="PERSON">constant</ENAMEX>, as does the average effect of a deleterious
+        mutation. But as the distance away from this peak
+        increases, a portion of the mutant distribution may move
+        into the vicinity of <NUMEX TYPE="CARDINAL">one or more</NUMEX> other fitness peaks,
+        separated from the original <NUMEX TYPE="CARDINAL">one</NUMEX> by a valley of deleterious
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>. Mutations that lead out of the valley onto a new
+        fitness peak are, of course, beneficial mutations. If a
+        <ENAMEX TYPE="PERSON">mutation</ENAMEX> is beneficial because it restores some previously
+        existing <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> or function, then we can call it a
+        compensatory mutation. If the frequency of compensatory
+        mutations increases as <NUMEX TYPE="CARDINAL">one</NUMEX> moves out from the original
+        peak, this effect will slow down the decay of mean fitness
+        with increasing mutational distance, even without 
+        selection for compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>.
+        In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we focus on a fairly simple system (<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        secondary structure folding), which avoids the first
+        explanation above because of complete information, and
+        avoids the <NUMEX TYPE="ORDINAL">second</NUMEX> and <NUMEX TYPE="ORDINAL">third</NUMEX> explanations because there is
+        only a single gene with dichotomous fitness (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX> or <NUMEX TYPE="MONEY">1</NUMEX>) in the
+        system. Thus, we can focus on whether, and to what extent,
+        compensatory mutations that precisely restore the
+        previously existing folding structure contribute to an
+        excess of antagonistic interactions.
+        In order to analyze the topology and structure of
+        fitness landscapes, and assess their effect on epistasis,
+        we need a system where each sequence in a well-defined
+        space is assigned a unique fitness that is independent of
+        the frequency of other genotypes in the <ENAMEX TYPE="PER_DESC">population</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        secondary structure folding is a well-studied model system.
+        In this system, the secondary structure of an <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> molecule
+        is taken as a predictor of the fitness of the underlying
+        sequence [ <NUMEX TYPE="CARDINAL">31 32 33 34 35 36</NUMEX> ] . <ENAMEX TYPE="SUBSTANCE">RNA folding</ENAMEX> has the
+        advantage that all genotypes can be separated naturally
+        into <NUMEX TYPE="CARDINAL">only two</NUMEX> classes, the viable ones (those that fold
+        into a particular target structure) with fitness <NUMEX TYPE="CARDINAL">1</NUMEX>, and the
+        non-viable ones (those that fail to fold into that exact
+        structure), which are assigned fitness <NUMEX TYPE="CARDINAL">0</NUMEX>. Such a
+        classification permits a precise mathematical analysis,
+        while at the same time many important properties of
+        high-dimensional fitness landscapes are retained [ <TIMEX TYPE="DATE">37</TIMEX> ] .
+        The set of all viable <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> can be decomposed into
+        smaller <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> called neutral <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ <NUMEX TYPE="CARDINAL">38 39</NUMEX> ] . <NUMEX TYPE="CARDINAL">Two</NUMEX> viable
+        sequences belong to the same neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX> if one
+        sequence can be transformed into the other through a series
+        of <NUMEX TYPE="CARDINAL">single</NUMEX> point mutations, without passing through a
+        sequence with lower fitness along the way. If no such
+        series of mutations exists, then the two viable sequences
+        belong to different neutral <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>.
+        As discussed in previous <ENAMEX TYPE="ORG_DESC">publications</ENAMEX> [ <ENAMEX TYPE="LAW">2 11 25</ENAMEX> ] , the
+        average fitness 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) at a Hamming distance 
+        d from a particular reference
+        sequence can be used for studying directional epistasis in
+        a large number of genotypes. The value of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) is obtained by averaging over the
+        individual <ENAMEX TYPE="PER_DESC">fitnesses</ENAMEX> of all sequences that can be obtained
+        from the reference sequence by introducing 
+        d mutations. By definition, 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>) is the fitness of the reference
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX>, and we have always 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>) = <NUMEX TYPE="CARDINAL">1</NUMEX>. The value of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) is given by <NUMEX TYPE="CARDINAL">1</NUMEX> minus the mean
+        effect of single mutations and, in general, the value of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) is given by <NUMEX TYPE="CARDINAL">1</NUMEX> minus the mean
+        effect of 
+        d mutations. Moreover, since we
+        assume in this study that all individual <ENAMEX TYPE="PER_DESC">fitnesses</ENAMEX> are
+        either <NUMEX TYPE="CARDINAL">0</NUMEX> or <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) corresponds also to the fraction
+        of viable sequences at distance 
+        d from the reference sequence. We
+        will make use of this property repeatedly throughout this
+        paper.
+        We expect that 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) decreases roughly exponentially
+        as 
+        d increases, for the following
+        reason. If the sequences are sufficiently long that any
+        back mutations can be neglected, then genotype space can be
+        visualized as a tree (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>). If the number of neutral
+        <ENAMEX TYPE="PERSON">neighbors</ENAMEX> (the neutrality, <ENAMEX TYPE="CONTACT_INFO">ν</ENAMEX>) of all viable sequences is
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">the same</TIMEX>, and the fraction of neutral
+        mutations of a viable sequence is on average much larger
+        than the probability that a completely random sequence is
+        viable, then 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>) can be approximated by <ENAMEX TYPE="DISEASE">[ν</ENAMEX>/( 
+        <ENAMEX TYPE="CONTACT_INFO">L κ-</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> )] 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), where 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> is sequence length and κ denotes
+        the number of different bases that can occur (κ = <NUMEX TYPE="CARDINAL">4</NUMEX> for
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>). Thus, we can write 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) = <ENAMEX TYPE="PER_DESC">exp</ENAMEX>(-α 
+        d ) with <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <ENAMEX TYPE="CONTACT_INFO">1 - ν/</ENAMEX>( 
+        <ENAMEX TYPE="CONTACT_INFO">L κ-</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ). The condition that the fraction
+        of neutral <ENAMEX TYPE="DISEASE">mutants ν</ENAMEX>/( 
+        <ENAMEX TYPE="CONTACT_INFO">L κ-</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) is much larger than the total
+        fraction of viable mutants among all possible sequences is
+        crucial for the exponential decay of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ). Consider by contrast the <ENAMEX TYPE="ORGANIZATION">Russian</ENAMEX>
+        <ENAMEX TYPE="PRODUCT">Roulette</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">Gavrilets</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Gravner</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] , in which
+        all sequences are randomly assigned a fitness value of
+        either <NUMEX TYPE="CARDINAL">0</NUMEX> or <NUMEX TYPE="CARDINAL">1</NUMEX>. The total fraction 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> of viable sequences in this model
+        is equal to the expected fraction of neutral mutants of any
+        sequence with fitness <NUMEX TYPE="CARDINAL">1</NUMEX>, and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) ≈ 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> for 
+        d <NUMEX TYPE="MONEY">> 0</NUMEX> in this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+        In the general case, ν is not constant. If ν changes
+        systematically with increasing 
+        d , then 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) will decay slightly faster or
+        slower than a perfect exponential. We incorporate this by
+        writing [ <ENAMEX TYPE="LAW">2</ENAMEX> ]
+        
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) = <ENAMEX TYPE="PER_DESC">exp</ENAMEX>(<ENAMEX TYPE="GPE">-αd β</ENAMEX>). (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+        The parameter β represents the 
+        deviation from the exponential
+        expectation. Because an exact exponential decay means that
+        the average effect of a new mutation is independent of how
+        many mutations have accumulated previously, β is a measure
+        of the net effect of epistatic interactions. In the
+        following, we refer to this net effect as directional
+        epistasis, and to β as the epistasis parameter. <ENAMEX TYPE="CONTACT_INFO">β > 1</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to synergistic epistasis, whereas <ENAMEX TYPE="CONTACT_INFO">β < 1</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to antagonistic interactions.
+        Consider the fitness landscape depicted in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, in
+        which circles represent viable sequences while crosses are
+        non-viable ones. This particular landscape contains <NUMEX TYPE="QUANTITY">two</NUMEX>
+        separate neutral <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, of which <NUMEX TYPE="CARDINAL">one</NUMEX> (indicated by bold
+        solid lines) is connected to the reference sequence at
+        distance 
+        d = <NUMEX TYPE="CARDINAL">0</NUMEX>. At 
+        d = <NUMEX TYPE="CARDINAL">2</NUMEX> in the upper <ENAMEX TYPE="ORG_DESC">branch</ENAMEX>, a
+        compensatory mutation leads onto a second neutral network
+        (shown as bold dashed lines). For such "fitness <ENAMEX TYPE="PLANT">trees</ENAMEX>"
+        anchored at particular reference sequences, we can measure
+        both the decline in average fitness with mutational
+        <ENAMEX TYPE="ORGANIZATION">distance</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), as well as the change in the
+        average neutrality as we increase 
+        d . The average neutrality at
+        distance 
+        d simply reflects the connectedness
+        of the neutral network at that distance. Average neutrality
+        at mutational distance 
+        d is defined as the average number of
+        neutral <ENAMEX TYPE="GPE_DESC">neighbors</ENAMEX> of a sequence that is separated by 
+        d mutations from the reference
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> and that is part of the neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX> under
+        investigation. As per the arguments by <ENAMEX TYPE="PERSON">Wilke</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Adami</ENAMEX> [ <NUMEX TYPE="CARDINAL">11</NUMEX>
+        ] , we expect the connectedness to decrease with 
+        d as we move away from a reference
+        sequence in the center of a high-fitness cluster. By
+        contrast, we expect connectedness to increase (or at least
+        decrease more slowly) if the reference sequence is on the
+        fringe of such a cluster. Figure 3shows 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) and average neutrality for
+        examples of "fringe" and "<ENAMEX TYPE="ORG_DESC">center</ENAMEX>" reference sequences. The
+        fringe sequence (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3a) has strongly antagonistic net
+        epistasis, and neutrality increases with distance. By
+        contrast, the center sequence (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 3b) shows a slightly
+        synergistic tendency and declining neutrality with
+        distance. This <ENAMEX TYPE="ORG_DESC">association</ENAMEX> agrees with our expectation that
+        more antagonistic curves 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) are caused by an increase in the
+        density of neutral sequences with 
+        d , whereas more synergistic curves
+        result from a corresponding decline.
+      
+      
+        Results
+        For <NUMEX TYPE="CARDINAL">100</NUMEX> randomly chosen <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sequences of length 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = <NUMEX TYPE="CARDINAL">76</NUMEX>, we measured both the fraction
+        of neutral mutants 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) as well as the average neutrality
+        of <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> of neutral mutants as a function of the
+        distance 
+        d . We determined α and β from
+        fitting exp(-α 
+        d β) to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ). Moreover, we performed a linear
+        regression on the average neutrality to quantify the change
+        in neutrality with distance from the reference sequence,
+        for each of the random sequences serving as a reference.
+        Among the <NUMEX TYPE="CARDINAL">100</NUMEX> reference sequences that we studied, the
+        change in neutrality was sufficiently linear to make the
+        slope 
+        <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> an excellent indicator of the
+        general trend (increasing or decreasing neutrality with
+        distance 
+        d ), even if the true relationship
+        was not always precisely linear.
+        Figure 4shows this measured slope 
+        <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> versus the fitted epistasis
+        parameter β for each of the <NUMEX TYPE="CARDINAL">100</NUMEX> reference sequences. The
+        <NUMEX TYPE="CARDINAL">two</NUMEX> quantities are very strongly correlated (correlation
+        coefficient 
+        r = <NUMEX TYPE="PERCENT">-0.960</NUMEX>, 
+        p <NUMEX TYPE="MONEY">< 0.0001</NUMEX>). However, the
+        distributions of 
+        <ENAMEX TYPE="ORGANIZATION">m and β</ENAMEX> differ in an important
+        respect. The values of 
+        <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> are distributed roughly
+        <ENAMEX TYPE="ORGANIZATION">symmetrically</ENAMEX> around <NUMEX TYPE="CARDINAL">zero</NUMEX>, meaning that the average
+        neutrality increases as often as it decreases with distance
+        from the reference sequence. The epistasis parameter β, on
+        the other hand, lies almost entirely below unity. Even when
+        the average neutrality decays quickly as <NUMEX TYPE="CARDINAL">one</NUMEX> moves away
+        from the reference sequence, the corresponding value of β
+        indicates at most a very slight tendency toward synergistic
+        <ENAMEX TYPE="ORGANIZATION">epistasis</ENAMEX>. This is precisely the pattern of excess
+        antagonistic epistasis that demands an explanation.
+        If compensatory mutations were responsible for the shift
+        of β to values below <NUMEX TYPE="CARDINAL">one</NUMEX>, then by adjusting the function 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) to 
+        remove their contribution we should
+        find a distribution of β symmetrical around <NUMEX TYPE="CARDINAL">one</NUMEX>. As
+        described in the <ENAMEX TYPE="LOCATION">Methods</ENAMEX> section, it is possible to
+        separate the contribution to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) of neutral mutations that lie on
+        the same network 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) from the contribution 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) that reflects compensatory
+        mutations from neighboring neutral <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> onto the
+        reference <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. Figure 5shows 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ), estimated using method <TIMEX TYPE="DATE">M2</TIMEX>, for a
+        typical example. The contribution of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) dwindles as the mutational
+        distance 
+        d increases, while 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) becomes increasingly dominant. In
+        other words, at large distances 
+        d , most of the viable sequences
+        arise through compensatory mutations.
+        After partitioning the contributions of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) for all <NUMEX TYPE="CARDINAL">100</NUMEX> functions 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), we determined α and β for the
+        functions 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) in the same way as was done for 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ). The functions 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) can be thought of as the decay
+        functions without "contamination" by compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>. Thus, the differences in α and β for 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) must be ascribed to compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>. Figure <TIMEX TYPE="DATE">6shows α</TIMEX> versus β for both 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), shown as triangles, and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ), calculated by method <TIMEX TYPE="DATE">M2</TIMEX>, shown
+        as circles. The removal of compensatory mutations causes a
+        pronounced upward shift of β toward more synergistic
+        <ENAMEX TYPE="ORGANIZATION">epistasis</ENAMEX>. The average decay parameter α is largely
+        <ENAMEX TYPE="PERSON">unaffected</ENAMEX>. For 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), average <β> = <NUMEX TYPE="CARDINAL">0.893</NUMEX> ±
+        <NUMEX TYPE="MONEY">0.006</NUMEX> (standard error of the mean), while for 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) the average <β> = <NUMEX TYPE="CARDINAL">0.983</NUMEX> ±
+        <NUMEX TYPE="QUANTITY">0.004 by M2</NUMEX> or <NUMEX TYPE="MONEY">1.046 ± 0.005</NUMEX> by <TIMEX TYPE="DATE">M1</TIMEX>. Figure <TIMEX TYPE="DATE">7shows</TIMEX> that the
+        removal of compensatory mutations yields a distribution of
+        β that is <NUMEX TYPE="CARDINAL">approximately</NUMEX> symmetric around <NUMEX TYPE="CARDINAL">one</NUMEX>, in contrast
+        to the pronounced excess of antagonistic epistasis (β <
+        <NUMEX TYPE="CARDINAL">1</NUMEX>) when compensatory mutations are included.
+      
+      
+        Discussion
+        The correlation between average mutational effects (α)
+        and <ENAMEX TYPE="DISEASE">directional epistasis (β</ENAMEX>) described by <ENAMEX TYPE="PERSON">Wilke</ENAMEX> and Adami
+        [ <TIMEX TYPE="DATE">11</TIMEX> ] implies that whether a reference sequence shows
+        <ENAMEX TYPE="ORGANIZATION">synergistic</ENAMEX> or antagonistic epistasis depends on whether it
+        lies near the center of a dense cluster of high-fitness
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in genetic space, or on the fringes of such a
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. <ENAMEX TYPE="PERSON">Hansen</ENAMEX> and <ENAMEX TYPE="PERSON">Wagner</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] independently suggested
+        that the relative frequency of synergistic and antagonistic
+        interactions depends on the distance of the genotype in
+        question from the optimum, and thus from the center of the
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>.
+        In this study, we demonstrated a very strong correlation
+        <TIMEX TYPE="DATE">between β</TIMEX>, which governs the net direction of epistasis,
+        and the mean change in neutrality per added mutation away
+        from the reference sequence, 
+        <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). This correlation is fully
+        consistent with the hypothesis that directional epistasis
+        depends on the location of the reference sequence relative
+        to other high-fitness genotypes. Yet, this correlation does
+        not explain the overall preponderance of antagonistic
+        <ENAMEX TYPE="PERSON">epistasis</ENAMEX> observed in <NUMEX TYPE="CARDINAL">two</NUMEX> computational systems [ <ENAMEX TYPE="LAW">2 11</ENAMEX> ] ,
+        nor the absence of overall synergistic epistasis in most
+        biological systems that have been carefully studied in this
+        regard. Although we found wide variation in the epistasis
+        parameter for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure folding (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>), <NUMEX TYPE="CARDINAL">98</NUMEX>
+        of <NUMEX TYPE="CARDINAL">100</NUMEX> reference sequences showed an excess of antagonistic
+        <ENAMEX TYPE="CONTACT_INFO">epistasis (β < 1</ENAMEX>) and <NUMEX TYPE="CARDINAL">only 2</NUMEX> exhibited more synergism (β
+        <ENAMEX TYPE="CONTACT_INFO">> 1</ENAMEX>). We demonstrated that this overall excess of
+        antagonistic interactions results from compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Figs. 5, 6, 7</ENAMEX>), which are evidently important
+        for the shape of the fitness function whether or not a
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> is in the middle of a dense cluster.
+        The trajectory for mean fitness as random mutations
+        <ENAMEX TYPE="PERSON">accumulate</ENAMEX> is generally one of decay because many more
+        mutations are deleterious than are beneficial. The decay
+        function is therefore sometimes loosely discussed as if it
+        depended only on deleterious mutations (or only deleterious
+        and neutral mutations). This focus on declining fitness
+        tends to ignore compensatory mutations because they are
+        <ENAMEX TYPE="ORGANIZATION">beneficial</ENAMEX>, albeit conditionally. But compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> cannot be ignored if their frequency varies
+        systematically in genetic space. In particular, if
+        compensatory mutations are an increasing fraction of all
+        viable mutations as the distribution moves away from a
+        local fitness peak, then they will affect the shape of the
+        decay function (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">5</NUMEX>) and the resulting epistasis
+        <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Figs. 6, 7</ENAMEX>).
+        In the present paper, we have used the term
+        "compensatory mutation" for all mutations that are not on
+        the main neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX>, irrespective of their distance to
+        this <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. This is a broad definition of compensatory
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX>, because it encompasses not only those mutations
+        that directly counteract a particular deleterious mutation,
+        but also mutations that establish a new neutral network far
+        away from the main <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. The latter type of mutations
+        could also be called advantageous mutations. Here, we have
+        lumped both <ENAMEX TYPE="PER_DESC">types</ENAMEX> together, because in this way the
+        presentation of our results is less cluttered, and the
+        mathematics of separating 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) into the various contributions is
+        easier to follow, than if we were distinguishing three
+        different types of mutations. An additional argument for
+        calling all these mutations compensatory is that they can
+        produce a fitness gain only in association with one or more
+        mutations that would otherwise be deleterious, that is,
+        none of the mutations that could be termed advantageous is
+        accessible directly from the main neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. On the
+        other hand, our definition excludes mutations that restore
+        a genotype to the main neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX> (even mutations that
+        are not reversions in the strict sense). Again, we chose
+        this definition for mathematical precision and clarity. The
+        definition is not as important as the substantive
+        conclusion: The fact that it is possible to restore a
+        previously existing structure by many non-trivial
+        mutational pathways is sufficient to cause pronounced
+        antagonistic directional epistasis.
+        A high abundance of compensatory mutations implies
+        considerable flexibility in the genotype-phenotype map,
+        such that fit phenotypes can be found widely distributed in
+        <ENAMEX TYPE="PRODUCT">genotype</ENAMEX> space. For the case of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure
+        <ENAMEX TYPE="PERSON">folding</ENAMEX>, this property of the genotype-phenotype map has
+        been demonstrated analytically using graph theory [ <TIMEX TYPE="DATE">41</TIMEX> ] ,
+        and it has been verified in extensive numerical simulations
+        [ <NUMEX TYPE="CARDINAL">42 43</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Random</ENAMEX> graph theory predicts that <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary
+        structures can be classified into common structures, which
+        can be found almost anywhere in sequence space, and rare
+        structures. Only a very small number of <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> fold into
+        any given rare structure. The common structures satisfy the
+        shape-covering theorem, which states that within any sphere
+        of a certain radius 
+        r , <NUMEX TYPE="CARDINAL">at least one</NUMEX> sequence can be
+        found that folds into a given common structure. Since we
+        have chosen the reference sequences randomly in our
+        analysis, we can safely assume that the majority of the
+        sequences that we have studied fold into a common
+        structure, and that therefore the shape-covering theorem
+        applies. For sequences of length 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = <NUMEX TYPE="CARDINAL">76</NUMEX>, we have 
+        r �<NUMEX TYPE="MONEY">� 10</NUMEX> (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX> in <ENAMEX TYPE="GPE">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX> ] ).
+        That means that any common structure can be found at least
+        once within a distance of approximately <NUMEX TYPE="CARDINAL">10-12</NUMEX> mutations
+        from any arbitrarily chosen sequence. In other words, even
+        in the empty regions of sequence space, <NUMEX TYPE="CARDINAL">at least one</NUMEX> out of
+        <NUMEX TYPE="CARDINAL">10 6-10</NUMEX> 7sequences will be viable. A <NUMEX TYPE="ORDINAL">second</NUMEX> prediction from
+        <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> graph theory is that the common <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> should
+        <ENAMEX TYPE="ORGANIZATION">percolate</ENAMEX> through sequence space. <ENAMEX TYPE="ORGANIZATION">Percolation</ENAMEX> means that it
+        is possible to find <NUMEX TYPE="CARDINAL">two</NUMEX> sequences with almost no sequence
+        identity which fold into the same <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>, and which are
+        connected by a path of mutant sequences that also fold into
+        the same <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. However, this percolation property
+        holds only if the <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> of both <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> of a pair in
+        paired regions of the secondary structure is considered as
+        a single-mutation event, which runs counter to the standard
+        biological meaning of mutation. Most of these double
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> will be classified as compensatory mutations
+        according to our definition (because each individual
+        mutation of such pairs will most likely destroy the
+        secondary structure), and therefore a single neutral path
+        according to random graph theory will appear as several
+        independent paths linked together by compensatory mutations
+        in our analysis. This fact, combined with the
+        shape-covering theorem which we discussed previously, is
+        probably the source of the large number of compensatory
+        mutations that we observe.
+        A major difference between the fitness landscapes we
+        have studied here and more natural fitness landscapes is
+        that we restricted fitness values to either one or <NUMEX TYPE="CARDINAL">zero</NUMEX>,
+        whereas in nature fitness is certainly not a binary
+        variable. <NUMEX TYPE="CARDINAL">Two</NUMEX> sequences that fold into the same structure
+        may bind to a <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> with different efficiencies, and a
+        sequence that folds into a slightly different <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> may
+        also bind to the <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>, albeit less efficiently. We
+        chose here binary fitness values for mathematical
+        <ENAMEX TYPE="PERSON">simplicity</ENAMEX> and clarity in our analysis. With a continuous
+        fitness scale, apart from neutral and inviable sequences,
+        we would have to keep track of slightly and strongly
+        <ENAMEX TYPE="PERSON">deleterious</ENAMEX> as well as advantageous sequences, and would
+        consequently need a much more elaborate mathematical
+        procedure to account for the contributions from these
+        different fitness classes. Nevertheless, it would certainly
+        be desirable to address in a future study the effect of
+        compensatory mutations on epistatic interactions in a
+        system with a continuous fitness scale, for example with a
+        fitness measure similar to the <NUMEX TYPE="CARDINAL">one</NUMEX> used by <ENAMEX TYPE="ORGANIZATION">Ancel</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Fontana</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] or, alternatively, using digital organisms [
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ] .
+        The present study does not exclude the possibility that
+        antagonistic epistasis in some <ENAMEX TYPE="ORG_DESC">systems</ENAMEX> could be caused by
+        effects other than compensatory mutations. However, our
+        findings do indicate that compensatory mutations can play a
+        major role in producing antagonistic epistasis and thus
+        slowing the decay in mean fitness under random mutation
+        <ENAMEX TYPE="ORGANIZATION">accumulation</ENAMEX>. Moreover, in the present study, only
+        mutations that re-created exactly the same <ENAMEX TYPE="SUBSTANCE">RNA folding</ENAMEX> as
+        the wild-type were deemed compensatory, while in nature
+        even a modified secondary <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> may have a tertiary
+        structure that is sufficiently close to the wild-type that
+        no fitness loss is incurred [ <TIMEX TYPE="DATE">45</TIMEX> ] , which means that
+        compensatory mutations in natural <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> may be
+        even more frequent that in our computational model.
+        Compensatory mutations have been reported for rRNA [ <TIMEX TYPE="DATE">46</TIMEX> ] ,
+        <ENAMEX TYPE="ORGANIZATION">tRNA</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX> ] , and mRNA [ <TIMEX TYPE="DATE">48</TIMEX> ] structures, and it is
+        certainly not surprising that we should find a high
+        frequency of compensatory mutations in the present study.
+        What is important and novel in this study is that we have
+        explained the overall excess of antagonistic epistasis by
+        these compensatory mutations. This connection suggests that
+        evidence for one of these phenomena may provide evidence
+        for the other in more complicated systems.
+        In the remaining paragraphs, we discuss to what extent
+        our results can be applied to systems other than <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        secondary structure folding. We begin with <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        Several studies of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> folding 
+        in <TIMEX TYPE="DATE">silico</TIMEX> indicate that widespread
+        neutral networks exist, comparable to the situation for <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> [ <NUMEX TYPE="CARDINAL">39 49 50</NUMEX> ] . Moreover, decay functions similar
+        to the function 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) studied here have been measured 
+        in vitro [ <NUMEX TYPE="CARDINAL">51 52</NUMEX> ] by making fitness
+        a binary variable (e.g., a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binds to a <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> or
+        not) and then screening <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> of sequences with varying
+        average numbers of mutations for the relevant property.
+        These experiments found that average fitness initially
+        decayed exponentially with increasing mutations, but the
+        rate of decay tended to decelerate at higher mutation
+        numbers. This deceleration may be attributed to suppressor
+        mutations that stabilize parts of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> against
+        further mutations [ <TIMEX TYPE="DATE">53</TIMEX> ] , which in essence is a form of
+        compensation. For example, <TIMEX TYPE="DATE">the M182T</TIMEX> mutation in
+        β-lactamase compensates for locally destabilizing mutations
+        in a loop near the active site [ <NUMEX TYPE="CARDINAL">54 55</NUMEX> ] . Unfortunately,
+        no study has yet investigated explicitly the decay function
+        of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that carry such a suppressor mutation.
+        Therefore, it is unclear whether the decelerating decay
+        rates seen by <ENAMEX TYPE="ORGANIZATION">Suzuki et al.</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX> ] and by <ENAMEX TYPE="ORGANIZATION">Daugherty et</ENAMEX> al.
+        [ <TIMEX TYPE="DATE">52</TIMEX> ] are a consequence of compensatory suppressor
+        mutations or, alternatively, indicate that the reference
+        sequences happened to be located outside a dense cluster of
+        fit sequences.
+        Using whole <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and viruses, several studies have
+        sought to measure the mutational decay function for fitness
+        and the overall direction of epistatic interactions [ <NUMEX TYPE="CARDINAL">25 26</NUMEX>
+        <NUMEX TYPE="CARDINAL">27 28 56</NUMEX> ] . <NUMEX TYPE="CARDINAL">Only one</NUMEX> of these studies found net
+        synergistic interactions [ <TIMEX TYPE="DATE">56</TIMEX> ] . Several other studies
+        with <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and viruses have documented widespread
+        compensatory mutations [ <NUMEX TYPE="CARDINAL">57 58 59</NUMEX> ] , although these
+        studies all used selection to find compensatory mutations
+        rather than directly estimating their frequency. Taken
+        together, these <NUMEX TYPE="CARDINAL">two</NUMEX> types of studies are largely consistent
+        with the main conclusions of the present paper, that
+        synergistic interactions do not generally dominate the
+        fitness function and compensatory mutations are common.
+        Moreover, in <NUMEX TYPE="CARDINAL">two</NUMEX> of the studies on compensation, it was
+        shown that the compensatory mutations had occurred outside
+        the gene that was debilitated [ <NUMEX TYPE="CARDINAL">58 59</NUMEX> ] . Therefore, the
+        observed patterns of epistasis and compensation do not
+        merely reflect the robustness of individual <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> and protein
+        molecules to multiple mutations (as described above), but
+        must indicate more general features of their genomes.
+        Of course, it is possible that more complex patterns of
+        gene regulation in eukaryotes [ <TIMEX TYPE="DATE">60</TIMEX> ] might predispose them
+        to synergistic effects between mutations. In fact, studies
+        on <ENAMEX TYPE="SUBSTANCE">fruitflies</ENAMEX> [ <NUMEX TYPE="CARDINAL">30 61</NUMEX> ] and a unicellular alga [ <TIMEX TYPE="DATE">20</TIMEX> ] (but
+        see [ <TIMEX TYPE="DATE">24</TIMEX> ] ) reported net synergistic epistasis, which
+        might reflect fitness landscapes in which peaks are few and
+        far between. But other studies with eukaryotes, including
+        <ENAMEX TYPE="ORGANIZATION">nematodes</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] and fungi [ <NUMEX TYPE="CARDINAL">22 29</NUMEX> ] , found no tendency
+        toward synergistic epistasis. Hence, the overall direction
+        of epistasis for fitness, and the possible role of
+        compensatory mutations in pushing toward net antagonistic
+        epistasis among random mutations, will require more study
+        in higher organisms. Finally, <ENAMEX TYPE="GPE">Zuckerkandl</ENAMEX> [ <TIMEX TYPE="DATE">62</TIMEX> ] recently
+        proposed that complex regulatory <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> may often evolve
+        via a process of drift decay followed by selection for
+        compensatory mutations. Such an interplay would complicate
+        the overall pattern of directional epistasis relative to
+        regulatory complexity.
+      
+      
+        Methods
+        We predicted <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> secondary structure using the <ENAMEX TYPE="GPE">Vienna</ENAMEX>
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> package, version <NUMEX TYPE="CARDINAL">1.3.1</NUMEX>, with the default set-up [ <TIMEX TYPE="DATE">31</TIMEX> ]
+        . We used <NUMEX TYPE="CARDINAL">100</NUMEX> randomly chosen <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> sequences of length 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = <NUMEX TYPE="CARDINAL">76</NUMEX> as reference sequences, by
+        randomly drawing <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> A, <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>, C, and <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> from a uniform
+        distribution in which each <ENAMEX TYPE="GPE_DESC">base</ENAMEX> has a probability <NUMEX TYPE="CARDINAL">0.25</NUMEX> of
+        being drawn at any position. For each reference sequence,
+        we determined its secondary structure, and measured the
+        fraction of mutant sequences at <ENAMEX TYPE="ORGANIZATION">Hamming</ENAMEX> distances 
+        d = <NUMEX TYPE="CARDINAL">1,2,...,8</NUMEX> that folded into the
+        same structure, by calculating the secondary structure of
+        <NUMEX TYPE="CARDINAL">up to 10</NUMEX> 6mutant <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> at each Hamming distance. We
+        used the fraction of neutral mutants at <ENAMEX TYPE="ORGANIZATION">Hamming</ENAMEX> distance 
+        d as the function 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) for the particular reference
+        sequence. (The fraction of neutral mutants at distance 
+        d is equivalent to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) under the assumption that mutant
+        sequences which fold into the same <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> as the
+        reference sequence have fitness <NUMEX TYPE="CARDINAL">1</NUMEX>, and all other mutants
+        have fitness <NUMEX TYPE="CARDINAL">0</NUMEX>.) In addition, to distinguish neutral from
+        compensatory mutations, we recorded at each Hamming
+        distance 
+        d , for all viable sequences as well
+        as a random sample of <NUMEX TYPE="CARDINAL">up to 1,000</NUMEX> non-viable sequences, the
+        average number of viable sequences after an 
+        additional one-step mutation. In the
+        following analyses, we denote the average <TIMEX TYPE="TIME">fraction of</TIMEX>
+        viable sequences that are one mutation away from a viable
+        sequence at distance 
+        d as 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ). Similarly, we denote as 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) the average fraction of viable
+        sequences that are one mutation away from a 
+        non-viable sequence at distance 
+        d .
+        As in <ENAMEX TYPE="GPE">Ref.</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] , we fitted functions exp(<ENAMEX TYPE="GPE">-αd β</ENAMEX>) to
+        the measured 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), in order to obtain a
+        <NUMEX TYPE="CARDINAL">two</NUMEX>-parameter description of the average effect of single
+        <ENAMEX TYPE="PERSON">mutations, α</ENAMEX>, and the directional epistasis, β. We also
+        fitted functions 
+        <ENAMEX TYPE="GPE">md</ENAMEX> + 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> to the average neutrality as a
+        function of 
+        d , in order to identify whether
+        neutrality was increasing or decreasing with mutational
+        distance 
+        d .
+        We used <NUMEX TYPE="CARDINAL">two</NUMEX> methods to separate 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) into contributions from viable
+        sequences that lie on the same neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX> as the
+        reference sequence at 
+        d = <NUMEX TYPE="CARDINAL">0</NUMEX> [ 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d )], and from viable sequences that
+        lie on other neutral <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d )].
+        The first method, <TIMEX TYPE="DATE">M1</TIMEX>, uses the information contained in
+        both 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) and 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ). As explained below, this method
+        tends to overestimate the contribution of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ). Let γ ( 
+        d ) = 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d )/ [ 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) + 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d )], which is the fraction of viable
+        <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> belonging to the reference neutral network at
+        distance 
+        d . Then, 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) is simply given by
+        
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d <NUMEX TYPE="CARDINAL">+1</NUMEX>) = <NUMEX TYPE="MONEY">γ</NUMEX> ( 
+        d ) 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ). (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+        Estimating 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) is more complicated. First, we
+        must take into account <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> contributing to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) that are not part of the neutral
+        network of the reference sequence. This contribution is
+        given by [<NUMEX TYPE="QUANTITY">1 - γ</NUMEX> ( 
+        d )] 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ). We must then obtain the
+        contribution of additional compensatory mutations at
+        distance 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>. These are given by <NUMEX TYPE="CARDINAL">1</NUMEX> - 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), the number of non-viable
+        sequences at distance 
+        d , multiplied by the probability
+        with which these non-viables turn into viable sequences
+        after a single mutation, 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ). Hence, we arrive at
+        
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>) = [<NUMEX TYPE="QUANTITY">1 - γ</NUMEX> ( 
+        d )] 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) + [<NUMEX TYPE="CARDINAL">1</NUMEX> - 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d )] 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ). (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+        With relations (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>), we can recursively calculate
+        
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) and 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) for all 
+        d for which 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ), 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) and 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) are known.
+        In general, we expect 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) ≈ 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) + 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ). However, method M1 has the
+        problem that some of the mutations counted in 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) may actually lead back onto the
+        network of the reference sequence rather than onto a
+        separate neutral <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. (While this can be seen as a sort
+        of compensatory mutation, it is not the kind investigated
+        here.) Such sequences would then be counted twice, so that
+        in reality 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ) < 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) + 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ).
+        To avoid this double-counting, method <ENAMEX TYPE="PRODUCT">M2</ENAMEX> uses instead of
+        (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) the expression
+        
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d + <NUMEX TYPE="CARDINAL">1</NUMEX>). (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+        In this case, the quantity 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) drops out, which insures that 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) + 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) is always identical to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ). M2 does not suffer from double
+        counting viable sequences, but it uses less information
+        than <TIMEX TYPE="DATE">M1</TIMEX> and depends on an additional assumption. In
+        particular, <TIMEX TYPE="DATE">M2</TIMEX> assumes that the viable sequences at
+        distance 
+        d that belong to the neutral network
+        of the reference sequence have the same neutrality as those
+        that do not belong to that network. Given these
+        considerations, it seems prudent to use both <ENAMEX TYPE="SUBSTANCE">M1</ENAMEX> and M2
+        rather than rely entirely on either one.
+        Both methods <TIMEX TYPE="DATE">M1 and M2</TIMEX> are based on the assumption that
+        the fitness landscape can be represented as a tree, and
+        that back mutations can be neglected. With a sequence
+        length of 
+        <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = <NUMEX TYPE="CARDINAL">76</NUMEX>, <NUMEX TYPE="CARDINAL">only one</NUMEX> out of <NUMEX TYPE="CARDINAL">228</NUMEX> possible
+        <ENAMEX TYPE="PERSON">mutations</ENAMEX> is a back mutation, and therefore the neglect of
+        back mutations is justified. The representation of the
+        fitness landscape as a tree is potentially more
+        <ENAMEX TYPE="PERSON">problematic</ENAMEX>, because there may exist several <ENAMEX TYPE="FAC_DESC">paths</ENAMEX> from the
+        reference sequence to a particular sequence at mutational
+        distance 
+        d , whereas the <ENAMEX TYPE="PLANT">tree</ENAMEX> approximation
+        assumes that there is <NUMEX TYPE="CARDINAL">only one</NUMEX> such path. For example,
+        consider the wild type aa, with neutral mutants aA, <ENAMEX TYPE="PERSON">Aa</ENAMEX>, and
+        AA, Then, at mutational distance one, there are <NUMEX TYPE="CARDINAL">two</NUMEX> neutral
+        <ENAMEX TYPE="ORGANIZATION">mutants</ENAMEX> (aA and <ENAMEX TYPE="ORGANIZATION">Aa</ENAMEX>), and at distance <NUMEX TYPE="CARDINAL">two</NUMEX>, there is only one
+        (AA). The <ENAMEX TYPE="PLANT">tree</ENAMEX> approximation counts the mutant at distance
+        <NUMEX TYPE="CARDINAL">two twice</NUMEX>, once as a mutant of aA, and once as a mutant of
+        <ENAMEX TYPE="PERSON">Aa</ENAMEX>. This double counting means that our methods have the
+        tendency to overestimate 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ). This overestimation, however, is
+        not problematic in the context of the present paper,
+        because - as we emphasized in the results - our main
+        conclusions are based on the large contribution of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ) to 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ( 
+        d ). A correction for the
+        overestimation of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">neut</ENAMEX> ( 
+        d ) would increase the contribution
+        of 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">comp</ENAMEX> ( 
+        d ), and would therefore make our
+        conclusions even stronger.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ANIMAL">COW</ENAMEX> was responsible for the <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> folding simulations and
+        the data analysis. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> contributed substantially to
+        the design of the study and the writing of the manuscript.
+        All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final manuscript.
+      
+    
+  

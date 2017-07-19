@@ -1,0 +1,466 @@
+
+  
+    
+      
+        Background
+        The scientific community has recently witnessed the
+        publication of several large eukaryotic genomes in various
+        stages of completion, including the human <ENAMEX TYPE="SUBSTANCE">genome</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>],
+        the nematode 
+        Caenorhabditis elegans [ <ENAMEX TYPE="LAW">3</ENAMEX>], the
+        <ENAMEX TYPE="ORGANIZATION">fruit</ENAMEX> fly 
+        Drosophila melanogaster [ <ENAMEX TYPE="LAW">4</ENAMEX>], and the
+        model plant 
+        Arabidopsis thaliana [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>]. Each of
+        these genomes contains <NUMEX TYPE="CARDINAL">over 10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, and as <ENAMEX TYPE="PER_DESC">scientists</ENAMEX>
+        attempt to study these genes more closely, the need for
+        accurate gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> becomes increasingly apparent. For
+        high-throughput genome sequencing projects, equally rapid
+        high-throughput genome annotation is necessary, and
+        <ENAMEX TYPE="ORGANIZATION">bioinformaticists</ENAMEX> use a variety of computational methods to
+        generate this annotation. Despite many improvements in
+        recent <TIMEX TYPE="DATE">years</TIMEX>, these computational methods still fall short
+        of producing correct models for every <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>. In order to
+        improve the annotation and facilitate further research, it
+        is essential that we develop methods to identify genes
+        correctly.
+        Annotation of a gene model should include a precise
+        description of where the genomic <ENAMEX TYPE="SUBSTANCE">DNA sequence</ENAMEX> is
+        transcribed into <ENAMEX TYPE="SUBSTANCE">messenger RNA</ENAMEX>, the positions in the mRNA
+        of any and all introns, and the translated protein sequence
+        of the gene. If alternative splice variants are present,
+        these should be annotated as well. Computational methods
+        for genome annotation have several shortcomings that result
+        in the following errors in annotation.
+        Gene prediction programs predict exon boundaries
+        correctly <NUMEX TYPE="PERCENT">only about 80%</NUMEX> of the time, even for the most
+        intensively studied organisms [ <ENAMEX TYPE="LAW">7, 8, 9</ENAMEX>]. Thus a gene with
+        <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="PER_DESC">exons</ENAMEX> will be completely correct <NUMEX TYPE="PERCENT">only 0.8</NUMEX> <TIMEX TYPE="DATE">5</TIMEX>= <NUMEX TYPE="PERCENT">33%</NUMEX> of
+        the time, and genes with more exons will be even less
+        likely to be correct. Gene prediction programs also tend to
+        merge and split gene models. Thus <NUMEX TYPE="CARDINAL">two</NUMEX> real genes may be
+        merged into one predicted transcript, or vice versa. In
+        addition, programs to align genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> to protein
+        <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> often miss small exons, especially when the
+        <ENAMEX TYPE="SUBSTANCE">homologous proteins</ENAMEX> are not well conserved. Annotation
+        <ENAMEX TYPE="PERSON">protocols</ENAMEX> also tend to miss short genes. For example,
+        recent work has shown that <NUMEX TYPE="CARDINAL">at least one</NUMEX> large <ENAMEX TYPE="PER_DESC">family</ENAMEX> of 
+        Arabidopsis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> encodes a short
+        (<NUMEX TYPE="CARDINAL">80</NUMEX>-120 amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>) protein similar to a secreted
+        polypeptide ligand for a <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>-like kinase that
+        functions in meristems [ <TIMEX TYPE="DATE">10</TIMEX>]. Most of these were missed in
+        the original, automated annotation of the 
+        Arabidopsis genome. Alignment
+        programs also make mistakes when genes occur in tandemly
+        repeated copies. Finally, alignment of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequence to
+        genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> cannot predict untranslated regions (UTRs), and
+        the leading 
+        <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio gene prediction programs
+        (<ENAMEX TYPE="ORGANIZATION">Genscan</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>], <ENAMEX TYPE="GPE">GlimmerM</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>], <ENAMEX TYPE="GPE">Genemark</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">HMM</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]) have
+        great difficulty predicting <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>; most of them predict only
+        the coding portion of a transcript.
+        The solution to many of these problems is to identify
+        the complete sequence of the transcribed portions of the
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. Sequencing the mature transcripts (spliced mRNA)
+        solves <NUMEX TYPE="CARDINAL">three</NUMEX> major problems: <NUMEX TYPE="ORDINAL">first</NUMEX>, it permits accurate
+        identification of the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>. <NUMEX TYPE="ORDINAL">Second</NUMEX>, in
+        conjunction with complete genomic sequence, it enables
+        alignment software to identify the precise locations of all
+        <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX>. <NUMEX TYPE="ORDINAL">Third</NUMEX>, it aids in the discovery of new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+      
+      
+        Results and discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">Re</ENAMEX>-annotation of the Arabidopsisgenome
+          The <ENAMEX TYPE="ORG_DESC">alignments</ENAMEX> generated from the cDNA sequences were
+          used to create new gene models for the corresponding
+          genes in the 
+          A. thaliana genome. Many of the
+          genes have been manually curated, but many others were
+          created by automated scripts [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>]. Manual curation is
+          still ongoing.
+          We used the cDNA alignments to create new gene models
+          automatically according to the following criteria. As
+          described above, there were <NUMEX TYPE="CARDINAL">4,918</NUMEX> cDNAs for which all
+          alignment programs agreed on the positions of all
+          <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX>. Using a majority voting scheme for the remaining
+          <NUMEX TYPE="CARDINAL">98</NUMEX> <ENAMEX TYPE="PER_DESC">cDNAs</ENAMEX> did not always give a correct answer, as
+          discussed above, therefore we used these only after
+          manual inspection. We assume the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding region is
+          the longest <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> on the forward strand, and required it to
+          span <NUMEX TYPE="PERCENT">at least 40%</NUMEX> of the cDNA length. This allowed us to
+          create <NUMEX TYPE="CARDINAL">4,809</NUMEX> gene models automatically, leaving <NUMEX TYPE="CARDINAL">109</NUMEX> cDNAs
+          that were inspected manually to determine if they
+          represent <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX>, pseudogenes or other types of
+          sequence. In <NUMEX TYPE="CARDINAL">one</NUMEX> case, cDNA <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">104289</ENAMEX>, the
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding region was actually on the opposite
+          <ENAMEX TYPE="ORGANIZATION">strand</ENAMEX>, corresponding to expressed protein <ENAMEX TYPE="SUBSTANCE">At2g23670</ENAMEX>, and
+          Ceres: <ENAMEX TYPE="PRODUCT">20125</ENAMEX> matched the correct strand, supporting the
+          gene annotation. (This could be explained in several
+          <ENAMEX TYPE="ORGANIZATION">ways</ENAMEX>: as an example of antisense-mediated translational
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>, as <NUMEX TYPE="CARDINAL">two</NUMEX> separate <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> on opposite strands,
+          perhaps expressed in different cell types, or simply
+          erroneous data.) In most of the other cases, the
+          problematic cDNA is either an <ENAMEX TYPE="SUBSTANCE">RNA gene</ENAMEX> or a likely
+          <ENAMEX TYPE="ORGANIZATION">pseudogene</ENAMEX>.
+          Using the alignments from the <NUMEX TYPE="CARDINAL">4,809</NUMEX> gene models, we
+          updated the annotation of the genome, and evaluated how
+          this had changed the previous annotation. For the vast
+          majority of genes, <NUMEX TYPE="CARDINAL">5</NUMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> had not been annotated
+          previously, and these were added with the incorporaton of
+          the cDNA data. More interesting is how the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+          regions changed. Of the gene models, <NUMEX TYPE="CARDINAL">2,978</NUMEX> contained
+          identical <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding regions to what had already been
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> and required only <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> refinements, but <NUMEX TYPE="CARDINAL">1,591</NUMEX>
+          were adjusted, yielding more accurate <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>.
+          Some of these contain very short 'micro-<ENAMEX TYPE="PER_DESC">exons</ENAMEX>' that are
+          usually missed by 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio gene prediction programs.
+          Perhaps most significant was the addition of <NUMEX TYPE="CARDINAL">240</NUMEX>
+          completely novel genes not previously included in the 
+          Arabidopsis genome annotation. Of
+          the <NUMEX TYPE="CARDINAL">240</NUMEX> novel genes, <NUMEX TYPE="CARDINAL">92</NUMEX> have significant homology to
+          known <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and the rest do not match any previously
+          described <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. In summary, we found that <NUMEX TYPE="PERCENT">62%</NUMEX> of the
+          matching gene models further validated the existing
+          exon-intron <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for the gene, <NUMEX TYPE="PERCENT">33%</NUMEX> needed to be
+          corrected, and <NUMEX TYPE="PERCENT">5%</NUMEX> represented previously undiscovered
+          genes.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Micro</ENAMEX>-exons
+          We also used the cDNA alignments to detect
+          'micro-<ENAMEX TYPE="PER_DESC">exons</ENAMEX>', very short exons that are typically missed
+          by both gene-finding programs and alignment algorithms.
+          Using new software protocols we developed, we found <NUMEX TYPE="CARDINAL">47</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">micro-exons</ENAMEX>, ranging from <TIMEX TYPE="DATE">3 to 25</TIMEX> base pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>) in
+          length, distributed evenly across <NUMEX TYPE="CARDINAL">all five</NUMEX>
+          chromosomes.
+          To find micro-exons, we analyzed the results of sim4
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> using <NUMEX TYPE="CARDINAL">all 5,016</NUMEX> <ENAMEX TYPE="NATIONALITY">Ceres</ENAMEX> cDNAs. Sim4 identified
+          <NUMEX TYPE="CARDINAL">36</NUMEX> cDNAs encoding exons of <NUMEX TYPE="QUANTITY">25 bp or less</NUMEX>. In an effort to
+          identify additional micro-exons, <ENAMEX TYPE="PRODUCT">sim4</ENAMEX> alignments
+          containing imperfect intron-exon boundaries were
+          examined. We selected only those cases with near-perfect
+          alignments, requiring that all but one or <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">exons</ENAMEX> have
+          <NUMEX TYPE="PERCENT">100%</NUMEX> identity. We then checked to see if the <ENAMEX TYPE="PRODUCT">1-2</ENAMEX> exons
+          with slightly lower identity were misaligned as the
+          result of the presence of a small, undetected, exon. We
+          used the <TIMEX TYPE="TIME">5 bp</TIMEX> segments at the boundaries of the exon as
+          probes. If these <NUMEX TYPE="CARDINAL">5</NUMEX> bp probes mismatched in the original
+          alignment, we searched the adjacent intron (that is, the
+          <ENAMEX TYPE="ORGANIZATION">intron</ENAMEX> identified by the initial alignment) for short
+          exons that would produce a perfect match with the cDNA.
+          We also required that any new exon would generate introns
+          with a standard GT-AG consensus on either end. This
+          procedure therefore yielded valid exon-intron structures
+          that always improved the identity of the alignment
+          between cDNA and genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. Figure 1shows an example of
+          the cDNA alignments before and after inserting a
+          <ENAMEX TYPE="ORGANIZATION">micro</ENAMEX>-exon.
+          Using this method, we were able to identify <NUMEX TYPE="CARDINAL">11</NUMEX>
+          additional micro-exons, all shorter than <TIMEX TYPE="TIME">12 bp</TIMEX>. An
+          extraordinarily short exon of <NUMEX TYPE="QUANTITY">only 3 bp</NUMEX> was identified,
+          corresponding to exon <NUMEX TYPE="CARDINAL">2</NUMEX> of disease-resistance gene 
+          RAR1 (<NUMEX TYPE="MONEY">At5g51700</NUMEX>). A listing of
+          these micro-exons from all chromosomes is shown in Table
+          <NUMEX TYPE="CARDINAL">4</NUMEX>. Note that in some cases the length of the micro-exons
+          is not a multiple of <NUMEX TYPE="CARDINAL">three</NUMEX>; for these, one of the
+          preceding or following exons had its boundary realigned
+          to maintain the reading frame. In comparison to the other
+          alignment programs examined, <ENAMEX TYPE="GPE">GeneSeqer</ENAMEX> proved to be
+          highly competent in identifying micro-exons; <NUMEX TYPE="CARDINAL">46</NUMEX> of the <NUMEX TYPE="CARDINAL">47</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">micro</ENAMEX>-exons were identified by <ENAMEX TYPE="ORGANIZATION">GeneSeqer</ENAMEX> using the
+          default settings. After lowering the minimum exon length
+          <ENAMEX TYPE="ORGANIZATION">cut-off</ENAMEX> to <NUMEX TYPE="QUANTITY">1 bp</NUMEX>, all <NUMEX TYPE="CARDINAL">47</NUMEX> were identified.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> indication that these micro-exons are correct (in
+          addition to the identity with the cDNA) is that many of
+          them are homologous to exons in other 
+          Arabidopsis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. For example, a
+          search of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> in <TIMEX TYPE="DATE">late 2001</TIMEX> revealed that the
+          <ENAMEX TYPE="ORGANIZATION">micro</ENAMEX>-exon of <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">118038</ENAMEX> is homologous to exons from
+          <NUMEX TYPE="CARDINAL">five</NUMEX> different cDNAs (accession numbers gi: <ENAMEX TYPE="CONTACT_INFO">15028118,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">gi:6683111, gi:14517549, gi:15027838</ENAMEX>, and <ENAMEX TYPE="PER_DESC">gi</ENAMEX>:<ENAMEX TYPE="CONTACT_INFO">16974574</ENAMEX>).
+          The consensus sequence of these exons, <ENAMEX TYPE="ORGANIZATION">ATCCTAA</ENAMEX>(<ENAMEX TYPE="PRODUCT">T/C</ENAMEX>)<ENAMEX TYPE="ORGANIZATION">G</ENAMEX>, has
+          been previously characterized as a micro-exon in the
+          <ENAMEX TYPE="SUBSTANCE">potato invertase gene</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>].
+        
+        
+          Splicing anomalies
+          Analysis of cDNA sequences can help to estimate the
+          frequency of alternative splicing in a <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          Alternative splicing appears to be relatively common in
+          <ENAMEX TYPE="ANIMAL">animals</ENAMEX> [ <TIMEX TYPE="DATE">22, 23</TIMEX>]; in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> this phenomenon has been
+          less frequently observed, possibly as a result of the
+          smaller collections of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> compared with mammalian
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>. Recently, some reports have appeared documenting
+          a small number of cases [ <TIMEX TYPE="DATE">24, 25</TIMEX>]. We examined the
+          alignments of cDNAs to the genome, looking for examples
+          where <NUMEX TYPE="CARDINAL">more than one</NUMEX> <ENAMEX TYPE="PER_DESC">cDNA</ENAMEX> aligned to overlapping locations
+          on the same chromosome in such a way as to predict a
+          different splicing pattern. The working hypothesis was
+          that if <NUMEX TYPE="CARDINAL">two</NUMEX> cDNAs mapped to the same locus, but presented
+          distinct sets of exons, this would constitute evidence of
+          alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX>, or possibly another type of
+          splicing anomaly. We broadened the search for splicing
+          anomalies by including in this protocol all the complete
+          cDNAs available from <ENAMEX TYPE="GPE">GenBank</ENAMEX>, including the <ENAMEX TYPE="ORGANIZATION">Institute for</ENAMEX>
+          Physical and <ENAMEX TYPE="ORGANIZATION">Chemical Research</ENAMEX> (RIKEN) collection
+          described below. A total of <NUMEX TYPE="CARDINAL">1,515</NUMEX> Ceres transcripts
+          overlapped another transcript, of which <NUMEX TYPE="CARDINAL">1,129</NUMEX> overlapped
+          a sequence from the <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> set.
+          This protocol identified <NUMEX TYPE="CARDINAL">158</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with apparent
+          splicing anomalies, each of which was inspected manually.
+          They fall into many different classes, representing
+          different genetic events, as follows: <NUMEX TYPE="CARDINAL">27</NUMEX> alignments
+          indicate an alternative <ENAMEX TYPE="SUBSTANCE">3</ENAMEX>' acceptor site for an intron;
+          <TIMEX TYPE="TIME">17 alignments</TIMEX> indicate an alternative <ENAMEX TYPE="SUBSTANCE">5</ENAMEX>' <ENAMEX TYPE="PER_DESC">donor</ENAMEX> site for
+          an intron; <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="PER_DESC">alignments</ENAMEX> indicate that one or more
+          <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX> remained unspliced. In some cases more than one
+          intron was unspliced; for example, in one interesting
+          case <NUMEX TYPE="CARDINAL">only one</NUMEX> intron was spliced in the RIKEN transcript
+          (<ENAMEX TYPE="CONTACT_INFO">gi: 15146259</ENAMEX>), whereas <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">introns</ENAMEX> were spliced from
+          the corresponding Ceres transcript (<ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX>:<TIMEX TYPE="DATE">3992</TIMEX>,
+          corresponding to gene At2g35520). These unspliced
+          transcripts may arise from nuclear rather than mature
+          cytoplasmic mRNA sequences. <TIMEX TYPE="DATE">Six alignments</TIMEX> indicate that
+          an internal exon is missing in <NUMEX TYPE="CARDINAL">one</NUMEX> isoform; presumably
+          the adjacent introns are spliced as a single intron
+          containing the exon sequence. Fifty-<NUMEX TYPE="CARDINAL">seven</NUMEX> alignments
+          suggest possible alternative transcription initiation
+          sites. For <NUMEX TYPE="CARDINAL">17</NUMEX> of these transcripts, the putative
+          initiation site was shifted far enough in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+          direction to move past the first <ENAMEX TYPE="GPE_DESC">donor site</ENAMEX>, making it
+          impossible to splice out the <NUMEX TYPE="ORDINAL">first</NUMEX> intron, producing an
+          additional <NUMEX TYPE="CARDINAL">5</NUMEX>' exon in one of the transcripts. Many of the
+          other transcripts contained <NUMEX TYPE="CARDINAL">one or more additional 5</NUMEX>'
+          exons as a result of alternative initiation sites.
+          Thirteen alignments suggest alternative <ENAMEX TYPE="SUBSTANCE">3</ENAMEX>'
+          <ENAMEX TYPE="ORGANIZATION">polyadenylation</ENAMEX> (poly(A)) sites that affect splicing. The
+          prediction of poly(A) <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> can be confounded by
+          misannealing of the oligo(dT) primers used for reverse
+          <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX>; for example, the presence of multiple
+          <ENAMEX TYPE="ORGANIZATION">adenines</ENAMEX> within the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> can be mistaken for a poly(A)
+          site. <ENAMEX TYPE="PERSON">Misannealing</ENAMEX> cannot explain the presence of
+          unspliced intronic sequence found at the terminus of <NUMEX TYPE="CARDINAL">12</NUMEX>
+          of these <NUMEX TYPE="CARDINAL">13</NUMEX> transcripts, suggesting that these putative
+          <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are genuine and have an impact on splicing.
+          We have found similar evidence for the occurrence of
+          <ENAMEX TYPE="DISEASE">multiple poly</ENAMEX>(A) sites in <ENAMEX TYPE="GAME">RACE</ENAMEX>-<ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> experiments directed
+          at cloning cDNAs from hypothetical genes. Finally, <NUMEX TYPE="CARDINAL">15</NUMEX>
+          alignments display multiple splicing anomalies, falling
+          into <NUMEX TYPE="CARDINAL">more than one</NUMEX> of the categories above.
+          Table 5lists many of these alternatively spliced
+          genes; the complete list, with graphical and textual
+          alignment data, is available on-line [ <TIMEX TYPE="DATE">26</TIMEX>] and is also
+          provided as Additional data with this paper online.
+          Figure 2highlights several interesting examples. In
+          Figure <TIMEX TYPE="DATE">2a</TIMEX>, the alternative <ENAMEX TYPE="SUBSTANCE">3</ENAMEX>' splice site on the second
+          <ENAMEX TYPE="PERSON">intron</ENAMEX> leads to a shift in the reading frame, producing a
+          different <ENAMEX TYPE="SUBSTANCE">protein sequence</ENAMEX>. In Figure <TIMEX TYPE="DATE">2b</TIMEX>, alignments of
+          several <ENAMEX TYPE="PER_DESC">cDNAs</ENAMEX> indicate that the last intron is unspliced.
+          Figure <TIMEX TYPE="DATE">2cshows</TIMEX> that different <TIMEX TYPE="DATE">5</TIMEX>' ends lead to differing
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>' introns and exons, while not changing the protein
+          sequence in this particular example. Figure 2dshows a
+          centrally located exon that is spliced out along with the
+          surrounding introns. Figure <NUMEX TYPE="CARDINAL">2econtains three</NUMEX> different <TIMEX TYPE="DATE">5</TIMEX>'
+          transcription start sites, <NUMEX TYPE="CARDINAL">three</NUMEX> different <TIMEX TYPE="DATE">3</TIMEX>' termination
+          sites, and <NUMEX TYPE="CARDINAL">two</NUMEX> unspliced introns in the middle
+          transcript. The unspliced introns occur within exon <NUMEX TYPE="CARDINAL">2</NUMEX> of
+          <ENAMEX TYPE="PER_DESC">GI</ENAMEX>:<ENAMEX TYPE="CONTACT_INFO">14335057</ENAMEX>, which corresponds to <NUMEX TYPE="CARDINAL">three</NUMEX> exons and <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX> in both the other transcripts. Note that some of
+          the alternative splicing events occur within the same
+          <ENAMEX TYPE="ORGANIZATION">ecotype</ENAMEX>.
+          Neither collection of cDNAs can be considered a random
+          sample of transcripts, and therefore the number of
+          examples of alternative splicing discovered in this data
+          (<NUMEX TYPE="PERCENT">approximately 10%</NUMEX> of the overlapping transcripts) should
+          not be used to extrapolate to the entire genome. The
+          discovery of transcripts with different introns spliced
+          out raises the question of whether the different spliced
+          products are translated and whether the splicing
+          differences reflect programmed developmental variation or
+          simply splicing errors. It is not possible to answer
+          these questions now, but incomplete splicing and
+          consequential variants in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> have been noted
+          previously to be associated with gene silencing and were
+          <ENAMEX TYPE="ORGANIZATION">postulated</ENAMEX> to reflect the regulated production of
+          aberrant <ENAMEX TYPE="SUBSTANCE">RNA products</ENAMEX> not destined to be translated [
+          <NUMEX TYPE="CARDINAL">27</NUMEX>]. One clear conclusion is that alternative splicing
+          can be discovered via analysis of cDNAs and genomic
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, and that a fuller collection of cDNAs will
+          provide a valuable resource for more discoveries about
+          <ENAMEX TYPE="ORGANIZATION">splicing</ENAMEX> and gene regulation.
+        
+        
+          Are the sequences full-length?
+          An independent project to sequence complete 
+          Arabidopsis cDNAs is ongoing by the
+          <ENAMEX TYPE="ORGANIZATION">SPP</ENAMEX> <ENAMEX TYPE="ORG_DESC">consortium</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>], using clones created by <ENAMEX TYPE="ORGANIZATION">K.</ENAMEX>
+          Shinozaki at <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> in <ENAMEX TYPE="GPE">Japan</ENAMEX>. These sequences are publicly
+          available from <ENAMEX TYPE="PERSON">GenBank</ENAMEX> (search for "<ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> cDNA
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX>"). These data provided the opportunity to
+          compare the <NUMEX TYPE="CARDINAL">two</NUMEX> sets of cDNAs and measure independently
+          how many of them appear to cover the entire length of the
+          predicted mRNA transcript. The sequencing of the RIKEN
+          <ENAMEX TYPE="ORGANIZATION">cDNAs</ENAMEX> generated <NUMEX TYPE="CARDINAL">2,996</NUMEX> sequences as of <TIMEX TYPE="DATE">October 2001</TIMEX>; we
+          compared these to the <NUMEX TYPE="QUANTITY">5,016 cDNAs</NUMEX> from <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX> and found
+          1,129 sequences that are contained in both data sets. Of
+          the <NUMEX TYPE="CARDINAL">1,129</NUMEX> sequences, <NUMEX TYPE="CARDINAL">941</NUMEX> alignments yield the same
+          exon-intron <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for the underlying gene. We then
+          asked, for each of the sequences containing identical
+          introns, do the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' ends match, and if not, how
+          large is the difference? The results are illustrated in
+          Figure <NUMEX TYPE="CARDINAL">3</NUMEX>.
+          Several observations can be made about these results.
+          First, it is important to note that the <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX> clones were
+          selected for full-length sequencing from among a large
+          number of clustered <NUMEX TYPE="CARDINAL">5</NUMEX>' sequences (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods), whereas the <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> clones were sequenced on the
+          <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end followed by clustering and selection of a clone
+          for <ENAMEX TYPE="SUBSTANCE">sequencing</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>]. The methods for creating the
+          full-length cDNA sequences at both <ENAMEX TYPE="ORG_DESC">centers</ENAMEX> involve
+          multiple sequencing runs, followed by <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> of the
+          overlapping sequences. <NUMEX TYPE="ORDINAL">Second</NUMEX>, we observed that in the
+          Ceres data, many <ENAMEX TYPE="PER_DESC">mRNAs</ENAMEX> appeared to have <NUMEX TYPE="CARDINAL">two</NUMEX> or more
+          putative alternative transcription start sites. This
+          became apparent when different cDNA assemblies were found
+          to overlap exactly except for an extension on the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end
+          on <NUMEX TYPE="CARDINAL">one</NUMEX> or more clones. It is interesting to note that
+          when the <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> clones were longer or shorter on the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'
+          end, clones of the equivalent length could often be found
+          in the <ENAMEX TYPE="PERSON">Ceres</ENAMEX> collection. Multiple clones with the same <NUMEX TYPE="CARDINAL">5</NUMEX>'
+          end provided strong validation that these were truly
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of alternative transcription initiation
+          sites or repeatable artifacts of the cloning process.
+          Overall, there were <NUMEX TYPE="CARDINAL">397</NUMEX> <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX> clones that were <NUMEX TYPE="MONEY">> 10</NUMEX> bp
+          longer on the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end, and <NUMEX TYPE="CARDINAL">136</NUMEX> <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> clones that were
+          longer on the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end. If alternative transcription
+          initiation is the correct explanation, then it is
+          relatively common. It is worth noting that in almost all
+          cases, both alternative cDNAs contain complete <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>.
+          On the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end, the <ENAMEX TYPE="ORGANIZATION">Ceres</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> databases each
+          contained <NUMEX TYPE="CARDINAL">316</NUMEX> sequences that were ><TIMEX TYPE="TIME">10 bp longer than</TIMEX>
+          their match from the other set. If these represent
+          alternative polyadenylation <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> or stabilized ends of
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> that get polyadenylated, then these are quite common.
+          Further investigation will be necessary to determine if
+          the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of transcripts truly varies at such a high
+          frequency.
+          In summary, work described in this study on 
+          <ENAMEX TYPE="GPE">Arabidopsis</ENAMEX> illustrates the utility
+          of full-length cDNAs for finding alternative splice
+          variants, short exons, <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>, short genes and alternative
+          transcription start sites. The annotation of eukaryotic
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> is currently an inexact and developing science,
+          and the results described here demonstrate the power of
+          full-length cDNA sequences for improving the quality of
+          multiple aspects of genome annotation.
+        
+      
+      
+        Materials and methods
+        
+          Preparation and sequencing of cDNA
+          Starting material for cDNA synthesis was polysomal <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          isolated from the top-most inflorescence tissues (ecotype
+          <ENAMEX TYPE="ORGANIZATION">Wassilewskija</ENAMEX>) and from roots (ecotype <ENAMEX TYPE="ORGANIZATION">Landsberg</ENAMEX> erecta).
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from roots of <ENAMEX TYPE="ORGANIZATION">Landsberg</ENAMEX> erecta was used to construct
+          the libaries because of the availability of high-quality
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. <NUMEX TYPE="CARDINAL">Nine</NUMEX> parts inflorescence to <NUMEX TYPE="CARDINAL">one</NUMEX> part root, as
+          measured by wet mass, was used to make three
+          size-fractionated <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>. Because the ecotypes were
+          mixed before library construction, we cannot determine
+          the <ENAMEX TYPE="PER_DESC">source</ENAMEX> ecotype for any individual cDNA. Polysomal <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          was isolated from a <ENAMEX TYPE="SUBSTANCE">detergent</ENAMEX>-generated supernatant on a
+          <ENAMEX TYPE="PRODUCT">2 M</ENAMEX> sucrose cushion. To capture full-length cDNAs, an
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> is first attached to intact <NUMEX TYPE="CARDINAL">5</NUMEX>' ends,
+          taking advantage of the cap. After <NUMEX TYPE="ORDINAL">first</NUMEX>- and
+          <NUMEX TYPE="ORDINAL">second</NUMEX>-strand synthesis, the full-length cDNAs were
+          selected, size fractionated and cloned into pBluescript.
+          The ligation mixture was transformed into <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>,
+          selected on appropriate antibiotics and picked into
+          <NUMEX TYPE="CARDINAL">384</NUMEX>-well microtiter plates. In repeated rounds of
+          sequencing, <NUMEX TYPE="CARDINAL">several tens of thousands</NUMEX> of clones from the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> were sequenced from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end, the
+          <ENAMEX TYPE="FAC_DESC">sequences</ENAMEX> clustered, and the clone with the longest <NUMEX TYPE="CARDINAL">5</NUMEX>'
+          end in each cluster selected for complete sequencing.
+          The number of clones sequenced in each round depended
+          on the percentage of new full-length clones that could be
+          obtained from each of the size-fractionated <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>. As
+          the clones reported in this study came from
+          non-normalized <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, <NUMEX TYPE="CARDINAL">only three</NUMEX> rounds of <NUMEX TYPE="CARDINAL">5</NUMEX>'
+          sequencing were employed; <NUMEX TYPE="CARDINAL">42,000</NUMEX> in the <NUMEX TYPE="ORDINAL">first</NUMEX> round,
+          <NUMEX TYPE="CARDINAL">59,000</NUMEX> in the <NUMEX TYPE="ORDINAL">second</NUMEX> round and <NUMEX TYPE="CARDINAL">22,000</NUMEX> in the final round.
+          Following each round of <NUMEX TYPE="CARDINAL">5</NUMEX>' sequencing, all sequences were
+          clustered using a clustering algorithm that forms
+          separate clusters if there are <NUMEX TYPE="CARDINAL">more than 6</NUMEX> nucleotide
+          differences in any <NUMEX TYPE="CARDINAL">30</NUMEX>-nucleotide window of the match. In
+          this way, clones would not fall into separate clusters
+          simply because of ecotypic differences, different
+          putative transcription start sites or sequencing errors.
+          However, they would cluster separately if alternative
+          splicing occurred in the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">approximately 500</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> and involved <NUMEX TYPE="CARDINAL">more than 6</NUMEX> nucleotides.
+          Following clustering, the clone that was longest on the
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end was selected for full-length sequencing. If clones
+          were of comparable length on the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end, the clone to be
+          sequenced was selected from the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> with the highest
+          percentage of full-length clones. Sequencing of <NUMEX TYPE="CARDINAL">5</NUMEX>' ends
+          was performed on capillary sequencers (<ENAMEX TYPE="ORGANIZATION">Molecular</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Dynamics</ENAMEX>); full-length sequencing was done on ABI377
+          <ENAMEX TYPE="ORGANIZATION">sequencers</ENAMEX> using primer walking. The <NUMEX TYPE="CARDINAL">5,016</NUMEX> clones
+          analyzed in this study were selected from all full-length
+          clones based on length (<NUMEX TYPE="MONEY">> 400 nucleotides</NUMEX>),
+          <ENAMEX TYPE="PERSON">non-redundancy</ENAMEX> (eliminating alternatively spliced
+          <ENAMEX TYPE="ORGANIZATION">clones</ENAMEX>), and length of the putative ORF relative to
+          overall clone length.
+        
+        
+          Alignment of cDNA sequences to the <ENAMEX TYPE="ORGANIZATION">A.</ENAMEX>
+          thalianagenome
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> programs were used to align <NUMEX TYPE="CARDINAL">all 5,016</NUMEX> <ENAMEX TYPE="NATIONALITY">Ceres</ENAMEX> cDNA
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> to the 
+          A. thaliana genome as follows.
+          First, each program was used to align each cDNA sequence
+          to the genome. Some programs cannot efficiently handle a
+          search comparing a cDNA to a <NUMEX TYPE="CARDINAL">30</NUMEX> + <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> eukaryotic
+          chromosome, and to compensate for those programs, we
+          created a modified procedure that first used <ENAMEX TYPE="SUBSTANCE">BLASTN</ENAMEX> to
+          identify and extract a region of <NUMEX TYPE="CARDINAL">20,000</NUMEX> <ENAMEX TYPE="FAC_DESC">bp</ENAMEX> surrounding
+          the gene. Each <ENAMEX TYPE="PER_DESC">cDNA</ENAMEX> was aligned to the corresponding <NUMEX TYPE="CARDINAL">20</NUMEX>
+          kb genome sequence <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> using <NUMEX TYPE="CARDINAL">all four</NUMEX> programs with
+          default parameter settings. The resulting alignments were
+          then compared automatically to generate the comparison
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> appearing in the main text. The programs are <TIMEX TYPE="DATE">sim4</TIMEX>,
+          available from [ <TIMEX TYPE="DATE">30</TIMEX>]; <ENAMEX TYPE="CONTACT_INFO">dds/gap2</ENAMEX>, available from [ <TIMEX TYPE="DATE">31</TIMEX>];
+          GeneSeqer, available from [ <TIMEX TYPE="DATE">32</TIMEX>]; and <TIMEX TYPE="TIME">est_genome</TIMEX>,
+          available from [ <TIMEX TYPE="DATE">33</TIMEX>].
+          Gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were constructed by <NUMEX TYPE="ORDINAL">first</NUMEX> recreating the
+          cDNA sequence using the 
+          Arabidopsis genome sequence,
+          employing the longest alignment for which all programs
+          predicted identical splice sites. The longest <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> was
+          identified along the forward strand of the cDNA followed
+          by a <ENAMEX TYPE="ORG_DESC">division</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> into <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding exon
+          segments and untranslated regions of exons. These
+          constructed gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were then compared to the
+          existing gene annotation at the mapped genomic region.
+          Previously annotated gene structures that disagreed with
+          the cDNAs were replaced by the cDNA alignment-based gene
+          models, and new gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were created where
+          pre-existing gene annotations were lacking.
+        
+      
+      
+        Additional data files
+        Additional data corresponding to anomalous splicing,
+        including png image files and text-formatted multiple
+        alignments, is available.
+        Additional data file 1
+        Additional data corresponding to anomalous splicing
+        Additional data corresponding to anomalous splicing
+        Click here for additional data file
+      
+    
+  

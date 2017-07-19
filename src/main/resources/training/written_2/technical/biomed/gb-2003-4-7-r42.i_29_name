@@ -1,0 +1,1201 @@
+
+  
+    
+      
+        Background
+        Although the analysis of sequenced genomes to date has
+        focused most heavily on the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding set of genes,
+        all genomes also contain a constellation of non-coding <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        genes. With the exception of certain classes of <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> with
+        strongly conserved sequences and/or <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, such as
+        <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX> and transfer <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, identification of most
+        <ENAMEX TYPE="PERSON">non-coding RNAs</ENAMEX> has historically been a relatively
+        <ENAMEX TYPE="ORGANIZATION">serendipitous</ENAMEX> affair. Only very recently have there been
+        concerted efforts to identify such genes systematically,
+        using both experimental and computational approaches [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+        .
+        Our collective ignorance of the totality of non-coding
+        <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> was laid bare by recent work on microRNAs
+        (<NUMEX TYPE="MONEY">miRNAs</NUMEX>), an abundant <ENAMEX TYPE="PER_DESC">family</ENAMEX> of <NUMEX TYPE="CARDINAL">21-22</NUMEX> nucleotide non-coding
+        <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> [ <NUMEX TYPE="CARDINAL">2 3</NUMEX> ] . The founding <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this <ENAMEX TYPE="PER_DESC">family</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">lin-4</ENAMEX>
+        and let-<NUMEX TYPE="CARDINAL">7</NUMEX>, were identified through forward analysis of
+        extant 
+        Caenorhabditis elegans mutants [ <NUMEX TYPE="CARDINAL">4 5</NUMEX>
+        ] . Both of these RNAs are post-transcriptional regulators
+        of developmental timing that function by binding to the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+        untranslated <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>) of target genes [ <NUMEX TYPE="CARDINAL">5 6 7 8</NUMEX> ]
+        . Although they were long regarded as genetic curiosities
+        possibly specific to nematodes, let-7 was subsequently
+        found to be broadly conserved across bilaterian evolution [
+        <NUMEX TYPE="CARDINAL">9</NUMEX> ] and miRNA genes are now recognized as a pervasive and
+        widespread feature of animal and plant <ENAMEX TYPE="SUBSTANCE">genomes</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX>
+        <NUMEX TYPE="CARDINAL">13 14 15 16</NUMEX> ] .
+        In general, it is thought that miRNA biogenesis proceeds
+        via intermediate precursor transcripts of <NUMEX TYPE="CARDINAL">more than 70</NUMEX>
+        nucleotides that have the capacity to form an extended
+        stem-loop <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> (pre-miRNA), although at least some
+        pre-miRNAs are further derived from even longer transcripts
+        (primary miRNA transcripts, or <NUMEX TYPE="QUANTITY">pri-miRNAs</NUMEX>). These can exist
+        as long individual pre-miRNA precursor transcripts, as
+        operon-like multiple pre-miRNA precursors, or even as part
+        of primary mRNA transcripts. Processing of pri-miRNA into
+        the pre-miRNA stem-loop occurs in the nucleus, while
+        subsequent processing of pre-miRNA into <NUMEX TYPE="CARDINAL">21-22</NUMEX> mers is a
+        cytoplasmic event mediated by the <ENAMEX TYPE="EVENT">RNAse III</ENAMEX> enzyme <ENAMEX TYPE="ORGANIZATION">Dicer</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">17 18 19 20</NUMEX> ] ; <ENAMEX TYPE="PERSON">Dicer</ENAMEX> is also responsible for cleavage of
+        long perfectly double-stranded <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> into <NUMEX TYPE="CARDINAL">21-22</NUMEX> nucleotide
+        fragments during <ENAMEX TYPE="SUBSTANCE">RNA interference</ENAMEX> (RNAi) [ <ENAMEX TYPE="LAW">2 21</ENAMEX> ] . These
+        latter molecules, known as <ENAMEX TYPE="SUBSTANCE">silencing RNA</ENAMEX> (siRNA), bind to
+        and trigger the degradation of perfectly homologous mRNA
+        molecules via RISC, a double-strand <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-induced silencing
+        complex containing nuclease activity [ <NUMEX TYPE="CARDINAL">22 23</NUMEX> ] .
+        Although the 
+        in vivo function of only a few miRNAs
+        is known so far, it is believed that the vast majority are
+        likely to participate in post-transcriptional gene
+        regulation of complementary mRNA targets. Interestingly,
+        perfect or near-perfect target complementarity is
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with mRNA degradation [ <NUMEX TYPE="CARDINAL">24 25 26</NUMEX> ] , similar to
+        the effects of siRNA, whereas imperfect base-pairing is
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with regulation by translational inhibition [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+        <NUMEX TYPE="CARDINAL">27</NUMEX> ] . Recently, siRNAs with imperfect match to target mRNA
+        were observed to function as <ENAMEX TYPE="SUBSTANCE">translational inhibitors</ENAMEX> [ <NUMEX TYPE="CARDINAL">28</NUMEX>
+        ] , suggesting that the type of <NUMEX TYPE="CARDINAL">21-22</NUMEX> nucleotide
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-mediated regulation may be largely determined by the
+        quality of target complementarity.
+        The vast majority of the <NUMEX TYPE="CARDINAL">approximately 300</NUMEX> miRNAs
+        currently known were identified through direct cloning of
+        short <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> molecules. Although this method has been quite
+        successful thus far, its practicality is limited by the
+        necessity for a considerable amount of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> as raw material
+        for cloning, and cloned products are often dominated by a
+        few highly expressed miRNAs. For example, <NUMEX TYPE="PERCENT">41%</NUMEX> of miRNAs
+        cloned from <ENAMEX TYPE="GPE">HeLa</ENAMEX> <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> are variants of let-<NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="PERCENT">28%</NUMEX> of human
+        brain <ENAMEX TYPE="SUBSTANCE">miRNAs</ENAMEX> are variants of <ENAMEX TYPE="SUBSTANCE">miR-124</ENAMEX>, and <NUMEX TYPE="PERCENT">45%</NUMEX> of miRNAs
+        cloned from human heart and <NUMEX TYPE="PERCENT">32%</NUMEX> of those cloned from early 
+        Drosophila embryos are miR-<NUMEX TYPE="CARDINAL">1</NUMEX> [ <NUMEX TYPE="CARDINAL">10 29</NUMEX>
+        ] . In fact, it has been opined that few additional
+        mammalian <ENAMEX TYPE="ANIMAL">miRNAs</ENAMEX> will be easily identified by the direct
+        cloning method [ <TIMEX TYPE="DATE">30</TIMEX> ] .
+        As a complementary approach to miRNA identification, we
+        developed an informatic strategy (<ENAMEX TYPE="FAC">'miRseeker'</ENAMEX>) and applied
+        it to the completed genomes of 
+        Drosophila melanogaster and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , which are <NUMEX TYPE="CARDINAL">some 30</NUMEX>
+        <ENAMEX TYPE="PERSON">million</ENAMEX> <TIMEX TYPE="DATE">years</TIMEX> diverged. miRseeker <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> conserved
+        <ENAMEX TYPE="ORGANIZATION">intronic</ENAMEX> and intergenic sequences to an <ENAMEX TYPE="SUBSTANCE">RNA folding</ENAMEX> and
+        evaluation procedure to identify evolutionarily constrained
+        hairpin <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> with features characteristic of known
+        <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX>. The specificity of this computational procedure was
+        shown by the presence of <NUMEX TYPE="CARDINAL">18</NUMEX> out of <NUMEX TYPE="CARDINAL">24</NUMEX> reference miRNAs
+        within the top <NUMEX TYPE="CARDINAL">124</NUMEX> candidates. We identified a total of <NUMEX TYPE="CARDINAL">48</NUMEX>
+        novel miRNA <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> whose existence was strongly
+        supported by conservation in other insect, nematode or
+        vertebrate genomes. Expression of <TIMEX TYPE="DATE">24</TIMEX> novel miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was
+        verified by northern analysis (including <NUMEX TYPE="CARDINAL">20</NUMEX> out of <NUMEX TYPE="CARDINAL">27</NUMEX>
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> that were supported by <NUMEX TYPE="ORDINAL">third</NUMEX>-species
+        <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX> and <NUMEX TYPE="CARDINAL">4</NUMEX> out of <NUMEX TYPE="CARDINAL">11 high</NUMEX>-scoring predictions
+        specific to 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> ), demonstrating that the
+        bioinformatic screen was successful. As might be expected,
+        the newly verified miRNA genes vary tremendously with
+        respect to abundance and developmental expression profile,
+        suggesting diverse roles for these genes. Inference of our
+        false-positive prediction and false-negative verification
+        rates (based on our ability to identify known miRNAs and
+        detect the expression of highly conserved, and thus
+        presumed genuine, novel miRNAs) leads us to estimate that
+        drosophilid genomes contain <NUMEX TYPE="CARDINAL">around 110</NUMEX> miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, or
+        <NUMEX TYPE="PERCENT">nearly 1%</NUMEX> of the number of predicted <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>.
+        In combination with other concurrent genomic analyses [ <NUMEX TYPE="CARDINAL">31</NUMEX>
+        <NUMEX TYPE="CARDINAL">32 33 34</NUMEX> ] , it is likely that most miRNAs in completed
+        <ENAMEX TYPE="ANIMAL">animal genomes</ENAMEX> have now been identified. Collectively, this
+        sets the stage for both genome-wide and targeted studies of
+        this functionally elusive <ENAMEX TYPE="PER_DESC">family</ENAMEX> of <ENAMEX TYPE="PER_DESC">regulators</ENAMEX>.
+      
+      
+        Results
+        
+          Evolutionarily conserved characteristics of miRNA
+          genes
+          The starting point for our studies was a reference set
+          of <NUMEX TYPE="CARDINAL">24</NUMEX> 
+          Drosophila pre-miRNA sequences ( 
+          let-<NUMEX TYPE="CARDINAL">7</NUMEX> , the <NUMEX TYPE="CARDINAL">21</NUMEX> originally
+          identified by <ENAMEX TYPE="GPE">Lagos</ENAMEX>-<ENAMEX TYPE="GPE">Quintana</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX>, 
+          mir-<NUMEX TYPE="CARDINAL">125</NUMEX> , and a previously
+          undescribed paralog of 
+          mir-<NUMEX TYPE="CARDINAL">2</NUMEX> that we named 
+          <ENAMEX TYPE="PRODUCT">mir-2c</ENAMEX> [ <ENAMEX TYPE="LAW">9 10 29</ENAMEX> ] ). We analyzed
+          this set to derive rules and determine parameters that
+          specifically describe known miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within anonymous
+          genomic sequence.
+          Examination of the genomic sequence of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura showed that all <NUMEX TYPE="CARDINAL">24</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the reference set are highly conserved along
+          the entirety of the predicted precursor transcripts,
+          which typically range <NUMEX TYPE="MONEY">between 70-100 nucleotides</NUMEX>. When
+          viewed in <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> plot alignments [ <TIMEX TYPE="DATE">35</TIMEX> ] , miRNA genes
+          reside in short regions of exceptional conservation,
+          easily seen as local <ENAMEX TYPE="PER_DESC">'peaks</ENAMEX>' (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). As is the case
+          for many other non-coding <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX>, their degree of
+          conservation usually exceeds that of coding regions, due
+          to their lack of <NUMEX TYPE="ORDINAL">third</NUMEX>-position wobble. This suggested
+          that miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> might be found by folding fixed lengths
+          of conserved sequence to identify ones that display the
+          high degree of relatively continuous helicity
+          characteristic of known pre-miRNAs. However, pilot
+          studies identified a very large number of conserved
+          stem-loops in genomic sequence, suggesting that
+          additional criteria were necessary to make effective
+          miRNA gene predictions.
+          We next aligned the <NUMEX TYPE="CARDINAL">24</NUMEX> pairs of orthologous 
+          Drosophila pre-miRNA sequences and
+          assessed their pattern of nucleotide divergence. There
+          are <NUMEX TYPE="CARDINAL">only three</NUMEX> pairs that have been completely conserved
+          (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">1</NUMEX>), indicating that most pre-miRNAs
+          have diverged to some extent within 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . Unexpectedly, we
+          detected mild selective pressure on the precise sequence
+          of the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. This attribute is not
+          self-evident. It might have been the case that point
+          mutations along an arm would be neutral as long as the
+          status of base-pairing was maintained; this is possible
+          due to the acceptability of <ENAMEX TYPE="ORGANIZATION">G-U</ENAMEX> base-pairing in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>.
+          Instead, we observed preferential divergence within the
+          loop sequence. <NUMEX TYPE="CARDINAL">Ten</NUMEX> members of the reference set have
+          <ENAMEX TYPE="GPE">diverged</ENAMEX> exclusively within their loop sequence (Figure
+          2a, class <NUMEX TYPE="CARDINAL">2</NUMEX>), whereas there are no <ENAMEX TYPE="PER_DESC">members</ENAMEX> that have
+          <ENAMEX TYPE="GPE">diverged</ENAMEX> exclusively along an arm (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">5</NUMEX>).
+          This is well illustrated by the 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> let-<NUMEX TYPE="CARDINAL">7</NUMEX> orthologs, which
+          have accumulated <NUMEX TYPE="MONEY">four mismatches</NUMEX> and gaps in the loop
+          sequence but maintain perfectly conserved <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> (Figure
+          2b). Thus, the terminal loop is the most evolutionary
+          labile portion of pre-miRNA.
+          Mutations do eventually accumulate on the
+          <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>, and orthologous pre-miRNAs from
+          more diverged <ENAMEX TYPE="ANIMAL">species</ENAMEX> will often preserve only the <NUMEX TYPE="CARDINAL">21-24</NUMEX>
+          nucleotide mature miRNA itself. However, because of
+          preferential divergence within the loop, orthologous
+          miRNAs from species of an appropriate evolutionary
+          <ENAMEX TYPE="ORGANIZATION">distance</ENAMEX> (such as 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura ) show an equal or
+          greater amount of change within the loop than on the
+          <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">3</NUMEX>). This is the
+          case despite the fact that the loop is typically only a
+          <NUMEX TYPE="ORDINAL">third</NUMEX> to <NUMEX TYPE="CARDINAL">a quarter</NUMEX> the length of each <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">eleven</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the reference set that show divergence on both
+          an <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> and the loop, <NUMEX TYPE="CARDINAL">seven</NUMEX> show more changes in the loop
+          than on the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> and <NUMEX TYPE="CARDINAL">three</NUMEX> have an
+          equal number of changes on the loop and
+          <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">3</NUMEX>); only one
+          <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the reference set (<ENAMEX TYPE="CONTACT_INFO">miR-2b-1</ENAMEX>) shows a greater
+          number of changes on the non-miRNA <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> than the loop
+          (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">6</NUMEX>). Finally, there are no cases where
+          both <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> have diverged (irrespective of loop status), a
+          situation that would imply that the miRNA sequence itself
+          had diverged (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          We propose then that classes <ENAMEX TYPE="PRODUCT">1-3</ENAMEX> represent the normal
+          pattern of evolutionary divergence of miRNAs, and
+          consider 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> that fall
+          into these <ENAMEX TYPE="PER_DESC">classes</ENAMEX> to represent 'good' miRNA <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>.
+          Conversely, we consider classes <NUMEX TYPE="CARDINAL">4</NUMEX>-<NUMEX TYPE="CARDINAL">6</NUMEX> to have a low
+          probability of reflecting a genuine miRNA in 
+          Drosophila , regardless of how
+          <ENAMEX TYPE="ORGANIZATION">'impressive</ENAMEX>' the helical nature of the conserved
+          stem-loop is. Indeed, we tested <NUMEX TYPE="CARDINAL">one</NUMEX> class <TIMEX TYPE="DATE">4 and seven</TIMEX>
+          class <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> by northern blot and failed to observe
+          expression for any of them, despite extensive, conserved
+          stem-loop <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> (data not shown). We emphasize that
+          these evolutionary considerations are most relevant to
+          relatively closely related <ENAMEX TYPE="ANIMAL">species</ENAMEX>: since the loop is
+          much shorter than the <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX>, we expect class <NUMEX TYPE="CARDINAL">3</NUMEX> candidates
+          to eventually evolve into class <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> in species
+          separated by greater evolutionary distance than the two 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> analyzed in the
+          present study (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>).
+        
+        
+          Computational prediction of <ENAMEX TYPE="ORGANIZATION">DrosophilamiRNA</ENAMEX> genes
+          using miRseeker
+          
+            Extraction of <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, conserved, 'nongenic'
+            Drosophilasequences
+            We first subdivided <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> of the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome [ <TIMEX TYPE="DATE">36</TIMEX> ]
+            into <NUMEX TYPE="CARDINAL">1,287</NUMEX> contigs of <NUMEX TYPE="CARDINAL">100,500</NUMEX> nucleotides each, with
+            <NUMEX TYPE="CARDINAL">500</NUMEX> nucleotides of overlap at either end. These were
+            matched to the <NUMEX TYPE="CARDINAL">approximately 18,000</NUMEX> contigs in the
+            <NUMEX TYPE="ORDINAL">first</NUMEX> assembly of the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura genome produced
+            by the <ENAMEX TYPE="ORGANIZATION">Human Genome Sequencing Center</ENAMEX> at the <ENAMEX TYPE="ORGANIZATION">Baylor</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">College of Medicine</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX> ] , using a dataset provided
+            by the <ENAMEX TYPE="ORGANIZATION">Berkeley Genome Pipeline</ENAMEX> [ <TIMEX TYPE="DATE">38</TIMEX> ] . We then
+            aligned the repeat-masked 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster sequence to
+            corresponding 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura sequence using
+            the global alignment tool AVID [ <NUMEX TYPE="CARDINAL">35 39</NUMEX> ] . We
+            subsequently eliminated from the alignment all
+            sequences associated with the following <ENAMEX TYPE="ORGANIZATION">Release 3.1</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] : exons, transposable elements,
+            snRNA, snoRNA, tRNA and rRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. In total, we were
+            able to align <NUMEX TYPE="CARDINAL">51.3</NUMEX> out of <NUMEX TYPE="CARDINAL">90.2</NUMEX> megabases of intronic
+            and intergenic 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster sequence by this
+            procedure.
+            Using the reference set, we empirically determined
+            parameters for extracting conserved sequences that
+            could contain <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> (designated as 'regions'). We
+            found that a <NUMEX TYPE="CARDINAL">100</NUMEX>-unit <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> of the alignment (where a
+            unit is either a single paired or gapped nucleotide)
+            containing <NUMEX TYPE="PERCENT">no more than 13%</NUMEX> gaps or <NUMEX TYPE="PERCENT">15%</NUMEX> mismatches, was
+            sufficient to identify all known miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within
+            their respective genomic neighborhoods, with a minimum
+            of additionally selected sequences.
+            Conserved intergenic or intronic sequences are
+            frequently <TIMEX TYPE="TIME">longer than 100 nucleotides.</TIMEX> We chose to
+            evaluate these as a series of 'regions' that overlap
+            each other by <TIMEX TYPE="TIME">around 10 nucleotides</TIMEX>, and grouped these
+            regions into a single 'super-region'. The rationale for
+            defining 'regions' and 'super-regions' came from our
+            observation that <ENAMEX TYPE="SUBSTANCE">RNA folding algorithms</ENAMEX> would not
+            necessarily identify characteristic pre-miRNA
+            structures if they were folded within the context of
+            longer <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, owing to base-pairing with non-miRNA
+            sequence. Thus, region-folding should offer optimal
+            structures, while tracking of <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions would
+            ensure that multiple overlapping regions were evaluated
+            as a single <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene. We took care to verify that
+            our windowing parameters segregated individual miRNAs
+            within known miRNA clusters (the 
+            <ENAMEX TYPE="CONTACT_INFO">mir-2 ,</ENAMEX> 
+            mir-<NUMEX TYPE="CARDINAL">13</NUMEX> and 
+            <ENAMEX TYPE="CONTACT_INFO">mir-3 → mir-6</ENAMEX> clusters [ <TIMEX TYPE="DATE">10</TIMEX> ] )
+            into distinct <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions. This analysis identified
+            436,000 conserved regions that originate from <NUMEX TYPE="CARDINAL">118,000</NUMEX>
+            super-regions.
+          
+          
+            Identification of conserved stem-loops and
+            evaluation of their quality
+            We analyzed conserved regions with mfold <NUMEX TYPE="CARDINAL">3.1</NUMEX>, an
+            <ENAMEX TYPE="SUBSTANCE">RNA-folding algorithm</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX> ] . As <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> can be
+            located on either strand, and the quality of predicted
+            hairpin <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> can vary significantly between the
+            respective strands (depending on the amount of <ENAMEX TYPE="ORGANIZATION">G-U</ENAMEX>
+            base-pairing), we folded each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> as both the
+            forward and the reverse complement of the extracted
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX> (<NUMEX TYPE="CARDINAL">436,000</NUMEX> regions <NUMEX TYPE="MONEY">× 2</NUMEX> = <NUMEX TYPE="CARDINAL">872,000</NUMEX> mfolds).
+            Evaluation of <ENAMEX TYPE="ORG_DESC">candidate structures</ENAMEX> took into account
+            the length of the longest helical <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> (with a minimum
+            cutoff of <NUMEX TYPE="CARDINAL">23</NUMEX> base-pairs) and the free energy of this
+            isolated <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> (with a minimum cutoff of <ENAMEX TYPE="LANGUAGE">ΔG ≤</ENAMEX>-<NUMEX TYPE="CARDINAL">23.0</NUMEX>
+            <ENAMEX TYPE="CONTACT_INFO">kcal/mol</ENAMEX>). The physical resemblance to the canonical
+            stem-loop precursor was also assessed with metrics that
+            reward continuous helical pairing and progressively
+            penalize internal loops of increasing size. Since
+            unpaired nucleotides in known miRNAs have a tendency to
+            be found in symmetric loops, the presence of asymmetric
+            <ENAMEX TYPE="PERSON">loops</ENAMEX> and bulged nucleotides was further penalized. The
+            size of the hairpin loop was not specifically evaluated
+            as it appears to be variable in known pre-miRNAs;
+            however it was indirectly assessed, as maximization of
+            stem length concomitantly minimizes terminal loop
+            size.
+            Given a <NUMEX TYPE="CARDINAL">100</NUMEX>-nucleotide input sequence, mfold <NUMEX TYPE="CARDINAL">3.1</NUMEX>
+            typically returns one to <NUMEX TYPE="CARDINAL">six</NUMEX> alternate structures, each
+            containing <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">four</NUMEX> helical <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX>; thus, the
+            structure containing the highest-scoring helical arm
+            had to be determined for each folded sequence. The
+            highest-scoring region in each <ENAMEX TYPE="PER_DESC">super-</ENAMEX>region (which
+            could be located on either strand) was then saved as
+            its <ENAMEX TYPE="PER_DESC">representative</ENAMEX>, and these were ordered. For the top
+            25,000 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions, we
+            repeated this analysis on all <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> in the
+            corresponding 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions.
+            We averaged the scores obtained for each aligned pair
+            of 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> regions (termed a
+            region-<ENAMEX TYPE="PER_DESC">pair</ENAMEX>) and selected the highest-scoring
+            region-<ENAMEX TYPE="PER_DESC">pair</ENAMEX> within each <ENAMEX TYPE="PER_DESC">super-</ENAMEX>region as its most
+            probable miRNA <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> sequence. We then searched for
+            homologs of these selected <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> in 
+            Anopheles gambiae using <ENAMEX TYPE="ORGANIZATION">WU</ENAMEX>-BLAST
+            of the 
+            Dm sequence [ <TIMEX TYPE="DATE">42</TIMEX> ] , extending
+            the returned sequences as necessary on their <ENAMEX TYPE="PRODUCT">5</ENAMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+            ends to make <NUMEX TYPE="CARDINAL">100</NUMEX>-nucleotide windows equivalent to the
+            queried sequence. The top <NUMEX TYPE="CARDINAL">three mosquito</NUMEX> hits were then
+            folded and scored as before. However, as a large
+            fraction of known fly miRNAs lack mosquito counterparts
+            (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), we decided to rank the <ENAMEX TYPE="ORG_DESC">candidates</ENAMEX> solely on
+            their average 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> score.
+            miR-<NUMEX TYPE="CARDINAL">125 and miR</NUMEX>-<NUMEX TYPE="CARDINAL">2c</NUMEX> received exceptionally low scores
+            in this analysis, while miR-<NUMEX TYPE="CARDINAL">10</NUMEX> was absent because it
+            was not located in an alignable contig in the first
+            available assembly of 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura (although it was
+            identifiable by BLAST search). The other <NUMEX TYPE="CARDINAL">21</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of
+            the reference set fell into the top <NUMEX TYPE="CARDINAL">600 or so</NUMEX> in the
+            initial round of scoring, indicating that our method of
+            <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> stem-loops effectively identified genuine
+            miRNAs from among the <NUMEX TYPE="CARDINAL">118,000</NUMEX> conserved
+            super-regions.
+          
+          
+            Evaluation of the divergence pattern in conserved
+            stem-loops
+            As discussed <TIMEX TYPE="DATE">earlier</TIMEX>, <NUMEX TYPE="CARDINAL">23/24</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the 
+            Drosophila reference set are
+            described by one of <NUMEX TYPE="CARDINAL">three</NUMEX> patterns of divergence
+            (Figure <TIMEX TYPE="DATE">2a</TIMEX>, classes <ENAMEX TYPE="CONTACT_INFO">1-3</ENAMEX>). In the final set of tests, we
+            implemented a series of <ENAMEX TYPE="PRODUCT">Boolean</ENAMEX> filters to eliminate
+            high-scoring, conserved stem-loops whose patterns of
+            nucleotide divergence are incompatible with a high
+            likelihood of representing genuine miRNAs (Figure <TIMEX TYPE="DATE">2a</TIMEX>,
+            <ENAMEX TYPE="CONTACT_INFO">classes 4-6</ENAMEX>).
+            We began this analysis by trimming the <NUMEX TYPE="CARDINAL">100</NUMEX>-unit
+            region to exclude sequences at the ends of the windowed
+            sequence that lie outside of the main helical <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. We
+            then defined a potential miRNA <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> sequence as
+            being a perfectly conserved block of sequence greater
+            than <NUMEX TYPE="CARDINAL">22</NUMEX> nucleotides in length located <NUMEX TYPE="CARDINAL">less than 10</NUMEX>
+            nucleotides from the end of the terminal loop, and
+            eliminated those <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> that did not contain a
+            potential <ENAMEX TYPE="PER_DESC">miRNA</ENAMEX> (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">4</NUMEX>). If both arms
+            passed this test, it was kept as a miRNA candidate
+            regardless of loop status (Figure <TIMEX TYPE="DATE">2a</TIMEX>, classes <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>)
+            as either <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> could potentially contain a miRNA. The
+            remaining <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> contain only a single conserved
+            <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> miRNA <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. We defined the nonconserved <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> as
+            the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> and eliminated the candidate
+            if it displayed a perfectly conserved loop (Figure <TIMEX TYPE="DATE">2a</TIMEX>,
+            <ENAMEX TYPE="CONTACT_INFO">class 5</ENAMEX>). The remaining <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> contain divergent
+            positions in both the loop and the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding
+            arm. We eliminated those that contained <NUMEX TYPE="CARDINAL">more than four</NUMEX>
+            additional non-conserved positions in the
+            <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> compared to within the loop
+            (Figure <TIMEX TYPE="DATE">2a</TIMEX>, class <NUMEX TYPE="CARDINAL">6</NUMEX>), leaving behind class <NUMEX TYPE="CARDINAL">3</NUMEX> candidates
+            as potential miRNAs. Of the reference set miRNAs, only
+            <ENAMEX TYPE="PRODUCT">mir-2b-1</ENAMEX> failed these filters (as a class <NUMEX TYPE="CARDINAL">6</NUMEX> miRNA),
+            even though it received the <NUMEX TYPE="ORDINAL">eighth</NUMEX> highest score of all
+            super-regions in the entire euchromatic sequence of the
+            drosophilid genomes.
+            <NUMEX TYPE="CARDINAL">Only about one-third</NUMEX> of the highest-scoring
+            conserved stem-loops passed these filters (with an even
+            greater fraction of lower-scoring <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> failing
+            these filters), leaving behind <NUMEX TYPE="CARDINAL">around 200</NUMEX> candidates
+            from the initial top <NUMEX TYPE="CARDINAL">600</NUMEX>. Of the reference set, <NUMEX TYPE="CARDINAL">18/24</NUMEX>
+            (<NUMEX TYPE="PERCENT">75%</NUMEX>) reside in the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">124</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, demonstrating
+            that the overall procedure robustly selected for
+            genuine miRNAs (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). A <NUMEX TYPE="ORDINAL">second</NUMEX> measure of
+            the utility of assessing patterns of nucleotide
+            divergence is their ability to select against
+            self-complementary repeats. Many high-scoring
+            <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> were previously noticed to be rich in
+            complementary nucleotide repeats (such as <ENAMEX TYPE="ORGANIZATION">CAG</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">UUG</ENAMEX> and
+            <ENAMEX TYPE="ORGANIZATION">CUG</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">AUAU</ENAMEX>, or poly(A)-poly(<ENAMEX TYPE="ORGANIZATION">U</ENAMEX>) repeats) and were
+            presumed to be poor <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> in spite of occasionally
+            remarkable helical structure: nearly all of them were
+            eliminated by the step <NUMEX TYPE="CARDINAL">3</NUMEX> filters. We have generated a
+            web interface where folded structures and evaluation of
+            the top <NUMEX TYPE="CARDINAL">208</NUMEX> miRseeker <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> may be accessed [ <TIMEX TYPE="DATE">43</TIMEX> ]
+            .
+            Candidate mature miRNA sequences were defined by the
+            bounds of the perfectly conserved sequence. A total of
+            <TIMEX TYPE="DATE">42</TIMEX> novel <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> in the top <NUMEX TYPE="CARDINAL">208</NUMEX> miRseeker
+            predictions were supported by additional evidence of
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX> and structural conservation in a <NUMEX TYPE="ORDINAL">third</NUMEX> species
+            (primarily 
+            <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> and 
+            Apis , with a smaller fraction in
+            <ENAMEX TYPE="ORGANIZATION">nematodes</ENAMEX> or vertebrates). In cases where candidate
+            miRNAs were identifiable in non-insect <ENAMEX TYPE="ANIMAL">species</ENAMEX>, a
+            putative <NUMEX TYPE="CARDINAL">21-24</NUMEX> nucleotide product was usually evident.
+            A predicted miRNA produced from <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> whose only
+            homologs were found in other <ENAMEX TYPE="ANIMAL">insects</ENAMEX> could usually be
+            inferred to within <TIMEX TYPE="TIME">5 nucleotides</TIMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          
+        
+        
+          Experimental verification of novel candidate
+          miRNAs
+          We next sought to validate the predicted miRNAs by
+          northern blot of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> isolated <TIMEX TYPE="TIME">from 0-24 hour</TIMEX>
+          embryos, <NUMEX TYPE="ORDINAL">third</NUMEX> instar larvae and early pupae, and adult
+          <ENAMEX TYPE="PER_DESC">males</ENAMEX>. The total number of genes authenticated by this
+          method is an underestimate, for <NUMEX TYPE="CARDINAL">two</NUMEX> main reasons. First,
+          the mature miRNA can be derived from either <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> of a
+          given stem-loop, and many predicted pre-<ENAMEX TYPE="PER_DESC">miRNAs</ENAMEX> fold well
+          on either strand. In some cases (such as <ENAMEX TYPE="SUBSTANCE">miR-4</ENAMEX> and
+          <ENAMEX TYPE="CONTACT_INFO">miR-100</ENAMEX>), the nontranscribed strand actually adopts a
+          fold with longer continuous helices than does the
+          transcribed strand. As we tested <NUMEX TYPE="CARDINAL">one</NUMEX> or two probes for
+          each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, a false-negative result will have been
+          obtained if we tested either the incorrect <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> or strand
+          of a putative miRNA. <NUMEX TYPE="ORDINAL">Second</NUMEX>, a significant fraction of
+          miRNAs are likely to be expressed at extremely low levels
+          or in a highly tissue-specific manner, and so may not be
+          amenable to confirmation by these means. With these
+          concerns in mind, we tested <NUMEX TYPE="CARDINAL">38</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes from two
+          classes of predicted miRNAs: <NUMEX TYPE="CARDINAL">27</NUMEX> that were conserved
+          outside of 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> (<NUMEX TYPE="CARDINAL">25</NUMEX> of which were
+          high-scoring <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>) and <NUMEX TYPE="CARDINAL">11 high</NUMEX>-scoring, 
+          Drosophila -specific <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>.
+          This analysis confirmed <TIMEX TYPE="DATE">24</TIMEX> novel miRNA genes that give
+          rise to processed <NUMEX TYPE="QUANTITY">21-24 nucleotide</NUMEX> RNAs (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          The expression profiles of computationally identifed
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> during development were much more heterogenous
+          than those of the known set of <ENAMEX TYPE="SUBSTANCE">embryonically</ENAMEX> derived
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] . We identified miRNAs whose expression was
+          highly restricted to individual developmental periods
+          (embryogenesis, <ENAMEX TYPE="PER_DESC">larval</ENAMEX>/pupal development, or adulthood),
+          ones expressed in <NUMEX TYPE="CARDINAL">two</NUMEX> of these developmental windows, and
+          ones expressed throughout development, either at a
+          relatively uniform level or in a progressive fashion.
+          Selected hybridizations that illustrate the different
+          <ENAMEX TYPE="PERSON">temporal</ENAMEX> and quantitative profiles are shown in Figure
+          5and the collected northern data are summarized in Table
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. We also note that these experimentally verified miRNAs
+          vary tremendously in abundance, with several being <NUMEX TYPE="CARDINAL">two</NUMEX> to
+          <NUMEX TYPE="CARDINAL">three</NUMEX> orders of magnitude less abundant than miRNAs
+          discovered by direct cloning. Other undetected miRNAs
+          <ENAMEX TYPE="ORGANIZATION">orthologous</ENAMEX> to ones cloned in other <ENAMEX TYPE="ANIMAL">species</ENAMEX> (that is,
+          miR-137 and <ENAMEX TYPE="SUBSTANCE">miR-219</ENAMEX>, <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>) may be present at even
+          lower levels. This suggests that their identification by
+          sequencing miRNA cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> would have been
+          unlikely.
+          In total, we observed expression for <NUMEX TYPE="CARDINAL">20</NUMEX> out of <NUMEX TYPE="CARDINAL">27</NUMEX>
+          (<NUMEX TYPE="PERCENT">74%</NUMEX>) <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes that were conserved outside 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and <NUMEX TYPE="CARDINAL">4</NUMEX> out of <NUMEX TYPE="MONEY">11</NUMEX> (<NUMEX TYPE="PERCENT">36%</NUMEX>) of
+          high-scoring 
+          Drosophila -specific predictions
+          (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). <NUMEX TYPE="CARDINAL">Two</NUMEX> of the former <ENAMEX TYPE="PER_DESC">class</ENAMEX> were low-scoring
+          <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> that were nonetheless conserved in 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">miR-287</ENAMEX> and miR-<NUMEX TYPE="CARDINAL">288</NUMEX>),
+          indicating that <NUMEX TYPE="ORDINAL">third</NUMEX>-species conservation is in our
+          hands a very strong indicator of a candidate gene's
+          validity. Table 1lists 
+          <ENAMEX TYPE="PERSON">bona fide Drosophila</ENAMEX> miRNAs that
+          scored in the top <NUMEX TYPE="CARDINAL">208</NUMEX>, grouped as <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          reference set followed by newly identified miRNAs that
+          fulfill accepted criteria for miRNA biogenesis (that is,
+          ones whose expression was confirmed here by northern blot
+          and/or are homologous to miRNAs cloned in other <ENAMEX TYPE="ANIMAL">species</ENAMEX>);
+          each subset is rank-ordered by miRseeker score. The
+          high-scoring, <NUMEX TYPE="ORDINAL">third</NUMEX>-species-conserved <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> whose
+          expression is unverified at present (either untested or
+          negative by northern blot) are listed separately; they
+          are provisionally referred to by their nucleotide
+          position along the chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> (that is, <TIMEX TYPE="DATE">2R</TIMEX>:<ENAMEX TYPE="CONTACT_INFO">4681879</ENAMEX>).
+          We note that while this work was in preparation, forward
+          genetic analysis of 
+          <ENAMEX TYPE="PER_DESC">bantam</ENAMEX> demonstrated that it encodes
+          a <ENAMEX TYPE="PER_DESC">miRNA</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] that was identified as a high-scoring
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> by miRseeker. In addition, a subset of the
+          newly identified miRNAs (miR-<NUMEX TYPE="CARDINAL">34</NUMEX>, miR-<NUMEX TYPE="CARDINAL">79</NUMEX>, miR-<NUMEX TYPE="CARDINAL">87</NUMEX>, <TIMEX TYPE="DATE">miR-92a</TIMEX>,
+          <ENAMEX TYPE="PRODUCT">miR-124b</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">miR-133</ENAMEX> and miR-<NUMEX TYPE="CARDINAL">263a</NUMEX>) were independently found
+          by homology search or by informatic means and confirmed
+          by northern analysis while this work was under review [
+          <NUMEX TYPE="CARDINAL">34 45</NUMEX> ] .
+          <ENAMEX TYPE="ORGANIZATION">Conservation</ENAMEX> alone is an insufficient criterion for
+          assessing the validity of a miRNA [ <TIMEX TYPE="DATE">46</TIMEX> ] . Indeed, one
+          high-scoring <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> (number <TIMEX TYPE="DATE">78, 2L</TIMEX>:<NUMEX TYPE="CARDINAL">13233310</NUMEX> that is
+          strongly conserved in 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> and was identified by
+          <ENAMEX TYPE="ORGANIZATION">miRseeker</ENAMEX> appears to be an unannotated <ENAMEX TYPE="SUBSTANCE">U2 snRNA</ENAMEX> [ <TIMEX TYPE="DATE">43</TIMEX> ] .
+          Nevertheless, our high success rate (<NUMEX TYPE="MONEY">20/27</NUMEX>) leads us to
+          believe that failure to observe expression of a
+          high-scoring, <NUMEX TYPE="ORDINAL">third</NUMEX>-species-conserved miRseeker candidate
+          could reflect a false-negative result. As an example, we
+          show alignments and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> folds of the <NUMEX TYPE="CARDINAL">four</NUMEX> insect
+          orthologs of <ENAMEX TYPE="SUBSTANCE">2R</ENAMEX>:<ENAMEX TYPE="CONTACT_INFO">11128979</ENAMEX>, which all adopt canonical,
+          high-scoring stem-loop structures and collectively
+          display patterns of nucleotide divergence characteristic
+          of genuine miRNAs (preponderance of divergence within the
+          <ENAMEX TYPE="PERSON">loop</ENAMEX>, slightly less divergence along a nonconserved <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>,
+          and perfect conservation of a putative miRNA-encoding
+          arm) (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). Although in this case evidence for
+          expression of either strand by northern analysis was not
+          obtained, it was subsequently found to be orthologous to
+          miR-<NUMEX TYPE="CARDINAL">137</NUMEX>, and thus accepted as a genuine miRNA. We
+          hypothesize that other novel, high-scoring candidates
+          with a similar level of <NUMEX TYPE="ORDINAL">third</NUMEX>-species-conservation but
+          which lack evidence of expression may in fact be genuine,
+          thus implying <NUMEX TYPE="CARDINAL">up to 7/27</NUMEX> (<NUMEX TYPE="PERCENT">26%</NUMEX>) false-negative rate of
+          northern analysis.
+          Together, these data allow us to estimate the number
+          of 
+          Drosophila <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX>. In the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">124</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, there are <NUMEX TYPE="CARDINAL">18</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          reference set and <TIMEX TYPE="DATE">25</TIMEX> novel miRNAs that meet accepted
+          criteria for representing genuine miRNAs. Of the
+          remaining <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, <NUMEX TYPE="PERCENT">around 36%</NUMEX> may be genuine, although
+          this rises to a maximum of <NUMEX TYPE="PERCENT">approximately 62%</NUMEX> if one
+          considers the inferred false-negative rate of northern
+          analysis. Thus, there may be <NUMEX TYPE="QUANTITY">between 81 ×</NUMEX> (<NUMEX TYPE="MONEY">0.36 to 0.62</NUMEX>)
+          = <NUMEX TYPE="CARDINAL">29 to 50</NUMEX> additional miRNAs in this list of unverified
+          and/or untested <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>. Therefore, we estimate <NUMEX TYPE="CARDINAL">72-93</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> (<NUMEX TYPE="CARDINAL">18</NUMEX> reference + <NUMEX TYPE="CARDINAL">25</NUMEX> novel verified genes + <NUMEX TYPE="CARDINAL">29-50</NUMEX>
+          additional unverified <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>) at a cutoff that
+          includes <NUMEX TYPE="MONEY">18/24</NUMEX> (<NUMEX TYPE="PERCENT">75%</NUMEX>) <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the reference set,
+          allowing us to extrapolate that drosophilid genomes may
+          contain <NUMEX TYPE="CARDINAL">96-124</NUMEX>, or <NUMEX TYPE="MONEY">around 110</NUMEX> miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. This suggests
+          that <NUMEX TYPE="PERCENT">nearly 1%</NUMEX> of 
+          Drosophila genes are miRNAs, a
+          figure that is in relative accord with the percentage
+          recently ascribed to vertebrate genomes [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+        
+        
+          miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>: clusters and paralogs
+          A subset of <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> are known to reside in local
+          genomic clusters with possible operon-like <ENAMEX TYPE="ORG_DESC">organization</ENAMEX>.
+          The largest cluster of <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> includes <NUMEX TYPE="CARDINAL">six</NUMEX> that were
+          previously identified as the 
+          <ENAMEX TYPE="CONTACT_INFO">mir-3 → mir-6-3</ENAMEX> cluster [ <TIMEX TYPE="DATE">10</TIMEX> ] . We
+          identified <NUMEX TYPE="CARDINAL">two</NUMEX> additional conserved stem-loop structures
+          that flank 
+          mir-3 (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>), one of which ( 
+          <ENAMEX TYPE="CONTACT_INFO">mir-286</ENAMEX> ) was confirmed by northern
+          <ENAMEX TYPE="PERSON">blot</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5a</NUMEX>). Surprisingly, 
+          mir-286 is the only <ENAMEX TYPE="PER_DESC">member</ENAMEX> of this
+          <NUMEX TYPE="CARDINAL">seven</NUMEX>-miRNA cluster that is conserved in 
+          Anopheles , indicating tremendous
+          flux in the miRNA content of this region even within the
+          <ENAMEX TYPE="ORGANIZATION">Diptera</ENAMEX>. We also observed that <ENAMEX TYPE="SUBSTANCE">miR-286</ENAMEX> is related at its
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end to another experimentally verified miRNA (<ENAMEX TYPE="CONTACT_INFO">miR-279,</ENAMEX>
+          Figure <NUMEX TYPE="CARDINAL">5h</NUMEX>), suggesting that they may have related
+          functions.
+          The volatility of <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> is further indicated by
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the miR-<NUMEX TYPE="CARDINAL">2/miR</NUMEX>-<NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> box subfamily [ <TIMEX TYPE="DATE">47</TIMEX> ] .
+          <NUMEX TYPE="CARDINAL">Seven</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> were previously reported that are scattered
+          in <NUMEX TYPE="CARDINAL">four</NUMEX> genomic locations on <NUMEX TYPE="CARDINAL">three</NUMEX> different chromosome
+          arms, including a cluster of three 
+          mir-<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> on <TIMEX TYPE="DATE">2L</TIMEX> and a cluster of
+          two 
+          mir-<NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> on <TIMEX TYPE="DATE">3R</TIMEX>; we also
+          identified an additional paralog of 
+          mir-2 ( 
+          <ENAMEX TYPE="PRODUCT">mir-2c</ENAMEX> ) that is located in the 
+          mir-13 cluster. Unexpectedly, the 
+          Anopheles genome contains <NUMEX TYPE="CARDINAL">only four</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this subfamily, and all are located in a
+          single cluster on <TIMEX TYPE="DATE">2L</TIMEX> (Figure <NUMEX TYPE="CARDINAL">7b</NUMEX>); the same <NUMEX TYPE="CARDINAL">four</NUMEX> members
+          were identifiable in the unassembled genomic sequence of 
+          <ENAMEX TYPE="ORGANIZATION">Apis</ENAMEX> [ <TIMEX TYPE="DATE">48</TIMEX> ] . The simplest scenario
+          is that <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> box-<ENAMEX TYPE="PER_DESC">family</ENAMEX> have undergone
+          radical duplication and dispersal about the genome in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . This is consistent
+          with the finding that the remaining <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>-box
+          family [ <TIMEX TYPE="DATE">47</TIMEX> ] , including 
+          mir-<NUMEX TYPE="CARDINAL">11</NUMEX> , the three 
+          mir-<NUMEX TYPE="CARDINAL">6</NUMEX> paralogs and the
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>-box-antisense gene 
+          mir-<NUMEX TYPE="CARDINAL">5</NUMEX> , are similarly absent from
+          both 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Apis</ENAMEX> . However, <NUMEX TYPE="CARDINAL">one</NUMEX> new putative
+          <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>-box <ENAMEX TYPE="PER_DESC">family</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2R:4681879</ENAMEX>) was identified by
+          miRseeker, and it has been conserved in <NUMEX TYPE="CARDINAL">all four</NUMEX>
+          sequenced insect genomes.
+          Another notable cluster that includes previously
+          identified miRNAs is one containing 
+          <ENAMEX TYPE="CONTACT_INFO">mir-100 ,</ENAMEX> 
+          let-7 and 
+          mir-125 (Figure <NUMEX TYPE="CARDINAL">7c</NUMEX>). miR-125 is an
+          apparent homolog of 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">elegans lin-4</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] , which
+          functions with let-<NUMEX TYPE="CARDINAL">7</NUMEX> to regulate developmental timing in
+          <ENAMEX TYPE="ORGANIZATION">nematodes</ENAMEX>. Although complementary sites for both miRNAs
+          are found in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> of several putative nematode
+          targets, these miRNAs are not physically linked in the 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans genome and their mutant
+          phenotypes are principally due to misregulation of
+          different transcripts [ <NUMEX TYPE="CARDINAL">4 5 6 8</NUMEX> ] . The function of these
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> has not yet been explicitly demonstrated in other
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, but 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> let-7 is regulated at
+          the larval-pupal transition by ecdysone [ <TIMEX TYPE="DATE">49</TIMEX> ] , and all
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this cluster are present in other
+          <ENAMEX TYPE="ANIMAL">insects</ENAMEX> and in vertebrates, thus implying broadly
+          conserved functions. Their existence in a gene cluster in
+          
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> (data not shown) may
+          imply that their functions overlap to a greater extent in
+          <ENAMEX TYPE="ANIMAL">insects</ENAMEX> than in nematodes. This could explain why
+          individual let-7 or miR-<NUMEX TYPE="CARDINAL">125</NUMEX> mutants with strong
+          developmental defects have not yet been identified in 
+          Drosophila by genetic means. Our
+          observation that the temporal expression profile of
+          miR-100 (Figure <NUMEX TYPE="CARDINAL">5d</NUMEX>) is similar to that described for
+          let-<NUMEX TYPE="CARDINAL">7 and miR</NUMEX>-125 (that is, expression is initiated
+          during <TIMEX TYPE="DATE">larval</TIMEX>/pupal development and continues through
+          <ENAMEX TYPE="ORGANIZATION">adulthood</ENAMEX> [ <ENAMEX TYPE="LAW">9 29</ENAMEX> ] ) is consistent with probable
+          coordinate expression of <NUMEX TYPE="CARDINAL">all three</NUMEX> as a single pri-miRNA
+          <ENAMEX TYPE="PERSON">transcript</ENAMEX>, and may further implicate <ENAMEX TYPE="SUBSTANCE">miR-100</ENAMEX> in
+          developmental timing. While this work was under review,
+          the clustering of <ENAMEX TYPE="SUBSTANCE">miR-100</ENAMEX>, let-7 and <ENAMEX TYPE="SUBSTANCE">miR-125</ENAMEX> was
+          <ENAMEX TYPE="ORGANIZATION">independently</ENAMEX> reported; these <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> also provide
+          evidence for coordinate expression of these miRNAs as a
+          single pri-miRNA [ <NUMEX TYPE="CARDINAL">45 50</NUMEX> ] .
+          The characteristics of <ENAMEX TYPE="SUBSTANCE">miR-100</ENAMEX> are highly unusual and
+          thus serve as a useful caution. First, although miRseeker
+          correctly identified it as a high-scoring conserved
+          stem-loop, the incorrect strand was identified as its
+          nontranscribed strand adopts greater helical structure
+          than does its transcribed strand. <NUMEX TYPE="ORDINAL">Second</NUMEX>, it is the only
+          confirmed 
+          Drosophila miRNA that deviates from
+          the expected pattern of divergence in two fundamental
+          <ENAMEX TYPE="ORGANIZATION">ways</ENAMEX>: it not only contains a mismatch on the <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> while
+          maintaining a perfectly conserved loop (and thus failed
+          the conservation filter as a class <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>), but the
+          mismatch actually resides within the mature miRNA
+          sequence itself. Therefore, the identification of miR-100
+          in flies relied upon its conservation in other
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          We identified <NUMEX TYPE="CARDINAL">several additional</NUMEX> examples of closely
+          linked miRNAs that are transcribed from the same strand
+          (Figure <NUMEX TYPE="CARDINAL">7d</NUMEX>). These include clusters containing paralogous
+          miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (such as 
+          <ENAMEX TYPE="PRODUCT">mir-281a</ENAMEX> and 
+          <ENAMEX TYPE="PRODUCT">mir-281b</ENAMEX> ) others that contain
+          unrelated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">mir-12/mir-283 ,</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">mir-34/mir-277</ENAMEX> and 
+          <ENAMEX TYPE="CONTACT_INFO">mir-275/2L:7418176 clusters</ENAMEX>), and
+          some that are a mixture of both ( 
+          mir-79 cluster). Unexpectedly, we
+          did not find that clusters of paralogous miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          more prevalent, as might have been predicted 
+          a priori if gene clusters generally
+          result from local gene duplications. This is apparently
+          corroborated by the identification of several miRNA
+          clusters whose processed <ENAMEX TYPE="SUBSTANCE">products</ENAMEX> derive from opposing
+          arms of their respective <ENAMEX TYPE="PER_DESC">precursors</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>) [ <NUMEX TYPE="CARDINAL">10 29</NUMEX> ]
+          . A <NUMEX TYPE="ORDINAL">second</NUMEX> curious observation is that relatively few 
+          Drosophila miRNAs are <ENAMEX TYPE="PER_DESC">members</ENAMEX> of
+          paralogous gene sets, irrespective of whether they are
+          physically linked or not. In fact, we identified only
+          <NUMEX TYPE="CARDINAL">four</NUMEX> new examples ( 
+          miR-<NUMEX TYPE="CARDINAL">281a</NUMEX> + 
+          b , 
+          miR-<NUMEX TYPE="CARDINAL">276a</NUMEX> + 
+          b , 
+          miR-<NUMEX TYPE="CARDINAL">92a</NUMEX> + 
+          b and 
+          miR-<NUMEX TYPE="CARDINAL">263a</NUMEX> + 
+          b ) to add to the previously
+          described sets of 
+          miR-6 and 
+          <ENAMEX TYPE="CONTACT_INFO">miR-2 /</ENAMEX> 
+          miR-<NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. This contrasts with
+          observations of miRNAs in vertebrates, where the majority
+          of known miRNAs are <ENAMEX TYPE="PER_DESC">members</ENAMEX> of paralogous gene sets [ <NUMEX TYPE="CARDINAL">31</NUMEX>
+          ] . The most extreme examples of this disparity are 
+          let-7 and 
+          mir-<NUMEX TYPE="CARDINAL">29</NUMEX> , which are present in
+          single copies in 
+          Drosophila , but are represented by
+          <ENAMEX TYPE="ORGANIZATION">thirteen</ENAMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> distinct human <ENAMEX TYPE="SUBSTANCE">homologs</ENAMEX>,
+          respectively.
+        
+      
+      
+        Discussion
+        
+          Drosophilid genomes contain <NUMEX TYPE="CARDINAL">around 110</NUMEX> microRNA
+          genes
+          Although the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were identified
+          through forward genetics, the vast majority of known
+          miRNAs were identified by direct cloning of mature <TIMEX TYPE="DATE">21-22</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">nucleotide RNAs</ENAMEX>, either from size-selected total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> or
+          from purified miRNP <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX>. The direct cloning method
+          has the distinct advantages of being expression based and
+          aimed at identifying the processed <ENAMEX TYPE="SUBSTANCE">miRNA</ENAMEX> that is
+          presumably the active regulatory species. While it is
+          clear that cloning efforts in some organisms have been
+          far from saturating, work in other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> (mammals)
+          suggests that efforts of this sort will give sharply
+          diminishing returns. In any case, it is likely that many
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> will not be amenable to direct cloning, including
+          those that are present at very low levels (be they poorly
+          expressed, highly unstable, inefficiently processed, or
+          expressed by small numbers of cells) or whose expression
+          is otherwise restricted to times and/or locations for
+          which the isolation of sufficient amounts of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> for
+          <ENAMEX TYPE="ORGANIZATION">cloning</ENAMEX> is impractical.
+          In theory, a computational approach based on the
+          structural features of known miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> might permit the
+          unbiased discovery of the remaining complement of miRNA
+          genes in a given sequenced genome. However, in <NUMEX TYPE="CARDINAL">one</NUMEX> test,
+          around <NUMEX TYPE="PERCENT">5%</NUMEX> of randomly selected 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans genomic sequences were
+          found to have the capacity to fold into plausible miRNA
+          precursor hairpins [ <TIMEX TYPE="DATE">11</TIMEX> ] . This suggests that
+          computational prediction of miRNAs based on presumed
+          structure alone would have an unacceptably high
+          false-positive rate. This type of approach might be
+          strongly aided by comparative genomics, whereby one
+          confined the analysis to genomic regions subject to both
+          <ENAMEX TYPE="PERSON">evolutionary</ENAMEX> and structural constraint. The proof of
+          principle behind this dual scheme was demonstrated by the
+          identification of several miRNAs via a structural
+          analysis of genomic sequence conserved over <NUMEX TYPE="CARDINAL">50 million</NUMEX>
+          <TIMEX TYPE="DATE">years</TIMEX> of nematode evolution [ <TIMEX TYPE="DATE">12</TIMEX> ] . Indeed, the great
+          majority of 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans miRNAs identified
+          through the direct cloning approach are conserved in the
+          genome of 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> briggsae , with conservation
+          typically extending across the length of the predicted
+          miRNA precursor.
+          In this study, we describe miRseeker, a computational
+          approach for the identification of 
+          Drosophila miRNA genes that ranks
+          conserved stem-loop structures and assesses their pattern
+          of nucleotide divergence. <ENAMEX TYPE="ORGANIZATION">miRseeker</ENAMEX> successfully
+          identified nearly all of the known 
+          Drosophila <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX>, and a
+          strong majority of novel, high-scoring <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> were
+          verified by northern analysis. In total, we catalogued <NUMEX TYPE="CARDINAL">32</NUMEX>
+          newly verified miRNAs (<NUMEX TYPE="CARDINAL">24</NUMEX> of which were confirmed here by
+          <ENAMEX TYPE="ORGANIZATION">northern blot</ENAMEX>), bringing the current 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> tally to <NUMEX TYPE="CARDINAL">56</NUMEX>. Our data
+          allows us to estimate the presence of <NUMEX TYPE="MONEY">around 110</NUMEX> miRNA
+          genes in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . The approach used in
+          this study should be applicable to the analysis of other
+          sets of sequenced genomes of related higher eukaryotic
+          <ENAMEX TYPE="ANIMAL">model organisms</ENAMEX>. While this manuscript was in preparation
+          and in submission, several other computational
+          predictions of <ENAMEX TYPE="SUBSTANCE">miRNA genes</ENAMEX> by similar overall strategies
+          were reported [ <NUMEX TYPE="CARDINAL">31 32 33 34</NUMEX> ] . The results of our
+          studies are most similar to analyses by <ENAMEX TYPE="ORGANIZATION">Bartel</ENAMEX> and
+          <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> predicting <ENAMEX TYPE="PRODUCT">200-255</ENAMEX> miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in vertebrates,
+          or <NUMEX TYPE="PERCENT">nearly 1%</NUMEX> of the predicted genes in <ENAMEX TYPE="PER_DESC">humans</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] ;
+          this is comparable to our estimate of <ENAMEX TYPE="ANIMAL">flies</ENAMEX>.
+          A unique aspect of miRseeker amongst the recently
+          described methodologies is its assessment of the pattern
+          of nucleotide divergence within miRNA precursors. The
+          existence of this pattern, which is reflected by initial
+          divergence within loop sequence, was unexpected. Two
+          conclusions may be drawn from this phenomenon. First, the
+          <ENAMEX TYPE="PERSON">loop</ENAMEX> appears to be the least critical feature of a
+          pre-miRNA, an observation supported by the identification
+          of orthologous insect miRNAs that vary quite
+          significantly in terms of both loop size and sequence
+          (data not shown). <NUMEX TYPE="ORDINAL">Second</NUMEX>, there appears to be measurable
+          selective pressure on the sequence of the non-miRNA <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>,
+          above and beyond the necessity to maintain a certain
+          degree of helical structure that would make it a Dicer
+          <ENAMEX TYPE="ORGANIZATION">substrate</ENAMEX>. This is perhaps at odds with the nonspecific
+          activity of <ENAMEX TYPE="ORGANIZATION">Dicer</ENAMEX>, which efficiently processes virtually
+          every input dsRNA ever tested in <ENAMEX TYPE="ORGANIZATION">RNAi</ENAMEX> assays. It may be
+          the case that specific sequence requirements become
+          greater when processing imperfect stem-loops
+          characteristic of pre-miRNA, or alternatively, that the
+          <ENAMEX TYPE="CONTACT_INFO">non-miRNA-encoding</ENAMEX> product may in fact have some
+          previously unappreciated function. Nonetheless, it is
+          clear that the selective pressure on the
+          <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> is mild, and that it diverges long
+          before the sequence of the mature miRNA does.
+          It is worth noting that the fraction of miRNAs
+          conserved between mammals and <ENAMEX TYPE="ANIMAL">fish</ENAMEX>, which are around <NUMEX TYPE="CARDINAL">450</NUMEX>
+          <ENAMEX TYPE="PERSON">million</ENAMEX> <TIMEX TYPE="DATE">years</TIMEX> diverged, appears to be significantly
+          higher than the fraction of miRNAs that are conserved
+          between flies and <ENAMEX TYPE="ANIMAL">mosquitoes</ENAMEX>, which are separated by only
+          <TIMEX TYPE="DATE">250 million years</TIMEX> of evolution (this paper and [ <TIMEX TYPE="DATE">31</TIMEX> ] ).
+          This indicates that insect miRNAs evolve much more
+          rapidly than do vertebrate miRNAs. This is in general
+          agreement with analyses of <ENAMEX TYPE="SUBSTANCE">orthologous protein</ENAMEX> pairs,
+          which showed that dipteran pairs had a higher rate of
+          divergence than did fish/human pairs [ <TIMEX TYPE="DATE">51</TIMEX> ] . Since it
+          may be argued that the selective environmental pressures
+          are more different between these sequenced vertebrates,
+          it may be that the relatively high rate of divergence in
+          <ENAMEX TYPE="ORGANIZATION">Diptera</ENAMEX> is a consequence of their shorter generation
+          times.
+        
+        
+          Of false negatives and false positives
+          In these heady times of miRNA gene discovery, it is
+          prudent to exercise caution in designating predicted
+          genes as 
+          bona fide , just because they
+          resemble known miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">46</TIMEX> ] . At the same time,
+          while many <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">annotated protein</ENAMEX>-coding genes
+          are not associated with cDNA clones or other evidence of
+          expression, computational methods of their identification
+          are robust enough for them to be considered 'real' genes
+          until proven otherwise. It is our hope that refinement of
+          miRNA prediction algorithms may further reduce the
+          false-positive rate and elevate confidence in their
+          output to a comparable level. Consideration of nucleotide
+          <ENAMEX TYPE="PERSON">bias</ENAMEX> at the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of miRNA (including a propensity to
+          begin with <ENAMEX TYPE="ORGANIZATION">U</ENAMEX>) may improve predictions [ <TIMEX TYPE="DATE">11</TIMEX> ] , although
+          we stress that our algorithms were designed to predict
+          pre-miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and not mature miRNA sequences
+          themselves. The extent of the precisely conserved arm
+          (thus including a potential miRNA) was in most cases
+          longer than the mature product, and it would have been
+          arbitrary to select a <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> miRNA sequence just so
+          that it began with a <ENAMEX TYPE="GPE">U. Notably</ENAMEX>, a recent study suggests
+          that different chemical strategies for capturing miRNA
+          molecules may differentially recover miRNAs according to
+          their <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends [ <TIMEX TYPE="DATE">33</TIMEX> ] , so reevaluation of <ENAMEX TYPE="SUBSTANCE">miRNA 5</ENAMEX>' bias
+          may be in order. Incorporation of promoter evidence in
+          gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> may also help, given recent speculation that
+          miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may be transcribed by <ENAMEX TYPE="SUBSTANCE">RNA polymerase</ENAMEX> II. Our
+          confidence in the high-scoring 
+          Drosophila -specific <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>,
+          most of which we did not test in this study, will also
+          undoubtedly be bolstered by their conservation in the
+          genomes of additional species of 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . We eagerly await the
+          initiation of these sequencing projects.
+          Potential false negatives fall into <NUMEX TYPE="CARDINAL">several</NUMEX> classes.
+          First, our search was based on the currently sequenced
+          and alignable portions of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura genomes. As
+          mentioned <TIMEX TYPE="DATE">earlier</TIMEX>, one of the <NUMEX TYPE="CARDINAL">24</NUMEX> reference miRNAs
+          (<NUMEX TYPE="CARDINAL">miR</NUMEX>-<NUMEX TYPE="CARDINAL">10</NUMEX>) did not reside in an aligned region, even though
+          it was readily identified in available 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura sequence by BLAST
+          <ENAMEX TYPE="ORGANIZATION">query</ENAMEX>. Next, as our strategy relies upon conservation of
+          primary sequence, we will have missed exceptionally
+          divergent miRNAs, including class <NUMEX TYPE="CARDINAL">6</NUMEX> candidates.
+          Comparisons with 
+          Anopheles demonstrate that dipteran
+          miRNA genes evolve rapidly and although none of the
+          reference set is absent from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , there may be
+          examples that are specific to individual drosophilid
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The recent discovery of a large class of tiny
+          non-coding <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX> (tncRNAs) that share some features
+          with miRNAs provides a precedent for exceptionally
+          rapidly evolving small <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX>; tncRNAs are not even
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> within 
+          <ENAMEX TYPE="ORGANIZATION">Caenorhabditis</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] . We also
+          masked exons from the search, so we will have excluded
+          any miRNAs that might be processed from spliced mRNA,
+          including untranslated regions. Finally, we will have
+          missed those miRNAs that proceed through precursor
+          transcripts of unusual structure. Although most known
+          pre-miRNAs in 
+          Drosophila , 
+          Caenorhabditis , <ENAMEX TYPE="ANIMAL">mice</ENAMEX> and <ENAMEX TYPE="PER_DESC">humans</ENAMEX>
+          form relatively canonical stem-loops of <NUMEX TYPE="MONEY">around 70</NUMEX> to <NUMEX TYPE="CARDINAL">100</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in length, <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> miRNA precursors are often
+          processed through exceptionally long stem-loops (many 150
+          <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> or longer) [ <NUMEX TYPE="CARDINAL">14 15 16</NUMEX> ] . miR-125 is a member
+          of the 
+          Drosophila reference set that
+          received a low score by our informatic procedure,
+          possibly because it may derive from an unusually long
+          stem-loop (<NUMEX TYPE="MONEY">120 nucleotides</NUMEX>), only a portion of which was
+          included in the queried window. In addition, other plant
+          miRNAs may proceed through precursors of noncanonical
+          structure, such as multiple stem-loops or stem-loops of
+          poor quality [ <TIMEX TYPE="DATE">14</TIMEX> ] . The existence of these types of
+          pre-miRNAs in metazoans is unknown at present.
+          Despite these potential <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error, the robust
+          ability of miRseeker to identify genuine miRNAs is
+          clearly indicated by its ability to identify most of the
+          previously known 
+          Drosophila miRNAs as very
+          high-scoring <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> and by our experimental
+          validation of a very large number of newly identified
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> miRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+        
+        
+          Prospects
+          Perhaps the most outstanding current challenge
+          regarding miRNAs lies in determining their regulatory
+          targets. It is presumed that most of them will form <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          duplexes with complementary sequences in mRNA, but direct
+          regulatory relationships are known for only a handful of
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX>. Although many miRNAs in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> were found to be
+          nearly or completely complementary to known or putative
+          target <ENAMEX TYPE="ORG_DESC">mRNAs</ENAMEX> [ <NUMEX TYPE="CARDINAL">24 52</NUMEX> ] , the few cases of known or
+          presumed animal miRNA targets involve imperfect and
+          limited homology. Indeed, searches for complements to
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> in animal genomes to date have not succeeded in
+          detecting matches more compelling than those identified
+          in random sequence. Thus, matching miRNAs to their
+          cognate targets 
+          in <TIMEX TYPE="DATE">silico</TIMEX> presents a daunting
+          task.
+          The <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of a large subset of experimentally
+          derived 
+          Drosophila miRNAs were recently
+          observed to be perfectly complementary to <ENAMEX TYPE="ORGANIZATION">Brd</ENAMEX> boxes, <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">boxes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GY</ENAMEX> boxes, a set of <NUMEX TYPE="CARDINAL">3</NUMEX>' UTR sequence motifs
+          involved in post-transcriptional regulation [ <NUMEX TYPE="CARDINAL">47 53 54 55</NUMEX>
+          ] . This suggests that, at least in 
+          Drosophila , a subset of relevant
+          miRNA <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> might be found by searching for complements
+          to the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'<TIMEX TYPE="TIME">-most 8-10 nucleotides</TIMEX> of miRNAs in <TIMEX TYPE="DATE">3</TIMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>.
+          This procedure certainly produces many candidate
+          regulatory pairs (<ENAMEX TYPE="PERSON">I. Holmes</ENAMEX> and <ENAMEX TYPE="PERSON">E.C.L.</ENAMEX>, unpublished
+          observations), but so many matches are found that it is
+          difficult to single out individual cases as being more
+          likely to be genuine.
+          Comparative genomic analyses of orthologous
+          drosophilid <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> should aid in this endeavor, as
+          evidenced by the recent demonstration that several
+          conserved motifs in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> of the pro-apoptotic gene 
+          hid are targets of the miRNA bantam
+          [ <TIMEX TYPE="DATE">44</TIMEX> ] . Statistically significant pairings of conserved
+          and/or overrepresented <ENAMEX TYPE="PRODUCT">3</ENAMEX>' UTR motifs can be assessed for
+          <ENAMEX TYPE="ORGANIZATION">complementarity</ENAMEX> to miRNAs. Comparisons with 
+          Anopheles orthologs may also prove
+          useful in this regard. For example, as is the case for
+          their drosophilid <ENAMEX TYPE="PER_DESC">counterparts</ENAMEX>, 
+          Anopheles transcripts for <NUMEX TYPE="CARDINAL">two</NUMEX> types
+          of 
+          Enhancer of split genes (basic
+          helix-loop-helix repressor and <ENAMEX TYPE="PER_DESC">Brd-family</ENAMEX>) contain <ENAMEX TYPE="PERSON">Brd</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>
+          and <ENAMEX TYPE="ORGANIZATION">GY</ENAMEX> box motifs in their <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="PERSON">UTRs (E.C.L.</ENAMEX>, unpublished
+          observations). We anticipate that other examples of
+          sequence motifs that are conserved in orthologs of the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> dipterans and that are strongly complementary to
+          <ENAMEX TYPE="ORGANIZATION">miRNAs</ENAMEX> will be prime <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to test as new examples
+          of <ENAMEX TYPE="GPE">miRNA-mediated</ENAMEX> post-transcriptional gene
+          regulation.
+        
+      
+      
+        Materials and methods
+        
+          Genome analysis
+          We used the following genomic sequences and analyses
+          in this work: 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> sequence
+          (<ENAMEX TYPE="ORGANIZATION">Berkeley Drosophila Genome Project</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX>) [ <TIMEX TYPE="DATE">36</TIMEX> ] ; 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="ORGANIZATION">Release 3.1</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> (BDGP) [ <TIMEX TYPE="DATE">40</TIMEX> ] ; 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> sequence
+          and <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Human Genome Sequencing Center</ENAMEX> at <ENAMEX TYPE="ORGANIZATION">Baylor</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">College of Medicine</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">HGSC</ENAMEX> at <ENAMEX TYPE="ORGANIZATION">BCM</ENAMEX>) [ <TIMEX TYPE="DATE">37</TIMEX> ] ; whole-genome
+          alignment of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura (<ENAMEX TYPE="ORGANIZATION">Berkeley</ENAMEX> Genome
+          <ENAMEX TYPE="ORGANIZATION">Pipeline</ENAMEX>) [ <TIMEX TYPE="DATE">32</TIMEX> ] ; 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> <ENAMEX TYPE="PER_DESC">gambiae</ENAMEX> assembled genomic
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Anopheles Genome Project</ENAMEX>) [ <TIMEX TYPE="DATE">56</TIMEX> ] ; 
+          Apis mellifera unassembled genomic
+          trace sequence (HGSC at <ENAMEX TYPE="ORGANIZATION">BCM</ENAMEX>) [ <TIMEX TYPE="DATE">48</TIMEX> ] .
+        
+        
+          miRseeker computational pipeline
+          
+            Extraction of conserved
+            Drosophilasequences
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> of the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome [ <TIMEX TYPE="DATE">36</TIMEX> ] was
+            divided into <NUMEX TYPE="CARDINAL">1,287</NUMEX> contigs of <NUMEX TYPE="CARDINAL">100,500</NUMEX> nucleotides each,
+            with <NUMEX TYPE="CARDINAL">500</NUMEX> nucleotides of overlap at either end. These
+            contigs were aligned to the <NUMEX TYPE="ORDINAL">first</NUMEX> assembly of the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura euchromatic
+            sequence [ <TIMEX TYPE="DATE">37</TIMEX> ] by running <TIMEX TYPE="DATE">1287</TIMEX> parallel AVID jobs on
+            the <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX> cluster. Aligned sequences with the following
+            Release <NUMEX TYPE="MONEY">3.1 annotations</NUMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] were eliminated: exons,
+            transposable elements, snRNA, snoRNA, tRNA and rRNA
+            genes. Conserved miRNA <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> regions were extracted
+            from the aligned nongenic drosophilid sequence as
+            follows. A <NUMEX TYPE="CARDINAL">100</NUMEX>-unit <TIMEX TYPE="DATE">window</TIMEX> (where a unit is either an
+            aligned or a gapped nucleotide) was advanced across the
+            <ENAMEX TYPE="ORGANIZATION">AVID</ENAMEX> alignment files by <NUMEX TYPE="CARDINAL">single</NUMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX>. Once a window
+            that satisfied minimal conservation criteria (�<NUMEX TYPE="PERCENT">�13%</NUMEX> gaps
+            and �<NUMEX TYPE="PERCENT">�15%</NUMEX> mismatches) was identified, the corresponding 
+            <ENAMEX TYPE="ORGANIZATION">Dm</ENAMEX> and 
+            Dp sequences (regions) were
+            stored as a multiple fasta file. The window was then
+            advanced by <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX> and reassessed. The window
+            continued to advance by <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX> until it no longer
+            satisfied our criteria for conservation, at which point
+            it was advanced by <NUMEX TYPE="CARDINAL">single</NUMEX> <ENAMEX TYPE="ORG_DESC">units</ENAMEX> until the next
+            conserved region was identified. Around <NUMEX TYPE="CARDINAL">436,000</NUMEX>
+            conserved regions were identified in this way.
+            The forward and reverse complement sequences of the
+            regions were loaded into a <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> database. If two 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster regions initiated
+            within <TIMEX TYPE="DATE">less than 13</TIMEX> nucleotides of each other, they
+            were grouped into a <ENAMEX TYPE="PER_DESC">super-</ENAMEX>region; reiterated grouping
+            sorted the <NUMEX TYPE="CARDINAL">436,000</NUMEX> regions into <NUMEX TYPE="CARDINAL">118,000</NUMEX> distinct
+            super-regions.
+          
+          
+            <ENAMEX TYPE="SUBSTANCE">RNA folding</ENAMEX> and scoring of conserved
+            stem-loops
+            All 
+            Dm regions were folded with mfold
+            <NUMEX TYPE="CARDINAL">3.1</NUMEX> by submitting parallel batches of <NUMEX TYPE="CARDINAL">500</NUMEX> mfolds to the
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> nodes and copying the .<ENAMEX TYPE="ORGANIZATION">det and .</ENAMEX>out mfold
+            output files to a final storage destination. All mfold
+            outputs were parsed, and information about the number
+            of structures, number of <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> per structure, size of
+            <ENAMEX TYPE="ORGANIZATION">helices</ENAMEX> within <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> and size and symmetry of the
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> loops within arms was loaded into the MySQL
+            database.
+            <NUMEX TYPE="CARDINAL">Two</NUMEX> parameters for each individual <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> in each
+            output <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> were evaluated: free energy (Δ<ENAMEX TYPE="ORGANIZATION">G</ENAMEX>
+            <ENAMEX TYPE="CONTACT_INFO">kcal/mol</ENAMEX>) and miRNA-like helicity. Helicity was
+            calculated by awarding <NUMEX TYPE="CARDINAL">+1</NUMEX> for each paired nucleotide,
+            -<NUMEX TYPE="CARDINAL">1</NUMEX> for each <NUMEX TYPE="CARDINAL">one</NUMEX>-nucleotide symmetric loop and <NUMEX TYPE="PERCENT">-2</NUMEX> for
+            each <NUMEX TYPE="CARDINAL">two</NUMEX>-nucleotide symmetric loop. A progressively
+            increasing penalty was applied for symmetric loops
+            greater than <NUMEX TYPE="CARDINAL">three</NUMEX> nucleotides as well as for all
+            bulged nucleotides and asymmetrically sized loops, as
+            these are more rarely observed in genuine miRNAs. An
+            overall score was calculated as (helical score +
+            (<ENAMEX TYPE="ORGANIZATION">ABS(ΔG</ENAMEX>)<NUMEX TYPE="CARDINAL">/2</NUMEX>))<TIMEX TYPE="DATE">/2</TIMEX>. For each <ENAMEX TYPE="PER_DESC">super-</ENAMEX>region a single region
+            that includes the highest scoring <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> was flagged.
+            All steps outlined above in the <ENAMEX TYPE="ORG_DESC">sub-section</ENAMEX> above
+            were repeated for regions contained within 
+            Dp <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions corresponding to
+            the top <NUMEX TYPE="PERCENT">25%</NUMEX> 
+            Dm <ENAMEX TYPE="PER_DESC">super-</ENAMEX>regions. The average
+            score of each corresponding 
+            <ENAMEX TYPE="ORGANIZATION">Dm</ENAMEX> and 
+            Dp <ENAMEX TYPE="LOCATION">region</ENAMEX> (termed a region-<ENAMEX TYPE="PER_DESC">pair</ENAMEX>)
+            was determined, and the highest-scoring region-<ENAMEX TYPE="PER_DESC">pair</ENAMEX> in
+            each <ENAMEX TYPE="PER_DESC">super-</ENAMEX>region was flagged as its best candidate
+            <ENAMEX TYPE="ORGANIZATION">miRNA</ENAMEX>.
+            Representative regions were then rank-ordered by
+            average 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> score. The 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster sequences from
+            the top <NUMEX TYPE="PERCENT">20%</NUMEX> of 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> regions were blasted
+            against the 
+            Anopheles genome. The top <NUMEX TYPE="CARDINAL">three</NUMEX> 
+            Anopheles blast hits were
+            subjected to the steps outlined in the previous
+            sub-section and the best-scoring <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> was
+            determined and linked to rank-ordered 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> regions. In most cases,
+            either no 
+            Anopheles blast hit or
+            non-homologous sequence was returned. The blast hit was
+            determined to be homologous if it folded into a similar
+            structure as the drosophilid sequences and one or both
+            helical <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> were highly conserved; these candidates
+            are flagged orange on the web output.
+          
+          
+            Evaluation of the divergence pattern in conserved
+            stem-loops
+            The alignment of 
+            <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> sequences was processed to
+            distinguish loop regions (colored blue on the web
+            output) and <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> regions (colored red on the web
+            output). Since <ENAMEX TYPE="SUBSTANCE">mfold</ENAMEX> tends to insert small helices
+            within terminal loops that falsely reduce the size of
+            the terminal loop, small terminal loops (<ENAMEX TYPE="CONTACT_INFO">3, 4</ENAMEX> or <NUMEX TYPE="CARDINAL">5</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in length) were extended to <NUMEX TYPE="CARDINAL">seven</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>. Potential <ENAMEX TYPE="PRODUCT_DESC">miRNA-encoding arms</ENAMEX> were then
+            identified as perfectly matched blocks of sequence more
+            than <NUMEX TYPE="QUANTITY">22 nucleotides long</NUMEX> and <NUMEX TYPE="CARDINAL">less than 10</NUMEX> nucleotides
+            from the end of either side of the terminal loop
+            (colored yellow on the web output). If no such sequence
+            was found, the region was eliminated. If both arms
+            contained potential miRNA sequences, the region passed
+            and it was considered a miRNA <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> (colored green
+            on the web output). If <NUMEX TYPE="CARDINAL">only one</NUMEX> potential
+            miRNA-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> was identified, then the other arm
+            was defined as the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. The terminus
+            of the potential <ENAMEX TYPE="ORG_DESC">miRNA-encoding arm</ENAMEX> was provisionally
+            defined as the end of the perfectly conserved sequence,
+            and the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> was trimmed to an equal
+            helical length. The number of mismatched and gapped
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in the loop <ENAMEX TYPE="LOCATION">region</ENAMEX> and in the
+            <ENAMEX TYPE="GPE">non-miRNA-encoding</ENAMEX> <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> was evaluated. <ENAMEX TYPE="PER_DESC">Candidates</ENAMEX> with
+            only a single <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> miRNA-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> were
+            disqualified if they did not diverge in the loop or the
+            number of mismatches in the non-<NUMEX TYPE="CARDINAL">miRNA</NUMEX>-encoding <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> was
+            <NUMEX TYPE="CARDINAL">four</NUMEX> or more mismatches greater than the number of
+            <ENAMEX TYPE="ORGANIZATION">mismatches</ENAMEX> within the loop. The <ENAMEX TYPE="ORG_DESC">candidates</ENAMEX> that pass
+            the conservation filter are colored green on the web
+            report. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">208</NUMEX> <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> produced by miRseeker,
+            along with information on <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, scores,
+            alignments, and genomic locations, are accessible via
+            the web [ <TIMEX TYPE="DATE">43</TIMEX> ] .
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">miRseeker</ENAMEX> public interface
+          For the genome-wide search, several steps of the
+          pipeline that do not require interaction with the
+          database were run in parallel on the <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX> cluster
+          (including <ENAMEX TYPE="SUBSTANCE">AVID alignments</ENAMEX>, extraction of conserved
+          regions, and mfolds) and represent a significant amount
+          of computational time. To allow public access to
+          miRseeker, we developed a scaled-down version of our
+          computational pipeline [ <TIMEX TYPE="DATE">58</TIMEX> ] . It allows a <ENAMEX TYPE="PER_DESC">user</ENAMEX> to input
+          <NUMEX TYPE="CARDINAL">two</NUMEX> sets of homologous sequences (<NUMEX TYPE="MONEY">up to 100 kb</NUMEX>) from any
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> along with gene annotation for one of them,
+          and performs all the steps of the miRNA-finding procedure
+          described above, producing a list of miRNA candidates
+          ordered by score. A cutoff score that reliably
+          distinguishes genuine miRNAs will differ with sequences
+          from different input genomes. Our experience with
+          drosophilid genomes suggests that a cutoff of <NUMEX TYPE="CARDINAL">16.00</NUMEX>
+          produces genuine <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> but also a high <TIMEX TYPE="TIME">fraction of</TIMEX>
+          probable false negatives, whereas a cutoff of <NUMEX TYPE="CARDINAL">17.00</NUMEX>
+          defines <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> of much higher overall quality. We
+          stress that the conservation consideration described
+          above applies only to appropriately related <ENAMEX TYPE="ANIMAL">species</ENAMEX> (such
+          as 
+          <ENAMEX TYPE="ORGANIZATION">Dm/Dp</ENAMEX> ) and should not be
+          <ENAMEX TYPE="ORGANIZATION">indiscriminately</ENAMEX> used to filter miRNA <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> derived
+          from comparative analysis of other <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The miRseeker
+          <ENAMEX TYPE="ORGANIZATION">public interface</ENAMEX> currently supports only a single
+          concurrent <ENAMEX TYPE="PER_DESC">user</ENAMEX>.
+        
+        
+          Northern blot validation of predicted miRNA
+          genes
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was isolated from embryos (made by combining
+          equal amounts of <TIMEX TYPE="TIME">0-12-hour and 12-24-hour</TIMEX> embryo <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>),
+          <ENAMEX TYPE="ORGANIZATION">larvae</ENAMEX> and pupae (made by combining equal amounts of
+          <NUMEX TYPE="ORDINAL">third</NUMEX> instar and <TIMEX TYPE="DATE">0-1-day-old</TIMEX> pupal <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>), and <TIMEX TYPE="DATE">0-2-day-old</TIMEX>
+          adult <ENAMEX TYPE="PER_DESC">males</ENAMEX>. Blots were prepared by electrophoresing <NUMEX TYPE="CARDINAL">40</NUMEX>
+          mg <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from each time point per lane on <NUMEX TYPE="PERCENT">15%</NUMEX> acrylamide
+          gels, followed by electroblotting to <ENAMEX TYPE="ORGANIZATION">ZetaProbe</ENAMEX> GT
+          <ENAMEX TYPE="PERSON">membranes</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">BioRad</ENAMEX>). These were then probed with
+          radioactive <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> oligonucleotide probes end-labeled with
+          the <ENAMEX TYPE="ORGANIZATION">StarFire</ENAMEX> system (<ENAMEX TYPE="ORGANIZATION">Integrated DNA Technologies</ENAMEX>,
+          Coralville, <ENAMEX TYPE="ORGANIZATION">IA</ENAMEX>).
+        
+      
+      
+        Additional data file
+        A detailed description (Additional data file <NUMEX TYPE="CARDINAL">1</NUMEX>) of the
+        miRseeker output data, including the folded structures and
+        evaluation of the top <NUMEX TYPE="CARDINAL">208</NUMEX> miRseeker <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>, that can be
+        accessed at [ <TIMEX TYPE="DATE">43</TIMEX> ] is available with the online version of
+        this article.
+        Additional data file 1
+        The <ENAMEX TYPE="SUBSTANCE">miRseeker</ENAMEX> output data
+        the <ENAMEX TYPE="SUBSTANCE">miRseeker</ENAMEX> output data, including the folded
+        structures and evaluation of the top <NUMEX TYPE="CARDINAL">208</NUMEX> miRseeker
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX>,
+        Click here for additional data file
+      
+    
+  

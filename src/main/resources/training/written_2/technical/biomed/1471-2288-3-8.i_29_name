@@ -1,0 +1,810 @@
+
+  
+    
+      
+        Background
+        Missing outcome data are common in clinical studies [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ] . Many approaches assume missing at random (<ENAMEX TYPE="GPE">MAR</ENAMEX>) as a
+        base case. <ENAMEX TYPE="ORGANIZATION">MAR</ENAMEX> means that the probability of missing
+        depends only on observed variables [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . <NUMEX TYPE="CARDINAL">Four</NUMEX> strategies
+        for examining the bias or sensitivity of results when <ENAMEX TYPE="ORGANIZATION">MAR</ENAMEX>
+        does not hold are to ( 
+        i ) fit all saturated <ENAMEX TYPE="GPE">MAR</ENAMEX> and non-<ENAMEX TYPE="GPE">MAR</ENAMEX>
+        missing-data models [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] , ( 
+        <ENAMEX TYPE="ORGANIZATION">ii</ENAMEX> ) add a parameter to various <ENAMEX TYPE="ORGANIZATION">MAR</ENAMEX>
+        models to make them non-<ENAMEX TYPE="GPE">MAR</ENAMEX> and test if the fit is
+        significantly improved [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] , ( 
+        <ENAMEX TYPE="PERSON">iii</ENAMEX> ) impute the missing data in one
+        arm using the observed proportion of events in the other
+        arm [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] , ( 
+        <ENAMEX TYPE="PRODUCT">iv</ENAMEX> ) estimate results under a non-<ENAMEX TYPE="GPE">MAR</ENAMEX>
+        missing-data mechanism with key parameters specified by the
+        <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> [ <ENAMEX TYPE="LAW">1 10</ENAMEX> ] - [ <TIMEX TYPE="DATE">13</TIMEX> ] . We propose a variation of
+        method ( 
+        <ENAMEX TYPE="PRODUCT">iv</ENAMEX> ) for randomized trials with
+        binary outcome that explicitly uses the randomization
+        distribution to reduce user input. To our knowledge this is
+        the only method that exploits the randomization
+        distribution for missing-data adjustment.
+        We illustrate the methodology using data from the Polyp
+        <ENAMEX TYPE="ORGANIZATION">Prevention Trial</ENAMEX> (PPT) in which <NUMEX TYPE="CARDINAL">2079</NUMEX> <ENAMEX TYPE="PER_DESC">men</ENAMEX> and <ENAMEX TYPE="PER_DESC">women</ENAMEX> with
+        recently removed colorectal adenoma were randomized to
+        receive either intensive counseling to adopt a low-fat diet
+        (intervention) or a standard brochure on healthy eating
+        (control) [ <TIMEX TYPE="DATE">14</TIMEX> ] . The binary outcome was at least one
+        adenoma detected on colonoscopy following randomization. In
+        the control arm <NUMEX TYPE="PERCENT">9%</NUMEX> of the <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were missing the
+        outcome, and in the intervention arm <NUMEX TYPE="PERCENT">7%</NUMEX> were missing the
+        outcome. Dropping the data from <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with a missing
+        outcome gives an estimated difference of -<NUMEX TYPE="CARDINAL">.002</NUMEX> (<ENAMEX TYPE="PERSON">s.e.</ENAMEX>=<NUMEX TYPE="CARDINAL">.022</NUMEX>)
+        in the probability of adenoma recurrence between the
+        intervention and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Thus there was very little
+        evidence that intensive counseling to adopt a low-fat diet
+        reduced the probability of adenoma recurrence. An important
+        question was whether or not an adjustment for the missing
+        <ENAMEX TYPE="PERSON">outcomes</ENAMEX> would have changed this conclusion.
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="PERSON">Adjusting for Observed Covariates</ENAMEX>
+          As a starting point, we assume the data are missing at
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> (<ENAMEX TYPE="GPE">MAR</ENAMEX>). Let 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> denote the binary outcome of
+          adenoma recurrence. Let 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX> denote random assignment to
+          the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX> denote random assignment to
+          the intervention <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Also let 
+          R = <NUMEX TYPE="CARDINAL">0</NUMEX> if the outcome is missing and
+          <NUMEX TYPE="CARDINAL">1</NUMEX> if the outcome is observed. Suppose we also have data
+          on the observed variable 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> , which represents either strata
+          formed by the cross-classification of categorical
+          baseline covariates or outpoints of a continuous
+          variable. Under the <ENAMEX TYPE="GPE">MAR</ENAMEX> assumption, the probability of
+          missing depends on 
+          Z and 
+          S but not 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> , namely,
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, <ENAMEX TYPE="GPE">s</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          R = <NUMEX TYPE="CARDINAL">1</NUMEX> | 
+          z, s ). (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          Because 
+          R and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> are conditionally independent
+          given 
+          Z and 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> , it follows from (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) that
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, <ENAMEX TYPE="GPE">s</ENAMEX>, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, s ). (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+          In other words, under the <ENAMEX TYPE="GPE">MAR</ENAMEX> assumption in (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), the
+          probability of adenoma recurrence conditional on
+          treatment assignment and baseline covariates is the same
+          in all subjects as in subjects not missing outcome. <ENAMEX TYPE="PERSON">Baker</ENAMEX>
+          and <ENAMEX TYPE="PERSON">Laird</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] proved the related result that under <ENAMEX TYPE="ORGANIZATION">MAR</ENAMEX>
+          the maximum likelihood estimate of the probability of
+          outcome conditional on covariates is the same in all
+          subjects as in subjects not missing outcome.
+          With binary outcomes, the overall measure of treatment
+          effect is typically a difference, a relative risk, or an
+          odds ratio. We focus on the difference because it is easy
+          to interpret [ <TIMEX TYPE="DATE">15</TIMEX> ] and because it simplifies our
+          formulation. Let Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           denote the treatment effect for stratum <ENAMEX TYPE="CONTACT_INFO">5,</ENAMEX>
+          namely
+          Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ). (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+          By virtue of the randomization 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          S = 
+          s | 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          S = 
+          s | 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          S = 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ). Therefore we can write the
+          overall treatment effect as
+          <ENAMEX TYPE="PER_DESC">Δ</ENAMEX> = Σ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          S = 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ). (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+          If the missing-data mechanism is given in (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), then
+          from (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), the treatment effect in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) equals the treatment effect
+          in stratum 
+          s among <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with observed
+          <ENAMEX TYPE="CONTACT_INFO">outcomes,</ENAMEX>
+          Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>). (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>)
+          Let 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            zsy 
+           denote the number of subjects in treatment group 
+          z and stratum 
+          s who have 
+          observed outcome 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> . Based on (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>), we estimate Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           by
+          
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          q 
+          
+          <ENAMEX TYPE="CONTACT_INFO">s 1 -</ENAMEX> 
+          q 
+          
+          <ENAMEX TYPE="ORGANIZATION">s 0</ENAMEX> , where 
+          q 
+          
+            sz 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+          <ENAMEX TYPE="CONTACT_INFO">zs 1 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">zs</ENAMEX> + , (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>)
+          where "+" denotes summation over the indicated
+          <ENAMEX TYPE="ORGANIZATION">subscript</ENAMEX>. Let 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            zs 
+           denote the number of subjects (with either observed
+          or missing outcomes) in treatment group 
+          z and stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> . We estimate 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          S = 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) by 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">s  /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          ++ , giving an overall estimate of
+          treatment effect,
+          <ENAMEX TYPE="CONTACT_INFO">= Σ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>)
+          The estimate in (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) is closely related to the estimate
+          proposed by <ENAMEX TYPE="ORGANIZATION">Horvitz</ENAMEX> and <ENAMEX TYPE="PERSON">Thompson</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] . It is also
+          maximum likelihood because it is a function of maximum
+          likelihood estimates of the parameters. Using the delta
+          method, and noting that = 
+          d 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          d 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> + .... 
+          d 
+          
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> -1 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> <ENAMEX TYPE="PRODUCT">-1</ENAMEX> + 
+          d 
+          
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+           (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> ), we obtain
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= 1 - .</ENAMEX>
+        
+        
+          <ENAMEX TYPE="PERSON">Bias</ENAMEX> from an omitted binary covariate
+          Suppose that instead of (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), the probability of
+          missingness depends on treatment assignment, baseline
+          strata, 
+          and an unobserved binary covariate 
+          x . For our example from the Polyp
+          <ENAMEX TYPE="ORGANIZATION">Prevention Trial</ENAMEX>, 
+          x could be an unreported indicator
+          of a family history of colon <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. Then
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, <ENAMEX TYPE="GPE">s</ENAMEX>, x, <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, <ENAMEX TYPE="GPE">s</ENAMEX>, x ). (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>)
+          In other words the data would be MAR if 
+          x were observed. The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> in (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>)
+          implies that, when 
+          x is not observed, missingness
+          depends on outcome and on treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX> via
+          
+          We assume that for each level of 
+          x within stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> , the treatment effect is the
+          same, namely
+          Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x ) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x )
+          = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) from (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>) (<NUMEX TYPE="MONEY">11</NUMEX>)
+          Importantly Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           in (<NUMEX TYPE="MONEY">11</NUMEX>) does not depend on 
+          x . Let denote the apparent
+          treatment effect in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> after collapsing over 
+          x , namely,
+          
+          To formalize the relationship between and Δ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           let
+          α 
+          
+            xs 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) (<NUMEX TYPE="MONEY">13</NUMEX>)
+          ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= α</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">s  - α</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  (<NUMEX TYPE="MONEY">14</NUMEX>)
+          φ 
+          
+            zs 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          X = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, <ENAMEX TYPE="GPE">s</ENAMEX>, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>), (<NUMEX TYPE="MONEY">15</NUMEX>)
+          ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= φ</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">s  - φ</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  . (<NUMEX TYPE="MONEY">16</NUMEX>)
+          <ENAMEX TYPE="PERSON">Combining</ENAMEX> (<NUMEX TYPE="MONEY">11</NUMEX>) and (<NUMEX TYPE="MONEY">13</NUMEX>), we can write
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, x, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) = α 
+          
+            xs 
+           <ENAMEX TYPE="CONTACT_INFO">+ Δ</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           . (<NUMEX TYPE="MONEY">17</NUMEX>)
+          <ENAMEX TYPE="PERSON">Substituting</ENAMEX> (<NUMEX TYPE="MONEY">13</NUMEX>)-(<NUMEX TYPE="MONEY">17</NUMEX>) into (<NUMEX TYPE="MONEY">12</NUMEX>) gives
+          
+          For a tabular display of these calculations see Table
+          <NUMEX TYPE="CARDINAL">1</NUMEX>. For a graphical depiction based on the <ENAMEX TYPE="ORGANIZATION">BK</ENAMEX>-plot [ <NUMEX TYPE="CARDINAL">17 18</NUMEX>
+          ] , see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          From (<NUMEX TYPE="MONEY">18</NUMEX>) the bias from omitting 
+          x in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> is ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           . The <NUMEX TYPE="ORDINAL">first</NUMEX> factor
+          ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="LAW">X</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          R = <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="LAW">X</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          R = <NUMEX TYPE="CARDINAL">1</NUMEX>) (<NUMEX TYPE="MONEY">19</NUMEX>)
+          is the effect of 
+          X on subjects in the control group
+          with observed outcomes. By virtue of the <ENAMEX TYPE="GPE">MAR</ENAMEX> assumption
+          in (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>), we could also write ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="LAW">X</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0,5</NUMEX>, 
+          X = <NUMEX TYPE="CARDINAL">0</NUMEX>), which is the effect of <NUMEX TYPE="PERCENT">X</NUMEX> on
+          all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> factor,
+          ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          X = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, Z = <NUMEX TYPE="CARDINAL">1</NUMEX>) - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          X = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          Z = <NUMEX TYPE="CARDINAL">0</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>, <ENAMEX TYPE="NATIONALITY">R</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>), (<NUMEX TYPE="MONEY">20</NUMEX>)
+          ranges from <NUMEX TYPE="PERCENT">-1</NUMEX> to <NUMEX TYPE="CARDINAL">1</NUMEX> and measures the degree of
+          confounding between 
+          X and 
+          Z among <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with observed
+          <ENAMEX TYPE="PERSON">outcomes</ENAMEX> (i.e. 
+          R = <NUMEX TYPE="CARDINAL">1</NUMEX>). If ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= 0</ENAMEX>, there is no confounding and no bias because the
+          distribution of 
+          X among <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with observed
+          <ENAMEX TYPE="PERSON">outcomes</ENAMEX> is the same in the control and study <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. If ε
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= ± 1</ENAMEX> there is complete confounding and the bias
+          reaches the maximum value of ± ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           . Taking a weighted average over all strata, the
+          overall apparent treatment effect is
+          
+          and the overall bias is
+          
+          <ENAMEX TYPE="PERSON">bias = �</ENAMEX>� 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           . (<NUMEX TYPE="MONEY">22</NUMEX>)
+          Remarkably it is possible to obtain simple bounds on ε
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           based only on the proportion of <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who are
+          missing in each randomized <ENAMEX TYPE="ORG_DESC">group</ENAMEX> in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> . Let
+          π 
+          
+            zs 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+          R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+          z, s ) (<NUMEX TYPE="MONEY">23</NUMEX>)
+          denote the proportion of subjects in randomization
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> 
+          z and stratum 
+          s with an observed outcome. As
+          derived in the <ENAMEX TYPE="ORGANIZATION">Appendix See</ENAMEX> additional file: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>, the
+          maximum ε 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           , which we call the upper bound factor, is
+          
+          If only <NUMEX TYPE="PERCENT">15%</NUMEX> of the <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> are missing in each <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> ε 
+          ( 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  is less than <NUMEX TYPE="CARDINAL">.18</NUMEX>. If we let
+          ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           denote the anticipated maximum value of ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           , then substituting (<NUMEX TYPE="MONEY">24</NUMEX>) into (<NUMEX TYPE="MONEY">22</NUMEX>) gives the
+          anticipated maximum bias,
+          
+          <ENAMEX TYPE="PERSON">bias</ENAMEX> 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= ± ψ</ENAMEX> 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           Σ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           ε 
+          ( 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           , (<NUMEX TYPE="MONEY">25</NUMEX>)
+          where the anticipated maximum bias under complete
+          confounding, ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           , is specified by the <ENAMEX TYPE="PER_DESC">investigator</ENAMEX>; the upper bound
+          factor, ε 
+          ( 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  , is based on the fraction
+          with observed outcomes in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ; and 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           is the fraction of subjects in stratum 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> .
+          Thus the <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> need only specify ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           . One might argue that if 
+          x were a strong unobserved
+          inherited gene, ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           would be close to <NUMEX TYPE="CARDINAL">1</NUMEX>. However because, "eligible
+          <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> had no history of <ENAMEX TYPE="DISEASE">colorectal cancer</ENAMEX>, surgical
+          resection of adenomas, bowel resection, the polyposis
+          <ENAMEX TYPE="DISEASE">syndrome</ENAMEX>, or inflammatory bowel disease" [ <TIMEX TYPE="DATE">14</TIMEX> ] , it is
+          unlikely that many subjects had an unobserved
+          high-penetrance gene related to the recurrence of
+          <ENAMEX TYPE="ORGANIZATION">adenomas</ENAMEX>. We therefore believe that unobserved factors
+          that might affect both adenoma recurrence and missingness
+          could have an effect of similar magnitude as observed
+          baseline covariates. Thus to obtain a plausible value for
+          ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           , we suggest estimating ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           , as defined in (<NUMEX TYPE="MONEY">19</NUMEX>), based on observed covariates.
+          (See the Results section.) Of course the relationship
+          between observed covariates and missingness could differ
+          substantially from the relationship between an unobserved
+          <ENAMEX TYPE="ORGANIZATION">covariate</ENAMEX> and missingness. Nevertheless, we believe that
+          estimates of ψ 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           from observed covariates are helpful for specifying
+          a realistic value for ψ 
+          
+            <ENAMEX TYPE="PERSON">max</ENAMEX> 
+           .
+          Additional file 1
+          
+          
+          Click here for file
+        
+      
+      
+        Results
+        We applied our approach to data from the <ENAMEX TYPE="ORGANIZATION">PPT</ENAMEX> trial
+        stratified by age and sex (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). We first assumed MAR
+        and applied (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) and (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>) to estimate the difference in the
+        probabilities of adenoma recurrence between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+        We obtained = -<NUMEX TYPE="CARDINAL">.003</NUMEX> with 
+        <ENAMEX TYPE="PRODUCT">se</ENAMEX> ( ).=<NUMEX TYPE="CARDINAL">.022</NUMEX>, which is close to the
+        <ENAMEX TYPE="ORGANIZATION">unstratified</ENAMEX> estimate and its standard error.
+        To compute the anticipated maximum bias (<NUMEX TYPE="MONEY">25</NUMEX>) we first
+        computed ε 
+        ( 
+        <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+        s  using (<NUMEX TYPE="MONEY">24</NUMEX>) and estimated 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+         from the observed fractions (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). This gave Σ 
+        
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+         ε 
+        ( 
+        <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> 
+        
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+         = <NUMEX TYPE="CARDINAL">.10</NUMEX>. We then specified ψ 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         , the anticipated maximum bias under complete
+        <ENAMEX TYPE="ORGANIZATION">confounding</ENAMEX>. To obtain a plausible value for ψ 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         , we estimated ψ 
+        
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+         in (<NUMEX TYPE="MONEY">19</NUMEX>) pretending either sex or age was the
+        unobserved covariate 
+        x . This gave = <NUMEX TYPE="CARDINAL">.23</NUMEX>, <NUMEX TYPE="CARDINAL">.18</NUMEX>, <NUMEX TYPE="CARDINAL">.18</NUMEX>, <NUMEX TYPE="CARDINAL">.19</NUMEX>,
+        for <TIMEX TYPE="DATE">the four age</TIMEX> categories when 
+        x = sex and <NUMEX TYPE="MONEY">.07 and .09</NUMEX> for the two
+        sex categories when 
+        x = age. Treating the largest as a
+        realistic lower bound for ψ 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         , we specified a slightly larger value, ψ 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         = <NUMEX TYPE="CARDINAL">.25</NUMEX>, so that the anticipated maximum bias is 
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> 
+        
+          <ENAMEX TYPE="PERSON">max</ENAMEX> 
+         = <NUMEX TYPE="MONEY">± .25 × .10</NUMEX> = <NUMEX TYPE="CARDINAL">.025</NUMEX>. The <ENAMEX TYPE="ORGANIZATION">MAR</ENAMEX> confidence interval is
+        shifted to the right or left by the anticipated maximum
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        For purpose of comparison, we also computed estimates
+        and confidence intervals under a worst (best) case
+        <ENAMEX TYPE="ORGANIZATION">imputation</ENAMEX> [ <ENAMEX TYPE="LAW">9 19</ENAMEX> ] , where missing outcome data in each
+        stratum were imputed as no recurrence (recurrence) in
+        controls and recurrence (no recurrence) in the intervention
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>. (These stratum-specific estimates were combined over
+        <ENAMEX TYPE="ORGANIZATION">strata</ENAMEX> using weights inversely proportional to the
+        stratum-specific variances.) In the worst and best case
+        imputations the confidence intervals did not overlap zero
+        (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        Our sensitivity analysis showed that the worst and best
+        case imputations were too extreme. Because the absolute
+        value of the anticipated maximum bias, <NUMEX TYPE="CARDINAL">.025</NUMEX>, is smaller
+        than <NUMEX TYPE="CARDINAL">1.96</NUMEX> × 
+        <ENAMEX TYPE="PRODUCT">se</ENAMEX> ( ) = <NUMEX TYPE="CARDINAL">.043</NUMEX>, the bias-adjusted
+        confidence intervals overlap <NUMEX TYPE="CARDINAL">zero</NUMEX>. Thus the anticipated
+        maximum bias of <NUMEX TYPE="MONEY">± .025</NUMEX> did not change our conclusion of
+        little evidence of an effect of treatment on adenoma
+        recurrence. However it did increase our uncertainty, as the
+        more extreme lower and upper bounds indicated that the true
+        effect of treatment could likely be higher or lower than
+        indicated by the original analysis.
+      
+      
+        Discussion
+        The key idea of our method is to incorporate non-<ENAMEX TYPE="GPE">MAR</ENAMEX>
+        missingness by postulating an unobserved binary covariate.
+        Although similar in spirit to using an unobserved binary
+        covariate with observational data [ <TIMEX TYPE="DATE">20</TIMEX> ] , randomization
+        adds important extra information that can be usefully
+        exploited. Our formulation implies that the probability of
+        missingness depends on both outcome and treatment
+        assignment.
+        The proposed methods hinges on first selecting the
+        appropriate baseline covariates. We agree with <ENAMEX TYPE="PERSON">Myers</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ]
+        that if one anticipates missing data, one should collect
+        information on the baseline covariates related to outcome
+        that might predict missing in outcome. We assumed that
+        within a stratum, the effect of treatment did not depend on
+        the unobserved binary covariate. We view this as a main
+        effect and thus a reasonable approximation.
+        We also agree with <ENAMEX TYPE="ORGANIZATION">Shih</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] that one should collect
+        information on the cause of missingness. In particular we
+        recommend reporting whether any of the missing outcomes
+        were definitely <ENAMEX TYPE="GPE">MAR</ENAMEX>, for example, due to random technical
+        problems, to accidents, or to leaving the study for reasons
+        completely unrelated to the investigation. Suppose that
+        outcome was definitely MAR in a proportion 
+        v 
+        
+          zs 
+         of <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. Then it is more informative to write 
+        v 
+        
+          zs 
+         as 
+        <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+        R = <NUMEX TYPE="CARDINAL">1</NUMEX>, not MAR| 
+        z, s ) + 
+        v 
+        
+          zs 
+         . Because 
+        v 
+        
+          zs 
+         contains no information about the effect of 
+        X on missingness, one can replace π 
+        
+          zs 
+         by π 
+        
+          zs 
+         - 
+        v 
+        
+          zs 
+         , which reduces ε 
+        ( 
+        <ENAMEX TYPE="PERSON">max</ENAMEX> ) 
+        <ENAMEX TYPE="ORGANIZATION">s</ENAMEX>  and hence reduces the
+        anticipated maximum bias.
+        Although we applied our methodology to a
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-classification of categorical covariates, it could
+        also be applied to continuous covariates or a univariate
+        combination of covariates in a manner analogous to a
+        propensity score [ <TIMEX TYPE="DATE">22</TIMEX> ] . Let 
+        <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> denote a vector of covariates and 
+        e 
+        
+          z 
+         = 
+        <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+        R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+        z, <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ). Following the derivation of
+        propensity scores [ <TIMEX TYPE="DATE">22</TIMEX> ] , we can write, 
+        <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+        R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+        z, e 
+        
+          z 
+         ) = 
+        E ( 
+        r | 
+        z, e 
+        
+          z 
+         ) = 
+        E ( 
+        E ( 
+        r | 
+        z, <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> )| 
+        z, e 
+        
+          z 
+         ) = 
+        E ( 
+        e 
+        
+          z 
+         | 
+        z, e 
+        
+          z 
+         ) = 
+        e 
+        
+          z 
+         . Therefore 
+        <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+        R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+        z, <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> ) = 
+        <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> ( 
+        R = <NUMEX TYPE="CARDINAL">1|</NUMEX> 
+        z, e 
+        
+          z 
+         ), and thus e 
+        
+          z 
+         contains the same information for the probability of
+        being observed as 
+        <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> . This calculation justifies using 
+        e 
+        
+          z 
+         to summarize the covariates predicting missingness. To
+        form <NUMEX TYPE="CARDINAL">five</NUMEX> strata for randomized group 
+        z , we would compute 
+        e 
+        
+          z 
+         for each subject in group 
+        z and then divide the distribution of
+        
+        e 
+        
+          z 
+         into quintiles.
+      
+      
+        Conclusion
+        The bias due to an unobserved binary covariate could
+        arise when the probability of missingness depends on both
+        treatment and outcome. Computation of the bias is easy
+        because it equals the maximum anticipated bias under
+        complete confounding multiplied by an upper bound factor.
+        The maximum anticipated bias might require some expert
+        input but some lower bound values can be obtained using
+        observed baseline covariate. The upper bound factor is
+        easily computed from the fraction missing in each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.
+        The methodology is particularly useful in the common
+        situation when <NUMEX TYPE="PERCENT">no more than 15%</NUMEX> of the <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (in excess
+        of those definitely <ENAMEX TYPE="GPE">MAR</ENAMEX>) have missing outcomes, so that the
+        upper bound factor in the bias is less than <NUMEX TYPE="CARDINAL">.18</NUMEX>.
+      
+      
+        Contributions
+        SGB devised the basic model with the unobserved
+        covariate, worked out the unconstrained maximization, and
+        wrote the initial draft of the manuscript. <ENAMEX TYPE="ORGANIZATION">LSF</ENAMEX> worked out
+        the constrained maximization and provided substantive
+        improvements to the manuscript.
+      
+    
+  

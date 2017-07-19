@@ -1,0 +1,524 @@
+
+  
+    
+      
+        Background
+        
+          Hypothesis formulation
+          The assessment of bias in dinucleotide relative
+          <ENAMEX TYPE="ORGANIZATION">abundance</ENAMEX> begins with the "odds ratios" 
+          r 
+          
+            xy 
+           = 
+          f 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          f 
+          
+            x 
+           
+          f 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           where 
+          f 
+          
+            x 
+           denotes the (normalized) frequency of nucleotide
+          (base) 
+          x and 
+          f 
+          
+            xy 
+           is the frequency of dinucleotide (base step) 
+          <ENAMEX TYPE="ORGANIZATION">xy</ENAMEX> in the leading strand. These
+          ratios compare observed dinucleotide frequencies to those
+          expected from the base composition alone under the
+          assumption of statistical independence (i.e., thorough
+          shuffling of the sequence). When 
+          r 
+          
+            xy 
+           is greater (<NUMEX TYPE="MONEY">less</NUMEX>) than <NUMEX TYPE="CARDINAL">one</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">xy</ENAMEX> is over(under)-represented. The
+          <ENAMEX TYPE="ORGANIZATION">symmetrized</ENAMEX> version 
+          r * 
+          
+            xy 
+           is computed from frequencies of the sequence
+          concatenated with its inverted complement. The numbers { 
+          r * 
+          
+            xy 
+           } comprise the dinucleotide relative abundance
+          profile [ <NUMEX TYPE="CARDINAL">3 4 5 6</NUMEX> ] .
+          The statistical problem is to test the hypotheses that
+          patterns of dinucleotide over- and under-representation
+          in a given genome are invariant. Using symbol 
+          f for frequencies in windows, let 
+          g be used to represent the global
+          frequencies computed for a complete sequence (a genome or
+          chromosome). The <ENAMEX TYPE="PER_DESC">hypothesis</ENAMEX> asserts that 
+          r * 
+          
+            xy 
+           in any window is approximately equal to a constant.
+          This constant is the global signature 
+          c * 
+          
+            xy 
+           = 
+          g * 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          g * 
+          
+            x 
+           
+          g * 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           .
+          Karlin, <ENAMEX TYPE="GPE">Landunga</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Blaisdell</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] assessed
+          homogeneity of the dinucleotide relative abundance
+          profile through the <ENAMEX TYPE="LOCATION">delta</ENAMEX>-distance δ* = (<NUMEX TYPE="MONEY">1/16</NUMEX>) Σ | 
+          r * 
+          
+            xy 
+           - 
+          c * 
+          
+            xy 
+           <ENAMEX TYPE="PERSON">|</ENAMEX>. They provided standards for classifying δ* in <NUMEX TYPE="CARDINAL">100</NUMEX>
+          kb windows as follows: "random" (<ENAMEX TYPE="CONTACT_INFO">0 < 1000δ* < 15</ENAMEX>),
+          "very close" (<TIMEX TYPE="TIME">15 < 1000δ* < 30</TIMEX>), "close" (<NUMEX TYPE="CARDINAL">30</NUMEX> <
+          <TIMEX TYPE="TIME">1000δ* < 45</TIMEX>), "moderately related" (<TIMEX TYPE="TIME">45 < 1000δ*</TIMEX>
+          < <NUMEX TYPE="CARDINAL">65</NUMEX>), and "distantly related" (<TIMEX TYPE="TIME">65 < 1000δ*</TIMEX> <
+          <NUMEX TYPE="CARDINAL">95</NUMEX>). The upper limit of the "random" range, which
+          typifies thoroughly shuffled sequences, scales <NUMEX TYPE="CARDINAL">as 1/√</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , where 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the number of <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> in the
+          window.
+          The local stability of 
+          r 
+          
+            xy 
+           would be an ancillary result under the assumption of
+          a stationary stochastic process, since then the
+          frequencies converge in probability to fixed limits, 
+          f 
+          
+            x 
+           → 
+          p 
+          
+            x 
+           and 
+          f 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          f 
+          
+            x 
+           → 
+          p 
+          
+            xy 
+           as 
+          <ENAMEX TYPE="ORGANIZATION">n → ∞.</ENAMEX> The simplest case would be a
+          <ENAMEX TYPE="ORGANIZATION">homogeneous Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> with base step transition
+          probabilities 
+          p 
+          
+            xy 
+           and stationary base composition 
+          p 
+          
+            x 
+           . In this case the differences 
+          f 
+          
+            x 
+           - 
+          p 
+          
+            x 
+           and 
+          f 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          f 
+          
+            x 
+           - 
+          p 
+          
+            xy 
+           tend to <NUMEX TYPE="CARDINAL">zero as 1/√</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> and it is clear that 
+          r 
+          
+            xy 
+           - 
+          p 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           will vanish at the same rate [ <TIMEX TYPE="DATE">18</TIMEX> ] . Moreover, the
+          globally computed quotient 
+          c 
+          
+            xy 
+           = 
+          g 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          g 
+          
+            x 
+           
+          g 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           would be a consistent estimate of 
+          p 
+          
+            xy 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+           . Thus the separate terms of Σ | 
+          r 
+          
+            xy 
+           - 
+          c 
+          
+            xy 
+           | tend to <NUMEX TYPE="CARDINAL">zero as 1/√</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> and the same must obviously apply
+          to δ*.
+          We start however with the understanding that the
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> is fundamentally nonstationary, exhibiting
+          statistically significant variations in base frequencies
+          between non-overlapping windows [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . Locally or
+          <ENAMEX TYPE="PERSON">globally</ENAMEX> estimated <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> may describe it better
+          than assuming that the <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> are independent and
+          <ENAMEX TYPE="PERSON">identically</ENAMEX> distributed [ <TIMEX TYPE="DATE">19</TIMEX> ] but they fail to reflect
+          the salient features of natural <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] . For
+          example, <ENAMEX TYPE="PERSON">Robin</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Daudin</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] compared the frequency
+          of a specific motif in the genome sequence of 
+          Haemophilus influenzae to Markovian
+          predictions and found that the observed frequencies were
+          everywhere higher than predicted.
+          This point aside, the stationary Markov analogy
+          provides a useful benchmark in assessing local stability
+          of the genomic signature. If nucleotide sequences behaved
+          like <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX>, then δ*√ 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> would not depend on 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . We will examine this 
+          scaled delta-distance δ*√ 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> to see if it exhibits any trend.
+          A decreasing ("<ENAMEX TYPE="PER_DESC">super-Markov</ENAMEX>") trend would imply that
+          signature stability emerges as the scale increases and
+          could indicate the breakdown of stability for some window
+          size below <NUMEX TYPE="CARDINAL">50</NUMEX> kb.
+        
+        
+          Scope of the investigation
+          This survey examines <NUMEX TYPE="CARDINAL">22</NUMEX> sequences from <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> and
+          <TIMEX TYPE="TIME">17 genera.</TIMEX> The sequences are listed in <ENAMEX TYPE="PRODUCT">Table 1along</ENAMEX> with
+          serial numbers ( 
+          <ENAMEX TYPE="ORGANIZATION">SN</ENAMEX> ) and <NUMEX TYPE="CARDINAL">4</NUMEX>-letter abbreviations ( 
+          <ENAMEX TYPE="ORGANIZATION">Abbr</ENAMEX> ). Most of them have been
+          previously studied and found to show stability of the
+          genomic signature in <TIMEX TYPE="DATE">50</TIMEX> kb windows [ <ENAMEX TYPE="LAW">9</ENAMEX> ] . The shortest
+          is the <NUMEX TYPE="CARDINAL">580</NUMEX> kb complete genome of 
+          Mycoplasma genitalium . The longest
+          complete sequence is the <TIMEX TYPE="DATE">7657</TIMEX> kb 
+          human chromosome <ENAMEX TYPE="ORGANIZATION">XXII</ENAMEX> .
+          The selected sequences, which are not always complete
+          genomes, fall into <NUMEX TYPE="CARDINAL">two</NUMEX> main classes, being typically (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          the chromosome that constitutes the largest single
+          element in a prokaryotic genome or (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) one of the
+          chromosomes in a eukaryotic genome. In the <NUMEX TYPE="ORDINAL">first</NUMEX> case,
+          for example, is the 
+          Borrelia burgdorferi sequence that
+          excludes <TIMEX TYPE="DATE">21</TIMEX> identified plasmids. The <NUMEX TYPE="ORDINAL">second</NUMEX> case is
+          exemplified by 
+          Plasmodium falciparum where
+          <ENAMEX TYPE="PERSON">chromosomes II</ENAMEX> and <ENAMEX TYPE="PERSON">III</ENAMEX> are selected to the exclusion of
+          the other <NUMEX TYPE="CARDINAL">12</NUMEX>. Since our investigation focuses on scaling
+          properties of the genomic signature, it is appropriate to
+          consider <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> comprised of many <NUMEX TYPE="CARDINAL">50</NUMEX> kb contigs,
+          assuming that variation between such contigs is small
+          compared to variation between species.
+          The present sample, which spans a wide range of <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>+C
+          proportion, is hoped diverse enough that any consistent
+          trends and features in the statistical picture it
+          produces cannot be easily attributed to chance. A broader
+          range of sequences, including mitochondrial and large
+          viral <ENAMEX TYPE="SUBSTANCE">genomes</ENAMEX>, has been surveyed by Karlin 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> [ <NUMEX TYPE="CARDINAL">3 4 6 8 9 12 17</NUMEX> ] using <NUMEX TYPE="CARDINAL">50</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">kb</ENAMEX> and larger windows. This investigation, which applies
+          similar methodology to smaller window sizes, concerns the
+          intra-genomic homogeneity of dinucleotide relative
+          abundance, and inter-sequence distance calculations are
+          beyond its scope.
+          Our use of nonoverlapping windows is consistent with
+          the methodology employed in prior studies using <NUMEX TYPE="CARDINAL">50</NUMEX> kb and
+          longer windows. (Overlapping windows with a high
+          percentage overlap would be required to localize and sort
+          out the significance of nonconforming <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> that could
+          possibly reflect a foreign signature.) Overlap would
+          introduce statistical dependence between successive
+          windows and such dependence could only complicate the
+          analysis of variance within <TIMEX TYPE="DATE">sequences</TIMEX>. Window size was
+          varied by factors of approximately <NUMEX TYPE="CARDINAL">two</NUMEX>, the specific
+          values being <NUMEX TYPE="CARDINAL">50</NUMEX> kb, <NUMEX TYPE="CARDINAL">25</NUMEX> kb, <NUMEX TYPE="CARDINAL">10</NUMEX> kb, <NUMEX TYPE="CARDINAL">5</NUMEX> kb, <NUMEX TYPE="CARDINAL">2</NUMEX> kb, <NUMEX TYPE="CARDINAL">1</NUMEX> kb, <NUMEX TYPE="CARDINAL">500</NUMEX>
+          b, <ENAMEX TYPE="PRODUCT">250 b</ENAMEX>, and <NUMEX TYPE="CARDINAL">125</NUMEX> b.
+        
+      
+      
+        Results and discussion
+        
+          Increasing trend in mean scaled
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distance
+          Table 2shows mean scaled delta-distance by sequence ( 
+          <ENAMEX TYPE="ORGANIZATION">Abbr</ENAMEX> ) and window size ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). Scaled delta-distance, defined
+          above as δ*√ 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , is a statistical <ENAMEX TYPE="ORG_DESC">invariant</ENAMEX> for
+          any benchmark sequence generated by a <ENAMEX TYPE="GPE">Markov</ENAMEX> chain
+          exhibiting the same signature as the given sequence.
+          Except for the 
+          Borrelia burgdorferi sequence, the
+          mean scaled delta-distance is increasing in window size
+          for every sequence. The lone exception is a drop, for 
+          <ENAMEX TYPE="PERSON">B. burgdorferi</ENAMEX> , from <NUMEX TYPE="CARDINAL">3.580</NUMEX> to
+          <NUMEX TYPE="CARDINAL">3.553</NUMEX>, as window size increases from <NUMEX TYPE="CARDINAL">10</NUMEX> kb to <NUMEX TYPE="CARDINAL">25</NUMEX> kb.
+          The essentially increasing trend in δ*√ 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> has an obvious implication for
+          the scalability of standard binning levels used in
+          classifying intra-genomic delta-distance [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . These
+          levels cannot be re-scaled by the reciprocal square root
+          of window size without admitting that the profiles seen
+          through smaller windows are statistically closer to the
+          global signature. The profiles seen through larger
+          windows obviously tend toward the signature but local
+          fluctuations tend to <NUMEX TYPE="CARDINAL">zero</NUMEX> slower than <NUMEX TYPE="CARDINAL">1/√</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> (i.e., the convergence rate is
+          "sub-Markov").
+        
+        
+          Quasi-stable hierarchy of mean scaled
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distances
+          The rows of <ENAMEX TYPE="PRODUCT">Table 2are</ENAMEX> grouped as archaea ( 
+          Aful, <ENAMEX TYPE="ORGANIZATION">Mjan</ENAMEX> ), protist ( 
+          Pfa2, <TIMEX TYPE="DATE">Pfa3</TIMEX> ), <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> ( 
+          Sc11, <TIMEX TYPE="DATE">Sc15</TIMEX> ), <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> ( 
+          Ath4 ), human ( 
+          Hs22 ), or <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> (<NUMEX TYPE="CARDINAL">all 14</NUMEX>
+          others). Rows are averaged in <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> and the results are
+          plotted in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Granted that the curves for archaea
+          and <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> are almost indistinguishable, we see that
+          ranking mean scaled delta distances by <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> produces
+          about the same result for every window size. The one
+          clear exception is the crossing of the curves for <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> (
+          
+          Arabidopsis thaliana, chromosome
+          <ENAMEX TYPE="PRODUCT">IV</ENAMEX> ) and human ( 
+          <ENAMEX TYPE="ORGANIZATION">chromosome XXII</ENAMEX> ) between 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> kb and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">5</NUMEX> kb. Thus the view through <NUMEX TYPE="CARDINAL">50</NUMEX>
+          kb windows shows that the imprint of the global signature
+          is weaker in the latter; but <NUMEX TYPE="CARDINAL">2</NUMEX> kb and smaller windows
+          show relatively clearer imprints in the human
+          chromosome.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Normality</ENAMEX> and homoscedasticity of log delta
+          The increasing trend in all the curves of Figure
+          1suggests that local deviations from the global signature
+          are better described by a multiplicative error process
+          (instead of <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX>). Therefore we examine the (natural)
+          logarithms of the <ENAMEX TYPE="LOCATION">delta</ENAMEX>-distances in windows and find
+          that they are close to normally distributed with nearly
+          constant variance over the range of window size. Mean
+          values of -log(δ*) are shown in <ENAMEX TYPE="PRODUCT">Table 3with</ENAMEX> corresponding
+          standard deviations in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>.
+          Each pair of corresponding cells in Tables 3and
+          4defines a normal distribution with mean a variance
+          determined by a sample of observed delta-distances. Each
+          sample is subjected to the <ENAMEX TYPE="PRODUCT">Kolmogorov-Smirnov</ENAMEX> test of fit
+          to the corresponding normal distribution [ <TIMEX TYPE="DATE">22</TIMEX> ] . (We
+          generate a random sample of the same size as the observed
+          sample from a normal distribution with the same
+          parameters. The <ENAMEX TYPE="GPE">Kolmogorov</ENAMEX>-Smirnov <NUMEX TYPE="CARDINAL">two</NUMEX>-sample test is
+          then invoked. The null hypothesis is that the observed
+          and simulated samples share a common underlying
+          distribution.) <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>-values from the test, which measure
+          support for the null hypothesis of normality, are shown
+          in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>. The bottom row of <ENAMEX TYPE="PRODUCT">Table 5counts</ENAMEX> (by window
+          size) the number of times the test accepts <ENAMEX TYPE="PER_DESC">normality</ENAMEX> of
+          <ENAMEX TYPE="CONTACT_INFO">log(δ*</ENAMEX>) at the <NUMEX TYPE="PERCENT">5%</NUMEX> significance level.
+          <ENAMEX TYPE="ORGANIZATION">Delta</ENAMEX>-distances tend to fit the log-normal
+          distribution better for window sizes <NUMEX TYPE="CARDINAL">1</NUMEX> kb and larger.
+          Rejection of log-normality for the smallest window sizes
+          is to some extent a consequence of increasing sample
+          size. The apparent goodness-of-fit actually gets better
+          as window size decreases as illustrated in Figure 2for
+          <NUMEX TYPE="CARDINAL">three</NUMEX> indicated window sizes on the 
+          Haemophilus influenzae sequence.
+          (The sample <ENAMEX TYPE="ORGANIZATION">CDF</ENAMEX> approaches a smooth curve as window size
+          declines and the number of windows increases. The heavy
+          <ENAMEX TYPE="PERSON">plotted</ENAMEX> points are from log-normal distribution functions
+          with means and variances of the corresponding
+          samples.)
+        
+        
+          <ENAMEX TYPE="PERSON">Sub-Markov</ENAMEX> convergence rate of mean log
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>
+          Since δ*√ 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is essentially increasing in 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , we infer that the locally
+          computed dinucleotide relative abundance converges to the
+          global signature more slowly than the reciprocal square
+          root of window size. The log-normality of the
+          <ENAMEX TYPE="LOCATION">intragenomic</ENAMEX> delta distance suggests a log-linear model
+          of the form log(δ*) = <NUMEX TYPE="MONEY">α - βlog</NUMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) for intercept (α) and slope (β)
+          coefficients that can be estimated for each sequence (or
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>) by simple linear regression. <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>, columns <NUMEX TYPE="CARDINAL">10</NUMEX>
+          and <NUMEX TYPE="CARDINAL">11</NUMEX>, give intercept and slope coefficients of least
+          squares fits to the scatter plots of mean log(δ*) versus
+          <ENAMEX TYPE="PERSON">log</ENAMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). Column <TIMEX TYPE="DATE">12</TIMEX> gives the mean
+          absolute residual (<ENAMEX TYPE="GPE">MAR</ENAMEX>) to indicate the closeness of the
+          straight line fit. All estimated slope coefficients are
+          greater than the benchmark value <NUMEX TYPE="PERCENT">-1/2</NUMEX> implied by the
+          Markovian analogy. Figure <NUMEX TYPE="QUANTITY">3shows least</NUMEX> squares fits to
+          log-log scatter plots obtained by grouping rows of <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>(in the same as way described above for going from <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          2to Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        
+        
+          Weakly consistent patterns of intragenomic
+          <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in <ENAMEX TYPE="LOCATION">delta</ENAMEX>-distance
+          Residual accumulated delta-distance (RADD) is defined
+          as window size times the cumulative sum of terms δ*( 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ) - mean(δ*), 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, ..., 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> where 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> is the position index (counted in
+          windows from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end) and 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> is the total number of windows.
+          Here mean(δ*) is just the average of unscaled
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distances in windows of size 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> . Since δ*(<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) +...+ δ*( 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> ) = 
+          T mean(δ*), a plot of <ENAMEX TYPE="ORGANIZATION">RADD</ENAMEX> versus 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> always returns to <NUMEX TYPE="CARDINAL">zero</NUMEX>. The RADD
+          plot will superficially resemble random walks obtained by
+          integrating counts of purine minus pyrimidine <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>. Such
+          "walking plots" are useful in depicting long range
+          compositional biases concomitant to replication [ <ENAMEX TYPE="LAW">7</ENAMEX> ] and
+          their self-similarity with respect to re-scaling has been
+          said to instantiate the "fractal geometry of nature [ <NUMEX TYPE="CARDINAL">23</NUMEX>
+          <NUMEX TYPE="CARDINAL">24</NUMEX> ] ."
+          Here we use the <ENAMEX TYPE="ORGANIZATION">RADD</ENAMEX> plot to examine how well
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distances in smaller windows are smoothed by
+          corresponding larger windows. For example, take a single
+          <NUMEX TYPE="CARDINAL">50</NUMEX> kb window on the 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> genitalium sequence, compute its
+          <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distance from the global signature, then divide it
+          into <NUMEX TYPE="CARDINAL">50</NUMEX> contiguous <NUMEX TYPE="CARDINAL">1</NUMEX> kb windows and repeat the
+          calculation for each piece. Do the <NUMEX TYPE="CARDINAL">50</NUMEX> delta-distances
+          exhibit random fluctuations about the level indicated by
+          the single larger window? If so, the patterns would be
+          judged consistent, and that result would typify a
+          stationary process. Such consistency is only weakly
+          evidenced In Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, however, as larger scales give
+          rise to emergent trends. The same effect is seen in
+          Figure <NUMEX TYPE="CARDINAL">5where</NUMEX> the <ENAMEX TYPE="PRODUCT">125 b</ENAMEX> and <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="FAC_DESC">kb traces track</ENAMEX> each other
+          closely but diverge from the other traces in the central
+          region.
+        
+      
+      
+        Conclusions
+        The imprint of the global signature is locally pervasive
+        on all scales considered in the sequences that were
+        <ENAMEX TYPE="ORGANIZATION">scanned</ENAMEX>. No lower bound can yet be placed on the local
+        scale on which the global signature is reflected. The
+        <ENAMEX TYPE="ORGANIZATION">inter</ENAMEX>-genomic hierarchy of mean intra-genomic
+        <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distances is essentially preserved across the range
+        of window sizes. Intra-genomic delta-distance is
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> log-normally distributed (in windows down to
+        <TIMEX TYPE="TIME">1 kb</TIMEX>) and the variance of log-delta is fairly uniform
+        across the set of sequences. <ENAMEX TYPE="ORGANIZATION">Delta</ENAMEX>-distance tends to <NUMEX TYPE="CARDINAL">zero</NUMEX>
+        with increasing window size but the rate of this
+        <ENAMEX TYPE="ORGANIZATION">convergence</ENAMEX> is significantly slower than for simple random
+        processes.
+      
+      
+        Methods
+        The <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> listed in <ENAMEX TYPE="PRODUCT">Table 1were</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">downloaded</ENAMEX> from the
+        (<ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology Information</ENAMEX>) GenBank [
+        <NUMEX TYPE="CARDINAL">25</NUMEX> ] in FASTA format and saved as plain text files. The
+        last <NUMEX TYPE="CARDINAL">two</NUMEX> columns of <ENAMEX TYPE="PRODUCT">Table 1provide</ENAMEX> GenBank accession
+        numbers and approximate dates of the revisions used in this
+        analysis. The sequences, as text files, were processed by
+        routines written in <ENAMEX TYPE="ORGANIZATION">SPlus</ENAMEX>, <ENAMEX TYPE="PRODUCT">Version 4.5</ENAMEX>. The texts were read
+        in <ENAMEX TYPE="FAC_DESC">blocks</ENAMEX> (contigs) of <NUMEX TYPE="MONEY">50 kb</NUMEX> (when computing
+        <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX>-distances in <TIMEX TYPE="DATE">50</TIMEX> kb and <NUMEX TYPE="CARDINAL">25</NUMEX> kb windows) or <NUMEX TYPE="MONEY">20 kb</NUMEX> (for
+        smaller windows). Counts of overlapping base steps in
+        windows were computed with the last base of <NUMEX TYPE="CARDINAL">one</NUMEX> window
+        serving as the <NUMEX TYPE="ORDINAL">first</NUMEX> base of the next. Thus the number of
+        base steps in a window is equal to the number of bases (not
+        <NUMEX TYPE="CARDINAL">one</NUMEX> less). However, one base step was uncounted at the
+        start of every block. Incomplete windows in the last block
+        were discarded and blocks past end-of-file were ignored.
+        Sometimes complete <ENAMEX TYPE="FAC_DESC">blocks</ENAMEX> near end-of-file were omitted.
+        With the exception of 
+        Arabidopsis thaliana, chromosome <ENAMEX TYPE="PRODUCT">IV</ENAMEX> ,
+        the total sequence lengths in kilobases are listed in the
+        <NUMEX TYPE="ORDINAL">fourth</NUMEX> column ( 
+        <ENAMEX TYPE="ORGANIZATION">kb</ENAMEX> ) of <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. All corresponding
+        sample lengths are <NUMEX TYPE="PERCENT">at least 96%</NUMEX> of total length, and most
+        are close to <NUMEX TYPE="PERCENT">99%</NUMEX>, when texts were read in <TIMEX TYPE="DATE">20</TIMEX> kb blocks. For
+        
+        A. thaliana , however, the global
+        signature was computed from a scan of the <NUMEX TYPE="PERCENT">99%</NUMEX> complete
+        sequence; but local <ENAMEX TYPE="LOCATION">delta</ENAMEX>-distances from the global
+        signature were computed only for the first <NUMEX TYPE="PERCENT">50%</NUMEX> of the
+        complete sequence due to computing difficulties. The <TIMEX TYPE="DATE">8750</TIMEX>
+        kb length for this sequence in <ENAMEX TYPE="PRODUCT">Table 1is</ENAMEX> therefore about
+        half the total bases in the chromosome.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="PERSON">RHB</ENAMEX> conceived the study and carried out the
+        computations. <ENAMEX TYPE="SUBSTANCE">RWJ</ENAMEX> participated in experimental design and
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> analysis. Both <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+      
+        List of abbreviations
+        CDF: <ENAMEX TYPE="ORGANIZATION">Cumulative Distribution Function</ENAMEX>
+        <ENAMEX TYPE="WORK_OF_ART">MAR: Mean Absolute Residual</ENAMEX>
+        RADD: <ENAMEX TYPE="ORGANIZATION">Residual Accumulated Delta-Distance</ENAMEX>
+        Sequence abbreviations are as shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+      
+    
+  

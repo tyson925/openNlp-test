@@ -1,0 +1,907 @@
+
+  
+    
+      
+        Background
+        For the development of an all-encompassing potential
+        energy function for the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> folding problem that can
+        simulate both the thermodynamic and kinetic processes, it
+        is argued that one must start from <NUMEX TYPE="ORDINAL">first</NUMEX> principles [ <ENAMEX TYPE="LAW">1</ENAMEX> ] .
+        However, given the complexity of the problem, involving
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of atoms and an extremely large number of
+        conformations available to these atoms, the available
+        computational power posses a serious restriction.
+        Alternatively, one could use the available experimental
+        results to develop empirical potential functions using a
+        simplified representation for the system which does not
+        require an explicit enumeration of the entire system. Here,
+        we present <NUMEX TYPE="CARDINAL">one</NUMEX> such simplified method to train a potential
+        energy function using a small set of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> which places
+        a significant number of additional <ENAMEX TYPE="PER_DESC">native</ENAMEX> conformations
+        near its minima.
+        Ideally, we would like to obtain a potential energy
+        function which assigns correct free energy to the native
+        and non-<ENAMEX TYPE="NATIONALITY">native</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> for all the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. However, this
+        requires knowing the complete distribution of energy states
+        and total number of degeneracies for both the <ENAMEX TYPE="PER_DESC">native</ENAMEX> and
+        denatured <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, quantities which are not readily
+        available even for a simplified representation of our
+        system. This has led to design of potential functions with
+        restricted objectives.
+        Knowledge-based potentials are obtained from a survey of
+        <ENAMEX TYPE="SUBSTANCE">protein crystal</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. In this case, there is no
+        training of parameters. The <ENAMEX TYPE="SUBSTANCE">residue-residue interaction</ENAMEX> can
+        be defined as <ENAMEX TYPE="PER_DESC">contact</ENAMEX> vs. no-contact type [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] or,
+        alternatively, can also be defined as distance dependent [
+        <NUMEX TYPE="CARDINAL">5 6 7</NUMEX> ] . The resulting potentials depend upon the training
+        set of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, reference <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, and the functional form [
+        <NUMEX TYPE="CARDINAL">8</NUMEX> ] . <ENAMEX TYPE="PERSON">Thomas and Dill</ENAMEX> [ <ENAMEX TYPE="LAW">9 10</ENAMEX> ] have pointed out that these
+        potential functions do not assign the correct value to the
+        energy parameters, though they do rank them correctly.
+        On the other hand, the potential parameters are
+        explicitly trained in the optimization-based methods. In
+        these cases, the goal is to obtain a potential function
+        which either maximizes the difference between the native
+        and average non-<ENAMEX TYPE="NATIONALITY">native</ENAMEX> state energy (<ENAMEX TYPE="WORK_OF_ART">Z</ENAMEX>-score [ <TIMEX TYPE="DATE">11</TIMEX> ] ),
+        maximizes the ratio of folding to glass transition
+        temperatures [ <TIMEX TYPE="DATE">12</TIMEX> ] or requires that all the non-<ENAMEX TYPE="PER_DESC">natives</ENAMEX> be
+        of energy higher than the native [ <TIMEX TYPE="DATE">13</TIMEX> ] . Here, the native
+        state is represented by a single conformation. While the
+        <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> approaches provide reasonable results, they do
+        not guarantee complete success in terms of fold recognition
+        even for the training set <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. A somewhat better
+        <ENAMEX TYPE="PERSON">criterion</ENAMEX> is to require that all the non-native
+        conformations have energy higher than the <ENAMEX TYPE="PER_DESC">native</ENAMEX>. In this
+        case, if the energy function is chosen such that the total
+        energy of the conformation is a linear function of its
+        adjustable parameters, then the problem can be stated as a
+        <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> programming problem with a suitable objective
+        function [ <NUMEX TYPE="CARDINAL">13 14 15 16 17 18 19 20</NUMEX> ] .
+        There are <NUMEX TYPE="CARDINAL">five</NUMEX> factors that govern the training of a
+        potential function using optimization-based methods: (i)
+        representation of amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) choice of the
+        interaction energy function, (<ENAMEX TYPE="ORGANIZATION">iii</ENAMEX>) training set of
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, (<ENAMEX TYPE="PRODUCT">iv</ENAMEX>) generation of the alternative conformations
+        or decoys and (v) the objective function.
+        The representation of the amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> depends upon the
+        amount of atomic-level detail one wishes to incorporate in
+        the calculations, starting from a single point per residue
+        representation [ <ENAMEX TYPE="LAW">9 10 11</ENAMEX> ] to an all-heavy atom
+        representation [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] . As more and more details are
+        included, the complexity of the calculations increases;
+        however, a coarse-grained <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can not be expected to
+        produce very refined structure predictions. While the
+        <ENAMEX TYPE="PRODUCT">lattice</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> have usually stayed with single point
+        representation, the continuous state <ENAMEX TYPE="PER_DESC">models</ENAMEX> have used
+        different variations from a single point per residue to
+        <NUMEX TYPE="CARDINAL">all</NUMEX>-atom representation.
+        The choice of the interaction energy function to some
+        extent depends upon the physical property of the amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        which is deemed important, as well as on the type of amino
+        <ENAMEX TYPE="SUBSTANCE">acid representation</ENAMEX> used. The most commonly used pairwise
+        <ENAMEX TYPE="ORGANIZATION">inter</ENAMEX>-residue interactions can be treated as <ENAMEX TYPE="PER_DESC">contact</ENAMEX>/no
+        contact [ <NUMEX TYPE="CARDINAL">14 15 22</NUMEX> ] , discrete distance ranges [ <NUMEX TYPE="CARDINAL">16 17 23</NUMEX>
+        ] , and continuously varying functions of distance [ <NUMEX TYPE="CARDINAL">13 18</NUMEX>
+        <NUMEX TYPE="CARDINAL">19 24 25</NUMEX> ] . The energy function should be flexible enough
+        without causing overfitting. While having more parameters
+        does provide the flexibility, having too many of them is
+        not always helpful, as seen by <ENAMEX TYPE="ORGANIZATION">Park et</ENAMEX>. al. [ <TIMEX TYPE="DATE">25</TIMEX> ] where a
+        80,000 parameter potential performed worse than a simple
+        contact type function. Such discontinuous functions could
+        also lead to problems if used for kinetic calculations or
+        for local optimization. Furthermore, it has been shown that
+        distance dependent energy functions perform better than
+        contact type in a continuous conformation space [ <TIMEX TYPE="DATE">24</TIMEX> ]
+        .
+        Furthermore, excluded-volume effects play an important
+        role in the performance of a potential function. As <ENAMEX TYPE="ORGANIZATION">Thomas</ENAMEX>
+        <ENAMEX TYPE="PERSON">& Dill</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] have pointed out, one of the reasons for
+        failure of the potential functions is the absence of any
+        excluded-volume effects in the interaction energy models.
+        Similarly, <ENAMEX TYPE="PERSON">Park & Levitt</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] show that a van der
+        Waals type energy function gives better results than
+        contact type or solvation potential alone, and a
+        combination of surface energy function with a van der Waals
+        type energy function performs even better.
+        Another crucial requirement for the development of
+        potential functions using optimization-based methods is the
+        <ENAMEX TYPE="PER_DESC">generation</ENAMEX> of realistic and challenging decoys. A great
+        deal depends upon the set of decoys used to define the
+        non-<ENAMEX TYPE="NATIONALITY">native</ENAMEX> <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. It has been demonstrated by various
+        <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> [ <NUMEX TYPE="CARDINAL">14 19 26</NUMEX> ] that using a set of decoys
+        obtained mostly by threading does not enforce a very
+        stringent training criterion, and the potential functions
+        so obtained fail to even place the training set native
+        <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> near a local minimum, let alone the global
+        minimum. Similarly, one can obtain low energy conformations
+        by manipulation of conformations in a contact map
+        representation, though this may lead to geometrically
+        unrealizable conformations [ <TIMEX TYPE="DATE">14</TIMEX> ] . Other methods which
+        have been used to generate low energy <ENAMEX TYPE="ORG_DESC">decoys</ENAMEX> include
+        Monte-Carlo simulations [ <TIMEX TYPE="DATE">27</TIMEX> ] and molecular dynamics
+        simulations [ <NUMEX TYPE="CARDINAL">28 29</NUMEX> ] , both of which require significant
+        computation time, discretization of conformational
+        variables [ <TIMEX TYPE="DATE">24</TIMEX> ] , and inclusion of rigid pieces of
+        structures [ <TIMEX TYPE="DATE">30</TIMEX> ] .
+        A necessary, though not sufficient, condition for a well
+        behaved potential function is that the native conformation
+        be at or near a minimum of the potential function. As
+        pointed out earlier [ <NUMEX TYPE="CARDINAL">14 19 26</NUMEX> ] , the potential functions
+        derived with mostly threaded <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> fail to satisfy
+        this condition, even when a large set of conformations is
+        used. The reason for such a failure is that the training
+        conformations are fixed and not allowed to relax given a
+        potential function. This results in most of the
+        conformations being of significantly higher energy and only
+        a small set of conformations end up providing an active
+        <ENAMEX TYPE="PERSON">constraint</ENAMEX> set. However, if the inactive conformations are
+        allowed to relax, they would provide a much more stringent
+        set of constraints and will improve the performance of the
+        potential function significantly. In this work, we place a
+        milder condition on the training by only asking that the
+        native be near a local minimum. No condition is placed for
+        the global minimum. We use energy minimization to generate
+        new decoys which are physically realizable low energy
+        <ENAMEX TYPE="ORGANIZATION">decoys</ENAMEX> and provide better training. Furthermore, a
+        physically meaningful objective function is used during the
+        <ENAMEX TYPE="ORGANIZATION">quadratic</ENAMEX> programming. Here we train a potential function
+        using only a few single domain, monomeric <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> which do
+        not require any hetero <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> or ligands to stabilize their
+        folded <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. These <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> have <NUMEX TYPE="PERCENT">less than 10%</NUMEX> sequence
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> (using <ENAMEX TYPE="ORGANIZATION">MOE</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] ) and significantly different
+        crystal <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> (average rmsd of <NUMEX TYPE="MONEY">~11 Å</NUMEX>). Once trained,
+        the potential function is able to place <NUMEX TYPE="CARDINAL">42</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, even
+        including some multi-chain <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and <NUMEX TYPE="CARDINAL">two</NUMEX> CASP3 <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>,
+        to within <NUMEX TYPE="QUANTITY">~4 Å</NUMEX> of the experimental <ENAMEX TYPE="SUBSTANCE">native conformations</ENAMEX>.
+        Here we present a method that <ENAMEX TYPE="PRODUCT_DESC">trains</ENAMEX> a reasonably good
+        potential function using only a few <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+      
+      
+        Results and Discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">PIE</ENAMEX> function
+          The <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX> function, shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, has <NUMEX TYPE="CARDINAL">3</NUMEX> parameters
+          per interaction type, hence a total of <NUMEX TYPE="CARDINAL">900</NUMEX> parameters.
+          The potential function was so trained that when the
+          <ENAMEX TYPE="PER_DESC">native conformations</ENAMEX> of the training set <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are
+          energy minimized, the resulting local minimum
+          <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX> is within <NUMEX TYPE="QUANTITY">2.5 Å</NUMEX> rmsd. For all choices of <NUMEX TYPE="CARDINAL">0.3</NUMEX>
+          ≤ 
+          <ENAMEX TYPE="ORGANIZATION">G �</ENAMEX>� <NUMEX TYPE="QUANTITY">60.0 and 0.05 ≤</NUMEX> ρ 
+          
+            cut 
+           �<NUMEX TYPE="MONEY">� 0.25</NUMEX>, the potential was trainable, i.e., the
+          potential function had enough flexibility that we did not
+          run in to a situation where the <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX> could not come up with
+          a solution, though at times solutions were suboptimal.
+          The performance of these potential functions on the test
+          set proteins varied greatly. In general high 
+          G and low ρ 
+          
+            cut 
+           values resulted in a very rough energy surfaces
+          which led to large energy changes for small
+          conformational variations. On the other hand, low 
+          G and high ρ 
+          
+            cut 
+           values resulted in a potential function that is too 
+          flat and allows easy conformational
+          changes. For these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, we found that a value of 
+          G = <NUMEX TYPE="CARDINAL">10.0</NUMEX> and ρ 
+          
+            cut 
+           = <NUMEX TYPE="CARDINAL">0.12</NUMEX> gave us the best results. This potential
+          function (<NUMEX TYPE="MONEY">PIE3</NUMEX>) is able to place <NUMEX TYPE="CARDINAL">four</NUMEX> of the <NUMEX TYPE="CARDINAL">12</NUMEX> test
+          <ENAMEX TYPE="SUBSTANCE">protein native conformations</ENAMEX> to within <NUMEX TYPE="MONEY">~4</NUMEX> Å rmsd of a
+          local minimum (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The other <NUMEX TYPE="CARDINAL">eight</NUMEX> are between
+          <TIMEX TYPE="TIME">4-12 Å</TIMEX> rmsd.
+        
+        
+          <ENAMEX TYPE="PRODUCT">SE</ENAMEX> function
+          The <ENAMEX TYPE="PRODUCT">SE</ENAMEX> function is very simple and has <NUMEX TYPE="CARDINAL">only 21</NUMEX>
+          adjustable parameters, one for each <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> and one for
+          the overcrowding which prevents a complete collapse of
+          the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> as well as prevents any unrealistic chain
+          <ENAMEX TYPE="ORGANIZATION">overlaps</ENAMEX>. Once again, we used the same <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and
+          used various combinations of 
+          G and ρ 
+          
+            cut 
+           to obtain solutions. However, this time, with the <ENAMEX TYPE="PRODUCT">SE</ENAMEX>
+          function by itself, we failed to obtain a potential
+          function even for a single <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, let alone <NUMEX TYPE="CARDINAL">all three</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> together. As soon as the conformations were
+          generated by energy minimization process, we obtained a
+          set of inequalities which resulted in a null feasible
+          solution <ENAMEX TYPE="GPE_DESC">region</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX>. This shows that the <ENAMEX TYPE="PRODUCT">SE</ENAMEX> function
+          by itself does not have enough flexibility to give a
+          trained potential function when decoys are generated by
+          more rigorous methods. Yet, this function was
+          successfully trained by threading using experimental
+          crystal structures [ <TIMEX TYPE="DATE">18</TIMEX> ] .
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> function
+          As with the <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX>, the same <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are used for
+          the training purposes. Since this is a sum of the other
+          <NUMEX TYPE="CARDINAL">two</NUMEX> energy functions, there are <NUMEX TYPE="CARDINAL">920</NUMEX> parameters, the one
+          parameter for overcrowding in the <ENAMEX TYPE="PRODUCT">SE</ENAMEX> function having been
+          removed since the 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> part of the <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX> function performs a
+          similar function. Once again, we obtain various sets of
+          trained parameters depending upon the value of 
+          G and ρ 
+          
+            cut 
+           , and once again we find that 
+          G = <NUMEX TYPE="CARDINAL">10.0</NUMEX> and ρ 
+          
+            cut 
+           = <NUMEX TYPE="CARDINAL">0.12</NUMEX> give the best results for the test <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          In this case (<NUMEX TYPE="MONEY">PSE3</NUMEX>), <NUMEX TYPE="CARDINAL">six</NUMEX> of these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> remain within
+          ~<NUMEX TYPE="QUANTITY">4 Å</NUMEX> rmsd and all <NUMEX TYPE="CARDINAL">12</NUMEX> are within <NUMEX TYPE="QUANTITY">~6 Å</NUMEX>. Considering that
+          the test set contains both close homologs and
+          significantly different <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from the training
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in terms of their size, sequence, and structure,
+          this is a very encouraging result since <TIMEX TYPE="DATE">all 12</TIMEX> test
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> remain within <NUMEX TYPE="MONEY">~6 Å</NUMEX> compared to <NUMEX TYPE="MONEY">~12</NUMEX> Å for <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX>. It
+          shows that using a <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> function, one can train a
+          potential function using only a few <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> which would
+          be applicable to many other <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The comparison
+          between the results of the <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX> and <ENAMEX TYPE="PRODUCT">PSE3</ENAMEX> functions is
+          shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+          The training for <TIMEX TYPE="DATE">PSE3</TIMEX> was performed using three
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (<ENAMEX TYPE="PRODUCT">Set A = {1ayi</ENAMEX>, <TIMEX TYPE="DATE">1bk2</TIMEX>, <ENAMEX TYPE="PRODUCT">1ubi}</ENAMEX>), none of which
+          <ENAMEX TYPE="PERSON">contains Cys</ENAMEX>. However, there were many other interactions
+          which remained untrained in the final version of <TIMEX TYPE="DATE">PSE3</TIMEX>. To
+          get <NUMEX TYPE="CARDINAL">all 300</NUMEX> pairwise interactions to train at least
+          moderately, we had to either select larger <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> which
+          contain all <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in sufficient number or enlarge the
+          training set even if all the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are not present in
+          any one of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. Since computation time increases
+          as square of the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> length, we chose to enlarge the
+          training set using smaller <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. A set of <NUMEX TYPE="CARDINAL">four</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (<ENAMEX TYPE="PRODUCT">Set B</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">{1enh, 1bk2, 2era, 1ubi}</ENAMEX>) contains all
+          the <NUMEX TYPE="CARDINAL">20</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids collectively</ENAMEX>. However, in the final
+          trained potential function (<NUMEX TYPE="MONEY">PSE4</NUMEX>), <NUMEX TYPE="CARDINAL">eight</NUMEX> of the
+          interactions still remain completely untrained. This set
+          was then further expanded by including <NUMEX TYPE="CARDINAL">two</NUMEX> additional
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (<ENAMEX TYPE="PRODUCT">Set C</ENAMEX>: <ENAMEX TYPE="WORK_OF_ART">{1enh, 1bk2, 2era, 1ubi, 1ail, 1dsl}</ENAMEX>).
+          The final trained potential function using <ENAMEX TYPE="PRODUCT">Set C</ENAMEX> (<NUMEX TYPE="MONEY">PSE6</NUMEX>)
+          has all the pairwise interactions at least mildly
+          trained. Set C contains <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (<TIMEX TYPE="DATE">1enh and 1ail</TIMEX>) with
+          mostly <ENAMEX TYPE="FAC_DESC">α-helical structure</ENAMEX>, <NUMEX TYPE="CARDINAL">three</NUMEX> (<ENAMEX TYPE="PRODUCT">1bk2</ENAMEX>, <TIMEX TYPE="DATE">2era and 1dsl</TIMEX>)
+          with mostly β-sheet structure and <NUMEX TYPE="CARDINAL">one</NUMEX> (<NUMEX TYPE="MONEY">1ubi</NUMEX>) with <ENAMEX TYPE="DISEASE">α</ENAMEX>/β
+          structure. However, there is very little sequence
+          identity between any of these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and their crystal
+          structures are also very different (<NUMEX TYPE="PERCENT">less than 10%</NUMEX>
+          sequence alignment and rmsd of <NUMEX TYPE="QUANTITY">8-14 Å</NUMEX> in their crystal
+          structures using <ENAMEX TYPE="ORGANIZATION">MOE</ENAMEX>). The corresponding solvation
+          parameters for various <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+          The best results for <ENAMEX TYPE="PRODUCT">Set B</ENAMEX> (<NUMEX TYPE="MONEY">PSE4</NUMEX>) are obtained using 
+          G = <NUMEX TYPE="CARDINAL">9.9</NUMEX> and ρ 
+          
+            cut 
+           = <NUMEX TYPE="CARDINAL">0.12</NUMEX>. The potential function PSE4 places <NUMEX TYPE="CARDINAL">14</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">15</NUMEX> test set native <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> to within <NUMEX TYPE="QUANTITY">~4 Å</NUMEX> of a
+          local minimum (see <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>) which is a significant
+          improvement over <TIMEX TYPE="DATE">PSE3</TIMEX>. The <NUMEX TYPE="ORDINAL">PSE4</NUMEX> was further applied to
+          another <NUMEX TYPE="CARDINAL">72</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>) for a total of <NUMEX TYPE="CARDINAL">87</NUMEX> test
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Of these <NUMEX TYPE="CARDINAL">87</NUMEX> test <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, <NUMEX TYPE="CARDINAL">31</NUMEX> native
+          conformations were placed within <NUMEX TYPE="MONEY">~4</NUMEX> Å rmsd of a local
+          minimum (including <NUMEX TYPE="CARDINAL">three</NUMEX> CASP3 <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>), and <NUMEX TYPE="CARDINAL">59</NUMEX> are
+          within <NUMEX TYPE="MONEY">~6</NUMEX> Å rmsd. Thus, <TIMEX TYPE="DATE">PSE4</TIMEX> places a total of <NUMEX TYPE="CARDINAL">35</NUMEX> native
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> (including the training set <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>) of
+          very different sequences and crystal <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> to within
+          <NUMEX TYPE="CARDINAL">4</NUMEX> Å rmsd and <NUMEX TYPE="CARDINAL">63</NUMEX> to within <NUMEX TYPE="QUANTITY">6 Å</NUMEX> rmsd of a local minimum out
+          of a total of <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The set of <NUMEX TYPE="CARDINAL">91</NUMEX> proteins
+          contains a variety of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, some of which are
+          multi-<ENAMEX TYPE="ORG_DESC">chain</ENAMEX> (e.g., <TIMEX TYPE="DATE">1d3b</TIMEX>) or require a large <ENAMEX TYPE="ORG_DESC">group</ENAMEX> for
+          <ENAMEX TYPE="PERSON">stabilization</ENAMEX> (e.g., <TIMEX TYPE="DATE">1cc5</TIMEX>).
+          The best result for <ENAMEX TYPE="PRODUCT">Set C</ENAMEX> (potential function PSE6
+          with 
+          G = <NUMEX TYPE="CARDINAL">13.1</NUMEX> and ρ 
+          
+            cut 
+           = <NUMEX TYPE="CARDINAL">0.15</NUMEX>) places <NUMEX TYPE="CARDINAL">11</NUMEX> out of <NUMEX TYPE="CARDINAL">14</NUMEX> test set <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> to
+          within <NUMEX TYPE="MONEY">~4</NUMEX> Å rmsd (see <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). In all, out of <NUMEX TYPE="CARDINAL">91</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> including the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>, <NUMEX TYPE="CARDINAL">71</NUMEX> are within <NUMEX TYPE="MONEY">~6</NUMEX> Å
+          and <NUMEX TYPE="CARDINAL">42</NUMEX> are within <NUMEX TYPE="MONEY">~4 Å</NUMEX> (including <NUMEX TYPE="CARDINAL">two</NUMEX> CASP3 <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>).
+          The fact that <ENAMEX TYPE="PRODUCT">PSE6</ENAMEX> is able to place <NUMEX TYPE="CARDINAL">71</NUMEX> out of <NUMEX TYPE="CARDINAL">91</NUMEX> native
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> within <NUMEX TYPE="MONEY">~6</NUMEX> Å rmsd of a local minimum for
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> of very different sequences, crystal structures,
+          and length points to the robustness of the potential
+          function, and, therefore, the usefulness of the
+          approach.
+        
+        
+          Threading test
+          To further test the validity and usefulness of the
+          final potential function <TIMEX TYPE="DATE">PSE6</TIMEX>, we performed an ungapped
+          threading test using all the <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. We first energy
+          minimized each of the native <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> and obtained
+          the conformation of the local minimum using potential
+          PSE6. These local minimum conformations were then used as
+          <ENAMEX TYPE="ORGANIZATION">decoys</ENAMEX> during ungapped threading tests for each <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>.
+          The threaded conformations were not energy minimized. In
+          the threading test, instead of the usual <NUMEX TYPE="CARDINAL">single</NUMEX> point
+          representation for each <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>, we use a <NUMEX TYPE="CARDINAL">five</NUMEX> point
+          representation for each <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>, since the potential PSE6
+          has been trained using this representation. Out of <NUMEX TYPE="CARDINAL">91</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, <NUMEX TYPE="CARDINAL">89</NUMEX> <ENAMEX TYPE="PER_DESC">native conformations</ENAMEX> are ranked <NUMEX TYPE="ORDINAL">first</NUMEX> and
+          the other <NUMEX TYPE="CARDINAL">two</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">1dsl, 1snc</ENAMEX>) are ranked <NUMEX TYPE="ORDINAL">second</NUMEX>. This test
+          is conducted using a total of <NUMEX TYPE="CARDINAL">180,878</NUMEX> decoys. Therefore,
+          we see that a potential function trained using the
+          procedure outlined in this work also performs well when
+          subjected to the threading test, whereas the potentials
+          designed using only threaded conformations do not perform
+          well when decoys are generated using energy
+          <ENAMEX TYPE="ORGANIZATION">minimization</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the drawbacks of this procedure is that the
+          training process is not sequential and, therefore, quite
+          time consuming, i.e., addition of inequalities for a new
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> after the training for <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is complete
+          does not necessarily give better results. Any change in
+          <ENAMEX TYPE="PERSON">protein</ENAMEX> set, 
+          G , ρ 
+          
+            cut 
+           or any other strategy change requires starting all
+          over again, since the set of conformations generated for
+          the training are based on the current set of parameters,
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, the process is memory dependent. However, given
+          that the potential energy surface is of very high
+          dimension and highly irregular, it is to be expected.
+          By only considering the energy minimization of the
+          experimental <ENAMEX TYPE="SUBSTANCE">native conformation</ENAMEX>, we reduce the amount of
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> required to train the potential function. Each
+          potential function could be trained within <TIMEX TYPE="DATE">a week</TIMEX> running
+          on <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">Sun</ENAMEX> workstations (<ENAMEX TYPE="PRODUCT">CPU</ENAMEX> speeds: <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="PRODUCT">MHz-450</ENAMEX> MHz).
+          However, we had to perform many training runs to get the
+          best possible potential function for each set, and at
+          this point it guarantees only the local minimum condition
+          for the native <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, not the global one.
+        
+      
+      
+        Conclusions
+        A necessary, though not sufficient, condition for the
+        stability of the native <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is that the
+        experimental <ENAMEX TYPE="SUBSTANCE">native</ENAMEX> conformation be at or near a minimum of
+        the potential function. We show that by using only a small
+        set of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, potential functions can be trained that
+        put a large number of <ENAMEX TYPE="NATIONALITY">native</ENAMEX> <ENAMEX TYPE="GPE_DESC">states</ENAMEX> near a local minimum of
+        the potential function. While this does not guarantee the
+        stability of the native <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, this does ensure that the
+        <ENAMEX TYPE="SUBSTANCE">native conformation</ENAMEX> is not sitting at highly unstable
+        points on the potential surface, a condition which is
+        encountered in other potential functions. Our best
+        potential function (<NUMEX TYPE="MONEY">PSE6</NUMEX>) obtained using training Set C
+        (containing <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>) is able to place a total of <NUMEX TYPE="CARDINAL">42</NUMEX>
+        native conformations to within <NUMEX TYPE="MONEY">~4</NUMEX> Å rmsd and <NUMEX TYPE="CARDINAL">71</NUMEX> native
+        <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> to within <NUMEX TYPE="MONEY">~6</NUMEX> Å rmsd of a local minimum of the
+        potential function out of the <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. We also find
+        that while the pairwise interaction energy function is
+        <ENAMEX TYPE="ORGANIZATION">trainable</ENAMEX> using the more rigorously generated decoys, the
+        solvation potential alone is not. The solvation potential
+        has <NUMEX TYPE="CARDINAL">only 21</NUMEX> adjustable parameters and can not provide
+        enough flexibility to satisfy all the constraints in our
+        case, though it was trainable using threaded conformations
+        from <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX>. The best results are obtained using the pairwise
+        energy function in combination with the solvation energy
+        function. We further test the final potential function PSE6
+        with threaded conformations for <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and find that
+        <NUMEX TYPE="CARDINAL">89</NUMEX> of the native <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> are ranked <NUMEX TYPE="ORDINAL">first</NUMEX> and the
+        remaining <NUMEX TYPE="CARDINAL">two</NUMEX> are ranked <NUMEX TYPE="ORDINAL">second</NUMEX>. The training process is
+        further improved by the use of a physically meaningful
+        quantity for the objective function in the <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX> optimization
+        which helps in identifying a better solution.
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="PER_DESC">Generation</ENAMEX> of native structure
+          For the purposes of training, we select only single
+          <ENAMEX TYPE="PERSON">domain</ENAMEX>, monomeric <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> which do not require any
+          hetero atoms or ligands for their stabilization in the
+          folded <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. Furthermore, the atom positions are
+          available for the main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> heavy atoms and at least the
+          corresponding C 
+          β atom of the <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>. The crystal
+          structures (obtained from <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ] ) for the protein
+          <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> are fitted to a standard geometry continuous state
+          model (very similar to the <NUMEX TYPE="CARDINAL">one</NUMEX> used by <ENAMEX TYPE="PERSON">Dill</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et</ENAMEX>. al. [ <TIMEX TYPE="DATE">33</TIMEX> ] ). In the fitted
+          model, each side <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> is represented by a single
+          <ENAMEX TYPE="ORGANIZATION">interacting</ENAMEX> site, located at the C 
+          β , while keeping all the main chain
+          heavy atoms, i.e., each <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> is represented by <TIMEX TYPE="TIME">five</TIMEX>
+          interacting <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> (united atom types). Standard values
+          for bond lengths and bond angles are used, and all
+          <ENAMEX TYPE="ORGANIZATION">peptide</ENAMEX> bonds are kept in the trans conformation. Thus,
+          only <ENAMEX TYPE="ANIMAL">torsion angles (φ</ENAMEX>, <NUMEX TYPE="MONEY">ψ</NUMEX>) are allowed to vary between
+          -<NUMEX TYPE="CARDINAL">180° and 180°</NUMEX>. The details of the fitting procedure are
+          described in ref. <NUMEX TYPE="CARDINAL">20</NUMEX> and will not be repeated here. The
+          <ENAMEX TYPE="ORGANIZATION">fitted</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is within <NUMEX TYPE="QUANTITY">0.5 Å</NUMEX> rmsd [ <TIMEX TYPE="DATE">34</TIMEX> ] of the PDB
+          structure and is used as the native <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> in our
+          calculations. Thus, the native <ENAMEX TYPE="GPE_DESC">state</ENAMEX> is a single energy,
+          non-degenerate <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in our calculations.
+        
+        
+          <ENAMEX TYPE="PER_DESC">Generation</ENAMEX> of the non-<ENAMEX TYPE="NATIONALITY">native</ENAMEX> decoys
+          The conformations of the non-native <ENAMEX TYPE="PER_DESC">decoys</ENAMEX> are
+          generated using the following procedures, (i)
+          <ENAMEX TYPE="ORGANIZATION">Parameter-Independent Decoys</ENAMEX>: Starting from the native
+          conformation, all pairs of torsional angles are perturbed
+          by <ENAMEX TYPE="PRODUCT">-30° ≤ δ ≤ 30°</ENAMEX> at a time. For example, for a <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> of
+          <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, there are <NUMEX TYPE="CARDINAL">100</NUMEX> torsion angles and, therefore,
+          <TIMEX TYPE="DATE">4950</TIMEX> pairs of torsional angles. This would give us <TIMEX TYPE="DATE">4950</TIMEX>
+          different decoys, but see the Solution Procedure section
+          for the precise protocol used. These conformations do not
+          depend upon the current potential function, (<ENAMEX TYPE="DISEASE">ii</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">Parameter-Dependent Decoys</ENAMEX>: The <ENAMEX TYPE="SUBSTANCE">native conformation</ENAMEX> is
+          energy minimized with respect to torsion angles using the
+          current potential function.
+        
+        
+          Energy functions
+          Since we generate conformations by energy minimization
+          with respect to the torsion angles which are allowed to
+          change continuously, we also need an energy function that
+          is a continuous and differentiable function of angles. We
+          use <NUMEX TYPE="CARDINAL">three</NUMEX> different types of energy functions: the
+          pairwise interaction energy (<ENAMEX TYPE="ORGANIZATION">PIE</ENAMEX>) function, the solvation
+          energy (<ENAMEX TYPE="PRODUCT">SE</ENAMEX>) function, and the pairwise interaction with
+          solvation energy (<ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>) function. In our case, all these
+          functions are continuous functions of separation between
+          atoms and, therefore, the conformations can be energy
+          minimized with respect to torsion angles to generate
+          <ENAMEX TYPE="ORGANIZATION">decoys</ENAMEX> once we use the standard geometric representation
+          for the conformations.
+        
+        
+          Pairwise interaction energy (<ENAMEX TYPE="ORGANIZATION">PIE</ENAMEX>) function
+          The pairwise interaction between a pair of atoms is
+          represented by [ <TIMEX TYPE="DATE">19</TIMEX> ]
+          
+          where 
+          p 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          i t 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX>   are adjustable parameters,
+          
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          
+            i 
+           is the type of united atom 
+          i, and 
+          x 
+          
+            ij 
+           is the distance between united atoms 
+          i and 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . The function 
+          f 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          x 
+          
+            ij 
+           ) is defined over a limited distance interval as
+          follows:
+          
+          where 
+          b = <NUMEX TYPE="CARDINAL">4.0</NUMEX>, 
+          a 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">0.0</NUMEX>, 
+          a 
+          <TIMEX TYPE="DATE">1</TIMEX> = <NUMEX TYPE="CARDINAL">4.0</NUMEX>, 
+          a 
+          <TIMEX TYPE="DATE">2</TIMEX> = <NUMEX TYPE="CARDINAL">6.0</NUMEX> and 
+          a 
+          <TIMEX TYPE="DATE">3</TIMEX> = <NUMEX TYPE="CARDINAL">8.0</NUMEX>. The <NUMEX TYPE="ORDINAL">first</NUMEX> term in each
+          interaction, 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          x 
+          
+            ij 
+           ), provides some steric repulsion for atoms sitting
+          too close to each other and its coefficient is always
+          fixed at <NUMEX TYPE="CARDINAL">10</NUMEX> which prevents a complete collapse of the
+          chain. The other <NUMEX TYPE="CARDINAL">three</NUMEX> functions have adjustable
+          coefficients which are allowed to vary <NUMEX TYPE="PERCENT">between -20</NUMEX> and
+          <TIMEX TYPE="DATE">20</TIMEX>. The functional form of 
+          f 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ( 
+          x 
+          
+            ij 
+           )'s is shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Each interaction energy is
+          represented by <NUMEX TYPE="CARDINAL">four</NUMEX> parameters. The maximum interaction
+          <ENAMEX TYPE="ORGANIZATION">distance</ENAMEX> is <NUMEX TYPE="QUANTITY">12 Å</NUMEX>. <ENAMEX TYPE="PERSON">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) has following
+          properties:
+          
+          e 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              i 
+             
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+           (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>) = <NUMEX TYPE="CARDINAL">10</NUMEX>
+          
+          e 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              i 
+             
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+           
+          (x 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> ) = <NUMEX TYPE="CARDINAL">0</NUMEX> for 
+          x 
+          
+            ij 
+           <ENAMEX TYPE="PERSON">≥</ENAMEX> <NUMEX TYPE="CARDINAL">12</NUMEX> Å
+          
+          The interaction energy function 
+          e 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              i 
+             
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+           
+          (x 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> ) is continuous and
+          differentiable for all 
+          x 
+          
+            ij 
+           <ENAMEX TYPE="PRODUCT">≥ 0</ENAMEX>, and is a linear function of adjustable
+          parameters.
+          Furthermore, we consider <NUMEX TYPE="CARDINAL">24</NUMEX> atom types: <NUMEX TYPE="CARDINAL">20</NUMEX> side chain
+          atom <ENAMEX TYPE="PER_DESC">types</ENAMEX> representing <NUMEX TYPE="CARDINAL">20</NUMEX> different amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> and <NUMEX TYPE="CARDINAL">four</NUMEX>
+          main chain heavy atoms (C 
+          α , C, <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, and <NUMEX TYPE="CARDINAL">0</NUMEX>). This gives us a
+          total of <NUMEX TYPE="CARDINAL">24 × 25/2</NUMEX> = <NUMEX TYPE="CARDINAL">300</NUMEX> different types of interactions
+          and a total of <NUMEX TYPE="CARDINAL">1200</NUMEX> parameters. In the present study, <NUMEX TYPE="CARDINAL">300</NUMEX>
+          of these parameters have a fixed value of <NUMEX TYPE="CARDINAL">10</NUMEX>, and <NUMEX TYPE="CARDINAL">900</NUMEX> are
+          adjustable. The total pairwise energy is
+          
+          where the summation is over all pairs of united atom
+          types separated by <NUMEX TYPE="CARDINAL">at least three</NUMEX> <ENAMEX TYPE="ORG_DESC">covalent</ENAMEX> bonds. Since
+          the total pairwise energy of any conformation is just the
+          sum of individual pairwise interaction energies, the
+          total pairwise energy is also a linear function of the
+          adjustable parameters.
+        
+        
+          Solvation energy (<ENAMEX TYPE="PRODUCT">SE</ENAMEX>) function
+          The solvation energy represents the change in energy
+          due to the <ENAMEX TYPE="FAC_DESC">burial</ENAMEX> of various <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. This is an average
+          contribution for each <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> based upon how many other
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are surrounding it and given by
+          
+          where 
+          p 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ( 
+          i ) is the energy contribution
+          for a residue of type 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> at sequence position 
+          i along the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> surrounded by
+          other <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, and 
+          P 
+          
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+           is the penalty for overcrowding. Here, the first
+          <ENAMEX TYPE="ORGANIZATION">summation</ENAMEX> is over all <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> pairs separated by at least
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> along the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> backbone, and second
+          <ENAMEX TYPE="ORGANIZATION">summation</ENAMEX> is over all those <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> for which the total
+          number of contacts exceeds the maximum allowable number.
+          The number of excess contacts 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            i 
+           are
+          
+          The function 
+          C 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              i 
+             
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+           
+          (x 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> ) determines the <ENAMEX TYPE="FAC_DESC">burial</ENAMEX> of each
+          residue where 
+          x 
+          
+            ij 
+           is the separation between <NUMEX TYPE="CARDINAL">two</NUMEX> side chain C 
+          β atoms situated at positions 
+          i and 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . These are sigmoidal functions
+          (see Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Both 
+          C 
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              i 
+             
+           
+          
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             
+           
+          (x 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> ) and 
+          C 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ( 
+          i ), 
+          <ENAMEX TYPE="PERSON">max</ENAMEX>  were obtained by
+          <ENAMEX TYPE="ORGANIZATION">Dombkowski</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Crippen</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] from the survey of PDB
+          crystal structures, and these functions are predetermined
+          in our training procedure. Only the 
+          p 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ( 
+          i ) 's and 
+          P 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           are determined here. This energy function has
+          therefore <TIMEX TYPE="DATE">only 21</TIMEX> adjustable parameters.
+        
+        
+          Pairwise interaction with solvation energy (<ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>)
+          function
+          The <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> function includes both the pairwise
+          interaction energy and the solvation energy without the
+          overcrowding part since the 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          x 
+          
+            ij 
+           ) part of the <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX> function ensures that the chain
+          does not collapse to a point. The total energy in this
+          case is given by
+          
+          and it has a total of <TIMEX TYPE="DATE">920</TIMEX> adjustable parameters.
+        
+        
+          Parameter adjustment using quadratic
+          programming
+          Given the above energy functions, the total energy of
+          any conformation is a linear function of the adjustable
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, irrespective of the energy function being
+          used. This property allows us to use quadratic
+          programming (QP) to adjust the values of these
+          parameters. We choose the following objective function
+          for the optimization purposes:
+          
+          where α 
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  is the sum of the
+          coefficients of the 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            p 
+           parameters 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           when the derivative of the energy of a conformation
+          is evaluated at the native <ENAMEX TYPE="PER_DESC">conformation</ENAMEX> of the 
+          <ENAMEX TYPE="ORGANIZATION">n -th</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. While the <NUMEX TYPE="ORDINAL">first</NUMEX> term
+          minimizes the gradient of the energy with respect to
+          dihedral angles at the native <ENAMEX TYPE="PER_DESC">conformation</ENAMEX> for all
+          training set <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, the <NUMEX TYPE="ORDINAL">second</NUMEX> term keeps the values
+          of parameters small to reduce the roughness of the energy
+          surface. Having a continuous energy function is essential
+          for using such a physically meaningful objective
+          function. By minimizing the magnitude of the gradient of
+          energy of the native <ENAMEX TYPE="PER_DESC">conformation</ENAMEX>, we obtain a set of
+          parameters such that the native conformation approximates
+          a stationary point of the potential function. The total
+          number of parameters 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            P 
+           depends upon the type of energy function is being
+          used, namely <NUMEX TYPE="CARDINAL">900</NUMEX> for the <ENAMEX TYPE="SUBSTANCE">PIE</ENAMEX> function, <NUMEX TYPE="CARDINAL">21</NUMEX> for the <ENAMEX TYPE="PRODUCT">SE</ENAMEX>
+          function, and <NUMEX TYPE="CARDINAL">920</NUMEX> for the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> function. The constraints
+          are of the form
+          Δ 
+          E = 
+          E 
+          
+            non 
+           - 
+          E 
+          
+            nat 
+           > 
+          <ENAMEX TYPE="ORGANIZATION">g    </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>)
+          where
+          
+          where 
+          G and ρ 
+          
+            cut 
+           are adjustable constants. If ρ < ρ 
+          
+            cut 
+           , we consider the decoy to be conformationally
+          identical to the <ENAMEX TYPE="PER_DESC">native</ENAMEX> and no inequality is generated
+          even if the energy of the decoy is lower than that of the
+          native. The constants 
+          G and ρ 
+          
+            cut 
+           define the minimum energy separation between the
+          <ENAMEX TYPE="PER_DESC">native</ENAMEX> and decoys, and the radius of the basin of the
+          native, respectively. They may be changed from one
+          training run to another; however, not during the same
+          training run. Here, ρ is given by [ <TIMEX TYPE="DATE">35</TIMEX> ]
+          
+          where 
+          R 
+          
+            gj 
+           is the radius of gyration of the 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> thconformation and 
+          D 
+          <NUMEX TYPE="CARDINAL">1,2</NUMEX> is the customary root mean square
+          deviation in C 
+          α coordinates after optimal
+          superposition of the <NUMEX TYPE="CARDINAL">two</NUMEX> conformations, taken to be the
+          <ENAMEX TYPE="PER_DESC">native</ENAMEX> and an alternate. By allowing 
+          g to vary linearly with ρ near the
+          native structure, we avoid sudden jumps in the potential
+          energy surface and keep the variation in the energy
+          function smooth near the <ENAMEX TYPE="PER_DESC">native</ENAMEX>. Finally, we need to
+          provide bounds on our parameters, and we have chosen 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">10</NUMEX> for all 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           's which multiply 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          x 
+          
+            ij 
+           )'s and <ENAMEX TYPE="PRODUCT">-20 �</ENAMEX>� 
+          p 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="PRODUCT">≤ 20</ENAMEX> for the rest of them. These values are chosen
+          so that we are able to find a feasible solution while
+          keeping most of the parameters away from the extreme
+          values. Due to the choice of , we use quadratic
+          programming (QP) instead of linear programming to solve
+          the set of inequalities. [ <TIMEX TYPE="DATE">36</TIMEX> ]
+        
+        
+          Solution procedure
+          We obtain the initial set of parameters by minimizing
+          using <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX>. The decoys are generated using the methods
+          described <TIMEX TYPE="DATE">earlier</TIMEX>. First, the decoys are generated by
+          <ENAMEX TYPE="ORGANIZATION">perturbing</ENAMEX> pairs of torsion angles by an amount δ. For a
+          chain of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, there are <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">n -1</ENAMEX>)<NUMEX TYPE="CARDINAL">/2</NUMEX> such pairs. Even for a
+          chain with <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, this would produce <TIMEX TYPE="DATE">4950</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX>. Initially, since the parameter set is
+          completely untrained, a large number of inequalities are
+          generated for a training set of <NUMEX TYPE="CARDINAL">three to six</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>
+          ranging in length from <NUMEX TYPE="CARDINAL">50-90</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. To keep the number
+          of inequalities to a reasonable value, we first perturb
+          pairs of angles separated by a certain number of covalent
+          bonds 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> and its multiples. For example,
+          in the <NUMEX TYPE="ORDINAL">first</NUMEX> pass, we change the pair of angles separated
+          by 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">9</NUMEX> covalent bonds or multiples
+          of it, i.e., <TIMEX TYPE="DATE">9, 18, 27</TIMEX>, etc. In this case, starting from
+          the <NUMEX TYPE="ORDINAL">fifth</NUMEX> torsion angle from the <ENAMEX TYPE="ORGANIZATION">N-terminus</ENAMEX>, we perturb
+          pairs of angles located at (<NUMEX TYPE="CARDINAL">5</NUMEX>+<NUMEX TYPE="CARDINAL">9</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , <NUMEX TYPE="CARDINAL">5</NUMEX>+<NUMEX TYPE="CARDINAL">9</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> ) positions along the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> where
+          
+          <ENAMEX TYPE="ORGANIZATION">k �</ENAMEX>� 
+          <ENAMEX TYPE="CONTACT_INFO">l = 0, 1, 2,</ENAMEX> 
+          <ENAMEX TYPE="PERSON">etc</ENAMEX>, collect all the inequalities
+          and run them through the <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX> to obtain a new set of
+          parameters. Next, we take pairs of angles separated by <NUMEX TYPE="CARDINAL">4</NUMEX>
+          backbone bonds and add new inequalities to the previous
+          set and obtain a new set of parameters by <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX>. This
+          process is repeated for pairs of angles separated by <NUMEX TYPE="CARDINAL">two</NUMEX>,
+          <NUMEX TYPE="CARDINAL">one</NUMEX> and zero backbone bonds. Next, we repeat this process
+          for all pairs of angles by perturbing them by <ENAMEX TYPE="LAW">δ ± 2°, δ</ENAMEX> ±
+          <ENAMEX TYPE="PRODUCT">4° and δ ± 6°</ENAMEX> where <ENAMEX TYPE="CONTACT_INFO">12° ≤ |δ| ≤ 20°</ENAMEX>. This is the
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> independent <ENAMEX TYPE="PER_DESC">generation</ENAMEX> of decoys.
+          The next step is parameter dependent generation of
+          <ENAMEX TYPE="ORGANIZATION">decoys</ENAMEX>. Here, we use energy minimization of native
+          <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX> (using 
+          BFGS method [ <TIMEX TYPE="DATE">37</TIMEX> ] ) to generate
+          new decoys. During each cycle, we begin from the native
+          <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX> and energy minimize the conformations with
+          respect to the torsion angles. After every <NUMEX TYPE="CARDINAL">100</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">minimization</ENAMEX> steps, the conformational distance of the
+          current conformation from the native is calculated in
+          terms of <NUMEX TYPE="MONEY">ρ</NUMEX>. If the ρ value is greater than the cutoff
+          value ρ 
+          cut , we say that the current
+          <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX> is sufficiently different from the native
+          <NUMEX TYPE="CARDINAL">one</NUMEX>, i.e., it does not belong to the basin of <ENAMEX TYPE="SUBSTANCE">native</ENAMEX>, and
+          since the energy of this conformation is lower than the
+          native, a new constraint is generated. After complete
+          minimization of the native <ENAMEX TYPE="PER_DESC">conformations</ENAMEX>, if any new
+          inequalities are generated, they are added to the set of
+          <ENAMEX TYPE="PERSON">inequalities</ENAMEX> and a new set of parameters is obtained by
+          <ENAMEX TYPE="ORGANIZATION">QP</ENAMEX>. If no new inequalities are generated, then the
+          training is complete and a trained potential has been
+          obtained. To keep the number of inequalities within a
+          manageable limit, we periodically discard inequalities
+          corresponding to nonnatives having energy significantly
+          higher than the native <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, i.e., having high slack
+          value greater than 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> for the current parameter set.
+          Initially, 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> is set at <NUMEX TYPE="CARDINAL">500</NUMEX> and slowly reduced
+          to 200.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' Contributions
+        <ENAMEX TYPE="PERSON">M.C.</ENAMEX> designed the fitting protocols, wrote the computer
+        programs, chose training and test data, and carried out the
+        calculations. <ENAMEX TYPE="PERSON">G.M.C.</ENAMEX> contributed overall planning, advice,
+        and discussions throughout. Both have read and approved the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

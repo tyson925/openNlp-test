@@ -1,0 +1,723 @@
+
+  
+    
+      
+        Background
+        Repetitive sequences present many difficulties for
+        genome sequencing and analysis. The presence of large
+        numbers of repeats often confounds sequence <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX>,
+        especially if the repeats are long and highly conserved.
+        The presence of low copy-number repeats can also confound
+        <ENAMEX TYPE="ORGANIZATION">assembly</ENAMEX>, especially for whole-genome <ENAMEX TYPE="PRODUCT_DESC">shotgun</ENAMEX> sequencing
+        <ENAMEX TYPE="FAC_DESC">projects</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>]. Once a genome has been assembled, repeats
+        take on a new and more important role involving their
+        biological function. Certain classes of repeats, such as
+        transposons, perform a function by allowing mobile elements
+        to move around a genome. Other classes belong to less
+        well-defined categories with respect to their role, though
+        they may be even more ubiquitous. Repetitive sequences
+        appear to dominate the centromeres of many <ENAMEX TYPE="PER_DESC">eukaryotes</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX>],
+        and telomeric and subtelomeric repeats extend for <NUMEX TYPE="CARDINAL">thousands</NUMEX>
+        or <NUMEX TYPE="MONEY">tens of thousands of nucleotides</NUMEX> at the ends of
+        chromosomes. These repeats also appear elsewhere in the
+        genome, for reasons as yet unknown. For these and other
+        reasons, it is critical to both the <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> and analysis
+        of genomic sequences to identify and characterize
+        repetitive sequence elements.
+        There are numerous computational methods for detecting
+        <ENAMEX TYPE="PERSON">repeats</ENAMEX>, in <NUMEX TYPE="CARDINAL">one</NUMEX> form or another, in genomic <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>.
+        These include algorithms that locate repeated substrings,
+        including tandem repeats [ <ENAMEX TYPE="LAW">3, 4, 5, 6</ENAMEX>], as well as programs
+        for identifying known repeats, such as the widely-used
+        <ENAMEX TYPE="ORGANIZATION">RepeatMasker</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>]. <ENAMEX TYPE="ORGANIZATION">RepeatMasker</ENAMEX> uses a database of known
+        repeat <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> and implements a string-matching algorithm
+        to find copies of those repeats in a new sequence. A more
+        rapid implementation of the same approach is <ENAMEX TYPE="ORGANIZATION">MaskerAid</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">8</NUMEX>], a wrapper for <ENAMEX TYPE="ORGANIZATION">WU</ENAMEX>-BLAST [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>] that uses the BLAST
+        engine instead of the <ENAMEX TYPE="ORGANIZATION">CrossMatch</ENAMEX> algorithm. Most of these
+        tools have some restriction on the maximum length of the
+        input sequence, which limits their use to sequences
+        considerably smaller than the size of a eukaryotic
+        chromosome. Recently, however, new systems based on suffix
+        <ENAMEX TYPE="PLANT">trees</ENAMEX>, such as <ENAMEX TYPE="PERSON">RepeatMatch</ENAMEX> (based on <ENAMEX TYPE="ORGANIZATION">MUMmer</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]) and
+        <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> [ <TIMEX TYPE="DATE">12, 13</TIMEX>], have overcome this size limitation, at
+        least for biologically realistic input sizes. Both
+        <ENAMEX TYPE="ORGANIZATION">RepeatMatch</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> are highly efficient computational
+        tools that can find all exact repeats in sequences as long
+        as complete eukaryotic chromosomes - <NUMEX TYPE="CARDINAL">10-100</NUMEX> megabases (<ENAMEX TYPE="PRODUCT">Mb</ENAMEX>).
+        The output of these systems, however, while accurately
+        representing the long list of positions of exact repeats,
+        does not provide any overview or summary of the repetitive
+        structure of the sequence. The <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> <ENAMEX TYPE="ORG_DESC">system</ENAMEX> includes a
+        visualization tool to generate repeat graphs, which are
+        useful for identifying the positions of repeats, but this
+        does not provide an overview of the exact and non-exact
+        repeats in a genome. Figure 1shows an example of a repeat
+        graph [ <TIMEX TYPE="DATE">12</TIMEX>] for a short DNA sequence.
+        Examining the output of <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">RepeatMatch</ENAMEX> for a
+        complete bacterial genome, it quickly becomes obvious that
+        many exact repeats are non-exact copies of one another.
+        Whether a genome is a few or <NUMEX TYPE="MONEY">hundreds of megabases</NUMEX> in
+        length, the task of recognizing and describing how repeats
+        resemble one another at this scale is too complicated to
+        accomplish manually.
+        Here we describe a new system for the recognition of
+        repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> in genome sequences. This system,
+        RepeatFinder, is freely available from our website [ <TIMEX TYPE="DATE">14</TIMEX>].
+        In contrast to approaches that cluster together the results
+        of BLAST searches (for example, <ENAMEX TYPE="PERSON">Z.H. Bao</ENAMEX> and <ENAMEX TYPE="PERSON">S. Eddy</ENAMEX>,
+        unpublished data) our algorithm uses a comprehensive set of
+        exact repeats as the basis for constructing repeat classes.
+        It relies on the efficient suffix <ENAMEX TYPE="PLANT">tree</ENAMEX> data structure for
+        identification of exact repeats, which permits rapid
+        identification of repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> even in sequences
+        containing <NUMEX TYPE="MONEY">tens of millions of nucleotides</NUMEX>. The algorithm
+        does not make any prior assumptions about the number or
+        structure of the classes. At its core is a merging
+        procedure that produces the actual <ENAMEX TYPE="PER_DESC">members</ENAMEX> of each repeat
+        class using merging criteria described below, and it also
+        builds a repeat map of the genome sequence.
+        We have applied this system to several complete
+        microbial genomes [ <TIMEX TYPE="DATE">15, 16, 17, 18, 19, 20, 21</TIMEX>], to the
+        complete 
+        Arabidopsis thaliana genome [ <ENAMEX TYPE="LAW">2</ENAMEX>], and
+        to a large collection of <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> bacterial artificial
+        <ENAMEX TYPE="PERSON">chromosome</ENAMEX> (BAC) end sequences [ <TIMEX TYPE="DATE">22, 23</TIMEX>]. The results of
+        this analysis are described below. The output of the system
+        gives a clear picture of all repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> identified in a
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> or a sequence collection. It provides
+        straightforward access to the actual repeat sequences as a
+        multi-fasta file, simple statistical analyses of the
+        results, and a procedure for identifying each <ENAMEX TYPE="PER_DESC">class</ENAMEX>'s most
+        representative element. We describe here the computational
+        techniques used in the system and demonstrate its use on
+        several different genome sequences.
+      
+      
+        Results and discussion
+        
+          Algorithm description
+          Our algorithm is based on first identifying all exact
+          repeats in the input sequence, and then defining repeat
+          classes by merging and extending these short exact
+          matches. An exact repeat is represented by pair of
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX> ( 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          A 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) delimiting its location in the
+          genome sequence, and by the repeat length 
+          <ENAMEX TYPE="PERSON">l.</ENAMEX> We implemented an algorithm that
+          uses either of <TIMEX TYPE="DATE">two suffix</TIMEX> tree methods, <ENAMEX TYPE="GPE">RepeatMatch</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]
+          or REPuter [ <TIMEX TYPE="DATE">12</TIMEX>] to determine all the exact repeats in a
+          given sequence. (For more on suffix <ENAMEX TYPE="PLANT">trees</ENAMEX> see [ <TIMEX TYPE="DATE">24</TIMEX>].) The
+          computational time and space requirements for both these
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX> are linear in the size of the input sequences, an
+          essential requirement for any algorithm attempting to
+          process whole eukaryotic genomes. The subsequent
+          clustering procedure merges neighboring repeats and
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> them into classes. The input to the system can be
+          either a single genome sequence or a set of sequences.
+          The clustering procedure consists of the following steps,
+          which are described in more detail below.
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>: <ENAMEX TYPE="PERSON">Selection</ENAMEX> and pre-processing. The list of
+          coordinates of all exact repeats as output by RepeatMatch
+          or <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> can be interpreted as a partition of the
+          original genome sequence. (The output of <ENAMEX TYPE="ORGANIZATION">RepeatMatch</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> are very similar. We used <ENAMEX TYPE="SUBSTANCE">REPuter</ENAMEX> in the example
+          and in the subsequent repeat analyses of microbial
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>; for the 
+          A. thaliana genome and and the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX>
+          BAC end-sequence data we used <ENAMEX TYPE="PRODUCT">RepeatMatch</ENAMEX>.) Each
+          <NUMEX TYPE="CARDINAL">partition</NUMEX> point has a reference to the pair coordinates (
+          
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          A 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) and the repeat length 
+          <ENAMEX TYPE="PERSON">l.</ENAMEX> Each repeat corresponds to at
+          least <NUMEX TYPE="CARDINAL">two partition</NUMEX> points. Some repeats can be found in
+          the sequence <NUMEX TYPE="MONEY">more than twice</NUMEX>, and the corresponding
+          <NUMEX TYPE="CARDINAL">partition</NUMEX> points can appear with different coordinates
+          and different lengths. To prepare the data for the
+          merging procedure, we sort the list of partition points
+          in increasing order, and in the case of duplicate first
+          <ENAMEX TYPE="PERSON">coordinates</ENAMEX>, in increasing order of <NUMEX TYPE="ORDINAL">second</NUMEX> coordinates.
+          (The clustering algorithm is order-independent; however,
+          the linear nature of repeat data allows us to use this
+          pre-processing step to simplify the clustering procedure
+          without affecting the final clusters.) In particular
+          cases it is useful to filter the original repeat data to
+          remove certain types of repeats; for example, simple
+          <NUMEX TYPE="CARDINAL">one</NUMEX>-base (homopolymeric) or <NUMEX TYPE="CARDINAL">two</NUMEX>-base repeats.
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>: Merging procedure. In outline, this procedure
+          works by repeatedly merging together <NUMEX TYPE="CARDINAL">two</NUMEX> exact repeats
+          that either overlap or that occur within a limited
+          <ENAMEX TYPE="ORGANIZATION">distance</ENAMEX> (a gap) of each other. Specific values for the
+          <ENAMEX TYPE="PERSON">overlap</ENAMEX> and gap distance can be specified for each genome
+          sequence. Whether the algorithm is merging repeats that
+          <ENAMEX TYPE="PERSON">overlap</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2c</NUMEX>), or merging repeats separated by a
+          <ENAMEX TYPE="ORGANIZATION">gap</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>), the new merging repeats will always have
+          the property that significant subsequences of the repeat
+          appear at least twice in the genome sequence.
+          At the time of merging procedure, we generate a repeat
+          map of the genome sequence. This map is based on a
+          linked-list data structure, which allows for rapid and
+          simple modifications to the dynamically changing repeat
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Every merging repeat in the map is linked by
+          pointers to all the merging repeats with which it shares
+          exact repeats.
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>: <ENAMEX TYPE="ORGANIZATION">Classification</ENAMEX>. This step defines the repeat
+          classes. Each merging repeat will be assigned to a
+          specific class if its list of references (that is, the
+          repeats that were combined into the merging repeat)
+          contains <NUMEX TYPE="CARDINAL">at least one</NUMEX> repeat that already belongs to the
+          class. If a merging repeat has references that belong to
+          multiple distinct classes, then those <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are
+          combined into one. If a merging repeat contains no
+          references to an existing <ENAMEX TYPE="PER_DESC">class</ENAMEX>, then the merging repeat
+          forms a new class.
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>: BLAST searches and repeat class updates. The
+          initial classification is based on exact repeats. To
+          merge together similar but non-exact repeats, we use
+          <ENAMEX TYPE="PERSON">WU</ENAMEX>-BLAST [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>] to search all merging repeats against
+          all others. The resulting matches between the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are
+          used as input to an update procedure which redistributes
+          all merging repeats into new classes. It is possible to
+          skip this step if the initial repeat set contains
+          approximate rather than exact repeats.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>: <ENAMEX TYPE="PERSON">Pre</ENAMEX>-processing
+          In this step, the output from <ENAMEX TYPE="ORGANIZATION">REPuter</ENAMEX> or RepeatMatch
+          is used to partition the original genome sequence. For
+          each repeat starting at coordinates 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          A 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> with length 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> , this list will include both ( 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> ) and ( 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> ). The list is then sorted by
+          <NUMEX TYPE="ORDINAL">first</NUMEX> and by <NUMEX TYPE="ORDINAL">second</NUMEX> coordinates. To illustrate the
+          method, we use the example shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. The table
+          on the left in Figure <NUMEX TYPE="CARDINAL">3shows all seven</NUMEX> pairs of repeats,
+          while the right table shows the corresponding sorted
+          <NUMEX TYPE="CARDINAL">partition</NUMEX> points.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>: <ENAMEX TYPE="PERSON">Merging</ENAMEX> and repeat map generation
+          Using the list of partition points, we begin merging
+          exact repeats using the following criteria. Given <TIMEX TYPE="TIME">two</TIMEX>
+          <NUMEX TYPE="CARDINAL">partition</NUMEX> points 
+          p 
+          <TIMEX TYPE="DATE">1</TIMEX> = ( 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           ) and 
+          p 
+          <TIMEX TYPE="DATE">2</TIMEX> = ( 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ) where 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> < 
+          B 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , we compute the distance between
+          the non-overlapping repeats as
+          
+          d ( 
+          p 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) = <ENAMEX TYPE="PERSON">max</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           <ENAMEX TYPE="CONTACT_INFO">+ 1</ENAMEX>).
+          Next, given a maximum gap size 
+          G <NUMEX TYPE="MONEY">> 0</NUMEX>, the 'merging with gap'
+          protocol uses the rule that sequences corresponding to 
+          p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> are merged if
+          
+          d ( 
+          p 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) < 
+          <ENAMEX TYPE="ORGANIZATION">G.</ENAMEX> 
+          The 'merging with overlap' protocol only merges
+          sequences that overlap one another; that is they are at
+          least partially identical. We denote the overlap of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          sequences as
+          <NUMEX TYPE="CARDINAL">0</NUMEX>( 
+          p 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) = <ENAMEX TYPE="PERSON">max</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           - 
+          B 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>) for 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> < 
+          B 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          Then the criterion for 'merging with overlap' is as
+          follows: given a minimum overlap proportion 
+          op, where <NUMEX TYPE="CARDINAL">0</NUMEX> ≤ 
+          <ENAMEX TYPE="PRODUCT">op ≤ 1</ENAMEX>, repeat points ( 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          A 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           ) and ( 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ) are merged if at least one of the <NUMEX TYPE="CARDINAL">four</NUMEX> repeats has
+          overlap satisfying
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          p 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) > 
+          <ENAMEX TYPE="PERSON">op min</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ).
+          The parameter 
+          <ENAMEX TYPE="ORGANIZATION">op</ENAMEX> is interpreted as a fraction of
+          the shorter of the two repeats. Thus for 
+          <ENAMEX TYPE="PER_DESC">op</ENAMEX> = <NUMEX TYPE="CARDINAL">0.75</NUMEX>, we will merge <NUMEX TYPE="CARDINAL">two</NUMEX>
+          overlapped sequences if the length of their overlap is at
+          least <NUMEX TYPE="PERCENT">75%</NUMEX> of the length of the shorter sequence.
+          Using either merging procedure, if <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> are
+          merged then the new sequence will be defined as a merging
+          repeat with starting position 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> = 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and with length 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           <ENAMEX TYPE="PERSON">= max</ENAMEX> ( 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            A 
+           , 
+          B 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ) - 
+          A 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> . The merging procedure is not
+          permitted to merge pairs of partition points of the form
+          ( 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ) and ( 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          B 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            B 
+           ). This condition avoids merging of tandem repeats
+          and avoids repetitiveness within the merging repeats.
+          On the left side of Figure <NUMEX TYPE="CARDINAL">4we</NUMEX> illustrate the merging
+          procedure using a merging with 
+          G = <NUMEX TYPE="CARDINAL">1</NUMEX>. Dark gray rectangles mark
+          the start coordinates of merging repeats. The extent of
+          each merging repeat is shown by dividing sets of repeats
+          using horizontal lines.
+          This procedure, by updating and creating new
+          <ENAMEX TYPE="PERSON">references</ENAMEX>, leads to the repeat map shown on the right of
+          Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. These references define the correspondences
+          between all merging repeats. Each merging repeat
+          maintains references to the other merging repeats with
+          which it shares exact repeats; each exact repeat is
+          assigned to the first merging repeat in which it appears.
+          In our example, the merging repeat starting in coordinate
+          <NUMEX TYPE="CARDINAL">77</NUMEX> gets a reference to itself only, because its exact
+          repeats have no previous references. The next repeat,
+          starting in position <TIMEX TYPE="DATE">116</TIMEX>, gets a reference to itself and
+          to its <ENAMEX TYPE="PER_DESC">mate</ENAMEX> the merging repeat <NUMEX TYPE="CARDINAL">77</NUMEX>. A data structure
+          <ENAMEX TYPE="ORG_DESC">stores</ENAMEX> with each merging repeat its start coordinate, its
+          length ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ), the number of exact repeats it includes ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ), and a list of references to itself and to other
+          <ENAMEX TYPE="PERSON">repeats</ENAMEX> ( 
+          R 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          R 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          R 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ).
+        
+        
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>: <ENAMEX TYPE="ORGANIZATION">Classification</ENAMEX>
+          Given the repeat map, we can begin to define classes
+          by noting that if a merging repeat has <NUMEX TYPE="CARDINAL">at least one</NUMEX>
+          reference in common with another, then they belong to the
+          same class. Figure 5illustrates <NUMEX TYPE="CARDINAL">one</NUMEX> step in this
+          procedure. The merging repeat ( 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, l 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> (<NUMEX TYPE="MONEY">126,8</NUMEX>) has <NUMEX TYPE="CARDINAL">two</NUMEX> common references in <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          classes, class <TIMEX TYPE="DATE">1</TIMEX> and <ENAMEX TYPE="SUBSTANCE">class 5</ENAMEX>. These <ENAMEX TYPE="PER_DESC">classes</ENAMEX> are then
+          combined together into a new class <TIMEX TYPE="DATE">1</TIMEX>, which contains all
+          references from both the original classes.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>: BLAST searches and further merging
+          For this step, the most time-consuming part of the
+          algorithm, we use the underlying sequences of the merging
+          <ENAMEX TYPE="PERSON">repeats</ENAMEX>, and run a BLAST search of all sequences against
+          all others. Classes are merged if any of their underlying
+          sequences have a BLAST 
+          E -value less then a user-specified
+          threshold when compared to any sequence in another class.
+          If a class appears in multiple similarity pairs, all
+          these similar classes are merged with the original <ENAMEX TYPE="PER_DESC">class</ENAMEX>.
+          For the example in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, BLAST searches do not reveal
+          any new similarity pairs; thus the classification from
+          the figure is identical to the final classification
+          (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        
+        
+          Repeat analysis of microbial genomes
+          We used our repeat clustering algorithm to analyze
+          several complete microbial genomes. <ENAMEX TYPE="PRODUCT">Table 2summarizes</ENAMEX> the
+          repeat analysis for the 
+          Neisseria meningitidis genome [ <TIMEX TYPE="DATE">20</TIMEX>]
+          using <NUMEX TYPE="CARDINAL">two</NUMEX> different clustering criteria. It illustrates
+          how increasing the exact repeat size in the initial step
+          leads to fewer merging repeats and fewer classes. It also
+          shows how reducing the size of the gap and increasing the
+          required overlap increases the number of repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX>,
+          as would be expected.
+          For a more comprehensive repeat analysis, we chose
+          <NUMEX TYPE="CARDINAL">seven</NUMEX> different microbial genomes, using <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="FAC_DESC">base</ENAMEX> pairs
+          (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>) as the minimal exact repeat length and allowing less
+          than a <NUMEX TYPE="CARDINAL">25</NUMEX> bp gap for the merging procedure. Table 3shows
+          the results for these genomes. It presents the number of
+          merging repeats, the number of repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX>, the
+          longest single merging repeat, and the number of classes
+          containing <NUMEX TYPE="CARDINAL">more than two</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>. As shown here, these
+          latter classes comprise <NUMEX TYPE="PERCENT">only 10-25%</NUMEX> of all repeat
+          classes, indicating that most repeat <ENAMEX TYPE="PER_DESC">types</ENAMEX> are simple
+          <ENAMEX TYPE="PERSON">duplications</ENAMEX>. Among these duplication, the vast majority
+          occur in tandem, although this is not shown in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>.
+          The picture given here shows how repeat analysis can
+          quickly provide an overall picture of how repetitive a
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> is; in addition, the analysis extracts the repeats
+          themselves for further analysis.
+        
+        
+          Defining the prototype for a repeat class
+          Small microbial genomes have relatively few types of
+          <ENAMEX TYPE="PERSON">repeats</ENAMEX>, and relatively few copies of each type. In
+          contrast, our studies of longer eukaryotic genome
+          sequences have uncovered <NUMEX TYPE="CARDINAL">tens of thousands</NUMEX> of repeat
+          classes and <NUMEX TYPE="CARDINAL">hundreds of thousands</NUMEX> of merging repeats. In
+          order to be able to process this data efficiently - in
+          particular, in order to run the procedure where all
+          classes are compared against each other using BLAST - we
+          developed a procedure to define the most representative
+          element for each <ENAMEX TYPE="PER_DESC">class</ENAMEX>, which we call its prototype.
+          Referring to the repeat map shown in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, we use
+          the length of the merging repeat ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ) and the number of exact repeats ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ) to defined the desirable properties for the
+          prototype. The different merging protocols affect the
+          properties of the prototype. Thus, in the 'merging with
+          <ENAMEX TYPE="ORGANIZATION">gap</ENAMEX>' procedure, the merging repeats with the longest
+          <ENAMEX TYPE="PERSON">lengths</ENAMEX> and with the greatest number of subrepeats should
+          be the best <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to represent the class. In this
+          case, many <ENAMEX TYPE="PER_DESC">members</ENAMEX> will consist of simple subsequences of
+          the prototype. When we use the 'merging with overlap'
+          procedure, we also look for the greatest number of
+          subrepeats, but the length of the most representative
+          repeat should be closer to the shortest repeat in the
+          class. In this case the representative element will tend
+          to match across most of its length to every <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the
+          class.
+          Using these considerations, we can construct the
+          objective function for both cases. For each <ENAMEX TYPE="PER_DESC">class</ENAMEX>, given
+          the merging repeat length 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ) and number of subrepeats 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+           ), the maximum and the minimum repeat lengths in the
+          class ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> ), and the maximum and the minimum
+          number of subrepeats in the <ENAMEX TYPE="PER_DESC">class</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          <ENAMEX TYPE="PERSON">max</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> ), we define the function 
+          F(<TIMEX TYPE="DATE">l</TIMEX>,<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>) for each merging repeat of
+          the <ENAMEX TYPE="PER_DESC">class</ENAMEX> as
+          for 'merging with <ENAMEX TYPE="PER_DESC">gaps</ENAMEX>' and
+          for 'merging with <ENAMEX TYPE="PER_DESC">overlaps</ENAMEX>'.
+          This non-negative function is a summary of the
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> in the length and number of subrepeats from the
+          desirable values for the class prototype. Then we solve
+          the optimization problem of minimizing function 
+          F(<TIMEX TYPE="DATE">l</TIMEX>,<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>): 
+          find ( 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ) corresponding to an element in
+          the single repeat <ENAMEX TYPE="PER_DESC">class</ENAMEX>: min 
+          F(<TIMEX TYPE="DATE">l</TIMEX>,<ENAMEX TYPE="ORGANIZATION">n</ENAMEX>). 
+          If we get several elements that minimize this
+          function, we select the <NUMEX TYPE="CARDINAL">one</NUMEX> with the maximal number of
+          <ENAMEX TYPE="ORGANIZATION">subrepeats</ENAMEX>. Thus in our example (Figures <ENAMEX TYPE="CONTACT_INFO">1, 3, 4, 5</ENAMEX>) the
+          prototype for <ENAMEX TYPE="SUBSTANCE">class 1</ENAMEX> is the longest repeat starting in
+          position <TIMEX TYPE="DATE">77</TIMEX>, with 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> = <NUMEX TYPE="CARDINAL">11</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>. Likewise, the prototype for
+          <ENAMEX TYPE="SUBSTANCE">class 2</ENAMEX> is the repeat starting at position <TIMEX TYPE="DATE">23</TIMEX>, and for
+          class <TIMEX TYPE="DATE">3</TIMEX> it is the repeat starting at position <TIMEX TYPE="DATE">38</TIMEX>. We used
+          this procedure in our studies of the genome sequences of 
+          A. thaliana [ <ENAMEX TYPE="LAW">2</ENAMEX>] and <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> BAC end
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> [ <TIMEX TYPE="DATE">22, 23</TIMEX>].
+        
+        
+          Repeat structure of the Arabidopsisgenome
+          The <ENAMEX TYPE="PRODUCT">125 Mb</ENAMEX> 
+          A. thaliana <ENAMEX TYPE="FAC_DESC">genome</ENAMEX> consists of <NUMEX TYPE="CARDINAL">five</NUMEX>
+          chromosomes ranging from <NUMEX TYPE="CARDINAL">18</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> to <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> in length. We
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> <NUMEX TYPE="MONEY">the suffix</NUMEX> tree <ENAMEX TYPE="ANIMAL">algorithm</ENAMEX> for finding exact
+          repeats to each of these <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> separately, and than
+          used our clustering method to determine the repetitive
+          structure of each chromosome. We found from <NUMEX TYPE="CARDINAL">100,000</NUMEX> to
+          <NUMEX TYPE="CARDINAL">400,000</NUMEX> pairs of exact repeats in each chromosome using a
+          minimum length of <NUMEX TYPE="QUANTITY">25 bp</NUMEX> (after filtering out simple
+          repeat <ENAMEX TYPE="PER_DESC">sequences</ENAMEX>). These repeats in total represent
+          <NUMEX TYPE="PERCENT">approximately 10%</NUMEX> of the chromosome sequences. To group
+          the repeats into classes the gap merging strategy was
+          used, with a maximum gap size of <NUMEX TYPE="QUANTITY">less than 25 bp</NUMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> finds <NUMEX TYPE="CARDINAL">some 5,000</NUMEX>-<NUMEX TYPE="CARDINAL">7,000</NUMEX> repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> per
+          chromosome, but <NUMEX TYPE="PERCENT">only 20%</NUMEX> of these contain more than <TIMEX TYPE="TIME">two</TIMEX>
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> is known to contain
+          extensive gene duplication and strong evidence of a
+          whole-genome duplication [ <ENAMEX TYPE="LAW">2</ENAMEX>]; thus it is not surprising
+          to observe such a preponderance of repeats with just <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX>. We defined the prototype element for each class
+          using the optimization procedure described above,
+          combined all the prototypes from <NUMEX TYPE="CARDINAL">five</NUMEX> chromosomes in one
+          <ENAMEX TYPE="PERSON">database</ENAMEX>, and generated a final classification of the
+          whole genome by clustering the BLAST search results of
+          all prototypes against all. This resulted in <NUMEX TYPE="CARDINAL">over 5,000</NUMEX>
+          classes with <NUMEX TYPE="CARDINAL">three</NUMEX> or more elements. <ENAMEX TYPE="PRODUCT">Table 4contains</ENAMEX> a
+          summary of the repeat <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for the entire 
+          A. thaliana genome.
+          To find out more about the composition of the 
+          Arabidopsis repeats, each sequence
+          was searched against <ENAMEX TYPE="ORGANIZATION">AtRepBase</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] and the 
+          Arabidopsis gene database [ <TIMEX TYPE="DATE">26</TIMEX>]
+          (using a maximum BLAST E-value of <NUMEX TYPE="CARDINAL">0.01</NUMEX> and <NUMEX TYPE="PERCENT">at least 100%</NUMEX>
+          identity for 
+          Arabidopsis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <NUMEX TYPE="PERCENT">at least 95%</NUMEX>
+          identity to <ENAMEX TYPE="FAC">AtRep-Base</ENAMEX> sequences). Of <NUMEX TYPE="CARDINAL">105,434</NUMEX> repeat
+          sequences that fall into <NUMEX TYPE="CARDINAL">27,961</NUMEX> separate repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX>,
+          2,124 sequences matched an annotated repeat sequence in
+          AtRepBase, and <NUMEX TYPE="CARDINAL">25,149</NUMEX> sequences matched a segment of an 
+          Arabidopsis gene. Comparing both
+          sets of matches, <NUMEX TYPE="CARDINAL">only 417</NUMEX> of the repeat <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> were
+          found to match both a gene <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> and an annotated
+          repeat sequence. The large number of repeats that match
+          gene segments reflects the prevalence of segmental
+          chromosomal duplications and tandem gene duplications in 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX>. Due to the greedy
+          'merging with gap' method used to build the repeat
+          classes, relatively few of the repeat classes contained
+          an abundance of the repeat sequences; the largest repeat
+          class contained <NUMEX TYPE="QUANTITY">30,975 sequences</NUMEX> of which <NUMEX TYPE="CARDINAL">6,505</NUMEX> matched
+          gene <ENAMEX TYPE="PER_DESC">segments</ENAMEX> and <NUMEX TYPE="CARDINAL">1,723</NUMEX> matched annotated repeats.
+          To further analyze the composition of the repeat
+          classes, a prototype repeat sequence was chosen to
+          represent each repeat <ENAMEX TYPE="PER_DESC">class</ENAMEX> containing at least <NUMEX TYPE="CARDINAL">five</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX>, and the top database matches were identified
+          (<ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>). Of the <NUMEX TYPE="CARDINAL">1,454</NUMEX> prototype repeat sequences
+          examined, <NUMEX TYPE="CARDINAL">approximately half</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">755</ENAMEX>) matched gene segments
+          and <TIMEX TYPE="DATE">58</TIMEX> matched annotated repeats. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> matched by
+          the prototype repeat sequences include known <ENAMEX TYPE="PER_DESC">members</ENAMEX> of
+          large 
+          Arabidopsis gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> including
+          a cytochrome <TIMEX TYPE="DATE">P450</TIMEX>, a <ENAMEX TYPE="SUBSTANCE">receptor kinase</ENAMEX>, a
+          disease-resistance <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and several transposon open
+          reading frames. In addition, there were many matches to
+          <ENAMEX TYPE="SUBSTANCE">hypothetical proteins</ENAMEX>, the validity of which remains to
+          be determined. The biological relevance of the remaining
+          repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> remains unclear at present.
+        
+        
+          <ENAMEX TYPE="PERSON">Rice</ENAMEX> repeat database
+          <ENAMEX TYPE="ORGANIZATION">Yuan</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">27</TIMEX>] recently reported on
+          the construction of a <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat database that was
+          generated by searching all available <ENAMEX TYPE="SUBSTANCE">rice sequences</ENAMEX> for
+          minisatellite sequences, mobile elements, rDNA,
+          centromeric repeat sequences and telomeric repeat
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. This database includes <NUMEX TYPE="CARDINAL">215</NUMEX> sequences. We
+          attempted to use the repeat finding system described here
+          to enlarge this set, using as input the large collection
+          of sequences from the <ENAMEX TYPE="ORGANIZATION">Clemson University</ENAMEX> <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> BAC end
+          database [ <TIMEX TYPE="DATE">23</TIMEX>].
+          Unlike either 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> or the microbial
+          genomes, where a single genome sequence or a few large
+          chromosomes were being processed, in this case we had
+          <NUMEX TYPE="CARDINAL">101,562</NUMEX> BAC end sequences with an average length of
+          <ENAMEX TYPE="CONTACT_INFO">approximately 400-700 bp.</ENAMEX> We therefore developed a
+          special pre-processing procedure which generates a single
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> (<NUMEX TYPE="CARDINAL">approximately 42</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> long) from all the BAC
+          ends. Each original sequence is represented by its
+          coordinate in the new sequence. This procedure permits
+          the algorithm to work with <NUMEX TYPE="CARDINAL">hundreds of thousands</NUMEX> of
+          different sequences simultaneously. The <ENAMEX TYPE="ORG_DESC">system</ENAMEX> found
+          <NUMEX TYPE="CARDINAL">5,208,206</NUMEX> exact repeat pairs with lengths from <NUMEX TYPE="QUANTITY">25 bp to</NUMEX>
+          <TIMEX TYPE="TIME">728 bp</TIMEX>, where the latter represents an entire <ENAMEX TYPE="ORGANIZATION">BAC</ENAMEX> end
+          that was repeated exactly. The maximum length of each
+          repeat was bounded by the length of the BAC end sequence
+          in which it was found. This length restriction was added
+          to the merging procedure to avoid artificially long
+          repeats that might mistakenly span <NUMEX TYPE="CARDINAL">more than one</NUMEX> BAC end
+          sequence. The pre-clustering procedure also includes
+          filtering of the exact repeats data to remove
+          simple-sequence repeats, which were determined to
+          comprise <NUMEX TYPE="PERCENT">over 40%</NUMEX> of exact repeats. We merged the
+          filtered exact repeats data, requiring an overlap of <NUMEX TYPE="PERCENT">95%</NUMEX>.
+          This resulted in <NUMEX TYPE="CARDINAL">48,768</NUMEX> repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX>, of which only
+          <NUMEX TYPE="CARDINAL">8,118</NUMEX> include <NUMEX TYPE="CARDINAL">more than two</NUMEX> <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. <ENAMEX TYPE="PRODUCT">Table 4contains</ENAMEX> a
+          summary of these repeat classes. A searchable <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat
+          <ENAMEX TYPE="PERSON">database</ENAMEX>, based on the prototypes of these <ENAMEX TYPE="PER_DESC">classes</ENAMEX>, is
+          available online at [ <TIMEX TYPE="DATE">28</TIMEX>].
+          To test this new repeat database, we compared it to
+          the set of annotated repeats based on known, expertly
+          curated repeats [ <TIMEX TYPE="DATE">27</TIMEX>]. There were <NUMEX TYPE="CARDINAL">four</NUMEX> general <ENAMEX TYPE="PER_DESC">groups</ENAMEX> in
+          this set: <ENAMEX TYPE="CONTACT_INFO">telomere/centromere repeats,</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">transposon/transposon</ENAMEX>-like repeats, rDNA, and all the
+          rest [ <TIMEX TYPE="DATE">27</TIMEX>]. We used BLAST to search annotated repeats
+          against the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat database, using an <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value cutoff
+          of <NUMEX TYPE="PERCENT">10 -8</NUMEX>. Classification of the BLAST hits shows that the
+          annotated repeats from the <NUMEX TYPE="CARDINAL">four</NUMEX> distinct <ENAMEX TYPE="PER_DESC">groups</ENAMEX> always
+          fall into separate <ENAMEX TYPE="PER_DESC">classes</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat database;
+          in other words, the new database divides the previous
+          repeat <ENAMEX TYPE="PER_DESC">classes</ENAMEX> into a finer-grained set of repeats, but
+          it does not merge any of the <NUMEX TYPE="CARDINAL">four</NUMEX> known groups
+          together.
+        
+        
+          Performance
+          Because of the use of the efficient <ENAMEX TYPE="SUBSTANCE">suffix</ENAMEX> tree
+          procedures, the system runs very fast, with the
+          <NUMEX TYPE="CARDINAL">all</NUMEX>-versus-all BLAST search consuming <NUMEX TYPE="PERCENT">approximately 80%</NUMEX>
+          of the computation time. The running time of the exact
+          repeat <ENAMEX TYPE="PER_DESC">finder</ENAMEX> is <NUMEX TYPE="PERCENT">about 10-15%</NUMEX> of the total, with the
+          other processes - merging, clustering and post-BLAST
+          updating - using a relatively minor proportion of overall
+          computation time. The running time depends on both the
+          sequence length and the number of repeats; for example,
+          small microbial genomes take <TIMEX TYPE="TIME">just 3-15 minutes</TIMEX>, whereas
+          the highly repetitive <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat database took about two
+          <TIMEX TYPE="DATE">days</TIMEX> to process. The memory needed for computation is
+          dominated by the requirements of the suffix <ENAMEX TYPE="PLANT">tree</ENAMEX> used for
+          the initial repeats computation [ <TIMEX TYPE="DATE">11, 12, 13</TIMEX>]; this can
+          grow to many gigabytes for large eukaryotic
+          chromosomes.
+        
+      
+      
+        Conclusions
+        We describe a new system for rapid identification of all
+        repeats in genome sequences and assignment of these repeats
+        to similarity classes. The system has been used to analyze
+        the repeat structure of several complete microbial genomes,
+        and the much larger genome of the model plant 
+        A. thaliana. We also used it to
+        create a new <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> repeat database, based on an analysis of
+        a large BAC end sequence database. This new computational
+        tool should prove helpful in the analysis of repeat
+        structure for both complete and partial genome
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>.
+      
+    
+  

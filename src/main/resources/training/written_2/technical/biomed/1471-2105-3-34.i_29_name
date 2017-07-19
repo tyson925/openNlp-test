@@ -1,0 +1,601 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> transduction is the primary means by which cells
+        coordinate their metabolic, morphologic, and genetic
+        responses to environmental cues such as growth factors,
+        <ENAMEX TYPE="PERSON">hormones</ENAMEX>, nutrients, osmolarity, and other chemical and
+        tactile stimuli. Traditionally, the discovery of molecular
+        components of signaling <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> and mammals has
+        relied upon the use of gene knockouts and epistasis
+        analysis. Although these methods have been highly effective
+        in generating detailed descriptions of specific linear
+        signaling pathways, our knowledge of complex signaling
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> and their interactions remains incomplete. New
+        computational methods that capture molecular details from
+        high-throughput genomic data in an automated fashion are
+        desirable and can help direct the established techniques of
+        molecular biology and genetics.
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray technology has evolved to the point where
+        one can simultaneously measure the transcript abundance of
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> under <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of conditions, producing
+        <NUMEX TYPE="CARDINAL">hundreds of thousands</NUMEX> of individual data points. Similarly,
+        high-throughput yeast <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid experiments have
+        identified <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">pairwise protein</ENAMEX>-protein
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. Once a core pathway is established, these
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> can readily be integrated into model refinements, as a
+        recent study in systems biology elegantly demonstrates [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        ] . However, synthesizing these data 
+        <ENAMEX TYPE="ORGANIZATION">de novo</ENAMEX> into models of pathways and
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> remains a significant challenge.
+        How can one bridge the gap from transcript abundances
+        and <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interaction data to pathway <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>?
+        Clustering expression data into <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes that share
+        <ENAMEX TYPE="PERSON">profiles</ENAMEX> is a proven method for grouping functionally
+        related genes, but does not order pathway components
+        according to physical or regulatory relationships. Here we
+        present an automated approach for modelling signal
+        <ENAMEX TYPE="ORGANIZATION">transduction</ENAMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae by integrating
+        <ENAMEX TYPE="SUBSTANCE">protein-protein interaction</ENAMEX> [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] and gene expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Our program, <ENAMEX TYPE="GPE">NetSearch</ENAMEX>, draws all possible linear
+        paths of a specified length through the interaction map
+        starting at any membrane <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and ending on any
+        <ENAMEX TYPE="SUBSTANCE">DNA-binding protein</ENAMEX>. Microarray expression data [ <NUMEX TYPE="CARDINAL">5 6 7</NUMEX> ]
+        is then used to rank all paths according to the degree of
+        similarity in the expression profiles of pathway <ENAMEX TYPE="PER_DESC">members</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">Linear</ENAMEX> pathways that have common starting points and
+        <ENAMEX TYPE="ORGANIZATION">endpoints</ENAMEX> and the highest <ENAMEX TYPE="PER_DESC">ranks</ENAMEX> are then combined into the
+        final model of the branched <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>.
+        Our approach is calibrated using the yeast MAPK
+        (<NUMEX TYPE="CARDINAL">mitogen</NUMEX>-activated <ENAMEX TYPE="SUBSTANCE">protein kinases</ENAMEX>) pathways involved in
+        <ENAMEX TYPE="ORGANIZATION">pheromone</ENAMEX> response, filamentous growth, and maintenance of
+        cell wall integrity (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). These pathways are activated
+        by <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein-coupled receptors</ENAMEX> and characterized by a core
+        <ENAMEX TYPE="ORGANIZATION">cascade of MAP</ENAMEX> kinases that activate each other through
+        sequential binding and phosphorylation reactions; they are
+        among the most thoroughly studied <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> and are
+        therefore excellent benchmarks against which to test our
+        approach.
+      
+      
+        Results
+        
+          Input data and parameters
+          Recent papers [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] have used the yeast-<NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid
+          technique and literature surveys to identify and assemble
+          over <TIMEX TYPE="DATE">7000</TIMEX> non-redundant <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interactions
+          among <TIMEX TYPE="DATE">more than 4000</TIMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. While <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid screens
+          efficiently identify fusion <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are able to
+          <ENAMEX TYPE="PERSON">interact</ENAMEX>, the biological significance of the interaction
+          for <ENAMEX TYPE="SUBSTANCE">native proteins</ENAMEX> acting 
+          in vivo generally requires
+          <ENAMEX TYPE="PERSON">verification</ENAMEX>, because the technique is susceptible to a
+          high rate of false positives [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . To assess the
+          possible contribution of false-positive <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+          interactions to the combined interaction dataset, we
+          analyzed the connectivity of each <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and found that
+          a small fraction of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> had a very high number of
+          <ENAMEX TYPE="PERSON">interactions</ENAMEX> (highlighted in red, <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>). With these
+          highly connected <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> included in our data set,
+          NetSearch generates <NUMEX TYPE="CARDINAL">17 million</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> signaling
+          pathways of length <NUMEX TYPE="CARDINAL">seven</NUMEX> or less, <NUMEX TYPE="PERCENT">95%</NUMEX> of which involve
+          <NUMEX TYPE="CARDINAL">one</NUMEX> of these <NUMEX TYPE="CARDINAL">twenty</NUMEX>-<NUMEX TYPE="CARDINAL">two</NUMEX> highly-connected <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. We
+          excluded the highly interacting <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from the
+          interaction dataset based on their nonspecific inclusion
+          in the predicted pathways and evidence of their
+          <ENAMEX TYPE="ORGANIZATION">susceptibility</ENAMEX> to systematic error. This yielded an
+          interaction map that contains <TIMEX TYPE="DATE">5560</TIMEX> interactions among
+          <TIMEX TYPE="DATE">3725</TIMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, an average of three interactions per
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>.
+          Using the <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> algorithm, this protein
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was queried for paths up to length
+          <NUMEX TYPE="CARDINAL">eight</NUMEX> that begin at membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and end at
+          transcription factors. The search generated approximately
+          <NUMEX TYPE="CARDINAL">4.4 million</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> pathways of length <NUMEX TYPE="CARDINAL">eight</NUMEX> or less
+          whose biological plausibility was assessed using gene
+          expression data.
+          To score the pathways, we first used a 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -means algorithm to cluster all
+          yeast <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into clusters based on their expression
+          profiles. <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> then assigned each pathway a
+          statistical score [ <TIMEX TYPE="DATE">10</TIMEX> ] according to the number of
+          <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> that clustered together. For example, a
+          path with <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> in one cluster would score higher
+          than a <ENAMEX TYPE="FAC_DESC">path</ENAMEX> that only had <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> in that cluster.
+          Cluster size influenced path scoring such that a path
+          that had <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> from a cluster of <NUMEX TYPE="CARDINAL">30</NUMEX> elements
+          would score higher than a <ENAMEX TYPE="FAC_DESC">path</ENAMEX> that had <NUMEX TYPE="CARDINAL">three</NUMEX> members
+          from a cluster of <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. Also, a <ENAMEX TYPE="FAC_DESC">path</ENAMEX> with <NUMEX TYPE="CARDINAL">four</NUMEX>
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in one cluster and <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in a second
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> would score higher than a <ENAMEX TYPE="FAC_DESC">path</ENAMEX> that had <NUMEX TYPE="CARDINAL">four</NUMEX>
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in cluster <NUMEX TYPE="CARDINAL">one</NUMEX>, but no more than <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in
+          cluster <NUMEX TYPE="CARDINAL">two</NUMEX>.
+          Pathways were scored using <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX>'s 'sumprob'
+          <ENAMEX TYPE="WORK_OF_ART">scoring metric: Assuming N</ENAMEX> proteins total and a
+          partitioning of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> into k clusters C 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , C 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,...C 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , with <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,...<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>, respectively, and a pathway
+          <ENAMEX TYPE="ORGANIZATION">p of L</ENAMEX> proteins p 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> →p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> →...→ p 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> , where c 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) = number of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> in
+          cluster C 
+          i , the sumprob score is computed as
+          follows:
+          
+          prob 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) scores a pathway for a cluster C
+          
+          i such that pathways which are more
+          concentrated in C 
+          i have higher scores. The summation in
+          prob 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) computes the cumulative
+          <ENAMEX TYPE="ORGANIZATION">hypergeometric</ENAMEX> probability of pathway <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> containing c 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) or more <ENAMEX TYPE="PER_DESC">members</ENAMEX> of C 
+          i . prob 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) assesses co-clustering of
+          <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> in the single cluster C 
+          i . <ENAMEX TYPE="ORGANIZATION">sumprob</ENAMEX>(<ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>), the sum of prob 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) values over all clusters for
+          which c 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) >= <NUMEX TYPE="CARDINAL">2</NUMEX>, is a simple measure of
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-clustering across the entire collection of available
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>. The rationale for the restriction c 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (i) >= <NUMEX TYPE="CARDINAL">2</NUMEX> is that without it a
+          <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX> could get a high score simply from having single
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> in <NUMEX TYPE="CARDINAL">one or more</NUMEX> rare clusters, in which case the
+          score would no longer reflect 
+          <ENAMEX TYPE="ORGANIZATION">co</ENAMEX> -clustering.
+          The exact composition of paths discovered using
+          NetSearch depend on the parameters used in path drawing
+          and path scoring. To ensure that <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> reproducibly
+          generates statistically significant, biologically
+          plausible paths, we combinatorially varied every
+          parameter value in the path-drawing and path-scoring
+          algorithms, and selected <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations that
+          generate the most statistically significant pathways.
+          Statistical significance was measured by drawing pathways
+          from <ENAMEX TYPE="SUBSTANCE">membrane proteins</ENAMEX> to <ENAMEX TYPE="SUBSTANCE">DNA-binding proteins</ENAMEX> through
+          the experimentally determined <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction map
+          (<ENAMEX TYPE="SUBSTANCE">henceforth</ENAMEX> called "real pathways") and comparing these
+          pathways with pathways drawn through control interaction
+          maps that were created by randomizing all pairwise
+          interactions in the original dataset. (The randomization
+          procedure was performed <NUMEX TYPE="CARDINAL">three</NUMEX> times and statistics were
+          calculated on the average output of these runs. Paths
+          produced using these interaction maps are henceforth
+          referred to as "random pathways"). We ultimately chose
+          parameters that maximized the number of high-scoring
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> produced with real interactions, while
+          minimizing high-scoring pathways from the randomized
+          <ENAMEX TYPE="PERSON">interactions</ENAMEX>.
+          The parameters we varied included the number of
+          clusters into which the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were grouped, the
+          microarray expression datasets used in clustering, the
+          maximum path length, and the scoring metric. Expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> were clustered into <TIMEX TYPE="DATE">12, 25, 50, 100 and 250</TIMEX>
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>, and NetSearch best discriminated between real
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> and random pathways when <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were grouped into
+          25 clusters. <TIMEX TYPE="TIME">Three</TIMEX> 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae expression datasets
+          were examined individually, including the "<ENAMEX TYPE="WORK_OF_ART">Compendium</ENAMEX>"
+          set, composed of expression profiles in response to <NUMEX TYPE="CARDINAL">300</NUMEX>
+          diverse mutations and chemical treatments [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ; the
+          "<ENAMEX TYPE="WORK_OF_ART">MAPK</ENAMEX>" set, composed of <NUMEX TYPE="CARDINAL">56</NUMEX> conditions chosen to probe the
+          behavior of MAPK signal transduction [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ; and the
+          "<ENAMEX TYPE="WORK_OF_ART">Cell Cycle</ENAMEX>" set, composed of <NUMEX TYPE="CARDINAL">77</NUMEX> conditions relevant to
+          the cell cycle [ <ENAMEX TYPE="LAW">7</ENAMEX> ] . Combinations of these datasets
+          were also examined, for a total of <NUMEX TYPE="CARDINAL">five</NUMEX> different sets
+          that allowed us to compare the <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> of data that
+          probes specific biological processes, such as MAPK
+          signaling or the cell cycle, and that which probes the
+          state of the cell more broadly, such as the Compendium
+          set and the combined sets. The composite data set that
+          combined <NUMEX TYPE="CARDINAL">all three</NUMEX> <ENAMEX TYPE="PER_DESC">individual</ENAMEX> sets (for a total of <NUMEX TYPE="CARDINAL">433</NUMEX>
+          conditions) provided the best discrimination between real
+          <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX> and random pathways, although the other sets
+          performed comparably.
+          The final input parameter that required evaluation was
+          the maximum path length allowable for <ENAMEX TYPE="GPE">NetSearch</ENAMEX> <ENAMEX TYPE="FAC_DESC">paths</ENAMEX>.
+          While short path lengths risk omission of key path
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX>, longer path lengths increase the likelihood of
+          including false-positive interactions. As a <NUMEX TYPE="ORDINAL">first</NUMEX> step
+          towards determining the optimal maximum path length, we
+          examined the path lengths connecting every possible pair
+          of the <TIMEX TYPE="DATE">3725</TIMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the interaction dataset,
+          regardless of subcellular localization. The minimal path
+          length between any <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> chosen at random contains
+          on average <NUMEX TYPE="CARDINAL">7.4</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>. <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, we examined the
+          fraction of pathways with high coclustering ratios for
+          various path lengths. Consistent with our finding that
+          the average path length between any <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> is <NUMEX TYPE="CARDINAL">7.4</NUMEX>,
+          this fraction peaks at <NUMEX TYPE="CARDINAL">eight</NUMEX>, which we set as our
+          <ENAMEX TYPE="PERSON">maximum</ENAMEX>, unless otherwise noted.
+        
+        
+          NetSearch output
+          Using a maximum path length of <NUMEX TYPE="CARDINAL">eight</NUMEX>, and <NUMEX TYPE="CARDINAL">25</NUMEX> gene
+          clusters from <NUMEX TYPE="CARDINAL">433</NUMEX> conditions [ <NUMEX TYPE="CARDINAL">5 6 7</NUMEX> ] , NetSearch
+          generated <NUMEX TYPE="MONEY">~4.4 million pathways</NUMEX> each for the real and
+          randomized <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> interaction datasets. From the
+          <ENAMEX TYPE="PERSON">experimental</ENAMEX> ("real") data, <TIMEX TYPE="DATE">4059</TIMEX> pathways had a
+          coclustering score �<NUMEX TYPE="MONEY">� 16</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). At this cutoff,
+          randomized interaction data produced on average <NUMEX TYPE="PERCENT">only ~1%</NUMEX>
+          this number of pathways (<NUMEX TYPE="MONEY">32 pathways</NUMEX>, <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">7</NUMEX> × <NUMEX TYPE="PERCENT">10 -6</NUMEX>).
+          However, we emphasize that <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> selects paths based
+          on their rank relative to all paths between selected
+          starting and endpoints. The absolute score depends on the
+          particular expression data set used, and varies from
+          network to <ENAMEX TYPE="ORG_DESC">network</ENAMEX> depending on the degree of
+          <ENAMEX TYPE="ORGANIZATION">coregulation</ENAMEX> in the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> under the conditions tested in
+          the expression data.
+          The signaling network models generated by NetSearch
+          for the pheromone response, cell wall integrity and
+          filamentation pathways are depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>. In each
+          case, the starting <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>, depicted in blue)
+          and ending <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (transcription factor, depicted in
+          red) were selected as inputs, and <ENAMEX TYPE="PERSON">NetSearch</ENAMEX> draws all
+          possible paths between these points. The size of each
+          <ENAMEX TYPE="ORGANIZATION">vertex</ENAMEX> is proportional to the sum of scores of the paths
+          in which that <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is found, providing a useful visual
+          clue to the potential importance of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> in the
+          given <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. Comparison with <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1shows that NetSearch
+          reproduced many of the essential elements of these MAPK
+          pathways, while providing a detailed account of the
+          experimentally determined interconnections among network
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">three</NUMEX> network <ENAMEX TYPE="PER_DESC">models</ENAMEX>, the <NUMEX TYPE="CARDINAL">one</NUMEX> generated
+          for the pheromone response pathway originating at Ste3p
+          (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4A) exhibited the highest co-clustering scores.
+          Every <ENAMEX TYPE="SUBSTANCE">protein NetSearch</ENAMEX> included in this <ENAMEX TYPE="ORG_DESC">network</ENAMEX> model
+          has a description in the <ENAMEX TYPE="PERSON">Yeast Proteome Database</ENAMEX> (YPD) [
+          <NUMEX TYPE="CARDINAL">9</NUMEX> ] consistent with a known or plausible role in mating.
+          Of the nineteen <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> we have included in our
+          depiction of the pheromone response network, eighteen are
+          annotated as playing a role in the fungal cell
+          differentiation by <ENAMEX TYPE="ORGANIZATION">MIPS</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] . The probability that
+          this selection would have occurred by chance was
+          calculated with the hypergeometric distribution was found
+          to be P = <NUMEX TYPE="CARDINAL">5</NUMEX> × <NUMEX TYPE="PERCENT">10 -24</NUMEX>. Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> does differ in several
+          respects from the canonical pheromone response pathway
+          depicted in <ENAMEX TYPE="FAC">Fig 1</ENAMEX>. It includes more <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">heterotrimeric G</ENAMEX> protein <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>, including the alpha,
+          beta, and <ENAMEX TYPE="SUBSTANCE">gamma subunits</ENAMEX>, the GDP-GTP exchange factor,
+          and the <ENAMEX TYPE="SUBSTANCE">GTPase-activating protein</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Gpa1p, Ste4p, Ste18p,</ENAMEX>
+          Cdc24p, and <ENAMEX TYPE="PRODUCT">Sst2p</ENAMEX>, respectively). It includes <TIMEX TYPE="DATE">Far1p</TIMEX>, a
+          protein necessary for pheromone-induced cell cycle arrest
+          in G1 [ <TIMEX TYPE="DATE">11</TIMEX> ] , <TIMEX TYPE="DATE">Mpt5p</TIMEX>, a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> necessary for recovery
+          from cell cycle arrest [ <TIMEX TYPE="DATE">12</TIMEX> ] , and <TIMEX TYPE="DATE">Bem1p and Sph1</TIMEX>, both
+          of which are necessary for establishment of <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> polarity
+          during <TIMEX TYPE="DATE">shmooing</TIMEX> and budding [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . In our
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction map there is no direct interaction
+          between a pheromone <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> (<ENAMEX TYPE="PRODUCT">Ste2p</ENAMEX> or <NUMEX TYPE="MONEY">Ste3p</NUMEX>) and any
+          component of the heterotrimeric <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> protein complex
+          (<ENAMEX TYPE="CONTACT_INFO">Ste4p/Ste18p/Gpa1p</ENAMEX>), so <ENAMEX TYPE="PERSON">NetSearch</ENAMEX> drew indirect paths
+          through <TIMEX TYPE="DATE">Akr1p</TIMEX>, a known inhibitor of signaling in the
+          pheromone pathway [ <TIMEX TYPE="DATE">15</TIMEX> ] . The predicted <ENAMEX TYPE="ORG_DESC">network</ENAMEX> does not
+          include the <ENAMEX TYPE="ORGANIZATION">GTPase</ENAMEX> <ENAMEX TYPE="PRODUCT">Cdc42p</ENAMEX> (paths were instead drawn
+          <ENAMEX TYPE="ORGANIZATION">preferentially</ENAMEX> through its cofactor <TIMEX TYPE="DATE">Cdc24p</TIMEX>, which
+          physically interacts with <NUMEX TYPE="CARDINAL">Ste4p</NUMEX>) or <TIMEX TYPE="DATE">Ste20p</TIMEX>, because of
+          missing interactions in the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction map.
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4Bdepicts the pheromone response network at
+          several different score cutoffs, and demonstrates how
+          higher co-clustering score cutoffs reduces the complexity
+          of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction map. NetSearch detects <NUMEX TYPE="CARDINAL">354</NUMEX>
+          paths of length <NUMEX TYPE="CARDINAL">eight</NUMEX> from <TIMEX TYPE="DATE">Ste3p</TIMEX> to <TIMEX TYPE="DATE">Ste12p</TIMEX>, and
+          <ENAMEX TYPE="PERSON">incorporates</ENAMEX> <NUMEX TYPE="CARDINAL">70</NUMEX> different <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> into those <ENAMEX TYPE="FAC_DESC">paths</ENAMEX>. The
+          top graph in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4Bshows the network constructed from
+          <NUMEX TYPE="CARDINAL">all 354</NUMEX> <ENAMEX TYPE="FAC_DESC">paths</ENAMEX> (with each <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> arranged on the
+          perimeter of an ellipse for clarity). In the middle
+          <ENAMEX TYPE="PERSON">graph</ENAMEX>, all paths that scored below the median have been
+          eliminated, leaving only <NUMEX TYPE="CARDINAL">27</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. On the bottom of
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4B, only the highest scoring paths (those used to
+          construct the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4A) with <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, are
+          depicted. Comparison of these <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> indicates that
+          most <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are eliminated by simply excluding the
+          pathways that score in the bottom <NUMEX TYPE="CARDINAL">half</NUMEX>; further
+          modifications to the cutoff affect the results
+          incrementally. In setting a precise cutoff for pathway
+          inclusion in the final network <ENAMEX TYPE="PER_DESC">models</ENAMEX>, one seeks to
+          strike a balance between the inclusion of false-positives
+          and the omission of true-positives. We set the cutoff
+          such that the top <ENAMEX TYPE="FAC_DESC">fifteen paths</ENAMEX> for each <ENAMEX TYPE="ORG_DESC">network</ENAMEX> were
+          included.
+          The <ENAMEX TYPE="ORG_DESC">network</ENAMEX> model generated for the cell wall
+          integrity pathway is depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4C. Membrane
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in particular may fail to produce interactions
+          when forced into the nucleus by the requirements of the
+          standard <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid technique. We observed this to be the
+          case for the cell wall integrity pathway, as neither
+          Wsc1p, <TIMEX TYPE="DATE">Wsc2p</TIMEX>, <TIMEX TYPE="DATE">Wcs3p</TIMEX> or <TIMEX TYPE="DATE">Mid2p</TIMEX> were observed to interact in
+          any of the high-throughput screens. To reconstruct this
+          network, we therefore started with the momomeric GTPase
+          Rho1p, and restricted our search to a length of <NUMEX TYPE="CARDINAL">seven</NUMEX>
+          because of the omission of the initial signal sensor. Of
+          the <NUMEX TYPE="CARDINAL">18</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> included in this <ENAMEX TYPE="ORG_DESC">network</ENAMEX> model, all but
+          Smd3p have descriptions consistent with a role in cell
+          wall maintenance. NetSearch included both GTPase
+          <ENAMEX TYPE="PER_DESC">constituents</ENAMEX> of this pathway, <TIMEX TYPE="DATE">Rho1p and Cdc42p</TIMEX>, as well
+          as associated <ENAMEX TYPE="ORGANIZATION">GAPs</ENAMEX> and other interactors, including
+          Rdi1p, <TIMEX TYPE="DATE">Rga1p</TIMEX>, and <TIMEX TYPE="DATE">Gic2p</TIMEX>. Other included network elements
+          are <TIMEX TYPE="DATE">Fks1p</TIMEX>, the <NUMEX TYPE="CARDINAL">1,3</NUMEX>-βglucan synthase of which <TIMEX TYPE="DATE">Rho1p</TIMEX> is a
+          <ENAMEX TYPE="ORGANIZATION">subunit</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] , the actin <ENAMEX TYPE="SUBSTANCE">protein Act1p</ENAMEX>, and the
+          <ENAMEX TYPE="SUBSTANCE">proteins Bni1p</ENAMEX>, <TIMEX TYPE="DATE">Bud6p</TIMEX>, and <ENAMEX TYPE="PRODUCT">Sph1p</ENAMEX>, which are associated
+          with Rho-mediated signal transduction, actin filament
+          <ENAMEX TYPE="ORGANIZATION">organization</ENAMEX>, cell polarity <ENAMEX TYPE="ORG_DESC">establishment</ENAMEX>, and bud
+          growth. Smd3p forms a complex with the <ENAMEX TYPE="ORGANIZATION">Sm</ENAMEX> core
+          spliceosomal <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] , and we are not aware of
+          any role it may play in maintaining cell wall integrity.
+          Its inclusion is most likely a result of its expression
+          correlation with 
+          BUD6 in one of the microarray
+          datasets, but it seems unlikely that the observed
+          interactions of <ENAMEX TYPE="PRODUCT">Smd3p with Spa2p</ENAMEX> and <ENAMEX TYPE="PRODUCT">Slt2p</ENAMEX> have
+          biological significance. In the <ENAMEX TYPE="GPE">NetSearch</ENAMEX>-generated
+          model, <ENAMEX TYPE="PRODUCT">Bck1p</ENAMEX> is downstream of <TIMEX TYPE="DATE">Mkk1p</TIMEX> because, although it
+          interacts with both <TIMEX TYPE="DATE">Mkk1p and Mkk2p</TIMEX>, it has been shown
+          specifically not to interact with <NUMEX TYPE="QUANTITY">Pkc1p</NUMEX> in <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid
+          <ENAMEX TYPE="ORGANIZATION">assays</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] .
+          The <ENAMEX TYPE="ORG_DESC">network</ENAMEX> model for filamentous growth (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4D)
+          involves <NUMEX TYPE="CARDINAL">21</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, <NUMEX TYPE="CARDINAL">20</NUMEX> of which are known to play a
+          role in filamentous growth, or have functions consistent
+          with that role, with the exception of <TIMEX TYPE="DATE">Fus1p</TIMEX>. As in the
+          <ENAMEX TYPE="ORGANIZATION">pheromone</ENAMEX> response and cell wall integrity network
+          models, key components of the <ENAMEX TYPE="ORGANIZATION">Ras GTPase</ENAMEX> are included,
+          such as Cdc25p (the <ENAMEX TYPE="ORGANIZATION">Ras</ENAMEX> guanine nucleotide exchange
+          factor), <TIMEX TYPE="DATE">Cyr1p</TIMEX> (the <ENAMEX TYPE="GPE">Ras</ENAMEX>-associated adenylate cyclase),
+          and <ENAMEX TYPE="PRODUCT">Srv2p</ENAMEX>, which enables the activation of adenylate
+          cyclase by <TIMEX TYPE="DATE">Ras2p</TIMEX>. Several <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with roles in actin
+          filament <ENAMEX TYPE="ORG_DESC">organization</ENAMEX>, cell polarity <ENAMEX TYPE="ORG_DESC">establishment</ENAMEX>, bud
+          growth, and GTPase-mediated signal transduction are
+          <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> with the cell wall integrity pathway, including
+          Bni1p, <TIMEX TYPE="DATE">Spa2p</TIMEX>, <TIMEX TYPE="DATE">Bud6p</TIMEX>, and <TIMEX TYPE="DATE">Act1p</TIMEX>. <ENAMEX TYPE="PERSON">NetSearch</ENAMEX> depicts
+          <ENAMEX TYPE="CONTACT_INFO">interactions</ENAMEX> <TIMEX TYPE="TIME">between Abp1p</TIMEX> and <TIMEX TYPE="DATE">both Srv2p and Act1p</TIMEX>,
+          consistent with the function of <ENAMEX TYPE="SUBSTANCE">Abp1</ENAMEX> in tethering Srv2p
+          to the cytoskeleton. The adenylate cyclase and associated
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> mentioned above, along with <TIMEX TYPE="DATE">Hsp82p and Hsc82p</TIMEX>,
+          activate the <ENAMEX TYPE="ORG_DESC">cAMP pathway</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] , a pathway that acts in
+          parallel with the <ENAMEX TYPE="ORGANIZATION">MAPK</ENAMEX> pathway to promote filamentation.
+          Hsp82p is a chaperone <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> known to interact with a
+          number of signaling pathway components [ <TIMEX TYPE="DATE">20</TIMEX> ] . It is
+          required for activation of the pheromone signaling
+          <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] , and for the general response to amino
+          <ENAMEX TYPE="SUBSTANCE">acid starvation</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] . It may play a similar role in
+          response to nitrogen (ammonia) starvation, a trigger for
+          <ENAMEX TYPE="ORGANIZATION">filamentation</ENAMEX>. Fus1p, included in our predicted network,
+          does not have a documented role in <TIMEX TYPE="DATE">filamentation</TIMEX>; it is
+          required for cell fusion during pheromone initiated
+          mating. Its transcript levels are significantly
+          <ENAMEX TYPE="ORGANIZATION">upregulated</ENAMEX> in response to pheromone, but are unchanged
+          in 
+          tec1Δ strains [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ; that study
+          <ENAMEX TYPE="PRODUCT">notes</ENAMEX>, however, that in 
+          dig1Δ <NUMEX TYPE="CARDINAL">dig2Δ</NUMEX> cells, <ENAMEX TYPE="PRODUCT">fus1</ENAMEX> is
+          constitutively activated, and both mating and invasive
+          growth are observed. Tec1p, conspicuously absent in our
+          model, has not been observed to interact with any
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in high-<NUMEX TYPE="CARDINAL">throughput two</NUMEX>-hybrid screens.
+        
+      
+      
+        Discussion
+        The utility of <ENAMEX TYPE="SUBSTANCE">yeast protein-protein</ENAMEX> interaction maps
+        for generating signaling network <ENAMEX TYPE="PER_DESC">models</ENAMEX> has previously been
+        suggested [ <TIMEX TYPE="DATE">23</TIMEX> ] , and they have been used to predict
+        metabolic pathways [ <TIMEX TYPE="DATE">24</TIMEX> ] . Expression data has been used
+        to generate and refine models for genetic regulatory
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> without the benefit of <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interaction
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] . In this study, we have used expression data
+        to rank <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> pathways of <ENAMEX TYPE="SUBSTANCE">interacting proteins</ENAMEX>. This
+        approach has a strong biological and experimental
+        rationale: <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> used in the same signaling <ENAMEX TYPE="ORG_DESC">network</ENAMEX> must
+        exist simultaneously with its activation. The genes
+        encoding these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> must be transcribed at
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">the same time</TIMEX>, and under the same
+        environmental conditions in which the signaling <ENAMEX TYPE="ORG_DESC">network</ENAMEX> is
+        required. Furthermore, experimental evidence suggests that
+        when a signaling <ENAMEX TYPE="ORG_DESC">network</ENAMEX> is activated, positive feedback
+        mechanisms upregulate the expression of genes that encode
+        pathway <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ] , implying that this rationale is
+        also applicable to "surveillance" pathways, whose protein
+        <ENAMEX TYPE="ORGANIZATION">components</ENAMEX> may need to be constitutively present in small
+        quantities, but whose concentration increases with
+        <ENAMEX TYPE="ORGANIZATION">activation</ENAMEX>. This biological rationale is borne out by
+        evidence that interacting <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> have more highly
+        correlated expression profiles than do non-interacting
+        <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] . However, if a single component of a
+        signaling <ENAMEX TYPE="ORG_DESC">network</ENAMEX> is independently (and differentially)
+        regulated, it would not necessarily be excluded using our
+        approach, if for instance, it connected <NUMEX TYPE="CARDINAL">two halves</NUMEX> of a
+        pathway which had similar average expression profiles.
+        <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> can be used to predict new signaling pathways,
+        identify previously unknown <ENAMEX TYPE="PER_DESC">members</ENAMEX> of documented pathways,
+        or identify smaller clusters of <ENAMEX TYPE="SUBSTANCE">interacting proteins</ENAMEX>. Until
+        we have a more complete <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction set, a <ENAMEX TYPE="PER_DESC">user</ENAMEX> who
+        wishes to explore a particular pathway
+        <ENAMEX TYPE="CONTACT_INFO">http://arep.</ENAMEX><ENAMEX TYPE="ORGANIZATION">med</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">harvard</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">edu/NetSearchneeds</ENAMEX> to specify
+        <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX> starting points and ending points (such as membrane
+        and <ENAMEX TYPE="SUBSTANCE">DNA-binding proteins</ENAMEX>, respectively). This selection can
+        be based on a known genetic interaction, a shared mutant
+        phenotype, a shared functional classification, or signature
+        expression profile. This is the approach we have followed
+        in constructing the <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>. Those
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> are comprised of all highest ranking linear paths
+        connecting the <ENAMEX TYPE="SUBSTANCE">receptors</ENAMEX> and transcription factors for that
+        <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX>.
+        The pheromone response pathway is commonly depicted as a
+        simple, linear transmission of the mating signal from the
+        <ENAMEX TYPE="SUBSTANCE">membrane</ENAMEX> receptor, <TIMEX TYPE="DATE">Ste2p</TIMEX> (for alpha-factor) or <NUMEX TYPE="MONEY">Ste3p</NUMEX> (for
+        a-factor), to the nuclear effectors, <TIMEX TYPE="DATE">Ste12p and Mcm1p</TIMEX>, via
+        a <ENAMEX TYPE="ORGANIZATION">MAPK</ENAMEX> cascade. However, mating pheromone exposure also
+        induces other cellular processes such as those required for
+        polarized growth, cell cycle arrest, and recovery from cell
+        cycle arrest. Furthermore, the topology of the protein
+        interactions required for these processes is considerably
+        more complicated than a series of pairwise interactions. In
+        addition to accurately depicting the MAPK cascade, our
+        predicted pheromone response network identifies many
+        proteins necessary to execute the coordinated processes of
+        growth polarization and cell cycle arrest, and reflects the
+        complex topology of the interaction <ENAMEX TYPE="ORG_DESC">network</ENAMEX>.
+        The complexity of these interactions are observed in
+        large, multifunctional <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> of possibly dynamic
+        composition. For example, products of <TIMEX TYPE="DATE">Ste18</TIMEX>, <TIMEX TYPE="DATE">Ste4</TIMEX>, <TIMEX TYPE="DATE">Cdc42</TIMEX>,
+        Cdc24, <TIMEX TYPE="DATE">Far1</TIMEX>, <TIMEX TYPE="DATE">Bem1</TIMEX>, <TIMEX TYPE="DATE">Ste20</TIMEX>, <TIMEX TYPE="DATE">Ste5</TIMEX>, and other <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are
+        thought to constitute a complex that has numerous
+        interactions among <ENAMEX TYPE="ORG_DESC">components</ENAMEX>, and that mediates many
+        different cellular processes [ <NUMEX TYPE="CARDINAL">14 28</NUMEX> ] . The <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> may
+        coordinate mating pheromone detection with (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) cell cycle
+        arrest via <ENAMEX TYPE="ORGANIZATION">Far1p</ENAMEX>, (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) MAPK signal transduction via Ste5p
+        and <ENAMEX TYPE="PRODUCT">Ste20p</ENAMEX>, and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) cell polarity via <ENAMEX TYPE="ORGANIZATION">Bem1p</ENAMEX> and Far1p
+        (among others) [ <NUMEX TYPE="CARDINAL">29 30</NUMEX> ] .
+        Given that several of these <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> share components of
+        the MAPK cascade, the mechanism by which input-output
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> is maintained remains one of the most important
+        questions in the field of molecular signal transduction.
+        One well accepted hypothesis is that scaffolding proteins
+        such as <ENAMEX TYPE="PRODUCT">Ste5p</ENAMEX> and <ENAMEX TYPE="PRODUCT">Pbs2p</ENAMEX> tether the <ENAMEX TYPE="ORGANIZATION">MAPK</ENAMEX> module to the
+        appropriate input and output components [ <TIMEX TYPE="DATE">31</TIMEX> ] . The recent
+        identification of numerous Ste5p <ENAMEX TYPE="PER_DESC">analogs</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">mammals</ENAMEX> makes this hypothesis even more intriguing [ <TIMEX TYPE="DATE">26</TIMEX> ] .
+        Beyond <ENAMEX TYPE="SUBSTANCE">scaffolding proteins</ENAMEX>, higher-order <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> complexes
+        have been hypothesized to play a role in maintaining signal
+        specificity [ <TIMEX TYPE="DATE">32</TIMEX> ] . Our computational results suggest that
+        this may indeed be the case. When comparing the minimal
+        pathways for pheromone response and filamentation as
+        <ENAMEX TYPE="PERSON">depicted in Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, it appears that maintaining signal
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX> would be a considerable challenge. But when
+        comparing the <NUMEX TYPE="CARDINAL">two</NUMEX> network predictions depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">4,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">one</NUMEX> notes many differences, all of which may help ensure
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX>. The <ENAMEX TYPE="ORG_DESC">network</ENAMEX> perspective suggests not a single
+        scaffolding <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, but many scaffolding <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> - in
+        fact, a "scaffolding <ENAMEX TYPE="ORG_DESC">network</ENAMEX>." The possibility exists that
+        relatively nonspecific kinases function simply as
+        "phosphorylation modules," operating inside insulating
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> that are the primary determinant of signaling
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX>.
+        Because our <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interaction data is only a
+        small fraction of a truly complete interaction map, one
+        finds portions of a network that cannot be connected using
+        available <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interaction data. This was the
+        case in our attempts to model the <ENAMEX TYPE="ORGANIZATION">HOG</ENAMEX> <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. While
+        NetSearch correctly identified the upstream elements of
+        this pathway (<ENAMEX TYPE="CONTACT_INFO">Sln1p → Ypd1p → Ssk1p → Ssk22p</ENAMEX>), it was
+        unable to form any connections to <NUMEX TYPE="CARDINAL">Pbs2p</NUMEX> or <TIMEX TYPE="DATE">Hog1p</TIMEX> that ended
+        in a transcription factor. In some cases, a missing
+        <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> can be circumvented, however. In the model for
+        the pheromone response network, <ENAMEX TYPE="ORGANIZATION">NetSearch</ENAMEX> inserted <TIMEX TYPE="DATE">Akr1p</TIMEX>, a
+        known inhibitor of the pheromone pathway [ <TIMEX TYPE="DATE">15</TIMEX> ] , between
+        Ste3p and the <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> protein <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Ste4p/Ste18p/Gpa1p</ENAMEX>).
+        Although the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-interaction dataset we used contained
+        no direct interaction between <ENAMEX TYPE="CONTACT_INFO">Ste2p/Ste3p</ENAMEX> and <ENAMEX TYPE="PRODUCT">Ste4p</ENAMEX>,
+        <ENAMEX TYPE="PRODUCT">Ste2p-Ste4p</ENAMEX> has been shown to interact in a targeted yeast
+        <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid study [ <TIMEX TYPE="DATE">33</TIMEX> ] .
+        Our failure to model the <ENAMEX TYPE="ANIMAL">HOG pathway</ENAMEX> underscores the
+        fact that, for the purposes of this algorithm, missing
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX> (false-negatives) are a more significant
+        obstacle than are false-positive interactions. Missing
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX> cannot be "created" by the algorithm, but
+        false-positive interactions are de-emphasized as a result
+        of the bias imposed by ranking paths according to the
+        similarity of expression profiles. Bearing this out, of the
+        fifty-eight <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> included in our <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, only Smd3p
+        seems to be included as a result of false-positive
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. (This is distinct from the case of <TIMEX TYPE="DATE">Fus1p</TIMEX>,
+        which may be misplaced in the filamentation pathway, but
+        whose interactions with <TIMEX TYPE="DATE">Act1p and Ste7p</TIMEX> are real.) This
+        highlights a general observation on the integration of
+        genomic technologies. <NUMEX TYPE="CARDINAL">Two</NUMEX>-hybrid and microarray expression
+        studies are both known to have a sizable fraction of
+        systematic errors (for instance, self-activators in
+        <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid experiments, and cross-hybridization in
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>), but when looking at the intersection of the
+        <NUMEX TYPE="CARDINAL">two</NUMEX>, the true signals tend to reinforce one another,
+        whereas the systematic errors in the <NUMEX TYPE="CARDINAL">two</NUMEX> tend to be
+        different and are reduced further into the noise. These
+        effects may help explain why we observe so few
+        false-positive proteins inserted into our predicted
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>.
+        In addition to using more complete interaction datasets,
+        such as those found in <ENAMEX TYPE="LOCATION">Ho</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Gavin</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX> ] , one
+        could improve this approach by integrating more types of
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Homology modelling could be used to differentially
+        weight the inclusion of molecules likely to be involved in
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> transduction (e.g. kinases), and genetic
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX> could weight the inclusion of the two proteins
+        in the same path. Signaling motif identification [ <TIMEX TYPE="DATE">36</TIMEX> ] and
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from <ENAMEX TYPE="SUBSTANCE">protein kinase chips</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX> ] could also easily be
+        incorporated into this framework. Based on the interaction
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> available, the <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> depicted in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4are static,
+        with all interactions given equal weight, and without
+        information on the direction of information transfer. In
+        reality, signaling <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> are dynamic and vectorial
+        <ENAMEX TYPE="PERSON">complexes</ENAMEX>, with interactions of varying strengths among
+        component <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">38</TIMEX> ] . The technology necessary to
+        generate data which will allow <ENAMEX TYPE="PER_DESC">modelling</ENAMEX> of these network
+        properties are beginning to emerge. <ENAMEX TYPE="ORGANIZATION">Kinase</ENAMEX> chips [ <TIMEX TYPE="DATE">37</TIMEX> ]
+        will allow <NUMEX TYPE="CARDINAL">one</NUMEX> to incorporate information about the
+        direction of information flow. The strength of protein
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX> (with <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>) has been measured on chips in a
+        highly parallel manner [ <TIMEX TYPE="DATE">39</TIMEX> ] and the same could be done
+        for <ENAMEX TYPE="SUBSTANCE">protein-protein interactions</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> on the
+        <ENAMEX TYPE="ORGANIZATION">spatial</ENAMEX> and temporal co-localization of signaling
+        <ENAMEX TYPE="ORGANIZATION">components</ENAMEX> is being generated by new imaging techniques [
+        <NUMEX TYPE="CARDINAL">41</NUMEX> ] , which will yield <ENAMEX TYPE="ANIMAL">insight</ENAMEX> into the mechanism with
+        which the cellular response to a signal is modulated by the
+        intensity and the duration of the signal [ <TIMEX TYPE="DATE">42</TIMEX> ] , and the
+        interplay with parallel pathways.
+      
+      
+        Conclusions
+        The approach we have presented allows <NUMEX TYPE="CARDINAL">one</NUMEX> to query the
+        intersection of <NUMEX TYPE="CARDINAL">two</NUMEX> enormous sets of functional
+        genomic-derived molecular data. One can, in effect,
+        simultaneously browse <ENAMEX TYPE="SUBSTANCE">protein-protein interaction</ENAMEX> and gene
+        expression data. It allows <NUMEX TYPE="CARDINAL">one</NUMEX> to extract a group of
+        highly-connected, highly-correlated <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from global
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> to isolate a <ENAMEX TYPE="ORG_DESC">sub-network</ENAMEX> of particular interest.
+        Significantly, this approach does not require prior
+        knowledge of pathway intermediates. The interaction data
+        determines the pathways that are considered, and gene
+        expression data is used to rank the pathways. Although we
+        have focused on signaling pathways, this approach should be
+        applicable to modelling the relationships among any group
+        of <ENAMEX TYPE="SUBSTANCE">interacting proteins</ENAMEX> that cooperate to perform a given
+        function within a cell, and the web-version of the software
+        allows for these queries. As many genomic techniques are
+        generating increasingly large amounts of molecular data,
+        new tools such as this will be required for the synthesis
+        of "parts into pathways" in order that we may understand
+        how cells regulate the many processes necessary for growth
+        and development.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="PERSON">M.S.</ENAMEX> conceived of the study, performed the network
+        <ENAMEX TYPE="ORGANIZATION">modelling</ENAMEX> and drafted the manuscript. <ENAMEX TYPE="ORGANIZATION">A.P.</ENAMEX> wrote program
+        code, analyzed the network <ENAMEX TYPE="PER_DESC">models</ENAMEX> and drafted the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>. J.A. devised algorithms, wrote and refined
+        program code and constructed the associated web pages. P.D.
+        performed statistical analyses and examined the protein
+        interaction maps. <ENAMEX TYPE="ORGANIZATION">G.C.</ENAMEX> guided the study and coordinated the
+        project. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+      
+        <ENAMEX TYPE="PERSON">Supplementary</ENAMEX> website
+        <ENAMEX TYPE="PERSON">Supplementary</ENAMEX> website -
+        <ENAMEX TYPE="CONTACT_INFO">http://arep.</ENAMEX><ENAMEX TYPE="ORGANIZATION">med</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">harvard</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">edu/NetSearchWeb interface</ENAMEX> for
+        NetSearch:
+        <ENAMEX TYPE="CONTACT_INFO">http://arep.</ENAMEX><ENAMEX TYPE="ORGANIZATION">med</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">harvard</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/NetSearch/runprog.</ENAMEX>html
+      
+    
+  

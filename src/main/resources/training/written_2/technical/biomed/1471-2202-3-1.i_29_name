@@ -1,0 +1,1297 @@
+
+  
+    
+      
+        Background
+        Eukaryotic organisms evolved clocks as an adaptation to
+        geophysical <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> such as <TIMEX TYPE="DATE">day</TIMEX> and <TIMEX TYPE="TIME">night</TIMEX> or high and low
+        tides or the passing <TIMEX TYPE="DATE">seasons</TIMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . These clocks are
+        oscillators that control timing in a broad range of
+        processes such as rhythms in gene expression [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , and
+        navigational mechanisms for migratory flight [ <ENAMEX TYPE="LAW">3</ENAMEX> ] .
+        Studies on the nature of such clocks - whether at the level
+        of gene expression or behavior - most often rely on the
+        measurement of rhythmic processes by repeated sampling over
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>. Thus, the analysis of circadian clock function
+        becomes the analysis of time series.
+        The fruitfly, 
+        Drosophila melanogaster, has been the
+        outstanding model <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> for studying genetic, molecular,
+        <ENAMEX TYPE="ORGANIZATION">neural</ENAMEX> and behavioral substrates of circadian rhythms
+        [reviewed, for example, in [ <NUMEX TYPE="CARDINAL">4 5 6</NUMEX> ] ]. Recent studies have
+        demonstrated that many molecular components of a circadian
+        clock, several of which were initially identified in 
+        Drosophila, exhibit clock function in
+        mammals as well. Thus, the fruitfly has provided
+        mechanistic hypotheses that can be used to evaluate other
+        organisms [ <NUMEX TYPE="CARDINAL">2 7</NUMEX> ] .
+        In any metazoan <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>, the timing system is
+        increasingly appreciated to be complex. For example,
+        whereas rhythmicity of locomotor activity is governed by a
+        pacemaker within a discrete set of neurons in the 
+        Drosophila brain [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] , molecular
+        and physiological studies have also established the
+        presence of autonomous circadian clocks in isolated
+        <ENAMEX TYPE="PERSON">appendages</ENAMEX> and excretory structures [ <NUMEX TYPE="CARDINAL">10 11 12</NUMEX> ] .
+        Moreover, the molecular mechanisms underlying clock
+        function in these tissues may not be identical [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+        Finally, many rhythmic phenotypes expressed in flies can
+        occur on different time scales. Figure <NUMEX TYPE="CARDINAL">1portrays 6</NUMEX> examples
+        to illustrate the different levels of rhythmicity commonly
+        studied in 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster. Each of these
+        <ENAMEX TYPE="ORGANIZATION">rhythms</ENAMEX> has heretofore been analyzed using a separate
+        <ENAMEX TYPE="PERSON">analytical</ENAMEX> technique. The periodic pattern of eclosion
+        (emergence of the <ENAMEX TYPE="PER_DESC">adult</ENAMEX> at <TIMEX TYPE="TIME">the end of metamorphosis</TIMEX>) and
+        the pattern of adult locomotion (Figure <TIMEX TYPE="DATE">1a</TIMEX>,b) are classic
+        examples of circadian rhythms, which are typically analyzed
+        by application of periodogram functions [ <NUMEX TYPE="CARDINAL">14 15 16 17</NUMEX> ] .
+        Figure 1cand <NUMEX TYPE="CARDINAL">1ddisplay</NUMEX> examples of daily molecular rhythms
+        for a whole fly and a pair of dissected wings, as reported
+        in real time by luciferase-encoding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> fused to regulatory
+        sequences of the 
+        period (per) clock gene; these
+        <ENAMEX TYPE="CONTACT_INFO">gene-</ENAMEX>product fluctuations have been analyzed using
+        functions other than periodograms [ <NUMEX TYPE="CARDINAL">10 18</NUMEX> ] . 
+        Drosophila rhythms are also evident
+        on other time scales besides 
+        <TIMEX TYPE="TIME">circa-24 hours</TIMEX>. Courtship song, for
+        example, consists of a series of sinusoidal hums and trains
+        of pulses that come from the male's wing vibrations. The
+        intervals between these pulses (<TIMEX TYPE="DATE">interpulse</TIMEX> intervals, or
+        <ENAMEX TYPE="ORGANIZATION">IPIs</ENAMEX>) have been shown to vary rhythmically with a period
+        near <TIMEX TYPE="TIME">one minute</TIMEX> in 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] . The trace
+        shown in Figure 1eis taken from a digitized recording of
+        the male courtship song, and such acoustical data have been
+        subjected to still further kinds of time-series analysis [
+        <NUMEX TYPE="CARDINAL">20 21 22</NUMEX> ] . Finally, at the highest frequency among these
+        examples of periodic biological fluctuations, the heartbeat
+        of the <ENAMEX TYPE="PER_DESC">fruitfly</ENAMEX> exhibits a rhythm depicted in Figure <TIMEX TYPE="DATE">1f</TIMEX>. It
+        is driven by a pacemaker oscillator with a frequency on the
+        order of <NUMEX TYPE="CARDINAL">about 2</NUMEX> <ENAMEX TYPE="PRODUCT">Hz</ENAMEX> [ <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] . Although heartbeat,
+        courtship song, and locomotor-activity rhythms occur on
+        different time scales, the mechanisms underlying these
+        different rhythms could be related. For example, mutations
+        of the 
+        per gene affect both circadian and
+        courtship song <ENAMEX TYPE="PER_DESC">rhythms</ENAMEX> [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] , but not heartbeat [ <TIMEX TYPE="DATE">25</TIMEX> ]
+        .
+        Precise quantitative tools are needed for the analyses
+        of such rhythms. In addition, a unified set of analytical
+        methods would allow for comparisons to be made between
+        rhythms of different types (e.g., behavioral vs. molecular)
+        and time scales (e.g., circadian locomotor rhythm vs. the
+        <ENAMEX TYPE="ORGANIZATION">rhythmic IPI</ENAMEX> in courtship song). However, we have been
+        unable to find such methods for the analysis of rhythms.
+        This deficiency extends to the analysis of changes in the
+        phase of rhythms induced (usually) by environmental
+        stimuli. Although the resulting "phase response curves" are
+        routinely plotted (showing the elementary magnitudes and
+        directions of phase shifts), additional matters revolving
+        round phase analysis are rarely addressed.
+        To make such comparisons possible we have substantially
+        <ENAMEX TYPE="PERSON">modified</ENAMEX>, extended, and integrated a set of computational
+        tools, such that they may be applied to the analysis of any
+        rhythmic process. We not only describe these tools, and
+        apply them in several specific examples, but also present
+        the reasoning and goals underlying our choice of tools.
+        We cover <NUMEX TYPE="CARDINAL">four</NUMEX> general topics in time-series analysis.
+        First, 
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> acquisition: sampling and
+        inspection of the raw data. <NUMEX TYPE="ORDINAL">Second</NUMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> conditioning: preparation of
+        the data for further analysis by removal of high frequency
+        <ENAMEX TYPE="PERSON">noise</ENAMEX>, long-term trends and other extraneous and confusing
+        <ENAMEX TYPE="ORGANIZATION">perturbations</ENAMEX> in the data. <NUMEX TYPE="ORDINAL">Third</NUMEX>, 
+        estimation of rhythmicity and
+        period. <NUMEX TYPE="ORDINAL">Fourth</NUMEX>, 
+        analysis of phase, including
+        determination of phase response curves, phase coherence,
+        and the comparison of phase among <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+      
+      
+        Results and Discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> acquisition
+          The tools described below are applications of signal
+          analysis protocols. For our purposes, the signal is
+          defined as the data recorded over time. For the locomotor
+          activity and eclosion assays, these data correspond to
+          the number of light <ENAMEX TYPE="PRODUCT_DESC">beam interruptions</ENAMEX> per <TIMEX TYPE="TIME">half hour</TIMEX> over
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>. For the luciferase <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> assay data they
+          correspond to the intensity of <ENAMEX TYPE="PER_DESC">bioluminescence</ENAMEX> sampled
+          <ENAMEX TYPE="PERSON">hourly</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and Methods for further details).
+          In this section we consider the acquisition and
+          description of the signals along with some pertinent
+          analytical constraints.
+          In circadian studies sampling typically occurs at
+          evenly spaced intervals of time, <TIMEX TYPE="TIME">every hour or half hour</TIMEX>.
+          The sampling rate defines the shortest cycle that can be
+          measured. For instance, if the sampling rate in a
+          locomotor activity experiment is once <NUMEX TYPE="QUANTITY">per hour</NUMEX>, then it
+          would be possible to evaluate periodicities down to <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <TIMEX TYPE="TIME">hours</TIMEX>, but no shorter, because a minimum of <NUMEX TYPE="CARDINAL">two</NUMEX> points is
+          required to describe a cycle. Put in frequency terms,
+          this means the sampling rate must be twice that of the
+          highest frequency to be analyzed; this limit is the
+          so-called Nyquist frequency [ <TIMEX TYPE="DATE">26</TIMEX> ] . At the other end of
+          the spectrum, it follows that the longest period that can
+          be measured in a time series is determined by <NUMEX TYPE="CARDINAL">half</NUMEX> of the
+          length of that series. These high and low frequency are
+          noteworthy because the presence of fluctuations at either
+          end of this range can influence the analysis of circadian
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX> [see [ <TIMEX TYPE="DATE">21</TIMEX> ] for examples involving courtship
+          song cycles].
+          Although we may be interested in <TIMEX TYPE="TIME">circa-24 hour</TIMEX>
+          rhythms, it is often the case that other periodicities
+          are represented within the signal. For example, ultradian
+          rhythms, periodicities in the range of <NUMEX TYPE="CARDINAL">5 to 18</NUMEX> h, may be
+          present [for example, [ <NUMEX TYPE="CARDINAL">27 28</NUMEX> ] ]. While the latter
+          rhythms are inherently of interest [ <NUMEX TYPE="CARDINAL">29 30</NUMEX> ] , they may
+          nevertheless interfere with the analysis of the <TIMEX TYPE="TIME">24-hour</TIMEX>
+          components of the signal. Similarly, there may be
+          long-range trends in the data; for instance, behavioral
+          or enzymatic activity might slowly diminish over the
+          duration of the experiment; thus, phenomena that could be
+          the result of aging or chemical <ENAMEX TYPE="SUBSTANCE">substrate</ENAMEX> depletion may
+          produce temporally based changes that would be unrelated
+          to clock function (see Figure <NUMEX TYPE="CARDINAL">3</NUMEX>; <NUMEX TYPE="CARDINAL">10</NUMEX>). These trends appear
+          as very low frequency periodicities and can also
+          interfere with the assessment of <TIMEX TYPE="TIME">24 hour</TIMEX> periodicities.
+          We will describe methods for filtering out both short and
+          long period noise, aimed at emphasizing the periodicity
+          of interest within the signal.
+          The length of the data set - hence the number of
+          cycles present - affects the outcome of the analysis for
+          period length. As discussed below, the confidence in the
+          estimate of the period is directly related to the number
+          of cycles in an experiment. Molecular studies on cycling
+          gene products have commonly led to a single cycle's worth
+          of data. It is not possible to estimate period rigorously
+          or even to demonstrate the presence of true rhythmicity
+          based on <TIMEX TYPE="TIME">just 24 hours or 36 hours</TIMEX> of sampling. With more
+          cycles, say <TIMEX TYPE="DATE">one or two weeks</TIMEX>' worth of data, a more
+          reasonable and precise assessment of <TIMEX TYPE="DATE">period</TIMEX> becomes
+          possible. we wish to emphasize that sampling more
+          frequently over a given duration of time has no effect on
+          the accuracy of this estimate [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+          Although more sophisticated analyses such as
+          <ENAMEX TYPE="ORGANIZATION">autocorrelation</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> (described below) are required
+          to evaluate rhythmic signals quantitatively, it is often
+          possible to make meaningful qualitative assessments by
+          inspecting a plot of raw data. As an alternative to
+          looking at records from a series of individual <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>,
+          it is informative to evaluate the average signal for the
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>. To accomplish this, we combine data from
+          <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> by calculating a mean level for each time
+          point. This can clarify the phenotype, because any random
+          variation present within various time segments of
+          individual records is lost when such records are
+          averaged.
+          By way of example, we recently studied luciferase ( 
+          <ENAMEX TYPE="ORGANIZATION">luc</ENAMEX> ) <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> activity in
+          dissected antennae in order to evaluate the effects of
+          the 
+          cryptochrome -defective 
+          cry 
+          b mutation on a circadian clock
+          that operates in the 
+          Drosophila antenna. The 
+          luc <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> was driven by a
+          portion of the 
+          period (per) <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> (its <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-flanking
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> and those encoding the <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-terminal <NUMEX TYPE="CARDINAL">2/3</NUMEX> of the
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>) in some cases or the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-flanking sequences of
+          the 
+          <ENAMEX TYPE="ORGANIZATION">timeless</ENAMEX> (<ENAMEX TYPE="PERSON">tim</ENAMEX>) gene in the others;
+          these molecular <ENAMEX TYPE="PER_DESC">constructs</ENAMEX> were introduced into the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome by germline
+          transformation [ <NUMEX TYPE="CARDINAL">32 18 33</NUMEX> ] . <ENAMEX TYPE="PER_DESC">Reporter</ENAMEX> activity was
+          sampled from an enzymatic reaction (luciferase oxidizing
+          luciferin, present in the medium surrounding the
+          <ENAMEX TYPE="ORGANIZATION">antennae</ENAMEX>); the reaction produces a bioluminescent signal
+          that is measured in counts per second once each hour [ <NUMEX TYPE="CARDINAL">13</NUMEX>
+          ] . One genetically based comparison made in this study
+          involved the effects of the (normal) 
+          cry +allele compared with that of 
+          cry b, tested in <TIMEX TYPE="TIME">LD 12:12</TIMEX> (<TIMEX TYPE="TIME">12 hours</TIMEX>
+          of light followed by <TIMEX TYPE="TIME">12 hours</TIMEX> of darkness, over the
+          course of <NUMEX TYPE="CARDINAL">about 5</NUMEX>-<NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> per specimen). Based on the
+          analysis and tabulation of each individual <ENAMEX TYPE="PER_DESC">specimen</ENAMEX>, <NUMEX TYPE="PERCENT">26%</NUMEX>
+          of the 
+          cry 
+          b samples (carrying either of the
+          luc transgenes) showed rhythmicity in this assay as
+          compared with <NUMEX TYPE="PERCENT">86%</NUMEX> of the 
+          cry antennal pairs [ <TIMEX TYPE="DATE">13</TIMEX> ] . We
+          inferred from this set of results that the mutation
+          affects clock function in a manner separate from the
+          <ENAMEX TYPE="ORGANIZATION">photoreceptive</ENAMEX> role played by <ENAMEX TYPE="SUBSTANCE">CRY protein</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] .
+          In Figure <NUMEX TYPE="QUANTITY">2we</NUMEX> plot and analyze the average
+          luminescence of <NUMEX TYPE="CARDINAL">antennal</NUMEX> pairs collected in <TIMEX TYPE="TIME">LD12:12 to</TIMEX>
+          compare 
+          cry +versus 
+          cry 
+          b . Tabulated data from individual
+          <ENAMEX TYPE="PERSON">specimens</ENAMEX> indicated that <NUMEX TYPE="CARDINAL">one quarter</NUMEX> of the 
+          cry 
+          b samples were rhythmic (see Table
+          1in [ <TIMEX TYPE="DATE">13</TIMEX> ] ). However, plotting the average data for each
+          <ENAMEX TYPE="ORGANIZATION">genotype</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>) uncovers a more extreme difference
+          between 
+          cry +and 
+          cry 
+          b . Indeed, in contrast to the
+          smooth sinusoidal appearance of the 
+          cry +signal plotted in the leftmost
+          panel of the top row, inspection of the averaged (but
+          otherwise unconditioned) data plotted in the leftmost
+          panel of the bottom row reveals little, if any,
+          rhythmicity evident for the 
+          cry 
+          b tissues. Given that the effect of
+          averaging is to smooth a time series and potentially
+          emphasize rhythmicity, the absence of obvious periodicity
+          in 
+          cry 
+          b , as shown qualitatively in the
+          bottom left <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, suggests that the antennal
+          
+          cry 
+          b phenotype is typically arrhythmic
+          in <TIMEX TYPE="TIME">LD12:12</TIMEX>. We will return to the other panels in Figure
+          2when we discuss the quantitative analysis of periodicity
+          using autocorrelation and <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> conditioning
+          When there are elements within a signal that interfere
+          with the extraction of periodicities in the circadian
+          range (or any range of interest), the raw data often need
+          to be filtered for further study. Here, we discuss our
+          choice and application of techniques for such
+          preparation. <NUMEX TYPE="CARDINAL">Three</NUMEX> problems will be addressed by
+          application of a digital filter: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the presence of a
+          shifting temporal baseline (i.e., trend), <NUMEX TYPE="CARDINAL">2</NUMEX>) the presence
+          of high frequency noise, and <NUMEX TYPE="CARDINAL">3</NUMEX>) comparison between types
+          of measurement (i.e., normalization).
+          There are <NUMEX TYPE="CARDINAL">two</NUMEX> types of linear effects that can
+          interfere with subsequent analyses. First, the signal
+          could decrease or increase monotonically and at a
+          constant rate producing a linear trend in the data. For
+          example, as an animal ages, the amount of locomotor
+          activity can decrease slowly. Alternatively, it might
+          rise rapidly in a sort of "death dance"(as observed in 
+          Drosophila locomotor records) as
+          the <ENAMEX TYPE="ANIMAL">animal</ENAMEX> nears the end of its duty cycle. Figure 3shows
+          <NUMEX TYPE="CARDINAL">two</NUMEX> examples of behavioral records from individual flies.
+          The top row comes from a healthy, robust individual
+          wild-type fruitfly; the bottom row is a record from
+          another <ENAMEX TYPE="PER_DESC">individual</ENAMEX>, whose activity dwindled. The leftmost
+          plot is called an actogram (see caption for details);
+          next to it is the raw data plot for each individual. We
+          looked at <NUMEX TYPE="CARDINAL">92</NUMEX> <ENAMEX TYPE="PER_DESC">individual</ENAMEX> records from this experiment and
+          found that <NUMEX TYPE="CARDINAL">12</NUMEX> of these (<NUMEX TYPE="PERCENT">13%</NUMEX>) showed this sort of gradual
+          decline or increase in the general level of activity over
+          the course of the experiment. The behavioral trends
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with aging may have linear as well as
+          non-linear <ENAMEX TYPE="ORG_DESC">components</ENAMEX> (see below).
+          In a <NUMEX TYPE="ORDINAL">second</NUMEX> type of linear effect, the rhythmic
+          component of a signal could be obscured by high baseline
+          activity. This could occur, for instance, if the peak to
+          trough variation were <NUMEX TYPE="CARDINAL">30</NUMEX> arbitrary <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, with the mean
+          levels being in the <NUMEX TYPE="CARDINAL">thousands</NUMEX>. In such a case, even
+          though the rhythmicity might be quite strong in the
+          <ENAMEX TYPE="ORGANIZATION">circadian</ENAMEX> range (with very little variability from peak
+          to peak), the rhythm could nevertheless be inaccessible
+          to the method of analysis. This elevated baseline is also
+          eliminated by removing the linear trend because the mean
+          level is reduced to <NUMEX TYPE="CARDINAL">zero</NUMEX> (see below).
+          Figure <NUMEX TYPE="CARDINAL">4illustrates</NUMEX> the effects of removing this type
+          of linear trend. The signal shown in Figure 4ais taken
+          from a 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc;cry +antennal specimen
+          evaluated using the luciferase assay in constant
+          darkness. The dashed line was fit by regression to the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> using the method of <NUMEX TYPE="QUANTITY">least</NUMEX> squares [ <TIMEX TYPE="DATE">35</TIMEX> ] . This line
+          defines the linear trend in the data. Subtracting the
+          value of each point on the trend line from the
+          corresponding data point removes the linear trend as well
+          as the constant baseline, producing the curve shown in
+          Figure <TIMEX TYPE="DATE">4b</TIMEX>. The dashed line in <TIMEX TYPE="DATE">4b</TIMEX> is the resulting
+          <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> line with slope and mean of <NUMEX TYPE="CARDINAL">0</NUMEX>. As a safeguard
+          against interference from linear trends and the
+          possibility that rhythmicity is obscured by the baseline
+          level of output, we always remove the linear trend from
+          the data as a <NUMEX TYPE="ORDINAL">first</NUMEX> step in our analysis.
+          Even after this manipulation there is still a <ENAMEX TYPE="ORGANIZATION">U</ENAMEX>-shaped
+          aspect to the data (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). Although the mean is now
+          <ENAMEX TYPE="PERSON">zero</ENAMEX>, the individual points are not uniformly distributed
+          above and below the trend line along its entire length.
+          This indicates a residual nonlinear trend. Such nonlinear
+          trends are common in luciferase assays and are likely to
+          be caused by the depletion of substrate from the medium
+          over time [ <NUMEX TYPE="CARDINAL">18 10</NUMEX> ] . We use digital filters to remove
+          non-linear trends from signals and also to smooth them
+          when they contain high frequency noise (see below).
+          <ENAMEX TYPE="ORGANIZATION">Digital</ENAMEX> filters are like optical filters, which pass
+          <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> of wavelengths while absorbing others. Thus, as
+          white light can be filtered to yield any component
+          <ENAMEX TYPE="ORGANIZATION">spectral</ENAMEX> color, by analogy, specific periodicities within
+          a signal can be easily eliminated using a filter
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] . Although it is not our intention to
+          present a formal or rigorous review of digital filters
+          (see [ <TIMEX TYPE="DATE">36</TIMEX> ] , for example), we will introduce a simple
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> and then discuss the slightly more sophisticated
+          Butterworth filter which we use in our studies.
+          <ENAMEX TYPE="ORGANIZATION">Chatfield</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX> ] defines a filter as a function that
+          takes a time series x(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) and transforms it into another
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> series y(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). The simplest and oldest example of such
+          a filter is the moving average. For example, in an
+          average that considers <NUMEX TYPE="CARDINAL">5</NUMEX> consecutive points, <NUMEX TYPE="CARDINAL">5</NUMEX>
+          consecutive values from the original series x(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) are each
+          multiplied by <NUMEX TYPE="CARDINAL">1</NUMEX>, the results are added, then divided by <NUMEX TYPE="CARDINAL">5</NUMEX>
+          to produce the corresponding y(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>). The process moves
+          ahead one time point and is repeated. Thus for every x(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)
+          there is a y(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) consisting of an average of <NUMEX TYPE="CARDINAL">5</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of
+          the original set. This process will produce a smoothed
+          series that preferentially reduces the amplitude of high
+          frequency spikes in the data while preserving that of the
+          larger periods which are of interest [ <TIMEX TYPE="DATE">36</TIMEX> ] . In this
+          example, the coefficients have equal "weight". In more
+          sophisticated filters, the coefficients normally have
+          non-integer values to "tune" the output of the filter to
+          pass different frequencies.
+          The <ENAMEX TYPE="ORGANIZATION">Butterworth</ENAMEX> filter is an example of a more refined
+          <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> treatment [ <TIMEX TYPE="DATE">36</TIMEX> ] . It is a recursive filter
+          that operates on the data twice, incorporating the output
+          of the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> into a <NUMEX TYPE="ORDINAL">second</NUMEX>. Also, it is a
+          "real-time" filter in that it uses only present and past
+          values, never "future" ones (e.g. <ENAMEX TYPE="LAW">X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>+<NUMEX TYPE="CARDINAL">1</NUMEX> ), as is employed in the moving
+          average method described above. The number of recursions
+          is referred to as the number of "poles". Thus if the
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> acts on the data <NUMEX TYPE="CARDINAL">three</NUMEX> times, it is termed a three
+          pole filter. The <ENAMEX TYPE="ORGANIZATION">Butterworth</ENAMEX> filter produces a phase
+          shift in the data; so we always run the filter twice,
+          once forward and once in reverse to maintain the
+          integrity of phase (times of peak occurrences, for
+          example; see below).
+          Applying the <ENAMEX TYPE="ORGANIZATION">Butterworth</ENAMEX> filter to the data shown in
+          Figure <TIMEX TYPE="DATE">4removes</TIMEX> high- and low-frequency interference.
+          Together with the elimination of the linear trend, the
+          outcome demonstrates the presence of circadian
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX> in this signal (Figures <NUMEX TYPE="CARDINAL">5and 6</NUMEX>). This
+          approach is especially powerful in a situation where the
+          biological or molecular <ENAMEX TYPE="PER_DESC">readout</ENAMEX> (putatively revealing the
+          rhythmic process) is not robust - for example, the output
+          from 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc or 
+          per-luc <ENAMEX TYPE="PER_DESC">reporters</ENAMEX> in isolated
+          <ENAMEX TYPE="ORGANIZATION">antennae</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 13</NUMEX> ] .
+          Figure <NUMEX TYPE="CARDINAL">5a</NUMEX> shows the raw data from Figure 4areplotted
+          for better apprehension of the time series. Figure
+          5bdemonstrates the results from the operation of a
+          low-pass filter on these data; the lower frequencies -
+          representing longer periods-pass through the filter
+          <ENAMEX TYPE="PERSON">unscathed</ENAMEX>, while the higher frequency spikes are removed.
+          Figure <NUMEX TYPE="CARDINAL">5cshows</NUMEX> the application of a high-pass filter,
+          which removed the periodicities greater than <TIMEX TYPE="TIME">72 hours</TIMEX>.
+          Note that in this case the linear trend has also been
+          removed so that the mean value drops to <NUMEX TYPE="CARDINAL">0</NUMEX>. The shape of
+          the curve is now horizontal rather than <ENAMEX TYPE="ORGANIZATION">U</ENAMEX>-shaped, because
+          both types of trends are now absent (compare to Figure
+          4b). Finally, Figure <NUMEX TYPE="CARDINAL">5dshows</NUMEX> the results of the action of
+          a low-pass filter with a <TIMEX TYPE="TIME">72 hour</TIMEX> cutoff, allowing only
+          <TIMEX TYPE="DATE">periods</TIMEX> <TIMEX TYPE="TIME">longer than 72 hours</TIMEX> to pass. The result is a
+          curve that defines the contour of the nonlinear
+          long-range trend in the data.
+          Defining a long range trend (as illustrated in Figure
+          5d) is key to our method for detrending and normalizing a
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>. Normalization of the signal allows us to compare
+          different kinds of rhythms to each other, because the
+          units of analysis are eliminated. For example, one might
+          want to evaluate whether the period of a molecular rhythm
+          is the same as a behavioral rhythm in <ENAMEX TYPE="ORGANIZATION">DD</ENAMEX> or,
+          alternatively, whether the timing of the peak of such
+          <ENAMEX TYPE="ORGANIZATION">rhythms</ENAMEX> is the same. The luciferase assay and the
+          locomotor activity assay would facilitate this sort of
+          experiment. But such comparisons are complicated because
+          it is not clear what it means to compare locomotor
+          activity counts against counts of bioluminescence.
+          However, if these <ENAMEX TYPE="ORG_DESC">units</ENAMEX> of analysis are eliminated, then
+          the temporal features of <NUMEX TYPE="CARDINAL">two</NUMEX> signals can be compared.
+          We accomplish normalization as follows: after a
+          low-pass Butterworth filter is set to define a trend
+          <ENAMEX TYPE="PERSON">curve</ENAMEX> (see Figure <NUMEX TYPE="CARDINAL">5d</NUMEX>), we then divide each data point by
+          the corresponding value in the low pass trend curve. This
+          <ENAMEX TYPE="ORGANIZATION">division</ENAMEX> has <NUMEX TYPE="CARDINAL">three</NUMEX> effects, as depicted in Figure <TIMEX TYPE="DATE">6b</TIMEX>:
+          First, the <ENAMEX TYPE="ORG_DESC">units</ENAMEX> of measurement are removed from the data
+          and the data are normalized. <NUMEX TYPE="ORDINAL">Second</NUMEX>, the mean is adjusted
+          to <NUMEX TYPE="CARDINAL">1</NUMEX>. <NUMEX TYPE="ORDINAL">Third</NUMEX>, the nonlinear trend in the data is
+          eliminated. When the nonlinear trend is removed in this
+          <ENAMEX TYPE="PERSON">way</ENAMEX>, the ratio of a data value to the corresponding value
+          of the trend line is emphasized. This both corrects for
+          the damping evident in <TIMEX TYPE="DATE">5c</TIMEX> (a result in this case of
+          <ENAMEX TYPE="SUBSTANCE">luciferin</ENAMEX> depletion in the medium) and reveals that the
+          rhythm is actually just as robust later in the
+          experiment, even though it appears to be damping prior to
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX>. To illustrate this point another way,
+          consider that a change from <TIMEX TYPE="DATE">4000</TIMEX> cps to <TIMEX TYPE="DATE">2000</TIMEX> cps appears
+          more dramatic than a drop from <TIMEX TYPE="DATE">100 to 50</TIMEX> even though both
+          represent a <NUMEX TYPE="CARDINAL">2</NUMEX>-fold change; the ratio, and hence relative
+          amplitude, is the same in both cases. Again, detrending
+          the data by <ENAMEX TYPE="ORG_DESC">division</ENAMEX> emphasizes the ratio rather than the
+          absolute value. Thus, it becomes evident that the actual
+          <ENAMEX TYPE="ORGANIZATION">oscillation</ENAMEX> is not damping (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>).
+          One further application of filtering has proven useful
+          for determining phase values. The <ENAMEX TYPE="ORGANIZATION">Butterworth</ENAMEX> filter can
+          be used as a "bandpass" with both a high and a low
+          <ENAMEX TYPE="PERSON">cutoff</ENAMEX>. This allows the <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> to focus on a
+          precisely defined range of periods. Figure 7ashows raw
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from monitoring 
+          Drosophila eclosion. Fig 7bshows
+          these adult-emergence counts after a bandpass filter has
+          been applied; this setting of the filter removes all
+          <TIMEX TYPE="DATE">periods</TIMEX> shorter than <TIMEX TYPE="TIME">4 hours</TIMEX> and <TIMEX TYPE="TIME">longer than 40 hours</TIMEX>.
+          Figure <NUMEX TYPE="CARDINAL">7cindicates</NUMEX> the result of removing periods less
+          than <TIMEX TYPE="TIME">15 hours</TIMEX> and greater than <TIMEX TYPE="TIME">30 hours</TIMEX>, which results in
+          distortion of the data. We show this outcome to
+          illustrate that care is required when establishing the
+          cutoff limits of the bandpass. In the most severe and
+          worst case scenario, application of a sharply-defined
+          band pass filter to pure noise would result in a spectrum
+          with a pseudopeak at the center of the filter's <ENAMEX TYPE="ORG_DESC">band</ENAMEX>.
+          Thus, we end this section with a cautionary note about
+          filters: the choice requires familiarity with the raw
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> (one reason for the earlier emphasis on qualitative
+          scrutiny of data plots prior to quantitative analysis); a
+          specific criterion or goal; and a conservative sense
+          <TIMEX TYPE="DATE">about</TIMEX> whether the important components of the signal
+          might be distorted. We say <ENAMEX TYPE="PER_DESC">conservative</ENAMEX> because of the
+          possibility that an artifact might be introduced into the
+          analysis by the choice of filter parameters as
+          <ENAMEX TYPE="ORGANIZATION">illustrated</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>.
+        
+        
+          Estimation of rhythmicity and period
+          The conditioning procedures described above
+          (detrending and normalization) prepare a signal for
+          analysis. In this section we demonstrate tools for
+          evaluating (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) periodicity in the circadian range, (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+          the strength of a rhythm (if there is one), (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) whether
+          or not the rhythm is a fluke, (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) the period of the
+          rhythm. We discuss alternative methods for evaluating the
+          period of behavioral rhythms as well as rhythms in the
+          luciferase assay, including a method used in earlier
+          studies called <ENAMEX TYPE="PRODUCT">FFT-NLLS</ENAMEX> [ <NUMEX TYPE="CARDINAL">10 18</NUMEX> ] .
+          To evaluate whether the data are periodic, we use
+          <ENAMEX TYPE="ORGANIZATION">autocorrelation</ENAMEX> (correlogram) analysis [ <TIMEX TYPE="DATE">37</TIMEX> ] . <ENAMEX TYPE="CONTACT_INFO">Briefly,</ENAMEX>
+          the conditioned signal is paired with itself element for
+          element, ordered in time. A coefficient of correlation is
+          calculated in the standard manner [ <TIMEX TYPE="DATE">35</TIMEX> ] for the two
+          identical ordered data sets. The calculation is repeated
+          as the <NUMEX TYPE="CARDINAL">two</NUMEX> series are slipped or "lagged" out of register
+          with one another, <NUMEX TYPE="CARDINAL">one</NUMEX> point at a time. When the lag
+          between the series is <NUMEX TYPE="CARDINAL">0</NUMEX>, the correspondence is perfect
+          and the correlation coefficient is <NUMEX TYPE="CARDINAL">1</NUMEX>; but when the two
+          sets start to be offset, the correlation coefficient
+          begins to decrease. If the series is random with respect
+          to time, correlation will rapidly fall to low levels and
+          remain there. If, however, there is a regular rhythm in
+          the signal, then the peaks and troughs in the amplitude
+          of the signal will slip back into register when the lag
+          approximates the periodicity, causing the correlation to
+          increase again. Further peaks will appear each time there
+          is an alignment (i.e., for periodic harmonics, <NUMEX TYPE="CARDINAL">24</NUMEX> h, <NUMEX TYPE="CARDINAL">48</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX>, etc.). Rhythmic variation in this autocorrelation
+          function uncovers periodicity. Note that as the lag
+          between the data series increases, the number of
+          <NUMEX TYPE="CARDINAL">nonoverlapping</NUMEX> points increases and the autocorrelation
+          analysis involves a diminishing portion of the signal. In
+          addition, the calculation is done by <NUMEX TYPE="ORDINAL">first</NUMEX> calculating
+          the covariance and then dividing by the variance, thus
+          the output is normalized. See Figures 2and <NUMEX TYPE="CARDINAL">3for</NUMEX> examples
+          of the correlogram as applied to the luciferase assay and
+          locomotor behavior, respectively.
+          A reasonable question is whether or not the
+          <ENAMEX TYPE="ORG_DESC">periodicity</ENAMEX> signified by the outcome of an
+          <ENAMEX TYPE="DISEASE">autocorrelation</ENAMEX> treatment can occur by chance alone.
+          While strong periodicities from random records are
+          unlikely, the presence of weaker pseudoperiodicity in a
+          noisy signal is more likely. Such effects have been
+          observed in the analysis of courtship song as a
+          consequence of the sampling rate; fluctuating values from
+          <NUMEX TYPE="CARDINAL">one</NUMEX> point to the next suggest periodicity in the range of
+          the <ENAMEX TYPE="ORGANIZATION">Nyquist</ENAMEX> frequency; for the song records in question
+          and analysis of the pulse-rate fluctuations, <NUMEX TYPE="CARDINAL">20</NUMEX>-s
+          <TIMEX TYPE="DATE">periods</TIMEX>, against a background of <NUMEX TYPE="CARDINAL">10</NUMEX>-s sampling intervals
+          [ <TIMEX TYPE="DATE">21</TIMEX> ] . It is possible to assess quantitatively how
+          likely <TIMEX TYPE="DATE">a given</TIMEX> peak in an autocorrelation can be the
+          result of chance alone. A <NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval can be
+          <ENAMEX TYPE="ORGANIZATION">computed</ENAMEX> based on the number of observations in the
+          series equal to <TIMEX TYPE="DATE">2/√N</TIMEX>. By convention, <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is taken to be a
+          constant rather than varying as data are 'lost' by
+          lagging (<NUMEX TYPE="MONEY">37</NUMEX>). The correlogram <ENAMEX TYPE="ORG_DESC">panels</ENAMEX> within <ENAMEX TYPE="LOCATION">Figs.</ENAMEX> 2and
+          3exemplify results with significant rhythmicities by this
+          <ENAMEX TYPE="PERSON">criterion</ENAMEX>. In practice we seek to demonstrate significant
+          <ENAMEX TYPE="ORGANIZATION">rhythmicity</ENAMEX>; however, a rhythmic series may fail this
+          formal test of significance and appear to be rhythmic
+          nonetheless. There is precedence for a less quantitative
+          assessment of rhythmicity using the autocorrelation
+          function [ <NUMEX TYPE="CARDINAL">37 38</NUMEX> ] . Accordingly, the shape of the
+          <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> plot may show rhythmicity even if statistical
+          significance is not reached, i.e., the plot shows
+          repetition of the peaks at a regular interval. For
+          example, if the shape of the correlogram is sinusoidal
+          with a period in the circadian range, then we would
+          interpret this to mean that there is a circadian rhythm
+          in the data, even if the <ENAMEX TYPE="FAC_DESC">correlogram</ENAMEX> fails to show that
+          the rhythm is statistically significant (see below for
+          more detail). This convention has been applied where the
+          size of the data set may be small (at most <ENAMEX TYPE="PRODUCT">180</ENAMEX> data
+          points in luciferase studies, for instance) making the
+          confidence limit unrealistically high [ <TIMEX TYPE="DATE">13</TIMEX> ] . Thus,
+          given a regular rise and fall in the correlogram, we
+          would consistently consider those data to be rhythmic
+          [see [ <NUMEX TYPE="CARDINAL">37 38</NUMEX> ] for more detail, also see [ <NUMEX TYPE="CARDINAL">10 39</NUMEX> ] ].
+          While this assessment of rhythmicity is subjective (in
+          contrast to the objective cutoff imposed by the <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval), we guard against <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> bias
+          by evaluating each record "blind" to genotype or
+          treatment. In this way, the presence of a rhythm is not
+          dismissed simply because the output is weak or noisy and
+          the record is short. Note that the correlogram also gives
+          an estimate of the period (see below).
+          Even when the autocorrelation function portrays
+          statistically significant rhythmicity, it is still
+          possible that the data do not represent a truly rhythmic
+          process. The signal could be an expression of chance,
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, of random variation. To determine whether the
+          phenomenon is indeed stochastic, we produce <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> permutations of the original data in time. The
+          power (variance) in the signal and the mean will be the
+          same, but the original order of the time series will be
+          completely lost. If the original periodicity is lost when
+          the signal is randomized, this provides <NUMEX TYPE="CARDINAL">one</NUMEX> more piece of
+          evidence that the observed rhythm in the autocorrelation
+          (and later spectrum) is real and believable. While this
+          does not rigorously eliminate the possibility that the
+          original series was pseudorhythmic by chance, it will
+          show that the combination of analytical techniques used
+          is not generating artifacts when given a randomized
+          version of the original data. We term this process
+          "shuffling" because we redistribute the data several
+          times sequentially [see the following citations for
+          examples [ <NUMEX TYPE="CARDINAL">27 39 13</NUMEX> ] ].
+          If the data demonstrate rhythmicity, it is important
+          to specify numerically how "strong" the rhythmicity may
+          be. This strength may be a function of the relative
+          <ENAMEX TYPE="ORGANIZATION">amplitude</ENAMEX> and regularity of the underlying physiological
+          process or a reflection of the amount of noise in the
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>, or the consequence of how many (putative)
+          <TIMEX TYPE="DATE">periods</TIMEX>' worth of data were collected. Given that the
+          autocorrelation function is a good measure of the
+          <ENAMEX TYPE="ORGANIZATION">amplitude</ENAMEX> across the entire <ENAMEX TYPE="FAC_DESC">span</ENAMEX> of the signal, and that
+          the rate of "decay" in this function reliably assesses
+          the long-range regularity in the data [ <TIMEX TYPE="DATE">37</TIMEX> ] we employ an
+          index derived from this function as a measure of how
+          rhythmic the data are. We assess the strength of the
+          rhythm as the height of the <NUMEX TYPE="ORDINAL">third</NUMEX> peak in the correlogram
+          (counting the peak at lag <TIMEX TYPE="DATE">0</TIMEX> as the <NUMEX TYPE="ORDINAL">first</NUMEX> peak), terming
+          this number the Rhythmicity Index, or RI (see Figures
+          2and <NUMEX TYPE="CARDINAL">3</NUMEX>). Statistical analysis employing the <ENAMEX TYPE="ORGANIZATION">RI</ENAMEX> between
+          different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> or <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> is straightforward, because
+          it is simply a correlation coefficient, which is normally
+          distributed and dimensionless [ <NUMEX TYPE="CARDINAL">35 37</NUMEX> ] . This method was
+          developed to measure and compare the strength of rhythms
+          in 
+          Drosophila heart function [see [ <NUMEX TYPE="CARDINAL">25</NUMEX>
+          ] , and especially <TIMEX TYPE="DATE">40</TIMEX>, for a more rigorous presentation
+          of the method), as well as for circadian luciferase
+          expression in dissected antennae [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+          The choice of <TIMEX TYPE="DATE">the third correlogram</TIMEX> peak was not
+          motivated by rigorous theoretical considerations but was
+          also not arbitrary. Empirically, in analysis of heartbeat
+          rhythms, the <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PER_DESC">rdpeak</ENAMEX> proved the most reliable. There are
+          other practical considerations: in the case of circadian
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, especially when <TIMEX TYPE="DATE">only 4-5 days</TIMEX> of data are
+          available, the <NUMEX TYPE="CARDINAL">3</NUMEX> rdpeak incorporates <NUMEX TYPE="CARDINAL">only half</NUMEX> the
+          original data (as the autocorrelation analysis is
+          calculated each successive lag produces a loss of a data
+          point for subsequent consideration, thus after <TIMEX TYPE="DATE">one day 24</TIMEX>
+          <TIMEX TYPE="TIME">one hour</TIMEX> points would be out of the analysis). Choosing
+          peaks beyond the <NUMEX TYPE="ORDINAL">4th</NUMEX> <NUMEX TYPE="CARDINAL">one</NUMEX> (and likely beyond <TIMEX TYPE="DATE">the 3rd</TIMEX>)
+          could actually distort the outcome because the
+          correlation would be based on such a small number of
+          points [ <TIMEX TYPE="DATE">40</TIMEX> ] .
+          Once the signal has been determined to contain a real
+          rhythmic component, the next point to be addressed is
+          what the period of the rhythm might be and how certain
+          one can be of that estimate.
+          The heart of period estimation is <ENAMEX TYPE="NATIONALITY">Fourier</ENAMEX> analysis.
+          Other methods have been used for biological time series
+          with varying amounts of success. The most common
+          non-<ENAMEX TYPE="GPE">Fourier</ENAMEX>-based technique currently in use in
+          <ENAMEX TYPE="ORGANIZATION">chronobiology</ENAMEX> is the " chi-squared periodogram" [ <NUMEX TYPE="CARDINAL">41 42</NUMEX> ]
+          . Although serious objections have been raised in
+          consideration of the periodogram (discussed from varying
+          <ENAMEX TYPE="ORGANIZATION">perspective</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">Whittaker</ENAMEX> and <ENAMEX TYPE="PERSON">Robinson</ENAMEX> [ <TIMEX TYPE="DATE">42</TIMEX> ] ; <ENAMEX TYPE="ORGANIZATION">Kendall</ENAMEX>, [
+          <NUMEX TYPE="CARDINAL">43</NUMEX> ] ; <ENAMEX TYPE="PERSON">Dowse</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Ringo</ENAMEX> [ <NUMEX TYPE="CARDINAL">39 44</NUMEX> ] <ENAMEX TYPE="PERSON">Enright</ENAMEX> [ <TIMEX TYPE="DATE">46</TIMEX> ] , we
+          continue to employ this method along with others
+          discussed below.
+          Central to spectral analysis methods lies the
+          discovery by <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> that any function can be decomposed
+          into a series of harmonic sine and cosine terms with
+          <ENAMEX TYPE="ORGANIZATION">coefficients</ENAMEX> determined by the goodness-of-fit to the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Frequencies for which coefficients may be
+          calculated are <TIMEX TYPE="DATE">1/N</TIMEX>, <TIMEX TYPE="DATE">2/N</TIMEX>, etc., where <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the number of
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> points, and range up to the <ENAMEX TYPE="ORGANIZATION">Nyquist</ENAMEX> frequency
+          dictated by the rate of sampling (see above). The vector
+          sum of the coefficients for the sine and cosine terms at
+          a given frequency represent the power in the signal
+          attributable to that frequency [ <TIMEX TYPE="DATE">31</TIMEX> ] . <ENAMEX TYPE="PERSON">Critically</ENAMEX>, this
+          decomposition of the data is orthogonal, in the sense
+          that the amplitude coefficients for each sinusoid
+          frequency are independent of each other. The derivation
+          of a given coefficient has no effect on any others [ <TIMEX TYPE="DATE">45</TIMEX> ]
+          . A plot of the <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> coefficients as a function of
+          frequency or period yields a spectrum indicating any
+          <ENAMEX TYPE="ORGANIZATION">periodicity</ENAMEX> in the data and its frequency, the true
+          <ENAMEX TYPE="ORGANIZATION">periodogram</ENAMEX> (this use of periodogram is not the same as
+          the <ENAMEX TYPE="GPE">Chi</ENAMEX>-squared <ENAMEX TYPE="ORG_DESC">periodogram</ENAMEX> traditionally used to
+          evaluate circadian rhythms data [see [ <TIMEX TYPE="DATE">44</TIMEX> ] ]). The area
+          under the curve of the periodogram equals the variance in
+          the data, which has now been partitioned according to the
+          frequency and moved from the time to the frequency domain
+          [ <TIMEX TYPE="DATE">37</TIMEX> ] .
+          Figure <NUMEX TYPE="CARDINAL">8ashows</NUMEX> the linearly detrended plot from an
+          isolated antennal pair expressing a 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> sampled in <TIMEX TYPE="TIME">hourly</TIMEX>
+          increments in the time domain (counts per second of
+          bioluminescence over time). Figure 8bshows these same
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> plotted in the frequency domain. Note that, for
+          <ENAMEX TYPE="ORGANIZATION">convenience</ENAMEX>, circadian rhythm data plots are usually
+          converted to period from frequency on the abcissa.
+          <TIMEX TYPE="DATE">Periods</TIMEX> <TIMEX TYPE="TIME">longer than 24 h</TIMEX> normally result from long-term
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> or nonlinear trends in the data (see above), just
+          as shorter periods may be a result of either high
+          frequency rhythms [ <NUMEX TYPE="CARDINAL">27 47</NUMEX> ] or high frequency noise.
+          In practice, <ENAMEX TYPE="NATIONALITY">Fourier</ENAMEX> analysis is no longer done by
+          direct transformation of the raw data, but rather by
+          variations of <NUMEX TYPE="CARDINAL">two</NUMEX> basic methods. In the <NUMEX TYPE="ORDINAL">first</NUMEX> general
+          class of techniques, one takes the transform of either
+          the autocovariance function or, more usually, the
+          autocorrelation function [ <TIMEX TYPE="DATE">47</TIMEX> ] . As the latter effects a
+          normalization of the data, the <ENAMEX TYPE="ORG_DESC">units</ENAMEX> of the spectrum are
+          termed spectral density. When computing the
+          autocorrelation function, data are lost at either end
+          with each advancing lag, so computation values seldom
+          proceeds past the point when <NUMEX TYPE="CARDINAL">about 1/3</NUMEX> of the original
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> set has been lost. To compensate for this loss,
+          zeros are added to extend the series out to <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> lags [ <NUMEX TYPE="CARDINAL">48</NUMEX>
+          <NUMEX TYPE="CARDINAL">49</NUMEX> ] .
+          Alternatively, the data may be transformed directly,
+          but with a computational shortcut called the <ENAMEX TYPE="PERSON">Fast Fourier</ENAMEX>
+          Transform, or FFT [ <TIMEX TYPE="DATE">47</TIMEX> ] . For this method the number of
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> points must be a power of <NUMEX TYPE="CARDINAL">two</NUMEX> (<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>; [ <TIMEX TYPE="DATE">37</TIMEX> ] ).
+          Obtaining exactly <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">Ndata</ENAMEX> points is not always possible
+          for experimental reasons so the convention has been to
+          extend the data set by adding <NUMEX TYPE="CARDINAL">zeros</NUMEX> out to the next
+          higher integer power of <NUMEX TYPE="CARDINAL">2</NUMEX>. Zeros are also often added
+          beyond this point to increase resolution (see discussion
+          on resolution below [ <TIMEX TYPE="DATE">37</TIMEX> ] ).
+          There are <NUMEX TYPE="CARDINAL">two</NUMEX> problems associated with adding the
+          zeros to pad out either the autocorrelation function or
+          the raw data themselves. First, the abrupt end of the
+          original data set followed by a string of <NUMEX TYPE="CARDINAL">zeros</NUMEX> creates a
+          sharp discontinuity and this artifact can cause problems
+          in the resultant spectrum in the form of "side lobes" [
+          <NUMEX TYPE="CARDINAL">47 48</NUMEX> ] . <NUMEX TYPE="CARDINAL">One</NUMEX> strategy for addressing this problem is to
+          apply so-called smoothing or weighting functions to make
+          the drop to <NUMEX TYPE="CARDINAL">zero</NUMEX> less precipitous and reduce the
+          appearance in the spectrum of the resultant artifactual
+          <ENAMEX TYPE="PERSON">bands</ENAMEX> called side-lobes [ <NUMEX TYPE="CARDINAL">47 48 37</NUMEX> ] . But techniques for
+          side-lobe suppression are in themselves problematic.
+          There is no reason to presume that the next several data
+          points would be <NUMEX TYPE="CARDINAL">zero</NUMEX> and, in addition, perfectly good and
+          real data near the end of the original series are
+          <ENAMEX TYPE="ORGANIZATION">corrupted</ENAMEX> when they are altered by the smoothing function
+          [ <NUMEX TYPE="CARDINAL">47 48 37</NUMEX> ] . We prefer to avoid using the <ENAMEX TYPE="ORGANIZATION">FFT</ENAMEX> for these
+          reasons. The technique described below avoids both
+          problems offering excellent side-lobe suppression with no
+          loss in resolution [ <TIMEX TYPE="DATE">50</TIMEX> ] .
+          A major advance in spectral analysis was the
+          <ENAMEX TYPE="ORGANIZATION">development of Maximum Entropy Spectral Analysis</ENAMEX>, or <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>
+          by <ENAMEX TYPE="PERSON">Burg</ENAMEX> [ <NUMEX TYPE="CARDINAL">48 49 50 51</NUMEX> ] . The <ENAMEX TYPE="PER_DESC">reader</ENAMEX> is referred to [ <NUMEX TYPE="CARDINAL">39</NUMEX>
+          ] for a full treatment of the topic. <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> operates by
+          <NUMEX TYPE="ORDINAL">first</NUMEX> fitting an autoregressive <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to the data. This
+          model presumes that a datum at a given time point is a
+          combination of a variable number of previous values and
+          some stochastic process. Thus X 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = a 
+          <ENAMEX TYPE="LAW">1 X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>-<NUMEX TYPE="CARDINAL">1</NUMEX> + a 
+          <ENAMEX TYPE="LAW">2 X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>-<NUMEX TYPE="CARDINAL">2</NUMEX> + ... + a 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> +<ENAMEX TYPE="LAW">X</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">t-n</ENAMEX> + Z 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> , where {a}'s are coefficients
+          estimated from the data, <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the number of terms in the
+          model, and <ENAMEX TYPE="WORK_OF_ART">Z</ENAMEX> is a stochastic process. A simple arithmetic
+          operation turns the set of coefficients into what is
+          termed the prediction error filter. Fourier methods are
+          used to construct a spectrum, and we choose the number of
+          estimates of period to assay in the data. Typically, for
+          circadian analysis, we examine the data sets for
+          periodicity at increments of <TIMEX TYPE="TIME">0.1 hours</TIMEX> in the circadian
+          range, but this resolution can be increased or decreased
+          arbitrarily as warranted. Moreover, <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> is readily
+          applicable to time series involving putative cycle
+          durations well shorter or longer than <TIMEX TYPE="DATE">one day</TIMEX>.
+          The luciferase assay has been employed to address
+          molecular rhythms in <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> [ <TIMEX TYPE="DATE">52</TIMEX> ] and cyanobacteria [ <NUMEX TYPE="CARDINAL">53</NUMEX>
+          ] and mammals [ <NUMEX TYPE="CARDINAL">54 55</NUMEX> ] as well as in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX>. Typically, <ENAMEX TYPE="CONTACT_INFO">5-7</ENAMEX> cycles
+          are evident in these studies. As explained below, the
+          number of cycles in a signal indicates the theoretical
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> of the estimate for the period, i.e., whether
+          an estimate of say <TIMEX TYPE="TIME">24.5 hours</TIMEX> can be distinguished from
+          an estimate of <TIMEX TYPE="TIME">24.0 hours</TIMEX> depends on the number of
+          cycles. We employ <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> to estimate the period of a rhythm
+          in the luciferase assay, while using the correlogram to
+          evaluate rhythmicity.
+          
+          Drosophila locomotor activity
+          rhythms are typically measured from <TIMEX TYPE="DATE">5 days to 2 weeks</TIMEX> and
+          in <ENAMEX TYPE="ANIMAL">mice</ENAMEX> such measurements are often presented for a month
+          or longer [ <TIMEX TYPE="DATE">56</TIMEX> ] . The behavioral rhythm has the form of
+          a square wave with intervals of activity followed by
+          intervals of inactivity (in contrast to the sinusoidal
+          waveform of the luciferase rhythm). Moreover, the
+          distribution of activity during the active part of the
+          circadian cycle varies (not the temporal distribution of
+          the interval of activity so much as the amount of
+          activity at a given time within that interval from <TIMEX TYPE="DATE">day</TIMEX> to
+          <ENAMEX TYPE="ORGANIZATION">day</ENAMEX>). This variation can give rise to pseudorhythms that
+          could skew the estimate of period using any of these
+          statistical methods.
+          Our concern about such errors motivated a comparison
+          between <NUMEX TYPE="CARDINAL">three</NUMEX> different numerical methods for estimating
+          <TIMEX TYPE="DATE">circadian</TIMEX> period. As shown in <ENAMEX TYPE="PRODUCT">Table 1we</ENAMEX> applied
+          Autocorrelation, <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> and the "<ENAMEX TYPE="PERSON">Chi</ENAMEX>-squared Periodogram" [
+          <NUMEX TYPE="CARDINAL">57</NUMEX> ] to locomotor activity data generated by <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>
+          who were either wild-type, 
+          <NUMEX TYPE="CARDINAL">cyc 01/</NUMEX>+, 
+          <NUMEX TYPE="CARDINAL">cyc 02/</NUMEX>+, or who had <NUMEX TYPE="CARDINAL">only one</NUMEX> copy
+          of the 
+          cyc locus ( 
+          <ENAMEX TYPE="CONTACT_INFO">cyc -deletion/+</ENAMEX>) [ <TIMEX TYPE="DATE">58</TIMEX> ] . We
+          advocate using these methods simultaneously to maximize
+          <ENAMEX TYPE="PERSON">accuracy</ENAMEX> (for example, if <ENAMEX TYPE="NATIONALITY">Autocorrelation</ENAMEX> analysis
+          indicates that a signal is arrhythmic we reject any value
+          from <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> because <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> does not evaluate rhythmicity and
+          will return an estimate for any signal). We examined the
+          estimates returned by each method separately to compute
+          the averages shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Moreover, although direct
+          inspection of the data lacks the objectivity of a
+          computer <ENAMEX TYPE="ORG_DESC">program</ENAMEX>, a straightforward view of the actogram
+          provides a check against accepting numerical output that
+          might be obviously skewed as described above.
+          In fact, for these experiments, the analytic methods
+          are in agreement (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The consistency of
+          results across genotypes in these analyses further
+          validates this multi-pronged approach: The wild-type
+          <ENAMEX TYPE="ANIMAL">flies</ENAMEX> and those carrying cyc-gene variants (mutations or
+          a deletion of the locus) gave the same overall
+          rhythmicity as well as period values. These results
+          differ with previous results (based on periodogram
+          alone), which indicated that 
+          <NUMEX TYPE="CARDINAL">cyc 01/</NUMEX>+ and 
+          <ENAMEX TYPE="CONTACT_INFO">cyc -deletion/+ heterozygotes</ENAMEX>
+          exhibit longer circadian periods compared with wild-type
+          [ <TIMEX TYPE="DATE">58</TIMEX> ] . <ENAMEX TYPE="PRODUCT">Table 1also</ENAMEX> demonstrates that these methods fail
+          to correlate in a rank order test even though they yield
+          the same estimates on average (see <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 1for
+          details).
+          We have observed that <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> may show a greater spectral
+          density around <TIMEX TYPE="TIME">12 hours than at 24 hours</TIMEX>. This is often
+          the case when estimating the period of a rhythm in LD
+          <TIMEX TYPE="TIME">12:12</TIMEX>, for example. Such results say that a <NUMEX TYPE="QUANTITY">12 hour</NUMEX>
+          period captures the rhythmicity in the data more
+          completely than periodicity at a value representing a
+          longer period. This outcome is a logical consequence of
+          the bimodal locomotor activity profile under a light-dark
+          cycle. In such cases, when a peak near <TIMEX TYPE="TIME">12 hours</TIMEX> is
+          greater than a <ENAMEX TYPE="PRODUCT_DESC">mini-</ENAMEX>peak located near, say, <TIMEX TYPE="TIME">18 hours</TIMEX> (or
+          <TIMEX TYPE="TIME">24 or 27</TIMEX>), our estimate of the rhythm becomes twice the
+          period value of the major peak in the spectrum.
+          In summary, the considerations for estimating period
+          of locomotor activity rhythms are similar to those we
+          apply when estimating luciferase activity rhythms as
+          described above. We use a subjective but systematic
+          approach that can be summarized as follows: The signal is
+          evaluated by an <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> who is blind to genotype or
+          treatment. <ENAMEX TYPE="ORGANIZATION">Rhythmicity</ENAMEX> is assessed by the autocorrelation
+          function. While the autocorrelation function may provide
+          statistical confidence, we typically accept the shape of
+          the correlogram as the criterion for rhythmicity. If the
+          <ENAMEX TYPE="ORGANIZATION">correlogram</ENAMEX> is sinusoidal with peaks and troughs
+          occurring in the circadian range, we accept the signal as
+          rhythmic - even when the autocorrelation function fails
+          to be statistically significant. This subjective
+          <ENAMEX TYPE="ORGANIZATION">criterion</ENAMEX> follows from the fact that the confidence
+          interval of the correlogram is not based on variability
+          in the signal but solely on the number of data points
+          taken in the experiment (see [ <TIMEX TYPE="DATE">37</TIMEX> ] ). Following
+          inspection of the signal and the correlogram, several
+          methods are used to estimate period. We tend to use <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>
+          and the correlogram for 
+          luc data and we also include the
+          <ENAMEX TYPE="ORGANIZATION">correlogram</ENAMEX> and chi-squared periodogram analysis for
+          locomotor activity or eclosion. This permits a reality
+          check on the nature and quality of the putative
+          rhythmicity, including the provision of <NUMEX TYPE="CARDINAL">3</NUMEX> independent
+          estimates of the period. It is especially important to
+          analyze such results in a versatile manner when the
+          locomotor data were collected for a relatively small
+          number of <TIMEX TYPE="DATE">days</TIMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          The <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> transform can also be employed as a
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX>. The data are first transformed directly and the
+          coefficients plotted. If there is an area of the spectrum
+          that is interfering with the analysis, it may be removed
+          cleanly by zeroing out the coefficients in those areas of
+          the spectrum. The original data set is then reconstituted
+          by use of the inverse Fourier transform, which simply
+          runs the system in reverse. The resulting time series,
+          "Fourier-filtered" in this manner, is the original minus
+          the spectral elements that were causing the problem.
+          Recall that the sine and cosine terms in the original
+          Fourier decomposition were orthogonal; thus the only
+          <ENAMEX TYPE="FAC_DESC">areas</ENAMEX> of the spectrum affected are the ones whose
+          coefficients were removed.
+          Figure <NUMEX TYPE="CARDINAL">8cshows</NUMEX> the changes in the spectrum portrayed
+          in <TIMEX TYPE="DATE">8b</TIMEX> after all periods <TIMEX TYPE="TIME">longer than 40 hours</TIMEX> were removed
+          by zeroing coefficients beyond that value. The filtered
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 8d) gives a view of the data without
+          influence by long period trends in the data set. Note the
+          similarity between the result of the <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> filter shown
+          in Figure <NUMEX TYPE="CARDINAL">8dand</NUMEX> the result of the <ENAMEX TYPE="ORGANIZATION">Butterworth Filter</ENAMEX>
+          shown in Figure <TIMEX TYPE="DATE">5c</TIMEX>. As treatment with the Butterworth
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> produces comparable results and also normalizes
+          the data, we regularly use this technique, reserving the
+          Fourier filter for unusual situations. For example, when
+          an ultradian rhythm is embedded in a strong circadian
+          <ENAMEX TYPE="PERSON">rhythm</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> filtering is the most effective method
+          for looking solely at the ultradian rhythm (<ENAMEX TYPE="ORGANIZATION">HB Dowse</ENAMEX>,
+          unpublished observations). This is exemplified by the
+          isolation through <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> filtering of a circhoral
+          (<TIMEX TYPE="TIME">approximately hourly</TIMEX>) rhythm in human core body
+          temperature found against a background of a strong
+          <ENAMEX TYPE="SUBSTANCE">circadian</ENAMEX> temperature rhythm [ <TIMEX TYPE="DATE">59</TIMEX> ] .
+          One further method of period estimation needs to be
+          mentioned, as we and others have used it in the past [ <NUMEX TYPE="CARDINAL">10</NUMEX>
+          <NUMEX TYPE="CARDINAL">18</NUMEX> ] . It is called <ENAMEX TYPE="WORK_OF_ART">Fast Fourier Transform - Non Linear</ENAMEX>
+          Least Squares analysis (FFT-NLLS). This method estimates
+          the period of a rhythm with the <ENAMEX TYPE="FAC">Fast Fourier Transform</ENAMEX>,
+          then uses that value as a starting point to fit a
+          <ENAMEX TYPE="ORGANIZATION">sinusoid</ENAMEX> to the data by non linear least squares
+          estimation [ <NUMEX TYPE="CARDINAL">10 18</NUMEX> ] . This would presumably find a
+          period "in between the cracks" of the original <ENAMEX TYPE="ORGANIZATION">FFT</ENAMEX>. There
+          are problems with this approach which argue against its
+          <ENAMEX TYPE="PERSON">applicability</ENAMEX>. For the reasons given above, viz.
+          relatively low resolution compared with <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>, along with
+          the generation of artifactual side-lobes, we wish to
+          avoid using the <ENAMEX TYPE="ORGANIZATION">FFT</ENAMEX> and prefer to use <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> for estimates
+          of the period. Finally, the pitfall of <ENAMEX TYPE="ORGANIZATION">FFT-NLLS</ENAMEX> is that
+          the curve-fitting <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> associated with a probing
+          <ENAMEX TYPE="ORGANIZATION">sinusoid</ENAMEX> is sensitive to the presence of other
+          <ENAMEX TYPE="ORGANIZATION">periodicities</ENAMEX> in the data, variations in wave form from
+          cycle to cycle, and random noise. We prefer to analyze
+          the signal itself, rather than an idealized approximation
+          of the data obtained from a curve-fitting algorithm.
+          We have referred to the limits of resolution in time
+          series analysis. These issues are the same as those
+          connected with resolution involved in optical
+          <ENAMEX TYPE="ORGANIZATION">interferometry</ENAMEX> and obey the same laws [ <TIMEX TYPE="DATE">60</TIMEX> ] . For
+          example, the wider the spacing of the mirrors in the
+          interferometer, the better the resolution [ <TIMEX TYPE="DATE">60</TIMEX> ] .
+          <ENAMEX TYPE="ORGANIZATION">Resolution</ENAMEX> in digital signal analysis is the capacity of
+          a given system to separate <NUMEX TYPE="CARDINAL">two</NUMEX> arbitrarily close
+          frequencies into distinct peaks in the spectrum. As with
+          optical systems, the longer the record, the closer the
+          <TIMEX TYPE="DATE">two</TIMEX> peaks can be in frequency and still be separated. The
+          fundamental reason for this can best be visualized by
+          considering what happens to information when data are
+          passed back and forth from the time domain to the
+          frequency domain. If, for example, one is dealing with a
+          lengthy locomotor record that contains bouts of rhythmic
+          activity interspersed with inactivity, spectral analysis
+          can indicate the presence of the rhythm but nothing about
+          the local time-dependent features of the rhythm, such as
+          when the periods of inactivity occur, amplitude changes
+          over the course of the experiment, and transient phase
+          shifts. The relatively large number of complete <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> in
+          the data, however, yield very reliable information about
+          the periodicity; and if there is <NUMEX TYPE="CARDINAL">more than one</NUMEX> rhythm,
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> periods can more likely be resolved by
+          <ENAMEX TYPE="GPE">Fourier</ENAMEX>-based spectral analysis in the same manner that
+          <NUMEX TYPE="CARDINAL">two</NUMEX> wavelengths of light can be resolved into separate
+          lines in a spectroscope [ <TIMEX TYPE="DATE">60</TIMEX> ] . The relationship between
+          the number of cycles present in the data record and
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> is mathematically equivalent to the gain in
+          spectral resolution with the increase in distance between
+          mirrors in an interferometer [ <TIMEX TYPE="DATE">60</TIMEX> ] . On the other side
+          of the coin, if a very short series is transformed,
+          information about local conditions in the time domain
+          becomes more precise at the expense of resolution in the
+          frequency domain [the information in the time domain is
+          more precise; but the resolution in the frequency domain
+          is greatly reduced [ <TIMEX TYPE="DATE">38</TIMEX> ] .
+          The relationship between the number of <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> and the
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> of <TIMEX TYPE="DATE">period</TIMEX> by <ENAMEX TYPE="NATIONALITY">Fourier</ENAMEX> analysis is known for an
+          <ENAMEX TYPE="ORGANIZATION">ideal</ENAMEX> spectrum [ <TIMEX TYPE="DATE">61</TIMEX> ] . Although the theory is beyond the
+          scope of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, the resolution of <NUMEX TYPE="CARDINAL">two</NUMEX> distinct
+          <TIMEX TYPE="DATE">periods</TIMEX> based on <TIMEX TYPE="DATE">5 days</TIMEX> of data is to within <TIMEX TYPE="TIME">0.3 hours</TIMEX>
+          and the resolution for <TIMEX TYPE="DATE">one week</TIMEX> is <TIMEX TYPE="TIME">0.2 hours</TIMEX>. But these
+          estimates are unrealistic in practice, because in the
+          <ENAMEX TYPE="ORGANIZATION">ideal</ENAMEX> situation period and phase are precise and
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-invariant. By contrast, when actual experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are evaluated, the error for the estimate of the
+          period will vary as a result of noise in the signal,
+          peak-to-peak variation in the wave form, and variability
+          in the period itself over the duration of the experiment.
+          The standard deviation of the frequency estimate can be
+          calculated [ <TIMEX TYPE="DATE">61</TIMEX> ] . In practice, for example, when
+          comparing period estimates as a function of genotype, the
+          means for each group are compared statistically rather
+          than periods from <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>. If a difference in the
+          mean period in the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> appears statistically
+          significant, then we consider it believable even if the
+          difference is small and approaches the theoretical limit
+          of resolution for the length of the records.
+        
+        
+          Phase, phase response curves, phase coherence, and
+          comparison of phase
+          If a process is rhythmic, it can be represented by a
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX>, with the phase of the rhythm represented by the
+          angle of a vector. If <NUMEX TYPE="CARDINAL">two</NUMEX> processes of identical period
+          are occurring simultaneously, they may be compared with
+          respect to their relative phase. <NUMEX TYPE="CARDINAL">Two</NUMEX> questions regarding
+          phase are typically addressed. The <NUMEX TYPE="ORDINAL">first</NUMEX> asks how the
+          clock can be reset and is addressed by examining the
+          response of a rhythm to some incoming signal such as a
+          pulse of light. Typically, this sort of question leads to
+          the measurement of a phase response curve (<ENAMEX TYPE="ORGANIZATION">PRC</ENAMEX>). The <ENAMEX TYPE="ORGANIZATION">PRC</ENAMEX>
+          plots changes of phase as a function of when a stimulus
+          <ENAMEX TYPE="PERSON">pulse</ENAMEX> (e.g., <TIMEX TYPE="TIME">5 minutes</TIMEX> or <NUMEX TYPE="QUANTITY">1 hour</NUMEX> of light) is
+          administered. Several methods for evaluating <ENAMEX TYPE="ORGANIZATION">PRCs</ENAMEX> have
+          been <ENAMEX TYPE="PER_DESC">validated</ENAMEX> [ <TIMEX TYPE="DATE">62</TIMEX> ] ; the method we use is Aschoffs
+          <ENAMEX TYPE="DISEASE">Type II</ENAMEX> procedure. We will describe <NUMEX TYPE="CARDINAL">two</NUMEX> methods for
+          analyzing data used for evaluation of the <ENAMEX TYPE="ORGANIZATION">PRC</ENAMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX>
+          question asks what is the phase of the rhythm within <TIMEX TYPE="TIME">each</TIMEX>
+          cycle (or within a cycle on average)? This matter is
+          addressed by estimating <TIMEX TYPE="DATE">a given</TIMEX> phase reference point
+          (such as the peak) in a cycle. For instance one might
+          want to evaluate whether a group of rhythmic <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> is
+          <ENAMEX TYPE="ORGANIZATION">coherent</ENAMEX> (phase-synchronized). Alternatively, one might
+          want to know whether <NUMEX TYPE="CARDINAL">two or more</NUMEX> groups of subjects
+          exhibit maxima (and minima) for their fluctuating
+          parameters at different times.
+          The most straightforward method for determining phase
+          is to pick an easily identified landmark in the signal,
+          usually a peak, and note its time either with respect to
+          the actual time of day, or to that of the <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>'s
+          subjective <TIMEX TYPE="DATE">circadian day</TIMEX>. The initial stage of applying
+          this method usually requires a vigorous conditioning of
+          the data to make them smooth enough, so that a peak,
+          trough, or other <ENAMEX TYPE="ORG_DESC">landmark</ENAMEX> can be found reliably. <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX>
+          averaging and smoothing are typically necessary. Figure
+          9aand <ENAMEX TYPE="SUBSTANCE">9bshow</ENAMEX> averaged raw locomotor activity data for
+          flies that received a <TIMEX TYPE="TIME">5-minute</TIMEX> pulse of light (Figure <NUMEX TYPE="CARDINAL">9a</NUMEX>)
+          or control flies that were not perturbed by exogenous
+          <ENAMEX TYPE="PERSON">stimuli</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9b</NUMEX>). Figure <NUMEX TYPE="CARDINAL">9cshows</NUMEX> the smoothed curves
+          obtained from these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> superimposed on one
+          another. Figure <NUMEX TYPE="CARDINAL">9dplots</NUMEX> the difference between these two
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> on a <TIMEX TYPE="DATE">daily</TIMEX> basis, from which the estimate of the
+          shift can be evaluated (see Figure <ENAMEX TYPE="PER_DESC">caption</ENAMEX> for more
+          details). Note that if the behavior of the group
+          receiving the light pulse is affected, there may be
+          <ENAMEX TYPE="ORGANIZATION">transients</ENAMEX>. Transients result when the phase shift takes
+          some number of <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> to be complete before the new
+          steady phase is established. If transients are present
+          they can be detected by this method.
+          One disadvantage of the method depicted in Figure 9is
+          that it is subjective, i.e., whether a steady-state phase
+          shift has occurred is a matter of judgement. A second
+          method removes all subjectivity from the process and
+          gives an estimate based on the data set in its entirety
+          rather than on a day by day evaluation of the difference
+          <TIMEX TYPE="DATE">between two</TIMEX> peaks. This method is based on
+          cross-correlation analysis [ <TIMEX TYPE="DATE">37</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Cross</ENAMEX> correlation is
+          much like autocorrelation but is used to compare <NUMEX TYPE="CARDINAL">two</NUMEX>
+          different signals instead of <NUMEX TYPE="CARDINAL">one</NUMEX> data set against itself.
+          A probing series, <ENAMEX TYPE="PER_DESC">- exemplified</ENAMEX> here by the
+          non-light-pulsed <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of behaving flies (see Figure
+          <NUMEX TYPE="CARDINAL">10</NUMEX>)-is lagged against the time series of interest - the
+          light-pulsed <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. If there is no difference in the
+          phase between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, there will be the usual
+          peak of correlation at lag <NUMEX TYPE="CARDINAL">zero</NUMEX>. If there is a phase
+          difference, then that will be reflected quantitatively in
+          a displacement forward or backward in the position of the
+          central peak of the function. This is demonstrated in
+          Figure <NUMEX TYPE="CARDINAL">10</NUMEX>, employing the same data treated in Figure <NUMEX TYPE="CARDINAL">9</NUMEX>.
+          The advantage of this process is threefold: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) it treats
+          every data point, not just the time of the peaks; (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) it
+          does not require excessive data conditioning before
+          application of the principal piece of analysis; (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) it
+          obviates the need for judgment calls by the <ENAMEX TYPE="PER_DESC">analyst</ENAMEX> (such
+          as when has the steady state been reached). Note that in
+          Figure <NUMEX TYPE="CARDINAL">10we</NUMEX> crosscorrelated the average of the two
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, but in principle an estimate of the variability
+          in the data could be obtained by cross correlating each
+          of the pulsed <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> against the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.
+          The period of a rhythm does not predict its phase. For
+          example, one might wish to determine the phase of a
+          luciferase-reported molecular rhythm, with respect to the
+          peak of 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc expression in a group of
+          cultured tissue specimens maintained in <TIMEX TYPE="TIME">LD12:12</TIMEX>. As shown
+          in Figure <NUMEX TYPE="CARDINAL">11</NUMEX>, the approach to this problem involves
+          plotting the peak (the mean peak time within an
+          experiment) for each individual <ENAMEX TYPE="PER_DESC">specimen</ENAMEX> (isolated fly
+          wings in this case) that has been examined on a unit
+          circle using polar coordinates. A group mean vector is
+          then determined. The direction of the vector indicates
+          the phase of the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> (by convention phase <NUMEX TYPE="CARDINAL">0</NUMEX> corresponds
+          to lights on), and the magnitude of this vector indicates
+          the coherence of the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. Thus, in the extreme, if all
+          the points were uniformly dispersed around the circle,
+          the magnitude of the vector would be <NUMEX TYPE="CARDINAL">zero</NUMEX>; whereas if
+          they all occurred precisely in the same location, the
+          magnitude of the vector would be <NUMEX TYPE="CARDINAL">1</NUMEX>. A statistic,
+          <ENAMEX TYPE="ORGANIZATION">Rayleigh</ENAMEX>'s test, provides a z-score that makes it
+          possible to assess whether the magnitude of the average
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> is significant for the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, i.e., whether the
+          individual phase values are clustered tightly enough to
+          provide a significant estimate of the mean peak time [ <NUMEX TYPE="CARDINAL">63</NUMEX>
+          ] .
+          In addition, one might ask whether <NUMEX TYPE="CARDINAL">two</NUMEX> sample
+          <ENAMEX TYPE="PER_DESC">populations</ENAMEX> have the same phase. In Figure <NUMEX TYPE="CARDINAL">12</NUMEX>, we compare
+          
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc activity in cultured wings
+          vs. heads to ask whether the luciferase <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> activity
+          peaked at the same time in these <NUMEX TYPE="CARDINAL">two</NUMEX> tissues. In this
+          case <TIMEX TYPE="DATE">two</TIMEX> average vectors are compared, and an <ENAMEX TYPE="PRODUCT">F-</ENAMEX>statistic
+          (<ENAMEX TYPE="PERSON">Watson-Williams</ENAMEX>-<ENAMEX TYPE="PERSON">Stevens</ENAMEX> test in [ <TIMEX TYPE="DATE">63</TIMEX> ] ) is calculated
+          to test whether the means are drawn from the same
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX> or not.
+          More generally, the comparison of different rhythms
+          will be required to analyze the relationships amongst
+          <ENAMEX TYPE="PERSON">molecular</ENAMEX>, physiological and behavioral rhythms. One
+          feature of this analysis must be to examine how the phase
+          of these various rhythms predict one another. For
+          example, at a molecular level it seems that
+          <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> component of a mammalian <ENAMEX TYPE="ANIMAL">circadian</ENAMEX> clock
+          involves the antiphase expression of transcriptional
+          <ENAMEX TYPE="ORG_DESC">regulators</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . to illustrate such comparisons across
+          levels of analysis, we compare smoothed, normalized data
+          from 
+          <ENAMEX TYPE="PERSON">tim</ENAMEX>-luc expression amongst various
+          isolated body parts, the entire fly, and locomotor
+          activity in <TIMEX TYPE="TIME">LD 12:12</TIMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">13</NUMEX>).
+        
+      
+      
+        Conclusions
+        We have presented a collection of methods for analyzing
+        aspects of biological time series data across all
+        modalities of data acquisition. Although we discuss the
+        application of these tools to oscillating phenomena in one
+        <ENAMEX TYPE="PERSON">organism</ENAMEX>, they could as easily be applied to data involving
+        other kinds of rhythms in any <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The collection of
+        <ENAMEX TYPE="ORGANIZATION">analytical</ENAMEX> processes we employed for evaluating rhythmicity
+        and estimating period or phase represent, as far as we
+        know, a unique aggregation of analytical tools for the
+        analysis of biological data.
+        We were motivated to assemble this method for several
+        reasons. First, it is likely that insights into the biology
+        of circadian timing systems will emerge from the use of
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> procedures; this facilitates direct
+        comparisons among behavioral, biochemical, molecular, and
+        other signals - a possibility that has not been
+        well-explored in the literature. <NUMEX TYPE="ORDINAL">Second</NUMEX>, while some - but
+        nowhere near all - of these tools are available in
+        commercial packages, such products are expensive. More
+        important, they proved unsatisfying to us, because such
+        canned programs do not address the full range of temporally
+        related questions one wishes to ask (and modifying these
+        programs' code is usually not possible). Now that
+        <ENAMEX TYPE="PERSON">real-time</ENAMEX>, long-term methods are available to study
+        molecular rhythms in mammalian tissues as well as in
+        <ENAMEX TYPE="PERSON">microbes</ENAMEX>, <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>, and <ENAMEX TYPE="ANIMAL">insects</ENAMEX>, methods such as ours will
+        facilitate studies in a widening array of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>.
+      
+      
+        Materials and Methods
+        
+          Experimental data
+          All of the data used for analysis of luciferase
+          activity in whole flies or body parts has been published
+          previously [ <TIMEX TYPE="DATE">13</TIMEX> ] .
+          Adult locomotor activity data are all presented here
+          for the <NUMEX TYPE="ORDINAL">first</NUMEX> time. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> used to assess the effects of
+          trends (as depicted in Figure <NUMEX TYPE="CARDINAL">3and</NUMEX> in the text) were
+          collected using the <ENAMEX TYPE="ORGANIZATION">Trikinetics Drosophila</ENAMEX> Activity
+          <ENAMEX TYPE="ORGANIZATION">Monitoring System</ENAMEX> (see below). In these experiments 
+          <ENAMEX TYPE="GPE">Canton</ENAMEX>-S <ENAMEX TYPE="PER_DESC">males</ENAMEX> were reared in LD
+          <TIMEX TYPE="TIME">12:12</TIMEX> at <NUMEX TYPE="CARDINAL">25°</NUMEX> C and collected as <TIMEX TYPE="TIME">2-3 day</TIMEX> old young <ENAMEX TYPE="PER_DESC">adults</ENAMEX>.
+          These <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were then moved into an <ENAMEX TYPE="ORG_DESC">incubator</ENAMEX> where
+          they were placed in constant darkness; after <TIMEX TYPE="DATE">3 days</TIMEX> they
+          were loaded into the activity monitors under a dim red
+          safe-light.
+          The experiments described in <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 1employed 
+          <ENAMEX TYPE="ORGANIZATION">Canton-S</ENAMEX> as a wild type control
+          along with 
+          <NUMEX TYPE="CARDINAL">cyc 01/</NUMEX>+ [ <TIMEX TYPE="DATE">56</TIMEX> ] and 
+          cyc-deletion/+ , a deficiency
+          <ENAMEX TYPE="PERSON">strain Df</ENAMEX>(<NUMEX TYPE="MONEY">3L</NUMEX>)kto2 obtained from the <ENAMEX TYPE="GPE">Bloomington</ENAMEX> Stock
+          <ENAMEX TYPE="ORGANIZATION">Center</ENAMEX>. In these studies, <TIMEX TYPE="TIME">2-3 day</TIMEX> old <ENAMEX TYPE="PER_DESC">males</ENAMEX> were
+          collected and loaded into the activity monitors.
+          Locomotor activity rhythms were assessed in the <ENAMEX TYPE="ORG_DESC">incubator</ENAMEX>
+          under <ENAMEX TYPE="LAW">LD 12</ENAMEX>:<NUMEX TYPE="CARDINAL">12</NUMEX> for either <NUMEX TYPE="CARDINAL">5</NUMEX> or <TIMEX TYPE="DATE">6 days</TIMEX> before the interval
+          of constant darkness began (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          Eclosion data were obtained from the wild type ( 
+          <ENAMEX TYPE="ORGANIZATION">Canton-S</ENAMEX> ) using the Trikinetics
+          system [ <TIMEX TYPE="DATE">65</TIMEX> ] .
+          <ENAMEX TYPE="PERSON">Heartbeat</ENAMEX> was recorded optically by placing a <ENAMEX TYPE="ORGANIZATION">PI</ENAMEX> pupa
+          on a temperature-controlled stage of a binocular
+          <ENAMEX TYPE="PERSON">microscope</ENAMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX> eyepiece of which was fitted with a
+          <ENAMEX TYPE="ORGANIZATION">phototransistor</ENAMEX>. Changes in illumination caused by the
+          beating of the heart were registered by the
+          phototransistor, amplified, and recorded directly on the
+          disk of a desktop computer. The output is a direct plot
+          of voltage as a function of time over a <NUMEX TYPE="CARDINAL">30</NUMEX> s span of time
+          [ <TIMEX TYPE="DATE">25</TIMEX> ] .
+          Male mating song was recorded in an <ENAMEX TYPE="NATIONALITY">Insectavox</ENAMEX> [ <TIMEX TYPE="DATE">66</TIMEX> ]
+          microphone system. A male previously housed to elicit
+          maximal courtship was placed in the recording chamber
+          with a female. <ENAMEX TYPE="PERSON">Song</ENAMEX> was recorded directly through an <ENAMEX TYPE="ORGANIZATION">AD</ENAMEX>
+          converter into a microcomputer.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> analysis system
+          Most of the analytical tools outlined below have been
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> individually to previous 
+          Drosophila circadian rhythms data,
+          most saliently <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX> and autocorrelation were used in both
+          <ENAMEX TYPE="ORGANIZATION">behavioral</ENAMEX> and molecular studies [ <NUMEX TYPE="CARDINAL">39 15 13</NUMEX> ] .
+          <ENAMEX TYPE="PRODUCT">Butterworth</ENAMEX> filters have been employed in studies of
+          locomotor rhythms [ <TIMEX TYPE="DATE">13</TIMEX> ] . The Rhythmicity Index (RI) was
+          devised to facilitate studies on Drosophila heart
+          function behavioral studies [ <NUMEX TYPE="CARDINAL">46 25</NUMEX> ] and extended to the
+          
+          Drosophila luciferase assay [ <TIMEX TYPE="DATE">13</TIMEX> ]
+          . Phase coherence and comparison analyses [ <TIMEX TYPE="DATE">32</TIMEX> ] , have
+          appeared in <ENAMEX TYPE="ORGANIZATION">Yang et al.</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Cross</ENAMEX> correlation [ <TIMEX TYPE="DATE">37</TIMEX> ]
+          has not been employed previously for the study of
+          biological rhythms.
+        
+        
+          Input
+          The data files from eclosion and activity studies were
+          generated using the <ENAMEX TYPE="ORGANIZATION">Drosophila Activity Monitoring System</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">Trikinetics, Inc.</ENAMEX>, <ENAMEX TYPE="GPE">Waltham MA</ENAMEX>) [for ex., [ <TIMEX TYPE="DATE">33</TIMEX> ] ]. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX>
+          files generated by the <ENAMEX TYPE="PRODUCT">DAM</ENAMEX> system provides a header to
+          identify the name of the experiment, the location of the
+          subject in the monitoring device, the date, the number of
+          <ENAMEX TYPE="PERSON">bins</ENAMEX> and the length of the bin in <TIMEX TYPE="TIME">minutes</TIMEX>. Immediately
+          beneath this header, a string of numbers is arranged as a
+          single column with the number of activity counts per bin
+          listed for the duration of the experiment. In addition,
+          there are special code numbers associated with being
+          <ENAMEX TYPE="ORGANIZATION">offline</ENAMEX>. These appear in place of the activity counts
+          until the offline status has changed. These codes appear
+          in <ENAMEX TYPE="ORG_DESC">association</ENAMEX> when the power goes down or a short
+          circuit occurs in the system.
+          Our code reads these files by skipping the header and
+          identifying any warning codes. We handle the occasional
+          anomaly by using the average of the points on either side
+          of the missing bin. In addition, the data are linked to a
+          file that describes the lighting conditions (lights on or
+          off) for each experiment, so that the data can be plotted
+          (using data-display software newly written for this
+          study) against a background with shading appropriate to
+          the lighting condition.
+          The luciferase assay data were generated by a benchtop
+          scintillation counter (<ENAMEX TYPE="ORGANIZATION">Topcounter, Packard</ENAMEX>) [ <NUMEX TYPE="CARDINAL">10 18</NUMEX> ] .
+          The <ENAMEX TYPE="ORGANIZATION">Topcounter</ENAMEX> generates a file for each collection point
+          that contains all the samples evaluated at that time; our
+          code reorganizes this original data file such that a
+          distinct record is retrieved for each sample (individual
+          fly or tissue specimen dissected from it) with values
+          listed in the order of occurrence from the beginning
+          until <TIMEX TYPE="DATE">the end of each</TIMEX> experiment; the values are stored
+          internally as a <ENAMEX TYPE="ANIMAL">matrix</ENAMEX> whose columns represent individual
+          <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and whose rows represent observations at equally
+          separated time frames.
+          The description given above applies typically to the
+          files we analyze. However, there is nothing special about
+          these files and we wish to emphasize that our analysis
+          routines act on the matrix or data points we obtain from
+          the data collection files. In principle then, the only
+          barrier to analyzing data collected in any format is a
+          <ENAMEX TYPE="PERSON">way</ENAMEX> to read the data into a matrix and so our system
+          could be easily adapted to other data collection
+          schemes.
+        
+        
+          Processing
+          We used existing library functions (<ENAMEX TYPE="ORGANIZATION">Matlab</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX>
+          Processing <ENAMEX TYPE="PERSON">Toolbox</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Mathworks, Inc.</ENAMEX>) to implement the
+          Butterworth filter, autocorrelation, crosscorrelation,
+          and <ENAMEX TYPE="ORGANIZATION">Fourier</ENAMEX> analyses. For these methods, we wrote
+          functions to specify details such as the high and low
+          frequency cutoffs with the filter, for example.
+          We wrote the code to analyze trends; to perform <ENAMEX TYPE="ORGANIZATION">MESA</ENAMEX>;
+          to identify peaks in the data and evaluate a phase shift
+          by comparing <NUMEX TYPE="CARDINAL">two</NUMEX> data sets; to plot such peaks around a
+          <ENAMEX TYPE="ORGANIZATION">circle</ENAMEX> and calculate mean vectors associated with a given
+          set of peaks; to perform statistical tests on these
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>; to plot the data as shown above in Results and
+          Discussion.
+        
+        
+          Output
+          In addition to numerical output associated with the
+          analysis of a data set, all of the methods in our
+          ensemble generate graphic output. We found this output to
+          be an important part of our analytic process, in that
+          looking at straightforward numerical outputs is a
+          powerful aid to facilitate an intuitive understanding the
+          results of the mathematical manipulations. At least for
+          us, the statistical analysis is most meaningful when
+          supported by what the human eye can infer (see text for
+          more detail) from the graphical presentation of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+          The phase plots and actograms are generated by
+          functions written anew for this study. Actograms plot
+          counts per bin as a histogram across the day. All of the
+          actograms shown here are formatted as double plots with
+          <TIMEX TYPE="DATE">day 1 and day</TIMEX> <NUMEX TYPE="CARDINAL">2</NUMEX> on the first line, <TIMEX TYPE="DATE">day 2 and day</TIMEX> <NUMEX TYPE="CARDINAL">3</NUMEX> on the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> line and so on. These can be reformatted to change
+          the daylength on the horizontal axis to the nearest
+          increment defined by the sampling rate (for example, we
+          can plot the data modulo..<NUMEX TYPE="CARDINAL">.23.5</NUMEX> or <NUMEX TYPE="MONEY">24.0</NUMEX> or <NUMEX TYPE="MONEY">24.5</NUMEX> or...,
+          when data are collected every <TIMEX TYPE="TIME">0.5 hours</TIMEX>).
+          The present package was developed using MATLAB
+          (<ENAMEX TYPE="ORGANIZATION">Mathworks, Inc.</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Natick MA</ENAMEX>), version <NUMEX TYPE="CARDINAL">5</NUMEX> and version <ENAMEX TYPE="CONTACT_INFO">6,</ENAMEX>
+          along with the <ENAMEX TYPE="ORGANIZATION">Signal Processing</ENAMEX> tool box. While our code
+          was written in <ENAMEX TYPE="GPE">Matlab</ENAMEX>, it could be adapted for use with
+          similar products.
+        
+      
+    
+  

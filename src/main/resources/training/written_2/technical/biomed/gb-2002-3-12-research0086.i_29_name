@@ -1,0 +1,1773 @@
+
+  
+    
+      
+        Background
+        The functional <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> of metazoan genome sequences
+        represents <NUMEX TYPE="CARDINAL">one</NUMEX> of the greatest challenges in modern
+        biological research. For example, even with structural
+        constraints imposed by the genetic code to guide algorithm
+        design, the identification of all <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> in a
+        metazoan genome remains an unsolved computational problem.
+        The identification of functional non-coding sequences, such
+        as untranslated regions (UTRs), <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for
+        non-<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, and 
+        cis -regulatory elements, poses an
+        even more difficult problem for comprehensive genome
+        annotation, as the rules governing their <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> and
+        function remain more elusive. Despite these difficulties,
+        it is increasingly clear that comparative genomic
+        approaches will substantially aid efforts to annotate these
+        and other important sequence features. With whole-genome
+        sequence data quickly becoming available for several
+        <ENAMEX TYPE="PERSON">organisms</ENAMEX>, it is important to determine which species
+        comparisons and features of genome evolution will be most
+        useful for comparative genome annotation.
+        The genus 
+        Drosophila offers a
+        well-characterized evolutionary genetic system for
+        developing and testing methods for comparative genome
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX>. From the seminal <ENAMEX TYPE="PER_DESC">population</ENAMEX>-genetic and
+        <ENAMEX TYPE="ORGANIZATION">phylogenetic</ENAMEX> studies of <ENAMEX TYPE="ORGANIZATION">Dobzhansky</ENAMEX> and <ENAMEX TYPE="PER_DESC">co-workers</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>], and
+        the classification of taxonomic relationships in the genus
+        by <ENAMEX TYPE="PERSON">Patterson</ENAMEX>, <ENAMEX TYPE="PERSON">Stone</ENAMEX> and others [ <ENAMEX TYPE="LAW">2</ENAMEX>], 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> has long served as a model
+        system for developing and testing evolutionary principles
+        at the morphological and cytological levels. The genus 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> has also served as a
+        proving ground for developing and testing evolutionary
+        principles at the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>] and <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequence levels [
+        <NUMEX TYPE="CARDINAL">4</NUMEX>]. In addition, for <TIMEX TYPE="DATE">over a decade</TIMEX> and <TIMEX TYPE="DATE">a half</TIMEX>, comparative
+        sequence analysis has had an important role in the
+        functional analysis of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and 
+        cis -regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> in 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> (see, for example, [ <ENAMEX TYPE="CONTACT_INFO">5,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">6</NUMEX>]). This history of research has culminated in a rich
+        understanding of the pattern and process of molecular
+        evolution in the genus 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>]. With the complete
+        sequencing of the euchromatic portion of the 
+        Drosophila melanogaster genome [ <ENAMEX TYPE="CONTACT_INFO">8,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">9</NUMEX>], this prior knowledge can be applied to the task of
+        comparative genome annotation.
+        We have undertaken a pilot study to assess the
+        contribution of large-scale comparative genomic sequence
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> on the functional <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> of the 
+        Drosophila genome. Our goals are to
+        identify the <ENAMEX TYPE="ANIMAL">species</ENAMEX> whose genome sequences would be most
+        useful in annotating the 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome, and to
+        identify features of genome evolution that can assist the
+        annotation of <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> and the non-coding 
+        cis -regulatory <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> controlling
+        their transcription. The lessons learned from this study
+        have implications for efforts to annotate the entire 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome using
+        comparative sequence data from the forthcoming 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura genome [ <TIMEX TYPE="DATE">10</TIMEX>] as well
+        as the recently completed 
+        Anopheles gambiae genome [ <TIMEX TYPE="DATE">11</TIMEX>].
+        Beyond the initial analyses presented here, these data also
+        serve as materials for the further study of molecular
+        evolutionary processes in 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and the calibration of
+        comparative sequence analysis tools.
+        Here, we report the isolation and analysis of genomic
+        sequences from <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> regions representing both
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-rich and gene-poor <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> of the 
+        Drosophila genome, totaling <NUMEX TYPE="CARDINAL">over 1.25</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">megabases</ENAMEX> (<ENAMEX TYPE="PRODUCT">Mb</ENAMEX>) of <ENAMEX TYPE="SUBSTANCE">DNA sequence</ENAMEX>. These regions were isolated
+        from fosmid <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> of <NUMEX TYPE="CARDINAL">four</NUMEX> divergent 
+        Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> ( 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+        willistoni , and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ) chosen to cover a
+        range of divergence times (<ENAMEX TYPE="PRODUCT">6-15</ENAMEX>, <TIMEX TYPE="DATE">46, 53</TIMEX> and <NUMEX TYPE="CARDINAL">61-65 million</NUMEX>
+        <TIMEX TYPE="DATE">years</TIMEX>, respectively) from the <ENAMEX TYPE="ANIMAL">reference species</ENAMEX>, 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster [ <ENAMEX TYPE="LAW">7</ENAMEX>]. Using the
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> and curation tools described in
+        accompanying papers [ <TIMEX TYPE="DATE">12, 13, 14</TIMEX>], we predicted the coding
+        sequence content of these sequences for subsequent
+        comparative analyses. Our results indicate that the
+        majority of coding sequences predicted in 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster can be identified in
+        divergent 
+        Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> and show evidence
+        of functional constraint. <ENAMEX TYPE="ORGANIZATION">Microsynteny</ENAMEX> is generally
+        maintained at the scale of individual <ENAMEX TYPE="PER_DESC">fosmid</ENAMEX> clones, and
+        the few rearrangement breakpoints, transposable elements
+        and <ENAMEX TYPE="SUBSTANCE">gene transpositions</ENAMEX> can readily be identified. Analysis
+        of coding sequence evolution suggests that uncharacterized
+        genes, which we will refer to as 'predicted' <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, tend to
+        have a higher rate of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> evolution than 'known' genes
+        - those genes that have been selected for experimental
+        study and thus are more likely to have easily discerned
+        functions. Analysis of non-coding sequence evolution
+        reveals that levels of conservation vary with divergence
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>, and that conserved non-coding sequences (CNCSs)
+        exhibit a striking pattern of spatial clustering in 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . Using transgenic
+        <ENAMEX TYPE="PER_DESC">reporter assays</ENAMEX> we show that <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters can be used to
+        accurately predict a <ENAMEX TYPE="FAC_DESC">developmentally</ENAMEX> regulated enhancer in
+        the 
+        <ENAMEX TYPE="ORGANIZATION">apterous</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> ) region. We discuss the
+        implications of our results for comparative approaches to
+        <ENAMEX TYPE="SUBSTANCE">protein-coding</ENAMEX> and 
+        cis -regulatory sequence prediction
+        in the genus 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+      
+      
+        Results
+        
+          Isolation and sequencing of genomic regions from
+          <ENAMEX TYPE="PERSON">divergent Drosophilaspecies</ENAMEX>
+          On the basis of genome size considerations and the
+          desire to investigate a range of divergence times in the
+          genus 
+          Drosophila , we constructed fosmid
+          <ENAMEX TYPE="PERSON">libraries</ENAMEX> (<NUMEX TYPE="CARDINAL">approximately 40</NUMEX>-kb inserts) for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">willistoni</ENAMEX> and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis is closely related to
+          the <ENAMEX TYPE="ANIMAL">well-studied species</ENAMEX>, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis , but has been reported
+          to have less dispersed repetitive <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> than 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis (<ENAMEX TYPE="PERSON">Kevin White</ENAMEX>, personal
+          <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>). We designed degenerate <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> primers for a
+          set of <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">well-characterized genes</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">apterous</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ap</ENAMEX>), even-skipped (<TIMEX TYPE="TIME">eve</TIMEX>),
+          fushi-tarazu (ftz), twist (twi) , and 
+          <ENAMEX TYPE="CONTACT_INFO">Rhodopsins 1, 2, 3</ENAMEX> and 
+          <NUMEX TYPE="CARDINAL">4</NUMEX> ( 
+          Rh1, <TIMEX TYPE="DATE">Rh2</TIMEX>, <ENAMEX TYPE="PRODUCT">Rh3</ENAMEX> and 
+          Rh4 )) to obtain species-specific
+          sequence-tagged <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> (STSs) that were subsequently used
+          for hybridization to gridded <ENAMEX TYPE="SUBSTANCE">fosmid</ENAMEX> filters (see
+          Materials and methods). Positive clones from the library
+          screen were verified by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> and restriction mapped to
+          choose the longest clone containing the <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene
+          and its regulatory regions.
+          In the initial design of this project, comparative
+          sequence data was to be collected from a 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis <ENAMEX TYPE="ORGANIZATION">P1</ENAMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>]. Using
+          a <ENAMEX TYPE="GPE">PCR</ENAMEX>-based plate-pool screening strategy, we isolated a
+          P1 <ENAMEX TYPE="PER_DESC">clone</ENAMEX> from this <ENAMEX TYPE="ORG_DESC">library</ENAMEX> containing an <NUMEX TYPE="CARDINAL">83.2</NUMEX>-kb insert
+          from the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> region of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis. Sequencing of this
+          <ENAMEX TYPE="PERSON">clone</ENAMEX> revealed long stretches of <ENAMEX TYPE="SUBSTANCE">repetitive DNA</ENAMEX>, which
+          complicated both <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> and comparative analyses. In
+          addition, the insert size of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis <ENAMEX TYPE="PRODUCT">P1</ENAMEX> library
+          (<TIMEX TYPE="TIME">approximately 60-80 kb</TIMEX>) was greater than necessary for
+          comparative analysis of single gene regions. This clone
+          was used to guide transgenic <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> analysis (see
+          below), but has not been included in the other analyses
+          reported here.
+          In total, <NUMEX TYPE="CARDINAL">30</NUMEX> fosmid clones were isolated and sequenced
+          using methods described in [ <ENAMEX TYPE="LAW">9</ENAMEX>] which sum to <NUMEX TYPE="CARDINAL">1,257,069</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>. All clones were finished to an estimated error rate
+          of <NUMEX TYPE="CARDINAL">fewer than 0.17</NUMEX> errors per <NUMEX TYPE="CARDINAL">10</NUMEX> kb, with an average
+          estimated error rate of <NUMEX TYPE="CARDINAL">0.03</NUMEX> errors per <NUMEX TYPE="CARDINAL">10</NUMEX> kb. The
+          lengths of fosmids sequenced for the <NUMEX TYPE="CARDINAL">eight</NUMEX> candidate
+          regions are shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Though we were able to
+          obtain species-specific <ENAMEX TYPE="ORGANIZATION">STSs</ENAMEX> for the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni twi gene, we were not
+          able to obtain clones for this region from the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni fosmid <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. We
+          were also not able to obtain a <ENAMEX TYPE="ANIMAL">species</ENAMEX>-specific probe for
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni ftz , nor could we
+          obtain any 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni ftz clones using
+          probes from other non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Also shown in
+          <ENAMEX TYPE="PRODUCT">Table 1are</ENAMEX> the lengths and locations of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genomic regions
+          corresponding to the <ENAMEX TYPE="ORG_DESC">union</ENAMEX> of the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> sequences
+          homologous to <NUMEX TYPE="CARDINAL">all four</NUMEX> non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The
+          union of sequences from all non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> for
+          the <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> regions covers <NUMEX TYPE="QUANTITY">494.6 kb</NUMEX> of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome; an
+          additional <NUMEX TYPE="CARDINAL">65.3</NUMEX> kb of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genomic sequence
+          was sampled owing to rearrangements in non-melanogaster
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Thus the <ENAMEX TYPE="PRODUCT">1.25 Mb</ENAMEX> of comparative data presented
+          here span over <NUMEX TYPE="CARDINAL">0.5</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> of coding and non-coding sequences
+          of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome.
+        
+        
+          Comparative annotation of coding sequences
+          The <NUMEX TYPE="CARDINAL">30</NUMEX> non-melanogaster fosmid (and the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis <ENAMEX TYPE="ORGANIZATION">ap P1</ENAMEX>) sequences were
+          computationally processed using the pipeline used to
+          <ENAMEX TYPE="ORGANIZATION">re</ENAMEX>-annotate the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome [ <TIMEX TYPE="DATE">12</TIMEX>]. The
+          only major modification to this <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> was to add an
+          additional tier of evidence containing the results of
+          <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> searches of all <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster peptides [ <TIMEX TYPE="DATE">14</TIMEX>]
+          against non-melanogaster sequences. Predicted coding
+          sequences were manually verified and refined using the
+          <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> annotation tool [ <TIMEX TYPE="DATE">13</TIMEX>]. As no expressed sequence
+          <ENAMEX TYPE="PERSON">tag</ENAMEX> (<TIMEX TYPE="TIME">EST</TIMEX>) information exists to annotate transcribed
+          non-coding sequences (such as <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>) for the <NUMEX TYPE="CARDINAL">four</NUMEX>
+          non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>, we annotated only
+          <ENAMEX TYPE="SUBSTANCE">protein-coding gene</ENAMEX> and exon <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>. Thus, in keeping
+          with other gene-prediction studies (for example [ <TIMEX TYPE="DATE">16</TIMEX>]),
+          we use the terms gene and exon to refer to the translated
+          components of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and exons.
+          In the <NUMEX TYPE="CARDINAL">30</NUMEX> fosmids, we predict a total of <NUMEX TYPE="CARDINAL">164</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> in non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> (<NUMEX TYPE="MONEY">53</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , <NUMEX TYPE="CARDINAL">41</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , <NUMEX TYPE="CARDINAL">39</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni , <NUMEX TYPE="CARDINAL">31</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ) that form
+          orthologous clusters with <NUMEX TYPE="CARDINAL">81</NUMEX> 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">81</NUMEX>
+          genes, <NUMEX TYPE="CARDINAL">30</NUMEX> are 'known' genes that have been functionally
+          characterized in some way by the <ENAMEX TYPE="GPE_DESC">community</ENAMEX> of 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>; the
+          remaining <NUMEX TYPE="CARDINAL">51</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are 'predicted' <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> based only on
+          the evidence in the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX> ([ <TIMEX TYPE="DATE">14</TIMEX>] and see
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> in the Additional data files
+          <ENAMEX TYPE="LAW">section</ENAMEX>). Of the <NUMEX TYPE="CARDINAL">164</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> predicted in non-melanogaster
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, <NUMEX TYPE="CARDINAL">133</NUMEX> (<NUMEX TYPE="PERCENT">81%</NUMEX>) are full length; the remaining <NUMEX TYPE="CARDINAL">31</NUMEX>
+          (<NUMEX TYPE="PERCENT">19%</NUMEX>) are partial coding sequences that span the edge of
+          the sequenced genomic clone. In non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>,
+          we predict <NUMEX TYPE="CARDINAL">495</NUMEX> coding exons (<ENAMEX TYPE="CONTACT_INFO">148</ENAMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , <NUMEX TYPE="CARDINAL">133</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , <NUMEX TYPE="CARDINAL">111</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni , <NUMEX TYPE="CARDINAL">103</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ) that form
+          orthologous clusters with <NUMEX TYPE="CARDINAL">264</NUMEX> 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster coding exons. On
+          average, there are <NUMEX TYPE="CARDINAL">approximately two</NUMEX> non-melanogaster
+          species sampled per orthologous gene and coding exon
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. <NUMEX TYPE="CARDINAL">Fifteen</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="CARDINAL">10</NUMEX> complete) and <NUMEX TYPE="CARDINAL">39</NUMEX> coding exons
+          were sequenced in <NUMEX TYPE="CARDINAL">all four</NUMEX> non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          Qualitatively, our data reveal that the majority of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> gene
+          models are highly conserved in divergent 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX>. This made it
+          possible to automatically identify orthologous <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in
+          non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> results in
+          conjunction with <ENAMEX TYPE="PERSON">Genie</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>] and/or GENSCAN [ <TIMEX TYPE="DATE">18</TIMEX>]
+          predictions to improve intron-exon boundaries and
+          identify small/divergent exons in <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>. In the few
+          discrepant cases where no clear ortholog could be
+          <ENAMEX TYPE="ORGANIZATION">unambiguously</ENAMEX> identified (such as the <NUMEX TYPE="CARDINAL">four</NUMEX> closely
+          related <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the 
+          Rhodopsin gene <ENAMEX TYPE="PER_DESC">family</ENAMEX>), we used the
+          conserved microsyntenic gene orders maintained in these
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX> to resolve orthologs (see below). With the
+          exception of the retrotransposition events discussed
+          below, the intron-exon structure of gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> is highly
+          conserved as well: <NUMEX TYPE="CARDINAL">only one</NUMEX> case of intron gain was
+          observed in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis <TIMEX TYPE="DATE">Rh2</TIMEX> , as has been
+          reported previously for 
+          Rh2 in the closely related <ENAMEX TYPE="ANIMAL">species</ENAMEX>,
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis [ <TIMEX TYPE="DATE">19</TIMEX>]. For a small class
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          BcDNA:<ENAMEX TYPE="CONTACT_INFO">LD21213, Gr59a, Gr59b, CG9895,</ENAMEX>
+          CG10887, <TIMEX TYPE="DATE">CG17186</TIMEX>, <TIMEX TYPE="DATE">CG4733</TIMEX> ), orthologs could be
+          identified in divergent <ENAMEX TYPE="ANIMAL">species</ENAMEX>, but amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> sequences
+          could not be reliably aligned with the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster gene model. In
+          addition, orthologs of <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          CG13029, <TIMEX TYPE="DATE">CG14294</TIMEX>, <TIMEX TYPE="DATE">CG12133</TIMEX>,
+          CG12378 ) could not be identified in non-melanogaster
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> except in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , the species most
+          closely related to 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster . The absence of
+          these genes is not simply due to insufficient sampling,
+          since in these cases <TIMEX TYPE="DATE">both 5</TIMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' neighboring genes
+          could be identified in more divergent <ENAMEX TYPE="ANIMAL">species</ENAMEX> (see Figure
+          <NUMEX TYPE="CARDINAL">2</NUMEX>, for example). These may represent genes overpredicted
+          in both 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster , lineage-specific
+          genes which evolved before the divergence of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , or genes which have
+          transposed from (or to) other locations in the genomes of
+          the more divergent species.
+          We used an evolutionary genetic approach, the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test, to assess the accuracy of
+          these gene and exon predictions [ <TIMEX TYPE="DATE">20</TIMEX>]. This test relies
+          on the assumption that functionally constrained
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding sequences should exhibit significantly
+          lower rates of evolution in amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX>-encoding
+          nucleotide <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> (typically <NUMEX TYPE="ORDINAL">first</NUMEX> and <NUMEX TYPE="ORDINAL">second</NUMEX> positions in
+          a codon) relative to silent sites (typically third
+          positions in a codon). Quantitatively, this leads to the
+          prediction that the ratio of the average rate of
+          <ENAMEX TYPE="SUBSTANCE">amino-acid substitution</ENAMEX> per site (<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a ) relative to the average rate of
+          silent substitution per site (<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) for functionally constrained
+          coding sequences should be significantly less than <NUMEX TYPE="CARDINAL">1</NUMEX> [
+          <NUMEX TYPE="CARDINAL">21</NUMEX>]. Genes or exons which have a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">s ≈ 1</ENAMEX> are inferred to evolve in the
+          absence of functional constraint; <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or exons which
+          have a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s ></ENAMEX> <ENAMEX TYPE="PRODUCT">1</ENAMEX> are inferred to evolve under
+          the influence of positive selection. The significance of
+          a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratio can be determined by a
+          likelihood ratio test of the probabilities of the data
+          under the alternative hypotheses of functional constraint
+          relative to no constraint [ <TIMEX TYPE="DATE">22</TIMEX>]. Genes or coding exons
+          with a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratio significantly less than 1
+          <ENAMEX TYPE="ORGANIZATION">'pass</ENAMEX>' the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test; <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or coding exons with a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>
+          
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratio not significantly less than 1
+          <ENAMEX TYPE="ORGANIZATION">'fail</ENAMEX>' the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test. The power of this test to
+          detect functional constraint is influenced both by
+          evolutionary distance and sequence length [ <TIMEX TYPE="DATE">20</TIMEX>]; thus we
+          analyzed both <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and coding exons in pairwise
+          comparison with <NUMEX TYPE="CARDINAL">all four</NUMEX> non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          All pairwise gene-level comparisons studied here
+          <ENAMEX TYPE="ORGANIZATION">exhibited K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratios <NUMEX TYPE="CARDINAL">less than one</NUMEX> (see
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> in the Additional data files
+          <ENAMEX TYPE="LAW">section</ENAMEX>). <NUMEX TYPE="CARDINAL">One hundred and fifty</NUMEX>-<NUMEX TYPE="CARDINAL">five</NUMEX> of <NUMEX TYPE="MONEY">164</NUMEX> (<NUMEX TYPE="PERCENT">94.5%</NUMEX>) of
+          these <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratios were significantly less than
+          <NUMEX TYPE="CARDINAL">1</NUMEX>, indicating that the vast majority of genes in our
+          sample show evidence of functional constraint. All <NUMEX TYPE="CARDINAL">nine</NUMEX>
+          pairwise comparisons that fail the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test at the gene level were 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster-D.
+          erecta comparisons, and <NUMEX TYPE="CARDINAL">eight</NUMEX> out of <NUMEX TYPE="CARDINAL">nine</NUMEX> involved
+          predicted genes (<ENAMEX TYPE="PRODUCT">Supplementary Table 1</ENAMEX>). Genomic
+          sequences for <NUMEX TYPE="CARDINAL">six</NUMEX> of the <NUMEX TYPE="CARDINAL">nine</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> which fail the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test at the gene level were sampled
+          in more divergent <ENAMEX TYPE="ANIMAL">species</ENAMEX>: <NUMEX TYPE="CARDINAL">four</NUMEX> of these <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> could
+          be identified in more divergent <ENAMEX TYPE="ANIMAL">species</ENAMEX> ( 
+          Lmpt, <TIMEX TYPE="DATE">CG10887</TIMEX>, <TIMEX TYPE="DATE">CG14292</TIMEX> , and 
+          CG4468 ), whereas <NUMEX TYPE="CARDINAL">two</NUMEX> could not ( 
+          CG12378 and 
+          CG14294 ), indicating that genes
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in divergent species can fail gene-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests in comparisons among closely
+          related species like 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta . Of the <NUMEX TYPE="CARDINAL">four</NUMEX> genes
+          identified only in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta and not in more distantly
+          related <ENAMEX TYPE="ANIMAL">species</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> pass 
+          CG12133 and 
+          CG13029 ) and <NUMEX TYPE="CARDINAL">two</NUMEX> fail ( 
+          CG12378 and 
+          CG14294 ) the gene-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test. We note that of these <NUMEX TYPE="CARDINAL">four</NUMEX>
+          genes, the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that pass ( 
+          CG12133 and 
+          CG13029 ) have <ENAMEX TYPE="DISEASE">multiple exons</ENAMEX>,
+          whereas the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that fail ( 
+          CG12378 and 
+          CG14294 ) have only a single exon.
+          This result indicates that at least some of the genes
+          found only in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta are likely to be real
+          genes under functional constraint.
+          Though the majority of pairwise exon level comparisons
+          have <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratios <NUMEX TYPE="CARDINAL">less than one</NUMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), a
+          much lower proportion of pairwise comparisons at the exon
+          level pass the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test. In total, <NUMEX TYPE="PERCENT">71.9%</NUMEX> (<NUMEX TYPE="MONEY">356/495</NUMEX>) of
+          pairwise comparisons at the exon level pass the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test: <NUMEX TYPE="PERCENT">54.0%</NUMEX> (<NUMEX TYPE="MONEY">80/148</NUMEX>) for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta ; <NUMEX TYPE="PERCENT">78.9%</NUMEX> (<NUMEX TYPE="MONEY">105/133</NUMEX>) for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura ; <NUMEX TYPE="PERCENT">81.1%</NUMEX> (<NUMEX TYPE="MONEY">90/111</NUMEX>)
+          for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni ; and <NUMEX TYPE="PERCENT">79.6%</NUMEX> (<NUMEX TYPE="MONEY">82/103</NUMEX>)
+          for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis . Coding exons from
+          known and predicted genes pass the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test at similar rates: overall,
+          (<NUMEX TYPE="PERCENT">72.2%</NUMEX> known versus <NUMEX TYPE="PERCENT">71.1%</NUMEX> predicted), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta (<NUMEX TYPE="PERCENT">56.6%</NUMEX> known versus <NUMEX TYPE="PERCENT">50.0%</NUMEX>
+          predicted), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura (<NUMEX TYPE="PERCENT">80.4%</NUMEX> known
+          versus <NUMEX TYPE="PERCENT">75.6%</NUMEX> predicted), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni (<NUMEX TYPE="PERCENT">81.5%</NUMEX> known versus
+          <NUMEX TYPE="PERCENT">82.1%</NUMEX> predicted), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (<NUMEX TYPE="PERCENT">78.0%</NUMEX> known versus
+          <NUMEX TYPE="PERCENT">80.6%</NUMEX> predicted). The majority of exons that fail the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test still have <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratios <NUMEX TYPE="CARDINAL">less than 1</NUMEX>; <NUMEX TYPE="CARDINAL">only six</NUMEX>
+          non-significant pairwise exon comparisons (<NUMEX TYPE="CARDINAL">one</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , one in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , <NUMEX TYPE="CARDINAL">two</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni , and <NUMEX TYPE="CARDINAL">two</NUMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ) have <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratios greater than 1 (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). As
+          with gene-level comparisons, the most closely related
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , fails the highest
+          proportion of exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests. In contrast to gene-level
+          comparisons, there is no tendency for exons from
+          predicted genes to fail <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests relative to exons from known
+          genes.
+          Pairwise comparisons that do not pass the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test could result from misannotated
+          <ENAMEX TYPE="ORGANIZATION">exons</ENAMEX> or an insufficient amount of divergence to resolve
+          differential rates of amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> and silent site
+          evolution. Failure to pass exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests because of insufficient
+          divergence is a function of divergence time and exon
+          length [ <TIMEX TYPE="DATE">20</TIMEX>]. Our results suggest that both factors
+          contribute to non-significant exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests between <ENAMEX TYPE="ANIMAL">species</ENAMEX> in the genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . The fact that the most
+          closely related <ENAMEX TYPE="ANIMAL">species</ENAMEX>, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , fails the highest
+          proportion of gene-and exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests indicates that insufficient
+          divergence time contributes to non-significant
+          comparisons. Exon length is also a factor, as there is a
+          tendency for shorter exons to fail <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests in our data. For example, the
+          average length of all exons failing the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test in comparisons between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura is <NUMEX TYPE="CARDINAL">22.1</NUMEX> codons,
+          and the average length of all <ENAMEX TYPE="PRODUCT_DESC">exons</ENAMEX> passing the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test is <NUMEX TYPE="CARDINAL">152.1</NUMEX> codons. Similar
+          results are obtained for pairwise comparisons involving 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis , and for both known
+          and predicted <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (data not shown).
+          To determine if insufficient divergence time is the
+          major cause of non-significant exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests, we performed multi-species
+          exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests that capitalize on a greater
+          total amount of divergence for a given exon [ <TIMEX TYPE="DATE">20</TIMEX>]. The
+          question addressed by this analysis is: does the addition
+          of <NUMEX TYPE="CARDINAL">a third</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> to 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster-D.
+          pseudoobscura pairwise comparisons increase the
+          proportion of exons that pass exon-level <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests? For this analysis, we
+          analyzed exons that failed pairwise tests between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura using triplets
+          involving 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">pseudoobscura</ENAMEX> and <NUMEX TYPE="CARDINAL">one</NUMEX> other non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          Using the same cutoffs for the pairwise exon-level
+          <ENAMEX TYPE="PERSON">analyses</ENAMEX> and a guide tree based on Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, we tested
+          <TIMEX TYPE="DATE">16, 14 and 13</TIMEX> exons which did not show evidence of
+          functional constraint between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , for which we
+          have sequence data available in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis , respectively. Only
+          <NUMEX TYPE="CARDINAL">2</NUMEX> of the <TIMEX TYPE="DATE">16</TIMEX> (<NUMEX TYPE="PERCENT">12.5%</NUMEX>) non-significant exon-level 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster-D.
+          pseudoobscura comparisons pass the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s test when 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta is included as a <NUMEX TYPE="ORDINAL">third</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, whereas <NUMEX TYPE="CARDINAL">6</NUMEX> of <NUMEX TYPE="MONEY">14</NUMEX> (<NUMEX TYPE="PERCENT">42.8%</NUMEX>) and <NUMEX TYPE="CARDINAL">6</NUMEX> of <NUMEX TYPE="MONEY">13</NUMEX> (<NUMEX TYPE="PERCENT">46.1%</NUMEX>) pass
+          when 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis are included as a
+          <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX>, respectively. These results demonstrate
+          that multiple comparisons among divergent species can
+          reveal functional constraint acting on coding exons that
+          cannot otherwise be detected in pairwise comparisons.
+          Finally, as a preliminary assessment of the relative
+          utility of 
+          A. gambiae genome sequences for
+          comparative gene prediction in 
+          Drosophila , we attempted to
+          identify homologs in 
+          A. gambiae of the <NUMEX TYPE="CARDINAL">81</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for
+          which we have comparative sequence data in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . For <NUMEX TYPE="CARDINAL">21</NUMEX> of the <NUMEX TYPE="CARDINAL">81</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          in our study (<NUMEX TYPE="PERCENT">25.9%</NUMEX>) we were not able to obtain a clear
+          <ENAMEX TYPE="ORGANIZATION">homolog</ENAMEX> (defined as a high-scoring pair (HSP) with an
+          expected (<ENAMEX TYPE="ORGANIZATION">E</ENAMEX>) value <NUMEX TYPE="CARDINAL">less than 10</NUMEX> -20and greater than or
+          equal to <NUMEX TYPE="PERCENT">30%</NUMEX> identity over <NUMEX TYPE="CARDINAL">100</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> using default
+          parameters of <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX>) in the 
+          A. gambiae mapped scaffold
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>; <NUMEX TYPE="CARDINAL">11</NUMEX> of these <NUMEX TYPE="CARDINAL">21</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> did not yield any <ENAMEX TYPE="ORGANIZATION">HSPs</ENAMEX> at
+          all. These results are compatible with a recent
+          whole-genome analysis showing that <NUMEX TYPE="PERCENT">18.6%</NUMEX> of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have no clear
+          <ENAMEX TYPE="ORGANIZATION">homolog</ENAMEX> in 
+          A. gambiae [ <TIMEX TYPE="DATE">23</TIMEX>]. No clear homolog
+          could be identified in the 
+          A. gambiae genome sequences for
+          <NUMEX TYPE="CARDINAL">three</NUMEX> of <NUMEX TYPE="MONEY">30</NUMEX> (<NUMEX TYPE="PERCENT">10.0%</NUMEX>) known genes in our dataset, whereas a
+          greater than <NUMEX TYPE="CARDINAL">three</NUMEX> times higher proportion of predicted
+          genes, <NUMEX TYPE="CARDINAL">18</NUMEX> of <NUMEX TYPE="MONEY">51</NUMEX> (<NUMEX TYPE="PERCENT">35.3%</NUMEX>), had no clear homolog in 
+          A. gambiae . <TIMEX TYPE="TIME">Five</TIMEX> 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> - <NUMEX TYPE="CARDINAL">the four</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the 
+          Rhodopsin gene <ENAMEX TYPE="PER_DESC">family</ENAMEX> and 
+          CG5245 - have <ENAMEX TYPE="DISEASE">multiple HSPs</ENAMEX> in the 
+          A. gambiae genome sequences. We
+          were able to resolve orthology for 
+          Rh4 <TIMEX TYPE="DATE">only</TIMEX>, as the 
+          sina <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in 
+          A. gambiae is contained within the 
+          Rh4 gene as in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and other species
+          in the subgenus 
+          <ENAMEX TYPE="ORGANIZATION">Sophophora</ENAMEX> .
+        
+        
+          <ENAMEX TYPE="PERSON">Rearrangement</ENAMEX> and transposition of genomic
+          sequences
+          Using the gene predictions discussed above as
+          orthologous markers, we addressed the question of whether
+          the microsyntenic relationships in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genomic sequence
+          surveyed are conserved in non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>. In
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, our data indicate that the microsyntenic order
+          of coding and non-coding sequences is highly conserved in
+          the genus 
+          Drosophila at the scale of
+          individual <ENAMEX TYPE="PER_DESC">fosmids</ENAMEX> (<NUMEX TYPE="MONEY">approximately 40 kb</NUMEX>). Our data
+          provide evidence for <NUMEX TYPE="CARDINAL">only six</NUMEX> genomic rearrangements in
+          these sequences occurring in the phylogeny of these <NUMEX TYPE="CARDINAL">five</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX> each in the lineages leading to the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ftz, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura
+          Rh1, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <TIMEX TYPE="TIME">eve</TIMEX>, <TIMEX TYPE="DATE">Rh1</TIMEX> , and 
+          Rh3 <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>, as well as in the
+          ancestor of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster/<ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta
+          eve <ENAMEX TYPE="LOCATION">region</ENAMEX> (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). All of these unique events
+          occurred in non-coding intergenic regions and none of the
+          rearrangement breakpoints is associated with detectable
+          transposable element sequences (see also [ <TIMEX TYPE="DATE">24</TIMEX>]). Although
+          it is difficult to estimate the length distribution of
+          microsyntenic <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> in 
+          Drosophila from our data, it is
+          clear that very small microsyntenic regions can be
+          <ENAMEX TYPE="ORGANIZATION">delimited</ENAMEX> in the 
+          Drosophila genome through multiple
+          species comparisons. For example, the <NUMEX TYPE="CARDINAL">two</NUMEX> independent
+          <ENAMEX TYPE="ORGANIZATION">rearrangements</ENAMEX> in the vicinity of the 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> locus reduce this microsyntenic
+          region to a <NUMEX TYPE="QUANTITY">approximately 20-kb</NUMEX> interval of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome containing
+          <NUMEX TYPE="CARDINAL">only three</NUMEX> neighboring <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          <ENAMEX TYPE="PERSON">Adam</ENAMEX>, <ENAMEX TYPE="PRODUCT">CG12134</ENAMEX> and 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> ) and their flanking non-coding
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          We can directly confirm the nature of one
+          <ENAMEX TYPE="PERSON">rearrangement</ENAMEX> ( 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ftz ) as a
+          paracentric micro-inversion since both breakpoints are
+          contained within a single fosmid clone. In this case, a
+          small (<NUMEX TYPE="MONEY">approximately 14 kb</NUMEX>) region containing the 
+          ftz coding sequence and flanking
+          non-coding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> is inverted between the 
+          <ENAMEX TYPE="ORGANIZATION">Antp</ENAMEX> and 
+          Scr genes relative to 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster . <ENAMEX TYPE="CONTACT_INFO">Maier</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">25</TIMEX>] provide hybrization
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> for a similar rearrangement in the 
+          ftz locus of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> hydei , another <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the
+          subgenus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . It is likely that the
+          other rearrangement breakpoints we observe also result
+          from paracentric inversions, the predominant form of
+          genome rearrangement in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]. Consistent with
+          this is the fact that rearranged sequences can be
+          inferred to come from the same chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>. At least
+          <NUMEX TYPE="CARDINAL">two</NUMEX> other breakpoints (in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <ENAMEX TYPE="PRODUCT">Rh1</ENAMEX> and 
+          Rh3 <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>) also have probably
+          arisen from micro-inversions, as in both cases <NUMEX TYPE="CARDINAL">only two</NUMEX>
+          genes are inferred to have switched order locally on the
+          chromosome.
+          We also identified <NUMEX TYPE="CARDINAL">eight</NUMEX> examples of novel genetic
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>, <NUMEX TYPE="CARDINAL">seven</NUMEX> of which
+          occur in intergenic regions (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). <NUMEX TYPE="CARDINAL">Four</NUMEX> of these
+          cases involve the insertion of novel transposable element
+          sequences: full length 
+          Bari-<NUMEX TYPE="CARDINAL">1</NUMEX> -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in both the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura <NUMEX TYPE="ORDINAL">Rh1</NUMEX> <ENAMEX TYPE="GPE_DESC">region</ENAMEX> and the
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <NUMEX TYPE="CARDINAL">Rh3</NUMEX> regions, a
+          partial 
+          I -like element in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <ENAMEX TYPE="PRODUCT">Rh4</ENAMEX> region, and a
+          partial 
+          blastopia -like element in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis <ENAMEX TYPE="PRODUCT">Rh3</ENAMEX> region.
+          Identification of 
+          Bari-<NUMEX TYPE="CARDINAL">1</NUMEX> -like transposon sequences
+          in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni is consistent with
+          previous observations [ <TIMEX TYPE="DATE">27</TIMEX>]; 
+          I -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> have been shown to
+          exist in the melanogaster and obscura <ENAMEX TYPE="ANIMAL">species</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>], but
+          this is the <NUMEX TYPE="ORDINAL">first</NUMEX> report of 
+          I -like <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in the willistoni
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>. The other <NUMEX TYPE="CARDINAL">four</NUMEX> cases arise from gene transposition
+          including: a homolog of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster X-chromosome gene 
+          CG2222 in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni eve <ENAMEX TYPE="LOCATION">region</ENAMEX>; a homolog
+          of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <NUMEX TYPE="CARDINAL">3R</NUMEX>-chromosome gene 
+          CG5245 in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura <NUMEX TYPE="ORDINAL">Rh1</NUMEX> <ENAMEX TYPE="GPE_DESC">region</ENAMEX>; a
+          homolog of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <NUMEX TYPE="CARDINAL">3R</NUMEX>-chromosome gene 
+          CG8319 in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <ENAMEX TYPE="PRODUCT">Rh1</ENAMEX> region, and the 
+          Rh4 gene in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (see below). The 
+          CG5245 -like <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and the 
+          CG8319 -like <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni both are located in
+          the same intergenic region between the 
+          Arc42 and 
+          PK92B genes, but result from
+          independent events since they involve different ancestral
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> and occur on opposite strands in this
+          intergenic region. This result suggests the possibility
+          of hotspots for gene transposition in the 
+          Drosophila genome.
+          <NUMEX TYPE="CARDINAL">At least one</NUMEX> novel gene, the 
+          CG2222 -like gene 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni , is likely to have
+          originated from a retrotransposition event as this gene
+          lacks introns while its closest <ENAMEX TYPE="PER_DESC">homolog</ENAMEX>, found on a
+          different chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome, has <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX>. Another striking example of retrotransposition
+          involves the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis Rh4 gene and
+          illustrates the fact that functionally important genes
+          can undergo dramatic changes in location and gene
+          structure during genome evolution [ <TIMEX TYPE="DATE">29</TIMEX>]. This gene
+          maintains its microsyntenic relationship with neighboring
+          genes in the <ENAMEX TYPE="PRODUCT">72D2-3</ENAMEX> region of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome in
+          Sophophoran <ENAMEX TYPE="ANIMAL">species</ENAMEX>, but has retrotransposed into the
+          intron of another gene, 
+          CG10967 , in a region of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis genome that
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the <ENAMEX TYPE="PRODUCT">69E1-2</ENAMEX> region of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome. As a
+          result, genes contained in the intron of the Sophophoran 
+          Rh4 ( 
+          sina , 
+          CG13030 and 
+          CG13029 ) have been lost in the
+          process. Cytological evidence for transposition of 
+          Rh4 exists for the closely related
+          species 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis and the more distantly
+          related species 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> repleta [ <TIMEX TYPE="DATE">29, 30</TIMEX>].
+          In contrast to the stability of microsyntenic gene
+          order in the genus 
+          Drosophila , we found that the
+          sample of genes studied here are scattered widely
+          throughout the 
+          Anopheles genome. For example, of
+          the <NUMEX TYPE="CARDINAL">55</NUMEX> 
+          Drosophila genes that had a single
+          clear homolog in 
+          Anopheles , <NUMEX TYPE="CARDINAL">27</NUMEX> are located on 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster chromosome arm <TIMEX TYPE="DATE">2R</TIMEX>.
+          Of these <NUMEX TYPE="CARDINAL">27</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">ten</NUMEX>, <NUMEX TYPE="CARDINAL">five</NUMEX>, <NUMEX TYPE="CARDINAL">six</NUMEX> and <NUMEX TYPE="CARDINAL">six</NUMEX> are located on 
+          A. gambiae chromosome arms <TIMEX TYPE="DATE">2L</TIMEX>, <TIMEX TYPE="DATE">2R</TIMEX>,
+          3L and <TIMEX TYPE="DATE">3R</TIMEX>. These results are consistent with previous
+          reports comparing the locations of genes in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster with 
+          A. gambiae , which indicate that
+          extensive genome rearrangement has occurred since the
+          divergence of these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">lineages</ENAMEX> [ <TIMEX TYPE="DATE">23, 31, 32</TIMEX>]. Some 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in our sample
+          do maintain microsyntenic relationships in 
+          A. gambiae , such as the 
+          Rh4 and 
+          sina <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. In this case,
+          conservation of microsynteny is most probably maintained
+          because of the nested relationship of these genes, and
+          this configuration in the outgroup 
+          <ENAMEX TYPE="PERSON">Anopheles</ENAMEX> supports the scenario
+          that transposition of 
+          Rh4 occurred at some point in the
+          lineage leading to the 
+          Drosophila subgenus (see above, and
+          [ <TIMEX TYPE="DATE">29, 30</TIMEX>]).
+        
+        
+          Patterns of coding sequence evolution
+          In addition to providing a useful resource for
+          studying comparative gene prediction and genome
+          rearrangements, our data confirm and extend emerging
+          trends in 
+          Drosophila coding sequence
+          evolution. <ENAMEX TYPE="PRODUCT">Table 2summarizes</ENAMEX> the average rates of
+          <ENAMEX TYPE="SUBSTANCE">amino-acid</ENAMEX> and silent site substitution for all, known
+          and predicted genes in our dataset. These data show that
+          predicted genes tend to have a higher rate of amino-acid
+          substitution than known genes in the genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . This trend is
+          significant for the <NUMEX TYPE="CARDINAL">three</NUMEX> most closely related pairwise
+          <ENAMEX TYPE="PERSON">comparisons</ENAMEX> ( 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster versus 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni ) but non-significant
+          in the comparison involving the most distantly related
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> ( 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster versus 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ). No significant
+          differences were detected in the rates of silent site
+          substitution between known and predicted genes in any
+          pairwise comparison, although predicted genes in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis tend to show elevated
+          rates of silent site substitution.
+          In contrast to expectation, average rates of
+          <ENAMEX TYPE="SUBSTANCE">amino-acid substitution</ENAMEX> are highest in comparisons
+          between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni , not 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+          The overall increased rate of amino<ENAMEX TYPE="SUBSTANCE">-acid substitution</ENAMEX> for
+          genes in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage is caused by
+          an increased rate of amino<ENAMEX TYPE="SUBSTANCE">-acid substitution</ENAMEX> in predicted
+          genes. For known genes, average rates of amino-acid
+          substitution are consistent with the accepted
+          phylogenetic relationships of these <ENAMEX TYPE="ANIMAL">species</ENAMEX>: 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta is most closely related
+          to 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster , followed by 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis , respectively.
+          Average rates of silent site substitution also do not
+          show a pattern consistent with the accepted phylogeny of
+          these <ENAMEX TYPE="ANIMAL">species</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). This is a consequence
+          of the fact that, for comparisons between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and either 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis , average rates of
+          silent site substitution exceed an expectation of one
+          substitution per site, indicating that silent <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are
+          <ENAMEX TYPE="ORGANIZATION">'saturated'</ENAMEX> in these comparisons. Even so, it is apparent
+          that there may be an increased rate of silent site
+          <ENAMEX TYPE="PERSON">substitution</ENAMEX> as well in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage. It is
+          unlikely that these results are simply a consequence of
+          an incorrect phylogeny, since the phylogenetic
+          relationships of these <ENAMEX TYPE="ANIMAL">species</ENAMEX> are well established [
+          <NUMEX TYPE="CARDINAL">7</NUMEX>].
+          Our estimate of the average rate of amino-acid
+          substitution per site in known genes between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura (<NUMEX TYPE="MONEY">0.071</NUMEX>) is nearly
+          the same as previous estimates (<NUMEX TYPE="MONEY">0.076</NUMEX>) using a different
+          sample of known genes and estimation procedure [ <TIMEX TYPE="DATE">33</TIMEX>]. In
+          addition, our estimate of the average rate of amino-acid
+          substitution for predicted genes between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta (<NUMEX TYPE="MONEY">0.071</NUMEX>) is similar to
+          that estimated using different methods for a sample of
+          rapidly evolving genes between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> yakuba (<NUMEX TYPE="MONEY">0.067</NUMEX>) [ <TIMEX TYPE="DATE">34</TIMEX>], a species
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> as divergent from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster as 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta [ <TIMEX TYPE="DATE">35</TIMEX>]. Thus the
+          <ENAMEX TYPE="ORGANIZATION">categorical</ENAMEX> and lineage effects we detect are unlikely to
+          be artifacts of our data or methods. The cause(s) of the
+          increased rate of amino<ENAMEX TYPE="SUBSTANCE">-acid substitution</ENAMEX> in predicted
+          genes in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage remain to be
+          <ENAMEX TYPE="PERSON">clarified</ENAMEX>, but are most probably related to increased
+          rates of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> evolution detected previously in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> saltans lineage [ <TIMEX TYPE="DATE">36</TIMEX>], which
+          have been explained by a shift in base composition in the
+          common ancestor of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> saltans and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (see below,
+          and [ <TIMEX TYPE="DATE">37</TIMEX>]).
+          In 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster , it is well
+          established that coding sequences have a higher GC
+          content, relative to genomic averages, due to the
+          preferential use of codons ending in C or <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> [ <TIMEX TYPE="DATE">38, 39</TIMEX>].
+          This pattern holds in the closely related species 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , as well as in the more
+          distantly related species 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). In
+          contrast, our data show that 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni coding sequences have
+          a higher frequency of AT (<NUMEX TYPE="PERCENT">53%</NUMEX>) base-pairs than <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> (<NUMEX TYPE="PERCENT">47%</NUMEX>)
+          base-pairs. This shift in base usage in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni coding sequences is
+          apparent at the dinucelotide level as well, predominantly
+          affecting those dinucleotides that exclusively contain AT
+          or GC. Non-coding sequences of all non-melanogaster
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX> are AT-rich, as in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster [ <TIMEX TYPE="DATE">40</TIMEX>]; slight
+          shifts towards higher AT frequency are observed in the
+          non-coding sequences of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          The shift in base usage in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage is also
+          detected in the pattern of <ENAMEX TYPE="SUBSTANCE">synonymous codon</ENAMEX> usage (see
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX> in the additional data files).
+          Previous analyses of a limited number of coding sequences
+          revealed a shift away from preferred C-ending codons used
+          in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster lineage, towards
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX>-ending codons in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage [ <ENAMEX TYPE="LAW">7, 41</ENAMEX>]. Our
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> indicate that this trend holds for a much larger
+          sample of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (see <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX> in additional
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> files). For <NUMEX TYPE="CARDINAL">10</NUMEX> of the <NUMEX TYPE="CARDINAL">18</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> with more than
+          <NUMEX TYPE="CARDINAL">one</NUMEX> codon (<ENAMEX TYPE="WORK_OF_ART">Arg, Asn, His, Ile, Leu, Lys, Phe, Pro, Thr</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Tyr</ENAMEX>), the most frequently used codon in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni differs from that in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster . All <NUMEX TYPE="CARDINAL">10</NUMEX> of these
+          changes in synonymous <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage involve 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni most frequently using
+          an A- or <ENAMEX TYPE="PRODUCT">T-</ENAMEX>ending (or beginning, for example, <ENAMEX TYPE="ORGANIZATION">Leu</ENAMEX>) codon
+          with 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster using a <ENAMEX TYPE="ORGANIZATION">G-</ENAMEX> or
+          C-ending (or beginning) codon, supporting a trend
+          identified originally using only the 
+          Adh coding sequence [ <TIMEX TYPE="DATE">41</TIMEX>]. The most
+          frequently used codon differs between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis for <NUMEX TYPE="CARDINAL">only two</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Asp</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">Ser</ENAMEX>), <NUMEX TYPE="CARDINAL">one</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Asn</ENAMEX>) and <NUMEX TYPE="CARDINAL">four</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Asn, Ile</ENAMEX>, <ENAMEX TYPE="EVENT">Pro</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Thr</ENAMEX>) amino
+          <ENAMEX TYPE="PERSON">acids</ENAMEX>, respectively.
+        
+        
+          Patterns of non-coding sequence evolution
+          Our data also provide an opportunity to study basic
+          features of non-coding conservation in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . which remain largely
+          <ENAMEX TYPE="ORGANIZATION">unexplored</ENAMEX>. As shown in Figures <ENAMEX TYPE="PRODUCT">2and 4</ENAMEX>, a substantial
+          proportion of non-coding sequences are conserved in 
+          Drosophila , especially in pairwise
+          comparisons between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta . Levels of conservation
+          appear to plateau in more divergent comparisons, with a
+          tendency for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura to show higher
+          levels of non-coding conservation relative to 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis in pairwise
+          comparisons with 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster . Few, if any,
+          non-coding sequences are conserved between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          A. gambiae (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, see also [
+          <NUMEX TYPE="CARDINAL">23</NUMEX>]). There is also regional variation in levels of
+          non-coding conservation in the 
+          Drosophila genome, as illustrated
+          by contrasting conservation between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , for example, in the 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>) and 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) regions.
+          To estimate levels of sequence conservation in
+          non-coding regions and to contrast patterns of coding
+          with non-coding conservation, we aligned genomic
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> using the <ENAMEX TYPE="ORGANIZATION">AVID</ENAMEX> alignment tool [ <TIMEX TYPE="DATE">42</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">AVID</ENAMEX> is a
+          global alignment tool that works by recursively finding
+          <ENAMEX TYPE="ORGANIZATION">co-linear 'anchors</ENAMEX>' of maximal sequence identity;
+          therefore, locally inverted or transposed sequences that
+          might be conserved will not be included in our analysis.
+          Conserved non-coding sequences (CNCSs), defined as
+          windows of <NUMEX TYPE="QUANTITY">10 bp</NUMEX> or greater with <NUMEX TYPE="PERCENT">90%</NUMEX> or greater
+          <ENAMEX TYPE="NATIONALITY">nucleotide</ENAMEX> identity, were identified in pairwise
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> using the <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> program [ <TIMEX TYPE="DATE">43</TIMEX>]. These
+          parameters were chosen to identify short, highly
+          conserved sequences found in 
+          Drosophila non-coding regions [
+          <NUMEX TYPE="CARDINAL">44</NUMEX>]. We used 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster as the reference
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX> in pairwise comparisons with non-melanogaster
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, and <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>] exported from
+          <ENAMEX TYPE="ORGANIZATION">Gadfly</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> format to classify conserved <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> as
+          either coding or non-coding. <ENAMEX TYPE="ORGANIZATION">Transcribed</ENAMEX> and
+          nontranscribed non-coding sequences were analyzed
+          together, since <TIMEX TYPE="DATE">previous</TIMEX> results showed similar patterns
+          of conservation for intergenic and intronic sequences in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>].
+          The results of this analysis are shown in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>,
+          which contrasts features of conservation in both coding
+          and non-coding sequences by <ENAMEX TYPE="ANIMAL">species</ENAMEX>. For all species
+          analyzed, coding regions have a higher proportion of
+          sequences that meet our definition of conservation
+          relative to non-coding sequences. In addition, the median
+          segment length surpassing our criterion for conservation
+          is longer for coding sequences relative to non-coding
+          sequences for all species analyzed. These results are
+          expected, as coding sequences are on average thought to
+          experience more intense purifying selection than
+          non-coding sequences [ <TIMEX TYPE="DATE">21</TIMEX>]. In contrast, the average
+          percent identity of conserved <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> is higher for
+          non-coding sequences than coding sequences. This is
+          probably a result of silent site substitution in
+          otherwise functionally constrained coding sequences.
+          Analysis of levels of conservation by species shows
+          that the increased rate of amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> sequence evolution
+          in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage detected
+          above may reflect a more widespread phenomenon in the
+          genome of this <ENAMEX TYPE="ANIMAL">species</ENAMEX>. As shown in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni shows unexpectedly
+          low levels of both non-coding and coding conservation,
+          given the accepted phylogeny of the <ENAMEX TYPE="ANIMAL">species</ENAMEX>. These data
+          show that the increased rate of evolution in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage is not
+          restricted to coding sequences, rendering
+          coding-sequence-based interpretations of the unusual
+          patterns of molecular evolution in this lineage less
+          <ENAMEX TYPE="ORGANIZATION">tenable</ENAMEX> (see, for example [ <ENAMEX TYPE="LAW">7, 41</ENAMEX>]). Together with the
+          changes in base composition in both coding and non-coding
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> noted above, the increased rate of evolution in
+          both coding and non-coding sequences detected in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni suggests a
+          genome-wide effect, possibly resulting from a change in
+          mutation pressure or a change in <ENAMEX TYPE="PER_DESC">population</ENAMEX> size at some
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> during the history of this lineage (see also [
+          <NUMEX TYPE="CARDINAL">37</NUMEX>]).
+          Despite the lineage effect in levels of conservation
+          in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni genome, the median
+          length of conserved coding or non-<NUMEX TYPE="CARDINAL">coding</NUMEX> segments
+          generally decreases with increasing divergence time as
+          expected (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). However, the average percent identity
+          of conserved coding or non-<NUMEX TYPE="CARDINAL">coding</NUMEX> segments identified
+          does not decrease with increasing divergence time.
+          Finally, the ratio of conserved sequences that are coding
+          relative to non-coding increases with increasing
+          divergence time. The ratio of conserved sequences that
+          are coding relative to non-coding is <NUMEX TYPE="MONEY">1.36</NUMEX> for comparisons
+          with 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , but increases to <NUMEX TYPE="CARDINAL">2.21</NUMEX>
+          for comparisons involving 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and approximately
+          <NUMEX TYPE="MONEY">3.5</NUMEX> for comparisons involving 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis .
+          Changes in the median CNCS length reflect changes in
+          the overall distribution of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> lengths in pairwise
+          comparisons between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and either 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+          willistoni , or 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). These
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> quantitatively describe the pattern of non-coding
+          conservation shown in Figures <NUMEX TYPE="CARDINAL">2and 4</NUMEX>: <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> lengths become
+          shorter with increasing divergence but plateau to
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> the same length in the most distant
+          comparisons. The stability of this distribution at more
+          extreme evolutionary distances is apparently insensitive
+          to changes in the proportion of non-coding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> that is
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> (compare 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ). Shown for
+          comparison is the distribution of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> lengths between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis from [ <TIMEX TYPE="DATE">44</TIMEX>], as well as a
+          reanalysis of this data using the current methods.
+          Differences between the present and previous results for
+          the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis data show the effect of
+          different methods for detecting <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX>. The differences
+          observed in the distribution of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> lengths between the
+          closely related species 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis using the <ENAMEX TYPE="ORGANIZATION">AVID-VISTA</ENAMEX>
+          method reflect the fact that the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis data were obtained from
+          non-coding regions with known or suspected 
+          cis -regulatory function, whereas
+          the data here represent a more random sampling of
+          non-coding regions in the 
+          Drosophila genome.
+          Conservation of non-coding sequences is typically
+          interpreted as evidence of functional constraint and this
+          assumption underlies most phylogenetic footprinting
+          methods. This assumption was questioned by <ENAMEX TYPE="PERSON">Clark</ENAMEX> [ <TIMEX TYPE="DATE">45</TIMEX>],
+          who proposed an alternative hypothesis for non-coding
+          conservation based on heterogeneity in mutation rates
+          (that is, mutational cold spots). To resolve these
+          alternatives we studied the spatial distribution and
+          conservation of spacing between <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> in the 
+          Drosophila genome. Under a simple
+          mutational cold-spot hypothesis, <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> should occur
+          randomly in non-coding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and the lengths of 'spacer
+          intervals' between <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> should be exponentially
+          distributed [ <TIMEX TYPE="DATE">46, 47</TIMEX>]. In addition, there should be no
+          tendency for the spacing between mutational cold spots to
+          remain conserved between divergent 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX>, given the rapid
+          rate of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> loss in unconstrained sequences in the 
+          Drosophila genome [ <TIMEX TYPE="DATE">48, 49</TIMEX>].
+          As shown in Figure <NUMEX TYPE="CARDINAL">6for</NUMEX> non-coding comparisons between
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , the frequency
+          spacer interval lengths between <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome differ
+          significantly from the exponential distribution. The
+          deviation from expected results from an excess of short
+          and <TIMEX TYPE="DATE">long spacer</TIMEX> intervals, indicating that <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> are
+          clustered in the 
+          Drosophila genome. Non-random
+          spacing of <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> is also observed in other pairwise
+          species comparisons in the genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> ([ <TIMEX TYPE="DATE">46</TIMEX>] and data not
+          shown). In addition, the lengths of homologous spacer
+          intervals are highly correlated across <ENAMEX TYPE="ANIMAL">species</ENAMEX> (Figure
+          <NUMEX TYPE="CARDINAL">7</NUMEX>). This correlation is unlikely to be an artifact of
+          alignment, as the AVID method <NUMEX TYPE="ORDINAL">first</NUMEX> aligns regions of
+          local similarity before generating a global alignment.
+          Moreover, similar results have been obtained using
+          non-global alignment methods [ <TIMEX TYPE="DATE">46</TIMEX>]. These results suggest
+          that spacer interval sequences between <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> (and
+          therefore <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> themselves) are functionally constrained,
+          and provide evidence against the hypothesis that CNCSs
+          are simply mutational cold spots.
+          Clusters of <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> are readily apparent in <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> plots
+          of complex gene regions with known 
+          cis -regulatory function (Figures
+          2and <NUMEX TYPE="CARDINAL">4</NUMEX>). In addition, there is a strong tendency for
+          known 
+          cis -regulatory elements to overlap
+          clusters of <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX>. For example, discrete enhancers that
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> embryonic expression of 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> are contained within discrete
+          CNCS clusters in the region <TIMEX TYPE="DATE">5</TIMEX>' to 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). In contrast,
+          <ENAMEX TYPE="ORGANIZATION">discrete CNCSs</ENAMEX> clusters are not observed in the region <TIMEX TYPE="DATE">3</TIMEX>'
+          to 
+          eve where enhancers overlap one
+          another [ <TIMEX TYPE="DATE">50, 51</TIMEX>]. The correspondence of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters
+          and functional <ENAMEX TYPE="PER_DESC">enhancers</ENAMEX> is observed in other regions of
+          the 
+          Drosophila genome, such as the
+          <ENAMEX TYPE="PRODUCT">discrete</ENAMEX> muscle-specific enhancer in the <NUMEX TYPE="ORDINAL">fourth</NUMEX> intron of
+          
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). The inexact
+          correspondence between enhancer sequences and CNCS
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX> is perhaps not unexpected as enhancers are
+          typically defined as the minimal sequence sufficient to
+          recapitulate native expression in a <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> gene assay.
+          Nevertheless, this pattern suggests a functional
+          relationship between 
+          cis -regulatory elements and
+          <ENAMEX TYPE="ORGANIZATION">discrete CNCS</ENAMEX> clusters.
+          To test the hypothesis that <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters can predict
+          the location of 
+          cis -regulatory <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in the 
+          Drosophila genome, we carried out 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -element-mediated <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> gene
+          analysis of genomic sequences corresponding to a CNCS
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> in the <NUMEX TYPE="ORDINAL">fourth</NUMEX> intron of 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> . This CNCS cluster is apparent
+          in pairwise comparisons between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura as well as between
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> is a LIM-homeobox transcription
+          factor expressed in many tissues in 
+          Drosophila , including embryonic
+          expression in the developing brain [ <TIMEX TYPE="DATE">52, 53</TIMEX>]. As shown in
+          Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genomic sequences
+          corresponding to the CNCS cluster in the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> intron <NUMEX TYPE="CARDINAL">4</NUMEX> drives <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> gene
+          expression in the 
+          Drosophila embryo in a specific
+          pattern that recapitulates native 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> expression in the developing
+          brain. In addition, when introduced into the genome of 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster , the homologous
+          fragment from the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis genome also drives
+          <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> gene expression in the same pattern, indicating
+          that the expression pattern resulting from this enhancer
+          has been conserved since the divergence of these two
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Experiments to test the function of CNCS
+          <ENAMEX TYPE="CONTACT_INFO">clusters 1, 2</ENAMEX>, and <NUMEX TYPE="CARDINAL">3</NUMEX> in the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> region are currently
+          underway.
+        
+      
+      
+        Discussion
+        
+          Prospects for comparative gene prediction in
+          Drosophila
+          Although great progress has been made towards
+          understanding the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding component of eukaryotic
+          genome sequences [ <TIMEX TYPE="DATE">54, 55, 56, 57</TIMEX>], comprehensive genome
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> is far from complete in any metazoan.
+          State-of-the-art statistical and remote-homology
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-prediction methods are successful at identifying the
+          location of exons in unannotated genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, but are
+          often quite poor at predicting the details of gene
+          structure, necessitating human <ENAMEX TYPE="SUBSTANCE">curation</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. <NUMEX TYPE="CARDINAL">One</NUMEX> of the
+          most useful sources of information for accurately
+          predicting complex gene <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> is <TIMEX TYPE="TIME">EST</TIMEX>/cDNA data [
+          <NUMEX TYPE="CARDINAL">58</NUMEX>]. Predicting the structure of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which no
+          <TIMEX TYPE="TIME">EST</TIMEX>/cDNA data exists will require alternative approaches,
+          such as comparative gene modeling among divergent species
+          with conserved proteomes in the same <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of
+          <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>.
+          The results of our <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s analyses presented here give
+          preliminary insight into the prospects of comparative
+          gene modeling using large-scale sequence data in the
+          genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . From our findings, we
+          expect that structural details of most <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> coding
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> can be verified and improved using pairwise
+          sequence data between divergent species like 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura . Our results also
+          indicate that, although it may not be necessary for many
+          genes in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome, 
+          <ENAMEX TYPE="ORGANIZATION">de novo</ENAMEX> comparative gene prediction
+          between these <ENAMEX TYPE="ANIMAL">species</ENAMEX> will find the vast majority of
+          as-yet unidentified genes lacking <TIMEX TYPE="TIME">EST</TIMEX>/cDNA data. It is
+          important to note that we do not expect to detect all
+          coding exons (especially <ENAMEX TYPE="PER_DESC">short exons</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>]) in pairwise
+          comparisons, highlighting the added value of multiple
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> data for comparative exon prediction. In
+          addition, important details of gene models will prove
+          difficult to predict using only comparative data, as
+          amino-acid divergence (especially insertions or
+          <ENAMEX TYPE="ORGANIZATION">deletions</ENAMEX>) can obscure <ENAMEX TYPE="SUBSTANCE">intron</ENAMEX>-exon boundaries and other
+          details of gene structure. Moreover, there is inherent
+          uncertainty in the 'correct' gene structure developed
+          from comparative data alone, since <NUMEX TYPE="CARDINAL">two</NUMEX> divergent
+          sequences are simultaneously being modeled. Finally, the
+          comparative annotation of <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences awaits the
+          development of methods that accurately predict the
+          non-coding components of gene models.
+          The patterns of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding sequence evolution
+          detected in our data have important implications for
+          comparative gene prediction. Most notably, the trend we
+          detect for predicted genes to show an increased rate of
+          amino-acid substitution relative to known genes is
+          important, as it may reflect differences in functional
+          constraint or quality of gene models between the two
+          classes of genes. For <NUMEX TYPE="CARDINAL">at least three</NUMEX> reasons, we believe
+          that the elevated rate of amino<ENAMEX TYPE="SUBSTANCE">-acid substitution</ENAMEX> in
+          predicted genes is not a result of poor-quality gene
+          models in this class of genes. First, many of the genes
+          in the predicted <ENAMEX TYPE="PER_DESC">class</ENAMEX> have <TIMEX TYPE="TIME">EST</TIMEX>/cDNA data (see
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), so the details of these gene
+          models are likely to be correct. <NUMEX TYPE="ORDINAL">Second</NUMEX>, estimates of <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a (and <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> ) are based on aligned sequences;
+          thus gross inaccuracies in gene models that would create
+          <ENAMEX TYPE="ORGANIZATION">gaps</ENAMEX> in the alignment are excluded from estimates of
+          evolutionary rates. <NUMEX TYPE="ORDINAL">Third</NUMEX>, differential rates in these
+          <NUMEX TYPE="CARDINAL">two</NUMEX> classes of genes maybe expected, as a high proportion
+          of known genes were selected for study because their
+          mutational inactivation resulted in an obvious phenotype.
+          Thus we favor the interpretation that increased rates of
+          <ENAMEX TYPE="SUBSTANCE">amino-acid substitution</ENAMEX> in predicted genes results from
+          lower levels of functional constraint.
+          If this interpretation is correct, our results confirm
+          those of <ENAMEX TYPE="ORGANIZATION">Schmid</ENAMEX> and <ENAMEX TYPE="PER_DESC">co-workers</ENAMEX> [ <TIMEX TYPE="DATE">34, 59</TIMEX>] who have shown
+          that a large fraction of randomly sampled coding
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> and orphan genes are rapidly evolving in the
+          genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . Our results are also
+          consistent with those of Ashburner 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">60</TIMEX>] who show that genes
+          with known mutant phenotypes in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster are more likely to
+          have a conserved homolog in <ENAMEX TYPE="GPE">GenBank</ENAMEX> relative to predicted
+          genes with no known phenotype. Similarly, Zdobnov 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] show that 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster orphan genes tend
+          to exhibit lower levels of conservation in pairwise
+          comparison with 
+          A. gambiae [ <TIMEX TYPE="DATE">23</TIMEX>]. Finally, the
+          interpretation that known and predicted genes differ in
+          their levels of functional constraint is supported by the
+          fact that increased rates of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> evolution in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni affect predicted
+          genes more strongly than known genes (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Together
+          these results suggest that there is a large class of
+          <ENAMEX TYPE="SUBSTANCE">functional protein</ENAMEX>-coding sequences evolving under weak
+          selective constraint in the 
+          Drosophila genome [ <TIMEX TYPE="DATE">34</TIMEX>]. Rates of
+          evolution for this class of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may be too fast to
+          allow the identification of homologs from extremely
+          <ENAMEX TYPE="ANIMAL">divergent species</ENAMEX> (such as 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> ) for comparative gene
+          <ENAMEX TYPE="PERSON">prediction</ENAMEX>, but slow enough to use comparative data
+          within the genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+        
+        
+          <ENAMEX TYPE="PERSON">Rearrangement</ENAMEX>, transposition and genome
+          annotation
+          Genome rearrangement in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> typically occurs through
+          paracentric inversion, allowing the homology of
+          chromosome arms to be maintained over <NUMEX TYPE="CARDINAL">millions</NUMEX> of <TIMEX TYPE="DATE">years</TIMEX>.
+          Homologous chromosome arms in the genus 
+          Drosophila are referred to as
+          <ENAMEX TYPE="ORGANIZATION">Muller</ENAMEX>'s elements, and represent a clearly established
+          level of synteny between species [ <ENAMEX TYPE="LAW">7</ENAMEX>]. The homology of
+          <ENAMEX TYPE="ORGANIZATION">Muller</ENAMEX>'s <ENAMEX TYPE="PER_DESC">elements</ENAMEX> can be extended to 
+          A. gambiae [ <TIMEX TYPE="DATE">23, 31</TIMEX>]; however it is
+          clear that a substantial fraction of rearrangements
+          between these <ENAMEX TYPE="ANIMAL">species</ENAMEX> must occur by other mechanisms than
+          paracentric inversion. Levels of synteny below the
+          chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> are more difficult to establish, and the
+          description of these levels of conserved gene order is
+          currently arbitrary [ <TIMEX TYPE="DATE">23</TIMEX>]. Thus it is important to point
+          out that the strictly co-linear microsynteny we detect
+          between 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> differs from the
+          <ENAMEX TYPE="ORGANIZATION">'hyphenated</ENAMEX>' microsynteny with multiple gene losses and
+          gains between 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX>].
+          Rates of genome rearrangement between <ENAMEX TYPE="ANIMAL">species</ENAMEX> in the
+          genus 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> based on cytological
+          evidence are thought to be among the highest for any
+          <ENAMEX TYPE="ORGANIZATION">metazoan</ENAMEX> [ <TIMEX TYPE="DATE">61</TIMEX>]. Before this study only a single fixed
+          inversion breakpoint had been characterized at the
+          sequence level in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>]. Unfortunately,
+          the limited number of events in our data makes it
+          difficult to estimate the absolute rate of genome
+          rearrangement at the sequence level in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . More extensive
+          analysis of genome rearrangement at the sequence level in
+          
+          Caenorhabditis by <ENAMEX TYPE="ORGANIZATION">Coghlan and Wolfe</ENAMEX>
+          [ <TIMEX TYPE="DATE">62</TIMEX>], suggests that rates of genome rearrangement are
+          fourfold higher in nematodes than in <ENAMEX TYPE="ANIMAL">flies</ENAMEX>. As
+          <ENAMEX TYPE="ORGANIZATION">micro-inversions</ENAMEX> (such as that seen in the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ftz region) are not
+          expected to be included in cytological estimates, this
+          claim will have to be re-evaluated using large-scale
+          comparative sequence data in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+          There is mounting evidence for the role of
+          transposable <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in the origin of inversion
+          <ENAMEX TYPE="ORGANIZATION">breakpoints</ENAMEX> in 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and other <ENAMEX TYPE="ANIMAL">species</ENAMEX> [
+          <TIMEX TYPE="DATE">63, 64, 65</TIMEX>]. In contrast, our data provide no evidence
+          that rearrangement breakpoints fixed between 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> are associated
+          with transposable element sequences (see also [ <TIMEX TYPE="DATE">24</TIMEX>]).
+          Together, these observations suggest a 'hit-and-run'
+          scenario in which transposable <ENAMEX TYPE="PER_DESC">elements</ENAMEX> may play a part
+          in the origin of chromosome rearrangements, but are lost
+          (either through deletion or transposition) by the time
+          <ENAMEX TYPE="ORGANIZATION">rearrangements</ENAMEX> reach high frequency or fixation between
+          species [ <TIMEX TYPE="DATE">66</TIMEX>]. Consistent with this scenario is the fact
+          that transposable element sequences are not conserved
+          between <ENAMEX TYPE="ANIMAL">species</ENAMEX> within unrearranged microsyntenic regions
+          (for example, the 
+          HB element in the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> region, Figure <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          The maintenance of microsyntenic regions we observe at
+          the scale of multi-gene fosmid-sized regions
+          (<NUMEX TYPE="MONEY">approximately 40 kb</NUMEX>) should improve identification of
+          orthologs for comparative gene modeling. On the other
+          hand, 
+          <ENAMEX TYPE="ORGANIZATION">de novo</ENAMEX> comparative gene
+          identification can be complicated if, for example, nested
+          genes maintain microsyntenic relationships [ <TIMEX TYPE="DATE">67</TIMEX>]. In
+          addition, as the few rearrangement breakpoints we
+          observed occur exclusively in intergenic regions (see
+          also [ <TIMEX TYPE="DATE">24</TIMEX>]), rearrangement breakpoints may also help
+          define the boundaries of complex genetic loci.
+          Conservation of microsynteny between genes and flanking
+          intergenic <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> may reveal structural and functional
+          connections in the genome, and thus it may be possible to
+          associate functional non-coding sequences with the
+          appropriate flanking gene through genome rearrangements
+          (see also [ <TIMEX TYPE="DATE">30</TIMEX>]). Proof of this principle can be seen for
+          the intergenic region <TIMEX TYPE="DATE">3</TIMEX>' to 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> and <ENAMEX TYPE="PRODUCT">5</ENAMEX>' to 
+          TER94 , which maintains association
+          with 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> , but not 
+          TER94 , in non-melanogaster group
+          <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). This conservation of microsynteny
+          between the 
+          <ENAMEX TYPE="PERSON">eve</ENAMEX> coding and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> is
+          consistent with the fact that this region is known to
+          contain multiple enhancer sequences that regulate
+          embryonic 
+          eve expression [ <TIMEX TYPE="DATE">50, 51</TIMEX>].
+        
+        
+          Prospects for comparative cis-regulatory prediction
+          in Drosophila
+          Conservation of non-coding sequences is rapidly
+          becoming one of the most powerful methods of predicting
+          individual 
+          cis -regulatory <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in genomic
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> [ <TIMEX TYPE="DATE">68</TIMEX>]. Most computational methods designed to
+          identify CNCSs rely on the assumption that non-coding
+          conservation implies functional constraint, rather than
+          <ENAMEX TYPE="ORGANIZATION">heterogeneity</ENAMEX> in mutation rates [ <TIMEX TYPE="DATE">45</TIMEX>]. Our results
+          provide <NUMEX TYPE="CARDINAL">two</NUMEX> pieces of evidence that support this
+          assumption and argue against a simple mutational
+          cold-spot interpretation of non-coding conservation.
+          First, we demonstrate that the lengths of spacer
+          intervals separating CNCSs are non-randomly distributed
+          in the 
+          Drosophila genome, indicating a
+          tendency for <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> to be clustered in non-coding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>.
+          <NUMEX TYPE="ORDINAL">Second</NUMEX>, we show that the spatial relationships of
+          <ENAMEX TYPE="ORGANIZATION">neighboring CNCSs</ENAMEX> are generally conserved as revealed by
+          the strong correlation of spacer interval lengths in
+          <ENAMEX TYPE="ANIMAL">divergent species</ENAMEX>. Clustering of <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> and conservation
+          of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> spacing are not expected under a mutational
+          cold-spot hypothesis, and suggest that the spacer
+          intervals between <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX>, and therefore <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> themselves,
+          are under functional constraint. Given the rapid rate of
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> loss for unconstrained sequences in 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">48, 49</TIMEX>], it is
+          difficult to understand the mere existence of spacer
+          <ENAMEX TYPE="PERSON">intervals</ENAMEX>, as well as their conservation of length,
+          without invoking some form of functional constraint
+          acting on these sequences.
+          Clustering of <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> has also been recently reported in
+          the <ENAMEX TYPE="ANIMAL">worm</ENAMEX> genome [ <TIMEX TYPE="DATE">47</TIMEX>], and future research will determine
+          if CNCS clustering is a general feature of non-coding
+          conservation in metazoan genomes. As yet, there has been
+          no report of a general tendency for <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> to be clustered
+          in mammalian <ENAMEX TYPE="ANIMAL">genomes</ENAMEX>, although certain regions of the
+          mammalian <ENAMEX TYPE="ANIMAL">genome</ENAMEX> (such as the 
+          H19 <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <TIMEX TYPE="DATE">69</TIMEX>]) show a strong
+          pattern of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clustering. The general functional
+          significance of <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters remains to be explored, but
+          it is clear that some CNCS clusters correspond to
+          functional enhancer sequences. We show here proof of the
+          principle that <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters can be used to identify
+          functional enhancer sequences in the 
+          Drosophila genome (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>, <NUMEX TYPE="CARDINAL">8</NUMEX>), as
+          Ishihara 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">69</TIMEX>] have shown for CNCS
+          clusters in the mammalian <ENAMEX TYPE="ANIMAL">genome</ENAMEX>.
+          Using <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters to identify enhancers represents
+          the comparative genomic analogue of efforts to predict 
+          cis -regulatory sequences by
+          exploiting the clustering of predicted transcription
+          factor binding sites [ <TIMEX TYPE="DATE">70, 71</TIMEX>]. However, unlike
+          binding-site clusters, <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters can be rapidly
+          identified in the absence of any 
+          a priori information about
+          transcription factor specificity, and may therefore
+          provide a more general approach to genome-wide 
+          cis -regulatory prediction. In
+          fact, <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters may be a powerful source of data for
+          inferring transcription factor specificity, as specific
+          binding-site motifs are likely to be locally
+          <NUMEX TYPE="CARDINAL">over</NUMEX>-represented in CNCS clusters with demonstrable
+          enhancer function. Using the intrinsic clustering of
+          <ENAMEX TYPE="ORGANIZATION">CNCSs</ENAMEX> provides a new way of circumventing the reliance on
+          expression data implicit in current approaches to
+          <ENAMEX TYPE="GPE">CNCS</ENAMEX>-based motif discovery [ <TIMEX TYPE="DATE">72</TIMEX>]. Finally, successfully
+          linking <ENAMEX TYPE="ORGANIZATION">CNCS</ENAMEX> clusters with enhancer function will provide
+          an alternative means of defining enhancer structure based
+          on evolutionary rather than operational criteria.
+        
+      
+      
+        Conclusions
+        The patterns of divergence in both coding and 
+        cis -regulatory <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> described
+        here indicate that 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura will greatly aid
+        efforts to functionally annotate the 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome, and justify
+        the choice of 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura as the second 
+        Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> for complete
+        genome sequencing. The divergence between these <ENAMEX TYPE="ANIMAL">species</ENAMEX> is
+        sufficient such that there does not appear to be any need
+        to go to more distantly related species to obtain a high
+        level of signal to noise to detect functionally constrained
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. This observation suggests that the search for
+        additional 
+        Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> whose genome
+        sequence would help interpret the 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster sequence should focus
+        on <ENAMEX TYPE="ANIMAL">species</ENAMEX> at a similar evolutionary distance as 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura. 
+        Of the <ENAMEX TYPE="ANIMAL">species</ENAMEX> studied here, 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta is too closely related to 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster for comprehensive
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> and 
+        cis -regulatory prediction. Neither
+        <ENAMEX TYPE="ORGANIZATION">coding</ENAMEX> nor non-coding sequences have experienced sufficient
+        divergence to differentiate whether sequences 'conserved'
+        between 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster result from
+        functional constraint or shared ancestry (Figures <NUMEX TYPE="CARDINAL">2</NUMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX>). At
+        the other extreme, using 
+        A. gambiae genome sequences may not
+        substantially aid comprehensive genome annotation, as a
+        large proportion of 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may not be present
+        in the 
+        Anopheles genome and the lack of
+        non-coding conservation between these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (Figure <NUMEX TYPE="ORDINAL">7and</NUMEX> [
+        <NUMEX TYPE="CARDINAL">23</NUMEX>]) means that this powerful source of data is unavailable
+        for 
+        cis -regulatory <ENAMEX TYPE="ORG_DESC">annotation</ENAMEX>. In
+        contrast, divergent <ENAMEX TYPE="ANIMAL">species</ENAMEX> in the genus 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> (such as 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni ) show similar
+        properties to each other and to 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura in terms of their
+        utility for identifying functionally constrained coding or
+        non-coding sequences.
+        
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster are both <ENAMEX TYPE="PER_DESC">members</ENAMEX> of
+        the subgenus 
+        <ENAMEX TYPE="ORGANIZATION">Sophophora</ENAMEX> ; thus these <NUMEX TYPE="CARDINAL">two</NUMEX> species
+        are expected to share more aspects of their biology in
+        common than either will with 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis. Therefore, we propose
+        that of the <ENAMEX TYPE="ANIMAL">species</ENAMEX> studied here, 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni is the most suitable
+        <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> for the third 
+        Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> for complete
+        genome sequencing. We make this suggestion despite the
+        increased rate of evolution and changes in base composition
+        and <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage observed in this lineage. In fact, it may
+        be possible to take advantage of these unusual patterns of
+        molecular evolution in the 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni lineage to dissect
+        regions of the 
+        Drosophila genome under different
+        levels of functional constraint. Given a more thorough
+        understanding of these phenomena and their cause(s), we
+        believe that a 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni genome sequence would
+        complement efforts to annotate the 
+        Drosophila genome based on whole
+        genome comparisons between 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura. 
+      
+      
+        Materials and methods
+        
+          Construction of <ENAMEX TYPE="ORGANIZATION">Drosophilaspecies</ENAMEX> fosmid
+          <ENAMEX TYPE="CONTACT_INFO">libraries</ENAMEX>
+          <NUMEX TYPE="CARDINAL">Four</NUMEX> 
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> spanning a range
+          of divergence times in the genus were selected for study:
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta (strain <NUMEX TYPE="CARDINAL">14021</NUMEX>-<NUMEX TYPE="CARDINAL">0224.0</NUMEX>), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura (strain
+          <NUMEX TYPE="CARDINAL">14011</NUMEX>-<NUMEX TYPE="CARDINAL">0121.4</NUMEX>), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni (strain
+          <NUMEX TYPE="CARDINAL">14030</NUMEX>-<NUMEX TYPE="CARDINAL">0814.10</NUMEX>) and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis (strain
+          <NUMEX TYPE="CARDINAL">15010</NUMEX>-<NUMEX TYPE="CARDINAL">1001.10</NUMEX>). All strains are available from the <ENAMEX TYPE="ORGANIZATION">Tucson</ENAMEX>
+          
+          Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> stock <ENAMEX TYPE="ORG_DESC">center</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">73</NUMEX>]. To construct fosmid <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> from
+          adult flies was prepared by partial digestion with 
+          <ENAMEX TYPE="ORGANIZATION">Mbo</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX> and size-selecting fragments
+          using pulsed-field gel electrophoresis, then cloned in
+          the 
+          Bam <ENAMEX TYPE="ORGANIZATION">HI</ENAMEX> site of the fosmid vector
+          pFOS1 [ <TIMEX TYPE="DATE">74</TIMEX>] and transformed into 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> strain XL1-<ENAMEX TYPE="ORGANIZATION">Blue MR</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>). Detailed information about the 
+          Drosophila stocks, construction of
+          the genomic fosmid <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> and their availability can
+          be found at the <ENAMEX TYPE="ORGANIZATION">Children's Hospital</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">Oakland Research</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Institute BACPAC Resources</ENAMEX> website [ <TIMEX TYPE="DATE">75</TIMEX>].
+        
+        
+          Probe design and library screening
+          To amplify gene-specific <ENAMEX TYPE="ORGANIZATION">STSs</ENAMEX>, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">willistoni</ENAMEX> and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was
+          isolated from adult flies and used as template for PCR
+          with degenerate primers. Primer sequences are available
+          upon request. Double-stranded <NUMEX TYPE="CARDINAL">40</NUMEX>-nucleotide oligomers
+          designed from the gene and species specific <ENAMEX TYPE="ORGANIZATION">STSs</ENAMEX> were
+          <ENAMEX TYPE="PER_DESC">radioactively</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">32P</ENAMEX> and hybridized to genomic
+          colony filters [ <TIMEX TYPE="DATE">76</TIMEX>]. Positive clones were subjected to
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> to remove false positives and restriction mapped
+          using 
+          Sal I- 
+          Not I, 
+          <ENAMEX TYPE="ORGANIZATION">Eco</ENAMEX> RI- 
+          Not I double digestions. The
+          largest clone overlapping all positive hits was sheared
+          and subcloned into <NUMEX TYPE="CARDINAL">3</NUMEX>-kb plasmids, and sequenced using
+          methods described in [ <ENAMEX TYPE="LAW">9</ENAMEX>]. From the results of this
+          screen, we estimated the average number of unique hits
+          per <ENAMEX TYPE="ORG_DESC">library</ENAMEX> per species to be <NUMEX TYPE="MONEY">4.1</NUMEX> for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta , <NUMEX TYPE="CARDINAL">3.2</NUMEX> for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura , <NUMEX TYPE="CARDINAL">2.2</NUMEX> for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and <NUMEX TYPE="CARDINAL">2.9</NUMEX> for 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis . These figures
+          indicate that these <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> have fewer unique hits than
+          the expected <NUMEX TYPE="CARDINAL">approximately 5×</NUMEX> coverage. Sequences for
+          these clones have been submitted to <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> under the
+          <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers <TIMEX TYPE="DATE">AY186999 and AY190934-AY190963</TIMEX>.
+        
+        
+          Comparative gene prediction
+          Coding sequences in these fosmid clones were predicted
+          using the computational pipeline used to re-annotate the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome [ <TIMEX TYPE="DATE">12</TIMEX>]. The
+          only major modification to this <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> was to add an
+          additional tier of evidence containing the results of
+          <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> searches of all <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster peptides [ <TIMEX TYPE="DATE">14</TIMEX>]
+          against non-melanogaster sequences. Gene predictions were
+          manually verified and refined using the annotation
+          <ENAMEX TYPE="ORGANIZATION">platform Apollo</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]. As no <TIMEX TYPE="TIME">EST</TIMEX> information exists to
+          annotate transcribed non-coding sequences (such as <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>)
+          for non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX>, we annotated only
+          <ENAMEX TYPE="SUBSTANCE">protein-coding gene</ENAMEX> and exon <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>. For similar reasons,
+          and to minimize the <ENAMEX TYPE="PER_DESC">insertion</ENAMEX>/deletion of amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> at
+          intron/exon boundaries, we did not require
+          non-melanogaster <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> to obey consensus splice site
+          rules. Annotated sequences were stored and queried in
+          Gadcompara, a cloned version of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster annotation
+          <ENAMEX TYPE="PERSON">database</ENAMEX>, <ENAMEX TYPE="GPE">Gadfly</ENAMEX>.
+          To identify orthologous <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in 
+          Anopheles gambiae , <NUMEX TYPE="CARDINAL">8,987</NUMEX> scaffolds
+          from project accession number <TIMEX TYPE="DATE">AAAB00000000</TIMEX> were
+          downloaded from <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and searched using default
+          parameters of <NUMEX TYPE="MONEY">TBLASTN 2.0</NUMEX> [ <TIMEX TYPE="DATE">77</TIMEX>] with the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster peptides listed in
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> (see additional data files) as
+          queries. Homologs were identified as <ENAMEX TYPE="ORGANIZATION">HSPs</ENAMEX> with an
+          expected value <NUMEX TYPE="MONEY">< 10</NUMEX> <ENAMEX TYPE="PRODUCT">-20and �</ENAMEX>� <NUMEX TYPE="PERCENT">30%</NUMEX> identity over <NUMEX TYPE="CARDINAL">100</NUMEX>
+          amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> and estimation of sequence
+          <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>
+          Orthologous regions of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome
+          corresponding to sequenced fosmids were identified using
+          default parameters of <ENAMEX TYPE="ORGANIZATION">BLAT</ENAMEX> [ <TIMEX TYPE="DATE">78</TIMEX>] against a database made
+          up of the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">sequences</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX>]. The <ENAMEX TYPE="ORG_DESC">union</ENAMEX> of
+          <ENAMEX TYPE="FAC_DESC">sequences</ENAMEX> spanning hits to each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> region was
+          <ENAMEX TYPE="PERSON">extracted</ENAMEX> and is listed in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Orthologous coding
+          and peptide sequences from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster were identified by
+          unique gene symbols in <ENAMEX TYPE="GPE">Gadfly</ENAMEX> using <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations
+          [ <TIMEX TYPE="DATE">14</TIMEX>]. For <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with alternative transcripts, the
+          transcript leading to the longest translation product was
+          chosen in most, but not all, cases. <ENAMEX TYPE="ORGANIZATION">Coding</ENAMEX> and translated
+          <ENAMEX TYPE="SUBSTANCE">amino-acid sequences</ENAMEX> from non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> were
+          extracted from <ENAMEX TYPE="GPE">Gadcompara</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> queries.
+          Multiple alignment of orthologous amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> sequences
+          was carried out using the default parameters of DIALIGN
+          2.1 [ <TIMEX TYPE="DATE">79</TIMEX>]. <ENAMEX TYPE="SUBSTANCE">Amino-acid alignments</ENAMEX> were used to align
+          coding sequences using the gap_cds <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">SEALS</ENAMEX>
+          package [ <TIMEX TYPE="DATE">80</TIMEX>] to ensure that nucleotide alignment gaps
+          were inserted between codons. <ENAMEX TYPE="ORGANIZATION">Pairwise K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> tests were carried out using PAML
+          3.12 [ <TIMEX TYPE="DATE">22</TIMEX>] with <ENAMEX TYPE="PER_DESC">runmode</ENAMEX> = <NUMEX TYPE="PERCENT">-2</NUMEX>, as outlined in [ <TIMEX TYPE="DATE">20</TIMEX>].
+          Evidence of functional constraint was inferred when twice
+          the difference in likelihoods between a model with <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s ratio fixed at <NUMEX TYPE="CARDINAL">1</NUMEX> versus <NUMEX TYPE="CARDINAL">one</NUMEX> with <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          s as a free parameter exceeded a
+          cutoff such that the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value was <NUMEX TYPE="MONEY">less than 0.05</NUMEX> per
+          number of tests. Estimates of <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          a and <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> in <ENAMEX TYPE="PRODUCT">Table 2were</ENAMEX> obtained using the
+          method of <ENAMEX TYPE="PERSON">Yang</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Nielson</ENAMEX> [ <TIMEX TYPE="DATE">81</TIMEX>], which accounts for
+          differences in nucleotide and codon frequencies as well
+          as transition:transversion rate bias, implemented in PAML
+          3.12 [ <TIMEX TYPE="DATE">22</TIMEX>]. Multiple amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> and coding sequence
+          alignments are available on request.
+          Annotations of <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> regions in <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 1were
+          exported from <ENAMEX TYPE="ORGANIZATION">Gadfly</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> format [ <TIMEX TYPE="DATE">43</TIMEX>], and used to
+          evaluate conservation in non-coding sequences.
+          <ENAMEX TYPE="ORGANIZATION">Nontranscribed</ENAMEX> (intergenic) and transcribed (<ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">intron</ENAMEX>) non-coding sequences were analyzed together [
+          <NUMEX TYPE="CARDINAL">44</NUMEX>]. Pairwise alignment of homologous genomic regions
+          between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and individual
+          non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> was performed using default
+          parameters of the <ENAMEX TYPE="GPE">AVID</ENAMEX> global alignment tool [ <TIMEX TYPE="DATE">42</TIMEX>]. CNCSs
+          were identified in <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> using a window size of <NUMEX TYPE="CARDINAL">10</NUMEX> bp
+          with an identity of <NUMEX TYPE="PERCENT">90%</NUMEX> with manual post-processing to
+          remove spurious matches at the beginning and end of the
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX>. Repeat <ENAMEX TYPE="PER_DESC">masking</ENAMEX> was performed before coding
+          sequence annotation to identify transposable <ENAMEX TYPE="PER_DESC">elements</ENAMEX>;
+          however, it is possible that some CNCSs are simple
+          repetitive sequences. Only sequences from candidate
+          regions that clearly maintain microsynteny in
+          non-melanogaster <ENAMEX TYPE="ANIMAL">species</ENAMEX> were included in estimates of
+          non-coding conservation. Thus, the entire 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis ftz, <ENAMEX TYPE="PRODUCT">Rh3</ENAMEX> and 
+          Rh4 clones as well as rearranged
+          segments of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura and
+          
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis <TIMEX TYPE="TIME">eve</TIMEX> clones, 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura <ENAMEX TYPE="ORGANIZATION">Rh1</ENAMEX> clones, and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> willistoni <ENAMEX TYPE="ORGANIZATION">Rh3</ENAMEX> clones were
+          omitted from analyses of non-coding conservation. In
+          addition, we also reanalyzed non-coding conservation
+          between 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis using this same approach
+          for the dataset of [ <TIMEX TYPE="DATE">44</TIMEX>]. Pairwise genomic alignments and
+          <ENAMEX TYPE="ORGANIZATION">VISTA</ENAMEX> regions files are available on request.
+        
+        
+          <ENAMEX TYPE="PER_DESC">Generation</ENAMEX> of transgenic <ENAMEX TYPE="ANIMAL">flies</ENAMEX> and expression
+          analysis
+          The CNCS cluster carrying the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> brain enhancer was amplified
+          from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster (BAC) and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis (<NUMEX TYPE="MONEY">P1</NUMEX>) clones bearing the 
+          <ENAMEX TYPE="ORGANIZATION">ap</ENAMEX> gene, respectively. The
+          following pairs of oligonucleotides were used for PCR
+          amplification:
+          DmelBR-F:<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">AAACCATCTCACTCGCATGA-3</ENAMEX>'
+          DmelBR-<ENAMEX TYPE="NATIONALITY">R</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TGCTTCCAGACAACGACAAA-3</ENAMEX>'
+          DvirBR-F: <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TTCGCTGGTCAATGGTTCAA-3</ENAMEX>'
+          DvirBR-<ENAMEX TYPE="NATIONALITY">R</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">ATGGGCTGGCAACATACAACA-3</ENAMEX>'
+          The resulting <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster (<NUMEX TYPE="QUANTITY">1,235 bp</NUMEX>) and 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> virilis (<NUMEX TYPE="QUANTITY">1,658 bp</NUMEX>) were cloned
+          into pCaSpeRhs43β-gal to generate pChabMelBR and
+          pChabVirBR, respectively. These constructs were injected
+          into 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster y;w embryos by
+          standard 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -element transformation [ <TIMEX TYPE="DATE">82</TIMEX>].
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> independent lines were generated with pChabMelBR and
+          <NUMEX TYPE="CARDINAL">three</NUMEX> with pChabVirBR, all of which showed similar
+          expression patterns. Transgenic <ENAMEX TYPE="ANIMAL">embryos</ENAMEX> were
+          immunostained with monoclonal <ENAMEX TYPE="NATIONALITY">anti-β</ENAMEX>-gal antibody
+          (<NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">4,000</NUMEX>; <ENAMEX TYPE="GPE">Promega</ENAMEX>) as described in [ <TIMEX TYPE="DATE">53</TIMEX>].
+        
+      
+      
+        Additional data files
+        <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, describes the number of coding
+        exons, amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+        a /<ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+        s ratio for 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this study.
+        <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, details the <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage in 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster compared with 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+        willistoni , and 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis .
+        Additional data file 1
+        Supplementary table 1
+        Supplementary table 1
+        Click here for additional data file
+        Additional data file 2
+        Supplementary table 2
+        Supplementary table 2
+        Click here for additional data file
+      
+    
+  

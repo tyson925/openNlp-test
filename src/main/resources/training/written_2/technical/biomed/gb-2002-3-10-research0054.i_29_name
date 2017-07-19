@@ -1,0 +1,598 @@
+
+  
+    
+      
+        Background
+        Genome-wide structural analyses in terms of patterns of
+        protein folding have been useful in revealing functional
+        and evolutionary relationships [ <ENAMEX TYPE="LAW">1, 2, 3, 4</ENAMEX>]. Given the
+        abundance of <ENAMEX TYPE="SUBSTANCE">membrane proteins</ENAMEX>, it would be highly
+        desirable to have a similar analysis for this major
+        category of <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>; however, the number of known
+        membrane <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> remains small. Here we exploit
+        the fact that membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> can be classified into
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> on the basis of sequence similarities and
+        topology, and use the family groupings to analyze genomic
+        characteristics of <ENAMEX TYPE="SUBSTANCE">membrane protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        Most transmembrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are formed from bundles of
+        helices that traverse the membrane lipid <ENAMEX TYPE="SUBSTANCE">bilayer</ENAMEX>. It is
+        estimated that <NUMEX TYPE="PERCENT">20-30%</NUMEX> of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in known genomes are
+        of this type [ <ENAMEX TYPE="LAW">3, 4, 5, 6</ENAMEX>]. The most general description of
+        the transmembrane helical regions (TMs) is that they
+        comprise a region of <NUMEX TYPE="CARDINAL">18</NUMEX> or more amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> with a largely
+        <ENAMEX TYPE="PERSON">hydrophobic</ENAMEX> character. This sequence feature can be
+        identified in primary sequences using hydrophobicity scales
+        [ <ENAMEX TYPE="LAW">7, 8, 9</ENAMEX>]. The most abundant amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in transmembrane
+        regions are leucine, isoleucine, valine, phenylalanine,
+        alanine, glycine, serine, and threonine. Taken together,
+        these amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> account for <NUMEX TYPE="PERCENT">75%</NUMEX> of the amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in
+        transmembrane regions [ <TIMEX TYPE="DATE">10, 11, 12</TIMEX>]. Analysis of the
+        distribution of amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> has revealed patterns in TM
+        regions, for example <ENAMEX TYPE="PERSON">GxxxG</ENAMEX>, which are thought to be
+        important in helix-helix interactions [ <TIMEX TYPE="DATE">11, 12, 13</TIMEX>,
+        <NUMEX TYPE="CARDINAL">14</NUMEX>].
+        We took advantage of the classification of protein
+        <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> provided by others (<ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">Pfam-B</ENAMEX>) [ <TIMEX TYPE="DATE">15</TIMEX>], to
+        identify <ENAMEX TYPE="PER_DESC">families</ENAMEX> that appear to be polytopic membrane
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, and augmented these lists with additional family
+        <ENAMEX TYPE="PER_DESC">members</ENAMEX> based on amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> sequence comparisons.
+        Furthermore, we identified additional <ENAMEX TYPE="PER_DESC">families</ENAMEX> on the basis
+        of clustering of amino<ENAMEX TYPE="SUBSTANCE">-acid sequences</ENAMEX>, resulting in <NUMEX TYPE="CARDINAL">637</NUMEX>
+        distinct <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We used these <ENAMEX TYPE="PER_DESC">families</ENAMEX> to analyze
+        <ENAMEX TYPE="SUBSTANCE">amino-acid compositions</ENAMEX> in the helical regions, pair
+        <ENAMEX TYPE="PERSON">motifs</ENAMEX>, domain structures, and patterns of <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and
+        arrive at a number of generalizations. Among these are that
+        glycine, tyrosine, and proline appear frequently in
+        <ENAMEX TYPE="GPE">conserved</ENAMEX> locations within family transmembrane helices and
+        that the specific pair motifs are found in <ENAMEX TYPE="PER_DESC">families</ENAMEX> that
+        seem to be transporters, symporters, and <ENAMEX TYPE="ORG_DESC">channels</ENAMEX>. The
+        number of kinds of domains and <ENAMEX TYPE="PER_DESC">families</ENAMEX> seems to increase
+        with the number of open reading frames (ORFs) in most
+        <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. Here we present our analysis and discuss these
+        findings.
+      
+      
+        Results
+        
+          Classification of polytopic membrane protein
+          domains
+          The procedure used to classify polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> is based mainly on family classification schemes
+          (<ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">Pfam-B</ENAMEX>) and is shown in Figure <TIMEX TYPE="DATE">1a</TIMEX>. We
+          identified <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane domains in Pfam
+          [ <TIMEX TYPE="DATE">15</TIMEX>] by allocating TM-helices annotated in <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">16</NUMEX>] to <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in <ENAMEX TYPE="GPE">Pfam</ENAMEX>. After conservatively picking 183
+          <ENAMEX TYPE="PERSON">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">152 Pfam-B</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, we conducted an analysis
+          of loops that connect TM-helices. It was shown that the
+          loops tend to be short, with most of them (> <NUMEX TYPE="PERCENT">95%</NUMEX>)
+          having <NUMEX TYPE="CARDINAL">fewer than 80</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. We therefore took <NUMEX TYPE="CARDINAL">80</NUMEX>
+          <ENAMEX TYPE="PERSON">residues</ENAMEX> as the maximal intra-domain loop between
+          TM-helices to define polytopic membrane domains. Though
+          the <NUMEX TYPE="CARDINAL">80</NUMEX>-residue cutoff may not apply to a small portion
+          (<NUMEX TYPE="PERCENT">around 5%</NUMEX>) of integral membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, it diminished
+          the chance of including soluble <ENAMEX TYPE="SUBSTANCE">domains</ENAMEX> within membrane
+          domains, given that the average soluble domain has about
+          <NUMEX TYPE="CARDINAL">170</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>].
+          Using <ENAMEX TYPE="ORGANIZATION">TMHMM</ENAMEX>, a membrane <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> prediction program
+          based on a hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> model [ <ENAMEX TYPE="LAW">6</ENAMEX>], TM-helices of
+          membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in <TIMEX TYPE="DATE">26</TIMEX> genomes were predicted. Polytopic
+          membrane domains were identified using the loop size
+          between TM-helices as a guide. These domains were then
+          classified into <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="PRODUCT">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">318 Pfam-B</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> either
+          by direct <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT ID matching or by sequence
+          similarity matching using <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>]. Of the aligned
+          domains, most of their TM-helices also aligned well,
+          especially in <ENAMEX TYPE="GPE">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>, which have alignments
+          based on manually crafted hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>.
+          Unclassified domains were clustered into <NUMEX TYPE="CARDINAL">121</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> by
+          their sequence similarities. For each <ENAMEX TYPE="PER_DESC">family</ENAMEX>, a profile
+          was constructed, as shown in Figure <TIMEX TYPE="DATE">1b</TIMEX>. This included: an
+          averaged hydrophobicity plot of all <ENAMEX TYPE="PER_DESC">members</ENAMEX> in the family
+          based on the <ENAMEX TYPE="ORGANIZATION">Goldman-Engelman-Steitz</ENAMEX> (GES) scale [ <ENAMEX TYPE="LAW">8</ENAMEX>]; a
+          consensus sequence of the <ENAMEX TYPE="PER_DESC">family</ENAMEX>, represented by a
+          <ENAMEX TYPE="ORGANIZATION">sequence</ENAMEX> logo plot [ <TIMEX TYPE="DATE">19</TIMEX>]; and consensus sequences of the
+          TM-helices. By analyzing the hydrophobicity plots, we can
+          locate TM-helices in the aligned sequences in protein
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and assign a number of TM-helices to each
+          family. Some <ENAMEX TYPE="PER_DESC">families</ENAMEX>, including <NUMEX TYPE="CARDINAL">3</NUMEX> in <ENAMEX TYPE="LOCATION">Pfam-A</ENAMEX> and <NUMEX TYPE="CARDINAL">20</NUMEX> in
+          Pfam-B, were eliminated at this step, owing to the
+          ambiguity of TM-helices observed in the plot. From this
+          process, we identified <NUMEX TYPE="CARDINAL">228</NUMEX> <ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX>, <ENAMEX TYPE="PRODUCT">298 Pfam-B</ENAMEX> and <NUMEX TYPE="CARDINAL">121</NUMEX>
+          clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX> for our analyses, with approximately
+          <NUMEX TYPE="PERCENT">95%</NUMEX> domains classified in <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        
+        
+          Analysis of the number of TM-helices in <ENAMEX TYPE="GPE">Pfam</ENAMEX>-A
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane domains
+          After assigning a number of TM-helices to each <ENAMEX TYPE="PER_DESC">family</ENAMEX>,
+          we conducted a survey of the assigned numbers of
+          TM-helices in <NUMEX TYPE="CARDINAL">228</NUMEX> <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Pfam-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> are manually
+          classified <ENAMEX TYPE="PER_DESC">families</ENAMEX> that have well-aligned protein
+          domains, and most of them have a well-defined number for
+          TM-helices. We also picked <ENAMEX TYPE="PER_DESC">families</ENAMEX> in solute transport
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX> that are annotated as transporters, symporters
+          and <ENAMEX TYPE="ORG_DESC">channels</ENAMEX>, and analyzed the number of TM-helices for
+          these <ENAMEX TYPE="PER_DESC">families</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          In general, most <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> tend to have a small
+          number of TM-helices. For those with <NUMEX TYPE="CARDINAL">seven</NUMEX> or fewer
+          TM-helices, the number of <ENAMEX TYPE="PER_DESC">families</ENAMEX> does not vary
+          significantly with helix number, although there are more
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> with <NUMEX TYPE="CARDINAL">two or four</NUMEX> TM-helices than with <NUMEX TYPE="CARDINAL">three</NUMEX>,
+          <NUMEX TYPE="CARDINAL">five</NUMEX>, <NUMEX TYPE="CARDINAL">six</NUMEX>, or <NUMEX TYPE="CARDINAL">seven</NUMEX>. For <ENAMEX TYPE="PER_DESC">families</ENAMEX> with <NUMEX TYPE="QUANTITY">more than seven</NUMEX>
+          TM-helices, the number of <ENAMEX TYPE="PER_DESC">families</ENAMEX> decreases sharply as
+          the number of TM-helices increases. <ENAMEX TYPE="PER_DESC">Families</ENAMEX> with <NUMEX TYPE="CARDINAL">12</NUMEX>
+          TM-helices are the exception, however; they have a small
+          peak in numbers against the overall downward slope of the
+          plot. We also carried out the same kind of analysis on
+          Pfam-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> that are annotated as transporters,
+          symporters, and <ENAMEX TYPE="ORG_DESC">channels</ENAMEX>, and found that <NUMEX TYPE="CARDINAL">12</NUMEX>-TM-helix
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> are preferred by transporter-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>. In
+          addition, most (<NUMEX TYPE="CARDINAL">11</NUMEX> out of <NUMEX TYPE="CARDINAL">12</NUMEX>) Pfam-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> with <NUMEX TYPE="CARDINAL">12</NUMEX>
+          TM-helices are transporter-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>. There seems to
+          be a tendency for the transporter-like <ENAMEX TYPE="PER_DESC">families</ENAMEX> to have
+          an even number of TM-helices, because <ENAMEX TYPE="PER_DESC">families</ENAMEX> with <NUMEX TYPE="CARDINAL">2</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">4,</ENAMEX>
+          <ENAMEX TYPE="LAW">6, 8, and 12</ENAMEX> TM-helices have a relatively higher
+          occurrence than those with a neighboring odd number of
+          TM-helices.
+        
+        
+          Analysis of amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> distribution and pair
+          motifs
+          We selected <NUMEX TYPE="CARDINAL">168</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> from <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A that had more
+          than <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>. For each of these <ENAMEX TYPE="PER_DESC">families</ENAMEX>, we then
+          generated consensus sequences with conservation value (<ENAMEX TYPE="NATIONALITY">R</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">sequence</ENAMEX> ) using the <ENAMEX TYPE="ORGANIZATION">Alpro</ENAMEX> program [
+          <NUMEX TYPE="CARDINAL">19</NUMEX>]. Relatively conserved amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in the consensus
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> (<ENAMEX TYPE="NATIONALITY">R</ENAMEX> 
+          sequence value <NUMEX TYPE="MONEY">> 3.0</NUMEX>, representing
+          the top <NUMEX TYPE="PERCENT">15%</NUMEX> R 
+          sequence value of all amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>) and
+          in <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX>-helical regions were analyzed for their composition
+          as well as for pair motifs.
+          We compared the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> composition of the
+          TM-helices in general with the composition of only the
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> positions in TM-helices in the <NUMEX TYPE="CARDINAL">168</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). We noticed that some amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> are
+          considerably more prevalent in the conserved positions,
+          such as glycine (<NUMEX TYPE="PERCENT">8%</NUMEX> average composition in TM-helices
+          versus <NUMEX TYPE="PERCENT">19%</NUMEX> composition in conserved positions of
+          TM-helices), proline (<NUMEX TYPE="PERCENT">4%</NUMEX> versus <NUMEX TYPE="PERCENT">9%</NUMEX>) and tyrosine (<NUMEX TYPE="PERCENT">3%</NUMEX>
+          versus <NUMEX TYPE="PERCENT">5%</NUMEX>). In contrast, isoleucine (<NUMEX TYPE="PERCENT">10%</NUMEX> versus <NUMEX TYPE="PERCENT">4%</NUMEX>),
+          <ENAMEX TYPE="ORGANIZATION">valine</ENAMEX> (<NUMEX TYPE="PERCENT">8%</NUMEX> versus <NUMEX TYPE="PERCENT">4%</NUMEX>), methionine (<NUMEX TYPE="PERCENT">4%</NUMEX> versus <NUMEX TYPE="PERCENT">1%</NUMEX>) and
+          <ENAMEX TYPE="ORGANIZATION">threonine</ENAMEX> (<NUMEX TYPE="PERCENT">7%</NUMEX> versus <NUMEX TYPE="PERCENT">4%</NUMEX>) are less prevalent in conserved
+          positions.
+          As might be expected, the changes in prevalence of
+          certain amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> reflect their conservation in the
+          consensus sequence. Therefore, glycine, proline and
+          tyrosine are relatively conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX>-helical
+          regions, and isoleucine, valine, methionine and threonine
+          have relatively high mutability. This result correlates
+          very well with the mutation data matrix (MDM) for
+          <ENAMEX TYPE="CONTACT_INFO">multi-</ENAMEX>spanning transmembrane regions in membrane proteins
+          [ <TIMEX TYPE="DATE">10</TIMEX>]. In the <ENAMEX TYPE="ORGANIZATION">MDM</ENAMEX> of multi-spanning transmembrane α
+          helices, isoleucine, methionine and valine are found to
+          have relatively high mutability as <ENAMEX TYPE="SUBSTANCE">hydrophobic residues</ENAMEX>,
+          and serine and threonine also rank high in mutability as
+          <ENAMEX TYPE="SUBSTANCE">polar residues</ENAMEX>. In the matrix, proline appears to be
+          highly conserved. Our results confirm these findings; in
+          addition, we find that glycine and tyrosine are also
+          highly conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in polytopic TM-helices.
+          We also analyzed the consensus sequences of <ENAMEX TYPE="PRODUCT">168 Pfam</ENAMEX>-A
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> for significant amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> pair motifs and
+          compared our findings with previous studies. Table 1shows
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX> lists: <NUMEX TYPE="CARDINAL">one</NUMEX> includes the top <NUMEX TYPE="CARDINAL">50</NUMEX> pairs of Senes 
+          <ENAMEX TYPE="ANIMAL">et al.</ENAMEX> with their significance [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>]; the <NUMEX TYPE="ORDINAL">second</NUMEX> includes the top <NUMEX TYPE="CARDINAL">50</NUMEX> pairs with their
+          occurrences from randomly generated pairs; and the third
+          includes the top <NUMEX TYPE="CARDINAL">50</NUMEX> pairs with their occurrences using
+          Senes 
+          <ENAMEX TYPE="ORGANIZATION">et al .</ENAMEX>'s top <NUMEX TYPE="CARDINAL">200</NUMEX> most significant
+          <ENAMEX TYPE="PERSON">pairs</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">three</NUMEX> lists, the <ENAMEX TYPE="NATIONALITY">GxxxG</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX> always ranks
+          first, highlighting its significance in TM-helices [ <TIMEX TYPE="DATE">12</TIMEX>,
+          <TIMEX TYPE="DATE">13, 14</TIMEX>]. In the last list, which contains top-ranked
+          pairs in the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> lists, we observed some
+          interesting pair-motif patterns that are associated with
+          <ENAMEX TYPE="ORGANIZATION">glycine</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">Amino-acid</ENAMEX> pairs such as <ENAMEX TYPE="ORGANIZATION">ZxxxZ</ENAMEX> and <ENAMEX TYPE="PERSON">ZxxxxxxZ</ENAMEX> (Z
+          represents glycine, alanine, or <ENAMEX TYPE="SUBSTANCE">serine - residues</ENAMEX> with a
+          small <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX>) are highly ranked in the last list. It
+          is known that amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> are positioned with an average
+          of <NUMEX TYPE="CARDINAL">3.6</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> per turn in TM-helices [ <TIMEX TYPE="DATE">20</TIMEX>]. Two
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> that are separated by <NUMEX TYPE="CARDINAL">three or six</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are
+          thus oriented in the same direction. Therefore, it was
+          suggested that these motifs are favored for TM-helix
+          packing [ <TIMEX TYPE="DATE">12, 14</TIMEX>]. Our results are in good agreement with
+          the pair motifs that are formed with small <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, but
+          do not favor pairs with β-branched aliphatic <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>
+          (isoleucine and valine). This is probably because
+          <ENAMEX TYPE="ORGANIZATION">isoleucine</ENAMEX> and valine are highly mutable <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in
+          TM-helices.
+          Of all the <ENAMEX TYPE="PRODUCT">168 Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane
+          domains we studied, <NUMEX TYPE="CARDINAL">45</NUMEX> are classified as transporters,
+          channels, and symporters, representing <NUMEX TYPE="PERCENT">27%</NUMEX> of the total
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We studied <ENAMEX TYPE="ORGANIZATION">GxxxG</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GxxxxxxG</ENAMEX> pairs, and found
+          that they tend to be associated within
+          transporter/<ENAMEX TYPE="ORG_DESC">channel</ENAMEX>-like membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          When <NUMEX TYPE="CARDINAL">one</NUMEX> or both glycines is mutated to a small residue
+          such as serine or alanine, this <ENAMEX TYPE="ORG_DESC">association</ENAMEX> is weakened.
+          Therefore, <ENAMEX TYPE="ORGANIZATION">GxxxG</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GxxxxxxG</ENAMEX> pairs are relatively
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in transporter/<ENAMEX TYPE="ORG_DESC">channel</ENAMEX>-like membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          By comparing the amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> composition of conserved
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the TM-helices of the transporter-like
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> with that of the rest of the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>), we found that glycine is <NUMEX TYPE="CARDINAL">two</NUMEX> times more
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in the transporter-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>, reflecting
+          the favored <ENAMEX TYPE="PERSON">GxxxG</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GxxxxxxG</ENAMEX> pairs in these <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Proline</ENAMEX> and asparagine are also among the conserved
+          <ENAMEX TYPE="ORGANIZATION">residues</ENAMEX> favored in transporter-like <ENAMEX TYPE="PER_DESC">families</ENAMEX>, whereas
+          cysteine, histidine, isoleucine, leucine, methionine, and
+          valine are unfavored.
+        
+        
+          Genome-wide analysis of <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic
+          membrane domains
+          Classified polytopic membrane <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> domains
+          represent from <NUMEX TYPE="PERCENT">40% to 81%</NUMEX> of the total polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> in the <ENAMEX TYPE="ORG_DESC">genomes</ENAMEX> studied, with an average coverage
+          of <NUMEX TYPE="PERCENT">61%</NUMEX> (Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>). We kept the family classification
+          relatively conservative instead of aiming for a high
+          overall coverage with a less careful classification. To
+          avoid including falsely predicted <ENAMEX TYPE="PER_DESC">families</ENAMEX>, we based our
+          analysis on <ENAMEX TYPE="PER_DESC">families</ENAMEX> with no <NUMEX TYPE="CARDINAL">fewer than four</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>.
+          However, a higher proportion of polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> could be classified if smaller <ENAMEX TYPE="PER_DESC">families</ENAMEX> were
+          considered (Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>).
+          We classified polytopic membrane domains into <ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX>,
+          Pfam-B and self-clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Figure <NUMEX TYPE="CARDINAL">4bshows</NUMEX> the
+          distribution of these <NUMEX TYPE="CARDINAL">three</NUMEX> kinds of <ENAMEX TYPE="PER_DESC">families</ENAMEX> in all the
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. Most of the classified polytopic membrane
+          domains belong to <ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">Pfam-B</ENAMEX>, which cover <NUMEX TYPE="PERCENT">95%</NUMEX> of
+          classified domains.
+          Classified polytopic membrane domains and their
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> were studied in relation to the number of ORFs
+          in each genome. Figure <NUMEX TYPE="CARDINAL">5ashows</NUMEX> the number of classified
+          polytopic membrane domains versus the number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> in
+          all the genomes, and Figure <NUMEX TYPE="CARDINAL">5bshows</NUMEX> the same relation in
+          genomes of single-celled <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. A rough linear
+          relation seems to exist between the number of classified
+          polytopic membrane domains and the number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> in each
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. However, it is interesting that 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans is an obvious outlier in
+          the trend. To try to explain this, we took a closer look
+          at the biggest <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane domains in 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans (Figure <NUMEX TYPE="CARDINAL">5c</NUMEX>). The three
+          biggest <ENAMEX TYPE="PER_DESC">families</ENAMEX> in 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans are <TIMEX TYPE="DATE">PF01604</TIMEX>, <TIMEX TYPE="DATE">PF01461</TIMEX>,
+          and <ENAMEX TYPE="PRODUCT">PB000009</ENAMEX>, which are described as <NUMEX TYPE="CARDINAL">7</NUMEX>-TM chemoreceptor
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>. (The annotation of <ENAMEX TYPE="PRODUCT">PB000009</ENAMEX> is from <TIMEX TYPE="DATE">PD000148</TIMEX> in
+          <ENAMEX TYPE="ORGANIZATION">Prodom</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>].) These <ENAMEX TYPE="PER_DESC">families</ENAMEX> are almost unique to 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans, as most of their
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> in <ENAMEX TYPE="GPE">Pfam</ENAMEX> are from 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans. These <ENAMEX TYPE="PER_DESC">families</ENAMEX> contain
+          well-amplified membrane domains, with total numbers of
+          <TIMEX TYPE="DATE">289, 250</TIMEX>, and <NUMEX TYPE="CARDINAL">216</NUMEX>, respectively. Those numbers are more
+          than double the biggest <ENAMEX TYPE="PER_DESC">family</ENAMEX> in 
+          Drosophila melanogaster, which is
+          PF00083 (<ENAMEX TYPE="ORGANIZATION">Sugar</ENAMEX> (and other) transporter) with <NUMEX TYPE="CARDINAL">108</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>.
+          By removing the number of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in these three
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> (a total of <NUMEX TYPE="CARDINAL">754</NUMEX>), we can see a better fit of 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans to the trend line. So
+          the unusually large number of polytopic membrane domains
+          is likely to be caused by <ENAMEX TYPE="SUBSTANCE">protein amplification</ENAMEX> in a few
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+          This hypothesis was supported by analysis of Figure
+          5d, which shows the number of <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic
+          membrane domains in relation to the number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> in
+          studied genomes. The number of <ENAMEX TYPE="PER_DESC">families</ENAMEX> seems to have a
+          logarithmic relation in all studied genomes, including 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans. Given that 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans has an unusually large
+          number of polytopic membrane domains but a normal number
+          of <ENAMEX TYPE="PER_DESC">families</ENAMEX>, the amplification of polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> is limited to a few <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        
+      
+      
+        Discussion
+        Polytopic membrane domains of integral membrane proteins
+        in <NUMEX TYPE="CARDINAL">26</NUMEX> <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> have been classified into <NUMEX TYPE="CARDINAL">637</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, which
+        include <NUMEX TYPE="CARDINAL">218</NUMEX> <ENAMEX TYPE="ORGANIZATION">Pfam-A</ENAMEX>, <ENAMEX TYPE="PRODUCT">298 Pfam-B</ENAMEX> and <NUMEX TYPE="CARDINAL">121</NUMEX> clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        Only <ENAMEX TYPE="PER_DESC">families</ENAMEX> that are reasonably big (≥ <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>) were
+        selected. The classified <ENAMEX TYPE="PER_DESC">families</ENAMEX> were used for amino-acid
+        distribution and pattern studies for genome-wide
+        analysis.
+        Our studies on amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> distribution and patterns were
+        conducted on <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We also analyzed <ENAMEX TYPE="PRODUCT">Pfam-B</ENAMEX> and
+        the clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX>, but found fewer conservations,
+        probably because the <ENAMEX TYPE="PRODUCT">Pfam-B</ENAMEX> and the clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX> are
+        not as carefully aligned as <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>. In the
+        analysis of amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> positions, glycine, proline and
+        tyrosine were found to be the most conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in
+        <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX>-helical regions, whereas isoleucine, valine, methionine
+        and threonine were identified as the least conserved
+        <ENAMEX TYPE="PERSON">residues</ENAMEX>, relative to average occurrence. This result is
+        mostly consistent with previous results from an <ENAMEX TYPE="ORGANIZATION">MDM</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>].
+        Although hydrophobic <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> such as leucine and
+        isoleucine are among the most abundant <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in
+        TM-helices, they are not well conserved in position. The
+        observed conservation in position for <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> such as
+        glycine, proline and tyrosine raises the question of
+        whether these <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> are associated with the functions of
+        <ENAMEX TYPE="PERSON">integral</ENAMEX> membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        We also studied amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> pair motifs in the conserved
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in classified <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We show that pairs
+        consisting of a glycine and another small amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        (glycine, alanine or serine) and facing the same direction
+        in <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX> α-helices are common in conserved positions. As those
+        pair motifs have been shown to be important for packing of
+        <ENAMEX TYPE="SUBSTANCE">TM-helices</ENAMEX> [ <TIMEX TYPE="DATE">12, 13, 14</TIMEX>], conservation of those motifs
+        probably implies their importance in folding stability of
+        <ENAMEX TYPE="PERSON">integral</ENAMEX> membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, as is the case with hydrophobic
+        <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> found in the core regions of soluble <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+        Our results have some interesting implications for the
+        <ENAMEX TYPE="PERSON">classified Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> annotated as transporters,
+        <ENAMEX TYPE="ORGANIZATION">symporters</ENAMEX> and <ENAMEX TYPE="ORG_DESC">channels</ENAMEX>. First, there is a preference for
+        <NUMEX TYPE="CARDINAL">12</NUMEX> TM-helices among these <ENAMEX TYPE="PER_DESC">families</ENAMEX>. As there is no <NUMEX TYPE="CARDINAL">12</NUMEX>-TM
+        transporter protein <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> available, we do not know
+        exactly why a <NUMEX TYPE="CARDINAL">12</NUMEX> TM-helix bundle is preferred for
+        transport. The <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">MsbA</ENAMEX> from 
+        Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>], an
+        <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>-binding cassette (<ENAMEX TYPE="ORGANIZATION">ABC</ENAMEX>) transporter homolog, was
+        recently solved. It contains <NUMEX TYPE="CARDINAL">12</NUMEX> TM-helices in a homodimer
+        of <NUMEX TYPE="CARDINAL">two 6</NUMEX>-TM-helical bundles, which form a central chamber
+        to translocate substrates. However, it is unlikely that
+        polytopic membrane domains in the <NUMEX TYPE="CARDINAL">12</NUMEX>-<ENAMEX TYPE="ORGANIZATION">TM Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+        have a structure like that of <ENAMEX TYPE="ORGANIZATION">ABC</ENAMEX> transporters; as there is
+        no obvious sequence similarity within the sequence
+        containing the <NUMEX TYPE="CARDINAL">12</NUMEX> TM-helices, it is unlikely to form two
+        <NUMEX TYPE="CARDINAL">6</NUMEX>-TM-helical bundles. By looking at <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> of other
+        transport <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, including the potassium channel [ <TIMEX TYPE="DATE">23</TIMEX>],
+        the mechanosensitive <ENAMEX TYPE="ORG_DESC">ion channel</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>], the aquaporin water
+        <ENAMEX TYPE="ORGANIZATION">channel</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>], and the glycerol facilitator channel [ <TIMEX TYPE="DATE">26</TIMEX>],
+        it is apparent that <ENAMEX TYPE="PRODUCT">7-10</ENAMEX> TM-helices are needed to form a
+        <ENAMEX TYPE="ORGANIZATION">tunnel</ENAMEX> and transport molecules. This means that proteins
+        with a small number of TM-helices must oligomerize to form
+        a proper <ENAMEX TYPE="FAC_DESC">tunnel</ENAMEX> to translocate molecules through the
+        <ENAMEX TYPE="ORGANIZATION">membrane</ENAMEX>. In addition, <ENAMEX TYPE="PER_DESC">families</ENAMEX> of these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> tend to
+        have <ENAMEX TYPE="PERSON">GxxxG</ENAMEX> and <ENAMEX TYPE="GPE">GxxxxxxG</ENAMEX> instead of related motifs that have
+        <NUMEX TYPE="CARDINAL">one</NUMEX> or both glycines changed to alanine or serine. While
+        this preference is interesting, we do not know its origin.
+        Perhaps it reflects especially tight packing among helices
+        in transporters, permitting the <ENAMEX TYPE="ORGANIZATION">Cα</ENAMEX>-H...<ENAMEX TYPE="PERSON">O</ENAMEX> hydrogen bonding
+        that has been discussed [ <TIMEX TYPE="DATE">14</TIMEX>].
+        We also studied the distribution of classified families
+        in <TIMEX TYPE="TIME">26 genomes.</TIMEX> Although the classified <ENAMEX TYPE="PER_DESC">families</ENAMEX> of
+        polytopic membrane domains do not provide complete coverage
+        of the total potential polytopic membrane domains, we think
+        they include most membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that have essential
+        functions in these genomes. The excluded domains are either
+        unique in function for the <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> or falsely predicted.
+        In most genomes the number of classified polytopic membrane
+        <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> seems to have a linear relation with the number of
+        <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>. However, 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans is an outlier to this
+        trend. By studying the <ENAMEX TYPE="PER_DESC">families</ENAMEX> in 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans, we found that it has an
+        <ENAMEX TYPE="CONTACT_INFO">exceptional</ENAMEX> number of <NUMEX TYPE="CARDINAL">7</NUMEX>-TM-helical membrane domains, most
+        of which are annotated as chemoreceptors. As 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> <ENAMEX TYPE="PER_DESC">elegans</ENAMEX> cannot see or hear but
+        must search for <ENAMEX TYPE="SUBSTANCE">food</ENAMEX>, chemosensation is key to survival. 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans mediates chemosensation by
+        <NUMEX TYPE="CARDINAL">32</NUMEX> neurons that are mostly arranged in bilateral pairs on
+        the left and right sides, and it is estimated that there
+        are <NUMEX TYPE="CARDINAL">about 500</NUMEX> <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>-<ENAMEX TYPE="SUBSTANCE">protein-coupled receptors</ENAMEX> that act in
+        <ENAMEX TYPE="ORGANIZATION">chemosensation</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>]. We have now identified many
+        <ENAMEX TYPE="ORGANIZATION">chemoreceptors</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">750</ENAMEX>), classified into <NUMEX TYPE="CARDINAL">three</NUMEX> large <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        Therefore, classification of polytopic membrane domains
+        into <ENAMEX TYPE="PER_DESC">families</ENAMEX> gives us another way to look at the
+        distribution and functions of integral membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+        <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>.
+      
+      
+        Materials and methods
+        
+          Databases
+          In this study, the following databases were used:
+          <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> (release <TIMEX TYPE="DATE">39</TIMEX> and updated to <NUMEX TYPE="CARDINAL">19</NUMEX> <TIMEX TYPE="DATE">December</TIMEX>, <TIMEX TYPE="DATE">2000</TIMEX>)
+          [ <TIMEX TYPE="DATE">16</TIMEX>], which contains <NUMEX TYPE="CARDINAL">91,132</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> entries; Pfam
+          (release <NUMEX TYPE="MONEY">6.1</NUMEX>) [ <TIMEX TYPE="DATE">15</TIMEX>], which contains <NUMEX TYPE="CARDINAL">2,727</NUMEX> protein
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> in <ENAMEX TYPE="LOCATION">Pfam-A</ENAMEX> and <NUMEX TYPE="CARDINAL">40,230</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> in <ENAMEX TYPE="GPE">Pfam</ENAMEX>-B;
+          <ENAMEX TYPE="ORGANIZATION">Proteome Analysis Database</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>], where complete
+          non-redundant proteomes were downloaded. We selected
+          <NUMEX TYPE="CARDINAL">eight</NUMEX> genomes from archaea: 
+          Archaeoglobus fulgidus (AF), 
+          Aeropyrum pernix <TIMEX TYPE="DATE">K1</TIMEX> (AP), 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. (<ENAMEX TYPE="ORGANIZATION">HS</ENAMEX>), 
+          Methanococcus jannaschii (MJ), 
+          Methanobacterium
+          <ENAMEX TYPE="ORGANIZATION">thermoautotrophicum</ENAMEX> (MT), 
+          Pyrococcus abyssi (<ENAMEX TYPE="ORGANIZATION">PA</ENAMEX>), 
+          Pyrococcus horikoshii (PH), and 
+          Thermoplasma acidophilum (<ENAMEX TYPE="ORGANIZATION">TA</ENAMEX>); <NUMEX TYPE="CARDINAL">14</NUMEX>
+          genomes from <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>: 
+          Aquifex aeolicus (AA), 
+          Borrelia burgdorferi (BB), 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> (BS), 
+          Chlamydia pneumoniae strain AR39
+          (<ENAMEX TYPE="ORGANIZATION">CP</ENAMEX>), 
+          Chlamydia trachomatis (CT), 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> strain K12 (<ENAMEX TYPE="ORGANIZATION">EC</ENAMEX>), 
+          Haemophilus influenzae (HI), 
+          Helicobacter pylori strain 26695
+          (<ENAMEX TYPE="PRODUCT">HP</ENAMEX>), 
+          Mycobacterium tuberculosis (<ENAMEX TYPE="ORGANIZATION">MyTu</ENAMEX>), 
+          Mycoplasma genitalium (MG), 
+          Mycoplasma pneumoniae (<ENAMEX TYPE="PER_DESC">MP</ENAMEX>), 
+          Rickettsia prowazekii (RP), 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>. (<ENAMEX TYPE="ORGANIZATION">SS</ENAMEX>), and 
+          Treponema pallidum (TP); <NUMEX TYPE="CARDINAL">four</NUMEX>
+          genomes from eukaryotes: 
+          Saccharomyces cerevisiae (SC), 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster (DM), 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans (CE), and 
+          Arabidopsis thaliana (<ENAMEX TYPE="ORGANIZATION">AT</ENAMEX>).
+        
+        
+          Classification of polytopic membrane protein
+          domains
+          Figure 1ashows our complete classification procedure.
+          We extracted <NUMEX TYPE="CARDINAL">8,301</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> entries in the <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT
+          database containing no less than <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">TRANSMEM</ENAMEX> annotations
+          in the <ENAMEX TYPE="ORGANIZATION">FT</ENAMEX> field. In these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, a total of <NUMEX TYPE="CARDINAL">52,636</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">transmembrane</ENAMEX> (TM) regions were allocated to <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+          the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> database. By analyzing the location of TM
+          regions in <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> domains of each <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, we were
+          able to identify <ENAMEX TYPE="PER_DESC">families</ENAMEX> that contain polytopic membrane
+          <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX>. We went through a relatively
+          conservative procedure to identify potential <ENAMEX TYPE="PER_DESC">families</ENAMEX> of
+          polytopic membrane domains. First, a <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> needed
+          to have a significant number of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> containing no
+          fewer than <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX> regions to be identified as a polytopic
+          membrane domain <ENAMEX TYPE="PER_DESC">family</ENAMEX>. <NUMEX TYPE="ORDINAL">Second</NUMEX>, all <ENAMEX TYPE="PER_DESC">families</ENAMEX> in <ENAMEX TYPE="GPE">Pfam</ENAMEX>-A
+          and some in <ENAMEX TYPE="GPE">Pfam</ENAMEX>-B that have more than <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> are
+          analyzed, as the <ENAMEX TYPE="GPE">Pfam</ENAMEX>-B database is under development and
+          contains <NUMEX TYPE="CARDINAL">thousands</NUMEX> of small protein <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Finally, we
+          <ENAMEX TYPE="PRODUCT">identified 183 Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">152 Pfam-B</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Proteins</ENAMEX>
+          in these <ENAMEX TYPE="PER_DESC">families</ENAMEX> contain <NUMEX TYPE="CARDINAL">36,878</NUMEX> <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX> regions, representing
+          <NUMEX TYPE="PERCENT">approximately 70%</NUMEX> of the total TM regions extracted from
+          <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>. We analyzed sizes of the loops between all
+          the <ENAMEX TYPE="ORGANIZATION">TM</ENAMEX> regions, as shown in the inner chart of Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          By <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>'s <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> domain classification, most loops (>
+          <NUMEX TYPE="PERCENT">95%</NUMEX>) are short peptides, containing <NUMEX TYPE="CARDINAL">less than 80</NUMEX> amino
+          <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>.
+          <ENAMEX TYPE="SUBSTANCE">Proteins</ENAMEX> from <NUMEX TYPE="CARDINAL">26</NUMEX> genomes were submitted to TMHMM
+          server for TM-helix prediction [ <ENAMEX TYPE="LAW">6</ENAMEX>]. Predicted membrane
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> were searched for polytopic membrane domains,
+          using a rule, generated from the above result, that the
+          intramembrane-domain loop sizes must be less than 80
+          amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. To identify domains that are included in the
+          Pfam <ENAMEX TYPE="PER_DESC">families</ENAMEX> that have been identified, we searched the
+          defined polytopic membrane domains for <ENAMEX TYPE="ORGANIZATION">SWISS-PROT ID</ENAMEX>
+          matches and regional matches. Unmatched domains are
+          further classified on the basis of <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>'s classification,
+          and <NUMEX TYPE="CARDINAL">additional 48</NUMEX> <ENAMEX TYPE="PRODUCT">Pfam-A</ENAMEX> and <ENAMEX TYPE="PRODUCT">166 Pfam-B</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> are
+          identified (small size Pfam-B <ENAMEX TYPE="PER_DESC">families</ENAMEX> with no less than
+          <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> and no less than <NUMEX TYPE="CARDINAL">three</NUMEX> matches are
+          selected). In total, we identified <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="PRODUCT">Pfam-A</ENAMEX> and <NUMEX TYPE="CARDINAL">318</NUMEX>
+          Pfam-B <ENAMEX TYPE="PER_DESC">families</ENAMEX> as polytopic membrane domains. As not all
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from the <NUMEX TYPE="CARDINAL">26</NUMEX> genomes are included in <ENAMEX TYPE="GPE">Pfam</ENAMEX>, we
+          then tried to assign the unclassified polytopic membrane
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> to the identified <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> by sequence
+          similarity matching to <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in these <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We
+          used the FASTA program [ <TIMEX TYPE="DATE">18</TIMEX>] to search for matches, and
+          matches with 
+          E -values less than <NUMEX TYPE="CARDINAL">0.01</NUMEX> were
+          considered positive. Obviously, one can assign <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> using the HMMer software [ <TIMEX TYPE="DATE">29</TIMEX>], which they are
+          closely associated with. However, we chose to take a
+          somewhat simpler tack, using <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX>. This is a somewhat
+          more conservative approach (finding fewer homologs) which
+          has the advantage of using consistent thresholds that can
+          be applied to all the searches. Query domains were
+          assigned to <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> that their best matches belong
+          to.
+          As for those that have not been classified into Pfam
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> by either ID match or by sequence-similarity
+          match, we tried to cluster these into <ENAMEX TYPE="PER_DESC">families</ENAMEX> on the
+          basis of their sequence similarities. This procedure was
+          done by an all-against-all sequence similarity search ( 
+          E -value <NUMEX TYPE="MONEY">< 0.01</NUMEX>) using <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX>,
+          and polytopic membrane domains were clustered by applying
+          a multiple linkage clustering method [ <TIMEX TYPE="DATE">30</TIMEX>] to the FASTA
+          results. 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX> must have more
+          than <NUMEX TYPE="CARDINAL">0.9</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( 
+          <ENAMEX TYPE="CONTACT_INFO">N -1</ENAMEX>) links to other <ENAMEX TYPE="PER_DESC">members</ENAMEX>, with
+          tolerance of <NUMEX TYPE="PERCENT">10%</NUMEX> missing links among <ENAMEX TYPE="PER_DESC">members</ENAMEX>. We selected
+          <NUMEX TYPE="CARDINAL">121</NUMEX> clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX> that contain no <NUMEX TYPE="CARDINAL">fewer than four</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX>, and aligned <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> in each family
+          using the <ENAMEX TYPE="ORGANIZATION">CLUSTAL W</ENAMEX> program [ <TIMEX TYPE="DATE">31</TIMEX>]. For a complete list of
+          assigned polytopic membrane domains see Additional data
+          files and [ <TIMEX TYPE="DATE">32</TIMEX>].
+        
+        
+          TM-helix identification in the <ENAMEX TYPE="PER_DESC">families</ENAMEX> of
+          polytopic membrane domains
+          We assume that all <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> in a classified
+          family have a defined number of TM-helices. To identify
+          the number of TM-helices, we made a hydrophobic plot for
+          each <ENAMEX TYPE="PER_DESC">family</ENAMEX> of polytopic membrane domain. We took the
+          aligned sequences in <ENAMEX TYPE="GPE">Pfam</ENAMEX>'s <ENAMEX TYPE="PER_DESC">families</ENAMEX> and in clustered
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and calculated the averaged <ENAMEX TYPE="ORGANIZATION">GES</ENAMEX> hydrophobic
+          values [ <ENAMEX TYPE="LAW">8</ENAMEX>] of all the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> at each aligned position
+          (<ENAMEX TYPE="ORGANIZATION">Deleted</ENAMEX> and inserted <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>, represented by '-' and
+          '.' respectively, are given <NUMEX TYPE="CARDINAL">0</NUMEX> individual values.) The
+          plot for each <ENAMEX TYPE="PER_DESC">family</ENAMEX> was generated by the averaged GES
+          values along their corresponding aligned positions. Most
+          hydrophobic regions were clearly defined, as most
+          TM-<ENAMEX TYPE="PER_DESC">helices</ENAMEX> aligned well in each <ENAMEX TYPE="PER_DESC">family</ENAMEX>. By identifying
+          hydrophobic <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> in the plots, we assigned numbers of
+          TM-helices to classified <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. We also eliminated <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PRODUCT">Pfam-A and 20 Pfam-B</ENAMEX>
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, as they did not contain multiple hydrophobic
+          regions in their hydrophobicity plots. Therefore, we have
+          <ENAMEX TYPE="PRODUCT">228 Pfam-A</ENAMEX>, <ENAMEX TYPE="PRODUCT">298 Pfam-B</ENAMEX> and <NUMEX TYPE="CARDINAL">121</NUMEX> clustered <ENAMEX TYPE="PER_DESC">families</ENAMEX> for
+          further analysis.
+        
+        
+          Analysis of amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> distribution and pair
+          motifs
+          We analyzed <NUMEX TYPE="CARDINAL">168</NUMEX> <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> with <NUMEX TYPE="CARDINAL">more than 20</NUMEX>
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> and generated consensus sequences with their
+          sequence logos of all aligned sequences in these <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          using the <ENAMEX TYPE="ORGANIZATION">Alpro</ENAMEX> sequence logo program [ <TIMEX TYPE="DATE">19</TIMEX>]. The selected
+          family size threshold of <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> is somewhat
+          arbitrary. We chose it because: <NUMEX TYPE="ORDINAL">first</NUMEX>, a significant
+          portion (~<NUMEX TYPE="PERCENT">75%</NUMEX>) of the <NUMEX TYPE="CARDINAL">228</NUMEX> classified <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX> had
+          <NUMEX TYPE="CARDINAL">more than 20</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>; and <NUMEX TYPE="ORDINAL">second</NUMEX>, the potential bias from
+          small <ENAMEX TYPE="PER_DESC">families</ENAMEX> could be reduced as they tend to have more
+          conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> than big <ENAMEX TYPE="PER_DESC">families</ENAMEX>. However, we can
+          show that our results remain unaffected by changing this
+          threshold. In particular, we analyzed <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX>-A <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          containing <TIMEX TYPE="DATE">more than 25, 30, 35</TIMEX>, or <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>, and got
+          essentially the same results. Amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> with sequence
+          conservation values (<ENAMEX TYPE="NATIONALITY">R</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">sequence</ENAMEX> ) of no less than <NUMEX TYPE="MONEY">3.0</NUMEX> (top
+          <NUMEX TYPE="PERCENT">15%</NUMEX> of all values) were considered as <ENAMEX TYPE="SUBSTANCE">conserved residues</ENAMEX>.
+          For all the <ENAMEX TYPE="PER_DESC">families</ENAMEX>, we counted the occurrences of amino
+          <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in the consensus sequences and in all aligned
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in hydrophobic regions, which are defined to
+          have <NUMEX TYPE="CARDINAL">no fewer than 10</NUMEX> continuous amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> with GES
+          hydrophobicity value greater than 0.
+          We used the <ENAMEX TYPE="PER_DESC">pair</ENAMEX> definition from a previous study [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>]. For example, a pair XY 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> (<ENAMEX TYPE="LAW">X</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> represent amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+          and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> a number) corresponds to amino
+          <ENAMEX TYPE="LAW">acids X</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> separated by ( 
+          <ENAMEX TYPE="CONTACT_INFO">n -1</ENAMEX>) <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. We analyzed
+          occurrences of pair motifs of all combinations of amino
+          acids separated by <NUMEX TYPE="CARDINAL">1 to 10</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. This result was
+          compared with a previous study of the <NUMEX TYPE="CARDINAL">200</NUMEX> most
+          significant over-represented pairs [ <TIMEX TYPE="DATE">12, 33</TIMEX>].
+        
+        
+          Analysis of the <ENAMEX TYPE="PER_DESC">families</ENAMEX> of polytopic membrane
+          domain in genomes
+          Using simple cross-referencing based on the above
+          procedure, proteomic entries in each genome were searched
+          for matches of polytopic membrane domains of classified
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Numbers of membrane domains in classified
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> were counted and analyzed in all genomes
+          studied.
+        
+      
+      
+        Additional data files
+        A complete listof assigned polytopic membrane domains is
+        available as additional data and from [ <TIMEX TYPE="DATE">32</TIMEX>].
+        Additional data file 1
+        A complete list of assigned polytopic membrane
+        domains
+        A complete list of assigned polytopic membrane
+        domains
+        Click here for additional data file
+      
+    
+  

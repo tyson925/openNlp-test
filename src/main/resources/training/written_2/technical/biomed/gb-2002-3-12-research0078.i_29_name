@@ -1,0 +1,609 @@
+
+  
+    
+      
+        Background
+        The discovery of genes underlying multigenic diseases
+        and traits is one of the most important challenges
+        currently facing genetic <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>. This effort has been
+        aided by quantitative trait locus (QTL) mapping methods,
+        which have now been applied to numerous <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> phenotypes
+        in a range of <ENAMEX TYPE="ANIMAL">species</ENAMEX>, including many behavioral phenotypes
+        of high interest. A <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> is a chromosomal region that
+        contains a gene or genes that influence a quantitative
+        trait. The power of this approach was first demonstrated in
+        <ENAMEX TYPE="PLANT">plants</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>] and later in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX>], flies [ <ENAMEX TYPE="LAW">3</ENAMEX>], livestock
+        [ <ENAMEX TYPE="LAW">4, 5</ENAMEX>], <ENAMEX TYPE="ANIMAL">rodents</ENAMEX> [ <ENAMEX TYPE="LAW">6, 7, 8, 9</ENAMEX>] and <ENAMEX TYPE="PER_DESC">humans</ENAMEX> [ <TIMEX TYPE="DATE">10, 11</TIMEX>,
+        <NUMEX TYPE="CARDINAL">12</NUMEX>].
+        Historically, a typical approach to going from <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> to
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> has been to select one or a few of the best biological
+        <ENAMEX TYPE="SUBSTANCE">candidate genes</ENAMEX> from within the QTL interval and search for
+        sequence differences that predict differential expression
+        and/or structure of the gene product. An alternative
+        strategy is to carry out comparative sequencing of large
+        numbers of potential <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes located within the QTL
+        <ENAMEX TYPE="PERSON">interval</ENAMEX>, which is feasible given the automated sequencing
+        methods now available [ <TIMEX TYPE="DATE">13</TIMEX>]. However, these approaches are
+        limited because the gene underlying a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> may not be
+        recognized as a good <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene if little is known
+        about the gene's function and/or if a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> region is large,
+        in which case sequencing every <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> within the <ENAMEX TYPE="LAW">QTL</ENAMEX> requires
+        considerable time, cost and labor to complete.
+        The recent development of murine whole-genome draft
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>] should speed the process of identifying
+        disease genes underlying <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> because several of the
+        <ENAMEX TYPE="PLANT">strains</ENAMEX> used for genome sequencing are the same as those
+        that have been used to develop the majority of <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> QTLs
+        so far identified. The <ENAMEX TYPE="PER_DESC">public</ENAMEX> mouse genome sequencing
+        effort used <ENAMEX TYPE="PRODUCT">C57BL/6J</ENAMEX> (<NUMEX TYPE="MONEY">B6</NUMEX>) <ENAMEX TYPE="ANIMAL">mice</ENAMEX>, while the private effort by
+        <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> has sequenced the mouse genome in <NUMEX TYPE="CARDINAL">four</NUMEX> strains:
+        <ENAMEX TYPE="ORGANIZATION">DBA</ENAMEX><ENAMEX TYPE="PRODUCT">/2J</ENAMEX> (<NUMEX TYPE="MONEY">D2</NUMEX>), <ENAMEX TYPE="PRODUCT">A/J</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">129X1/SvJ</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">129S1/SvImJ</ENAMEX>. Combinations
+        of these <ENAMEX TYPE="PLANT">strains</ENAMEX>, for example <TIMEX TYPE="DATE">B6xD2</TIMEX> and <ENAMEX TYPE="PRODUCT">B6xA/J</ENAMEX>, have been
+        used for the identification of <NUMEX TYPE="QUANTITY">over 250 murine</NUMEX> QTLs.
+        Because of these resources, we reasoned that sequence
+        variations in QTL <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> might now be identified simply by
+        direct 
+        in silico alignment of the sequences
+        obtained directly from the databases of the two relevant
+        strains, obviating much of the need for 
+        <ENAMEX TYPE="ORGANIZATION">de novo</ENAMEX> sequencing. We show that,
+        once several factors were addressed, such as sequencing
+        error detection and discrimination between closely related
+        genes, a high-throughput <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> could be developed that
+        allows large numbers of gene-coding regions from QTL
+        intervals to be rapidly compared 
+        in silico and interstrain allelic
+        sequence differences quickly identified and targeted for
+        further hypothesis-driven analyses. We also believe that
+        this strategy has considerable general <ENAMEX TYPE="ORG_DESC">utility</ENAMEX>, and should
+        be applicable to any <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> as long as the <ENAMEX TYPE="PLANT">strains</ENAMEX> used are
+        those for which relatively complete genome sequences are
+        available.
+        While our work was in progress, <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> incorporated the
+        public B6 sequence into its mouse genome <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> and
+        developed a searchable database of mouse single nucleotide
+        <ENAMEX TYPE="ORGANIZATION">polymorphisms</ENAMEX> (SNPs) [ <TIMEX TYPE="DATE">15</TIMEX>]. Comparison of the gene variants
+        identified by our approach to the <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> identified by a
+        search of <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>'s SNP database indicates that the latter
+        significantly underestimates the number of <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> present and
+        that the method described here provides the most complete
+        and accurate compilation of <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> gene variants.
+        We tested this approach on <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> involved in physical
+        dependence on <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>; these are located on murine
+        <ENAMEX TYPE="CONTACT_INFO">chromosomes 1</ENAMEX> and <NUMEX TYPE="CARDINAL">13</NUMEX> and were identified using <NUMEX TYPE="CARDINAL">two</NUMEX> mapping
+        populations derived from <TIMEX TYPE="DATE">the B6 and D2</TIMEX> <ENAMEX TYPE="PLANT">progenitor strains</ENAMEX>.
+        The well documented difference in susceptibility to
+        withdrawal after chronic ethanol exposure between the B6
+        and D2 <ENAMEX TYPE="PER_DESC">inbred</ENAMEX> mouse strains provided an excellent starting
+        point for dissecting genetic influences involved in
+        physical dependence on <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> and to study how common
+        allele variants influence genetic predisposition to
+        physical dependence on <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>. Genome-wide evaluations of
+        chronic ethanol withdrawal convulsions identified <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> on
+        murine chromosomes <TIMEX TYPE="DATE">1, 13, 19 and 4</TIMEX> [ <TIMEX TYPE="DATE">16</TIMEX>]. The <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> on
+        chromosome <NUMEX TYPE="CARDINAL">1</NUMEX> and chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> (a sex-limited QTL) were
+        detected in two mapping <ENAMEX TYPE="PER_DESC">populations</ENAMEX>, that is, the BXD
+        <ENAMEX TYPE="PLANT">recombinant inbred strains</ENAMEX> and a <NUMEX TYPE="ORDINAL">B6D2 F2</NUMEX> intercross [ <TIMEX TYPE="DATE">16</TIMEX>,
+        <NUMEX TYPE="CARDINAL">17</NUMEX>].
+      
+      
+        Results
+        A flow chart showing the steps involved in the 
+        in silico comparison of the coding
+        region of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">alcohol</ENAMEX> withdrawal <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> is
+        shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. The <ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology</ENAMEX>
+        Information (NCBI)/<ENAMEX TYPE="PERSON">Mouse Genome Database</ENAMEX> (MGD) human<ENAMEX TYPE="PER_DESC">/</ENAMEX>mouse
+        homology map and the <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> mouse genome <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> were
+        searched to obtain a list of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and predicted genes
+        within <TIMEX TYPE="TIME">each QTL</TIMEX>. The selected genes included plausible
+        candidate genes that have been implicated in functions
+        relevant to alcohol action, as well as genes whose
+        functions are not well understood or were not previously
+        suspected to be related to alcohol action. For the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> on
+        chromosome <NUMEX TYPE="CARDINAL">1</NUMEX>, a list of <NUMEX TYPE="CARDINAL">121</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was selected, most of
+        which are within <NUMEX TYPE="MONEY">4 million</NUMEX> bases (<ENAMEX TYPE="PRODUCT">Mb</ENAMEX>) upstream or <ENAMEX TYPE="PRODUCT">4 Mb</ENAMEX>
+        downstream of the peak log of odds (LOD) score
+        (<TIMEX TYPE="TIME">approximately 18-24 centimorgans</TIMEX> (cM) from the
+        <ENAMEX TYPE="ORGANIZATION">centromere</ENAMEX>). For chromosome <NUMEX TYPE="CARDINAL">13</NUMEX>, a list of <NUMEX TYPE="CARDINAL">78</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was
+        selected, most of which are within <NUMEX TYPE="QUANTITY">2 Mb</NUMEX> upstream or <ENAMEX TYPE="PRODUCT">2 Mb</ENAMEX>
+        downstream of the peak LOD score (<NUMEX TYPE="MONEY">approximately 37 cM</NUMEX> from
+        the centromere). The complete coding region of each gene,
+        as available, was retrieved either from <ENAMEX TYPE="GPE">Celera</ENAMEX> or NCBI to
+        be used as the query for subsequent strain-specific BLAST
+        searches [ <TIMEX TYPE="DATE">18</TIMEX>]. B6 <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> were retrieved from the
+        mmtrace database at <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> using a <ENAMEX TYPE="ORGANIZATION">MegaBLAST</ENAMEX> search, and D2
+        sequences were retrieved from <ENAMEX TYPE="GPE">Celera</ENAMEX> by BLAST search of the
+        All <ENAMEX TYPE="ANIMAL">Mouse Fragments</ENAMEX> (masked) database. All data were
+        retrieved from <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> <TIMEX TYPE="DATE">between August 2001</TIMEX> and
+        <TIMEX TYPE="DATE">April 2002</TIMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> in-house programs were used to parse the
+        BLAST results and remove any hits with low
+        nucleotide-similarity scores or an insignificant e-value.
+        The filtered BLAST results from <TIMEX TYPE="DATE">the B6 and D2</TIMEX> <ENAMEX TYPE="PLANT">strains</ENAMEX> were
+        then aligned using <ENAMEX TYPE="ORGANIZATION">AutoAssembler</ENAMEX> and allelic sequence
+        variations were detected.
+        On proximal chromosome <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">121</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> covering <NUMEX TYPE="CARDINAL">125,385</NUMEX>
+        base-pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>) were selected and the <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> aligned,
+        and for chromosome <NUMEX TYPE="CARDINAL">13</NUMEX>, <NUMEX TYPE="CARDINAL">78</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> covering <NUMEX TYPE="CARDINAL">84,635</NUMEX> <ENAMEX TYPE="PER_DESC">bp</ENAMEX> were
+        selected and aligned. Altogether, the alignment encompassed
+        <NUMEX TYPE="CARDINAL">199</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> spanning <NUMEX TYPE="QUANTITY">210,020 bp</NUMEX>. Because of some gaps that
+        remain in the available genome sequences for <TIMEX TYPE="DATE">the B6</TIMEX> and D2
+        strains, complete coding regions were sometimes not
+        available and in such cases the coverage was therefore
+        incomplete. Our calculations indicate that the 
+        in silico coverage of the coding
+        region of the <NUMEX TYPE="CARDINAL">199</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for <TIMEX TYPE="DATE">the B6</TIMEX> and <NUMEX TYPE="CARDINAL">D2</NUMEX> strains was <NUMEX TYPE="PERCENT">86%</NUMEX>
+        and <NUMEX TYPE="PERCENT">69%</NUMEX>, respectively. The lower percent coverage of the D2
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> is likely to be due to the fact that it is only one
+        out of <NUMEX TYPE="CARDINAL">four</NUMEX> mouse <ENAMEX TYPE="PLANT">strains</ENAMEX> used to generate <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>'s 5.2x
+        coverage of the mouse genome. When the <NUMEX TYPE="ORDINAL">B6</NUMEX> and <ENAMEX TYPE="PRODUCT">D2</ENAMEX> data are
+        combined, <NUMEX TYPE="PERCENT">61%</NUMEX> of the length of the coding regions was
+        covered by both genome sequences (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        Previous efforts to identify human <ENAMEX TYPE="SUBSTANCE">SNPs</ENAMEX> by database
+        mining found it important to filter results in order to
+        eliminate the false detection of <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX>]. With this in
+        mind, we took the following steps to ensure the quality of
+        SNPs detected in our data. First, to avoid the inclusion of
+        sequences from additional closely related paralogous <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+        we used a BLAST hit cutoff of <NUMEX TYPE="PERCENT">98%</NUMEX>, so that only reads at
+        least <NUMEX TYPE="PERCENT">98%</NUMEX> similar to the query sequence were selected.
+        Furthermore, reads that potentially affected amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        sequence were used for a BLAST search against the mouse
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> and removed from the <ENAMEX TYPE="CONTACT_INFO">B6/D2</ENAMEX> alignment if the best
+        BLAST hit was on a sequence scaffold located in another
+        part of the genome. <NUMEX TYPE="ORDINAL">Second</NUMEX>, to avoid the inclusion of
+        changes due to poor-quality sequence, <ENAMEX TYPE="GPE">Phred</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>] scores of
+        individual B6 reads were checked at changed nucleotide
+        positions and poor-quality changes (<ENAMEX TYPE="WORK_OF_ART">Phred score ≤ 10</ENAMEX>)
+        eliminated. This step was not done with <ENAMEX TYPE="PRODUCT">D2</ENAMEX> sequences
+        because individual sequence traces and <ENAMEX TYPE="ORGANIZATION">Phred</ENAMEX> scores were
+        not available from <ENAMEX TYPE="GPE">Celera</ENAMEX>. <NUMEX TYPE="ORDINAL">Third</NUMEX>, by in-house <ENAMEX TYPE="PER_DESC">sequencing</ENAMEX> of
+        <NUMEX TYPE="CARDINAL">44</NUMEX> gene coding variations found in the 
+        in silico alignments of <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        <TIMEX TYPE="DATE">from B6</TIMEX>, <TIMEX TYPE="DATE">D2</TIMEX>, <ENAMEX TYPE="PRODUCT">A/J</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">129X1/SvJ</ENAMEX>, and <ENAMEX TYPE="PRODUCT">129S1/SvImJ</ENAMEX> <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, we
+        verified that <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> had not mislabeled the strain from
+        which sequence reads were derived and showed that no mix-up
+        or cross-contamination of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> had occurred. Even after
+        the above steps were taken, there were still instances
+        where some reads had one sequence and other reads had a
+        slightly different sequence for the same strain. In-house
+        sequencing of <ENAMEX TYPE="SUBSTANCE">B6</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">D2 DNA</ENAMEX> for a subset of interstrain
+        frame shifts (<NUMEX TYPE="PERCENT">10%</NUMEX> of the total) showed that all the
+        apparent differences were false. In-house sequencing for a
+        subset of intrastrain single <ENAMEX TYPE="FAC_DESC">base</ENAMEX>-pair substitutions (<NUMEX TYPE="PERCENT">21%</NUMEX>
+        of the total) was also carried out. This analysis showed
+        that when <NUMEX TYPE="CARDINAL">two</NUMEX> different intrastrain sequences (for example,
+        in <TIMEX TYPE="DATE">the D2</TIMEX> strain) were detected, the correct sequence was
+        always identical to the other strain (for example, <TIMEX TYPE="DATE">B6</TIMEX>), so
+        that no interstrain variant appeared at that position. On
+        the basis of this in-house sequence analysis we chose to
+        operationally classify all frameshifts as false and
+        interstrain substitutions present in <NUMEX TYPE="PERCENT">50%</NUMEX>, or fewer than
+        <NUMEX TYPE="PERCENT">50%</NUMEX>, of the reads for one strain as false.
+        The number of nonsynonymous changes was totaled from all
+        <NUMEX TYPE="CARDINAL">199</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the chronic alcohol withdrawal <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> on
+        proximal chromosome <NUMEX TYPE="CARDINAL">1</NUMEX> and mid-chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> for which
+        allelic sequences were aligned, together covering <NUMEX TYPE="CARDINAL">7</NUMEX> cM and
+        <ENAMEX TYPE="PRODUCT">12 Mb</ENAMEX> of the mouse genome and representing <NUMEX TYPE="CARDINAL">210,019</NUMEX> <ENAMEX TYPE="PER_DESC">bp</ENAMEX> of
+        coding region. In total, <NUMEX TYPE="CARDINAL">21</NUMEX> of the <NUMEX TYPE="CARDINAL">199</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> surveyed from
+        the chromosome <NUMEX TYPE="CARDINAL">1 and 13</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> showed nonsynonymous
+        changes in their coding regions between <TIMEX TYPE="DATE">B6 and D2</TIMEX> animals
+        (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). A search of <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>'s SNP database found
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">half</NUMEX> of the nonsynonymous <ENAMEX TYPE="CONTACT_INFO">B6/D2 sequence</ENAMEX>
+        changes which we identified by multiple alignment of BLAST
+        hits. Of the nonsynonymous changes that we identified by
+        multiple alignment of BLAST hits and verified by in-house
+        sequencing, <NUMEX TYPE="CARDINAL">fewer than half</NUMEX> are listed in the SNP
+        database.
+        On chromosome <NUMEX TYPE="CARDINAL">1</NUMEX>, where <NUMEX TYPE="CARDINAL">121</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were compared, eight
+        amino-acid changes were identified in <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+        Of these, <NUMEX TYPE="CARDINAL">two</NUMEX> are known genes and <NUMEX TYPE="CARDINAL">four</NUMEX> are based only on
+        computational predictions by <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> of the <NUMEX TYPE="CARDINAL">two</NUMEX> known
+        genes for which allelic variation was identified within its
+        coding region sequence was 
+        Slc5a7 . This encodes a high-affinity
+        <ENAMEX TYPE="ANIMAL">choline</ENAMEX> transporter expressed in the brain and spinal cord
+        and may be considered a plausible <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene for
+        underlying the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> (see Discussion).
+        On chromosome <NUMEX TYPE="CARDINAL">13</NUMEX>, when looking only at changes that have
+        multiple read coverage or were verified by in-house
+        sequencing, <NUMEX TYPE="CARDINAL">36</NUMEX> amino-acid changes were detected within <TIMEX TYPE="DATE">15</TIMEX>
+        genes (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). <NUMEX TYPE="CARDINAL">Nine</NUMEX> additional changes in <NUMEX TYPE="CARDINAL">four</NUMEX> other
+        genes within the chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> were also identified,
+        but these were all of limited reliability in that only a
+        single sequence read was available for either <TIMEX TYPE="DATE">the B6</TIMEX> or D2
+        <ENAMEX TYPE="ORGANIZATION">allele</ENAMEX>. Of the 
+        in silico predicted changes based on
+        single-read coverage that were sequenced in <ENAMEX TYPE="FAC_DESC">house</ENAMEX>,
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">half</NUMEX> were proven false. The <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> showing
+        allelic differences with multiple read coverage span a
+        range of functional <ENAMEX TYPE="PER_DESC">classes</ENAMEX> and include a zinc
+        metalloprotease, <ENAMEX TYPE="SUBSTANCE">60S ribosomal protein</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">hyaluronic acid</ENAMEX>
+        <ENAMEX TYPE="SUBSTANCE">binding protein</ENAMEX> (gene 
+        Habp4 ), developmental related
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (gene 
+        <ENAMEX TYPE="ORGANIZATION">Ptch</ENAMEX> ), transport <ENAMEX TYPE="PRODUCT_DESC">system kinase</ENAMEX> and
+        several <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which no functional assignments have yet
+        been made. As discussed below, <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which
+        allelic variations were detected, 
+        Srd5a1, <ENAMEX TYPE="PRODUCT">Nrif-2</ENAMEX> , and 
+        Hsd17b3 are thought to be
+        particularly promising biological <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to underlie
+        the chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>.
+      
+      
+        Discussion
+        While other studies have <TIMEX TYPE="TIME">mined EST</TIMEX> databases to detect
+        <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX>], the work presented here is the first
+        demonstration of the use of strain-specific genome sequence
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX> to discover gene-coding variants for murine <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>.
+        Whereas previous studies have focused on detection of SNPs
+        in expressed sequence tags (ESTs) that map to locations
+        throughout the genome for use as genetic markers, the
+        present work searched strain-specific genomic sequence
+        databases for coding-region SNPs underlying disease-related
+        <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>. In this <NUMEX TYPE="ORDINAL">first</NUMEX> application of the strategy, we
+        surveyed <NUMEX TYPE="CARDINAL">199</NUMEX> QTL-localized genes covering <NUMEX TYPE="CARDINAL">approximately 7</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">cM</ENAMEX> and <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> of the mouse genome and identified <NUMEX TYPE="CARDINAL">21</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        that had altered coding regions between the <NUMEX TYPE="ORDINAL">B6</NUMEX> and D2
+        progenitor <ENAMEX TYPE="PLANT">strains</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">At least one</NUMEX> of the allelically variant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> - 
+        Slc5a7 , detected within the proximal
+        chromosome <NUMEX TYPE="CARDINAL">1</NUMEX> QTL interval - is a promising biological
+        candidate gene. 
+        Slc5a7 encodes a high-affinity
+        <ENAMEX TYPE="ANIMAL">choline</ENAMEX> transporter expressed in cholinergic neurons in the
+        brain and spinal cord. Prolonged ethanol exposure decreases
+        high-affinity choline uptake in <ENAMEX TYPE="ANIMAL">rat cerebral</ENAMEX> cortex [ <TIMEX TYPE="DATE">21</TIMEX>],
+        and acute ethanol exposure decreases choline transport in
+        <ENAMEX TYPE="ORGANIZATION">erythrocytes</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>]. There was a single amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> change of
+        <ENAMEX TYPE="ORGANIZATION">arginine</ENAMEX> (<NUMEX TYPE="MONEY">B6</NUMEX>) to histidine (<NUMEX TYPE="MONEY">D2</NUMEX>) at position <TIMEX TYPE="DATE">38</TIMEX>, which is
+        located in the <NUMEX TYPE="ORDINAL">first</NUMEX> cytoplasmic loop of the transporter,
+        with the arginine also being conserved in <ENAMEX TYPE="ANIMAL">rat</ENAMEX> and human.
+        However, while synteny data between human and <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> suggest
+        that the gene is within the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>, data from Celera
+        apparently places it on another chromosome. Therefore the
+        question of whether 
+        Slc5a7 remains a good <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> for
+        the proximal <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> must await resolution of this issue.
+        <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which allelic variations were detected -
+        
+        Srd5a1, <ENAMEX TYPE="PRODUCT">Nrif-2</ENAMEX> and 
+        Hsd17b3 - appear to be particularly
+        promising biological <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to underlie the chromosome
+        <TIMEX TYPE="TIME">13 QTL</TIMEX>. The most compelling of these is 
+        Srd5a1 , which encodes a steroid
+        <ENAMEX TYPE="CONTACT_INFO">5α-reductase 1</ENAMEX> and is expressed in brain and is
+        consequently termed a neurosteroid. <NUMEX TYPE="CARDINAL">5α</NUMEX>-reduced metabolites
+        of the neurosteroids are thought to be involved in
+        <ENAMEX TYPE="ORGANIZATION">myelination</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>], and one of the key features of
+        <ENAMEX TYPE="DISEASE">alcoholism</ENAMEX> is the loss of cerebral white matter [ <TIMEX TYPE="DATE">24</TIMEX>].
+        <ENAMEX TYPE="CONTACT_INFO">Steroid 5α-</ENAMEX>reductase is also required for the reduction of
+        <ENAMEX TYPE="SUBSTANCE">progesterone</ENAMEX> to <NUMEX TYPE="CARDINAL">5α</NUMEX>-dihydroprogesterone, which is further
+        metabolized to <NUMEX TYPE="CARDINAL">3α,5α</NUMEX>-<ENAMEX TYPE="SUBSTANCE">progesterone</ENAMEX> (allopregnanolone), which
+        has neuroactivity at GABA 
+        A <ENAMEX TYPE="SUBSTANCE">receptors</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>]. Some symptoms of
+        ethanol withdrawal appear to be produced through
+        <ENAMEX TYPE="ORGANIZATION">neuroadaptive</ENAMEX> changes in GABA-mediated neurotransmission [
+        <NUMEX TYPE="CARDINAL">26</NUMEX>]. It is known that many neuroactive <ENAMEX TYPE="SUBSTANCE">steroids</ENAMEX> have
+        anticonvulsant activity [ <TIMEX TYPE="DATE">27</TIMEX>], and during ethanol
+        withdrawal <TIMEX TYPE="DATE">the B6</TIMEX> and D2 <ENAMEX TYPE="ANIMAL">mice</ENAMEX> have differential sensitivity
+        to the anticonvulsant effects of <ENAMEX TYPE="SUBSTANCE">allopregnanolone</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>]. We
+        identified <NUMEX TYPE="CARDINAL">three</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> changes within this gene
+        <TIMEX TYPE="DATE">between the B6 and D2</TIMEX> <ENAMEX TYPE="PLANT">strains</ENAMEX>, one of which occurs at
+        position <NUMEX TYPE="CARDINAL">7</NUMEX> with arginine (<NUMEX TYPE="MONEY">B6</NUMEX>) being replaced by cysteine
+        (<NUMEX TYPE="MONEY">D2</NUMEX>). Unlike arginine, cysteine can participate in
+        disulfide <ENAMEX TYPE="FAC_DESC">bridge</ENAMEX> formation and thus has the potential to
+        produce a marked difference in the functional activity of
+        <ENAMEX TYPE="CONTACT_INFO">5α-reductase 1</ENAMEX> in <TIMEX TYPE="DATE">B6</TIMEX> compared to D2 <ENAMEX TYPE="ANIMAL">animals</ENAMEX>.
+        Another <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene is 
+        Nrif-<NUMEX TYPE="CARDINAL">2</NUMEX> , a <ENAMEX TYPE="ORGANIZATION">Kr�</ENAMEX>�ppel-type <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> finger
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> thought to function as a transcriptional repressor
+        [ <TIMEX TYPE="DATE">29</TIMEX>]. <NUMEX TYPE="CARDINAL">One</NUMEX> of the identified amino-acid changes replaces
+        the arginine at position <NUMEX TYPE="CARDINAL">593</NUMEX> in <TIMEX TYPE="DATE">the D2</TIMEX> strain with a
+        glutamine <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> in B6 <ENAMEX TYPE="ANIMAL">mice</ENAMEX>, and this occurs within a
+        known binding site for the intracellular domain of the
+        <ENAMEX TYPE="SUBSTANCE">neurotrophin</ENAMEX> receptor P75NTR [ <TIMEX TYPE="DATE">30</TIMEX>]. The 
+        Nrif-<NUMEX TYPE="CARDINAL">2</NUMEX> gene is expressed in brain and
+        several other tissues, but expression is highest in testis.
+        Interestingly, the chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> is sex-limited and
+        affects severity of physical dependence on <ENAMEX TYPE="SUBSTANCE">alcohol</ENAMEX> only in
+        <ENAMEX TYPE="PER_DESC">males</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>]. In males <TIMEX TYPE="DATE">the D2</TIMEX> allele was associated with
+        more severe withdrawal responses than the <NUMEX TYPE="ORDINAL">B6</NUMEX> allele,
+        whereas the opposite direction of effect was found in
+        female <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. Because the behavioral trait is sex-limited,
+        this suggests that the actions of the underlying gene are
+        sex-limited. Such a phenotype might be expected if the
+        causal variant gene was expressed and/or active in gonadal
+        tissue, as is the case with 
+        Nrif-<NUMEX TYPE="CARDINAL">2</NUMEX> .
+        <NUMEX TYPE="CARDINAL">A third</NUMEX> altered <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene within the chromosome <NUMEX TYPE="CARDINAL">13</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> is 
+        Hsd17b3 . This gene encodes a
+        <NUMEX TYPE="CARDINAL">17β</NUMEX>-hydroxysteroid dehydrogenase expressed primarily in
+        testis but also in several other tissues, including brain [
+        <NUMEX TYPE="CARDINAL">30</NUMEX>]. 
+        Hsd17b3 catalyzes the interconversion
+        of androstenedione and testosterone, favoring the reduction
+        reaction [ <TIMEX TYPE="DATE">31</TIMEX>]. Ethanol exposure has been shown to inhibit
+        the reduction of androstenedione to testosterone in rat
+        Leydig cells 
+        in vitro [ <TIMEX TYPE="DATE">32</TIMEX>]. The amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> change
+        within this gene replaces a cysteine (<NUMEX TYPE="MONEY">B6</NUMEX>) at residue <NUMEX TYPE="CARDINAL">95</NUMEX>
+        with an arginine (<NUMEX TYPE="MONEY">D2</NUMEX>).
+        While these data are consistent with the variant genes
+        identified on chromosomes <NUMEX TYPE="CARDINAL">1</NUMEX> and/or <NUMEX TYPE="CARDINAL">13</NUMEX> being the gene that
+        underlies the respective <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>, it is also possible that the
+        <ENAMEX TYPE="ORGANIZATION">polymorphisms</ENAMEX> identified in these genes are merely linked
+        to the polymorphisms that actually underlie these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>.
+        Although 
+        Slc5a7, <ENAMEX TYPE="PRODUCT">Nrif-2</ENAMEX>, <TIMEX TYPE="DATE">Srd5a1</TIMEX> , and 
+        Hsd17b3 are promising <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to
+        underlie these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>, a significant number of altered
+        genes were also identified that cannot formally be ruled
+        out at this time, either in place of, or in addition to,
+        these <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Additional fine mapping of these QTLs is
+        needed to eliminate as many false candidate <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as
+        possible from these QTL intervals. In addition, definitive
+        confirmation that 
+        Slc5a7, <ENAMEX TYPE="PRODUCT">Nrif-2</ENAMEX>, <ENAMEX TYPE="PRODUCT">Srd5a1</ENAMEX> and 
+        Hsd17b3 (or other promising candidate
+        genes if they arise) are involved in predisposition to
+        physical dependence on <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> will probably require
+        verification using transgenics (for example, allele
+        substitution or bacterial artificial chromosome
+        <ENAMEX TYPE="ORGANIZATION">transgenics</ENAMEX>).
+        Another feature of the approach described here is that
+        it not only rapidly identifies gene variants within QTL
+        intervals but, because it will find many genes that are
+        unchanged between strains, can also quickly eliminate large
+        numbers of gene-coding regions as possible candidates
+        underlying the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>. Finally, it should be pointed out that
+        even when a synonymous sequence difference is found between
+        <ENAMEX TYPE="PLANT">QTL strains</ENAMEX>, it can still be used as a new, easily scored
+        <ENAMEX TYPE="PERSON">marker</ENAMEX> to further narrow the QTL interval using
+        fine-mapping resources such as interval-specific congenic
+        <ENAMEX TYPE="ANIMAL">recombinant mice</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>]. In this regard we identified many
+        such synonymous changes between <TIMEX TYPE="DATE">B6 and D2</TIMEX> that fall within
+        the proximal chromosome <NUMEX TYPE="CARDINAL">1</NUMEX> or mid-chromosome <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>, and
+        therefore can serve as new informative markers for fine
+        mapping of these QTLs.
+        The approach described here has considerable general
+        <ENAMEX TYPE="PERSON">applicability</ENAMEX>. Many other murine <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>, encompassing a wide
+        range of <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> phenotypes of interest, have been
+        identified using mapping <ENAMEX TYPE="PER_DESC">populations</ENAMEX> derived from <NUMEX TYPE="CARDINAL">two</NUMEX> of
+        the <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> strains for which whole-genome draft
+        sequences are now available, and therefore lend themselves
+        to this 
+        in silico approach. When we carried
+        out a <ENAMEX TYPE="NATIONALITY">PubMed</ENAMEX> literature database search, <NUMEX TYPE="CARDINAL">276</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX>,
+        corresponding to <NUMEX TYPE="CARDINAL">57</NUMEX> different phenotypes, were identified
+        that utilized <NUMEX TYPE="CARDINAL">two</NUMEX> of these <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> strains (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>).
+        The <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> intervals that were used in the present study were
+        rather large, and many other <ENAMEX TYPE="SUBSTANCE">QTLs</ENAMEX> that use strains amenable
+        to an 
+        in silico approach are considerably
+        smaller.
+        While the present study focused on QTL gene-coding
+        region comparisons because of their potential functional
+        importance [ <ENAMEX TYPE="LAW">5</ENAMEX>], it should be pointed out that
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-regulatory regions, which are also of considerable
+        functional importance and have been shown to underlie some
+        <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> [ <TIMEX TYPE="DATE">34, 35</TIMEX>], can be studied in the same way. For
+        example, the approach described here can be combined with
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from high-density <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> microarray studies of <TIMEX TYPE="DATE">the B6</TIMEX> and
+        D2 strains (<ENAMEX TYPE="PERSON">J.M.S.</ENAMEX>, unpublished work). In such a scenario,
+        interstrain comparison of the expression levels of <NUMEX TYPE="CARDINAL">tens of</NUMEX>
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> would be carried out, the genes that are
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed between strains identified, and
+        their chromosome location determined from the genome
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>. Those <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes that map to
+        a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> region would be selected and the upstream regulatory
+        regions aligned 
+        in silico to search for sequence
+        differences that affect predicted transcriptional binding
+        sites. Such binding-site differences, when present, would
+        be promising <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to underlie the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> in which the
+        gene resides. Although less is known about sequences
+        affecting gene regulation than about those affecting
+        <ENAMEX TYPE="SUBSTANCE">protein sequence</ENAMEX>, there has been considerable progress in
+        <TIMEX TYPE="DATE">the past few years</TIMEX> in our understanding of the sequences
+        involved in controlling gene regulation [ <TIMEX TYPE="DATE">36, 37</TIMEX>].
+        It is also possible that sequence changes in the
+        noncoding regions of mRNAs can have functional effects. For
+        example, sequence in the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' untranslated region (UTR) can
+        affect mRNA translation, and sequence in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> can
+        affect mRNA stability. The <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="LOCATION">UTR</ENAMEX> region can also contain
+        enhancer elements that affect gene regulation and
+        expression. Whereas less is known about the functional
+        relevance of sequence changes in noncoding parts of mRNAs
+        than those in the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding region, they can
+        nevertheless be functionally important and, as such, could
+        be included in surveys using the 
+        in silico approach described
+        here.
+        While <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>'s SNP database has the ability to quickly
+        identify interstrain <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> in QTL <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, the information
+        available from the SNP database is not as complete as the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> generated by our 
+        in silico approach. Specifically,
+        <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> uses a different strategy for assigning <ENAMEX TYPE="ORGANIZATION">SNPs</ENAMEX> in the
+        <ENAMEX TYPE="ANIMAL">mouse genome</ENAMEX> and the SNP database makes very conservative
+        SNP predictions; <NUMEX TYPE="CARDINAL">fewer than half</NUMEX> of the SNPs we identified 
+        in silico and verified by in-house
+        sequencing are in the SNP database. The SNP database also
+        misclassifies some SNPs as missense mutations when the SNPs
+        are actually in the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' or <NUMEX TYPE="CARDINAL">3</NUMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> (<ENAMEX TYPE="PERSON">J.M.S.</ENAMEX>, unpublished
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>). And finally, the <ENAMEX TYPE="ORGANIZATION">Celera SNP</ENAMEX> database does not
+        indicate which regions of a gene's coding sequence are
+        covered by reads in each strain, and therefore does not
+        distinguish between completely sequenced regions in which
+        no <ENAMEX TYPE="PER_DESC">variants</ENAMEX> have been detected and <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> where no
+        variants are found because sequence coverage for one of the
+        strains is absent. Such a limitation provides an incomplete
+        picture of the interstrain variants that exist in a given
+        <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>, which in turn could result in passing over the
+        critical SNP underlying the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>.
+        Although the strategy presented here provides a
+        significant new tool in going from <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> to gene, a number of
+        challenges still remain on the way to realizing this goal.
+        For example, functional confirmation that an interstrain
+        gene alteration underlies a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>, while feasible, is not
+        trivial. As more QTL-localized genes are identified that
+        have potentially important sequence changes, as described
+        here for example, it becomes more difficult to test them
+        all functionally. A related ongoing development that should
+        help this situation by reducing the number of potential
+        candidate genes that remain within the QTL interval is
+        reduction of the interval by fine mapping using specialized
+        congenic <ENAMEX TYPE="PLANT">strains</ENAMEX> or recombinant progeny testing [ <TIMEX TYPE="DATE">33, 38</TIMEX>].
+        A number of interval-specific congenic strains have
+        recently been developed for a number of <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> and, although
+        <ENAMEX TYPE="PERSON">straightforward</ENAMEX>, fine mapping is still a large-scale
+        <ENAMEX TYPE="ORGANIZATION">enterprise</ENAMEX> because of the need to generate and test large
+        numbers of <ENAMEX TYPE="ANIMAL">animals</ENAMEX> to identify and behaviorally assess
+        informative recombinants, and because of the need for
+        <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX> to detect such recombination events.
+        While such challenges remain, the new genomics tools and
+        <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX> that are now available or are becoming available
+        are clearly providing a major impetus to this field. The
+        power of high-density microarray studies to identify
+        QTL-related genes and pathways, draft genomic sequences for
+        the primary mouse <ENAMEX TYPE="PLANT">strains</ENAMEX> used for <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> analysis, and
+        evolving bioinformatics tools and databases are all making
+        major impacts on this field, with more improvements to be
+        expected. For example, after this work was completed, we
+        used the 
+        in silico approach on a QTL
+        identified using <ENAMEX TYPE="SUBSTANCE">B6</ENAMEX> and <ENAMEX TYPE="PRODUCT">A/J</ENAMEX> strains and found that coverage
+        was considerably higher than reported in this study. We
+        found that in an analysis of <NUMEX TYPE="CARDINAL">over 30</NUMEX> QTL genes the 
+        in silico coverage for <TIMEX TYPE="DATE">B6</TIMEX> and <ENAMEX TYPE="PRODUCT">A/J</ENAMEX> was
+        <NUMEX TYPE="PERCENT">98% and 91%</NUMEX>, respectively, with a total coverage for both
+        of <NUMEX TYPE="PERCENT">90%</NUMEX> (<ENAMEX TYPE="PERSON">J.M.S.</ENAMEX>, unpublished data). Finally, the anticipated
+        completion of the <NUMEX TYPE="ORDINAL">B6</NUMEX> genome sequence and deeper sequence
+        coverage of <TIMEX TYPE="DATE">the D2</TIMEX> and <ENAMEX TYPE="PRODUCT">A/J</ENAMEX> genomes, in particular, if
+        carried out would remove the last remaining obstacles to
+        virtually complete 
+        in silico discovery of gene variants
+        for the <NUMEX TYPE="CARDINAL">several hundred</NUMEX> <ENAMEX TYPE="ORGANIZATION">QTLs</ENAMEX> identified using these
+        strains.
+      
+      
+        Materials and methods
+        
+          Identification of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within <ENAMEX TYPE="LOCATION">QTL</ENAMEX> regions
+          A list of known genes within the <NUMEX TYPE="CARDINAL">1.0</NUMEX> <ENAMEX TYPE="ORGANIZATION">LOD</ENAMEX> confidence
+          interval for each <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> was found using the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> vs <ENAMEX TYPE="ORGANIZATION">MGD</ENAMEX>
+          human/mouse homology maps at <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX>]. This list was
+          screened for <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes on the basis of gene
+          expression within the brain and functional relevance to
+          the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> phenotype. GenBank accession numbers for the
+          complete coding region sequence of each <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene
+          were found on <ENAMEX TYPE="ORGANIZATION">LocusLink</ENAMEX>. Coding region sequences were
+          retrieved from <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and used as the query for BLAST
+          searches.
+          A more complete list of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and gene predictions
+          within the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> was found on the <ENAMEX TYPE="PRODUCT">Celera Discovery System</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">40</NUMEX>]. The genetic marker with the highest LOD score for a
+          <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> was localized on <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>'s physical map and a list of
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and predicted genes within an interval on either
+          side of this marker was generated and screened for
+          candidate genes. Coding region sequences of the selected
+          genes were retrieved either from <ENAMEX TYPE="GPE">Celera</ENAMEX> or NCBI and used
+          as the query for BLAST searches.
+        
+        
+          BLAST searches
+          A <ENAMEX TYPE="ORGANIZATION">MegaBLAST</ENAMEX> search of the mmtrace database on <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">41</NUMEX>] was used to retrieve B6 <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> from the public
+          database. Low complexity was filtered, percent identity
+          was set to <NUMEX TYPE="PERCENT">98%</NUMEX>, and the number of alignments to return
+          was set to <NUMEX TYPE="CARDINAL">100</NUMEX>. Results were saved as a text file. A
+          <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> search of the <ENAMEX TYPE="WORK_OF_ART">All Mouse Fragments</ENAMEX> (masked)
+          database on <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX> [ <TIMEX TYPE="DATE">42</TIMEX>] was used to search for D2
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. The e-value was set to <NUMEX TYPE="CARDINAL">0.1</NUMEX>, and the number of
+          hits to return was set to <NUMEX TYPE="CARDINAL">250</NUMEX>. The complete entries view
+          of the results was exported to a file which was given a
+          .txt extension.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> scripts to process BLAST results
+          A script, named <ENAMEX TYPE="PERSON">Mouse Gene Selection NCBI</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MGS_NCBI</ENAMEX>),
+          was written in <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> and used to parse BLAST results from
+          <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>. This script filters the BLAST results and only
+          selects hits which have percent identity greater than or
+          equal to <NUMEX TYPE="PERCENT">98%</NUMEX> and e-value, which is a measure of the
+          statistical significance of BLAST hits, less than or
+          equal to <NUMEX TYPE="CARDINAL">0.0001</NUMEX>. The e-value is the number of hits with
+          the same degree of similarity one would expect to find by
+          chance if there were no true matches in the database.
+          Another script, <ENAMEX TYPE="PERSON">Mouse Gene Selection Celera</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MGS_Celera</ENAMEX>),
+          was written in <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> and used to parse BLAST results from
+          <ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>. This script filters the BLAST results and only
+          selects hits with strain name <ENAMEX TYPE="PRODUCT">DBA/2J</ENAMEX>, e-value less than
+          or equal to <NUMEX TYPE="PERCENT">0.0001 and percent</NUMEX> identity greater than or
+          equal to <NUMEX TYPE="PERCENT">98%</NUMEX>. After filtering the BLAST results, the
+          script saves each alignment as an individual text file.
+          When <NUMEX TYPE="CARDINAL">one</NUMEX> hit aligns with <NUMEX TYPE="CARDINAL">more than one</NUMEX> region of the
+          query sequence, the entire hit is discarded if any of the
+          <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> does not meet the above criteria. As both
+          scripts are written in <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX>, they can be run on Unix,
+          <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX> or PC <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>.
+        
+        
+          Alignment of filtered BLAST results
+          Filtered BLAST results were aligned using
+          AutoAssembler <NUMEX TYPE="CARDINAL">2.1</NUMEX>. For each gene, <NUMEX TYPE="CARDINAL">one</NUMEX> alignment file was
+          made of the filtered B6 BLAST results and a separate
+          alignment file was made of the filtered D2 BLAST results.
+          The <NUMEX TYPE="ORDINAL">B6</NUMEX> alignment file was then compared to the D2
+          alignment file to identify sequence changes. When
+          sequence variations were found within a strain they were
+          regarded as true only if <NUMEX TYPE="CARDINAL">more than half</NUMEX> the reads for a
+          strain contained the change. This criterion was checked
+          for validity by in-house sequencing.
+        
+        
+          In-house sequencing
+          In-house sequencing was used to test 
+          in silico sequence predictions and
+          also occasionally to fill in gaps that remained in
+          certain genes. C57BL<ENAMEX TYPE="PRODUCT">/6J</ENAMEX> and <ENAMEX TYPE="PRODUCT">DBA/2J</ENAMEX> <ENAMEX TYPE="ANIMAL">mice</ENAMEX> were obtained
+          from the <ENAMEX TYPE="ORGANIZATION">Jackson Laboratory</ENAMEX>. <ENAMEX TYPE="ANIMAL">Animals</ENAMEX> were euthanized and
+          the brains dissected. Whole-brain <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was isolated using
+          an RNeasy <ENAMEX TYPE="PERSON">Maxi Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>). cDNA was synthesized by
+          <ENAMEX TYPE="PRODUCT">RT-PCR</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">SUPERSCRIPT First Strand Synthesis System</ENAMEX>
+          for <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Invitrogen</ENAMEX>). C57BL<ENAMEX TYPE="PRODUCT">/6J</ENAMEX>, <ENAMEX TYPE="PRODUCT">DBA/2J</ENAMEX>, <ENAMEX TYPE="PRODUCT">A/J</ENAMEX>,
+          129X1<ENAMEX TYPE="ORGANIZATION">/SvJ</ENAMEX>, and <ENAMEX TYPE="PRODUCT">129S1/SvImJ</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">genomic DNAs</ENAMEX> were obtained
+          from the <ENAMEX TYPE="ORGANIZATION">Jackson Laboratory</ENAMEX>. Primer3 software [ <TIMEX TYPE="DATE">43</TIMEX>] was
+          used to design primers to amplify either cDNA or genomic
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. Template <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was amplified by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> in the Perkin
+          <ENAMEX TYPE="ORGANIZATION">Elmer GeneAmp PCR</ENAMEX> system <TIMEX TYPE="DATE">9700</TIMEX>. A typical reaction cycle
+          was denaturation for <TIMEX TYPE="TIME">3 min</TIMEX> at <TIMEX TYPE="DATE">94°C</TIMEX> followed by <NUMEX TYPE="CARDINAL">35</NUMEX> cycles
+          of denaturation for <TIMEX TYPE="DATE">15</TIMEX> s at <TIMEX TYPE="DATE">94°C</TIMEX>, annealing for <TIMEX TYPE="TIME">1 min 15</TIMEX>
+          s at <TIMEX TYPE="DATE">54°C</TIMEX>, and extension for <TIMEX TYPE="TIME">1 min 15</TIMEX> s at <NUMEX TYPE="ORDINAL">72°C</NUMEX> with a
+          final extension step at <TIMEX TYPE="DATE">72°C</TIMEX> for <NUMEX TYPE="CARDINAL">10</NUMEX> min. <ENAMEX TYPE="ORGANIZATION">Products</ENAMEX> were
+          run on a <NUMEX TYPE="PERCENT">1.7%</NUMEX> agarose gel, stained with ethidium bromide,
+          and purified using <ENAMEX TYPE="ORGANIZATION">QIAquick</ENAMEX> <ENAMEX TYPE="PRODUCT">Gel Extraction kits</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>).
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were reamplified when necessary.
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were sequenced using <ENAMEX TYPE="ORGANIZATION">ABI</ENAMEX> Big Dye
+          <ENAMEX TYPE="PERSON">Terminator</ENAMEX> v.<NUMEX TYPE="CARDINAL">2</NUMEX> chemistry and cycle sequencing and
+          sequence traces read on an ABI PRISM <TIMEX TYPE="DATE">3100</TIMEX> <ENAMEX TYPE="PERSON">Gene Analyzer</ENAMEX>.
+          When in-house <ENAMEX TYPE="PER_DESC">sequencing</ENAMEX> was done to fill gaps from the 
+          in silico alignment, a minimum of
+          <NUMEX TYPE="CARDINAL">one</NUMEX> forward read and <NUMEX TYPE="CARDINAL">one</NUMEX> reverse read was run for each
+          sample of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products. When-in <ENAMEX TYPE="FAC_DESC">house</ENAMEX> sequencing was done
+          to verify nonsynonymous changes found in the 
+          in silico alignment, a minimum of
+          <NUMEX TYPE="CARDINAL">two</NUMEX> forward reads and <NUMEX TYPE="CARDINAL">two</NUMEX> reverse reads was run for each
+          sample of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products. Sequencing data for each strain
+          were analyzed with the <ENAMEX TYPE="PRODUCT">Consed</ENAMEX> software <ENAMEX TYPE="FAC_DESC">suite</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>].
+          Sequencing was repeated for regions of poor quality (that
+          is, <ENAMEX TYPE="ORGANIZATION">Phred</ENAMEX> score <NUMEX TYPE="MONEY">< 40</NUMEX>). High-quality sequence was
+          exported and <ENAMEX TYPE="PRODUCT">B6</ENAMEX> sequence was compared to D2 sequence
+          using <ENAMEX TYPE="ORGANIZATION">AutoAssembler</ENAMEX> to identify changes between the two
+          strains.
+        
+      
+    
+  

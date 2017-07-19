@@ -1,0 +1,897 @@
+
+  
+    
+      
+        Background
+        
+          The <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of blind protein structure
+          prediction
+          The <ENAMEX TYPE="GPE_DESC">community</ENAMEX>-wide experiment on methods to test
+          protein structure prediction (CASP) was first initiated
+          in <TIMEX TYPE="DATE">1994</TIMEX>, as a means of evaluating structure prediction
+          methods in a blind and rigourous manner [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . This was
+          motivated in part by claims in the literature of the
+          protein folding problem being "solved" without producing
+          tangible benefits, since most of the "solutions" included
+          a strong dependence on the test set. These experiments
+          evaluate prediction techniques by asking <ENAMEX TYPE="PER_DESC">modellers</ENAMEX> to
+          construct models for a number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences before
+          the experimental result is known, over a period of <ENAMEX TYPE="CONTACT_INFO">3-4</ENAMEX>
+          <TIMEX TYPE="DATE">months</TIMEX>. We have taken part in <NUMEX TYPE="CARDINAL">all four</NUMEX> <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments,
+          including the most recent <NUMEX TYPE="CARDINAL">one</NUMEX> (<NUMEX TYPE="MONEY">CASP4</NUMEX>) that finished in
+          <ENAMEX TYPE="CONTACT_INFO">December 2000 http://predictioncenter.</ENAMEX><ENAMEX TYPE="ORGANIZATION">llnl</ENAMEX>.gov. The CASP4
+          results provide a benchmark as to what level of model
+          accuracy we can currently expect from our approaches.
+          There are <NUMEX TYPE="CARDINAL">three</NUMEX> primary categories of methods for
+          predicting protein <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> from sequence: comparative
+          modelling, fold recognition, and 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio prediction. In the
+          comparative modelling and fold recognition categories,
+          the methodologies rely on the presence of <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          evolutionarily related template <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> that
+          are used to construct a model; the evolutionary
+          relationship can be deduced from sequence similarity [ <NUMEX TYPE="CARDINAL">2</NUMEX>
+          <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] or by "threading" a sequence against a library of
+          structures and selecting the best match [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] . For
+          both of these approaches, a sequence alignment between
+          the target <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> to be modelled and the evolutionarily
+          related <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with known structure is used to create
+          the initial or <ENAMEX TYPE="SUBSTANCE">seed</ENAMEX> model. In the 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio category, there is no
+          strong dependence on database information and prediction
+          methods are based on general principles that govern
+          protein structure and energetics [ <NUMEX TYPE="CARDINAL">9 10 11 12 13</NUMEX> ] . The
+          categories vary in difficulty, and consequently methods
+          in each of these categories produce <ENAMEX TYPE="PER_DESC">models</ENAMEX> with different
+          levels of accuracy relative to the experimental
+          structures.
+          Since the inception of <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX>, predictors all over the
+          world have built <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> for <NUMEX TYPE="CARDINAL">128</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> using the
+          <ENAMEX TYPE="PERSON">methodologies</ENAMEX> described above. Before the <NUMEX TYPE="ORDINAL">first</NUMEX> CASP
+          experiment, published results in comparative modelling in
+          the literature usually were obtained by applying
+          structure prediction methods in the context of the exact
+          experimental <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>; for example, re-building side
+          chains on the native main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>, or re-building regions
+          of main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> keeping the rest of the experimental
+          structure fixed. (This <ENAMEX TYPE="ORG_DESC">practice</ENAMEX> continues to this day.) 
+          <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio methodologies,
+          parameterised extensively on small test sets, failed when
+          given novel types of sequences.
+          CASP1 was an eye-opener in terms of understanding the
+          difficulty of making accurate predictions on approximate
+          <ENAMEX TYPE="ORGANIZATION">templates</ENAMEX> in comparative modelling [ <TIMEX TYPE="DATE">14</TIMEX> ] . The main
+          problems in creating a good comparative or fold
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> were related to alignment between the
+          <ENAMEX TYPE="ORGANIZATION">template</ENAMEX> and target sequences, and building of
+          non-conserved variable regions (<ENAMEX TYPE="ORG_DESC">side chains</ENAMEX>, and main
+          chain loops). In the 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio category, it appeared
+          that methods could not sample conformational space
+          accurately, and select <ENAMEX TYPE="PER_DESC">native</ENAMEX>-like conformations, for all
+          but very small fragments. The highlight of <ENAMEX TYPE="SUBSTANCE">CASP1</ENAMEX> was the
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> of threading as viable method for predicting
+          <ENAMEX TYPE="ORGANIZATION">folds</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] , and the success of <ENAMEX TYPE="ORG_DESC">neural-network</ENAMEX> based
+          secondary structure prediction methods [ <TIMEX TYPE="DATE">16</TIMEX> ] .
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> CASP showed some improvement in <NUMEX TYPE="CARDINAL">two</NUMEX> areas:
+          In comparative modelling, loops were being built better,
+          and the use of hand-inspected alignments greatly
+          increased model accuracy [ <TIMEX TYPE="DATE">17</TIMEX> ] . In the fold recognition
+          category, alignments as well as prediction of folds
+          improved [ <TIMEX TYPE="DATE">18</TIMEX> ] . The results in the 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio category remained
+          virtually unchanged except for <NUMEX TYPE="CARDINAL">one</NUMEX> model of the
+          <ENAMEX TYPE="SUBSTANCE">alpha-helical protein</ENAMEX> NK-<ENAMEX TYPE="PERSON">Lysin</ENAMEX> predicted to within <NUMEX TYPE="CARDINAL">6.0</NUMEX> Å
+          C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>, capturing the correct topology
+          [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+          The <NUMEX TYPE="ORDINAL">third</NUMEX> CASP saw consistent but little progress
+          relative to <NUMEX TYPE="QUANTITY">CASP2</NUMEX> in both comparative modelling and fold
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> categories [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] , but the most dramatic
+          results were observed in the 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio category. Here multiple
+          <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> predicted large parts of a few <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences
+          at a <ENAMEX TYPE="SUBSTANCE">crude</ENAMEX> topological level (within <NUMEX TYPE="QUANTITY">6.0 Å</NUMEX> C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> for <NUMEX TYPE="MONEY">≈ 60</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>) [ <TIMEX TYPE="DATE">22</TIMEX> ] .
+        
+        
+          Performance of our methods at <ENAMEX TYPE="CONTACT_INFO">CASP1-3: Comparative</ENAMEX>
+          modelling
+          <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> a general estimate of how well our
+          comparative modelling prediction methods have performed
+          at different <ENAMEX TYPE="SUBSTANCE">CASP</ENAMEX> experiments [ <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] .
+          Even though our methods produced mediocre results at
+          CASP1, we realised that a major problem with accurate
+          comparative modelling had to do with the interconnected
+          nature of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structures [ <TIMEX TYPE="DATE">23</TIMEX> ] : If a certain region
+          of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> varied with respect to the homologue, then
+          it was likely that a structurally interacting region
+          would also vary, even if that region was conserved in
+          sequence. We therefore developed a graph-theory based
+          approach to address this problem which demonstrated
+          significant progress in loop <ENAMEX TYPE="FAC_DESC">building</ENAMEX> at <TIMEX TYPE="DATE">CASP2</TIMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>)
+          [ <TIMEX TYPE="DATE">24</TIMEX> ] . <TIMEX TYPE="DATE">The CASP3 and CASP4</TIMEX> results are minor
+          improvements over <TIMEX TYPE="DATE">the CASP2</TIMEX> results since the
+          <ENAMEX TYPE="ORGANIZATION">enhancements</ENAMEX> made to the graph theory method have been
+          minimal.
+        
+        
+          Performance of methods at <ENAMEX TYPE="FAC">CASP1-3</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio
+          prediction
+          In the 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio category, as with
+          comparative modelling, the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments did not
+          live up to the results previously published in the
+          literature [ <NUMEX TYPE="CARDINAL">16 19</NUMEX> ] . It was not until <TIMEX TYPE="DATE">CASP3</TIMEX> (the first
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> where we took part in this category) that the first
+          consistent positive results were seen: <NUMEX TYPE="CARDINAL">several</NUMEX> groups
+          were able to predict the correct topologies for small
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, or large fragments of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (~<NUMEX TYPE="CARDINAL">60-80</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> to <NUMEX TYPE="CARDINAL">about 6.0</NUMEX> Å C 
+          <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> RMSD relative to the experimental
+          <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX>) [ <NUMEX TYPE="CARDINAL">22 25</NUMEX> ] .
+        
+        
+          CASP4
+          The <NUMEX TYPE="ORDINAL">fourth</NUMEX> CASP was held in <TIMEX TYPE="DATE">December 2000</TIMEX>. CASP4
+          demonstrated further improvement in our methodologies in
+          both comparative modelling and 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio prediction [ <TIMEX TYPE="DATE">26</TIMEX> ] . Our
+          approaches combine a <ENAMEX TYPE="GPE">Monte Carlo</ENAMEX> procedure, simulated
+          annealing, genetic algorithms, graph theory, and
+          semi-exhaustive searches with move sets consisting of
+          <ENAMEX TYPE="PERSON">fragments</ENAMEX> and discrete state <ENAMEX TYPE="PER_DESC">models</ENAMEX>, and scoring
+          functions consisting of all atom-based pairwise
+          functions, hydrophobicity indices, secondary structure
+          preferences, and hydrogen bonding. The goal was to
+          develop components that form a structure prediction
+          engine, combining and innovating upon previously
+          developed approaches by observing what methods work well
+          at the previous <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments, and adding new
+          components of our own.
+          We focus here on the results of our prediction
+          methodologies on all of the <NUMEX TYPE="CARDINAL">40</NUMEX> sequences, for which an
+          experimental answer was later available. Unlike the
+          <ENAMEX TYPE="ORGANIZATION">assessors</ENAMEX>' evaluations at <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> (which has recently
+          appeared in the special issue (<NUMEX TYPE="MONEY">S5</NUMEX>) of 
+          <ENAMEX TYPE="WORK_OF_ART">Proteins: Structure, Function</ENAMEX>, and
+          <ENAMEX TYPE="ORGANIZATION">Genetics</ENAMEX> ), which focus on how well a particular
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> performs, we treat <ENAMEX TYPE="DISEASE">CASP</ENAMEX> as a test-bed for how well
+          an individual method performs. Using the lessons learnt
+          from <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> successes and failures, we suggest a unified
+          approach that mixes and matches between the best
+          predictions to produce the best results. The aim of this
+          work is to illustrate when our prediction methods work,
+          when they fail, and what this means in the context of
+          building models for all <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded by the genome of
+          an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> at <TIMEX TYPE="TIME">the present time</TIMEX>.
+        
+      
+      
+        Results and Discussion
+        
+          What went right; what went wrong
+          
+            Comparative modelling and fold recognition
+            <ENAMEX TYPE="PRODUCT">Table 2compares</ENAMEX> all the predictions we made for
+            CASP4 using comparative modelling and fold recognition
+            methods. The results are qualitatively assessed as
+            being one of "excellent", "good", "useful", and
+            "failure". In the comparative modelling category, we
+            made <NUMEX TYPE="CARDINAL">29</NUMEX> predictions for <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> that had sequence
+            identities ranging from <NUMEX TYPE="PERCENT">50% to 10%</NUMEX> to the nearest
+            related <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with known structure. For <NUMEX TYPE="CARDINAL">23</NUMEX> of these
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, we produced models ranging from <NUMEX TYPE="CARDINAL">1.0</NUMEX> to <NUMEX TYPE="CARDINAL">6.0</NUMEX> Å
+            root mean square deviation (RMSD) for the C 
+            α atoms between the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and the
+            corresponding experimental <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for all or large
+            parts of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, with model accuracies scaling
+            fairly linearly with respect to sequence identity
+            (i.e., the higher the sequence identity, the better the
+            prediction). These <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> ranged in accuracy from
+            "excellent" to "useful". Figure 1shows <NUMEX TYPE="CARDINAL">some</NUMEX> examples of
+            the comparative modelling predictions with different
+            difficulties made at <TIMEX TYPE="DATE">CASP4</TIMEX>.
+            The comparative modelling and fold recognition
+            targets are in <ENAMEX TYPE="PRODUCT">Table 2are</ENAMEX> sorted by the difficulty
+            index. The percentage identities for alignments between
+            several comparative modelling targets and their
+            corresponding templates fall in the twilight <ENAMEX TYPE="FAC_DESC">zone</ENAMEX> or
+            below (alignments with percentage identities <=
+            <NUMEX TYPE="PERCENT">30%</NUMEX>). In fact, such targets belong more in the category
+            of fold recognition since it is clear that even a <NUMEX TYPE="PERCENT">20%</NUMEX>
+            identity alignment can easily result in a wrong fold
+            assignment. (The percentage identity is used for
+            illustration purposes only-BLAST e-values follow a
+            similar trend but are most robust.)
+            Our comparative modelling methods produce excellent
+            models when the percentage identity between the target
+            and corresponding template sequence is high (usually
+            within <NUMEX TYPE="QUANTITY">2.0 Å</NUMEX> C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> for > <NUMEX TYPE="PERCENT">30%</NUMEX> identity). In
+            several cases where the alignment falls into the
+            twilight <ENAMEX TYPE="FAC_DESC">zone</ENAMEX> (<NUMEX TYPE="PERCENT">20-30%</NUMEX> sequence identity), <ENAMEX TYPE="PER_DESC">models</ENAMEX> around
+            <NUMEX TYPE="CARDINAL">4.0</NUMEX> Å C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> are produced (<ENAMEX TYPE="CONTACT_INFO">T0122/trpa,</ENAMEX>
+            <ENAMEX TYPE="CONTACT_INFO">T0112/dhso, T0125/spl8, T0121/malk</ENAMEX>).
+            In <NUMEX TYPE="CARDINAL">one</NUMEX> case, <ENAMEX TYPE="CONTACT_INFO">T0092/yeco</ENAMEX>, the percentage identity
+            between the target and template <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the
+            alignment we used was <NUMEX TYPE="PERCENT">12%</NUMEX>, but we predict <ENAMEX TYPE="CONTACT_INFO">107 residues</ENAMEX>
+            to within <NUMEX TYPE="QUANTITY">6.0 Å</NUMEX> C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>. However, not all cases where
+            we assumed a homology relationship provided similar
+            results, and the failures are indicated as "F" in Table
+            <NUMEX TYPE="CARDINAL">2</NUMEX>.
+            While the graph-theory methods have been fairly
+            successful at handling the interconnectedness problem
+            to build non-conserved <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> and main <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+            ] , other major problems preventing the construction of
+            accurate comparative <ENAMEX TYPE="PER_DESC">models</ENAMEX> have to do with inaccurate
+            <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> and using the template structure as a static
+            model upon which to build variable main <ENAMEX TYPE="ORG_DESC">chains</ENAMEX>. In the
+            former case, if a region of the alignment is incorrect
+            but is assumed to be correct, then no amount of further
+            model <ENAMEX TYPE="FAC_DESC">building</ENAMEX> will fix this error. In the latter case,
+            the loop and <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> construction methods, even if
+            <ENAMEX TYPE="ORGANIZATION">interconnectedness</ENAMEX> is taken into account, are limited
+            by the approximate nature of the template framework. In
+            other words, alignment errors are irrecoverable. Even
+            though <NUMEX TYPE="PERCENT">50-70%</NUMEX> of the <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> (of <NUMEX TYPE="CARDINAL">up to 15</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>) we
+            thought would vary with respect to the <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> homologue
+            structure were predicted to within <NUMEX TYPE="QUANTITY">3.0 Å</NUMEX> C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>, this is mostly in cases
+            where the approximate template is well-predicted
+            (within <NUMEX TYPE="QUANTITY">2.0 Å</NUMEX> C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>).
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio prediction
+          <ENAMEX TYPE="PRODUCT">Table 2compares</ENAMEX> all the predictions we made for CASP4
+          using our 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio methods. We made <NUMEX TYPE="CARDINAL">eleven</NUMEX>
+          predictions for <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> that had no detectable sequence
+          relationships when we began the modelling process. We
+          produced <NUMEX TYPE="CARDINAL">nine</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> with <ENAMEX TYPE="ANIMAL">accuracies</ENAMEX> ranging from <NUMEX TYPE="CARDINAL">4.0</NUMEX> to
+          <NUMEX TYPE="CARDINAL">6.0</NUMEX> Å C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> for <NUMEX TYPE="CARDINAL">60-100</NUMEX> <ENAMEX TYPE="SUBSTANCE">residue proteins</ENAMEX> (or
+          large fragments of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>). Figure 2illustrates some
+          of our more successful predictions.
+          At <TIMEX TYPE="DATE">CASP4</TIMEX>, we were consistently able to predict <NUMEX TYPE="CARDINAL">60-80</NUMEX>
+          residue consecutive fragments to within <NUMEX TYPE="QUANTITY">6.0 Å</NUMEX>, and, at
+          times, to within <NUMEX TYPE="QUANTITY">4.0 Å</NUMEX> C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>. These results are much more
+          consistent than at <TIMEX TYPE="DATE">CASP3</TIMEX>, and are also of better
+          quality.
+          While these predictions are a significant improvement
+          compared to the previous <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> results, we still have to
+          make much progress before we can produce models rivalling
+          that of experiment in accuracy. Given the range of RMSDs
+          for the <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> sampled (i.e.,
+          "decoys") for each of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (average range for the
+          <NUMEX TYPE="CARDINAL">eleven</NUMEX> predictions was <NUMEX TYPE="CARDINAL">9.3</NUMEX> - <NUMEX TYPE="CARDINAL">17.6</NUMEX> Å C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> for the entire <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>; and <NUMEX TYPE="CARDINAL">5.0</NUMEX>
+          - <NUMEX TYPE="CARDINAL">12.6</NUMEX> Å C 
+          <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> when only the best fragments
+          are considered), it is clear that devising
+          representations that will allow us to explore protein
+          <ENAMEX TYPE="PRODUCT">conformational</ENAMEX> space such that near-<ENAMEX TYPE="NATIONALITY">native</ENAMEX> conformations
+          are encountered is a major bottleneck. Our filter-based
+          <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> function approach generally picks conformations
+          from the lower end of the <ENAMEX TYPE="SUBSTANCE">RMSD</ENAMEX> distribution (usually
+          within the top <NUMEX TYPE="PERCENT">1%</NUMEX>, and no worse than the <NUMEX TYPE="PERCENT">10%</NUMEX>, of the
+          <ENAMEX TYPE="PER_DESC">conformations</ENAMEX> sampled), but further improvements can be
+          made.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Caveats</ENAMEX> regarding the use of results from CASP
+          experiments
+          
+            Averaging over different methods and
+            contexts
+            The results provided by the <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> organisers and
+            <ENAMEX TYPE="ORGANIZATION">assessors</ENAMEX> show how well a particular group did, but do
+            not measure performance of individual methods in
+            separate contexts. This makes it harder to determine
+            which methods work well and places an inherent penalty
+            on trying different non-conservative approaches. For
+            example, even successful loop and <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> building
+            methods will fail on comparative <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> based on
+            incorrect alignments (in our case, we tried <NUMEX TYPE="CARDINAL">six</NUMEX>
+            different approaches in the <NUMEX TYPE="CARDINAL">three</NUMEX> categories combined,
+            the results for <NUMEX TYPE="CARDINAL">only two</NUMEX> of which are listed in Figures
+            1and <NUMEX TYPE="CARDINAL">2</NUMEX>). This problem has been alleviated to some
+            degree by the <ENAMEX TYPE="ORGANIZATION">CAFASP</ENAMEX> experiment [ <TIMEX TYPE="DATE">47</TIMEX> ] , which provides
+            a strict method-by-method automatic evaluation, but it
+            requires that models be prepared by the means of an
+            automated server in a relatively short time-frame.
+            Ranking results by methods used (based on keywords
+            provided when the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is submitted, which could be
+            <ENAMEX TYPE="ORGANIZATION">standardised</ENAMEX>), and considering subsets of the target
+            relevant to particular methods, would help
+            significantly in identifying the methods that work
+            best.
+          
+          
+            Subjective quality of evaluations
+            Once a certain evaluation measure is chosen, then
+            evaluating all <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> submitted by that measure is
+            objective. However, particular methods appear to
+            perform better depending on the choice of evaluation
+            criteria used (for example, C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> over a contiguous set of
+            <ENAMEX TYPE="PERSON">residues</ENAMEX>, which we prefer, vs. C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> over non-contiguous
+            <ENAMEX TYPE="ORGANIZATION">residues</ENAMEX>). This illustrates the need for <NUMEX TYPE="CARDINAL">more than one</NUMEX>
+            measure, but even with that taken into account, there
+            exists an inherent subjectivity in measurement,
+            especially given the <ENAMEX TYPE="ORG_DESC">assessor</ENAMEX>'s visual evaluation of
+            the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> during the <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiment (one of the
+            <ENAMEX TYPE="PER_DESC">authors</ENAMEX> of the paper, <ENAMEX TYPE="PERSON">M.L.</ENAMEX>, was an assessor at <NUMEX TYPE="MONEY">CASP2</NUMEX>).
+            The reason there is a problem is because the results
+            are not entirely clear (i.e., the problem has not been
+            solved). Until predictions with accuracies rivalling
+            that of experiment are made, assessment of predictions
+            must be done automatically using limited and stringent
+            criteria, most relevant to <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> interested in
+            function. Such a criteria could include, for example,
+            how well <TIMEX TYPE="DATE">the model</TIMEX> picks out structurally similar
+            <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from the database of known structures,
+            relative to the experimental result.
+          
+        
+        
+          What can be done
+          
+            Promising future areas
+            While the <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments provide for an
+            environment where rapid testing of ideas is possible in
+            a rigourous manner, a lot of the development is ad hoc,
+            guided by intuition, and not all parameter choices are
+            explored thoroughly.
+            The <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments also show that there is not one
+            single algorithm that can "solve" the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structure
+            prediction problem. The most successful methods are
+            those that combine and build upon the techniques
+            developed by several <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> in the last <TIMEX TYPE="DATE">thirty</TIMEX>
+            <TIMEX TYPE="DATE">years</TIMEX> (special issues of 
+            <ENAMEX TYPE="WORK_OF_ART">Proteins: Structure, Function</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">Genetics</ENAMEX>, <TIMEX TYPE="DATE">1995, 1997, 1999</TIMEX>, and <TIMEX TYPE="DATE">2002</TIMEX>). Generally
+            the methods have incorporated different sampling
+            techniques and a variety of scoring functions each of
+            which aids prediction of <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> only to a limited
+            degree when used individually, but are producing models
+            useful for further biological study when combined
+            together in a coherent manner.
+            To provide a guidance for future work, we analysed
+            some of the more promising <ENAMEX TYPE="FAC_DESC">paths</ENAMEX> that we discovered to
+            assess their viability in improving our methods and
+            making better predictions, focusing on <NUMEX TYPE="CARDINAL">four</NUMEX> major
+            <ENAMEX TYPE="FAC_DESC">areas</ENAMEX>: alignment, refinement, sampling, and selection.
+            An analysis of the results generated by our methods at
+            the next <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> (evaluated in <TIMEX TYPE="DATE">December 2002</TIMEX>) will provide
+            a measure of the effectiveness of these
+            improvements.
+          
+          
+            Comparative modelling and fold recognition:
+            <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> and template selection using all-atom scoring
+            functions
+            A major reason for alignment methods failing at CASP
+            has to do with using sequence information only and not
+            incorporating structural information. For example,
+            while modelling <ENAMEX TYPE="CONTACT_INFO">T24/ubc9</ENAMEX>, sequence alignments generated
+            by several methods have an alignment error relative to
+            the structural <ENAMEX TYPE="SUBSTANCE">alignment</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] . The sequence
+            identity/similarity scores would have been lower with
+            the new alignment since the number of identical
+            residues decreases by <NUMEX TYPE="CARDINAL">six</NUMEX> in a region of <NUMEX TYPE="CARDINAL">fourteen</NUMEX>
+            <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. This phenomenon has been observed time and
+            again at <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX>, illustrated in Figure <NUMEX TYPE="CARDINAL">3by three</NUMEX>
+            examples, including <ENAMEX TYPE="CONTACT_INFO">T24/ucb9.</ENAMEX> We were later able to
+            readily distinguish between the correct and incorrect
+            <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> when an all-atom scoring function was
+            <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to the models constructed using both
+            alignments, and justify the changes by detailed
+            environment analysis. The score for the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> based on
+            the correct alignments were better by ~<NUMEX TYPE="PERCENT">10%</NUMEX> on average
+            relative to the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with the original alignment. This
+            would indicate that a sequence alignment algorithm that
+            incorporates structural information in a rigourous
+            manner is useful and necessary to handle the alignment
+            problem.
+            Historically, in comparative modelling, the template
+            with the highest sequence identity or similarity to the
+            target sequence being modelled has been used for
+            further analysis. However, a comparison of <ENAMEX TYPE="PER_DESC">members</ENAMEX> of a
+            family with known <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> shows that sequence only
+            measures do not correlate absolutely with the
+            structural similarity [ <TIMEX TYPE="DATE">48</TIMEX> ] even in cases where the
+            evolutionary relationships are obvious.
+            We thus devised an experiment where we constructed
+            models for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> with large numbers of known
+            structures (specifically the globin and the
+            immunoglobulin <ENAMEX TYPE="PER_DESC">families</ENAMEX>). We then conducted an
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-against-all homology modelling exercise where every
+            <ENAMEX TYPE="PER_DESC">member</ENAMEX> of the <ENAMEX TYPE="PER_DESC">family</ENAMEX> was modelled on every other
+            <ENAMEX TYPE="ORGANIZATION">template</ENAMEX> (resulting in <TIMEX TYPE="DATE">29 and 60</TIMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> for each member
+            of the globin and immunoglobulin <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+            respectively). We compared the performance of the
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-atom scoring function to <NUMEX TYPE="CARDINAL">two</NUMEX> sequence only metrics.
+            The results for the globin <ENAMEX TYPE="PER_DESC">family</ENAMEX> are given in Figure
+            <NUMEX TYPE="CARDINAL">4</NUMEX>. On average, using the <NUMEX TYPE="CARDINAL">all-atom</NUMEX> function improves
+            model quality by <NUMEX TYPE="CARDINAL">0.8</NUMEX> Å C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX> compared to only using
+            sequence identity. The theoretical best improvement
+            that could have been achieved on average is <NUMEX TYPE="CARDINAL">0.9</NUMEX> Å C 
+            <ENAMEX TYPE="ORGANIZATION">α RMSD</ENAMEX>. Similar improvements are
+            observed for the immunoglobulin <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+            Taken together with previously published results [
+            <NUMEX TYPE="CARDINAL">32 49</NUMEX> ] , these results strongly indicate that the
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-atom scoring function is a powerful method to
+            handle the alignment problem, the template selection
+            problem, the construction of <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> and main
+            <ENAMEX TYPE="PERSON">chains</ENAMEX>, and potentially helpful in refining models when
+            continuous forms of the function are used.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio prediction: Sampling conformational
+            space
+            At <TIMEX TYPE="DATE">CASP4</TIMEX>, we mixed and matched different move sets
+            and search methods for <ENAMEX TYPE="SUBSTANCE">sampling protein</ENAMEX> conformational
+            space. Since we did not have the time to test the
+            performance of each move set or search method, we
+            assumed they would work equally well on average and
+            combined them sequentially which generally resulted in
+            improvements.
+            <ENAMEX TYPE="PRODUCT">Table 4shows</ENAMEX> the average results of different
+            combinations of move sets and search methods for a set
+            of <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (PDB codes: <ENAMEX TYPE="CONTACT_INFO">1ctf, 1e68, 1eh2, 1nkl,</ENAMEX>
+            1pgb, <TIMEX TYPE="DATE">1sro</TIMEX>; <NUMEX TYPE="CARDINAL">four</NUMEX> of these were <ENAMEX TYPE="ORGANIZATION">CASP targets</ENAMEX>). The
+            results shown are for <NUMEX TYPE="CARDINAL">10,000</NUMEX> trajectories with
+            different starting random <ENAMEX TYPE="SUBSTANCE">seeds</ENAMEX>. While some of the
+            combinations do not necessarily enhance the simple
+            approach of using <NUMEX TYPE="CARDINAL">only 3</NUMEX>-residue fragments with a
+            straight-forward monte carlo procedure, the combination
+            of using fragments and the <NUMEX TYPE="CARDINAL">14</NUMEX>-state model for making
+            moves, with <ENAMEX TYPE="ORGANIZATION">MC</ENAMEX> and <ENAMEX TYPE="GPE">GA</ENAMEX> search techniques for the
+            sampling, shows a significant improvement, which we
+            hope to demonstrate at <TIMEX TYPE="DATE">CASP5</TIMEX> by further extending the
+            preliminary studies described here. Since these
+            combinations were tried with equal weighting, further
+            improvement may be obtained by parameterising how the
+            different move sets and search techniques are applied
+            depending on the trajectory landscape.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio prediction: <ENAMEX TYPE="NATIONALITY">Selecting native</ENAMEX>-like
+            conformations
+            Even though our all-<NUMEX TYPE="CARDINAL">atom</NUMEX> function is readily able to
+            distinguish native-like conformations in certain
+            scenarios, it is not adequate for large sets of decoys
+            where the closest <ENAMEX TYPE="PER_DESC">conformation</ENAMEX> generated is represented
+            at the topological level (�<NUMEX TYPE="MONEY">�� 6.0</NUMEX> Å C 
+            <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> RMSD relative to the experimental
+            result). Using the <NUMEX TYPE="CARDINAL">all-atom</NUMEX> function alone to select
+            <ENAMEX TYPE="NATIONALITY">native</ENAMEX>-like conformations is not likely to suffice when
+            it is also used in the actual minimisation/search
+            process, since all conformations generated in such
+            searches represent local minima of this function. Thus,
+            our method has incorporates multiple functions and uses
+            hierarchical filtering to reduce the number of
+            conformations from a large sample to a tiny fraction to
+            enhance the signal and eliminate false positives.
+            At <TIMEX TYPE="DATE">CASP4</TIMEX>, we used our expertise to manually devise a
+            single hierarchical filtering scheme where we
+            successively eliminated <NUMEX TYPE="PERCENT">10%</NUMEX> of the conformations with
+            each filter until we were left with <NUMEX TYPE="CARDINAL">one</NUMEX> conformation.
+            In the experiment in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>, we compare the average
+            performance of each of the <ENAMEX TYPE="PER_DESC">individual</ENAMEX> filters to our
+            final hierarchical combination when reducing the <NUMEX TYPE="CARDINAL">10,000</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> generated for each <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> by our search
+            method (corresponding to the last entry in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>) to
+            <TIMEX TYPE="DATE">1000</TIMEX> conformations. The hierarchical combination first
+            reduces the <NUMEX TYPE="CARDINAL">10,000</NUMEX> conformations to <TIMEX TYPE="DATE">8000</TIMEX> by applying
+            the density function, which is then reduced to <TIMEX TYPE="DATE">6000</TIMEX> by
+            applying the hydrophobic compactness function, which is
+            then reduced to <TIMEX TYPE="DATE">4000, 3000, 2000</TIMEX>, and <TIMEX TYPE="DATE">1000</TIMEX> in the same
+            order as presented in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>.
+            <ENAMEX TYPE="PRODUCT">Table 5shows</ENAMEX> that particularly promising filters
+            include the use of density-based scoring functions,
+            hydrophobic compactness, all-atom pairwise preferences
+            and match of the final conformation to the predicted
+            secondary structure. Physics-based functions based on
+            <ENAMEX TYPE="ORGANIZATION">electrostatics</ENAMEX> and van der Waals interactions do not
+            discriminate well on their own, and only do so when an
+            explicit solvation term is added to the functions.
+            <ENAMEX TYPE="PRODUCT">Table 5also</ENAMEX> shows that even though some of the
+            individual functions perform well, the combination of
+            all the functions applied in a hierarchical manner
+            performs the best. As mentioned <TIMEX TYPE="DATE">earlier</TIMEX>, this
+            combination was developed through intuition under
+            pressure from the <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiment (though here the goal
+            was to reduce the total number of conformations to
+            <NUMEX TYPE="CARDINAL">five</NUMEX>). This suggests that there exists more optimal
+            (linear and non-linear) combinations of these
+            functions.
+          
+        
+        
+          Computational issues
+          <ENAMEX TYPE="PRODUCT">Table 6lists</ENAMEX> the times taken for the computational
+          tasks outlined in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. Times are given per <TIMEX TYPE="DATE">1000</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">MHz Pentium III</ENAMEX> <ENAMEX TYPE="ORG_DESC">processor</ENAMEX> and for a cluster of <NUMEX TYPE="CARDINAL">64</NUMEX> such
+          processors when the algorithm can run in parallel. For
+          CASP4, predictions were made with computing power 1/4th
+          of the capability shown.
+        
+        
+          Application of structure prediction methods to
+          whole genomes
+          The qualitative assessment of our methods, considered
+          independently of the difficulty of the prediction, ranks
+          <ENAMEX TYPE="PRODUCT">32/40</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> as useful, good, or excellent. Similar
+          results are likely to be observed when these methods are
+          <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to large numbers of sequences if we assume that
+          the sample of <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> roughly reflects the
+          distribution of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> seen in a genome. In practice,
+          it is likely that we will encounter more homologous
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in a genome since experimentalists are not as
+          likely to solve a <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for which there clearly
+          exists a homolog.
+          This is a long way from our predictions at <NUMEX TYPE="ORDINAL">CASP1</NUMEX> [ <NUMEX TYPE="CARDINAL">23</NUMEX>
+          ] , and our initial implementations of these
+          methodologies [ <NUMEX TYPE="CARDINAL">12 24</NUMEX> ] . Yet there is much room for
+          further improvement. Besides improving the existing
+          <ENAMEX TYPE="PERSON">methodologies</ENAMEX>, and developing new ones, we can also
+          integrate other existing algorithms such that consensus
+          predictions can be used to assign confidence levels, as
+          well as having multiple choices for an outcome that can
+          be tested experimentally.
+          Analyses of small genomes show that <NUMEX TYPE="PERCENT">about 30-40%</NUMEX> of
+          the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> within the genome can be modelled by
+          comparative modelling and fold recognition methods [ <NUMEX TYPE="CARDINAL">27</NUMEX>
+          <NUMEX TYPE="CARDINAL">50 52</NUMEX> ] . <NUMEX TYPE="PERCENT">An additional 20-30%</NUMEX> of the sequences are (or
+          contain) small domains with simple secondary structures
+          that are viable <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio structure prediction [ <NUMEX TYPE="CARDINAL">53</NUMEX>
+          ] . The remaining <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are usually not amenable to
+          structure prediction and sometimes even structure
+          <ENAMEX TYPE="PERSON">determination</ENAMEX> (a significant fraction of the latter are
+          membrane <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>).
+          It is thus possible to construct a "genome prediction
+          engine" using the computational resources available where
+          we can take the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences encoded by an
+          <ENAMEX TYPE="PERSON">organism</ENAMEX>'s genome and attempt to predict their
+          structures, and use the modelled structures to predict
+          functions. The goal of this endeavour is to improve
+          existing methods and develop new ones to perform various
+          <ENAMEX TYPE="PER_DESC">facets of the genome</ENAMEX>/proteome modelling task in an
+          automated fashion. To this end, our predictions for the
+          <ENAMEX TYPE="ORGANIZATION">next CASP</ENAMEX> are almost entirely focused on the
+          fully-automated (CAFASP) aspect via the use of a
+          prediction server
+          <ENAMEX TYPE="CONTACT_INFO">http://protinfo.</ENAMEX><ENAMEX TYPE="ORGANIZATION">compbio</ENAMEX>.<ENAMEX TYPE="GPE">washington</ENAMEX>.edu
+        
+        
+          Using predicted <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> to annotate
+          function
+          The reason for obtaining <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> for proteins
+          encoded by a genome is that they can be used to
+          understand function and further our knowledge about the
+          <ENAMEX TYPE="PERSON">organism</ENAMEX>'s biology. Even though structure prediction
+          methods need further development, it is possible to
+          produce models where functional <ENAMEX TYPE="PER_DESC">hypotheses</ENAMEX> can be tested
+          in a rational manner (for example, with mutagenesis
+          experiments) through detailed analysis [ <TIMEX TYPE="DATE">54</TIMEX> ] .
+          Additionally, structure comparisons can be used to detect
+          functional relationships that cannot be detected by
+          sequence information alone [ <TIMEX TYPE="DATE">52</TIMEX> ] , and micro-environment
+          analyses that parse <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> for particular
+          three-dimensional motifs [ <TIMEX TYPE="DATE">55</TIMEX> ] can be used to discern
+          molecular function. Both of these <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>-based
+          approaches, used complementarily in conjunction with
+          sequence-only motif-finding approaches [ <NUMEX TYPE="CARDINAL">56 57 58</NUMEX> ] and
+          experimental data, will enable to us better assign
+          function to all or large parts of a proteome.
+        
+      
+      
+        Conclusions
+        
+          Why is protein/proteome modelling important?
+          Even given the ongoing structural genomics projects,
+          the continually increasing amount of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and protein
+          sequence data from genome projects makes it infeasible
+          for <ENAMEX TYPE="ORGANIZATION">NMR</ENAMEX> and x-ray crystallography techniques to rapidly
+          provide information about the <NUMEX TYPE="ORDINAL">3D</NUMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> determined [ <TIMEX TYPE="DATE">59</TIMEX> ] . Thus there is an urgent
+          need for reliably predicting structure from amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+          sequence.
+          <ENAMEX TYPE="SUBSTANCE">Proteins</ENAMEX> in a cell do not work in isolation of one
+          another. Thus to understand the function of multi-protein
+          <ENAMEX TYPE="PERSON">complexes</ENAMEX>, or whole proteomes, from a structural
+          <ENAMEX TYPE="PERSON">viewpoint</ENAMEX>, it is necessary to have a model for many
+          <ENAMEX TYPE="SUBSTANCE">proteins encoded</ENAMEX> by the genome of an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>. The CASP
+          results indicate that structure prediction methods have
+          matured to a point where they can be applied on a
+          genome-wide scale, and that these <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> can be used
+          with novel but straight-forward approaches to annotate
+          and understand function [ <NUMEX TYPE="CARDINAL">54 55 60 61</NUMEX> ] . The resulting
+          models and annotations, when combined with other
+          genomic/proteomic data, including that from gene
+          expression arrays [ <TIMEX TYPE="DATE">62</TIMEX> ] , genome-wide <NUMEX TYPE="CARDINAL">two</NUMEX>-hybrid
+          experiments [ <TIMEX TYPE="DATE">63</TIMEX> ] , and other proteomics studies [ <TIMEX TYPE="DATE">64</TIMEX> ]
+          , will provide us with a dynamic picture of organismal
+          structure, function, and evolution [ <TIMEX TYPE="DATE">65</TIMEX> ] .
+        
+      
+      
+        Methods
+        
+          Comparative modelling and fold recognition
+          
+            <ENAMEX TYPE="SUBSTANCE">Template</ENAMEX> selection and alignment
+            Target sequences related to <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that have
+            <ENAMEX TYPE="ORGANIZATION">conformations</ENAMEX> determined by experiment (X-ray
+            <ENAMEX TYPE="ORGANIZATION">crystallography</ENAMEX> or NMR) were <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for comparative
+            <ENAMEX TYPE="ORGANIZATION">modelling</ENAMEX>. If the sequence relationship between the
+            <ENAMEX TYPE="ORGANIZATION">template</ENAMEX> and target <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> was unambiguous (usually
+            when the sequence identity is > <NUMEX TYPE="PERCENT">40%</NUMEX>), or if there
+            was <NUMEX TYPE="CARDINAL">only one</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with known structure in the
+            family, the template <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> was used to construct
+            the sole initial model. If there were many possible
+            template <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, <ENAMEX TYPE="PER_DESC">models</ENAMEX> were constructed using all
+            available templates.
+            <ENAMEX TYPE="ORGANIZATION">PSIBLAST</ENAMEX> alignments and other publicly available
+            servers such as <ENAMEX TYPE="PRODUCT">GenTHREADER</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] and <ENAMEX TYPE="PRODUCT">SAM-T99</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ] ,
+            available as part of the <ENAMEX TYPE="ORGANIZATION">CAFASP meta</ENAMEX>-server [ <TIMEX TYPE="DATE">29</TIMEX> ] ,
+            were also used to generate a variety of choices for
+            <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX>. These <ENAMEX TYPE="PER_DESC">alternate alignments</ENAMEX> were used to
+            construct initial models. Thus, for a given <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> in
+            a <ENAMEX TYPE="PER_DESC">family</ENAMEX> with <NUMEX TYPE="CARDINAL">at least one</NUMEX> known representative
+            structure, there could be many template and alignment
+            choices for constructing the initial models.
+          
+          
+            Constructing initial models
+            Following the sequence alignment, an initial model
+            was generated for each template structure and
+            corresponding alignment by copying atomic coordinates
+            for the main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> (excluding any insertions/loops) and
+            for the <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> of identical <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> in the target
+            and <ENAMEX TYPE="SUBSTANCE">template proteins</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">Residues</ENAMEX> that differed in side
+            chain type were constructed using a minimum
+            <ENAMEX TYPE="ORGANIZATION">perturbation</ENAMEX> (<ENAMEX TYPE="PER_DESC">MP</ENAMEX>) technique [ <TIMEX TYPE="DATE">24</TIMEX> ] . The <ENAMEX TYPE="PER_DESC">MP</ENAMEX> method
+            changes a given amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> to the target amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+            preserving the values of equivalent torsion angles
+            between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX>, where available. The other
+            angles were constructed for each residue type using
+            internally developed <ENAMEX TYPE="ORG_DESC">library</ENAMEX> based on the most
+            frequently observed χ values in a database of known
+            structures [ <TIMEX TYPE="DATE">30</TIMEX> ] .
+          
+          
+            Manual inspection to improve alignments
+            An all-against-all structure comparison between all
+            the initial <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> was used to produce a multiple
+            sequence alignment based on structural similarity for a
+            given <ENAMEX TYPE="PER_DESC">family</ENAMEX>. This alignment was used in conjunction
+            with sequence information and interactive graphics to
+            create new sequence alignments.
+          
+          
+            Constructing variable <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> and main
+            chains
+            Multiple <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> conformations for residue
+            positions that differ in type between the template and
+            target <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> were generated by exploring all the
+            possibilities in a rotamer <ENAMEX TYPE="ORG_DESC">library</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] . The most
+            probable conformations based on the interactions of a
+            given conformation with the local main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> were
+            selected using an all-atom distance dependent
+            conditional probability discriminatory function [ <TIMEX TYPE="DATE">32</TIMEX> ]
+            .
+            A set of possible conformations were generated for
+            main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> regions (loops) considered to vary in the
+            target with respect to the template structures,
+            including insertions and deletions. Main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> sampling
+            was performed using an exhaustive enumeration technique
+            based on <TIMEX TYPE="DATE">14</TIMEX> discrete torsion angle <ENAMEX TYPE="GPE_DESC">states</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] . For
+            longer main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> regions (<NUMEX TYPE="MONEY">> 15</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>), fragments
+            from a database of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structures are used to
+            generate the torsion angle values. Developments in our 
+            <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio sampling protocol were
+            incorporated into our loop sampling technique.
+            In <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> experiments, main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> regions and side
+            chains selected for sampling were determined visually
+            using interactive computer graphics. We partially
+            automated this procedure by developing programs to
+            identify <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> with implausible packing, clashes,
+            and unfavorable electrostatic interactions with other
+            side <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> and/or main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>.
+          
+          
+            <NUMEX TYPE="CARDINAL">All</NUMEX>-atom conditional probability scoring
+            function
+            The all-atom scoring function is the core of many
+            aspects of this <ENAMEX TYPE="FAC_DESC">project</ENAMEX> where identification of
+            <ENAMEX TYPE="NATIONALITY">native</ENAMEX>-like conformations is required. The function
+            calculates the probability of a conformation being
+            <ENAMEX TYPE="NATIONALITY">native</ENAMEX>-like given a set of inter-atomic distances [ <NUMEX TYPE="CARDINAL">32</NUMEX>
+            ] . The conditional probabilities are compiled by
+            counting frequencies of distances between pairs of atom
+            types in a database of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. All
+            non-hydrogen atoms are considered, and a
+            residue-specific description of the atoms is used,
+            <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, the C 
+            α of an alanine is different from
+            the C 
+            α of a giycine. This results in a
+            total of <NUMEX TYPE="CARDINAL">167</NUMEX> atom types. The distances observed are
+            divided into <NUMEX TYPE="CARDINAL">1.0</NUMEX> Å bins ranging from <NUMEX TYPE="QUANTITY">3.0 Å to 20.0 Å</NUMEX>.
+            Contacts between atom types in the <NUMEX TYPE="QUANTITY">0-3 Å</NUMEX> range are
+            placed in a separate bin, resulting in a total of <NUMEX TYPE="CARDINAL">18</NUMEX>
+            distance bins. Distances between atoms within a single
+            <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> are not included in the counts.
+            We then compile tables of scores proportional to the
+            negative log conditional probability that one is
+            observing a native conformation given an interatomic
+            distance for all possible pairs of the <NUMEX TYPE="CARDINAL">167</NUMEX> atom types
+            for the <NUMEX TYPE="CARDINAL">18</NUMEX> distance ranges. Given a set of distances in
+            a conformation, the probability that the conformation
+            represents a "correct" fold is evaluated by summing the
+            scores for all distances and the corresponding atom
+            <ENAMEX TYPE="PERSON">pairs</ENAMEX>.
+          
+          
+            Using graph theory to generate consistent
+            conformations
+            We use a graph-theoretic approach to assemble the
+            <ENAMEX TYPE="ORGANIZATION">sampled</ENAMEX> <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> and main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> conformations
+            together in a consistent and optimal manner: Each
+            possible <ENAMEX TYPE="PER_DESC">conformation</ENAMEX> of a residue is represented using
+            the notion of a node in a graph. Each node is given a
+            weight based on the degree of the interaction between
+            its <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> atoms and the local main <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> atoms.
+            The weight is computed using the <NUMEX TYPE="CARDINAL">all</NUMEX>-atom scoring
+            function [ <TIMEX TYPE="DATE">32</TIMEX> ] . Edges are then drawn between pairs of
+            <ENAMEX TYPE="CONTACT_INFO">residues/nodes</ENAMEX> that are consistent with each other
+            (i.e., clash-free and satisfying geometrical
+            constraints). The edges are also weighted according to
+            the probability of the interaction between atoms in the
+            <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. Once the entire graph is constructed, all
+            the maximal sets of completely connected nodes
+            (<NUMEX TYPE="MONEY">cliques</NUMEX>) are found using a clique-finding algorithm [
+            <NUMEX TYPE="CARDINAL">34</NUMEX> ] . The cliques with the best total weights
+            represent the <ENAMEX TYPE="SUBSTANCE">optimal</ENAMEX> combinations of mixing and
+            matching among the various possibilities, taking the
+            respective environments into account [ <TIMEX TYPE="DATE">35</TIMEX> ] . The
+            clique-finding approach for generating <ENAMEX TYPE="FAC_DESC">conformations</ENAMEX> is
+            fast, since it pre-calculates all the scores. In its
+            present implementation, it can sample <NUMEX TYPE="CARDINAL">up to 10</NUMEX>
+            11conformations in a <TIMEX TYPE="TIME">24-hour</TIMEX> period on a <TIMEX TYPE="DATE">1000</TIMEX> MHz <ENAMEX TYPE="ORGANIZATION">Intel</ENAMEX>
+            processor.
+          
+          
+            Selecting the most <ENAMEX TYPE="NATIONALITY">native</ENAMEX>-like
+            conformations
+            All <ENAMEX TYPE="PER_DESC">models</ENAMEX> produced are refined using the <ENAMEX TYPE="ORGANIZATION">Energy</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">Calculation and Dynamics</ENAMEX> (ENCAD) package [ <TIMEX TYPE="DATE">36</TIMEX> ] . For a
+            given <ENAMEX TYPE="SUBSTANCE">protein sequence</ENAMEX>, there could be more than one
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-atom model produced. For such cases, all models
+            were ranked using the <NUMEX TYPE="CARDINAL">all</NUMEX>-atom pairwise scoring
+            function [ <TIMEX TYPE="DATE">32</TIMEX> ] and the best scoring <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are
+            considered to be the most <ENAMEX TYPE="NATIONALITY">native</ENAMEX>-like ones.
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Ab</ENAMEX> initio prediction
+          
+            Sampling <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> conformational space
+            We initially start with an all-atom conformation
+            where the torsion values for <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> predicted to be
+            in helix/sheet by <ENAMEX TYPE="ORGANIZATION">PSIPRED</ENAMEX> secondary structure
+            prediction [ <TIMEX TYPE="DATE">38</TIMEX> ] are set to idealised values [ <TIMEX TYPE="DATE">33</TIMEX> ] .
+            The remaining <ENAMEX TYPE="CONTACT_INFO">φ/ψ</ENAMEX> values are set in an extended
+            <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX>. Side <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> conformations are predicted by
+            simply using the most frequently observed rotamer in a
+            database of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structures [ <TIMEX TYPE="DATE">30</TIMEX> ] . New
+            conformations are generated by perturbing the existing
+            conformation at an arbitrary residue by one of <NUMEX TYPE="CARDINAL">two</NUMEX>
+            methods: ( 
+            i ) the torsion values for <TIMEX TYPE="TIME">three</TIMEX>
+            residues with identical sequence from a known structure
+            are used to modify the current conformation, similar in
+            spirit to that of <ENAMEX TYPE="PERSON">Baker</ENAMEX> and <ENAMEX TYPE="PER_DESC">colleagues</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX> ] ; ( 
+            <ENAMEX TYPE="ORGANIZATION">ii</ENAMEX> ) one of possible <NUMEX TYPE="CARDINAL">14</NUMEX> torsion
+            <ENAMEX TYPE="CONTACT_INFO">(φ/ψ</ENAMEX>) values derived based on the most frequently
+            occurring torsion values for a given <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX> in a
+            database of known structures. The move sets were
+            combined sequentially (i.e., where a certain number of
+            <ENAMEX TYPE="ORG_DESC">iterations</ENAMEX> consisted of copying torsion values for
+            <NUMEX TYPE="CARDINAL">3</NUMEX>-residue fragments and the next few iterations would
+            use torsion values from the <NUMEX TYPE="CARDINAL">14</NUMEX>-state φ<ENAMEX TYPE="PRODUCT">/ψ</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>).
+            The scoring function for minimisation is primarily a
+            combination of the <NUMEX TYPE="CARDINAL">all-atom</NUMEX> function, a hydrophobic
+            compactness function, and a bad contacts function [ <NUMEX TYPE="CARDINAL">40</NUMEX>
+            ] . The primary search technique we used was a
+            <ENAMEX TYPE="ORGANIZATION">Metropolis Monte Carlo</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MC</ENAMEX>) procedure where
+            conformations are accepted or rejected based on the
+            <ENAMEX TYPE="ORGANIZATION">Boltzmann</ENAMEX>'s equation [ <TIMEX TYPE="DATE">41</TIMEX> ] . Each trajectory was
+            allowed <NUMEX TYPE="CARDINAL">50,000</NUMEX> iterations, starting with a high
+            temperature such that <NUMEX TYPE="PERCENT">99%</NUMEX> of the moves were accepted
+            for <TIMEX TYPE="DATE">the first 1000</TIMEX> steps and "cooled" linearly until
+            <NUMEX TYPE="PERCENT">only 1%</NUMEX> of the moves were accepted for the last <NUMEX TYPE="CARDINAL">100</NUMEX>
+            steps.
+            At particular points in the trajectory (every <TIMEX TYPE="DATE">1000</TIMEX>
+            steps), a fragment from another trajectory was copied
+            at random, similar in spirit to genetic algorithms (<ENAMEX TYPE="GPE">GA</ENAMEX>)
+            strategies [ <NUMEX TYPE="CARDINAL">42 43</NUMEX> ] . The standard Metropolis
+            <ENAMEX TYPE="PERSON">criterion</ENAMEX> would then apply: i.e., if the selected
+            fragment enhanced the score of the conformation
+            relative to the previous conformation, it would be
+            accepted. If not, its probability of acceptance would
+            be determined by the difference in score between the
+            current conformation and the previous conformation. The
+            probability is calculated by the <ENAMEX TYPE="GPE">Boltzmann</ENAMEX>-like
+            equation where Δ 
+            E is the difference in scores and
+            
+            kT, representing the product of
+            <ENAMEX TYPE="ORGANIZATION">Boltzmann</ENAMEX>'s constant and temperature, is set to a value
+            calculated using the standard deviation of the scores
+            of the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">1000</NUMEX> steps in a given trajectory.
+          
+          
+            Selecting biologically relevant
+            conformations
+            The <ENAMEX TYPE="ORG_DESC">conformations</ENAMEX> generated were minimised using
+            <ENAMEX TYPE="ORGANIZATION">ENCAD</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX> ] and scored using a combination of scoring
+            functions that hierarchically reduces the total number
+            of <ENAMEX TYPE="SUBSTANCE">conformations</ENAMEX> produced to one final conformation.
+            The scoring functions used for the final filtering
+            include the <NUMEX TYPE="CARDINAL">all-atom</NUMEX> function [ <TIMEX TYPE="DATE">32</TIMEX> ] , hydrophobic
+            <ENAMEX TYPE="ORGANIZATION">compactness</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] , a simple <ENAMEX TYPE="SUBSTANCE">residue-residue</ENAMEX> contact
+            function [ <TIMEX TYPE="DATE">44</TIMEX> ] , a density-scoring function that is
+            based on the distance of a conformation to all its
+            <ENAMEX TYPE="PER_DESC">relatives</ENAMEX> in the conformation pool, contact order [ <NUMEX TYPE="CARDINAL">45</NUMEX>
+            ] , a secondary structure based scoring function that
+            evaluates the match between the predicted structure and
+            the secondary structure of a final energy-minimised
+            conformation, and standard physics-based electrostatics
+            and <ENAMEX TYPE="ORGANIZATION">Van der Waals</ENAMEX> terms [ <TIMEX TYPE="DATE">46</TIMEX> ] .
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Internal</ENAMEX> testing and comparison of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> to the
+          experimental result
+          We initially ran our algorithms on test sets
+          consisting of <NUMEX TYPE="CARDINAL">10-20</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. To minimise bias of a
+          particular algorithm to a fixed test set, new proteins
+          were added to the test sets regularly. In all cases where
+          a three-dimensional model must be compared to an
+          experimental structure, we use the root mean square
+          <ENAMEX TYPE="PERSON">deviation</ENAMEX> (RMSD) between corresponding atoms of the
+          prediction and the experimental answer (usually
+          calculated using the C 
+          α atoms).
+        
+        
+          Availability of software and decoys
+          The <ENAMEX TYPE="ORG_DESC">ensembles</ENAMEX> of <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> that were generated and
+          much of the software used to generate them are available
+          at <ENAMEX TYPE="CONTACT_INFO">http://compbio.</ENAMEX><ENAMEX TYPE="GPE">washington</ENAMEX>.edu
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="GPE">RS</ENAMEX> performed the algorithm development, carried out the
+        computations, evaluated the results, and drafted the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">ML</ENAMEX> helped with the algorithm development and
+        evaluation of the results produced, and provided
+        intellectual guidance and mentorship. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and
+        approved the final manuscript.
+      
+    
+  

@@ -1,0 +1,415 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">Aneuploidy</ENAMEX> is a common feature of <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. Genetic
+        alterations such as amplification, deletion, translocation
+        and rearrangement could result in either gain-of-function
+        or loss-of-function mutations in genes that modulate
+        aspects of cell proliferation, differentiation, motility
+        and survival. Whereas cytogenetic profiling techniques,
+        such as comparative genomic hybridization (CGH) [ <ENAMEX TYPE="LAW">1</ENAMEX>], have
+        been useful in finding genetic abnormalities, other
+        experimental approaches are frequently used to identify
+        which specific <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>(s) drive selection for the genetic
+        <ENAMEX TYPE="PERSON">aberration</ENAMEX> and contribute most to <ENAMEX TYPE="DISEASE">tumor progression</ENAMEX>. Common
+        gene identification techniques include determining if a
+        <ENAMEX TYPE="SUBSTANCE">candidate gene</ENAMEX> contains a sequence mutation and/or
+        determining if the <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene or <ENAMEX TYPE="SUBSTANCE">gene product</ENAMEX> is
+        <ENAMEX TYPE="ORGANIZATION">abnormally</ENAMEX> expressed. As mutation analysis and protein
+        expression studies are time-consuming, increasingly
+        high-throughput gene-expression profiling is being used to
+        identify <ENAMEX TYPE="PER_DESC">abnormally</ENAMEX> expressed genes within a region of
+        cytogenetic change [ <ENAMEX TYPE="LAW">2, 3, 4, 5, 6</ENAMEX>].
+        Recently, several <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> have observed that chromosomal
+        changes can lead to regional biases in gene-expression
+        values both in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> ( 
+        Saccharomyces cerevisiae ) and in
+        human tumors and tumor-derived cell lines [ <ENAMEX TYPE="LAW">2, 3, 7, 8</ENAMEX>].
+        These studies suggest that a fraction of gene-expression
+        values (<NUMEX TYPE="PERCENT">15-25%</NUMEX>) are regulated in concordance with gene
+        dosage. A computational technique termed comparative
+        genomic microarray analysis (CGMA) has previously been used
+        to identify regions of allelic imbalance indirectly from
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles of human tumors [ <ENAMEX TYPE="LAW">8</ENAMEX>]. CGMA
+        predicts chromosomal amplifications and deletions by
+        organizing gene-expression data by genomic mapping location
+        and scanning for regions that contain a statistically
+        significant number of gene-expression values that change in
+        the same relative direction. In this study, we apply CGMA
+        analysis to a large hepatocellular carcinoma microarray
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> to demonstrate its validity as an alternative to
+        <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> and to identify <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes in regions of frequent
+        cytogenetic change.
+        Primary liver <ENAMEX TYPE="DISEASE">cancer</ENAMEX> in <ENAMEX TYPE="PER_DESC">adults</ENAMEX> is the <NUMEX TYPE="ORDINAL">sixth</NUMEX> most common
+        form of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and the <NUMEX TYPE="ORDINAL">fourth</NUMEX> leading cause of death from
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> worldwide [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>]. Through the examination of
+        <ENAMEX TYPE="DISEASE">hepatitis B virus</ENAMEX> (HBV) - and <ENAMEX TYPE="DISEASE">hepatitis C</ENAMEX> virus
+        (<ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX>)-induced tumors, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">landmark</ENAMEX> <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies have
+        suggested that a subset of cytogenetic changes frequently
+        occurs in <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> [ <TIMEX TYPE="DATE">11, 12</TIMEX>]. These include frequent gain of
+        <ENAMEX TYPE="PRODUCT">chromosomes 1q</ENAMEX>, <TIMEX TYPE="DATE">6p</TIMEX>, <TIMEX TYPE="DATE">8q</TIMEX>, <TIMEX TYPE="DATE">17q and 20q</TIMEX> and frequent loss of
+        <ENAMEX TYPE="PRODUCT">chromosomes 1p</ENAMEX>, <TIMEX TYPE="DATE">4q</TIMEX>, <TIMEX TYPE="DATE">6q</TIMEX>, <TIMEX TYPE="DATE">8p</TIMEX>, <TIMEX TYPE="DATE">13, 16 and 17p</TIMEX> [ <TIMEX TYPE="DATE">11, 12</TIMEX>]. In
+        particular, gain of chromosomes <TIMEX TYPE="DATE">1q and 8q</TIMEX> has been
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the early development of <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>], whereas
+        loss of chromosome 4q has been linked to increased
+        aggressiveness of established tumors [ <TIMEX TYPE="DATE">11</TIMEX>]. To determine
+        whether gene-expression data could be used to identify
+        <ENAMEX TYPE="ORGANIZATION">cytogenetic</ENAMEX> changes accurately, we applied <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> to a
+        microarray dataset of <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> tumors and compared the CGMA
+        predictions to existing <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> data. For <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> was able to
+        predict nearly all chromosomal aberrations identified
+        previously by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX>. In addition, from the gene-expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> we also identified a set of genes whose expression
+        values change most within the regions of cytogenetic
+        change. These <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may represent candidate genes whose
+        expression changes drive selection for chromosomal gains or
+        losses.
+      
+      
+        Results
+        
+          CGMA predictions of cytogenetic changes
+          Normalized, log-transformed gene-expression data from
+          <NUMEX TYPE="CARDINAL">104</NUMEX> HCC gene-expression arrays [ <TIMEX TYPE="DATE">13</TIMEX>] were obtained from
+          the <ENAMEX TYPE="PRODUCT">Stanford Microarray Database</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. As <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> analysis
+          yields more intuitive predictions if the tumor expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is compared to a normal tissue reference, the
+          original HCC gene-expression data was mathematically
+          transformed such that the pooled cell-line reference was
+          replaced by a normal tissue reference ([ <ENAMEX TYPE="LAW">3</ENAMEX>], see
+          Materials and methods). Using this transformation,
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression values from the tumor sample are compared
+          to corresponding values from non-cancerous tissue.
+          Genomic <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> that contain a disproportionate number of
+          genes that change expression in the same relative
+          direction (that is, show a gene-expression bias) may
+          indicate an underlying chromosomal gain or loss (Figure
+          1a) [ <ENAMEX TYPE="LAW">2, 3, 7, 8</ENAMEX>]. Chromosomal <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> that contained a
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression bias with <NUMEX TYPE="PERCENT">at least 95%</NUMEX> confidence (a sign
+          test 
+          z -statistic of <NUMEX TYPE="CARDINAL">at least 1.96</NUMEX>, see
+          Materials and methods) were identified for all <NUMEX TYPE="CARDINAL">104</NUMEX> HCC
+          expression profiles (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). In addition, genomic
+          regions that contained significant gene-expression biases
+          in <NUMEX TYPE="PERCENT">at least 35%</NUMEX> of non-replicate samples were identified
+          (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). A <NUMEX TYPE="PERCENT">35%</NUMEX> threshold was chosen because in
+          previous <ENAMEX TYPE="PRODUCT">CGMA</ENAMEX> <ENAMEX TYPE="SUBSTANCE">profiling</ENAMEX> experiments this threshold
+          yielded the highest <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> agreement ([ <ENAMEX TYPE="LAW">8</ENAMEX>] and data
+          not shown). <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> predicted frequent gains for chromosome
+          1q (gained in <NUMEX TYPE="PERCENT">72%</NUMEX> of <ENAMEX TYPE="DISEASE">tumor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>), <TIMEX TYPE="DATE">6p</TIMEX> (<NUMEX TYPE="PERCENT">56%</NUMEX>), <TIMEX TYPE="DATE">8q</TIMEX> (<NUMEX TYPE="PERCENT">49%</NUMEX>),
+          17q (<NUMEX TYPE="PERCENT">46%</NUMEX>), <TIMEX TYPE="DATE">20q</TIMEX> (<NUMEX TYPE="PERCENT">46%</NUMEX>), <TIMEX TYPE="DATE">5q</TIMEX> (<NUMEX TYPE="PERCENT">42%</NUMEX>), <TIMEX TYPE="DATE">19P</TIMEX> (<NUMEX TYPE="PERCENT">37%</NUMEX>) and <TIMEX TYPE="DATE">12q</TIMEX> (<NUMEX TYPE="PERCENT">35%</NUMEX>).
+          Frequent chromosomal losses were predicted for chromosome
+          4q (lost in <NUMEX TYPE="PERCENT">66%</NUMEX> of <ENAMEX TYPE="DISEASE">tumor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>), <TIMEX TYPE="DATE">17p</TIMEX> (<NUMEX TYPE="PERCENT">48%</NUMEX>), <TIMEX TYPE="DATE">13</TIMEX> (<NUMEX TYPE="PERCENT">39%</NUMEX>),
+          <TIMEX TYPE="DATE">16</TIMEX> (<NUMEX TYPE="PERCENT">37%</NUMEX>), and <TIMEX TYPE="DATE">8p</TIMEX> (<NUMEX TYPE="PERCENT">35%</NUMEX>). To determine if CGMA predictions
+          were consistent with other cytogenetic profiling studies,
+          the <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> data were compared with data from <NUMEX TYPE="CARDINAL">two</NUMEX> of the
+          largest CGH profiling studies (<NUMEX TYPE="CARDINAL">67 and 50</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>,
+          respectively) using <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> tumors [ <TIMEX TYPE="DATE">11, 12</TIMEX>]. Of the <NUMEX TYPE="CARDINAL">13</NUMEX>
+          regions detected by <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX>, <TIMEX TYPE="DATE">10</TIMEX> (<NUMEX TYPE="PERCENT">77%</NUMEX>) were also implicated
+          by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> also detected <NUMEX TYPE="CARDINAL">three</NUMEX> gained
+          regions, chromosomes <TIMEX TYPE="DATE">5q</TIMEX>, <TIMEX TYPE="DATE">12q and 19p</TIMEX>, which were not
+          implicated in the <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> analysis. <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> failed to discover
+          <NUMEX TYPE="CARDINAL">two</NUMEX> regions of loss detected by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> - chromosomes <ENAMEX TYPE="PRODUCT">1p</ENAMEX> and
+          6q. It is noteworthy that these particular losses were
+          not identified in both <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies. These data suggest
+          that CGMA predictions produce results very similar to
+          <ENAMEX TYPE="ORGANIZATION">traditional CGH</ENAMEX> profiling studies.
+        
+        
+          Comparison to previous <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> studies
+          To date there have been <NUMEX TYPE="CARDINAL">at least 20</NUMEX> reports on the
+          application of <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> [ <TIMEX TYPE="DATE">11, 12, 15, 16, 17, 18, 19</TIMEX>,
+          <TIMEX TYPE="DATE">20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32</TIMEX>]. To
+          determine whether the differences between the CGMA
+          predictions and the <NUMEX TYPE="CARDINAL">two</NUMEX> large <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies were similar to
+          the experimental variation observed between different HCC
+          <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies, predictions produced by <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> were compared
+          to <NUMEX TYPE="CARDINAL">13</NUMEX> different HCC CGH profiling studies (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> produced <NUMEX TYPE="CARDINAL">10</NUMEX> of <NUMEX TYPE="MONEY">13</NUMEX> (<NUMEX TYPE="PERCENT">77%</NUMEX>) predictions that matched a
+          consensus chromosomal aberration profile. On average,
+          each <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> study matched the consensus profile in <NUMEX TYPE="CARDINAL">78</NUMEX> ± <NUMEX TYPE="PERCENT">14%</NUMEX>
+          of the chromosomal regions analyzed. Therefore, the
+          variation in <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> results was similar to the variations
+          between independent <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies. These results suggest
+          that <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> profiling is able to predict regions of
+          frequent chromosomal imbalance in <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> as well as CGH
+          <ENAMEX TYPE="ORGANIZATION">profiling</ENAMEX>. As <NUMEX TYPE="CARDINAL">only 4</NUMEX> of the <NUMEX TYPE="CARDINAL">104</NUMEX> (<NUMEX TYPE="PERCENT">4%</NUMEX>) samples analyzed
+          scored positive for <ENAMEX TYPE="DISEASE">HCV</ENAMEX> infection, we could not use this
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> to detect significant cytogenetic differences
+          between HCV-infected verses HBV-infected <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>
+          (data not shown).
+        
+        
+          CGMA predictions of multifocal tumors
+          Included in the set of <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> gene-expression profiles
+          were several cases in which <ENAMEX TYPE="DISEASE">multiple tumor nodules</ENAMEX> were
+          removed from the same <ENAMEX TYPE="PER_DESC">patient</ENAMEX>. In some cases the nodules
+          had related gene-expression profiles (<ENAMEX TYPE="PER_DESC">patients</ENAMEX> <TIMEX TYPE="DATE">HK63</TIMEX>,
+          HK64, <TIMEX TYPE="DATE">HK66</TIMEX>) whereas in other cases tumors from the same
+          <ENAMEX TYPE="PER_DESC">patient</ENAMEX> had distinctive profiles (<ENAMEX TYPE="CONTACT_INFO">HK65, HK67, HK85</ENAMEX>) [
+          <NUMEX TYPE="CARDINAL">33</NUMEX>]. In particular, in patient HK67 the gene-expression
+          profile from nodule <ENAMEX TYPE="PRODUCT">HK67.1</ENAMEX> was distinct from the
+          expression profiles from nodules <ENAMEX TYPE="PRODUCT">HK67.2</ENAMEX> and HK67.3 [ <TIMEX TYPE="DATE">33</TIMEX>].
+          <ENAMEX TYPE="ORGANIZATION">Array CGH</ENAMEX> was used previously to determine the
+          cytogenetic profiles of the tumor nodules from this
+          patient [ <TIMEX TYPE="DATE">33</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Array CGH</ENAMEX> identified common cytogenetic
+          <ENAMEX TYPE="ORGANIZATION">abnormalities</ENAMEX> in patient <TIMEX TYPE="DATE">HK67</TIMEX>'s tumors, including loss of
+          <ENAMEX TYPE="PRODUCT">chromosome 15q</ENAMEX>, an unusual gain of chromosome <NUMEX TYPE="CARDINAL">19q</NUMEX>, and
+          loss of the centromeric region of chromosome <NUMEX TYPE="CARDINAL">22</NUMEX>. However,
+          additional cytogenetic changes were found in tumors
+          HK67.2 and <ENAMEX TYPE="PRODUCT">HK67.3</ENAMEX> that were not present in <NUMEX TYPE="CARDINAL">HK67.1</NUMEX>. The
+          cytogenetic profiling data coupled with the observation
+          that HK67.2 and <ENAMEX TYPE="PRODUCT">HK67.3</ENAMEX> were both smaller in size and had
+          an increased mitotic index, suggested that <ENAMEX TYPE="PRODUCT">HK67.1</ENAMEX> was the
+          primary tumor and <ENAMEX TYPE="PRODUCT">HK67.2</ENAMEX> and <ENAMEX TYPE="PRODUCT">HK67.3</ENAMEX> were divergent HK67.1
+          <ENAMEX TYPE="ORGANIZATION">subclones</ENAMEX>. To determine whether <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> predictions agree
+          with this monoclonal origin hypothesis, <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> profiles of
+          patient HK67<ENAMEX TYPE="DISEASE">'s tumor nodules</ENAMEX> were isolated and organized
+          by hierarchical clustering (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> also detected
+          the common chromosome <NUMEX TYPE="CARDINAL">19q</NUMEX> gain and chromosome <NUMEX TYPE="CARDINAL">15q</NUMEX> loss in
+          the <NUMEX TYPE="ORDINAL">HK67</NUMEX> tumors. <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> did not identify a common loss on
+          chromosome <NUMEX TYPE="CARDINAL">22</NUMEX>, however, <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> identified other genetic
+          <ENAMEX TYPE="ORGANIZATION">aberrations</ENAMEX> (+<NUMEX TYPE="CARDINAL">8q</NUMEX>, <TIMEX TYPE="DATE">-16q and -19q</TIMEX>) consistently found in
+          the <NUMEX TYPE="ORDINAL">HK67</NUMEX> tumors. <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> also identified additional
+          <ENAMEX TYPE="ORGANIZATION">aberrations</ENAMEX> (+<NUMEX TYPE="CARDINAL">2q</NUMEX>, <TIMEX TYPE="DATE">+5q</TIMEX>, <TIMEX TYPE="DATE">+12q</TIMEX>) present in <ENAMEX TYPE="PRODUCT">H67.2</ENAMEX> and H67.3
+          that were not found in <NUMEX TYPE="CARDINAL">H67.1</NUMEX>. Taken together, the CGMA
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> supports the hypothesis that the <ENAMEX TYPE="PRODUCT">H67.2</ENAMEX> and HK67.3
+          tumor nodules probably arose from <NUMEX TYPE="MONEY">HK67.1</NUMEX>, but that
+          additional distinct cytogenetic events had occurred in
+          these nodules during tumor progression. In contrast,
+          tumor nodules from patient HK64 have very similar
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles and very similar cytogenetic
+          profiles as predicted by <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX>, suggesting that these
+          tumors have common origins and these nodules have not
+          <ENAMEX TYPE="ORGANIZATION">diverged</ENAMEX> significantly from the original lineage. In
+          addition, tumor nodules from patient HK85 showed
+          distinctive expression profiles and distinct HBV
+          integration sites [ <TIMEX TYPE="DATE">33</TIMEX>]. Similarly, the tumors from
+          patient HK85 also show distinct CGMA-predicted
+          cytogenetic profiles, reflecting the independent
+          transforming mechanism (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>).
+        
+        
+          Identification of <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes in regions of
+          frequent cytogenetic change
+          Frequent cytogenetic abnormalities suggest that
+          tumor-modifying <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (oncogenes or <ENAMEX TYPE="DISEASE">tumor suppressors</ENAMEX>)
+          may be driving selection for the amplification or
+          deletion of these particular genetic regions [ <TIMEX TYPE="DATE">6, 11, 12</TIMEX>,
+          <TIMEX TYPE="DATE">34, 35, 36</TIMEX>]. An advantage of using <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> profiling rather
+          than traditional molecular genetic profiling is that
+          access to gene-expression data is inherent in the
+          analysis. CGMA allows cytogenetic analysis and the
+          candidate gene approach to be performed with the same
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>. For example, the 
+          c-myc oncogene has been postulated
+          to drive selection for frequent chromosome 8q
+          <ENAMEX TYPE="ORGANIZATION">amplification</ENAMEX>. Though 
+          c-myc is located on a region that
+          both <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> identify as frequently gained, c- 
+          <ENAMEX TYPE="ORGANIZATION">myc</ENAMEX> 's expression is increased more
+          than twofold in <NUMEX TYPE="PERCENT">less than 6%</NUMEX> of the samples. In fact, in
+          <NUMEX TYPE="PERCENT">52%</NUMEX> of the HCC tissue samples, c- 
+          <ENAMEX TYPE="ORGANIZATION">myc</ENAMEX> 's expression is downregulated
+          (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). This implies that increased 
+          c-myc expression is not driving the
+          selection for the amplification of chromosomal region 8q
+          in these samples. In the small <ENAMEX TYPE="GPE_DESC">region</ENAMEX> of chromosome 8q
+          presented in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (for squalene
+          <ENAMEX TYPE="ORGANIZATION">monooxygenase</ENAMEX> and <ENAMEX TYPE="PRODUCT">pro2000</ENAMEX>) do show increased expression
+          in a majority of <ENAMEX TYPE="SUBSTANCE">HCC samples</ENAMEX>. Consistent with previous
+          reports examining gene-expression levels in regions of
+          cytogenetic change, expression levels for a large
+          percentage of genes in this amplified <ENAMEX TYPE="GPE_DESC">region</ENAMEX> remain
+          unchanged [ <ENAMEX TYPE="LAW">3, 5, 8</ENAMEX>].
+          The set of genes that are consistently misregulated in
+          regions of frequent cytogenetic change as predicted by
+          <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> are shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. Platelet-derived growth factor
+          <ENAMEX TYPE="SUBSTANCE">receptor alpha</ENAMEX> is consistently downregulated in a region
+          of frequent cytogenetic loss and this suggests that loss
+          of a <ENAMEX TYPE="PER_DESC">member</ENAMEX> of this <ENAMEX TYPE="SUBSTANCE">receptor gene</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> is important in
+          <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> progression. It has previously been reported that a
+          <ENAMEX TYPE="PERSON">transcript</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">PRLTS</ENAMEX> ) with sequence similarity to
+          the extracellular domain of platelet-derived growth
+          <ENAMEX TYPE="SUBSTANCE">factor receptor</ENAMEX> may also be a <ENAMEX TYPE="DISEASE">tumor</ENAMEX> suppressor for <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">35</NUMEX>]. In addition, consistently increased expression of
+          the pituitary tumor transforming gene 1 oncogene ( 
+          <ENAMEX TYPE="ORGANIZATION">PTTG</ENAMEX> ) is observed in these samples
+          (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). 
+          PTTG maps to chromosome <NUMEX TYPE="CARDINAL">5q</NUMEX>, a
+          region that was identified as frequently changed by <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX>,
+          but not identified in the majority of <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> profiling
+          studies. 
+          <ENAMEX TYPE="ORGANIZATION">PTTP</ENAMEX> overexpression in <ENAMEX TYPE="ORGANIZATION">NIH</ENAMEX> 3T3
+          cells induces these <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> to form tumors when injected
+          into nude <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. Overexpression of this gene may result
+          from frequent chromosomal amplification and may
+          participate in HCC tumor progression.
+        
+        
+          CGMA prediction software
+          To assist in identifying regions of unidirectional
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression bias, we have constructed a web-based
+          program that processes <NUMEX TYPE="CARDINAL">two</NUMEX>-color gene-expression data and
+          identifies genomic regions that contain gene-expression
+          <ENAMEX TYPE="PERSON">biases</ENAMEX>. The input for this program is a simple
+          tab-delimited gene-expression matrix file consisting of
+          columns for the probe sequence identifier, probe name,
+          and gene-expression ratios. Because different microarray
+          <ENAMEX TYPE="ORGANIZATION">technologies</ENAMEX> use different identifiers to describe the
+          microarray <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>, the program translates probe sequence
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ids</ENAMEX>) such as <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers and
+          UniGene cluster ids to <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> transcript ids using
+          precompiled sequence comparisons. After data analysis, a
+          summary table is displayed showing chromosomal regions
+          that show significant (α �<NUMEX TYPE="MONEY">� 0.05</NUMEX>) unidirectional
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression bias highlighted in either red or green,
+          indicating either increased or decreased expression
+          <ENAMEX TYPE="PERSON">biases</ENAMEX>, respectively. The program can also send several
+          output files to the <ENAMEX TYPE="PER_DESC">user</ENAMEX> via e-mail. These files include
+          a summary report that contains the 
+          z -statistic for each chromosomal
+          region (positive for upregulated regions and negative for
+          downregulated regions) and a list of genes located in
+          regions of frequent cytogenetic change. The program is
+          available at [ <TIMEX TYPE="DATE">37</TIMEX>].
+        
+      
+      
+        Discussion
+        In this study we have used gene-expression profiling
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> to predict cytogenetic changes that frequently occur
+        in <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> <ENAMEX TYPE="ORG_DESC">landmark</ENAMEX> CGH analyses identified <NUMEX TYPE="CARDINAL">12</NUMEX> different
+        regions of frequent imbalance. However, one study found <NUMEX TYPE="CARDINAL">8</NUMEX>
+        regions and the other study found <NUMEX TYPE="CARDINAL">11</NUMEX> [ <TIMEX TYPE="DATE">11, 12</TIMEX>]. <NUMEX TYPE="CARDINAL">Five</NUMEX> of
+        these <NUMEX TYPE="CARDINAL">12</NUMEX> regions were not found in both experiments. CGMA
+        successfully identified <NUMEX TYPE="CARDINAL">10</NUMEX> of <NUMEX TYPE="CARDINAL">12</NUMEX> regions previously
+        distinguished by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> also detected <NUMEX TYPE="CARDINAL">three</NUMEX> regions that
+        have not been implicated by these <ENAMEX TYPE="DISEASE">CGH</ENAMEX> studies. On average
+        however, <NUMEX TYPE="PERCENT">22%</NUMEX> of genomic regions indentified in a particular
+        HCC CGH study are not constantly identified in other
+        studies. Therefore, the <NUMEX TYPE="CARDINAL">three</NUMEX> inconsistent CGMA predictions
+        (<NUMEX TYPE="CARDINAL">3</NUMEX> of <NUMEX TYPE="CARDINAL">13</NUMEX>; <NUMEX TYPE="PERCENT">23%</NUMEX>) are comparable to the inconsistencies
+        between independent <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> studies for <ENAMEX TYPE="ORGANIZATION">HCC</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">Three</NUMEX> additional regions were identified by <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> that
+        were not identified by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX>. While these CGMA-predicted
+        regions were near the <NUMEX TYPE="PERCENT">35%</NUMEX> cutoff for detection, they could
+        represent other regions of allelic imbalance yet to be
+        detected by <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX>. It is also possible that biological
+        mechanisms other than cytogenetic change could influence
+        expression in large genomic regions and produce regional
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression biases. Additional molecular genetic work
+        will be required to resolve these differences.
+        If <ENAMEX TYPE="ORGANIZATION">CGH</ENAMEX> data are not available for a particular cancer
+        type, but gene-expression profiling data are, then CGMA
+        could allow rapid prediction of the cytogenetic
+        abnormalities that frequently occur within that cancer
+        type. Moreover, in instances where gene-expression
+        <ENAMEX TYPE="PERSON">profiling</ENAMEX> reveals previously unrecognized <ENAMEX TYPE="DISEASE">cancer</ENAMEX> subtypes,
+        <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> could determine whether cytogenetic differences are
+        responsible for these different subtypes. In cancer types
+        where traditional cytogenetic profiling has already been
+        carried out, <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> predictions could serve to confirm
+        existing cytogenetic profiling data and be used further to
+        examine <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes whose expression changes most
+        within a region of frequent cytogenetic change. In this way
+        <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> can be combined with the <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene approach to
+        identify genes that are directly involved in tumor
+        <ENAMEX TYPE="ORGANIZATION">progression</ENAMEX>.
+      
+      
+        Conclusions
+        <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> can be used to indicate chromosomal imbalances by
+        detecting chromosomal regions that contain a
+        <ENAMEX TYPE="CONTACT_INFO">disproportionate</ENAMEX> number of gene-expression values that
+        change in the same relative direction. This analysis
+        provides good evidence that <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> is a practical alternative
+        to CGH cytogenetic profiling when gene-expression profiling
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is available.
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Normalization</ENAMEX> and filtering
+          Normalized, log-transformed gene-expression data for
+          <NUMEX TYPE="CARDINAL">104</NUMEX> <ENAMEX TYPE="SUBSTANCE">HCC samples</ENAMEX> and <NUMEX TYPE="CARDINAL">76</NUMEX> corresponding non-cancerous liver
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles [ <TIMEX TYPE="DATE">13</TIMEX>] were obtained from the
+          <ENAMEX TYPE="ORGANIZATION">Stanford Microarray Database</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. Genes that were
+          present in <NUMEX TYPE="PERCENT">at least 75%</NUMEX> of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> (<NUMEX TYPE="CARDINAL">10,037</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) were
+          used for further analysis. In this study, both the tumor
+          <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> and normal tissue samples were compared to a
+          pooled cell-line reference [ <ENAMEX TYPE="LAW">3</ENAMEX>]. To allow comparison of
+          tumor gene-expression values to gene-expression values
+          from surrounding non-cancerous tissue, new gene
+          expression ratios, tumor verse normal (<ENAMEX TYPE="ORGANIZATION">T/N</ENAMEX>), were
+          estimated. To create the new ratios, log-transformed
+          non-cancerous tissue ratios (<ENAMEX TYPE="ORGANIZATION">N/U</ENAMEX>) were subtracted from
+          the log-transformed HCC tissue ratios (<ENAMEX TYPE="ORGANIZATION">T/U</ENAMEX>) for each gene
+          such that log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="ORGANIZATION">T/N</ENAMEX>) = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="ORGANIZATION">T/U</ENAMEX>) - log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<ENAMEX TYPE="ORGANIZATION">N/U</ENAMEX>). If an HCC sample did not have
+          a corresponding non-cancerous sample, the global mean of
+          the non-cancerous tissue gene-expression ratios were
+          used.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">CGMA</ENAMEX> analysis
+          To identify regional gene-expression biases,
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression values that map within a given
+          chromosomal <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> were collected and a sign test for a
+          <NUMEX TYPE="CARDINAL">one</NUMEX>-sample mean/median was used to determine whether a
+          significant upward or downward bias was present in the
+          expression values. An exception was made for chromosomes
+          <TIMEX TYPE="DATE">13-16, 21 and 22</TIMEX>. These chromosomes are more telocentric
+          and therefore only their q-<ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> were tested for
+          expression biases. Sequence comparisons were used to map
+          microarray <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences (the sequences that are placed
+          on the microarray) to predicted <ENAMEX TYPE="PERSON">Ensembl</ENAMEX> transcripts
+          (<ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> version <NUMEX TYPE="MONEY">6.28</NUMEX>) [ <ENAMEX TYPE="LAW">8</ENAMEX>]. Included in the Ensembl
+          transcript annotations are chromosomal mapping locations
+          at <ENAMEX TYPE="FAC_DESC">base</ENAMEX>-pair resolution. <ENAMEX TYPE="ORGANIZATION">Redundancy</ENAMEX> introduced by
+          replicate probes on the array and/or multiple probes
+          mapping to the same gene were eliminated by averaging
+          expression values that map to identical transcripts. Of
+          the filtered set of <NUMEX TYPE="CARDINAL">10,037</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">6,274</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="PERCENT">63%</NUMEX>) were
+          unique and had associated genomic mapping
+          information.
+          A sign test for the <NUMEX TYPE="CARDINAL">one</NUMEX>-sample mean/median was used to
+          determine whether a significant number of genes that map
+          to a given chromosomal region change in a unidirectional
+          manner. The algorithm scores a gene as up (+) or down (<ENAMEX TYPE="CONTACT_INFO">-</ENAMEX>)
+          regulated if the magnitude of the expression value change
+          is <NUMEX TYPE="CARDINAL">at least 1.8</NUMEX>-fold. The sign test computes the
+          <ENAMEX TYPE="PERSON">probability</ENAMEX>, in the form of a 
+          z -statistic, of finding 
+          x upregulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> out of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> genes that change in a given
+          genomic region. For simplicity, the 
+          z -statistic is computed using the
+          normal approximation to the binomial distribution such
+          that 
+          z = (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> 
+          x - 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> )/sqrt( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). Genomic <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> that contained
+          less than <TIMEX TYPE="DATE">15</TIMEX> changed gene-expression values were excluded
+          from further analysis. On average, <NUMEX TYPE="CARDINAL">160</NUMEX> gene-expression
+          values were located to each genomic region. The sign test
+          
+          z -statistic can be converted to a
+          <ENAMEX TYPE="PERSON">significance value (α</ENAMEX>) based on the <NUMEX TYPE="CARDINAL">two</NUMEX>-tailed 
+          z -statistic ( 
+          z 
+          <NUMEX TYPE="CARDINAL">α/2</NUMEX> ) critical values. For example, if
+          
+          z = <NUMEX TYPE="CARDINAL">1.96</NUMEX>, then α = <NUMEX TYPE="CARDINAL">0.05</NUMEX>; if 
+          z = <NUMEX TYPE="CARDINAL">2.58</NUMEX> then α = <NUMEX TYPE="CARDINAL">0.01</NUMEX>, and so
+          on.
+        
+      
+    
+  

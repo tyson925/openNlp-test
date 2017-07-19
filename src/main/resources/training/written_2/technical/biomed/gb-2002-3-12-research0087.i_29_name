@@ -1,0 +1,819 @@
+
+  
+    
+      
+        Background
+        Transcription initiation is one of the most important
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> points in regulating gene expression [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>].
+        Recent observations have emphasized the importance of the
+        core promoter, a region of <NUMEX TYPE="CARDINAL">about 100</NUMEX> base-pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>)
+        flanking the transcription start site (TSS), in regulating
+        <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX> [ <ENAMEX TYPE="LAW">3, 4</ENAMEX>]. The core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> serves as the
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> site for the basal transcription apparatus,
+        which comprises the <ENAMEX TYPE="SUBSTANCE">multisubunit RNA polymerase</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> and
+        several auxiliary factors. Core <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> show specificity
+        both in their interactions with enhancers and with sets of
+        general transcription factors that control distinct subsets
+        of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Although there are no known DNA sequence motifs
+        that are shared by all core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX>, a number of motifs
+        have been identified that are present in a substantial
+        fraction. The most familiar of these motifs is the <ENAMEX TYPE="ORGANIZATION">TATA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">box</ENAMEX>, which has been reported to be part of <NUMEX TYPE="PERCENT">30-40%</NUMEX> of core
+        <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>].
+        Prediction and analysis of core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> have been
+        active areas of research in computational biology [ <ENAMEX TYPE="LAW">6</ENAMEX>],
+        with several recent publications on prediction of human
+        <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> [ <ENAMEX TYPE="LAW">7, 8, 9, 10</ENAMEX>]. In contrast, prediction of
+        invertebrate <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> has received much less attention and
+        has focused almost exclusively on 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . <ENAMEX TYPE="PERSON">Reese</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>] described
+        the application of time-delay neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, and in our
+        previous work [ <TIMEX TYPE="DATE">12</TIMEX>] we used a combination of a generalized
+        <ENAMEX TYPE="PRODUCT">hidden Markov</ENAMEX> model for sequence features and Gaussian
+        distributions for the predicted structural features of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>.
+        Structural features were also examined by <ENAMEX TYPE="ORGANIZATION">Levitsky</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Katokhin</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>], but they did not present results for
+        promoter prediction in genomic sequences.
+        As with computational methods for predicting the
+        intron-exon structure of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>], the computational
+        prediction of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> has been greatly aided by cDNA
+        sequence information. However, promoter prediction is
+        complicated by the fact that most cDNA clones do not extend
+        to the <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>. Recent advances in cDNA <ENAMEX TYPE="ORG_DESC">library</ENAMEX> construction
+        methods that utilize the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-cap structure of mRNAs have
+        allowed the generation of so-called 'cap-trapped' <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>
+        with an increased percentage of full-length cDNAs [ <TIMEX TYPE="DATE">15</TIMEX>,
+        <NUMEX TYPE="CARDINAL">16</NUMEX>]. Such <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> have been used to map <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in
+        vertebrates by aligning the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-end sequences of individual
+        <ENAMEX TYPE="ORGANIZATION">cDNAs</ENAMEX> to genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> [ <TIMEX TYPE="DATE">17, 18</TIMEX>]. However, it is estimated
+        that even in the best <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> only <NUMEX TYPE="PERCENT">50-80%</NUMEX> of cDNAs extend
+        to the <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> [ <TIMEX TYPE="DATE">16, 19</TIMEX>], making it unreliable to base
+        conclusions on individual cDNA alignments.
+        We describe here a more cautious approach for
+        <ENAMEX TYPE="ORGANIZATION">identifying TSSs</ENAMEX> that requires the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of the
+        alignments of multiple, independent cap-selected cDNAs to
+        lie in close proximity. We then examine the regions
+        flanking these putative <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>, the putative core promoter
+        regions, for <ENAMEX TYPE="SUBSTANCE">conserved DNA</ENAMEX> sequence motifs. We also use
+        this new set of putative <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> to retrain and significantly
+        improve our previously described probabilistic promoter
+        prediction method. Finally, we report the results of
+        promoter prediction on whole 
+        Drosophila melanogaster chromosomes,
+        and discuss the different challenges of computational
+        promoter recognition in invertebrate and vertebrate
+        <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>.
+      
+      
+        Results and discussion
+        
+          Selection of expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>) clusters
+          to determine transcription start sites
+          <ENAMEX TYPE="PERSON">Stapleton</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">20</TIMEX>] report the results of
+          aligning <NUMEX TYPE="CARDINAL">237,471</NUMEX> <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <TIMEX TYPE="TIME">EST</TIMEX> <TIMEX TYPE="DATE">sequences</TIMEX>, including <NUMEX TYPE="CARDINAL">115,169</NUMEX>
+          obtained from cap-trapped <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, on the annotated
+          <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> sequence of the 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome. They
+          examined these alignments for alternative splice forms
+          and grouped them into <NUMEX TYPE="CARDINAL">16,744</NUMEX> clusters with consistent
+          splice <ENAMEX TYPE="FAC_DESC">sites</ENAMEX>, overlapping <NUMEX TYPE="CARDINAL">9,644</NUMEX> known <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-encoding
+          genes. We applied the following set of criteria to select
+          those <NUMEX TYPE="CARDINAL">5</NUMEX>' <TIMEX TYPE="TIME">EST</TIMEX> clusters most likely to identify <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>.
+          Clusters were required to either overlap a known
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene or have evidence of splicing. <NUMEX TYPE="CARDINAL">One</NUMEX> of
+          the <TIMEX TYPE="DATE">three most 5</TIMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> in the cluster had to be derived
+          from a cap-trapped <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. In some cases, disjoint
+          clusters overlap the annotation of a single gene; here,
+          we only considered the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' cluster. We required the
+          distance to the next upstream cluster to be greater than
+          <TIMEX TYPE="TIME">1 kb.</TIMEX> This requirement, together with the selection of
+          only <TIMEX TYPE="DATE">the most 5</TIMEX>' cluster, leads to the selection of only
+          <NUMEX TYPE="CARDINAL">one</NUMEX> start site per gene. By doing so, we minimize the
+          erroneous inclusion of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> which are not full-length,
+          but also exclude alternative start sites or start sites
+          of genes with overlapping transcript. Because the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends
+          of <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> derived from full-length cDNAs are expected to
+          lie in a narrow window at the <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>, we required that the
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of <NUMEX TYPE="CARDINAL">at least three</NUMEX> <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> fall within <TIMEX TYPE="TIME">an 11-bp</TIMEX>
+          window of genomic sequence, and that the number of ESTs
+          <ENAMEX TYPE="CONTACT_INFO">whose 5</ENAMEX>' ends fall within this window comprise at least
+          <NUMEX TYPE="PERCENT">30%</NUMEX> of the <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> in the cluster. With a single <TIMEX TYPE="TIME">EST</TIMEX> we
+          cannot be sure to have reached the true start site, even
+          if it was generated by a method selecting for the cap
+          site of the mRNA [ <TIMEX TYPE="DATE">17, 19</TIMEX>]; with a cluster of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> within
+          a small range, we can be more confident that we have
+          defined the actual <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>. By requiring selected clusters to
+          have <NUMEX TYPE="CARDINAL">at least three</NUMEX> <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> we are, however, introducing a
+          <ENAMEX TYPE="PERSON">bias</ENAMEX> against genes with low expression levels. The
+          requirement that <NUMEX TYPE="PERCENT">30%</NUMEX> or more of the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> in a cluster
+          terminate within the <NUMEX TYPE="CARDINAL">11</NUMEX>-bp window was introduced because,
+          for large <TIMEX TYPE="TIME">EST</TIMEX> clusters, a simple numerical requirement is
+          insufficiently stringent.
+          We identified a total of <NUMEX TYPE="CARDINAL">1,941</NUMEX> clusters, representing
+          <NUMEX TYPE="PERCENT">about 14%</NUMEX> of <ENAMEX TYPE="SUBSTANCE">annotated genes</ENAMEX>, which met all of the above
+          criteria. <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> how the numbers of selected
+          clusters varies when we change a single parameter
+          specified in the requirement for distance to next
+          upstream cluster and the requirement that the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of
+          <NUMEX TYPE="CARDINAL">at least three</NUMEX> <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> fall in a specified window of
+          sequence to a higher or lower value, leaving the other
+          selection requirements constant. Not surprisingly, the
+          most sensitive criterion by far is the window size. A
+          large number of clusters show slightly different <TIMEX TYPE="DATE">5</TIMEX>' ends,
+          which was also observed by other large-scale full-length
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> projects [ <TIMEX TYPE="DATE">17, 18</TIMEX>]. At the moment, it is an open
+          question how much of this variation is a result of
+          incomplete extension to the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end during library
+          construction or an indication of a larger than expected
+          variation in the transcription initiation process. The
+          most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <TIMEX TYPE="TIME">EST</TIMEX> of each selected cluster, along with its
+          corresponding genomic location, is presented in
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> in the additional data files
+          available (see Additional data files).
+          We defined <TIMEX TYPE="DATE">the start of the most 5</TIMEX>' <TIMEX TYPE="TIME">EST</TIMEX> in each of the
+          <NUMEX TYPE="CARDINAL">1,941</NUMEX> clusters as the predicted <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> and refer to this as
+          position <NUMEX TYPE="CARDINAL">+1</NUMEX> in the analyses reported below. We extracted
+          the genomic sequences from <NUMEX TYPE="QUANTITY">250 bp</NUMEX> upstream to <NUMEX TYPE="CARDINAL">50</NUMEX> bp
+          downstream of each of these <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> as a set of putative
+          proximal <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> regions to compare with previous
+          collections of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, to identify possible core
+          promoter motifs, and to use as training set for
+          computational promoter prediction. To study the motifs in
+          core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> with more sensitivity, we also carried out
+          analyses on subsequences from <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="CARDINAL">+40</NUMEX>.
+        
+        
+          Comparison with previous collections of core
+          <ENAMEX TYPE="CONTACT_INFO">promoters</ENAMEX>
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> small collections of curated 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila TSSs</ENAMEX> have been assembled
+          previously on the basis of information carefully
+          extracted from the literature. The 
+          <ENAMEX TYPE="PERSON">Drosophila Promoter Database</ENAMEX> (DPD)
+          was the set of <NUMEX TYPE="CARDINAL">247</NUMEX> <ENAMEX TYPE="SUBSTANCE">TSSs</ENAMEX> used to train earlier
+          computational promoter finding systems such as <ENAMEX TYPE="ORGANIZATION">NNPP</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]
+          and <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]. This DPD was assembled by combining
+          
+          Drosophila <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in the
+          <ENAMEX TYPE="PRODUCT">Eukaryotic Promoter Database release 63</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>], and a set
+          of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> extracted according to similar criteria [
+          <NUMEX TYPE="CARDINAL">22</NUMEX>]. The <NUMEX TYPE="ORDINAL">second</NUMEX> set was the 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila Core Promoter Database</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>]) with <NUMEX TYPE="CARDINAL">205</NUMEX> start sites.
+          To assess the quality of our inferred <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>, we aligned
+          the <NUMEX TYPE="QUANTITY">1,941 300 bp</NUMEX> sequences against sequences flanking the
+          <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX> using BLAST [ <TIMEX TYPE="DATE">23</TIMEX>]. The derivation
+          of our <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> set, which corresponds to <NUMEX TYPE="PERCENT">just over 14%</NUMEX> of all
+          
+          Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, did not depend on
+          the scientific literature and thus we expect it to be
+          largely non-overlapping with the <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX> and CPD sets. It was
+          therefore not surprising that of the <NUMEX TYPE="CARDINAL">247</NUMEX> core promoter
+          regions in the <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX>, <TIMEX TYPE="DATE">only 44</TIMEX> (<NUMEX TYPE="PERCENT">18%</NUMEX>) could be aligned to
+          those in our set. The positions of the <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in <NUMEX TYPE="CARDINAL">28</NUMEX> of
+          these alignments differed by <TIMEX TYPE="TIME">less than 10 bp</TIMEX> and are
+          considered identical for our purposes; in <NUMEX TYPE="CARDINAL">five</NUMEX> cases, the
+          <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX> entries lie <NUMEX TYPE="QUANTITY">more than 10 bp</NUMEX> upstream, and in <TIMEX TYPE="DATE">11</TIMEX>
+          cases, a newly derived putative <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> was <NUMEX TYPE="CARDINAL">more than 10</NUMEX> bp
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>' of the corresponding <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> in the <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">205</NUMEX> core
+          promoter regions in the <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX>, <NUMEX TYPE="CARDINAL">32</NUMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> (<NUMEX TYPE="PERCENT">16%</NUMEX>) belonging to
+          <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> could be aligned successfully; in <NUMEX TYPE="CARDINAL">21</NUMEX> out of <NUMEX TYPE="CARDINAL">30</NUMEX>
+          cases, the difference was again smaller than <TIMEX TYPE="TIME">10 bp</TIMEX>, in
+          <NUMEX TYPE="CARDINAL">six</NUMEX> cases, a <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX> entry was more <ENAMEX TYPE="PRODUCT">5</ENAMEX>', in <NUMEX TYPE="CARDINAL">three</NUMEX> cases a
+          newly derived <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>. This simple assessment suggests that
+          our new set of putative <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> is of similar accuracy to
+          the <ENAMEX TYPE="ORGANIZATION">DPD</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX>. However, our set is <NUMEX TYPE="CARDINAL">eight</NUMEX> times larger,
+          containing the predicted <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> for one in <NUMEX TYPE="CARDINAL">seven</NUMEX> 
+          Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+        
+        
+          Identification of <NUMEX TYPE="CARDINAL">over</NUMEX>-represented sequence motifs
+          in core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX>
+          Core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> are known to contain binding sites for
+          proteins important for transcription initiation, and our
+          <NUMEX TYPE="ORDINAL">first</NUMEX> analysis of the sequence content of our set of
+          <NUMEX TYPE="CARDINAL">1,941</NUMEX> core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> was to assess the representation of
+          <NUMEX TYPE="CARDINAL">two</NUMEX> well-established core promoter sequence motifs, the
+          <ENAMEX TYPE="ORGANIZATION">initiator</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX>) and the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>. We used the CPD
+          consensus strings for the 
+          <ENAMEX TYPE="PERSON">Drosophila Inr</ENAMEX> and <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">TCA</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">G/T</ENAMEX>)<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>(C/T) and <ENAMEX TYPE="ORGANIZATION">TATAAA</ENAMEX>, respectively [ <ENAMEX TYPE="LAW">5</ENAMEX>], permitting
+          up to one mismatch. A search with these consensus strings
+          in random sequences of equal length would result in a
+          frequency of <NUMEX TYPE="PERCENT">29.3%</NUMEX> for the initiator and <NUMEX TYPE="PERCENT">11.6%</NUMEX> for the
+          <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>. Of the <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, <NUMEX TYPE="PERCENT">67.3%</NUMEX> have a match to the
+          Inr consensus in the region from <NUMEX TYPE="PERCENT">-10 to +10 and 42.4%</NUMEX>
+          have a <ENAMEX TYPE="DISEASE">TATA box</ENAMEX> in the region from <NUMEX TYPE="PERCENT">-45</NUMEX> to <NUMEX TYPE="PERCENT">-15</NUMEX>. We
+          observed that <NUMEX TYPE="PERCENT">62.8%</NUMEX> of our core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> had a match to
+          the <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX> consensus in the <NUMEX TYPE="PERCENT">-10</NUMEX> to <NUMEX TYPE="CARDINAL">+10</NUMEX> interval, an almost
+          identical fraction as observed for the <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX>. However, we
+          observed a frequency for the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX> consensus of <NUMEX TYPE="PERCENT">28.3%</NUMEX>,
+          <NUMEX TYPE="CARDINAL">only about two-thirds</NUMEX> of the frequency observed in the
+          <ENAMEX TYPE="ORGANIZATION">CPD</ENAMEX>; extending the region over which we allowed matches
+          to <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="PERCENT">-15</NUMEX> <TIMEX TYPE="DATE">only</TIMEX> increased the frequency to <NUMEX TYPE="PERCENT">33.9%</NUMEX>.
+          We next looked for <NUMEX TYPE="CARDINAL">over</NUMEX>-represented motifs using the
+          <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> system to analyze the core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> regions from <NUMEX TYPE="PERCENT">-60</NUMEX>
+          to <NUMEX TYPE="CARDINAL">+40</NUMEX> on the leading strand ([ <TIMEX TYPE="DATE">24, 25</TIMEX>] and see Materials
+          and methods). <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> uses the iterative
+          expectation-maximization algorithm to identify conserved
+          ungapped <ENAMEX TYPE="FAC_DESC">blocks</ENAMEX> in a set of query sequences, and delivers
+          weight matrix models of the found non-overlapping motifs.
+          The <NUMEX TYPE="CARDINAL">10</NUMEX> most statistically significant motifs found by
+          this method are listed in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, and their location
+          distributions within the sequences that <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> used in its
+          alignments are shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Well-known motifs such
+          as the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX> are readily found (the <NUMEX TYPE="ORDINAL">third</NUMEX> and
+          <NUMEX TYPE="ORDINAL">fourth</NUMEX> most significant motifs in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). These motifs
+          are known to have largely fixed locations relative to the
+          <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>, and the tight distribution in the locations of the
+          motifs we observe (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>) implies that the <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in our
+          core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> set have been accurately mapped. <ENAMEX TYPE="CONTACT_INFO">Motif 9</ENAMEX>
+          matches the previously derived downstream promoter
+          element (DPE) consensus (<ENAMEX TYPE="ORGANIZATION">A/G</ENAMEX>)<ENAMEX TYPE="ORGANIZATION">G</ENAMEX>(A/T)(C/T)<ENAMEX TYPE="ORGANIZATION">GT</ENAMEX>, but Figure
+          1suggests a <NUMEX TYPE="ORDINAL">second</NUMEX>, distinct, <ENAMEX TYPE="ORGANIZATION">DPE</ENAMEX> (motif <NUMEX TYPE="CARDINAL">10</NUMEX>).
+          From the location distribution it is apparent that
+          <ENAMEX TYPE="CONTACT_INFO">motif 1</ENAMEX> is preferentially found close to the <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>,
+          although not as tightly localized as the <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX> motif. Motif
+          <NUMEX TYPE="CARDINAL">2</NUMEX>, which shows a broad spatial distribution within the
+          core promoter regions, corresponds to the target of the
+          <ENAMEX TYPE="SUBSTANCE">DNA replication</ENAMEX>-related-element binding factor (DREF). At
+          the same time our study was being carried out, <ENAMEX TYPE="ORGANIZATION">DREF</ENAMEX> was
+          interestingly found to be part of a complex with 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> TBP-related factor (TRF)
+          <NUMEX TYPE="CARDINAL">2</NUMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]. TRF2 replaces the <ENAMEX TYPE="ORGANIZATION">TATA</ENAMEX>-box-binding element TBP
+          in a distinct subset of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, and our data suggest
+          that it is used in a larger fraction of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> than
+          previously thought.
+          Because different algorithms for detecting
+          overrepresented motifs have different properties (see
+          Materials and methods), we compared the motifs identified
+          using a <ENAMEX TYPE="ORGANIZATION">Gibbs</ENAMEX> sampling algorithm [ <TIMEX TYPE="DATE">27, 28</TIMEX>] with those
+          identified by <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX>. Gibbs sampling is non-deterministic
+          and generally delivers different results each time it is
+          run; therefore, the motifs that are most significant are
+          those that are reported multiple times with high
+          likelihood scores. We performed <NUMEX TYPE="CARDINAL">100</NUMEX> iterations of the
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX>; each iteration was stopped after a maximum of
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> motifs were reported. We sorted the resulting 986
+          motifs by their log-likelihood score (see [ <TIMEX TYPE="DATE">28</TIMEX>]), which
+          ranged from negative infinity (the logarithm of <NUMEX TYPE="CARDINAL">zero</NUMEX>) to
+          <NUMEX TYPE="CARDINAL">1,353</NUMEX>. Among the <NUMEX TYPE="CARDINAL">354</NUMEX> motifs with scores higher than <NUMEX TYPE="CARDINAL">700</NUMEX>,
+          we observed no motifs that were unrelated to the <NUMEX TYPE="CARDINAL">ten</NUMEX> most
+          significant motifs found by <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Instead,
+          these <NUMEX TYPE="CARDINAL">354</NUMEX> motifs were comprised of several variants each
+          of motifs <ENAMEX TYPE="PRODUCT">1-6</ENAMEX> and <NUMEX TYPE="CARDINAL">8</NUMEX> of <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>; the best variant of motif
+          <NUMEX TYPE="CARDINAL">1</NUMEX> scored <NUMEX TYPE="CARDINAL">1,353</NUMEX> and the best variant of the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>
+          scored <NUMEX TYPE="CARDINAL">742</NUMEX>. We still consider it likely that the three
+          motifs in <ENAMEX TYPE="PRODUCT">Table 2that</ENAMEX> were not also identified by Gibbs
+          sampling are biologically meaningful. For example, motif
+          <NUMEX TYPE="CARDINAL">9</NUMEX>, is similar in both sequence and positional restriction
+          to the well-established DPE motif.
+          We were interested in determining which of the <NUMEX TYPE="CARDINAL">10</NUMEX>
+          motifs shown in <ENAMEX TYPE="PRODUCT">Table 2tend</ENAMEX> to occur together in
+          individual <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. We searched the core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> with
+          each of the <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">weight matrix models</ENAMEX>, using the program
+          <ENAMEX TYPE="ORGANIZATION">Patser</ENAMEX> ([ <TIMEX TYPE="DATE">29</TIMEX>] see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). We restricted
+          the sequence range in which the <NUMEX TYPE="ORDINAL">first</NUMEX> base of the model
+          must lie to count as a match as follows: <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="PERCENT">-15</NUMEX> for
+          the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>, <NUMEX TYPE="PERCENT">-20</NUMEX> to <NUMEX TYPE="CARDINAL">+10</NUMEX> for the <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX>, <TIMEX TYPE="DATE">+10 to +25</TIMEX> for the
+          <ENAMEX TYPE="ORGANIZATION">DPE</ENAMEX>, and <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="CARDINAL">+25</NUMEX> for the other <NUMEX TYPE="CARDINAL">six</NUMEX> models. Table
+          3gives the percentage of hits for each separate motif, as
+          well as the percentage of <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> containing a specific
+          motif that also contain <NUMEX TYPE="CARDINAL">one</NUMEX> of the other motifs. Some
+          previously known dependencies are apparent; for example,
+          <ENAMEX TYPE="SUBSTANCE">DPE</ENAMEX> containing <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> very often contain an <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX> motif,
+          but rarely any of the other motifs. Other obvious
+          correlations are a tendency for motif <NUMEX TYPE="CARDINAL">6</NUMEX>-containing
+          <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> to also contain motif <NUMEX TYPE="CARDINAL">1</NUMEX>, and a tendency for
+          <ENAMEX TYPE="CONTACT_INFO">motif 7</ENAMEX>-containing <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> to contain motif 2 (DRE).
+          Conversely, motif 7 is rarely observed in <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> with
+          a <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>. There is also a large difference in the
+          likelihood of the <ENAMEX TYPE="ORGANIZATION">DPE</ENAMEX> and the DPE-like motif <NUMEX TYPE="CARDINAL">10</NUMEX> to occur
+          in the same <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> as the <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">Motif 1</ENAMEX> is the only
+          other motif in addition to the <ENAMEX TYPE="ORGANIZATION">TATA, Inr</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DPE</ENAMEX> motifs
+          to show a marked spatial preference within the core
+          promoter <ENAMEX TYPE="LOCATION">region</ENAMEX> and tends to occur near the <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>. It is
+          therefore worth noting that there is a bias against
+          cooccurrence of motif <NUMEX TYPE="CARDINAL">1</NUMEX> and the <ENAMEX TYPE="ORGANIZATION">Inr</ENAMEX>, suggesting that they
+          may have similar roles in distinct subsets of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>.
+          Weight matrices for all <NUMEX TYPE="CARDINAL">10</NUMEX> motifs are provided in
+          <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX> of the additional data files.
+          To determine whether any of the motifs were enriched
+          in <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> for genes associated with a specific
+          function, process or cellular <ENAMEX TYPE="ORG_DESC">component</ENAMEX>, we retrieved the
+          <ENAMEX TYPE="SUBSTANCE">gene ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) terms [ <TIMEX TYPE="DATE">30</TIMEX>] associated with the group
+          of genes whose core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> contained a particular
+          <ENAMEX TYPE="PERSON">motif</ENAMEX>. Even though some differences can be seen, it is
+          too early to say whether any are biologically
+          significant. <ENAMEX TYPE="CONTACT_INFO">DREF/</ENAMEX>TRF2 <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> were reported to control
+          genes involved in <ENAMEX TYPE="SUBSTANCE">DNA replication</ENAMEX> and cell proliferation,
+          but we see no such clear restriction of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          containing <ENAMEX TYPE="SUBSTANCE">DREs</ENAMEX>. The most frequent GO terms associated
+          with each motif are given in <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX> of the
+          additional data files.
+          In a final experiment, we ran MEME on both strands of
+          the entire <NUMEX TYPE="CARDINAL">300</NUMEX>-bp core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> regions. <ENAMEX TYPE="PRODUCT">Table 4shows</ENAMEX> the
+          consensus sequences of the <NUMEX TYPE="CARDINAL">10</NUMEX> most statistically
+          significant motifs. Note that the initiator and <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>
+          are no longer identified, owing to the background model
+          and the extended sequences, but that some of the other
+          core motifs of <ENAMEX TYPE="PRODUCT">Table 2are</ENAMEX> still highly statistically
+          significant. <ENAMEX TYPE="CONTACT_INFO">Motif 2</ENAMEX> of <ENAMEX TYPE="PRODUCT">Table 4may</ENAMEX> be related to the
+          reverse complement of the GAGA box, which has been
+          reported to occur in clusters of adjacent copies [
+          <NUMEX TYPE="CARDINAL">31</NUMEX>].
+        
+        
+          Using the core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> set to retrain the
+          <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> TSS prediction tool
+          <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> is a probabilistic promoter prediction
+          system that identifies likely <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in large genomic
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> [ <TIMEX TYPE="DATE">12, 32</TIMEX>]. To a certain extent, the performance
+          of such probabilistic systems can be improved by
+          increasing the size of the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> used to estimate
+          the system parameters. The dataset we originally used to
+          <ENAMEX TYPE="PERSON">train McPromoter</ENAMEX> consisted of <NUMEX TYPE="CARDINAL">only 247</NUMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX>, <NUMEX TYPE="CARDINAL">240</NUMEX>
+          non-coding and <NUMEX TYPE="CARDINAL">711</NUMEX> coding sequences. We took advantage of
+          our new large <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> set to retrain <ENAMEX TYPE="PERSON">McPromoter</ENAMEX> (see
+          Materials and methods). We used a slightly smaller set of
+          <NUMEX TYPE="CARDINAL">1,841</NUMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> sequences that eliminated instances of
+          related <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> in the <NUMEX TYPE="CARDINAL">1,941</NUMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> set, along with a
+          newly extracted <ENAMEX TYPE="PER_DESC">representative</ENAMEX> set of non-promoter
+          sequences taken from 
+          Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="CARDINAL">2,635</NUMEX> coding and
+          <NUMEX TYPE="CARDINAL">1,755</NUMEX> non-coding sequences). The tests we describe below
+          document a markedly improved performance. The largest
+          part of the improvement was due to the increase in the
+          size of the <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> set. <ENAMEX TYPE="ORGANIZATION">Cross-validation</ENAMEX> experiments in
+          which only a subset of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> was used suggest that
+          additional sequences similar to those in the current set
+          of <NUMEX TYPE="CARDINAL">1,841</NUMEX> would not further improve the results
+          significantly (data not shown). However, it is possible
+          that assembling a more <ENAMEX TYPE="PER_DESC">representative</ENAMEX> set of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          that includes <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> from <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed at low
+          levels would improve performance. It might also be useful
+          to make training sets consisting of subsets of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          that share combinations of motifs and use a collection of
+          McPromoter variants each trained on a different class of
+          core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX>.
+        
+        
+          Evaluating the performance of the retrained
+          McPromoter
+          
+            Analysis of the <ENAMEX TYPE="PRODUCT">2.9 Mb</ENAMEX> Adhregion
+            <ENAMEX TYPE="PRODUCT">Table 5shows</ENAMEX> the results of the retrained system on
+            the test set of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> used in the <ENAMEX TYPE="NATIONALITY">Genome</ENAMEX> Annotation
+            <ENAMEX TYPE="ORGANIZATION">Assessment Project</ENAMEX>, which consists of <NUMEX TYPE="CARDINAL">92</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            annotated with the help of full-length cDNAs in the 
+            Adh <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>]. A prediction is
+            counted as correct if it falls in the region between
+            -<NUMEX TYPE="CARDINAL">500 and +50</NUMEX> of the annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end.
+            By comparison with another predictor for 
+            Drosophila <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NNPP</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>],
+            the retrained McPromoter system has <NUMEX TYPE="CARDINAL">10-15</NUMEX> times fewer
+            false positives, but some of this improvement simply
+            results from the larger training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> and not from
+            differences in the underlying algorithm. When
+            McPromoter was trained on the same, smaller, dataset as
+            <ENAMEX TYPE="ORGANIZATION">NNPP</ENAMEX>, the reduction in false positives was only about
+            <NUMEX TYPE="CARDINAL">three</NUMEX>- to sixfold (data not shown; for details see [
+            <NUMEX TYPE="CARDINAL">34</NUMEX>]). The <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> system output ranges from <TIMEX TYPE="DATE">0 to 1</TIMEX>,
+            and <ENAMEX TYPE="PRODUCT">Table 5gives</ENAMEX> the results for a number of thresholds
+            between <NUMEX TYPE="CARDINAL">0.98</NUMEX> and <NUMEX TYPE="CARDINAL">0.8</NUMEX>; additional predictions below <NUMEX TYPE="CARDINAL">0.7</NUMEX>
+            are no longer distinguishable from randomly spaced
+            predictions (see [ <TIMEX TYPE="DATE">34</TIMEX>] for discussion). Consider, for
+            example, the predictions obtained at a threshold of
+            <NUMEX TYPE="CARDINAL">0.9</NUMEX>; <NUMEX TYPE="CARDINAL">21</NUMEX> out of <NUMEX TYPE="CARDINAL">48</NUMEX> true positives were located within
+            <ENAMEX TYPE="PRODUCT">+/-50</ENAMEX> bases of the annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end, and the average
+            distance of all <NUMEX TYPE="CARDINAL">48</NUMEX> true positives was <NUMEX TYPE="CARDINAL">109</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>. As the
+            real <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> is likely to be further upstream than the
+            <ENAMEX TYPE="PRODUCT">annotated 5</ENAMEX>' end, we believe this result indicates that
+            <ENAMEX TYPE="ORG_DESC">McPromoter</ENAMEX> performs well in predicting the precise
+            location of a <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX>.
+          
+          
+            The complete genome: a case study of chromosome
+            arm 2R
+            The annotation of genomes is a process in flux as
+            new data and analysis tools are continuously refined.
+            We used the reannotated chromosome arm 2R [ <TIMEX TYPE="DATE">35</TIMEX>] to
+            evaluate our ability to predict promoter regions in a
+            complete eukaryotic chromosome. Of the set of <NUMEX TYPE="CARDINAL">1,941</NUMEX>
+            <ENAMEX TYPE="SUBSTANCE">TSSs</ENAMEX> used for retraining <ENAMEX TYPE="PERSON">McPromoter</ENAMEX>, <NUMEX TYPE="CARDINAL">423</NUMEX> correspond to
+            genes located on arm <TIMEX TYPE="DATE">2R</TIMEX>. Of the <NUMEX TYPE="CARDINAL">2,231</NUMEX> annotated genes
+            on this chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>, <NUMEX TYPE="CARDINAL">2,130</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have at least one
+            transcript with an annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' untranslated region
+            (<ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>) (that is, a <NUMEX TYPE="CARDINAL">5</NUMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> with length <NUMEX TYPE="MONEY">> 0</NUMEX>) and these
+            genes produce a total of <NUMEX TYPE="CARDINAL">2,742</NUMEX> transcripts with
+            <ENAMEX TYPE="PRODUCT">annotated 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>. While the average size of <TIMEX TYPE="DATE">a 5</TIMEX>' UTR
+            is <NUMEX TYPE="CARDINAL">about 265</NUMEX> bp [ <TIMEX TYPE="DATE">35</TIMEX>], the average genomic distance
+            <TIMEX TYPE="DATE">from 5</TIMEX>' <ENAMEX TYPE="PRODUCT_DESC">UTR</ENAMEX> start to the beginning of the annotated
+            open reading frame (ORF) in chromosome arm 2R is <NUMEX TYPE="CARDINAL">1,444</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>; a more detailed distribution is depicted in Figure
+            <NUMEX TYPE="CARDINAL">2</NUMEX>. As evidence for <TIMEX TYPE="DATE">a 5</TIMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>, the annotators use the
+            <TIMEX TYPE="DATE">full</TIMEX> set of <NUMEX TYPE="CARDINAL">5</NUMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>, but with less stringent criteria
+            than we used to select for <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>. Many 
+            Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have large
+            <ENAMEX TYPE="ORGANIZATION">introns</ENAMEX> in their <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> and these introns may not be
+            detected if the cDNA clone from which the <TIMEX TYPE="TIME">EST</TIMEX> is
+            derived is not full length; this will lead to frequent
+            placement of the annotated <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> too close to the
+            <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>.
+            We therefore counted a hit as positive if it fell
+            within <TIMEX TYPE="TIME">-1,000/</TIMEX>+<NUMEX TYPE="CARDINAL">100</NUMEX> of the annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end, a region
+            twice as large as for the 
+            <ENAMEX TYPE="ORGANIZATION">Adh</ENAMEX> set. Because of the large
+            number of genes with <NUMEX TYPE="CARDINAL">more than one</NUMEX> annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end,
+            which often lie closely together, we did not evaluate
+            <ENAMEX TYPE="ORGANIZATION">success</ENAMEX> on the level of individual <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>, but rather on
+            the level of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>; that is, if at least one prediction
+            falls within the positive region of any of its
+            annotated start sites, it is considered as positive
+            hit. At threshold <NUMEX TYPE="CARDINAL">0.8</NUMEX>, <NUMEX TYPE="CARDINAL">1,232</NUMEX> TSSs referring to <NUMEX TYPE="CARDINAL">1,176</NUMEX>
+            (<NUMEX TYPE="PERCENT">55.2%</NUMEX>) genes are correctly identified, with one
+            additional prediction every <NUMEX TYPE="CARDINAL">5,663</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> across the
+            whole chromosome. This is comparable to the performance
+            on the 
+            Adh <ENAMEX TYPE="LOCATION">region</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>). We did
+            not pre-filter for low-complexity regions, and <NUMEX TYPE="CARDINAL">101</NUMEX>
+            genes were left out of the test set because of missing
+            <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> information, so the real false-positive rate is
+            most likely to be lower.
+            Although it is desirable for a promoter recognition
+            system to be as good as possible when used with no
+            additional information on naked genomic sequence, tools
+            are not used in isolation in a genome annotation
+            project. For example, we used information about the
+            position of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and considered only the <NUMEX TYPE="ORDINAL">first</NUMEX> hit
+            upstream of the translation start codon of each gene,
+            but <NUMEX TYPE="QUANTITY">less than 5 kb</NUMEX> upstream of the annotated <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTR
+            end. We therefore make at most one prediction per gene
+            - <NUMEX TYPE="CARDINAL">zero</NUMEX> if there is no hit above the predefined
+            threshold within the scanned region. Leaving the
+            threshold at <NUMEX TYPE="CARDINAL">0.8</NUMEX>, <ENAMEX TYPE="PERSON">McPromoter</ENAMEX> predicts <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> for <NUMEX TYPE="CARDINAL">1,017</NUMEX>
+            genes (<NUMEX TYPE="PERCENT">47.8%</NUMEX>) within the <NUMEX TYPE="PERCENT">-1,000/</NUMEX>+<NUMEX TYPE="CARDINAL">100</NUMEX> region, makes no
+            prediction for <NUMEX TYPE="CARDINAL">392</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="PERCENT">18.4%</NUMEX>), and delivers
+            predictions outside the <NUMEX TYPE="PERCENT">-1,000/</NUMEX>+<NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="GPE_DESC">region</ENAMEX> with respect
+            to the annotated <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> in <NUMEX TYPE="CARDINAL">721</NUMEX> cases (<NUMEX TYPE="PERCENT">33.8%</NUMEX>).
+            As more experimental data from mapping TSSs are
+            obtained, it will be interesting to see if the
+            percentage of successful prediction increases. One
+            particularly promising approach will be to use the
+            large amount of additional information we have from <NUMEX TYPE="CARDINAL">5</NUMEX>'
+            <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>. As described above, we applied very strict
+            criteria for identifying the <NUMEX TYPE="CARDINAL">1,941</NUMEX> <ENAMEX TYPE="SUBSTANCE">TSSs</ENAMEX> used in our
+            training set. We have, however, <TIMEX TYPE="DATE">at least one 5</TIMEX>' <TIMEX TYPE="TIME">EST</TIMEX> for
+            an additional <NUMEX TYPE="CARDINAL">8,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>]. Looking for
+            coincidences between the <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> predicted by McPromoter
+            and the genomic positions of the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of these ESTs
+            is likely to be a powerful approach. As an initial test
+            of this idea, we ran <ENAMEX TYPE="PERSON">McPromoter</ENAMEX> with a very low
+            threshold of <NUMEX TYPE="CARDINAL">0.75</NUMEX> on the whole genome, and retained all
+            the hits as long as they were <NUMEX TYPE="QUANTITY">more than 100 bp</NUMEX> apart.
+            As above, no filtering for repeats and low-complexity
+            regions was carried out. Because of the very low
+            <ENAMEX TYPE="PERSON">threshold</ENAMEX>, we generated an average of <NUMEX TYPE="CARDINAL">one</NUMEX> predicted TSS
+            every <NUMEX TYPE="CARDINAL">3,000</NUMEX> nucleotides in the genome. We found that
+            <NUMEX TYPE="CARDINAL">11,160</NUMEX> - <NUMEX TYPE="CARDINAL">approximately one</NUMEX> in <NUMEX TYPE="CARDINAL">seven</NUMEX> - of these
+            predictions is on the appropriate strand and within <NUMEX TYPE="CARDINAL">500</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX> of <TIMEX TYPE="TIME">an EST</TIMEX> <TIMEX TYPE="DATE">5</TIMEX>' end. If these predictions are valid, we
+            would expect them to be closer than <TIMEX TYPE="TIME">500 bp to an EST</TIMEX>
+            end. Indeed, we found that <NUMEX TYPE="PERCENT">56%</NUMEX> of the <NUMEX TYPE="CARDINAL">11,160</NUMEX>
+            predictions in fact lie within <TIMEX TYPE="TIME">50 bp of an EST</TIMEX>, much
+            higher than would be expected by chance, and in
+            accordance with the results in the much smaller 
+            Adh <ENAMEX TYPE="GPE_DESC">region</ENAMEX> set. Even when we
+            require co-localization within <TIMEX TYPE="TIME">10 bp</TIMEX>, we still retain
+            <NUMEX TYPE="PERCENT">25%</NUMEX> of the predictions originally selected to be within
+            <TIMEX TYPE="TIME">500 bp</TIMEX>. The next step is to optimize both the threshold
+            we use for predicting the <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX> and the window size we
+            use for assessing their correlation with <NUMEX TYPE="CARDINAL">5</NUMEX>' <TIMEX TYPE="TIME">EST</TIMEX> ends.
+            In <TIMEX TYPE="DATE">the end</TIMEX>, we will still need to conduct experiments
+            such as primer extension to distinguish real from
+            false-positive predictions.
+          
+        
+        
+          A comparison with vertebrate promoter
+          finding
+          It is instructive to examine our results on the 
+          Drosophila genome in the context of
+          recent work on promoter finding in vertebrates. As a
+          benchmark set, the 'known' genes of human chromosome <NUMEX TYPE="CARDINAL">22</NUMEX>
+          are widely used, as it was the <NUMEX TYPE="ORDINAL">first</NUMEX> completely sequenced
+          human chromosome [ <TIMEX TYPE="DATE">36</TIMEX>]. The annotation of release <NUMEX TYPE="MONEY">2.3</NUMEX> of
+          May <TIMEX TYPE="DATE">2001</TIMEX> contained <NUMEX TYPE="CARDINAL">339</NUMEX> known genes. We applied the first
+          version of <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> trained on human data [ <TIMEX TYPE="DATE">37</TIMEX>], which
+          uses only sequence features and a simple <ENAMEX TYPE="GPE">Markov</ENAMEX> chain
+          model for the whole promoter sequence. Along the
+          guidelines of earlier evaluations, we counted a
+          prediction as correct if it fell within <TIMEX TYPE="TIME">-2,000</TIMEX> and <NUMEX TYPE="CARDINAL">+500</NUMEX>
+          bp relative to the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of the annotation [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>], and
+          retained only the best hit within a window of <NUMEX TYPE="CARDINAL">2,000</NUMEX>
+          bases. As a negative set, we used the sequences
+          downstream of <NUMEX TYPE="CARDINAL">+500</NUMEX> until the end of each gene annotation.
+          <ENAMEX TYPE="PRODUCT">Table 6shows</ENAMEX> the results for different thresholds.
+          Despite the large region where predictions count as
+          correct, the average distance of true positive
+          predictions is <NUMEX TYPE="QUANTITY">about 250 bp</NUMEX>, and <NUMEX TYPE="PERCENT">about 40%</NUMEX> of these are
+          located within <TIMEX TYPE="TIME">± 100 bp</TIMEX>, making our results comparable to
+          those reported by other <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. For example, Scherf 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] report a sensitivity
+          of <NUMEX TYPE="PERCENT">45%</NUMEX> on the set of known genes and specificity of <NUMEX TYPE="PERCENT">40%</NUMEX>
+          for the whole of chromosome <NUMEX TYPE="CARDINAL">22</NUMEX>. They do not attempt to
+          predict the strand of the <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> (and also do not
+          predict <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> locations but rather promoter regions of an
+          average of <ENAMEX TYPE="CONTACT_INFO">555 bp</ENAMEX>); as our evaluation considers only the
+          sense strand of the genes, the numbers are
+          comparable.
+          The good results obtained on human data with even a
+          simple sequence <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are apparently largely due to the
+          strong correlation of vertebrate <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> with CpG
+          <ENAMEX TYPE="GPE">islands</ENAMEX>. <NUMEX TYPE="PERCENT">60%</NUMEX> of the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of known genes on chromosome
+          <NUMEX TYPE="CARDINAL">22</NUMEX> are located within <ENAMEX TYPE="ORGANIZATION">CpG</ENAMEX> islands, regions in the genome
+          that are not depleted of <ENAMEX TYPE="ORGANIZATION">CG</ENAMEX> dinucleotides and are
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with an open chromatin structure [ <TIMEX TYPE="DATE">38</TIMEX>]. At <NUMEX TYPE="PERCENT">64%</NUMEX>
+          <ENAMEX TYPE="PERSON">sensitivity</ENAMEX>, <NUMEX TYPE="PERCENT">82%</NUMEX> of the true predictions by McPromoter
+          are located within <ENAMEX TYPE="ORGANIZATION">CpG</ENAMEX> islands, and the correlation gets
+          stronger as the specificity increases. This was also
+          reported for other, more recently developed
+          promoter-finding systems [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>]. Therefore,
+          promoter-finding methods based on sequence information
+          successfully identify almost the exact same subset of
+          <ENAMEX TYPE="PERSON">promoters</ENAMEX>, owing to the high correlation with the subset
+          of <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX> located within <ENAMEX TYPE="ORGANIZATION">CpG</ENAMEX> islands [ <ENAMEX TYPE="LAW">8</ENAMEX>]. Vertebrate
+          promoter recognition thus appears to be reaching its
+          limit when the models use the proximal promoter sequence
+          as the only information <ENAMEX TYPE="ORG_DESC">source</ENAMEX>.
+          In the only system so far with a significantly better
+          performance and smaller correlation with <ENAMEX TYPE="ORGANIZATION">CpG</ENAMEX> islands,
+          promoter recognition is guided by a simultaneous
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> of <NUMEX TYPE="ORDINAL">first</NUMEX> exons [ <ENAMEX TYPE="LAW">7</ENAMEX>]. When we used the version
+          of <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> that includes analysis of the physical
+          properties of the genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, as we do with 
+          Drosophila , the true positives are
+          much less correlated with <ENAMEX TYPE="ORGANIZATION">CpG</ENAMEX> islands (<NUMEX TYPE="PERCENT">61%</NUMEX>), and
+          therefore constitute a broader subset of vertebrate
+          <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. Unfortunately, the false-positive rate
+          increased roughly fivefold, and the predictions tend to
+          be located farther away from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX>].
+          The <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of vertebrate and invertebrate organisms
+          differ in that invertebrate genomes do not contain CpG
+          <ENAMEX TYPE="GPE">islands</ENAMEX>, a feature of <NUMEX TYPE="CARDINAL">more than half</NUMEX> of vertebrate genes
+          [ <TIMEX TYPE="DATE">39</TIMEX>]. This makes computational recognition of
+          invertebrate <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, and those vertebrate <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          not found in <ENAMEX TYPE="GPE">CpG</ENAMEX> islands, more difficult.
+        
+      
+      
+        Conclusions
+        In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we present a strategy for annotating core
+        <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in the complete 
+        Drosophila genome by a two-step
+        process of <NUMEX TYPE="CARDINAL">5</NUMEX>' <TIMEX TYPE="TIME">EST</TIMEX> cluster selection and computational
+        prediction. With the help of a larger training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>, we were
+        able to significantly improve the performance of
+        McPromoter, our computational TSS prediction tool. Probably
+        for the <NUMEX TYPE="ORDINAL">first</NUMEX> time in invertebrate promoter prediction, the
+        results are sensitive and specific enough to guide
+        verification by subsequent wet lab experiments such as
+        primer extension.
+        A <NUMEX TYPE="ORDINAL">first</NUMEX> analysis of motifs prevalent in core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX>
+        revealed that <NUMEX TYPE="CARDINAL">less than one-third</NUMEX> of 
+        Drosophila <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> have a consensus
+        <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>. In contrast, the DRE motif that is part of the
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> site for an alternative transcription
+        initiation complex that utilizes <ENAMEX TYPE="PRODUCT">TRF2</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>] is more
+        frequent than previously thought. One surprising result of
+        our work is that there are relatively few recognizable
+        binding sites for known general transcription factors in 
+        Drosophila core <ENAMEX TYPE="ORG_DESC">promoters</ENAMEX>. Our
+        analysis did, however, reveal previously undescribed or
+        underappreciated motifs, an encouraging sign that there are
+        distinct features in 
+        Drosophila core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> regions.
+        <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> is accessible at [ <TIMEX TYPE="DATE">32</TIMEX>]. The training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> are
+        available from the 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila Genome Project</ENAMEX> website [
+        <NUMEX TYPE="CARDINAL">40</NUMEX>]. McPromoter predictions are part of the analysis
+        results in the <ENAMEX TYPE="PRODUCT">Genome Annotation Database Gadfly</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX>].
+      
+      
+        Materials and methods
+        
+          <TIMEX TYPE="TIME">EST</TIMEX> clustering
+          <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> and clustering of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> on the complete 
+          Drosophila sequence are described
+          in detail in [ <TIMEX TYPE="DATE">20</TIMEX>].
+        
+        
+          Motif finding
+          We used the <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> system, version 3.0 [ <TIMEX TYPE="DATE">24, 25</TIMEX>] to look
+          for core promoter motifs using a motif width range of
+          <TIMEX TYPE="TIME">5-15 bp</TIMEX> and <NUMEX TYPE="CARDINAL">zero</NUMEX> or one occurrence per sequence. That is,
+          <ENAMEX TYPE="GPE">MEME</ENAMEX> decides during the motif identification whether or
+          not to include a sequence; the numbers of sequences that
+          <ENAMEX TYPE="SUBSTANCE">MEME</ENAMEX> used for the alignments are given in Tables 2and 4.
+          We observed that <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> is rather restrictive in deciding
+          whether to use a particular sequence or not; thus, the
+          number of sequences in any given motif alignment is
+          rather small, and searching for binding sites as
+          described below resulted in larger numbers of sequences
+          with a particular motif. We used the standard background
+          model of <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX>, which corresponds to the single-nucleotide
+          frequencies in the set. For the analysis of the extended
+          sequences from <NUMEX TYPE="PERCENT">-250</NUMEX> to <NUMEX TYPE="CARDINAL">+50</NUMEX>, we used <NUMEX TYPE="CARDINAL">a third</NUMEX>-order Markov
+          chain as background model, which should prevent the
+          algorithm from reporting ubiquitous short repeat motifs.
+          The background parameters were estimated on the <NUMEX TYPE="PERCENT">-250</NUMEX> to
+          +<NUMEX TYPE="CARDINAL">50</NUMEX> sequences.
+          We also applied the <ENAMEX TYPE="ORGANIZATION">Gibbs</ENAMEX> sampling algorithm for motif
+          identification [ <TIMEX TYPE="DATE">27</TIMEX>]. Our data set was too large to be
+          submitted to the available web-based sites. We therefore
+          used an implementation adapted to DNA sequence analysis
+          that we could install locally [ <TIMEX TYPE="DATE">28</TIMEX>] to analyze sequences
+          from <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="CARDINAL">+40</NUMEX> in the same set of <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> used with
+          <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX>. As with other implementations of <ENAMEX TYPE="ORGANIZATION">Gibbs</ENAMEX> sampling,
+          this implementation [ <TIMEX TYPE="DATE">28</TIMEX>] does not automatically estimate
+          the width of motifs, which we fixed at <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>. Also,
+          there is no equivalent of the 'zero or one occurrence per
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>' statistics of <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX>; instead, we used a prior
+          probability of <NUMEX TYPE="MONEY">0.075</NUMEX> for motif occurrence. This property
+          makes the identification of rarely occurring motifs
+          <ENAMEX TYPE="ORGANIZATION">intrinsically</ENAMEX> harder.
+        
+        
+          Searching for binding sites
+          To look for binding sites of the motifs, we used the
+          weight matrices as computed by <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> with the program
+          <ENAMEX TYPE="ORGANIZATION">Patser</ENAMEX> <ENAMEX TYPE="PRODUCT">v3d</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>]. As the searched regions are rather
+          small, we set a rather low threshold corresponding to a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of <ENAMEX TYPE="PRODUCT">1e-3</ENAMEX>; that is, once
+          every <NUMEX TYPE="CARDINAL">1,000</NUMEX> nucleotides in a random sequence we can
+          expect to see a score equal or better than the threshold,
+          assuming that the sequence has the same base composition
+          as our core <ENAMEX TYPE="ORG_DESC">promoter</ENAMEX> set.
+        
+        
+          Datasets
+          To retrain the <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> system, we used the newly
+          determined <ENAMEX TYPE="ORGANIZATION">TSSs</ENAMEX>, and extracted <NUMEX TYPE="QUANTITY">250 bp</NUMEX> upstream and <NUMEX TYPE="CARDINAL">50</NUMEX> bp
+          downstream of each <ENAMEX TYPE="ORGANIZATION">TSS</ENAMEX> as training sequences. We
+          constructed a <ENAMEX TYPE="PER_DESC">representative</ENAMEX> set starting from these
+          1,941 sequences similar to the guidelines of the
+          <ENAMEX TYPE="PRODUCT">Eukaryotic Promoter Database</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]: Sequences are only
+          included if they share <NUMEX TYPE="PERCENT">less than 50%</NUMEX> identity in the core
+          promoter <ENAMEX TYPE="LOCATION">region</ENAMEX> (in our case, <NUMEX TYPE="PERCENT">-60</NUMEX> to <NUMEX TYPE="CARDINAL">+40</NUMEX>) to each of the
+          <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in the growing set. This resulted in a data set
+          of <NUMEX TYPE="CARDINAL">1,864</NUMEX> sequences. We aligned this set to the 
+          Adh <ENAMEX TYPE="GPE_DESC">region</ENAMEX> that we use as test
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, and <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> within the 
+          Adh <ENAMEX TYPE="LOCATION">region</ENAMEX> were removed from that
+          set.
+          For non-<ENAMEX TYPE="PER_DESC">promoter sequences</ENAMEX>, we started with a
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> set of genes compiled in <TIMEX TYPE="DATE">1999</TIMEX> that
+          <ENAMEX TYPE="CONTACT_INFO">comprised 416</ENAMEX> single-and multi-exon <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>]. In
+          addition, we used the genes contained in the 
+          <ENAMEX TYPE="PERSON">Drosophila Gene Collection</ENAMEX> as of <NUMEX TYPE="CARDINAL">31</NUMEX>
+          <TIMEX TYPE="DATE">December, 2001</TIMEX>. In a <NUMEX TYPE="ORDINAL">first</NUMEX> step, we eliminated genes that
+          showed evidence of alternative splicing. The remaining
+          set was aligned to the <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> database [ <TIMEX TYPE="DATE">42</TIMEX>] using
+          <ENAMEX TYPE="ORGANIZATION">TBLASTX</ENAMEX> [ <TIMEX TYPE="DATE">43</TIMEX>], and we retained all cDNA entries where the
+          protein completely aligned with the cDNA, and the
+          similarity was <NUMEX TYPE="PERCENT">above 90%</NUMEX> for 
+          Drosophila <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and <NUMEX TYPE="PERCENT">40%</NUMEX> for
+          <ENAMEX TYPE="CONTACT_INFO">non-</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> entries. <ENAMEX TYPE="PRODUCT">5</ENAMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' UTRs
+          were truncated, and the remaining sequences were aligned
+          to the genomic sequence using Sim4 [ <TIMEX TYPE="DATE">44</TIMEX>], to map the
+          exon-intron structure. This resulted in a set of <NUMEX TYPE="CARDINAL">264</NUMEX>
+          entries with hits to 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila SWISS-PROT</ENAMEX> entries, and
+          <NUMEX TYPE="CARDINAL">29</NUMEX> against <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> of other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. These sequences
+          were then added <NUMEX TYPE="CARDINAL">one</NUMEX> by <NUMEX TYPE="CARDINAL">one</NUMEX> to the existing initial set of
+          <NUMEX TYPE="CARDINAL">416</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, provided that the similarity of the coding
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> was <NUMEX TYPE="PERCENT">less than 80%</NUMEX> to <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> already in the set. A
+          total of <NUMEX TYPE="CARDINAL">229</NUMEX> sequences were added in this way, resulting
+          in a final set of <NUMEX TYPE="CARDINAL">645 single</NUMEX>- and multi-exon <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Exons
+          and introns of these genes were then divided into <NUMEX TYPE="CARDINAL">300</NUMEX>-bp
+          long non-overlapping stretches to generate <NUMEX TYPE="CARDINAL">2,635</NUMEX> coding
+          and <NUMEX TYPE="QUANTITY">1,755 intronic sequences of 300 bp</NUMEX> each.
+        
+        
+          Computational promoter prediction
+          The <ENAMEX TYPE="ORGANIZATION">McPromoter</ENAMEX> <ENAMEX TYPE="ORG_DESC">system</ENAMEX> consists of a generalized hidden
+          <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> model of a promoter sequence, with <NUMEX TYPE="CARDINAL">six</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">interpolated Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> submodels representing
+          different segments of the promoter sequence from <NUMEX TYPE="PERCENT">-250</NUMEX> to
+          +<NUMEX TYPE="CARDINAL">50</NUMEX>: upstream <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>, <ENAMEX TYPE="DISEASE">TATA box</ENAMEX>, spacer, initiator and
+          <ENAMEX TYPE="PERSON">downstream</ENAMEX>. It is augmented by a set of Gaussian
+          <ENAMEX TYPE="PERSON">densities</ENAMEX> describing profiles of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> physicochemical
+          properties [ <TIMEX TYPE="DATE">45</TIMEX>] in the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="ORG_DESC">segments</ENAMEX>. The likelihoods of
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> and profile <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> are finally combined in a
+          neural network classifier, which is trained to output
+          values of <NUMEX TYPE="CARDINAL">1</NUMEX> for <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> and <NUMEX TYPE="CARDINAL">0</NUMEX> for non-promoter
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Cross-validation</ENAMEX> tests of <NUMEX TYPE="CARDINAL">14</NUMEX> different
+          properties such as <ENAMEX TYPE="SUBSTANCE">DNA bendability</ENAMEX> and nucleosome
+          <ENAMEX TYPE="PERSON">positioning</ENAMEX> (compiled in [ <TIMEX TYPE="DATE">46</TIMEX>]) showed that stacking
+          energy delivered the best classification results for both
+          <ENAMEX TYPE="ORGANIZATION">human</ENAMEX> and 
+          Drosophila sequences when combined
+          with the sequence probabilities. On our previous small 
+          Drosophila dataset, a combination
+          of all features by <ENAMEX TYPE="PER_DESC">principal</ENAMEX>-component analysis (<ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>, see
+          for example [ <TIMEX TYPE="DATE">47</TIMEX>]) led to an improvement in
+          classification; however, on the current larger dataset,
+          no additional improvement is observed when using <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>.
+          We carried out <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">cross-validation</ENAMEX> experiments on
+          the new dataset, setting aside <NUMEX TYPE="CARDINAL">one-fifth</NUMEX> as a test set
+          and taking the remaining four-fifths for training. The
+          best average cross-correlation value (<ENAMEX TYPE="PRODUCT">CC</ENAMEX>) of promoter
+          versus non-promoter classification was <NUMEX TYPE="MONEY">0.79</NUMEX>, with an
+          equal recognition rate of <NUMEX TYPE="PERCENT">89.9%</NUMEX> and a <ENAMEX TYPE="ORG_DESC">receiver</ENAMEX> operating
+          <ENAMEX TYPE="PERSON">characteristics integral</ENAMEX> of <NUMEX TYPE="CARDINAL">9,575</NUMEX>.
+          To localize <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in genomic sequences, an input
+          window of <NUMEX TYPE="CARDINAL">300</NUMEX> bp is shifted along both sides of the
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, and the neural network score as well as the
+          position of the initiator segment is stored for each
+          window. After smoothing the score graph along the
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, the best local maximum within a certain range
+          is reported if it exceeds a preset threshold on the
+          score. A detailed description can be found in [ <TIMEX TYPE="DATE">12</TIMEX>,
+          <NUMEX TYPE="CARDINAL">34</NUMEX>].
+        
+        
+          Evaluation measures
+          For classification into <ENAMEX TYPE="PER_DESC">promoter</ENAMEX>/non-promoter, we used
+          the equal recognition rate (<ENAMEX TYPE="ORGANIZATION">ERR</ENAMEX>) and the integral over
+          the <ENAMEX TYPE="ORG_DESC">receiver</ENAMEX> operating characteristics (ROC) as measures.
+          A <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curve gives the recognition rate (true positives)
+          for preselected values of false positives, which was in
+          our case <NUMEX TYPE="PERCENT">0 to 100%</NUMEX> in <NUMEX TYPE="PERCENT">1%</NUMEX> steps. Then, the trapezoid rule
+          is used to compute the integral numerically. The highest
+          achievable value is <NUMEX TYPE="MONEY">10,000</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">100 × 100</ENAMEX>, the perfect
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> for all rates of false positives); a random
+          classification results in a value of <NUMEX TYPE="CARDINAL">5,000</NUMEX>. <ENAMEX TYPE="ORGANIZATION">ERR</ENAMEX> gives the
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> performance at the point where the rate of
+          true <TIMEX TYPE="DATE">positives</TIMEX> equals the rate of true negatives; the ROC
+          integral <ENAMEX TYPE="PER_DESC">judges</ENAMEX> the performance in a more global manner.
+          We also give the correlation coefficient (<ENAMEX TYPE="PRODUCT">CC</ENAMEX>), defined
+          as:
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">TP</ENAMEX> stands for true positives, 
+          <ENAMEX TYPE="ORGANIZATION">TN</ENAMEX> for true negatives, 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> for false positives, and 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> for false negatives; these
+          numbers denote the absolute numbers of correctly and
+          incorrectly classified sequences. <ENAMEX TYPE="PRODUCT">CC</ENAMEX> values should be
+          considered with caution, as they depend on the relative
+          size of the dataset for each <ENAMEX TYPE="PER_DESC">class</ENAMEX> and can therefore
+          generally not be compared across different datasets.
+        
+      
+      
+        Additional data files
+        Additional data files containing the following
+        supplementary tables are available with the online version
+        of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>: Supplementary table <TIMEX TYPE="DATE">1</TIMEX>, showing alignment
+        positions of the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> of the <NUMEX TYPE="CARDINAL">1,941</NUMEX> selected <TIMEX TYPE="TIME">EST</TIMEX>
+        <ENAMEX TYPE="PERSON">clusters</ENAMEX>, for <ENAMEX TYPE="PRODUCT">Release 2and</ENAMEX> the realignment to <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>;
+        Supplementary table <TIMEX TYPE="DATE">2</TIMEX>, listing the weight matrixes for the
+        10 motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>; Supplementary table <TIMEX TYPE="DATE">3</TIMEX>, listing
+        the most frequent GO terms associated with each of the <NUMEX TYPE="CARDINAL">10</NUMEX>
+        motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>; and Supplementary table <TIMEX TYPE="DATE">4with</TIMEX> the
+        raw data for the positional distribution of motif hits
+        (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        Additional data file 1
+        <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> positions of the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> of the <NUMEX TYPE="CARDINAL">1,941</NUMEX>
+        <TIMEX TYPE="TIME">selected EST</TIMEX> clusters for <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Alignment</ENAMEX> positions of the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> of the <NUMEX TYPE="CARDINAL">1,941</NUMEX>
+        <TIMEX TYPE="TIME">selected EST</TIMEX> clusters for <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+        Click here for additional data file
+        Additional data file 2
+        Realignment of positions of the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> of the
+        <NUMEX TYPE="CARDINAL">1,941</NUMEX> selected <TIMEX TYPE="TIME">EST</TIMEX> clusters after <ENAMEX TYPE="ORGANIZATION">Release</ENAMEX> <NUMEX TYPE="CARDINAL">3</NUMEX>
+        Realignment of positions of the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> of the
+        <NUMEX TYPE="CARDINAL">1,941</NUMEX> selected <TIMEX TYPE="TIME">EST</TIMEX> clusters after <ENAMEX TYPE="ORGANIZATION">Release</ENAMEX> <NUMEX TYPE="CARDINAL">3</NUMEX>
+        Click here for additional data file
+        Additional data file 3
+        Weight matrixes for the <NUMEX TYPE="CARDINAL">10</NUMEX> motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>
+        Weight matrixes for the <NUMEX TYPE="CARDINAL">10</NUMEX> motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>
+        Click here for additional data file
+        Additional data file 4
+        The most frequent GO terms associated with each of the
+        10 motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>
+        The most frequent GO terms associated with each of the
+        10 motifs shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>
+        Click here for additional data file
+        Additional data file 5
+        The raw data for the positional distribution of motif
+        hits
+        The raw data for the positional distribution of motif
+        hits
+        Click here for additional data file
+      
+    
+  

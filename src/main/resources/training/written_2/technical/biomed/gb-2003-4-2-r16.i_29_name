@@ -1,0 +1,590 @@
+
+  
+    
+      
+        Rationale
+        The volume and diversity of expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>)
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in the public databases makes them an important
+        <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX> for gene identification, genome annotation and
+        comparative genomics. The value of <TIMEX TYPE="TIME">EST</TIMEX> data is enhanced
+        when the sequences are clustered (on the basis of sequence
+        <ENAMEX TYPE="ORGANIZATION">overlap</ENAMEX>) to reduce redundancy. In some cases these sequence
+        clusters can be used to generate a consensus sequence that
+        represents a virtual transcript. Examples of electronic
+        transcript data resources include <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>], <ENAMEX TYPE="PER_DESC">TIGR</ENAMEX> <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Indices [ <ENAMEX TYPE="LAW">2, 3</ENAMEX>], <ENAMEX TYPE="GPE">DoTS</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>] and <ENAMEX TYPE="PRODUCT">STACK</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Each of these
+        resources differs in the methods used to reduce the
+        <ENAMEX TYPE="ORGANIZATION">redundancy</ENAMEX> in <TIMEX TYPE="TIME">EST</TIMEX> sequence data and in how the data are
+        represented. For example, <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> uses pairwise sequence
+        comparisons to <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and <TIMEX TYPE="TIME">partition EST</TIMEX> and other transcript
+        sequences from <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> into gene-orientated clusters with
+        no consensus sequence. The other <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX> (TIGR <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        <ENAMEX TYPE="PERSON">Indices</ENAMEX>, <ENAMEX TYPE="GPE">DoTS</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">STACK</ENAMEX>) cluster sequences from <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> and
+        known transcripts and then assemble the <ENAMEX TYPE="PER_DESC">members</ENAMEX> of each
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> to produce a consensus representation of the
+        transcripts. The algorithms and/or parameters used to guide
+        the clustering and assembly process for the virtual
+        transcript resources are similar, but not identical. These
+        <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX> also differ with respect to the number of species
+        for which <TIMEX TYPE="TIME">EST</TIMEX> assemblies are available. For example, the
+        STACK database includes only human sequence data, <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> has
+        both human and mouse assemblies, and <ENAMEX TYPE="PER_DESC">TIGR</ENAMEX> <ENAMEX TYPE="PERSON">Gene Indices</ENAMEX>
+        maintains separate electronic transcript databases for over
+        <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX>. In contrast to computational approaches to
+        transcript analysis and representation, the <ENAMEX TYPE="PERSON">Mammalian Gene</ENAMEX>
+        Collection (MGC) [ <ENAMEX TYPE="LAW">6</ENAMEX>] and the <ENAMEX TYPE="ANIMAL">RIKEN Mouse</ENAMEX> Encyclopedia
+        <ENAMEX TYPE="FAC_DESC">projects</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>] are systematically generating full-length
+        <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones with the aim of having <NUMEX TYPE="CARDINAL">at least one</NUMEX> full-length
+        clone reagent and sequence for every human (MGC) and mouse
+        (<ENAMEX TYPE="ORGANIZATION">MGC</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX>) gene.
+        The <ENAMEX TYPE="ANIMAL">Mouse Genome Informatics</ENAMEX> (MGI) database [ <ENAMEX TYPE="LAW">8</ENAMEX>]
+        provides integrated access to genetic, genomic and
+        biological data for the laboratory <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>. The MGI database
+        represents an integrated platform to which several related
+        <ENAMEX TYPE="FAC_DESC">projects</ENAMEX> contribute, including the <ENAMEX TYPE="ANIMAL">Mouse Genome Database</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">MGD</ENAMEX>) [ <ENAMEX TYPE="LAW">9</ENAMEX>], the <ENAMEX TYPE="PERSON">Gene Expression Database</ENAMEX> (GXD) [ <TIMEX TYPE="DATE">10</TIMEX>], the
+        <ENAMEX TYPE="PERSON">Mouse Genome Sequence</ENAMEX> (MGS) project [ <TIMEX TYPE="DATE">11</TIMEX>], the <ENAMEX TYPE="ANIMAL">Mouse Tumor</ENAMEX>
+        <ENAMEX TYPE="PERSON">Biology</ENAMEX> (MTB) database [ <TIMEX TYPE="DATE">12</TIMEX>], and the <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>)
+        project [ <TIMEX TYPE="DATE">13</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> provides access to gene annotation and
+        nomenclature, mapping, nucleotide and protein <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX>,
+        mammalian gene homology, gene expression, phenotypes,
+        allelic variants and mutants and strain data. The
+        information in the MGI database is updated <TIMEX TYPE="DATE">daily</TIMEX> by
+        professional scientific <ENAMEX TYPE="PER_DESC">curators</ENAMEX> who extract relevant data
+        from the scientific literature and other sources. <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> staff
+        curate <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between genes and nucleotide and
+        <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> in collaboration with other database
+        <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX>, including <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>], <ENAMEX TYPE="ORGANIZATION">RIKEN</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>], and the
+        <ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology Information</ENAMEX>'s <ENAMEX TYPE="PRODUCT">LocusLink</ENAMEX> [
+        <TIMEX TYPE="DATE">15, 16</TIMEX>]. Genes in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> are given unique, permanent accession
+        <ENAMEX TYPE="ORGANIZATION">ids</ENAMEX> to facilitate stable cross-references with other
+        databases even when such information as gene name,
+        functional annotation, and so on changes over time [ <TIMEX TYPE="DATE">11</TIMEX>].
+        <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> a summary of some of the MGI database
+        content.
+        The utility of both experimentally and computationally
+        derived transcript resources are greatly enhanced when the
+        transcripts are associated with well curated biological
+        knowledge about the genes with which the transcripts are
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]. However, manual curation of
+        <ENAMEX TYPE="SUBSTANCE">computationally</ENAMEX> derived transcript data is not feasible
+        because the underlying data for these resources are
+        constantly changing. Therefore, we have developed a
+        semi-automated curation process to create and update
+        associations between constantly changing electronic
+        transcript databases and the genes represented in the MGI
+        database. <ENAMEX TYPE="ORGANIZATION">Associations</ENAMEX> are based on <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence
+        <ENAMEX TYPE="PER_DESC">accession identifiers</ENAMEX> shared between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and
+        transcript clusters/assemblies. Although <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>
+        between the genes in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> and the electronic transcripts
+        could also be made on the basis of sequence similarity, the
+        use of shared accession ids is faster and avoids
+        inconsistencies in sequence-to-gene <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> that arise
+        from highly similar sequence among <ENAMEX TYPE="PER_DESC">members</ENAMEX> of multigene
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+      
+      
+        Transitive <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and
+        assembled transcripts
+        To establish <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and the
+        <ENAMEX TYPE="ORGANIZATION">Institute</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">Genomic Research</ENAMEX> (TIGR) mouse <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> index
+        tentative consensus sequence (TCs) or <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> mouse transcript
+        <ENAMEX TYPE="PERSON">assemblies</ENAMEX> (DTs), we used GenBank sequence accession
+        <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX> (GB) that are associated with <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the MGI
+        database and are also component sequences of transcript
+        assemblies as <ENAMEX TYPE="FAC_DESC">bridges</ENAMEX>. All gene-to-transcript associations
+        are represented as a set of graphs (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Nodes of the
+        graph are <ENAMEX TYPE="PER_DESC">members</ENAMEX> of a group of <ENAMEX TYPE="SUBSTANCE">interrelated MGI genes</ENAMEX> and
+        transcript assemblies, and each edge is a group of GenBank
+        sequence accession identifiers that are shared by the
+        related <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene and the transcript <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX>.
+        We first generated a set of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence accession
+        identifiers that have trusted <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> (that is they
+        have been manually curated) with mouse <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> represented in
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>. A <TIMEX TYPE="DATE">daily</TIMEX> report of the <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> markers and
+        GenBank sequences, <ENAMEX TYPE="ORGANIZATION">MRK_Sequence.</ENAMEX>rpt, is available from the
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> public <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site [ <TIMEX TYPE="DATE">17</TIMEX>]. We removed sequences associated
+        with <NUMEX TYPE="CARDINAL">more than one</NUMEX> gene object in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> (for example, large
+        cloned inserts containing multiple genes) to avoid
+        confounding multiple genes to sequence <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. After
+        this filtering step, the relationships of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> to
+        GenBank sequences were maintained in a dictionary data
+        structure, <ENAMEX TYPE="ORGANIZATION">MGI-GB</ENAMEX>, with <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> accession numbers as keys and
+        GenBank accession identifiers as values.
+        A <NUMEX TYPE="ORDINAL">second</NUMEX> dictionary, <ENAMEX TYPE="ORGANIZATION">GB-MGI</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GB</ENAMEX> as keys and <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> as
+        values), was generated by reversing the keys and values of
+        <ENAMEX TYPE="ORGANIZATION">MGI-GB</ENAMEX>. A report with all DT identifiers and their
+        <ENAMEX TYPE="PERSON">constituent GenBank</ENAMEX> sequences accession identifiers,
+        musDoTS<TIMEX TYPE="DATE">_rel5_accessionsPerAssembly</TIMEX>.dat.gz file (<ENAMEX TYPE="ORGANIZATION">Release</ENAMEX>
+        <NUMEX TYPE="CARDINAL">5.0</NUMEX>, <TIMEX TYPE="DATE">19 August 2002</TIMEX>), was downloaded from <ENAMEX TYPE="ORGANIZATION">CBIL</ENAMEX>'s website [
+        <NUMEX TYPE="CARDINAL">18</NUMEX>].
+        A report containing <ENAMEX TYPE="ORGANIZATION">TIGR Mouse Gene Index TC</ENAMEX> identifiers
+        and their <ENAMEX TYPE="PER_DESC">constituent</ENAMEX> <ENAMEX TYPE="PERSON">GenBank</ENAMEX> sequence identifiers was
+        generated from <ENAMEX TYPE="ORGANIZATION">TIGR Mouse Gene Index Release 9.0</ENAMEX> (<TIMEX TYPE="DATE">October</TIMEX>
+        <TIMEX TYPE="DATE">1, 2002</TIMEX>) (<ENAMEX TYPE="PRODUCT">Geo Pertea</ENAMEX>, personal communication). This report
+        was used to create <NUMEX TYPE="CARDINAL">two</NUMEX> dictionaries, <ENAMEX TYPE="ORGANIZATION">TC-GB</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> as keys and
+        <ENAMEX TYPE="ORGANIZATION">GB</ENAMEX> as values) and <ENAMEX TYPE="ORGANIZATION">GB-TC</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GB</ENAMEX> as keys and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> as values) to
+        <ENAMEX TYPE="ORGANIZATION">map TCs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence accession ids. There were many
+        more <ENAMEX TYPE="NATIONALITY">GenBank</ENAMEX> sequences (mostly ESTs) in the TIGR <ENAMEX TYPE="PERSON">Mouse Gene</ENAMEX>
+        Index than in the MGI database because the TIGR <ENAMEX TYPE="PERSON">Mouse Gene</ENAMEX>
+        Index was built on all available GenBank sequences, and MGI
+        curated only a subset of them (mostly mRNA and RefSeq
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>). Only <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence accession identifiers
+        that appear in the MGI database were retained in <ENAMEX TYPE="ORGANIZATION">TC-GB</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">GB-TC</ENAMEX> because those sequences will bridge the transitive
+        associations between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX>. Sequences
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with <NUMEX TYPE="CARDINAL">more than one</NUMEX> <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> were removed.
+        <NUMEX TYPE="CARDINAL">Two</NUMEX> of the dictionaries described above, <ENAMEX TYPE="ORGANIZATION">MGI-GB</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">GB-TC</ENAMEX>, were used to link MGI <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> on the basis of
+        <ENAMEX TYPE="ORGANIZATION">shared GenBank</ENAMEX> sequences. A <ENAMEX TYPE="WORK_OF_ART">dictionary</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MGI-TC</ENAMEX>-via<ENAMEX TYPE="ORGANIZATION">-GB</ENAMEX> (MGI
+        as keys and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> as values), was used to maintain the
+        gene-to-transcript <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> and their supporting
+        GenBank sequences. For each <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession identifier in
+        <ENAMEX TYPE="ORGANIZATION">MGI-GB</ENAMEX>, the related <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> identifier in <ENAMEX TYPE="ORGANIZATION">GB-TC</ENAMEX> was retrieved
+        and added as a value to the MGI accession identifier key,
+        keeping the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession identifiers as a line of
+        evidence in support of the link. When <NUMEX TYPE="CARDINAL">more than one</NUMEX> GenBank
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> supports the same MGI-to-<ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> link, all were
+        attached to the same <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX>. Figure <NUMEX TYPE="CARDINAL">2ashows</NUMEX> examples of links
+        from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> with the supporting GenBank
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. Of <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> genetic markers with <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequences,
+        <NUMEX TYPE="PERCENT">71.3%</NUMEX> (<NUMEX TYPE="CARDINAL">20,772</NUMEX> out of <NUMEX TYPE="CARDINAL">29,144</NUMEX>) of were linked to <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+        <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> in this analysis. The majority of <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> markers with no
+        <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> have <NUMEX TYPE="CARDINAL">only one</NUMEX> <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence, which is
+        either <ENAMEX TYPE="DISEASE">singleton mRNA</ENAMEX>/<TIMEX TYPE="TIME">EST</TIMEX> sequence with no <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> accession
+        number assigned or <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequence excluded from building TIGR
+        <ENAMEX TYPE="PERSON">Mouse Gene</ENAMEX> Index. <ENAMEX TYPE="PRODUCT">Table 2summarizes</ENAMEX> the <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>
+        between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> markers and <ENAMEX TYPE="ORGANIZATION">TIGR Mouse Gene Index TCs</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">Two</NUMEX> other dictionaries, <ENAMEX TYPE="ORGANIZATION">TC-GB</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GB-MGI</ENAMEX>, were used to
+        <ENAMEX TYPE="ORGANIZATION">link TCs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the same way. A <ENAMEX TYPE="WORK_OF_ART">dictionary</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX>-MGI-via<ENAMEX TYPE="ORGANIZATION">-GB</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> as keys and <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> as values), was used to
+        maintain links from <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and the supporting
+        GenBank sequences. Figure <NUMEX TYPE="CARDINAL">2bshows</NUMEX> examples of links from
+        <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> to MGI genes with the supporting <ENAMEX TYPE="NATIONALITY">GenBank</ENAMEX> sequences.
+        <NUMEX TYPE="PERCENT">19.8%</NUMEX> (<NUMEX TYPE="CARDINAL">20,942</NUMEX> out of <NUMEX TYPE="CARDINAL">105,520</NUMEX>) of <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> (excluding singletons)
+        were linked to <NUMEX TYPE="CARDINAL">one</NUMEX> or more <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX>.
+        The same approaches were also used to associate MGI
+        genetic markers to <ENAMEX TYPE="ORGANIZATION">DoTS DTs</ENAMEX>. A report with all DT
+        <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX> and their <ENAMEX TYPE="PER_DESC">constituent</ENAMEX> <ENAMEX TYPE="PERSON">GenBank</ENAMEX> sequence
+        accession identifiers was downloaded from <ENAMEX TYPE="ORGANIZATION">CBIL</ENAMEX>'s website
+        (<ENAMEX TYPE="ORGANIZATION">Release 5.0</ENAMEX>, <TIMEX TYPE="DATE">19 August</TIMEX>, <TIMEX TYPE="DATE">2002</TIMEX>). The
+        <ENAMEX TYPE="GPE">musDoTS</ENAMEX>_<ENAMEX TYPE="PRODUCT">1-7-02_containedIds</ENAMEX>.dat.gz file can be downloaded
+        from this site [ <TIMEX TYPE="DATE">18</TIMEX>]. The report lists both <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> assemblies
+        (excluding singletons) and singletons. We included only
+        assemblies in our analysis. Statistics of <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> markers and <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> are shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. The analysis
+        linked <NUMEX TYPE="PERCENT">83.5%</NUMEX> (<NUMEX TYPE="CARDINAL">24,340</NUMEX> out of <NUMEX TYPE="CARDINAL">29,144</NUMEX>) of <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> markers with
+        sequence information to <NUMEX TYPE="PERCENT">20.1%</NUMEX> (<NUMEX TYPE="CARDINAL">25,799</NUMEX> out of <NUMEX TYPE="CARDINAL">128,341</NUMEX>) of
+        <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX>. It is not surprising that <NUMEX TYPE="PERCENT">only about 20%</NUMEX> of <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> or TCs
+        can be associated with <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> because the majority of
+        the assemblies are composed solely of <TIMEX TYPE="TIME">EST</TIMEX> sequences and the
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="ORG_DESC">curation</ENAMEX> processes focus primarily on collecting and
+        curating <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> with genomic and mRNA sequence data.
+        There are a total of <NUMEX TYPE="CARDINAL">26,440</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (including singletons) with
+        mRNA sequences and <NUMEX TYPE="CARDINAL">20,908</NUMEX> of them have MGI <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>.
+        The remaining <NUMEX TYPE="CARDINAL">5,532</NUMEX> DTs with mRNA sequences might represent
+        alternative transcripts of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX>, known genes not yet
+        represented by <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>, or novel genes. We will evaluate the
+        component sequences of these DTs and incorporate them into
+        MGI database over time through manual curation.
+      
+      
+        Classification of the relationships between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> genes
+        and transcript assemblies
+        
+          <NUMEX TYPE="CARDINAL">One</NUMEX>-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between genes and
+          transcripts are related to transcript diversity
+          The <ENAMEX TYPE="ANIMAL">TIGR Mouse</ENAMEX> Gene Index and <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> databases are
+          transcript orientated. That is, the sequence clustering
+          and assembly process seeks to generate distinct
+          assemblies for every form of transcript. The MGI database
+          is gene-centric and <ENAMEX TYPE="PER_DESC">associates</ENAMEX> transcripts from the same
+          <ENAMEX TYPE="ORGANIZATION">locus</ENAMEX> to a single gene object in the database. Therefore,
+          in many cases, there are <ENAMEX TYPE="DISEASE">multiple TCs</ENAMEX>/DTs associated with
+          a single gene in the MGI database. The average numbers of
+          <ENAMEX TYPE="ORGANIZATION">DTs/TCs per MGI</ENAMEX> gene among the <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many associations
+          were <NUMEX TYPE="MONEY">2.29 and 2.24</NUMEX>, respectively.
+          <ENAMEX TYPE="DISEASE">Multiple TCs</ENAMEX>/DTs associated with a single <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene
+          often represent alternatively spliced transcripts. For
+          example, 
+          Ncam1 (neural <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> adhesion
+          <ENAMEX TYPE="CONTACT_INFO">molecule 1</ENAMEX>) in the MGI database (MGI:<ENAMEX TYPE="CONTACT_INFO">97281</ENAMEX>) was
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">TC549908, TC582634, TC582635,</ENAMEX>
+          TC640342, <TIMEX TYPE="DATE">TC640343</TIMEX>) and with <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (<NUMEX TYPE="MONEY">DT.487850</NUMEX>,
+          DT<NUMEX TYPE="CARDINAL">.87072470</NUMEX>, <NUMEX TYPE="MONEY">DT.87072472</NUMEX>, <NUMEX TYPE="MONEY">DT.97397085</NUMEX>, and <NUMEX TYPE="MONEY">DT.97411237</NUMEX>). 
+          Ncam1 is known to exist in <TIMEX TYPE="TIME">three</TIMEX>
+          prominent <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> isoforms encoded by <NUMEX TYPE="CARDINAL">at least four</NUMEX>
+          different transcripts generated from alternative splicing
+          [ <TIMEX TYPE="DATE">19</TIMEX>]. <NUMEX TYPE="CARDINAL">At least eight</NUMEX> distinct mRNAs have been identified
+          by a variety of analyses, and <NUMEX TYPE="CARDINAL">24</NUMEX> potential transcripts
+          have been proposed [ <TIMEX TYPE="DATE">20</TIMEX>]. These <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many associations
+          caused by alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> (and/or alternative
+          <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) addition sites, see below) were confirmed by
+          mapping the <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> or DTs to the mouse genome assembly using
+          <ENAMEX TYPE="ORGANIZATION">BLAT</ENAMEX> search at the <ENAMEX TYPE="ORGANIZATION">University of California</ENAMEX> <ENAMEX TYPE="GPE">Santa Cruz</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">UCSC</ENAMEX>) genome browser [ <TIMEX TYPE="DATE">21</TIMEX>]. Figure 3ashows how these
+          virtual transcripts align to the 
+          Ncam1 gene on mouse chromosome
+          <NUMEX TYPE="CARDINAL">9</NUMEX>.
+          <ENAMEX TYPE="DISEASE">Multiple TCs</ENAMEX> or DTs could also represent products of
+          transcription from <ENAMEX TYPE="PER_DESC">alternative promoters</ENAMEX> and/or
+          polyadenylation <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of a single gene. For example, 
+          <ENAMEX TYPE="ORGANIZATION">Dtna</ENAMEX> (dystrobrevin alpha) in the
+          MGI database (MGI:<ENAMEX TYPE="CONTACT_INFO">106039</ENAMEX>) was associated with <NUMEX TYPE="CARDINAL">five</NUMEX> TCs
+          (<ENAMEX TYPE="CONTACT_INFO">TC546133, TC569762, TC577975, TC590157, TC633947</ENAMEX>) and
+          with <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (<NUMEX TYPE="MONEY">DT.50316348</NUMEX>, <NUMEX TYPE="MONEY">DT.60101497</NUMEX>, <NUMEX TYPE="MONEY">DT.87050693</NUMEX>,
+          <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX><NUMEX TYPE="MONEY">.91340878 and DT.91393353</NUMEX>). The 
+          Dtna gene has <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> that
+          are active in tissue-specific manner [ <TIMEX TYPE="DATE">22</TIMEX>]. Figure
+          3bclearly shows multiple transcripts from <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          of 
+          Dtna <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> on mouse chromosome <NUMEX TYPE="CARDINAL">18</NUMEX>.
+          Experimental results suggested that 
+          Ncam1 contains <NUMEX TYPE="CARDINAL">more than one</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) addition site and produces transcripts with
+          different <TIMEX TYPE="DATE">3</TIMEX>' untranslated regions [ <TIMEX TYPE="DATE">19</TIMEX>]. Figure
+          3ademonstrates that multiple virtual transcripts with
+          different <TIMEX TYPE="DATE">3</TIMEX>' ends align the 
+          Ncam1 gene on mouse chromosome
+          <NUMEX TYPE="CARDINAL">9</NUMEX>.
+          Another explanation for <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many MGI gene to
+          <ENAMEX TYPE="ORGANIZATION">DTs/TCs</ENAMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> is multiple site-specific
+          recombination or <ENAMEX TYPE="SUBSTANCE">DNA rearrangement</ENAMEX> that occurs normally
+          in certain cell types. For example, the 
+          <ENAMEX TYPE="ORGANIZATION">Igh</ENAMEX><ENAMEX TYPE="PRODUCT">-VS107</ENAMEX> (immunoglobulin heavy
+          <ENAMEX TYPE="PERSON">chain</ENAMEX> (<ENAMEX TYPE="PRODUCT">S107</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>)) locus in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> (MGI: <ENAMEX TYPE="CONTACT_INFO">96490</ENAMEX>) was
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> (<ENAMEX TYPE="PRODUCT">TC632874</ENAMEX>, <TIMEX TYPE="DATE">TC632875</TIMEX>, TC632877
+          and <ENAMEX TYPE="PRODUCT">TC643641</ENAMEX>) and with <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (<NUMEX TYPE="MONEY">DT.94166135</NUMEX>,
+          <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX><NUMEX TYPE="MONEY">.94209475 and DT.94398318</NUMEX>). All above <ENAMEX TYPE="ORGANIZATION">TCs/DTs</ENAMEX> and
+          sequences associated with 
+          <ENAMEX TYPE="ORGANIZATION">Igh</ENAMEX><ENAMEX TYPE="PRODUCT">-VS107</ENAMEX> were mapped to the same
+          locus on chromosome <NUMEX TYPE="CARDINAL">12</NUMEX> using the <ENAMEX TYPE="ORGANIZATION">UCSC</ENAMEX> genome browser
+          (data not shown). The sequence differences of 
+          <ENAMEX TYPE="ORGANIZATION">Igh</ENAMEX><ENAMEX TYPE="PRODUCT">-VS107</ENAMEX> transcripts are readily
+          explained by normal <ENAMEX TYPE="SUBSTANCE">DNA rearrangements</ENAMEX> (<ENAMEX TYPE="PERSON">V</ENAMEX>(<ENAMEX TYPE="NATIONALITY">D</ENAMEX>)<ENAMEX TYPE="PERSON">J</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">recombination</ENAMEX>) [ <TIMEX TYPE="DATE">23</TIMEX>]. Another example is that 
+          H2-Eb1 (<ENAMEX TYPE="CONTACT_INFO">histocompatibility 2</ENAMEX>, class
+          <ENAMEX TYPE="PRODUCT">II</ENAMEX> <ENAMEX TYPE="SUBSTANCE">antigen</ENAMEX> E beta) in the MGI database (MGI:<ENAMEX TYPE="CONTACT_INFO">95901</ENAMEX>) was
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> (<ENAMEX TYPE="PRODUCT">TC575977</ENAMEX>, <TIMEX TYPE="DATE">TC608775</TIMEX>, TC638140
+          and <ENAMEX TYPE="PRODUCT">TC640785</ENAMEX>) and with <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (<NUMEX TYPE="MONEY">DT.493389</NUMEX> and
+          <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX><NUMEX TYPE="MONEY">.55100612</NUMEX>). The 
+          H2-Eb1 gene contains a
+          recombination hotspot, which has a predominant role in
+          generating different recombinants through meiotic
+          crossing-over within the I region of the mouse major
+          histocompatibility <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> (MHC) [ <TIMEX TYPE="DATE">24</TIMEX>]. All above <ENAMEX TYPE="ORGANIZATION">TCs/DTs</ENAMEX>
+          except <ENAMEX TYPE="PRODUCT">TC575977</ENAMEX> and <NUMEX TYPE="MONEY">DT.55100612</NUMEX> were mapped to annotated 
+          H2-Eb1 gene on chromosome <NUMEX TYPE="CARDINAL">17</NUMEX> using
+          the <ENAMEX TYPE="ORGANIZATION">UCSC</ENAMEX> genome browser (data not shown). TC575977 and
+          DT<NUMEX TYPE="CARDINAL">.55100612</NUMEX> were associated to 
+          H2<TIMEX TYPE="DATE">-Eb1</TIMEX> through <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> sequence
+          AK012147, which was mapped to chromosome <NUMEX TYPE="CARDINAL">5</NUMEX>. Further
+          analysis indicated that <ENAMEX TYPE="PRODUCT">AK012147</ENAMEX> was incorrectly
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with 
+          H2<TIMEX TYPE="DATE">-Eb1</TIMEX>. 
+          Non-biological explanations may also explain some of
+          the <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> among genes and transcripts
+          in our analysis. For example, low-quality sequence data
+          or problematic sequences that are not filtered out before
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> and <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX> can cause errors in the sequence
+          assemblies. Another possible explanation is that
+          <ENAMEX TYPE="ORGANIZATION">nucleotide</ENAMEX> and protein <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX> are occasionally
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the wrong gene in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>. This will always
+          be a challenge to the database <ENAMEX TYPE="PER_DESC">community</ENAMEX> when both
+          <ENAMEX TYPE="PERSON">completeness</ENAMEX> (including as much data as possible in the
+          database) and accuracy (associating every sequence to the
+          right gene) are goals. Fortunately, non-biological
+          reasons for <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between transcripts
+          and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> only account for a small percentage of the
+          whole <ENAMEX TYPE="ORG_DESC">dataset</ENAMEX> based on our experience of ongoing internal
+          quality control and manual check of portions of the data
+          in this analysis.
+        
+        
+          The many-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between genes and
+          transcripts are evidence for <NUMEX TYPE="CARDINAL">over</NUMEX>-clustering or gene
+          <ENAMEX TYPE="ORGANIZATION">redundancy</ENAMEX> in MGI
+          In the analysis reported here, <NUMEX TYPE="PERCENT">14.8%</NUMEX> (<NUMEX TYPE="CARDINAL">4,302</NUMEX> out of
+          <NUMEX TYPE="CARDINAL">29,144</NUMEX>) of MGI genes with sequence information were
+          involved in many-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> to <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> transcript
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> and <NUMEX TYPE="PERCENT">12.4%</NUMEX> (<NUMEX TYPE="CARDINAL">3,621</NUMEX> out <NUMEX TYPE="CARDINAL">29,144</NUMEX>) in <TIMEX TYPE="TIME">many-to-one</TIMEX>
+          gene to <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> transcript <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. The average numbers
+          of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> per <ENAMEX TYPE="ORGANIZATION">DT/TC</ENAMEX> were <NUMEX TYPE="MONEY">2.16 and 2.23</NUMEX>, respectively.
+          First, some of the many-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> are due to
+          sequence clusters that contain mistakenly grouped similar
+          sequences from closely related <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (paralogs). For
+          example, sequences from <NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          defensin-related cryptdin gene <ENAMEX TYPE="PER_DESC">family</ENAMEX> were clustered into
+          <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> (<NUMEX TYPE="MONEY">TC6H932</NUMEX>) and to <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">DT</ENAMEX>. <NUMEX TYPE="CARDINAL">94272645</NUMEX>). These
+          genes share similar structure and sequence. Their mRNAs
+          are distinguished by a <NUMEX TYPE="QUANTITY">45-nucleotide</NUMEX> <ENAMEX TYPE="PRODUCT">5</ENAMEX>' untranslated
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> (UTS) encoded completely by the <NUMEX TYPE="ORDINAL">first</NUMEX> exon [
+          <NUMEX TYPE="CARDINAL">25</NUMEX>]. <NUMEX TYPE="ORDINAL">Second</NUMEX>, genes adjacent to each other in the same
+          <ENAMEX TYPE="GPE">chromosomal</ENAMEX> location were occasionally clustered together
+          and assembled into one sequence because their transcripts
+          overlap each other. For example, the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of 
+          Stk11 (<ENAMEX TYPE="DISEASE">serine</ENAMEX>/threonine kinase <NUMEX TYPE="CARDINAL">11</NUMEX>;
+          MGI:<ENAMEX TYPE="CONTACT_INFO">1341870</ENAMEX>) is in very close proximity to the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of
+          a functionally unrelated gene dos (downstream of 
+          Stk11 ; MGI: <ENAMEX TYPE="CONTACT_INFO">1354170</ENAMEX>) and it seems
+          that overlapping transcripts of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are
+          produced [ <TIMEX TYPE="DATE">26</TIMEX>]. Both 
+          Stk11 and 
+          Dos were linked to <NUMEX TYPE="CARDINAL">one</NUMEX> DT
+          (<NUMEX TYPE="MONEY">DT.493186</NUMEX>) because sequences associated with both genes
+          were clustered and assembled together. <NUMEX TYPE="ORDINAL">Third</NUMEX>, there are
+          rare cases of polycistronic transcripts in mammalian
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. For example, 
+          <ENAMEX TYPE="ORGANIZATION">Snrpn</ENAMEX> (small nuclear
+          <ENAMEX TYPE="ORGANIZATION">ribonucleoprotein N; MGI</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">98347</ENAMEX>) and 
+          <ENAMEX TYPE="ORGANIZATION">Snurf</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">SNRPN</ENAMEX> upstream reading frame; MGI:
+          <NUMEX TYPE="CARDINAL">1891236</NUMEX>) are expressed as bicistronic 
+          Snurf-Snrpn transcript [ <TIMEX TYPE="DATE">27</TIMEX>] and
+          both of them were associated with one single <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX>
+          (<NUMEX TYPE="MONEY">TC619385</NUMEX>) and one single <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> (<NUMEX TYPE="MONEY">DT.535946</NUMEX>) in our analysis.
+          Finally, many-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> can be caused by
+          uncorrected <ENAMEX TYPE="SUBSTANCE">gene redundancy</ENAMEX> (<NUMEX TYPE="CARDINAL">one</NUMEX> gene represented by
+          multiple entries) in the MGI database. The majority of
+          the redundant records are the result of genes in <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> that
+          are represented solely by <TIMEX TYPE="TIME">EST</TIMEX> sequences. As these
+          redundancies are identified in MGI they are
+          corrected.
+        
+        
+          Many-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between genes and
+          transcripts could be the result of any combination of
+          many-to-<NUMEX TYPE="CARDINAL">one and one</NUMEX>-to-many associations
+          In the analysis reported here, we had <NUMEX TYPE="CARDINAL">531</NUMEX> <ENAMEX TYPE="PRODUCT">MGI-DT</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">454</NUMEX> <ENAMEX TYPE="ORGANIZATION">MGI-TC</ENAMEX> many-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. There were <NUMEX TYPE="PERCENT">4.1%</NUMEX>
+          (<NUMEX TYPE="CARDINAL">1,202</NUMEX> out of <NUMEX TYPE="CARDINAL">29,144</NUMEX>) of MGI genes with sequence
+          information and <NUMEX TYPE="CARDINAL">1,355</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> involved in many-to-many MGI
+          gene to <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> transcript <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> and <NUMEX TYPE="PERCENT">3.6%</NUMEX> (<NUMEX TYPE="CARDINAL">1,044</NUMEX> out
+          <NUMEX TYPE="CARDINAL">29,144</NUMEX>) of MGI genes with sequence information and <NUMEX TYPE="CARDINAL">1,127</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> in many-to-many MGI gene to <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> transcript
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>. The average numbers of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> per <ENAMEX TYPE="ORGANIZATION">DT/TC</ENAMEX>
+          were <NUMEX TYPE="MONEY">2.26 and 2.30</NUMEX>, respectively, and the average numbers
+          of <ENAMEX TYPE="ORGANIZATION">DTs/TCs per MGI</ENAMEX> gene were <NUMEX TYPE="MONEY">2.55 and 2.48</NUMEX>, respectively.
+          The majority of the many-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> had only
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs/TCs</ENAMEX>. The <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with the largest
+          number of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> in MGI-DT <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> included <NUMEX TYPE="CARDINAL">eight</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">paired-Ig</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> A <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          Pira1, <TIMEX TYPE="DATE">Pira2</TIMEX>, <TIMEX TYPE="DATE">Pira3</TIMEX>, <TIMEX TYPE="DATE">Pira4</TIMEX>, <TIMEX TYPE="DATE">Pira5</TIMEX>,
+          Pira7, <TIMEX TYPE="DATE">Pira10</TIMEX>, <TIMEX TYPE="DATE">Pira11</TIMEX> ) and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> (<NUMEX TYPE="MONEY">DT.87053023</NUMEX> and
+          <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX>. <NUMEX TYPE="CARDINAL">94272531</NUMEX>). <ENAMEX TYPE="SUBSTANCE">DNA blot</ENAMEX> analysis indicated the presence
+          of multiple paired-<ENAMEX TYPE="ORGANIZATION">Ig</ENAMEX>-like <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> A genes in the
+          genome, and cDNA sequencing analysis suggested <NUMEX TYPE="CARDINAL">0.2</NUMEX>-<NUMEX TYPE="PERCENT">4.7%</NUMEX>
+          frequency of overall nucleotide variations [ <TIMEX TYPE="DATE">28</TIMEX>]. The
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> with the largest number of <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">MGI-TC</ENAMEX>
+          associations included <NUMEX TYPE="CARDINAL">six</NUMEX> eosinophil-associated
+          <ENAMEX TYPE="ORGANIZATION">ribonuclease</ENAMEX> ( 
+          Ear1, <TIMEX TYPE="DATE">Ear2</TIMEX>, <TIMEX TYPE="DATE">Ear3</TIMEX>, <TIMEX TYPE="DATE">Ear8</TIMEX>, <ENAMEX TYPE="PRODUCT">Ear9</ENAMEX> and 
+          Ear10 ) and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> guanylyltransferase
+          and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-phosphatase ( 
+          <ENAMEX TYPE="ORGANIZATION">Rngtt</ENAMEX> ) and <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">TC561767,</ENAMEX>
+          TC569331, <TIMEX TYPE="DATE">TC557280 and TC557281</TIMEX>). The <ENAMEX TYPE="ANIMAL">mouse Ear</ENAMEX> family
+          has <NUMEX TYPE="CARDINAL">at least 13</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX>, <NUMEX TYPE="CARDINAL">11</NUMEX> functional <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">pseudogenes</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>]. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within this family share a
+          common genomic structure that is conserved with primate
+          Ear genes. The <ENAMEX TYPE="ANIMAL">mouse Ear</ENAMEX> gene family forms <NUMEX TYPE="CARDINAL">four</NUMEX> unique
+          <ENAMEX TYPE="ORGANIZATION">clades</ENAMEX> ( 
+          Ear1<NUMEX TYPE="CARDINAL">/2/3/8/9/10</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> form
+          subfamily A). The <ENAMEX TYPE="PER_DESC">members</ENAMEX> of each clade share a high
+          degree of sequence identity. Transcripts from 
+          Ear1<NUMEX TYPE="CARDINAL">/2/3/8/9/10</NUMEX> were over-clustered
+          into <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> (<NUMEX TYPE="MONEY">TC561767</NUMEX>). TC569331 was associated with 
+          Ear2 because of shared <TIMEX TYPE="TIME">EST</TIMEX> sequence
+          AA510162 and associated with 
+          <ENAMEX TYPE="ORGANIZATION">Rngtt</ENAMEX> because of shared GenBank
+          <ENAMEX TYPE="CONTACT_INFO">sequence AK002922.</ENAMEX> Sequence analysis indicated that
+          AA510162 encodes 
+          <ENAMEX TYPE="ORGANIZATION">Rngtt</ENAMEX> instead of 
+          Ear2 . Further analysis suggested
+          that a typographical error in the <ENAMEX TYPE="ORG_DESC">publication</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]
+          caused the reported <TIMEX TYPE="TIME">EST</TIMEX> sequence associated with 
+          Ear2 to be <TIMEX TYPE="DATE">AA510162</TIMEX> instead of
+          AA510161. This many-to-many <ENAMEX TYPE="ORG_DESC">association</ENAMEX> can be resolved
+          into <NUMEX TYPE="CARDINAL">one many</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">association</ENAMEX> (<NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PRODUCT">Ear</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to
+          TC561767) caused by <NUMEX TYPE="CARDINAL">over</NUMEX>-clustering and <NUMEX TYPE="CARDINAL">one one</NUMEX>-to-many
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> (<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene 
+          <ENAMEX TYPE="ORGANIZATION">Rngtt</ENAMEX> to <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX>) caused by
+          transcript diversity. The <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with the largest number
+          of <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> in MGI-DT <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> included <NUMEX TYPE="CARDINAL">18</NUMEX> <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> and three
+          immunoglobin heavy-chain <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          Igh-<NUMEX TYPE="CARDINAL">4</NUMEX>, <ENAMEX TYPE="PRODUCT">Igh-VJ558</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Igh-V</ENAMEX> ). The <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with the largest
+          number of <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">MGI-TC</ENAMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> included <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">three</NUMEX> immunoglobin heavy-chain <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+          Igh-<NUMEX TYPE="CARDINAL">4</NUMEX>, <ENAMEX TYPE="PRODUCT">Igh-VJ558</ENAMEX> and 
+          <ENAMEX TYPE="CONTACT_INFO">Igh-1</ENAMEX> ). The complexity of the
+          many-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> demonstrates the challenges of
+          creating links between genes and electronic transcripts
+          and highlights the caveats that <ENAMEX TYPE="PER_DESC">users</ENAMEX> of these resources
+          must keep in mind.
+        
+      
+      
+        Comparison of <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TIGR Mouse Gene Index</ENAMEX>
+        
+          For the <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">MGI-DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MGI-TC associations</ENAMEX>,
+          the number of shared sequences between <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> pairs
+          linked to the same MGI gene varies
+          Our analysis reported <NUMEX TYPE="CARDINAL">16,996</NUMEX> <ENAMEX TYPE="PRODUCT">MGI-DT</ENAMEX> and <NUMEX TYPE="CARDINAL">13,451</NUMEX> <ENAMEX TYPE="ORGANIZATION">MGI-TC</ENAMEX>
+          <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. A total of <NUMEX TYPE="CARDINAL">11,126</NUMEX> MGI genes had
+          both <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. Among these, all
+          except <NUMEX TYPE="CARDINAL">eight</NUMEX> pairs of <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> had one or more GenBank
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in common (see <ENAMEX TYPE="PRODUCT">Table 4for</ENAMEX> details). There are
+          <NUMEX TYPE="CARDINAL">1,305</NUMEX> <ENAMEX TYPE="SUBSTANCE">MGI genes</ENAMEX>, whose associated <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> pairs had
+          exactly the same component sequences. The assemblies that
+          were identical in the number of component sequences were
+          generally small clusters. Of the assemblies associated
+          with the <NUMEX TYPE="CARDINAL">1,305</NUMEX> MGI genes described above, <NUMEX TYPE="CARDINAL">496</NUMEX> had only
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">component sequences</ENAMEX>, <NUMEX TYPE="CARDINAL">635</NUMEX> had <NUMEX TYPE="CARDINAL">three to five</NUMEX> component
+          sequences, <NUMEX TYPE="CARDINAL">136</NUMEX> had <NUMEX TYPE="CARDINAL">six</NUMEX> to <NUMEX TYPE="CARDINAL">ten</NUMEX> component sequences, and <NUMEX TYPE="CARDINAL">38</NUMEX>
+          had <NUMEX TYPE="CARDINAL">more than ten</NUMEX> but less than <NUMEX TYPE="CARDINAL">33</NUMEX> component sequences.
+          Most <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> pairs associated with the same MGI genes
+          have <NUMEX TYPE="CARDINAL">one</NUMEX> or more sequences in common. The number of
+          <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> sequences between <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> varies widely, ranging
+          from <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">more than 1,000</NUMEX>. The maximum number of shared
+          GenBank sequences is <NUMEX TYPE="MONEY">1,157 between DT.9133761</NUMEX> and
+          TC615398 both associated with <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene 
+          Svs2 (seminal vesicle <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>,
+          secretion <NUMEX TYPE="CARDINAL">2</NUMEX>; MGI: <ENAMEX TYPE="CONTACT_INFO">1858275</ENAMEX>). These pairs generally have
+          very different numbers of component sequences, ranging
+          from <NUMEX TYPE="CARDINAL">only two</NUMEX> to <NUMEX TYPE="MONEY">more than a few thousand sequences</NUMEX>. TCs
+          generally have larger numbers of sequences per cluster
+          than do <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX>. The maximum number of component sequences
+          for <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> are <NUMEX TYPE="CARDINAL">1,592</NUMEX> (<NUMEX TYPE="MONEY">DT.537719</NUMEX>) and <NUMEX TYPE="MONEY">9,193</NUMEX> (<NUMEX TYPE="MONEY">TC619155</NUMEX>)
+          respectively.
+        
+        
+          For the <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many MGI-<ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MGI-TC associations</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> and <ENAMEX TYPE="PERSON">TIGR Mouse Gene Index</ENAMEX> did not consistently
+          <ENAMEX TYPE="ORGANIZATION">cluster the GenBank</ENAMEX> sequences
+          There are <NUMEX TYPE="CARDINAL">2,522</NUMEX> MGI genes associated with multiple
+          <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX>, and <NUMEX TYPE="CARDINAL">1,975</NUMEX> MGI genes with <ENAMEX TYPE="DISEASE">multiple TCs</ENAMEX>. And <NUMEX TYPE="CARDINAL">1,475</NUMEX> MGI
+          genes had both <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>-to-<ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>-to-<NUMEX TYPE="CARDINAL">DT one</NUMEX>-to-many
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>. We considered all TCs or DTs associated
+          with the same MGI <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as different forms of transcripts
+          and grouped them together. We compared the identity and
+          grouping of the component sequences between the <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> group
+          and its corresponding <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. We included only the
+          sequences curated in the MGI database in the comparison
+          because they are mostly high-quality mRNA sequences and
+          should be reliably clustered. There were only <NUMEX TYPE="CARDINAL">245</NUMEX> pairs
+          of the <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> associated with the same set
+          of <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="PER_DESC">curated</ENAMEX> <ENAMEX TYPE="PERSON">GenBank</ENAMEX> sequences, which were also
+          clustered in the same way. The remaining pairs differ
+          either in their set of associated <ENAMEX TYPE="PERSON">GenBank</ENAMEX> sequences or in
+          the way of sequence clustering.
+          The differences between the two electronic transcript
+          databases are likely to be due to the different criteria
+          used by the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> for clustering and assembly of <TIMEX TYPE="TIME">EST</TIMEX>
+          and mRNA sequences. <NUMEX TYPE="CARDINAL">One</NUMEX> possibility is different degrees
+          of trimming poor-quality sequences from the ends of ESTs
+          (<ENAMEX TYPE="ORGANIZATION">C.J.S.</ENAMEX>, personal communication). Less trimming in DoTS
+          build might result in more assemblies than <ENAMEX TYPE="ORGANIZATION">TIGR TCs</ENAMEX>. In
+          testing, fewer larger assemblies were generated when
+          trimming was not limited. Limited trimming was chosen in
+          attempt to preserve better representation of
+          differentially processed transcripts in <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> build. The
+          comparison of the <NUMEX TYPE="CARDINAL">two</NUMEX> databases using curated data from
+          <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> as a reference provides some measures to evaluate and
+          improve computational methods.
+        
+      
+      
+        Utility of the analysis
+        The <ENAMEX TYPE="ORG_DESC">association</ENAMEX> of MGI genes with electronic transcript
+        assemblies supplies biological context to the
+        <ENAMEX TYPE="ORGANIZATION">computationally</ENAMEX> assembled transcripts and allows
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to access these data from biological as well as
+        sequence perspectives. The curation process described here
+        permits us to rapidly build high-confidence associations
+        between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and electronic transcript sequences. The
+        results reveal the complications that can arise from the
+        clustering process as well as errors in the MGI database.
+        The assessment of the results will provide measures to
+        evaluate and improve <TIMEX TYPE="TIME">the EST</TIMEX>-assembly protocols and to
+        check the quality of gene representation in the MGI
+        database.
+      
+      
+        Access to the links between the MGI database and the
+        <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CBIL</ENAMEX> electronic transcript databases
+        Only <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TCs/DTs</ENAMEX> that are
+        supported by non-conflicting evidence (<NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX> and
+        <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>) are accessible from the web
+        browsers for these resources. The links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to
+        <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> are available from the <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene detail pages.
+        The links from <ENAMEX TYPE="ORGANIZATION">TCs</ENAMEX> to MGI genes are available from <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX>'s
+        <ENAMEX TYPE="ORGANIZATION">TC</ENAMEX> report page and through another TIGR database resource,
+        <ENAMEX TYPE="ORGANIZATION">RESOURCERER</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX>]. The links from <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> to MGI genes are
+        available from <ENAMEX TYPE="ORGANIZATION">Allgenes</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">DT</ENAMEX> report page [ <TIMEX TYPE="DATE">32</TIMEX>]. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can
+        query for related <ENAMEX TYPE="ORGANIZATION">DTs</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> gene accession identifiers or
+        symbols. The data files for <ENAMEX TYPE="ORGANIZATION">MGI-DT/TC</ENAMEX> <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> are
+        available from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> public <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site [ <TIMEX TYPE="DATE">17</TIMEX>]. These data will
+        be updated after each build of <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX>'s <ENAMEX TYPE="PERSON">Mouse Gene</ENAMEX> Index and
+        <ENAMEX TYPE="ORGANIZATION">CBIL</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> database or after every major change in MGI
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>.
+      
+      
+        Additional data files
+        The original datasets from <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX>(from <ENAMEX TYPE="PERSON">TIGR Mouse Gene</ENAMEX>
+        Index <ENAMEX TYPE="ORGANIZATION">Release 9.0</ENAMEX> (<NUMEX TYPE="CARDINAL">1</NUMEX> <TIMEX TYPE="DATE">October 2002</TIMEX>)), <ENAMEX TYPE="PERSON">DoTS</ENAMEX>(from <ENAMEX TYPE="ORGANIZATION">DoTS</ENAMEX> mouse
+        <ENAMEX TYPE="ORGANIZATION">assembly Release 5.0</ENAMEX> (<TIMEX TYPE="DATE">19 August 2002</TIMEX>)) and <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX>(<TIMEX TYPE="DATE">11 October</TIMEX>
+        <TIMEX TYPE="DATE">2002</TIMEX>) are available as additional data files. Links from
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the <ENAMEX TYPE="ORGANIZATION">DOTS</ENAMEX> ( <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many, many-to-oneand
+        many-to-many) and <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX> ( <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many,
+        many-to-oneand many-to-many) electronic transcript
+        <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> from the analysis done on <TIMEX TYPE="DATE">11 October 2002</TIMEX> are
+        also available as additional data files. The most recent
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> files for <ENAMEX TYPE="ORGANIZATION">MGI-DT/TC associations</ENAMEX> can be obtained from
+        <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> public <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site [ <TIMEX TYPE="DATE">17</TIMEX>].
+        Additional data file 1
+        The original datasets from TIGR
+        The original dataset from TIGR
+        Click here for additional data file
+        Additional data file 2
+        The original dataset from DoTs
+        The original dataset from DoTs
+        Click here for additional data file
+        Additional data file 3
+        The original dataset from MGI
+        The original dataset from MGI
+        Click here for additional data file
+        Additional data file 4
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTs - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Click here for additional data file
+        Additional data file 5
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many
+        Click here for additional data file
+        Additional data file 6
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Click here for additional data file
+        Additional data file 7
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-many
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to the DOTS - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-many
+        Click here for additional data file
+        Additional data file 8
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Click here for additional data file
+        Additional data file 9
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">one</NUMEX>-to-many
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">10</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-<NUMEX TYPE="CARDINAL">one</NUMEX>
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">11</NUMEX>
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-many
+        Links from <ENAMEX TYPE="ORGANIZATION">MGI</ENAMEX> to TIGR - <NUMEX TYPE="CARDINAL">many</NUMEX>-to-many
+        Click here for additional data file
+      
+    
+  

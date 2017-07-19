@@ -1,0 +1,567 @@
+
+  
+    
+      
+        Background
+        Recent progress in genomic sequencing has led to the
+        rapid enrichment of <ENAMEX TYPE="SUBSTANCE">protein sequence databases</ENAMEX>.
+        Computational biology strives to extract the maximum
+        possible information from these sequences by classifying
+        them according to their homologous relationships. Classical
+        <ENAMEX TYPE="PER_DESC">protein families</ENAMEX> are distinguished by <ENAMEX TYPE="PER_DESC">members</ENAMEX> which exhibit
+        sequence similarity, a feature which can often be used to
+        infer that the sequences are related evolutionarily as well
+        as functionally. <NUMEX TYPE="CARDINAL">One</NUMEX> of the first goals of any
+        genome-sequencing project is to broadly classify as many
+        <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and their products as possible into putative
+        functional <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        <ENAMEX TYPE="SUBSTANCE">Proteins</ENAMEX> are translated from their corresponding mRNAs.
+        Cellular mRNA levels are immensely informative about cell
+        state and the activity of genes, and in most cases, changes
+        in mRNA abundance are positively correlated with changes in
+        <ENAMEX TYPE="SUBSTANCE">protein abundance</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Co</ENAMEX>-regulation of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> often reflects
+        that these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are involved in similar biological
+        processes and have related functions [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Therefore
+        changes in the expression patterns of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> families
+        under different experimental conditions can provide clues
+        about regulatory mechanisms, the relationships between
+        broader cellular functions and biochemical pathways, as
+        well as interactions between different <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> motifs [ <NUMEX TYPE="CARDINAL">2 3</NUMEX>
+        <NUMEX TYPE="CARDINAL">4 5 6 7</NUMEX> ] .
+        The advent of microarray technology has made
+        simultaneous analysis of the gene expression profiles of
+        <NUMEX TYPE="CARDINAL">tens of thousands</NUMEX> of genes a practical reality [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+        Availability of human genome sequences and massive high
+        throughput data on their expression provides an opportunity
+        to study regulatory relationships between gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> [ <NUMEX TYPE="CARDINAL">9</NUMEX>
+        <NUMEX TYPE="CARDINAL">10</NUMEX> ] . <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX>'s <ENAMEX TYPE="PRODUCT">LifeExpress RNA Database</ENAMEX> is a gene
+        expression database that contains raw and normalized data
+        from <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of <ENAMEX TYPE="SUBSTANCE">Incyte microarray</ENAMEX> experiments. Using these
+        large-scale mRNA expression data, we can infer the
+        functional relationships between protein <ENAMEX TYPE="PER_DESC">families</ENAMEX> by
+        comparing the aggregated expression profiles of the members
+        of each protein <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> is a functionally annotated database of protein
+        domain <ENAMEX TYPE="PER_DESC">families</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] . In this study, each <ENAMEX TYPE="PER_DESC">member</ENAMEX> of Pfam
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> was mapped to <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones which were presented
+        in the <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> microarray chips based on the sequence
+        identity. We then generated mRNA expression profiles for
+        these Pfam family <ENAMEX TYPE="PER_DESC">members</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX>'s <ENAMEX TYPE="PRODUCT">LifeExpress</ENAMEX> <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">LE</ENAMEX>) database (<ENAMEX TYPE="PRODUCT">Version 3.0</ENAMEX>, <TIMEX TYPE="DATE">April 2001</TIMEX> release, Incyte
+        <ENAMEX TYPE="ORGANIZATION">Genomics, Inc.</ENAMEX>). We analyzed <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, whose
+        family <ENAMEX TYPE="PER_DESC">members</ENAMEX> are well represented on the Incyte
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. The expression data for various <ENAMEX TYPE="PER_DESC">members</ENAMEX> of a
+        <ENAMEX TYPE="PERSON">single Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> in one experiment was first converted
+        into binary digits and then summarized as the <ENAMEX TYPE="ORGANIZATION">Family</ENAMEX>
+        <ENAMEX TYPE="PERSON">Regulation Ratio</ENAMEX>. The set of <ENAMEX TYPE="ORGANIZATION">Family Regulation Ratios</ENAMEX> for a
+        <ENAMEX TYPE="PERSON">particular Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> across multiple experiments is
+        called a <ENAMEX TYPE="ORGANIZATION">Family Regulation Profile</ENAMEX>. By using <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+        <ENAMEX TYPE="PERSON">Correlation</ENAMEX>, we analyzed the similarities between these
+        Family Regulation Profiles to impute functional
+        relationships between the different <ENAMEX TYPE="PER_DESC">families</ENAMEX>. This method
+        was validated by comparing <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX>
+        generated based on <NUMEX TYPE="CARDINAL">two</NUMEX> different randomly selected <ENAMEX TYPE="PRODUCT">LE</ENAMEX> data
+        <ENAMEX TYPE="ORGANIZATION">subsets</ENAMEX>.
+        This study explores an approach to relate protein
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX> based on quantitative comparison of the family
+        mRNA expression profiles. Analysis of the profiles may be
+        useful to address what protein domain <ENAMEX TYPE="PER_DESC">families</ENAMEX> are
+        <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-regulated and possibly how they may interact physically
+        or genetically with one another.
+      
+      
+        Results
+        
+          Clones mapped to multiple <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          Structural similarities between distinct proteins
+          often involve only a portion of each protein sequence.
+          These conserved <ENAMEX TYPE="ORG_DESC">sub-structures</ENAMEX>, which often have readily
+          identifiable boundaries, may recur in a large number of
+          different <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in which they perform a similar
+          function. In addition, many <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> consist of
+          combinations of these recurrent <ENAMEX TYPE="DISEASE">substructures</ENAMEX> (domains)
+          in which case the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> function can be economically
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> based on the presence of these domains. <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> is
+          a domain-based <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> database. Multi-domain proteins
+          can be classified into several <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, which in
+          turns means that several <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> can share the same
+          corresponding <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+          Among <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> discussed here, there are <TIMEX TYPE="DATE">1647</TIMEX>
+          clones mapped to <NUMEX TYPE="CARDINAL">more than one</NUMEX> <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, and <NUMEX TYPE="CARDINAL">346</NUMEX> Pfam
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> sharing <NUMEX TYPE="CARDINAL">more than one</NUMEX> clone. Multi-domain
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are the major reason for this observation, i.e. 
+          PF00043 and 
+          PF02798 representing <ENAMEX TYPE="PRODUCT">C-domain</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-domain of 
+          Glutathione
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>-transferease respectively. Non-uniformity of Pfam
+          <ENAMEX TYPE="PERSON">classification</ENAMEX> and clone mapping may also cause clone
+          sharing between <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>. A table listing pairs of
+          Pfam <ENAMEX TYPE="PER_DESC">families</ENAMEX> that share <NUMEX TYPE="PERCENT">more than 50%</NUMEX> of their family
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> is provided as an additional file (see Additional
+          File <NUMEX TYPE="CARDINAL">1</NUMEX>: [<TIMEX TYPE="DATE">supp1</TIMEX>.<ENAMEX TYPE="PERSON">doc</ENAMEX>]). These <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> pairings may
+          suggest that the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">domains</ENAMEX> are associated with a
+          distinct functional <ENAMEX TYPE="PER_DESC">class</ENAMEX>.
+          Additional File 1
+          The list of the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs which share <NUMEX TYPE="PERCENT">more than 50%</NUMEX>
+          family members
+          Click here for file
+        
+        
+          <ENAMEX TYPE="WORK_OF_ART">Correlations of Pfam Family Expression Profiles for</ENAMEX>
+          Related Pfams
+          Our analysis includes <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, whose names
+          are provided in an additional file (see Additional File
+          <TIMEX TYPE="TIME">2:</TIMEX> [<TIMEX TYPE="DATE">supp2</TIMEX>.<ENAMEX TYPE="PERSON">doc</ENAMEX>]). <ENAMEX TYPE="PERSON">Pearson Correlation Coefficients</ENAMEX> (PCC)
+          were calculated between each pair of <ENAMEX TYPE="ORGANIZATION">Pfam Family</ENAMEX>
+          <ENAMEX TYPE="PERSON">Regulation Profiles</ENAMEX>. Common clones shared by <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs
+          were removed during <ENAMEX TYPE="ORGANIZATION">PCC</ENAMEX> calculation to reduce this source
+          of bias (<ENAMEX TYPE="ORGANIZATION">See Methods</ENAMEX>). <TIMEX TYPE="DATE">9045</TIMEX> PCCs were computed based on
+          the <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX> consisting of more than
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> clone <ENAMEX TYPE="PER_DESC">members</ENAMEX>. Of these, <NUMEX TYPE="CARDINAL">781</NUMEX> <ENAMEX TYPE="ORGANIZATION">PCCs</ENAMEX> were greater than
+          <NUMEX TYPE="CARDINAL">0.6</NUMEX> and <NUMEX TYPE="CARDINAL">71</NUMEX> PCCs greater than <NUMEX TYPE="CARDINAL">0.75</NUMEX>. <ENAMEX TYPE="PRODUCT">Table 1shows</ENAMEX> the top
+          hits (PCC - <NUMEX TYPE="CARDINAL">0.75</NUMEX>) with the highest <ENAMEX TYPE="ORGANIZATION">PCC</ENAMEX> of <NUMEX TYPE="CARDINAL">0.89</NUMEX> between
+          PF00046 (homeobox domain) and <TIMEX TYPE="DATE">PF00520</TIMEX> (ion transport
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>). More detailed and completed Pfam-pairs (PCC -
+          <NUMEX TYPE="MONEY">0.6</NUMEX>) are listed in the <ENAMEX TYPE="FAC">Additional File 3</ENAMEX>: [<TIMEX TYPE="DATE">supp3</TIMEX>.<ENAMEX TYPE="PERSON">doc</ENAMEX>].
+          The line graphs of <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX> of PF00046
+          and <ENAMEX TYPE="PRODUCT">PF00520</ENAMEX> are shown as <ENAMEX TYPE="LANGUAGE">Fig</ENAMEX> 1.
+          Additional File 2
+          The list of these <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="PERSON">Pfam</ENAMEX> family <ENAMEX TYPE="ORGANIZATION">IDs</ENAMEX> and names
+          Click here for file
+          Additional File 3
+          List of the <ENAMEX TYPE="GPE">Pfam</ENAMEX>-pairs with the <ENAMEX TYPE="ORGANIZATION">Pearson Correlation</ENAMEX>
+          Coefficient greater than <NUMEX TYPE="CARDINAL">0.6</NUMEX>.
+          Click here for file
+          The <ENAMEX TYPE="PERSON">Pfam</ENAMEX> co-regulation <ENAMEX TYPE="ORG_DESC">network</ENAMEX> can be visualized using
+          the <ENAMEX TYPE="PRODUCT">Pajek</ENAMEX> software package, a program originally designed
+          for social network analysis (<NUMEX TYPE="MONEY">12</NUMEX>). The map is layed out
+          with Kamada-Kawi methods where each node represents a
+          <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> and each edge represents a correlation
+          coefficient greater than <NUMEX TYPE="MONEY">0.6</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2A) and <NUMEX TYPE="MONEY">0.75</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2B)
+          between <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX> of the connecting
+          <ENAMEX TYPE="ORGANIZATION">nodes</ENAMEX>. A subset of interconnected <ENAMEX TYPE="ORGANIZATION">Pfams</ENAMEX> in which each
+          <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> has at least k interactions (where k is an integer)
+          forms a k-core. These cores represent <ENAMEX TYPE="ORGANIZATION">Pfams</ENAMEX> associated
+          with one another by multiple interactions. The <NUMEX TYPE="CARDINAL">20</NUMEX>-core
+          subgraph where each <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> had <NUMEX TYPE="CARDINAL">at least 20</NUMEX> <ENAMEX TYPE="FAC_DESC">connections</ENAMEX>, was
+          derived from <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 2Aand displayed as <ENAMEX TYPE="PRODUCT">Fig 2C</ENAMEX>. This graph
+          may represent the core <ENAMEX TYPE="ORG_DESC">network</ENAMEX> of cellular
+          regulation.
+          Additional File 4
+          Figure. Pfam regulation network predicted by the
+          correlation of <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX>. In total, <NUMEX TYPE="CARDINAL">89</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">Pfams</ENAMEX> (labeled with <ENAMEX TYPE="ORGANIZATION">Pfam Ids</ENAMEX>) and <NUMEX TYPE="CARDINAL">781</NUMEX> correlations with
+          PCC - <NUMEX TYPE="CARDINAL">0.6</NUMEX> are shown <ENAMEX TYPE="PRODUCT">Table</ENAMEX>. The list of the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs
+          which share <NUMEX TYPE="PERCENT">more than 50%</NUMEX> family members
+          Click here for file
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> cross-validation
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> independent sets of <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX>
+          were constructed from the randomly selected,
+          non-overlapping subsets of expression data <TIMEX TYPE="DATE">S1 and S2</TIMEX> (see
+          Methods). <ENAMEX TYPE="PERSON">Separate Pearson Correlation Coefficients</ENAMEX>, PCC1
+          and <ENAMEX TYPE="PRODUCT">PCC2</ENAMEX>, were computed from these data subsets
+          respectively. The correlation between <TIMEX TYPE="DATE">PCC1 and PCC2</TIMEX> was
+          determined by calculating an <ENAMEX TYPE="PERSON">Enrichment Factor</ENAMEX> (EF) that
+          expresses the degree to which calculations based on one
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> subset were corroborated by calculations based on
+          the other data subset.
+          First, we selected <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs from S1 by screening for
+          pairs where <ENAMEX TYPE="SUBSTANCE">PCC1</ENAMEX> is greater than <NUMEX TYPE="CARDINAL">0.5</NUMEX>. If <ENAMEX TYPE="PRODUCT">PCC1</ENAMEX> and PCC2
+          for a particular pair of <ENAMEX TYPE="PRODUCT">Pfam</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are positively
+          correlated, an increase in <TIMEX TYPE="DATE">PCC2</TIMEX> cutoff should result in a
+          greater likelihood of PCC1 falling <NUMEX TYPE="MONEY">above 0.5</NUMEX>, i.e. EF
+          should increase. We calculated a series of <ENAMEX TYPE="ORGANIZATION">EFs</ENAMEX> with the
+          PCC2 cutoff increasing from <TIMEX TYPE="DATE">0 to 1</TIMEX>. <ENAMEX TYPE="ORGANIZATION">EF</ENAMEX> stayed around <NUMEX TYPE="CARDINAL">1</NUMEX>
+          for low PCC2 (<NUMEX TYPE="MONEY">0 to 0.2</NUMEX>), and gradually increased to as
+          high <NUMEX TYPE="CARDINAL">as 4.2</NUMEX> when PCC2 - <NUMEX TYPE="CARDINAL">0.8</NUMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>).
+          <ENAMEX TYPE="ORGANIZATION">EFs</ENAMEX> were also computed to compare <TIMEX TYPE="DATE">PCC1 and PCC2</TIMEX> in the
+          same cutoff range from <TIMEX TYPE="DATE">0 to 1</TIMEX>. An EF greater than 1
+          indicates higher than background correlation between PCC1
+          and <TIMEX TYPE="DATE">PCC2</TIMEX>. The representation ratio predicted to occur if
+          there is no correlation between <TIMEX TYPE="DATE">PCC1 and PCC2</TIMEX>, and the
+          observed representation ratios were calculated as
+          described in <ENAMEX TYPE="GPE">Methods</ENAMEX>. The discrepancy between them was
+          evaluated by determining the statistical variable
+          <ENAMEX TYPE="PERSON">chi-square (χ</ENAMEX> <NUMEX TYPE="CARDINAL">2</NUMEX>) and the corresponding p value. The
+          higher the <NUMEX TYPE="QUANTITY">chi-square</NUMEX> and the lower the p value, the less
+          likely the observed degree of correlation occurred by
+          chance, which implies that the observed relationship is
+          biologically significant. As shown in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>, both EF
+          and χ <TIMEX TYPE="DATE">2analyses</TIMEX> showed strong correlation between PCC1
+          and <ENAMEX TYPE="PRODUCT">PCC2</ENAMEX> with the p value less than <NUMEX TYPE="CARDINAL">0.00001</NUMEX>.
+          The <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation coefficient between all PCC1
+          and PCC2 values was determined to be <NUMEX TYPE="MONEY">0.76</NUMEX>, showing that
+          PCC1 and <ENAMEX TYPE="PRODUCT">PCC2</ENAMEX> were well correlated. Our approach is
+          validated by this consistency of <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> correlations
+          derived from randomly selected LE expression experiments
+          S1 and <TIMEX TYPE="DATE">S2</TIMEX>.
+        
+      
+      
+        Discussion
+        Expression monitoring on a genome-wide scale was first
+        successfully demonstrated in budding <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> [ <ENAMEX TYPE="LAW">1 13 14</ENAMEX> ] .
+        Whole-genome expression profiles provide a rich source of
+        information on <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> function, <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>, and <ENAMEX TYPE="SUBSTANCE">gene pathways</ENAMEX>, and have been compared
+        with data sets describing transcription factor binding
+        sites, <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">protein-protein interactions</ENAMEX>, and
+        <ENAMEX TYPE="SUBSTANCE">protein abundance</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16 17 18 19 20 21 22</NUMEX> ] mainly in
+        <ENAMEX TYPE="SUBSTANCE">budding yeast</ENAMEX>. In this study we used large scale human
+        genome-wide expression data to study the relationship
+        between the expression patterns of different protein
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We summarized the change in gene expression level
+        for a set of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family <ENAMEX TYPE="PER_DESC">members</ENAMEX> as a binary code of
+        "regulated" and "unregulated". A <NUMEX TYPE="CARDINAL">two</NUMEX>-fold change in
+        expression level was chosen as a cutoff for categorizing a
+        change in expression level as significant. This cutoff is
+        <ENAMEX TYPE="PERSON">arbitrary</ENAMEX>, but from our experience with <ENAMEX TYPE="PERSON">Taqman</ENAMEX> confirmation
+        (data not shown), a <NUMEX TYPE="CARDINAL">two</NUMEX>-fold change in expression level
+        reliably distinguishes real signals from background noise
+        for most expression experiments. The gene regulation was
+        then converted to a percentage for gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> to profile
+        the regulation for each microarray experiment.
+        Since the mapping from <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> to Incyte
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> clones is through the <ENAMEX TYPE="ORGANIZATION">Swissprot</ENAMEX> database, Pfam
+        family <ENAMEX TYPE="PER_DESC">members</ENAMEX> that are not represented in the Swissprot
+        database cannot be mapped to <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones, and are
+        therefore not included in the <ENAMEX TYPE="ORGANIZATION">Family Regulation Profile</ENAMEX>
+        analysis. That may be one source of false negatives. Other
+        factors such as sensitivity of the <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> microarray
+        technology, the arbitrary twofold cutoff, etc. may also
+        contribute to false negative results. In order to reduce
+        these types of errors, we included in our analysis only
+        those <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> that map to <NUMEX TYPE="CARDINAL">at least 10</NUMEX> <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones.
+        Due to the fact that the domain hierarchy of Pfam
+        <ENAMEX TYPE="PERSON">classification</ENAMEX> is not perfectly reflected in the database,
+        multi-domain <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> may fall into several <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> members
+        leading to a significant number of false positives. To
+        address this potential source of error, we excluded from
+        pair-wise correlation analysis those <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones shared
+        by both <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> in the <ENAMEX TYPE="PER_DESC">pair</ENAMEX>.
+        To validate relationships that are revealed by
+        microarray expression profiling, one direct way is to split
+        all the experiments randomly into <NUMEX TYPE="CARDINAL">two</NUMEX> non-overlapping pools
+        and derive the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> relationships independently from each
+        of these <ENAMEX TYPE="FAC_DESC">pools</ENAMEX>. The <ENAMEX TYPE="PRODUCT">555 LE</ENAMEX> experiment were divided into <NUMEX TYPE="CARDINAL">two</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> sets of <TIMEX TYPE="DATE">S1 and S2</TIMEX> and the corresponding Pfam
+        relationships were denoted as <TIMEX TYPE="DATE">PCC1 and PCC2</TIMEX>. The
+        correlation coefficient for <TIMEX TYPE="DATE">PCC1 and PCC2</TIMEX> of <NUMEX TYPE="CARDINAL">0.76</NUMEX> indicates
+        a high degree of correlation between <NUMEX TYPE="CARDINAL">two</NUMEX> data sets. In
+        order to ensure the independence of the data, we also
+        performed another analysis where data were split into <NUMEX TYPE="CARDINAL">two</NUMEX>
+        sets based on the tissue type. The <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> relationships (not
+        shown) derived from these latter data sets are consistent
+        with each other and with those derived from the complete
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> pool, further corroborating the observed
+        relationships.
+        It is important to note that many of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family
+        relationships (based on co-expression) identified here are
+        supported by functional links. Taking the <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coupled
+        <ENAMEX TYPE="PERSON">receptors</ENAMEX> (GPCRs) as an example, after agonist action,
+        <ENAMEX TYPE="ORGANIZATION">GPCRs activate G</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and become phosphorylated by <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>
+        <ENAMEX TYPE="SUBSTANCE">protein-coupled receptor kinases</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX> ] . This event
+        promotes activation of effector enzymes and ion channels by
+        the activated <ENAMEX TYPE="SUBSTANCE">Gα GTP</ENAMEX>. This GPCR-mediated regulation of ion
+        channels also depends on the coordination and parallel
+        regulation of <ENAMEX TYPE="SUBSTANCE">protein tyrosine kinase</ENAMEX> and protein tyrosine
+        phosphatase activities [ <TIMEX TYPE="DATE">24</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">GPCRs</ENAMEX> can also interact
+        with the growing <ENAMEX TYPE="PER_DESC">family</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">PDZ domain-containing proteins</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">25</NUMEX> ] . All of these relationships are reflected in our
+        study by the strong correlation <NUMEX TYPE="CARDINAL">between 7</NUMEX> transmembrane
+        <ENAMEX TYPE="PERSON">receptors</ENAMEX> (rhodopsin <ENAMEX TYPE="PER_DESC">family</ENAMEX>) (<NUMEX TYPE="MONEY">PF00001</NUMEX>), <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> kinases
+        (<NUMEX TYPE="MONEY">PF00069</NUMEX>), <ENAMEX TYPE="SUBSTANCE">protein tyrosine phosphatases</ENAMEX> (<NUMEX TYPE="MONEY">PF00102</NUMEX>), ion
+        transport <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (<NUMEX TYPE="MONEY">PF00520</NUMEX>), and <ENAMEX TYPE="ORGANIZATION">PDZ</ENAMEX> domain proteins
+        (<NUMEX TYPE="MONEY">PF00595</NUMEX>).
+        Our study revealed many intriguing links between protein
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>. For example, the link between homeobox proteins
+        (<NUMEX TYPE="MONEY">PF00046</NUMEX>) and other <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Homeobox <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are
+        a very important <ENAMEX TYPE="PER_DESC">family</ENAMEX> of transcription factors. According
+        to our analysis, homeobox <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are involved in the
+        regulation of or are regulated by many protein <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+        such as <ENAMEX TYPE="ORGANIZATION">GPCRs</ENAMEX>, ion channels, tyrosine phosphatases, nuclear
+        <ENAMEX TYPE="SUBSTANCE">hormone receptors</ENAMEX>, and protein <ENAMEX TYPE="SUBSTANCE">kinases</ENAMEX>. For example the
+        cone rod <ENAMEX TYPE="FAC_DESC">homeobox</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Crx</ENAMEX>) binds and transactivates the
+        rhodopsin <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ] . However, it has not been
+        determined whether other rhodopsin GPCRs are also regulated
+        by homeobox <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. In 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans , it was reported that the
+        homeobox gene, <ENAMEX TYPE="SUBSTANCE">lim-6</ENAMEX>, is required for distinct chemosensory
+        <ENAMEX TYPE="PERSON">representations</ENAMEX> (ion sensing), which is related to ion
+        <ENAMEX TYPE="ORGANIZATION">channel/</ENAMEX>transportation mechanisms. Again, it has not been
+        studied systematically whether <ENAMEX TYPE="SUBSTANCE">homeobox proteins</ENAMEX> are
+        important <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> of ion channel/transporter. Another
+        example of an intriguing relationship revealed in the
+        present study is between the PH domain, the EGF domain and
+        the immunoglobulin superfamily. Pleckstrin-homology (PH)
+        domains are <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> modules of <NUMEX TYPE="CARDINAL">approximately 120</NUMEX> amino
+        <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> found in a wide variety of signaling <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+        <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> ranging from yeasts to <ENAMEX TYPE="PER_DESC">humans</ENAMEX>. The EGF domain,
+        which often occurs as multiple tandem repeats, is widely
+        distributed among extracellular <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> involved in
+        adhesion, <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>-ligand interactions, extracellular
+        <ENAMEX TYPE="FAC">matrix</ENAMEX> <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>, <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of cell fate, and blood
+        <ENAMEX TYPE="ORGANIZATION">coagulation</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] . <ENAMEX TYPE="FAC_DESC">Cell adhesion</ENAMEX> usually activates PI
+        <NUMEX TYPE="CARDINAL">3</NUMEX>-kinase activity. Many PH domain proteins bind with high
+        affinity to specific phosphoinositides such as <ENAMEX TYPE="ORGANIZATION">PI</ENAMEX>-<NUMEX TYPE="CARDINAL">4,5</NUMEX>-<NUMEX TYPE="CARDINAL">P2</NUMEX>,
+        <ENAMEX TYPE="ORGANIZATION">PI</ENAMEX>-<NUMEX TYPE="CARDINAL">3,4</NUMEX>-<NUMEX TYPE="CARDINAL">P2</NUMEX> or PI-<NUMEX TYPE="CARDINAL">3,4,5</NUMEX>-P3 which are generated by <ENAMEX TYPE="ORGANIZATION">PI-3</ENAMEX> kinase
+        [ <TIMEX TYPE="DATE">28</TIMEX> ] . This relationship was reflected by the high
+        correlation coefficient (<NUMEX TYPE="MONEY">0.79</NUMEX>) between the PH domain and
+        the EGF domain seen in our analysis. Furthermore, another
+        major <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> adhesion molecular <ENAMEX TYPE="PER_DESC">family</ENAMEX> is the immunoglobulin
+        <ENAMEX TYPE="ORGANIZATION">superfamily</ENAMEX> (<NUMEX TYPE="MONEY">PF00047</NUMEX>). <NUMEX TYPE="CARDINAL">Two</NUMEX> immunoglobulins which are
+        particularly important in the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> adhesion cascade are
+        <ENAMEX TYPE="ORGANIZATION">Intercellular</ENAMEX> <ENAMEX TYPE="PRODUCT">Adhesion Molecule-1</ENAMEX> (ICAM-<NUMEX TYPE="CARDINAL">1</NUMEX>) or <ENAMEX TYPE="PRODUCT">CD54</ENAMEX> and
+        <ENAMEX TYPE="PRODUCT">Vascular Cell Adhesion Molecule-1</ENAMEX> (VCAM-<NUMEX TYPE="CARDINAL">1</NUMEX>). The
+        <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-expression that we observed in our analysis for the
+        EGF-like domains and immunoglobin superfamily suggested
+        that they may cooperate with each other in the cell
+        adhesion process. Links between <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> like these
+        suggest novel hypotheses about family interactions that may
+        be further explored.
+      
+      
+        Conclusions
+        Integrating genome-wide expression information with
+        protein functional classifications and genetic <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> is
+        a huge challenge. Our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is based on the binary
+        idealization of gene expression change to generate a <ENAMEX TYPE="ORGANIZATION">Family</ENAMEX>
+        <ENAMEX TYPE="PERSON">Regulation Profile</ENAMEX>. Although this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is simplified, the
+        abstraction may be useful for conceptualizing the nature of
+        functional relationships between <ENAMEX TYPE="PER_DESC">families</ENAMEX> of protein
+        <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX>.
+      
+      
+        Methods
+        
+          Database resources
+          <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> is a large collection of multiple protein
+          sequence alignments and <ENAMEX TYPE="WORK_OF_ART">Profile Hidden Markov Models</ENAMEX>
+          covering many <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> <ENAMEX TYPE="PRODUCT">Version 6.3</ENAMEX> (released
+          on <TIMEX TYPE="DATE">May, 2001</TIMEX>) contains alignments and <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> for <TIMEX TYPE="DATE">2847</TIMEX>
+          <ENAMEX TYPE="PER_DESC">protein families</ENAMEX>, based on the <ENAMEX TYPE="NATIONALITY">Swiss</ENAMEX>-Prot 39 and
+          <ENAMEX TYPE="PRODUCT">SP-TrEMBL 14</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein sequence databases</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] . Pfam was
+          downloaded from
+          <ENAMEX TYPE="CONTACT_INFO">ftp://genetics.</ENAMEX><ENAMEX TYPE="ORGANIZATION">wusti</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/pub/eddy/pfam-6.3/Pfam-A.</ENAMEX><TIMEX TYPE="DATE">full</TIMEX>.<ENAMEX TYPE="ORGANIZATION">gz</ENAMEX>.
+          Pfam family <ENAMEX TYPE="ANIMAL">ID</ENAMEX> and family <ENAMEX TYPE="PER_DESC">members</ENAMEX> (represented by
+          <ENAMEX TYPE="ORGANIZATION">Swiss-Prot ID</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">TrEMBL ID</ENAMEX>) were extracted and organized
+          in a relational database (<ENAMEX TYPE="ORGANIZATION">Sybase, Adaptive Server</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Enterprise Release 11.9.3</ENAMEX>, CA, <ENAMEX TYPE="ORGANIZATION">Sybase Inc.</ENAMEX>). A
+          non-redundant <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequence database comprised of
+          <ENAMEX TYPE="ORGANIZATION">Swiss-Prot</ENAMEX> and <ENAMEX TYPE="PERSON">TrEMBL</ENAMEX> was also downloaded from
+          <ENAMEX TYPE="CONTACT_INFO">ftp://ftp.</ENAMEX><ENAMEX TYPE="ORGANIZATION">expasy</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org/databases/sp_tr</ENAMEX>_nrdband the data
+          were parsed and stored in <ENAMEX TYPE="GPE">Sybase</ENAMEX>.
+          The <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> microarray is manufactured by depositing
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> onto a glass surface in an array format at a density
+          of <NUMEX TYPE="CARDINAL">up to 10,000</NUMEX> array elements per chip. LifeExpress <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          is a gene expression database which, in <ENAMEX TYPE="PRODUCT">Version 3.0</ENAMEX>
+          (<TIMEX TYPE="DATE">April 2000</TIMEX> release), includes <TIMEX TYPE="DATE">6307</TIMEX> expression
+          experiments performed using <ENAMEX TYPE="ORGANIZATION">Incyte's Human</ENAMEX> <ENAMEX TYPE="PRODUCT">Genome</ENAMEX> chip
+          <NUMEX TYPE="CARDINAL">1~5</NUMEX>. (<ENAMEX TYPE="ORGANIZATION">Incyte Human</ENAMEX> <ENAMEX TYPE="PRODUCT">Genome</ENAMEX> chip 1 (<NUMEX TYPE="MONEY">HG1</NUMEX>) contains <TIMEX TYPE="DATE">9766</TIMEX>
+          cDNAs, while <ENAMEX TYPE="SUBSTANCE">HG2</ENAMEX> containing <TIMEX TYPE="DATE">9612</TIMEX> cDNAs, <ENAMEX TYPE="SUBSTANCE">HG3</ENAMEX> containing
+          <TIMEX TYPE="DATE">9686</TIMEX> cDNAs, <ENAMEX TYPE="SUBSTANCE">HG4</ENAMEX> containing <TIMEX TYPE="DATE">9249</TIMEX> cDNAs, <ENAMEX TYPE="SUBSTANCE">HG5</ENAMEX> containing
+          <TIMEX TYPE="DATE">9219</TIMEX> cDNAs. In total the <NUMEX TYPE="CARDINAL">five</NUMEX> arrays contain <NUMEX TYPE="CARDINAL">46909</NUMEX> cDNAs
+          which represent <NUMEX TYPE="CARDINAL">about 41296</NUMEX> unique genes.). These
+          experiments encompass the therapy areas of <ENAMEX TYPE="ORGANIZATION">Cancer</ENAMEX>
+          <ENAMEX TYPE="PERSON">Biology</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">Cardiovascular System</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Immunology</ENAMEX> and
+          <ENAMEX TYPE="PERSON">Inflammation</ENAMEX>, <ENAMEX TYPE="PERSON">Metabolism</ENAMEX>, <ENAMEX TYPE="GPE">Neurobiology</ENAMEX>, <ENAMEX TYPE="PERSON">Toxicology</ENAMEX>, and
+          <ENAMEX TYPE="PERSON">Body Map</ENAMEX>.
+        
+        
+          Selection of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs in LifeExpress
+          The <ENAMEX TYPE="PRODUCT">LE</ENAMEX> database contains data points from a total of
+          <ENAMEX TYPE="PRODUCT">976</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs (Note: here the term of "probe" refers to
+          "fluorescent-labeled total <ENAMEX TYPE="SUBSTANCE">RNA sample</ENAMEX> used for microarray
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>") that have been hybridized to <NUMEX TYPE="CARDINAL">one</NUMEX> or more
+          <ENAMEX TYPE="ORGANIZATION">Human Genome</ENAMEX> chips <TIMEX TYPE="DATE">1~5</TIMEX>. <NUMEX TYPE="CARDINAL">266</NUMEX> of these <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs have
+          been hybridized to <NUMEX TYPE="CARDINAL">all five</NUMEX> chips. Using data from all
+          available probe pairs would reduce the number of genes
+          that could be compared, since many genes are not
+          represented in all <NUMEX TYPE="CARDINAL">976</NUMEX> experiments. By contrast, limiting
+          oneself to only those <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs that have been run
+          against all the chips would greatly reduce the number of
+          experiments from which the data is drawn. In order to
+          optimize the amount of data that could be compared, <NUMEX TYPE="CARDINAL">555</NUMEX>
+          probe pairs that were hybridized to the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="ORGANIZATION">Human</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Genome</ENAMEX> chips (<ENAMEX TYPE="PRODUCT">HG1</ENAMEX>, <TIMEX TYPE="DATE">HG2</TIMEX>, <TIMEX TYPE="DATE">HG3</TIMEX>, and <ENAMEX TYPE="PRODUCT">HG4</ENAMEX>) were used in this
+          study.
+        
+        
+          <ENAMEX TYPE="PERSON">Mapping Pfam</ENAMEX> to LifeExpress
+          A total of <TIMEX TYPE="DATE">4935</TIMEX> <ENAMEX TYPE="NATIONALITY">Swiss</ENAMEX>-<ENAMEX TYPE="GPE">Prot</ENAMEX> human <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX> and <NUMEX TYPE="CARDINAL">22208</NUMEX>
+          TrEMBL human <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> are included in <TIMEX TYPE="DATE">1427</TIMEX> protein
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX> covered by <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> <ENAMEX TYPE="PRODUCT">Version 6.3</ENAMEX>. Corresponding
+          GenBank mRNA sequences for those <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> records were
+          identified from annotation present in <ENAMEX TYPE="NATIONALITY">Swiss</ENAMEX>-<ENAMEX TYPE="GPE">Prot</ENAMEX> and
+          TrEMBL sequence records, and were assembled together with
+          the clone sequences from <ENAMEX TYPE="ORGANIZATION">LifeExpress Human Genome</ENAMEX> chips
+          <ENAMEX TYPE="PRODUCT">1~4</ENAMEX> using the <ENAMEX TYPE="ORGANIZATION">PHRAP</ENAMEX> assembler (threaded version <NUMEX TYPE="CARDINAL">3.01</NUMEX>
+          licensed from <ENAMEX TYPE="ORGANIZATION">Southwest Parallel Software, Inc.</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">spsoft</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. <TIMEX TYPE="DATE">4177</TIMEX> <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones belonging to
+          <TIMEX TYPE="DATE">1069</TIMEX> Pfam <ENAMEX TYPE="PER_DESC">families</ENAMEX> were mapped to these sequences. Pfam
+          family PF00069 is most highly represented on the chips
+          with <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="ORGANIZATION">Incyte</ENAMEX> clones while <NUMEX TYPE="CARDINAL">343</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> are
+          represented on the microarrays by <NUMEX TYPE="CARDINAL">only one</NUMEX> family <ENAMEX TYPE="PER_DESC">member</ENAMEX>.
+          In total <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> are represented by more than
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> clones on the microarrays. There were <TIMEX TYPE="DATE">2644</TIMEX> clones
+          that belonged to these largest <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data Processing</ENAMEX>
+          One probe <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">LE</ENAMEX> could have been hybridized to the
+          same <ENAMEX TYPE="ORGANIZATION">Incyte Human</ENAMEX> <ENAMEX TYPE="PRODUCT">Genome</ENAMEX> chip several times. In these
+          cases, the average of the differential expression values
+          (fold difference) for the different hybridizations was
+          used in subsequent calculations. For each gene, the
+          expression ratio for a particular probe pair was reduced
+          to a binary variable ("regulated" or "unregulated")
+          rather than a continuous variable. For each pair of
+          experimental conditions, a gene was considered to be
+          "regulated" if it showed at least a <NUMEX TYPE="CARDINAL">two</NUMEX>-fold change in
+          expression level (either up- or down-regulated) between
+          conditions, and "unregulated" if the expression ratio was
+          less than <NUMEX TYPE="CARDINAL">two</NUMEX>-fold.
+          In order to analyze the expression profile for each
+          <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, we calculated the <ENAMEX TYPE="ORGANIZATION">Family Regulation Ratio</ENAMEX>
+          (<ENAMEX TYPE="ORGANIZATION">FRR</ENAMEX>) for each <ENAMEX TYPE="PERSON">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> as the percentage of its
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> which were "regulated" in a pair-wise comparison
+          and assigned the ratio to the <ENAMEX TYPE="ORGANIZATION">Pfam ID</ENAMEX> for this probe
+          pair. For example, <NUMEX TYPE="CARDINAL">140</NUMEX> clones in the 
+          PF00001 <ENAMEX TYPE="PER_DESC">family</ENAMEX> had been hybridized
+          with the probe pair of " 
+          <ENAMEX TYPE="ORGANIZATION">PBMC Cells, Untx</ENAMEX>, <NUMEX TYPE="CARDINAL">24</NUMEX> hr, <TIMEX TYPE="DATE">Dn4625</TIMEX> vs t/2
+          <NUMEX TYPE="CARDINAL">4</NUMEX> hr ", of which <NUMEX TYPE="CARDINAL">28</NUMEX> clones (<NUMEX TYPE="PERCENT">20%</NUMEX>) showed greater than
+          <NUMEX TYPE="CARDINAL">two</NUMEX> fold difference in the <ENAMEX TYPE="PER_DESC">pair</ENAMEX>-wise comparison. This
+          meant that <NUMEX TYPE="PERCENT">20%</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> in the <ENAMEX TYPE="PER_DESC">family</ENAMEX> of 
+          PF00001 were "regulated" with this
+          probe <ENAMEX TYPE="PER_DESC">pair</ENAMEX>. So the <ENAMEX TYPE="ORGANIZATION">Family Regulation Ratio</ENAMEX> of <NUMEX TYPE="CARDINAL">0.2</NUMEX> was
+          assigned to 
+          PF00001 for this probe <ENAMEX TYPE="PER_DESC">pair</ENAMEX>.
+          In order to reduce random noise, we only studied the
+          <NUMEX TYPE="CARDINAL">135</NUMEX> <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> represented by <NUMEX TYPE="CARDINAL">more than ten</NUMEX> clones on
+          the microarrays. Family Regulation Profiles were
+          generated for each of these largest <ENAMEX TYPE="NATIONALITY">Pfam</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> by
+          calculating the FRRs corresponding to <NUMEX TYPE="CARDINAL">555</NUMEX> probe
+          <ENAMEX TYPE="PERSON">pairs</ENAMEX>.
+        
+        
+          Correlation measure
+          Correlations between <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX> are
+          measured with the standard <ENAMEX TYPE="ORGANIZATION">Pearson Correlation</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Coefficient</ENAMEX> (PCC). The <ENAMEX TYPE="ORGANIZATION">PCC</ENAMEX> between <NUMEX TYPE="CARDINAL">two</NUMEX> profiles 
+          a, b with 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> dimensions is calculated as
+          
+          where 
+          a 
+          
+            i 
+           and 
+          b 
+          
+            i 
+           represent the <ENAMEX TYPE="WORK_OF_ART">Family Regulated Ratios of Pfam</ENAMEX> 
+          a and Pfam 
+          b for the sample 
+          i , and and indicate the respective
+          means. If a clone was mapped to both Pfam 
+          a and 
+          b , the <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX>
+          of 
+          a and 
+          b would be modified with the clone
+          excluded. In other words, common clones between Pfam
+          <ENAMEX TYPE="PERSON">pairs</ENAMEX> made no contribution to the PCC calculation.
+        
+        
+          Cross-validation with <NUMEX TYPE="CARDINAL">two</NUMEX> independent
+          subsets
+          <NUMEX TYPE="CARDINAL">One</NUMEX> way to validate our approach is to verify that the
+          Pfam relationships based on our <ENAMEX TYPE="ORGANIZATION">Family Regulation</ENAMEX>
+          Profiles would be ubiquitous. In other words, different
+          <ENAMEX TYPE="PERSON">microarray</ENAMEX> experiment sets, as long as the experiment
+          <ENAMEX TYPE="ORGANIZATION">resource</ENAMEX> is rich, diverse and well-represented enough,
+          should generate a similar result. The <ENAMEX TYPE="PRODUCT">555 LE</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs
+          were randomly divided into <NUMEX TYPE="CARDINAL">two</NUMEX> data sets with one data
+          set containing <ENAMEX TYPE="PRODUCT">278</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs (<NUMEX TYPE="MONEY">S1</NUMEX>) and the other one
+          <ENAMEX TYPE="PRODUCT">containing 277</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs (<NUMEX TYPE="MONEY">S2</NUMEX>). Based on these <NUMEX TYPE="CARDINAL">two</NUMEX> data
+          sets, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">Family Regulation Profiles</ENAMEX> for each <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> were
+          computed respectively. <ENAMEX TYPE="PERSON">Pearson Correlations</ENAMEX> among <ENAMEX TYPE="ORGANIZATION">Family</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">Regulation Profiles PCC1</ENAMEX> and <ENAMEX TYPE="PRODUCT">PCC2</ENAMEX> were calculated using
+          S1 and <NUMEX TYPE="ORDINAL">S2</NUMEX> respectively. PCC1 and <ENAMEX TYPE="PRODUCT">PCC2</ENAMEX> should be
+          positively correlated if the derived Pfam relationships
+          are independent of the expression experiment
+          selection.
+          The <ENAMEX TYPE="FAC">Enrichment Factor</ENAMEX> (EF) is a parameter that
+          represents the extent to which the <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs identified
+          by <TIMEX TYPE="DATE">PCC1</TIMEX> within the cutoff range specified by 
+          C1 are over-represented in pools of
+          <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs that could be identified by <TIMEX TYPE="DATE">PCC2</TIMEX> within the
+          cutoff range specified by 
+          C2 . The number of total <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs
+          are indicated as 
+          G 
+          
+            total 
+           while the number of <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs selected by <NUMEX TYPE="CARDINAL">PCC1</NUMEX> - 
+          C1 and <NUMEX TYPE="CARDINAL">PCC2</NUMEX> - 
+          C2 are indicated as 
+          G 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          G 
+          <TIMEX TYPE="DATE">2</TIMEX> respectively. The number of Pfam
+          <ENAMEX TYPE="ORGANIZATION">pairs</ENAMEX> common to both PCC1 - 
+          C1 and <NUMEX TYPE="CARDINAL">PCC2</NUMEX> - 
+          C2 is indicated as 
+          G 
+          
+            both 
+           . Therefore the expected background representation
+          ratio, or the random representation ratio for 
+          G 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> within 
+          G 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX> is,
+          
+          and the observed representation ratio for 
+          G 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> within 
+          G 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX> is,
+          
+          
+          <ENAMEX TYPE="ORGANIZATION">EF</ENAMEX> is then defined as,
+          
+          with a value for 
+          <ENAMEX TYPE="CONTACT_INFO">EF > 1</ENAMEX> indicating higher than
+          background representation ratio for 
+          G 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> within 
+          G 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> .
+          Take an example where 
+          G 
+          <ENAMEX TYPE="PRODUCT">1</ENAMEX> is selected by <NUMEX TYPE="CARDINAL">PCC1</NUMEX> - <NUMEX TYPE="CARDINAL">0.5</NUMEX> and <ENAMEX TYPE="PRODUCT">G2</ENAMEX> is
+          selected by <NUMEX TYPE="CARDINAL">PCC2</NUMEX> - <NUMEX TYPE="CARDINAL">0.8</NUMEX>. Out of total <TIMEX TYPE="DATE">8968</TIMEX> <ENAMEX TYPE="PRODUCT">Pfam</ENAMEX> pairs
+          there are <TIMEX TYPE="DATE">2185</TIMEX> <ENAMEX TYPE="PRODUCT">Pfam</ENAMEX> pairs with <NUMEX TYPE="CARDINAL">PCC1</NUMEX> - <NUMEX TYPE="CARDINAL">0.5</NUMEX>, so the ratio
+          of R 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> can be calculated <NUMEX TYPE="CARDINAL">as 2185/8968</NUMEX> =
+          <NUMEX TYPE="CARDINAL">0.24</NUMEX>. There are <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="ORGANIZATION">Pfam</ENAMEX> pairs with <NUMEX TYPE="CARDINAL">PCC2</NUMEX> - <NUMEX TYPE="CARDINAL">0.8</NUMEX>, of which
+          all <NUMEX TYPE="CARDINAL">20</NUMEX> also have <NUMEX TYPE="CARDINAL">PCC1</NUMEX> - <NUMEX TYPE="CARDINAL">0.5</NUMEX>. The ratio of 
+          R 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , equals <NUMEX TYPE="CARDINAL">20/20</NUMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, therefore, 
+          <ENAMEX TYPE="ORGANIZATION">EF</ENAMEX> = <NUMEX TYPE="CARDINAL">1/0.24</NUMEX> = <NUMEX TYPE="CARDINAL">4.2</NUMEX>
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">WD</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">LW</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PQ</ENAMEX> carried out the data analysis and drafted the
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">JG</ENAMEX>, <ENAMEX TYPE="PRODUCT">MH</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MK</ENAMEX> participated in the design of
+        study. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final
+        <ENAMEX TYPE="PERSON">manuscript</ENAMEX>.
+      
+    
+  

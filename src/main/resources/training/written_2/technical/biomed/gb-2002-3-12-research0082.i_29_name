@@ -1,0 +1,754 @@
+
+  
+    
+      
+        Rationale
+        Unadorned genomic sequence data is simply a string of
+        As, <ENAMEX TYPE="ORGANIZATION">Ts, Gs</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Cs</ENAMEX>, with perhaps an associated confidence
+        value for each <ENAMEX TYPE="FAC_DESC">base</ENAMEX>. In this raw state, sequence data
+        provides very little biological insight. To utilize any
+        sequence it must be interpreted in the context of other
+        biological knowledge. This is the process of annotation,
+        the task of adding explanatory notations to the sequence
+        text. We define an annotation as the biological evaluation
+        and explanation of a specific region on a nucleic acid
+        sequence that includes, but is not limited to, gene
+        transcripts. Any feature that can be anchored to the
+        sequence - for example, an exon, a promoter, a transposable
+        element, a regulatory region, or a <ENAMEX TYPE="LOCATION">CpG</ENAMEX> island - is an
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX>. The genomic sequence will stabilize and reach a
+        finite endpoint, but the annotations will continue to
+        evolve indefinitely, as biological knowledge increases. To
+        understand the genetic legacy of an <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> we must
+        interpret its genomic sequence, translating the information
+        it contains in molecular form into human-readable
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>.
+        Part of this process is purely computational, and in its
+        simplest terms can be described as a process of
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX>: can anything be located that is somehow
+        already familiar? The <NUMEX TYPE="ORDINAL">first</NUMEX> obvious tactic is to collect
+        sequences that may represent interesting biological
+        features and to search the genomic sequence in order to
+        discover the presence or absence of similar sequences. The
+        principle is the same whether the sequences used in this
+        comparison are expressed sequence tags (ESTs), full-length
+        cDNAs, repeated elements or highly conserved sequences, and
+        whether the sequences come from the same <ENAMEX TYPE="ANIMAL">species</ENAMEX>, a closely
+        related <ENAMEX TYPE="ANIMAL">species</ENAMEX> or a distantly related <ENAMEX TYPE="ANIMAL">species</ENAMEX>; it is only
+        the alignment algorithm that will vary appropriately, for
+        example, BLAST [ <ENAMEX TYPE="LAW">1</ENAMEX>], <ENAMEX TYPE="PRODUCT">Sim4</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX>], or BLAT [ <ENAMEX TYPE="LAW">3</ENAMEX>]. The <NUMEX TYPE="ORDINAL">second</NUMEX>
+        general tactic is to utilize what is already known about
+        specific classes of sequence features to construct an
+        abstract model representing this combined knowledge and to
+        search the genomic sequence to identify locations that
+        match this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, for example, hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> (HMM) [
+        <ENAMEX TYPE="LAW">4, 5, 6</ENAMEX>] and stochastic context-free grammars (SCFG) [ <ENAMEX TYPE="CONTACT_INFO">7,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">8</NUMEX>].
+        While these computational examinations reveal the
+        general <ENAMEX TYPE="PER_DESC">character</ENAMEX> of the primary sequence the results are
+        still of limited use for further functional biological
+        research [ <TIMEX TYPE="DATE">9, 10, 11, 12</TIMEX>]. For example, BLAST provides
+        alignment results composed of high-scoring pairs (HSPs)
+        indicating local regions of similarity, but in total these
+        typically do not provide the best global alignment over the
+        entire length of the peptide to the genomic sequence.
+        Similarly gene-prediction programs can generate quite
+        different results depending on the length of the genomic
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> analyzed and the gene density of the surrounding
+        sequence. Even systems that strive to make adjustments and
+        collate the results of all the analyses are unable to
+        consistently provide accurate biological <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> (see [ <TIMEX TYPE="DATE">13</TIMEX>]
+        for a more detailed discussion). Our current computational
+        analysis capabilities are useful for primary annotation,
+        but the biological imprecision of the results, especially
+        within eukaryote genomes, makes <ENAMEX TYPE="PER_DESC">expert</ENAMEX> evaluation
+        absolutely essential to ensure the correctness of the
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>. In addition, this step is required to deepen
+        our understanding by connecting these annotations to all
+        the experimentally known biology of the <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>.
+        Software <ENAMEX TYPE="ORG_DESC">developers</ENAMEX> are familiar with debugging tools
+        and techniques. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is an analogous tool for debugging
+        genomic feature descriptions derived from automated
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX> and computational <ENAMEX TYPE="ORG_DESC">pipelines</ENAMEX>. It is also a tool to
+        facilitate connecting and comparing these annotations with
+        existing biological data. As an introspective tool, <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>
+        makes it possible for <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to closely examine and
+        compare explicit details and contrast them with their own
+        biological knowledge and apply any necessary corrections.
+        This evaluation is absolutely essential for progress in
+        genomics for <NUMEX TYPE="CARDINAL">three</NUMEX> reasons.
+        First, we must improve our current algorithms and
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> techniques for <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>. Several
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> have augmented standard approaches based solely on
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding potential by exploiting exact alignments to
+        <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> and <TIMEX TYPE="TIME">EST</TIMEX> data and similarities to sequences from the
+        same or different genomes (see, for example [ <TIMEX TYPE="DATE">14, 15</TIMEX>]).
+        However, we are not yet at the stage where we can make
+        intelligent use of all the existing data automatically.
+        Resolving the conflicts that exist <TIMEX TYPE="TIME">between EST</TIMEX> evidence,
+        BLAST similarities and computational predictions can be
+        extremely complicated and is still best done by manual
+        <ENAMEX TYPE="ORGANIZATION">inspection</ENAMEX>. The simplifications that existing automated
+        annotation <ENAMEX TYPE="ORG_DESC">pipelines</ENAMEX> must make lead to a number of
+        systematic errors, including <NUMEX TYPE="CARDINAL">under</NUMEX>- or <NUMEX TYPE="CARDINAL">over</NUMEX>-predicting
+        genes as well as merging the exons from <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in one
+        gene model or splitting the exons from <NUMEX TYPE="CARDINAL">one</NUMEX> gene into <NUMEX TYPE="CARDINAL">two</NUMEX>
+        gene models. For example, if the software discounts
+        <TIMEX TYPE="TIME">unspliced EST</TIMEX> evidence (a common simplification made to
+        reduce the effect of errors in <TIMEX TYPE="TIME">EST</TIMEX> databases), small genes
+        can easily be omitted. In addition, issues such as
+        determining alternative transcripts, understanding promoter
+        <ENAMEX TYPE="PERSON">usage</ENAMEX>, identifying polyadenylation sites, distinguishing
+        genes within the intron of another gene, and recognizing
+        dicistronic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, are all outstanding problems in the
+        annotation of <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>. Yet, as more genomes
+        become available, we cannot hope to provide a high level of
+        manual examination and correction to describe the genes
+        present on these <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> precisely. It is essential that we
+        utilize the knowledge we are gaining from these initial
+        'well-<ENAMEX TYPE="PER_DESC">annotated</ENAMEX>' genomes to improve the existing
+        computational methods, both by generating more
+        <ENAMEX TYPE="ORGANIZATION">comprehensive</ENAMEX> training sets as well as by refining the
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> themselves.
+        <NUMEX TYPE="ORDINAL">Second</NUMEX>, we must expand the available computational
+        repertoire to include methods for annotating other
+        biologically important features. Current computational
+        analyses are primarily only capable of describing simple
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> and these are therefore the sole
+        targets of most automated strategies. There are other
+        useful predictive programs for <ENAMEX TYPE="SUBSTANCE">tRNA genes</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>] and
+        <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> [ <TIMEX TYPE="DATE">17, 18, 19, 20</TIMEX>], but a large number of
+        biological features still cannot be recognized by
+        computational methods alone. For example, there are no
+        fully automatic computational methods to detect
+        biologically important annotations such as pseudogenes and
+        non-coding <ENAMEX TYPE="SUBSTANCE">RNA genes</ENAMEX>. Until <TIMEX TYPE="DATE">a day</TIMEX> arrives when we know all
+        the feature types that we are searching for, and precisely
+        how to find them in the genomic sequence, we will need to
+        rely upon expert inspection to augment automated
+        analyses.
+        <NUMEX TYPE="ORDINAL">Third</NUMEX>, we must deliver the annotations to the community
+        as quickly and as accurately as possible because the
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> themselves are an important resource.
+        <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> depend on the availability of complete peptide
+        sets, gene structures and other data. Moreover, to be truly
+        useful these data must be correct. Many <ENAMEX TYPE="PER_DESC">people</ENAMEX> have noted
+        and remarked upon the current fallibility of <NUMEX TYPE="ORDINAL">first</NUMEX>-pass
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene predictions and other annotations (see,
+        for example [ <TIMEX TYPE="DATE">9, 10, 11, 12, 21, 22, 23</TIMEX>]). The technology
+        is not yet available to provide highly reliable datasets.
+        This impedes research that relies on these data. If
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> in the <ENAMEX TYPE="PER_DESC">community</ENAMEX> were provided with a means of
+        viewing the supporting data for each annotation as well as
+        for making corrections to annotations, then the accurate
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> they require would become available much sooner.
+      
+      
+        Origins of <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>
+        In <TIMEX TYPE="DATE">the year 2000</TIMEX>, within the space of <TIMEX TYPE="DATE">six months</TIMEX>, both
+        the 
+        Drosophila genome [ <TIMEX TYPE="DATE">24</TIMEX>] and the draft
+        human <ENAMEX TYPE="SUBSTANCE">genome</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>] were published. Both the <ENAMEX TYPE="ORGANIZATION">Berkeley</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Drosophila Genome Project</ENAMEX> (BDGP) working with Celera
+        <ENAMEX TYPE="ORGANIZATION">Genomics</ENAMEX> and other <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>, and the <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]
+        project working on the human <ENAMEX TYPE="PER_DESC">genome</ENAMEX> provided the community
+        with annotations in a very short time. However, to those
+        who were working closely with the data it was obvious that
+        in the longer term this initial analysis would have to be
+        <ENAMEX TYPE="PERSON">refined</ENAMEX>, improved and extended by manual <ENAMEX TYPE="PER_DESC">curators</ENAMEX>. The
+        genomics community required tools that would provide more
+        than simply a view of these data, but that would enable
+        professional <ENAMEX TYPE="PER_DESC">curators</ENAMEX>, and ultimately every <ENAMEX TYPE="PER_DESC">researcher</ENAMEX>, to
+        easily modify and correct the annotations on an ongoing
+        basis through direct interaction. Both <ENAMEX TYPE="ORGANIZATION">FlyBase-BDGP</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>]
+        and <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> shared this understanding, and in <TIMEX TYPE="DATE">the summer</TIMEX> of
+        <TIMEX TYPE="DATE">2000</TIMEX> entered into a collaborative agreement to achieve this
+        <ENAMEX TYPE="ORGANIZATION">aim</ENAMEX>.
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> has roots reaching back <TIMEX TYPE="DATE">more than a decade</TIMEX>, and
+        builds on previous generations of software and domain
+        knowledge. In <TIMEX TYPE="DATE">the early 1990s</TIMEX> the 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans project was underway at
+        the <ENAMEX TYPE="ORGANIZATION">Sanger Institute</ENAMEX> and the 
+        Drosophila genome project was
+        beginning at <ENAMEX TYPE="ORGANIZATION">Berkeley</ENAMEX>. Both projects share the same
+        informatics root because both began by using ACeDB
+        (documentation, code and data available by anonymous FTP
+        from [ <TIMEX TYPE="DATE">28, 29, 30</TIMEX>]). <ENAMEX TYPE="GPE">Berkeley</ENAMEX> developed a variant called
+        <ENAMEX TYPE="ORGANIZATION">FlyDB</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX>] and was actively involved in porting <ENAMEX TYPE="ORGANIZATION">AceDB</ENAMEX> to
+        the <ENAMEX TYPE="PRODUCT">Macintosh</ENAMEX> computer <ENAMEX TYPE="FAC_DESC">platform</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Sanger Institute</ENAMEX>
+        coordinated the overall development of <ENAMEX TYPE="ORGANIZATION">ACeDB</ENAMEX> and has relied
+        upon <ENAMEX TYPE="ORGANIZATION">ACeDB</ENAMEX> for the ongoing annotation of 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans and human genome
+        sequence.
+        In <TIMEX TYPE="DATE">the mid-1990s</TIMEX>, first <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX>] and then <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>]
+        were becoming widespread as programming languages for
+        developing bioinformatics tools. Our <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> explored the
+        use of both languages. <ENAMEX TYPE="GPE">Berkeley</ENAMEX> created bioTkPerl [ <TIMEX TYPE="DATE">34, 35</TIMEX>]
+        and became one of the early <ENAMEX TYPE="PER_DESC">participants</ENAMEX> in <ENAMEX TYPE="GPE">BioPerI</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX>].
+        BioTkPerl was used in a number of applications, but most
+        notably in this context it was the underpinning for the
+        annotation tool <ENAMEX TYPE="ORGANIZATION">Genotator</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Genotator</ENAMEX> has been widely
+        distributed and in turn formed the basis for other
+        <ENAMEX TYPE="GPE">Perl</ENAMEX>-based genomic tools such as <ENAMEX TYPE="PRODUCT">Genquire</ENAMEX> [ <TIMEX TYPE="DATE">38</TIMEX>].
+        Initially we had hopes that <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> would enable us to
+        distribute both the data and the application software
+        dynamically over the internet, and thus solve the problem
+        of providing a far-flung community with both the freshest
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and the latest application releases simultaneously. In
+        practice, both the <ENAMEX TYPE="GPE">Berkeley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> use <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> for
+        internet-based data access [ <TIMEX TYPE="DATE">39</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> for locally
+        resident applications. Our first Java applications were
+        Artemis at the <ENAMEX TYPE="ORGANIZATION">Sanger Institute</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">CloneCurator</ENAMEX> at
+        <ENAMEX TYPE="GPE">Berkeley</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Artemis</ENAMEX> is widely used for annotating microbial
+        and other smaller genomes. CloneCurator was used to
+        annotate the <NUMEX TYPE="CARDINAL">2.9 million</NUMEX> <ENAMEX TYPE="FAC_DESC">base</ENAMEX> (<ENAMEX TYPE="PRODUCT">Mb</ENAMEX>) 
+        Adh region of 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX>] and provided the
+        baseline that was used to evaluate the results of the
+        <ENAMEX TYPE="ORGANIZATION">Genome Annotation Assessment Project</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX>] trial. Although
+        both provided useful tools for the tasks they were
+        originally developed for, we needed a more sophisticated,
+        and easier to use, annotation <ENAMEX TYPE="PER_DESC">editor</ENAMEX> for a large, complex
+        eukaryotic genome. There have been <NUMEX TYPE="CARDINAL">two</NUMEX> commercial products
+        that originated with <ENAMEX TYPE="ORGANIZATION">CloneCurator</ENAMEX> and built upon its
+        intellectual legacy, <ENAMEX TYPE="PERSON">AnnotationStation</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Neomorphic Software</ENAMEX>
+        for <ENAMEX TYPE="ORGANIZATION">TIGR</ENAMEX>) and <ENAMEX TYPE="PERSON">Genome-Browser</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Celera</ENAMEX>), but neither was
+        freely available. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is the most recent undertaking and
+        builds upon all of this accumulated experience.
+        Several general concepts were learned over this period
+        as we gained experience in working with genomic sequence
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. One was the importance of distinguishing the
+        presentation of the information from the underlying
+        biological data model. <ENAMEX TYPE="ORGANIZATION">Searls</ENAMEX> [ <TIMEX TYPE="DATE">42</TIMEX>] stated this concept
+        most clearly as the need to "drive semantics out" of the
+        graphical presentation. The <NUMEX TYPE="ORDINAL">second</NUMEX> key concept was an
+        appreciation of well-understood and standard issues in data
+        management and portability. We needed a graphical
+        annotation tool that could be used easily at multiple sites
+        with different data-management environments. Taken
+        together, these issues led to the development of
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>.
+      
+      
+        Overview of <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> from the curatorial
+        perspective
+        
+          Viewing the data
+          The <ENAMEX TYPE="PER_DESC">curator</ENAMEX> can load data by specifying a region on a
+          selected chromosome. Depending on the source of the data
+          this <ENAMEX TYPE="GPE_DESC">region</ENAMEX> may be determined by absolute sequence
+          position, a file name, or, for 
+          Drosophila , gene name, cytological
+          region (map position), scaffold accession or sequence
+          (which will be mapped to a genomic location by BLAST
+          similarity). After data from the desired <ENAMEX TYPE="LOCATION">region</ENAMEX> have been
+          loaded, a navigation bar allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to easily access
+          other <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> of the genome - for example, the region
+          immediately upstream or downstream of the currently
+          displayed sequence. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> can transparently access data
+          across the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> from remote machines, as well as
+          reading files that reside locally.
+          The main <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> screen shows genomic features layered
+          on a segment of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, where each genomic feature appears
+          as a colored shape (typically rectangles, as shown in
+          Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Features are grouped, meaning that the
+          separate local alignments of <ENAMEX TYPE="SUBSTANCE">subsequences</ENAMEX> derived from
+          the same source sequence (HSPs) are treated as a single
+          composite feature, and likewise the distinct exons from a
+          prediction are grouped together into a single feature
+          (composite features are typically drawn as lines
+          connecting the rectangles representing <ENAMEX TYPE="PER_DESC">member</ENAMEX> features).
+          By default, the display shows features on both the
+          forward and reverse strands, with the forward strand on
+          top and the reverse strand on the bottom, separated by a
+          coordinate <ENAMEX TYPE="ORG_DESC">bar</ENAMEX>. For each strand, the inner (light blue)
+          panel contains annotations, showing exons and introns for
+          each transcript of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene. The outer
+          (gray) panel displays computational evidence to support
+          these annotations, such as gene predictions generated by
+          programs such as <ENAMEX TYPE="PRODUCT">GenScan</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>] and <ENAMEX TYPE="PERSON">Genie</ENAMEX> [ <TIMEX TYPE="DATE">45</TIMEX>], and other
+          biological data, such as <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> aligned using the program
+          Sim4 [ <ENAMEX TYPE="LAW">2</ENAMEX>] and protein homologies revealed by <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">1</NUMEX>].
+          The features representing the supporting evidence in
+          the outer <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> are organized into tiers and <ENAMEX TYPE="PER_DESC">types</ENAMEX>. A
+          <ENAMEX TYPE="ORGANIZATION">tier</ENAMEX> is a horizontal row of supporting evidence placed at
+          a specified position on the vertical axis that can be
+          labeled and controlled as a single collection. A tier
+          might be organized, for example, to contain all gene
+          prediction results from various programs, or all BLASTX
+          results from comparisons to several different species
+          <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>. In addition to the tier, each feature is
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with a particular data 'type'. A feature type
+          is typically an <ENAMEX TYPE="ORG_DESC">association</ENAMEX> of that feature to the
+          results produced by a particular analysis, for example,
+          all features derived from a <ENAMEX TYPE="ORGANIZATION">TBLASTX</ENAMEX> run against all mouse
+          <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> in dbEST might be given the type 'Mouse'. Each data
+          type can be individually assigned a shape and a color
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can control the maximum number of rows
+          shown in a tier and set a score threshold so that only
+          results above that threshold are visible. Operations on
+          individual <ENAMEX TYPE="PER_DESC">tiers</ENAMEX> include setting a vertical coordinate
+          position or setting whether the tier is visible or
+          hidden. The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can view the data within a tier in a
+          collapsed style, in which all features within a tier are
+          collapsed into one line (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), or in an expanded
+          style, in which each individual feature is positioned to
+          avoid overlapping any other feature. These <NUMEX TYPE="CARDINAL">two</NUMEX> organizing
+          principles of layout and category simplify viewing the
+          massive amounts of data.
+          A feature can be selected by clicking on it, at which
+          point detailed information such as name, sequence range
+          and score appear in the text <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> at the bottom of the
+          screen (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). 'Rubber-<ENAMEX TYPE="PER_DESC">banding</ENAMEX>' regions allows <NUMEX TYPE="CARDINAL">one</NUMEX> to
+          select multiple entries and view abbreviated information
+          <NUMEX TYPE="MONEY">about</NUMEX> each in the text display table, which can be sorted
+          by any field (for example, name or score).
+          Further information about an annotation that is
+          locally maintained can be displayed by bringing up the
+          text window, which contains descriptive information about
+          an annotation (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Many features originate from
+          other databases (for example, <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> [ <TIMEX TYPE="DATE">46</TIMEX>], <ENAMEX TYPE="ORGANIZATION">EMBL</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">47</NUMEX>] and <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> [ <TIMEX TYPE="DATE">48</TIMEX>]), and we can obtain extra
+          information by looking up those features in their parent
+          <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>. Apollo allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to access this
+          information using a context-dependent menu. By
+          right-clicking a feature, the relevant report is
+          <ENAMEX TYPE="PERSON">retrieved</ENAMEX> and shown in an internet browser.
+          Apollo allows the view to be scaled using zoom buttons
+          that magnify by <TIMEX TYPE="DATE">10×, 2×</TIMEX>, <NUMEX TYPE="CARDINAL">0.5×</NUMEX>, and <NUMEX TYPE="CARDINAL">0.1×</NUMEX>. The
+          magnification can also be targeted to fit a selected
+          feature. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> provides 'semantic <ENAMEX TYPE="PER_DESC">zooming</ENAMEX>': some
+          features that would clutter the display at low zoom
+          levels appear only when the <ENAMEX TYPE="PER_DESC">user</ENAMEX> zooms in. At a
+          sufficiently high zoom level, start and stop codons and
+          the underlying genome sequence appear. Likewise, the
+          sequence level information is displayed for each evidence
+          type and annotation, either as nucleotides or amino-acid
+          <ENAMEX TYPE="PERSON">residues</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>).
+          A view is also available that displays the translation
+          of each of the <NUMEX TYPE="CARDINAL">three</NUMEX> frames of the genomic sequence. In
+          this, start and stop codon positions are colored green
+          and red respectively. Also when a transcript is selected,
+          the specified coding frame of each of its exons is
+          highlighted.
+          In addition to the horizontal scroll <ENAMEX TYPE="ORG_DESC">bar</ENAMEX>, <ENAMEX TYPE="PER_DESC">curators</ENAMEX> can
+          move to a specific position by specifying a coordinate,
+          gene name, or short sequence string (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can
+          also bookmark <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> of interest to find them easily
+          again. The sequence of any feature or set of features can
+          be saved in FASTA format, either as the raw <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequence
+          or as a virtual cDNA, coding sequence or translated
+          <ENAMEX TYPE="SUBSTANCE">amino-acid sequence</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> also provides a restriction
+          enzyme finder, which allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to find known
+          restriction enzyme sites within a sequence, and a <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> base
+          frequency analyzer, which displays a plot of <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content
+          from an adjustable sliding window over a sequence.
+          The most recent addition to <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is the synteny
+          <ENAMEX TYPE="PER_DESC">viewer</ENAMEX> and <ENAMEX TYPE="PER_DESC">editor</ENAMEX> (Figures <NUMEX TYPE="CARDINAL">8</NUMEX>, <NUMEX TYPE="CARDINAL">9</NUMEX>), which displays features
+          on <NUMEX TYPE="CARDINAL">two</NUMEX> different genomes at the same time. The need for
+          this additional tool was precipitated by the recent
+          release of the mouse genome. The synteny display is being
+          used to improve annotations by closely examining the
+          mouse-to-human comparisons. We are currently working to
+          add editing capabilities to this view and to present
+          other genome comparisons, such as between 
+          <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Anopheles</ENAMEX> .
+        
+        
+          Editing the data
+          <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>'s editing functionality allows <ENAMEX TYPE="PER_DESC">curators</ENAMEX> to
+          manually create and modify gene annotations. Annotation
+          in <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is supported by the ability to detect and
+          display edge matches, start and stop codons and potential
+          splice <ENAMEX TYPE="FAC_DESC">sites</ENAMEX>. New gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> can be created easily by
+          dragging a feature from the evidence <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> into the
+          annotation zone. When a new gene model is created, <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>
+          automatically creates an annotation using the longest
+          possible open reading frame (ORF) for the transcript.
+          <ENAMEX TYPE="PERSON">Curator</ENAMEX> comments can then be attached to the gene
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> or to an individual transcript annotation.
+          Modifications are time-stamped and associated with the
+          <ENAMEX TYPE="PERSON">curator</ENAMEX>'s name, providing a complete history of the
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX>.
+          As alternatively spliced transcripts are added to a
+          gene model, they are sequentially named and numbered to
+          associate them with that annotation. <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> automatically
+          creates alternatively spliced transcripts for a gene
+          whenever the <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> of transcripts overlap. In 
+          Drosophila overlapping untranslated
+          regions (UTRs) are observed frequently between adjacent
+          <ENAMEX TYPE="PERSON">transcripts</ENAMEX>, but this does not necessarily indicate that
+          the transcripts are for the same gene, so <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> offers
+          the option to make these new transcripts into distinct
+          overlapping genes. <ENAMEX TYPE="PER_DESC">Curators</ENAMEX> may add exons to existing
+          transcripts by dragging the selected evidence down until
+          the features are positioned directly over an existing
+          transcript. <ENAMEX TYPE="PER_DESC">Curators</ENAMEX> may set a splice site by selecting
+          an exon and one evidence feature and choosing either the
+          'Set as <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end' or <NUMEX TYPE="MONEY">'Set</NUMEX> <TIMEX TYPE="DATE">as 3</TIMEX>' end' option from the
+          <ENAMEX TYPE="PER_DESC">annotation</ENAMEX> pop-up menu.
+          Sequence-level adjustments are possible with <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>'s
+          exon <ENAMEX TYPE="PER_DESC">editor</ENAMEX>. This allows the <ENAMEX TYPE="PER_DESC">curator</ENAMEX> to modify
+          intron-exon boundaries base by base, split and merge
+          genes, and export genomic or translated sequence. The
+          exon <ENAMEX TYPE="PER_DESC">editor</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">10</NUMEX>) allows <NUMEX TYPE="CARDINAL">one</NUMEX> to view the genomic
+          sequence of a single strand and its <NUMEX TYPE="CARDINAL">three</NUMEX>-frame
+          <ENAMEX TYPE="PERSON">conceptual</ENAMEX> translation, with start and stop codons
+          highlighted.
+        
+      
+      
+        Overview of <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> from the <ENAMEX TYPE="ORG_DESC">developer</ENAMEX>'s
+        perspective
+        
+          Installation and configuration
+          <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> runs under the <ENAMEX TYPE="ORGANIZATION">Windows, Mac</ENAMEX> OS <ENAMEX TYPE="LAW">X</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX> and
+          Solaris operating systems and requires <NUMEX TYPE="MONEY">Java 1.2</NUMEX> or <NUMEX TYPE="CARDINAL">1.3</NUMEX>.
+          In our memory tests with a <NUMEX TYPE="MONEY">300 kilobase</NUMEX> (kb) sequence
+          with <NUMEX TYPE="CARDINAL">several thousand</NUMEX> features, the memory heap size
+          hovered around <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="PERSON">Mbytes</ENAMEX> (<ENAMEX TYPE="PRODUCT">MB</ENAMEX>). Therefore <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> will run
+          on a machine with <ENAMEX TYPE="PRODUCT">128 MB</ENAMEX> of available memory, but it will
+          do better with <ENAMEX TYPE="PRODUCT">256 MB</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is highly configurable in terms of appearance,
+          <ENAMEX TYPE="ORGANIZATION">connectivity</ENAMEX> and extensions. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can specify the color,
+          graphical representation and placement of any feature
+          (both annotations and computational results). The
+          configuration file describes both the tiers and the types
+          of data that are to be displayed. The file describes each
+          tier by a label (for example 'Prediction'), a visible
+          flag (either true or false), and a layout flag (if true
+          then all data in this tier is arranged to avoid overlap,
+          that is, the tier is expanded). The file also describes
+          for each feature type: the tier it is to appear in; a
+          label for that feature type; a color; the list of
+          attributes to appear in the tabular report; initial score
+          <ENAMEX TYPE="ORGANIZATION">thresholds</ENAMEX>; and the drawable class to be used to display
+          this feature. <ENAMEX TYPE="ORGANIZATION">URLs</ENAMEX> for connecting features to outside
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> <ENAMEX TYPE="PER_DESC">sources</ENAMEX> are also configurable. Note that the
+          separation of tiers and types allows multiple feature
+          types to be displayed in the same tier. For example the
+          results of all gene-prediction programs can be shown in a
+          single 'Prediction' tier. The aim is provide as much
+          flexibility as possible in the presentation of the data.
+          The information included in this file is incorporated
+          when <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> data are loaded.
+          The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can change some of the 'style' attributes of
+          a feature type - for example, its color and tier position
+          - interactively. A 'types' <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> pops up as a separate
+          window and shows all the tier names and colors.
+          Right-clicking on a type lets the <ENAMEX TYPE="PER_DESC">user</ENAMEX> adjust the color
+          used for displaying features of that type; middle
+          clicking allows the score threshold to be adjusted
+          (features with scores below the threshold are not shown
+          in the display). The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can adjust the order of tiers
+          by selecting and dragging tiers with the mouse and the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> key. The new tier options can then be saved to a
+          tiers file, allowing each <ENAMEX TYPE="PER_DESC">user</ENAMEX> to store personal style
+          preferences.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">External</ENAMEX> data adaptors: connecting <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> to a
+          database
+          <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> is populated with data via a set of adaptors.
+          Typically (for data coming from an external data source)
+          these consist of <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="NATIONALITY">Java</ENAMEX> <ENAMEX TYPE="PER_DESC">classes</ENAMEX>: a dialog box and the
+          adaptor itself. The dialog box allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to tell
+          the system what sequence they wish to examine. The
+          <ENAMEX TYPE="ORGANIZATION">adaptor</ENAMEX> provides a method for translating between the
+          structure of the external data and the internal <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> models.
+          The existing adaptors allow data to be loaded from the
+          <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> CGI server, <ENAMEX TYPE="ORGANIZATION">GAME XML</ENAMEX> files, direct connections to
+          either the <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> or <NUMEX TYPE="MONEY">Gadfly databases</NUMEX>, <ENAMEX TYPE="ORGANIZATION">DAS</ENAMEX> servers [
+          <NUMEX TYPE="CARDINAL">49</NUMEX>], and the <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> variant of <ENAMEX TYPE="ORGANIZATION">GFF</ENAMEX>. Once edited the data
+          may be stored as <ENAMEX TYPE="ORGANIZATION">GAME XML</ENAMEX> files, <ENAMEX TYPE="ORGANIZATION">GFF</ENAMEX> files, or GenBank
+          table format [ <TIMEX TYPE="DATE">50</TIMEX>]. We recognize a need for additional
+          <ENAMEX TYPE="ORGANIZATION">adaptors</ENAMEX> to read other variants of <ENAMEX TYPE="ORGANIZATION">GFF</ENAMEX> (particularly that
+          generated by <ENAMEX TYPE="ORGANIZATION">Artemis</ENAMEX>), and <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and EMBL flat-file
+          entries.
+          The class <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">gui</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">DataLoader</ENAMEX> manages the fetching
+          and recording of annotation session data, which are held
+          in the <ENAMEX TYPE="ORGANIZATION">CurationSet</ENAMEX> data model. This class is instantiated
+          whenever a new request is received for an additional
+          feature or sequence data from an external <ENAMEX TYPE="PER_DESC">source</ENAMEX>. The
+          <ENAMEX TYPE="ORGANIZATION">DataLoader</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX> is quite straightforward; it provides
+          <NUMEX TYPE="CARDINAL">two</NUMEX> publicly available methods for loading and saving the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> utilized during an annotation session. If a specific
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> adaptor is not provided among the arguments in the
+          initial request, then the <ENAMEX TYPE="ORGANIZATION">DataLoader</ENAMEX> will bring up a
+          dialog <ENAMEX TYPE="DISEASE">box</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">org.</ENAMEX><ENAMEX TYPE="ORGANIZATION">bdgp</ENAMEX>.swing.widget.<ENAMEX TYPE="ORGANIZATION">DataAdapterChooser</ENAMEX>) to
+          allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to select an adaptor for an external data
+          source (or sink). When the <ENAMEX TYPE="ORGANIZATION">DataLoader</ENAMEX> instantiates a
+          DataAdapterChooser it provides it with an
+          <ENAMEX TYPE="CONTACT_INFO">org</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">bdgp</ENAMEX>.<ENAMEX TYPE="PERSON">io</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">DataAdapterRegistry</ENAMEX>. This DataAdapterRegistry
+          is populated with the list of all available adaptors from
+          the configuration file and is initialized during <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>'s
+          startup. These adaptors are one of the <NUMEX TYPE="CARDINAL">two</NUMEX> pieces of
+          software that must be provided to add a new external
+          <ENAMEX TYPE="ORGANIZATION">adaptor</ENAMEX>.
+          A data adaptor extends the
+          <ENAMEX TYPE="CONTACT_INFO">org</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">bdgp</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">io-AbstractDataAdapter</ENAMEX> <ENAMEX TYPE="PER_DESC">class</ENAMEX> and implements the
+          following methods of the ApolloDataAdapterI
+          <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX>:
+          
+          GetUI: The DataAdapterChooser
+          requires an interface to interact with the <ENAMEX TYPE="PER_DESC">user</ENAMEX> and
+          collect any necessary information. The DataAdapterChooser
+          obtains this interface via this DataAdapter method,
+          including as an argument the type of input/output
+          operation (for example, <ENAMEX TYPE="ORGANIZATION">IOOperation</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">READ</ENAMEX> or
+          <ENAMEX TYPE="ORGANIZATION">IOOperation</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">WRITE</ENAMEX>). This user interface is the other
+          class (in addition to the <ENAMEX TYPE="ORGANIZATION">DataAdapter</ENAMEX> itself) that the
+          software <ENAMEX TYPE="ORG_DESC">developer</ENAMEX> must provide to add an external
+          <ENAMEX TYPE="ORGANIZATION">adaptor</ENAMEX>.
+          
+          GetCurationSet: his returns a
+          <ENAMEX TYPE="ORGANIZATION">CurationSet</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (from which all annotations and
+          features can be accessed). A <ENAMEX TYPE="ORGANIZATION">CurationSet</ENAMEX> is the hub for
+          all sequence and feature <ENAMEX TYPE="PER_DESC">models</ENAMEX> contemplated in an
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> session.
+          
+          CommitChanges: The argument passed to
+          this is a <ENAMEX TYPE="ORGANIZATION">CurationSet</ENAMEX>. The purpose is to record the
+          <ENAMEX TYPE="PERSON">curator</ENAMEX>'s annotation in a persistent form, whether this
+          is a file or a database.
+          
+          GetStateInformation: Following a load
+          this method captures the current query parameters so that
+          they may be saved and then restored in subsequent
+          sessions.
+          
+          setStateInformation: This method
+          restores the parameters needed to access a CurationSet
+          that was under examination in an earlier session. It is
+          an alternate to explicitly setting load parameters using
+          a dialog.
+          There are other required methods as well, but those
+          described above provide the essential functionality for a
+          <ENAMEX TYPE="ORGANIZATION">DataAdapter</ENAMEX>.
+          The explicit <ENAMEX TYPE="ORGANIZATION">DataAdapterUI</ENAMEX> that must be written
+          provides an implementation of the
+          <ENAMEX TYPE="CONTACT_INFO">org</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">bdgp</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">swingAbstractIntDataAdapUI interface</ENAMEX>. It
+          provides the <ENAMEX TYPE="ORGANIZATION">DataAdapter</ENAMEX> with any user information that
+          is entered into the dialog window. The key method is
+          doOperation, which performs the data transformation by
+          delegating it to its <ENAMEX TYPE="PER_DESC">partner</ENAMEX> data adaptor. The input and
+          <ENAMEX TYPE="ORGANIZATION">outputs</ENAMEX> to this method are entirely dependent on the
+          operation the data adaptor is supposed to perform.
+          In summary, the <ENAMEX TYPE="PER_DESC">mechanics</ENAMEX> of adding a new external
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> are straightforward. This allows a developer
+          to focus solely on writing the software to handle the
+          semantic mapping between their own data representation
+          and the <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> data models.
+        
+        
+          Adding new Drawables
+          Several <ENAMEX TYPE="PER_DESC">graphical elements</ENAMEX> are already available for
+          representing features (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). <ENAMEX TYPE="PER_DESC">Developers</ENAMEX> can
+          incorporate new <ENAMEX TYPE="ORGANIZATION">Drawable</ENAMEX> classes by simply extending the
+          existing <ENAMEX TYPE="FAC_DESC">base</ENAMEX> classes and implementing relevant methods.
+          The following describes some of the methods that can be
+          <ENAMEX TYPE="ORGANIZATION">overridden</ENAMEX>.
+          
+          DrawSelected, drawUnselected , or
+          simply 
+          draw . These methods actually paint
+          the graphics for the primary representation of the
+          sequence.
+          
+          <ENAMEX TYPE="ORGANIZATION">AddHighlights</ENAMEX> can be used to draw
+          graphical indications that a feature shares start or end
+          positions with other features on the sequence.
+          
+          <ENAMEX TYPE="ORGANIZATION">AddDecorations</ENAMEX> is used to draw any
+          additional characteristics, for example the <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of
+          start and stop codons within the feature.
+          A single feature type in fact requires <NUMEX TYPE="CARDINAL">two</NUMEX> Drawable
+          classes, one for a set of those features and another for
+          an <ENAMEX TYPE="PER_DESC">individual</ENAMEX> feature. This is useful for drawing gene
+          structures because the draw method for the set can be
+          used to draw a single line to illustrate the introns,
+          whereas the draw method for the individual <ENAMEX TYPE="PER_DESC">exons</ENAMEX> can be
+          used to draw the rectangles to illustrate the exons. Once
+          a <ENAMEX TYPE="ORG_DESC">developer</ENAMEX> has written the <ENAMEX TYPE="PRODUCT">Drawable</ENAMEX> software it can be
+          added by including the name of the class in the
+          configuration file.
+        
+        
+          Adding new views
+          This is undoubtedly the most ambitious way of
+          <ENAMEX TYPE="ORGANIZATION">extending Apollo</ENAMEX>. A <ENAMEX TYPE="PER_DESC">developer</ENAMEX> must understand how events
+          are passed between windows because it is these events
+          that indicate some change has occurred in the <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of
+          the shared underlying data models. While there are many
+          other steps that are involved in adding a new view, this
+          <ENAMEX TYPE="LAW">section</ENAMEX> will focus on crucial elements of event handling
+          inside <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>.
+          Windows that are interested in receiving a particular
+          type of event must implement the appropriate listener
+          <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> for that event. When the listening window is
+          instantiated it is provided with the central Controller
+          object and must add itself to the global list of
+          <ENAMEX TYPE="PER_DESC">listeners</ENAMEX> held in the Controller object by calling the
+          <ENAMEX TYPE="PERSON">Controller</ENAMEX>'s addListener method with itself as the only
+          argument. When the Controller receives notification of a
+          particular event it notifies every <ENAMEX TYPE="PER_DESC">listener</ENAMEX> on this
+          list.
+          Events themselves are provided to the central event
+          Controller. The Controller implements an individual
+          handler method for every type of event within <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>.
+          These Controller <ENAMEX TYPE="PER_DESC">handler</ENAMEX> methods notify all registered
+          <ENAMEX TYPE="PER_DESC">Listeners</ENAMEX> that an <ENAMEX TYPE="EVENT">Event</ENAMEX> of that type has occurred. Some
+          examples of the current list of events for broadcasting
+          changes involving feature and sequence selection,
+          movement to a different sequence position, changes to
+          feature content or appearance, window <ENAMEX TYPE="ORG_DESC">operations</ENAMEX>, and the
+          availability of new data are briefly described below.
+          
+          Feature selection: This is the most
+          basic of events and indicates that one or more of the
+          sequence features has been selected, usually by a mouse
+          <ENAMEX TYPE="PERSON">click</ENAMEX>, but also from the text search dialog, menus and
+          <ENAMEX TYPE="ORGANIZATION">scrolling</ENAMEX> lists.
+          
+          Base focus: This event is used to
+          center a display of the genomic sequence on a particular
+          base. This may be used to position a display on a
+          feature, or because a user has typed in a particular
+          position, or because a given sequence string occurs at
+          that position.
+          
+          Region change: This event indicates
+          that a completely new region of the genome is replacing
+          the current sequence.
+          
+          Annotation change: The
+          <ENAMEX TYPE="ORGANIZATION">AnnotationEditor</ENAMEX> is the sole generator of these events.
+          To track changes to these important features and ensure
+          consistency this task is highly centralized. Thus, for
+          example, when editing from the synteny view, the
+          modification requests will be relayed to the
+          <ENAMEX TYPE="ORGANIZATION">AnnotationEditor</ENAMEX>. While the <ENAMEX TYPE="PER_DESC">user</ENAMEX> interacts with the
+          synteny display, the non-graphical <ENAMEX TYPE="NATIONALITY">AnnotationEditor</ENAMEX> class
+          directly manages the edits. The <ENAMEX TYPE="ORGANIZATION">AnnotationEditor</ENAMEX> carries
+          out the additions, deletions and changes to start and end
+          positions for exons, transcripts, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and any other
+          annotation features. The Controller then passes these
+          events on to the <ENAMEX TYPE="PER_DESC">listeners</ENAMEX> so that the annotations can be
+          redrawn accordingly.
+          
+          Result change: This event is used
+          only under unusual circumstances. Features are
+          occasionally placed on the incorrect strand because of
+          problems the alignment software has in identifying the
+          correct strand (<TIMEX TYPE="TIME">EST</TIMEX> sequences that do not contain any
+          splice junctions are the common source of this problem).
+          In these cases we allow the <ENAMEX TYPE="PER_DESC">curator</ENAMEX> to move the computed
+          feature from one strand to the other so that it may be
+          used during <TIMEX TYPE="DATE">annotation</TIMEX>.
+          
+          Appearance change: This event is used
+          to issue a request for a change in the appearance of a
+          feature, for example, if the chosen color is altered.
+        
+      
+      
+        Discussion
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> was first put into practical use as an <ENAMEX TYPE="PER_DESC">editor</ENAMEX> in
+        <TIMEX TYPE="DATE">November 2001</TIMEX> for the re-annotation of the complete 
+        Drosophila genome. <NUMEX TYPE="CARDINAL">Ten</NUMEX> full-time
+        curators located at <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">FlyBase-BDGP</ENAMEX> and
+        FlyBase-<ENAMEX TYPE="ORGANIZATION">Harvard</ENAMEX>) used <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> over the course of <NUMEX TYPE="CARDINAL">seven</NUMEX>
+        <TIMEX TYPE="DATE">months</TIMEX> to revise and correct the annotations for the
+        complete <ENAMEX TYPE="ORG_DESC">genome</ENAMEX> [ <TIMEX TYPE="DATE">51</TIMEX>]. During the course of this exercise
+        many improvements and capabilities were made to the
+        software, culminating in a well-exercised code-base for
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Ensembl</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> provides <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> to the community
+        for browsing human and <ENAMEX TYPE="ANIMAL">mouse annotations</ENAMEX>.
+        Other <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, both commercial and academic, are also
+        using <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>. The bioinformatics <ENAMEX TYPE="ORG_DESC">group</ENAMEX> at <ENAMEX TYPE="ORGANIZATION">Biogen</ENAMEX> has been
+        using <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> to examine alignments, executed with <ENAMEX TYPE="ORGANIZATION">BLAT</ENAMEX>,
+        between their internal data and the public human genomic
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> (<ENAMEX TYPE="PERSON">X. Zhijun</ENAMEX>, personal communication). Their group
+        wrote a custom data adaptor to load their data that uses
+        either chromosome and range, or a sequence, or a sequence
+        name to query their internal data source and then display
+        the specified region in <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>. The data adaptor retrieves
+        the data from an internal web service. The 
+        Fugu genomics <ENAMEX TYPE="ORG_DESC">group</ENAMEX> at the <ENAMEX TYPE="ORGANIZATION">UK HGMP</ENAMEX>-RC
+        in <ENAMEX TYPE="GPE">Cambridge</ENAMEX> has been using <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> to display scaffolds,
+        that is, draft sequences of the 
+        Fugu genome (<ENAMEX TYPE="ORGANIZATION">T. Vavouri</ENAMEX>, personal
+        <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">Annotation</ENAMEX> has been generated in GFF format
+        and loaded into <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>. The 
+        <ENAMEX TYPE="ORGANIZATION">Fugu</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is currently working on
+        <ENAMEX TYPE="ORGANIZATION">modifying Apollo</ENAMEX> to enable the interactive manipulation and
+        validation of the ordered scaffolds.
+        The best annotation makes use of every available piece
+        of information. This has already been seen in the 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> project's use of results
+        from external <ENAMEX TYPE="ORG_DESC">pipelines</ENAMEX> and of the internal sequence reads
+        (individual sequences from the cDNA that are unassembled)
+        available from the full-length cDNA sequencing project [
+        <NUMEX TYPE="CARDINAL">52</NUMEX>]. As new data become available, <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> must be able to
+        display them effectively. Today, this means we need to add
+        displays to <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> that exploit comparative data. By
+        aligning the genomic regions of related <ENAMEX TYPE="ANIMAL">species</ENAMEX> and looking
+        for conserved sequence regions we will gain insight into
+        both fine gene structure (by identifying microexons) and
+        into regulatory and other conserved regions.
+        Motivated both by our experience over the past several
+        <TIMEX TYPE="DATE">months</TIMEX> and by new data that are becoming available we are
+        actively working on the following new features. A splice
+        junction view and <ENAMEX TYPE="PER_DESC">editor</ENAMEX> will provide a tabular view of
+        <ENAMEX TYPE="PER_DESC">donor</ENAMEX> and acceptor splice pairs together with predicted
+        splice junctions from standard weight matrices [ <TIMEX TYPE="DATE">53</TIMEX>]. It
+        will allow <ENAMEX TYPE="PER_DESC">curators</ENAMEX> to fine-tune splice sites to generate
+        the most biologically likely peptide. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> adaptors for
+        <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and EMBL flat files should be particularly useful
+        for a broader <ENAMEX TYPE="PER_DESC">audience</ENAMEX> of <ENAMEX TYPE="PER_DESC">biologists</ENAMEX>. In addition, we will
+        allow existing entries from these public sequence archives
+        to be overlaid onto the genomic sequence that is being
+        <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX>.
+        Finally, we have developed external analysis adaptors
+        which will be useful in <NUMEX TYPE="CARDINAL">two</NUMEX> ways. <NUMEX TYPE="ORDINAL">First</NUMEX> they will enable
+        the <ENAMEX TYPE="PER_DESC">curator</ENAMEX> to dynamically reanalyze a specific sub-section
+        of the sequence. This is important because, despite best
+        efforts, the results of a gene prediction or an alignment
+        over a large genomic region are often not as accurate as
+        those produced when the sequence analysis is more targeted.
+        <NUMEX TYPE="ORDINAL">Second</NUMEX>, on-demand analysis will allow the <ENAMEX TYPE="PER_DESC">curator</ENAMEX> to
+        dynamically evaluate the <ENAMEX TYPE="ORG_DESC">peptides</ENAMEX> generated by
+        <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>. This peptide evaluation is essential
+        to the process of annotation if one wishes to produce a
+        high-quality peptide set. The annotated peptides must be
+        examined to verify their biological fidelity. This includes
+        both consideration of the motifs that are present on the
+        <ENAMEX TYPE="ORGANIZATION">peptide</ENAMEX> and a comparison with known peptides. <ENAMEX TYPE="CONTACT_INFO">Downstream</ENAMEX>
+        processing currently carries out this validation of the
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> in bulk, but this delays feedback and problems
+        with the peptides are only cycled back to the <ENAMEX TYPE="PER_DESC">curators</ENAMEX> for
+        correction after some time has passed. Making corrections
+        will be much more effective once the results of the
+        evaluation are immediately available to the <ENAMEX TYPE="PER_DESC">curator</ENAMEX> while
+        they are working with that gene.
+        There are many other features that could be added to
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> and we look forward to working with the open source
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> in bioinformatics to develop <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> further. The
+        <ENAMEX TYPE="PRODUCT">Generic Model Organism Database</ENAMEX> project (GMOD) [ <TIMEX TYPE="DATE">54</TIMEX>], whose
+        <ENAMEX TYPE="ORGANIZATION">aim</ENAMEX> is to provide tools for managing <ENAMEX TYPE="SUBSTANCE">organism databases</ENAMEX>,
+        has adopted <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> as its annotation workbench. Software
+        <ENAMEX TYPE="PER_DESC">developers</ENAMEX> who are interested in contributing to this
+        project and customizing <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> for their own genome
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> projects can find more details at [ <TIMEX TYPE="DATE">55</TIMEX>] and can
+        obtain the source code from the <ENAMEX TYPE="ORGANIZATION">Concurrent Versions System</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">CVS</ENAMEX>) [ <TIMEX TYPE="DATE">56</TIMEX>] <ENAMEX TYPE="ORG_DESC">repository</ENAMEX> maintained on the <ENAMEX TYPE="ORGANIZATION">GMOD</ENAMEX> Sourceforge
+        site at [ <TIMEX TYPE="DATE">57</TIMEX>]. <ENAMEX TYPE="PER_DESC">Biologists</ENAMEX> who are interested in using
+        <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> for genomic annotation will find the detailed user's
+        guide at [ <TIMEX TYPE="DATE">58</TIMEX>] and the most recent release of <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> for
+        local <ENAMEX TYPE="FAC_DESC">installation</ENAMEX> at [ <TIMEX TYPE="DATE">59</TIMEX>].
+      
+    
+  

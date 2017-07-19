@@ -1,0 +1,544 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX> experiments simultaneously measure the
+        expression levels of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes, generating huge
+        amounts of data. The analysis of these data presents a
+        tremendous challenge to <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> and new tools are needed
+        to help gain biological insights from these experiments.
+        Although the data are generated for individual genes,
+        examining a dataset on a gene-by-gene basis is time
+        <ENAMEX TYPE="PERSON">consuming</ENAMEX> and difficult to carry out across an entire
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> way of accelerating the pace of data analysis
+        is to approach the data from a higher level of
+        <ENAMEX TYPE="ORGANIZATION">organization</ENAMEX>. This can be done using data-driven methods,
+        such as hierarchical clustering and self-organizing maps [
+        <ENAMEX TYPE="LAW">1, 2</ENAMEX>], which identify <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes with similar
+        expression patterns. A complementary approach is to view
+        the data at the level of known biological processes or
+        <ENAMEX TYPE="ORGANIZATION">pathways</ENAMEX>. Identifying those <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of biologically related
+        genes that are showing a large number of gene-expression
+        changes will create an informative description of the
+        biology that is occurring in a particular dataset, making
+        it possible to generate new hypotheses and identify those
+        specific areas of biology that warrant more detailed
+        investigation.
+        One tool that assists in the identification of important
+        biological processes is <ENAMEX TYPE="PERSON">GenMAPP</ENAMEX> (<ENAMEX TYPE="PERSON">Gene MicroArray Pathway</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Profiler</ENAMEX>) [ <ENAMEX TYPE="LAW">3</ENAMEX>], a program for viewing and analyzing
+        microarray data on microarray pathway profiles (MAPPs)
+        representing biological pathways or any other functional
+        grouping of genes. When a <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> is linked to a
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression dataset, <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> automatically and
+        <ENAMEX TYPE="ORGANIZATION">dynamically</ENAMEX> color codes the genes on the MAPP according to
+        criteria supplied by the <ENAMEX TYPE="PER_DESC">user</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> is a useful starting
+        point for pathway-based analysis of gene-expression data,
+        but there are several critical requirements to be met
+        before this tool can be used to identify correlated
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes across all biology. On a practical
+        level, <ENAMEX TYPE="GPE">pathway</ENAMEX>-based analysis of microarray data needs to
+        be automated, so that all possible pathways can be
+        <ENAMEX TYPE="ORGANIZATION">explored</ENAMEX>. Identifying correlated gene-expression changes in
+        an <ENAMEX TYPE="PER_DESC">individual</ENAMEX> pathway is often interesting, but it is
+        necessary to know if the gene-expression changes seen on a
+        particular pathway are unique to this pathway or are
+        occurring in many other pathways. Equally important to
+        <ENAMEX TYPE="ORGANIZATION">automation</ENAMEX> is expanding the pathway information that is
+        <ENAMEX TYPE="ORGANIZATION">digitally</ENAMEX> represented. <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> currently has over <TIMEX TYPE="DATE">50</TIMEX> MAPP
+        files depicting various biological pathways and gene
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>, but this is still only a small fraction of all
+        known biology [ <ENAMEX TYPE="LAW">3</ENAMEX>]. Several other pathway programs such as
+        <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>], <ENAMEX TYPE="ORGANIZATION">EcoCyc/MetaCyc</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX>], <ENAMEX TYPE="PERSON">Pathway Processor</ENAMEX> (which
+        uses <ENAMEX TYPE="ORGANIZATION">KEGG</ENAMEX>) [ <ENAMEX TYPE="LAW">6</ENAMEX>] and <ENAMEX TYPE="ORGANIZATION">ViMAc</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>] are available for
+        integration with microarray data analysis, but these
+        programs focus on well-defined metabolic pathways, and like
+        GenMAPP, would benefit from a broader base of pathway
+        information.
+        To address this issue, we have used information
+        available from the <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Consortium</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX>]. The
+        <ENAMEX TYPE="ORGANIZATION">GO Consortium</ENAMEX> is creating a defined vocabulary of terms
+        describing the biological processes, cellular components
+        and molecular functions of all genes. The GO is built in a
+        hierarchical manner, with a parent-child relationship
+        existing between GO terms. <ENAMEX TYPE="PER_DESC">Curators</ENAMEX> at the public gene
+        databases are assigning <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to GO terms to provide
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and a biological context for individual genes.
+        In addition to providing gene annotation, GO also provides
+        a <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> for organizing <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into biologically relevant
+        <ENAMEX TYPE="ORGANIZATION">groupings</ENAMEX>. These groupings can serve as the basis for
+        identifying those areas of biology showing correlated
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes in a microarray experiment. While
+        GO has been used to annotate microarray data both by hand
+        and by some software packages [ <ENAMEX TYPE="LAW">9, 10, 11</ENAMEX>], there has been
+        no automated way to use it for pathway-based analysis.
+        We have developed a tool called <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> that
+        dynamically links gene-expression data to the GO hierarchy.
+        For each of the <NUMEX TYPE="CARDINAL">11,239</NUMEX> ([ <TIMEX TYPE="DATE">12</TIMEX>]; as of <TIMEX TYPE="DATE">May 6, 2002</TIMEX>]) GO
+        biological process, cellular component and molecular
+        function terms, <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> calculates the percentage of the
+        genes measured that meet a user-defined criterion. This is
+        done for each specific GO node, and for the cumulative
+        total of the number of genes meeting the criterion in a
+        parent GO term combined with all of its <ENAMEX TYPE="PER_DESC">children</ENAMEX>, giving a
+        complete picture of the number of genes associated with a
+        particular GO term. Using this percentage and a 
+        z score (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods),
+        the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can rank the GO terms by their relative amounts of
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes. <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> therefore generates a
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profile at the level of biological
+        processes, cellular <ENAMEX TYPE="ORG_DESC">components</ENAMEX> and molecular functions,
+        rapidly identifying those areas of biology that warrant
+        further study (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> are both available free-of-charge
+        at [ <TIMEX TYPE="DATE">13</TIMEX>].
+      
+      
+        Results and discussion
+        
+          The <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser
+          Viewing the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results as a ranked list is
+          <ENAMEX TYPE="PERSON">informative</ENAMEX>, but it does not take full advantage of the
+          fact that GO is arranged in a hierarchy. <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> also
+          presents the results in the context of the GO hierarchy
+          (Figures <TIMEX TYPE="DATE">2a</TIMEX>, <TIMEX TYPE="DATE">3a</TIMEX>) showing the entire hierarchy,
+          color-coded by the percentage of genes changed. <ENAMEX TYPE="PER_DESC">Users</ENAMEX> can
+          step through the hierarchy, expanding those <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> of
+          the <ENAMEX TYPE="PLANT">tree</ENAMEX> that are showing gene expression changes, moving
+          from broad terms to more specific categories. Often the
+          ranked list of terms will show many interrelated terms,
+          and it is necessary to view the results in the hierarchy
+          to identify the relationships among them. For example,
+          the terms 'RNA metabolism', 'RNA <ENAMEX TYPE="ORG_DESC">processing</ENAMEX>', 'mRNA
+          processing', and 'mRNA <ENAMEX TYPE="PER_DESC">splicing</ENAMEX>' appear as upregulated in
+          <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. However, the <ENAMEX TYPE="PLANT">tree</ENAMEX> view (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>) clearly shows
+          that mRNA splicing is a <ENAMEX TYPE="PER_DESC">child</ENAMEX> term of both <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> splicing
+          and mRNA processing, which are in turn child terms of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX>. Similarly, the terms 'main pathways of
+          carbohydrate metabolism', 'catabolic carbohydrate
+          <ENAMEX TYPE="ORGANIZATION">metabolism'</ENAMEX>, and 'glycolysis' also appear as
+          <ENAMEX TYPE="ORGANIZATION">downregulated</ENAMEX> in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser (Figure
+          3a) shows that 'glycolysis' is related to 'main pathways
+          of carboyhydrate metabolism' through the hierarchical
+          relationship between these terms.
+          The <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser also provides <NUMEX TYPE="CARDINAL">three</NUMEX> search and
+          <ENAMEX TYPE="ORGANIZATION">navigation</ENAMEX> functions. First, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can search by a
+          <ENAMEX TYPE="ORGANIZATION">keyword</ENAMEX> or an exact GO term name. <NUMEX TYPE="ORDINAL">Second</NUMEX>, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can
+          search by a gene identifier to find which GO term(s) the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is associated with. For example, searching for the
+          gene alpha-myosin heavy <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> using its <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT
+          <ENAMEX TYPE="ORGANIZATION">identifier</ENAMEX> <ENAMEX TYPE="PRODUCT">MYH6_MOUSE</ENAMEX> or its <ENAMEX TYPE="ORGANIZATION">MGD</ENAMEX> identifier MGI:<ENAMEX TYPE="CONTACT_INFO">97255</ENAMEX>
+          finds the GO process terms 'striated muscle contraction',
+          'cytoskeleton <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> and <ENAMEX TYPE="PER_DESC">biogenesis</ENAMEX>', 'protein
+          <ENAMEX TYPE="ORGANIZATION">modification'</ENAMEX>, and 'muscle development'. <NUMEX TYPE="ORDINAL">Third</NUMEX>, the user
+          can expand the GO tree automatically to show all nodes
+          with a minimum number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or minimum percentage of
+          genes meeting the criterion or with a minimum 
+          z score. The terms meeting the
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> are highlighted in yellow to clearly indicate the
+          results of the search.
+          Once the GO terms of interest have been identified
+          with <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> will want to know exactly which
+          genes are associated with these terms and exactly which
+          genes are being differentially expressed. This can be
+          accomplished using <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX>. Selecting a GO term in the
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser automatically builds a <ENAMEX TYPE="SUBSTANCE">MAPP</ENAMEX> containing
+          the genes associated with that GO term and all of its
+          <ENAMEX TYPE="PER_DESC">children</ENAMEX>, and opens this <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> in <ENAMEX TYPE="GPE">GenMAPP</ENAMEX>. Figure 3bshows
+          the <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> generated by selecting the GO term 'glycolysis'
+          in the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> on the <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> are
+          color-coded with the same criteria used to calculate the
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results, significantly increased and decreased
+          at the <TIMEX TYPE="DATE">12.5-day</TIMEX> embryo time point. Clicking on a gene on
+          the <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> opens a 'back <ENAMEX TYPE="PER_DESC">page</ENAMEX>' containing <ENAMEX TYPE="SUBSTANCE">annotations</ENAMEX>,
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data and hyperlinks to that gene's page
+          in the public databases. By integrating <ENAMEX TYPE="PERSON">GenMAPP</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>, it is possible to seamlessly move from a
+          global gene-expression profile at the level of all
+          biological processes, <ENAMEX TYPE="ORG_DESC">components</ENAMEX> and functions to a
+          detailed description of the gene-expression levels for
+          the specific genes involved. For example, a closer
+          examination of the glycolysis <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> indicates that
+          <ENAMEX TYPE="ORGANIZATION">hexokinase</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX> is upregulated in the <TIMEX TYPE="DATE">12.5-day</TIMEX> <ENAMEX TYPE="PER_DESC">embryo</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">isoforms</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> and <ENAMEX TYPE="PRODUCT">IV</ENAMEX> are downregulated, as compared with
+          the adult heart. This is consistent with hexokinase I
+          being the predominant isoform in the embryonic heart [
+          <NUMEX TYPE="CARDINAL">21</NUMEX>].
+        
+        
+          Expanding <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> beyond GO
+          GO is a good starting point for analyzing microarray
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in the context of biological pathways, but this is
+          by no means the only way to <ENAMEX TYPE="ORG_DESC">group</ENAMEX> related genes. Instead
+          of representing each GO process as an alphabetical list
+          on a <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>, it would be more useful to represent the
+          relationships between these genes as a fully delineated
+          <ENAMEX TYPE="ORGANIZATION">pathway</ENAMEX>. As a start in this direction, <ENAMEX TYPE="GPE">GenMAPP</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]
+          has created over <TIMEX TYPE="DATE">50</TIMEX> MAPPs depicting metabolic pathways,
+          signaling pathways and gene <ENAMEX TYPE="PER_DESC">families</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> can
+          incorporate any MAPP file into its analysis to augment
+          the GO hierarchy. For the <ENAMEX TYPE="ORGANIZATION">FVB</ENAMEX> benchmark developmental
+          dataset, we have run <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> on an archive of <NUMEX TYPE="CARDINAL">54</NUMEX> mouse
+          MAPPs available from [ <TIMEX TYPE="DATE">13</TIMEX>] (see Additional data files for
+          the complete results). These results for the <NUMEX TYPE="CARDINAL">12.5</NUMEX>-day
+          embryonic time point agree with the GO results, showing
+          that the expression of genes involved in the metabolic
+          <ENAMEX TYPE="SUBSTANCE">pathways 'tricarboxylic acid</ENAMEX> cycle' (<NUMEX TYPE="PERCENT">83.3%</NUMEX> of <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          measured, 
+          z score of <NUMEX TYPE="MONEY">5.91</NUMEX>) and 'fatty acid
+          <ENAMEX TYPE="PERSON">degradation</ENAMEX>' (<NUMEX TYPE="PERCENT">69.2%</NUMEX> of <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> measured, 
+          z score <NUMEX TYPE="MONEY">4.82</NUMEX>) is significantly
+          decreased. In addition, the significantly increased
+          criterion identified genes encoding <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>
+          (<NUMEX TYPE="PERCENT">71.1%</NUMEX> of <NUMEX TYPE="CARDINAL">45</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+          z score <NUMEX TYPE="MONEY">6.75</NUMEX>) and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> involved in
+          the cell cycle (<NUMEX TYPE="PERCENT">53.3%</NUMEX> of <NUMEX TYPE="CARDINAL">15</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+          z score <NUMEX TYPE="MONEY">2.4</NUMEX>).
+          The archive of <ENAMEX TYPE="ORGANIZATION">MAPPs</ENAMEX> provided by <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> is in no way
+          <ENAMEX TYPE="ORGANIZATION">comprehensive</ENAMEX>. The growth of this archive depends on
+          assistance from the entire biological community. Our hope
+          is that, as <ENAMEX TYPE="SUBSTANCE">MAPPFinder</ENAMEX> <ENAMEX TYPE="PER_DESC">users</ENAMEX> see the added utility of
+          viewing the GO biological processes as fully delineated
+          pathways, they will use <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX> to organize the gene
+          lists into more descriptive biological pathways. Figure
+          3cgives an example of how the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the GO term
+          <ENAMEX TYPE="ORGANIZATION">'glycolysis</ENAMEX>' can be rearranged using the tools in GenMAPP
+          to depict the full pathway showing the direction of the
+          enzymatic cascade, metabolic intermediates and cellular
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org</ENAMEX> is currently accepting
+          submissions of new <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> files. <ENAMEX TYPE="GPE">MAPPs</ENAMEX> contributed by the
+          <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> will be included in the downloadable MAPP
+          <ENAMEX TYPE="ORGANIZATION">archive</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> is a necessary complement to current
+          analysis tools
+          By approaching large datasets from a higher level or
+          <ENAMEX TYPE="ORGANIZATION">organization</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> helps to ease the data analysis
+          and shorten the time necessary to gain a biological
+          understanding of the microarray data. <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> has
+          greatly expanded current pathway-based tools by using the
+          large amount of annotations available from the GO. This
+          broad analysis will help identify biological processes
+          that have not yet been implicated in a particular
+          experimental condition and begin to make connections
+          between biological processes previously thought to be
+          unrelated.
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> is available for <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> and human
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. We plan to extend the program to many of the other
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX> that are in GO and updates will be available at [
+          <NUMEX TYPE="CARDINAL">13</NUMEX>].
+        
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression data
+          The publicly available mouse microarray dataset, the
+          <ENAMEX TYPE="GPE">FVB</ENAMEX> benchmark set for <ENAMEX TYPE="DISEASE">cardiac</ENAMEX> development, maturation and
+          aging, was obtained from the <ENAMEX TYPE="ORGANIZATION">CardioGenomics Program</ENAMEX> for
+          Genomics Applications [ <TIMEX TYPE="DATE">14</TIMEX>]. These data compare healthy
+          mouse hearts at different time points during development,
+          using male and female <ENAMEX TYPE="ORGANIZATION">FVB/N</ENAMEX> <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. Specifically, this
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> examines heart tissue from <TIMEX TYPE="DATE">12.5-day</TIMEX> embryos,
+          <TIMEX TYPE="DATE">1-day</TIMEX> neonatal <ENAMEX TYPE="ANIMAL">mice</ENAMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX><ENAMEX TYPE="ANIMAL">-week mice</ENAMEX>, <NUMEX TYPE="CARDINAL">4</NUMEX><ENAMEX TYPE="ANIMAL">-week mice</ENAMEX>, and adult
+          <ENAMEX TYPE="ANIMAL">mice</ENAMEX> at <TIMEX TYPE="DATE">5 months</TIMEX> and <TIMEX TYPE="DATE">1 year</TIMEX>. Our analysis focused on the
+          <TIMEX TYPE="DATE">12.5-day</TIMEX> embryonic time point and the control adult <ENAMEX TYPE="ANIMAL">mice</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">Three</NUMEX> <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">U74A version 1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">arrays</ENAMEX> were used for each
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> point. For the embryonic time point, <NUMEX TYPE="CARDINAL">three</NUMEX> hearts
+          were pooled for each array because of their small size.
+          To improve the statistical power in our analysis, the
+          <TIMEX TYPE="DATE">5-month</TIMEX> and the <NUMEX TYPE="CARDINAL">1</NUMEX><ENAMEX TYPE="ANIMAL">-year mice</ENAMEX> were combined into a single
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> of normal adult <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> intensity values were
+          obtained with <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <ENAMEX TYPE="PRODUCT">MAS 5.0</ENAMEX> software. <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> values
+          less than <NUMEX TYPE="CARDINAL">20</NUMEX> were raised to <NUMEX TYPE="CARDINAL">20</NUMEX> and the log base 2 was
+          taken. Log folds were determined from the average of each
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> point when compared with the average of the combined
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> values were calculated with a
+          permutation 
+          <ENAMEX TYPE="PRODUCT">t</ENAMEX> test. The statistical analysis
+          was done using the multest package of the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> statistical
+          programming language [ <TIMEX TYPE="DATE">22</TIMEX>]. These data were imported into
+          GenMAPP, and the resulting <ENAMEX TYPE="PERSON">GenMAPP Expression Dataset</ENAMEX>
+          file (.<ENAMEX TYPE="ORGANIZATION">gex</ENAMEX>) was exported to <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> requires a user-defined criterion for a
+          meaningful gene-expression change. In this case we
+          combined a fold change with a statistical filter to
+          determine significance. We are using a fold change of
+          greater than <NUMEX TYPE="CARDINAL">1.2</NUMEX> with a 
+
+          p value of <NUMEX TYPE="CARDINAL">less than 0.05</NUMEX> to define
+          a significant gene-expression increase, and a fold change
+          of <NUMEX TYPE="PERCENT">less than -1.2</NUMEX> with a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value of <NUMEX TYPE="CARDINAL">less than 0.05</NUMEX> to
+          define a significant gene-expression decrease. To
+          determine the overall number of gene-expression changes
+          in each GO term, an additional criterion of a fold change
+          greater than <NUMEX TYPE="CARDINAL">1.2</NUMEX> or less than <NUMEX TYPE="PERCENT">-1.2</NUMEX> and a 
+          p value of <NUMEX TYPE="CARDINAL">less than 0.05</NUMEX> is used
+          (data not shown).
+          It is important to note that while we have used
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data generated from <ENAMEX TYPE="ORGANIZATION">Affymetrix GeneChips</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from other microarray <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and other techniques
+          such as <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> (serial analysis of gene expression) can be
+          used equally easily.
+        
+        
+          Linking the expression data to <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> builds a local copy of the GO hierarchy
+          using the <NUMEX TYPE="CARDINAL">three</NUMEX> ontology files (<ENAMEX TYPE="WORK_OF_ART">Process, Component and</ENAMEX>
+          Function) available from GO [ <TIMEX TYPE="DATE">12</TIMEX>]. The directed acyclic
+          <ENAMEX TYPE="PERSON">graph</ENAMEX> (DAG) structure of GO [ <TIMEX TYPE="DATE">23</TIMEX>] allows a node to be a
+          <ENAMEX TYPE="PER_DESC">child</ENAMEX> of multiple <ENAMEX TYPE="PER_DESC">parents</ENAMEX>. This makes the navigation,
+          <ENAMEX TYPE="ORGANIZATION">visualization</ENAMEX> and computation of the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results
+          more difficult than if the GO were stored in a classical
+          tree structure. To ease the programming necessary to
+          implement the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> algorithm, the DAG structure was
+          converted to a classical <ENAMEX TYPE="PLANT">tree</ENAMEX>. For each node of the DAG
+          that contained multiple <ENAMEX TYPE="PER_DESC">parents</ENAMEX>, multiple copies were
+          inserted into the <ENAMEX TYPE="PLANT">tree</ENAMEX> representation of the GO using
+          local identifiers to handle duplicate GO terms. This tree
+          structure maintains the 'true <ENAMEX TYPE="FAC_DESC">path</ENAMEX>' rule enforced in the
+          GO DAG structure. <ENAMEX TYPE="PRODUCT">MAPPFinder</ENAMEX> handles this conversion
+          <ENAMEX TYPE="PERSON">internally</ENAMEX>, and to the <ENAMEX TYPE="PER_DESC">user</ENAMEX> the GO hierarchy seen in the
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> browser will be identical to that seen in
+          other GO browsers.
+          The links between the GO terms and the genes in the
+          expression dataset are made with the gene-association
+          files [ <TIMEX TYPE="DATE">15</TIMEX>]. These <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> are taken from the
+          <ENAMEX TYPE="ORGANIZATION">European Bioinformatics Institute</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>] for human genes,
+          the <ENAMEX TYPE="ANIMAL">Mouse Genome Database</ENAMEX> (MGD) [ <TIMEX TYPE="DATE">16</TIMEX>] for mouse <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          and the 
+          <ENAMEX TYPE="PERSON">Saccharomyces Genome Database</ENAMEX> (SGD)
+          [ <TIMEX TYPE="DATE">25</TIMEX>] for <ENAMEX TYPE="SUBSTANCE">yeast genes</ENAMEX>. Currently, the genes in the input
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> must be identified with <ENAMEX TYPE="ORGANIZATION">GenBank, SWISS-PROT</ENAMEX> or SGD
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> uses a relational database to link the
+          expression dataset to the gene-<ENAMEX TYPE="ORG_DESC">association</ENAMEX> files. The
+          MAPPFinder database relates gene-expression data to the
+          appropriate gene-identifrcation systems for each species
+          (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). For human data, the gene-<ENAMEX TYPE="ORG_DESC">association</ENAMEX> files
+          use <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> identifiers, requiring a
+          <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>-to-<ENAMEX TYPE="WORK_OF_ART">GenBank relational</ENAMEX> table to link datasets
+          using <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers to the GO annotations.
+          For <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> data, the gene-<ENAMEX TYPE="ORG_DESC">association</ENAMEX> files use SGD
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX>. A <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>-to-SGD relational table is also
+          included for expression datasets using <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT
+          <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX>. For <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> data, the GO gene-association
+          files use MGD identifiers, requiring a <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>-to-MGD
+          <ENAMEX TYPE="ORGANIZATION">relational</ENAMEX> table, and a <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>-to-<ENAMEX TYPE="ORGANIZATION">MGD relational</ENAMEX>
+          table. MAPPFinder takes advantage of the fact that <ENAMEX TYPE="ORGANIZATION">MGD</ENAMEX> is
+          also related to <ENAMEX TYPE="PERSON">UniGene</ENAMEX>, allowing additional <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> that
+          are not in the MGD-GenBank relational table to be used as
+          gene identifiers. With this intermediate step, many more
+          GenBank identifiers can be linked to GO annotations.
+          Currently, there is no direct relationship between
+          <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and <ENAMEX TYPE="PERSON">UniGene</ENAMEX>, so a similar intermediate step
+          was not used for human data.
+        
+        
+          Calculating the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results
+          <ENAMEX TYPE="PERSON">MAPPFinder</ENAMEX> calculates the percentage of genes measured
+          within each GO term that meet a user-defined criterion,
+          and this measurement is known as the 'percent changed'.
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> also calculates the percentage of the genes
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with a GO term that are measured in the
+          experiment, and this measurement is known as the 'percent
+          present'. Calculating the percent present is necessary to
+          determine how well represented a GO term is in the
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>.
+          The GO gene-<ENAMEX TYPE="ORG_DESC">association</ENAMEX> files [ <TIMEX TYPE="DATE">17</TIMEX>] are potentially
+          <ENAMEX TYPE="PERSON">problematic</ENAMEX>, because they treat each GO term
+          <ENAMEX TYPE="PERSON">independently</ENAMEX>, removing the implicit parent-child
+          relationship. As a result, looking at the GO terms
+          individually is often uninformative because the number of
+          genes associated with any one term is smaller than the
+          actual number of genes involved in that process,
+          component, or function. To address this issue, we
+          calculate the nested percentage for a <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> term with
+          all its <ENAMEX TYPE="PER_DESC">children</ENAMEX> below it in the hierarchy. By combining
+          the <ENAMEX TYPE="PER_DESC">child</ENAMEX> terms with their <ENAMEX TYPE="ORG_DESC">parent</ENAMEX>, the results
+          incorporate genes associated with the entire <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> of
+          the hierarchy, providing a much more accurate
+          representation of the number of genes involved in that
+          process, component or function. As more specific branches
+          of the GO are examined, the denominator of the two
+          <ENAMEX TYPE="PERSON">equations</ENAMEX> will become smaller and the <ENAMEX TYPE="PER_DESC">user</ENAMEX> can find their
+          desired level of specificity. One complication that
+          arises from this method is that in some cases a gene is
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with both the <ENAMEX TYPE="ORG_DESC">parent</ENAMEX> and <ENAMEX TYPE="PER_DESC">child</ENAMEX> terms or
+          multiple <ENAMEX TYPE="PER_DESC">child</ENAMEX> terms. When the percentages are calculated
+          for the <ENAMEX TYPE="ORG_DESC">sub-</ENAMEX>tree, we ensure that each gene is only
+          counted once, so that genes with <ENAMEX TYPE="DISEASE">multiple annotations</ENAMEX> are
+          not weighted more heavily.
+          Another complication that arises while calculating the
+          <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results is the issue of multiple probes of the
+          same gene on the array. In this case, the features or
+          duplicate genes are clustered to <NUMEX TYPE="CARDINAL">one</NUMEX> unique gene. If any
+          of the instances of this gene on the array meet the
+          user-defined criterion, then that gene meets the
+          user-defined criterion. The number of unique genes is
+          also used to calculate the 
+          z score, meaning that the
+          statistics are based only on a single occurrence of each
+          gene in the dataset.
+          A statistical rating of the relative gene-expression
+          activity in each <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX> and GO term is also provided. It is
+          a standardized difference score ( 
+          z score) using the expected value
+          and standard deviation of the number of genes meeting the
+          criterion on a GO term under a hypergeometric
+          distribution. The 
+          z score is useful for ranking GO
+          terms by their relative amounts of gene expression
+          changes. Positive 
+          z scores indicate GO terms with a
+          greater number of genes meeting the criterion than is
+          expected by chance. Negative 
+          z scores indicate GO terms with
+          fewer genes meeting the criterion than expected by
+          chance. A 
+          z score near <NUMEX TYPE="CARDINAL">zero</NUMEX> indicates that
+          the number of genes meeting the criterion approximates
+          the expected number. Extreme positive scores suggest GO
+          terms with the greatest confidence that the correlation
+          between the expression changes of the genes in this
+          grouping are not occurring by chance alone. 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> values are not assigned to the GO
+          terms or MAPPs because, while such a standardized
+          difference score could approximate a normal 
+          z score for an individual <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>, the
+          lack of independence between GO terms and the multiple
+          testing occurring among them most certainly makes the
+          normal 
+          p value for such a 
+          z score unreliable. As a result, 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values are not assigned to the GO
+          terms and <ENAMEX TYPE="ORGANIZATION">MAPPs</ENAMEX>.
+          The 
+          z score is calculated by
+          subtracting the expected number of genes in a GO term (or
+          <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>) meeting the criterion from the observed number of
+          genes, and dividing by the standard deviation of the
+          observed number of genes. The equation used is
+          
+          or
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the total number of genes
+          measured, 
+          R is the total number of genes
+          meeting the criterion, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the total number of genes in
+          this specific <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>, and 
+          r is the number of genes meeting
+          the criterion in this specific <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>.
+          Therefore, if <NUMEX TYPE="CARDINAL">two</NUMEX> GO terms contain the same number of
+          genes, the term with the greater number of genes meeting
+          the criterion will receive a higher score. Dividing by
+          the standard deviation adjusts for the size of the GO
+          term, ranking a GO term (or MAPP) with a large number of
+          genes meeting the criterion higher than a GO term (or
+          <ENAMEX TYPE="ORGANIZATION">MAPP</ENAMEX>) with the same percentage of genes changed, but
+          fewer total genes.
+          The <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results are generated in the GO browser
+          for analysis in the context of the GO hierarchy and as
+          tab-delimited text files that can be used for sorting and
+          filtering the data in a spreadsheet program.
+        
+      
+      
+        Additional data files
+        The following additional data files are available:
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data in the form of a GenMAPP
+        expression dataset file(.<ENAMEX TYPE="ORGANIZATION">gex</ENAMEX>). It contains the microarray
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> and the criteria used to define increased and
+        decreased gene-expression change. It can be opened for
+        editing in <ENAMEX TYPE="GPE">GenMAPP</ENAMEX> and is the appropriate data type for use
+        with <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>.
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data as a database filegenerated
+        by <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> (.<ENAMEX TYPE="ORGANIZATION">gdb</ENAMEX>). It contains the relationships between
+        the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the dataset and the GO hierarchy. The file can
+        be opened for viewing in <ENAMEX TYPE="ORGANIZATION">Microsoft Access</ENAMEX>. This file must
+        be present to build <ENAMEX TYPE="ORGANIZATION">GenMAPP MAPPs</ENAMEX> from existing MAPPFinder
+        results.
+        The <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results for the <TIMEX TYPE="DATE">12.5-day</TIMEX> embryos versus
+        the adult <ENAMEX TYPE="ANIMAL">mice</ENAMEX> are contained in the files: <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo
+        - significantly increased - <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> results, <NUMEX TYPE="CARDINAL">12.5</NUMEX>-day
+        Embryo - significantly increased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX> results, <NUMEX TYPE="CARDINAL">12.5</NUMEX>-day
+        Embryo - significantly decreased - <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> results,
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly decreased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX> results,
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - All Changes - <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> results,
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo <ENAMEX TYPE="WORK_OF_ART">- All Changes - Local Results</ENAMEX>. These text
+        files contain the <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> results for both criteria and
+        both the GO hierarchy and the <ENAMEX TYPE="ORGANIZATION">GenMAPP</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">org MAPPs</ENAMEX>. These
+        files can be loaded into <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> for view in the
+        <ENAMEX TYPE="ORGANIZATION">MAPPFinder GO</ENAMEX> <ENAMEX TYPE="ORG_DESC">browser</ENAMEX>. These files are tab-delimited and
+        can also be viewed as tables in <ENAMEX TYPE="ORGANIZATION">Microsoft Excel</ENAMEX>. The 'All
+        Changes' files contain the results for a criteria looking
+        for either increased or decreased gene expression changes.
+        A zip filecontaining all aditional data files is
+        available.
+        Additional data file 1
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data in the form of a GenMAPP
+        expression dataset file
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data in the form of a GenMAPP
+        expression dataset file (.<ENAMEX TYPE="ORGANIZATION">gex</ENAMEX>). It contains the microarray
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> and the criteria used to define increased and
+        decreased gene-expression change. It can be opened for
+        editing in <ENAMEX TYPE="GPE">GenMAPP</ENAMEX> and is the appropriate data type for use
+        with <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>.
+        Click here for additional data file
+        Additional data file 2
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data as a database file generated
+        by <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX>
+        The <ENAMEX TYPE="ORGANIZATION">FVBN</ENAMEX> developmental data as a database file generated
+        by <ENAMEX TYPE="ORGANIZATION">MAPPFinder</ENAMEX> (.<ENAMEX TYPE="ORGANIZATION">gdb</ENAMEX>). It contains the relationships between
+        the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the dataset and the GO hierarchy. The file can
+        be opened for viewing in <ENAMEX TYPE="ORGANIZATION">Microsoft Access</ENAMEX>. This file must
+        be present to build <ENAMEX TYPE="ORGANIZATION">GenMAPP MAPPs</ENAMEX> from existing MAPPFinder
+        results.
+        Click here for additional data file
+        Additional data file 3
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly increased - <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Ontology results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly increased - <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Ontology results
+        Click here for additional data file
+        Additional data file 4
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly increased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX>
+        results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly increased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX>
+        results
+        Click here for additional data file
+        Additional data file 5
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly decreased - <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Ontology results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly decreased - <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+        Ontology results
+        Click here for additional data file
+        Additional data file 6
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly decreased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX>
+        results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - significantly decreased - <ENAMEX TYPE="ORGANIZATION">Local</ENAMEX>
+        results
+        Click here for additional data file
+        Additional data file 7
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - All Changes - <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX>
+        results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - All Changes - <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX>
+        results
+        Click here for additional data file
+        Additional data file 8
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - <ENAMEX TYPE="ORGANIZATION">All Changes - Local</ENAMEX> results
+        <TIMEX TYPE="DATE">12.5-day</TIMEX> Embryo - <ENAMEX TYPE="ORGANIZATION">All Changes - Local</ENAMEX> results
+        Click here for additional data file
+        Additional data file 9
+        A zip file containing all aditional data files
+        A zip file containing all aditional data files.
+        Click here for additional data file
+      
+    
+  

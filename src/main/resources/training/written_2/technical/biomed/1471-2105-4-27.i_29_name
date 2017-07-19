@@ -1,0 +1,400 @@
+
+  
+    
+      
+        Background
+        Expression microarrays provide a vehicle for exploring
+        the gene expression in a manner that is rapid, sensitive,
+        systematic and comprehensive [ <NUMEX TYPE="CARDINAL">1 2 3 4 5 6</NUMEX> ] . <NUMEX TYPE="CARDINAL">Thousands</NUMEX> of
+        genes can now be studied simultaneously without the need of
+        an 
+        a priori <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> gene list. In
+        order to keep up with advances in genome sequencing, the
+        number and composition of <ENAMEX TYPE="PER_DESC">representative</ENAMEX> gene sequences are
+        frequently updated and <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> representing newly
+        discovered expressed sequences are added on commercial
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. Furthermore, existing <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> are revised
+        because <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sequences once thought to be unique for a
+        single gene are occasionally found to be less specific.
+        This leads to the question of whether results from newer
+        microarray <ENAMEX TYPE="PER_DESC">generations</ENAMEX> are comparable to those of previous
+        <ENAMEX TYPE="PER_DESC">generations</ENAMEX>. The cost, time and irreplaceable nature of
+        some of the <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> used for microarray analysis require
+        that a method to compare data from different generations be
+        developed.
+        Although <ENAMEX TYPE="PERSON">Affymetrix Chips</ENAMEX> can each measure the
+        expression of <NUMEX TYPE="CARDINAL">over 12,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>, the true
+        transcript level is confounded by a substantial amount of
+        noise and variability induced by both the large number of
+        observations and the wide range of gene expression values [
+        <NUMEX TYPE="CARDINAL">7</NUMEX> ] . Microarrays are sensitive to noise from many sources
+        including the manufacturing process and the experimental
+        (<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> isolation, labeling, hybridization, staining, washing
+        and scanning) processes. Even within the same generation of
+        chips and for replicates of single tissue samples, there
+        may be substantial variability in the measurement levels
+        for the same gene [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . It is critical to distinguish
+        this noise from the changes that are real. Many empirical
+        approaches have been adopted to decrease noise from
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> based experiments. Different methodologies and
+        strategies for reducing noise include establishing an
+        arbitrary global threshold for fold-changes [ <ENAMEX TYPE="LAW">9</ENAMEX> ] ,
+        noise-filtering look up tables [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , normalization
+        techniques to make microarrays comparable, such as using
+        ANOVA methods to provide estimates of changes in gene
+        expression that are corrected for potential confounding
+        effects [ <NUMEX TYPE="CARDINAL">10 11</NUMEX> ] , and using replicate experiments to
+        estimate the variability in reported gene expression [ <TIMEX TYPE="DATE">12</TIMEX> ]
+        . Applying fold change thresholds has been the most common
+        method of reducing noise by filtering out the false
+        <ENAMEX TYPE="ORGANIZATION">positives</ENAMEX> [ <NUMEX TYPE="CARDINAL">8 9 13</NUMEX> ] . However, much of the work done to
+        date has focused on decreasing noise within the same
+        generation and has not addressed the issue of comparability
+        across generations.
+        In this analysis, we have estimated the level of
+        congruency between corresponding probe sets on <NUMEX TYPE="CARDINAL">two</NUMEX>
+        <ENAMEX TYPE="PER_DESC">generations</ENAMEX> of <ENAMEX TYPE="PERSON">Affymetrix Chips</ENAMEX>, <ENAMEX TYPE="PERSON">HuGeneFL</ENAMEX> (old) and <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+        (new). We aim to understand the characteristics that
+        contribute to the systematic variability of the expression
+        values for experiments performed on different generations
+        of microarrays and extract features that would make them
+        more comparable. Furthermore, we address the issue of
+        variable scanner settings, since a <NUMEX TYPE="CARDINAL">ten</NUMEX>-fold decrease in the
+        photo-multiplier tube (PMT) settings of the scanner was
+        another <ENAMEX TYPE="ORG_DESC">parameter</ENAMEX> introduced by <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> in parallel to
+        the new chip <ENAMEX TYPE="PER_DESC">generation</ENAMEX>, and interfered with data
+        <ENAMEX TYPE="PERSON">comparability</ENAMEX>. More specifically, to expand the dynamic
+        range of the expression assay, a reduction of the system
+        amplification was recommended when using <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips.
+      
+      
+        Results
+        In order to assess the accuracy and reproducibility of
+        the experiments, as well as the effect of different scanner
+        <ENAMEX TYPE="PERSON">settings</ENAMEX> and different chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX> we performed the
+        following types of comparisons. The labeled cRNA from a
+        single sample was split in <NUMEX TYPE="CARDINAL">two</NUMEX>, hybridized to <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+        chips and both were scanned at "low gain" photo-multiplier
+        <ENAMEX TYPE="PERSON">tube</ENAMEX> (PMT) settings (<NUMEX TYPE="MONEY">Exp 1</NUMEX>). The labeled cRNA from a sample
+        was split, hybridized to <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chips, one was scanned
+        at "low gain" <ENAMEX TYPE="ORGANIZATION">PMT</ENAMEX> settings, the other at "high gain"
+        <ENAMEX TYPE="PERSON">settings</ENAMEX> (<NUMEX TYPE="MONEY">Exp 2</NUMEX>). The labeled cRNA from a sample was split,
+        <ENAMEX TYPE="ORGANIZATION">hybridized</ENAMEX> to <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips, one was scanned at "low
+        gain", the other at "high gain" (<NUMEX TYPE="MONEY">Exp 3</NUMEX>). The labeled cRNA
+        from <NUMEX TYPE="CARDINAL">one</NUMEX> sample was split, hybridized to a <ENAMEX TYPE="PRODUCT">HuGeneFL</ENAMEX> chip
+        and a <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chip, the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> scanned at "high gain" and
+        the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> at "low gain" (<NUMEX TYPE="MONEY">Exp 4</NUMEX>) according to
+        <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>'s recommendations.
+        For the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chip-pairs, where each chip-<ENAMEX TYPE="PER_DESC">pair</ENAMEX> was
+        hybridized with a single tissue sample and scanned at the
+        same "low gain" scanner setting, the correlations across
+        all <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> were greater than <NUMEX TYPE="MONEY">0.99</NUMEX> (<NUMEX TYPE="MONEY">Exp1</NUMEX> in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        Looking at the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX><ENAMEX TYPE="PRODUCT">-U95A</ENAMEX> chip-pairs in <ENAMEX TYPE="FAC">Exp 2</ENAMEX>, with one
+        chip of each <ENAMEX TYPE="PER_DESC">pair scanned</ENAMEX> at "high gain" and the other at
+        "low gain" <ENAMEX TYPE="ORGANIZATION">PMT</ENAMEX> settings, the correlation coefficients
+        across all <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> ranged from <NUMEX TYPE="MONEY">0.756 to 0.872</NUMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        The same analysis on the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT">HuGeneFL</ENAMEX> chip-pairs (with
+        <NUMEX TYPE="CARDINAL">one</NUMEX> of each <ENAMEX TYPE="PER_DESC">pair scanned</ENAMEX> at "high gain" and the other at
+        "low gain") resulted in the correlation coefficients across
+        the <NUMEX TYPE="CARDINAL">7,129</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets ranging <NUMEX TYPE="MONEY">between 0.904 and 0.947</NUMEX> (Exp
+        <NUMEX TYPE="CARDINAL">3</NUMEX>, <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Finally, in the analysis of the <NUMEX TYPE="CARDINAL">8,044</NUMEX> common
+        <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> between <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips (measured at "high gain")
+        and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chips (measured at "low gain"), the correlation
+        <ENAMEX TYPE="SUBSTANCE">coefficients</ENAMEX> ranged <NUMEX TYPE="MONEY">between 0.730 and 0.810</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Exp</ENAMEX> <ENAMEX TYPE="PRODUCT">4</ENAMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+        <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        The rest of the analyses focused solely on the
+        measurements made on the <NUMEX TYPE="CARDINAL">seven</NUMEX> samples split across the
+        HuGeneFL at "high gain" and the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips at "low
+        gain", as this is the most common comparison that will need
+        to be made (<NUMEX TYPE="MONEY">Exp 4</NUMEX>). The correlation between the gene
+        expression values was computed for different subsets of
+        <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> based on i) the number of common probe pairs;
+        <ENAMEX TYPE="ORGANIZATION">ii</ENAMEX>) the number of 'P' calls assigned to every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set;
+        <ENAMEX TYPE="PERSON">iii</ENAMEX>) the expression level of the genes on HuGeneFL
+        chips.
+        For the <NUMEX TYPE="ORDINAL">first</NUMEX> analysis each subset consisted of probe
+        sets with the same number of common probe pairs. The
+        correlation coefficient (r) was calculated by plotting all
+        the measurements on the <ENAMEX TYPE="GPE">HuGeneFL</ENAMEX> versus all the
+        measurements on the <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> for every subset. The number of
+        common probe pairs within probe sets ranged from <NUMEX TYPE="CARDINAL">zero</NUMEX> to <NUMEX TYPE="CARDINAL">16</NUMEX>
+        (see Methods). The correlation improved as the number of
+        common probe pairs increased (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). When <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets
+        had <NUMEX TYPE="CARDINAL">1</NUMEX> or more <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs in common, r was greater than
+        <NUMEX TYPE="CARDINAL">0.8</NUMEX>, and for <TIMEX TYPE="DATE">14</TIMEX> or more <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs in common, r was more
+        than <NUMEX TYPE="CARDINAL">0.9</NUMEX>.
+        A <NUMEX TYPE="ORDINAL">second</NUMEX> analysis was performed in a similar manner, by
+        creating subsets based on the number of 'P' calls per probe
+        set, across the <NUMEX TYPE="CARDINAL">14</NUMEX> chips (<ENAMEX TYPE="PRODUCT">7 HuGeneFL</ENAMEX> and <ENAMEX TYPE="PRODUCT">7 HG-U95A</ENAMEX> chips).
+        The correlation coefficient increased for the genes as the
+        number of 'P' calls increased (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        Based on the level of gene expression on the HuGeneFL
+        chips, different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were made for gene expression level
+        ranging from, for example, <NUMEX TYPE="PERCENT">-100,000</NUMEX> to <NUMEX TYPE="PERCENT">-10,000</NUMEX>, <NUMEX TYPE="PERCENT">-10,000</NUMEX> to
+        -<NUMEX TYPE="CARDINAL">1,000</NUMEX> and so on. The correlation across the <NUMEX TYPE="CARDINAL">two</NUMEX> chips was
+        computed for each of these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). It was
+        observed that the higher the reported gene expression level
+        on the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips, the higher the correlation of the
+        gene expression values between <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+        chips.
+        A <NUMEX TYPE="QUANTITY">chi-square</NUMEX> analysis was done for all the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> on
+        both <ENAMEX TYPE="PER_DESC">generations</ENAMEX> to determine if the absolute calls made
+        for the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips were statistically independent from
+        the absolute calls made for the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips. A
+        <NUMEX TYPE="CARDINAL">three</NUMEX>-by-<NUMEX TYPE="CARDINAL">three</NUMEX> contingency table was constructed based on
+        the absolute calls. The <NUMEX TYPE="CARDINAL">113,050</NUMEX> pairs of calls (<NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> ×
+        <ENAMEX TYPE="PRODUCT">2</ENAMEX> chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX> × <NUMEX TYPE="CARDINAL">8,044</NUMEX> common <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>) were placed
+        into this contingency table and the <NUMEX TYPE="QUANTITY">chi-square</NUMEX> value
+        <ENAMEX TYPE="ORGANIZATION">computed</ENAMEX>. The computed <NUMEX TYPE="QUANTITY">chi-square</NUMEX> value was greater than
+        the <NUMEX TYPE="QUANTITY">chi-square</NUMEX> value at <NUMEX TYPE="CARDINAL">0.01</NUMEX> significance level, giving
+        sufficient confidence to reject the null hypothesis that
+        the calls made for the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips were independent from
+        the calls made for the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> <ENAMEX TYPE="PER_DESC">generation</ENAMEX> of <ENAMEX TYPE="PERSON">Chips</ENAMEX>.
+        The correlation coefficient was computed for each probe
+        set across the <NUMEX TYPE="CARDINAL">two</NUMEX> chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX>. There were <NUMEX TYPE="CARDINAL">seven</NUMEX> pairs
+        of expression values for each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set and <NUMEX TYPE="CARDINAL">8,044</NUMEX>
+        correlations corresponding to the <NUMEX TYPE="CARDINAL">8,044</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> common
+        to <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chips (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). <NUMEX TYPE="CARDINAL">2,200</NUMEX> of the
+        <NUMEX TYPE="CARDINAL">8,044</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="PERCENT">27 %</NUMEX>) had a negative correlation (i.e. r <
+        <NUMEX TYPE="CARDINAL">0</NUMEX>), indicating that the gene expression levels changed in
+        opposite direction across <ENAMEX TYPE="PER_DESC">generations</ENAMEX> (i.e. the more of a
+        <ENAMEX TYPE="ORGANIZATION">transcript</ENAMEX> reported by <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">generation</ENAMEX>, the less reported by
+        the other <ENAMEX TYPE="PER_DESC">generation</ENAMEX>) (see <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX> [ <ENAMEX TYPE="LAW">Additional File 1</ENAMEX>] at
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX>chip.<ENAMEX TYPE="CONTACT_INFO">org/~ashish/Reproducibility/</ENAMEX>for the
+        correlation coefficients between the probe sets of the two
+        chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX>).
+        In order to determine if high intensity can compensate
+        for low number of matched probe pairs, correlation was
+        computed for different intensity levels of <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> for
+        probe sets with specific number of common probe pairs. For
+        example, we looked at all the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> with <NUMEX TYPE="CARDINAL">0</NUMEX> common
+        probe pairs and computed correlations for different ranges
+        of <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> intensity levels. It was observed that even for
+        probe sets with low number of common probe pairs, the
+        correlation between <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A gene expression
+        levels increased as the reported gene expression on
+        HuGeneFL increased (Figure <NUMEX TYPE="CARDINAL">5and 6</NUMEX>).
+        All the above described analysis was repeated using the
+        <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> <NUMEX TYPE="MONEY">MAS 5.0 algorithm</NUMEX>. The obtained results were
+        highly similar (see Additional Figures <NUMEX TYPE="CARDINAL">7-10</NUMEX> at
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX>chip.<ENAMEX TYPE="CONTACT_INFO">org/~ashish/Reproducibility/</ENAMEX>). However,
+        when using the <NUMEX TYPE="MONEY">MAS 5.0 algorithm</NUMEX>, <NUMEX TYPE="CARDINAL">2,637</NUMEX> of the <NUMEX TYPE="CARDINAL">8,044</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        (<NUMEX TYPE="PERCENT">32%</NUMEX>) were negatively correlated.
+      
+      
+        Discussion
+        This work is focused on the comparison of <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> at
+        "high gain" settings and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> settings at "low gain"
+        settings. Although this comparison represents probe sets
+        with the worst correlation coefficients, it was
+        specifically chosen because most research <ENAMEX TYPE="FAC_DESC">labs</ENAMEX> tend to use
+        <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips with the old scanner ("high gain") settings
+        and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chips with the new scanner ("low gain")
+        <ENAMEX TYPE="PERSON">settings</ENAMEX>, due to a change in <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> recommendations.
+        This represents the most common problem of comparability
+        across the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">generations</ENAMEX>.
+        Many of the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> in the new generation of
+        <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> chips (<ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX>) have been significantly modified
+        from the corresponding <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> in the older <ENAMEX TYPE="PER_DESC">generation</ENAMEX>.
+        These differences in the design of the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> are due
+        to several factors, including corrections and additions
+        made to the public databases and new techniques used in
+        probe selection. Our aim was to determine the
+        characteristics of the <NUMEX TYPE="CARDINAL">two</NUMEX> chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX> that would
+        account for the systematic variability in the gene
+        expression values across them.
+        The gene expression values for replicates of a
+        particular tissue sample measured at the same scanner
+        setting and on the same chip <ENAMEX TYPE="PER_DESC">generation</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX>) gave a
+        very high correlation of <NUMEX TYPE="MONEY">0.99</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Exp</ENAMEX> <ENAMEX TYPE="PRODUCT">1</ENAMEX>, <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). This
+        indicates that expression measurements within <TIMEX TYPE="TIME">one</TIMEX>
+        <ENAMEX TYPE="PER_DESC">generation</ENAMEX> are highly reproducible. Therefore, any
+        variation in gene expression levels across the two
+        <ENAMEX TYPE="PER_DESC">generations</ENAMEX> should be due to the chip technology itself and
+        the specificity of the probe set sequences.
+        The reproducibility of <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips scanned at "high
+        gain" and "low gain" scanner settings is poorer than the
+        reproducibility of <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips at the two scanner
+        settings. This lower correlation of <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips at the
+        <NUMEX TYPE="CARDINAL">two</NUMEX> scanner settings could be attributed to the fact that
+        <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips have higher density of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs than
+        <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips, making them more sensitive to background
+        noise. Furthermore, since the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips are more
+        specific with respect to their sequence selection criteria,
+        they would hybridize more efficiently than <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips
+        and so would be more saturated at high scanner settings
+        giving a lower correlation between "high gain" and "low
+        gain" scanner settings. The experiment involving <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+        chips at "high gain" versus the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> at "low gain" had a
+        higher correlation compared to the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> at "high gain"
+        versus the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> at "low gain" experiments (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        This could be attributed to several factors. The different
+        composition of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs used for some <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set across
+        <ENAMEX TYPE="PER_DESC">generations</ENAMEX> could result in altered hybridization
+        efficiency, and consequently different expression values
+        for the corresponding genes. The different number of probe
+        pairs per probe set in each <ENAMEX TYPE="PER_DESC">generation</ENAMEX> could also introduce
+        some <ENAMEX TYPE="PER_DESC">variance</ENAMEX> since it alters the "sample size" on which
+        all calculations are based. The higher density of probe
+        cells in the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips means that <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs are
+        closely packed, and perhaps affected in a different way
+        than standard density chips by noise and background levels.
+        Moreover, the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs for each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set are scattered
+        over <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips as opposed to being physically grouped
+        together as on the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips. This could result in a
+        variable impact of background and noise on the expression
+        value obtained for each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set.
+        Every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set on <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> has a corresponding probe
+        set on <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX>. However, not all the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs within a
+        probe set are common for the corresponding probe sets on
+        both chip <ENAMEX TYPE="ORG_DESC">types</ENAMEX>. In this analysis, the correlation between
+        probe sets increases as the number of common probe pairs
+        increases (from <NUMEX TYPE="CARDINAL">zero</NUMEX> to <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs), with a correlation
+        coefficient of <NUMEX TYPE="MONEY">0.4</NUMEX> if there are no probe pairs in common
+        and <NUMEX TYPE="MONEY">over 0.8</NUMEX> if even one probe pair is in common. The sharp
+        increase of the correlation coefficient between probe sets
+        with none and <NUMEX TYPE="CARDINAL">one</NUMEX> common probe pairs, could be explained by
+        the use of poor sequence selection criteria for the
+        specific <ENAMEX TYPE="PRODUCT">HuGeneFL</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>, which later required the
+        complete replacement of the probe set. The chi square value
+        <ENAMEX TYPE="ORGANIZATION">computed</ENAMEX> using the absolute calls given to each of the
+        probe sets demonstrates that most probe sets (<NUMEX TYPE="PERCENT">77%</NUMEX>) were
+        assigned the same absolute calls on both <ENAMEX TYPE="PER_DESC">generations</ENAMEX>. Using
+        the reproducibility of absolute calls as a measure of
+        consistency across the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">generations</ENAMEX> indicates that the
+        <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">generations</ENAMEX> are consistent overall.
+        The reproducibility of gene expression measurements
+        across <ENAMEX TYPE="PER_DESC">generations</ENAMEX> was higher for <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> with higher
+        gene expression measurements. To some extent, high
+        expression levels appear to compensate for low numbers of
+        common probe pairs between chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX>, with highest
+        correlations reached when increased gene expression was
+        combined with a large number of common probe pairs (Figure
+        5and <NUMEX TYPE="CARDINAL">6</NUMEX>). This pattern was also evident when analyzing the
+        number of 'P' calls for every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set. More specifically,
+        the correlation of absolute calls for every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set,
+        increased with increasing gene expression levels. Although
+        the absolute calls are qualitative indicators of the
+        presence of a transcript in a sample, they are derived from
+        the intensities of individual probe pairs within the probe
+        set. We propose that the increased reproducibility at
+        higher expression levels is due to the decreased
+        significance of the fixed measurement noise effect.
+      
+      
+        Conclusions
+        This <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> gives a basic summary statistic of the
+        comparison between different chip <ENAMEX TYPE="PER_DESC">generations</ENAMEX>, as well as
+        information on the extent to which this is possible. Being
+        able to perform such comparisons is critical especially
+        when tissue availability and financial limitations are an
+        issue. <ENAMEX TYPE="PRODUCT">Skeletal</ENAMEX> muscle was used for the purposes of this
+        study, but any tissue can be used for the establishment of
+        benchmarks depending on the specific interests of
+        individual <ENAMEX TYPE="FAC_DESC">labs</ENAMEX>. Further study of more <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> and tissue
+        types could establish a widely applicable analytical model
+        to make the most of current datasets and accelerate work
+        with future microarray <ENAMEX TYPE="PER_DESC">generations</ENAMEX> and <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>.
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> extraction and hybridization
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was extracted from normal human skeletal
+          muscle tissue samples and used for cDNA and labeled cRNA
+          <ENAMEX TYPE="PERSON">synthesis</ENAMEX> as previously described [ <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] . The
+          fragmented cRNA together with control <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> recommended
+          by <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> were hybridized to the <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> of choice
+          (HuGeneFL or <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips contain
+          oligonucleotide sequences <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of <NUMEX TYPE="CARDINAL">5,600</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          Each gene is represented by <NUMEX TYPE="CARDINAL">at least one</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set, which
+          in turn consists of approximately <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs. Each
+          probe pair consists of <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> cells, the perfect match
+          (<ENAMEX TYPE="ORGANIZATION">PM</ENAMEX>) and the mismatch (MM). The former is complementary
+          to, and interrogates the expression of a <TIMEX TYPE="DATE">25</TIMEX> base pair
+          region of the gene sequence, while the latter contains a
+          <NUMEX TYPE="CARDINAL">one</NUMEX>-base change and is used to control for non-specific
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips contain <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>, each
+          consisting of approximately <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs,
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of ~<NUMEX TYPE="CARDINAL">12,600</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. All <NUMEX TYPE="CARDINAL">5,600</NUMEX> measured by
+          the <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips are also measured by the <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+          chips; however, in order to improve their sensitivity and
+          <ENAMEX TYPE="PERSON">specificity</ENAMEX>, the composition of some of the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs
+          has been changed.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> detection and analysis
+          The chips were incubated (<TIMEX TYPE="TIME">16-17 hours</TIMEX>, <ENAMEX TYPE="PRODUCT">45°C</ENAMEX> and <NUMEX TYPE="CARDINAL">60</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">rpm</ENAMEX>) in a rotating oven, washed by the Affymetrix
+          <ENAMEX TYPE="ORGANIZATION">Fluidics Station</ENAMEX>, using the recommended signal
+          amplification step, and scanned by the Affymetrix
+          <ENAMEX TYPE="ORGANIZATION">Scanner</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> different scanner settings were used. "High
+          gain" <ENAMEX TYPE="ORGANIZATION">PMT</ENAMEX>) settings were recommended for <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> chips,
+          and "low gain" <ENAMEX TYPE="ORGANIZATION">PMT</ENAMEX> settings were introduced for the
+          <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips. Therefore most HuGeneFL chips were scanned
+          using <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> "high gain" settings and most <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-U95A
+          chips were scanned using the "low gain" settings. In
+          order to assess the influence of the "scanner settings"
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> in our data, some HuGeneFL chips were rescanned
+          under "low gain" and some <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips were rescanned
+          under "high gain". A list of experiments and settings is
+          presented in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>(the raw .<ENAMEX TYPE="ORGANIZATION">CEL</ENAMEX> files for all these
+          experiments can be accessed at
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX>chip.<ENAMEX TYPE="CONTACT_INFO">org/~ashish/Reproducibility/</ENAMEX>). Using the
+          Affymetrix software (<ENAMEX TYPE="PRODUCT">Microarray Suite 4.0</ENAMEX>), each probe
+          set was assigned an "average difference" value
+          corresponding to the expression level of the particular
+          gene it represents. The calculated average difference was
+          used as the measure of expression levels throughout this
+          analysis. The analysis was repeated using the Affymetrix
+          <ENAMEX TYPE="PRODUCT">Microarray Suite 5.0</ENAMEX> (<NUMEX TYPE="MONEY">MAS 5.0</NUMEX>).
+          Affymetrix software also assigns every <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set an
+          "absolute call" (Present [<ENAMEX TYPE="LAW">P</ENAMEX>], <ENAMEX TYPE="PRODUCT">Absent</ENAMEX> [A], Marginal [<ENAMEX TYPE="ORGANIZATION">M</ENAMEX>]),
+          which represents a qualitative indication of whether or
+          not a transcript is detected within a sample. In the MAS
+          <NUMEX TYPE="CARDINAL">4.0</NUMEX> algorithm these calls are determined using the
+          following metrics: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the ratio of the number of positive
+          probe pairs to the number of negative probe pairs (known
+          as the <ENAMEX TYPE="PRODUCT">Positive/Negative Ratio</ENAMEX>), <NUMEX TYPE="CARDINAL">2</NUMEX>) <TIMEX TYPE="TIME">the fraction of</TIMEX>
+          positive probe pairs (<ENAMEX TYPE="ORGANIZATION">Positive Fraction</ENAMEX>), and <NUMEX TYPE="CARDINAL">3</NUMEX>) the
+          average across the probe set of each probe <ENAMEX TYPE="PER_DESC">pair</ENAMEX>'s log
+          ratio of positive intensity over negative intensity (<ENAMEX TYPE="ORGANIZATION">Log</ENAMEX>
+          Average Ratio) (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>).
+          Affymetrix tables
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">affymetrix</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/Auth/support/downloads/comparisons/PN600444HumanFLComp.</ENAMEX>zipindicate
+          that <NUMEX TYPE="CARDINAL">6,623</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> from <ENAMEX TYPE="PRODUCT">HuGeneFL</ENAMEX> chip have been mapped
+          to <NUMEX TYPE="CARDINAL">7,094</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> from the <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chip giving a total
+          of <NUMEX TYPE="CARDINAL">8,044</NUMEX> comparisons between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">generations</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> also provides a list of the numbers of probe
+          <ENAMEX TYPE="ORGANIZATION">pairs</ENAMEX> common for the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">generations</ENAMEX>.
+          The correlation coefficient was used as a measure of
+          congruency between the <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> across the two
+          <ENAMEX TYPE="PER_DESC">generations</ENAMEX> of <ENAMEX TYPE="PERSON">Affymetrix Chips</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX> [ Additional
+          File <NUMEX TYPE="CARDINAL">1</NUMEX>]). The correlation for different subsets of probe
+          sets was computed based on certain <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set
+          <ENAMEX TYPE="PERSON">characteristics</ENAMEX>, as discussed above. Finally, a
+          <ENAMEX TYPE="PERSON">chi-square</ENAMEX> analysis was done to determine whether the
+          absolute calls made for the <ENAMEX TYPE="PRODUCT">HuGeneFL</ENAMEX> chip were different
+          from the absolute calls made for the <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> chip.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        AN conceived the study, performed the bioinformatical
+        analysis and drafted the manuscript. DS designed the
+        experimental part of the study, performed the microarray
+        experiments and drafted the manuscript. <ENAMEX TYPE="ORGANIZATION">AJB</ENAMEX> guided the
+        study and helped with the analyses. <ENAMEX TYPE="GPE">JNH</ENAMEX> performed the
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments and helped with the manuscript. LMK
+        guided the study. <ENAMEX TYPE="ORGANIZATION">AHB</ENAMEX> guided the study. <ENAMEX TYPE="ORGANIZATION">ISK</ENAMEX> guided the
+        study and coordinated the project. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and
+        approved the final manuscript.
+        Additional File 1
+        Correlation between <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX>. Correlation
+        Coefficients between <ENAMEX TYPE="ORGANIZATION">HuGeneFL</ENAMEX> and <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> with
+        the confidence intervals of their correlations and number
+        of common probe pairs.
+        Click here for file
+      
+    
+  

@@ -1,0 +1,641 @@
+
+  
+    
+      
+        Background
+        Alizadeh 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">1</ENAMEX> ] did a large scale,
+        long-term study of diffuse large <ENAMEX TYPE="GPE">B-cell</ENAMEX> lymphoma (DLBCL),
+        using microarray data chips. By doing cluster analysis on
+        this data, they were able to diagnose <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX> with an
+        accuracy of <NUMEX TYPE="PERCENT">93%</NUMEX> for this specific lymphoma; they were not
+        able to predict which individual <ENAMEX TYPE="PER_DESC">patients</ENAMEX> would survive to
+        the end of the long-term study. The <ENAMEX TYPE="ORGANIZATION">International</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Prognostic</ENAMEX> Index for this disease was incorrect for <NUMEX TYPE="PERCENT">30%</NUMEX> of
+        these <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+        Cluster analysis, together with other statistical
+        methods for identifying and correlating minimal gene lists
+        with outcome, have become established as the primary tools
+        for the analysis of microarray data in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> studies. We
+        wished to test a different approach, <ENAMEX TYPE="GPE">ANN</ENAMEX>.
+        These <NUMEX TYPE="CARDINAL">two</NUMEX> approaches to the analysis of microarray data
+        differ substantially in their mode of operation. In the
+        <NUMEX TYPE="ORDINAL">first</NUMEX> examination of the data, clustering, as applied in
+        numerous recent <ENAMEX TYPE="DISEASE">cancer</ENAMEX> studies, is an unsupervised mapping
+        of the input data examples based on the overall pairwise
+        similarity of those examples to each other (here,
+        similarity with respect to the expression levels of
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>); the method is unsupervised in that no
+        information of the desired outcome is provided. Subsequent
+        analysis of the clusters in these studies generally
+        attempts to reduce the gene set to the subset of genes that
+        are most informative for the problem at hand. This step is
+        a supervised step since there is an explicit effort to find
+        <ENAMEX TYPE="ORGANIZATION">correlations</ENAMEX> in the pattern of gene expression that match
+        the classification one is attempting to make among the
+        input examples (see Discussion for specific examples). The
+        input for this supervised step is the product of an
+        unsupervised step. As this subselection is not routinely
+        subjected to independent test using input examples
+        originally withheld from the subselection process, it is
+        generally not possible to judge how specifically the
+        subselection choices relate to this specific set of
+        examples as opposed to the general <ENAMEX TYPE="PER_DESC">population</ENAMEX> of potential
+        examples. To the extent that the gene set employed is much
+        larger than the gene set that really determines the
+        <ENAMEX TYPE="PERSON">classification</ENAMEX>, it is possible that much of the clustering
+        result will be based on irrelevant similarities.
+        On the other hand, backpropagation neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> are a
+        supervised learning method that has an excellent reputation
+        for classification problems. During the training phase, the
+        <ENAMEX TYPE="ORGANIZATION">ANN</ENAMEX> are supplied with both the input data and the answer
+        and are specifically tasked to make the classification of
+        interest, given a training set of examples from all
+        classes. That is, the <ENAMEX TYPE="ORGANIZATION">ANN</ENAMEX> are constantly checking to see if
+        they have gotten the 'correct' answer, the answer being the
+        actual classification not just the overall similarity of
+        inputs.
+        <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> accomplish this by continually adjusting their
+        <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> weighted connections to reduce the observed error
+        in matching input to output. When the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> has achieved
+        a <ENAMEX TYPE="SUBSTANCE">solution</ENAMEX> that correctly identifies all training examples,
+        the weights are fixed; it is then tested on input examples
+        that were not part of the training set to see if the
+        solution is a general one. It is only in this independent
+        test that the quality of the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> is judged.
+        <ENAMEX TYPE="PER_DESC">Investigators</ENAMEX> are not limited to a single <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. It is
+        feasible to train a series of <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> using, say, <NUMEX TYPE="PERCENT">90%</NUMEX> of
+        the examples for training and holding back <NUMEX TYPE="PERCENT">10%</NUMEX> for testing.
+        A different <NUMEX TYPE="PERCENT">10 %</NUMEX> can be tested in a <NUMEX TYPE="ORDINAL">second</NUMEX> <ENAMEX TYPE="ORG_DESC">network</ENAMEX> and so
+        on. In this way, with the training of <NUMEX TYPE="CARDINAL">ten</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, each
+        input can be found in a test set one time and can,
+        therefore, be independently evaluated. The data presented
+        below, with the exception of a few cases, are the output of
+        <NUMEX TYPE="CARDINAL">ten slightly</NUMEX> different trained <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, operating in test
+        <ENAMEX TYPE="PERSON">mode</ENAMEX>, which collectively evaluate the entire <ENAMEX TYPE="ORG_DESC">donor</ENAMEX> pool.
+        This 'round-robin' procedure was employed, in duplicate, in
+        every trial described throughout this work. The fact that
+        <NUMEX TYPE="CARDINAL">one</NUMEX> ends up with <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> is not an impediment to
+        analysis since any future examples could be submitted to
+        all <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> for evaluation, with a majority poll
+        deciding the classification. That is, <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in
+        agreement on a particular input datum would determine the
+        classification of that input. These <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> are, of
+        course, likely to be very similar in that their training
+        sets differ only slightly.
+        A <NUMEX TYPE="ORDINAL">second</NUMEX> major advantage of backpropagation networks
+        follows from the <NUMEX TYPE="ORDINAL">first</NUMEX>. Not only are neural networks
+        trained to the specific question, rather than a loose
+        derivative of that question, and tested for generality, but
+        they can also be asked for a quantitative assessment of how
+        they got the correct answer. Numerical partial
+        differentiation of the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> with respect to a given test
+        input example [ <NUMEX TYPE="CARDINAL">2 3</NUMEX> ] allows <NUMEX TYPE="CARDINAL">one</NUMEX> to see the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>'s
+        evaluation of the relative impact of each gene in arriving
+        at the correct answer for this particular input. Cluster
+        analysis, including the statistical <ENAMEX TYPE="ORG_DESC">correlations</ENAMEX>, has no
+        corresponding highly focused sight for targeting specific
+        similarities as opposed to non-specific similarities. To
+        the extent that this is true, neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> should be
+        able to identify relatively small gene subsets which will
+        significantly outperform the initial gene sets in
+        <ENAMEX TYPE="PERSON">classification</ENAMEX> and which will also significantly outperform
+        the gene subsets suggested by cluster analysis.
+      
+      
+        Results
+        
+          Determining patient prognosis from microarray
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>
+          Cluster analysis [ <NUMEX TYPE="CARDINAL">1 4</NUMEX> ] had shown that the <TIMEX TYPE="DATE">4026</TIMEX> gene
+          expression panels for <TIMEX TYPE="DATE">40</TIMEX> DLBCL <ENAMEX TYPE="PER_DESC">patients</ENAMEX> contained some
+          information relevant to the question of prognosis but
+          these <ENAMEX TYPE="PER_DESC">authors</ENAMEX> did not make an attempt to provide survival
+          predictions for individual <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+          We wished to see if the neural network strategy, of
+          <ENAMEX TYPE="PERSON">train</ENAMEX>, test, differentiate, retrain on the reduced gene
+          set, and retest, could produce any useful result with
+          respect to prognosis on an individual basis. The approach
+          would be: [ <ENAMEX TYPE="LAW">1</ENAMEX> ] use the entire gene set without
+          <ENAMEX TYPE="ORGANIZATION">preprocessing</ENAMEX> to train a network, testing to confirm that
+          it had at least a good fit to the problem and, [ <ENAMEX TYPE="LAW">2</ENAMEX> ] use
+          the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>'s definition of the problem, by
+          differentiating the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>, to focus on those genes most
+          essential to the classification. These <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> would then
+          form the basis for training new <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> with hopefully
+          improved performance. Over <NUMEX TYPE="CARDINAL">130</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained for
+          this study. Figure 1shows a work flow schematic for this
+          study. <ENAMEX TYPE="PRODUCT">Table 1provides</ENAMEX> a summary overview of the data,
+          including data not shown.
+          Initially a <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was trained to accept microarray
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> on the complete <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of <NUMEX TYPE="CARDINAL">4026</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from <NUMEX TYPE="CARDINAL">40</NUMEX>
+          <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. This <ENAMEX TYPE="ORG_DESC">network</ENAMEX> had <NUMEX TYPE="CARDINAL">12078</NUMEX> input neurons with a
+          semi-quantitative assessment of each gene, <NUMEX TYPE="CARDINAL">100</NUMEX>
+          middle-layer neurons, and a single output neuron. The
+          <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were originally designed with <NUMEX TYPE="QUANTITY">3 input bits</NUMEX> per
+          datum: <NUMEX TYPE="CARDINAL">one</NUMEX> for sign,'-' = <NUMEX TYPE="CARDINAL">1</NUMEX>, and <NUMEX TYPE="CARDINAL">2</NUMEX> for quantitative
+          degree of signal with <NUMEX TYPE="CARDINAL">00</NUMEX> being <NUMEX TYPE="CARDINAL">0</NUMEX> to <NUMEX TYPE="CARDINAL">0.5</NUMEX>, <TIMEX TYPE="DATE">01</TIMEX> being ><NUMEX TYPE="CARDINAL">0.5</NUMEX>
+          to <NUMEX TYPE="CARDINAL">1.0</NUMEX>, <TIMEX TYPE="DATE">10</TIMEX> being ><NUMEX TYPE="CARDINAL">1.0</NUMEX> to <NUMEX TYPE="CARDINAL">2.0</NUMEX>, and <NUMEX TYPE="CARDINAL">11</NUMEX> being ><NUMEX TYPE="CARDINAL">2.0</NUMEX>.
+          Thus <ENAMEX TYPE="ORGANIZATION">'011</ENAMEX>' would indicate a particular gene whose
+          expression, relative to control, was increased at a
+          <ENAMEX TYPE="CONTACT_INFO">magnitude >2</ENAMEX>. The training set included <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX>,
+          with <NUMEX TYPE="CARDINAL">10</NUMEX> additional <ENAMEX TYPE="PER_DESC">donors</ENAMEX> being held back as test data.
+          The <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was trained by processing <NUMEX TYPE="CARDINAL">12</NUMEX> iterations of
+          the complete training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. The test set, drawn from a
+          mixture of <ENAMEX TYPE="PER_DESC">survivors</ENAMEX> and non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX>, was then run. The
+          entire process was then repeated with a different choice
+          of test data each time. In this round-robin fashion, all
+          <ENAMEX TYPE="PER_DESC">donors</ENAMEX> serve as test data for one of the <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, and
+          each training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> is necessarily slightly different. A
+          round robin series of <NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> was generated. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX>
+          underlying Figure <NUMEX TYPE="CARDINAL">5</NUMEX> of the <TIMEX TYPE="DATE">earlier</TIMEX> report
+          <ENAMEX TYPE="CONTACT_INFO">http://llmpp.</ENAMEX><ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/lymphoma/</ENAMEX>data.<ENAMEX TYPE="ORGANIZATION">shtmlwere</ENAMEX> used for
+          training. The <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were asked to predict, based on
+          the <TIMEX TYPE="DATE">4026</TIMEX> gene set, which of <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> would
+          survive to the end of the study (longest point = <NUMEX TYPE="CARDINAL">10.8</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">yrs</ENAMEX>). <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> initially varied with <TIMEX TYPE="DATE">from 1 to 3</TIMEX> errors
+          on <NUMEX TYPE="CARDINAL">10</NUMEX> test <ENAMEX TYPE="PER_DESC">patients</ENAMEX> each, for a total of <NUMEX TYPE="CARDINAL">31</NUMEX> of <NUMEX TYPE="CARDINAL">40</NUMEX>
+          <ENAMEX TYPE="PER_DESC">patients</ENAMEX> correctly predicted (data not shown). 1However,
+          a trained neural <ENAMEX TYPE="ORG_DESC">network</ENAMEX> can be numerically
+          differentiated [ <NUMEX TYPE="CARDINAL">2 3</NUMEX> ] to show the relative dependence of
+          the output (classification) on each active input neuron
+          within an input vector. Briefly stated, the
+          differentiation process involves slightly perturbing the
+          <ENAMEX TYPE="ORGANIZATION">activation</ENAMEX> (down from <NUMEX TYPE="MONEY">1.0 to 0.85</NUMEX>) of each active input
+          neuron, one at a time, to note the specific change in the
+          output value. In that there is one gene for each active
+          node, the largest change in the output points to the most
+          influential gene. We then trained qualitative <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>,
+          with <NUMEX TYPE="QUANTITY">2 bits</NUMEX> per gene, on the <TIMEX TYPE="DATE">4026</TIMEX> gene set in order to
+          differentiate them (<ENAMEX TYPE="CONTACT_INFO">'1 0</ENAMEX>' for expression greater than, or
+          equal to, the control, <NUMEX TYPE="CARDINAL">'0 1</NUMEX>' for less than the control).
+          The <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> had <NUMEX TYPE="CARDINAL">67</NUMEX> middle layer neurons. This coding has
+          the effect that there is an active neuron for each gene
+          in the set regardless of expression level and the total
+          number of active input neurons is constant from input to
+          input. By taking the top <NUMEX TYPE="PERCENT">25%</NUMEX> of genes in <TIMEX TYPE="DATE">each of 12</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">differentiations</ENAMEX> and requiring agreement of <NUMEX TYPE="CARDINAL">at least 4</NUMEX> of
+          <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in choosing each gene, we obtained a set of
+          <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. (These cutoff criteria are necessarily
+          arbitrary and are only justified by subsequent proof that
+          they produced gene subsets having the desired
+          information.) A round-robin series of <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, with <NUMEX TYPE="CARDINAL">4</NUMEX>
+          test <ENAMEX TYPE="PER_DESC">donors</ENAMEX> each, produced a single error (<NUMEX TYPE="MONEY">DLCL0018</NUMEX>) in
+          survival predictions when trained on these <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (data
+          not shown) <NUMEX TYPE="CARDINAL">1</NUMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> round-robin training with the
+          same gene set produced no errors, correctly evaluating
+          all <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in a series of <NUMEX TYPE="CARDINAL">10</NUMEX> test sets (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          <NUMEX TYPE="CARDINAL">2</NUMEX>).
+          For a <NUMEX TYPE="ORDINAL">second</NUMEX> study, we took <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and held them
+          in reserve to model information from a "follow-up" study.
+          <NUMEX TYPE="CARDINAL">Twenty</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained, on the <NUMEX TYPE="CARDINAL">34</NUMEX> gene set, using
+          the remaining <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>; each had <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in the
+          training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> and <NUMEX TYPE="CARDINAL">1</NUMEX> in the test set. Collectively, these
+          <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> made no errors in the prognosis of <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+          The data for the <NUMEX TYPE="CARDINAL">20</NUMEX> reserve <ENAMEX TYPE="PER_DESC">patients</ENAMEX> were then tested on
+          all <NUMEX TYPE="CARDINAL">20</NUMEX> trained <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> to emulate follow-up data. Out of
+          <NUMEX TYPE="CARDINAL">400</NUMEX> individual <ENAMEX TYPE="PER_DESC">scores</ENAMEX>, there were <NUMEX TYPE="CARDINAL">5</NUMEX> errors distributed
+          over <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. A poll of the <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, therefore,
+          produced no errors by a majority, correctly classifying
+          all <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the follow-up <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.(data not
+          shown)
+          The <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are given in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. In <NUMEX TYPE="CARDINAL">5</NUMEX> of <NUMEX TYPE="CARDINAL">12</NUMEX> cases,
+          the gene chosen as most influential in determining the
+          correct prognosis was <NUMEX TYPE="CARDINAL">18593</NUMEX>, a tyrosine <ENAMEX TYPE="SUBSTANCE">kinase</ENAMEX> receptor
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. While this gene set may not be the absolute best
+          possible, it clearly does contain sufficient information
+          for error-free predictions on these <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. The
+          identification of this gene set will hopefully lead
+          eventually to a better understanding of the interaction
+          of these genes in this disease as a result of future
+          studies.
+        
+        
+          Diagnosing lymphoma from microarray data
+          The diagnosis of <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> lymphoma by biopsy is not
+          trivial. Even with gene expression data, clustering
+          techniques produced a misreading of <NUMEX TYPE="CARDINAL">7</NUMEX> out of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ] , a result unimproved in their hands by further
+          analysis of reduced gene panels. We wished to see if back
+          propagation neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> could do better using the
+          same data set. Figure 2shows a work flow schematic for
+          this study. This testing over the whole <ENAMEX TYPE="ORG_DESC">donor</ENAMEX> set with
+          <NUMEX TYPE="CARDINAL">4026</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> produced <NUMEX TYPE="CARDINAL">6</NUMEX> errors in diagnosis (data not
+          shown).
+          Thus, in the <NUMEX TYPE="ORDINAL">first</NUMEX> round, <ENAMEX TYPE="GPE">ANN</ENAMEX> merely match cluster
+          analysis. In preparation for differentiation, a network
+          was trained with the same <ENAMEX TYPE="PER_DESC">donor</ENAMEX> sets as the first network
+          above, but coded qualitatively. This network correctly
+          classified the <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the test set (data not
+          shown). The <NUMEX TYPE="CARDINAL">5</NUMEX> positive <ENAMEX TYPE="PER_DESC">donors</ENAMEX> from the test set were each
+          used, in turn, to differentiate the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. In these
+          cases, the first criterion for selection was broad: the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> had to contribute <NUMEX TYPE="PERCENT">at least 10%</NUMEX> as much as the gene
+          making the maximum contribution to the correct
+          classification; the <NUMEX TYPE="ORDINAL">second</NUMEX> criterion was that <NUMEX TYPE="CARDINAL">3</NUMEX> or more
+          of the <ENAMEX TYPE="PER_DESC">donors</ENAMEX> had to agree on the selection. This
+          produced a subset of <NUMEX TYPE="CARDINAL">292</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. The number of genes
+          referenced by a given <ENAMEX TYPE="GPE_DESC">donor</ENAMEX> under identical criteria
+          ranged from <TIMEX TYPE="DATE">45 to 1448</TIMEX>. <NUMEX TYPE="PERCENT">Only 38%</NUMEX> of the genes overlapped
+          the <NUMEX TYPE="CARDINAL">670</NUMEX> gene subset identified by cluster analysis. It
+          was of interest to see if these genes were sufficient for
+          correct classification of the <ENAMEX TYPE="PER_DESC">donors</ENAMEX>. <NUMEX TYPE="CARDINAL">Ten</NUMEX> different
+          <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained with the <NUMEX TYPE="CARDINAL">292</NUMEX> gene subset. <TIMEX TYPE="TIME">Three</TIMEX>
+          (<ENAMEX TYPE="ORGANIZATION">OCI</ENAMEX> <ENAMEX TYPE="PRODUCT">Ly1</ENAMEX> and <ENAMEX TYPE="PRODUCT">DLBCL0009</ENAMEX> and tonsil) errors were produced
+          <NUMEX TYPE="CARDINAL">over 96</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX> in <NUMEX TYPE="CARDINAL">2</NUMEX> separate series (data not shown).
+          At this point, the neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were doing a
+          much-improved diagnosis; it remained to be seen if the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> set could be further refined. The set of <NUMEX TYPE="CARDINAL">292</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          was then treated in <NUMEX TYPE="CARDINAL">two</NUMEX> different ways: [ <ENAMEX TYPE="LAW">1</ENAMEX> ] it was
+          arbitrarily split into even and odd halves, with each
+          half being used to train <NUMEX TYPE="CARDINAL">ten</NUMEX> new <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>. [ <ENAMEX TYPE="LAW">2</ENAMEX> ] it was
+          used whole to train <NUMEX TYPE="CARDINAL">ten</NUMEX> qualitative <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> for further
+          <ENAMEX TYPE="ORGANIZATION">differentiation</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">Twenty</NUMEX> different <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were then trained using a
+          <NUMEX TYPE="CARDINAL">146</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> (<TIMEX TYPE="TIME">odd</TIMEX> or even numbered) subset of the <NUMEX TYPE="CARDINAL">292</NUMEX> gene
+          set in <NUMEX TYPE="CARDINAL">2</NUMEX> series of <NUMEX TYPE="CARDINAL">10</NUMEX>. The odd set again produced <NUMEX TYPE="CARDINAL">3</NUMEX>
+          errors (data not shown). In the even set, a single error
+          was made over <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX> in <NUMEX TYPE="CARDINAL">ten</NUMEX> different test sets,
+          identifying the 'tonsil' inlier in the earlier cluster
+          analysis [ <ENAMEX TYPE="LAW">1</ENAMEX> ] as positive (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). <NUMEX TYPE="CARDINAL">Ten</NUMEX> additional
+          <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained on the even set with the same
+          result (data not shown).
+          The differentiation of the <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> from the <NUMEX TYPE="CARDINAL">292</NUMEX> gene
+          set pointed to <NUMEX TYPE="CARDINAL">8</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Given the high accuracy of the
+          even <NUMEX TYPE="CARDINAL">146</NUMEX> gene set, we also trained <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> on this set
+          for differentiation. These pointed to <NUMEX TYPE="CARDINAL">11</NUMEX> additional
+          genes. In these cases, only genes in the top <NUMEX TYPE="PERCENT">20%</NUMEX> in
+          influence chosen in common by <NUMEX TYPE="PERCENT">at least 25%</NUMEX> of the
+          <ENAMEX TYPE="ORGANIZATION">differentiated</ENAMEX> examples were considered. <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> trained
+          on these <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> produced <NUMEX TYPE="CARDINAL">2</NUMEX> errors over <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX> in <TIMEX TYPE="DATE">10</TIMEX>
+          test sets (<ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>). The <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, using the designation
+          from the initial report, are given in <ENAMEX TYPE="PRODUCT">Table 6</ENAMEX>.
+          We also wished to test this gene set in the context of
+          a follow-up study. For this purpose, we set aside <NUMEX TYPE="CARDINAL">50</NUMEX>
+          <ENAMEX TYPE="PER_DESC">donors</ENAMEX> as "follow-up" data, using the remaining <NUMEX TYPE="CARDINAL">46</NUMEX> <ENAMEX TYPE="PER_DESC">donors</ENAMEX>
+          in the usual training/testing round robin. <NUMEX TYPE="CARDINAL">Eleven</NUMEX>
+          <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained, <NUMEX TYPE="CARDINAL">9</NUMEX> with <TIMEX TYPE="DATE">42</TIMEX> training vectors and <NUMEX TYPE="CARDINAL">4</NUMEX>
+          test vectors and <NUMEX TYPE="CARDINAL">2</NUMEX> with <TIMEX TYPE="DATE">41</TIMEX> training vectors and <ENAMEX TYPE="PRODUCT">5</ENAMEX> test
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>. Collectively, these produced <NUMEX TYPE="CARDINAL">3</NUMEX> errors over <TIMEX TYPE="DATE">46</TIMEX>
+          <ENAMEX TYPE="PER_DESC">donors</ENAMEX> or <NUMEX TYPE="PERCENT">93%</NUMEX> correct. The follow-up <ENAMEX TYPE="PER_DESC">donors</ENAMEX> were then
+          tested on the <NUMEX TYPE="CARDINAL">11</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>. A poll of these networks
+          showed a majority vote for <NUMEX TYPE="CARDINAL">1</NUMEX> error or <NUMEX TYPE="PERCENT">98%</NUMEX> correct.
+        
+      
+      
+        Discussion
+        The rather remarkable conclusion of this analysis is
+        that there is sufficient information in a single gene
+        expression time point of <NUMEX TYPE="CARDINAL">less than 5 dozen</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to provide
+        perfect prognosis (out to <TIMEX TYPE="DATE">ten years</TIMEX>) and near-perfect
+        diagnosis for this set of <ENAMEX TYPE="PER_DESC">donors</ENAMEX>. Furthermore, neural
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>, through a strategy of <ENAMEX TYPE="PRODUCT_DESC">train</ENAMEX> and differentiate,
+        bring that information to the fore by progressively
+        focusing on the genes within the larger set which are most
+        responsible for the correct classifications, providing at
+        once a reduction in the noise level and specific donor
+        profiles. This focus on the specific classification problem
+        led to a set of <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for prognosis and a <NUMEX TYPE="ORDINAL">second</NUMEX> set of
+        <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for diagnosis. These sets are mutually exclusive.
+        The gene subsets suggested by cluster analysis [ <ENAMEX TYPE="LAW">1</ENAMEX> ] are
+        not supersets of these <ENAMEX TYPE="FAC_DESC">sets</ENAMEX>; the <NUMEX TYPE="CARDINAL">670</NUMEX> gene set of the
+        initial report captured <NUMEX TYPE="CARDINAL">only 7</NUMEX> of the <NUMEX TYPE="CARDINAL">19</NUMEX> gene set used for
+        diagnosis and the <NUMEX TYPE="CARDINAL">148</NUMEX> gene staging set captured <NUMEX TYPE="CARDINAL">only 2</NUMEX> of
+        the <NUMEX TYPE="CARDINAL">34</NUMEX> gene set used for prognosis. The <NUMEX TYPE="CARDINAL">234</NUMEX> gene subset
+        proposed by <ENAMEX TYPE="PERSON">Hastie</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">4</ENAMEX> ] for prognosis contains
+        <NUMEX TYPE="CARDINAL">6</NUMEX> of the <NUMEX TYPE="CARDINAL">34</NUMEX> gene set. There was no overlap with the <NUMEX TYPE="CARDINAL">13</NUMEX> gene
+        set identified by <ENAMEX TYPE="PERSON">Shipp</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] to correlate with their
+        cured/fatal classes for this disease. At first, it might
+        seem surprising that the gene subsets identified here do
+        not appear to be subsets of those identified <TIMEX TYPE="DATE">earlier</TIMEX> by
+        Alizadeh 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . But this surprise is based on
+        a naive intuition. The fact is that we do not know the
+        level of information redundancy that exists in these large
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>. Apropos of this point, Alon 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">6</ENAMEX> ] discarded the <TIMEX TYPE="DATE">1500</TIMEX>
+        genes indicated by cluster analysis as most discriminatory
+        in their study of colon <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and, upon reclustering,
+        found their diagnosis unimpaired. Likewise, it may be that
+        while the top <NUMEX TYPE="PERCENT">10%</NUMEX> of relevant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> might be sufficient for
+        perfect classification, so might the next <NUMEX TYPE="PERCENT">10%</NUMEX>. These sets
+        by definition are mutually exclusive. By extension, it is
+        not difficult to believe that some other large gene set
+        might be able to get <NUMEX TYPE="PERCENT">75%</NUMEX> of the classifications correct
+        with little or no overlap with those genes in the top
+        <NUMEX TYPE="PERCENT">10%</NUMEX>.
+        We have been careful to avoid any claim that the gene
+        sets extracted in this procedure are the "best" gene sets.
+        Only in <NUMEX TYPE="CARDINAL">one</NUMEX>, highly qualified sense can they be said to be
+        best; that is in classifying 
+        this data set there are no other
+        gene sets which offer a statistically significant
+        improvement in classification accuracy. That is not to say
+        that there may not be other sets which could do as well.
+        Nor is there any implication that these genes are seminal
+        in the etiology of this disease. They may not be necessary
+        but they are sufficient to do this classification. They may
+        not be sufficient to the classification of a much larger
+        patient set. <NUMEX TYPE="MONEY">Forty</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> are unlikely to be fully
+        <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of the general <ENAMEX TYPE="PER_DESC">patient population</ENAMEX> with this
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>. It should be noted, however, that the same caveats
+        apply to the analysis of these data by any other
+        method.
+        There have been a number of additional studies of cancer
+        using microarray data for either prognostic or diagnostic
+        purposes. The following listing includes a brief discussion
+        of <NUMEX TYPE="CARDINAL">7</NUMEX> of these studies:
+        (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) Shipp 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">5</ENAMEX> ] did a study of <NUMEX TYPE="CARDINAL">58</NUMEX> DLBCL
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and <NUMEX TYPE="CARDINAL">19</NUMEX> follicular lymphoma <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. They first
+        sought to classify <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">FL</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. They clustered
+        <TIMEX TYPE="DATE">6817</TIMEX> genes. Using their own weighted combination of
+        informative gene markers, they picked out <NUMEX TYPE="CARDINAL">30</NUMEX> genes whose
+        expression levels would be used to do a <NUMEX TYPE="CARDINAL">2</NUMEX>-way
+        <ENAMEX TYPE="PERSON">classification</ENAMEX>. They correctly classified 71/77 patients
+        for a diagnostic accuracy of <NUMEX TYPE="PERCENT">92%</NUMEX>. They then attempted to
+        develop high risk and low risk <ENAMEX TYPE="PER_DESC">groups</ENAMEX> with respect to <NUMEX TYPE="CARDINAL">5</NUMEX>
+        <TIMEX TYPE="DATE">year</TIMEX> prognosis. They used several different methods for
+        associating particular gene clusters with survival outcome:
+        <ENAMEX TYPE="PERSON">Kaplan Meier</ENAMEX> analysis, <ENAMEX TYPE="ORGANIZATION">Support Vector Machine</ENAMEX>, and
+        <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>-nearest <ENAMEX TYPE="ORG_DESC">neighbor</ENAMEX> analysis. They selected <NUMEX TYPE="CARDINAL">13</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as most
+        <ENAMEX TYPE="PERSON">informative</ENAMEX> and achieved the best result with <ENAMEX TYPE="ORGANIZATION">SVM</ENAMEX> modeling.
+        They did not explicitly state how many <ENAMEX TYPE="PER_DESC">patients</ENAMEX> initially
+        sorted into the high risk/low risk <ENAMEX TYPE="PER_DESC">groups</ENAMEX> but other data
+        suggest <TIMEX TYPE="DATE">17 and 41</TIMEX> respectively. The only way in which these
+        survival probability plots can be compared to the patient
+        by <ENAMEX TYPE="PER_DESC">patient</ENAMEX> predictions presented above is to associate low
+        risk with survival and high risk with non-survival (Please
+        note:this equation was not made by any of the <ENAMEX TYPE="PER_DESC">authors</ENAMEX>, with
+        the exception of [ <ENAMEX TYPE="LAW">3</ENAMEX> ] below, discussing risk <ENAMEX TYPE="PER_DESC">groups</ENAMEX>). If
+        <NUMEX TYPE="CARDINAL">one</NUMEX> makes this <ENAMEX TYPE="ORG_DESC">association</ENAMEX>, their best result is <NUMEX TYPE="CARDINAL">14/58</NUMEX>
+        errors for a <NUMEX TYPE="CARDINAL">5</NUMEX> yr. survival accuracy of <NUMEX TYPE="PERCENT">76%</NUMEX>.
+        (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) Rosenwald 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">7</ENAMEX> ] did what they termed a
+        follow-up study on the original Alizadeh 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . study of <ENAMEX TYPE="ORGANIZATION">DLBCL</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+        However, it was not really a follow-up study because a
+        different chip was used for the microarray data. The
+        <ENAMEX TYPE="ORGANIZATION">Alizadeh</ENAMEX> study identified <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> based on an analysis of
+        weighting the gene cluster <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>: germinal <ENAMEX TYPE="FAC_DESC">center</ENAMEX> B
+        cell-like tumors which correlated with low risk and
+        activated B cell-like tumors which correlated with high
+        risk. If these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were made <ENAMEX TYPE="PER_DESC">survivors</ENAMEX> and
+        non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX>, the prognosis accuracy would have been <NUMEX TYPE="PERCENT">75%</NUMEX>.
+        In the follow-up, the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> found it necessary to
+        introduce a <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, consisting of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who did not
+        fit either of the previous <NUMEX TYPE="CARDINAL">2</NUMEX> categories. Although lacking
+        the associated gene profile, this <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> had a
+        survival pattern much like the activated B cell-like <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.
+        The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> used <ENAMEX TYPE="PERSON">Cox</ENAMEX> proportional hazards modeling to
+        assign <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> on the basis of the expression of <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+        The <NUMEX TYPE="CARDINAL">5</NUMEX> yr. survival for the low risk <ENAMEX TYPE="PER_DESC">group</ENAMEX> was <NUMEX TYPE="PERCENT">60%</NUMEX>, <NUMEX TYPE="PERCENT">35%</NUMEX> for
+        the activated B cell-like <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, and <NUMEX TYPE="PERCENT">39%</NUMEX> for the <NUMEX TYPE="ORDINAL">3rd</NUMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>.
+        An improved result was obtained using <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> drawn from <NUMEX TYPE="CARDINAL">4</NUMEX>
+        signature gene groupings plus a score for <TIMEX TYPE="DATE">BMP6</TIMEX> expression.
+        <ENAMEX TYPE="PERSON">Kaplan Meier</ENAMEX> estimates of survival were determined for <NUMEX TYPE="CARDINAL">4</NUMEX>
+        quartiles for which the <NUMEX TYPE="CARDINAL">5</NUMEX> yr. survival rate was
+        <NUMEX TYPE="PERCENT">73%,71%,34%,15%</NUMEX>. If these <NUMEX TYPE="CARDINAL">4</NUMEX> are collapsed into <NUMEX TYPE="CARDINAL">2</NUMEX> categories
+        of <ENAMEX TYPE="PER_DESC">survivor</ENAMEX> and non-<ENAMEX TYPE="PER_DESC">survivor</ENAMEX>, it would produce <NUMEX TYPE="CARDINAL">62/240</NUMEX>
+        errors for a prognosis accuracy of <NUMEX TYPE="PERCENT">74%</NUMEX>.
+        (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) van't Veer 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">8</ENAMEX> ] did a study of <NUMEX TYPE="CARDINAL">78</NUMEX>
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX>. Starting with <TIMEX TYPE="DATE">5000</TIMEX> signature
+        genes, they narrowed down the gene pool to <NUMEX TYPE="CARDINAL">231</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> by
+        examining the correlation coefficient of each gene with the
+        prognostic outcome. They then rank ordered these genes and
+        added them <NUMEX TYPE="CARDINAL">5</NUMEX> at a time to a <NUMEX TYPE="CARDINAL">one</NUMEX>-man-out test of their <NUMEX TYPE="CARDINAL">77</NUMEX>
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> for predicted outcome. This was repeated until an
+        optimum outcome classification was reached. This occurred
+        at <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. A <ENAMEX TYPE="PER_DESC">patient</ENAMEX> by <ENAMEX TYPE="PER_DESC">patient</ENAMEX> classification based on
+        the weighting of these <NUMEX TYPE="CARDINAL">70</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was able to produce a
+        survival classification with <NUMEX TYPE="CARDINAL">13/78</NUMEX> errors for an accuracy
+        of <NUMEX TYPE="PERCENT">83%</NUMEX>.
+        (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Beer</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">9</ENAMEX> ] used clustering and <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX>
+        hazard analysis to generate a list of <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to be used
+        in <ENAMEX TYPE="FAC">Kaplan Meier 5</ENAMEX> <ENAMEX TYPE="FAC_DESC">yr</ENAMEX>. projections of survival. They had <NUMEX TYPE="CARDINAL">86</NUMEX>
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <ENAMEX TYPE="DISEASE">lung cancer</ENAMEX> in the study. With <NUMEX TYPE="CARDINAL">22</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>
+        originally assigned to the low risk <ENAMEX TYPE="PER_DESC">group</ENAMEX> and <NUMEX TYPE="CARDINAL">19</NUMEX> to the
+        high risk <ENAMEX TYPE="PER_DESC">group</ENAMEX>, the corresponding <NUMEX TYPE="CARDINAL">5</NUMEX> yr. survival rates
+        were <NUMEX TYPE="PERCENT">83% and 40%</NUMEX>. If treated as survival categories this
+        would produce <NUMEX TYPE="CARDINAL">12/41</NUMEX> errors for a prognosis classification
+        accuracy of <NUMEX TYPE="PERCENT">71%</NUMEX>. Although these <ENAMEX TYPE="PER_DESC">authors</ENAMEX> had complete <NUMEX TYPE="CARDINAL">5</NUMEX> yr.
+        survival data on <NUMEX TYPE="CARDINAL">41</NUMEX> of the <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in the study, they at
+        no point attempted to analyze this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> specifically for
+        direct comparison with predictions.
+        (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) <ENAMEX TYPE="GPE">Khan</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX> ] used linear neural
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> to analyze microarray data from <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with
+        small round blue-cell tumors. They wished to classify the <NUMEX TYPE="CARDINAL">4</NUMEX>
+        subcategories of this tumor. <ENAMEX TYPE="ORGANIZATION">Principle Component Analysis</ENAMEX>
+        was used to reduce <NUMEX TYPE="CARDINAL">2308</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to <NUMEX TYPE="CARDINAL">10</NUMEX> components. Neural
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained using <NUMEX TYPE="CARDINAL">2/3</NUMEX> of a <NUMEX TYPE="CARDINAL">63</NUMEX> <ENAMEX TYPE="PER_DESC">patient</ENAMEX> pool to
+        <ENAMEX TYPE="PERSON">train</ENAMEX> and <NUMEX TYPE="CARDINAL">1/3</NUMEX> to test in a fully cross-validated fashion.
+        The <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were shuffled <NUMEX TYPE="CARDINAL">1250</NUMEX> times to produce <TIMEX TYPE="DATE">3750</TIMEX>
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>. These <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> correctly classified all <NUMEX TYPE="CARDINAL">63</NUMEX>
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> in a <NUMEX TYPE="CARDINAL">4</NUMEX>-way classification. The <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were
+        analyzed for the most influential inputs to produce a list
+        of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. New <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were calibrated with just these
+        <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>; these again correctly classified the <NUMEX TYPE="CARDINAL">63</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>
+        and also correctly classified the <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who had been
+        withheld from the whole process.
+        (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) Dehanasekaran 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">11</TIMEX> ] did a study of <NUMEX TYPE="CARDINAL">60</NUMEX>
+        <ENAMEX TYPE="SUBSTANCE">prostate biopsy samples</ENAMEX>, <NUMEX TYPE="CARDINAL">24</NUMEX> non-tumorous,14 tumor in situ,
+        <NUMEX TYPE="CARDINAL">20</NUMEX> metastatic <ENAMEX TYPE="DISEASE">tumor</ENAMEX>. Cluster analysis of microarray data
+        from <NUMEX TYPE="CARDINAL">nearly 10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes misplaced 2 samples</ENAMEX> out of <NUMEX TYPE="MONEY">26</NUMEX> for
+        a diagnostic accuracy of <NUMEX TYPE="PERCENT">92%</NUMEX>. The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> did not state why
+        they limited the clustering result to <NUMEX TYPE="CARDINAL">26</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> when they
+        had <NUMEX TYPE="CARDINAL">60</NUMEX>. Although they performed additional analyses, they
+        did not involve using the array data for either diagnosis
+        or prognosis.
+        (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) Golub 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">12</TIMEX> ] wished to be able to
+        distinguish acute myeloid <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> (AML) from acute
+        lymphoblastic <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ALL</ENAMEX>). Starting with the expression
+        of <NUMEX TYPE="CARDINAL">6817</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from <NUMEX TYPE="CARDINAL">38</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, they did a <NUMEX TYPE="CARDINAL">2</NUMEX>-class
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>. They then did a neighbor analysis to identify
+        <TIMEX TYPE="DATE">1100</TIMEX> genes occurring above chance levels which related to
+        the <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>/ALL distinction. They choose an informative subset
+        of <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to weight for <ENAMEX TYPE="PER_DESC">class</ENAMEX> assignment of the <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+        They were able to correctly classify <NUMEX TYPE="CARDINAL">29/34</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> for a
+        diagnostic accuracy of <NUMEX TYPE="PERCENT">85%</NUMEX>. They next attempted to use
+        self-organizing-maps (SOM) for <NUMEX TYPE="CARDINAL">2</NUMEX> classes in place of the
+        initial clustering. This produced <NUMEX TYPE="CARDINAL">only 4/38</NUMEX> errors for <NUMEX TYPE="PERCENT">89%</NUMEX>
+        diagnostic accuracy. Drawing a <NUMEX TYPE="CARDINAL">20</NUMEX> gene predictor from these
+        <ENAMEX TYPE="ORGANIZATION">SOM</ENAMEX> classes, they again produced <NUMEX TYPE="CARDINAL">4/38</NUMEX> errors, maintaining a
+        <NUMEX TYPE="PERCENT">89%</NUMEX> accuracy. These <ENAMEX TYPE="PER_DESC">authors</ENAMEX> also attempted to use array
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> to predict clinical outcome on <NUMEX TYPE="CARDINAL">15</NUMEX> <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> but
+        without success.
+        The identification of specific genes associated with a
+        particular biological characteristic such as malignant
+        <ENAMEX TYPE="ORGANIZATION">phenotype</ENAMEX> would be useful in many settings, [ <ENAMEX TYPE="LAW">1</ENAMEX> ] Precise
+        <ENAMEX TYPE="PERSON">classification</ENAMEX> and staging of tumors is critical for the
+        selection of the appropriate therapy. At present,
+        <ENAMEX TYPE="PERSON">classification</ENAMEX> is accomplished by morphologic,
+        immunohistochemical, and limited biological analyses.
+        Neural net analysis in the form of specific donor profiles
+        could provide a fine structure analysis of tumors
+        characterizing them by a precise weighting of the genes,
+        which they express differentially. At present, only subsets
+        of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with a given type of tumor respond to therapy.
+        <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> trained to distinguish responders from
+        non-responders would allow a comparison of <ENAMEX TYPE="DISEASE">tumor</ENAMEX>-expressed
+        genes in responders and non-responders to find those genes
+        most predictive of response. Recently we have used neural
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> on the data of Perou 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">12</TIMEX> ] for classifying breast
+        tumors as hormonally responsive or non-responsive. <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX>
+        that gave a perfect classification with <NUMEX TYPE="CARDINAL">496</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> pointed
+        to a subset of <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Retraining on these <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        produced no error in classifying 62 tissue samples from
+        their study (unpublished data). We have also analyzed the
+        <ENAMEX TYPE="ORGANIZATION">data of Dhanasekaran</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] . Here the original set
+        of <NUMEX TYPE="CARDINAL">9984</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was reduced to <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Retraining on these
+        <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> gave no errors in a <NUMEX TYPE="CARDINAL">3</NUMEX>-way (normal, early <ENAMEX TYPE="DISEASE">tumor</ENAMEX>,
+        <ENAMEX TYPE="DISEASE">metastatic disease</ENAMEX>) classification of <NUMEX TYPE="CARDINAL">53</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>
+        (unpublished data). Given the significant impairment in the
+        quality of life for many <ENAMEX TYPE="PER_DESC">patients</ENAMEX> undergoing chemotherapy
+        and/or radiation therapy, such prospective information
+        would be extremely beneficial. [ <ENAMEX TYPE="LAW">3</ENAMEX> ] T cell and
+        <ENAMEX TYPE="SUBSTANCE">antibody-mediated immunotherapy</ENAMEX> may be efficacious
+        approaches for limiting tumor growth in <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. At
+        present there is a paucity of known tumor rejection
+        antigens that can be targeted. Neural net analysis may
+        identify a panel of <ENAMEX TYPE="DISEASE">tumor</ENAMEX>-encoded <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> shared by many
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with the same type of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and thereby provide a
+        repertoire of potentially novel tumor rejection antigens. [
+        <NUMEX TYPE="CARDINAL">4</NUMEX> ] For many <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with autoimmune <ENAMEX TYPE="DISEASE">disease</ENAMEX> the target
+        <ENAMEX TYPE="PERSON">antigen</ENAMEX>(s) is unknown. Enhanced identification of cell-type
+        specific markers of the target organ through <TIMEX TYPE="DATE">neural</TIMEX> net
+        <ENAMEX TYPE="ORGANIZATION">profiling</ENAMEX> could identify potential <ENAMEX TYPE="ORG_DESC">target</ENAMEX> antigens as
+        candidate molecules for testing and tolerance
+        <ENAMEX TYPE="ORGANIZATION">induction</ENAMEX>.
+      
+      
+        Conclusions
+        We believe neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> will be an ideal tool to
+        assimilate the vast amount of information contained in
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX>. The artificial <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> presented here were
+        not selected from a large number of attempts. The networks
+        described here are the <NUMEX TYPE="ORDINAL">first</NUMEX> or <NUMEX TYPE="ORDINAL">second</NUMEX> attempts with the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and format stated; the longest training session lasted
+        less than <TIMEX TYPE="TIME">5 minutes</TIMEX>. Indeed, the trained neural network
+        may, in the form of its weight matrix, have the best
+        possible "understanding" of the very broad statement being
+        made in the microarray, a view that is accessible with the
+        differentiation of the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. In this study, that
+        viewpoint suggested a small subset of genes, which proved
+        sufficient to give a near-perfect classification in each of
+        <NUMEX TYPE="CARDINAL">two</NUMEX> problems. This approach should be suitable for any
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> study and, indeed, other global studies such as
+        2-D <ENAMEX TYPE="PER_DESC">gels</ENAMEX> and mass-spec data which contain sufficient
+        information for training.
+      
+      
+        Methods
+        The data from <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments are stored in
+        spreadsheet form, representing the positive or negative
+        level of expression, relative to some control <ENAMEX TYPE="GPE_DESC">state</ENAMEX>, of
+        <TIMEX TYPE="DATE">1000</TIMEX>'s of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for <NUMEX TYPE="CARDINAL">two</NUMEX> or more experimental conditions. A
+        short software program is sufficient to translate these
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> directly into a binary representation suitable as
+        input vectors for a neural <ENAMEX TYPE="ORG_DESC">network</ENAMEX>. The neural network
+        software used throughout this study was NeuralWorks
+        <ENAMEX TYPE="ORGANIZATION">Professional</ENAMEX> <ENAMEX TYPE="PRODUCT">II Plus</ENAMEX> v.5.3.Neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained on
+        the corresponding data sets, with a fraction of the data,
+        typically <NUMEX TYPE="PERCENT">10%</NUMEX>, withheld for testing purposes. All open
+        fields in the data array were set to <NUMEX TYPE="CARDINAL">zero</NUMEX>. The trained
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were then asked to classify new test data as to
+        donor type. Since the gene expression levels are read
+        directly from the spreadsheet, their order and names are
+        provided by the spreadsheet. Given the large amount of
+        input data, these <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> generally converge to a low
+        error level very quickly during training, often in a few
+        <TIMEX TYPE="TIME">minutes</TIMEX> or less. Subsequently additional <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were
+        trained with a simplified input that contained only
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> information in the form of a plus or minus sign
+        to characterize the expression of each gene in the <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>.
+        This reduced the input size to <NUMEX TYPE="QUANTITY">2 bits</NUMEX> per gene, <NUMEX TYPE="CARDINAL">01</NUMEX> for
+        below the control and <NUMEX TYPE="CARDINAL">10</NUMEX> for above, or equal to, the
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>. The output neuron was trained to output <NUMEX TYPE="MONEY">1.0</NUMEX> for a
+        positive <ENAMEX TYPE="PER_DESC">donor</ENAMEX> and <NUMEX TYPE="CARDINAL">0.0</NUMEX> for a negative <ENAMEX TYPE="PER_DESC">donor</ENAMEX> in the
+        <ENAMEX TYPE="ORGANIZATION">diagnostic</ENAMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>; for the prognostic networks <NUMEX TYPE="CARDINAL">1.0</NUMEX>
+        indicated a non-<ENAMEX TYPE="PER_DESC">survivor</ENAMEX> and <NUMEX TYPE="MONEY">0.0</NUMEX> a <ENAMEX TYPE="PER_DESC">survivor</ENAMEX>. The <TIMEX TYPE="DATE">4026</TIMEX> gene
+        panel <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was provided, respectively, <NUMEX TYPE="CARDINAL">100</NUMEX> or <NUMEX TYPE="CARDINAL">67</NUMEX>
+        middle-layer neurons for the <NUMEX TYPE="CARDINAL">3</NUMEX> bit or <NUMEX TYPE="CARDINAL">2</NUMEX> bit per gene
+        inputs. With a very large number of input neurons it is
+        possible to overload the middle-layer neurons, effectively
+        always operating them at <NUMEX TYPE="CARDINAL">one</NUMEX> extreme limit or the other;
+        this can have the undesirable effect of reducing their
+        sigmoid transfer function to a step function, with the loss
+        of the <ENAMEX TYPE="ORG_DESC">network</ENAMEX>'s non-linearity. This is clearly indicated
+        if multiple output values are found to be exactly
+        identical. <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> were trained to an error level below
+        <NUMEX TYPE="CARDINAL">0.05</NUMEX> after which they were tested with previously unseen
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. A possible disadvantage of neural <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>,
+        especially with a large input space and a relatively small
+        sample number, is overtraining. In overtraining, a network
+        can learn the specifics of each training example as opposed
+        to finding a global solution for the entire training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>.
+        This behavior is characterized by a degradation in test
+        scores as training sessions are extended. Although we saw
+        no evidence of this in this study, we did look to see how
+        much additional training would be necessary to degrade the
+        test results in the case of the initial diagnosis networks
+        with <NUMEX TYPE="CARDINAL">4026</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. It was not until we doubled the training
+        iterations dictated by the <NUMEX TYPE="CARDINAL">0.05</NUMEX> output error cutoff that we
+        saw some increased test error. At double the normal
+        training interval, <NUMEX TYPE="CARDINAL">8</NUMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were unchanged, but <NUMEX TYPE="CARDINAL">2</NUMEX>
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> showed an increased error of <NUMEX TYPE="CARDINAL">1</NUMEX>. This is
+        suggestive, but not proof, of the onset of overtraining.
+        The <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> trained on the reduced <TIMEX TYPE="DATE">34</TIMEX> or <NUMEX TYPE="CARDINAL">19</NUMEX> gene sets had
+        <NUMEX TYPE="CARDINAL">6</NUMEX> or <NUMEX TYPE="CARDINAL">4</NUMEX> middle-layer neurons.
+        To differentiate a trained <ENAMEX TYPE="ORG_DESC">network</ENAMEX> with respect to
+        specific inputs, a <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was trained on the <TIMEX TYPE="DATE">4026</TIMEX> gene
+        panel with <NUMEX TYPE="QUANTITY">2 bits</NUMEX> per gene. The <NUMEX TYPE="CARDINAL">5</NUMEX> positive <ENAMEX TYPE="PER_DESC">donors</ENAMEX> from the
+        test set were each differentiated, using software that we
+        designed for that purpose [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . The selected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+        then compared among the <NUMEX TYPE="CARDINAL">5</NUMEX> sets, with genes occurring in <NUMEX TYPE="CARDINAL">3</NUMEX>
+        or more instances being included in the final subset. This
+        requirement generated a subset of <NUMEX TYPE="CARDINAL">292</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the
+        original <TIMEX TYPE="DATE">4026</TIMEX> genes. <ENAMEX TYPE="ORG_DESC">Networks</ENAMEX> were trained on this <NUMEX TYPE="CARDINAL">292</NUMEX> gene
+        <ENAMEX TYPE="PERSON">subset</ENAMEX> and on <NUMEX TYPE="CARDINAL">two 146</NUMEX> gene subsets, representing every
+        other gene from the <NUMEX TYPE="CARDINAL">292</NUMEX> set. All were coded with <NUMEX TYPE="QUANTITY">3 bits</NUMEX> per
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> and employed <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> with <NUMEX TYPE="CARDINAL">25 or 12</NUMEX> middle-layer
+        neurons, respectively. Other <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> were trained on the
+        <NUMEX TYPE="CARDINAL">292</NUMEX> gene set and the <NUMEX TYPE="CARDINAL">146</NUMEX> 'even' set, coded with <NUMEX TYPE="QUANTITY">2 bits</NUMEX> per
+        gene for subsequent differentiation.
+        The differentiation of the large <ENAMEX TYPE="ORG_DESC">panel networks</ENAMEX> trained
+        for prognosis arbitrarily employed more selective criteria
+        (see text) for subset determination with the result that a
+        single differentiation reduced the gene set from <TIMEX TYPE="DATE">4026</TIMEX> genes
+        to <NUMEX TYPE="CARDINAL">34</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Subsequent <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> demonstrated that this was
+        a highly effective selection.
+        All <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in this study were <NUMEX TYPE="CARDINAL">three</NUMEX>-layer back
+        <ENAMEX TYPE="ORGANIZATION">propagation</ENAMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> trained with a learning coefficient of
+        <NUMEX TYPE="CARDINAL">0.3</NUMEX> and a momentum coefficient of <NUMEX TYPE="CARDINAL">0.4</NUMEX> using the generalized
+        <ENAMEX TYPE="ORGANIZATION">delta</ENAMEX> learning rule and the standard sigmoidal transfer
+        function. The cutoff, in all cases, between positive and
+        negative scoring was taken to be <NUMEX TYPE="CARDINAL">0.05</NUMEX> <ENAMEX TYPE="ORGANIZATION">RMS</ENAMEX> error at the
+        output neuron No <ENAMEX TYPE="ORG_DESC">network</ENAMEX> required more than <TIMEX TYPE="TIME">4 minutes</TIMEX>
+        training time on a PC at <NUMEX TYPE="CARDINAL">650</NUMEX> <ENAMEX TYPE="PRODUCT">Mh</ENAMEX>; in the majority of cases,
+        the <ENAMEX TYPE="ORG_DESC">network</ENAMEX> was fully trained in less than a minute.
+        Training and testing a <NUMEX TYPE="CARDINAL">10</NUMEX> network round-robin series could
+        generally be done in <TIMEX TYPE="TIME">less than 20 minutes</TIMEX>. Training was
+        deliberately kept to a minimum to avoid over-training. The
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> represented here were in each case the <NUMEX TYPE="ORDINAL">first</NUMEX> or
+        <NUMEX TYPE="ORDINAL">second</NUMEX> attempt result for the given problem. There was no
+        "data trolling."
+      
+      
+        Note
+        1All data not shown can be found at the site
+        <ENAMEX TYPE="CONTACT_INFO">http://</ENAMEX>research.<ENAMEX TYPE="ORGANIZATION">umbc</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/~moneill/GBMS</ENAMEX>
+      
+    
+  

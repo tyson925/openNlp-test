@@ -1,0 +1,868 @@
+
+  
+    
+      
+        Background
+        The introduction of small subunit <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX> as a
+        tool in microbial taxonomy by <ENAMEX TYPE="PERSON">Carl Woese</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">George Fox</ENAMEX> [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        ] led most microbiologists to assume that the concepts of
+        <ENAMEX TYPE="ANIMAL">animal</ENAMEX> and plant taxonomy could be extended to the realm of
+        <ENAMEX TYPE="ORGANIZATION">prokaryotes</ENAMEX>. In particular, it was assumed that a natural
+        <ENAMEX TYPE="ORGANIZATION">taxonomic</ENAMEX> system for microorganisms was feasible [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+        The goal of a natural taxonomic system is the formation of
+        taxonomic <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> that are defined by shared ancestry [ <ENAMEX TYPE="LAW">3</ENAMEX> ]
+        . By definition, an ancestor that defines a monophyletic
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> can only give rise to <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. No
+        <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> outside this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> has a lineage that traces back
+        to the same ancestor (paraphyletic <ENAMEX TYPE="ORG_DESC">group</ENAMEX>); however, there
+        might be earlier ancestors that define more inclusive
+        monophyletic <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. The metaphor for organismal evolution
+        that underlies a natural taxonomic system is a strictly
+        bifurcating <ENAMEX TYPE="PLANT">tree</ENAMEX> of <ENAMEX TYPE="ANIMAL">species</ENAMEX>. <TIMEX TYPE="DATE">A decade ago</TIMEX> <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX>
+        promised that <TIMEX TYPE="DATE">one day</TIMEX> it might be possible to place every
+        extant <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> on a universal <ENAMEX TYPE="PLANT">tree</ENAMEX> of life, and the hope
+        was that more genomic sequences would make this placement
+        more accurate.
+        However, the analyses of completely sequenced genomes
+        initiated a reassessment of concepts in microbial evolution
+        [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . While some molecular <ENAMEX TYPE="PER_DESC">markers</ENAMEX> were found to agree
+        with one another e.g., [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , others do not [ <NUMEX TYPE="CARDINAL">6 7 8 9 10</NUMEX>
+        <NUMEX TYPE="CARDINAL">11 12</NUMEX> ] . Transfer of genetic information between divergent
+        <ENAMEX TYPE="PERSON">organisms</ENAMEX> has turned the <ENAMEX TYPE="PLANT">tree</ENAMEX> of life into a net or web [
+        <NUMEX TYPE="CARDINAL">13</NUMEX> ] , and genomes into mosaics. Different parts of genomes
+        have different histories, and representing the history of
+        genome evolution as a single tree appears inconsistent with
+        the data. Nevertheless, the assumption of a tree-like
+        process still underlies many approaches. <ENAMEX TYPE="SUBSTANCE">Genome</ENAMEX> content
+        <ENAMEX TYPE="PLANT">trees</ENAMEX> have been calculated based on the presence and
+        absence of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <NUMEX TYPE="CARDINAL">14 15 16</NUMEX> ] or types of <ENAMEX TYPE="SUBSTANCE">protein folds</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">17</NUMEX> ] . While there is limited agreement between genome and
+        rRNA phylogeny, at present it remains unclear whether this
+        similarity is based on shared ancestry of part of a less
+        frequently exchanging genome core [ <TIMEX TYPE="DATE">18</TIMEX> ] , or if the
+        apparent congruence is itself the result of horizontal gene
+        transfer [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+        Overall genome content is not best represented on a
+        single <ENAMEX TYPE="PLANT">tree</ENAMEX>. <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1gives an example of an alternative
+        <ENAMEX TYPE="PERSON">depiction</ENAMEX>, where thickness of a line reflects percentage of
+        genes shared between <NUMEX TYPE="CARDINAL">two</NUMEX> genomes. The coherence among the
+        <NUMEX TYPE="CARDINAL">three</NUMEX> domains of life (<ENAMEX TYPE="ORGANIZATION">Bacteria, Archaea, Eucarya</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ] ),
+        is clearly reflected in genome content; i.e., <ENAMEX TYPE="GPE">Archaea</ENAMEX> share
+        more genes with other <ENAMEX TYPE="NATIONALITY">Archaea</ENAMEX> than with <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX>, but many
+        features are incompatible with representing the
+        relationships between different genomes as a <ENAMEX TYPE="PLANT">tree</ENAMEX>. For
+        example, the mesophilic euryarchaeon 
+        <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. has more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in
+        common with the <ENAMEX TYPE="SUBSTANCE">mesophilic Bacteria</ENAMEX> than does the
+        thermophilic crenarchaeote 
+        Aeropyrum pernix . However, the
+        extremophilic euryarcheote 
+        Archaeoglobus fulgidus shares many
+        more genes with the extremophilic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, 
+        Aquifex aeolicus and 
+        Thermotoga maritima than does 
+        <ENAMEX TYPE="ORGANIZATION">Halobacterium</ENAMEX> . While this example
+        illustrates the web-like relationships among genomes,
+        recent phylogenetic reconstructions from molecular data
+        have explored only few alternatives to the <ENAMEX TYPE="PLANT">tree</ENAMEX>-paradigm
+        (<ENAMEX TYPE="SUBSTANCE">e.g.</ENAMEX> [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ] ).
+        <NUMEX TYPE="CARDINAL">One</NUMEX> obvious drawback of the star-like representation in
+        <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1is that it utilizes BLAST search results only. Any
+        <ENAMEX TYPE="ORGANIZATION">phylogenetic</ENAMEX> information retained in the sequences is not
+        utilized beyond the presence or absence decision based on a
+        single expectation value cut-off. Because of recombination,
+        individual genes themselves might be mosaic [ <TIMEX TYPE="DATE">23</TIMEX> ] ;
+        however, within-gene recombination of <ENAMEX TYPE="SUBSTANCE">protein coding genes</ENAMEX>
+        occurs mostly between closely related <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. The
+        redundancy of the genetic code greatly reduces
+        recombination between divergent <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Even if a region
+        is <NUMEX TYPE="PERCENT">100%</NUMEX> conserved on the amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> level, the encoding DNA
+        can be so different as to allow the mismatch repair system
+        to prevent recombination. For studies of single divergent
+        orthologous <ENAMEX TYPE="SUBSTANCE">protein encoding genes</ENAMEX> the assumption of a
+        tree-like evolutionary history remains a reasonable
+        expectation. In this manuscript we focus on methods that
+        utilize the phylogenetic information that is retained in
+        molecular sequence data, while not presuming that genomes
+        as a whole evolved in a tree-like fashion.
+        In an elegant approach <ENAMEX TYPE="PERSON">Korbinian Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">Arndt von</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Haeseler</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] utilized <ENAMEX TYPE="PERSON">Bayesian</ENAMEX> posterior probabilities
+        to assess the phylogenetic information contained in an
+        alignment of <NUMEX TYPE="CARDINAL">four</NUMEX> homologous sequences. With <NUMEX TYPE="CARDINAL">four</NUMEX> sequences
+        there are <NUMEX TYPE="CARDINAL">only three</NUMEX> possible tree <ENAMEX TYPE="ANIMAL">topologies</ENAMEX>, and thus the
+        <NUMEX TYPE="CARDINAL">three</NUMEX> posterior probabilities corresponding to these three
+        <ENAMEX TYPE="PERSON">trees</ENAMEX> must sum up to <NUMEX TYPE="CARDINAL">one</NUMEX>. Utilizing a barycentric
+        coordinate system, the resulting probability vector is
+        represented as a point in an equilateral triangle (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>),
+        where the distances of the point P to the <NUMEX TYPE="CARDINAL">three</NUMEX> sides
+        represent the <NUMEX TYPE="CARDINAL">three</NUMEX> probabilities. <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von</ENAMEX>
+        Haeseler applied this approach to depict the phylogenetic
+        information content present in a multiple sequence
+        <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX>. They plot the results from the analyses of all
+        possible quartets, where the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> are selected
+        from a single multiple sequence alignment in the same
+        coordinate system. If there is a lot of phylogenetic
+        information in the alignment, then most probability vectors
+        will fall <NUMEX TYPE="CARDINAL">close to one</NUMEX> of the <ENAMEX TYPE="FAC_DESC">corners</ENAMEX>; conversely datasets
+        containing little phylogenetic information will mainly
+        result in vectors falling into the center of the triangle.
+        Here we explore the application of this and similar
+        approaches in comparative genome analyses. In particular,
+        we compare different approaches to calculate Bayesian
+        posterior probabilities, and we compare these probabilities
+        to the more widely used bootstrap support values. We assess
+        the reliability of the different probability mapping
+        approaches through their application to mitochondrial
+        genomes, and we illustrate their usefulness by mapping
+        selected interphylum and interdomain relationships.
+      
+      
+        Results and Discussion
+        
+          Overview of data flow in probability mapping
+          An outline of our approach to genome probability
+          mapping is given in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. Using <ENAMEX TYPE="SUBSTANCE">SEALS</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] and
+          MySQL we developed scripts that identify and retrieve 
+          quart ets of 
+          <ENAMEX TYPE="PERSON">o</ENAMEX> rthologous 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> rotein-encoding open reading frames
+          (<ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX>) from <NUMEX TYPE="CARDINAL">four</NUMEX> selected genomes. We use the term
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> to denote the collection of all <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> identified in
+          a genome. (In the case of genomes that are not well
+          annotated, it is feasible to use a very wide definition
+          of <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>, e.g, all amino <ENAMEX TYPE="SUBSTANCE">acid sequences</ENAMEX> encoded between <NUMEX TYPE="CARDINAL">two</NUMEX>
+          stop codons in any of the <NUMEX TYPE="CARDINAL">six</NUMEX> possible reading frames. As
+          long as one of the genomes included in the analyses is
+          properly annotated, only those identified <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> that are
+          actually homologous to an identified <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> will become part
+          of a <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> of orthologs.) We utilize an operational
+          definition of an ortholog: <NUMEX TYPE="CARDINAL">two</NUMEX> open reading frames are
+          considered orthologous, if and only if they are each
+          other's top scoring BLAST hit when one is used as a query
+          to search the other genome. A <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> is formed when each
+          of the open reading frames picks the other <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+          <ENAMEX TYPE="PERSON">quartet</ENAMEX> as the top scoring hit in searches of the
+          respective genomes. QuartOPs are similar to the clusters
+          of orthologous <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (COGs) maintained by the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> [ <NUMEX TYPE="CARDINAL">26</NUMEX>
+          <NUMEX TYPE="CARDINAL">27 28</NUMEX> ] , but differ in that <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX> require only
+          unidirectional, circular best hit relationships for <TIMEX TYPE="TIME">three</TIMEX>
+          of the reference genomes, whereas we require the
+          reciprocal top hit relationship for the <NUMEX TYPE="CARDINAL">four</NUMEX> genomes
+          included in a <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX>, and we do not limit our
+          identification of <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> to a number of reference
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Montague</ENAMEX> and <ENAMEX TYPE="PERSON">Hutchison</ENAMEX> utilized a comparable
+          approach in their definition of congruent <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] .
+          So far we have analyzed <NUMEX TYPE="CARDINAL">68</NUMEX> <ENAMEX TYPE="PER_DESC">genome</ENAMEX> quartets (see
+          <ENAMEX TYPE="ORGANIZATION">supplementary</ENAMEX> material). The number of QuartOPs
+          identified per genome <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> ranges from <NUMEX TYPE="MONEY">82</NUMEX> (for genome
+          quartet <NUMEX TYPE="MONEY">#6</NUMEX>: 
+          Deinococcus radiodurans, Treponema
+          pallidum, <ENAMEX TYPE="SUBSTANCE">Escherichia coli</ENAMEX>, and 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX> .) to <TIMEX TYPE="DATE">1182</TIMEX> (for
+          <ENAMEX TYPE="NATIONALITY">genome</ENAMEX> <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#63</NUMEX>: 
+          Agrobacterium tumifaciens,
+          Sinorhizobium meliloti, <ENAMEX TYPE="ORGANIZATION">Mezorhizobium</ENAMEX> loti and 
+          Caulobacter crescentus ).
+          Each of the aligned <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> from a genome <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> was
+          analyzed with respect to the posterior probability of the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> possible tree topologies given the aligned <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX>.
+          Routinely we calculated these probabilities using
+          <ENAMEX TYPE="ORGANIZATION">Strimmer's</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX>'s approach [ <TIMEX TYPE="DATE">24</TIMEX> ] : Using
+          each of the <NUMEX TYPE="CARDINAL">three</NUMEX> topologies as a usertree, we calculated
+          the maximum likelihood for each of the <NUMEX TYPE="CARDINAL">three</NUMEX> topologies
+          given the data. We then use the <NUMEX TYPE="CARDINAL">three</NUMEX> maximum likelihoods
+          to calculate the probability for topology 
+          i according to the formula: 
+          P 
+          
+            i 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">/</ENAMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ), where 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          
+            i 
+           is the likelihood for the best tree given topology 
+          i . Other types of reliability
+          measures used to evaluate <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> were bootstrap support
+          values and <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probabilities estimated
+          using <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> program (see below).
+          An example for the comparison of <NUMEX TYPE="MONEY">four genomes</NUMEX> from
+          different phyla is given in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4A. Surprisingly, each
+          of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX> is strongly supported by
+          <NUMEX TYPE="CARDINAL">more than 40</NUMEX> <ENAMEX TYPE="PERSON">QuartOPs</ENAMEX>, and most of the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> appear to
+          strongly support one of the <ENAMEX TYPE="PLANT">trees</ENAMEX>. None of the three
+          possibilities has majority support. Figure <NUMEX TYPE="CARDINAL">5lists</NUMEX> the
+          functional categories of those <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that strongly
+          support the different tree <ENAMEX TYPE="ANIMAL">topologies</ENAMEX>. None of the
+          categories shows a preference for a particular tree
+          <ENAMEX TYPE="ORGANIZATION">topology</ENAMEX>. For each <ENAMEX TYPE="PLANT">tree</ENAMEX> topology <NUMEX TYPE="PERCENT">more than 50%</NUMEX> of the
+          strongly supporting <ENAMEX TYPE="NATIONALITY">QuartOPs</ENAMEX> belong to the category
+          "information storage and processing", while this category
+          contains <NUMEX TYPE="CARDINAL">only about 1/3</NUMEX> of the genes present in the
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. While the genes in this category appear more
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> and phylogenetically informative, the strong
+          support that the genes in this category provide is nearly
+          evenly split between the <NUMEX TYPE="CARDINAL">three</NUMEX> possibilities.
+        
+        
+          Impact of model parameters and sequence
+          <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>
+          To test if ill-aligned sequences might have had an
+          impact on the analyses, we repeated the analysis of
+          <ENAMEX TYPE="NATIONALITY">genome</ENAMEX> <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY"># 8</NUMEX> (see Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) using only QuartOPs
+          that contained very similar sequences. By default we only
+          excluded top hits with an <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value larger than <NUMEX TYPE="PERCENT">10 -4</NUMEX>. We
+          repeated the example given in <ENAMEX TYPE="GPE">Fig</ENAMEX>. 4Awith a cut-off of <NUMEX TYPE="CARDINAL">10</NUMEX>
+          -<NUMEX TYPE="CARDINAL">20</NUMEX>, i.e., we not only required the sequences in a
+          <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> to be each others top hit, but in addition we
+          asked for a high similarity between the <NUMEX TYPE="CARDINAL">two</NUMEX> sequences. As
+          a result the support for the <NUMEX TYPE="CARDINAL">three</NUMEX> topologies in genome
+          quartet <NUMEX TYPE="MONEY">#8</NUMEX> dropped to <NUMEX TYPE="MONEY">54</NUMEX> (<NUMEX TYPE="MONEY">44</NUMEX>, <NUMEX TYPE="CARDINAL">38</NUMEX>), <TIMEX TYPE="DATE">51</TIMEX> (<NUMEX TYPE="MONEY">45</NUMEX>, <NUMEX TYPE="CARDINAL">32</NUMEX>), <TIMEX TYPE="DATE">39</TIMEX> (<NUMEX TYPE="MONEY">29</NUMEX>,
+          <NUMEX TYPE="CARDINAL">28</NUMEX>) (the numbers in parenthesis are the numbers of
+          quartets that support the topology with posterior
+          probability larger than <NUMEX TYPE="PERCENT">90% and 99%</NUMEX>, respectively). To
+          access the level of sequence conservation within the
+          <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX>' sequences, we calculated the average percentage
+          of pairwise identity per <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX>. It varied from <NUMEX TYPE="CARDINAL">40.53</NUMEX>
+          <NUMEX TYPE="PERCENT">10.54% to 43.84 ± 9.7%</NUMEX> when the E-value cut-off was
+          <ENAMEX TYPE="CONTACT_INFO">varied</ENAMEX> <TIMEX TYPE="TIME">between 10 -2and 10 -20</TIMEX>(see supplementary material
+          for the summary table). While pairwise sequence identity
+          is not a universally dependable measure of phylogenetic
+          information content, these values illustrates that the
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> within a <ENAMEX TYPE="NATIONALITY">QuartOP</ENAMEX> are neither identical to one
+          another, nor so divergent as to be saturated with
+          <ENAMEX TYPE="ORGANIZATION">substitutions</ENAMEX> and of questionable homology [ <TIMEX TYPE="DATE">30</TIMEX> ] . Using
+          only the most conserved <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> does not change the
+          qualitative result: each of the <NUMEX TYPE="CARDINAL">three</NUMEX> possible tree
+          <ENAMEX TYPE="ORGANIZATION">topologies</ENAMEX> is supported by about an equal number of
+          <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> (see supplementary material).
+          We recalculated the likelihoods for all <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> in
+          <ENAMEX TYPE="NATIONALITY">genome</ENAMEX> <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#8</NUMEX> using a model that incorporates 
+          a mong 
+          s ite 
+          r ate 
+          <ENAMEX TYPE="PRODUCT">v</ENAMEX> ariation (ASRV). The posterior
+          probabilities calculated according to <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Haeseler</ENAMEX> did not change dramatically and each of the
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX> is still supported by roughly equal
+          number of <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX>. The maps for this analysis are
+          available in the supplementary material.
+        
+        
+          Estimating <ENAMEX TYPE="ORGANIZATION">Bayesian Posterior Probabilities</ENAMEX>
+          The formula used by <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ]
+          to calculate posterior probabilities (i.e. the
+          probability that <ENAMEX TYPE="PLANT">tree</ENAMEX> topology 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          
+            i 
+           is true given an aligned set of <NUMEX TYPE="MONEY">four sequences</NUMEX>)
+          considers <NUMEX TYPE="CARDINAL">only three</NUMEX> <ENAMEX TYPE="PLANT">trees</ENAMEX> (i.e. branch lengths and
+          <ENAMEX TYPE="ORGANIZATION">topology</ENAMEX>), each with the same prior probability. These
+          <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">trees</ENAMEX> are those that have the highest likelihood
+          for the <NUMEX TYPE="CARDINAL">three</NUMEX> possible topologies. However, there are
+          infinitely many other <ENAMEX TYPE="PLANT">trees</ENAMEX> that differ from the three
+          chosen ones only by differences in branch lengths. What
+          is the effect on the calculated posterior probability of
+          using only the single best <ENAMEX TYPE="PLANT">tree</ENAMEX> as a <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of
+          all the <ENAMEX TYPE="PLANT">trees</ENAMEX> with the same topology? There is no 
+          a priori reason to exclude the
+          other <ENAMEX TYPE="PLANT">trees</ENAMEX> that have slightly lower likelihoods.
+          A different approach that does not make these
+          assumptions is the use of <ENAMEX TYPE="ORGANIZATION">Markov Chain Monte Carlo</ENAMEX>
+          methods to explore tree space. We used the program
+          MrBayes written by <ENAMEX TYPE="ORGANIZATION">Huelsenbeck</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Ronquist</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+          Using a <ENAMEX TYPE="GPE">QuartOP</ENAMEX> with posterior probabilities of <NUMEX TYPE="MONEY">.76</NUMEX>, <NUMEX TYPE="CARDINAL">.10</NUMEX>
+          and <NUMEX TYPE="CARDINAL">.13</NUMEX> we explored different parameter choices for the
+          biased random walk through <ENAMEX TYPE="PLANT">tree</ENAMEX>-space. We chose two
+          chains with <NUMEX TYPE="CARDINAL">5,000</NUMEX> burn-in cycles, and <NUMEX TYPE="CARDINAL">25,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> with
+          <ENAMEX TYPE="ORGANIZATION">sampling</ENAMEX> after every cycle as a compromise between
+          increased precision of the probability estimate and
+          computation time (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and Methods for more
+          details).
+          The result of calculating the posterior probabilities
+          of all <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> in genome <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#8</NUMEX> is given in figure
+          4B. Again all of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX> are strongly
+          supported by some <ENAMEX TYPE="GPE">QuartOPs</ENAMEX>. When we repeated this
+          analysis using the same settings, none of the
+          probabilities changed by more than a few percent. The
+          support for the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree</ENAMEX> topologies changed from
+          <NUMEX TYPE="CARDINAL">67/47/37</NUMEX>, <NUMEX TYPE="CARDINAL">69/40/22 and 86/55/32</NUMEX> (the <NUMEX TYPE="CARDINAL">three</NUMEX> numbers
+          indicate total support and <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that supported a
+          topology with <NUMEX TYPE="MONEY">more than .90 and .99</NUMEX> respectively) in the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> run to <NUMEX TYPE="CARDINAL">67/47/37</NUMEX>, <NUMEX TYPE="CARDINAL">70/41/22 and 85/55/32</NUMEX> in the
+          <NUMEX TYPE="ORDINAL">second</NUMEX>, indicating that the chosen parameters provided
+          satisfactory reproducibility. Plots of both analyses are
+          available in the supplementary material. Comparing figure
+          4Bwith <ENAMEX TYPE="ORGANIZATION">4Ait</ENAMEX> is clear that in this case the Bayesian
+          posterior probabilities estimated with <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> are more
+          conservative assessments of reliability than the ones
+          calculated according to [ <TIMEX TYPE="DATE">24</TIMEX> ] . The <NUMEX TYPE="PERCENT">99%</NUMEX> support level
+          calculated according to [ <TIMEX TYPE="DATE">24</TIMEX> ] <TIMEX TYPE="TIME">approximately</TIMEX> corresponds
+          to the <NUMEX TYPE="PERCENT">90%</NUMEX> support level calculated with <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX>.
+        
+        
+          Bootstrap support values versus posterior
+          probabilities
+          To facilitate comparison of <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior
+          probabilities with a more widely used confidence measure,
+          we generated <NUMEX TYPE="CARDINAL">100</NUMEX> bootstrapped samples [ <TIMEX TYPE="DATE">32</TIMEX> ] from each
+          <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> in case <NUMEX TYPE="MONEY">#8</NUMEX>. Each of the <ENAMEX TYPE="SUBSTANCE">bootstrapped samples</ENAMEX> was
+          analyzed using maximum likelihood with the same model of
+          <ENAMEX TYPE="PERSON">substitution</ENAMEX> as before. Each of the bootstrapped samples
+          supports one of the <NUMEX TYPE="CARDINAL">three</NUMEX> possible topologies, thus the
+          sum of the bootstrap support values for the three
+          <ENAMEX TYPE="PERSON">topologies</ENAMEX> adds up to <NUMEX TYPE="PERCENT">100%</NUMEX>, and the percentage of
+          bootstrapped <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> for each <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> that best supported
+          each <ENAMEX TYPE="PLANT">tree</ENAMEX> was again plotted in a barycentric coordinate
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 4C). Many more QuartOPs map into the central
+          region of the triangle as compared to Figure <TIMEX TYPE="DATE">4Aand 4B</TIMEX>.
+          Clearly, for this test bootstrap support values are more
+          conservative measures of support than either of the
+          posterior probabilities calculated above. Nevertheless,
+          there are still several <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that strongly support
+          each of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX>; however, there are <NUMEX TYPE="CARDINAL">22</NUMEX>
+          QuartOPs that support grouping 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> with 
+          Treponema pallidum with better than
+          <NUMEX TYPE="PERCENT">90%</NUMEX> bootstrap support, whereas the alternatives are
+          supported by <NUMEX TYPE="CARDINAL">only 12 and 13</NUMEX> <ENAMEX TYPE="PERSON">QuartOPs</ENAMEX>, respectively.
+          <ENAMEX TYPE="PRODUCT">Comparing Figures 4Aand 4Cit</ENAMEX> appears that in analyzing
+          quartets <NUMEX TYPE="PERCENT">70%</NUMEX> bootstrap support is comparable to <NUMEX TYPE="CARDINAL">.99</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">posterior</ENAMEX> probability calculated according to [ <TIMEX TYPE="DATE">24</TIMEX> ]
+          .
+        
+        
+          Comparison of the different reliability assessment
+          tools
+          ML-mapping according to [ <TIMEX TYPE="DATE">24</TIMEX> ] is the least
+          conservative of the tools explored. For the test cases
+          analyzed a posterior probability of <NUMEX TYPE="MONEY">.99</NUMEX> according to [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          ] , corresponds to a <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probability of
+          .90 calculating using a <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> exploration of
+          <ENAMEX TYPE="PRODUCT">tree-</ENAMEX>space using [ <TIMEX TYPE="DATE">31</TIMEX> ] and <NUMEX TYPE="PERCENT">about 70%</NUMEX> bootstrap support.
+          We did not find a strong dependence of the results on the
+          <ENAMEX TYPE="PRODUCT">substitution</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> used in calculating likelihoods and
+          separate runs indicated satisfactory precision of the
+          calculated probabilities and bootstrap values. Given that
+          we only analyzed <NUMEX TYPE="CARDINAL">about 300</NUMEX> <ENAMEX TYPE="PRODUCT">QuartOPs</ENAMEX> using <NUMEX TYPE="CARDINAL">all three</NUMEX>
+          approaches it would be premature to generalize our
+          findings; however, other analyses that utilized both
+          <ENAMEX TYPE="ORGANIZATION">bootstrapping</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probabilities also
+          found bootstrapping to be more conservative than
+          posterior probabilities calculated using <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> methods
+          with <ENAMEX TYPE="GPE">Markov</ENAMEX> chain <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX> sampling (e.g., [ <NUMEX TYPE="CARDINAL">33 34 35</NUMEX>
+          ] ).
+        
+        
+          Mitochondrial genomes
+          While gene transfer into the mitochondrial genomes has
+          been inferred [ <NUMEX TYPE="CARDINAL">36 37 38 39</NUMEX> ] , mitochondrial genomes are
+          expected to have undergone many fewer legitimate and
+          illegitimate recombination events than <ENAMEX TYPE="PER_DESC">free-</ENAMEX>living
+          <ENAMEX TYPE="ORGANIZATION">prokaryotes</ENAMEX>. Clearly, if probability mapping is to be
+          considered a reliable approach, we expect that when
+          <ENAMEX TYPE="PERSON">analyzing</ENAMEX> quartets of mitochondrial genomes, the
+          different <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> should all support the same tree
+          <ENAMEX TYPE="ORGANIZATION">topology</ENAMEX>.
+          In most instances, this expectation is fulfilled (see
+          <ENAMEX TYPE="CONTACT_INFO">Table 1</ENAMEX>), even though we selected instances in which the
+          splits could be expected to be ill resolved, e.g.,
+          echinoderm, mammal, insect, mollusk (<NUMEX TYPE="MONEY">m4</NUMEX>), or protist,
+          <ENAMEX TYPE="PERSON">fungus</ENAMEX>, animal, <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> (<NUMEX TYPE="MONEY">m7</NUMEX>). The only exception was an ORF
+          in quartet <TIMEX TYPE="DATE">m7</TIMEX> that encodes the cytochrome oxidase subunit
+          II. This <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> did not support grouping the <ENAMEX TYPE="ANIMAL">animal</ENAMEX> with the
+          fungal homolog as expected; rather it grouped the protist
+          and animal homologs together (posterior probability
+          according to [ <TIMEX TYPE="DATE">24</TIMEX> ] was <NUMEX TYPE="MONEY">» 0.99</NUMEX>). Inspection of the
+          aligned sequences (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">6</NUMEX>) revealed that there are more
+          <ENAMEX TYPE="ORGANIZATION">residues</ENAMEX> shared between the homologs from 
+          Cafeteria roenbergensis and 
+          <ENAMEX TYPE="PER_DESC">Homo sapiens</ENAMEX> thanbetween the
+          homologs from 
+          Cafeteria roenbergensis and 
+          Arabidopsis thaliana . No artifact
+          that could be responsible for this unexpected grouping
+          was detected. The same high support for this unexpected
+          <ENAMEX TYPE="ORGANIZATION">grouping</ENAMEX> is also recovered in bootstrap analysis and in
+          posterior probabilities calculated with <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ]
+          .
+          The finding of a <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> in a mitochondrial genome
+          quartet that supports a non-traditional grouping could
+          either reflect a rare recombination event, selection
+          pressures that led to convergent evolution in two
+          lineages, or a chance event - if <NUMEX TYPE="CARDINAL">one</NUMEX> looks at enough
+          samples one will find some that (considered by
+          themselves) appear significant. At present it is not
+          possible to decide between these <NUMEX TYPE="CARDINAL">three</NUMEX> possible
+          explanations. Our analysis of mitochondrial genomes shows
+          that in most instances the calculated probabilities
+          (<ENAMEX TYPE="ORGANIZATION">ML</ENAMEX>-mapping, <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> posterior probabilities, or
+          <ENAMEX TYPE="ORGANIZATION">bootstrap</ENAMEX> values) support the expected tree <ENAMEX TYPE="ANIMAL">topologies</ENAMEX>,
+          albeit with surprisingly strong support values. Rarely,
+          unexpected groupings can be recovered and support for
+          these probably erroneous groupings can be high. In most
+          instances the ML-mapping approach accurately revealed the
+          expected relationships between the mitochondrial genomes.
+          This confirms the suitability of this approach in genome
+          analyses.
+        
+        
+          Interphylum genome quartets
+          Here we focus on examples that illustrate the utility
+          of the probability mapping approach. Focusing on the
+          relationships between the cyanobacteria with other
+          bacterial phyla we calculated several genome quartets
+          that include the 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> and three
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> each of other bacterial phyla (see <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). In
+          all cases that included both 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> as a
+          <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of the low <ENAMEX TYPE="SUBSTANCE">GC Gram positives</ENAMEX>, and 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>., the majority of
+          <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> supported the topologies that grouped these two
+          organisms together. The alternative topologies were
+          significantly supported by some <ENAMEX TYPE="GPE">QuartOPs</ENAMEX>, but the number
+          of strongly supporting <ENAMEX TYPE="PERSON">QuartOPs</ENAMEX> was lower than for the 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX> - 
+          Synechocystis grouping. This also
+          was true when one of the other <NUMEX TYPE="CARDINAL">two</NUMEX> genomes was from a
+          high GC Gram positive (genome quartets <NUMEX TYPE="MONEY">#53</NUMEX>, <NUMEX TYPE="MONEY">#54</NUMEX>, <NUMEX TYPE="MONEY">#55</NUMEX> and
+          <NUMEX TYPE="MONEY">#68</NUMEX>). Only when <NUMEX TYPE="CARDINAL">two low</NUMEX> <ENAMEX TYPE="PRODUCT">GC Gram</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">positives</ENAMEX> were included
+          in the same <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX>, was the intra-phylum grouping of low
+          <ENAMEX TYPE="ORGANIZATION">GC Gram</ENAMEX> positives supported by many more <ENAMEX TYPE="SUBSTANCE">QuartOPs</ENAMEX> than
+          the grouping of 
+          <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX> <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX> with 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>. (<ENAMEX TYPE="PER_DESC">genome</ENAMEX> quartets
+          <NUMEX TYPE="MONEY">#51 and #52</NUMEX>).
+          Previous analyses based on a limited number of
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and signature insertions and deletions had
+          suggested different bacterial <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> as closest <ENAMEX TYPE="PER_DESC">relatives</ENAMEX>
+          to cyanobacteria. Among the suggested sister <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were
+          the <ENAMEX TYPE="ORGANIZATION">Deinococcales</ENAMEX> [ <TIMEX TYPE="DATE">40</TIMEX> ] and spirochetes [ <NUMEX TYPE="CARDINAL">41 42</NUMEX> ] . Our
+          analyses do not support these earlier claims, but are in
+          agreement with the recent analyses of genes involved in
+          chlorophyll biosynthesis [ <TIMEX TYPE="DATE">43</TIMEX> ] , which indicated that
+          the low GC Gram positive heliobacteria are closest to the
+          last common ancestor of all oxygenic photosynthetic
+          <ENAMEX TYPE="ORGANIZATION">lineages</ENAMEX>. The analyses summarized in <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 2also
+          illustrate that interphylum <ENAMEX TYPE="ORGANIZATION">HGT</ENAMEX>, while turning genomes
+          into mosaics, has not eroded all <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> between
+          bacterial <ENAMEX TYPE="DISEASE">phyla</ENAMEX>. In the case of cyanobacteria, a close
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> <NUMEX TYPE="PERCENT">between</NUMEX> low <ENAMEX TYPE="SUBSTANCE">GC Gram positives</ENAMEX> and the
+          <ENAMEX TYPE="ORGANIZATION">cyanobacteria</ENAMEX> is supported by the majority of conserved
+          genes. Similar observations of reproducible <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>
+          between phyla based on genome wide comparisons were
+          recently published [ <NUMEX TYPE="CARDINAL">44 45 46 47</NUMEX> ] . However, at present
+          it cannot be decided to what extent these closer
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> reflects shared ancestry or are due to
+          <ENAMEX TYPE="ORGANIZATION">preferred HGT</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] .
+        
+        
+          Interdomain genome quartets
+          In our search for the "<ENAMEX TYPE="PER_DESC">sister</ENAMEX>-phylum" to the
+          cyanobacteria we also analyzed a few quartets including
+          <ENAMEX TYPE="ORGANIZATION">Archaea</ENAMEX>. One noteworthy finding was that in the genome
+          quartet including 
+          <ENAMEX TYPE="CONTACT_INFO">Synechocystis sp.,</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">Halobacterium sp.,</ENAMEX> 
+          Aquifex aeolicus and 
+          Thermotoga maritima the grouping of
+          
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. with 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>. was recovered by
+          many more <ENAMEX TYPE="PERSON">QuartOPs</ENAMEX> (<NUMEX TYPE="CARDINAL">56</NUMEX> with p <NUMEX TYPE="MONEY">> .99</NUMEX>) than the grouping
+          that would be expected following <TIMEX TYPE="DATE">16S</TIMEX> rRNA phylogeny (<NUMEX TYPE="CARDINAL">12</NUMEX>
+          QuartOPs with <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> > <NUMEX TYPE="CARDINAL">.99</NUMEX>; see <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). To test if this
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> was specific for 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>., we repeated the
+          <ENAMEX TYPE="PERSON">analyses</ENAMEX> replacing 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>. with 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> . The result was
+          qualitatively the same: at the <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> > <NUMEX TYPE="MONEY">.99</NUMEX> level <TIMEX TYPE="DATE">53</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> supported grouping 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> with 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>., and <NUMEX TYPE="CARDINAL">only 27</NUMEX>
+          supported grouping 
+          Aquifex aeolicus with 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">7</NUMEX>).
+          Clearly, there are many artifacts possible in
+          analyzing divergent sequences. For many <ENAMEX TYPE="NATIONALITY">QuartOPs</ENAMEX> the
+          ortholog from 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. is expected to be
+          the longest <ENAMEX TYPE="ORG_DESC">branch</ENAMEX>. To test for the possibility that long
+          branch attraction [ <TIMEX TYPE="DATE">48</TIMEX> ] might be the reason for the
+          strong support of 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. grouping with 
+          <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>., we repeated the
+          analysis replacing the 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. genome with that
+          from 
+          Archaeoglobus fulgidus , another
+          <ENAMEX TYPE="ORGANIZATION">archaeon</ENAMEX>. Gratifyingly, many more <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> supported the
+          grouping of the thermophilic archaeon 
+          Archaeoglobus with the thermophilic
+          <ENAMEX TYPE="CONTACT_INFO">bacteria</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">Aquifex</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">Thermotoga</ENAMEX> . The different
+          interdomain genome quartets that include a meso- or
+          thermophilic archaeon are summarized in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>.
+          An analysis of the putative functional assignments of
+          the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that grouped 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. with the
+          mesophilic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> is given in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. To assess which
+          of these categories have an increased percentage of
+          QuartOPs as compared to distribution of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> within the
+          genome, we also calculated the distributions of ORFs
+          among functional categories in the 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. and 
+          A. fulgidus genomes. Open reading
+          frames within a genome are distributed almost evenly
+          among the <NUMEX TYPE="CARDINAL">four</NUMEX> meta-categories (see columns labeled "H"
+          and "<ENAMEX TYPE="WORK_OF_ART">A"</ENAMEX>). However, the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that <ENAMEX TYPE="ORG_DESC">group</ENAMEX> the
+          halobacterial orthologs with those from mesophilic
+          <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX> are distributed differentially among the
+          <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-categories. Most of the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> are in the
+          "<ENAMEX TYPE="WORK_OF_ART">Metabolism</ENAMEX>" and "<ENAMEX TYPE="ORGANIZATION">Information Storage and Processing</ENAMEX>"
+          <ENAMEX TYPE="ORGANIZATION">meta</ENAMEX>-categories. These are also the categories in which 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. shows many more
+          <ENAMEX TYPE="ORGANIZATION">OuartOPs</ENAMEX> in support of <ENAMEX TYPE="SUBSTANCE">topology 3</ENAMEX> than 
+          A. fulgidus .
+          The analyses described in this section reconfirm that
+          genes have been transferred across domain boundaries [ <NUMEX TYPE="CARDINAL">6</NUMEX>
+          <NUMEX TYPE="CARDINAL">7 8 9 10 11 12</NUMEX> ] . Not surprisingly, these transfers
+          appear to occur preferentially between <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> living
+          in the same or similar environment. The genome of the
+          mesophilic 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. contains many
+          genes that <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with the orthologs from mesophilic
+          <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, whereas the majority of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the
+          thermophilic archaeon 
+          Archaeoglobus fulgidus <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with
+          the orthologs from the extremely thermophilic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>.
+          The majority of <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> that <ENAMEX TYPE="ORG_DESC">group</ENAMEX> the halobacterial
+          orthologs with the ortholog from the mesophilic bactria
+          belong to <NUMEX TYPE="CARDINAL">two</NUMEX> of <NUMEX TYPE="QUANTITY">four meta</NUMEX>-categories: "<ENAMEX TYPE="ORGANIZATION">Information</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Storage</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Processing</ENAMEX>" and "<ENAMEX TYPE="WORK_OF_ART">Metabolism"</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> in
+          <ENAMEX TYPE="ORGANIZATION">Information Storage and Processing meta</ENAMEX>-category that
+          support the grouping of 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. with 
+          Synechocystis/<ENAMEX TYPE="SUBSTANCE">Bacillus</ENAMEX> are listed
+          in the <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>. A complete listing is available in the
+          <ENAMEX TYPE="ORGANIZATION">supplementary</ENAMEX> material. As expected, this list includes
+          several tRNA synthetases, which were previously found to
+          be frequently transferred [ <NUMEX TYPE="CARDINAL">6 7 8</NUMEX> ] , and enzymes
+          involved in <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> repair ( 
+          <ENAMEX TYPE="ORGANIZATION">cf .</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] ). More surprisingly,
+          this list also includes translation initiation factors
+          and several <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>. The latter were assumed
+          to be infrequently transferred, but recent analyses
+          reported them to be horizontally transferred among
+          bacterial lineages [ <NUMEX TYPE="CARDINAL">10 11</NUMEX> ] . The initiation factor IF-2
+          in 
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. was previously
+          shown to have strong similarity to the initiation factor
+          IF-2 from <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX> [ <TIMEX TYPE="DATE">49</TIMEX> ] . Most of the genes that group 
+          Halobacterium with the mesophilic
+          <ENAMEX TYPE="SUBSTANCE">bacteria encode</ENAMEX> functions that were postulated to be
+          frequently exchanged [ <TIMEX TYPE="DATE">50</TIMEX> ] . While no meta-category
+          appears exempt from <ENAMEX TYPE="ORGANIZATION">HGT</ENAMEX>, some functions appear to be more
+          often transferred than others (cf. <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>).
+          Additional file 1
+          
+          Click here for file
+          Additional file 2
+          
+          Click here for file
+        
+      
+      
+        Conclusions
+        Maximum likelihood mapping is a useful tool for
+        analyzing and depicting the mosaic nature of genomes.
+        ML-mapping is much less conservative than other approaches
+        of estimating <ENAMEX TYPE="PERSON">Bayesian</ENAMEX> posterior probabilities. If
+        ML-mapping is used as the only probability mapping tool,
+        the overestimation of supporting probabilities has to be
+        taken into consideration. A posterior probability of <NUMEX TYPE="CARDINAL">.99</NUMEX>
+        calculated with ML-mapping often corresponds to a posterior
+        probability of <NUMEX TYPE="CARDINAL">only .90</NUMEX>.
+        Many relationships among <ENAMEX TYPE="PER_DESC">prokaryotes</ENAMEX> cannot be depicted
+        by a tree-like pattern reflecting a core of rarely
+        transferred genes. Rather prokaryotic genomes are mosaics
+        where different parts have different evolutionary
+        <ENAMEX TYPE="PERSON">histories</ENAMEX>. However, <ENAMEX TYPE="ORGANIZATION">HGT</ENAMEX> between divergent <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> has not
+        erased all patterns of interphylum relationship. For
+        example, the majority of <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> the cyanobacteria
+        with the low <ENAMEX TYPE="ORGANIZATION">GC Gram</ENAMEX> positives as <ENAMEX TYPE="PER_DESC">sister</ENAMEX> phyla.
+        Due to horizontal gene transfer even organisms from
+        different <ENAMEX TYPE="PER_DESC">domains</ENAMEX> living in the same or similar
+        environments share more genes with each other than
+        <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> with a similar degree of divergence that live in
+        different environments. These interdomain horizontal
+        transfers mainly concern <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> involved in nucleotide,
+        <ENAMEX TYPE="ORGANIZATION">carbohydrate</ENAMEX> and amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> transport and metabolism;
+        however, <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are part of the translation
+        machinery or are involved in <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> repair appear to be
+        transferred across domain boundaries as well.
+      
+      
+        Materials and Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Genome Data</ENAMEX>
+          Completed genomes were retrieved from the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>'s FTP
+          <ENAMEX TYPE="CONTACT_INFO">site ftp://ncbi.</ENAMEX><ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/genbank/genomes/</ENAMEX>in the form
+          of amino <ENAMEX TYPE="SUBSTANCE">acid sequences</ENAMEX> encoded by open reading frames
+          (<ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>) as identified in the annotated genomes.
+          Mitochondrial genomes were obtained from the Organelle
+          <ENAMEX TYPE="PERSON">Genomes Page</ENAMEX> at NCBI
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">ncbi</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/PMGifs/Genomes/euk_o.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>.
+          The genomes were formatted using the 
+          formatdb program from the
+          stand-alone BLAST package, initially of version <NUMEX TYPE="CARDINAL">2.0.11</NUMEX>
+          and later of versions <NUMEX TYPE="CARDINAL">2.1.2</NUMEX> and <NUMEX TYPE="CARDINAL">2.2.1</NUMEX> as they were
+          released [ <TIMEX TYPE="DATE">51</TIMEX> ] . All analyses were performed
+          locally.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data Flow</ENAMEX> in <ENAMEX TYPE="WORK_OF_ART">Quartet Analyses</ENAMEX>
+          For each set of <NUMEX TYPE="CARDINAL">four</NUMEX> genomes, BLAST [ <NUMEX TYPE="CARDINAL">51 52</NUMEX> ] searches
+          of every ORF in <NUMEX TYPE="CARDINAL">one</NUMEX> genome against the other three
+          genomes were performed using the 
+          blastp program. The <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value cutoff
+          for the BLAST searches was set to <NUMEX TYPE="PERCENT">10 -4</NUMEX>(in <NUMEX TYPE="CARDINAL">one</NUMEX> test case
+          an <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value cutoff of <NUMEX TYPE="QUANTITY">10 -20was</NUMEX> used). For every BLAST
+          search the <ENAMEX TYPE="LAW">GI</ENAMEX> number of the top hit (if it was below the
+          <ENAMEX TYPE="ORGANIZATION">cutoff</ENAMEX>) was saved along with the <ENAMEX TYPE="LAW">GI</ENAMEX> number of the query
+          sequence forming a <ENAMEX TYPE="PER_DESC">GI pair</ENAMEX>. This resulted in twelve lists
+          of <ENAMEX TYPE="PER_DESC">GI</ENAMEX> pairs for each of the twelve possible pairwise
+          genome comparisons. This information was further used to
+          <ENAMEX TYPE="PERSON">identify</ENAMEX> quartets of <ENAMEX TYPE="SUBSTANCE">orthologous proteins</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX>).
+          Following <ENAMEX TYPE="ORGANIZATION">Tatusov et al.</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] we defined <ENAMEX TYPE="PERSON">QuartOPs</ENAMEX> as
+          those sets of genes that mutually pick each other as the
+          top scoring hit in the BLAST comparisons. The detection
+          of the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> was performed using the <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> database
+          <ENAMEX TYPE="CONTACT_INFO">software http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">mysql</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. The lists of <ENAMEX TYPE="PER_DESC">GI</ENAMEX> pairs were
+          entered into twelve tables of a database. The tables were
+          joined into one table under conditions that satisfy the
+          definition of the <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> (see above). This resulted in
+          a table with <NUMEX TYPE="CARDINAL">four</NUMEX> columns of <ENAMEX TYPE="PER_DESC">GI numbers</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX>. The
+          amino <ENAMEX TYPE="SUBSTANCE">acid sequences</ENAMEX> for each <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> were retrieved from
+          GenBank at <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> and were aligned using <ENAMEX TYPE="ORGANIZATION">ClustalW</ENAMEX> 1.8 [ <NUMEX TYPE="CARDINAL">53</NUMEX>
+          ] . QuartOPs were analyzed using the ML-mapping approach
+          according to <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX>, Bayesian
+          probabilities mapping and bootstrap support values
+          mapping techniques (see details below).
+        
+        
+          Posterior probabilities according to <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and
+          <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX>
+          For <NUMEX TYPE="CARDINAL">all three</NUMEX> possible unrooted <ENAMEX TYPE="PLANT">tree</ENAMEX> topologies
+          maximum-likelihood values and posterior probabilities
+          were calculated using in-house JAVA programs that were
+          written utilizing <ENAMEX TYPE="PER_DESC">classes</ENAMEX> from the <ENAMEX TYPE="ORGANIZATION">Phylogenetic Analysis</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Library</ENAMEX> version 1.0 [ <TIMEX TYPE="DATE">54</TIMEX> ] and parts of <ENAMEX TYPE="GPE">Vanilla</ENAMEX> package
+          version 1.0 [ <TIMEX TYPE="DATE">54</TIMEX> ] . If not indicated otherwise,
+          likelihood values were estimated using the automatically
+          selected suitable substitution model (chosen from
+          BLOSUM62, <ENAMEX TYPE="ORGANIZATION">CPREV</ENAMEX>, <ENAMEX TYPE="GPE">Dayhoff</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">JTT</ENAMEX>, <TIMEX TYPE="DATE">MTREV24</TIMEX>, <ENAMEX TYPE="GPE">VT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">WAG</ENAMEX>) with
+          no <ENAMEX TYPE="SUBSTANCE">ASRV</ENAMEX>. The maximum-likelihood mapping approach was
+          further used to visualize support for each <ENAMEX TYPE="PLANT">tree</ENAMEX> topology
+          [ <TIMEX TYPE="DATE">24</TIMEX> ] , i.e. the posterior probability vector for each
+          QuartOP was plotted into an equilateral triangle.
+          Maximum-likelihood maps were generated using <ENAMEX TYPE="ORGANIZATION">GNUPlot</ENAMEX> v.
+          <ENAMEX TYPE="CONTACT_INFO">3.7 http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">gnuplot</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">info/.</ENAMEX>
+        
+        
+          <ENAMEX TYPE="PERSON">Posterior Probabilities</ENAMEX> calculated with MrBayes
+          program
+          Posterior probabilities were also calculated with
+          <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> version 2.01 [ <TIMEX TYPE="DATE">31</TIMEX> ] . Each <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> was analyzed
+          with <NUMEX TYPE="CARDINAL">two</NUMEX> simultaneous <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> for <NUMEX TYPE="CARDINAL">25,000</NUMEX> cycles
+          under the JTT substitution model [ <TIMEX TYPE="DATE">55</TIMEX> ] without <ENAMEX TYPE="ORGANIZATION">ASRV</ENAMEX>. One
+          chain was heated with the temperature set equal to the
+          default value of <NUMEX TYPE="CARDINAL">0.2</NUMEX>. Samples were taken at each cycle.
+          The "burn in" option was set to <NUMEX TYPE="CARDINAL">5,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX>. The
+          remaining <NUMEX TYPE="CARDINAL">20,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> were used to calculate posterior
+          probabilities for each of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX>. The
+          posterior probabilities were plotted to equilateral
+          <ENAMEX TYPE="ORGANIZATION">triangle</ENAMEX> as described above. For discussion of the choice
+          of the parameters see below.
+        
+        
+          <ENAMEX TYPE="PERSON">Bootstrap Support Values</ENAMEX>
+          As an alternative to posterior probability vectors,
+          bootstrap support values were calculated and plotted.
+          Each <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> was bootstrapped <NUMEX TYPE="CARDINAL">100</NUMEX> times and the
+          proportion of bootstrapped datasets supporting each tree
+          topology was recorded as a bootstrap probability vector.
+          The bootstrap probability vectors were plotted into an
+          equilateral triangle with the zones changed to "total",
+          "<NUMEX TYPE="PERCENT">70%</NUMEX>" and "<NUMEX TYPE="PERCENT">90%</NUMEX>" (see <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        
+        
+          <ENAMEX TYPE="WORK_OF_ART">Empirical Search for Optimal</ENAMEX> MrBayes
+          Parameters
+          To find parameters that will return consistent
+          posterior probabilities within reasonable computation
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>, <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> from mitochondrial genome <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#</NUMEX>m1
+          was analyzed multiple times with different parameters.
+          According to <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX>'s approach [ <TIMEX TYPE="DATE">24</TIMEX> ]
+          this <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> has posterior probabilities of <NUMEX TYPE="MONEY">0.76</NUMEX>, <NUMEX TYPE="CARDINAL">0.10</NUMEX>
+          and <NUMEX TYPE="CARDINAL">0.13</NUMEX>. In all runs samples were taken at each cycle;
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> and the JTT substitution model [ <TIMEX TYPE="DATE">55</TIMEX> ] without
+          <ENAMEX TYPE="ORGANIZATION">ASRV</ENAMEX> were used.
+          First, we analyzed the dataset with <NUMEX TYPE="CARDINAL">250,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX>. We
+          tried different "burn in" options in the range of
+          <NUMEX TYPE="CARDINAL">1,000</NUMEX>-<NUMEX TYPE="CARDINAL">20,000</NUMEX>. The posterior probability values changed by
+          less than <NUMEX TYPE="PERCENT">0.3%</NUMEX> from case to case. We selected a "burn in"
+          of <NUMEX TYPE="CARDINAL">5,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> in further analyses. <NUMEX TYPE="ORDINAL">Second</NUMEX>, we tried
+          different numbers of <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> to calculate posterior
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>. The probabilities were calculated using
+          <NUMEX TYPE="CARDINAL">10,000</NUMEX>-<NUMEX TYPE="CARDINAL">240,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> with increment of <NUMEX TYPE="CARDINAL">10,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX>.
+          Again, the posterior probability values did not change
+          significantly from case to case. <NUMEX TYPE="ORDINAL">Third</NUMEX>, we raised the
+          "temperature" parameter 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> to <NUMEX TYPE="MONEY">2.0</NUMEX> for the <NUMEX TYPE="ORDINAL">second</NUMEX>, heated
+          chain. This did not result in changes of the estimated
+          posterior probabilities. <NUMEX TYPE="ORDINAL">Fourth</NUMEX>, we used <NUMEX TYPE="CARDINAL">25,000</NUMEX> cycles
+          and repeated the analysis <NUMEX TYPE="CARDINAL">10</NUMEX> times, calculating average
+          and standard deviation of all runs. For <NUMEX TYPE="CARDINAL">all three</NUMEX>
+          probabilities the standard deviation was <NUMEX TYPE="CARDINAL">less than 0.01</NUMEX>.
+          Based on these analyses we selected <NUMEX TYPE="CARDINAL">25,000</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> with a
+          "burn in" of <NUMEX TYPE="CARDINAL">5,000</NUMEX> as a compromise between precision of
+          probability estimation and computational time spent. As a
+          final test, we performed the analysis of the <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#8</NUMEX>
+          twice with selected parameters. This did not result in
+          significantly different maps. <ENAMEX TYPE="PERSON">Graphs</ENAMEX> and tables depicting
+          the results of these analyses are given in the
+          <ENAMEX TYPE="ORGANIZATION">supplementary</ENAMEX> material.
+        
+        
+          Mapping taking <ENAMEX TYPE="SUBSTANCE">ASRV</ENAMEX> into account
+          For the genome <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> <NUMEX TYPE="MONEY">#8</NUMEX> we calculated posterior
+          probabilities under the model which takes <ENAMEX TYPE="SUBSTANCE">ASRV</ENAMEX> into
+          account with <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX>'s [ <TIMEX TYPE="DATE">24</TIMEX> ] approach
+          and with the <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> program version 2.01 [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+          <ENAMEX TYPE="PRODUCT">TREE-PUZZLE 5.0</ENAMEX> [ <TIMEX TYPE="DATE">56</TIMEX> ] was used to calculate posterior
+          probabilities according to <ENAMEX TYPE="ORGANIZATION">Strimmer</ENAMEX> and <ENAMEX TYPE="PERSON">von Haeseler</ENAMEX> [ <NUMEX TYPE="CARDINAL">24</NUMEX>
+          ] . A discrete approximation of the <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> distribution [
+          <NUMEX TYPE="CARDINAL">57</NUMEX> ] was used to describe <ENAMEX TYPE="ORGANIZATION">ASRV</ENAMEX>. <NUMEX TYPE="CARDINAL">Eight</NUMEX> rate categories
+          were used in <ENAMEX TYPE="PRODUCT">TREE-PUZZLE</ENAMEX> [ <TIMEX TYPE="DATE">56</TIMEX> ] , and <NUMEX TYPE="CARDINAL">four</NUMEX> rate
+          categories were used in <ENAMEX TYPE="GPE">MrBayes</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] . The maps are
+          available in the supplementary material. Due to the
+          amount of time required for calculations, the analyses
+          were not performed for other genome quartets.
+        
+        
+          Functional assignments using the COG
+          database
+          Datasets for <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> with strong preference for a
+          particular tree <ENAMEX TYPE="ANIMAL">topology</ENAMEX> (i.e. with posterior probability
+          above <NUMEX TYPE="PERCENT">99%</NUMEX> for that particular topology, or in other words
+          the <ENAMEX TYPE="FAC">QuartOPs</ENAMEX> located in the very corners of the
+          equilateral triangle) were extracted. For each of those
+          QuartOPs the COG functional category [ <TIMEX TYPE="DATE">27</TIMEX> ] was
+          identified. In order to detect the functional categories,
+          the COG database was downloaded from <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site
+          (initially <TIMEX TYPE="DATE">the year 2000</TIMEX> release and <TIMEX TYPE="DATE">later the year 2001</TIMEX>
+          release). The COG database was formatted using the 
+          formatdb program of BLAST package.
+          Every <ENAMEX TYPE="PERSON">QuartOP</ENAMEX> was compared to the COG database using the 
+          blastp program. The category of the
+          each sequence in the <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> was assigned according to
+          the category of the top hit of each BLAST search. The
+          numbers of <ENAMEX TYPE="ORGANIZATION">QuartOPs</ENAMEX> in each functional category were
+          calculated for each of the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PLANT">tree topologies</ENAMEX>.
+        
+        
+          Distribution of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> among <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX> categories for
+          complete genomes of <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. and <ENAMEX TYPE="PERSON">Archaeoglobus</ENAMEX>
+          fulgidus
+          Every predicted <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> in a genome was compared to the
+          COG database (release of <TIMEX TYPE="DATE">year 2001</TIMEX>) using the 
+          blastp program with <ENAMEX TYPE="PRODUCT">E-</ENAMEX>value cutoff
+          <NUMEX TYPE="PERCENT">10 -4</NUMEX>. The category of each <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> was set to be equal to
+          the category of the top hit of the corresponding BLAST
+          search. Category Q was dropped from the results, because
+          the corresponding genome quartets were analyzed with the
+          previous release of the COG database (release of year
+          <TIMEX TYPE="DATE">2000</TIMEX>) that did not contain the Q category.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data Analysis Automation</ENAMEX>
+          The repetitive tasks of analyses were automated using
+          the <ENAMEX TYPE="ORGANIZATION">SEALS</ENAMEX> package version 0.824 [ <TIMEX TYPE="DATE">25</TIMEX> ] . The tasks that
+          were not available through <ENAMEX TYPE="ORGANIZATION">SEALS</ENAMEX> package were programmed
+          in <ENAMEX TYPE="ORGANIZATION">PERL</ENAMEX> v. <NUMEX TYPE="CARDINAL">5.005</NUMEX>. The <ENAMEX TYPE="ORGANIZATION">PERL</ENAMEX> scripts and <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> programs are
+          available upon request.
+        
+        
+          <ENAMEX TYPE="PERSON">Mitochondrial Genome Quartets Analyses</ENAMEX>
+          <NUMEX TYPE="CARDINAL">Seven</NUMEX> mitochondrial genome quartets were used as
+          controls and were analyzed with the <NUMEX TYPE="CARDINAL">three</NUMEX> approaches for
+          <ENAMEX TYPE="NATIONALITY">genome</ENAMEX> <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> analysis described above. For calculation
+          of posterior probabilities with <ENAMEX TYPE="ORGANIZATION">MrBayes</ENAMEX> <NUMEX TYPE="CARDINAL">at least 25,000</NUMEX>
+          cycles were used.
+        
+      
+      
+        List of Abbreviations
+        
+        <ENAMEX TYPE="ORGANIZATION">HGT</ENAMEX> horizontal gene transfer
+        
+        COG cluster of orthologous groups
+        
+        ML maximum likelihood
+        
+        rRNA <ENAMEX TYPE="SUBSTANCE">ribosomal ribonucleic acid</ENAMEX>
+        
+        <ENAMEX TYPE="PRODUCT">sp</ENAMEX>. species
+        
+        BLAST <ENAMEX TYPE="ORGANIZATION">Basic Local Alignment Search</ENAMEX>
+        Tool
+        
+        <ENAMEX TYPE="NATIONALITY">QuartOP</ENAMEX> <ENAMEX TYPE="ORG_DESC">quartet</ENAMEX> of orthologous
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>
+        
+        <ENAMEX TYPE="WORK_OF_ART">SEALS System for Easy Analysis of Lots</ENAMEX>
+        of Sequences
+        
+        <ENAMEX TYPE="ORGANIZATION">NCBI National Center for Biotechnology</ENAMEX>
+        Information
+        
+        <ENAMEX TYPE="ORGANIZATION">ASRV Among Site Rate Variation</ENAMEX>
+      
+      
+        <ENAMEX TYPE="ORGANIZATION">Supplementary Material</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> material is located at the <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> web
+        <ENAMEX TYPE="CONTACT_INFO">page http://carrot.</ENAMEX><ENAMEX TYPE="ORGANIZATION">mcb</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">uconn</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/quartets/.</ENAMEX> This web page
+        includes the summary of all genome quartets analyzed (with
+        maps), the results of control analyses, and a form to
+        request the scripts described in this article. ML maps are
+        available in postscript and <ENAMEX TYPE="ORGANIZATION">PDF</ENAMEX> formats. An offline version
+        of the <ENAMEX TYPE="ORGANIZATION">QuartOP</ENAMEX> web page is available as a compressed
+        <ENAMEX TYPE="ORGANIZATION">archive</ENAMEX> named <ENAMEX TYPE="ANIMAL">supp_material</ENAMEX>.zip and as a self-extracting
+        <ENAMEX TYPE="ORGANIZATION">archive</ENAMEX> supp_material.exe for <ENAMEX TYPE="ORGANIZATION">Microsoft Windows</ENAMEX> <ENAMEX TYPE="PER_DESC">users</ENAMEX>. The
+        <ENAMEX TYPE="ORGANIZATION">archive</ENAMEX> can be expanded using WinZip
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">winzip</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/</ENAMEX>for <ENAMEX TYPE="ORGANIZATION">Windows, StuffIt</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX>
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">stuffit</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/</ENAMEX>, or unzip utility for Unix. The
+        uncompress <ENAMEX TYPE="ORG_DESC">utilities</ENAMEX> have to be run with the option to
+        preserve the subdirectory <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> inside the archive. To
+        access the information in the archive, the file index.html
+        has to be opened using an Internet browser. This index.html
+        file is located in the root directory named
+        "offline_quartops". All the files in the archive are
+        <ENAMEX TYPE="ORGANIZATION">hyperlinked</ENAMEX> and accessible through the index.html file.
+      
+    
+  

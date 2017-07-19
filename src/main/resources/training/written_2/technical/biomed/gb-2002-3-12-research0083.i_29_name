@@ -1,0 +1,1614 @@
+
+  
+    
+      
+        Background
+        In the lexicon of genomics, an annotation is any feature
+        tied to the genomic <ENAMEX TYPE="SUBSTANCE">DNA sequence</ENAMEX>, for example, a
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene model, a transposon, or a
+        non-<ENAMEX TYPE="SUBSTANCE">protein-coding RNA gene</ENAMEX>. Adding such annotations to the
+        sequence of a genome in a rigorous and consistent way is a
+        prerequisite for the efficient use of that sequence in
+        biological research. Learning how to identify, display,
+        query, and interpret genome features in well-characterized
+        model organisms like the <ENAMEX TYPE="SUBSTANCE">fruit</ENAMEX> fly, 
+        Drosophila melanogaster , is crucial
+        to understanding the genomes of more complex organisms,
+        including 
+        <ENAMEX TYPE="PER_DESC">Homo sapiens</ENAMEX> .
+        A major long-term goal of the <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>] annotation
+        project is to overlay the 
+        Drosophila melanogaster genomic
+        sequence with all available biological information and to
+        provide traceable evidence for every annotation in a
+        publicly accessible database. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we provide a
+        description of our most recent step toward these goals.
+        In <TIMEX TYPE="DATE">March 2000</TIMEX>, a collaborative <ENAMEX TYPE="ORG_DESC">group</ENAMEX> including <ENAMEX TYPE="PERSON">Celera</ENAMEX>
+        Genomics, the <ENAMEX TYPE="GPE">Berkeley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">European</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila Genome Projects</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">EDGP</ENAMEX>), and a number of additional 
+        Drosophila <ENAMEX TYPE="ORG_DESC">experts</ENAMEX> published the
+        annotated, nearly finished genomic sequence of the fruit
+        fly [ <ENAMEX TYPE="LAW">3, 4</ENAMEX>]. This annotated sequence was called <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX>,
+        in anticipation of future changes to the sequence and
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>. At that time, the annotation of genes relied
+        heavily on computational gene-prediction algorithms with
+        only limited human <ENAMEX TYPE="SUBSTANCE">curation</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> provided
+        <NUMEX TYPE="PERCENT">approximately 80,000</NUMEX> expressed sequence tags (ESTs), mostly
+        from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of genes, which were used in the
+        computational analyses of the genome [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Because these
+        <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> were derived from non-normalized cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> and
+        were limited in number, they corresponded to <NUMEX TYPE="PERCENT">only about 40%</NUMEX>
+        of all genes in the genome [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Complete or nearly
+        complete sequences for an overlapping set of approximately
+        <NUMEX TYPE="CARDINAL">2,500</NUMEX> known 
+        Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX>
+        were also available [ <ENAMEX TYPE="LAW">3</ENAMEX>]. Owing to the nature of
+        whole-genome <ENAMEX TYPE="PRODUCT_DESC">shotgun</ENAMEX> (WGS) <ENAMEX TYPE="ORG_DESC">assembly</ENAMEX>, the <NUMEX TYPE="CARDINAL">1,630</NUMEX> gaps present
+        in the <ENAMEX TYPE="ORG_DESC">genome</ENAMEX> tended to occur at the <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of repetitive
+        sequence [ <ENAMEX TYPE="LAW">3</ENAMEX>]; gaps corresponding to transposable elements
+        were filled with composite sequences (reflecting sequence
+        reads from throughout the genome) rather than the actual
+        sequence. <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> predicted <NUMEX TYPE="CARDINAL">13,601</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>,
+        encoding 14,080 transcripts; each gene was assigned a
+        <ENAMEX TYPE="ORGANIZATION">unique CG</ENAMEX> identifier. The coordinates and predicted
+        sequences of the annotations, although not the evidence for
+        the predictions, were made available to <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> [
+        <TIMEX TYPE="DATE">6, 7, 8, 9, 10, 11</TIMEX>] and <ENAMEX TYPE="PERSON">FlyBase</ENAMEX>, the public databases
+        charged with making these annotations accessible to the
+        research <ENAMEX TYPE="PER_DESC">community</ENAMEX>. In <ENAMEX TYPE="GPE">FlyBase</ENAMEX>, the annotations were made
+        available as part of the genome annotation database, Gadfly
+        [ <TIMEX TYPE="DATE">12</TIMEX>].
+        <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>, a collaborative effort between Celera
+        <ENAMEX TYPE="ORGANIZATION">Genomics</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX>, was submitted to <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX>
+        and <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> in <TIMEX TYPE="DATE">October 2000</TIMEX>, after <NUMEX TYPE="CARDINAL">approximately 330</NUMEX> of the
+        <ENAMEX TYPE="ORGANIZATION">gaps</ENAMEX> in the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> sequence had been filled. Changes to
+        the annotations were based largely on <NUMEX TYPE="CARDINAL">approximately 6,000</NUMEX>
+        new <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> sequenced by the <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX>, which increased the
+        number of genes with <NUMEX TYPE="CARDINAL">3</NUMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> and allowed further refinement
+        in gene structures. Sequences of transposable elements
+        remained inaccurate, being based on composite sequences. In
+        all, <NUMEX TYPE="CARDINAL">748</NUMEX> transcripts were modified, <NUMEX TYPE="CARDINAL">114</NUMEX> transcripts were
+        <ENAMEX TYPE="PERSON">deleted</ENAMEX>, and <NUMEX TYPE="CARDINAL">336</NUMEX> transcripts were added. <ENAMEX TYPE="CONTACT_INFO">Release 2</ENAMEX>
+        predicted <NUMEX TYPE="CARDINAL">13,474</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>, encoding 14,335
+        polypeptides, of which <NUMEX TYPE="CARDINAL">13,218</NUMEX> (<NUMEX TYPE="PERCENT">92%</NUMEX>) were unchanged relative
+        to <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX>. Thus, the change from <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> to <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+        was minimal.
+        <ENAMEX TYPE="ORGANIZATION">Inaccuracies</ENAMEX> in the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX> predicted gene
+        structures resulted mainly from <ENAMEX TYPE="PER_DESC">computationally</ENAMEX> predicted
+        annotations which lacked supporting cDNA data. In addition,
+        the annotation was carried out rapidly by a large and
+        diverse <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of <ENAMEX TYPE="PER_DESC">curators</ENAMEX>. Mistakes in the annotation of
+        <NUMEX TYPE="CARDINAL">more than 1,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were reported to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> in error
+        reports from the <ENAMEX TYPE="GPE_DESC">community</ENAMEX>, and <NUMEX TYPE="CARDINAL">over 1,000</NUMEX> discrepancies
+        between the translated annotations and those in the curated
+        protein database <ENAMEX TYPE="PRODUCT">SWISS-PROT</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>] were reported by Karlin 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>]. Finally, a report of
+        <NUMEX TYPE="CARDINAL">1,042</NUMEX> new predicted annotations that did not match any of
+        the original <NUMEX TYPE="CARDINAL">13,601</NUMEX> predicted genes [ <TIMEX TYPE="DATE">15</TIMEX>], and another
+        based on analysis of testes cDNA sequences [ <TIMEX TYPE="DATE">16</TIMEX>], suggested
+        that the initial annotation may have missed a substantial
+        number of genes.
+        The 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster <NUMEX TYPE="MONEY">116.8 megabase</NUMEX> (<ENAMEX TYPE="PRODUCT">Mb</ENAMEX>)
+        euchromatic genomic sequence has now been finished to high
+        quality [ <TIMEX TYPE="DATE">17</TIMEX>]. Here we report the results of the
+        re-evaluation of previous annotations in light of the
+        finished euchromatic genome and considerable additional
+        experimental data. We call this sequence and new annotation
+        <ENAMEX TYPE="PRODUCT">set Release 3</ENAMEX>.
+        To support this re-annotation effort, a computational
+        <ENAMEX TYPE="ORGANIZATION">'pipeline</ENAMEX>' was created, and the results were stored in a
+        new Gadfly database, so that evidence for the annotations
+        can be tracked and queried by the public [ <TIMEX TYPE="DATE">12</TIMEX>]. To identify
+        new features in the genome, we utilized prediction software
+        and annotated alignments of non-<ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">transposons</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>], and pseudogenes. To improve the extent
+        and consistency of human <ENAMEX TYPE="SUBSTANCE">curation</ENAMEX>, a small <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of expert
+        FlyBase <ENAMEX TYPE="PER_DESC">curators</ENAMEX> visually inspected each gene in the entire
+        euchromatic sequence, using defined rules to integrate
+        computational analyses, cDNA data and protein alignments
+        into updated annotations. To assess the accuracy of the
+        exon-intron structures, we compared the resulting
+        <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> to the subset of curated peptides in <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT
+        and <ENAMEX TYPE="ORGANIZATION">TrEMBL</ENAMEX> that are based on experimental evidence [
+        <NUMEX TYPE="CARDINAL">12</NUMEX>].
+        The annotations in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> alter the majority (<NUMEX TYPE="PERCENT">85%</NUMEX>) of
+        gene <ENAMEX TYPE="PER_DESC">models</ENAMEX>, yet confirm that previous releases accurately
+        reflected the number of <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>. The gene
+        models have been enhanced in a number of ways. The number
+        of genes with annotated untranslated regions (UTRs) and
+        alternative transcripts has increased as a direct result of
+        the increase in <TIMEX TYPE="TIME">EST</TIMEX> and complete cDNA sequences, and the
+        fine details of the exon-intron <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> are significantly
+        improved. Numerous genes have been merged and/or split -
+        that is, the partitioning of adjacent exons into individual
+        gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> has changed - based on cDNA and protein
+        sequence alignments. Overall, the improved annotations
+        result in changes in <NUMEX TYPE="PERCENT">more than 40%</NUMEX> of the predicted
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>; however, <NUMEX TYPE="PERCENT">more than 85%</NUMEX> of the exons in the
+        originally predicted genes contain sequences that are
+        present in predicted exons in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>. We describe these
+        changes under the headings 'Genome statistics: how is
+        Release <NUMEX TYPE="CARDINAL">3</NUMEX> different?', 'New and deleted <ENAMEX TYPE="PER_DESC">annotations</ENAMEX>', and
+        <ENAMEX TYPE="ORGANIZATION">'Structural</ENAMEX> changes to gene <ENAMEX TYPE="PER_DESC">models</ENAMEX>' in Results and
+        discussion.
+        The new <ENAMEX TYPE="PER_DESC">annotations</ENAMEX> reveal a surprising number of genes
+        that fall outside the typical definition of a
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene model with a <NUMEX TYPE="CARDINAL">5</NUMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>, coding sequence
+        (CDS), and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> distinct from neighboring genes. We found
+        <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> containing <ENAMEX TYPE="SUBSTANCE">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences that overlap the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTR
+        of the gene immediately downstream, examples of dicistronic
+        <ENAMEX TYPE="PERSON">transcripts</ENAMEX> (<NUMEX TYPE="CARDINAL">two or more</NUMEX> distinct and non-overlapping
+        coding regions contained on a single processed <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX>), and
+        genes that, by means of alternative splicing, encode two
+        completely distinct non-overlapping peptides. These
+        atypical gene models illustrate the complexity of detailed
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> and pose new challenges for the computational
+        annotation of genomic sequence. We describe these unusual
+        genes, as well as assessment of and access to the data,
+        under the headings 'Complex gene <ENAMEX TYPE="PER_DESC">models</ENAMEX>', 'Assessment of
+        <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> quality', 'Accessing data and reporting errors',
+        and 'Future updates'.
+      
+      
+        Results and discussion
+        
+          <ENAMEX TYPE="ORGANIZATION">Genome</ENAMEX> statistics: how is <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+          different?
+          
+            Increase in the number of exons and transcripts,
+            but not genes
+            Although the re-annotation process changed the
+            majority of gene models, the number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+            genes changed minimally, from <NUMEX TYPE="CARDINAL">13,601</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX>
+            to <NUMEX TYPE="CARDINAL">13,474</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">13,676</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, of
+            which <NUMEX TYPE="CARDINAL">13,379</NUMEX> are in the euchromatin (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>) and <NUMEX TYPE="CARDINAL">297</NUMEX>
+            in the heterochromatin [ <TIMEX TYPE="DATE">25</TIMEX>]. However, the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            gene structures have changed to contain more exons. The
+            total number of unique exons in euchromatin, defined as
+            having unique sequence coordinate termini, has
+            increased <NUMEX TYPE="PERCENT">11%</NUMEX> from <NUMEX TYPE="MONEY">54,793</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">60,897</NUMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+            <ENAMEX TYPE="ORGANIZATION">exons</ENAMEX> has increased as well, from <NUMEX TYPE="MONEY">50,667 to 54,934</NUMEX> (we
+            define a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding exon here as any exon
+            containing CDS, even if the majority of the exon is
+            <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>). The consequence is that the average number of
+            <ENAMEX TYPE="ORGANIZATION">exons</ENAMEX> per gene has increased from <NUMEX TYPE="MONEY">4.1</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to
+            <NUMEX TYPE="MONEY">4.6</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, which is very similar to 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans (<NUMEX TYPE="MONEY">4.5</NUMEX> [ <TIMEX TYPE="DATE">26</TIMEX>]) and 
+            <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> (<NUMEX TYPE="MONEY">4.6</NUMEX> [ <TIMEX TYPE="DATE">27</TIMEX>]) but
+            significantly lower than 
+            <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> <ENAMEX TYPE="PER_DESC">sapiens</ENAMEX> (<NUMEX TYPE="MONEY">8.9</NUMEX>, see, for example
+            [ <TIMEX TYPE="DATE">28</TIMEX>]).
+            A major contributor to the increase in exons is the
+            increase in the number of <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> with
+            <ENAMEX TYPE="CONTACT_INFO">identified 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>. One limitation of 
+            <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio gene prediction
+            programs is that they predict only open reading frames
+            (<ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>): <TIMEX TYPE="TIME">EST</TIMEX> and full-length cDNA data are absolutely
+            essential to identify <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>. The expanded set of
+            available <TIMEX TYPE="TIME">EST</TIMEX>/cDNA data led to a significant increase
+            in the number of <ENAMEX TYPE="SUBSTANCE">annotated genes</ENAMEX> and transcripts with
+            <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> (from <NUMEX TYPE="PERCENT">57%</NUMEX> of the genes in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="PERCENT">76%</NUMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>) and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> (from <NUMEX TYPE="PERCENT">36%</NUMEX> of the genes in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="PERCENT">72%</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3; Table 1</ENAMEX>). These numbers
+            reflect data availability: sequences from cDNA clones
+            representing <NUMEX TYPE="CARDINAL">at least one</NUMEX> transcript from approximately
+            <NUMEX TYPE="PERCENT">78%</NUMEX> of the genes in 
+            Drosophila were supplemented by a
+            large number of <TIMEX TYPE="DATE">additional 5</TIMEX>' <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> [ <TIMEX TYPE="DATE">29, 30</TIMEX>]. The
+            length of the <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> also increased with these new data
+            (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>): the average <TIMEX TYPE="DATE">5</TIMEX>' UTR length per transcript
+            (for genes with annotated UTRs) increased by <NUMEX TYPE="PERCENT">30%</NUMEX>, to
+            <NUMEX TYPE="CARDINAL">265</NUMEX> nucleotides, and the average <TIMEX TYPE="DATE">3</TIMEX>' UTR length (for
+            genes with <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>) by <NUMEX TYPE="PERCENT">19%</NUMEX>, to <NUMEX TYPE="CARDINAL">442</NUMEX> nucleotides.
+            <NUMEX TYPE="CARDINAL">Four</NUMEX> times as many genes in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> (<NUMEX TYPE="PERCENT">20%</NUMEX>) as
+            compared to <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> (<NUMEX TYPE="PERCENT">5%</NUMEX>) show alternative transcripts
+            (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The vast majority of these are due to
+            alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> (an introduced bias; see Materials
+            and methods), but <NUMEX TYPE="PERCENT">13%</NUMEX> are due to alternative promoters
+            and <NUMEX TYPE="PERCENT">6%</NUMEX> to alternative polyadenylation sites.
+            Alternative splicing results in the <NUMEX TYPE="PERCENT">26%</NUMEX> increase in the
+            number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding transcripts, and is largely
+            responsible for a <NUMEX TYPE="PERCENT">14%</NUMEX> increase in the number of unique
+            <ENAMEX TYPE="ANIMAL">protein species</ENAMEX>: from <NUMEX TYPE="MONEY">13,922</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">15,848</NUMEX> in
+            <ENAMEX TYPE="CONTACT_INFO">Release 3</ENAMEX>.
+          
+          
+            <NUMEX TYPE="PERCENT">Forty-five percent</NUMEX> of predicted <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> differ
+            from <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            The changes in gene models also result in larger
+            <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. <ENAMEX TYPE="SUBSTANCE">Proteins</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> have a mean length of
+            <NUMEX TYPE="CARDINAL">552</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> and a median of <NUMEX TYPE="CARDINAL">421</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. This
+            is an increase compared to <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>, where the mean
+            was <NUMEX TYPE="CARDINAL">503</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> and the median 385 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. The
+            longest transcript and <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> are encoded by 
+            <ENAMEX TYPE="ORGANIZATION">dumpy</ENAMEX> (dp) , which encodes a
+            massive <NUMEX TYPE="QUANTITY">69.7 kilobase</NUMEX> (kb) mRNA and a <NUMEX TYPE="CARDINAL">23,054</NUMEX> amino-acid
+            <ENAMEX TYPE="ORGANIZATION">polypeptide</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">Dp</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is a component of the
+            <ENAMEX TYPE="ORGANIZATION">extracellular matrix</ENAMEX>, and appears to serve as an
+            elastic adhesion molecule at <NUMEX TYPE="CARDINAL">cuticle</NUMEX>-cell junctions,
+            such as the epidermalcuticle interface [ <TIMEX TYPE="DATE">31</TIMEX>].
+            The vast majority (<NUMEX TYPE="PERCENT">94%</NUMEX>) of the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations
+            contain sequences that are present in exons from
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>; however, <NUMEX TYPE="PERCENT">only 63%</NUMEX> of the unique peptides in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> are unchanged in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Of the
+            <NUMEX TYPE="CARDINAL">15,848</NUMEX> unique <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">peptides</ENAMEX>, <NUMEX TYPE="CARDINAL">8,769</NUMEX> (<NUMEX TYPE="PERCENT">55%</NUMEX>) are exact
+            matches to <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">peptides</ENAMEX>. Reciprocally, <NUMEX TYPE="PERCENT">45%</NUMEX> of the
+            peptides are different from <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>, emphasizing
+            that, although the overall picture of the number and
+            distribution of transcription <ENAMEX TYPE="ORG_DESC">units</ENAMEX> in the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome remains
+            largely the same, the new annotations include many
+            changes to the <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> encoded by the
+            <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>.
+          
+        
+        
+          New and deleted annotations
+          
+            Transposable elements
+            The sequences of the vast majority of transposons in
+            Releases <TIMEX TYPE="DATE">1 and 2</TIMEX> were <ENAMEX TYPE="SUBSTANCE">composites</ENAMEX> derived from a number
+            of copies of that transposon type. In <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, these
+            composite sequences are replaced with the actual
+            sequences present in the sequenced 
+            <ENAMEX TYPE="CONTACT_INFO">y 1</ENAMEX>; 
+            <ENAMEX TYPE="CONTACT_INFO">cn 1</ENAMEX> 
+            <ENAMEX TYPE="CONTACT_INFO">bw 1</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">sp 1strain</ENAMEX> for each individual
+            element [ <TIMEX TYPE="DATE">17, 18</TIMEX>]. In all, <NUMEX TYPE="CARDINAL">1,572</NUMEX> transposons are
+            <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> in the euchromatic <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">genome</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+            <NUMEX TYPE="CARDINAL">2</NUMEX>): <NUMEX TYPE="CARDINAL">682</NUMEX> long terminal repeat (LTR) transposons, <NUMEX TYPE="CARDINAL">486</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">LINE</ENAMEX> <ENAMEX TYPE="FAC_DESC">transposons</ENAMEX>, <NUMEX TYPE="CARDINAL">372</NUMEX> terminal inverted repeat (TIR)
+            transposons, and <NUMEX TYPE="CARDINAL">32</NUMEX> foldback (FB) elements. These data
+            include both full-length and partial elements. Details
+            of these analyses are reported in an accompanying
+            <ENAMEX TYPE="LAW">article [ 18</ENAMEX>].
+          
+          
+            Non-<ENAMEX TYPE="SUBSTANCE">protein-coding RNA genes</ENAMEX>
+            Small, non-<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding RNAs are also included in
+            this re-annotation. We searched for new tRNA genes
+            using the program tRNAscan<ENAMEX TYPE="PRODUCT">-SE</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX>] and <ENAMEX TYPE="PRODUCT">Sim4</ENAMEX> alignments
+            to known tRNAs: <NUMEX TYPE="CARDINAL">290</NUMEX> are annotated in the euchromatin
+            (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> reported <NUMEX TYPE="CARDINAL">292</NUMEX> <ENAMEX TYPE="PER_DESC">tRNAs</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>]; <NUMEX TYPE="CARDINAL">two</NUMEX> tRNA
+            genes were deleted as a result of sequence finishing
+            <ENAMEX TYPE="PERSON">resolving</ENAMEX> repeated regions of the genome.
+            Other non-<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding RNAs are limited, in
+            <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, to those already curated in the FlyBase
+            database [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. All <NUMEX TYPE="CARDINAL">23</NUMEX> of the known microRNAs in 
+            Drosophila are located precisely
+            in the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">genome</ENAMEX>. We annotated the majority of
+            the <NUMEX TYPE="CARDINAL">45</NUMEX> small nuclear <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> (snRNAs) involved in
+            splicing, with the exception of the <NUMEX TYPE="CARDINAL">four</NUMEX> snRNAs, <TIMEX TYPE="DATE">K2a</TIMEX>,
+            K2b, <TIMEX TYPE="DATE">K8</TIMEX>, and <ENAMEX TYPE="PRODUCT">K9</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>], for which there were no sequence
+            or cytological data available. Of the <NUMEX TYPE="CARDINAL">41</NUMEX> snRNAs
+            supported by such data, we found that <NUMEX TYPE="CARDINAL">nine</NUMEX> were
+            <ENAMEX TYPE="ORGANIZATION">redundant</ENAMEX> entries, and another <NUMEX TYPE="CARDINAL">five</NUMEX> could not be
+            identified at the previously specified cytological
+            locations, possibly due to strain variation and/or
+            inaccuracy in previous localization experiments. Thus,
+            we precisely located by sequence alignment <NUMEX TYPE="CARDINAL">28</NUMEX> snRNAs in
+            the genome, including a new copy of the 
+            snRNA:U4atac gene in the 83A
+            region.
+            All <NUMEX TYPE="CARDINAL">nine</NUMEX> of the small <ENAMEX TYPE="SUBSTANCE">nucleolar RNA</ENAMEX> (snoRNA) genes
+            in <ENAMEX TYPE="GPE">FlyBase</ENAMEX> were identified by <TIMEX TYPE="DATE">Sim4</TIMEX> alignment of
+            sequence obtained from the literature. In addition, we
+            incorporated data from <ENAMEX TYPE="ORGANIZATION">Tycowski</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Steitz</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX>] and
+            located <NUMEX TYPE="CARDINAL">19</NUMEX> more snoRNAs. Identification of other
+            <ENAMEX TYPE="ORGANIZATION">snoRNAs</ENAMEX> should be possible in the future with the use
+            of algorithms like <ENAMEX TYPE="PERSON">Snoscan</ENAMEX>, which looks for <TIMEX TYPE="DATE">2</TIMEX>'-<ENAMEX TYPE="PERSON">O</ENAMEX>-ribose
+            methylation <ENAMEX TYPE="PER_DESC">guide snoRNAs</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>]; however, the program
+            will have to be customized for 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+            The longer non-<ENAMEX TYPE="SUBSTANCE">protein-coding RNA genes</ENAMEX> αγ- 
+            element, bft, RNaseP:<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, <ENAMEX TYPE="GPE">Hsr</ENAMEX>-omega,
+            7SLRNA, pgc, <TIMEX TYPE="DATE">roX1</TIMEX>, <TIMEX TYPE="DATE">roX2</TIMEX> , and 
+            iab-<NUMEX TYPE="CARDINAL">4</NUMEX> , are annotated in the
+            <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. <NUMEX TYPE="CARDINAL">27</NUMEX> new 'miscellaneous non-coding <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>' genes
+            were detected by alignment of spliced DGC cDNAs that
+            did not appear to contain an ORF of significant length.
+            In some cases these appear to be <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> antisense
+            genes, which have also been reported in other organisms
+            [ <TIMEX TYPE="DATE">36</TIMEX>]. Further experiments will be necessary to verify
+            the existence of these interesting genes and to
+            determine their function.
+          
+          
+            Pseudogenes
+            The number of pseudogenes reported in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> is substantially
+            smaller than that in 
+            Caenorhabditis elegans [ <TIMEX TYPE="DATE">37, 38</TIMEX>].
+            We annotated the <NUMEX TYPE="CARDINAL">12</NUMEX> pseudogenes in <ENAMEX TYPE="GPE">FlyBase</ENAMEX> that map to
+            the euchromatic sequence and correspond to
+            <ENAMEX TYPE="SUBSTANCE">protein-coding paralogs</ENAMEX> (see <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX> in
+            the additional data files). We identified <NUMEX TYPE="CARDINAL">five</NUMEX> new
+            pseudogenes: <NUMEX TYPE="CARDINAL">four</NUMEX> histones and <NUMEX TYPE="CARDINAL">one</NUMEX> lectin ( 
+            CR31541 ) (<ENAMEX TYPE="PRODUCT">Supplementary Table</ENAMEX>
+            <NUMEX TYPE="CARDINAL">1</NUMEX>). Of these <NUMEX TYPE="CARDINAL">17</NUMEX> pseudogenes, <NUMEX TYPE="CARDINAL">15</NUMEX> are recombinationally
+            <ENAMEX TYPE="PERSON">derived</ENAMEX> (with introns, in tandem to their functional
+            <ENAMEX TYPE="ORGANIZATION">paralogs</ENAMEX>), <NUMEX TYPE="CARDINAL">one</NUMEX> ( 
+            Mgstl-<ENAMEX TYPE="GPE">Psi</ENAMEX> ) is retrotransposed
+            (with a poly(A) tail, lacking introns which its
+            functional <ENAMEX TYPE="PER_DESC">paralog</ENAMEX> possesses), and one is too
+            degenerate to classify definitively. We did not make
+            any attempt to comprehensively survey for new
+            retrotransposed pseudogenes or annotate pseudogenes
+            identified by Echols 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">37</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">WormBase</ENAMEX> [ <TIMEX TYPE="DATE">39, 40</TIMEX>]
+            currently reports <NUMEX TYPE="CARDINAL">392</NUMEX> pseudogenes in 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans . It is very likely
+            that a subset of the genes identified as <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+            genes in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> are actually pseudogenes. In
+            particular, <NUMEX TYPE="CARDINAL">19</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> were noted as
+            containing a 'probable mutation in the sequenced
+            strain' and <NUMEX TYPE="CARDINAL">more than 400</NUMEX> were marked 'problematic'
+            because of inconsistencies with the experimental
+            evidence and the predicted <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>.
+          
+          
+            New <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding genes
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> contains a total of <NUMEX TYPE="CARDINAL">802</NUMEX> new <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+            genes (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), that is, gene models that show no
+            overlap with exons in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>. Of these, <TIMEX TYPE="DATE">55</TIMEX> (<NUMEX TYPE="PERCENT">7%</NUMEX>) are
+            based solely on gene-prediction data, and <NUMEX TYPE="CARDINAL">20</NUMEX> of these
+            <NUMEX TYPE="CARDINAL">55</NUMEX> are based on GENSCAN predictions alone. Unlike
+            Releases <TIMEX TYPE="DATE">1 and 2</TIMEX>, which relied heavily on <ENAMEX TYPE="PERSON">Genie</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>],
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations did utilize GENSCAN predictions
+            (with <NUMEX TYPE="CARDINAL">at least one</NUMEX> exon with a score <NUMEX TYPE="MONEY">> 45</NUMEX>) in the
+            absence of other data. The majority of the new genes
+            show matches to <TIMEX TYPE="TIME">EST</TIMEX> (<NUMEX TYPE="CARDINAL">573</NUMEX>; <NUMEX TYPE="PERCENT">71%</NUMEX>) or full-insert cDNA
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> (<NUMEX TYPE="CARDINAL">273</NUMEX>; <NUMEX TYPE="PERCENT">34%</NUMEX>), indicating the importance of
+            these alignments in identifying new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> missed by the
+            
+            <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio gene prediction
+            programs. An additional set of new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was identified
+            by the <ENAMEX TYPE="GPE_DESC">community</ENAMEX> in error reports (<NUMEX TYPE="CARDINAL">52</NUMEX>; <NUMEX TYPE="PERCENT">7%</NUMEX>) or in
+            <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> submissions (<NUMEX TYPE="CARDINAL">58</NUMEX>; <NUMEX TYPE="PERCENT">7%</NUMEX>). Finally, we
+            created 338 (<NUMEX TYPE="PERCENT">42%</NUMEX>) new annotations in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> using
+            <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> homology data from <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> analysis, arising
+            from the comparison of translated <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> sequence
+            with sequence of other <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> or other model
+            <ENAMEX TYPE="PERSON">organisms</ENAMEX>, in the absence of other supporting data.
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> sequence 'finishing' had the largest
+            impact on areas of repetitive sequence, because the
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> WGS sequence assembly often collapsed these
+            regions [ <TIMEX TYPE="DATE">17</TIMEX>]. Duplicated sequences present assembly
+            challenges to genome sequencing efforts; tandemly
+            duplicated genes tend to collapse in sequence assembly
+            and cannot be annotated until the duplications are
+            resolved. Whole-genome analysis of the <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX> suggested that 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> has fewer newly
+            <ENAMEX TYPE="SUBSTANCE">duplicated genes</ENAMEX> than nematodes or <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX>]. We
+            investigated whether sequence finishing might have
+            uncovered previously undiscovered duplicated genes in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . From this analysis,
+            we found that the number of newly duplicated genes is
+            more similar to 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> elegans and 
+            Saccharomyces cerevisiae than
+            previously believed.
+            We measured the frequency of newly annotated
+            duplicated genes by comparing each of the transcripts
+            encoded by the <NUMEX TYPE="CARDINAL">802</NUMEX> new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> to all
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> transcripts using the BLASTN program. Of the
+            new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">124</NUMEX> (<NUMEX TYPE="PERCENT">15%</NUMEX>) have duplicate <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="PERCENT">75%</NUMEX>
+            identity, probability = <NUMEX TYPE="CARDINAL">1</NUMEX> × e <NUMEX TYPE="PERCENT">-25</NUMEX>) somewhere in the
+            <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> (whereas <NUMEX TYPE="PERCENT">10%</NUMEX> of a random sample of 
+            Drosophila <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have duplicates
+            by this measure). Thirty-six new genes are in repeat
+            regions that were collapsed in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> and have now
+            been resolved. For example, in the previously annotated
+            <NUMEX TYPE="CARDINAL">ten</NUMEX>-gene trypsin cluster on chromosome arm <TIMEX TYPE="DATE">2R</TIMEX>, three
+            new <ENAMEX TYPE="SUBSTANCE">trypsin genes</ENAMEX> ( 
+            CG30025, <TIMEX TYPE="DATE">CG30028</TIMEX>, <TIMEX TYPE="DATE">CG30031</TIMEX> ) have
+            been added ([ <TIMEX TYPE="DATE">17</TIMEX>] and Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+          
+          
+            <ENAMEX TYPE="SUBSTANCE">Deleted protein</ENAMEX>-coding genes
+            We rejected a total of <ENAMEX TYPE="PRODUCT">345 Release 2</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> during
+            the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> re-annotation (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), primarily on the
+            basis of a lack of supporting computational or
+            experimental evidence (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods).
+            <ENAMEX TYPE="ORGANIZATION">Nineteen</ENAMEX> <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were deleted because they were
+            contained within transposable elements. If based solely
+            on computational gene-prediction evidence, genes that
+            were less than an arbitrary length of <NUMEX TYPE="CARDINAL">100</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+            were deleted. We required an arbitrary length of <NUMEX TYPE="CARDINAL">50</NUMEX>
+            amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> for all annotations not specifically
+            supported by literature references (for example, the
+            <ENAMEX TYPE="SUBSTANCE">DIRG genes</ENAMEX> [ <TIMEX TYPE="DATE">42</TIMEX>]), and <NUMEX TYPE="CARDINAL">42</NUMEX> of the deleted <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            annotations were removed because they failed to meet
+            this criterion (Figure <TIMEX TYPE="DATE">2a</TIMEX>, inset).
+            The sizes of the predicted <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> were compared (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>),
+            along with the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sizes of <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> annotations
+            deleted in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, and sizes of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> newly added
+            in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). When examining the size range
+            of <NUMEX TYPE="CARDINAL">0</NUMEX>-50 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, there is a marked decrease in
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations compared to <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>, due to the
+            more stringent data requirements for small annotations
+            in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> (Figure <TIMEX TYPE="DATE">2b</TIMEX>, inset).
+          
+        
+        
+          Structural changes to gene models
+          
+            Gene merges
+            Evidence supporting the merger of gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> came
+            mainly from the alignment of full-length cDNA sequences
+            and, to a lesser extent, from <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> homology
+            evidence. <ENAMEX TYPE="ORGANIZATION">Merges</ENAMEX> based solely on BLASTX similarity were
+            more difficult, as the exact exon-intron structure of
+            the merged model was not experimentally indicated. A
+            total of <NUMEX TYPE="CARDINAL">1,351</NUMEX> <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were merged to form <NUMEX TYPE="CARDINAL">602</NUMEX>
+            (<NUMEX TYPE="PERCENT">5%</NUMEX> of total) <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genes. Sometimes the original
+            predictions were spaced quite far apart in the genome,
+            a probable reason that the gene prediction algorithm(s)
+            separated the exons. For example, multiple <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> support
+            a merge of 
+            CG14409 and the 
+            Flotillin-<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> ( 
+            Flo-2 or 
+            CG11547 ), adding <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT">5</ENAMEX>' exons
+            <NUMEX TYPE="CARDINAL">almost 80</NUMEX> kb away from the <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> annotation of the 
+            Flo-<NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). The new 
+            Flo-2 transcript encodes a
+            <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with <NUMEX TYPE="CARDINAL">an additional 50</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> at its amino
+            <ENAMEX TYPE="ORGANIZATION">terminus</ENAMEX>.
+          
+          
+            Gene splits
+            Gene model splits were often necessitated by the
+            facts that gene-prediction programs such as <ENAMEX TYPE="PERSON">Genie</ENAMEX> and
+            <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> can string together genes that lie close to
+            each other and do not resolve nested <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Of the
+            Release <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="CARDINAL">322</NUMEX> were split to form <NUMEX TYPE="CARDINAL">675</NUMEX> (<NUMEX TYPE="PERCENT">5%</NUMEX> of
+            total) <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genes. For example, the annotated gene
+            
+            CG6645 , with <NUMEX TYPE="CARDINAL">5</NUMEX> exons in <ENAMEX TYPE="ORGANIZATION">Release</ENAMEX>
+            <NUMEX TYPE="CARDINAL">2</NUMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>), appears to have been based on a <ENAMEX TYPE="PERSON">Genie</ENAMEX>
+            <ENAMEX TYPE="PERSON">prediction</ENAMEX> (note that <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> had predicted two
+            separate genes). <TIMEX TYPE="TIME">EST</TIMEX> evidence and <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> homology to
+            other fly <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> indicated that this gene should be
+            split into <NUMEX TYPE="CARDINAL">two three</NUMEX>-exon <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+            CG32054 and 
+            CG32053 . <NUMEX TYPE="CARDINAL">One 5</NUMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> exon and one
+            <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding exon in 
+            CG32053 were missed by both <ENAMEX TYPE="PERSON">Genie</ENAMEX>
+            and <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX>. Thus, neither <ENAMEX TYPE="PERSON">Genie</ENAMEX> nor <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> correctly
+            predicted the structure of these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>; each
+            correctly predicted aspects of the gene models, but <TIMEX TYPE="TIME">EST</TIMEX>
+            and <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> data were necessary to accurately determine
+            the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          
+          
+            Gene splits/merges
+            Gene splits/merges were defined as changes involving
+            <NUMEX TYPE="CARDINAL">more than one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in both <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> and <NUMEX TYPE="CARDINAL">3</NUMEX>. While not
+            common, splits/merges are interesting in that they
+            involve simultaneous restructuring of multiple Release
+            <TIMEX TYPE="TIME">2 annotations.</TIMEX> One notable example is the split of 
+            CG8278 into the 
+            CG30350 and 
+            sns annotations (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). In
+            this instance, <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX>, and cDNA
+            <ENAMEX TYPE="ORGANIZATION">records</ENAMEX> indicate that the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <NUMEX TYPE="CARDINAL">half</NUMEX> of 
+            CG8278 should be split off as a
+            separate gene model ( 
+            CG30350 ), while the
+            GenBank:<NUMEX TYPE="CARDINAL">AF254867</NUMEX> record indicates that the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' exon of 
+            CG8278 plus <NUMEX TYPE="CARDINAL">six</NUMEX> other <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> should be merged into the extensive 
+            sns annotation. There were <NUMEX TYPE="CARDINAL">93</NUMEX>
+            cases in which <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> annotations suffered a
+            reassignment of exons more complex than a simple gene
+            split or merge to generate <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX>.
+          
+        
+        
+          Complex gene models
+          
+            Nested genes
+            The phenomenon of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within genes, in which a
+            <ENAMEX TYPE="PERSON">gene</ENAMEX> is included within the intron of another gene, is
+            common. In the analysis of the <ENAMEX TYPE="PRODUCT">2.9 Mb</ENAMEX> 
+            Adh region of 
+            Drosophila , the frequency of
+            nested <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was reported to be <NUMEX TYPE="PERCENT">approximately 7%</NUMEX> [ <TIMEX TYPE="DATE">44</TIMEX>].
+            In extending this analysis to the entire euchromatin,
+            we find that <NUMEX TYPE="PERCENT">7.5%</NUMEX> (<NUMEX TYPE="MONEY">1,038</NUMEX>) of all <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genes,
+            including non-coding <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, are included within the
+            introns of other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Of the <NUMEX TYPE="CARDINAL">879</NUMEX> nested
+            <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>, the majority (<ENAMEX TYPE="CONTACT_INFO">574</ENAMEX>) are
+            transcribed from the opposite strand of the including
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>. We observed <NUMEX TYPE="CARDINAL">26</NUMEX> cases in which the exons and
+            introns of a gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> are interleaved. Transposons may
+            also be located within the introns of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>; we
+            observed <NUMEX TYPE="CARDINAL">431</NUMEX> such cases.
+          
+          
+            Overlapping genes
+            We analyzed the <ENAMEX TYPE="PER_DESC">mRNAs</ENAMEX> predicted for neighboring
+            genes to find those transcripts that share common
+            non-<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding genomic sequence. <NUMEX TYPE="PERCENT">About 15%</NUMEX> of
+            annotated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="MONEY">2,054</NUMEX>) involve the overlap of mRNAs on
+            opposite strands. Some of these involve overlapping
+            messages that have been previously described (for
+            example, 
+            Dopa decarboxylase and 
+            CG10561 [ <TIMEX TYPE="DATE">45</TIMEX>]); however, the vast
+            majority were not previously known to overlap.
+            Complementary sequences between distinct <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> from
+            overlapping genes on opposite strands have previously
+            been reported in eukaryotes and have been implicated in
+            regulating gene expression (for reviews see [ <TIMEX TYPE="DATE">46, 47</TIMEX>]).
+            For example, the complementary sequence shared between 
+            Dopa decarboxylase and 
+            CG10561 is thought to be involved
+            in regulating the levels of these transcripts [ <TIMEX TYPE="DATE">45</TIMEX>].
+            The large number of such overlapping transcripts
+            identified here raises the possibility that antisense
+            <ENAMEX TYPE="PERSON">interactions</ENAMEX> may not be an uncommon mechanism for
+            regulating gene expression in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+            We were surprised to find <NUMEX TYPE="CARDINAL">over 60</NUMEX> cases of
+            overlapping genes on the same strand, for which
+            <ENAMEX TYPE="CONTACT_INFO">cDNA/</ENAMEX><TIMEX TYPE="TIME">EST</TIMEX> data indicate that the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> of the upstream
+            gene overlaps the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> of the downstream gene. In
+            some instances, the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> of the upstream gene extends
+            past the postulated translation start of the downstream
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>. <NUMEX TYPE="CARDINAL">One</NUMEX> example of such an overlapping <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is 
+            CG9455 and 
+            Spn1 (<NUMEX TYPE="MONEY">CG9456</NUMEX>) , tandem genes
+            encoding serine protease <ENAMEX TYPE="SUBSTANCE">inhibitors</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). The <NUMEX TYPE="CARDINAL">two</NUMEX>
+            gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> are individually supported by a variety of
+            <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> data as well as full-insert cDNA sequences.
+            Interestingly, the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' exon of the <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA clone
+            covering the 
+            Spn1 gene (<NUMEX TYPE="MONEY">AT24862</NUMEX>) is entirely
+            included in the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'-most exon of the 
+            CG9455 <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA clone (<NUMEX TYPE="MONEY">GH04125</NUMEX>).
+            The existence of overlapping genes raises many
+            questions. Are such pairs of genes typically
+            <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-regulated? Where are the transcriptional regulatory
+            <ENAMEX TYPE="PER_DESC">elements</ENAMEX> for the downstream <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>? What are the
+            structural constraints on the overlapping
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>?
+          
+          
+            Alternatively transcribed genes
+            One mechanism for increasing potential <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and
+            regulatory diversity is through the production of
+            alternative transcripts. <NUMEX TYPE="PERCENT">Approximately 20%</NUMEX> of <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            genes have <NUMEX TYPE="CARDINAL">more than one</NUMEX> predicted transcript, and this
+            is almost certainly an underestimate. Many instances of
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> alternative splicing as well as alternative
+            <ENAMEX TYPE="ORGANIZATION">polyadenylation</ENAMEX> will have been missed, as our dataset
+            of cDNA sequences contained many more <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="SUBSTANCE">ESTs</ENAMEX> than 3'
+            <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> or complete cDNAs. As cDNA collections are
+            expanded, including those representing specific stages,
+            <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>, and cell types, additional genes with multiple
+            <ENAMEX TYPE="PERSON">transcripts</ENAMEX> and additional <ENAMEX TYPE="SUBSTANCE">protein species</ENAMEX> produced by
+            alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> will undoubtedly be identified.
+            Despite likely underestimation, the level of
+            alternative splicing that was observed clearly
+            illustrates that alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> is an important
+            mechanism for generating transcript diversity in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> (see Supplementary
+            <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX> in the additional data files).
+            Alternative splicing creates opportunities for
+            diversity both at the level of gene regulation and of
+            protein diversity. In <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, <NUMEX TYPE="PERCENT">35%</NUMEX> of the <NUMEX TYPE="CARDINAL">2,729</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            encoding multiple transcripts generate <NUMEX TYPE="CARDINAL">only one</NUMEX> protein
+            product; the transcripts differ only in their <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>.
+            Very commonly, these alternative transcripts vary in
+            the location of <NUMEX TYPE="CARDINAL">5</NUMEX>' non-coding exons, suggesting the use
+            of <ENAMEX TYPE="PER_DESC">alternative promoters</ENAMEX> and offering the possibility
+            of differential regulation. <NUMEX TYPE="PERCENT">The other 65%</NUMEX> of genes with
+            alternative transcripts encode <NUMEX TYPE="CARDINAL">two</NUMEX> or more protein
+            products, indicating that alternative splicing
+            generates considerable protein diversity in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> .
+            A large number of related <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> can be produced
+            from a single gene by the simple substitution of a
+            single domain. This mechanism has been taken to an
+            extreme level in the case of 
+            <ENAMEX TYPE="ORGANIZATION">mod</ENAMEX>(<NUMEX TYPE="MONEY">mdg4</NUMEX>) , which produces at
+            least <NUMEX TYPE="CARDINAL">29</NUMEX> distinct transcripts that share <TIMEX TYPE="DATE">5</TIMEX>' exons, but
+            are alternatively spliced to an array of different <TIMEX TYPE="DATE">3</TIMEX>'
+            <ENAMEX TYPE="ORGANIZATION">exons</ENAMEX> [ <TIMEX TYPE="DATE">48, 49</TIMEX>]. <ENAMEX TYPE="PERSON">Remarkably</ENAMEX>, <NUMEX TYPE="CARDINAL">eight</NUMEX> of these transcripts
+            appear to be generated by a 
+            <ENAMEX TYPE="ORGANIZATION">trans</ENAMEX> -splicing mechanism, using
+            <ENAMEX TYPE="CONTACT_INFO">variable 3</ENAMEX>' exons encoded on the opposite strand.
+            (<ENAMEX TYPE="ORGANIZATION">Seven</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">trans</ENAMEX> -spliced variants were
+            previously reported [ <TIMEX TYPE="DATE">48, 49</TIMEX>]; our analysis suggests
+            <NUMEX TYPE="CARDINAL">eight</NUMEX>.) Although we did not find any further examples
+            of 
+            <ENAMEX TYPE="ORGANIZATION">trans -splicing</ENAMEX>, we did find that
+            a similar gene, 
+            lola , generates <NUMEX TYPE="CARDINAL">at least 21</NUMEX>
+            alternative transcripts (including <NUMEX TYPE="CARDINAL">four</NUMEX> previously
+            described [ <TIMEX TYPE="DATE">50</TIMEX>]). The many 
+            lola transcripts also share <TIMEX TYPE="DATE">5</TIMEX>'
+            exons, but contain <NUMEX TYPE="CARDINAL">one</NUMEX> of an array of different <TIMEX TYPE="DATE">3</TIMEX>'
+            <ENAMEX TYPE="ORGANIZATION">exons</ENAMEX>. Both 
+            <ENAMEX TYPE="ORGANIZATION">lola</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">mod</ENAMEX>(<NUMEX TYPE="MONEY">mdg4</NUMEX>) encode <ENAMEX TYPE="PER_DESC">families</ENAMEX> of
+            specific <ENAMEX TYPE="SUBSTANCE">RNA polymerase</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> transcription factors that
+            include a <ENAMEX TYPE="ORGANIZATION">BTB/POZ</ENAMEX> dimerization domain near each amino
+            <ENAMEX TYPE="ORGANIZATION">terminus</ENAMEX> [ <TIMEX TYPE="DATE">50, 51</TIMEX>]. 
+            <ENAMEX TYPE="ORGANIZATION">mod</ENAMEX>(<NUMEX TYPE="MONEY">mdg4</NUMEX>) has been implicated in
+            a range of cellular and developmental processes,
+            including chromatin insulator functions [ <TIMEX TYPE="DATE">52</TIMEX>] and
+            <ENAMEX TYPE="ORGANIZATION">apoptosis</ENAMEX> [ <TIMEX TYPE="DATE">53</TIMEX>], and it has been suggested that its
+            many different isoforms underlie the pleiotropic nature
+            of this gene [ <TIMEX TYPE="DATE">49</TIMEX>].
+            Alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> can produce <NUMEX TYPE="CARDINAL">two</NUMEX> (or more)
+            distinct non-overlapping <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> from a single
+            pre-mRNA <ENAMEX TYPE="ANIMAL">species</ENAMEX>; we identified <NUMEX TYPE="CARDINAL">12</NUMEX> such cases (for
+            example, 
+            <ENAMEX TYPE="ORGANIZATION">Vanaso</ENAMEX> and α- 
+            <ENAMEX TYPE="PERSON">Spec</ENAMEX> , see Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). The mRNAs
+            produced most commonly share <TIMEX TYPE="DATE">5</TIMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences, but may
+            also share <TIMEX TYPE="DATE">3</TIMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences. <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> defines complexes
+            of this type as <NUMEX TYPE="CARDINAL">two</NUMEX> separate genes, since two
+            non-overlapping <ENAMEX TYPE="SUBSTANCE">protein products</ENAMEX> are produced. Although
+            other <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> sometimes describe such <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as
+            <ENAMEX TYPE="ORGANIZATION">dicistronic</ENAMEX> (since the unprocessed transcript is
+            <ENAMEX TYPE="ORGANIZATION">dicistronic</ENAMEX>), we do not include this type in our
+            categorization of <ENAMEX TYPE="SUBSTANCE">dicistronic genes</ENAMEX> (see below). The
+            component coding regions are resolved on separate
+            mRNAs, and thus internal translation initiation is not
+            required. We view these cases as one extreme along a
+            continuum of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> diversity created by alternative
+            <ENAMEX TYPE="ORGANIZATION">splicing</ENAMEX>.
+          
+          
+            Dicistronic genes
+            Examples of dicistronic transcripts have been
+            previously reported in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> [ <TIMEX TYPE="DATE">54, 55, 56, 57, 58</TIMEX>,
+            <TIMEX TYPE="DATE">59, 60, 61</TIMEX>]. Our results confirm that, while not
+            common, numerous examples of apparent dicistronic
+            transcripts are encountered in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> . We limit the term
+            <ENAMEX TYPE="ORGANIZATION">'dicistronic</ENAMEX>' to genes that meet the following
+            criteria: <NUMEX TYPE="CARDINAL">two</NUMEX> distinct and non-overlapping coding
+            regions contained on a single processed <ENAMEX TYPE="SUBSTANCE">mRNA</ENAMEX>, requiring
+            <ENAMEX TYPE="ORGANIZATION">internal</ENAMEX> initiation of translation of the downstream
+            CDS. In order to categorize a transcript as
+            dicistronic, we required that each CDS exceed <TIMEX TYPE="DATE">50</TIMEX> amino
+            <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in length and show some similarity to known
+            <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotation contains <NUMEX TYPE="CARDINAL">31</NUMEX> gene
+            pairs that can be described as dicistronic by these
+            criteria (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>, and see <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX> in
+            additional data files). This includes <NUMEX TYPE="CARDINAL">12</NUMEX> cases for
+            which the dicistronic transcript is represented by a
+            single cDNA. There are <NUMEX TYPE="CARDINAL">17</NUMEX> additional pairs, denoted as
+            putative, for which there is insufficient BLASTX
+            evidence to support both <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> in a dicistronic gene
+            model (see <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). Since the
+            determination of genes as dicistronic requires multiple
+            classes of data to confirm the transcript structure and
+            validate the coding regions, there are undoubtedly
+            additional <ENAMEX TYPE="SUBSTANCE">dicistronic genes</ENAMEX> yet to be uncovered
+            throughout the genome.
+            For many of the predicted dicistronic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="MONEY">31/48</NUMEX>),
+            there is evidence supporting alternative monocistronic
+            <ENAMEX TYPE="PERSON">transcript</ENAMEX>(s) for either the upstream or downstream
+            CDS, or for both. This includes 
+            Mosc1A+<NUMEX TYPE="CARDINAL">Mosc1B</NUMEX> , for which the
+            monocistronic transcript encodes a fusion protein
+            encompassing both <ENAMEX TYPE="ORGANIZATION">CDSs</ENAMEX> [ <TIMEX TYPE="DATE">59</TIMEX>]. In some cases the
+            dicistronic form may be less prevalent than the
+            <ENAMEX TYPE="ORGANIZATION">monocistronic</ENAMEX> forms: it has been estimated that the
+            dicistronic 
+            <ENAMEX TYPE="ORGANIZATION">Adh</ENAMEX>+<ENAMEX TYPE="ORGANIZATION">Adhr</ENAMEX> transcript is <NUMEX TYPE="PERCENT">only 5%</NUMEX> as
+            abundant as that of the 
+            Adh monocistronic transcripts [
+            <NUMEX TYPE="CARDINAL">57</NUMEX>].
+            Translation of the <NUMEX TYPE="ORDINAL">second</NUMEX> CDS of a dicistronic
+            transcript requires that initiation of translation
+            occur at an internal site. There are <NUMEX TYPE="CARDINAL">two</NUMEX> proposed
+            mechanisms for the initiation of internal translation.
+            One mechanism is that internal initiation occurs by
+            partial disassembly of the ribosome at the termination
+            of translation of the <NUMEX TYPE="ORDINAL">first</NUMEX> CDS, followed by continued
+            scanning by the <ENAMEX TYPE="SUBSTANCE">40S ribosomal subunit</ENAMEX> [ <TIMEX TYPE="DATE">62</TIMEX>]. The
+            following conditions are thought to be criteria for the
+            ribosomal scanning mechanism: an absence of any ATG
+            <ENAMEX TYPE="ORGANIZATION">codons</ENAMEX> in the intercistronic region, an intercistronic
+            region of <NUMEX TYPE="CARDINAL">15 to 78</NUMEX> bp, and an optimized consensus
+            translation start site for the <NUMEX TYPE="ORDINAL">second</NUMEX> CDS. We assessed
+            the sizes of intercistronic regions and the number of
+            <ENAMEX TYPE="ORGANIZATION">ATGs</ENAMEX> in these <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>, and found that there are <NUMEX TYPE="CARDINAL">seven</NUMEX>
+            pairs of <ENAMEX TYPE="SUBSTANCE">dicistronic genes</ENAMEX> that appear to conform to
+            this pattern (indicated in <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). The
+            majority of dicistronic cases clearly do not conform to
+            such a model of partial ribosome disassembly and
+            continued scanning. In <NUMEX TYPE="CARDINAL">four</NUMEX> cases, the intercistronic
+            region is less than <TIMEX TYPE="TIME">4 bp</TIMEX>. However, most of the
+            annotated dicistronic pairs are separated by several
+            hundred base pairs, and the separation can be as much
+            as <NUMEX TYPE="CARDINAL">4.5</NUMEX> kb. In these longer intercistronic regions,
+            there may be multiple ATG codons before the second
+            translation start site. A mechanism of translation
+            initiation utilizing an internal ribosome entry site
+            (<ENAMEX TYPE="ORGANIZATION">IRES</ENAMEX> [ <TIMEX TYPE="DATE">63</TIMEX>]) appears a better explanation for these
+            cases. Oh 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">64</TIMEX>] have hypothesized
+            that certain 
+            Drosophila genes with <TIMEX TYPE="DATE">long 5</TIMEX>'
+            <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> might be translated via internal ribosome entry.
+            If this is the case, translation of the <NUMEX TYPE="ORDINAL">second</NUMEX> CDS
+            within a dicistronic transcript may be effected by the
+            same initiation mechanism.
+          
+        
+        
+          Assessment of <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> quality
+          
+            Did we miss <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>?
+            <ENAMEX TYPE="ORGANIZATION">Andrews</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">16</TIMEX>] suggested that the
+            number of genes in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> might be a severe
+            underestimate, based on <NUMEX TYPE="CARDINAL">7,297</NUMEX> <TIMEX TYPE="TIME">testes EST</TIMEX> sequences they
+            generated and aligned to the annotated genome. However,
+            using their data, as well as <NUMEX TYPE="CARDINAL">23,087</NUMEX> additional
+            testes-derived <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>], we predict a similar number
+            of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> as in previous releases. The more
+            likely explanation for their results is that <ENAMEX TYPE="PRODUCT">5</ENAMEX>' exons,
+            and not genes, were under-predicted in 
+            Drosophila , since there is <TIMEX TYPE="TIME">EST</TIMEX>
+            evidence for testes-specific <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> and transcripts
+            [ <TIMEX TYPE="DATE">29</TIMEX>]. In most cases, the testes <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> did not align to
+            Release <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> because only the downstream CDS had
+            previously been annotated for those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, whereas in
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> the <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> that match the testes ESTs are
+            <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX>.
+            Gopal 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">15</TIMEX>] reported <NUMEX TYPE="CARDINAL">1,042</NUMEX>
+            novel genes that were not included in the <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX>. After completing our re-annotation, we
+            compared this set of <NUMEX TYPE="CARDINAL">1,042</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to our data. We found
+            that <NUMEX TYPE="PERCENT">75%</NUMEX> of their predicted genes mapped to
+            euchromatin, <NUMEX TYPE="PERCENT">16%</NUMEX> mapped to heterochromatin, <NUMEX TYPE="PERCENT">7%</NUMEX> mapped
+            within transposable elements, and <NUMEX TYPE="PERCENT">1%</NUMEX> could not be found
+            in the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genomic sequence. Of the <NUMEX TYPE="PERCENT">75%</NUMEX> that
+            mapped to euchromatin, <NUMEX TYPE="PERCENT">66%</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">520</ENAMEX>) do match <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>. <NUMEX TYPE="PERCENT">The remaining 34%</NUMEX> did not match <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            annotations, leading to the possibility that some or
+            all of these may represent novel genes. Incorporating
+            their methods (threading GENSCAN predictions to look
+            for structural <ENAMEX TYPE="SUBSTANCE">homology</ENAMEX>) into our computational
+            approach may uncover additional missed genes.
+            <NUMEX TYPE="CARDINAL">One</NUMEX> way to address the quality of the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> is by comparative sequence analysis. In an
+            accompanying paper, <ENAMEX TYPE="PERSON">C. Bergman</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">65</TIMEX>] surveyed sequence
+            conservation in <NUMEX TYPE="CARDINAL">approximately 0.5</NUMEX> <ENAMEX TYPE="PRODUCT">Mb</ENAMEX> of the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster genome containing
+            <NUMEX TYPE="CARDINAL">81</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> using comparative data from <NUMEX TYPE="CARDINAL">four</NUMEX> 
+            Drosophila <ENAMEX TYPE="ANIMAL">species</ENAMEX> ( 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> erecta, <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">willistoni</ENAMEX> and 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> littoralis) . Their comparison
+            to our 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster annotations
+            detected no <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> conserved in other <ENAMEX TYPE="ANIMAL">species</ENAMEX> that were
+            missed in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> [ <TIMEX TYPE="DATE">65</TIMEX>].
+            Other genes likely to be missed are genes with small
+            <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> (because of the arbitrary length cutoffs we used,
+            see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods), and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed
+            <ENAMEX TYPE="ORGANIZATION">transiently</ENAMEX> during development, at very low levels,
+            and/or in cells and tissues not represented by the DGC
+            cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>. Future <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA clones will be
+            generated by directed screening of cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> with
+            probes matching predicted exons [ <TIMEX TYPE="DATE">30</TIMEX>], and cDNAs
+            selected during the re-annotation process to represent
+            alternative transcripts not currently in the <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Reliance</ENAMEX> on gene prediction data versus cDNA
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>
+            Of the final set of annotations, <NUMEX TYPE="PERCENT">93%</NUMEX> contain
+            sequences that are present in <ENAMEX TYPE="PERSON">Genie-</ENAMEX>predicted exons and
+            <NUMEX TYPE="PERCENT">96%</NUMEX> contain sequences that are present in
+            GENSCAN-predicted exons (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). <NUMEX TYPE="CARDINAL">Only 249</NUMEX> (<NUMEX TYPE="PERCENT">2%</NUMEX>) of
+            <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were created without an 
+            <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio model, that is, solely
+            on the basis of cDNA or <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> homology evidence. The
+            fact that <NUMEX TYPE="PERCENT">98%</NUMEX> of our accepted annotations span a region
+            containing a gene prediction supports both the strength
+            of the prediction programs' algorithms as well as our
+            <ENAMEX TYPE="ORGANIZATION">reliance</ENAMEX> on them for our methods. However, both <ENAMEX TYPE="PERSON">Genie</ENAMEX>
+            and <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were often wrong in detail,
+            when compared to cDNA sequence alignments for <TIMEX TYPE="TIME">three</TIMEX>
+            main reasons: <NUMEX TYPE="ORDINAL">first</NUMEX>, exon mis-<ENAMEX TYPE="ORG_DESC">associations</ENAMEX>: the
+            programs placed exons from <NUMEX TYPE="CARDINAL">one</NUMEX> gene with the exons of a
+            neighboring or nested gene; <NUMEX TYPE="ORDINAL">second</NUMEX>, erroneous splice
+            site calls: the <ENAMEX TYPE="PER_DESC">donor</ENAMEX> and acceptor <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> were slightly
+            misplaced; or <NUMEX TYPE="ORDINAL">third</NUMEX>, missed <ENAMEX TYPE="PRODUCT_DESC">mini-</ENAMEX> and micro-exons:
+            small <ENAMEX TYPE="PER_DESC">ORFs</ENAMEX> were not identified [ <TIMEX TYPE="DATE">20, 66</TIMEX>].
+            The fraction of gene models that are based solely on
+            gene prediction data has decreased considerably, from
+            <NUMEX TYPE="CARDINAL">2,348</NUMEX> (<NUMEX TYPE="PERCENT">17%</NUMEX>) in <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> to <NUMEX TYPE="MONEY">815</NUMEX> (<NUMEX TYPE="PERCENT">6%</NUMEX>) in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). This shift was primarily due to the more
+            recently available 
+            <TIMEX TYPE="TIME">Drosophila EST</TIMEX> and cDNA
+            sequences, rather than newly evident similarity to
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in other <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+            Alignment of full-length cDNA sequences from the
+            same strain continues to be the best way to annotate
+            gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> [ <TIMEX TYPE="DATE">66, 67, 68</TIMEX>]. The number of <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> generated
+            by the <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> project increased from <NUMEX TYPE="MONEY">around 86,000</NUMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">246,248</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX>] and the number
+            of sequenced full-insert cDNAs from <NUMEX TYPE="MONEY">around 1,000</NUMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">over 9,000</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]. For
+            <NUMEX TYPE="PERCENT">approximately 6,000</NUMEX> of these, the completely assembled
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX> was available during the re-annotation effort
+            (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). In addition, <NUMEX TYPE="CARDINAL">8,699</NUMEX> ESTs
+            from the community deposited in dbEST [ <TIMEX TYPE="DATE">69</TIMEX>], including
+            a set of <NUMEX TYPE="MONEY">7,297</NUMEX> from a testes cDNA <ENAMEX TYPE="ORG_DESC">library</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>], were
+            available. In all, <NUMEX TYPE="PERCENT">78%</NUMEX> of the <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> show
+            a match to <TIMEX TYPE="TIME">an EST</TIMEX> sequence (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>) and <NUMEX TYPE="CARDINAL">over half</NUMEX> to
+            <TIMEX TYPE="DATE">full</TIMEX>-insert cDNA sequences. We anticipate further
+            improvement to gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> as more cDNA data become
+            available.
+          
+          
+            Non-consensus splice <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> and small
+            introns
+            All introns within <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> were
+            examined for conserved <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> splice junctions with the
+            Sequin program [ <TIMEX TYPE="DATE">70, 71</TIMEX>], and all instances of
+            <ENAMEX TYPE="ORG_DESC">annotations</ENAMEX> lacking <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> splice junctions were
+            inspected and commented on. Of the <NUMEX TYPE="CARDINAL">48,039</NUMEX> total splice
+            junctions, <NUMEX TYPE="PERCENT">0.5%</NUMEX> are annotated with <ENAMEX TYPE="ORGANIZATION">GC/AG</ENAMEX> splice
+            junctions, a frequency that might justify describing GC
+            as an alternative splice <ENAMEX TYPE="PER_DESC">donor</ENAMEX>. <NUMEX TYPE="CARDINAL">Eleven</NUMEX> instances of
+            AT/<ENAMEX TYPE="ORGANIZATION">AC</ENAMEX> splice junctions are annotated. An especially
+            well supported example of <ENAMEX TYPE="ORGANIZATION">AT/AC</ENAMEX> usage is 
+            CG1354 , which has <NUMEX TYPE="CARDINAL">more than 25</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">confirming ESTs</ENAMEX>. Other cases of non-consensus splice
+            sites appear rare; however, more are likely to be
+            documented in the future. The particular alignment
+            <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> used (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods) and our
+            <ENAMEX TYPE="ORGANIZATION">reliance</ENAMEX> upon gene-prediction data imposed a bias
+            against unconventional splice sites. In a number of
+            cases for which an unconventional splice junction was
+            supported by cDNA data, the precise location of the
+            <ENAMEX TYPE="PERSON">junction</ENAMEX> could not be determined, owing to repeated
+            sequence at the <ENAMEX TYPE="PER_DESC">donor</ENAMEX> and acceptor sites. A good
+            example of this type of pattern is 
+            <ENAMEX TYPE="ORGANIZATION">sba</ENAMEX> (<NUMEX TYPE="MONEY">CG13598</NUMEX>) . <NUMEX TYPE="CARDINAL">Two</NUMEX> alternative
+            transcripts for this gene are supported by cDNA data,
+            and both appear to contain an unconventional, ambiguous
+            <ENAMEX TYPE="LOCATION">splice</ENAMEX> junction. The <NUMEX TYPE="CARDINAL">two</NUMEX> transcripts share the
+            unconventional splice acceptor site; they differ in the
+            location of the non-consensus splice <ENAMEX TYPE="GPE_DESC">donor site</ENAMEX>, but
+            the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">donor</ENAMEX> sites are identical in sequence.
+            We also examined every gene model with an intron
+            less than <TIMEX TYPE="TIME">48 bp</TIMEX>. The frequency of such introns in 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> is low; <NUMEX TYPE="CARDINAL">32</NUMEX> are
+            <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>. There are several well
+            supported examples of introns <TIMEX TYPE="TIME">less than 45 bp</TIMEX>, with at
+            least <NUMEX TYPE="CARDINAL">two</NUMEX> supporting <ENAMEX TYPE="SUBSTANCE">cDNAs</ENAMEX> derived from the sequenced
+            strain. These include 
+            <ENAMEX TYPE="ORGANIZATION">mod</ENAMEX>(r) and 
+            csul , each with an intron of <NUMEX TYPE="CARDINAL">44</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>, and 
+            CG11892 , with a diminutive
+            intron of <NUMEX TYPE="QUANTITY">43 bp</NUMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">SWISS-PROT/TrEMBL</ENAMEX> validation of the models
+            We used the <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and <ENAMEX TYPE="PRODUCT">TrEMBL</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> databases
+            [ <TIMEX TYPE="DATE">13</TIMEX>] and the <ENAMEX TYPE="PRODUCT">PEP-QC</ENAMEX> software program [ <TIMEX TYPE="DATE">12</TIMEX>] to validate
+            the integrity of the annotations and to track
+            consistency with previously published data (see
+            Materials and methods). Of the <NUMEX TYPE="CARDINAL">3,687</NUMEX> annotated peptides
+            with a cognate in the curated <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>/TrEMBL
+            dataset, <NUMEX TYPE="PERCENT">75%</NUMEX> (<NUMEX TYPE="MONEY">2,764</NUMEX>) were of identical length and had
+            <NUMEX TYPE="PERCENT">more than 99%</NUMEX> sequence identity. Curators examined each
+            case with <NUMEX TYPE="PERCENT">less than 100%</NUMEX> sequence identity, and in some
+            cases, annotation errors were detected and corrected.
+            For example, translation start sites were shifted to
+            the experimentally reported position, which in some
+            cases was downstream of the predicted start. However,
+            in most cases discrepancies appeared to be due to
+            strain-specific polymorphisms or errors in the reported
+            DNA sequence on which the <ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX> entries were based
+            (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). Given the high quality of
+            the underlying <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genomic sequence, we believe
+            that in many cases the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotation</ENAMEX> is more
+            accurate than the sequences deposited by the community
+            in <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrEMBL</ENAMEX>.
+          
+          
+            Confidence in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> gene models
+            The amount of evidence attributable to each <ENAMEX TYPE="ORGANIZATION">Release</ENAMEX>
+            <NUMEX TYPE="CARDINAL">3</NUMEX> gene model varies considerably, and therefore our
+            confidence in these gene models, even the confidence in
+            <NUMEX TYPE="CARDINAL">two</NUMEX> alternative transcripts encoded by the same gene,
+            may differ greatly. To estimate the reliability of a
+            gene model, we developed a classification system that
+            <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> data into <NUMEX TYPE="CARDINAL">four</NUMEX> categories: computational gene
+            predictions; <ENAMEX TYPE="SUBSTANCE">protein similarities</ENAMEX>; alignments of ESTs
+            and other partial cDNA sequences; and alignments of
+            <TIMEX TYPE="DATE">full</TIMEX>-insert cDNA sequences. <NUMEX TYPE="CARDINAL">One</NUMEX> point was assigned to
+            each data type that overlapped a given annotation, and
+            a score of <TIMEX TYPE="DATE">1 to 4</TIMEX> was determined for each transcript,
+            with <NUMEX TYPE="CARDINAL">1</NUMEX> being the lowest and <ENAMEX TYPE="PRODUCT">4</ENAMEX> being the highest
+            confidence (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). As shown in
+            <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>, <NUMEX TYPE="PERCENT">more than 80%</NUMEX> of transcripts and <NUMEX TYPE="PERCENT">more than 75%</NUMEX>
+            of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were assigned a confidence value of <NUMEX TYPE="CARDINAL">3</NUMEX> or <NUMEX TYPE="CARDINAL">4</NUMEX>.
+            Thus, we have high confidence in a large proportion of
+            the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> gene models.
+          
+          
+            Limitations in our methods
+            The <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations should be much more
+            consistent than in previous releases because fewer
+            <ENAMEX TYPE="PER_DESC">curators</ENAMEX> were involved, a defined set of rules was
+            used, and additional validation steps were performed
+            (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). We set a rigorous standard
+            for the annotations by requiring attributable evidence
+            for every gene model, for example, a gene prediction,
+            an alignment to a <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> accession, or a
+            curated personal communication to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX>. However,
+            during the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> analysis, 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> annotated
+            particular <ENAMEX TYPE="PER_DESC">families</ENAMEX> of genes about which they were
+            <ENAMEX TYPE="PER_DESC">expert</ENAMEX> and for which they may have had specific
+            unpublished information. Much of the evidence for these
+            annotations was not released to the public domain and
+            is not currently available, so some of the details of
+            these gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were lost in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>. The solution
+            in these cases is for <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> in the <ENAMEX TYPE="GPE_DESC">community</ENAMEX> to
+            continue to submit error reports to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> to be
+            curated by <ENAMEX TYPE="PERSON">FlyBase</ENAMEX> as personal communications. The
+            resulting set of annotations will be stronger because
+            every gene has traceable evidence that is available in
+            the database and is annotated according to a standard
+            set of rules.
+            As is expected with such a complex analysis, rules
+            cannot be expected to cover every eventuality. As a
+            result, some of the annotations are based partially on
+            <ENAMEX TYPE="PERSON">curator judgment</ENAMEX>, introducing a potential source of
+            <ENAMEX TYPE="ORGANIZATION">inconsistency</ENAMEX>. Visual inspection and <ENAMEX TYPE="PER_DESC">curator</ENAMEX> expertise
+            were absolutely necessary in overcoming shortcomings of
+            the automated processes such as identifying <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> splice
+            <ENAMEX TYPE="PER_DESC">donors</ENAMEX> and sorting out complex gene models. It was also
+            essential for annotating unusual cases, such as the
+            dicistronic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and overlapping gene models. Further,
+            it should be noted that manual annotation is an
+            iterative process. Subsequent to an initial annotation
+            call, a set of automatic verification steps was carried
+            out. Potential errors were reviewed and, where
+            appropriate, annotations were modified as a result of
+            the verification analysis.
+          
+        
+        
+          Accessing data and reporting errors
+          The <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genomic sequence available at
+          <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX>] includes all gene models, that is,
+          the extent of transcripts and each corresponding CDS.
+          More complete information, including all classes of
+          evidence, can be obtained from <ENAMEX TYPE="GPE">FlyBase</ENAMEX>, presented in
+          <ENAMEX TYPE="PERSON">Gadfly Gene Annotation</ENAMEX> reports, in interactive Genome
+          Browser maps, in the <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> annotation tool, and by batch
+          <ENAMEX TYPE="ORGANIZATION">download</ENAMEX>. In addition to transcript structures, the <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Annotation</ENAMEX> report presents the evidence supporting a gene
+          model, any comments included by the annotator, and a
+          thumbnail view of the immediate genomic region. There are
+          links to the reports for adjacent genes, to the FlyBase
+          <ENAMEX TYPE="PERSON">Genome Browser</ENAMEX> view of the surrounding region, and to
+          <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX> files of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, transcript, and genomic
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. Another link takes <ENAMEX TYPE="PER_DESC">users</ENAMEX> to the results of
+          automated <ENAMEX TYPE="ORGANIZATION">BLASTP</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">InterProScan</ENAMEX> [ <TIMEX TYPE="DATE">72</TIMEX>] analyses of the
+          predicted peptides. The coordinates, comments, and
+          sub-features of the annotations (such as <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>, exons, and
+          so on) can be downloaded in a number of formats,
+          including <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GFF</ENAMEX>. The interactive genome browser
+          shows all transcripts annotated within a region; a zoom
+          feature allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to choose the level of
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX>. Additional data classes can be added, at the
+          discretion of the <ENAMEX TYPE="PER_DESC">user</ENAMEX>, including the extent of <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA
+          <ENAMEX TYPE="PERSON">clones</ENAMEX> and <TIMEX TYPE="TIME">EST</TIMEX> data, the <ENAMEX TYPE="ORGANIZATION">BAC</ENAMEX> clones used for
+          determination of the genomic sequence, and the position
+          of P-element <ENAMEX TYPE="PER_DESC">insertions</ENAMEX> isolated by the BDGP <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Disruption Project</ENAMEX> [ <TIMEX TYPE="DATE">73</TIMEX>].
+          <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> can also use the <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> genome annotation
+          and curation tool [ <TIMEX TYPE="DATE">19</TIMEX>] to view the supporting data in
+          greater detail. This <ENAMEX TYPE="GPE">Java</ENAMEX> software tool is available for
+          local installation [ <TIMEX TYPE="DATE">74</TIMEX>] and bulk downloads of the
+          <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> and computational evidence are available in
+          <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> or GFF format [ <TIMEX TYPE="DATE">75</TIMEX>]. Sequence data in multiple FASTA
+          format for the entire set of annotations are also
+          available at this site. In addition, <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX> includes
+          software to request and retrieve the annotations and
+          other data transparently from <ENAMEX TYPE="ORGANIZATION">FlyBase/BDGP</ENAMEX>. Many
+          individual <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> have already contributed
+          substantially to the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations by submitting
+          corrections to gene structures using the error report
+          forms [ <TIMEX TYPE="DATE">76</TIMEX>], and <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> can continue to submit
+          reports to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> in this manner. In the future, we hope
+          that by enabling <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to send an <ENAMEX TYPE="ORGANIZATION">Apollo XML</ENAMEX> output
+          file to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> for review, error reporting of fine gene
+          structures will be simplified.
+        
+        
+          Future updates
+          
+            Changes to the sequence
+            The <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> will continue to finish the remaining
+            problematic regions of the euchromatic genomic sequence
+            to high quality (see [ <TIMEX TYPE="DATE">17</TIMEX>]), and focus efforts on
+            refining the sequence of the heterochromatin [ <TIMEX TYPE="DATE">25</TIMEX>].
+            Changes to the sequence will be submitted to
+            <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> <TIMEX TYPE="DATE">every 6 to 12 months</TIMEX>.
+            Because sequence updates at the time of new releases
+            will result in changes to the coordinate system for
+            each chromosome <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> and for <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> accession
+            units, it will be particularly important for
+            <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to make note of specific release and
+            version dates when providing sequence coordinates.
+            <ENAMEX TYPE="GPE">FlyBase</ENAMEX> encourages <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to refer to coordinates
+            as associated with specific <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> accession
+            and version numbers.
+          
+          
+            Changes to gene models
+            Future re-annotation will be on a gene-by-gene
+            basis, rather than a survey of the entire genome.
+            Future analyses will include new large-scale datasets,
+            including the 
+            Anopheles gambiae genomic
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX>, the 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> pseudoobscura genomic
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX>, and additional <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA sequences [ <TIMEX TYPE="DATE">30</TIMEX>].
+            Changes to the gene models will occur more often than
+            changes in the sequence, and will be reported in
+            date-stamped updates of the <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">accessions</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> records. Such changes are
+            reflected in the feature annotations only and thus do
+            not constitute new releases, as the underlying genomic
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX> does not change.
+            <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> will also focus on the localization of many
+            more annotation features to the genome view, such as
+            regulatory elements, <ENAMEX TYPE="DISEASE">mutational lesions</ENAMEX>, rearrangement
+            breakpoints, and P-element insertion sites. Many of
+            these sequence features are already in the FlyBase
+            genetic data tables and gene annotation reports, based
+            on data from literature curation, computational
+            <ENAMEX TYPE="PERSON">analyses</ENAMEX> (for example [ <TIMEX TYPE="DATE">77</TIMEX>]), and large-scale projects
+            such as the <ENAMEX TYPE="ORGANIZATION">BDGP Gene Disruption Project</ENAMEX>.
+          
+          
+            Changes to functional annotation
+            In the annotation of genes in <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> attributes
+            of <ENAMEX TYPE="SUBSTANCE">gene products</ENAMEX> were predicted with respect to their
+            molecular functions, the roles they might play in
+            biological processes, and their cellular locations,
+            using the controlled vocabularies developed by the <ENAMEX TYPE="PERSON">Gene</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">Consortium</ENAMEX> [ <TIMEX TYPE="DATE">78</TIMEX>]. These predictions were
+            computational, using a program known as LOVEATFIRSTSITE
+            written by <ENAMEX TYPE="PERSON">M. Yandell</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>]. Since then, FlyBase
+            <ENAMEX TYPE="PER_DESC">curators</ENAMEX> have assessed each of these annotations,
+            retaining in <ENAMEX TYPE="GPE">FlyBase</ENAMEX> only those that were reasonably
+            secure, and have re-annotated many genes with GO terms
+            of higher granularity. This work, together with the
+            curation of GO terms from the literature and sequence
+            <ENAMEX TYPE="ORGANIZATION">records</ENAMEX>, has resulted in <NUMEX TYPE="CARDINAL">7,299</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> sharing <NUMEX TYPE="CARDINAL">25,057</NUMEX> GO
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>. This analysis has not yet been repeated
+            for the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> gene products, but the curation of GO
+            terms for all new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and all split/merged genes is
+            now in progress. When this annotation is completed we
+            will have a benchmark for further automatic predictions
+            of GO terms, using programs similar to LOVEATFIRSTSITE
+            [ <ENAMEX TYPE="LAW">3</ENAMEX>] and <ENAMEX TYPE="PRODUCT">PANTHER</ENAMEX> [ <TIMEX TYPE="DATE">79</TIMEX>].
+          
+        
+      
+      
+        Conclusions
+        Annotation of eukaryotic genomes is not a
+        straightforward process, owing to the limitations of the
+        current gene-prediction algorithms. However, we have made
+        the annotation process much more rigorous by utilizing a
+        large set of experimental data, manual curation, and
+        defined standards. By using a large amount of cDNA
+        alignment data and a tool facilitating the rapid visual
+        inspection of evidence for each gene model, we were able to
+        significantly improve the quality of 
+        Drosophila gene annotations. We found
+        that a comprehensive set of curation rules was crucial to
+        making manual annotation consistent and reliable. We also
+        found that comparison of predicted peptides to
+        experimentally verified <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">TrEMBL</ENAMEX> sequences was
+        an important quality-assessment step. In future, we plan to
+        make the automated analysis of predicted polypeptides,
+        including identification of their <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> and
+        sequence similarities, a more integrated part of genomic
+        sequence annotation. Finally, by making the annotations,
+        comments, and all supporting evidence available to <ENAMEX TYPE="PER_DESC">users</ENAMEX>,
+        we have provided the scientific community with the
+        <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX> to assess the quality of each gene model.
+        Our analysis reveals a number of genes that fall outside
+        the definition of conventional gene <ENAMEX TYPE="PER_DESC">models</ENAMEX>: neighboring
+        genes with overlapping <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>; genes with alternative
+        transcripts encoding distinct coding regions; and
+        dicistronic transcripts. An even larger number of genes
+        show alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> or are nested within neighboring
+        genes. Currently, gene-prediction algorithms are unable to
+        accurately predict such gene models. Studies like this one
+        are a prerequisite to extending current computational
+        methods to more successfully and specifically predict
+        eukaryotic gene structures, by defining the <ENAMEX TYPE="PER_DESC">classes</ENAMEX> of
+        features and the requirements for supporting evidence. Once
+        sophisticated computational <ENAMEX TYPE="ORG_DESC">pipelines</ENAMEX> can cope with the
+        <TIMEX TYPE="DATE">full</TIMEX> range of <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> genomic features, we will benefit
+        from better resources for biological investigation.
+        <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> is one of several major model <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> databases
+        with high-quality euchromatic sequence charged with
+        curation of experimental data from the literature. Unlike
+        many other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> has a genetic history
+        reaching back to <TIMEX TYPE="DATE">1910</TIMEX>, and an enormous amount of data to
+        tie to the sequence. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we have addressed one
+        of the first challenges, accurately annotating the genomic
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX>, by utilizing the extensive resource of
+        <TIMEX TYPE="DATE">full</TIMEX>-insert 
+        <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster cDNA sequences and
+        FlyBase gene records (containing existing community data),
+        and by manually curating the gene models using defined
+        methods and controlled vocabularies. However, there is more
+        work necessary to tie the annotated genomic sequence and
+        annotated peptide sequences to further experimental data
+        from the literature, results of large-scale analyses (for
+        example, microarray expression data), and new computational
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX> (for example, comparative sequence analysis). We
+        believe shared data-exchange formats and ontologies will be
+        vitally important to curate, collate, and structure this
+        huge amount of data in a way that allows <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to
+        exploit the information to its full potential.
+      
+      
+        Materials and methods
+        
+          Curation rules
+          We have attempted to provide documentation for as many
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> decisions as possible. In addition to
+          providing access to evidence (<TIMEX TYPE="TIME">EST</TIMEX> and full-insert cDNA
+          sequence reads, prior sequence submissions, BLASTX
+          homologies, and gene prediction data), we have developed
+          and made available a set of annotation rules (see [ <TIMEX TYPE="DATE">82</TIMEX>]
+          and additional data files) and have provided textual
+          comments to explain atypical or subjective
+          <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>.
+          The annotation rules promote consistency in the
+          <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> effort, and deal with all aspects of
+          annotation: from assessment of whether a marginal gene
+          prediction should be the basis for a new gene model to
+          the annotation of atypical splice <ENAMEX TYPE="FAC_DESC">sites</ENAMEX>; from the
+          determination of alternative <ENAMEX TYPE="SUBSTANCE">transcriptional</ENAMEX> starts and
+          <ENAMEX TYPE="PERSON">stops</ENAMEX>, and the designation of translation starts, to the
+          use of comments to flag atypical or questionable
+          <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>. Cases with insufficient, atypical, or
+          conflicting data that the rules did not address were left
+          to the discretion of the annotator; in such instances,
+          comments to document the subjective nature of the gene
+          model were added.
+          Typically, <NUMEX TYPE="CARDINAL">at least one</NUMEX> annotation was created
+          containing each site of alternative splicing represented
+          in <TIMEX TYPE="TIME">the EST</TIMEX>/cDNA data. For atypical splice junctions, a
+          higher level of supporting data was required (see below).
+          Often, <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of alternative splicing were supported by
+          <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> but not full-insert cDNAs. Since, as a matter of
+          policy, we tried to avoid creating partial transcript
+          models, this required that we postulate transcripts
+          combining, for example, <NUMEX TYPE="CARDINAL">5</NUMEX>' and <ENAMEX TYPE="PRODUCT">3</ENAMEX>' ESTs corresponding to
+          different cDNAs. In some cases, these combinations may
+          not exist 
+          in vivo . In particularly complex
+          cases, <ENAMEX TYPE="PER_DESC">curators</ENAMEX> did not create every splice form
+          suggested by the data, but commented that the potential
+          exists for additional splice forms.
+          The rules used were specific for this annotation
+          effort, in particular, for the types of data currently
+          available. For example, because of the limited amount of
+          <ENAMEX TYPE="PRODUCT">3</ENAMEX>' <TIMEX TYPE="TIME">EST</TIMEX> data, little attempt was made to annotate
+          alternative transcripts that differ as a result of
+          multiple polyadenylation sites.
+          Establishment of the annotation rules included the
+          development of a set of controlled comments, that is,
+          comments that are reproducibly phrased and are
+          consistently used. Such controlled comments were used to
+          confirm atypical gene structures, such as the use of
+          atypical splice <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> or overlapping <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>, and to
+          document the evidence used in subjective cases, such as
+          an unusual gene structure based on a single <TIMEX TYPE="TIME">EST</TIMEX> or a gene
+          model based solely on gene-prediction data. <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> cDNA
+          clones that appeared to contradict other evidence were
+          also flagged; most frequently, these were not full-length
+          or appeared to contain intronic sequences.
+        
+        
+          Annotation of non-<ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding genes
+          To annotate small, non-<ENAMEX TYPE="SUBSTANCE">protein-coding RNA genes</ENAMEX>
+          previously collected in the <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> database, we
+          retrieved sequences for each gene from <ENAMEX TYPE="GPE">GenBank</ENAMEX> [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>]
+          and generated a multiple-FASTA dataset. Occasionally,
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> was retrieved from the original literature. The
+          <ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX> dataset was then aligned to the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genome by
+          Sim4 <ENAMEX TYPE="PER_DESC">alignment</ENAMEX>. MicroRNAs were aligned by BLASTN
+          analysis; a single exact match was found for each of the
+          <ENAMEX TYPE="ORGANIZATION">microRNAs</ENAMEX> listed in <ENAMEX TYPE="GPE">FlyBase</ENAMEX>.
+        
+        
+          Evidence for gene structures
+          
+            Gene prediction data
+            The publicly available version of <ENAMEX TYPE="PERSON">Genie</ENAMEX>, which does
+            not <TIMEX TYPE="TIME">utilize EST</TIMEX> or BLAST evidence [ <TIMEX TYPE="DATE">20</TIMEX>], predicted
+            <NUMEX TYPE="CARDINAL">13,794</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> on the finished sequence. GENSCAN
+            predicted <NUMEX TYPE="CARDINAL">19,189</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. As reported previously [ <ENAMEX TYPE="CONTACT_INFO">3,</ENAMEX>
+            <NUMEX TYPE="CARDINAL">20</NUMEX>], <ENAMEX TYPE="PERSON">Genie</ENAMEX> appears to predict fewer false positives,
+            perhaps because it has been trained on 
+            Drosophila sequences, whereas
+            <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> has only been trained on vertebrate datasets [
+            <NUMEX TYPE="CARDINAL">21</NUMEX>]. However, <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> also shows greater sensitivity
+            <ENAMEX TYPE="PERSON">than Genie</ENAMEX>, identifying some real genes that <ENAMEX TYPE="PERSON">Genie</ENAMEX>
+            fails to find. To balance the false-positive and
+            false-negative rates of <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX>, we used an empirical
+            prediction score as a threshold, as done previously [
+            <NUMEX TYPE="CARDINAL">44</NUMEX>]. In the absence of other supporting evidence for a
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>, we used GENSCAN predictions only when at least
+            <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">exon</ENAMEX> had a score > <NUMEX TYPE="CARDINAL">45</NUMEX>; this is a stringent
+            <ENAMEX TYPE="PERSON">threshold</ENAMEX>, <NUMEX TYPE="PERCENT">as 21%</NUMEX> of the genes in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> with
+            full-length cDNA evidence do not contain any exons
+            <ENAMEX TYPE="PRODUCT">scoring > 45</ENAMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">BLASTX/TBLASTX</ENAMEX> sequence similarity data
+            To detect <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with significant sequence
+            <ENAMEX TYPE="PERSON">similarity</ENAMEX>, we used <ENAMEX TYPE="SUBSTANCE">BLASTX</ENAMEX> to compare translated
+            genomic sequence to peptides in other <ENAMEX TYPE="ANIMAL">species</ENAMEX> included
+            in <ENAMEX TYPE="ORGANIZATION">SWALL</ENAMEX> [ <TIMEX TYPE="DATE">13, 83</TIMEX>], and <ENAMEX TYPE="ORGANIZATION">TBLASTX</ENAMEX> to compare translated
+            genomic sequence to virtual translations of the rodent
+            <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> set [ <TIMEX TYPE="DATE">84</TIMEX>] and insect sequences in dbEST [ <TIMEX TYPE="DATE">69</TIMEX>].
+            We also looked for sequence similarities to 
+            Drosophila peptides that had
+            experimental verification, but not to those
+            representing purely hypothetical or computational gene
+            models (see below). Although the number of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in
+            a public database like <ENAMEX TYPE="PRODUCT">TrEMBL</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>] has increased
+            <ENAMEX TYPE="ORGANIZATION">exponentially</ENAMEX> in the time between the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> in <TIMEX TYPE="DATE">November 1999</TIMEX> and the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> in <TIMEX TYPE="DATE">2002</TIMEX> [ <TIMEX TYPE="DATE">85</TIMEX>], the increased size of the
+            <ENAMEX TYPE="SUBSTANCE">protein datasets</ENAMEX> resulted in a <NUMEX TYPE="PERCENT">14%</NUMEX> increase in the
+            number of fly genes that produce <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with
+            similarity to other <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. In <TIMEX TYPE="DATE">March 2000</TIMEX>, <ENAMEX TYPE="PERSON">Adams</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">3</ENAMEX>] reported that <NUMEX TYPE="CARDINAL">9,612</NUMEX>
+            (<NUMEX TYPE="PERCENT">71%</NUMEX>) of the <NUMEX TYPE="CARDINAL">13,601</NUMEX> of the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> genes showed a
+            match to another <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. We now find that <NUMEX TYPE="CARDINAL">10,996</NUMEX> (<NUMEX TYPE="PERCENT">82%</NUMEX>)
+            of the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> show a match by
+            <ENAMEX TYPE="ORGANIZATION">BLASTX</ENAMEX> or TBLASTX (with expectation value less than or
+            equal to <ENAMEX TYPE="CONTACT_INFO">1 × e -7</ENAMEX>). However, we note that the datasets
+            we used were fixed before the release of the genomic
+            sequence of 
+            A. gambiae [ <TIMEX TYPE="DATE">86</TIMEX>], the only other
+            <ENAMEX TYPE="ORGANIZATION">dipteran</ENAMEX> (or arthropod) with a complete genome
+            sequence. We expect that a higher percentage of 
+            Drosophila <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> will show
+            sequence similarity to 
+            Anopheles <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, because 
+            A. gambiae is more closely
+            related to 
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster than are the
+            other available model organisms [ <TIMEX TYPE="DATE">86</TIMEX>].
+          
+          
+            <TIMEX TYPE="TIME">EST</TIMEX> and cDNA alignment data
+            Prediction of gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> was made more rigorous by
+            the increased availability of cDNA data. However,
+            misleading <ENAMEX TYPE="PER_DESC">alignments</ENAMEX> can be created by the presence of
+            genomic <ENAMEX TYPE="SUBSTANCE">DNA contaminants</ENAMEX>, cDNA clones containing two
+            independent <ENAMEX TYPE="ORG_DESC">cDNAs</ENAMEX> co-ligated in the same plasmid vector
+            (<NUMEX TYPE="MONEY">chimeras</NUMEX>), and internal priming of cDNAs during
+            library synthesis. <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones derived from
+            incompletely processed primary transcripts are not
+            readily distinguishable from alternative splicing
+            without experimental verification. Moreover, cDNA
+            <ENAMEX TYPE="ORG_DESC">sequences</ENAMEX> designated as full length may actually be
+            <ENAMEX TYPE="ORGANIZATION">truncated</ENAMEX>; <NUMEX TYPE="CARDINAL">approximately 1,000</NUMEX> of the <NUMEX TYPE="CARDINAL">9,000</NUMEX> full-insert
+            sequences from the <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> are probably not full-length [
+            <TIMEX TYPE="DATE">29, 30</TIMEX>]. The <NUMEX TYPE="ORDINAL">Sim4</NUMEX> alignment tool can make mistakes in
+            determining splice site junctions or completely fail to
+            align very small <ENAMEX TYPE="ORG_DESC">exons</ENAMEX> [ <TIMEX TYPE="DATE">24, 67</TIMEX>]; indeed, a small
+            number of cases of failure to align microexons were
+            identified by <ENAMEX TYPE="PERSON">Stapleton</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">30</TIMEX>] when they compared
+            the predicted translation products of cDNAs with those
+            of <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> gene models. However, <ENAMEX TYPE="ORGANIZATION">Haas</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . found <ENAMEX TYPE="SUBSTANCE">est2genome</ENAMEX> and
+            other alignment tools were, in general, not superior to
+            Sim4 [ <TIMEX TYPE="DATE">24, 67</TIMEX>]. Despite these limitations, alignment of
+            complete <ENAMEX TYPE="DISEASE">cDNA sequences</ENAMEX> is invaluable in detecting
+            <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>, alternative splicing events, detailed exon-intron
+            structures, nested <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, and other key aspects of gene
+            models.
+            <TIMEX TYPE="DATE">Full</TIMEX>-insert 
+            Drosophila melanogaster cDNA
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> came from a number of <ENAMEX TYPE="PER_DESC">sources</ENAMEX>. The largest
+            set of full-insert cDNA sequences came from the BDGP 
+            <ENAMEX TYPE="PERSON">Drosophila Gene Collection</ENAMEX> (DGC)
+            project [ <ENAMEX TYPE="LAW">5, 29, 30</ENAMEX>]. Of the <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX>,
+            <NUMEX TYPE="CARDINAL">9,297</NUMEX> (<NUMEX TYPE="PERCENT">69%</NUMEX>) show a match to full-insert sequences from
+            the cDNA clones in the <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX>, and in some cases, more
+            than <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">DGC</ENAMEX> clone provided definitive gene models for
+            alternatively spliced products. At the time of
+            annotation, we had access to full-insert sequencing
+            reads from <NUMEX TYPE="CARDINAL">9,074</NUMEX> of the <NUMEX TYPE="QUANTITY">10,910 cDNA</NUMEX> clones, but only
+            <NUMEX TYPE="CARDINAL">some 6,000</NUMEX> of these had been fully assembled. Gene
+            models based on <TIMEX TYPE="DATE">incompletely</TIMEX> assembled <ENAMEX TYPE="PER_DESC">cDNA</ENAMEX> clones were
+            <ENAMEX TYPE="FAC">marked 'incomplete'</ENAMEX>. These gene models will be among
+            the <NUMEX TYPE="ORDINAL">first</NUMEX> annotations to be updated.
+            Sequences deposited in public databanks like
+            <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> [ <ENAMEX TYPE="LAW">6, 7, 8, 9, 10, 11</ENAMEX>] by 
+            <ENAMEX TYPE="ORGANIZATION">Drosophila</ENAMEX> <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> provided
+            definitive evidence for a number of genes. For a subset
+            of <ENAMEX TYPE="SUBSTANCE">well-studied genes</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> <ENAMEX TYPE="PER_DESC">curators</ENAMEX> synthesized all
+            of the available sequence and literature data into high
+            <ENAMEX TYPE="PERSON">quality Annotated Reference Gene Sequences</ENAMEX> (ARGS) that
+            have been deposited in <ENAMEX TYPE="GPE">GenBank</ENAMEX>'s <ENAMEX TYPE="ORGANIZATION">RefSeq</ENAMEX> <ENAMEX TYPE="ORG_DESC">division</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>].
+            These ARGS sequences correspond to <NUMEX TYPE="MONEY">795</NUMEX> (<NUMEX TYPE="PERCENT">6%</NUMEX>) of the
+            <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX>.
+            Other sequences came directly to <ENAMEX TYPE="PERSON">FlyBase</ENAMEX> as error
+            reports from the scientific community. FlyBase curated
+            <NUMEX TYPE="CARDINAL">636</NUMEX> reports with information about <NUMEX TYPE="CARDINAL">1,094</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as
+            personal communications, and any sequences supplied in
+            these reports were aligned to the genome. In all, <NUMEX TYPE="CARDINAL">825</NUMEX>
+            (<NUMEX TYPE="PERCENT">6%</NUMEX>) of the annotations overlapped these sequences
+            (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). Accurate annotation of <NUMEX TYPE="CARDINAL">three</NUMEX> gene <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+            in particular was greatly facilitated by sequence
+            submitted in error reports: <NUMEX TYPE="QUANTITY">85 cytochrome</NUMEX> P450
+            monooxygenase <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">B. Dunkov</ENAMEX>, personal communication,
+            FBrf0132129, <TIMEX TYPE="DATE">FBrf0126925</TIMEX>; <ENAMEX TYPE="PERSON">D.R. Nelson</ENAMEX>, personal
+            <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>, <TIMEX TYPE="DATE">FBrf0136021</TIMEX>), <NUMEX TYPE="CARDINAL">80</NUMEX> <ENAMEX TYPE="SUBSTANCE">gustatory</ENAMEX> receptor
+            genes (<ENAMEX TYPE="PERSON">H. Robertson</ENAMEX>, personal communication,
+            FBrf0141780; <ENAMEX TYPE="PERSON">K. Scott</ENAMEX> and <ENAMEX TYPE="PERSON">R. Axel</ENAMEX>, personal
+            <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>, <TIMEX TYPE="DATE">FBrf0137428</TIMEX>), and <NUMEX TYPE="CARDINAL">61</NUMEX> <ENAMEX TYPE="SUBSTANCE">odorant</ENAMEX> receptor
+            genes (<ENAMEX TYPE="PERSON">H. Robertson</ENAMEX>, personal communication
+            FBrf0136024; <ENAMEX TYPE="PERSON">C. Warr</ENAMEX> and <ENAMEX TYPE="PERSON">L. Vosshall</ENAMEX>, personal
+            <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>, <TIMEX TYPE="DATE">FBrf0128191</TIMEX>).
+          
+          
+            Determination of confidence values
+            The extent of each transcript and corresponding CDS
+            was extracted from the ' 
+            <ENAMEX TYPE="PERSON">Drosophila Genomic Sequence</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">Annotations</ENAMEX>' file (in GFF format [ <TIMEX TYPE="DATE">87</TIMEX>]), which is
+            available [ <TIMEX TYPE="DATE">75</TIMEX>]. The extent of overlap of each
+            transcript against the supporting evidence used during
+            the re-annotation was determined using an intersection
+            <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> to determine the annotations overlapped by
+            particular types of evidence [ <TIMEX TYPE="DATE">12</TIMEX>].
+            The evidence datasets used included: gene prediction
+            based on <ENAMEX TYPE="PERSON">Genie</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>] and <ENAMEX TYPE="ORGANIZATION">GENSCAN</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]; <ENAMEX TYPE="PRODUCT">Sim4</ENAMEX> alignments
+            to <TIMEX TYPE="TIME">EST</TIMEX> and full-insert cDNA <ENAMEX TYPE="PER_DESC">sequencing</ENAMEX> reads derived
+            from the <ENAMEX TYPE="ORGANIZATION">BDGP</ENAMEX> cDNA project [ <TIMEX TYPE="DATE">29, 30</TIMEX>], the earlier
+            analysis of the 
+            Adh <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>], and dbEST (for
+            example [ <TIMEX TYPE="DATE">16</TIMEX>]); <ENAMEX TYPE="ORGANIZATION">FlyBase ARGS</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>]; GenBank/<ENAMEX TYPE="DISEASE">EMBL</ENAMEX>/DDBJ
+            entries identified as 
+            Drosophila cDNA sequences [ <ENAMEX TYPE="CONTACT_INFO">6, 7,</ENAMEX>
+            <TIMEX TYPE="DATE">8, 9, 10, 11</TIMEX>] and error report submissions to <ENAMEX TYPE="ORGANIZATION">FlyBase</ENAMEX> [
+            <ENAMEX TYPE="LAW">1, 2</ENAMEX>]; and <ENAMEX TYPE="SUBSTANCE">BLASTX protein</ENAMEX> homology data. For a complete
+            list of the evidence datasets and their description see
+            [ <TIMEX TYPE="DATE">82</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were filtered using the Bioinformatics
+            Output <ENAMEX TYPE="PERSON">Parser</ENAMEX> (BOP), which also assembled <TIMEX TYPE="TIME">all EST</TIMEX> and
+            <TIMEX TYPE="DATE">full</TIMEX>-insert cDNA sequence reads from a particular cDNA
+            clone into a virtual assembly (<ENAMEX TYPE="ORGANIZATION">BOP</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]). The <ENAMEX TYPE="ORGANIZATION">Apollo</ENAMEX>
+            tool displayed these assemblies with sequence gaps
+            indicated differently from introns.
+            The algorithm used to assess relative annotation
+            quality assigned <NUMEX TYPE="CARDINAL">one</NUMEX> point for overlap of a gene
+            <ENAMEX TYPE="PERSON">prediction</ENAMEX>, either <ENAMEX TYPE="PERSON">Genie</ENAMEX> or GENSCAN or both. One
+            additional point was assigned for overlap with protein
+            similarity data. The remaining datasets were considered
+            in the following order and resulted in an additional
+            <NUMEX TYPE="CARDINAL">one</NUMEX> or <NUMEX TYPE="CARDINAL">two</NUMEX> points: the cDNA and annotation data were
+            analyzed to determine if any entry in this class
+            spanned the entire length of the CDS; if so, an
+            additional <NUMEX TYPE="CARDINAL">two</NUMEX> points were assigned, and if not,
+            <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX> and error report entries were
+            analyzed and if any spanned the length of CDS, two
+            points were assigned; if none of these data classes
+            corresponded to the full-length CDS, then the existence
+            of partial cDNA data and/or overlapping <TIMEX TYPE="TIME">EST</TIMEX> data
+            merited <NUMEX TYPE="CARDINAL">one</NUMEX> point. Details of the rules for this
+            classification system can be found at [ <TIMEX TYPE="DATE">82</TIMEX>].
+          
+          
+            Integrity checks
+            <ENAMEX TYPE="ORGANIZATION">SWISS-PROT/TrEMBL</ENAMEX> validation of the translated
+            models by <ENAMEX TYPE="ORGANIZATION">PEP-QC</ENAMEX> is described below. Both annotated
+            segments and chromosome <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX> were validated using the
+            Sequin software tool from the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> [ <TIMEX TYPE="DATE">71</TIMEX>], which found
+            mistakes in exon-intron structure, start of
+            translation, and <ENAMEX TYPE="DISEASE">ID duplication</ENAMEX>. We queried our dataset
+            for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> < 50 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, CDS features making
+            up <NUMEX TYPE="PERCENT">less than 25%</NUMEX> of the predicted transcript length,
+            <ENAMEX TYPE="PRODUCT">introns < 48</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">bp</ENAMEX>, and visually inspected each
+            <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> in these <ENAMEX TYPE="PER_DESC">classes</ENAMEX> making comments where
+            appropriate. We checked <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX> that overlapped
+            transposable elements and tRNA <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, or appeared
+            multiple times in the genome with duplicate
+            <ENAMEX TYPE="ORGANIZATION">identifiers</ENAMEX>. We verified that deleted <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX> had no independent evidence in
+            literature-curated references. Finally, in order to
+            allow the construction of a wild-type proteome from the
+            <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> sequenced 
+            <ENAMEX TYPE="CONTACT_INFO">y 1</ENAMEX>; 
+            <ENAMEX TYPE="CONTACT_INFO">cn 1</ENAMEX> 
+            <ENAMEX TYPE="CONTACT_INFO">bw 1</ENAMEX> 
+            <ENAMEX TYPE="PRODUCT">sp 1strain</ENAMEX>, we replaced annotated
+            sequences from known mutated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX>, cn, bw, <ENAMEX TYPE="ORGANIZATION">MstProx, LysE</ENAMEX>, <TIMEX TYPE="DATE">Rh6</TIMEX> )
+            with <ENAMEX TYPE="ORGANIZATION">RefSeq</ENAMEX> wild-type sequences from <ENAMEX TYPE="GPE">GenBank</ENAMEX> with an
+            appropriate note.
+          
+          
+            Non-consensus splice sites
+            All introns within <ENAMEX TYPE="SUBSTANCE">protein-coding genes</ENAMEX> were
+            examined for conserved <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> splice junctions with the
+            Sequin program [ <TIMEX TYPE="DATE">70, 71</TIMEX>], and all instances of
+            <ENAMEX TYPE="ORG_DESC">annotations</ENAMEX> lacking <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> splice junctions were
+            inspected and <ENAMEX TYPE="PER_DESC">commented</ENAMEX> upon. Splice junctions were
+            based upon alignment of <ENAMEX TYPE="DISEASE">cDNA</ENAMEX>/<TIMEX TYPE="TIME">EST</TIMEX> sequence and, in the
+            absence of such data, on gene prediction models. Even
+            for transcript <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> based upon <TIMEX TYPE="TIME">EST</TIMEX> data, the
+            number of atypical splice junctions is probably an
+            <ENAMEX TYPE="ORGANIZATION">underestimate</ENAMEX>. The alignment algorithm used (<NUMEX TYPE="MONEY">Sim4</NUMEX>)
+            forced intron junctions to occur at <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> sites
+            whenever possible, even at the expense of a
+            several-base mismatch. This occasionally resulted in
+            apparent early translation termination, in which case
+            the <ENAMEX TYPE="PER_DESC">annotator</ENAMEX> checked for a <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> <ENAMEX TYPE="PER_DESC">donor</ENAMEX> that would allow
+            read-through. Other <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> splice annotations were based on
+            information in the literature or <ENAMEX TYPE="ORGANIZATION">GenBank/EMBL/DDBJ</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">records</ENAMEX>. With the exception of <ENAMEX TYPE="ORGANIZATION">GT/AG</ENAMEX> junctions, we
+            imposed a higher standard of verification for
+            unconventional splice annotations: sequence data from a
+            <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> isolated from the sequenced strain, or multiple
+            <ENAMEX TYPE="ORGANIZATION">consistent ESTs</ENAMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">SWISS-PROT/TrEMBL</ENAMEX> validation of the models
+            The <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and <ENAMEX TYPE="PRODUCT">TrEMBL</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein databases</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]
+            were used to validate the integrity of the annotations
+            and to track consistency with previously published
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The <ENAMEX TYPE="PRODUCT">SWISS-PROT Protein Knowledgebase</ENAMEX> [ <TIMEX TYPE="DATE">80</TIMEX>] is a
+            curated <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequence database that provides a high
+            level of annotation, a minimal level of redundancy and
+            high level of integration with other databases. The
+            TrEMBL database [ <TIMEX TYPE="DATE">81</TIMEX>] contains the translations of all
+            CDS present in the <ENAMEX TYPE="ORGANIZATION">EMBL</ENAMEX> <ENAMEX TYPE="PRODUCT">Nucleotide Sequence Database</ENAMEX> [
+            <ENAMEX TYPE="LAW">8, 9</ENAMEX>], which are not yet integrated into <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> [
+            <NUMEX TYPE="CARDINAL">80</NUMEX>]. A non-redundant set of <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> and TrEMBL 
+            Drosophila sequences was created,
+            and <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> representing purely hypothetical or
+            computational gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> (those corresponding to <ENAMEX TYPE="ORGANIZATION">CG</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">BG</ENAMEX>, or EG genes in <ENAMEX TYPE="GPE">FlyBase</ENAMEX>) were excluded. The <ENAMEX TYPE="ORGANIZATION">PEP</ENAMEX>-QC
+            program [ <TIMEX TYPE="DATE">12</TIMEX>] compared the resulting collection of <TIMEX TYPE="DATE">3687</TIMEX>
+            
+            <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> melanogaster sequences
+            (<ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX>) to the annotated peptides using <ENAMEX TYPE="ORGANIZATION">BLASTP</ENAMEX> [
+            <NUMEX TYPE="CARDINAL">22</NUMEX>]. Each gene was placed into one of <NUMEX TYPE="CARDINAL">four</NUMEX> 'validation'
+            categories: <ENAMEX TYPE="WORK_OF_ART">Perfect</ENAMEX> match to <ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX> (annotated
+            peptide of identical length with <NUMEX TYPE="PERCENT">100%</NUMEX> sequence
+            identity), Single AA substitutions (annotated peptide
+            of identical length with ≥ <NUMEX TYPE="PERCENT">99%</NUMEX> sequence identity),
+            Significant mismatch (annotated peptide and SPTRreal
+            entry do not align over their entire length, but do
+            contain aligned spans of <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> or <NUMEX TYPE="PERCENT">20%</NUMEX> peptide
+            length, with <NUMEX TYPE="PERCENT">at least 97%</NUMEX> sequence identity), or Poor
+            match (poor or no BLAST hits). For <TIMEX TYPE="TIME">the first two</TIMEX>
+            categories, the <ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX> peptide was allowed to match a
+            portion of the annotated peptide if it was designated
+            as a 'fragment' of the full peptide sequence (<ENAMEX TYPE="CONTACT_INFO">125</ENAMEX> or
+            <NUMEX TYPE="PERCENT">3.4%</NUMEX> of SPTRreal genes are designated with this
+            tag).
+            In <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>, <NUMEX TYPE="PERCENT">about 75%</NUMEX> of all genes with a cognate
+            in <ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX> are in the <ENAMEX TYPE="WORK_OF_ART">Perfect</ENAMEX> match and Single AA
+            substitution categories (<NUMEX TYPE="CARDINAL">2,764</NUMEX> out of <NUMEX TYPE="CARDINAL">3,687</NUMEX>). <ENAMEX TYPE="CONTACT_INFO">Curators</ENAMEX>
+            examined every <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> marked Single AA substitutions,
+            Significant mismatch, or Poor match. In some cases,
+            annotation errors were detected and gene <ENAMEX TYPE="PER_DESC">models</ENAMEX> were
+            modified to produce a translation matching the SPTRreal
+            sequence. For example, <ENAMEX TYPE="PER_DESC">curators</ENAMEX> used the <ENAMEX TYPE="ORGANIZATION">PEP-QC</ENAMEX> output
+            to change translation start sites to the experimentally
+            reported position where appropriate. In other cases,
+            discrepancies may be due to strain polymorphisms,
+            errors in the reported DNA sequence on which the
+            <ENAMEX TYPE="ORGANIZATION">SPTRreal</ENAMEX> entries were based, or undetected errors in
+            either the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotation</ENAMEX> or sequence. Given the
+            high quality of the underlying <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> genomic
+            <ENAMEX TYPE="PERSON">sequence</ENAMEX>, we believe that in many cases the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            annotations are more accurate than the SPTRreal
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>.
+            The improvement over the <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX> is
+            evident. The combined number of <ENAMEX TYPE="WORK_OF_ART">Perfect</ENAMEX> match and
+            Single AA substitution annotations has increased by
+            <NUMEX TYPE="PERCENT">22%</NUMEX>, from <NUMEX TYPE="MONEY">2,260</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> to <NUMEX TYPE="CARDINAL">2,764</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>,
+            while the combined number of Significant mismatch and
+            Poor match annotations has decreased by <NUMEX TYPE="PERCENT">35%</NUMEX> (<NUMEX TYPE="MONEY">1,427</NUMEX> in
+            <ENAMEX TYPE="PRODUCT">Release 2</ENAMEX> versus <NUMEX TYPE="CARDINAL">923</NUMEX> in <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>). Over <TIMEX TYPE="DATE">the past two</TIMEX>
+            <TIMEX TYPE="DATE">years</TIMEX>, <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> has incorporated sequences from
+            Releases <NUMEX TYPE="CARDINAL">1 and 2</NUMEX> of the genomic annotations into the
+            curated <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> (<ENAMEX TYPE="PERSON">E. Whitfield</ENAMEX>, personal
+            <ENAMEX TYPE="ORGANIZATION">communication</ENAMEX>). Therefore, while the overall quality of
+            the sequences in <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> has almost certainly
+            increased during <TIMEX TYPE="TIME">this time</TIMEX>, it is still worth asking
+            the question - how well do the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> annotations
+            <ENAMEX TYPE="ORGANIZATION">match SWISS-PROT</ENAMEX> sequences deposited before the initial
+            genome annotations? This question was answered for the
+            <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX> using a dataset of <NUMEX TYPE="CARDINAL">1,049</NUMEX>
+            polypeptide sequences created in <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> before
+            <TIMEX TYPE="DATE">1999</TIMEX>, prior to the publication of the annotated <ENAMEX TYPE="ORGANIZATION">Release</ENAMEX>
+            <NUMEX TYPE="CARDINAL">1</NUMEX> sequence [ <TIMEX TYPE="DATE">14</TIMEX>]. That <ENAMEX TYPE="ORG_DESC">group</ENAMEX> found that <NUMEX TYPE="CARDINAL">578</NUMEX>, or <NUMEX TYPE="PERCENT">55%</NUMEX>, of
+            this <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> set had an annotated peptide of
+            identical length with <NUMEX TYPE="PERCENT">at least 95%</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> identity
+            (<ENAMEX TYPE="PERSON">A. J. Gentles</ENAMEX>, personal communication). Performing the
+            same analysis using the <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">annotations</ENAMEX>, we find
+            that <NUMEX TYPE="CARDINAL">694</NUMEX>, or <NUMEX TYPE="PERCENT">66%</NUMEX>, of the peptides in the same
+            <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> dataset match with <NUMEX TYPE="PERCENT">95%</NUMEX> identity. This <NUMEX TYPE="PERCENT">20%</NUMEX>
+            increase in the number of matching polypeptides most
+            likely is a reflection of the improvement in the
+            quality of the annotations. But what about the <NUMEX TYPE="PERCENT">34%</NUMEX> of
+            cases that show significant mismatch between <ENAMEX TYPE="PRODUCT">Release 3</ENAMEX>
+            and <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX>? We have examined these cases and
+            believe that the large majority of these remaining
+            discrepancies are not due to mistakes in our
+            annotation, but due to strain polymorphisms, as well as
+            errors in the sequence underlying the <ENAMEX TYPE="NATIONALITY">SWISS</ENAMEX>-PROT
+            entries created before <TIMEX TYPE="DATE">1999</TIMEX>. If this were indeed the
+            case, then the analysis of Karlin 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>] would have grossly
+            overestimated the error rate in the <ENAMEX TYPE="PRODUCT">Release 1</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">annotations</ENAMEX>.
+          
+          
+            Drosophilagenes
+            References for all 
+            Drosophila genes mentioned in the
+            paper can be found in <ENAMEX TYPE="GPE">FlyBase</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>].
+          
+        
+      
+      
+        Additional data files
+        Supplementary tablesof annotated pseudogenes, the
+        distribution of alternatively spliced transcripts, and
+        dicistronic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, along with the guidelines for
+        <ENAMEX TYPE="ORGANIZATION">re-annotation</ENAMEX>, are available with the online version of
+        this paper.
+        Additional data file 1
+        Supplementary tables
+        Supplementary tables
+        Click here for additional data file
+      
+    
+  

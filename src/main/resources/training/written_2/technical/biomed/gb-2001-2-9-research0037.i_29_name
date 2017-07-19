@@ -1,0 +1,875 @@
+
+  
+    
+      
+        Background
+        Access to automated <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequencing technology has made
+        possible the rapid generation and analysis of gene
+        <ENAMEX TYPE="PERSON">transcripts</ENAMEX> expressed in organisms via expressed sequence
+        <ENAMEX TYPE="PERSON">tags</ENAMEX> (ESTs) [ <ENAMEX TYPE="LAW">1, 2, 3, 4, 5</ENAMEX>]. This information has helped
+        to identify those genes expressed in particular stages of
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX> and in specialized tissues or organs [ <ENAMEX TYPE="CONTACT_INFO">6, 7, 8,</ENAMEX>
+        <ENAMEX TYPE="LAW">9, 10</ENAMEX>]. Novel gene products and target leads for
+        therapeutic intervention can also be gleaned rapidly from
+        <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2, 11</ENAMEX>]. A more detailed understanding of the
+        molecular interactions between symbionts, whether
+        <ENAMEX TYPE="ORGANIZATION">pathogenic</ENAMEX> or mutualistic [ <TIMEX TYPE="DATE">12</TIMEX>], is also possible with this
+        approach [ <TIMEX TYPE="DATE">13, 14, 15, 16, 17</TIMEX>].
+        For a sequence isolated from interacting symbionts,
+        determining its cellular role (or roles) is complicated by
+        not knowing which species expressed the sequence [ <TIMEX TYPE="DATE">18</TIMEX>]. We
+        refer to this challenge as 'the problem': given a sequence 
+        x expressed in an interaction between
+        species 
+        A and 
+        B , did 
+        x originate from 
+        A or 
+        B ? Various solutions are readily
+        <ENAMEX TYPE="PERSON">conceived</ENAMEX>, each with merits and faults. Here, we show that
+        a comparative lexical analysis of word counts
+        (specifically, hexamer frequencies), previously used to
+        detect <ENAMEX TYPE="ORG_DESC">library</ENAMEX> contamination in sequencing projects [ <TIMEX TYPE="DATE">19</TIMEX>],
+        provides a powerful computational basis to infer a
+        <ENAMEX TYPE="PERSON">transcript</ENAMEX>'s species of origin.
+        <ENAMEX TYPE="PERSON">Experimentally</ENAMEX>, one can attempt to solve the problem by
+        hybridizing a clone (as <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>) to genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (<ENAMEX TYPE="ORG_DESC">target</ENAMEX>) from
+        both <ENAMEX TYPE="ANIMAL">species</ENAMEX> and determining to which target the probe
+        <ENAMEX TYPE="ORGANIZATION">hybridizes</ENAMEX>. This approach can produce very reliable
+        results. However, if a sequence is highly conserved in the
+        <NUMEX TYPE="CARDINAL">two</NUMEX> taxa, hybridization stringency conditions can influence
+        the outcome considerably. For high<TIMEX TYPE="TIME">-throughput EST</TIMEX> sequence
+        analysis, source verification by hybridization is
+        impractical in terms of time and reagents. As an
+        alternative to 
+        in vitro hybridization, several
+        computational <ENAMEX TYPE="SUBSTANCE">solutions</ENAMEX> are possible.
+        Were the genome sequence of both <ENAMEX TYPE="ANIMAL">species</ENAMEX> completely
+        determined, one could simply use sequence similarity
+        searching [ <TIMEX TYPE="DATE">20, 21, 22</TIMEX>]. However, most plant <ENAMEX TYPE="PER_DESC">hosts</ENAMEX> and
+        their microbial symbionts have little or no genomic
+        sequence data available, which makes this approach very
+        <ENAMEX TYPE="PERSON">unreliable</ENAMEX>. Strong similarity to a sequence from one
+        <ENAMEX TYPE="PERSON">organism</ENAMEX> does not preclude the possibility that a similar
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> is present in the other <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Conclusions based
+        upon such partial knowledge have been informative, but are
+        potentially misleading [ <TIMEX TYPE="DATE">18, 23</TIMEX>].
+        <ENAMEX TYPE="SUBSTANCE">Codon</ENAMEX> usage varies across taxa [ <TIMEX TYPE="DATE">24, 25, 26</TIMEX>]. Exploiting
+        this fact may seem a viable solution to the problem, as it
+        has proven suitable for predicting the presence of introns
+        among exons in genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>. However, it really is not
+        practical, because of the need to know the reading frame
+        for translation of a messenger <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> into an amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>. <TIMEX TYPE="TIME">EST</TIMEX>
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are of notoriously unreliable quality, sometimes
+        having a large proportion of ambiguous bases, and sometimes
+        having single <ENAMEX TYPE="FAC_DESC">base</ENAMEX>-pair insertions or deletions, which
+        disrupt a reading frame. Word counting is less prone to
+        these <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error, and uses information intrinsic to
+        biases in <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage by counting codon pairs as hexamers
+        in a sliding window, whereas codons are read in
+        non-overlapping, tiled windows.
+        An intuitive approach to the problem that examines
+        sequence composition is to compare the guanine and cytosine
+        (<ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>) base content of a sequence with other sequences from
+        the species being studied. When <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX>' genomes have
+        different <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content, this method can be very useful. In a
+        recent investigation, for instance, sequences from the
+        stramenopile <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> pathogen 
+        Phytophthora sojae and its <ENAMEX TYPE="SUBSTANCE">soybean</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">Glycine max</ENAMEX> ) <ENAMEX TYPE="PER_DESC">host</ENAMEX> showed a <NUMEX TYPE="PERCENT">20%</NUMEX>
+        difference in mean <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content [ <TIMEX TYPE="DATE">18</TIMEX>]. The origin of a number
+        of sequences could readily be identified this way, but a
+        large proportion could not, because of considerable overlap
+        in the distributions' tails. Counting frequencies of <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> is
+        simple word counting, where the word size 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is <NUMEX TYPE="CARDINAL">1/2</NUMEX>: <NUMEX TYPE="CARDINAL">only two</NUMEX> semi-words, <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>/C
+        and <ENAMEX TYPE="DISEASE">A</ENAMEX>/T are counted.
+        An alternative approach to determining the origin of a
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> is suggested by previous work on analysis of word
+        counts, or 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -tuple frequencies, which was
+        intended as a means of evaluating a library for
+        contamination when sequencing from a single model organism
+        [ <TIMEX TYPE="DATE">19</TIMEX>]. The word-counting method provides distinct
+        advantages over other computational methods. Unlike
+        sequence-similarity searching, it does not require that the
+        <TIMEX TYPE="DATE">full</TIMEX> <ENAMEX TYPE="SUBSTANCE">protein-coding</ENAMEX> content of both genomes be known for
+        reasonable inferences to be made. Further, word counting is
+        sensitive to biases in <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage and <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content commonly
+        observed when comparing taxa, but does not require
+        knowledge of the reading frame for amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> translation.
+        That is, the underlying differences between the two
+        <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> that result in base composition or <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage
+        biases can also be detected by counting words. Unlike GC
+        analysis, lexical analysis establishes a clear threshold
+        above or below which we can infer the species of origin,
+        and a confidence level for an inference can readily be
+        assigned. <ENAMEX TYPE="ORGANIZATION">Dunning</ENAMEX>'s likelihood-ratio test of word
+        <ENAMEX TYPE="ORGANIZATION">dissimilarities</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>] also has the appealing property of
+        being non-parametric, having no assumption of normality for
+        the underlying frequency distribution, which makes it
+        statistically powerful [ <TIMEX TYPE="DATE">28</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Dunning</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>] demonstrated
+        that unreliable results can be obtained from parametric
+        tests, such as <ENAMEX TYPE="PRODUCT">Χ 2</ENAMEX>, particularly in such cases as lexical
+        analysis.
+        In the experiments detailed below, we first validate the
+        word-counting method on sequences whose origin and function
+        are known, then compare it with ability to diagnose the
+        origin of sequences with distributions of <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content. We
+        examine sequences from pathogenic interactions between
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> from the genus 
+        <ENAMEX TYPE="ORGANIZATION">Phytophthora</ENAMEX> and the <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> hosts 
+        <ENAMEX TYPE="PERSON">G. max</ENAMEX> and 
+        Medicago truncatula , then apply the
+        word-counting approach to sequences from <NUMEX TYPE="CARDINAL">two</NUMEX> microbial
+        <ENAMEX TYPE="ORGANIZATION">mutualists</ENAMEX> in association with 
+        <ENAMEX TYPE="PERSON">M. truncatula</ENAMEX> , the arbuscular
+        mycorrhizal zygomycete 
+        Glomus versiforme , and the
+        nitrogen-fixing bacterium 
+        Sinorhizobium meliloti .
+      
+      
+        Results
+        Validation sequence accession numbers, gene names, and
+        comparison results appear in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. Incorrect inferences
+        are underlined. The word-counting method was generally
+        quite reliable when tested against sequences of known
+        <ENAMEX TYPE="PERSON">origin</ENAMEX>, being wrong in <NUMEX TYPE="CARDINAL">3</NUMEX> cases out of <NUMEX TYPE="CARDINAL">50</NUMEX>; a phosphate
+        transporter from 
+        <ENAMEX TYPE="PERSON">G.</ENAMEX> versiforme and <NUMEX TYPE="CARDINAL">two</NUMEX> 
+        in planta -induced <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from 
+        Phytophthora infestans were
+        misidentified as <ENAMEX TYPE="PLANT">plant</ENAMEX> <ENAMEX TYPE="PER_DESC">sequences</ENAMEX>. This indicates a failure
+        rate of <NUMEX TYPE="PERCENT">6%</NUMEX> - all false negatives under the null hypothesis
+        that a transcript originates from the plant <ENAMEX TYPE="PER_DESC">host</ENAMEX>.
+        Performance of the method was not influenced by whether the
+        isolated source of a sequence was an mRNA or <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> molecule,
+        as indicated by the column labeled 'mRNA?'.
+        Distributions of <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content are <TIMEX TYPE="TIME">approximately normal</TIMEX> in
+        <NUMEX TYPE="CARDINAL">two</NUMEX> of <NUMEX TYPE="CARDINAL">three</NUMEX> cases studied, those of axenic 
+        P. sojae cultures (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). For
+        sequences from infected plant cultures, a bimodal
+        distribution is apparent. <NUMEX TYPE="CARDINAL">Roughly</NUMEX> <NUMEX TYPE="PERCENT">25%</NUMEX> of a total of <NUMEX TYPE="CARDINAL">927</NUMEX>
+        infected 
+        <ENAMEX TYPE="PERSON">G. max</ENAMEX> sequences contain less than
+        <NUMEX TYPE="PERCENT">50%</NUMEX> <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>; most of these are likely to be plant transcripts [
+        <NUMEX TYPE="CARDINAL">18</NUMEX>]. This is a considerably greater number than for axenic 
+        P. sojae cultures, in which fewer
+        than <NUMEX TYPE="PERCENT">5%</NUMEX> of mycelia and zoospore isolates contain less than
+        <NUMEX TYPE="PERCENT">50%</NUMEX> <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>.
+        Several properties of cumulative distribution functions
+        warrant comment, to help explain similar plots from word
+        dissimilarity comparisons (Figures <TIMEX TYPE="DATE">1b</TIMEX>, <TIMEX TYPE="DATE">2a</TIMEX>). The median of a
+        distribution occurs where the function reaches a cumulative
+        probability of <NUMEX TYPE="CARDINAL">0.5</NUMEX>. Medians from <NUMEX TYPE="CARDINAL">all three</NUMEX> 
+        P. sojae <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> are similar,
+        varying by <NUMEX TYPE="PERCENT">less than 4%</NUMEX> <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). Other moments of
+        the distributions are readily apparent; the variance is
+        inversely related to the slope at the median value of the
+        function. A useful property of cumulative distribution
+        functions is that any point on the 
+        <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> axis gives the integrated area
+        (cumulative probability) under the curve. We use this
+        property to establish experiment-wide false-positive and
+        false-negative rates (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). In this case, <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">0.088</NUMEX>
+        and <ENAMEX TYPE="PER_DESC">β</ENAMEX> = <NUMEX TYPE="CARDINAL">0.032</NUMEX>.
+        Calibration curves from hexamer dissimilarity tests,
+        shown in Figure 2bas solid black lines for <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and dashed
+        black lines for stramenopile training sequences are
+        <NUMEX TYPE="PERCENT">approximately</NUMEX> normal. The medians differ considerably, with
+        <NUMEX TYPE="PERCENT">only about 10% percent</NUMEX> overlap in the two distributions'
+        tails about the neutral 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -value of <NUMEX TYPE="CARDINAL">zero</NUMEX>. Superimposed are
+        comparison curves from 
+        P. sojae test sets (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>), which
+        parallel the <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content curves in Figure 1bbut show
+        slightly less variance. Axenic sequences are clearly more
+        like <ENAMEX TYPE="ANIMAL">stramenopiles</ENAMEX> ( 
+        B 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) than <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> ( 
+        A 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ) in hexamer composition, with all but
+        a small percentage having positive 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> values. Plant-like sequences are as
+        abundant in the mixed <ENAMEX TYPE="ORG_DESC">library</ENAMEX> as detected by <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content,
+        <NUMEX TYPE="PERCENT">about 23%</NUMEX>. As expected, the two methods agree, having
+        positively correlated values for <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> ( 
+        r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.852</NUMEX>, 
+        <ENAMEX TYPE="CONTACT_INFO">P < 10 -16,</ENAMEX> 
+        <ENAMEX TYPE="PERSON">v</ENAMEX> = <NUMEX TYPE="CARDINAL">2,641</NUMEX>).
+        Looking in more detail at the paired dissimilarity
+        values (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), we can see which individual sequences
+        are more or less like plant and pathogen. The magnitudes of
+        dissimilarity are also apparent, with longer sequences
+        having larger dissimilarity values. BLASTX similarity
+        searches against the <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> in nr, a
+        non-redundant <ENAMEX TYPE="ORG_DESC">library</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">29, 30, 31</TIMEX>] revealed
+        that none of the <NUMEX TYPE="CARDINAL">12</NUMEX> <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>-like mycelial transcripts
+        significantly resemble known <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> ( 
+        E > <NUMEX TYPE="PERCENT">10 -4</NUMEX>). Among the top <NUMEX TYPE="CARDINAL">ten</NUMEX> most
+        plant-like transcripts from the infected 
+        <ENAMEX TYPE="ORGANIZATION">G. max</ENAMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX>, <NUMEX TYPE="CARDINAL">three</NUMEX> had no
+        significant matches, <NUMEX TYPE="CARDINAL">four</NUMEX> matched putative 
+        Arabidopsis thaliana <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and
+        <NUMEX TYPE="CARDINAL">three</NUMEX> matched known 
+        <ENAMEX TYPE="PRODUCT">G. max</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">cytochrome</ENAMEX> P450
+        (accession <TIMEX TYPE="DATE">AF022460</TIMEX>, 
+        E < <NUMEX TYPE="PERCENT">10 -34</NUMEX>), methylglyoxalase
+        (accession <TIMEX TYPE="DATE">P46417</TIMEX>, 
+        E < <NUMEX TYPE="PERCENT">10 -34</NUMEX>), and a ripening
+        related <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (accession <TIMEX TYPE="DATE">AF127110</TIMEX>, 
+        E < <NUMEX TYPE="PERCENT">10 -71</NUMEX>). Thus, the majority of
+        the most <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>-like transcripts in the infected soybean
+        <ENAMEX TYPE="ORGANIZATION">library</ENAMEX> strongly resemble characterized <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> sequences.
+        Analysis results from all 
+        P. sojae and mixed-culture
+        transcripts are available as additional data files, grouped
+        by the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> from which transcripts were sequenced.
+        Figure <TIMEX TYPE="DATE">4shows</TIMEX> that calibration curves from comparing
+        <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and microbial symbiont training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> have good
+        separation and minimal overlap (<NUMEX TYPE="PERCENT">about 10%</NUMEX>) in <NUMEX TYPE="CARDINAL">two</NUMEX> of three
+        cases, but not for training set 
+        B 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> , comprised of zygomycetes and
+        chytridiomycetes, which overlaps considerably with plants
+        (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). The associated error rates are <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">0.126</NUMEX> and β
+        = <NUMEX TYPE="CARDINAL">0.207</NUMEX>. When comparing between <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, the
+        error rates are <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">0.052</NUMEX> and <ENAMEX TYPE="PER_DESC">β</ENAMEX> = <NUMEX TYPE="CARDINAL">0.084</NUMEX>, much lower than
+        when comparing <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> ( 
+        A 
+        <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">Medicago</ENAMEX> ) with fungi ( 
+        B 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> , zygomycetes and chytridiomycetes).
+        Error rates for comparing stramenopiles and 
+        P. infestans ESTs with <ENAMEX TYPE="PLANT">plants</ENAMEX> are as
+        in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>(α = <NUMEX TYPE="CARDINAL">0.088</NUMEX>, <ENAMEX TYPE="PER_DESC">β</ENAMEX> = <NUMEX TYPE="CARDINAL">0.032</NUMEX>).
+        Also shown in Figure <NUMEX TYPE="MONEY">4are</NUMEX> cumulative distributions from
+        comparisons with 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula and microbial
+        <ENAMEX TYPE="ORGANIZATION">symbionts</ENAMEX>. All resemble calibration curves from plant
+        sequences, having similar medians and slightly less
+        variance than the <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> calibration curves. Comparison
+        <ENAMEX TYPE="ORGANIZATION">curves</ENAMEX> show that the great majority of test sequences are
+        more <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>-like than otherwise, with <NUMEX TYPE="PERCENT">20%</NUMEX> or less resembling
+        microbial symbionts more closely than <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>. A greater
+        proportion of microbial sequences is present in the 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula - 
+        <ENAMEX TYPE="PERSON">G.</ENAMEX> versiforme interaction library
+        (<NUMEX TYPE="PERCENT">20%</NUMEX>, Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>) than in the 
+        P. medicaginis -infected 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula <ENAMEX TYPE="ORG_DESC">library</ENAMEX> (<NUMEX TYPE="PERCENT">5%</NUMEX>, Figure
+        4a). However, <ENAMEX TYPE="GPE">Long</ENAMEX>'s root-hair enriched <ENAMEX TYPE="ORG_DESC">library</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX>) [
+        <NUMEX TYPE="CARDINAL">6</NUMEX>] had a greater proportion of putative microbial sequences
+        present (<NUMEX TYPE="PERCENT">7% and 25%</NUMEX>) than any of the <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> isolated
+        from symbiont-associated cultures. The axenic and
+        nodulating root <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> had the smallest portion of
+        putative microbial transcripts (< <NUMEX TYPE="PERCENT">2%</NUMEX>, Figure <NUMEX TYPE="CARDINAL">4c</NUMEX>), with
+        the axenic <ENAMEX TYPE="ORG_DESC">library</ENAMEX> closely resembling nodulating root
+        <ENAMEX TYPE="PERSON">libraries</ENAMEX>. The method of preparing a library can affect the
+        proportion of <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and non-plant sequences, as discussed
+        below.
+        Paired dissimilarity values in Figure <NUMEX TYPE="CARDINAL">5show</NUMEX> in greater
+        detail which sequences are more or less like plant and
+        <ENAMEX TYPE="ORGANIZATION">symbiont</ENAMEX>. Sequences from an interaction <ENAMEX TYPE="ORG_DESC">library</ENAMEX> and pure
+        plant root cultures appear together for comparison.
+        Considerable variation in the degree of dissimilarity to
+        both training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> is clear, largely due to variation in
+        the length of sequences within test sets. Consistent with
+        the cumulative distributions of 
+        D(A) - 
+        D(<ENAMEX TYPE="ORGANIZATION">B</ENAMEX>) in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>, most sequences lie
+        above the identity function, and resemble the plant host
+        more closely than the microbial symbiont. Mycorrhizal test
+        sequences are more difficult to differentiate than
+        sequences from the rhizobacterial or pathogenic
+        <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX>, as seen by the diminished variation about the
+        identity function in mycorrhizal comparisons (Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>),
+        contrasted with comparisons from pathogen-infected and
+        nodulating root <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> (Figures <ENAMEX TYPE="PRODUCT">5aand c</ENAMEX>, respectively).
+        Analysis results from all 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula and mixed-culture
+        transcripts are available as additional data files, grouped
+        by the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> from which transcripts were sequenced, and
+        sorted from the least <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>-like transcripts to the most
+        plant-like.
+      
+      
+        Discussion
+        Clearly, the word-counting approach provides a reliable
+        solution to the problem of source identification with known
+        confidence, and has several significant advantages. The
+        reliability of the method is best justified in terms of the
+        favorable validation test results, and is further
+        corroborated by agreement with an analysis of <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content.
+        In test cases where the correct answer is known 
+        a priori , results were correct
+        within error rates expected from overlap in training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>.
+        (Recall that α = <NUMEX TYPE="CARDINAL">0.088</NUMEX> for comparisons between <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> and
+        stramenopiles, and <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">0.052</NUMEX> for comparisons between plants
+        and <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>.) Unlike <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content, the problem is clearly
+        resolved by word counting with a threshold value of 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, and with statistical rigor,
+        because false-positive and false-negative rates for a set
+        of comparisons are readily computed from cumulative
+        distributions of dissimilarity between <NUMEX TYPE="CARDINAL">two</NUMEX> training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>.
+        Optimal statistical power (minimal false-negative rate) is
+        <ENAMEX TYPE="ORGANIZATION">ensured</ENAMEX> when using a likelihood-ratio test statistic, as
+        demonstrated by the <ENAMEX TYPE="PRODUCT">Pearson-Neyman Theorem</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>]. Further,
+        word counting need not be trained only for the species
+        being compared. Rather, it is sufficient that the training
+        set be related to, but not necessarily congeners of, the
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> from which sequences are being compared. Sequences
+        from several species of the genus 
+        Phytophthora were correctly
+        distinguished from <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and bacterial sequences, and three
+        genes from 
+        Agrobacterium tumefaciens were
+        correctly identified as representing a bacterial
+        sequence.
+        However, several caveats warrant prudence. Transcribed
+        sequences that do not encode <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, but rather catalytic
+        single-stranded <ENAMEX TYPE="SUBSTANCE">RNAs</ENAMEX> such as transfer and <ENAMEX TYPE="SUBSTANCE">ribosomal RNAs</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">32</NUMEX>], should be treated independently because they are more
+        highly conserved across taxa than <ENAMEX TYPE="PER_DESC">messenger RNAs</ENAMEX>. Also,
+        filtering or trimming of low-complexity repeat regions,
+        such as poly(A) or poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) tracts, is helpful because
+        comparison results can be influenced by the abundance of a
+        single hexamer. Early in our investigations, using <NUMEX TYPE="CARDINAL">one</NUMEX> set
+        of training sequences obtained from directionally cloned 
+        P. infestans cDNAs produced results
+        that were difficult to interpret. It eventually became
+        clear that, as the 
+        P. infestans sequences were all
+        single-pass reads from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of a clone generated with
+        the <NUMEX TYPE="ORDINAL">T3</NUMEX> primer, few sequences complementary to the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of
+        the mRNA sequence were present in the training <ENAMEX TYPE="FAC_DESC">set</ENAMEX>. This
+        meant that the hexamer <ENAMEX TYPE="ORGANIZATION">AAAAAA</ENAMEX> was common, but the hexamer
+        TTTTTT scarce. Large amounts of the poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) hexamer would
+        be expected when sequencing reverse complements of mRNAs
+        obtained from <NUMEX TYPE="CARDINAL">3</NUMEX>' sequences generated with the <NUMEX TYPE="ORDINAL">T7</NUMEX> primer.
+        Both poly(A) and poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) regions were present among plant
+        training sequences. As a result, any sequence that
+        contained a poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) tract tended to resemble the plant
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX>. Further, because the error rates for an
+        inference depend on the degree to which calibration curves
+        <ENAMEX TYPE="PERSON">overlap</ENAMEX>, the best results are obtained where overlap is
+        minimal. Despite these caveats, word counting presents a
+        viable solution to the problem.
+        The 
+        P. sojae -infected 
+        <ENAMEX TYPE="ORGANIZATION">G. max</ENAMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX> provides a clear
+        example of contrast in both hexamer composition and GC
+        content, resulting in readily diagnosed origins. Not every
+        case is this simple. For clear separation between the two
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX> to appear, the <NUMEX TYPE="CARDINAL">two</NUMEX> must differ in composition and a
+        detectable proportion of transcripts from each <ENAMEX TYPE="ANIMAL">species</ENAMEX> must
+        be present in the <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. To be detectable, the proportion
+        of transcripts present from a particular species must be
+        greater than the error rate obtained from calibration
+        <ENAMEX TYPE="ORGANIZATION">curves</ENAMEX>.
+        Though these criteria are true for the infected 
+        <ENAMEX TYPE="ORGANIZATION">G. max</ENAMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX> ( 
+        <ENAMEX TYPE="PRODUCT">t < 0</ENAMEX> for <<NUMEX TYPE="PERCENT">25%</NUMEX> of <NUMEX TYPE="CARDINAL">927</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">transcripts</ENAMEX>), they do not appear to be true for the 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> we analyzed (
+        
+        <ENAMEX TYPE="PRODUCT">t < 0</ENAMEX> for <NUMEX TYPE="PERCENT">80-99%</NUMEX> of <NUMEX TYPE="CARDINAL">890</NUMEX>-<NUMEX TYPE="CARDINAL">3,017</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">transcripts</ENAMEX>). In the 
+        P. medicaginis interaction <ENAMEX TYPE="ORG_DESC">library</ENAMEX>,
+        we might expect the same bimodal distribution as seen with 
+        P. sojae . However, the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>
+        were prepared in different ways. The 
+        P. sojae -infected <ENAMEX TYPE="ORG_DESC">library</ENAMEX> was
+        prepared <TIMEX TYPE="DATE">two days</TIMEX> after infection, using a susceptible
+        plant <ENAMEX TYPE="PER_DESC">host</ENAMEX> strain, so as to maximize the number of pathogen
+        transcripts present in the host tissue [ <TIMEX TYPE="DATE">18</TIMEX>]. Further, 
+        <ENAMEX TYPE="PERSON">G. max</ENAMEX> hypocotyl tissues were
+        infected directly with a zoospore suspension. In contrast,
+        the 
+        P. medicaginis -infected <ENAMEX TYPE="ORG_DESC">library</ENAMEX> was
+        prepared <TIMEX TYPE="DATE">ten days</TIMEX> after infection and individual plants
+        varied in their degree of susceptibility (<ENAMEX TYPE="PERSON">C. Vance</ENAMEX>,
+        unpublished data). <ENAMEX TYPE="PLANT">Plants</ENAMEX> were also inoculated in a
+        different manner: ground mycelia were dissolved in sterile
+        <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> and incubated, and the resulting inoculum was
+        <ENAMEX TYPE="PER_DESC">pipetted</ENAMEX> onto the soil surface, rather than the <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>.
+        These differences in how tissues were cultured prior to
+        library preparation could have produced the disparate
+        abundance of plant transcripts, though both <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> were
+        prepared from <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> tissues infected with 
+        <ENAMEX TYPE="ORGANIZATION">Phytophthora</ENAMEX> .
+        For mycorrhizal root <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, we might explain the
+        relative lack of symbiont sequences as resulting simply
+        from a relative lack of transcripts in the host tissue.
+        Most of the biomass in mycorrhizal roots is plant <ENAMEX TYPE="SUBSTANCE">biomass</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">33</NUMEX>]. We might therefore expect that most of the transcripts
+        therein originate from the plant <ENAMEX TYPE="PER_DESC">host</ENAMEX>. Confounding this
+        result, the error rates in this comparison are the greatest
+        among all the comparisons we performed, most likely because
+        the evolutionary distance between fungi (zygomycetes and
+        <ENAMEX TYPE="ORGANIZATION">chytridiomycetes</ENAMEX>) and <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> is the least among comparisons
+        [ <TIMEX TYPE="DATE">34</TIMEX>]. Also, zygomycete <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding sequences are rare
+        in <ENAMEX TYPE="GPE">GenBank</ENAMEX>, which resulted in a small training set for
+        these fungi, and may have amplified any biases. The high
+        false-negative rate probably led to a failure to detect
+        some symbiont transcripts.
+        In nodulating root <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>, we do not expect to
+        observe an abundance of bacterial transcripts, because
+        bacteria generally do not form <ENAMEX TYPE="SUBSTANCE">polyadenylated mRNAs</ENAMEX> [ <TIMEX TYPE="DATE">35</TIMEX>].
+        As the protocols used to extract and purify mRNAs from
+        tissue lysate for the <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> cited in this study all
+        relied on the presence of polyadenylation sites, we
+        generally do not expect to find bacterial transcripts.
+        The abundance of putative microbial symbiont transcripts
+        among sequences from a pure plant root <ENAMEX TYPE="ORG_DESC">library</ENAMEX> is difficult
+        to interpret. The predicted portion of microbial
+        <ENAMEX TYPE="PERSON">transcripts</ENAMEX> was greater in the axenic root-hair enriched
+        library than in mixed cultures. Error rates were greatest
+        for comparisons between training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> from <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> and pooled
+        <ENAMEX TYPE="ORGANIZATION">zygomycete</ENAMEX> and chytridiomycete sequences. Other than
+        providing an <NUMEX TYPE="PERCENT">87%</NUMEX> confidence level, the <NUMEX TYPE="PERCENT">13%</NUMEX> false-positive
+        rate does not completely explain why <NUMEX TYPE="PERCENT">about 15%</NUMEX> of root-hair
+        enriched transcripts resemble fungal hexamer composition
+        more closely than <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>, and warrants further study.
+        <ENAMEX TYPE="ORGANIZATION">Care</ENAMEX> had been taken to avoid contaminating <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> tissue
+        cultures by culturing seedlings in covered plates. Because
+        of concern that ethylene accumulation in covered plates
+        could improperly stimulate nodulation-related gene
+        expression, seedlings were treated with <ENAMEX TYPE="ORGANIZATION">Ag</ENAMEX> 
+        <TIMEX TYPE="TIME">2 SO</TIMEX> 
+        <NUMEX TYPE="CARDINAL">4</NUMEX> , an inhibitor of the <ENAMEX TYPE="FAC_DESC">plants</ENAMEX>' response
+        to ethylene [ <ENAMEX TYPE="LAW">6</ENAMEX>]. Inhibition of the ethylene response could
+        have resulted in synthesis of transcripts that are
+        uncharacteristic of plant roots. Analysis of another axenic
+        <ENAMEX TYPE="PRODUCT">root-</ENAMEX>hair enriched <ENAMEX TYPE="ORG_DESC">library</ENAMEX>, particularly one provided a
+        <ENAMEX TYPE="ORGANIZATION">carbon</ENAMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> to identify potential contaminants, and not
+        treated with an inhibitor of <ENAMEX TYPE="SUBSTANCE">ethylene</ENAMEX> response, would be an
+        informative test.
+        These observations warrant further experimental
+        scrutiny. The transcripts identified as most and least like
+        <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> or symbiont might also be studied in more detail as
+        <ENAMEX TYPE="PER_DESC">candidate participants</ENAMEX> in symbiosis. Symbiotic
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>, whether pathogenic or mutualistic, present
+        novel challenges to both <ENAMEX TYPE="PLANT">plant</ENAMEX> <ENAMEX TYPE="PER_DESC">hosts</ENAMEX> and the <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> who
+        study them. <ENAMEX TYPE="PER_DESC">Computational</ENAMEX> approaches, in concert with
+        experimental verification, can help resolve these
+        challenges.
+      
+      
+        Methods and materials
+        
+          Training sequences
+          
+            Calibration
+            To characterize hexamer frequencies in <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> hosts
+            and their microbial symbionts, we collected sets of
+            training sequences from public databases and edited
+            them for quality. Training sets were chosen to be
+            <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of, but obtained independently from,
+            <ENAMEX TYPE="PER_DESC">taxa</ENAMEX> participating in symbiotic <ENAMEX TYPE="ORG_DESC">associations</ENAMEX> for which
+            a diagnosis of origin would be made. Because the
+            species being compared are represented unevenly in
+            public sequence databases, taxa were chosen so that
+            <NUMEX TYPE="CARDINAL">roughly</NUMEX> the same number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were analyzed in each
+            training set, rather than simply to maximize the
+            numbers of <ENAMEX TYPE="ANIMAL">species</ENAMEX> or sequences present.
+            Training sets represent <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding sequences
+            from <NUMEX TYPE="CARDINAL">three</NUMEX> taxonomic groupings: <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> ( 
+            A 
+            <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">Medicago</ENAMEX> and 
+            Glycine spp.), either fungi ( 
+            B 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> , zygomycetes and
+            <ENAMEX TYPE="ORGANIZATION">chytridiomycetes</ENAMEX>) or stramenopiles ( 
+            B 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> ), including <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX> from 
+            P. infestans [ <TIMEX TYPE="DATE">16</TIMEX>], and bacteria
+            ( 
+            B 
+            <ENAMEX TYPE="CONTACT_INFO">3 ,</ENAMEX> 
+            Rhizobium , 
+            <ENAMEX TYPE="ORGANIZATION">Sinorhizobium</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">Bradyrhizobium</ENAMEX> ). We performed
+            pairwise comparisons with <NUMEX TYPE="CARDINAL">two</NUMEX> different, taxon-specific
+            training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> ( 
+            A and 
+            B ) to infer the origin of a
+            transcript.
+            Training sets were obtained by querying the GenBank
+            database using the <ENAMEX TYPE="ORGANIZATION">Entrez</ENAMEX> retrieval tool [ <TIMEX TYPE="DATE">29, 30, 31</TIMEX>].
+            A preliminary query by taxon name obtained all
+            available nucleotide sequences from that taxon, then
+            the Limits option excluded <ENAMEX TYPE="ORGANIZATION">ESTs</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">STSs</ENAMEX> (sequence-tagged
+            sites), <ENAMEX TYPE="ORGANIZATION">GSSs</ENAMEX> (genome survey sequences), working draft
+            sequences, and patented sequences from the query set.
+            <ENAMEX TYPE="ORGANIZATION">Organellar</ENAMEX> (mitochondrial and chloroplast) <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was also
+            excluded via the Limits option. A query term to require
+            that a sequence contain a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding region (CDS)
+            was also added, which excluded <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX> and transfer
+            <ENAMEX TYPE="SUBSTANCE">RNA sequences</ENAMEX>. The results consisted of all sequences
+            that contain a nuclear <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding sequence
+            available for that taxon at the time of the query. This
+            was done on <NUMEX TYPE="CARDINAL">two</NUMEX> separate occasions: in <TIMEX TYPE="DATE">April</TIMEX> and
+            <TIMEX TYPE="DATE">October 2000</TIMEX>. (Changing slightly the composition of
+            training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> between those dates did not notably
+            affect the experimental outcome.)
+            Following a previously established protocol [ <TIMEX TYPE="DATE">19</TIMEX>],
+            we used a resampling procedure to evaluate the degree
+            of overlap between distributions of hexamer composition
+            obtained from comparing <NUMEX TYPE="CARDINAL">two</NUMEX> training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>. In this
+            <ENAMEX TYPE="PERSON">protocol</ENAMEX>, we resampled each training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> <NUMEX TYPE="CARDINAL">40</NUMEX> times by
+            <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> partitioning into training (for hexamer counts)
+            and test calculation pools. To control for any bias
+            introduced by length variation, a program randomly
+            <ENAMEX TYPE="CONTACT_INFO">clipped 300</ENAMEX> nucleotide fragments for word counting. As
+            a result, one random <NUMEX TYPE="CARDINAL">300</NUMEX> nucleotide fragment from each
+            training sequence was present in the training set
+            during a single resampling replicate; independent
+            replicates contained different, randomly chosen
+            training sequences and <NUMEX TYPE="CARDINAL">300</NUMEX> nucleotide fragments. Values
+            of the test statistic from <NUMEX TYPE="CARDINAL">40</NUMEX> resampled replicates were
+            pooled for calibration purposes.
+            As with the original protocol [ <TIMEX TYPE="DATE">19</TIMEX>], we pooled the
+            resulting test statistic distributions, normalized them
+            as cumulative distributions, and then evaluated them
+            for overlap. We call the resulting comparisons
+            <ENAMEX TYPE="ORGANIZATION">'calibration</ENAMEX> <ENAMEX TYPE="PER_DESC">curves</ENAMEX>', as they are not used directly to
+            make inferences, but rather indirectly, to evaluate the
+            degree of separation in hexamer counts from different
+            <ENAMEX TYPE="ORGANIZATION">taxa</ENAMEX>. Overlap of calibration curves should be minimal
+            to yield the most statistically powerful results
+            possible.
+            Due to considerable overlap of calibration curves
+            between taxonomically general, inclusive training sets
+            (that is, all eudicots, all fungi and miscellaneous
+            eukaryotes, and all eubacteria, data not shown), we
+            opted to work with specific training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> that included
+            only the most species-specific sequences available,
+            while maintaining approximately equal sample sizes
+            across taxa.
+            The most challenging case was that of the arbuscular
+            mycorrhizal fungi, for which very few <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-coding
+            sequences are available. To increase the amount of data
+            in this training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> ( 
+            B 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> ) without biasing sample sizes, we
+            pooled sequences from all species in the zygomycetes
+            with all available chytridiomycete coding sequences,
+            and compared this training <ENAMEX TYPE="FAC_DESC">set</ENAMEX> with a set from a single
+            plant <ENAMEX TYPE="SUBSTANCE">genus</ENAMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">Medicago</ENAMEX> ( 
+            A 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> ). We chose this option, rather
+            than including an arbitrary subset of sequences from
+            the ascomycetes and basidiomycetes, because zygomycetes
+            and <ENAMEX TYPE="PER_DESC">chytridiomycetes</ENAMEX> have diverged from their common
+            ancestor less recently than the ascomycetes and
+            basidiomycetes, based on <ENAMEX TYPE="SUBSTANCE">18S ribosomal RNA</ENAMEX> sequence
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX>]. That is, the ascomycetes and basidiomycetes
+            are more highly derived from the common fungal ancestor
+            than zygomycetes and chytridiomycetes, which resemble
+            more closely the ancestral <ENAMEX TYPE="GPE_DESC">state</ENAMEX> in modern
+            <ENAMEX TYPE="ORGANIZATION">lineages</ENAMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> quality
+            Starting with a full set of sequences, we filtered
+            for high-quality sequences by trimming regions having
+            extensive ambiguous bases (<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-rich) and poly(A) or
+            <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) regions. The test statistic can be sensitive to
+            the abundance of a single word [ <TIMEX TYPE="DATE">19</TIMEX>]. Thus, we trimmed
+            <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) and poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> to minimize the cases in
+            which a test sequence resembles one training set more
+            closely than the other, simply by virtue of having an
+            abundance of the hexamer <ENAMEX TYPE="ORGANIZATION">AAAAAA</ENAMEX> or TTTTTT. Similarly,
+            test results obtained from short or <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>-rich sequences
+            can be difficult to interpret [ <TIMEX TYPE="DATE">19</TIMEX>]. We allowed no more
+            than <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORGANIZATION">N per hexamer</ENAMEX> and trimmed poly(A) or poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>)
+            tracts <TIMEX TYPE="TIME">longer than 13 nucleotides.</TIMEX> To accommodate for
+            possible sequence chimeras, those sequences found to
+            contain an internal poly(A) or poly(<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) segment longer
+            than <NUMEX TYPE="CARDINAL">13</NUMEX> nucleotides were partitioned into <NUMEX TYPE="CARDINAL">two</NUMEX>
+            <ENAMEX TYPE="PERSON">fragments</ENAMEX>, and the longer of the two fragments was used
+            in analysis, provided its length was <NUMEX TYPE="CARDINAL">at least 300</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX>.
+            After trimming, we screened all remaining sequences
+            of <NUMEX TYPE="CARDINAL">300</NUMEX> nt or longer for similarity to 
+            Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX> [
+            <TIMEX TYPE="DATE">20, 21</TIMEX>]. All BLAST searches used default parameters and
+            low-complexity filtering with the programs DUST or SEG.
+            The decision to exclude non-coding <ENAMEX TYPE="SUBSTANCE">RNA sequences</ENAMEX> from
+            training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> was informed by the appearance of bimodal
+            distributions of hexamer frequencies and a large degree
+            of overlap between calibration curves (data not shown),
+            likely a result of divergent evolutionary rates between
+            <ENAMEX TYPE="SUBSTANCE">protein-coding</ENAMEX> and non-coding sequences [ <TIMEX TYPE="DATE">36, 37</TIMEX>].
+            <ENAMEX TYPE="ORGANIZATION">Chloroplast</ENAMEX> and mitochondrial sequences were eliminated
+            to avoid complications due to variation in <ENAMEX TYPE="SUBSTANCE">codon</ENAMEX> usage
+            between nuclear and organellar genomes.
+            <ENAMEX TYPE="PRODUCT">Table 2summarizes</ENAMEX> counts of sequences and
+            <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> in training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX> before and after trimming
+            and screening. All training sets obtained using the
+            procedure described above are available as additional
+            files.
+          
+          
+            Validation
+            To test the validity of word counting as a solution
+            to the problem, we identified a set of <NUMEX TYPE="CARDINAL">50</NUMEX> gene
+            sequences from <ENAMEX TYPE="FAC_DESC">plants</ENAMEX> ( 
+            <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula and 
+            <ENAMEX TYPE="PERSON">G. max</ENAMEX> ), oomycetes ( 
+            <ENAMEX TYPE="ORGANIZATION">Phytophthora</ENAMEX> ), zygomycetes ( 
+            Glomus versiforme ), and bacteria
+            ( 
+            Sinorhizobium meliloti and 
+            Agrobacterium tumefaciens ), for
+            which the function and origin have been characterized
+            <ENAMEX TYPE="PERSON">experimentally</ENAMEX>. We chose <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> known to play a role in
+            plant-microbe interactions, as well as <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are
+            found across taxa. We withheld these sequences, and
+            partial transcripts of the same <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, from training
+            sets prior to comparative lexical analysis, and
+            calculated hexamer dissimilarities for each of the
+            <TIMEX TYPE="DATE">three</TIMEX> training sets as described below.
+          
+        
+        
+          Test sequences
+          To diagnose the species of origin for sequences
+          expressed in symbiotic cultures, we collected sequences
+          generated by <TIMEX TYPE="TIME">distinct EST</TIMEX> sequencing projects from the
+          GenBank database [ <TIMEX TYPE="DATE">29, 30, 31</TIMEX>]. Sequences from pathogenic
+          interactions originated from cultures of a <ENAMEX TYPE="ANIMAL">species</ENAMEX> from
+          the genus 
+          Phytophthora with its <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> <ENAMEX TYPE="PER_DESC">host</ENAMEX>,
+          such as 
+          P. sojae and soybean ( 
+          <ENAMEX TYPE="PERSON">G. max</ENAMEX> ) isolated from inoculated
+          <ENAMEX TYPE="ORGANIZATION">hypocotyls</ENAMEX> <TIMEX TYPE="DATE">two days</TIMEX> after infection [ <TIMEX TYPE="DATE">18</TIMEX>] and 
+          P. medicaginis and 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula isolated from
+          infected roots <TIMEX TYPE="DATE">10 days</TIMEX> after infection (<ENAMEX TYPE="PERSON">C. Vance</ENAMEX>,
+          unpublished data). <ENAMEX TYPE="ORGANIZATION">Sequences</ENAMEX> expressed during mutualistic
+          interactions were obtained from cultures with 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula and mycorrhizal ( 
+          Glomus versiforme ; <ENAMEX TYPE="PERSON">M.J. Harrison</ENAMEX>,
+          unpublished data) or rhizobacterial ( 
+          <ENAMEX TYPE="PERSON">S. meliloti ; K. VandenBosch</ENAMEX>,
+          unpublished data) endosymbionts <TIMEX TYPE="DATE">several days</TIMEX> after
+          <ENAMEX TYPE="ORGANIZATION">inoculation</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Sequences</ENAMEX> expressed in pure, axenic cultures
+          from 
+          P. sojae mycelia and zoospores [
+          <NUMEX TYPE="CARDINAL">18</NUMEX>] and from sterile, uninoculated 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> truncatula roots [ <ENAMEX TYPE="LAW">6</ENAMEX>] provided a
+          basis for comparison in which no foreign transcripts were
+          expected.
+          To maximize the reliability of diagnostic comparisons,
+          we screened test sequences for high quality as for
+          training sequences, and for low similarity to 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , chloroplast and
+          mitochondrial <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, and non-coding <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> transcripts
+          (<ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX> and transfer RNAs). Independent BLASTN
+          comparisons identified sequences having very high
+          <ENAMEX TYPE="PERSON">similarity</ENAMEX> ( 
+          E < <NUMEX TYPE="PERCENT">10 -100</NUMEX>) to vector sequences
+          or moderately high similarity ( 
+          E < <NUMEX TYPE="PERCENT">10 -20</NUMEX>) to non-nuclear or
+          non-coding sequences obtained from <ENAMEX TYPE="GPE">GenBank</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Sequences</ENAMEX> so
+          identified were withheld from analysis. A summary of test
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> appears in <ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>. All test sequences obtained
+          using the procedure described above are available as
+          additional files.
+        
+        
+          Base content
+          We wrote a PERL program (countGC.<ENAMEX TYPE="ORGANIZATION">pl</ENAMEX>) that calculates
+          the <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> base content of a sequence as the portion of
+          <ENAMEX TYPE="ORGANIZATION">guanine</ENAMEX> and cytosine <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> among all unambiguous
+          (non-<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>) nucleotides in a sequence. The hist method in <ENAMEX TYPE="NATIONALITY">R</ENAMEX>,
+          version 1.1.1 [ <TIMEX TYPE="DATE">38</TIMEX>] aggregated continuous percentages
+          into discrete histogram bins, using bin sizes of <NUMEX TYPE="PERCENT">2%</NUMEX>
+          difference in <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>, with inclusive lower bin boundaries and
+          exclusive upper bounds; the lm method tested for linear
+          correlation of the dissimilarity test statistic 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> with <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>.
+        
+        
+          Comparative lexical analysis
+          White 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">19</TIMEX>] used a
+          likelihood-ratio test to determine whether word
+          frequencies from a particular sequence more closely
+          resemble the frequency distribution of control data sets
+          from the taxon being sequenced or a distantly related
+          <ENAMEX TYPE="ORGANIZATION">outgroup</ENAMEX>. They computed a test statistic 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(A,B,x) for each sequence 
+          x as the difference of
+          log-likelihood ratio dissimilarity measures, 
+          D ( 
+          A , 
+          x ) = <TIMEX TYPE="DATE">-2logλ</TIMEX>( 
+          A , 
+          x ), for <NUMEX TYPE="CARDINAL">two</NUMEX> data sets, a control
+          set 
+          A and an outgroup 
+          B , such that 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(A,B,x) = <ENAMEX TYPE="NATIONALITY">D</ENAMEX>(A,x) - <ENAMEX TYPE="NATIONALITY">D</ENAMEX>(B,x) . A
+          negative value for 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> indicates that the sequence more
+          closely resembles words from 
+          A ; conversely, a positive value
+          indicates a likely contaminant related to 
+          B . (<ENAMEX TYPE="ORGANIZATION">Dissimilarity</ENAMEX> is conceptually
+          related to distance. However, dissimilarity does not
+          measure distance because it does not possess the
+          mathematical properties of a distance metric [ <TIMEX TYPE="DATE">39</TIMEX>].)
+          Unlike the calculation of calibration curves, in which
+          <NUMEX TYPE="CARDINAL">300</NUMEX>-nucleotide subsequences are randomly resampled,
+          hexamer dissimilarity is measured over the whole length
+          of a test sequence when inferring a transcript's origin.
+          Originally, the <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> used the null hypothesis
+          that no difference exists for dissimilarity measures
+          between the two data sets, or that 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX>(A,B,x) = <NUMEX TYPE="CARDINAL">0</NUMEX> [ <TIMEX TYPE="DATE">19</TIMEX>]. White 
+          et al. [ <TIMEX TYPE="DATE">19</TIMEX>] tested <NUMEX TYPE="CARDINAL">two</NUMEX> alternative
+          hypotheses: that 
+          <ENAMEX TYPE="PRODUCT">t < 0</ENAMEX>, being more like 
+          A , or 
+          <ENAMEX TYPE="PRODUCT">t > 0</ENAMEX>, like 
+          B .
+          Lexical analysis using pentamers or heptamers yields
+          similar error rates and very highly correlated values for
+          the test result (not shown). Because <ENAMEX TYPE="ORGANIZATION">White</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">19</TIMEX>] reported the best
+          results were obtained using hexamers, and because a word
+          size of <NUMEX TYPE="CARDINAL">six</NUMEX> nucleotides corresponds to the size of a
+          dicodon, we chose to analyze hexamer frequencies. To use
+          longer words requires more training data, because the
+          number of possible words increases exponentially with
+          increasing word size. Use of shorter words may be
+          adequate for some applications and will be investigated
+          in future work.
+          Though we used <ENAMEX TYPE="PERSON">White</ENAMEX>'s word-counting methods, we did
+          make slight modifications. We simplified <NUMEX TYPE="CARDINAL">one</NUMEX> program
+          (called hybridize) to compute individual dissimilarity
+          values, rather than paired differences; a patch that
+          details how to modify the <ENAMEX TYPE="PRODUCT">C</ENAMEX> program is available (see
+          hyb2dis.<ENAMEX TYPE="ORGANIZATION">txt</ENAMEX> in additional data files). More importantly,
+          we amended the null hypothesis and interpreted
+          calibration curves to test for statistically significant
+          dissimilarity differences. Though the likelihood-ratio
+          test statistic indicates the magnitude of similarity to 
+          A or 
+          B , we do not know what values for 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> are significant with known
+          confidence. When testing hypotheses, one can make two
+          types of error: type I, or false positives, and <ENAMEX TYPE="DISEASE">type II</ENAMEX>,
+          false negatives [ <TIMEX TYPE="DATE">28</TIMEX>]. The false-positive rate is denoted
+          <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> and false-negative rate β. We determine α and β from
+          overlap in the calibration curves. Inferring error rates
+          from calibration curves is justified because we know the
+          correct answer and determine the error rate via
+          resampling, as with bootstrap methods to infer error
+          rates or confidence intervals [ <TIMEX TYPE="DATE">40</TIMEX>].
+          We are interested in knowing from which of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          organisms a sequence originated, and are reasonably
+          confident that it came from either one or the other.
+          Thus, we assume it came from <NUMEX TYPE="CARDINAL">one</NUMEX> and test whether we have
+          evidence to refute this assumption. The null hypothesis
+          here is that sequence 
+          x is from 
+          A . Alternatively, it might be from
+          
+          B . Evaluating the calibration
+          curve overlap at 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> quantifies the associated
+          error rates. The cumulative distribution function ( 
+          <ENAMEX TYPE="ORGANIZATION">cdf</ENAMEX> ) of taxon 
+          B specifies β where 
+          cdf 
+          B intersects <NUMEX TYPE="CARDINAL">0</NUMEX>; the 
+          cdf from 
+          A specifies α as <NUMEX TYPE="CARDINAL">1</NUMEX>- 
+          cdf 
+          A (<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>). We can thus resolve the problem
+          with known confidence 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> : 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> ( 
+          <ENAMEX TYPE="PRODUCT">t > 0</ENAMEX>) = <ENAMEX TYPE="PER_DESC">α</ENAMEX>. All other
+          computations were performed as described previously [
+          <NUMEX TYPE="CARDINAL">19</NUMEX>]. Software used for lexical analysis was obtained via
+          anonymous ftp from the TIGR software <ENAMEX TYPE="ORGANIZATION">FTP</ENAMEX> site [ <TIMEX TYPE="DATE">41</TIMEX>].
+        
+      
+      
+        Additional data files
+        The following files are available for download:
+        <ENAMEX TYPE="ORGANIZATION">countGC</ENAMEX>.pl: <ENAMEX TYPE="ORGANIZATION">PERL</ENAMEX> script used to compute <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content of
+        <ENAMEX TYPE="PERSON">sequences</ENAMEX> analyzed.
+        hyb2dis.txt: patch file that converts <ENAMEX TYPE="PERSON">White</ENAMEX>'s hybridize
+        program to compute individual dissimilarity values.
+        Training <ENAMEX TYPE="PRODUCT_DESC">sets</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">GlycineMedicago</ENAMEX>.txt,<ENAMEX TYPE="GPE">Rhizobia</ENAMEX>.txt,
+        <ENAMEX TYPE="ORGANIZATION">Stramenopiles</ENAMEX>.txt, <ENAMEX TYPE="GPE">ZygoChytrid</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">txt</ENAMEX>): FASTA-formatted text
+        files that contain the sequences used for calibration and
+        comparison.
+        Test sets(<ENAMEX TYPE="ORGANIZATION">PsojaeHA</ENAMEX>.txt, <ENAMEX TYPE="GPE">PsojaeMY</ENAMEX>.txt, <ENAMEX TYPE="GPE">PsojaeZO</ENAMEX>.txt,
+        <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX>.txt, <ENAMEX TYPE="ORGANIZATION">DSIR</ENAMEX>.txt, <ENAMEX TYPE="ORGANIZATION">MHAM</ENAMEX>.txt, <TIMEX TYPE="DATE">KV0</TIMEX>.txt, <TIMEX TYPE="DATE">KV2</TIMEX>.txt, <TIMEX TYPE="DATE">KV3</TIMEX>.<ENAMEX TYPE="ORGANIZATION">txt</ENAMEX>):
+        FASTA-formatted text files containing transcripts analyzed,
+        edited for quality.
+        Test results(<ENAMEX TYPE="ORGANIZATION">PsojaeHA</ENAMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <ENAMEX TYPE="GPE">PsojaeMY</ENAMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <ENAMEX TYPE="GPE">PsojaeZO</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">dat,</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX><ENAMEX TYPE="PRODUCT">-A1B1</ENAMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX><ENAMEX TYPE="PRODUCT">-A2B2</ENAMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">DSIR</ENAMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MHAM</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">dat,</ENAMEX>
+        KV0.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <TIMEX TYPE="DATE">KV2</TIMEX>.<ENAMEX TYPE="PERSON">dat</ENAMEX>, <TIMEX TYPE="DATE">KV3</TIMEX>.<ENAMEX TYPE="ORGANIZATION">dat</ENAMEX>): text files that contain
+        transcript analysis results, sorted from least to most
+        plant-like.
+        <ENAMEX TYPE="ORGANIZATION">countGC</ENAMEX>.pl
+        
+        <ENAMEX TYPE="ORGANIZATION">PERL</ENAMEX> script used to compute <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content of sequences
+        analyzed.
+        <ENAMEX TYPE="ORGANIZATION">countGC</ENAMEX>.pl
+        hyb2dis.txt
+        
+        Patch file that converts <ENAMEX TYPE="PERSON">White</ENAMEX>'s hybridize program to
+        compute individual dissimilarity values.
+        hyb2dis.txt
+        Training sets
+        
+        FASTA-formatted text files that contain the sequences
+        used for calibration and comparison.
+        <ENAMEX TYPE="ORGANIZATION">GlycineMedicago</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">Rhizobia</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">Stramenopiles</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">ZygoChytrid</ENAMEX>.txt
+        Test sets
+        
+        FASTA-formatted text files containing transcripts
+        analyzed, edited for quality.
+        <ENAMEX TYPE="ORGANIZATION">PsojaeHA</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">PsojaeMY</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">PsojaeZO</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX>.txt
+        <ENAMEX TYPE="ORGANIZATION">DSIR</ENAMEX>.txt
+        KV0.txt
+        KV2.txt
+        KV3.txt
+        Test results
+        
+        Text files that contain transcript analysis results,
+        sorted from least to most <ENAMEX TYPE="FAC_DESC">plant</ENAMEX>-like.
+        <ENAMEX TYPE="ORGANIZATION">PsojaeHA</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">PsojaeMY</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">PsojaeZO</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX><ENAMEX TYPE="PRODUCT">-A1B1</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">MtRHE</ENAMEX><ENAMEX TYPE="PRODUCT">-A2B2</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">DSIR</ENAMEX>.dat
+        <ENAMEX TYPE="ORGANIZATION">MHAM</ENAMEX>.dat
+        KV0.dat
+        KV2.dat
+        KV3.dat
+      
+    
+  

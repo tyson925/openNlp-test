@@ -1,0 +1,807 @@
+
+  
+    
+      
+        Background
+        The advent of microarray technology has enabled
+        <ENAMEX TYPE="PER_DESC">scientists</ENAMEX> to investigate biological questions in a more
+        global fashion. Instead of studying genes individually, the
+        expression of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes can be analyzed
+        simultaneously using probes attached to the surface of a
+        microscope slide [ <ENAMEX TYPE="LAW">1, 2, 3, 4, 5, 6</ENAMEX>]. The cDNA microarray
+        represents a popular array type in which double-stranded
+        <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products amplified from expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>)
+        clones are spotted onto <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>], allowing
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles to be determined with high
+        <ENAMEX TYPE="ORGANIZATION">reproducibility</ENAMEX> and efficiency. However, construction of
+        cDNA microarrays presents a number of challenges, largely
+        related to costs associated with clone validation, tracking
+        and maintenance. The laborious and problematic tracking of
+        <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons may lead to <NUMEX TYPE="PERCENT">10-30%</NUMEX>
+        misidentification of clones [ <ENAMEX TYPE="LAW">6</ENAMEX>]. For all practical
+        purposes, sequence verification of array elements is an
+        ongoing necessity. Other limitations of cDNA microarrays
+        are their difficulty, because of cross-hybridization, in
+        discriminating expression patterns of homologous genes,
+        alternative splice variants and antisense <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>.
+        Alternatively, microarrays can be composed of short
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> (<NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>) synthesized directly onto a
+        solid matrix using photolithographic technology
+        (<ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>) [ <ENAMEX TYPE="LAW">2, 9</ENAMEX>] or constructed from long
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> (<NUMEX TYPE="CARDINAL">55-70</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>) spotted onto <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides [
+        <TIMEX TYPE="DATE">10, 11, 12</TIMEX>]. To mimic the <ENAMEX TYPE="LOCATION">Affymetrix</ENAMEX> design of freely
+        moving probes tethered at <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">end</ENAMEX> onto a solid support,
+        in-house manufactured or commercially available long
+        oligonucleotides are modified by the addition of <TIMEX TYPE="DATE">a 5</TIMEX>' amino
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> for covalent attachment onto pre-activated glass
+        slides [ <ENAMEX TYPE="LAW">5, 10</ENAMEX>]. This oligonucleotide design strategy has
+        been widely viewed as a prerequisite for accurate
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression measurements. However, there is no clear
+        evidence that other covalent attachments do not form. With
+        oligonucleotide arrays, problems related to clone tracking,
+        handling of glycerol stocks and failed <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplifications
+        are avoided. The completion of numerous microbial, plant
+        and eukaryotic genomes, as well as extensive <TIMEX TYPE="TIME">EST</TIMEX> data,
+        provides sufficient sequence information to design unique
+        <ENAMEX TYPE="SUBSTANCE">oligonucleotides</ENAMEX> capable of distinguishing homologous genes
+        and alternative splice variants. As such, oligonucleotide
+        probes have an added flexibility over <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons.
+        <ENAMEX TYPE="ORGANIZATION">Comprehensive</ENAMEX> studies comparing the <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> approach
+        with cDNA arrays have only recently appeared in the
+        literature [ <TIMEX TYPE="DATE">13, 14</TIMEX>]. Studies comparing long
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> to cDNA arrays have not been as
+        forthcoming. In the only example to date, <NUMEX TYPE="CARDINAL">5</NUMEX>'-amino-modified
+        <NUMEX TYPE="CARDINAL">50</NUMEX>-mers representing prokaryotic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were compared to
+        corresponding <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> <ENAMEX TYPE="PER_DESC">amplicons</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]. Analysis of the
+        hybridization signals derived from these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types,
+        while providing important insights pertaining to
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and specificity, were limited in scope (total
+        of <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) and design (interrogation was carried out
+        with complementary targets derived from synthetic <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> as
+        opposed to cellular <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>). A drawback to using modified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> is the significant cost associated with
+        the addition of the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-amino <ENAMEX TYPE="SUBSTANCE">linker</ENAMEX>. An alternative
+        strategy is to utilize unmodified <ENAMEX TYPE="PER_DESC">oligonucleotides</ENAMEX> spotted
+        onto <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides, where attachment is believed to be
+        primarily ionic in nature [ <TIMEX TYPE="DATE">11</TIMEX>]. However, a comparison of
+        this approach to standard cDNA arrays has yet to be
+        provided. It is imperative that comparisons be carried out
+        on all <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types in the light of conflicting reports
+        regarding the correlation between <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> and cDNA
+        array-based expression measurements [ <TIMEX TYPE="DATE">13, 14</TIMEX>]. Whereas one
+        study shows both approaches correctly identifying <NUMEX TYPE="CARDINAL">16</NUMEX> out of
+        <NUMEX TYPE="CARDINAL">17</NUMEX> <ENAMEX TYPE="FAC_DESC">differentially</ENAMEX> regulated genes [ <TIMEX TYPE="DATE">13</TIMEX>], a <NUMEX TYPE="ORDINAL">second</NUMEX> study
+        found a correlation of 
+        r = <NUMEX TYPE="CARDINAL">0.328</NUMEX> between matched results
+        from the same <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. Discordant results were
+        not resolved in the latter study. Here we test the
+        performance of unmodified <NUMEX TYPE="CARDINAL">70</NUMEX>-mers printed alongside PCR
+        <ENAMEX TYPE="ORGANIZATION">amplicons</ENAMEX>. Using this unique study design, both probe types
+        can be simultaneously interrogated with a complex target
+        composed of both cellular and synthetic <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>.
+      
+      
+        Results
+        
+          Optimal attachment parameters for <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and PCR
+          amplicons on the same slide
+          The success of microarray assays requires stable
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> and retention of probes throughout the entire
+          <ENAMEX TYPE="CONTACT_INFO">printing/blocking/hybridization/</ENAMEX>washing process.
+          Oligonucleotides were spotted alongside <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons
+          onto <ENAMEX TYPE="ORGANIZATION">TeleChem SuperAmine aminated</ENAMEX> slides, and immobilized
+          by ultraviolet (UV) cross-linking. To determine the
+          <ENAMEX TYPE="ORGANIZATION">optimal UV</ENAMEX> cross-linking energy required for efficient
+          oligonucleotide immobilization, a series of spotted
+          arrays from the same printing session were subjected to
+          increasing UV energy (<TIMEX TYPE="DATE">70, 150, 250</TIMEX>, and <ENAMEX TYPE="CONTACT_INFO">450 mJ/cm 2</ENAMEX>).
+          Deposition and retention of the probe onto aminated
+          slides were assessed by: staining with <ENAMEX TYPE="ORGANIZATION">Vistra Green</ENAMEX>
+          solution and subsequent fluorescence scanning at <NUMEX TYPE="CARDINAL">532</NUMEX> nm;
+          and hybridization with <ENAMEX TYPE="WORK_OF_ART">Cy</ENAMEX>-labeled targets derived from
+          rat brain and heart <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. Using these <NUMEX TYPE="CARDINAL">two</NUMEX> methods, optimal
+          retention of both oligonucleotide and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes
+          was determined to occur <TIMEX TYPE="DATE">between 250</TIMEX> and <NUMEX TYPE="CARDINAL">450</NUMEX> <ENAMEX TYPE="PER_DESC">mJ</ENAMEX>/<ENAMEX TYPE="DISEASE">cm</ENAMEX> 2as
+          described below.
+          Directly following probe deposition, <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> cross-linking
+          at <ENAMEX TYPE="CONTACT_INFO">250 mJ/cm</ENAMEX> 2and <ENAMEX TYPE="ORGANIZATION">Vistra Green</ENAMEX> staining, the measured
+          fluorescence intensity from oligonucleotide probes was
+          typically higher than <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). The
+          efficiency of the oligonucleotide immobilization strategy
+          was tested by stringently washing the same slide
+          overnight in <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> (at <TIMEX TYPE="DATE">42°C</TIMEX>, <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> absent in wash
+          solution) to remove <ENAMEX TYPE="PERSON">Vistra Green</ENAMEX> and any loosely bound
+          nucleic <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>, restained with <ENAMEX TYPE="ORGANIZATION">Vistra Green</ENAMEX> and scanned
+          (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). There was essentially no change in the
+          average median intensity values for either the
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> or PCR amplicon probes after incubation
+          with <ENAMEX TYPE="SUBSTANCE">detergent</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>).
+          These results show that immobilization of unmodified
+          <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides to <ENAMEX TYPE="ORGANIZATION">SuperAmine aminated</ENAMEX> slides by
+          high-UV cross-linking energy is sufficient and comparable
+          to PCR amplicons. Clearly, our oligonucleotide
+          immobilization protocol should be sufficient to sustain
+          routine microarray hybridization and wash procedures,
+          which are much less stringent than the overnight wash at
+          42°C with <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> and no <ENAMEX TYPE="SUBSTANCE">salt</ENAMEX>.
+          The importance of titrating <ENAMEX TYPE="PRODUCT_DESC">UV</ENAMEX> cross-linking energy
+          for oligonucleotide immobilization is exemplified by a
+          series of spotted arrays hybridized with <ENAMEX TYPE="WORK_OF_ART">Cy</ENAMEX>-labeled
+          targets derived from rat brain and heart <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. As seen in
+          Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, there was an increase in the appearance of
+          <ENAMEX TYPE="ORGANIZATION">hybridized</ENAMEX> spots and signal intensity as the energy of
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-linking was increased. At lower cross-linking
+          <ENAMEX TYPE="PERSON">energies</ENAMEX> (for example, <TIMEX TYPE="DATE">70</TIMEX> and <ENAMEX TYPE="CONTACT_INFO">150 mJ/cm 2</ENAMEX>) it is apparent
+          that oligonucleotide probes were not sufficiently
+          attached to the surface of aminated slides. In contrast,
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons are sufficiently immobilized onto the
+          aminated surface of glass slides at these intensities [
+          <NUMEX TYPE="CARDINAL">15</NUMEX>]. On the basis of the <ENAMEX TYPE="SUBSTANCE">hybridization</ENAMEX> experiments and in
+          agreement with <ENAMEX TYPE="ORGANIZATION">Vistra Green</ENAMEX> staining results, optimal
+          attachment of <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides occurred between
+          <TIMEX TYPE="TIME">250 and</TIMEX> <ENAMEX TYPE="CONTACT_INFO">450 mJ/cm 2</ENAMEX>. An improvement in oligonucleotide
+          <ENAMEX TYPE="PERSON">retention</ENAMEX> onto aminated slides was not seen at
+          intensities higher than <ENAMEX TYPE="CONTACT_INFO">450 mJ/cm 2</ENAMEX>(data not shown). Of
+          interest was the finding that different slide chemistries
+          (that is, poly-L-lysine, aldehyde, aminosilane, epoxide)
+          had different <ENAMEX TYPE="PRODUCT_DESC">UV</ENAMEX> cross-linking titration curves for
+          optimal attachment of <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides, and
+          increasing the cross-linking intensity in some slide
+          types actually decreased apparent probe deposition (data
+          not shown). Even more surprising was the observation that
+          slides with the same or similar slide chemistry from
+          different <ENAMEX TYPE="ORG_DESC">vendors</ENAMEX> exhibited marked differences in the
+          <ENAMEX TYPE="ORGANIZATION">optimal UV</ENAMEX> cross-linking energy for probe attachment.
+        
+        
+          Sensitivity of unmodified <NUMEX TYPE="CARDINAL">70</NUMEX>-mers on aminated
+          slides
+          Defining assay sensitivity is important as the ability
+          to measure gene-expression changes is desired not only
+          for moderate and abundant <ENAMEX TYPE="SUBSTANCE">mRNAs</ENAMEX> but also for rare
+          transcripts. One method for assessing the sensitivity of
+          microarray assays is to use exogenous <ENAMEX TYPE="ORG_DESC">spiking</ENAMEX> controls.
+          These controls also help to identify systematic problems
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with target labeling, slide hybridization and
+          <ENAMEX TYPE="PERSON">scanning</ENAMEX>. For this purpose, we developed a set of <NUMEX TYPE="CARDINAL">10</NUMEX> 
+          Arabidopsis control cDNA plasmids.
+          Each of the <NUMEX TYPE="CARDINAL">10</NUMEX> plasmids was used to synthesize cRNA 
+          in vitro . cRNAs were quantitated
+          and differentially spiked into heart and brain <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          samples at specific copy numbers based on the following
+          assumptions: 360,000 mRNA transcripts per <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, <NUMEX TYPE="CARDINAL">20</NUMEX> pg
+          total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> per cell and <NUMEX TYPE="QUANTITY">1 pg mRNA transcript</NUMEX> per <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>;
+          hence, <NUMEX TYPE="CARDINAL">100</NUMEX> 'spike' copies/<ENAMEX TYPE="FAC_DESC">cell</ENAMEX> would be equivalent to
+          <NUMEX TYPE="CARDINAL">about 0.14</NUMEX> ng 'spike' transcript in <TIMEX TYPE="DATE">10 �</TIMEX>�g total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>]. To normalize our array data, we spiked <NUMEX TYPE="CARDINAL">five</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> control cRNAs into <TIMEX TYPE="DATE">the Cy3 and Cy5</TIMEX> labeling reactions
+          at equal copy number, ranging from <NUMEX TYPE="CARDINAL">40 to 100</NUMEX> copies per
+          cell. The remaining <NUMEX TYPE="CARDINAL">five</NUMEX> control cRNAs were spiked into
+          the labeling reactions at concentrations ranging from <NUMEX TYPE="CARDINAL">1</NUMEX>
+          to <NUMEX TYPE="CARDINAL">300</NUMEX> copies per cell. We printed 
+          Arabidopsis <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and PCR
+          <ENAMEX TYPE="ORGANIZATION">amplicons</ENAMEX> across <NUMEX TYPE="CARDINAL">six</NUMEX> different <ENAMEX TYPE="ORG_DESC">sectors</ENAMEX> in order to
+          measure intra-slide variability. <ENAMEX TYPE="ORGANIZATION">Inter</ENAMEX>-slide variability
+          was evaluated across independent hybridizations and
+          target labeling. Figures 3aand <TIMEX TYPE="DATE">3bcompare</TIMEX> the intra- and
+          <ENAMEX TYPE="ORGANIZATION">inter</ENAMEX>-slide variation of oligonucleotides to discern
+          <ENAMEX TYPE="ORGANIZATION">twofold</ENAMEX> changes in 
+          Arabidopsis <ENAMEX TYPE="ORG_DESC">targets</ENAMEX>. Similar
+          results were obtained for the detection of targets spiked
+          at threefold ratios (data not shown). These data show
+          that our oligonucleotide array <ENAMEX TYPE="FAC_DESC">platform</ENAMEX> was able to
+          detect <NUMEX TYPE="CARDINAL">two</NUMEX>- and threefold changes in transcript number at
+          a sensitivity of <NUMEX TYPE="CARDINAL">one</NUMEX> to <NUMEX TYPE="CARDINAL">two</NUMEX> copies per cell. Comparing
+          the sensitivity of oligonucleotide probes to PCR
+          <ENAMEX TYPE="ORGANIZATION">amplicons</ENAMEX> indicates that the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types perform
+          equally well at consistently detecting twofold changes in
+          rare transcript levels (Figure <NUMEX TYPE="CARDINAL">3c</NUMEX>).
+          
+          Arabidopsis probe elements serve as
+          excellent negative controls when exogenous cRNA is not
+          added to the labeling reaction. In the absence of cRNA
+          spiking, cross-hybridization of <ENAMEX TYPE="WORK_OF_ART">Cy</ENAMEX>-labeled rat targets to
+          
+          Arabidopsis probe elements was
+          <ENAMEX TYPE="PERSON">negligible</ENAMEX> (data not shown).
+        
+        
+          Concordance between probe types when measuring
+          differential gene expression in biological samples
+          To compare the accuracy of unmodified oligonucleotide
+          <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX> to conventional cDNA arrays, we hybridized slides
+          containing both probe types with equal amounts of
+          <ENAMEX TYPE="PERSON">Cy</ENAMEX>-labeled target derived from rat heart and brain <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">Hybridization</ENAMEX> to <NUMEX TYPE="CARDINAL">36</NUMEX> out of <NUMEX TYPE="CARDINAL">38</NUMEX> antisense-strand
+          oligonucleotide probes was negligible to nonexistent
+          under our incubation and wash protocols (data not shown).
+          A positive hybridization signal (threefold above
+          background) was obtained for <NUMEX TYPE="CARDINAL">65</NUMEX> of the <NUMEX TYPE="CARDINAL">75</NUMEX> sense-strand
+          oligonucleotide probes interrogated with labeled target.
+          Accordingly, each of the corresponding <NUMEX TYPE="CARDINAL">65</NUMEX> <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon
+          <ENAMEX TYPE="PERSON">probes</ENAMEX> had a positive hybridization signal (threefold
+          above background). As the intra-slide variation was low
+          (average standard deviation (SD) was <NUMEX TYPE="MONEY">around 0.07</NUMEX> and
+          around <NUMEX TYPE="MONEY">0.11</NUMEX> for log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> -transformed ratio values derived
+          from <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon and <NUMEX TYPE="CARDINAL">70</NUMEX>-mer spots, respectively), ratio
+          values from replicate spots within a slide were averaged.
+          Averaged ratios derived from independent experiments were
+          <ENAMEX TYPE="PERSON">plotted</ENAMEX> and regression analysis was performed to assess
+          reproducibility of <ENAMEX TYPE="SUBSTANCE">arrays</ENAMEX> containing oligonucleotide
+          targets (Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>). A similar comparison was performed
+          on <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). Both oligonucleotide
+          and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes showed high reproducibility
+          between replicate experiments (that is, different slides
+          hybridized with targets generated from different batches
+          of <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX>) with correlation coefficients ( 
+          r ) of <NUMEX TYPE="MONEY">0.95 and 0.96</NUMEX>, respectively.
+          Next, we compared oligonucleotide-derived ratios with
+          those obtained from <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes (Figure <NUMEX TYPE="CARDINAL">4c</NUMEX>). A
+          correlation coefficient of 
+          r = <NUMEX TYPE="CARDINAL">0.80</NUMEX> ( 
+          p <NUMEX TYPE="MONEY">< 0.05</NUMEX>) and a slope close to
+          unity were obtained, indicating that unmodified
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes gave comparable
+          expression ratios. Moreover, there was agreement in the
+          calculated average coefficient of variation (<NUMEX TYPE="PERCENT">13.4%</NUMEX>) for
+          the expression ratios computed from the two probe
+          types.
+        
+        
+          Validation of microarray results with real-time
+          PCR
+          Of the <TIMEX TYPE="DATE">65</TIMEX> represented genes that had a positive
+          hybridization signal with both the oligonucleotide and
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types, <NUMEX TYPE="CARDINAL">60</NUMEX> were in agreement of each
+          other (Figure <NUMEX TYPE="CARDINAL">4c</NUMEX>). <ENAMEX TYPE="ORGANIZATION">Real-time PCR</ENAMEX> was used to test the
+          accuracy of our microarray results (Figure <NUMEX TYPE="CARDINAL">5a</NUMEX>). <NUMEX TYPE="CARDINAL">Six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          exhibiting a range of expression differences in heart and
+          brain were selected for validation. These included
+          <ENAMEX TYPE="ORGANIZATION">histone</ENAMEX> <ENAMEX TYPE="PRODUCT">H4</ENAMEX>, which did not exhibit differential expression
+          in the two tissues (log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratio <NUMEX TYPE="MONEY">around 0</NUMEX>); cytochrome oxidase
+          <ENAMEX TYPE="PERSON">IV</ENAMEX>, kynurenine <NUMEX TYPE="CARDINAL">3</NUMEX>-hydroxylase, <ENAMEX TYPE="PER_DESC">serine</ENAMEX>/threonine protein
+          <ENAMEX TYPE="ORGANIZATION">kinase</ENAMEX> and <NUMEX TYPE="CARDINAL">14-3</NUMEX>-<NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein gamma</ENAMEX> which exhibited <NUMEX TYPE="CARDINAL">two</NUMEX>- to
+          threefold differences (log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratio = <NUMEX TYPE="CARDINAL">1</NUMEX> to <NUMEX TYPE="MONEY">1.6</NUMEX>); and desmin which
+          was around <NUMEX TYPE="CARDINAL">32-fold</NUMEX> <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed between the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> tissues (log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratio <NUMEX TYPE="CARDINAL">approximately 5</NUMEX>). In each
+          case, the expression ratios derived from oligonucleotide
+          and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes were in accord with real-time PCR
+          results.
+          There were <NUMEX TYPE="CARDINAL">five</NUMEX> notable discrepancies between the two
+          probe types, as compared to the <TIMEX TYPE="DATE">60</TIMEX> that were in
+          agreement. A discrepancy was defined as a change equal to
+          or greater than twofold measured with one probe type and
+          no change (or a change in the opposite direction)
+          measured with the other <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> type. The resolution of the
+          discordant results for inositol-<NUMEX TYPE="CARDINAL">1,4,5</NUMEX>-trisphosphate
+          <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">H +-ATPase</ENAMEX>, branched aminotransferase and
+          epoxide hydrolase is presented in Figure <TIMEX TYPE="DATE">5b</TIMEX>. In each
+          case, real-time <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> results were in agreement with the
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon-derived expression ratios. Interestingly,
+          each of the oligonucleotide-derived expression ratios
+          <ENAMEX TYPE="PERSON">erroneously</ENAMEX> suggested that these genes were not
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in heart and brain tissues.
+        
+        
+          Effect of oligonucleotide probe concentration on
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity
+          In our initial experiments, unmodified <NUMEX TYPE="CARDINAL">70</NUMEX>-mer
+          oligonucleotides were printed onto <ENAMEX TYPE="ORGANIZATION">TeleChem</ENAMEX> slides at a
+          relatively high concentration of <NUMEX TYPE="QUANTITY">50 μM</NUMEX>. By comparison,
+          the concentration for printing <ENAMEX TYPE="ORG_DESC">5</ENAMEX>'-amino <ENAMEX TYPE="SUBSTANCE">linker</ENAMEX> modified
+          <NUMEX TYPE="CARDINAL">50</NUMEX>-mer oligonucleotides was <NUMEX TYPE="QUANTITY">20 �</NUMEX>�m [ <TIMEX TYPE="DATE">12</TIMEX>]. To test the
+          performance of unmodified oligonucleotides at lower
+          printing concentrations, <NUMEX TYPE="CARDINAL">seven</NUMEX> rat <NUMEX TYPE="CARDINAL">70</NUMEX>-mer
+          oligonucleotides were serially diluted from <TIMEX TYPE="DATE">50, 25</TIMEX>, <NUMEX TYPE="CARDINAL">12.5</NUMEX>
+          to <NUMEX TYPE="QUANTITY">6.25 μM</NUMEX>. Each <ENAMEX TYPE="PER_DESC">oligonucleotide</ENAMEX> was chosen on the basis
+          of earlier microarray results showing that both
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> and cDNA probes could hybridize to heart
+          and brain targets, and that hybridization intensities
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the <NUMEX TYPE="CARDINAL">seven</NUMEX> different gene elements varied
+          by at least an order in magnitude. The selected probes
+          included SCG10 and desmin, which were highly
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in brain and heart,
+          respectively; <NUMEX TYPE="CARDINAL">14-3</NUMEX>-<NUMEX TYPE="CARDINAL">3</NUMEX>-<ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> and profilin which were
+          expressed at around twofold higher levels in brain and
+          heart, respectively; and histone <TIMEX TYPE="DATE">H4</TIMEX>, <TIMEX TYPE="TIME">14-3-3-theta</TIMEX> and
+          thymosin beta-<NUMEX TYPE="CARDINAL">4</NUMEX>, which showed no difference in expression
+          between brain and heart. All diluted oligonucleotides
+          along with their corresponding undiluted PCR amplicons
+          (<TIMEX TYPE="TIME">approximately 100-200 nM</TIMEX>) were spotted onto the array at
+          least <NUMEX TYPE="CARDINAL">four</NUMEX> times. A stained <ENAMEX TYPE="PER_DESC">representative</ENAMEX> section of an
+          array printed with different starting concentrations of
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> and a single concentration of the
+          corresponding <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons is depicted in Figure <NUMEX TYPE="CARDINAL">6</NUMEX>. As
+          the starting oligonucleotide concentration was decreased
+          from <NUMEX TYPE="QUANTITY">50 μm to 6.25 μM</NUMEX> (eightfold dilution), DNA
+          <ENAMEX TYPE="FAC_DESC">fluorescence</ENAMEX> decreased on average twofold for the
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> (data not shown). This suggests that the
+          capacity of the slides to retain <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides
+          in a typical <NUMEX TYPE="CARDINAL">100</NUMEX> μm diameter spot approached saturation
+          at the higher concentrations.
+          <ENAMEX TYPE="SUBSTANCE">Arrays</ENAMEX> containing diluted oligonucleotides were
+          hybridized with labeled targets derived from brain and
+          heart <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> as before. The median <TIMEX TYPE="DATE">Cy3 and Cy5</TIMEX> hybridization
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> (minus background) were summed for each
+          oligonucleotide concentration along with their
+          corresponding cDNA <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>). A comparison of
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> and cDNA probes clearly demonstrates that
+          the longer probe length of the latter does not
+          necessarily translate to greater hybridization signal
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>. While the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes for <NUMEX TYPE="CARDINAL">14-3</NUMEX>-3
+          <ENAMEX TYPE="SUBSTANCE">protein theta</ENAMEX>, desmin and thymosin beta-4 generated
+          higher signals than the corresponding oligonucleotide
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>, the converse was observed for <NUMEX TYPE="CARDINAL">14-3</NUMEX>-3 protein
+          <ENAMEX TYPE="PERSON">gamma</ENAMEX>, histone <ENAMEX TYPE="PRODUCT">H4</ENAMEX> and profilin. Moreover, there was no
+          <ENAMEX TYPE="PERSON">correlation</ENAMEX> ( 
+          r = <NUMEX TYPE="CARDINAL">0.06</NUMEX>, 
+          p <NUMEX TYPE="MONEY">> 0.05</NUMEX>) between the
+          hybridization signal intensities acquired from PCR
+          amplicon probes and the corresponding oligonucleotide
+          probes. Of interest was the apparent inverse correlation
+          between oligonucleotide concentration and hybridization
+          intensity. Hybridization intensities actually increased
+          with decreasing oligonucleotide concentration for <NUMEX TYPE="CARDINAL">14-3</NUMEX>-3
+          <ENAMEX TYPE="SUBSTANCE">protein gamma</ENAMEX>, desmin, <TIMEX TYPE="DATE">SCG10</TIMEX>, and to a lesser extent
+          thymosin beta-4 (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>).
+          For the oligonucleotides corresponding to
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes (for example, 
+          SCG10, desmin, <NUMEX TYPE="CARDINAL">14-3</NUMEX>-<NUMEX TYPE="CARDINAL">3</NUMEX>-<ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">profilin</ENAMEX> ), the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratios from <NUMEX TYPE="CARDINAL">four</NUMEX> independent
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> (including flip <ENAMEX TYPE="SUBSTANCE">dye</ENAMEX> experiments) were
+          averaged and plotted in Figure <TIMEX TYPE="DATE">7b</TIMEX>. The calculated ratios
+          were highly reproducible and similar across the entire
+          concentration range tested. This suggests that an
+          oligonucleotide concentration <NUMEX TYPE="CARDINAL">as low as 6.25</NUMEX> μM is
+          sufficient for accurate determination of relative
+          expression differences. As the absolute levels of these
+          <NUMEX TYPE="CARDINAL">four</NUMEX> transcripts in rat heart and brain are not known
+          with certainty, we repeated these experiments with known
+          concentrations of synthetic 
+          Arabidopsis cRNA that were
+          differentially spiked into rat heart and brain <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. <NUMEX TYPE="CARDINAL">Six</NUMEX> 
+          Arabidopsis oligonucleotides were
+          accordingly diluted and printed onto aminated slides to
+          test their ability to discriminate twofold differences in
+          synthetic cRNA concentrations ranging from <TIMEX TYPE="DATE">10 to 300</TIMEX>
+          copies per cell. Our data clearly show that an 
+          Arabidopsis oligonucleotide probe
+          concentration <NUMEX TYPE="CARDINAL">as low as 6.25</NUMEX> μM was sufficient to
+          accurately determine twofold differences in cRNA species
+          at a ratio of <NUMEX TYPE="CARDINAL">20/10</NUMEX> copies per cell (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>).
+        
+      
+      
+        Discussion
+        In the study reported here, we systematically compared
+        the performance of unmodified <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides to
+        <ENAMEX TYPE="ORGANIZATION">traditional PCR</ENAMEX> amplicons, both probe types printed and UV
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-linked onto <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides coated with primary amine
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Direct comparisons are best accomplished when both
+        probes are printed alongside each other, allowing for
+        simultaneous interrogation with a complex target. Hence,
+        analysis is not confounded by uneven aminosilane coating in
+        different batches of slides, inconsistencies in the array
+        resulting from different print sessions, differences in
+        <ENAMEX TYPE="PRODUCT">day-to-day</ENAMEX> label incorporation, or variations in <TIMEX TYPE="DATE">day-to-day</TIMEX>
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> and wash procedures. A correlation
+        <ENAMEX TYPE="ORGANIZATION">coefficient</ENAMEX> ( 
+        r ) of <NUMEX TYPE="CARDINAL">0.80</NUMEX> was obtained from our
+        analysis, indicating that the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types gave
+        comparable expression ratios. One variable that was not
+        controlled for in our study was the number of cross-links
+        per DNA molecule. Given a constant UV exposure, many more
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-links per molecule of cDNA <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> are presumably
+        formed compared to the shorter oligonucleotide <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>. It is
+        possible that the correlation coefficient was not higher as
+        a result of the differential reaction of the two probe
+        types to <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> irradiation.
+        We designed our arrays to contain <NUMEX TYPE="CARDINAL">75</NUMEX> different probes
+        corresponding to mammalian signal transduction genes with a
+        wide range of expression levels. In heart versus brain
+        comparisons, oligonucleotide probes, like their cDNA probe
+        <ENAMEX TYPE="PER_DESC">counterparts</ENAMEX>, could reproducibly discern differences in
+        mRNA <ENAMEX TYPE="PER_DESC">populations</ENAMEX> <NUMEX TYPE="MONEY">as low as twofold</NUMEX> (namely, <NUMEX TYPE="CARDINAL">14-3</NUMEX>-3 protein
+        <ENAMEX TYPE="ORGANIZATION">gamma</ENAMEX>) and <NUMEX TYPE="CARDINAL">as high as around 90-fold</NUMEX> (namely, creatine
+        <ENAMEX TYPE="ORGANIZATION">kinase</ENAMEX>). Hence, the dynamic range of unmodified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> is <NUMEX TYPE="CARDINAL">at least two</NUMEX> orders of magnitude in
+        fold-change measurements.
+        In the course of our work, we generated a resource of <NUMEX TYPE="CARDINAL">10</NUMEX>
+        
+        Arabidopsis spiking control cRNAs
+        along with their corresponding <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotide and
+        <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon probes. As part of our quality-control
+        procedures, all microarray assays routinely incorporate the
+        <ENAMEX TYPE="ORGANIZATION">spiking</ENAMEX> controls. These reagents will allow the microarray
+        <ENAMEX TYPE="PER_DESC">user</ENAMEX> to add specific concentrations of known transcripts
+        into a complex mix of mammalian target <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> in order to
+        assess, for example, hybridization kinetics, intra-slide
+        variability, inter-slide variability, sensitivity and
+        effectiveness of normalization algorithms. On the basis of
+        experiments with the <ENAMEX TYPE="ORG_DESC">spiking</ENAMEX> controls, unmodified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> can be used to detect twofold changes in
+        <ENAMEX TYPE="CONTACT_INFO">transcript</ENAMEX> number at a level of <NUMEX TYPE="CARDINAL">2-20</NUMEX> mRNA copies per cell.
+        It is important to note that our protocol for generating
+        <NUMEX TYPE="ORDINAL">first</NUMEX>-strand cDNA <ENAMEX TYPE="ORG_DESC">target</ENAMEX> involves the use of random
+        <ENAMEX TYPE="ORGANIZATION">primers</ENAMEX>. At the outset, the 
+        Arabidopsis cRNAs were engineered to
+        contain a <NUMEX TYPE="CARDINAL">3</NUMEX>' poly(A) tail. Hence, alternative protocols
+        using oligo(dT) to prime mRNA for the synthesis of labeled
+        target [ <TIMEX TYPE="DATE">15, 16</TIMEX>] can still take advantage of our spiking
+        <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> set.
+        In our initial assessment of cDNA and <NUMEX TYPE="CARDINAL">70</NUMEX>-mer
+        oligonucleotide <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> types, the latter was printed at a
+        concentration of <NUMEX TYPE="QUANTITY">50 μM</NUMEX>. Even at a printing concentration as
+        low as <ENAMEX TYPE="PRODUCT">6 μM</ENAMEX>, oligonucleotide probes were capable of
+        discerning twofold expression differences in complex
+        cellular <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> mixtures and in synthetic spiked cRNAs. In
+        fact, decreasing the oligonucleotide printing concentration
+        from <NUMEX TYPE="CARDINAL">50 to 6</NUMEX> μM had the effect of increasing the
+        hybridization signal around <NUMEX TYPE="CARDINAL">two</NUMEX>- to sixfold for a number of
+        the probes (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>). The reason is unclear, but it is
+        possible that high-density packing of an oligonucleotide
+        probe within the confines of a small spot interferes with
+        fluorescence emission of the <ENAMEX TYPE="ORG_DESC">target</ENAMEX> or hybridization
+        efficiency. Alternatively, the higher spotting
+        concentrations may favor cross-linking of the
+        oligonucleotide probes to each other following UV
+        <ENAMEX TYPE="PERSON">irradiation</ENAMEX>. In either case, this phenomenon appears to be
+        sequence dependent as not all probes exhibited this
+        behavior. The present study also demonstrates that longer
+        probes are not necessarily associated with higher
+        hybridization signals, as the hybridization signals from
+        half of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotide probes were actually
+        higher than or equivalent to their corresponding PCR
+        amplicons, which have an average length of <NUMEX TYPE="MONEY">1 kilobase</NUMEX> (kb).
+        Taken together, the combination of unmodified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> and low printing concentrations has
+        resulted in an <NUMEX TYPE="CARDINAL">approximately 16</NUMEX>-fold reduction in reagent
+        costs. An issue not evaluated in the present study, but one
+        that has significant cost-saving potential, is the effect
+        of reducing the length of unmodified oligonucleotides on
+        microarray sensitivity. Clearly, this is an area for future
+        investigation.
+        Of the <NUMEX TYPE="CARDINAL">five</NUMEX> discordant results found between
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> and cDNA arrays, real-time <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> data
+        validated the accuracy of the cDNA <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> type in every case
+        (Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>). It seems likely that a failure in
+        oligonucleotide <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> design was responsible for the
+        discordant data. Analysis of the discordant oligonucleotide
+        <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> (that is, inositol-<NUMEX TYPE="CARDINAL">1,4,5</NUMEX>-<ENAMEX TYPE="SUBSTANCE">trisphosphate</ENAMEX> receptor,
+        <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> +-ATPase, branched aminotransferase and epoxide
+        <ENAMEX TYPE="ORGANIZATION">hydrolase</ENAMEX>) did not reveal any obvious secondary structure
+        that might interfere with hybridization. Treatment of
+        spotted arrays with <ENAMEX TYPE="PRODUCT">UV</ENAMEX> light is thought to induce
+        <ENAMEX TYPE="GPE">free-radical</ENAMEX>-based coupling between thymidine <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> on
+        the oligonucleotide and carbon atoms on the alkyl amine
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of coated glass slides (<ENAMEX TYPE="PERSON">Todd Martinsky</ENAMEX>, TeleChem
+        <ENAMEX TYPE="ORGANIZATION">International</ENAMEX>, personal communication). The <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> content of
+        <ENAMEX TYPE="ORGANIZATION">concordant</ENAMEX> and discordant oligonucleotides was similar,
+        with average values of <NUMEX TYPE="PERCENT">26% and 29%</NUMEX>, respectively,
+        suggesting that <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> cross-linking was not preferentially
+        disrupting hybridization specificity of discordant <NUMEX TYPE="CARDINAL">70</NUMEX>-mers.
+        Moreover, there was a lack of correlation ( 
+        r = <NUMEX TYPE="CARDINAL">0.03</NUMEX>, 
+        p <NUMEX TYPE="MONEY">> 0.05</NUMEX>) between <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> content of the
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> and corresponding hybridization signal
+        <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>. Of interest, however, was the finding that the
+        discordant oligonucleotides had an average GC content of
+        <NUMEX TYPE="PERCENT">57%</NUMEX> compared to the concordant oligonucleotide average of
+        <NUMEX TYPE="PERCENT">50%</NUMEX>. Accordingly, the hybridization signal associated with
+        the discordant oligonucleotides was around <NUMEX TYPE="CARDINAL">two</NUMEX>- to
+        threefold higher than the concordant oligonucleotides,
+        suggesting that 'non-specific' <ENAMEX TYPE="WORK_OF_ART">Cy</ENAMEX>-labeled <ENAMEX TYPE="PER_DESC">targets</ENAMEX> were
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridizing with the discordant oligonucleotides.
+        This possibility is clearly illustrated for the H +-ATPase
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). Within the H +-ATPase <NUMEX TYPE="CARDINAL">70</NUMEX>-mer sequence is a
+        stretch of <NUMEX TYPE="CARDINAL">20</NUMEX> contiguous nucleotides perfectly matching a
+        region in the tumor <ENAMEX TYPE="SUBSTANCE">endothelial marker 8</ENAMEX> mRNA. It has been
+        shown previously that <NUMEX TYPE="CARDINAL">15</NUMEX> contiguous nucleotides are
+        sufficient for cross-hybridization of non-target species [
+        <NUMEX TYPE="CARDINAL">12</NUMEX>]. There are <NUMEX TYPE="CARDINAL">two</NUMEX> important points to note. First, the PCR
+        amplicon for <ENAMEX TYPE="ORGANIZATION">H +-ATPase</ENAMEX> also contains the same <NUMEX TYPE="CARDINAL">20</NUMEX>
+        <ENAMEX TYPE="PERSON">contiguous</ENAMEX> nucleotides (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). Regardless of this, this
+        particular probe was still able to distinguish differential
+        expression of the H +-ATPase <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in heart and brain
+        tissue. We postulate that a large fraction of H
+        <ENAMEX TYPE="PRODUCT">+-ATPase-specfic Cy-</ENAMEX>labeled targets (which on average
+        should be <NUMEX TYPE="QUANTITY">100-200 nucleotides long</NUMEX>) were available for
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> to complementary sequences found on the
+        longer PCR amplicon <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> but absent on the shorter <NUMEX TYPE="CARDINAL">70</NUMEX>-mer
+        probe (for example, sequences downstream of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mer).
+        <NUMEX TYPE="ORDINAL">Second</NUMEX>, tumor <ENAMEX TYPE="SUBSTANCE">endothelial marker 8 mRNA</ENAMEX> was identified in
+        <ENAMEX TYPE="ANIMAL">mouse</ENAMEX>. The <ENAMEX TYPE="ANIMAL">orthologous rat mRNA</ENAMEX> has not been cloned yet,
+        which is reflected by the <NUMEX TYPE="CARDINAL">more than 2.5 million</NUMEX> mouse <TIMEX TYPE="TIME">EST</TIMEX>
+        sequences present in dbEST, compared to <NUMEX TYPE="CARDINAL">only 351,827</NUMEX> ESTs
+        for the <ENAMEX TYPE="ANIMAL">rat</ENAMEX>. On the basis of BLAST searches of human and
+        <ENAMEX TYPE="ANIMAL">mouse sequences</ENAMEX>, contiguous non-target sequences could also
+        be identified in the discordant oligonucleotides for
+        inositol-<NUMEX TYPE="CARDINAL">1,4,5</NUMEX>-<ENAMEX TYPE="SUBSTANCE">trisphosphate</ENAMEX> receptor, branched
+        amino-transferase and epoxide hydrolase. Hence, future
+        oligonucleotide design considerations should include an
+        analysis of <ENAMEX TYPE="ANIMAL">mouse</ENAMEX> and human <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX>, because of the
+        relatively small number of available rat sequence for
+        expressed transcripts. In addition, the synthesis of
+        redundant <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> (for example, <NUMEX TYPE="QUANTITY">two 70-mers</NUMEX> per gene)
+        might be warranted to help decrease false negatives by an
+        order of magnitude.
+        The mechanism of the adherence of unmodified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> to glass slides has been addressed [ <TIMEX TYPE="DATE">11</TIMEX>].
+        Attachment involves noncovalent interactions such as
+        electrostatic interactions, where the negatively charged
+        phosphate backbone of the oligonucleotide is attracted to
+        the positively charged surface of the glass slide (for
+        example, a surface containing <ENAMEX TYPE="SUBSTANCE">protonated</ENAMEX> alkyl amines).
+        Whereas noncovalent interactions appear to be the
+        predominant mechanism for oligonucleotide attachment,
+        covalent linkage is likely to have an important
+        <ENAMEX TYPE="ORGANIZATION">supplementary</ENAMEX> role in <ENAMEX TYPE="ORGANIZATION">UV-irradiated</ENAMEX> microarrays. This seems
+        plausible as our stringent overnight washes in strong
+        <ENAMEX TYPE="SUBSTANCE">detergent</ENAMEX> did not appreciably detach unmodified
+        oligonucleotides from the slide surface. The importance of
+        <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> cross-linking cannot be overemphasized.
+        Under-irradiation of cDNA arrays is known to cause
+        insufficient binding of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and over-irradiation results in
+        <NUMEX TYPE="CARDINAL">over</NUMEX>-nicking of <ENAMEX TYPE="SUBSTANCE">DNA samples</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>]. A further complicating
+        factor is our finding that oligonucleotides printed onto
+        different slide chemistries (or slides with similar
+        chemistries from different <ENAMEX TYPE="ORG_DESC">vendors</ENAMEX>) will have very
+        different optimal UV titration curves. In our hands,
+        <ENAMEX TYPE="ORGANIZATION">optimal UV</ENAMEX> cross-linking occurred at <NUMEX TYPE="CARDINAL">450 and 70</NUMEX> <ENAMEX TYPE="PER_DESC">mJ</ENAMEX>/<ENAMEX TYPE="DISEASE">cm</ENAMEX> 2for
+        oligonucleotides printed onto <ENAMEX TYPE="LOCATION">TeleChem SuperAmine™</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Corning GAP II™</ENAMEX> slides, respectively. For <ENAMEX TYPE="ORGANIZATION">TeleChem</ENAMEX> slides,
+        under-irradiation (<ENAMEX TYPE="CONTACT_INFO">70-150 mJ/cm 2</ENAMEX>) causes insufficient
+        oligonucleotide attachment. For <ENAMEX TYPE="ORGANIZATION">Corning</ENAMEX> slides,
+        <NUMEX TYPE="CARDINAL">over</NUMEX>-irradiation (<ENAMEX TYPE="CONTACT_INFO">150-450 mJ/cm 2</ENAMEX>) results in a decrease in
+        the hybridization signal that may reflect excessive
+        covalent attachment of oligonucleotides. As UV
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-linking may adversely affect oligonucleotide
+        <ENAMEX TYPE="ORGANIZATION">accessibility</ENAMEX> to labeled <ENAMEX TYPE="ORG_DESC">target</ENAMEX> during <TIMEX TYPE="DATE">hybridization</TIMEX>, we
+        cannot discount the possibility that alternative attachment
+        strategies (for example, <NUMEX TYPE="CARDINAL">5</NUMEX>'-amino-modified
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX>) may provide greater sensitivity and
+        <ENAMEX TYPE="PERSON">specificity</ENAMEX>. This issue needs to be explored in the
+        future.
+        In summary, the present study provides evidence that the
+        performance of unmodified <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotides is
+        comparable to cDNAs printed on <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides. Optimal
+        conditions were identified for oligonucleotide attachment
+        and <ENAMEX TYPE="DISEASE">hybridization</ENAMEX>/wash conditions, resulting in high assay
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX> and reproducibility. Our results show that
+        unmodified oligonucleotides can provide an accurate,
+        <ENAMEX TYPE="ORGANIZATION">reproducible</ENAMEX> and cost-effective means to measure
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profiles. Of interest is the fact that our
+        hybridizations were successfully carried out on slides that
+        simultaneously contained both PCR amplicons and
+        <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX>. Hence, future microarrays can be
+        constructed in a modular fashion, with
+        <ENAMEX TYPE="GPE">oligonucleotide</ENAMEX>-based elements being added to existing PCR
+        amplicons as more genomic sequence information is gathered,
+        in the absence of readily available cDNA clones. Lastly,
+        our findings have broader implications, suggesting that the
+        combination of expression measurements across different
+        <ENAMEX TYPE="PERSON">platforms</ENAMEX> (for example, <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> and cDNA arrays,
+        unmodified long oligonucleotides and cDNA arrays) within a
+        single analysis maybe feasible [ <TIMEX TYPE="DATE">18</TIMEX>].
+      
+      
+        Materials and methods
+        
+          Constructing exogenous spiking <ENAMEX TYPE="ORG_DESC">cRNA</ENAMEX> controls and a
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicon printing set to assess oligonucleotide
+          sensitivity
+          <TIMEX TYPE="TIME">Ten</TIMEX> 
+          Arabidopsis thaliana genes
+          corresponding to chlorophyll a/b-binding <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="PRODUCT">Cab</ENAMEX>),
+          lipid transfer <ENAMEX TYPE="SUBSTANCE">protein 4</ENAMEX> (<NUMEX TYPE="MONEY">Ltp4</NUMEX>), lipid transfer protein <NUMEX TYPE="CARDINAL">6</NUMEX>
+          (<NUMEX TYPE="MONEY">Ltp6</NUMEX>), <TIMEX TYPE="DATE">NAC1</TIMEX>, ribulose-<NUMEX TYPE="CARDINAL">5</NUMEX>-phosphate kinase (PRKase),
+          ribulose-<NUMEX TYPE="CARDINAL">1,5</NUMEX>-bisphosphate <ENAMEX TYPE="DISEASE">carboxylase</ENAMEX>/oxygenase large
+          <ENAMEX TYPE="ORGANIZATION">subunit</ENAMEX> (rbcL), rubisco activase (<ENAMEX TYPE="ORGANIZATION">Ra</ENAMEX>), root cap <TIMEX TYPE="DATE">1</TIMEX> (<NUMEX TYPE="MONEY">RCP1</NUMEX>),
+          triosphosphate isomerase (<ENAMEX TYPE="ORGANIZATION">TIM</ENAMEX>), and papain-type cysteine
+          <ENAMEX TYPE="ORGANIZATION">endopeptidase</ENAMEX> (<NUMEX TYPE="MONEY">XCP2</NUMEX>) were chosen for <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplification on
+          the basis of their plant-specific expression. PCR
+          amplicons of <NUMEX TYPE="CARDINAL">approximately 500</NUMEX> base-pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>) were
+          amplified from an 
+          Arabidopsis cDNA library
+          constructed from leaf tissue or genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> using sense
+          and antisense gene-specific primers flanked by a 
+          <ENAMEX TYPE="PERSON">Hind III</ENAMEX> and 
+          Sac I adaptor sites for subcloning,
+          respectively. Primers were synthesized by <ENAMEX TYPE="ORGANIZATION">Invitrogen/Life</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Technologies</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">Operon Technologies</ENAMEX> and purified by <ENAMEX TYPE="ORGANIZATION">PAGE</ENAMEX>.
+          Primer sequences are as follows:
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CCACTGTAGATGGGCTATGC-3</ENAMEX>' and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">AGGGATAACAATATCGCCAA-3</ENAMEX>'
+          for <ENAMEX TYPE="PRODUCT">Cab; 5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TCACCCAAAAGAGAAGAGCA-3</ENAMEX>' and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CAAAGCCATCAAGACAAACA-3</ENAMEX>' for <TIMEX TYPE="DATE">Ltp4</TIMEX>;
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TCTTATTAGCCGTGTGCCTG-3</ENAMEX>' and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CAACTAGCAAACCAATGCCC-3</ENAMEX>'
+          for <TIMEX TYPE="DATE">Ltp6</TIMEX>; <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CAACATGGGAAGCTGTTTTG-3</ENAMEX>' and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CAAGCACACGTTATTTCCCC-3</ENAMEX>' for
+          NAC1;<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CGGAGAAGAAGAGGAGACCA-3</ENAMEX>' and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">GAGGGTCAAGAAGTCCAGTG-3</ENAMEX>' for <ENAMEX TYPE="ORGANIZATION">PRKase</ENAMEX>;
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">GTTCCACCTGAAGAAGCAGG-3</ENAMEX>' and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CGCATAAATGGTTGGGAGTT-3</ENAMEX>'
+          for <TIMEX TYPE="DATE">rbcL</TIMEX>; <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">GAGTGGAAACGCAGGAGAAG-3</ENAMEX>' and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">ACTCCAAGGCTCTCAACGAA-3</ENAMEX>' for <ENAMEX TYPE="ORGANIZATION">Ra</ENAMEX>;
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TGGTGGACTCTCCGTTCTTC-3</ENAMEX>' and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CGAGTTGTGACCATAAGCCA-3</ENAMEX>'
+          for <TIMEX TYPE="DATE">RCP1</TIMEX>; <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TCAAATCCTCGTTGACAGAC-3</ENAMEX>' and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CTGTTGCCTCCATTGACAGA-3</ENAMEX>' for <ENAMEX TYPE="PERSON">TIM</ENAMEX>; and
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">CAAATGGCTCTTTCTTCACC-3</ENAMEX>' and <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TGGTTCTTAACTTCCGCCAC-3</ENAMEX>'
+          for <TIMEX TYPE="DATE">XCP2</TIMEX>. <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products were digested with the restriction
+          enzymes 
+          <ENAMEX TYPE="PERSON">Hind III</ENAMEX> and 
+          <ENAMEX TYPE="PRODUCT">Sac I</ENAMEX>, subcloned into <NUMEX TYPE="ORDINAL">pSP64</NUMEX> poly(A)
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Promega</ENAMEX>, <ENAMEX TYPE="GPE">Madison</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">WI</ENAMEX>) and sequence verified. For
+          printing 
+          Arabidopsis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, inserts in
+          pSP64poly(A) were amplified by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> with the SP6
+          (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">ATTTAGGTGACACTATAG-3</ENAMEX>') and <ENAMEX TYPE="PRODUCT">M13R</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">primers</ENAMEX>. To generate
+          <ENAMEX TYPE="SUBSTANCE">cRNAs</ENAMEX> containing a <NUMEX TYPE="CARDINAL">3</NUMEX>' poly(A) tail, <TIMEX TYPE="DATE">pSP64poly</TIMEX>(A)
+          constructs were linearized with 
+          <ENAMEX TYPE="ORGANIZATION">Eco RI</ENAMEX> and 
+          in vitro transcribed from the SP6
+          promoter using the <ENAMEX TYPE="ORGANIZATION">MEGAscript™ High Yield</ENAMEX> Transcription
+          <ENAMEX TYPE="PERSON">Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Ambion</ENAMEX>, <ENAMEX TYPE="GPE">Austin</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TX</ENAMEX>). The 
+          Arabidopsis cRNA set was designed
+          to serve as spiking controls to assess a broad range of
+          <ENAMEX TYPE="CONTACT_INFO">copy</ENAMEX> numbers (rare, moderate, abundant) and varying
+          expression ratios (<ENAMEX TYPE="CONTACT_INFO">1:3, 1:2, 1:1, 2:1, 3:1</ENAMEX>). For printing
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <NUMEX TYPE="CARDINAL">70</NUMEX>-mers, oligonucleotides were synthesized on the
+          basis of the corresponding <NUMEX TYPE="QUANTITY">500 bp</NUMEX> of each gene in the 
+          Arabidopsis control spiking cRNA
+          set (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Development of our control set of <NUMEX TYPE="CARDINAL">10</NUMEX> 
+          Arabidopsis oligonucleotides and
+          corresponding set of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons subcloned into
+          pSP64poly(A) serve as a valuable quality-control resource
+          for <ENAMEX TYPE="DISEASE">cDNA</ENAMEX>/oligo microarrays. The 
+          Arabidopsis control spiking cRNA
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> set and protocols will be made freely available to
+          academic <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> upon request.
+        
+        
+          <ENAMEX TYPE="PERSON">Rat</ENAMEX> <NUMEX TYPE="CARDINAL">70</NUMEX>-mer oligonucleotide design
+          To minimize cross-hybridization, oligonucleotides of
+          <NUMEX TYPE="CARDINAL">70</NUMEX> bases (unmodified) were designed using the computer
+          program, <ENAMEX TYPE="PRODUCT">Pick70</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX>]. Oligonucleotide design
+          considerations included uniqueness, avoidance of internal
+          self-annealing structures, narrow 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> range (<TIMEX TYPE="DATE">75-80°C</TIMEX>) over the entire
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> set and masking of low-complexity
+          regions. The <ENAMEX TYPE="ORGANIZATION">TIGR Rat Gene</ENAMEX> Index containing a
+          non-redundant set of expressed mRNA sequences [ <TIMEX TYPE="DATE">20</TIMEX>] was
+          used as the 'complete genome <ENAMEX TYPE="PER_DESC">source</ENAMEX>' for selecting <NUMEX TYPE="CARDINAL">70</NUMEX>-mer
+          oligonucleotide sequences with <TIMEX TYPE="DATE">Pick70</TIMEX>. Oligonucleotides
+          were chosen to represent 'housekeeping' and signal
+          transduction <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, while other <NUMEX TYPE="CARDINAL">70</NUMEX>-mers were designed to
+          detect tissue-specific transcripts from either brain or
+          <ENAMEX TYPE="ORGANIZATION">heart</ENAMEX> (for example, those for <TIMEX TYPE="DATE">SCG10</TIMEX>, creatine kinase, and
+          <ENAMEX TYPE="ORGANIZATION">desmin</ENAMEX>). The sequences of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and corresponding
+          GenBank accession numbers of the genes are available as
+          and additional data file. Oligonucleotides were
+          synthesized at a <NUMEX TYPE="CARDINAL">50</NUMEX> nmol scale by <ENAMEX TYPE="ORGANIZATION">Invitrogen/Life</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Technologies</ENAMEX> (<ENAMEX TYPE="GPE">Carlsbad</ENAMEX>, CA) or <ENAMEX TYPE="ORGANIZATION">Operon Technologies</ENAMEX>
+          (<ENAMEX TYPE="GPE">Alameda</ENAMEX>, CA), and resuspended in sterile milliQ <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> to
+          a final concentration of <NUMEX TYPE="QUANTITY">100 μM</NUMEX>. We selected individual
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> clones from the <ENAMEX TYPE="ORGANIZATION">TIGR Rat Gene</ENAMEX> Index whose <TIMEX TYPE="TIME">EST</TIMEX>
+          sequences corresponded to the same gene from which the
+          <NUMEX TYPE="CARDINAL">70</NUMEX>-mers were designed. <ENAMEX TYPE="ANIMAL">Rat cDNA</ENAMEX> clone inserts were
+          amplified by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> with <TIMEX TYPE="DATE">M13F</TIMEX> (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">GTTTTCCCAGTCACGACGTTG-3</ENAMEX>')
+          and M13R (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>'-<ENAMEX TYPE="SUBSTANCE">TGAGCGGATAACAATTTCACACAG-3</ENAMEX>') primers [ <TIMEX TYPE="DATE">15</TIMEX>,
+          <NUMEX TYPE="CARDINAL">16</NUMEX>]. Insert size ranged from <NUMEX TYPE="CARDINAL">0.5</NUMEX> to <NUMEX TYPE="CARDINAL">1.5</NUMEX> kb.
+        
+        
+          <ENAMEX TYPE="PERSON">Microarray</ENAMEX> fabrication
+          <ENAMEX TYPE="ORGANIZATION">Oligonucleotides</ENAMEX> (<NUMEX TYPE="QUANTITY">50 μM</NUMEX>, except where indicated
+          otherwise) and <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> amplicons (<ENAMEX TYPE="CONTACT_INFO">100-200 nM</ENAMEX>) in <NUMEX TYPE="PERCENT">50%</NUMEX> DMSO
+          were printed onto <ENAMEX TYPE="ORGANIZATION">SuperAmine</ENAMEX> slides (TeleChem
+          <ENAMEX TYPE="ORGANIZATION">International</ENAMEX>, <ENAMEX TYPE="GPE">Sunnyvale</ENAMEX>, CA) using an Intelligent
+          <ENAMEX TYPE="ORGANIZATION">Automation Systems</ENAMEX> (IAS) arrayer (<ENAMEX TYPE="GPE">Cambridge</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX>) with a
+          <NUMEX TYPE="CARDINAL">12</NUMEX>-pen print <ENAMEX TYPE="PER_DESC">head</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>]. The rat <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and PCR
+          amplicons were printed in quadruplicate while the <NUMEX TYPE="CARDINAL">10</NUMEX> 
+          Arabidopsis <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and PCR
+          amplicons were spotted into <NUMEX TYPE="CARDINAL">six</NUMEX> different <ENAMEX TYPE="ORG_DESC">sectors</ENAMEX> on the
+          slide. After printing, <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was cross-linked to the slides
+          by <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> irradiation with a <ENAMEX TYPE="ORGANIZATION">Stratalinker UV</ENAMEX> Crosslinker
+          (<ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>, <ENAMEX TYPE="GPE">La Jolla</ENAMEX>, CA) and stored in a vacuum chamber
+          until use. To assess oligonucleotide retention, slides
+          were <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> cross-linked and stained for <TIMEX TYPE="TIME">10 min</TIMEX> in Vistra
+          Green Nucleic <ENAMEX TYPE="SUBSTANCE">Acid staining solution</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Amersham Pharmacia</ENAMEX>,
+          <ENAMEX TYPE="PERSON">Piscataway</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>) at a <NUMEX TYPE="CARDINAL">1</NUMEX>:10,000 dilution. Afterwards,
+          slides were washed at least <NUMEX TYPE="CARDINAL">five</NUMEX> times, <TIMEX TYPE="TIME">1 min each</TIMEX>, in
+          milliQ <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> at room temperature, centrifuged to dryness
+          (<ENAMEX TYPE="CONTACT_INFO">500 rpm × 5 min</ENAMEX>), and scanned at <NUMEX TYPE="CARDINAL">535</NUMEX> nm using a dual
+          <ENAMEX TYPE="ORGANIZATION">laser GenePix</ENAMEX> <ENAMEX TYPE="PRODUCT">4000B scanner</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Axon Instruments, Foster</ENAMEX>
+          <ENAMEX TYPE="GPE_DESC">City</ENAMEX>, CA). Subsequently, slides were gently agitated in
+          <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> (no <ENAMEX TYPE="SUBSTANCE">salt</ENAMEX>) <TIMEX TYPE="TIME">overnight</TIMEX> at <TIMEX TYPE="DATE">42°C</TIMEX>, washed extensively
+          with <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, scanned to ensure that the dye was completely
+          removed, restained with <ENAMEX TYPE="ORGANIZATION">Vistra Green</ENAMEX> and rescanned.
+        
+        
+          Target labeling and array hybridization
+          To generate labeled single-stranded cDNA <ENAMEX TYPE="ORG_DESC">target</ENAMEX>, <NUMEX TYPE="QUANTITY">10 �</NUMEX>�g
+          total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from <ENAMEX TYPE="DISEASE">rat heart</ENAMEX> or brain (<ENAMEX TYPE="ORGANIZATION">Clontech</ENAMEX>, <ENAMEX TYPE="GPE">Palo Alto</ENAMEX>,
+          CA) was reverse transcribed for <TIMEX TYPE="TIME">2-3 h</TIMEX> at <NUMEX TYPE="ORDINAL">42°C</NUMEX> in the
+          presence of <NUMEX TYPE="QUANTITY">6 �</NUMEX>�g random primers (<ENAMEX TYPE="ORGANIZATION">Invitrogen/Life</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Technologies</ENAMEX>), <NUMEX TYPE="ORDINAL">1x first</NUMEX>-strand synthesis buffer
+          (<ENAMEX TYPE="ORGANIZATION">Invitrogen/Life Technologies</ENAMEX>), <NUMEX TYPE="CARDINAL">10</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, dNTP mix (<NUMEX TYPE="CARDINAL">25</NUMEX>
+          mM dATP, <NUMEX TYPE="CARDINAL">25</NUMEX> mM dCTP, <NUMEX TYPE="CARDINAL">25</NUMEX> mM dGTP, <NUMEX TYPE="CARDINAL">15</NUMEX> mM dTTP, <NUMEX TYPE="CARDINAL">10</NUMEX> mM amino
+          allyl-dUTP), and <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX> <ENAMEX TYPE="PRODUCT">Superscript II</ENAMEX> reverse
+          <ENAMEX TYPE="ORGANIZATION">transcriptase</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Invitrogen/Life Technologies</ENAMEX>). <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was
+          hydrolyzed with <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">NaOH</ENAMEX> and <NUMEX TYPE="CARDINAL">100</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> for <TIMEX TYPE="TIME">15 min</TIMEX> at
+          65°C, then neutralized with <NUMEX TYPE="CARDINAL">200</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">HCl</ENAMEX>. <NUMEX TYPE="ORDINAL">First</NUMEX>-strand cDNA
+          was purified from unincorporated amino <ENAMEX TYPE="SUBSTANCE">allyl</ENAMEX>-dUTPs on
+          QIAquick PCR purification columns (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>, <ENAMEX TYPE="GPE">Valencia</ENAMEX>, CA)
+          according to <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s instructions, except that
+          QIAquick wash buffer was replaced with <NUMEX TYPE="CARDINAL">5</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> +phosphate
+          <ENAMEX TYPE="PERSON">buffer</ENAMEX> (pH <NUMEX TYPE="CARDINAL">8.5</NUMEX>) containing <NUMEX TYPE="PERCENT">80%</NUMEX> <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>, and cDNA was
+          eluted with <NUMEX TYPE="CARDINAL">4</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> +phosphate buffer (pH <NUMEX TYPE="CARDINAL">8.5</NUMEX>). Eluted
+          cDNA was lyophilized, resuspended in <NUMEX TYPE="CARDINAL">4.5</NUMEX> μl <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="ORGANIZATION">M Na</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 CO</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> buffer (<ENAMEX TYPE="CONTACT_INFO">pH 9</ENAMEX>), mixed with either Cy3
+          or Cy5 <ENAMEX TYPE="ORGANIZATION">NHS-ester</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Amersham Pharmacia</ENAMEX>), and incubated for
+          <TIMEX TYPE="TIME">1 h</TIMEX> in the dark at room temperature. Cy3- and <NUMEX TYPE="CARDINAL">Cy5</NUMEX>-labeled
+          cDNA <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> were then purified on QIAquick PCR
+          purification columns, combined and concentrated by
+          lyophilization, and hybridized to the microarray at 42°C
+          for <TIMEX TYPE="DATE">16</TIMEX> h in hybridization <ENAMEX TYPE="SUBSTANCE">solution</ENAMEX> containing <NUMEX TYPE="PERCENT">50%</NUMEX>
+          formamide, 5x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.1%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>, <NUMEX TYPE="QUANTITY">20 �</NUMEX>�g mouse <ENAMEX TYPE="SUBSTANCE">Cot-1 DNA</ENAMEX> and <NUMEX TYPE="CARDINAL">10</NUMEX>
+          μg poly(<ENAMEX TYPE="PERSON">dA</ENAMEX>). Reverse dye labeling of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> was employed
+          in separate experiments to account for any bias in dye
+          coupling or emission efficiency of <ENAMEX TYPE="WORK_OF_ART">Cy dyes</ENAMEX>. After
+          hybridization, microarray slides were washed by immersion
+          into 2x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> for <TIMEX TYPE="TIME">5 min</TIMEX> at <TIMEX TYPE="DATE">42°C</TIMEX>, 0.2x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <NUMEX TYPE="PERCENT">0.1%</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> for <TIMEX TYPE="TIME">1 min</TIMEX> at room temperature, 0.2x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> for <TIMEX TYPE="TIME">1 min</TIMEX> at
+          room temperature, and 0.05x <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> twice for <TIMEX TYPE="TIME">1 min</TIMEX> at room
+          <ENAMEX TYPE="PERSON">temperature</ENAMEX>, dried by centrifugation, and immediately
+          <ENAMEX TYPE="ORGANIZATION">scanned</ENAMEX>. Different hybridization and wash conditions were
+          tested (data not shown). The procedures described above
+          have been optimized for both PCR amplicon and
+          oligonucleotide probes regardless of whether the two
+          probe <ENAMEX TYPE="PER_DESC">types</ENAMEX> are printed together or separately. We chose
+          a random primer labeling scheme so that oligonucleotide
+          probe design would not be restricted to any particular
+          region of the mRNA molecule. In contrast, oligo(dT) 
+          <NUMEX TYPE="CARDINAL">12-18</NUMEX> priming protocols [ <TIMEX TYPE="DATE">16</TIMEX>] limit
+          design considerations to the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of the mRNA
+          molecule.
+        
+        
+          Array image processing and data analysis
+          Cy3 and <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> fluorescence on microarray slides were
+          scanned at <NUMEX TYPE="CARDINAL">10</NUMEX> μm resolution using a <ENAMEX TYPE="ORGANIZATION">GenePix</ENAMEX> <ENAMEX TYPE="PRODUCT">4000B</ENAMEX> scanner
+          and saved as <NUMEX TYPE="CARDINAL">two</NUMEX> single TIFF images. The intensities of
+          spots on the two images were subsequently analyzed with
+          <ENAMEX TYPE="PRODUCT">GenePix Pro 3.0</ENAMEX> software and a dataset was output. We
+          used the following criteria to flag bad or extremely weak
+          spots from the array dataset: spot area <NUMEX TYPE="MONEY">< 70 pixels</NUMEX>, <ENAMEX TYPE="ORGANIZATION">%</ENAMEX>
+          saturated pixels > <NUMEX TYPE="PERCENT">50%</NUMEX>, and sum of the median signal
+          intensity <NUMEX TYPE="MONEY">< 1,000</NUMEX>. Normalization of the array dataset
+          was based on total median background subtracted
+          intensities from <TIMEX TYPE="DATE">the Cy3</TIMEX> and <NUMEX TYPE="CARDINAL">Cy5</NUMEX> channels and linear
+          regression of the median signal intensities generated
+          from the 
+          Arabidopsis control cRNA set spiked
+          into the <ENAMEX TYPE="SUBSTANCE">query RNA samples</ENAMEX> at a <NUMEX TYPE="CARDINAL">1</NUMEX>:<NUMEX TYPE="CARDINAL">1</NUMEX> ratio [ <TIMEX TYPE="DATE">21</TIMEX>]. After
+          normalization, expression ratios were calculated for each
+          non-flagged spot and log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> transformed.
+        
+      
+      
+        Additional data files
+        The sequences of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and corresponding GenBank
+        <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers of the genes are available as an
+        additional data file.
+        Additional data file 1
+        Sequences of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and corresponding GenBank
+        <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers of the genes
+        Sequences of the <NUMEX TYPE="CARDINAL">70</NUMEX>-mers and corresponding GenBank
+        <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers of the genes
+        Click here for additional data file
+      
+    
+  

@@ -1,0 +1,393 @@
+
+  
+    
+      
+        Background
+        
+          Computational methods for whole genome
+          studies
+          Comparative genomics and more specialized fields such
+          as comparative virology, etc., involve the comparison of
+          <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and genomes [ <NUMEX TYPE="CARDINAL">12 13 14</NUMEX> ] . Recent
+          rapid data acquisition is allowing the analyses of whole
+          genome sequences, especially the smaller <ENAMEX TYPE="ORG_DESC">genomes</ENAMEX> such as
+          <ENAMEX TYPE="ORGANIZATION">mitochondria</ENAMEX> and chloroplasts [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX> ] , as well as
+          the larger bacterial genomes [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] and large tracts
+          of eukaryotic chromosomes, especially from related
+          organisms [ <NUMEX TYPE="CARDINAL">12 13 14 20 21 22 23</NUMEX> ] . These studies
+          include the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of the order of genes, 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, co-linearity [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] , the
+          location of <ENAMEX TYPE="SUBSTANCE">synteny</ENAMEX> [ <NUMEX TYPE="CARDINAL">26 27 28</NUMEX> ] and the identification
+          of clusters of <ENAMEX TYPE="SUBSTANCE">orthologous genes</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">cog</ENAMEX>] <TIMEX TYPE="TIME">between two</TIMEX>
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> [ <NUMEX TYPE="CARDINAL">21 22 23</NUMEX> ] . Along similar lines of thought, it
+          should be extremely useful to locate, identify and
+          catalog the sets of "core" genes common to these
+          genomes-genomes which otherwise may be related or
+          semi-related or unrelated in other respects. These global
+          views allow for a deeper understanding of <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> in
+          the context of another, especially in regards to their
+          genomic contents. In addition, the comparison of multiple
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> and the identification of related genes and
+          "core" genes can lead to insight into the structure and
+          function of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and genomes [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . This is very useful
+          in genome annotations and also in the identification and
+          characterization of functions for "newly found" putative
+          genes.
+          Identification of "core" <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from small whole
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> is useful and complements other data derived from
+          these genomes. Small <ENAMEX TYPE="ORG_DESC">genomes</ENAMEX> include those from viruses [
+          <NUMEX TYPE="CARDINAL">3</NUMEX> ] , mitochondria [ <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] and chloroplasts [ <TIMEX TYPE="DATE">16</TIMEX> ] .
+          The increasing importance of the large amount of DNA
+          sequence data recently collected from these small genomes
+          is reflected in the better understanding of their biology
+          [ <NUMEX TYPE="CARDINAL">3 4 12 13 14</NUMEX> ] and in the upsurge of publications
+          analyzing these genomes and the <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> to which they
+          belong [ <NUMEX TYPE="CARDINAL">15 16 17 18 19 20 21 22 23 24 25 26 27 28</NUMEX> ] .
+          <ENAMEX TYPE="PERSON">Genome</ENAMEX> co-linearity, gene clustering and homolog
+          identification are <NUMEX TYPE="CARDINAL">three</NUMEX> global genome analyses which are
+          important in many fields of research, including resolving
+          <ENAMEX TYPE="ORGANIZATION">phylogenetic</ENAMEX> and evolutionary relationships [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX> ]
+          .
+        
+      
+      
+        Results and Discussion
+        
+          Description of CoreGenes
+          <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> is written in <ENAMEX TYPE="GPE">JAVA</ENAMEX>-based programming
+          incorporating the <ENAMEX TYPE="FAC">'setdb' and 'BLASTP'</ENAMEX> programs from the
+          <ENAMEX TYPE="PERSON">WU</ENAMEX>-BLAST package of <ENAMEX TYPE="ORGANIZATION">Washington University</ENAMEX>,
+          <ENAMEX TYPE="CONTACT_INFO">http://BLAST.</ENAMEX><ENAMEX TYPE="ORGANIZATION">wustl</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">edu</ENAMEX>. The basis of this iterative
+          comparison rests on the <ENAMEX TYPE="ORGANIZATION">BLASTP</ENAMEX> <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] . A
+          flowchart of the processes is illustrated in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          This software allows for the identification,
+          <ENAMEX TYPE="PERSON">characterization</ENAMEX>, catalog and visualization of putatively
+          essential "core" genes in sets of <NUMEX TYPE="CARDINAL">two to five</NUMEX> genomes in
+          a user-friendly GUI environment. A table with additional
+          content information is generated from the analyses.
+          <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> has been validated with <ENAMEX TYPE="PER_DESC">representative</ENAMEX> genomes
+          from several <ENAMEX TYPE="PER_DESC">families</ENAMEX> of viruses, as well as
+          <ENAMEX TYPE="ORGANIZATION">mitochondrion</ENAMEX> and chloroplast genomes. In these examples,
+          it locates and identifies putatively related genes
+          directly and gene <ENAMEX TYPE="PER_DESC">clustering</ENAMEX> indirectly. In light of the
+          similarities of certain genes generated by <ENAMEX TYPE="PERSON">CoreGenes</ENAMEX>, one
+          may ponder their relationships upon further and closer
+          <ENAMEX TYPE="ORGANIZATION">inspection</ENAMEX>, given that the high BLAST scores between <NUMEX TYPE="CARDINAL">two</NUMEX>
+          genes do not always imply an orthologous relationship [
+          <NUMEX TYPE="CARDINAL">30</NUMEX> ] . In other words, the complexity of these BLAST
+          scores suggests that the <ENAMEX TYPE="PER_DESC">user</ENAMEX> should perform rigorous
+          phylogenetic analysis of each set of <ENAMEX TYPE="SUBSTANCE">homologous genes</ENAMEX> to
+          determine true orthology. Though if the <ENAMEX TYPE="PER_DESC">user</ENAMEX> uses a high
+          threshold value while using <ENAMEX TYPE="ORGANIZATION">GeneCore</ENAMEX>, s/he will increase
+          the chances to retrieve orthologous <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> obvious application is to use this tool as a step
+          in the characterization of an "alphabet" of putatively
+          essential "core" genes in a set of closely related
+          genomes such as from a collection of poxvirus genomes ( 
+          unpublished data ).
+        
+        
+          CoreGenes <ENAMEX TYPE="SUBSTANCE">graphical</ENAMEX> <ENAMEX TYPE="PER_DESC">user</ENAMEX> interface
+          The <ENAMEX TYPE="LAW">CoreGenes GUI</ENAMEX> contains <NUMEX TYPE="CARDINAL">three</NUMEX> levels of data
+          input/output, starting with an interface for the entry of
+          <NUMEX TYPE="CARDINAL">two</NUMEX> to <NUMEX TYPE="MONEY">five genomes</NUMEX> via <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers (Figure
+          <NUMEX TYPE="CARDINAL">2</NUMEX>) and ending with a display of the corresponding protein
+          of interest as archived in the NCBI database. Contained
+          within the top-level <ENAMEX TYPE="ORGANIZATION">GUI</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>) is an entry field for
+          <NUMEX TYPE="CARDINAL">up to five</NUMEX> genome sequences. 
+          <ENAMEX TYPE="PERSON">Nota Bene</ENAMEX>, entering GenBank
+          <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers with dyslexic renderings will result in
+          "error messages." It is preferable to use the recent
+          versions of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers, i.e., prefixed
+          with "<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_..."
+          Once the program is initiated, the respective genome
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are downloaded from the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> database (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+          These genome sequence data are subsequently parsed into
+          <ENAMEX TYPE="SUBSTANCE">protein-coding sequences</ENAMEX> [as annotated in the GenBank
+          database] and are converted by <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> into
+          "GeneOrder2<NUMEX TYPE="CARDINAL">.0</NUMEX>-<ENAMEX TYPE="ORGANIZATION">FASTA</ENAMEX>" format [ <NUMEX TYPE="CARDINAL">7 8 29 31</NUMEX> ] . Comparisons
+          are performed and the results are presented in a tabular
+          format in the subsequent <ENAMEX TYPE="ORGANIZATION">GUI</ENAMEX>. Each gene has a hyperlink
+          to its entry in the NCBI database.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> mining algorithm
+          <ENAMEX TYPE="SUBSTANCE">BLASTP protein</ENAMEX> similarity analyses [ <TIMEX TYPE="DATE">29</TIMEX> ] between the
+          reference sequence and the <NUMEX TYPE="ORDINAL">first</NUMEX> query sequence are
+          performed sequentially, with each query <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> compared
+          individually to the entire protein database of the
+          reference genome. This is similar to the algorithm for
+          the <ENAMEX TYPE="ORGANIZATION">GeneOrder</ENAMEX> analyses [ <NUMEX TYPE="CARDINAL">7 8</NUMEX> ] . If the alignment score
+          between the reference <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and a query <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> meets
+          or exceeds a defined similarity threshold number, then
+          the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are paired and their accession numbers
+          stored. A consensus map of related genes is generated and
+          stored. Hierarchical comparisons with additionally
+          entered query genomes, up to <NUMEX TYPE="CARDINAL">four</NUMEX> in total, are performed
+          in each session.
+          In detail, the process continues as query genome
+          number <NUMEX TYPE="CARDINAL">2</NUMEX> data are retrieved from <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> and treated as
+          described above, 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, this set of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> is
+          compared against the first consensus set of paired genes
+          formed between the reference genome and query genome
+          number <NUMEX TYPE="CARDINAL">1</NUMEX>. A <NUMEX TYPE="ORDINAL">second</NUMEX> consensus set of related genes is
+          generated and stored. Query genome numbers <TIMEX TYPE="DATE">3 and 4</TIMEX> are
+          <ENAMEX TYPE="ORGANIZATION">iteratively</ENAMEX> and separately analyzed in an analogous
+          manner. A caveat is that if query genome number <NUMEX TYPE="CARDINAL">1</NUMEX> does
+          not have a match to the reference genome, then a
+          subsequent query genome number <NUMEX TYPE="CARDINAL">2</NUMEX> match to the original
+          reference genome ( 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, possible true related gene)
+          will be discarded. In other words, hierarchical matches
+          must occur between the reference genome, query genome
+          number <NUMEX TYPE="CARDINAL">1</NUMEX> and query genome number <NUMEX TYPE="CARDINAL">2</NUMEX> in order for CoreGenes
+          to identify BLAST matches between the reference genome
+          and the query genome number <NUMEX TYPE="CARDINAL">2</NUMEX>. A visual presentation of
+          this is shown in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>(top <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>), where the genomes
+          are aligned with the reference <ENAMEX TYPE="ORG_DESC">genome</ENAMEX> serving as the
+          "x-axis." Genes from query genomes that have the desired
+          BLAST matches are arrayed vertically above the reference
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. This, despite its shortcoming of terminating a
+          further analysis should there be no match between the two
+          immediate genomes, is useful as a simple map of the order
+          of genes contained in the reference genome. It also
+          serves as a quick simple survey of the set of genomes in
+          terms of BLAST matches.
+          However, permutations of the <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> must be
+          analyzed in order to collect the comprehensive set of
+          putatively related core genes. Given the <NUMEX TYPE="CARDINAL">five</NUMEX> genomes to
+          be queried, this task is daunting manually. Of course it
+          would be useful to generate a table of genes that bin
+          across only <NUMEX TYPE="CARDINAL">2</NUMEX>, <NUMEX TYPE="CARDINAL">3</NUMEX> or <NUMEX TYPE="CARDINAL">4</NUMEX> genomes. This is being addressed
+          actively. It is anticipated that this comprehensive table
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> including rows with matches across <NUMEX TYPE="CARDINAL">only two</NUMEX>,
+          <NUMEX TYPE="CARDINAL">three</NUMEX> or <NUMEX TYPE="CARDINAL">four</NUMEX> genomes will be made available in the near
+          future. Meanwhile, upon the completion of the above
+          algorithm, a table containing the extracted <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> data
+          and summarizing the "core" genes within the queried
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> is generated (Figure <NUMEX TYPE="ORDINAL">3bottom</NUMEX> <ENAMEX TYPE="ORG_DESC">panel</ENAMEX>). The columns
+          of this table can also be exported via "cut and paste"
+          into <ENAMEX TYPE="ORGANIZATION">Microsoft Excel</ENAMEX> and Word programs to generate
+          publication quality figures.
+          <ENAMEX TYPE="CONTACT_INFO">Accession</ENAMEX> numbers of each gene and very brief
+          descriptions are presented in each individual block
+          within <TIMEX TYPE="TIME">this matrix</TIMEX>, as extracted directly from the
+          GenBank database. Each <ENAMEX TYPE="PER_DESC">individual</ENAMEX> gene is hyperlinked
+          from this table to the <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> website to allow the
+          investigator an opportunity to view the unique GenBank
+          file for the gene of interest.
+        
+        
+          Using CoreGenes
+          
+            Similarity ranges
+            Contained in the top-level window is a field to
+            define the minimum protein similarity score ( 
+            <ENAMEX TYPE="PERSON">i. e.</ENAMEX>, "<ENAMEX TYPE="WORK_OF_ART">BLASTP</ENAMEX>" threshold score).
+            These can be either the default ("<ENAMEX TYPE="WORK_OF_ART">75</ENAMEX>") or a
+            user-defined value. Score ranges are related to the
+            similarities of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> being queried [ <NUMEX TYPE="CARDINAL">7 8</NUMEX> ] .
+            For reference, the <NUMEX TYPE="CARDINAL">three</NUMEX> similarity ranges that can be
+            defined for running GeneOrder2<NUMEX TYPE="CARDINAL">.0</NUMEX> are highest ("<ENAMEX TYPE="WORK_OF_ART">A"</ENAMEX>),
+            high ("B") and low ("C") [ <NUMEX TYPE="CARDINAL">7 8</NUMEX> ] . The BLASTP threshold
+            score ranges for each are as follows: "<ENAMEX TYPE="WORK_OF_ART">A</ENAMEX>" is defined
+            from [<NUMEX TYPE="QUANTITY">200-∞</NUMEX>), "B" is defined from [<ENAMEX TYPE="CONTACT_INFO">100-200</ENAMEX>) and "C" is
+            defined from [<NUMEX TYPE="CARDINAL">75-100</NUMEX>). Genes with matches in the "<ENAMEX TYPE="WORK_OF_ART">A</ENAMEX>"
+            range are true homologs, while those in the "B" range
+            are likely related and those in the "C" range require
+            visual validation of the level of identity in order to
+            ensure a true match. Related gene matching values for
+            CoreGenes are also defined in this manner. Caveat: it
+            is always recommended that the results between <NUMEX TYPE="CARDINAL">two</NUMEX>
+            BLAST matches be scrutinized as reports have suggested
+            that the closest BLAST match is often not the nearest
+            neighbor [ <TIMEX TYPE="DATE">30</TIMEX> ] .
+          
+          
+            Examples of <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> analyses
+            This tool has been validated with analyses of
+            several diverse virus, chloroplast and mitochondrion
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. For example, a set of <NUMEX TYPE="CARDINAL">four</NUMEX> chloroplast genomes
+            (Figures <NUMEX TYPE="CARDINAL">2and 3</NUMEX>) and a set of <NUMEX TYPE="CARDINAL">five</NUMEX> mitochondrion
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> (data not shown) from evolutionary divergent
+            sets of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> were run independently to demonstrate
+            the power and capabilities of <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX>. Shown in
+            Figure 3is an output from one of these analyses. With
+            the BLASTP threshold score set at "<TIMEX TYPE="DATE">75</TIMEX>," the "core"
+            genes are cataloged and displayed with brief
+            identifying information from the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> database.
+            <NUMEX TYPE="CARDINAL">Sixty-one</NUMEX> "core" <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were cataloged from the set of
+            chloroplast genomes (data not shown). The genomes are
+            as follows: 
+            Arabidopsis thaliana , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<NUMEX TYPE="CARDINAL">000932</NUMEX>;
+            
+            Nicotiana tabacum , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<NUMEX TYPE="CARDINAL">001879</NUMEX>; 
+            Oryza sativa , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<NUMEX TYPE="CARDINAL">001320</NUMEX>; and 
+            Chlorella vulgaris , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001865</ENAMEX>.
+            Mitochondrion genomes are as follows: 
+            <ENAMEX TYPE="PER_DESC">Homo sapiens</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001807</ENAMEX>), 
+            Gallus gallus (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001323</ENAMEX>), 
+            Caenorhabditis
+            <ENAMEX TYPE="ORGANIZATION">elegans</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001328</ENAMEX>), 
+            Drosophila
+            <ENAMEX TYPE="ORGANIZATION">melanogaster</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001709</ENAMEX>) and 
+            Schizosaccharomyces
+            <ENAMEX TYPE="ORGANIZATION">pombe</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001326</ENAMEX>). An analysis was also performed
+            with a mixture of mitochondrion and chloroplast
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>. Interestingly, several putatively related
+            genes were detected in this particular analysis (data
+            not shown).
+          
+          
+            Additional validations
+            In addition to the aforementioned chloroplast and
+            mitochondrion genomes, and of more interest to our
+            research <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> has been validated with virus
+            <ENAMEX TYPE="ANIMAL">genomes</ENAMEX> ranging in size from <NUMEX TYPE="CARDINAL">35</NUMEX> kb to <NUMEX TYPE="MONEY">330 kb</NUMEX> (data not
+            shown). Specifically, it has been run with combinations
+            and permutations of adenovirus genomes, 
+            ca. <NUMEX TYPE="MONEY">35 kb</NUMEX> (<ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001405, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001406,</ENAMEX>
+            <ENAMEX TYPE="GPE">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">002067, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001454, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001460, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">000942, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001813</ENAMEX>
+            and <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">002501</ENAMEX>, poxvirus genomes, ca. <NUMEX TYPE="CARDINAL">250</NUMEX> kb <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001559,</ENAMEX>
+            <ENAMEX TYPE="GPE">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001266, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001266, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">003027, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001132, NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001731</ENAMEX>
+            and <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">002642</ENAMEX>), and other viruses of varying sizes: 
+            <ENAMEX TYPE="PRODUCT">ca. 150</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">kb</ENAMEX> ( 
+            e.g., baculoviruses: 
+            Heliocoverpa armigera
+            <ENAMEX TYPE="ORGANIZATION">nucleopolyhedrovirus</ENAMEX> <ENAMEX TYPE="PRODUCT">G4</ENAMEX> , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">002654</ENAMEX> and 
+            Lymantria dispar
+            <ENAMEX TYPE="ORGANIZATION">nucleopolyhedrovirus NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001973</ENAMEX>) and 
+            <ENAMEX TYPE="PRODUCT">ca. 330</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">kb</ENAMEX> ( 
+            Paramecium bursaria <ENAMEX TYPE="DISEASE">Chlorella</ENAMEX> virus
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , <ENAMEX TYPE="ORGANIZATION">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">000852</ENAMEX>).
+            A group of <NUMEX TYPE="CARDINAL">three</NUMEX> chordopox viruses (vaccinia
+            <ENAMEX TYPE="GPE">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001559,</ENAMEX> 
+            Molluscum <ENAMEX TYPE="DISEASE">contagiosum</ENAMEX> virus
+            <ENAMEX TYPE="GPE">NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001731</ENAMEX>, and <ENAMEX TYPE="DISEASE">fowlpox virus NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001266</ENAMEX>) and <NUMEX TYPE="CARDINAL">two</NUMEX>
+            entomopox viruses ( 
+            Melanoplus sanguinipes
+            <ENAMEX TYPE="ORGANIZATION">entomopoxvirus NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">001993</ENAMEX> and 
+            Amsacta moorei
+            <ENAMEX TYPE="ORGANIZATION">entomopoxvirus NC</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">002520</ENAMEX>) was analyzed with
+            <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX>. With related genomes such as these, the data
+            can also be used as a predictive tool for the
+            elucidation of an "alphabet" of essential genes
+            especially in collaboration with "wet bench" analyses
+            such as the characterization of temperature sensitive
+            mutants, for example, poxviruses (data not shown).
+          
+        
+        
+          Limitations
+          
+            <ENAMEX TYPE="PERSON">Server Connectivity</ENAMEX>
+            CoreGenes run time is a function of the network
+            connections. If <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="ORG_DESC">party</ENAMEX>, such as the NCBI server, is
+            experiencing heavy traffic or is down due to technical
+            difficulties, then the application will stall and be
+            unsuccessful. Sets of orthopoxviruses, 
+            <ENAMEX TYPE="PRODUCT">ca. 250</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">kb</ENAMEX>, take <TIMEX TYPE="DATE">approximately 25</TIMEX>
+            <TIMEX TYPE="TIME">minutes</TIMEX> to run on a <ENAMEX TYPE="ORGANIZATION">PowerMac</ENAMEX> <ENAMEX TYPE="PRODUCT">G3</ENAMEX> running <ENAMEX TYPE="ORGANIZATION">Mac</ENAMEX> OS <NUMEX TYPE="CARDINAL">9.0</NUMEX> and
+            Netscape Communicator <NUMEX TYPE="CARDINAL">6.1</NUMEX>. Larger genomes are currently
+            problematic due to the computational speed, the NCBI
+            <ENAMEX TYPE="PERSON">server</ENAMEX> and/or the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s connection timing out. This
+            issue is being addressed.
+            Some <ENAMEX TYPE="ORG_DESC">network</ENAMEX> "firewalls" may be incompatible with
+            this software, causing the connections to terminate
+            prematurely. An error message "An internal error has
+            occurred. Please try again <TIMEX TYPE="DATE">later</TIMEX> java <ENAMEX TYPE="PERSON">lang</ENAMEX>.NullPointer
+            Exception." will be displayed. Also, entering incorrect
+            <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> numbers may give this same message.
+            Alternatively, <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> has been run successfully on
+            <ENAMEX TYPE="ORGANIZATION">university</ENAMEX> and public <ENAMEX TYPE="ORG_DESC">library</ENAMEX> terminals with internet
+            access. These <ENAMEX TYPE="ORG_DESC">organizations</ENAMEX> do not seem to have the
+            "firewall" needs/<ENAMEX TYPE="ORG_DESC">concerns</ENAMEX> as other <ENAMEX TYPE="ORG_DESC">organizations</ENAMEX>.
+          
+          
+            Platform Limitations
+            <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> has been validated with several different
+            <ENAMEX TYPE="PERSON">platforms</ENAMEX> and also with different web browsers:
+            <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX> (<ENAMEX TYPE="PRODUCT">Explorer 4.5</ENAMEX> and <NUMEX TYPE="MONEY">Netscape 6.1</NUMEX>), PC (<ENAMEX TYPE="PRODUCT">Explorer</ENAMEX>
+            <NUMEX TYPE="MONEY">5.0 and Netscape 4.08</NUMEX>), <ENAMEX TYPE="ORGANIZATION">SGI</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX>) and <ENAMEX TYPE="ORGANIZATION">SUN</ENAMEX>
+            (<ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX>) workstations. There are compatibility issues
+            between <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX> (<NUMEX TYPE="MONEY">Netscape 4.7</NUMEX> and
+            below). Using <ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX> <NUMEX TYPE="CARDINAL">6.1</NUMEX> surmounts these problems.
+            This problem appears to lie in the <ENAMEX TYPE="ORGANIZATION">JAVA</ENAMEX> applet included
+            with the earlier version of <ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX> for <ENAMEX TYPE="ORGANIZATION">Macintosh</ENAMEX>.
+            Moving an <ENAMEX TYPE="ORGANIZATION">Apple</ENAMEX>-supplied "<ENAMEX TYPE="WORK_OF_ART">JAVA Accelerator for PowerPC</ENAMEX>"
+            into the "extensions" folder may allow earlier versions
+            of <ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX> to run this program. Printing the CoreGenes
+            applet-generated graph may be problematic due to an
+            applet incompatibility; capturing the graph as a
+            "screenshot" via the PC and the <ENAMEX TYPE="ORGANIZATION">Mac</ENAMEX> <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX> and
+            printing independently circumvents this.
+            Run times vary from <TIMEX TYPE="TIME">1 minute and 21 seconds</TIMEX> for a
+            set of <NUMEX TYPE="MONEY">five adenovirus genomes</NUMEX> ( 
+            ca. <NUMEX TYPE="MONEY">35 kb</NUMEX>) to <TIMEX TYPE="TIME">40 minutes</TIMEX> for a
+            set of <NUMEX TYPE="MONEY">five poxvirus genomes</NUMEX> ( 
+            <ENAMEX TYPE="PRODUCT">ca. 250</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">kb</ENAMEX>). Currently, if there
+            are multiple requests, the computation may take much
+            longer as the requests are queued. This inconvenience
+            is being addressed and is due to the server hosting the
+            software. Depending on the hardware, some local servers
+            may time out during this period while waiting for this
+            request to be processed, which will result in an error
+            message stating that "The attempt to load 'servlet'
+            failed." Adjusting "preference" settings on the local
+            web browser may rectify this problem. Immediate goals
+            of improvement include an option to have results
+            e-mailed back to the <ENAMEX TYPE="PER_DESC">user</ENAMEX>. We expect that there will be
+            additional improvements in both speed and response
+            issues when we upgrade our server hardware and rewrite
+            some of the <ENAMEX TYPE="PRODUCT">CoreGenes</ENAMEX> software to accommodate the
+            larger megabase-sized genomes.
+          
+          
+            Software Limitations
+            Only the NCBI database can be searched at this time;
+            in other words, only GenBank accession numbers can be
+            used. If there is an <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> error in entering the
+            number correctly, then an error message will be
+            <ENAMEX TYPE="CONTACT_INFO">displayed,</ENAMEX> 
+            e.g., "The attempt to load
+            <ENAMEX TYPE="ORGANIZATION">'servlet'</ENAMEX> failed." Improvements to this software will
+            include providing an additional field to enter
+            proprietary and non-GenBank genome data, similar to an
+            option developed for GeneOrder2.0 [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+          
+        
+      
+      
+        Conclusions
+        <ENAMEX TYPE="PER_DESC">CoreGenes</ENAMEX> fits into the niche for <ENAMEX TYPE="GPE">GUI</ENAMEX>-based interactive
+        computational tools [ <NUMEX TYPE="CARDINAL">1 2 3 4 5 6 7 8 9 10</NUMEX> ] that enhance
+        the visualization of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequence data, especially in the
+        context of genome comparisons. It meets a critical need for
+        tool sets containing global "whole genome" analyses tools.
+        As noted <TIMEX TYPE="DATE">earlier</TIMEX>, small <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> are still of great interest
+        to many <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>. This tool is a base to expand upon,
+        for example, to build more robust, elegant and
+        complementary "whole genome" computational tools. Although
+        <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> successfully expedites the <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of
+        "core" <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> during the comparisons of several small whole
+        <ENAMEX TYPE="PERSON">genomes</ENAMEX> simultaneously, it will likely be succeeded by
+        improved software to compare and analyze even much larger
+        genomes, especially in the megabase range. This feature is
+        being pursued with urgency. <NUMEX TYPE="CARDINAL">One</NUMEX> known current limitation in
+        analyzing larger genomes is computational, 
+        <ENAMEX TYPE="PERSON">e. g.</ENAMEX>, hardware; this will be
+        addressed shortly. Increasingly powerful workstations to
+        act as servers will allow the much more computationally
+        intensive comparisons of megabase-sized genomes. However,
+        this version of <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX> is very useful and fills a
+        current unmet need in genome analyses, that of collecting
+        related genes in a family of genomes. In addition to
+        stimulating the development of similar tools, CoreGenes
+        will allow continuing improvements to it. We plan to
+        support aggressively this version of <ENAMEX TYPE="ORGANIZATION">CoreGenes</ENAMEX>, updating
+        with improvements and additional features, as well as to
+        work on a more robust faster version.
+      
+    
+  

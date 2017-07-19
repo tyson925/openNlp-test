@@ -1,0 +1,364 @@
+
+  
+    
+      
+        Background
+        The exact conformation of a tripeptide in a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> can
+        be determined from its <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> and hydrogen bond
+        <ENAMEX TYPE="PERSON">interactions</ENAMEX>. The backbone conformation is captured in the
+        Ramachandran angles φ, ψ [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . The rotamer degrees of
+        freedom fixes the entire <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX>. A fixed tripeptide
+        occurring in different <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> will have different side
+        chain interactions, which in turn determine the range of φ,
+        ψ angles. These ranges are typically fairly wide and hence
+        their <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structure prediction is limited.
+        The use of <ENAMEX TYPE="ORGANIZATION">Ramachandran</ENAMEX> angles comes about from the well
+        known planarity of the peptide bond. In this work we would
+        like to complement this bias. We expect that C 
+        <ENAMEX TYPE="GPE">β</ENAMEX> locations are more directly
+        constrained by the <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> interactions. The data was
+        therefore analyzed in terms of the C 
+        <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> and C 
+        <ENAMEX TYPE="GPE">β</ENAMEX> locations, without the bias of the
+        planarity of the peptide bond. For structure prediction, we
+        need the <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> interaction statistics in terms of C 
+        <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> and C 
+        <ENAMEX TYPE="GPE">β</ENAMEX> locations. The planarity of the
+        <ENAMEX TYPE="ORGANIZATION">peptide</ENAMEX> bonds can be imposed as a further constraint.
+        In theory there are <TIMEX TYPE="DATE">8000</TIMEX> tripeptides and <NUMEX TYPE="CARDINAL">160,000</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">tetrapeptides</ENAMEX>. With the dataset of <TIMEX TYPE="DATE">about 1220</TIMEX> polypeptide
+        chain structures of high resolution <ENAMEX TYPE="CONTACT_INFO">(≤ 2°A</ENAMEX>), an analysis of
+        <ENAMEX TYPE="ORGANIZATION">tripeptide</ENAMEX> study is feasible and a tetrapeptide study will
+        be statistically insignificant. In our representative
+        protein data set, for each tripeptide "R 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> R 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> R 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> " (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>) we pick the corresponding
+        C 
+        αi , C 
+        βi i = <NUMEX TYPE="CARDINAL">1,2,3</NUMEX> positions, and then compute
+        <ENAMEX TYPE="ORGANIZATION">distances (αi,αj</ENAMEX>), (αi,<NUMEX TYPE="MONEY">βj</NUMEX>) and (βi,<NUMEX TYPE="MONEY">βj</NUMEX>) for i not equal to
+        <ENAMEX TYPE="PERSON">j.</ENAMEX> These <NUMEX TYPE="CARDINAL">12</NUMEX> distances along with the covalent bond length
+        <ENAMEX TYPE="ORGANIZATION">(αi,βi</ENAMEX>) capture the entire solid structure of the
+        tripeptide as embedded in the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. This information is
+        sufficient to fix a unique φ, ψ value along with the
+        position of the C 
+        <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> . The same " R 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> R 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> R 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> " is picked up from different proteins
+        and from different locations within the same <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. This
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is statistically analyzed without any further
+        <ENAMEX TYPE="NATIONALITY">physico-chemical</ENAMEX> bias about the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>. In this way, data
+        about various possible conformations of a tripeptide is
+        gathered and analyzed as explained in the discussion
+        <ENAMEX TYPE="LANGUAGE">section</ENAMEX>.
+        Attempts to understand and capture structural features
+        were first done as <ENAMEX TYPE="SUBSTANCE">inter residue</ENAMEX> contact statistics [ <NUMEX TYPE="CARDINAL">2 3</NUMEX> ]
+        involving long range interactions. Short range pairwise
+        residue statistics is contained in the <ENAMEX TYPE="PRODUCT">Protein Atlas</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ]
+        . In the literature [ <NUMEX TYPE="CARDINAL">5 6 7 8 9 10 11 12</NUMEX> ] there have been
+        many attempts to predict new <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> or peptide structures
+        using small amino <ENAMEX TYPE="SUBSTANCE">acid subsequences</ENAMEX> or fragments of length
+        <ENAMEX TYPE="CONTACT_INFO">3 to10.</ENAMEX> In the seminal paper [ <ENAMEX TYPE="LAW">5</ENAMEX> ] , Unger 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . analyzed hexamers and
+        identified <NUMEX TYPE="CARDINAL">about 100</NUMEX> structural building blocks, in which,
+        each amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> has a position dependent probability of
+        <ENAMEX TYPE="PERSON">occurrence</ENAMEX>. Others [ <TIMEX TYPE="DATE">10</TIMEX> ] classified the <NUMEX TYPE="CARDINAL">20</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>
+        into <NUMEX TYPE="CARDINAL">4</NUMEX> classes (<ENAMEX TYPE="ORGANIZATION">Glycine, Proline</ENAMEX>, hydrophobic and
+        <ENAMEX TYPE="ORGANIZATION">hydrophilic</ENAMEX>) and identified structural clusters. <ENAMEX TYPE="PERSON">Baker</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> [ <NUMEX TYPE="CARDINAL">11 12</NUMEX> ] used fragments with
+        definite amino <ENAMEX TYPE="SUBSTANCE">acid sequences</ENAMEX>, and their structural
+        variations in different known <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, as potential
+        templates for predicting new <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>. In all the
+        cases they have only used the backbone <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> (i.e. C 
+        <ENAMEX TYPE="PERSON">α</ENAMEX> co-ordinates only). In contrast, we
+        have used the C 
+        <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> and C 
+        <ENAMEX TYPE="PERSON">β</ENAMEX> co-ordinates, which then captures a
+        significant <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> configuration. Recently, de novo
+        protein design [ <NUMEX TYPE="CARDINAL">13 14 15 16 17 18 19 22</NUMEX> ] is gaining
+        importance and our data can also be used for this
+        purpose.
+      
+      
+        Results
+        Tripeptides have been classified into <NUMEX TYPE="CARDINAL">three</NUMEX> categories:
+        rigid, non-rigid and intermediate based on the relative
+        structural rigidity of various distances between C 
+        <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> and C 
+        β atoms in a tripeptide. In our sample
+        of <ENAMEX TYPE="SUBSTANCE">crystallized proteins</ENAMEX>, of the possible <TIMEX TYPE="DATE">8000</TIMEX> tripeptides,
+        <TIMEX TYPE="DATE">only 7964</TIMEX> occurred. The <NUMEX TYPE="CARDINAL">36</NUMEX> tripeptides, which do not occur
+        in our sample, however do occur in the <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX> ]
+        sequence data. The tripeptides, which occurred <TIMEX TYPE="DATE">more than 5</TIMEX>
+        times in our sample, were taken into consideration in our
+        analysis. We found that <TIMEX TYPE="DATE">1294</TIMEX> (<NUMEX TYPE="PERCENT">18%</NUMEX>) tripeptides can be
+        classified as rigid, <NUMEX TYPE="CARDINAL">302</NUMEX> (<NUMEX TYPE="PERCENT">4%</NUMEX>) as non-rigid and <TIMEX TYPE="DATE">5731</TIMEX>(<NUMEX TYPE="PERCENT">78%</NUMEX>) as
+        <ENAMEX TYPE="PRODUCT">intermediate</ENAMEX>. We classify rigid tripeptides as those, where
+        <NUMEX TYPE="CARDINAL">at least one</NUMEX> (<NUMEX TYPE="MONEY">1,3</NUMEX>) distance has a fluctuation less than
+        0.4°A and non-rigid tripeptides as those with all the (<NUMEX TYPE="MONEY">1,3</NUMEX>)
+        distance fluctuations greater than <TIMEX TYPE="DATE">0.7°A</TIMEX>. After accounting
+        for rigid and non-rigid, all the intermediates have at
+        least <NUMEX TYPE="CARDINAL">one</NUMEX> (<NUMEX TYPE="MONEY">1,3</NUMEX>) distance fluctuation <NUMEX TYPE="QUANTITY">between 0.4 to 0.7°A</NUMEX>.
+        The entire dataset of <TIMEX TYPE="DATE">7964</TIMEX> tripeptides along with all the
+        12 relative average distances, standard deviations and
+        <ENAMEX TYPE="PERSON">frequencies</ENAMEX> is available at the URL
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="PERSON">au</ENAMEX>-kbc.<ENAMEX TYPE="CONTACT_INFO">org/research_areas/bio/projects/protein/tri.</ENAMEX><ENAMEX TYPE="ORGANIZATION">html</ENAMEX>.
+        A profile of this large data set can be obtained by
+        studying side chain relative abundance (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>) and
+        structural <ENAMEX TYPE="SUBSTANCE">homology</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). To find correlation between
+        the <NUMEX TYPE="CARDINAL">three</NUMEX> classes of tripeptides and known secondary
+        structure subsequences, <TIMEX TYPE="DATE">9986</TIMEX> helices of sequence length ≥
+        <TIMEX TYPE="DATE">5, 4541</TIMEX> helices of sequence length ≥ <TIMEX TYPE="DATE">12, 9544</TIMEX> beta strands
+        of <ENAMEX TYPE="SUBSTANCE">length ≥ 3</ENAMEX> and <TIMEX TYPE="DATE">3120</TIMEX> beta strands of length �<NUMEX TYPE="MONEY">� 7</NUMEX> from DSMP
+        [ <TIMEX TYPE="DATE">21</TIMEX> ] were analyzed and the results are tabulated in Table
+        <NUMEX TYPE="CARDINAL">5</NUMEX>. The distribution of the <NUMEX TYPE="CARDINAL">three</NUMEX> classes of tripeptides in
+        these secondary structure elements mirrors their
+        distribution in the entire dataset, occurrence being
+        predominantly intermediate followed by rigid and non-rigid.
+        It can be inferred that the rigid <ENAMEX TYPE="PER_DESC">tripeptides</ENAMEX> have no
+        definite correlation with secondary structure elements.
+        <ENAMEX TYPE="PRODUCT">Table 3shows</ENAMEX> the frequency of various amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+        residues occurring in the <NUMEX TYPE="CARDINAL">three</NUMEX> categories intermediate,
+        rigid and non-rigid. In any category we have mentioned the
+        relative percentage of occurrence within the same
+        tripeptide category. The amino <ENAMEX TYPE="SUBSTANCE">acids Methionine</ENAMEX>, <ENAMEX TYPE="GPE">Proline</ENAMEX>,
+        <ENAMEX TYPE="ORGANIZATION">Tryptophan</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Glutamine</ENAMEX> occur predominantly in the rigid
+        <ENAMEX TYPE="ORGANIZATION">tripeptides</ENAMEX> and not as much in the other <NUMEX TYPE="CARDINAL">two</NUMEX> categories,
+        suggesting that <ENAMEX TYPE="ORGANIZATION">Methionine, Proline, Tryptophan</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Glutamine</ENAMEX> can cause structural rigidity in a tripeptide.
+        Similarly, it can be inferred that <ENAMEX TYPE="ORGANIZATION">Serine</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Threonine</ENAMEX> can
+        cause structural non-rigidity in a tripeptide. The amino
+        <ENAMEX TYPE="PERSON">acid Cysteine</ENAMEX> tends to be either in the rigid or in the
+        non-rigid category, but rarely in the intermediate
+        category. The sum of all the percentage numbers within a
+        category falls a little short of <NUMEX TYPE="CARDINAL">300</NUMEX>, since the <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>
+        occur at any of the <NUMEX TYPE="CARDINAL">three</NUMEX> possible positions in a
+        <ENAMEX TYPE="ORGANIZATION">tripeptide</ENAMEX>. Multiple occurrences of a residue within a
+        tripeptide are counted only once.
+        <ENAMEX TYPE="PRODUCT">Table 3does</ENAMEX> not reflect the absolute frequency of
+        occurrence in our dataset. For example <ENAMEX TYPE="PERSON">Methionine</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">Tryptophan</ENAMEX> actually occur rarely. Therefore, we looked at
+        those tripeptides that occur with more than the average
+        frequency which is greater than <NUMEX TYPE="CARDINAL">40</NUMEX> in our sample. This high
+        frequency sample dataset again shows that <ENAMEX TYPE="ORGANIZATION">Serine</ENAMEX> and
+        Threonine are predominant amongst non-rigids, while
+        Proline, <ENAMEX TYPE="ORGANIZATION">Alanine, Isoleucine</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">Leucine</ENAMEX> occur often
+        amongst the rigids.
+        The structural <ENAMEX TYPE="PER_DESC">homology</ENAMEX> of most tripeptides is shown in
+        <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. The fluctuating nature of tripeptides is quite
+        often captured by (α 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ,α 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) distances. So, we chose to classify
+        various structural similarities by looking at the (α 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ,α 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) distances alone. This was done by
+        taking the (α 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ,α 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) mean distances in bins of 0.2°A
+        (range being <NUMEX TYPE="CARDINAL">5.0</NUMEX> to <NUMEX TYPE="MONEY">7.8°A</NUMEX>) and counting the number of
+        tripeptides falling into each bin. <ENAMEX TYPE="PRODUCT">Table 4shows</ENAMEX> that almost
+        all the intermediate tripeptides have an (α 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> ,α 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) distance of (<NUMEX TYPE="QUANTITY">6.0 ± 0.7)°</NUMEX>A. We take
+        the range to be <NUMEX TYPE="MONEY">1.4</NUMEX> as the allowed fluctuation in any
+        single tripeptide is <TIMEX TYPE="DATE">0.7°A</TIMEX>. The tabulated results show that
+        all intermediates are broadly similar in <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. Among
+        the rigid tripeptides where the maximum allowed fluctuation
+        in any individual tripeptide is <NUMEX TYPE="QUANTITY">0.4°A only</NUMEX>, we find that
+        there are essentially two structural categories namely (<NUMEX TYPE="CARDINAL">5.8</NUMEX>
+        ± <NUMEX TYPE="CARDINAL">0.4</NUMEX>)°A and (<NUMEX TYPE="QUANTITY">6.4 ± 0.4)°</NUMEX>A. Finally the non-rigid
+        tripeptides, whose fluctuations are certainly larger than
+        0.7°A, can be thought of having essentially one
+        structure.
+        The frequency with which each of the tripeptides occurs
+        in our sample set of <NUMEX TYPE="QUANTITY">0.27 million tripeptides</NUMEX> from <TIMEX TYPE="DATE">1220</TIMEX>
+        <ENAMEX TYPE="ORGANIZATION">polypeptide</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> is shown in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>.
+        In the graph (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), Series <NUMEX TYPE="CARDINAL">1</NUMEX> indicates the
+        frequency profile of all the tripeptides, Series 2 is for
+        <ENAMEX TYPE="PRODUCT">intermediate</ENAMEX>, Series 3 is for rigid and Series 4 is for
+        <ENAMEX TYPE="ORGANIZATION">non-rigid</ENAMEX>. <NUMEX TYPE="PERCENT">About 10%</NUMEX> of the tripeptides occur with a
+        frequency of <NUMEX TYPE="CARDINAL">less than 6</NUMEX>. All the categories except the
+        <ENAMEX TYPE="PER_DESC">non-rigid</ENAMEX> do show that tripeptides that occur very
+        frequently are fewer. They obey Poisson like statistics.
+        Most tripeptides occur with a frequency of <NUMEX TYPE="CARDINAL">15</NUMEX>. Non-rigids
+        are rare and almost each non-rigid tripeptide occurs with a
+        different frequency. We find in our sample size of <NUMEX TYPE="CARDINAL">0.27</NUMEX>
+        <NUMEX TYPE="CARDINAL">million</NUMEX> tripeptides, <NUMEX TYPE="PERCENT">12.6%</NUMEX> fall into the rigid category, <NUMEX TYPE="PERCENT">4%</NUMEX>
+        in non-rigids and the remaining in intermediate.
+      
+      
+        Discussion
+        Every tripeptide, which occurs in a particular protein
+        and in a particular position, may yield <NUMEX TYPE="CARDINAL">one</NUMEX> possible
+        <ENAMEX TYPE="ORGANIZATION">conformation</ENAMEX>. Examining the entire crystallized data will
+        give the other possible conformations of the tripeptide
+        structures in <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. When this is statistically
+        analyzed, it will give a clue to the magnitude of
+        conformational fluctuations. It should be borne in mind
+        that in every event, there are particular chemical bonds or
+        steric hindrance, which makes the conformation
+        possible.
+        The data set that we studied typically has about 0.2°A
+        (<ENAMEX TYPE="NATIONALITY">R</ENAMEX> factor) uncertainty in the position of any co-ordinates
+        of the atom. Consequently, most of the nearest neighbour
+        distance data show a standard deviation ranging from <NUMEX TYPE="CARDINAL">0</NUMEX> to
+        0.4°A. Next nearest <ENAMEX TYPE="ORG_DESC">neighbour</ENAMEX> (<ENAMEX TYPE="NATIONALITY">R</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> , R 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> ) data will typically have a standard
+        deviation of <NUMEX TYPE="CARDINAL">0.4°A</NUMEX> to <TIMEX TYPE="DATE">0.7°A</TIMEX>. Let us say, we start with a
+        rigid structure in <NUMEX TYPE="CARDINAL">three</NUMEX> dimensions given by mutual
+        distances between C 
+        <NUMEX TYPE="CARDINAL">α1</NUMEX> , C 
+        <NUMEX TYPE="CARDINAL">β1</NUMEX> , C 
+        <NUMEX TYPE="CARDINAL">α2</NUMEX> , C 
+        <NUMEX TYPE="CARDINAL">β2</NUMEX> points. We have to find the C 
+        <NUMEX TYPE="CARDINAL">α3</NUMEX> and C 
+        <NUMEX TYPE="CARDINAL">β3</NUMEX> co-ordinates. <NUMEX TYPE="CARDINAL">Eight</NUMEX> additional
+        distances with corresponding standard deviations
+        (fluctuations) are given in <ENAMEX TYPE="PRODUCT">Table 1for</ENAMEX> each of the
+        <ENAMEX TYPE="ORGANIZATION">tripeptides</ENAMEX>. Many of the distances are actually redundant.
+        Therefore, the best distances are picked to achieve our
+        goal. It can be noted that the nearest neighbour distances
+        have smaller fluctuations, and to fix a point we need the
+        distance of a said point from <NUMEX TYPE="CARDINAL">three</NUMEX> other known points.
+        This translates to saying that we should know, at least one
+        next to nearest neighbour distance. We can choose from
+        amongst all the (<NUMEX TYPE="MONEY">1,3</NUMEX>) distances, the <NUMEX TYPE="CARDINAL">one</NUMEX>, which has the
+        lowest fluctuation and thus fix C 
+        <NUMEX TYPE="CARDINAL">α3</NUMEX> and then C 
+        <NUMEX TYPE="CARDINAL">β3</NUMEX> or vice versa. This yields the
+        optimum procedure for fixing the <NUMEX TYPE="CARDINAL">three</NUMEX> co-ordinates
+        accurately. In <ENAMEX TYPE="PRODUCT">Table 2we</ENAMEX> have boldfaced the significant
+        range around the medians within the category. This helps us
+        in demarcating those with fewer fluctuations than the
+        median.
+        In <ENAMEX TYPE="PRODUCT">Table 2there</ENAMEX> are occasions where R 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> , R 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> or R 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> , R 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> distances show a large standard
+        deviation, greater than <TIMEX TYPE="DATE">0.2°A</TIMEX>. These abnormalities are
+        artificial fluctuations in our crystallized data sample.
+        For example, in certain <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> data, the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> have given
+        <NUMEX TYPE="CARDINAL">more than one</NUMEX> possible coordinate information due to
+        experimental uncertainties in data interpretation. In our
+        analysis, the first choice with its uncertainties has been
+        taken. This is reflected in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. These occasions are
+        rare, and therefore, we have taken them as random errors
+        causing fluctuations.
+        We discuss some possibilities for the rigidity of
+        certain tripeptides. At the outset, we cannot make any
+        strict criterion for rigidity. However, statistically more
+        often than not the following observations hold. Rigidity
+        due to <ENAMEX TYPE="ORGANIZATION">Proline</ENAMEX> is well understood because of the side chain
+        interacting covalently with the backbone. Consequently, C 
+        <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> is held rigidly upto 
+        <ENAMEX TYPE="ORGANIZATION">trans</ENAMEX> and 
+        cis ambiguity. This amounts to the
+        fact that essentially φ is frozen to <ENAMEX TYPE="PRODUCT">-60° ± 20°</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] .
+        The tripeptide therefore tends to be rigid. On closer
+        examination, we find <ENAMEX TYPE="ORGANIZATION">Proline</ENAMEX> in position <NUMEX TYPE="CARDINAL">3</NUMEX> in the
+        tripeptide, makes the tripeptide rigid. This is in
+        agreement with the expectations from the covalent bond
+        structure.
+        <ENAMEX TYPE="ORGANIZATION">Methionine</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Tryptophan</ENAMEX> are fairly bulky; perhaps, the
+        good space filling is the cause for rigidity. Rigid
+        tripeptides with <ENAMEX TYPE="ORGANIZATION">Glutamine</ENAMEX> invariably also have another
+        <ENAMEX TYPE="ORGANIZATION">polar</ENAMEX> side chain <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>; consequently they form a weak
+        ionic bond within the tripeptide. Usually <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> with
+        long <ENAMEX TYPE="ORG_DESC">side chains</ENAMEX> have more rotameric fluctuations [ <TIMEX TYPE="DATE">23</TIMEX> ] .
+        Occasionally we find they may bind with another residue
+        within the tripeptide and end up being rigid. Lastly,
+        non-<ENAMEX TYPE="PER_DESC">rigids</ENAMEX> tend to have <ENAMEX TYPE="PERSON">Serine</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">Threonine residues</ENAMEX>,
+        which is consistent with their high polarity. Cysteine,
+        which is well known for its tendency to form <ENAMEX TYPE="ORGANIZATION">di</ENAMEX>-sulfide
+        bridge, can fall into either rigid or non-rigid category
+        but rarely in the intermediate category.
+        A single tripeptide does not have a unique structure,
+        indeed it varies as the position of the tripeptide changes
+        within a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and across <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. This fluctuation is
+        captured by the standard deviations in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. The
+        classification of rigid, non-rigid and intermediate is most
+        often determined by <NUMEX TYPE="MONEY">(α1,α3</NUMEX>) distance alone. Therefore we
+        can assess that <NUMEX TYPE="CARDINAL">two</NUMEX> different tripeptides have similar
+        structure, when their <NUMEX TYPE="MONEY">(α1,α3</NUMEX>) distance along with their
+        standard deviations overlap. This criterion implies that
+        structurally homologous tripeptides have similar backbones.
+        We have also looked at various other cross co-relations
+        such as <NUMEX TYPE="MONEY">(α1,α3</NUMEX>) vs <NUMEX TYPE="MONEY">(β1,β3</NUMEX>) distances, <NUMEX TYPE="MONEY">(α1,α3</NUMEX>) vs <NUMEX TYPE="MONEY">(α1,β3</NUMEX>)
+        distances etc. The structural homology conclusion, as
+        presented in the results remains unaltered.
+      
+      
+        Conclusions
+        Tripeptide analysis is shown to be feasible and
+        statistically significant results have been obtained. Some
+        regular features of <ENAMEX TYPE="ORG_DESC">side chain</ENAMEX> interactions suggest that
+        there are essentially <NUMEX TYPE="CARDINAL">three</NUMEX> classes of tripeptides: rigid,
+        <ENAMEX TYPE="ORGANIZATION">non-rigid</ENAMEX> and intermediate. These have no correlation with
+        the secondary <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and hence are
+        complementary to such studies. This data may be used to
+        predict plausible <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> for oligopeptides and for
+        denovo <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> design. Attempts are being made by us to
+        develop useful pseudo energy functions to realize the above
+        aims.
+      
+      
+        Methods
+        A <ENAMEX TYPE="PER_DESC">representative</ENAMEX> data set of <TIMEX TYPE="DATE">1220</TIMEX> protein <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> was
+        obtained from <ENAMEX TYPE="ORGANIZATION">Protein Data Bank PDB</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] with a sequence
+        identity ranging from <NUMEX TYPE="CARDINAL">0</NUMEX>-<NUMEX TYPE="PERCENT">90%</NUMEX> and <ENAMEX TYPE="PRODUCT">≤ 2°A</ENAMEX> resolution. This PDB
+        list was generated from <ENAMEX TYPE="PERSON">CulledPDB</ENAMEX> (<ENAMEX TYPE="PERSON">R.L.Dunbrack Jr.</ENAMEX>,
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">fccc</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/research/labs/dunbrack/pisces/</ENAMEX>), which
+        uses an algorithm similar to the remove-until-done
+        algorithm of <ENAMEX TYPE="ORGANIZATION">Hobohm</ENAMEX> and <ENAMEX TYPE="PERSON">Sander</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] . A statistical
+        analysis of <NUMEX TYPE="QUANTITY">0.27 million tripeptides</NUMEX> from this set was
+        done. If the distribution of tripeptides across proteins
+        were random, we would expect each of these tripeptides to
+        occur on an average <NUMEX TYPE="CARDINAL">about 34</NUMEX> times. For each of these <NUMEX TYPE="CARDINAL">0.27</NUMEX>
+        <NUMEX TYPE="CARDINAL">million tripeptides 12</NUMEX> distances <NUMEX TYPE="MONEY">(α1,α2</NUMEX>), <NUMEX TYPE="MONEY">(α1,β2</NUMEX>), <NUMEX TYPE="MONEY">(β1,α2</NUMEX>),
+        (β<NUMEX TYPE="CARDINAL">1,β2</NUMEX>), <NUMEX TYPE="MONEY">(α1,α3</NUMEX>), <NUMEX TYPE="MONEY">(α1,β3</NUMEX>), <NUMEX TYPE="MONEY">(β1,α3</NUMEX>), <NUMEX TYPE="MONEY">(β1,β3</NUMEX>), <NUMEX TYPE="MONEY">(α2,α3</NUMEX>),
+        (α<NUMEX TYPE="CARDINAL">2,β3</NUMEX>), <NUMEX TYPE="MONEY">(β2,α3</NUMEX>), <NUMEX TYPE="MONEY">(β2,β3</NUMEX>) were calculated. The mean and
+        standard deviation was then computed for each of these
+        <ENAMEX TYPE="PERSON">distances</ENAMEX>. The frequency of occurrence of each of the <NUMEX TYPE="CARDINAL">12</NUMEX>
+        <ENAMEX TYPE="PERSON">distances</ENAMEX> was also calculated. The objective is to find if
+        there is a conservation of distances in these tripeptides
+        irrespective of where they occur in a <ENAMEX TYPE="SUBSTANCE">protein sequence</ENAMEX>, or
+        which <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> they came from.
+        As a countercheck for the statistical <ENAMEX TYPE="ORG_DESC">reliability</ENAMEX> of our
+        analysis, another <ENAMEX TYPE="PER_DESC">representative</ENAMEX> dataset of <NUMEX TYPE="CARDINAL">0.15 million</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">tripeptides</ENAMEX> in <NUMEX TYPE="CARDINAL">700</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with sequence identity ranging
+        from <NUMEX TYPE="CARDINAL">0</NUMEX>-<NUMEX TYPE="PERCENT">20%</NUMEX> and <ENAMEX TYPE="PRODUCT">≤ 2°A</ENAMEX> resolution was taken and similar
+        computational analysis was done. The quantitative results
+        as reflected in <ENAMEX TYPE="PRODUCT">Table 2remained</ENAMEX> the same in both the sets.
+        Statistical significance became better in the <NUMEX TYPE="CARDINAL">0</NUMEX>-<NUMEX TYPE="PERCENT">90%</NUMEX>
+        sequence identity set. The standard deviation obtained in
+        the <NUMEX TYPE="CARDINAL">0</NUMEX>-<NUMEX TYPE="PERCENT">90%</NUMEX> set is therefore much more reliable.
+        In order to determine the structural homologs in the
+        tripeptides, <NUMEX TYPE="MONEY">(α1,α3</NUMEX>) mean distances were taken in bins of
+        0.2°A in a range of <NUMEX TYPE="CARDINAL">5.0°A</NUMEX> to <TIMEX TYPE="DATE">7.8°A</TIMEX>. The number of
+        tripeptides from each of the <NUMEX TYPE="CARDINAL">three</NUMEX> categories rigid,
+        <ENAMEX TYPE="ORGANIZATION">non-rigid</ENAMEX> and intermediate which fall into these 0.2°A bins
+        was counted. The results are tabulated in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. Helix
+        and beta strand subsequences from <ENAMEX TYPE="ORGANIZATION">DSMP</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] were
+        <ENAMEX TYPE="PERSON">extracted</ENAMEX> and the frequency of the <NUMEX TYPE="CARDINAL">three</NUMEX> classes of
+        tripeptides was computed. The results are tabulated in
+        <ENAMEX TYPE="CONTACT_INFO">Table 5</ENAMEX>.
+      
+      
+        <ENAMEX TYPE="ORGANIZATION">Supplementary</ENAMEX> material
+        The tripeptide distance data is available on the World
+        <ENAMEX TYPE="ORGANIZATION">Wide Web</ENAMEX> at the following URL:
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="PERSON">au</ENAMEX>-kbc.<ENAMEX TYPE="CONTACT_INFO">org/research_areas/bio/projects/protein/tri.</ENAMEX>html
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">SA</ENAMEX> did the data analysis, programming and webcasting. PG
+        introduced the subject and background chemistry to <ENAMEX TYPE="ORGANIZATION">RA</ENAMEX> and
+        <ENAMEX TYPE="ORGANIZATION">SA</ENAMEX>. The concept was conceived by <ENAMEX TYPE="ORGANIZATION">RA</ENAMEX>. Development of the
+        concept was done by all the <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">authors</ENAMEX>.
+      
+    
+  

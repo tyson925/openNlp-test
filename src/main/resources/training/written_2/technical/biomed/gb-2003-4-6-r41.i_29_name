@@ -1,0 +1,543 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">Microarray</ENAMEX> technology has revolutionized modern
+        biological research by permitting the simultaneous study of
+        genes comprising a large part of the genome. The blessings
+        stemming from this are accompanied by the <ENAMEX TYPE="PER_DESC">curse</ENAMEX> of high
+        dimensionality of the data output. The main objective of
+        this article is to explore one method for ranking genes in
+        order of likelihood of being differentially expressed. Top
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> lists, that give few false positives and few false
+        <ENAMEX TYPE="PERSON">negatives</ENAMEX>, are the output. As the interest is mainly in
+        ranking for the purpose of generating top gene lists,
+        issues such as calculation of 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values and correction for multiple
+        tests are of secondary importance.
+        Microarrays have an important role in finding novel drug
+        targets; the thinking that guides the design and
+        interpretation of such experiments has been expressed by
+        <ENAMEX TYPE="ORGANIZATION">Lonnstedt</ENAMEX> and Speed [ <ENAMEX TYPE="LAW">1</ENAMEX> ] : "The number of genes selected
+        would depend on the size, aim, background and follow-up
+        plans of the experiment." Often, interest is restricted to
+        so-called 'druggable' <ENAMEX TYPE="ORG_DESC">target</ENAMEX> classes, thus thinning out the
+        set of eligible genes considerably. It is generally
+        sensible to focus attention first on druggable targets with
+        smaller 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values (where the 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value is the probability of
+        obtaining at least the same degree of differential
+        expression by pure chance) before proceeding to ones with
+        larger 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values. In general, 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values have the greatest impact on
+        decisions regarding <ENAMEX TYPE="ORG_DESC">target</ENAMEX> selection by providing a
+        preliminary ranking of the genes. This is not to say that
+        <ENAMEX TYPE="ORGANIZATION">multiplicity</ENAMEX> should never be taken into account, or that
+        the method presented here replaces correction for
+        <ENAMEX TYPE="ORGANIZATION">multiplicity</ENAMEX>. On the contrary, the approach provides a
+        basis for such calculations (see Additional data
+        files).
+        The approach presented here could be applied to
+        different types of test statistics, but one particular type
+        of recently proposed statistic will be used. In <ENAMEX TYPE="GPE">Tusher</ENAMEX> [ <NUMEX TYPE="CARDINAL">2</NUMEX>
+        ] a methodology based on a modified 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic is described:
+        
+        where 
+        <ENAMEX TYPE="ORGANIZATION">diff</ENAMEX> is an effect estimate, for
+        example, a group mean difference, 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> is a standard error, and 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <ENAMEX TYPE="PRODUCT">0</ENAMEX> is a regularizing constant. This
+        <ENAMEX TYPE="PERSON">formulation</ENAMEX> is quite general and includes, for example, the
+        estimation of a contrast in an <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>. Setting 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> will yield a 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic. The constant, called
+        the fudge constant, is found by removing the trend in 
+        d as a function of 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> in moving windows across the data.
+        The technical details are outlined in [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . The statistic
+        calculated in this way will be referred to as <ENAMEX TYPE="PERSON">SAM</ENAMEX>. The
+        basic idea with 
+        d is to eliminate some false
+        positives with low values of 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> , see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>.
+        It is more relevant to optimize with respect to
+        false-positive and false-negative rates. This is the basic
+        idea behind the new approach. The idea is to jointly
+        minimize the number of genes that are falsely declared
+        positive and the number of genes falsely declared negative
+        by optimizing over a range of values of the significance
+        level a and the fudge constant 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> . How well this is achieved can be
+        judged by a <ENAMEX TYPE="ORG_DESC">receiver</ENAMEX> operating characteristics (ROC) curve,
+        which displays the number of false positives against the
+        number of false negatives expressed as proportions of the
+        total number of genes.
+        An alternative to the statistic (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) is 
+        d = 
+        <ENAMEX TYPE="CONTACT_INFO">diff /√</ENAMEX>( 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">0 2</NUMEX>+ 
+        <ENAMEX TYPE="CONTACT_INFO">S 2</ENAMEX>), or 
+        d = 
+        <ENAMEX TYPE="CONTACT_INFO">diff /√</ENAMEX>( 
+        wS 
+        <NUMEX TYPE="CARDINAL">0 2</NUMEX>+ (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> ) 
+        <ENAMEX TYPE="CONTACT_INFO">S 2</ENAMEX>) for some weight 
+        <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> , which is basically the statistic
+        proposed in <ENAMEX TYPE="GPE">Baldi</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . Its performance appears to be
+        very similar to that of (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) (data not shown). A software
+        implementation in <ENAMEX TYPE="NATIONALITY">R</ENAMEX> code within the package <ENAMEX TYPE="ORGANIZATION">SAG</ENAMEX> [ <NUMEX TYPE="CARDINAL">5 6</NUMEX> ] is
+        available from [ <ENAMEX TYPE="LAW">7</ENAMEX> ] via the function 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> .
+      
+      
+        Results
+        
+          The criterion
+          A comparison of methods in terms of their ROC curves
+          is presented in <ENAMEX TYPE="GPE">Lonnstedt</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . A method whose ROC
+          curve lies below <NUMEX TYPE="CARDINAL">another one</NUMEX> (has smaller ordinate for
+          given abscissa) is preferred (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). A method which
+          has a better ROC curve, in this sense, will produce top
+          lists with more differentially expressed genes (DEGs),
+          fewer non-DEGs, and, consequently, will leave out fewer
+          <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX>. Furthermore, such a method will give higher average
+          ranks to the <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX>, if the ranking is such that high rank
+          means more evidence of differential expression.
+          Superiority in terms of average ranks is a weaker
+          assertion than superiority in terms of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves (see
+          Additional data files for a proof). If it is desirable to
+          compare methods with respect to their ROC curves, then
+          the estimation procedures should find parameter estimates
+          that optimize the ROC curve. This section suggests a
+          goodness criterion based on the ROC curve.
+          False discovery rate ( 
+          <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> ) may be defined as the
+          proportion of false positives among the significant
+          genes, see [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . False-positive rate ( 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> ) may be defined as the number
+          of false positives among the significant genes divided by
+          the total number of genes. Similarly, we define the
+          false-negative rate ( 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> ) as the number of false
+          negatives among the nonsignificant genes divided by the
+          total number of genes, the true-positive rate ( 
+          <ENAMEX TYPE="ORGANIZATION">TP</ENAMEX> ) as the number of true
+          positives divided by the total number of genes, and, the
+          true-negative rate ( 
+          <ENAMEX TYPE="ORGANIZATION">TN</ENAMEX> ) as the number of true
+          negatives divided by the total number of genes.
+          In <ENAMEX TYPE="PRODUCT">Table 1relations</ENAMEX> involving these <ENAMEX TYPE="ORG_DESC">entities</ENAMEX> are
+          displayed. For instance, the proportion of unchanged
+          genes (non-DEGs), 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , equals the sum of the proportion
+          of true negative and the proportion of false positive: 
+          p 
+          <TIMEX TYPE="DATE">0</TIMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">TN</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> , and the proportion of
+          significant genes at a certain significance level α
+          equals the sum of the true positives and the false
+          positives: 
+          <ENAMEX TYPE="ORGANIZATION">p (α</ENAMEX>) = 
+          <ENAMEX TYPE="ORGANIZATION">TP</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> . It is intuitive that the
+          criterion to be minimized should be an increasing
+          function of 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> . Any top list produced should
+          have many DEGs and few non-DEGs.
+          Assume that we can, for every combination of values of
+          the significance level α and the fudge constant 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , calculate ( 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> ). The goodness criterion is
+          then formulated in terms of the distance of the points ( 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> ) to the origin (which point
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to no false positives and no false negatives,
+          see Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), which in mathematical symbols may be put
+          as
+          
+          The optimal value of (α, 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ) will be the one that minimizes
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>). It is for practical reasons not possible to do this
+          minimization over every combination, so the suggestion is
+          to estimate the criterion over a lattice of (α, 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ) values and pick the best
+          combination.
+          If one has an assessment regarding the relative
+          importance of 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> , that may be reflected in a
+          version of the criterion (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) that incorporates a weight λ
+          that reflects the relative importance of 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> compared to 
+          FN : 
+          C 
+          <ENAMEX TYPE="CONTACT_INFO">λ = √(λ 2</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> <NUMEX TYPE="CARDINAL">2</NUMEX>+ 
+          <ENAMEX TYPE="CONTACT_INFO">FN 2</ENAMEX>). The choice λ = (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> )/ 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> corresponds to another type of ROC
+          curve, which displays the proportion of true ( 
+          <ENAMEX TYPE="ORGANIZATION">TP /</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> )) against the proportion of false (
+          
+          <ENAMEX TYPE="CONTACT_INFO">FP /</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ) (see Additional data files). Other
+          goodness criteria are possible, such as the sum of 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> or the area under the curve in
+          Figure <NUMEX TYPE="CARDINAL">2</NUMEX>. For more details and other approaches see, for
+          example [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] .
+        
+        
+          Calculating p-values
+          Using the permutation method to simulate the null
+          distribution (no change) we can obtain a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for a <NUMEX TYPE="CARDINAL">two</NUMEX>-sided test, as
+          detailed below. Loosely speaking, in each loop of the
+          simulation algorithm the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> labels are randomly
+          rearranged, so that random <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are formed, the test
+          <ENAMEX TYPE="PERSON">statistic</ENAMEX> is calculated for this arrangement and the
+          value is compared to the observed <NUMEX TYPE="CARDINAL">one</NUMEX>. How extreme the
+          observed test statistic is will be judged by counting the
+          number of times that more extreme values are obtained
+          from the null distribution.
+          The data matrix 
+          
+            X 
+           has genes in rows and arrays in columns. Consider
+          the vector of group labels fixed. The permutation method
+          consists of repeatedly permuting the columns (equivalent
+          to rearranging <ENAMEX TYPE="ORG_DESC">group</ENAMEX> labels), thus obtaining the matrix 
+          
+            X* 
+           , and calculating the test statistic for each gene
+          and each permutation. Let 
+          d ( 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> ) * 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> be the value of the statistic of
+          the 
+          <ENAMEX TYPE="SUBSTANCE">j th gene</ENAMEX> in the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> permutation of columns. Then
+          the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value for gene 
+          i equals
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> is the number of genes, 
+          d ( 
+          i ) the observed statistic for gene
+          
+          i , 
+          B the number of permutations and
+          '<NUMEX TYPE="MONEY">#</NUMEX>' denotes the cardinality of the set [ <ENAMEX TYPE="LAW">2 10 11</ENAMEX> ] . In
+          words, this gives the relative frequency of randomly
+          generated test statistics with an absolute value that
+          exceeds the observed value of gene 
+          i . The formula (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) combines the
+          permutation method in [ <ENAMEX TYPE="LAW">2</ENAMEX> ] and the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value calculation in [ <TIMEX TYPE="DATE">10</TIMEX> ] .
+          These 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values are such that a more
+          extreme value of the test statistic will yield a lower 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value.
+          Given the significance level α ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values less than α are
+          considered significant), the proportion of the genes
+          considered differentially expressed is
+          
+          which is the relative frequency of genes with a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value <NUMEX TYPE="MONEY">less than α</NUMEX>.
+          The current version of 
+          <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> uses the estimate
+          
+          where 
+          q 
+          
+            X 
+           is the 
+          X<NUMEX TYPE="PERCENT">%</NUMEX> percentile of the 
+          d * (compare [ <ENAMEX TYPE="LAW">3</ENAMEX> ] ). This estimate
+          makes use of the fact that the genes whose test
+          statistics fall in the quartile range will be
+          predominantly the unchanged ones. More material on this
+          matter is in the Additional data files.
+        
+        
+          Estimating FP
+          Going via results for the 
+          <ENAMEX TYPE="ORGANIZATION">FDR</ENAMEX> in <ENAMEX TYPE="GPE">Storey</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX> ] (see also [ <NUMEX TYPE="CARDINAL">13</NUMEX>
+          <NUMEX TYPE="CARDINAL">14</NUMEX> ] ) it is possible to derive the estimate
+          
+          which is the proportion of unchanged genes multiplied
+          by the probability that such a gene produces a
+          significant result. For a derivation see the Additional
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> files.
+        
+        
+          Estimating FN
+          From <ENAMEX TYPE="PRODUCT">Table 1one</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">obtains</ENAMEX>, as outlined in the Additional
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> files,
+          
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> - 
+          p 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> ) - 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> ) (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>)
+          To get an intuitive feel for this equality, just note
+          that the <NUMEX TYPE="ORDINAL">second</NUMEX> term is the proportion unchanged
+          multiplied by the probability of such genes not being
+          significant, which estimates 
+          <ENAMEX TYPE="ORGANIZATION">TN</ENAMEX> , and that the <NUMEX TYPE="ORDINAL">third</NUMEX> term
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the positive ( 
+          <ENAMEX TYPE="ORGANIZATION">TP</ENAMEX> + 
+          <ENAMEX TYPE="ORGANIZATION">FP</ENAMEX> ). Subtracting the proportion of
+          these <NUMEX TYPE="CARDINAL">two</NUMEX> categories from the whole will leave us with
+          the 
+          <ENAMEX TYPE="ORGANIZATION">FN</ENAMEX> .
+        
+        
+          Estimating the criterion
+          The <ENAMEX TYPE="ORG_DESC">entities</ENAMEX> we need for the optimisation are given by
+          the estimates
+          
+          and
+          .
+          A scatter plot of the estimate of the criterion
+          
+          versus the true value is shown in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, and
+          reveals a good level of accuracy.
+        
+        
+          Tests
+          
+            Simulated cDNA data
+            The normal distributions modeled after real-life
+            cDNA data used in <ENAMEX TYPE="GPE">Baldi</ENAMEX> and <ENAMEX TYPE="LOCATION">Long</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] were used here
+            to provide a testing ground for the methods (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+            In each simulation <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <NUMEX TYPE="MONEY">four arrays</NUMEX> each were
+            created. <NUMEX TYPE="CARDINAL">Three</NUMEX> datasets with <NUMEX TYPE="PERCENT">1%</NUMEX>, <NUMEX TYPE="PERCENT">5% and 10%</NUMEX> <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX> were
+            generated using the normal distributions. In all cases 
+            <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> and the 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test coincided ( 
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+            <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>), and were the best methods in
+            terms of the <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves. Theory predicts that the 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test is optimal in this
+            situation (see Additional data files). When data were
+            antilogarithm-transformed, giving rise to lognormal
+            <ENAMEX TYPE="CONTACT_INFO">distributions,</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> again came out best,
+            followed by the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> method. The 
+            <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test falls behind this time.
+            Figure 4gives a graphical presentation of the results
+            in terms of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves.
+          
+          
+            Oligonucleotide <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> data
+            The data on <NUMEX TYPE="CARDINAL">two</NUMEX> types of <ENAMEX TYPE="DISEASE">leukemia</ENAMEX>, ALL and <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>,
+            appeared in Golub 
+            <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <NUMEX TYPE="CARDINAL">16 17</NUMEX> ] . Samples of
+            both <ENAMEX TYPE="PER_DESC">types</ENAMEX> were hybridized to <NUMEX TYPE="CARDINAL">38</NUMEX> arrays. In [ <TIMEX TYPE="DATE">17</TIMEX> ] , <NUMEX TYPE="CARDINAL">50</NUMEX>
+            genes were identified as <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX> using statistical
+            analysis of data from the full set of arrays. For these
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> it is impossible to calculate a ROC curve as the
+            <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX> are unknown. Instead, performance was assessed in
+            terms of the average rank of the <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, after all
+            genes were ranked by their likelihood of being DEGs
+            according to each of the methods. Using <NUMEX TYPE="CARDINAL">just three</NUMEX>
+            arrays from each of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> gave the best results,
+            followed by <ENAMEX TYPE="PERSON">SAM</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). This means that a necessary
+            but not sufficient condition for the superiority of 
+            <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> in terms of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves is
+            satisfied (see Additional data files).
+          
+          
+            Affymetrix spiking experiment data
+            In this test, data generated by <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> in an
+            experiment where <NUMEX TYPE="CARDINAL">14</NUMEX> transcripts were spiked at known
+            quantities (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>) [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] were used. Using three
+            arrays from each of <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of arrays where <NUMEX TYPE="CARDINAL">14</NUMEX> probe
+            sets (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) differ, further datasets with <NUMEX TYPE="CARDINAL">140 and 714</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX> were generated by a bootstrap procedure. Thus
+            there were <NUMEX TYPE="CARDINAL">three</NUMEX> datasets with roughly <NUMEX TYPE="PERCENT">0.1%</NUMEX>, <NUMEX TYPE="PERCENT">1% and 5%</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX>. In <NUMEX TYPE="CARDINAL">two</NUMEX> of these <NUMEX TYPE="CARDINAL">three</NUMEX> settings 
+            <ENAMEX TYPE="PERSON">samroc</ENAMEX> performed best, and in one
+            case (<NUMEX TYPE="PERCENT">0.1%</NUMEX>) <ENAMEX TYPE="PERSON">SAM</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> method were better.
+            Figure 5gives a graphical presentation of these results
+            in terms of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves.
+          
+        
+      
+      
+        Discussion
+        Whether to look at data on a log scale or not is a
+        tricky question, and is beyond the scope of this article.
+        However, the best performance by the tests considered was
+        achieved when data were lognormal (see Additional data
+        files). Normal, lognormal and real-life data were all
+        included in order to supply a varied testing ground.
+        As pointed out in [ <TIMEX TYPE="DATE">20</TIMEX> ] , the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> statistic is for
+        ranking purposes equivalent to a penalized 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+        
+          p 
+         <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+        mean 
+        <ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> 
+        mean 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> )/<NUMEX TYPE="MONEY">√</NUMEX>( 
+        a 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        <ENAMEX TYPE="CONTACT_INFO">S 2</ENAMEX>). Here 
+        a 
+        <ENAMEX TYPE="PRODUCT">1</ENAMEX> is a scale parameter related to the 
+        a priori distribution of the standard
+        error. This means that it is, at least in form, closely
+        related to the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test, <ENAMEX TYPE="PERSON">SAM</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> . <ENAMEX TYPE="PERSON">SAM</ENAMEX>, on the other hand,
+        chooses as its fudge constant the value among the
+        percentiles of 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> , which minimizes the coefficient
+        of variation of the median absolute deviation of the test
+        statistic computed over a number of percentiles of 
+        S [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . It is interesting to note
+        how different the <NUMEX TYPE="CARDINAL">three</NUMEX> related statistics the Bayes
+        method, <ENAMEX TYPE="PERSON">SAM</ENAMEX> and 
+        samroc turn out in practice.
+        One clue to why this difference occurs emerges when
+        comparing the denominators of <ENAMEX TYPE="DISEASE">SAM</ENAMEX>/ 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> more closely. First
+        square the denominators of (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) and the representation of
+        <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> above. We obtain ( 
+        a + 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> ) <TIMEX TYPE="DATE">2</TIMEX>= 
+        a <NUMEX TYPE="CARDINAL">2</NUMEX>+ <NUMEX TYPE="CARDINAL">2</NUMEX> 
+        aS + 
+        S 2for (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) and 
+        a 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> + 
+        S 2for <ENAMEX TYPE="PERSON">Bayes</ENAMEX> (where generally 
+        a 
+        <ENAMEX TYPE="CONTACT_INFO">1 ≥</ENAMEX> 
+        a 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ). For large values of 
+        S the former will exceed the latter.
+        This means that <ENAMEX TYPE="DISEASE">SAM</ENAMEX>/ 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> will downplay the importance
+        of the results for high expressing genes in a way that the
+        Bayes method does not.
+        But there is also another difference. The <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> method
+        seems to achieve best when the number of false positives is
+        allowed to grow rather large. The constant 
+        a corresponds to a large percentile
+        in the distribution of the 
+        S 2values (see Additional data
+        files). Whereas the constant in <ENAMEX TYPE="GPE">SAM</ENAMEX> will generally be
+        rather small, often the <NUMEX TYPE="CARDINAL">5</NUMEX>-<NUMEX TYPE="PERCENT">10%</NUMEX> percentile of the 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> values, the constant in the Bayes
+        method will correspond to <NUMEX TYPE="PERCENT">at least the 40%</NUMEX> percentile of
+        the 
+        <ENAMEX TYPE="CONTACT_INFO">S 2values.</ENAMEX> It seems that using a
+        large percentile will give a good performance when the
+        number of false positives grows large. This observation is
+        consistent with the observation made in <ENAMEX TYPE="GPE">Lonnstedt</ENAMEX> and Speed
+        [ <ENAMEX TYPE="LAW">1</ENAMEX> ] that the particular version of <ENAMEX TYPE="PERSON">SAM</ENAMEX>, which always uses
+        the <NUMEX TYPE="PERCENT">90%</NUMEX> percentile, will pass the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> method when the
+        number of false positives is allowed to grow large. Also, 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> will in general make use of a
+        smaller <ENAMEX TYPE="ORG_DESC">percentile</ENAMEX>, albeit that 
+        samroc shows greater spread between
+        <ENAMEX TYPE="ORGANIZATION">datasets</ENAMEX> in the values chosen, as a result of its
+        adaptation to the features specific to the data at
+        hand.
+        <ENAMEX TYPE="ORGANIZATION">Samroc</ENAMEX> is the only method that makes explicit use of the
+        number of changed genes in the ranking. If one has reason
+        to believe, for example from studying expression (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>), that
+        there are very few <ENAMEX TYPE="ORGANIZATION">DEGs</ENAMEX> (<< <NUMEX TYPE="PERCENT">1%</NUMEX>), then 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> is probably not the first
+        choice. Probably <ENAMEX TYPE="PERSON">SAM</ENAMEX> or the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX> method is more useful in
+        these situations. If, on the other hand, the number of DEGs
+        is reasonably large, 
+        <ENAMEX TYPE="ORGANIZATION">samroc</ENAMEX> is conjectured to take
+        precedence over <ENAMEX TYPE="PERSON">SAM</ENAMEX>, and to be more robust than the Bayes
+        method. Furthermore, one can argue that the kind of
+        experiments undertaken in drug discovery would more often
+        than not end in comparisons in which the biological systems
+        show vast differences in a large number of genes, mostly as
+        a downstream effect of some shock to the system.
+        The proposed method comes out better than or as good as
+        the original <ENAMEX TYPE="PERSON">SAM</ENAMEX> statistic in most tests performed. The 
+        <TIMEX TYPE="DATE">samroc</TIMEX> statistic is robust and
+        flexible in that it can address all sorts of problems that
+        suit a linear model. The methodology adjusts the fudge
+        constant flexibly and achieves an improved performance. The
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> gives fewer false positives and fewer false
+        negatives in many situations, and was never much worse than
+        the best test statistic in any circumstance. However, a
+        typical run with real-life data will take <TIMEX TYPE="TIME">several hours</TIMEX> on
+        a desktop computer. To make this methodology better suited
+        for production it would be a good investment to translate
+        part of the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> code, or the whole of it, into <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX>
+        To improve on standard univariate tests one must make
+        use of the fact that data are available on a large number
+        of related tests. <NUMEX TYPE="CARDINAL">One</NUMEX> way of achieving this goal has been
+        shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>. The conclusion is that it is possible
+        and sensible to calibrate the test with respect to
+        estimates of the false-positive and false-negative
+        rates.
+      
+      
+        Additional data files
+        A zip file (Additional data file <NUMEX TYPE="CARDINAL">1</NUMEX>) containing the R
+        package <ENAMEX TYPE="ORGANIZATION">SAG</ENAMEX> for retrieval, preparation and analysis of data
+        from the <ENAMEX TYPE="ORGANIZATION">Affymetrix GeneChip</ENAMEX> and the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> script (Additional
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> file <NUMEX TYPE="CARDINAL">2</NUMEX>) are available with the online version of this
+        <ENAMEX TYPE="LAW">article</ENAMEX>. An appendix (Additional data file <NUMEX TYPE="CARDINAL">3</NUMEX>) giving
+        further details of the statistical methods and the 
+        samroc algorithm is also available as
+        a <ENAMEX TYPE="ORGANIZATION">PDF</ENAMEX> file.
+        Additional data file 1
+        A zip file containing the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> package SAG for retrieval,
+        preparation and analysis of data from the Affymetrix
+        GeneChip
+        A zip file containing the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> package SAG for retrieval,
+        preparation and analysis of data from the Affymetrix
+        GeneChip
+        Click here for additional data file
+        Additional data file 2
+        The <ENAMEX TYPE="NATIONALITY">R</ENAMEX> script
+        The <ENAMEX TYPE="NATIONALITY">R</ENAMEX> script
+        Click here for additional data file
+        Additional data file 3
+        An appendix giving further details of the statistical
+        methods and the 
+        samroc algorithm
+        An appendix giving further details of the statistical
+        methods and the 
+        samroc algorithm
+        Click here for additional data file
+      
+    
+  

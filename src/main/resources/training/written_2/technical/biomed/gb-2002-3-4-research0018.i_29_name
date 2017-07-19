@@ -1,0 +1,613 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="SUBSTANCE">DNA microarray</ENAMEX> experiments have huge potential for
+        screening for gene expression of relevance in particular
+        <ENAMEX TYPE="ORGANIZATION">contexts</ENAMEX>. However, the output of such an experiment is
+        often just a list of 'fold-changes' in gene-expression
+        levels and so <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> face the question of whether
+        their 'hits' can be trusted or not. In the absence of any
+        knowledge of what to expect, most <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> simply draw a
+        line at a given fold-change and examine whatever is above
+        it. The largest fold-changes in highly expressed genes can
+        usually be trusted. However, because the 'correct'
+        fold-change limit typically shifts with decreasing
+        intensity of expression, a fixed fold-change line is
+        inadequate in the range of expression levels where most
+        genes actually lie. Most <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> reporting microarray
+        experiments cut off their <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> lists in essentially
+        arbitrary ways, at the level that the <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> feel
+        comfortable with, rather than on the basis of statistics.
+        Here we present an easy but sound recipe for quantifying
+        statistical significance, based on careful statistical
+        characterization of a large dataset of GeneChip
+        <ENAMEX TYPE="ORGANIZATION">®experiments</ENAMEX>.
+        A particular feature of <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> arrays is that each
+        transcript is probed by many short snippets of sequence,
+        instead of a single longer probe as in cDNA arrays [ <ENAMEX TYPE="CONTACT_INFO">1, 2,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">3</NUMEX>]. Therefore, translating the measured probe intensities
+        into a global gene-intensity or ratio score requires a
+        composite scoring function. In principle, the redundancy in
+        the probes offers a way to reduce the noise level for each
+        gene; on the other hand, finding the best estimator is
+        difficult and it is likely that the variability in probe
+        behavior will prevent a single estimator from being optimal
+        in all cases. Studying the raw data reveals its great
+        <ENAMEX TYPE="PERSON">complexity</ENAMEX>, and the <ENAMEX TYPE="ORG_DESC">hybridization</ENAMEX> processes underlying the
+        measured perfect-match (PM) versus single-mismatch (MM)
+        intensities prove hard to interpret physically. The
+        principal difficulties stem first from the large number of
+        probes with <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> intensities higher than the corresponding
+        <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX>, and therefore not conforming to the usual hybridization
+        picture; and <NUMEX TYPE="ORDINAL">second</NUMEX>, from the very broad intensity
+        distributions within each <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set.
+        The first task is therefore to design a method that can
+        robustly handle such input data. <NUMEX TYPE="ORDINAL">Second</NUMEX>, once reliable
+        measures for differential expression from <NUMEX TYPE="CARDINAL">two</NUMEX> experiments
+        are obtained, one would like to measure their significance
+        level. It is now widely accepted that such measures should
+        be derived in an intensity-dependent fashion [ <ENAMEX TYPE="CONTACT_INFO">4, 5, 6, 7,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">8</NUMEX>]. There are <NUMEX TYPE="CARDINAL">at least two</NUMEX> independent <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> to be considered: <NUMEX TYPE="ORDINAL">first</NUMEX>, the intrinsic noise
+        levels related to the technology (type I noise), which
+        includes noise components introduced by the enzymatic step
+        used in the cRNA preparation (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods)
+        and the fluorescence measurement (scan); and <NUMEX TYPE="ORDINAL">second</NUMEX>, the
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> encountered in biological replicates. Previous
+        studies have addressed significance issues in both cDNA and
+        GeneChip arrays: they have discussed significance according
+        to intrinsic noise levels [ <ENAMEX TYPE="LAW">4, 5</ENAMEX>]; or focused on
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in replicates only [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>]; or considered both
+        simultaneously [ <ENAMEX TYPE="LAW">8</ENAMEX>].
+        High-density oligonucleotide microarrays (HDONAs) are
+        composed of <NUMEX TYPE="CARDINAL">25</NUMEX>-base oligonucleotide probes synthesized and
+        attached to a glass matrix by photolithographic techniques.
+        As such a short oligonucleotide sequence would not give
+        sufficiently specific hybridization alone, <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> uses
+        <NUMEX TYPE="CARDINAL">14-20</NUMEX> different oligonucleotides to probe each transcript;
+        and each comes in <NUMEX TYPE="CARDINAL">two</NUMEX> versions - the <ENAMEX TYPE="PRODUCT">PM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> and the MM
+        probe. In the latter, the central <ENAMEX TYPE="ORG_DESC">base</ENAMEX> has been substituted
+        by its complement and this <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> is intended to control for
+        <ENAMEX TYPE="ORGANIZATION">nonspecificity</ENAMEX>. The pairs (<ENAMEX TYPE="ORGANIZATION">PM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX>) are called <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs
+        and the full set of probes for a given gene is called a
+        probe set. The standard picture used to interpret the
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> is based on <TIMEX TYPE="DATE">the following</TIMEX> model [ <ENAMEX TYPE="CONTACT_INFO">2, 9,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">10</NUMEX>]:
+        
+        <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> = 
+        I 
+        
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        I 
+        
+          NS 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        B 
+        
+        <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> = (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> ) 
+        I 
+        
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+         <ENAMEX TYPE="PERSON">+</ENAMEX> ' 
+        I 
+        
+          NS 
+         <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+        B 
+        where 
+        <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> (MM) is the observed brightness, 
+        I 
+        
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+         the contribution from specific complementary binding, 
+        I 
+        
+          NS 
+         the amount from nonspecific binding, and 
+        B a background of physical origin,
+        that is, the photodetector dark current or light
+        reflections from the scanning process. The proper technique
+        for estimating the background and its fluctuations is
+        discussed in [ <TIMEX TYPE="DATE">11</TIMEX>]. Then, (thought to be positive) reflects
+        the loss of binding due to a single substitution, and , '
+        are the susceptibilities for nonspecific binding. In the
+        <ENAMEX TYPE="ORGANIZATION">ideal</ENAMEX> case, which is usually assumed, = ' and therefore the
+        subtraction 
+        <ENAMEX TYPE="ORGANIZATION">PM - MM</ENAMEX> = (<ENAMEX TYPE="CONTACT_INFO">1 -</ENAMEX> ) 
+        I 
+        
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+         is directly proportional to the desired signal.
+        However, the susceptibility can be strongly varying within
+        a given probe set.
+        We shall focus on <TIMEX TYPE="DATE">the following two</TIMEX> aspects of GeneChip
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> analysis: <NUMEX TYPE="ORDINAL">first</NUMEX>, we describe a method to evaluate
+        ratio scores and associated quality measures. In this step,
+        we shall relax the assumption that = ' and consider either
+        the PM probes only or the usual <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX><ENAMEX TYPE="PRODUCT">-MM</ENAMEX> subtraction. These
+        cases were chosen to bracket the extremes of an ideally
+        performing <ENAMEX TYPE="PRODUCT">MM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> and a poor <ENAMEX TYPE="ORGANIZATION">MM. Second</ENAMEX>, we use the
+        assigned ratio scores and show how one can, with moderate
+        effort, attribute a significance level to differentially
+        expressed genes. Our approach is somewhat similar to that
+        described in [ <ENAMEX TYPE="LAW">8</ENAMEX>], in the sense that it relies on an
+        empirical characterization of the noise envelope, and is
+        more distantly related to that described in [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Both
+        these approaches were developed and applied in the context
+        of cDNA arrays (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods for a discussion
+        of the difference between our method and [ <ENAMEX TYPE="LAW">8</ENAMEX>]).
+      
+      
+        Results
+        
+          Relations between 'single-gene' measurements
+          Figures 1and <TIMEX TYPE="DATE">2show</TIMEX> the general trends in the relations
+          between the ratio measurements and their quality
+          measures, for both the <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> cases. We look at a
+          collection of <NUMEX TYPE="QUANTITY">12 Mu11KsubA</NUMEX> chips hybridized to mRNA
+          extracts from different mouse brain regions (see
+          Materials and methods). There are <NUMEX TYPE="CARDINAL">66</NUMEX> internal pairwise
+          comparisons possible, for each of the <NUMEX TYPE="CARDINAL">6,595</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. We
+          <ENAMEX TYPE="PERSON">randomly</ENAMEX> picked <NUMEX TYPE="CARDINAL">120,000</NUMEX> ratios out of the possible
+          <NUMEX TYPE="CARDINAL">435,270</NUMEX> for plotting these figures. For the purpose of
+          the present discussion, we believe the trends are well
+          captured by the set of ratios shown; we picked this
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> because, compared with other datasets we studied,
+          the ratios span a relatively large dynamic range. The
+          arrays were locally normalized, as explained in <ENAMEX TYPE="WORK_OF_ART">Materials</ENAMEX>
+          and methods. The main observation is that the three
+          quantities: the log-ratio (LR), the standard error (<ENAMEX TYPE="PRODUCT">SE</ENAMEX>),
+          and the <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> rank sign test 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value show little correlation
+          with each other, and therefore represent relatively
+          <ENAMEX TYPE="ORGANIZATION">'independent</ENAMEX>' indicators (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods for
+          the precise definitions). The <ENAMEX TYPE="ORG_DESC">lines</ENAMEX> indicating a
+          signal-to-noise ratio of <NUMEX TYPE="CARDINAL">1</NUMEX> clearly show that the vast
+          majority of the measurements are well defined, especially
+          for the larger log-ratios. The behavior of <ENAMEX TYPE="PRODUCT">SE</ENAMEX> when the
+          number of probes ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good ) retained for deriving the ratio
+          score is small (as indicated by the colored dots) is well
+          understood in terms of the number of residuals considered
+          in the LTS method, that is, genes with 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good = <NUMEX TYPE="CARDINAL">1</NUMEX> necessarily have <ENAMEX TYPE="PRODUCT">SE = 0</ENAMEX>. The
+          only obvious correlation is that small 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values are not compatible with
+          <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, as shown by the valley along <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> in the
+          contour plots of <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> versus 
+          <ENAMEX TYPE="PERSON">p.</ENAMEX> It is, however, possible to
+          achieve very small 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for tiny fold-changes, as
+          small as <NUMEX TYPE="CARDINAL">1.1</NUMEX>. The <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> methods show very similar
+          features overall, the biggest difference being that 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values tend to be larger for
+          large <ENAMEX TYPE="ORGANIZATION">LRs</ENAMEX> in the <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX>, which reflects the overall
+          smaller number of 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good probes usable in that method
+          (there are more probes lying below background after the
+          <ENAMEX TYPE="ORGANIZATION">subtraction</ENAMEX>).
+          The difference in the log-ratios from the <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX>
+          methods is illustrated in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. Although there is a
+          branch with <NUMEX TYPE="MONEY">LR ~ 0</NUMEX> from the PM method when all 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values are considered, this
+          branch rapidly disappears when focusing at smaller 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values only. Cases where the PM
+          and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> scores indicate regulation in opposite
+          <ENAMEX TYPE="ORGANIZATION">directions</ENAMEX> are virtually absent when 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> < <NUMEX TYPE="CARDINAL">0.05</NUMEX>. However, one can see a
+          'compression effect' in the scores from the PM method,
+          shown by the edges with slope <NUMEX TYPE="MONEY">> 1</NUMEX> near the regions
+          indicated by the arrows in the bottom right <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> (this
+          can also be seen by comparing the upper <NUMEX TYPE="CARDINAL">two</NUMEX> contour plots
+          of Figures <NUMEX TYPE="CARDINAL">1and 2</NUMEX>). This compression probably reflects
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridization effects that are not corrected for in
+          the PM-only method. However, if one is more interested in
+          finding significant changes than in the <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> values
+          themselves, the determining quantity is the LR value
+          divided by the width of the local noise. Therefore,
+          <ENAMEX TYPE="ORGANIZATION">compression</ENAMEX> in the scale is not dramatic as long as the
+          noise envelope also shrinks (see Discussion).
+          A comparison of the <ENAMEX TYPE="PRODUCT">LR/SE</ENAMEX> (signal-to-noise ratio, <ENAMEX TYPE="ORGANIZATION">SN</ENAMEX>)
+          from both methods emphasizes the complementarity of both
+          methods (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>), as there is clearly a similar
+          fraction of genes that have poor SN ratios (<ENAMEX TYPE="CONTACT_INFO">SN < 2</ENAMEX>) in
+          <NUMEX TYPE="CARDINAL">one</NUMEX> case but acceptable ratios in the other. These are
+          found in the top-left and bottom-right quadrants defined
+          by the horizontal and vertical blue lines.
+          We have shown previously [ <TIMEX TYPE="DATE">11, 12</TIMEX>] using the same
+          Mu11K <ENAMEX TYPE="PER_DESC">dataset</ENAMEX> that our PM-only composite ratios lead to a
+          reduction in variance, especially at low intensities,
+          when compared to the <ENAMEX TYPE="ORGANIZATION">Microarray Analysis Suite</ENAMEX> <NUMEX TYPE="CARDINAL">3.2</NUMEX>
+          available at that time.
+        
+        
+          Noise structure
+          In Figure 5we show typical scatterplots with
+          increasing levels of overall differential regulation,
+          from duplicates to strong regulation (going from left to
+          right). Although these particular data are from a subset
+          of the <NUMEX TYPE="QUANTITY">Mu11KsubA</NUMEX> chips used for Figures <ENAMEX TYPE="PRODUCT">1and 2</ENAMEX>, our
+          experience is that these are very typical of GeneChip
+          hybridization data from numerous chip series. We shall
+          always refer to duplicates as 'experiments' where the
+          <ENAMEX TYPE="ORGANIZATION">enzymatic</ENAMEX> steps (see <ENAMEX TYPE="WORK_OF_ART">Protocols in Materials</ENAMEX> and methods)
+          in the target sample preparations have been performed
+          independently. In ideal terms, the scatter cloud is
+          thought of as consisting of <NUMEX TYPE="CARDINAL">two</NUMEX> components: <NUMEX TYPE="CARDINAL">one</NUMEX> is just
+          noise from the enzymatic and hybridization steps
+          affecting all the genes; the other reflects true sample
+          differences. To illustrate this, we give three
+          prototypical cases showing the data for the individual
+          <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and the local variance regression lines (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>).
+          In these, the <NUMEX TYPE="ORDINAL">second</NUMEX> component increases gradually from
+          <ENAMEX TYPE="PERSON">zero</ENAMEX> (<ENAMEX TYPE="PER_DESC">left-</ENAMEX>most plot, duplicates), as visible in the
+          quantile-quantile (QQ) plots in Figure <TIMEX TYPE="DATE">5b</TIMEX>. The nearly
+          straight left-most QQ plot indicates that variable <ENAMEX TYPE="CONTACT_INFO">LR/σ</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">(η</ENAMEX>) closely follows a normal distribution. As the amount
+          of true regulation increases, longer tails develop that
+          depart from normal behavior.
+          The fact that the noise component behaves as local
+          log-normal distributions is not dictated by the choice of
+          the variable <ENAMEX TYPE="CONTACT_INFO">LR/σ (η</ENAMEX>), on the contrary, it emerges as a
+          rather pleasant feature of <ENAMEX TYPE="ORGANIZATION">GeneChip</ENAMEX> experiments. In
+          Figure <NUMEX TYPE="CARDINAL">6</NUMEX>, we demonstrate that this log-normality occurs
+          very systematically: we show the two best and <NUMEX TYPE="CARDINAL">two</NUMEX> worst
+          (judged by the linearity of the QQ plots and the amount
+          of outliers) from <NUMEX TYPE="CARDINAL">40</NUMEX> human <ENAMEX TYPE="PRODUCT">HG-U95A</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">duplicates</ENAMEX> collected
+          in a study of <ENAMEX TYPE="DISEASE">rheumatoid arthritis</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods). The majority of the cases look closer to the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> examples; and the <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> methods lead to
+          equally good log-normal distributions overall. The mean
+          and variation in the local <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> for both the <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX>
+          methods are shown in Figure <TIMEX TYPE="DATE">7and</TIMEX> reflect the
+          characteristic contraction of the noise envelope with
+          increasing coordinates along the diagonal. It is obvious
+          that the PM noise envelope is thinner than that of the
+          <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX><ENAMEX TYPE="PRODUCT">-MM</ENAMEX> at low intensity; on the other hand, both methods
+          lead to comparable local σ in the 'flat' <TIMEX TYPE="DATE">mid</TIMEX> to
+          high-intensity domains, where <NUMEX TYPE="CARDINAL">over half</NUMEX> of the data lies.
+          There, σ is <NUMEX TYPE="CARDINAL">approximately 0.15</NUMEX>, so that <NUMEX TYPE="CARDINAL">2σ</NUMEX> corresponds to
+          a ratio of <NUMEX TYPE="CARDINAL">2 0.3</NUMEX>= <NUMEX TYPE="CARDINAL">1.25</NUMEX>, so <NUMEX TYPE="PERCENT">95%</NUMEX> of repeated measurements
+          would fall within a factor of <NUMEX TYPE="CARDINAL">1.25</NUMEX> of their mean. Barring
+          some artifact affecting large numbers of probes
+          simultaneously, we would expect then that approximately
+          <NUMEX TYPE="PERCENT">95%</NUMEX> of the measurements in <TIMEX TYPE="DATE">the mid-</TIMEX> to high-intensity
+          range are reproducible within a factor of around
+          1.25.
+        
+      
+      
+        Discussion
+        Our experience is that despite constant improvements,
+        current incarnations of the arrays still behave fairly
+        inhomogeneously as far as their <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> hybridization
+        properties are concerned. This is probably the consequence
+        of various sequence-dependent effects: <NUMEX TYPE="ORDINAL">first</NUMEX>, the
+        difference in stacking energies of single-stranded snippets
+        between the <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">MM</ENAMEX> sequences can easily be in the
+        range of the gain in binding energies; <NUMEX TYPE="ORDINAL">second</NUMEX>, there are
+        certainly kinetic effects as the hybridizations are not
+        carried to complete equilibrium; and <NUMEX TYPE="ORDINAL">third</NUMEX>, there is always
+        the possibility of sequence-dependent synthesis
+        efficiencies. The wide range of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set behavior is best
+        seen in the SN ratios in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. For these reasons, we
+        believe that a safe way to proceed is to integrate the
+        results from both PM-only and <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> methods. For instance,
+        considering the intersection (or <ENAMEX TYPE="ORG_DESC">union</ENAMEX>) of genes predicted
+        by either method would minimize the false-positive (or
+        false-negative) rates. In addition, there seems to be a
+        significant variation in the hybridization properties
+        across different chip series, as can be observed from
+        simple statistics on the number of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs with MM
+        hybridizing better than <ENAMEX TYPE="ORGANIZATION">PM</ENAMEX> (see Results). The superiority
+        of the yeast chip mentioned above may of course be related
+        to the relative simplicity of the yeast genome compared to
+        that of the higher organisms.
+        Another point worth mentioning is that the values of the
+        ratio scores may deviate from the real mRNA concentration
+        ratios in some intensity regimes as the result of various
+        effects such as non-linearities in the probes' binding
+        <ENAMEX TYPE="PERSON">affinities</ENAMEX>. Evidence concerning this matter has recently
+        been reported [ <TIMEX TYPE="DATE">13</TIMEX>]. This emphasizes the main point of our
+        work, namely the importance of measuring differential
+        expression relative to the local noise; only then can we
+        decide whether a given ratio score can be considered as
+        indicating true regulation or not.
+        Finally, the question of handling significance across
+        replicated experiments is a <NUMEX TYPE="ORDINAL">second</NUMEX> step to be built on top
+        of the analysis presented above. The most reasonable
+        approach would be to follow [ <ENAMEX TYPE="LAW">7</ENAMEX>], namely to consider the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistics of the expression
+        ratios across the samples. However, one would also want to
+        weight the average according to the noise content in each
+        of the samples, in a manner similar to that discussed in [
+        <NUMEX TYPE="CARDINAL">8</NUMEX>].
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Datasets</ENAMEX> and protocols
+          
+            <ENAMEX TYPE="ORGANIZATION">Mul IKsubA</ENAMEX> chips hybridized to <ENAMEX TYPE="PER_DESC">adult</ENAMEX> mouse brain
+            extracts
+            All <NUMEX TYPE="CARDINAL">six</NUMEX> brain regions were obtained from adult
+            (<ENAMEX TYPE="CONTACT_INFO">2-3-month-old</ENAMEX>) CD-<NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. Dissections were carried out
+            in <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX>-cold buffer, and tissues were immediately frozen
+            with liquid nitrogen. Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was isolated. <ENAMEX TYPE="ORGANIZATION">Poly</ENAMEX> (A)
+            <ENAMEX TYPE="SUBSTANCE">+RNA</ENAMEX> was then isolated with magnetic oligo-dT beads.
+            For each brain region, <NUMEX TYPE="QUANTITY">1 μg</NUMEX> poly(A) +<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was converted
+            to double-stranded T7 <ENAMEX TYPE="PER_DESC">cDNA</ENAMEX>. Labeled cRNAs were produced
+            from the double-stranded cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> and hybridized
+            to chips according to the <ENAMEX TYPE="LAW">Affymetrix protocol</ENAMEX>,
+            including the <ENAMEX TYPE="SUBSTANCE">antibody</ENAMEX>-amplification step. All
+            hybridizations were carried out in duplicate.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX>-<NUMEX TYPE="CARDINAL">U95A</NUMEX> chips hybridized to human blood
+            extracts
+            The same protocol was used, except that no poly(A)
+            <ENAMEX TYPE="PERSON">isolation</ENAMEX> was done before the conversion to cDNA.
+          
+        
+        
+          Regression of the log-ratios, <ENAMEX TYPE="PRODUCT">SE</ENAMEX>
+          To compute expression ratios for genes measured in two
+          separate arrays, let ( 
+          x 
+          
+            i 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            i 
+           ) denote the brightness measurements for one probe
+          set (the index 
+          i ranges from <NUMEX TYPE="CARDINAL">1</NUMEX> to the number of
+          probe pairs for the particular probe set, <NUMEX TYPE="CARDINAL">14-20</NUMEX> depending
+          on the chip series) taken in the <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          <ENAMEX TYPE="LAW">hybridization arrays X</ENAMEX> and <ENAMEX TYPE="PERSON">Y.</ENAMEX> We investigate both cases
+          in which the intensities ( 
+          x 
+          
+            i 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            i 
+           ) are either the intensities of the
+          background-subtracted PM cells or the <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> values (which
+          need no background correction). Only 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good 'good' <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs are retained
+          for determining the ratio and associated quantities. We
+          discard probes that are saturated in both <ENAMEX TYPE="LAW">X</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX>, or
+          probe pairs such that <ENAMEX TYPE="PRODUCT">PM-MM < 3</ENAMEX> or <NUMEX TYPE="MONEY">PM < 3</NUMEX> in both X
+          or <ENAMEX TYPE="PERSON">Y. Here</ENAMEX>, corresponds to the standard deviation of the
+          fluctuations in the background intensity. Not considering
+          such probes prevents contamination of the ratio estimates
+          from noisy low-intensity probes. After identifying the
+          probe pairs allowed into the analysis, the differential
+          expression score <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> for the gene in question is obtained
+          from a LTS robust regression of LR 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">=</ENAMEX> log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ( 
+          x 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            i 
+           ) to an intercept = <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">LTS</ENAMEX> regression corresponds
+          to minimizing:
+          
+          the sum of the 
+          Ns smallest squared residuals [ <TIMEX TYPE="DATE">14</TIMEX>,
+          <NUMEX TYPE="CARDINAL">15</NUMEX>]. We used the default 
+          <ENAMEX TYPE="PER_DESC">Ns</ENAMEX> = ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good <NUMEX TYPE="CARDINAL">/2</NUMEX>) + <NUMEX TYPE="CARDINAL">1</NUMEX> and this parameter can be
+          adjusted in our scripts; however, we found no evidence
+          for changing the default. An estimate of the standard
+          error (<ENAMEX TYPE="PRODUCT">SE</ENAMEX>) for is given by 
+          <ENAMEX TYPE="PRODUCT">SE</ENAMEX> = . Composite absolute
+          intensities for the gene in each experiment can be
+          obtained via geometric means of the ( 
+          x 
+          
+            i 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            i 
+           ) probes kept in the <ENAMEX TYPE="ORGANIZATION">LTS</ENAMEX> regression, however, these
+          are only indicative measures as the method was designed
+          primarily for expression ratios.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> statistics, number of <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> used
+          In addition to the <ENAMEX TYPE="PRODUCT">SE</ENAMEX>, which reports a quantitative
+          estimate of the error in the log-ratio measurement, it is
+          also instructive to report a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value from a paired Wilcoxon
+          rank sign test of the LR 
+          
+            i 
+           values. Casually speaking, this value is related to
+          the portion of the probes indicating gene regulation in
+          the same direction: the theoretical minimum 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value, 
+          p 
+          
+            <ENAMEX TYPE="CONTACT_INFO">min</ENAMEX> 
+           , is achieved when all probe ratios agree on the
+          same direction of regulation. Moreover, the test is
+          non-parametric as it is operating in rank <ENAMEX TYPE="FAC_DESC">space</ENAMEX>, and 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> therefore also incorporates
+          information about the number of <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs used ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good ). Namely, the Wilcoxon 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value has a lower bound that
+          decreases with increasing sample size. For instance 
+          p 
+          <ENAMEX TYPE="PERSON">min</ENAMEX> = <NUMEX TYPE="CARDINAL">1/4</NUMEX> for 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good = <NUMEX TYPE="CARDINAL">3 and 1/8</NUMEX> for 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          good = <NUMEX TYPE="CARDINAL">4</NUMEX>, so that small 
+          p scores can only be reached when
+          enough probes are used. However, the converse is not
+          true, as a gene that is not differentially expressed can
+          have a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value that is close to <NUMEX TYPE="CARDINAL">1</NUMEX> even if
+          all the <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> pairs are 'good' in the above sense.
+          Our method does not primarily aim at quantifying the
+          presence or absence of a gene in a particular sample.
+          Nevertheless, we report the number of probes ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          above ) with intensity larger than 3 
+          <ENAMEX TYPE="ORGANIZATION">eff</ENAMEX> ( 
+          <ENAMEX TYPE="PER_DESC">eff</ENAMEX> = for the <ENAMEX TYPE="PRODUCT">PM-MM</ENAMEX> case) for both
+          <ENAMEX TYPE="LAW">samples X</ENAMEX> and <ENAMEX TYPE="PERSON">Y. Using</ENAMEX> enough data, one could compute a
+          probability of presence depending on 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          above , and it is likely that this
+          <ENAMEX TYPE="ORGANIZATION">calibration</ENAMEX> would be dependent on the chip series.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Normalization</ENAMEX> and noise characterization
+          The measures described above are all single-gene
+          properties; they can be computed when given just the
+          <ENAMEX TYPE="PER_DESC">intensities</ENAMEX> gathered for a single gene. In contrast,
+          correcting for systematic trends (also called 'data
+          massage') and more important, classifying expression
+          ratios according to their significance, requires measures
+          that involve the entire gene <ENAMEX TYPE="PER_DESC">population</ENAMEX> on the arrays. We
+          stress that these techniques are meaningful only when the
+          number of genes probed is sufficiently large, and under
+          the assumption that a large fraction of them does not
+          show differential regulation between the <NUMEX TYPE="CARDINAL">two</NUMEX> tested
+          samples. These requirements are usually met in GeneChip
+          experiments. <ENAMEX TYPE="ORGANIZATION">Normalization</ENAMEX> aims at correcting for
+          systematic trends (that is, bias as a result of dye
+          <ENAMEX TYPE="PERSON">efficiencies</ENAMEX> and amplification, sample concentration,
+          photodetector efficiency) so as to make a collection of
+          <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX> directly comparable. <NUMEX TYPE="CARDINAL">One</NUMEX> must distinguish global
+          from local normalization: in the <NUMEX TYPE="ORDINAL">first</NUMEX>, the intensities
+          of all the probes on the array are scaled by a constant
+          factor; in the <NUMEX TYPE="ORDINAL">second</NUMEX>, the normalization factor can be
+          intensity dependent. Local normalization techniques are
+          mostly discussed in the context of cDNA arrays [ <TIMEX TYPE="DATE">16, 17</TIMEX>],
+          where the intensity dependence can be severe. HDONAs
+          suffer less from 'bent' noise <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>; nevertheless,
+          local <ENAMEX TYPE="ORG_DESC">normalization</ENAMEX> has also been introduced for them [
+          <TIMEX TYPE="DATE">18, 19</TIMEX>]. Although attractive, local <ENAMEX TYPE="PER_DESC">normalization</ENAMEX> should
+          not be applied blindly as it can hide real failures in
+          the data and create its own artifacts. Our approach to
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> is based on centering the log-ratio
+          distribution either globally, or locally as in [ <TIMEX TYPE="DATE">16</TIMEX>]. For
+          the data presented in the Results section, local
+          normalization was used; however, our scripts allow a
+          choice between the local and global schemes (see
+          Additional data files for scripts). We always normalize
+          an array with respect to another one, and we found it
+          more accurate to do so at the gene rather than the probe
+          level (we normalize the composite ratio scores 
+          a posteriori instead of normalizing
+          the raw probe intensities).
+          Turning to the noise structure, significance of
+          regulation is quantified from a local robust regression (
+          ) of the variable <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> <ENAMEX TYPE="PRODUCT">2versus 77</ENAMEX>, where <ENAMEX TYPE="ORGANIZATION">LR</ENAMEX> = log( 
+          I 
+          
+            X 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          I 
+          
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+           ) is the log-ratio of the intensities and = log( 
+          I 
+          
+            X 
+           
+          I 
+          
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+           )/2 is half the log-product. 
+          I 
+          
+            X 
+           and 
+          I 
+          
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+           denote the locally normalized intensities of the
+          genes in channels <ENAMEX TYPE="LAW">X</ENAMEX> and <ENAMEX TYPE="PERSON">Y.</ENAMEX> We should emphasize that
+          estimating the local variance in this manner only makes
+          sense after the arrays have been locally normalized. The
+          function ( ) then quantifies the local log-ratio
+          variance, so that the local <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> is given by ( ) = . We
+          used the <ENAMEX TYPE="NATIONALITY">R</ENAMEX> routine loess for the fitting [ <TIMEX TYPE="DATE">15</TIMEX>]. The
+          justification for using the local <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> as a criterion for
+          significance relies upon the empirical fact that the
+          <ENAMEX TYPE="CONTACT_INFO">variable LR/</ENAMEX> ( ) follows a good normal distribution in
+          the case of replicate (pure noise) experiments (see
+          Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). The significance of a ratio score can
+          therefore be assessed using the value <ENAMEX TYPE="ORGANIZATION">LR/SD</ENAMEX>; that is, a
+          <ENAMEX TYPE="ORGANIZATION">value LR/SD</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> implies that the null hypothesis that the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> is not regulated can be rejected with a <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence level.
+          We finally comment on the precise differences between
+          our approach and that in [ <ENAMEX TYPE="LAW">8</ENAMEX>]. First, we found no
+          evidence for the inclusion of an <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> term in linear
+          coordinates. Judging by the data, the noise structure is
+          very well captured by an effective <TIMEX TYPE="DATE">multiplicative</TIMEX> model
+          (see Results). <NUMEX TYPE="ORDINAL">Second</NUMEX>, the multiplicative noise component
+          is estimated in logarithmic coordinates instead of
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX>, and after a local normalization. Finally, we
+          estimate the local scale in the noise by an empirical
+          robust fit of the local variance, with no 
+          a priori model. While it would be
+          satisfactory to have a physical model describing the
+          <ENAMEX TYPE="PERSON">noise</ENAMEX>, our experience is that it is very hard to
+          formulate one that accounts for the observed <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> in
+          all cases.
+        
+      
+      
+        Additional data files
+        Scripts for converting between file types are available
+        with this article ( <ENAMEX TYPE="PRODUCT">cdf2psc</ENAMEX>, <TIMEX TYPE="DATE">cel2ratios</TIMEX>, <TIMEX TYPE="DATE">cel2raw</TIMEX>, <TIMEX TYPE="DATE">raw2pcel</TIMEX>;
+        see explanatory filefor more details) and at the <ENAMEX TYPE="PER_DESC">authors</ENAMEX>'
+        website [ <TIMEX TYPE="DATE">20</TIMEX>].
+        Additional data file 1
+        cdf2psc
+        cdf2psc: converts a .cdf file into a .psc file.
+        Click here for additional data file
+        Additional data file 2
+        cel2ratios
+        cel2ratios: converts <NUMEX TYPE="CARDINAL">two</NUMEX> .<ENAMEX TYPE="ORGANIZATION">PCEL</ENAMEX> files into ratios.
+        Click here for additional data file
+        Additional data file 3
+        cel2raw
+        cel2raw: <ENAMEX TYPE="PER_DESC">converts</ENAMEX> .<ENAMEX TYPE="ORGANIZATION">CEL</ENAMEX> files into .<ENAMEX TYPE="ORGANIZATION">RAW</ENAMEX> files.
+        Click here for additional data file
+        Additional data file 4
+        raw2pcel
+        raw2pcel: estimates background and so on.
+        Click here for additional data file
+        Additional data file 5
+        Explanatory file
+        Explanatory file
+        Click here for additional data file
+      
+    
+  

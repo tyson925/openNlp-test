@@ -1,0 +1,1336 @@
+
+  
+    
+      
+        Background
+        All organisms possess an essentially fixed repertoire of
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> determined by their genome sequence. They have
+        evolved to survive varying internal and external
+        environments by carefully controlling the abundance and
+        activity of these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> to suit their conditions. To
+        simplify this task, genes whose products function together
+        are often under common regulatory control such that they
+        are <ENAMEX TYPE="PER_DESC">coordinately</ENAMEX> expressed under the appropriate
+        conditions. This property has been frequently exploited in
+        the analysis of genome-wide expression data, as the
+        experimental observation that a set of genes is coexpressed
+        frequently implies that the genes share a biological
+        function and are under common regulatory control [ <ENAMEX TYPE="LAW">1</ENAMEX>]. Many
+        <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> have multiple roles in the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, however, and act
+        with distinct sets of cooperating <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> to fulfill each
+        role. Their genes are therefore coexpressed with different
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes, each governed by a distinct regulatory
+        mechanism, in response to the varying demands of the cell
+        (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). This complicates the analysis of expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and calls for a more nuanced approach to data
+        analysis.
+        The yeast 
+        Saccharomyces cerevisiae evolved in a
+        niche in which the availability of nutrients and the
+        conditions of growth vary constantly, and it possesses
+        sophisticated mechanisms to choreograph the expression of
+        its <NUMEX TYPE="CARDINAL">approximately 6,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in order to thrive - or at
+        least survive - in a wide range of environmental
+        conditions. These responses are governed by a complex,
+        condition-specific regulatory system that transduces
+        information through the cell to the nucleus, where gene
+        expression is adjusted accordingly. Many of the individual
+        components of this regulatory system function under
+        particular conditions and govern the expression of
+        overlapping sets of gene targets, allowing a given gene to
+        be coexpressed with different gene <ENAMEX TYPE="PER_DESC">groups</ENAMEX> in response to
+        different conditions (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). As a consequence, the
+        targets of each regulatory <ENAMEX TYPE="ORG_DESC">system</ENAMEX> often display similar
+        expression patterns in response to <NUMEX TYPE="CARDINAL">one</NUMEX> set of conditions
+        but divergent patterns under other situations (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>).
+        For example, the known targets of the oxidative
+        stress-responsive transcription factor Yap1p are
+        coordinately induced in response to conditions that inflict
+        oxidative damage, but these genes are divergently expressed
+        in response to other environmental changes (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>) [
+        <NUMEX TYPE="CARDINAL">2</NUMEX>]. Similarly, the known targets of other transcription
+        factors in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> (including <ENAMEX TYPE="PRODUCT">Aft1p</ENAMEX>, <TIMEX TYPE="DATE">Zap1p</TIMEX>, <TIMEX TYPE="DATE">Pho4p</TIMEX>, <TIMEX TYPE="DATE">Hac1p</TIMEX>,
+        Hsf1p, and others) are similarly expressed only in response
+        to certain environments [ <ENAMEX TYPE="LAW">2, 3, 4, 5, 6</ENAMEX>].
+        The complexity of the regulatory <ENAMEX TYPE="ORG_DESC">network</ENAMEX> that governs
+        yeast gene expression complicates the analysis of
+        whole-genome expression data. Because of the connection
+        between gene-expression regulation and gene product
+        function, computational analysis of expression data is used
+        extensively to identify <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of similarly expressed
+        genes. However, the central limitation of most of the
+        commonly used algorithms is that they are unable to
+        identify genes whose expression is similar to multiple,
+        distinct gene <ENAMEX TYPE="PER_DESC">groups</ENAMEX>, thereby masking the relationships
+        between genes that are coregulated with different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        genes in response to different conditions. Consider, for
+        example, k-means clustering [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>]. The k-means algorithm
+        partitions <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into a defined set of discrete clusters,
+        attempting to maximize the expression similarity of the
+        genes in each cluster (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). The algorithm is
+        initiated by randomly partitioning the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Each <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is then
+        represented by a 'centroid' (the mean expression pattern of
+        genes in the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>), and the genes are repartitioned to the
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> whose centroid is most similar to their expression
+        pattern. The partitioning process is iterated until the
+        gene <ENAMEX TYPE="PER_DESC">partitions</ENAMEX> are stable (or some other stopping
+        <ENAMEX TYPE="PERSON">criterion</ENAMEX> is met). The end result of the algorithm is a set
+        of 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> clusters of similarly expressed
+        genes. However, a key property of this algorithm (and many
+        others like it) is that each gene is assigned to <NUMEX TYPE="CARDINAL">one</NUMEX> and
+        <NUMEX TYPE="CARDINAL">only one</NUMEX> cluster, obscuring the relationships between
+        <ENAMEX TYPE="SUBSTANCE">conditionally coregulated genes</ENAMEX> such as those shown in
+        Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. This limitation is especially problematic when
+        analyzing large gene-expression datasets that are collected
+        over many experimental conditions, when many of the genes
+        are likely to be similarly expressed with different groups
+        in response to different subsets of the experiments. A
+        number of methods have been developed to deal with complex
+        relationships between <ENAMEX TYPE="PER_DESC">objects</ENAMEX> [ <ENAMEX TYPE="LAW">9, 10, 11</ENAMEX>]. Here, we
+        explore the <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> of <NUMEX TYPE="CARDINAL">one</NUMEX> such method - fuzzy k-means
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>.
+        Fuzzy k-means clustering [ <TIMEX TYPE="DATE">12</TIMEX>] facilitates the
+        identification of overlapping <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="PER_DESC">objects</ENAMEX> by allowing
+        the <ENAMEX TYPE="PER_DESC">objects</ENAMEX> to belong to <NUMEX TYPE="CARDINAL">more than one</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX>. The essential
+        difference between fuzzy k-means clustering and standard
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering is the partitioning of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into each
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). Rather than the hard partitioning of
+        standard k-means clustering, where genes belong to only a
+        single cluster, fuzzy k-means clustering considers each
+        gene to be a <ENAMEX TYPE="PER_DESC">member</ENAMEX> of every cluster, with a variable
+        degree of <ENAMEX TYPE="FAC">'membership'</ENAMEX>. Each gene has a total membership of
+        <NUMEX TYPE="CARDINAL">1.0</NUMEX> that is apportioned to clusters on the basis of the
+        similarity between the gene's expression pattern and that
+        of each cluster centroid. Genes whose expression patterns
+        are very similar to a given centroid will be assigned a
+        high membership in that cluster, whereas genes that bear
+        little similarity to the centroid will have a low
+        membership. <ENAMEX TYPE="PERSON">Importantly</ENAMEX>, genes can be assigned significant
+        memberships to <NUMEX TYPE="CARDINAL">more than one</NUMEX> cluster, thus revealing genes
+        whose expression is similar to multiple, distinct <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        genes.
+        We implemented a heuristic variant of fuzzy k-means
+        clustering that incorporated principal component analysis
+        (<ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>) and hierarchical clustering to analyze published
+        yeast genomic expression data that followed the response of
+        cells to different environments. The method successfully
+        identified clusters of functionally related genes and more
+        <ENAMEX TYPE="ORGANIZATION">comprehensive</ENAMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of known transcription factor targets
+        in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>. In the process of this analysis, we identified
+        previously unrecognized similarities in the expression of
+        yeast genes and uncovered correlations between the
+        environmental conditions. We explored the regulation of
+        gene expression by correlating the identified clusters with
+        known regulatory elements present in the genes' <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>.
+        These details implicate mechanisms that <ENAMEX TYPE="SUBSTANCE">yeast cells</ENAMEX> use to
+        orchestrate genomic expression programs in response to
+        variable conditions.
+      
+      
+        Results
+        
+          Fuzzy k-means clustering overview
+          We implemented a version of the fuzzy k-means
+          algorithm, based on a description by <ENAMEX TYPE="ORGANIZATION">Gath</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Geva</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>],
+          in a <ENAMEX TYPE="PRODUCT">C++</ENAMEX> program called <ENAMEX TYPE="PERSON">FuzzyK</ENAMEX> (available at [ <TIMEX TYPE="DATE">14</TIMEX>]; see
+          Materials and Methods for complete details). We altered
+          the algorithm in two fundamental ways: <NUMEX TYPE="ORDINAL">first</NUMEX>, we
+          performed <NUMEX TYPE="CARDINAL">three</NUMEX> successive cycles of fuzzy k-means
+          clustering, with the <NUMEX TYPE="ORDINAL">second</NUMEX> and <NUMEX TYPE="ORDINAL">third</NUMEX> rounds of
+          <ENAMEX TYPE="PERSON">clustering</ENAMEX> performed on subsets of the data. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+          because the random initialization commonly used in
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering can have a profound impact on the
+          results [ <TIMEX TYPE="DATE">15</TIMEX>], we instead chose to initialize each
+          clustering cycle by seeding prototype centroids with the
+          eigen vectors identified by <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> of the respective dataset
+          (see below). Here we present an overview of the
+          algorithm, followed by a discussion of the parameter
+          <ENAMEX TYPE="ORGANIZATION">optimization</ENAMEX>.
+          The input of the program is a table of expression
+          values, where <TIMEX TYPE="DATE">each row</TIMEX> represents a given gene's relative
+          transcript abundance under the condition indicated in
+          each column (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). The <NUMEX TYPE="ORDINAL">first</NUMEX> round of clustering is
+          initialized by defining 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">/3</NUMEX> prototype centroids (where 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is the total number of clusters
+          and <ENAMEX TYPE="PRODUCT">3</ENAMEX> is the number of clustering <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX>) as the most
+          informative 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">/3</NUMEX> eigen vectors identified by
+          <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> of the input dataset (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). The
+          prototype centroids are refined in the subsequent steps:
+          each gene is assigned a membership score to each of the
+          prototype centroids, based on the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation
+          between the gene's expression pattern and the centroid in
+          question. Each of the centroid patterns is then
+          <ENAMEX TYPE="PERSON">recalculated</ENAMEX> as the weighted mean of all of the
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns in the dataset, where each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>'s weight is proportionate to its membership in the
+          corresponding cluster (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods for
+          details regarding the calculations). Genes that have a
+          large membership to a given centroid will contribute more
+          to the mean, and the new centroid will migrate in the
+          direction of those genes. The process of calculating
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-centroid memberships and updating the centroids is
+          <ENAMEX TYPE="ORGANIZATION">iterated</ENAMEX> until the centroid patterns become fixed (or
+          until the termination criterion is met, as described in
+          Materials and methods).
+          After this initial round of fuzzy clustering,
+          duplicate centroids (pairs whose <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation is
+          greater than <NUMEX TYPE="MONEY">0.9</NUMEX>) are averaged, and genes with a greater
+          than <NUMEX TYPE="CARDINAL">0.7</NUMEX> correlation to any of the identified centroids
+          are removed from the dataset (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods).
+          The fuzzy k-means clustering steps described above are
+          repeated on this smaller dataset to identify patterns
+          missed in the <NUMEX TYPE="ORDINAL">first</NUMEX> clustering cycle, and the new
+          centroids are added to the set identified in the first
+          round. The process of averaging replicated centroids and
+          selecting a data subset is repeated, and a <NUMEX TYPE="ORDINAL">third</NUMEX> cycle of
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> is performed on the subset of genes with a
+          correlation of <NUMEX TYPE="CARDINAL">less than 0.7</NUMEX> to any of the existing
+          <ENAMEX TYPE="ORGANIZATION">centroids</ENAMEX>. The newly identified centroids are combined
+          with the previous sets, and replicate centroids are
+          averaged.
+          In the final step of the program, the <ENAMEX TYPE="PER_DESC">membership</ENAMEX> of
+          each gene to each centroid is calculated. Thus, the
+          output of the algorithm is twofold: the method presents a
+          list of the unique centroids identified in the fuzzy
+          clustering cycles along with a <ENAMEX TYPE="PER_DESC">matrix</ENAMEX> representing the
+          final membership scores for each gene to each centroid.
+          In this representation, each gene can be related to all
+          the identified clusters through its membership value,
+          allowing genes that belong significantly to multiple
+          clusters to be realized. As a consequence, each cluster
+          consists of a continuous list of all of the genes in the
+          dataset, ranked according to decreasing membership.
+          The continuous clusters identified by fuzzy k-means
+          clustering present a challenge in visualizing the
+          clustering results. To this end, we have developed the
+          program <ENAMEX TYPE="PERSON">FuzzyExplorer</ENAMEX>, a <ENAMEX TYPE="ORGANIZATION">PERL</ENAMEX> <ENAMEX TYPE="PER_DESC">viewer</ENAMEX> based on the program
+          <ENAMEX TYPE="ORGANIZATION">GeneExplorer</ENAMEX> (developed by <ENAMEX TYPE="ORGANIZATION">Christian Rees; C. Rees</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">P.O.</ENAMEX>
+          <ENAMEX TYPE="PERSON">Brown</ENAMEX> and <ENAMEX TYPE="PERSON">D. Botstein</ENAMEX>, unpublished results). Using this
+          software, the genes that belong significantly to each
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> can be identified and visualized by applying a
+          membership cutoff: all genes whose membership is greater
+          than the cutoff will be selected as part of the cluster
+          and their gene-expression patterns will be displayed.
+          Rather than define a single cutoff for each cluster, the
+          visualization <ENAMEX TYPE="ORG_DESC">software</ENAMEX> applies a sliding membership
+          cutoff to select the genes, allowing each cluster to be
+          expanded or collapsed in terms of the number of genes
+          selected. This flexibility allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to define the
+          appropriate membership cutoff for each cluster. For
+          example, at a very high membership cutoff, most of the
+          genes in each cluster will have highly correlated
+          expression patterns in all of the experiments and will be
+          closely related in terms of function and regulation. As
+          the membership cutoff decreases, additional <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will be
+          assigned to each cluster <ENAMEX TYPE="ORG_DESC">group</ENAMEX>: in many cases, the
+          similarity in the expression of the selected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will
+          exist over only a subset of the <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments,
+          promoting the identification of conditionally coregulated
+          genes or genes whose products are more peripherally
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the same cellular processes (see below).
+          The appropriate membership cutoff will vary for each
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> and for the desired results, and selecting
+          meaningful cutoffs can be guided by additional
+          information (see Discussion). For many of the clusters
+          discussed below, the membership cutoffs were empirically
+          chosen to select genes that had coherent gene expression
+          patterns over a given subset of the experiments.
+        
+        
+          Optimization of fuzzy clustering parameters
+          
+            Clustering cycles
+            We found that performing <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">clustering cycles</ENAMEX>,
+            with the <NUMEX TYPE="ORDINAL">second</NUMEX> and <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> performed on subsets
+            of the data as described in <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods,
+            maximized the recovery of the clusters identified
+            through hierarchical clustering. Performing three
+            cycles to identify 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX> centroids recovered <NUMEX TYPE="PERCENT">79%</NUMEX>
+            of the known clusters in the dataset, compared to the
+            case when the clustering was carried out in <NUMEX TYPE="CARDINAL">one</NUMEX> round
+            using identical parameters and <ENAMEX TYPE="SUBSTANCE">seed vectors</ENAMEX>, for which
+            <NUMEX TYPE="PERCENT">64%</NUMEX> of the known clusters were identified (see [ <TIMEX TYPE="DATE">14</TIMEX>]).
+            Performing <NUMEX TYPE="CARDINAL">more than three</NUMEX> rounds of clustering did not
+            identify additional known clusters in the dataset, nor
+            did it lead to the increased identification of large
+            clusters of coherently expressed genes (data not
+            shown). We therefore implemented <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> of
+            clustering, although more sophisticated methods of
+            determining the optimal number of <ENAMEX TYPE="PRODUCT_DESC">cycles</ENAMEX> can be
+            envisioned.
+          
+          
+            Defining k
+            A significant challenge in partitioning-clustering
+            techniques is defining the number of clusters, 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>]. With standard
+            implementations of the k-means algorithm,
+            underestimating 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> will result in large clusters
+            of many genes that display divergent gene-expression
+            patterns, while overestimating 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> will over-fit the data and
+            split groups of similarly expressed <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into
+            multiple, small clusters. Because of the dependence of
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering on 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , a number of methods have been
+            developed to estimate this parameter [ <TIMEX TYPE="DATE">16, 17</TIMEX>]. In
+            contrast, fuzzy k-means clustering appears to be less
+            sensitive to <NUMEX TYPE="CARDINAL">over</NUMEX>-fitting, because the genes are not
+            forced to belong to only a single cluster. For example,
+            performing the clustering with 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">300</NUMEX> added <NUMEX TYPE="CARDINAL">only approximately</NUMEX>
+            <NUMEX TYPE="CARDINAL">30</NUMEX> unique centroids relative to when the clustering was
+            performed with 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">120</NUMEX>, and otherwise-identical
+            <ENAMEX TYPE="PERSON">parameters</ENAMEX> (see [ <TIMEX TYPE="DATE">14</TIMEX>]). The relatively small number of
+            <ENAMEX TYPE="ORGANIZATION">centroids</ENAMEX> added when 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> was increased to <NUMEX TYPE="CARDINAL">300</NUMEX> was
+            largely due to the fact that the program identified
+            many more replicates of centroids, which were
+            consequently removed from the final set. Of the
+            <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">30</TIMEX> added centroids, most appeared to
+            represent local minima, as they were centroids that
+            were poorly reproduced in <ENAMEX TYPE="SUBSTANCE">bootstrapping</ENAMEX> experiments
+            (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods) and identified few genes
+            that had coherent patterns of expression (data not
+            shown). Nonetheless, the addition of these patterns did
+            not significantly affect the relative memberships of
+            genes to the other centroids (data not shown),
+            indicating that overestimating 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> did not appreciably affect the
+            clustering results. This presents a significant
+            advantage over standard k-means clustering as it
+            reduces the requirement of accurately estimating 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> by allowing this parameter to
+            be overestimated.
+          
+          
+            Initialization
+            We examined a number of different initialization
+            methods (data not shown) and found that seeding
+            prototype centroids with the eigen vectors identified
+            by <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> performed optimally. Together, the eigen vectors
+            describe the variation in the gene-expression dataset,
+            and therefore seeding the centroids with these vectors
+            provides a systematic method of sampling the data
+            space. In addition, this protocol produces
+            deterministic clustering results, in contrast to the
+            <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> initialization method commonly implemented in
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering. <NUMEX TYPE="CARDINAL">One</NUMEX> potential drawback of this
+            method is that the number of clusters, 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , is limited to the number of
+            eigen vectors (which is determined by the number of
+            <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments analyzed). This limitation is
+            alleviated by performing successive cycles of fuzzy
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering on subsets of the data and
+            recalculating the eigen vectors for the respective
+            <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> used in each cycle. In addition, the clustering
+            protocol can incorporate <ENAMEX TYPE="PER_DESC">user</ENAMEX>-defined vectors to seed
+            any number of additional centroids.
+            Many of the eigen vectors identified by <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> seemed
+            to contain little information about the dataset, as
+            previously noted for this type of analysis [ <TIMEX TYPE="DATE">18, 19</TIMEX>].
+            Nonetheless, most of the eigen vectors diverged to
+            different gene-expression patterns within <TIMEX TYPE="DATE">10-15</TIMEX>
+            <ENAMEX TYPE="ORGANIZATION">iterations</ENAMEX>. The final centroids identified by the fuzzy
+            clustering method showed little dependence on the eigen
+            <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> used to seed the process, as evidenced by
+            bootstrapping analysis. <NUMEX TYPE="PERCENT">More than 50%</NUMEX> of the final
+            centroids were identified in <NUMEX TYPE="PERCENT">90%</NUMEX> of the bootstrapping
+            trials in which <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> was performed on a random sample of
+            the data, despite the fact the most of the eigen
+            vectors were significantly different in each trial (see
+            Materials and methods). Most of the final centroids
+            bore little similarity to the eigen vectors used to
+            initialize the process, with <NUMEX TYPE="PERCENT">less than 5%</NUMEX> of final
+            centroids similar to any of the eigen vectors with a
+            Pearson correlation greater than <NUMEX TYPE="CARDINAL">0.7</NUMEX>.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> context
+            Similarly to standard k-means clustering, the
+            results of the fuzzy k-means method were affected by
+            the data context. This was evident by the fact that the
+            recovery of known clusters was enhanced by performing
+            successive rounds of clustering on data subsets, as
+            described above. In addition, the algorithm performed
+            slightly better on an input dataset that consisted of
+            the subset of <ENAMEX TYPE="SUBSTANCE">yeast genes</ENAMEX> that showed differential
+            expression patterns, as opposed to the entire
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression dataset. As the input dataset for the
+            clustering process, we empirically selected genes whose
+            standard deviation of expression was greater than
+            around <NUMEX TYPE="MONEY">1.4</NUMEX> (log 
+            <NUMEX TYPE="CARDINAL">2 0.45</NUMEX>) from each gene's expression
+            mean, amounting to <NUMEX TYPE="CARDINAL">approximately 4,400</NUMEX> out of the
+            <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">6,200</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. The algorithm performed
+            equally well on input datasets selected by other
+            criteria of differential expression (data not shown).
+            Performing the clustering on data subsets posed no
+            limitation to the method, because at the end of the
+            procedure all genes in the complete dataset were
+            assigned membership values to the superset of
+            identified centroids.
+          
+        
+        
+          Fuzzy clustering of <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> genomic expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>
+          
+            Fuzzy clustering identified previously
+            unrecognized gene clusters
+            The fuzzy clustering method was also able to
+            identify clusters of genes that were not identified by
+            hierarchical or standard k-means clustering. For
+            example, <NUMEX TYPE="CARDINAL">one</NUMEX> centroid (cluster <TIMEX TYPE="DATE">61</TIMEX>, Figure <TIMEX TYPE="DATE">5aand</TIMEX> see [
+            <NUMEX TYPE="CARDINAL">14</NUMEX>]) represented genes that were strongly repressed in
+            response to prolonged nitrogen starvation but induced
+            by treatment with the sulfhydryl-rearranging drugs
+            <ENAMEX TYPE="ORGANIZATION">dithiothreitol</ENAMEX> (DTT) and diamide. <NUMEX TYPE="CARDINAL">Six</NUMEX> of the <NUMEX TYPE="CARDINAL">eight</NUMEX>
+            characterized genes within the top <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> encode <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are localized to or
+            function in relation to the <ENAMEX TYPE="FAC_DESC">cell wall</ENAMEX>, including those
+            involved in bud growth and cell separation ( 
+            AXL2, <TIMEX TYPE="DATE">CIS3</TIMEX>, <TIMEX TYPE="DATE">SIM1</TIMEX> ), cell-wall
+            proteins induced by antifungal <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> ( 
+            SVS1, <TIMEX TYPE="DATE">PRY2</TIMEX>, <TIMEX TYPE="DATE">PRY4</TIMEX>, <TIMEX TYPE="DATE">CRH1</TIMEX>, <TIMEX TYPE="DATE">TOS6</TIMEX> ), a
+            putative <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>-wall sensor ( 
+            WSC2 ), and a <ENAMEX TYPE="ORGANIZATION">Golgi</ENAMEX> mannose
+            transporter required for glycosylation of cell-wall
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> ( 
+            VRG4 ) (see [ <TIMEX TYPE="DATE">21</TIMEX>] for
+            references). Given the similarity in the expression of
+            these genes, many of the uncharacterized <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may also
+            be involved in processes related to the <ENAMEX TYPE="FAC_DESC">cell wall</ENAMEX>. In
+            fact, <NUMEX TYPE="PERCENT">nearly 70%</NUMEX> of all of the genes in this group
+            encode <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> predicted to contain signal peptides
+            (including <NUMEX TYPE="CARDINAL">nine</NUMEX> of the twelve characterized genes and
+            <NUMEX TYPE="CARDINAL">five</NUMEX> of the <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">uncharacterized genes</ENAMEX> in the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>;
+            <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> not shown [ <TIMEX TYPE="DATE">22</TIMEX>]), supporting the notion that these
+            <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are secreted to the cell surface. Extending
+            this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to the top <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the cluster
+            identified many more similarly expressed genes that are
+            functionally related. In addition to the genes involved
+            in <ENAMEX TYPE="FAC_DESC">cell wall biosynthesis</ENAMEX>, which accounted for <NUMEX TYPE="PERCENT">30%</NUMEX> of
+            the characterized genes selected in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, an
+            additional <NUMEX TYPE="PERCENT">30%</NUMEX> of the characterized genes encode
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> involved in <ENAMEX TYPE="SUBSTANCE">protein glycosylation</ENAMEX> and
+            secretion, while the remaining genes are involved in
+            <ENAMEX TYPE="SUBSTANCE">protein synthesis</ENAMEX>, cytoskeletal functions, and sterol
+            and lipid <ENAMEX TYPE="SUBSTANCE">biogenesis</ENAMEX>, all of which can be related to
+            cell-wall and membrane synthesis. Most of the genes
+            that had high memberships in this cluster did not fall
+            into a discrete cluster when the data were analyzed
+            with other clustering algorithms: the top <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with this group were distributed into <NUMEX TYPE="CARDINAL">five</NUMEX>
+            different clusters when the data were organized by
+            hierarchical clustering and <NUMEX TYPE="CARDINAL">four</NUMEX> clusters using k-means
+            <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). This example
+            demonstrates the <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> of our method in identifying
+            previously unrecognized <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of functionally related
+            genes.
+            In addition to identifying new <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of similarly
+            expressed genes, fuzzy k-means clustering also provided
+            more comprehensive clusters of previously recognized
+            <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of functionally related genes. In many cases,
+            these <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were similarly expressed in only a subset
+            of the experiments, a feature that prevented their
+            <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> when the data were analyzed with the other
+            clustering methods. An example of this is a centroid
+            that represents <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that were strongly induced by
+            <ENAMEX TYPE="SUBSTANCE">amino-acid starvation</ENAMEX> (cluster <NUMEX TYPE="CARDINAL">2</NUMEX> in Figure <NUMEX TYPE="CARDINAL">5b</NUMEX>).
+            Essentially all of the top <NUMEX TYPE="CARDINAL">seven</NUMEX> characterized genes
+            <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with this cluster function in methionine
+            <ENAMEX TYPE="ORGANIZATION">biosynthesis</ENAMEX> and showed similar expression patterns in
+            response to all of the experimental conditions (see [
+            <NUMEX TYPE="CARDINAL">14</NUMEX>]). However, as the membership cutoff was decreased
+            to expand the cluster, additional functionally related
+            genes were included, despite the fact that these genes
+            were divergently expressed in response to conditions
+            other than amino<ENAMEX TYPE="SUBSTANCE">-acid limitation</ENAMEX>. Of the characterized
+            genes within the top <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> belonging to this
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>, <NUMEX TYPE="PERCENT">64%</NUMEX> (<NUMEX TYPE="MONEY">42/66</NUMEX>) encode <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are directly
+            involved in amino<ENAMEX TYPE="SUBSTANCE">-acid biosynthesis</ENAMEX>, while more than
+            half of the remaining characterized genes are involved
+            in aspects of nitrogen and carbon metabolism that
+            support amino<ENAMEX TYPE="SUBSTANCE">-acid synthesis</ENAMEX>. <NUMEX TYPE="CARDINAL">Only half</NUMEX> of these genes
+            fell into the same cluster when the data were analyzed
+            with hierarchical clustering or k-means clustering (see
+            Materials and methods), while the remaining <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> fell
+            into multiple smaller <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in both cases.
+          
+          
+            Many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were assigned to multiple
+            clusters
+            <NUMEX TYPE="CARDINAL">One</NUMEX> of the most significant advantages of fuzzy
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering is that genes can belong to more
+            than <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX>, revealing distinct aspects of their
+            function and regulation. An illustration is provided by
+            the gene 
+            KAR2 , which encodes an HSP70
+            <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-folding chaperone localized to the endo-plasmic
+            <ENAMEX TYPE="ORGANIZATION">reticulum</ENAMEX> (<ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>) that is known to respond to defects in
+            <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> secretion and to unfolded <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in this organelle
+            (see [ <TIMEX TYPE="DATE">23</TIMEX>] for review). Consistent with the known
+            functions of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, 
+            KAR2 has significant membership
+            in <NUMEX TYPE="CARDINAL">two</NUMEX> clusters. The <NUMEX TYPE="ORDINAL">first</NUMEX> (cluster <NUMEX TYPE="CARDINAL">58</NUMEX> in Figure <NUMEX TYPE="CARDINAL">5c</NUMEX>)
+            includes genes that were induced by the reducing agent
+            <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, a condition that prevents proper disulfide-bond
+            formation and secretion in the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>]. <NUMEX TYPE="PERCENT">More than 75%</NUMEX>
+            (<NUMEX TYPE="MONEY">23/31</NUMEX>) of the characterized <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within the top <NUMEX TYPE="CARDINAL">50</NUMEX>
+            genes in this cluster are localized to the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> and
+            participate in various aspects of secretion, including
+            <ENAMEX TYPE="SUBSTANCE">protein folding</ENAMEX> ( 
+            KAR2, <TIMEX TYPE="DATE">LHS1</TIMEX>, <TIMEX TYPE="DATE">FKB2</TIMEX>, <TIMEX TYPE="DATE">JEM1</TIMEX> ), protein
+            disulfide isomerization ( 
+            EUG1, <TIMEX TYPE="DATE">PDI1</TIMEX>, <TIMEX TYPE="DATE">ERO1</TIMEX> ), protein
+            <ENAMEX TYPE="ORGANIZATION">glycosylation</ENAMEX> ( 
+            GFA1, <TIMEX TYPE="DATE">PMT3</TIMEX>, <TIMEX TYPE="DATE">PMI40</TIMEX>, <TIMEX TYPE="DATE">SEC59</TIMEX>, <TIMEX TYPE="DATE">WBP1</TIMEX>,
+            OST2 ), and forward and <ENAMEX TYPE="PRODUCT_DESC">retrograde</ENAMEX> trafficking ( 
+            ERD2, <TIMEX TYPE="DATE">ERP1</TIMEX>, <TIMEX TYPE="DATE">ERP2</TIMEX>, <TIMEX TYPE="DATE">SEC24</TIMEX>, <TIMEX TYPE="DATE">SEC13</TIMEX>, <TIMEX TYPE="DATE">RET2</TIMEX>,
+            RET3, and others [ <TIMEX TYPE="DATE">21</TIMEX>]). Many of the
+            uncharacterized <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> are likely to be
+            functionally related to the characterized genes. In
+            addition, 
+            KAR2 also has significant
+            membership in a second cluster (cluster <NUMEX TYPE="CARDINAL">11</NUMEX> in Figure
+            5d), which is composed of genes that were induced
+            following heat shock and diamide treatment. <NUMEX TYPE="CARDINAL">Roughly</NUMEX> <NUMEX TYPE="PERCENT">40%</NUMEX>
+            (<NUMEX TYPE="MONEY">14/36</NUMEX>) of the top characterized genes associated with
+            this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> encode <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-folding chaperones localized
+            to different subcellular regions (including those that
+            encode the cytosolic <TIMEX TYPE="DATE">Hsp90 and Hsp70</TIMEX> factors, the
+            <ENAMEX TYPE="CONTACT_INFO">mitochondrial Hsp10/Hsp60p</ENAMEX> and <ENAMEX TYPE="PRODUCT">Ssc1p</ENAMEX>, and the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>- and
+            mitochondrial-associated Ssa1p), and their induction
+            following heat shock and diamide treatment is likely to
+            be in response to widespread protein unfolding
+            inflicted by these conditions. That 
+            KAR2 clusters with both <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+            genes reflects the dual role of <ENAMEX TYPE="SUBSTANCE">Kar2p</ENAMEX> in the response
+            to <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>-specific challenges and to conditions that
+            generally destabilize <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> throughout the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>,
+            presumably without affecting other aspects of
+            <ENAMEX TYPE="ORGANIZATION">secretion</ENAMEX>.
+            The clustering of 
+            KAR2 with <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in these two
+            clusters not only reflects the functional role of the
+            encoded <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> but also corroborates the conditional
+            regulation of 
+            KAR2 expression. In response to
+            defects in <ENAMEX TYPE="WORK_OF_ART">ER secretion</ENAMEX>, 
+            KAR2 is known to be induced by
+            the transcription factor <TIMEX TYPE="DATE">Hac1p</TIMEX> as part of the unfolded
+            protein response (UPR) [ <TIMEX TYPE="DATE">25, 26, 27, 28</TIMEX>]. In fact,
+            nearly all of the top <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in cluster <NUMEX TYPE="CARDINAL">58</NUMEX> were shown
+            by Travers 
+            et al. [ <ENAMEX TYPE="LAW">6</ENAMEX>] to be induced
+            following <ENAMEX TYPE="DISEASE">DTT</ENAMEX> treatment in a manner dependent on Hac1p
+            and its upstream <ENAMEX TYPE="PER_DESC">regulator</ENAMEX>, <ENAMEX TYPE="PRODUCT">Ire1p</ENAMEX> [ <ENAMEX TYPE="LAW">6, 29, 30</ENAMEX>].
+            However, unlike most of the genes in cluster <TIMEX TYPE="DATE">58</TIMEX>, 
+            KAR2 is also induced in response
+            to heat shock, along with the other chaperone <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in
+            <ENAMEX TYPE="ORGANIZATION">cluster 11</ENAMEX>, by the transcription factor Hsf1p [ <TIMEX TYPE="DATE">31</TIMEX>].
+            Consistently, most of the top genes in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+            including 
+            KAR2 , contain multiple
+            Hsf1p-binding sites in their <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. The clustering
+            of 
+            KAR2 with both clusters of genes
+            therefore reflects the known induction of the gene by
+            Hac1p as part of the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX> but by <TIMEX TYPE="DATE">Hsf1p</TIMEX> following heat
+            shock.
+            Many additional <ENAMEX TYPE="SUBSTANCE">yeast genes</ENAMEX> have significant
+            membership in <NUMEX TYPE="CARDINAL">more than one</NUMEX> of the fuzzy clusters. When
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were assigned to all clusters with an
+            <ENAMEX TYPE="ORGANIZATION">empirically</ENAMEX> defined membership cutoff of <NUMEX TYPE="MONEY">0.06</NUMEX>, more
+            than <NUMEX TYPE="CARDINAL">a third</NUMEX> of the assigned <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were placed in more
+            than <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>); at a slightly lower cutoff of
+            <NUMEX TYPE="CARDINAL">0.04</NUMEX>, <NUMEX TYPE="CARDINAL">almost two-thirds</NUMEX> of all of the assigned genes
+            were placed into multiple clusters. As with 
+            KAR2 , the fuzzy assignment of
+            many of these genes was consistent with the known roles
+            of the encoded <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Genes involved in histidine
+            <ENAMEX TYPE="ORGANIZATION">biosynthesis</ENAMEX> (for example 
+            HIS4 and 
+            HIS5 ) clustered with other genes
+            involved in amino<ENAMEX TYPE="SUBSTANCE">-acid synthesis</ENAMEX> (cluster <NUMEX TYPE="CARDINAL">2</NUMEX> and cluster
+            <NUMEX TYPE="CARDINAL">80</NUMEX>) but also with genes required for adenine biogenesis
+            (cluster <NUMEX TYPE="CARDINAL">1</NUMEX>), in agreement with the roles of these gene
+            products in both histidine and purine metabolism [ <TIMEX TYPE="DATE">32</TIMEX>,
+            <NUMEX TYPE="CARDINAL">33</NUMEX>]. Genes that encode <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> vesicle coat <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> ( 
+            SEC13, <TIMEX TYPE="DATE">SEC21</TIMEX>, <TIMEX TYPE="DATE">SEC24</TIMEX>, <TIMEX TYPE="DATE">COP1</TIMEX>, <TIMEX TYPE="DATE">RET2</TIMEX>,
+            RET3 and others) were induced with other
+            <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>-specific genes in response to the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX>, as discussed
+            above for cluster <TIMEX TYPE="DATE">58</TIMEX>, but were also strongly repressed
+            following long-term nitrogen and carbon starvation,
+            along with <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of other genes that function in
+            diverse aspects of secretion and protein synthesis
+            (cluster <NUMEX TYPE="CARDINAL">72</NUMEX>). The repression of these genes coincided
+            with the cellular growth arrest resulting from the
+            starvation conditions and was likely to be triggered by
+            the decreased demand for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and membrane synthesis
+            in nondividing cells. That these genes belong to
+            multiple, distinct clusters reflects the
+            condition-specific roles of the encoded <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and
+            suggests that their conditional expression with these
+            alternative <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes is triggered by different
+            cellular signals.
+          
+          
+            Fuzzy clusters represent gene targets of yeast
+            transcription factors
+            Many of the genes that clustered together by fuzzy
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering are likely to be coregulated at the
+            level of transcription in response to certain
+            environmental conditions. We explored this possibility
+            by characterizing the enrichment of each fuzzy cluster
+            for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that contained known transcription factor
+            binding sites within <TIMEX TYPE="DATE">800</TIMEX> base-pairs (<ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>) upstream of
+            their open reading frames (ORFs). Genes were assigned
+            to each cluster using an empirically chosen membership
+            cutoff of <NUMEX TYPE="CARDINAL">0.06</NUMEX> or <NUMEX TYPE="MONEY">0.08</NUMEX>, and the probability of
+            observing the number of genes in each cluster that
+            contained one or more copies of each transcription
+            factor binding site was calculated, based on the
+            hypergeometric distribution (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+            methods). <NUMEX TYPE="CARDINAL">Roughly</NUMEX> <NUMEX TYPE="PERCENT">25%</NUMEX> of the identified fuzzy clusters
+            were statistically enriched (with 
+            <ENAMEX TYPE="CONTACT_INFO">P <2 × 10 -4</ENAMEX>) for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that
+            contain copies of <NUMEX TYPE="CARDINAL">at least one</NUMEX> of <NUMEX TYPE="CARDINAL">43</NUMEX> different promoter
+            <ENAMEX TYPE="PER_DESC">elements</ENAMEX>, and <NUMEX TYPE="CARDINAL">more than half</NUMEX> of these clusters were
+            enriched for multiple sites (the complete results are
+            available at [ <TIMEX TYPE="DATE">14</TIMEX>]). In many cases, the presence of the
+            <ENAMEX TYPE="PER_DESC">promoter elements</ENAMEX> was consistent with the known
+            regulation of the genes' expression (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). For
+            example, cluster <NUMEX TYPE="CARDINAL">2</NUMEX> was enriched for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that contain
+            binding sites for <TIMEX TYPE="DATE">Gcn4p</TIMEX>, <TIMEX TYPE="DATE">Cbf1p</TIMEX>, and <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="WORK_OF_ART">p. Around</ENAMEX>
+            <NUMEX TYPE="PERCENT">75%</NUMEX> of these genes are known to be induced by <TIMEX TYPE="DATE">Gcn4p</TIMEX> in
+            response to amino<ENAMEX TYPE="SUBSTANCE">-acid limitation</ENAMEX> and contain the Gcn4p
+            promoter element [ <TIMEX TYPE="DATE">34, 35</TIMEX>]. However, those that are
+            specifically involved in methionine synthesis also
+            contain the recognition sequences for <NUMEX TYPE="CARDINAL">Met31/32</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX> and/or
+            Cbf1p, factors that cooperatively regulate gene
+            expression according to the demand for the products of
+            this pathway [ <TIMEX TYPE="DATE">36, 37, 38, 39</TIMEX>].
+            At a membership cutoff of <NUMEX TYPE="MONEY">0.08</NUMEX>, cluster <NUMEX TYPE="CARDINAL">45</NUMEX> consisted
+            of many genes involved in the tricarboxylic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> cycle
+            and oxidative phosphorylation, and this group was
+            enriched for the binding site of the <NUMEX TYPE="CARDINAL">Hap2/3/4</NUMEX>p complex
+            that is known to regulate the genes' expression. At a
+            slightly lower cutoff of <NUMEX TYPE="MONEY">0.06</NUMEX>, additional genes
+            involved in respiration and utilization of alternative
+            <ENAMEX TYPE="ORGANIZATION">carbon</ENAMEX> <ENAMEX TYPE="PER_DESC">sources</ENAMEX> were assigned to the cluster, making the
+            enrichment of the promoter element recognized by the
+            catabolite repressor <ENAMEX TYPE="PRODUCT">Mig1p</ENAMEX> statistically significant [
+            <TIMEX TYPE="DATE">40, 41, 42</TIMEX>]. At both of these membership cutoffs, this
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> was also highly enriched for the sequence
+            recognized by the stress-responsive factors Msn2p and
+            Msn4p. These factors recognize a sequence that is very
+            similar to the <NUMEX TYPE="ORDINAL">Mig1p</NUMEX>-binding site, and it is possible
+            that the enriched sequence actually represents
+            derivative Mig1p <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. However, a specific role for
+            Msn2p in the response to <ENAMEX TYPE="SUBSTANCE">glucose starvation</ENAMEX> has
+            recently been identified [ <TIMEX TYPE="DATE">43</TIMEX>], raising the possibility
+            that the factor is directly involved in regulating
+            these genes. Another cluster (cluster <NUMEX TYPE="CARDINAL">73</NUMEX>) consists
+            largely of genes that were sharply repressed in
+            response to environmental stresses [ <ENAMEX TYPE="LAW">2, 44</ENAMEX>]. The
+            <ENAMEX TYPE="SUBSTANCE">ribosomal protein genes</ENAMEX> in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> are regulated by
+            the <ENAMEX TYPE="SUBSTANCE">factor Rap1p</ENAMEX> and contain multiple copies of its
+            binding site within their <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> [ <TIMEX TYPE="DATE">45, 46</TIMEX>], while
+            other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this group contain <NUMEX TYPE="CARDINAL">two</NUMEX> putative
+            regulatory sequences that have been previously
+            identified as enriched in the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of many of
+            these <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">2, 47, 48, 49, 50</TIMEX>]. In each of these
+            cases, the comprehensive clusters identified by the
+            fuzzy k-means analysis included additional genes that
+            were not previously known to be targets of these
+            factors. Some of the binding-site occurrences shown in
+            Figure <TIMEX TYPE="DATE">6are</TIMEX> likely to have occurred by chance
+            (especially for sequences that are common in the
+            genome, such as the <NUMEX TYPE="CARDINAL">Hap2/3/4</NUMEX><ENAMEX TYPE="PRODUCT_DESC">p-</ENAMEX>, <ENAMEX TYPE="PRODUCT">Mig1p-</ENAMEX>, and
+            <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX>-binding sites). However, the similarity
+            between the expression patterns of these genes and
+            those of the known transcription factor targets, along
+            with the functional correlation of the gene products
+            and the presence of the respective binding sites in the
+            genes' <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, strongly suggest that many of these
+            genes are legitimate <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> of these <ENAMEX TYPE="PER_DESC">regulators</ENAMEX>.
+            The overlapping clusters identified by fuzzy k-means
+            <ENAMEX TYPE="PERSON">clustering</ENAMEX> presented more complete <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+            transcription factor targets compared to other
+            clustering methods, enhancing the identification of
+            <ENAMEX TYPE="PER_DESC">promoter elements enriched</ENAMEX> in the clusters and
+            implicating details of the conditional regulation of
+            gene expression. An example can be seen in a set of
+            around <NUMEX TYPE="CARDINAL">15</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are induced by <TIMEX TYPE="DATE">Yap1p</TIMEX> in response
+            to oxidative <ENAMEX TYPE="DISEASE">stress</ENAMEX>, but by the general stress factors
+            Msn2p and/or <NUMEX TYPE="MONEY">Msn4p</NUMEX> (<ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX>) in response to other
+            stressful conditions [ <ENAMEX TYPE="LAW">2</ENAMEX>]. These genes belonged
+            significantly to <NUMEX TYPE="CARDINAL">three</NUMEX> different clusters (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>).
+            One cluster (cluster <NUMEX TYPE="CARDINAL">7</NUMEX>) consisted of <NUMEX TYPE="MONEY">around 90</NUMEX> known
+            <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX> targets and was enriched for genes whose
+            promoters contain the known <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX>-binding site as
+            well as other C-rich sequences that are similar to, but
+            distinct from, the <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX> site (see below). The
+            <NUMEX TYPE="ORDINAL">second</NUMEX> cluster that these genes belonged to (cluster <NUMEX TYPE="CARDINAL">4</NUMEX>)
+            comprised known Yap1p <ENAMEX TYPE="ORGANIZATION">targets</ENAMEX>, most of which contain
+            the <NUMEX TYPE="ORDINAL">Yap1p</NUMEX>-binding site within their <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. The
+            <NUMEX TYPE="ORDINAL">third</NUMEX> cluster (cluster <NUMEX TYPE="CARDINAL">8</NUMEX>) specifically represented the
+            subgroup of genes that are conditionally regulated by
+            Yap1p or <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX>, and this group was enriched for
+            both <TIMEX TYPE="DATE">the Yap1p</TIMEX> element and the <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX>-binding site
+            (but not other C-rich <ENAMEX TYPE="PER_DESC">sequences</ENAMEX>). At a lower membership
+            <ENAMEX TYPE="PERSON">cutoff</ENAMEX>, additional <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were assigned to cluster 8
+            that showed similar expression patterns and contain
+            both <TIMEX TYPE="DATE">the Yap1p</TIMEX> and <ENAMEX TYPE="PRODUCT">Msn2/Msn4p</ENAMEX> <ENAMEX TYPE="PER_DESC">promoter elements</ENAMEX>,
+            suggesting that these genes may also be conditionally
+            regulated by the factors. In contrast to these results,
+            when the data were analyzed by k-means clustering,
+            these <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> could only be assigned to a cluster of
+            Yap1p <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> or a cluster of <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX> targets, and
+            therefore no <ENAMEX TYPE="PER_DESC">group</ENAMEX> of genes that was statistically
+            enriched for both of these <ENAMEX TYPE="PER_DESC">promoter elements</ENAMEX> could be
+            identified (data not shown).
+            The majority of the clusters identified by fuzzy
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering were not statistically enriched for
+            known transcription factor binding sites. To identify
+            novel enriched <ENAMEX TYPE="PER_DESC">promoter sequences</ENAMEX>, we calculated the
+            hypergeometric distribution of all possible <NUMEX TYPE="CARDINAL">6</NUMEX>-mer
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of the genes clustered by
+            fuzzy k-means clustering. Almost all the statistically
+            significant <NUMEX TYPE="CARDINAL">6</NUMEX>-mers represented known transcription
+            factor binding sites, with the exception of a group of
+            C-rich <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> with high statistical enrichment in
+            the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of the <ENAMEX TYPE="CONTACT_INFO">Msn2/Msn4p</ENAMEX> targets in cluster 7
+            (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). We therefore focused our attention on the
+            newly identified group of cell-wall genes, defined as
+            the top <NUMEX TYPE="CARDINAL">20</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in cluster <NUMEX TYPE="CARDINAL">61</NUMEX>. Although none of the
+            <NUMEX TYPE="CARDINAL">6</NUMEX>-mers met the significance cutoff for this cluster (P
+            <ENAMEX TYPE="CONTACT_INFO">= 10 -6</ENAMEX>), the most significant sequence (<ENAMEX TYPE="ORGANIZATION">CGCGAA</ENAMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="PERCENT">10 -5</NUMEX>) was identical to the
+            core binding site of <ENAMEX TYPE="ORGANIZATION">SBF</ENAMEX>, a transcription factor
+            complex that regulates cell-cycle-dependent gene
+            expression at <TIMEX TYPE="DATE">the G1</TIMEX> to S transition [ <TIMEX TYPE="DATE">51, 52, 53</TIMEX>]. In
+            fact, <NUMEX TYPE="CARDINAL">more than two-thirds</NUMEX> of these genes were
+            identified by Iyer 
+            et al. [ <TIMEX TYPE="DATE">54</TIMEX>] as part of a larger
+            set of <NUMEX TYPE="MONEY">around 180</NUMEX> genes whose flanking regions were
+            physically bound by the <ENAMEX TYPE="ORGANIZATION">SBF</ENAMEX> <ENAMEX TYPE="FAC_DESC">complex</ENAMEX>. However, this set
+            of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was not coordinately expressed during
+            cell-cycle progression [ <TIMEX TYPE="DATE">54, 55</TIMEX>], suggesting that these
+            cell-wall genes may be regulated by a distinct
+            mechanism in response to environmental conditions.
+            To try and identify novel sequences conserved in
+            these <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, we used the motif-finding algorithm
+            <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> [ <TIMEX TYPE="DATE">56</TIMEX>], initializing the <ENAMEX TYPE="ORGANIZATION">EM</ENAMEX> algorithm with the most
+            significantly enriched <ENAMEX TYPE="SUBSTANCE">6mer</ENAMEX> for the cluster. Two
+            sequences were repeatedly identified using a variety of
+            <ENAMEX TYPE="PERSON">parameters</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>): <NUMEX TYPE="CARDINAL">one</NUMEX> motif was very similar to,
+            but extended from, the known SBF-binding site and was
+            present in <NUMEX TYPE="PERCENT">80%</NUMEX> of the gene <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, often in multiple
+            copies. This represents a significant enrichment over
+            the entire set of <ENAMEX TYPE="SUBSTANCE">yeast gene</ENAMEX> <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, of which
+            <NUMEX TYPE="PERCENT">approximately 30%</NUMEX> contain the site. <NUMEX TYPE="PERCENT">Nearly 90%</NUMEX> of the
+            promoter regions that contain this motif were shown to
+            be physically bound by the SBF complex [ <TIMEX TYPE="DATE">54</TIMEX>],
+            consistent with the idea that <ENAMEX TYPE="ORGANIZATION">SBF</ENAMEX> binds this sequence.
+            These details raise the possibility that SBF
+            coordinates the expression of this set of cell-wall
+            genes in response to conditions other than cell-cycle
+            <ENAMEX TYPE="ORGANIZATION">progression</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX>], perhaps in a manner that is
+            specifically dependent on the variant site identified
+            here. <ENAMEX TYPE="ORGANIZATION">MEME</ENAMEX> also identified another sequence that has
+            not previously been implicated in gene-expression
+            regulation (Figure <NUMEX TYPE="CARDINAL">7b</NUMEX>). <NUMEX TYPE="PERCENT">More than 55%</NUMEX> of the top <NUMEX TYPE="CARDINAL">20</NUMEX>
+            genes in cluster <NUMEX TYPE="CARDINAL">61</NUMEX> harbor the motif in their
+            <ENAMEX TYPE="PERSON">promoters</ENAMEX>, in contrast to <NUMEX TYPE="PERCENT">only 16%</NUMEX> of all yeast
+            <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. The precise roles of these sequences in
+            mediating gene expression will require further
+            experiments; however our ability to identify novel
+            sequences conserved in these <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> highlights the
+            potential for discovering additional regulatory
+            <ENAMEX TYPE="PER_DESC">elements</ENAMEX> by fuzzy k-means clustering.
+          
+          
+            <ENAMEX TYPE="SUBSTANCE">Fuzzy clustering</ENAMEX> uncovered correlations between
+            the environmental conditions
+            As well as understanding the similarities between
+            genes based on their expression patterns, it is also
+            enlightening to correlate the experimental conditions
+            in terms of their effects on gene expression. These
+            <ENAMEX TYPE="ORGANIZATION">correlations</ENAMEX> can implicate common features of the
+            environments while pointing to the regulatory systems
+            that are activated in each situation. A convenient
+            feature of the fuzzy-clustering output is that the
+            experiments can be hierarchically clustered, on the
+            basis of the expression patterns of each selected
+            subset of genes, to reveal similarities in the effects
+            of the conditions. Performing the clustering based on
+            subsets of genes presents subtle correlations between
+            the experiments that cannot be realized when the
+            <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> is based on all the genes in the dataset.
+            For example, when the <NUMEX TYPE="CARDINAL">93</NUMEX> microarray experiments
+            analyzed in this study were hierarchically clustered on
+            the basis of the expression patterns of all the genes
+            in the dataset, the experiments largely clustered
+            according to the individual time courses (Figure <NUMEX TYPE="CARDINAL">8a</NUMEX>).
+            This reveals that the overall genomic expression
+            program triggered by each environment was unique to
+            each set of conditions.
+            However, when the <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments were
+            clustered on the basis of subsets of genes identified
+            by fuzzy k-means clustering, more detailed correlations
+            emerged, indicating more information about the effects
+            of each environment. An example is the
+            sulfhydryl-oxidizing <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> <ENAMEX TYPE="PER_DESC">diamide</ENAMEX>, which affects many
+            aspects of <ENAMEX TYPE="FAC_DESC">cell biochemistry</ENAMEX>. When the experiment
+            clustering was performed on the basis of genes encoding
+            <ENAMEX TYPE="SUBSTANCE">protein-folding chaperones</ENAMEX> (the top <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in cluster
+            <NUMEX TYPE="CARDINAL">11</NUMEX>), a striking similarity between the effects of
+            <ENAMEX TYPE="ORGANIZATION">diamide</ENAMEX> and heat shock was observed (Figure <NUMEX TYPE="CARDINAL">8b</NUMEX>). In
+            contrast, when the microarray clustering was performed
+            on the basis of genes involved in oxidative stress
+            <ENAMEX TYPE="ORGANIZATION">defense</ENAMEX>, (the top <NUMEX TYPE="CARDINAL">24</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> belonging to cluster <NUMEX TYPE="CARDINAL">4</NUMEX>),
+            diamide was most similar to <ENAMEX TYPE="SUBSTANCE">hydrogen peroxide</ENAMEX> and
+            menadione, which inflict oxidative damage by generating
+            <ENAMEX TYPE="ANIMAL">reactive oxygen species</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">8c</NUMEX>). In terms of the
+            genes induced in the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX> (identified as the top <NUMEX TYPE="CARDINAL">30</NUMEX>
+            genes or so in cluster <NUMEX TYPE="CARDINAL">58</NUMEX>), the effects of diamide were
+            most similar to those triggered by the reducing agent
+            <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">8d</NUMEX>). That the effects of diamide were
+            similar to those of different environmental conditions
+            depending on the genes analyzed reflects the diverse
+            effects of this <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> on the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">8f</NUMEX>). By
+            crosslinking <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sulfhydryl <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, diamide is
+            thought to disrupt protein structure and trigger
+            oxidative stress [ <TIMEX TYPE="DATE">57, 58</TIMEX>], both of which are likely to
+            perturb normal <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> functions [ <TIMEX TYPE="DATE">59</TIMEX>].
+            The similarities between other environmental
+            conditions are less well understood. For example,
+            limitation of the essential nutrient <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> triggered
+            diverse gene-expression changes in the cell [ <ENAMEX TYPE="LAW">4</ENAMEX>].
+            Although the overall genomic expression program
+            triggered by this condition was distinct, when the
+            experiment clustering was based on <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> involved in
+            the use of alternative <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX> <ENAMEX TYPE="PER_DESC">sources</ENAMEX> and respiration
+            (cluster <TIMEX TYPE="DATE">36</TIMEX> and cluster <TIMEX TYPE="DATE">45</TIMEX>, respectively), a
+            significant similarity between the effects of zinc
+            <ENAMEX TYPE="PERSON">limitation</ENAMEX> and conditions that involve glucose
+            starvation emerged (Figure <NUMEX TYPE="CARDINAL">8e</NUMEX>). Like carbon starvation,
+            zinc limitation triggered the increased expression of
+            these genes, even though the cells were not limited for
+            <ENAMEX TYPE="PERSON">glucose</ENAMEX> (<ENAMEX TYPE="PERSON">T. Lyons</ENAMEX>, personal communication). This result
+            suggests that <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-limited cells may have a defect in
+            glucose metabolism, leading to the induced expression
+            of the respiration and carbon-utilization genes. While
+            a link between zinc limitation and <ENAMEX TYPE="SUBSTANCE">sugar</ENAMEX> metabolism has
+            been established in mammals [ <TIMEX TYPE="DATE">60</TIMEX>], the molecular basis
+            of this correlation is not known. In contrast to this
+            relationship, when the experiment clustering was
+            performed on <ENAMEX TYPE="SUBSTANCE">genes encoding ER-resident proteins</ENAMEX>, the
+            effects of <ENAMEX TYPE="SUBSTANCE">zinc starvation</ENAMEX> were most similar to those
+            inflicted by <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX> and diamide (Figure <NUMEX TYPE="CARDINAL">8d</NUMEX>), suggesting
+            that zinc limitation may initiate the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX>. Zinc
+            <ENAMEX TYPE="PERSON">starvation</ENAMEX> is not known to induce this program in yeast
+            (<ENAMEX TYPE="PERSON">C. Patil</ENAMEX>, personal communication). However, a
+            potential connection between <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX> is the
+            <ENAMEX TYPE="SUBSTANCE">protein calreticulin</ENAMEX>, an <ENAMEX TYPE="SUBSTANCE">ER protein</ENAMEX>-folding chaperone
+            that acts on glycosylated <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">61</TIMEX>]. That
+            mammalian calreticulin is a <ENAMEX TYPE="SUBSTANCE">zinc-dependent protein</ENAMEX> [
+            <NUMEX TYPE="CARDINAL">62</NUMEX>] raises the possibility that zinc limitation
+            prevents the proper activity of this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>,
+            leading to unfolded <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and triggering the
+            subtle increase in expression of genes that participate
+            in the <ENAMEX TYPE="ORGANIZATION">UPR</ENAMEX>. The correlations between the
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression changes triggered by these conditions
+            suggest hypotheses about the effects of each condition
+            that warrant future experiments.
+          
+        
+      
+      
+        Discussion
+        To respond to diverse and frequently changing
+        environmental conditions, <ENAMEX TYPE="SUBSTANCE">yeast cells</ENAMEX> must precisely
+        mediate the synthesis and function of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the
+        cell. This is controlled in part by the overall genomic
+        expression program that results from the combined action of
+        different regulatory factors, each of which responds to
+        specific extra- and intra-cellular signals. Many of these
+        <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> act under specific conditions, and together they
+        govern the expression of overlapping sets of genes.
+        Individual genes, in turn, are regulated by multiple,
+        condition-specific systems that result in each gene being
+        coexpressed with different <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> under different
+        situations.
+        Although examples of this type of regulation have been
+        observed on an individual gene basis, our results suggest
+        that the condition-specific regulation of overlapping sets
+        of <ENAMEX TYPE="SUBSTANCE">yeast genes</ENAMEX> is a prevalent theme in the regulation of
+        yeast gene expression. A large fraction of <ENAMEX TYPE="SUBSTANCE">yeast genes</ENAMEX> is
+        expressed in patterns that are similar to different groups
+        of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in response to different subsets of the
+        experiments (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Furthermore, a substantial number of
+        these genes contain multiple transcription factor binding
+        sites in their <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>, and see [ <TIMEX TYPE="DATE">14</TIMEX>]),
+        consistent with the idea that they are conditionally
+        regulated by multiple, independent regulatory systems. The
+        condition-specific regulation of gene expression has also
+        been implicated in higher organisms [ <TIMEX TYPE="DATE">63, 64</TIMEX>] and probably
+        has a significant role in regulating genomic expression.
+        This is in contrast to the regulatory logic of prokaryotes,
+        in which the expression of defined sets of genes in operons
+        is a predominant feature of regulation. Thus, the
+        conditional regulation of overlapping <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may
+        represent a regulatory theme that is particularly important
+        in eukaryotes.
+        The prevalence of conditional gene coexpression poses a
+        challenge for the analysis of gene-expression data, because
+        many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> will have expression patterns that are similar
+        to multiple, distinct gene <ENAMEX TYPE="PER_DESC">groups</ENAMEX>. Fuzzy k-means clustering
+        is well suited to identifying conditionally coexpressed
+        genes for a number of reasons. <NUMEX TYPE="ORDINAL">First</NUMEX> and foremost, the
+        method can present overlapping clusters, revealing distinct
+        features of each gene's function and regulation. The
+        resulting implications can be used to assign refined
+        hypothetical functions to uncharacterized gene products on
+        the basis of the known functions encoded by the genes in
+        each cluster. In addition, this information can suggest
+        additional cellular roles of well studied <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (see [
+        <NUMEX TYPE="CARDINAL">14</NUMEX>]). The overlapping clusters identified by fuzzy k-means
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> also present more comprehensive <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        <ENAMEX TYPE="SUBSTANCE">conditionally coregulated genes</ENAMEX>. This is especially
+        important for the successful identification of regulatory
+        <ENAMEX TYPE="ORGANIZATION">motifs</ENAMEX> common to the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of similarly expressed
+        genes, because motif-finding algorithms are often hindered
+        by small sample sets. <NUMEX TYPE="CARDINAL">More than two-thirds</NUMEX> of the gene
+        clusters we identified are not enriched for known
+        regulatory elements, highlighting the potential for
+        <ENAMEX TYPE="PERSON">discovering</ENAMEX> novel sequences involved in gene-expression
+        regulation. We expect that fuzzy k-means clustering will
+        advance that discovery, as illustrated by our ability to
+        identify new sequences conserved in the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of
+        clustered genes.
+        Another benefit of the fuzzy k-means algorithm is that
+        it identifies continuous clusters of genes. This allows
+        each cluster to be expanded or collapsed to view genes of
+        varying similarity in expression. While the genes of
+        highest membership in a given cluster are often tightly
+        <ENAMEX TYPE="ORGANIZATION">correlated</ENAMEX> in terms of biochemical function and regulation,
+        expanding the cluster can identify genes that are similarly
+        expressed in only subsets of the experimental conditions.
+        The resulting gene relationships can suggest details about
+        the cellular roles served by the encoded gene products and
+        the regulatory systems that govern the genes' expression in
+        response to the relevant conditions. Thus, the results of
+        fuzzy k-means clustering are naturally suited for
+        <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> to use in an intuitive and physiologically
+        meaningful way.
+        The unique features of fuzzy k-means clustering have
+        allowed us to uncover complex similarities in yeast
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns, identify putative transcription
+        factor binding sites present in the genes' <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>, and
+        elucidate the environmental conditions that trigger changes
+        in gene expression. Integrating these details can indicate
+        the cellular signals and regulatory systems that govern the
+        expression of specific sets of genes in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>).
+        For example, the fuzzy clustering of genes involved in
+        methionine biosynthesis with other amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> biosynthetic
+        <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and with <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> involved in nitrogen utilization lead
+        to the identification of multiple transcription factor
+        binding sites in the genes' <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. Together, these
+        details reflect the alternative regulatory systems that are
+        known to govern the expression of the methionine
+        biosynthesis <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Although they are induced by one
+        regulatory system (<ENAMEX TYPE="PRODUCT">Cbf1p-Met31/32</ENAMEX><ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>) according to the demand
+        for the <ENAMEX TYPE="ORG_DESC">pathway</ENAMEX>'s products, they are induced by an
+        alternative system (<NUMEX TYPE="MONEY">Gcn4p</NUMEX>) in response to a general signal
+        of amino<ENAMEX TYPE="SUBSTANCE">-acid starvation</ENAMEX> [ <TIMEX TYPE="DATE">34, 35, 65</TIMEX>], and they are
+        probably also regulated by a <NUMEX TYPE="ORDINAL">third</NUMEX> mechanism (GATA factors)
+        in response to the available nitrogen <ENAMEX TYPE="PER_DESC">source</ENAMEX>. Combining
+        this information with similar indications for other sets of
+        genes gives a summary of the details discussed in this
+        study and suggests a model for the <ENAMEX TYPE="ORG_DESC">organization</ENAMEX> of the
+        regulatory system that controls gene expression in yeast
+        (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). The overlapping nature of the sets of
+        coregulated genes supports the ability of the cell to
+        customize the emergent genomic expression program to the
+        particular needs of the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, while minimizing the number
+        of <ENAMEX TYPE="ORG_DESC">regulators</ENAMEX> required to produce each genomic expression
+        program.
+        The fuzzy k-means algorithm used here was chosen for its
+        conceptual and algorithmic simplicity. There are many
+        alternative algorithms that might accomplish the same ends.
+        For example, Ihmels 
+        et al. [ <TIMEX TYPE="DATE">11</TIMEX>] have applied a heuristic
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> to the analysis of <ENAMEX TYPE="SUBSTANCE">yeast gene</ENAMEX>-expression data to
+        identify overlapping sets of genes whose expression is
+        similar to known gene-expression patterns. This method
+        produced interesting results and identified genes that were
+        similarly expressed to known transcription factor targets.
+        A key difference between these algorithms is that fuzzy
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering requires no 
+        a priori information about the
+        <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>. Thus, each method may be suitable for a different
+        biological question, namely identifying genes whose
+        expression is similar to known or expected gene expression
+        patterns versus an unbiased, 
+        <ENAMEX TYPE="ORGANIZATION">de novo</ENAMEX> exploration of the
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression dataset.
+        Despite the advantages of fuzzy k-means clustering
+        discussed above, the method also has a number of
+        limitations. Most notably, the assignment of genes to the
+        clusters requires a user-defined membership cutoff. While
+        this allows complete flexibility in data exploration,
+        selecting meaningful cutoffs is a challenge. Choice of
+        cutoff can be guided by a number of criteria, including the
+        coherence of the selected gene-expression patterns, the
+        functional relationships of the characterized genes
+        selected, or the statistical enrichment of sequences in the
+        selected genes' <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>. We have attempted to alleviate
+        the challenge of selecting cutoffs by providing
+        visualization software specifically designed for the fuzzy
+        clustering results, allowing the gene expression data to be
+        inspected directly and dynamically.
+        Although the fuzzy k-means clustering method
+        successfully identified <NUMEX TYPE="PERCENT">nearly 90%</NUMEX> of the known clusters in
+        the dataset, it routinely failed to identify a small number
+        of <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> that were identified by hierarchical clustering.
+        The inability of the method to find the expression patterns
+        representing these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> seemed to be dependent on the
+        overall properties of the dataset, rather than the absence
+        of an appropriate eigen vector used to initiate the
+        process, as the program was unable to identify these
+        patterns even when the process was initiated by seeding the
+        centroids with the unidentified patterns (data not shown).
+        We have accounted for this limitation by allowing any
+        number of expression patterns to be added to the final list
+        of identified cluster centroids, thereby revealing genes
+        that are similarly expressed to the pattern in
+        question.
+        Despite these limitations, the unique advantages of
+        fuzzy k-means clustering make the technique a valuable tool
+        for gene-expression analysis. We believe that fuzzy k-means
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> will be a useful complement to other
+        computational methods commonly used to analyze
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression data. Whereas algorithms that present
+        discrete gene clusters provide a straightforward method of
+        initial data exploration, the flexibility of fuzzy k-means
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> can be used to reveal more complex correlations
+        between gene-expression patterns, promoting refined
+        hypotheses of the role and regulation of gene-expression
+        changes.
+      
+      
+        Materials and methods
+        
+          Software and supplementary information
+          The clustering software <ENAMEX TYPE="PERSON">FuzzyK</ENAMEX> and the visualization
+          program <ENAMEX TYPE="PER_DESC">FuzzyExplorer</ENAMEX> are available from [ <TIMEX TYPE="DATE">14</TIMEX>], along
+          with the complete clustering results and additional
+          information.
+        
+        
+          Dataset
+          Published genomic expression data of wild-type 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae responding to zinc
+          starvation [ <ENAMEX TYPE="LAW">4</ENAMEX>], phosphate limitation [ <ENAMEX TYPE="LAW">5</ENAMEX>], <ENAMEX TYPE="SUBSTANCE">DNA-</ENAMEX>damaging
+          <ENAMEX TYPE="PER_DESC">agents</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>], and a variety of stressful environmental
+          changes [ <ENAMEX TYPE="LAW">2</ENAMEX>] were combined into a dataset of <NUMEX TYPE="CARDINAL">6,153</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          and <NUMEX TYPE="CARDINAL">93</NUMEX> microarray experiments (dataset A). These data
+          were chosen because the experiments were performed using
+          the same experimental and microarray methods [ <TIMEX TYPE="DATE">55</TIMEX>]. The
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> were downloaded from the <ENAMEX TYPE="ORGANIZATION">Stanford</ENAMEX> Microarray
+          Database and were otherwise unprocessed before
+          clustering, with the exception of the heat shock, <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>,
+          and <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX>-source experiments, which were transformed as
+          previously described [ <ENAMEX TYPE="LAW">2</ENAMEX>]. The complete dataset organized
+          by hierarchical clustering can be downloaded from [ <TIMEX TYPE="DATE">14</TIMEX>].
+          A subset of this data was used in the fuzzy k-means
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> and consisted of <NUMEX TYPE="CARDINAL">4,373</NUMEX> genes whose standard
+          deviation in expression was log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (<NUMEX TYPE="MONEY">0.45</NUMEX>) from each vector mean
+          (<TIMEX TYPE="DATE">dataset</TIMEX> B), identified using the <ENAMEX TYPE="ORGANIZATION">program Cluster</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">66</NUMEX>].
+        
+        
+          Similarity metric
+          For all methods discussed, the weighted, uncentered
+          Pearson correlation was used as the similarity metric
+          (referred to simply as the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation) [ <ENAMEX TYPE="LAW">1</ENAMEX>].
+          Where noted, the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> distance was used, equal to <NUMEX TYPE="CARDINAL">1</NUMEX> -
+          correlation. The array weights used in the calculation
+          were generated as previously described, using a <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+          correlation cutoff of <NUMEX TYPE="CARDINAL">0.8</NUMEX> and an exponent of <NUMEX TYPE="MONEY">1</NUMEX> (see [ <TIMEX TYPE="DATE">67</TIMEX>]
+          for details).
+        
+        
+          Hierarchical clustering
+          Average linkage hierarchical clustering of the data
+          was carried out using the <ENAMEX TYPE="ORGANIZATION">program Cluster</ENAMEX> as previously
+          described, using the weighted, uncentered <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+          correlation as the similarity metric [ <ENAMEX TYPE="LAW">1</ENAMEX>]. <ENAMEX TYPE="DISEASE">Dataset A</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> B were hierarchically clustered with identical
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, using array weights calculated based on a
+          correlation cutoff of <NUMEX TYPE="CARDINAL">0.8</NUMEX> and an exponent of <NUMEX TYPE="CARDINAL">1</NUMEX> [ <TIMEX TYPE="DATE">67</TIMEX>].
+          Clustering of the <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments was carried out
+          similarly, using gene weights calculated with a
+          correlation cutoff of <NUMEX TYPE="CARDINAL">0.7</NUMEX> and an exponent of <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          To represent all the significant gene clusters
+          identified by hierarchical clustering, the dendrogram
+          generated for <TIMEX TYPE="DATE">dataset</TIMEX> B by the <ENAMEX TYPE="ORGANIZATION">Cluster</ENAMEX> program was
+          parsed, and the average expression patterns of clusters
+          of <NUMEX TYPE="CARDINAL">more than three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with an average <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+          correlation <NUMEX TYPE="MONEY">>0.7</NUMEX> were calculated. Through this method,
+          38 hierarchical cluster means were identified. The
+          parsing process was repeated to calculate the average
+          expression patterns of clusters of <NUMEX TYPE="CARDINAL">more than three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          with average correlations <NUMEX TYPE="MONEY">>0.8 and >0.9</NUMEX>. Cluster
+          means not already represented in the initial group of <NUMEX TYPE="CARDINAL">38</NUMEX>
+          clusters were added to the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, resulting in a total of
+          53 hierarchical cluster means identified for the dataset.
+          The centroids identified through fuzzy k-means clustering
+          were considered similar to the hierarchical cluster means
+          if the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation between the vectors was
+          ><NUMEX TYPE="CARDINAL">0.7</NUMEX>.
+        
+        
+          Fuzzy k-means clustering
+          We implemented the modified fuzzy k-means method in
+          the <ENAMEX TYPE="PRODUCT">C++</ENAMEX> program <ENAMEX TYPE="PERSON">FuzzyK</ENAMEX>, available at [ <TIMEX TYPE="DATE">14</TIMEX>].
+          The fuzzy k-means algorithm [ <TIMEX TYPE="DATE">12</TIMEX>] is based on the
+          minimization of the objective function shown below, for a
+          given fuzzy partition of the data, <ENAMEX TYPE="PRODUCT">F</ENAMEX>, and a set of 
+          <ENAMEX TYPE="ORGANIZATION">K cluster</ENAMEX> centroids, V
+          
+          where 
+          X 
+          
+            i 
+           is the expression pattern of the 
+          i th gene in the dataset, 
+          V 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is the centroid of the 
+          <ENAMEX TYPE="ORGANIZATION">j th cluster</ENAMEX>, 
+          d is the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> distance between 
+          X 
+          
+            i 
+           and 
+          V 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            XiVj 
+           is the <ENAMEX TYPE="PER_DESC">membership</ENAMEX> of 
+          X 
+          
+            i 
+           in cluster 
+          V 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the number of genes in the
+          dataset, and 
+          <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> is the total number of
+          <ENAMEX TYPE="PERSON">clusters</ENAMEX>.
+          We implemented the algorithm to perform three
+          successive cycles of fuzzy k-means clustering. The first
+          cycle of clustering was initialized by performing PCA on
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> B using the <ENAMEX TYPE="ORGANIZATION">GNU Scientific Library SVD</ENAMEX> function.
+          Of the top 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">/3</NUMEX> eigen vectors, those to which
+          no gene had a maximal <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation were eliminated
+          (for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">120</NUMEX>, <NUMEX TYPE="CARDINAL">only one</NUMEX> eigen vector was
+          eliminated in each cycle). The remaining eigen vectors
+          were used as prototype centroids for that clustering
+          cycle. Subsequent cycles of clustering were initialized
+          similarly, except that <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> was performed on the
+          respective data subset used in that clustering cycle.
+          During the centroid refinement in each clustering
+          cycle, new centroids were calculated on the basis of the
+          weighted mean of all the gene-expression patterns in the
+          dataset according to
+          
+          where each gene's membership 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> (a continuous variable from <NUMEX TYPE="CARDINAL">0</NUMEX> to
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) was defined as
+          
+          and 
+          <ENAMEX TYPE="ORGANIZATION">w</ENAMEX> was the gene weight: in the first
+          clustering cycle, the gene weights used were those
+          defined by the <ENAMEX TYPE="ORGANIZATION">program Cluster</ENAMEX>, using a <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+          correlation cutoff of <NUMEX TYPE="CARDINAL">0.7</NUMEX> and an exponent of <NUMEX TYPE="CARDINAL">1</NUMEX> [ <TIMEX TYPE="DATE">67</TIMEX>] and
+          in subsequent cycles the gene weight was empirically
+          defined as
+          
+          where 
+          d 
+          
+            <ENAMEX TYPE="PERSON">Xi</ENAMEX>, Vj 
+           is the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> distance between gene 
+          X 
+          
+            i 
+           , and vector 
+          V 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , 
+          c 
+          
+            <ENAMEX TYPE="PERSON">Xi</ENAMEX>, Xn 
+           is the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation between genes 
+          X 
+          
+            i 
+           and 
+          X 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           , and 
+          x is the correlation cutoff, in
+          this case <NUMEX TYPE="CARDINAL">0.6</NUMEX>. This weighting scheme served to overweight
+          genes that were correlated to other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX>.
+          In each clustering cycle, the centroids were
+          <ENAMEX TYPE="SUBSTANCE">iteratively</ENAMEX> refined until the average change in gene
+          memberships between iterations was <<NUMEX TYPE="CARDINAL">0.001</NUMEX>
+          (<NUMEX TYPE="CARDINAL">approximately 40-60</NUMEX> total iterations in each clustering
+          <ENAMEX TYPE="ORGANIZATION">cycle</ENAMEX>). While <NUMEX TYPE="PERCENT">around 85%</NUMEX> of the centroids stabilized
+          within <TIMEX TYPE="TIME">approximately 15 iterations</TIMEX>, some of the centroids
+          required <NUMEX TYPE="CARDINAL">more than 40</NUMEX> iterations before stabilizing.
+          After each clustering cycle, the centroids were
+          combined with those identified in previous cycles, and
+          replicate centroids were averaged: each centroid was
+          compared to all other centroids in the set, and centroid
+          pairs correlated ><NUMEX TYPE="CARDINAL">0.9</NUMEX> were replaced by the average of
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> vectors. The new vector was compared to the
+          remaining centroids in the set and averaged with those to
+          which it was correlated <NUMEX TYPE="MONEY">>0.9</NUMEX>. This process continued
+          until <TIMEX TYPE="DATE">each centroid</TIMEX> (or the vector that replaced it) was
+          compared to all other existing centroids in the set.
+          Following the <NUMEX TYPE="ORDINAL">first</NUMEX> and <NUMEX TYPE="ORDINAL">second</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">clustering cycles</ENAMEX>, data
+          subsets were selected to apply to subsequent rounds of
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>. Genes that were correlated to any existing
+          centroid with a <ENAMEX TYPE="PRODUCT">Pearson correlation >0.7</ENAMEX> were removed
+          from the dataset, and array and gene weights were
+          recalculated on the data subset as described above. The
+          new data subset was applied to a subsequent cycle of
+          clustering, performed as described above.
+        
+        
+          Final gene-cluster assignments
+          The centroids identified through <NUMEX TYPE="CARDINAL">three</NUMEX> rounds of fuzzy
+          clustering were combined into <NUMEX TYPE="CARDINAL">one</NUMEX> set and replicate
+          centroids were averaged, as described above. Each gene in
+          <ENAMEX TYPE="DISEASE">dataset A</ENAMEX> was assigned a membership score to each of the
+          unique centroids. For display in the figures, the final
+          list of centroids was ordered by hierarchical clustering.
+          Genes were selected in each cluster if their membership
+          score was greater than the empirically determined
+          membership cutoff applied to each cluster. For display in
+          Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, the genes selected in each cluster were
+          subsequently organized by hierarchical clustering.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering
+          For an optimal comparison of the results of k-means
+          and fuzzy k-means clustering, we performed the k-means
+          clustering identically to the fuzzy k-means protocol,
+          except that during the clustering iterations each gene
+          contributed only to the cluster to which it was most
+          similar (with a <ENAMEX TYPE="PER_DESC">membership</ENAMEX> of <NUMEX TYPE="MONEY">1.0</NUMEX>). <NUMEX TYPE="CARDINAL">Three</NUMEX> rounds of hard
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>-means clustering were performed with 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">120</NUMEX>, and each cycle was
+          initiated by seeding 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">/3</NUMEX> centroids with the most
+          informative 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">/3</NUMEX> eigen vectors identified by
+          <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>, as described above. The process for merging
+          centroids, selecting the data subsets for subsequent
+          <TIMEX TYPE="DATE">clustering</TIMEX> rounds, and <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> and array weighting were
+          carried out identically as described for fuzzy k-means
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>. After identification of the final set of
+          centroids, each gene was assigned only to the centroid to
+          which it was most similar.
+        
+        
+          Bootstrapping
+          To estimate the dependence of the procedure on the
+          initial dataset, a bootstrapping method was applied in
+          which the fuzzy k-means protocol was repeated <NUMEX TYPE="CARDINAL">100</NUMEX> times,
+          each time on <NUMEX TYPE="CARDINAL">4,373</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> chosen randomly from <TIMEX TYPE="DATE">dataset</TIMEX> B,
+          with 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">102</NUMEX>. The occurrence of each
+          <ENAMEX TYPE="ORGANIZATION">centroid</ENAMEX> in the bootstrap trials was determined by
+          summing the number of trials that contained a centroid
+          that was correlated ><NUMEX TYPE="CARDINAL">0.7</NUMEX> to the centroid in question.
+          By this criterion, <NUMEX TYPE="PERCENT">roughly 50%</NUMEX> of the centroids were
+          identified in <NUMEX TYPE="PERCENT">90%</NUMEX> of the trials, while <NUMEX TYPE="PERCENT">approximately 25%</NUMEX>
+          of the centroids were identified in all of the
+          trials.
+          To estimate the dependence of the procedure on the
+          eigen vectors used to seed the clusters, a similar
+          bootstrapping procedure was carried out in which <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> was
+          performed on <NUMEX TYPE="CARDINAL">4,373</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> chosen randomly from <TIMEX TYPE="DATE">dataset</TIMEX> B
+          but the cluster refinement was done using all genes in
+          <ENAMEX TYPE="PERSON">dataset B.</ENAMEX> The frequency of each centroid was scored as
+          described above. The results were similar to the previous
+          <ENAMEX TYPE="PERSON">bootstrapping</ENAMEX> experiment, with <NUMEX TYPE="PERCENT">around 50%</NUMEX> of the
+          centroids present in <NUMEX TYPE="PERCENT">90%</NUMEX> of the bootstrapping trials, and
+          around <NUMEX TYPE="PERCENT">25%</NUMEX> of the centroids identified in all the
+          trials.
+        
+        
+          Promoter analysis
+          Genes were assigned to all the <TIMEX TYPE="DATE">91</TIMEX> identified centroids
+          on the basis of a membership cutoff of <NUMEX TYPE="CARDINAL">0.06</NUMEX> or <NUMEX TYPE="MONEY">0.08</NUMEX>. The
+          statistical enrichment of each cluster for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that
+          contained known transcription factor binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> or
+          different <NUMEX TYPE="CARDINAL">6</NUMEX>-mer sequences within <NUMEX TYPE="QUANTITY">800 bp</NUMEX> upstream of the
+          <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> was assessed, according to the hypergeometric
+          distribution. The probability of observing at least 
+          q genes that contained one or more
+          copies of a given sequence out of 
+          l genes in a fuzzy cluster was
+          calculated as
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> is the number of genes in the
+          genome that contain the motif and 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the total number of genes in
+          the genome. Forty-three transcription factor binding
+          sites were compiled from the literature (see [ <TIMEX TYPE="DATE">14</TIMEX>] for a
+          complete list of sequences). The enrichment of each
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> was considered significant if the 
+          P value was <NUMEX TYPE="MONEY"><0.01</NUMEX> divided by the
+          number of <ENAMEX TYPE="PER_DESC">elements</ENAMEX> searched, or <NUMEX TYPE="CARDINAL">2</NUMEX> × <NUMEX TYPE="CARDINAL">10</NUMEX> -4for <TIMEX TYPE="DATE">the 43</TIMEX>
+          transcription factor binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> and <NUMEX TYPE="QUANTITY">2 × 10 -6for</NUMEX> the
+          <NUMEX TYPE="CARDINAL">4,096</NUMEX> different <NUMEX TYPE="CARDINAL">6</NUMEX>-mers.
+          The program MEME [ <TIMEX TYPE="DATE">56</TIMEX>] was seeded with the most
+          significant <NUMEX TYPE="CARDINAL">6</NUMEX>-mer (CGCGAA) enriched in the <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of
+          the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> selected for cluster <TIMEX TYPE="DATE">61</TIMEX>, and the program was
+          run with a variety of parameters (the parameters and MEME
+          output can be found at [ <TIMEX TYPE="DATE">14</TIMEX>]). Genes whose <ENAMEX TYPE="PER_DESC">promoters</ENAMEX>
+          contained significant matches to the identified matrices
+          were identified using <ENAMEX TYPE="ORGANIZATION">Patser</ENAMEX> on the RSA tools website [
+          <TIMEX TYPE="DATE">68, 69</TIMEX>].
+        
+      
+    
+  

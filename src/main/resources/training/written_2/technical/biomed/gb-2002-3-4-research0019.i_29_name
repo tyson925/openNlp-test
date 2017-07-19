@@ -1,0 +1,692 @@
+
+  
+    
+      
+        Background
+        Microarrays have become standard tools for gene
+        expression analysis as the <ENAMEX TYPE="SUBSTANCE">messenger RNA</ENAMEX> levels of
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes can be measured in <NUMEX TYPE="CARDINAL">one</NUMEX> assay. In a
+        standard microarray experiment, total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> or mRNA is
+        extracted from <ENAMEX TYPE="SUBSTANCE">cells</ENAMEX> or tissue, labeled by reverse
+        transcription with radioactive or fluorescent-tag-labeled
+        <ENAMEX TYPE="ORGANIZATION">nucleotides</ENAMEX> and hybridized to the arrays. After
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> and washing, the arrays are scanned and the
+        hybridization intensities at each spot are determined by
+        image-analysis software. <NUMEX TYPE="CARDINAL">Two</NUMEX>-channel microarrays open up
+        the possibility of carrying out many hybridizations in
+        parallel using a common reference <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. In such experiments,
+        different experimental conditions can be compared to each
+        other. In many cases, different conditions are analyzed
+        with some replications to allow variance analysis [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>].
+        This procedure results in multivariate grouped data in
+        which <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">group</ENAMEX> represents a condition with several
+        <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX>. Such data can be represented as a matrix with 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> rows (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) and 
+        p columns (hybridizations) and a
+        <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> of length 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> containing the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> labels. These
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are characteristic of multi-condition microarray
+        experiments.
+        To analyze such data, multivariate statistics are
+        needed. Before carrying out the analysis, the data must be
+        pre-processed by background subtraction, computation of
+        ratios and array-wise normalization. After this step, the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> can be analyzed using different multivariate
+        approaches. These methods can be classified as supervised
+        and unsupervised. A wide variety of supervised approaches
+        have been described, for example, classification and
+        regression <ENAMEX TYPE="PLANT">trees</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>] or support vector machines [ <ENAMEX TYPE="LAW">4</ENAMEX>].
+        Among unsupervised methods, hierarchical clustering [ <ENAMEX TYPE="LAW">5</ENAMEX>]
+        and other clustering approaches [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>], as well as
+        projection methods such as multidimensional scaling [ <ENAMEX TYPE="LAW">8</ENAMEX>],
+        principal components analysis (PCA) [ <TIMEX TYPE="DATE">9, 10, 11, 12, 13</TIMEX>]
+        and correspondence analysis [ <TIMEX TYPE="DATE">14</TIMEX>] have been described. Such
+        projection techniques reduce the dimensionality of
+        multivariate data to embed the variables and objects of the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> in a visualizable (<NUMEX TYPE="CARDINAL">two</NUMEX>- or three-dimensional) space.
+        The projection aims to represent the objects and variables
+        in the reduced space in such a way that they approximate
+        their original distances in the high-dimensional <ENAMEX TYPE="FAC_DESC">space</ENAMEX>.
+        This enables <NUMEX TYPE="CARDINAL">one</NUMEX> to extract and visualize the dominant
+        effects on variance from the data. With <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>, linear
+        <ENAMEX TYPE="PERSON">combinations</ENAMEX> (principal <ENAMEX TYPE="ORG_DESC">components</ENAMEX>) of the original
+        variables can thus be functionally interpreted (for review
+        see [ <TIMEX TYPE="DATE">15</TIMEX>]). This enables a biological interpretation of the
+        nature of coherent variation.
+        In <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments, the identification of subsets
+        of genes with large variation between <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> is of primary
+        interest. This process has to comprise a criterion that
+        accounts for the variance within <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Sometimes this
+        selection is only the <NUMEX TYPE="ORDINAL">first</NUMEX> step in the data analysis.
+        Hastie 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">16</TIMEX>] carried out
+        hierarchical clustering of gene-expression data and
+        computed an average expression profile for each cluster,
+        providing the input for a response model. A direct
+        significance analysis to select <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from microarray data
+        (<ENAMEX TYPE="GPE">SAM</ENAMEX>) was proposed by Tusher 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">17</TIMEX>]. This method is based
+        on 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -like (in the case of <NUMEX TYPE="CARDINAL">two</NUMEX>
+        conditions) or <ENAMEX TYPE="PRODUCT">F-</ENAMEX>like statistics.
+        Several methods for <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> selection involving <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> have
+        been proposed. The <ENAMEX TYPE="ANIMAL">'gene shaving</ENAMEX>' approach of Hastie 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] restricts <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> to the
+        <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="PER_DESC">principal</ENAMEX> component. <ENAMEX TYPE="ORG_DESC">Groups</ENAMEX> of genes are generated by
+        iterative exclusion of fixed fractions of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (typically
+        <NUMEX TYPE="PERCENT">10%</NUMEX>) with smallest absolute loadings according to the first
+        principal component. After orthogonalization of the data
+        with respect to an averaged expression profile of the first
+        <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>, the procedure is repeated. Another <ENAMEX TYPE="GPE">PCA</ENAMEX>-based method
+        of <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> selection using <ENAMEX TYPE="SUBSTANCE">PCA-</ENAMEX>derived gene coefficient
+        <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> and <ENAMEX TYPE="PRODUCT">F-</ENAMEX>statistics was described by Landgrebe 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">18</TIMEX>].
+        Although these methods allow the detection of patterns
+        or 'characteristic <ENAMEX TYPE="PER_DESC">nodes</ENAMEX>' by dimension reduction and the
+        selection of gene subsets with large variation between
+        condition <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, the reliability of the results has to be
+        determined. Therefore, it is imperative to assess whether
+        the results are statistically reliable relative to the
+        level of noise in the data. Classical statistical
+        <ENAMEX TYPE="ORGANIZATION">parametric</ENAMEX> tests depend on the assumptions of normality and
+        independence of variables (hybridizations). Yet, these
+        assumptions do not hold for microarray data [ <ENAMEX TYPE="LAW">1, 19</ENAMEX>].
+        Consequently, computationally intensive methods such as
+        <ENAMEX TYPE="ORGANIZATION">permutation</ENAMEX> tests or bootstrap procedures as introduced by
+        <ENAMEX TYPE="ORGANIZATION">Efron</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>] are preferable. <ENAMEX TYPE="ORGANIZATION">Kerr</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">1</ENAMEX>] show the application of
+        <ENAMEX TYPE="PERSON">bootstrap</ENAMEX> technique to clustering results. <ENAMEX TYPE="ORGANIZATION">Ghosh</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]
+        describes another approach based on mixture modeling to
+        assess the reliability of clustering results. Other
+        <ENAMEX TYPE="GPE">permutation</ENAMEX>-based approaches were published by Tusher 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">17</TIMEX>] and Dudoit 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">3</ENAMEX>]. The method proposed by
+        Hastie 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] also contains bootstrap
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. An approach of Wall 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">22</TIMEX>] tries to combine
+        <ENAMEX TYPE="GPE">PCA</ENAMEX>-based <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> selection with a confidence measure using
+        leave-<NUMEX TYPE="CARDINAL">one</NUMEX>-out cross-validation.
+        Here we describe an approach combining PCA-directed gene
+        selection with validation by permutation tests. We use a
+        test statistic based on the genes' object scores to select
+        genes with high variance with respect to the principal
+        <ENAMEX TYPE="ORGANIZATION">components</ENAMEX>. The method was developed for the analysis of
+        microarray data having several conditions with a few
+        <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX> per condition or a group <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>. We
+        demonstrate this approach by applying it to the
+        well-characterized data of Spellman 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>]. Although other methods
+        are better adapted to the analysis of temporal effects (for
+        example [ <TIMEX TYPE="DATE">24</TIMEX>]), we chose the yeast data to allow comparison
+        with other approaches applied to this dataset [ <TIMEX TYPE="DATE">14, 23</TIMEX>]. In
+        addition, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">datasets</ENAMEX> generated in our own <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> were
+        also analyzed. Our method was successfully applied to the
+        different datasets. We revealed the main <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+        <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> in the data and described the genes related to
+        this variance. This allowed the interpretation of variance
+        and the <ENAMEX TYPE="ORG_DESC">permutation-validated</ENAMEX> selection of genes in a
+        functional context.
+      
+      
+        Results
+        
+          Permutation-test-validated PCA
+          We carried out permutation-test-validated PCA on
+          grouped data with few replicates to study variation in
+          gene expression across several conditions, to understand
+          the <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of the data, to uncover patterns underlying
+          the hybridization conditions and to identify subsets of
+          genes with large variation across these patterns. <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> is
+          primarily aimed at finding and interpreting complex
+          relationships between variables in a dataset. Correlated
+          variables are converted to factors that are not
+          <ENAMEX TYPE="ORGANIZATION">correlated</ENAMEX> to each other. The central point of such
+          analysis is to decompose the original 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> data matrix ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> objects, 
+          p variables) in the following
+          manner:
+          
+          X = 
+          <ENAMEX TYPE="ORGANIZATION">AF T</ENAMEX> 
+          where 
+          X is the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> data matrix, 
+          A is the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p matrix</ENAMEX> of factor scores and 
+          F is the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p matrix</ENAMEX> of factor loadings. With 
+          s = 
+          p factors the total variance of all
+          variables is explained. The decomposition of 
+          X is done in such a way that the
+          factors explain the total variance in a descending order.
+          Therefore, it is possible to reduce the data to 
+          s dimensions with a minimum loss of
+          information expressed by the matrix of residuals 
+          E: 
+          
+          where Ã is the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">s matrix</ENAMEX> of factor scores, the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">s matrix</ENAMEX> of factor loadings and 
+          E is the matrix of residuals as a
+          result of dimension reduction. In this manner, PCA
+          provides a projection of the objects from 
+          <ENAMEX TYPE="ORGANIZATION">p -dimensional</ENAMEX> to 
+          <ENAMEX TYPE="PRODUCT">s -dimensional</ENAMEX> space.
+          In grouped data with replicates per <ENAMEX TYPE="PER_DESC">group</ENAMEX> (<ENAMEX TYPE="DISEASE">condition</ENAMEX>),
+          there is additional information about the columns of the
+          <ENAMEX TYPE="ORGANIZATION">data matrix</ENAMEX>: 
+          <ENAMEX TYPE="PER_DESC">y'</ENAMEX> = ( 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,..., 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>  ) is a set of class labels
+          identifying the replicates for each condition. Although
+          <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> is generally not considered to be appropriate for
+          grouped data, the method has been adapted for this data
+          type (rank-ordered <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>]).
+          The consecutive steps of the permutation validated PCA
+          procedure are shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. In step <NUMEX TYPE="CARDINAL">1</NUMEX>, we perform
+          <ENAMEX TYPE="ORGANIZATION">rank</ENAMEX>-ordered <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> based on the polished gene expression
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> 
+          X (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods) by
+          computing separate oneway ANOVAs on the principal
+          components loadings for each of the components. If the
+          between<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> variance dominates the total variability in
+          the data, <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> discriminates between <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. In this
+          situation, the <NUMEX TYPE="ORDINAL">first</NUMEX> components of the <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> and components
+          with high <ENAMEX TYPE="PRODUCT">F-</ENAMEX>values are identical. Thus, following the
+          order of explained variance, we select the components
+          with significant <ENAMEX TYPE="PRODUCT">F-</ENAMEX>statistics ( 
+          <ENAMEX TYPE="ORGANIZATION">p �</ENAMEX>�<NUMEX TYPE="MONEY">� 0.01</NUMEX>). At the occurrence of a
+          component with nonsignificant <ENAMEX TYPE="PRODUCT">F-</ENAMEX>statistics, we terminate
+          the selection. This process results in 
+          <ENAMEX TYPE="ORGANIZATION">k components</ENAMEX> (step <NUMEX TYPE="CARDINAL">2</NUMEX>). <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">approximated</ENAMEX> in the space based on these components
+          reflect the <NUMEX TYPE="CARDINAL">between</NUMEX>-<ENAMEX TYPE="ORG_DESC">group</ENAMEX> variance. Thus, in step <NUMEX TYPE="CARDINAL">3</NUMEX> of
+          the procedure, we compute components from the
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>-averaged data and derive the exact between-group
+          variance for each gene, which can be estimated by:
+          
+          where 
+          a 
+          
+            <ENAMEX TYPE="CONTACT_INFO">gi</ENAMEX> 
+           is the factor score for gene 
+          g and component 
+          i . As a test value, we use (step
+          <NUMEX TYPE="CARDINAL">3</NUMEX>). Genes with a high value are <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for
+          selection.
+          To assess the reliability of the results we perform a
+          permutation analysis (steps <ENAMEX TYPE="CONTACT_INFO">4-6</ENAMEX>). Under the hypothesis of
+          no effect of different conditions on gene expression
+          <ENAMEX TYPE="PERSON">profiles</ENAMEX>, the class labels given by 
+          y' are randomly sampled to
+          determine the permutation distribution of the required
+          test statistics. <ENAMEX TYPE="PRODUCT">Computing PCAs</ENAMEX> from randomized
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>-averaged data yields the distribution of the test
+          statistic 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          
+            g 
+           for each gene 
+          <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> (step <NUMEX TYPE="CARDINAL">4</NUMEX>):
+          
+          We compute <NUMEX TYPE="CARDINAL">1,000</NUMEX> permutation distributions for each
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> (step <NUMEX TYPE="CARDINAL">5</NUMEX>). In step <NUMEX TYPE="CARDINAL">6</NUMEX> we select the genes for which 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> 
+          g  is greater than the <NUMEX TYPE="PERCENT">95%</NUMEX>
+          quantile of the permutation distribution of 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> 
+          g  . The last step is the
+          visualization of the arrays and selected genes in the
+          reduced 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -components space. If 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, a twofold visualization is
+          suggested. The biplot with marked selected genes can be
+          used to relate genes and conditions. Genes lying near an
+          axis of a condition are upregulated in this hybridization
+          and genes lying in the opposite direction are repressed.
+          With several conditions, this relation is generally not
+          unique. Therefore, the visualization maybe supported by
+          color-coded expression-profile tables. Here, the data
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> is rearranged according to the angular distance
+          from the 
+          x -axis for each gene (rearranging 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> rows). The same is done for
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> (rearranging 
+          p columns). If 
+          <ENAMEX TYPE="ORGANIZATION">k ></ENAMEX> <NUMEX TYPE="CARDINAL">2 several</NUMEX> <ENAMEX TYPE="FAC_DESC">biplots</ENAMEX> and
+          color-coded tables must be constructed.
+        
+        
+          Application to yeast cell-cycle data
+          To demonstrate our approach, we applied it to the
+          yeast cell-cycle data published by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>]. These <ENAMEX TYPE="PER_DESC">authors</ENAMEX>
+          synchronized the yeast cell cycle using independent
+          methods of cell-cycle arrest and measured the expression
+          of all <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> open reading frames (ORFs) at different time
+          points after the cell-cycle synchronization. They
+          identified genes related to the cell cycle using Fourier
+          transformation and correlation measures. We analyzed the
+          cell-cycle-related genes selected by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] to demonstrate the
+          relationship between cell-cycle phases and
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression patterns and to select a subset of genes
+          that show the highest and most reproducible variance
+          across the cell-cycle phases. We analyzed the expression
+          patterns of <NUMEX TYPE="CARDINAL">773</NUMEX> selected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> over all <NUMEX TYPE="CARDINAL">73</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX>.
+          The cell cycle is a temporal continuum that is
+          generally grouped into <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>-cycle phases. This
+          <ENAMEX TYPE="PERSON">classification</ENAMEX> was also carried out by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>]. The classification
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in cell-cycle phase <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> enables <NUMEX TYPE="CARDINAL">one</NUMEX> to
+          analyze the variance of gene expression across the
+          cell-cycle phases and to select genes with different and
+          robust regulation. We analyzed the data using
+          permutation-validated <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>. A <NUMEX TYPE="ORDINAL">first</NUMEX> PCA was based on the
+          polished logarithmic ratios including all arrays. An
+          analysis of variance (ANOVA) using the variable loadings
+          as dependent variables and the classification-derived
+          cell-cycle phase <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> as factors was carried out. The
+          <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> components were highly significant whereas the
+          others were not. Figure 2shows a plot of the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX>
+          component loadings against each other. Of the data's
+          variance, <NUMEX TYPE="PERCENT">37.2%</NUMEX> was explained by the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">components</ENAMEX>. The plot shows that the resulting ordination
+          of the hybridizations corresponds to the assignment of
+          cell-cycle phases by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>]. The angular position
+          of the hybridizations in the plot reflects their correct
+          temporal situation in the cycle. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">seven</NUMEX> arrays
+          of the <ENAMEX TYPE="ORGANIZATION">CDC</ENAMEX> series seem to be misclassified. They are
+          shown with colored labels in Figure 2and show a
+          counterclockwise shift in expression in the cell cycle.
+          Thus, the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> components approximate the cell-cycle
+          aspect of the data quite well and could be interpreted as
+          cell-cycle components. They reflect the main temporal
+          aspect of the data.
+          A <NUMEX TYPE="ORDINAL">second</NUMEX> PCA was carried out on the <ENAMEX TYPE="ORG_DESC">group</ENAMEX>-averaged
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> using the original cell-cycle classification with
+          <NUMEX TYPE="CARDINAL">two</NUMEX> components (<NUMEX TYPE="PERCENT">94.4%</NUMEX> explained variance). Figure 3shows
+          a biplot of the <NUMEX TYPE="CARDINAL">773</NUMEX> gene scores and the <NUMEX TYPE="CARDINAL">five</NUMEX> cell-cycle
+          phase group loadings. For each gene the distance to the
+          origin indicates the variance in the reduced
+          <ENAMEX TYPE="PRODUCT">two-dimensional</ENAMEX> space. The hole in the middle of the plot
+          reflects the fact that only genes related to the cell
+          cycle were chosen by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>]. Genes without
+          variance with respect to the cell cycle (equally
+          <ENAMEX TYPE="ORGANIZATION">transcribed</ENAMEX> in most cell-cycle phases) would lie in the
+          middle of the biplot. In Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, <NUMEX TYPE="CARDINAL">60</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are labeled
+          with gene symbols. These genes had a test value above the
+          <NUMEX TYPE="PERCENT">95%</NUMEX> percentile of the permutation distribution of the
+          related test statistic. Figure <NUMEX TYPE="CARDINAL">3allows</NUMEX> the assignment of
+          the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to the cell-cycle phases in which they are
+          regulated. As illustrated by Figures <ENAMEX TYPE="PRODUCT">3and 4</ENAMEX>, in the
+          cell-cycle phase <ENAMEX TYPE="PRODUCT">M/G1</ENAMEX>, 
+          CDC46 (encoding part of the
+          replication complex) was selected as an upregulated gene,
+          whereas the histone genes 
+          HTB2, <ENAMEX TYPE="PRODUCT">HTA2</ENAMEX> and 
+          HHO1 (also marked by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] and Fellenberg 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>]) were selected as
+          downregulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. In phases <ENAMEX TYPE="PRODUCT">G1</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>, 
+          POL30 (replication complex) and 
+          RAD51 (cell-cycle-related protein
+          <ENAMEX TYPE="ORGANIZATION">kinase</ENAMEX>) were selected. The histone genes repressed in
+          <ENAMEX TYPE="CONTACT_INFO">M/G1</ENAMEX> were upregulated in <ENAMEX TYPE="GPE">S.</ENAMEX> In <TIMEX TYPE="DATE">G2</TIMEX> and <ENAMEX TYPE="ORGANIZATION">M</ENAMEX>, 
+          CLB1 (<ENAMEX TYPE="PRODUCT">G2/M-</ENAMEX>specific cyclin involved
+          in mitotic induction), 
+          CDC5 (<ENAMEX TYPE="SUBSTANCE">mitotic DNA replication</ENAMEX>) and 
+          CLB2 (<ENAMEX TYPE="PRODUCT">G2/M-</ENAMEX>specific cyclin involved
+          in mitotic induction) were selected as upregulated, in
+          <ENAMEX TYPE="ORGANIZATION">phase M</ENAMEX> 
+          CDC20 (cyclin degradation, part of
+          the anaphase-promoting complex). Thus, among the known
+          genes selected by our algorithm, many play a crucial role
+          in the cell cycle. As described by Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>], the microarray
+          expression data confirm the results of other gene
+          expression studies.
+        
+        
+          Application to abolition of CRH-RI function
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>
+          In this experiment, mRNAs from whole brains of <ENAMEX TYPE="ANIMAL">mice</ENAMEX> of
+          different genetic backgrounds which had been treated with
+          an antagonist directed against the ligand-binding domain
+          of a <NUMEX TYPE="QUANTITY">seven-transmembrane</NUMEX> neuropeptide <ENAMEX TYPE="SUBSTANCE">receptor</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>] (the
+          corticotropin-releasing <ENAMEX TYPE="SUBSTANCE">hormone receptor 1</ENAMEX> (<ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX>) [
+          <NUMEX TYPE="CARDINAL">27</NUMEX>]) were compared to mRNAs from brains of <ENAMEX TYPE="ANIMAL">mice</ENAMEX> lacking a
+          <ENAMEX TYPE="PRODUCT">functional CRH-R1</ENAMEX> (<ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> knockout <ENAMEX TYPE="ANIMAL">mice</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX>]) using
+          cDNA-microarrays (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The data consist of log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratios. The matrix had <NUMEX TYPE="CARDINAL">1,810</NUMEX>
+          complete observations (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) and <NUMEX TYPE="CARDINAL">21</NUMEX> hybridizations. We
+          computed a <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> based on the polished matrix of single
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> to show that the treatment <ENAMEX TYPE="ORG_DESC">group</ENAMEX> members
+          clustered together (data not shown). We performed an
+          <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> using the variable loadings as dependent variables
+          and the treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> as factors. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX>
+          components were highly significant, whereas the third
+          component was not. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> components explained
+          <NUMEX TYPE="PERCENT">37.5%</NUMEX> of the data's variance. We carried out <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> for
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX>-averaged data with <NUMEX TYPE="CARDINAL">two</NUMEX> components (<NUMEX TYPE="PERCENT">54.8%</NUMEX> explained
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX>). Figure 5shows a biplot of these components.
+          The <NUMEX TYPE="CARDINAL">two</NUMEX> components describe a gradient effect of the
+          abolition of <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> function in different genetic
+          backgrounds. <ENAMEX TYPE="CONTACT_INFO">Component 1</ENAMEX> (abscissa) distinguishes the
+          <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> abolition (null mutant) from relatively mild
+          <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> function impairment (<ENAMEX TYPE="PRODUCT">h1</ENAMEX>, <TIMEX TYPE="TIME">w1: 1 day</TIMEX> of treatment
+          with antagonist). With the increasing effect on the
+          <ENAMEX TYPE="ANIMAL">animals</ENAMEX> of gene function impairment, the <ENAMEX TYPE="ANIMAL">animals</ENAMEX>'
+          loadings on the <NUMEX TYPE="ORDINAL">first</NUMEX> component become more similar to
+          the genetic <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> inactivation. <ENAMEX TYPE="CONTACT_INFO">Component 2</ENAMEX> (ordinate)
+          distinguishes between impairment of <ENAMEX TYPE="SUBSTANCE">heterozygotes</ENAMEX> treated
+          for <TIMEX TYPE="DATE">1 day</TIMEX> and wild-type <ENAMEX TYPE="ANIMAL">animals</ENAMEX> treated for <TIMEX TYPE="DATE">7 days</TIMEX> (both
+          of <ENAMEX TYPE="CONTACT_INFO">129Ola/CD1 background</ENAMEX>).
+          Because long-term-treated wild-type <ENAMEX TYPE="ANIMAL">animals</ENAMEX> of 129SvJ
+          background (sy) are similar to the <ENAMEX TYPE="ANIMAL">knockout animals</ENAMEX>,
+          treatment seems to have a strong effect in these <ENAMEX TYPE="ANIMAL">animals</ENAMEX>.
+          <ENAMEX TYPE="ANIMAL">Animals</ENAMEX> with a <ENAMEX TYPE="CONTACT_INFO">129Ola/CD1</ENAMEX> background (<ENAMEX TYPE="ORG_DESC">group</ENAMEX> wy) show a
+          weaker response to treatment with the antagonist. Both
+          components describe abolition-of-function effects in a
+          background-dependent manner. Thus, given a particular
+          genetic background, treatment with an antagonist against
+          <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> can mimic the genetic abolition of gene function.
+          A comparable phenomenon was shown in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">Hughes</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">29</TIMEX>].
+          <NUMEX TYPE="CARDINAL">Only 25</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were selected by permutation tests and
+          are labeled with gene symbols in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>. These genes
+          show high variance across the treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> and are
+          highly reproducible. Only genes that contrast the groups
+          <ENAMEX TYPE="PERSON">ko</ENAMEX> and <ENAMEX TYPE="PRODUCT">s7</ENAMEX> on <NUMEX TYPE="CARDINAL">one</NUMEX> side and in the <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> <ENAMEX TYPE="PRODUCT">w1</ENAMEX> and <ENAMEX TYPE="PRODUCT">w7</ENAMEX> on the
+          other <ENAMEX TYPE="ORG_DESC">side</ENAMEX> are selected. The profiles of these genes are
+          <ENAMEX TYPE="ORGANIZATION">illustrated</ENAMEX> in Figure <ENAMEX TYPE="SUBSTANCE">6and</ENAMEX> support the interpretation of
+          the biplot.
+        
+        
+          Application to antidepressant data
+          In this experiment, <NUMEX TYPE="CARDINAL">29 12</NUMEX><ENAMEX TYPE="ANIMAL">-week-old male mice</ENAMEX> of 129SvJ
+          background were treated with mirtazapine, paroxetine or
+          vehicle for <TIMEX TYPE="DATE">1, 7 or 28 days</TIMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). cDNA microarrays
+          were used to measure the mRNA expression in total brain
+          homogenates of these <ENAMEX TYPE="ANIMAL">animals</ENAMEX>. The data consist of log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratios. The matrix had <NUMEX TYPE="CARDINAL">2,190</NUMEX>
+          complete observations (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) and <NUMEX TYPE="CARDINAL">24</NUMEX> hybridizations. We
+          computed a <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> based on the polished matrix of single
+          <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> to show that the treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were
+          <ENAMEX TYPE="ORGANIZATION">ordinated</ENAMEX> together (data not shown). We performed an
+          <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> using the variable loadings as dependent variables
+          and the treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> as factors. The <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX>
+          components were highly significant. They explained <NUMEX TYPE="PERCENT">36.3%</NUMEX>
+          of the data's variance and the object (<ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>) scores with
+          respect to these <NUMEX TYPE="CARDINAL">two</NUMEX> components were used to compute the
+          variance of genes according to the group differences.
+          We carried out a <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> with <ENAMEX TYPE="ORG_DESC">group</ENAMEX>-averaged data and <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">components</ENAMEX> (<NUMEX TYPE="PERCENT">72.1%</NUMEX> explained variance). Figure 7shows a
+          biplot of these <ENAMEX TYPE="ORG_DESC">components</ENAMEX> with <NUMEX TYPE="CARDINAL">127</NUMEX> selected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at the
+          <NUMEX TYPE="PERCENT">95%</NUMEX> percentile (labeled with numbers) and <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at the
+          <NUMEX TYPE="PERCENT">99%</NUMEX> percentile (labeled with gene symbols). The
+          components describe the effects of antidepressant
+          treatment on the mouse brain. The <NUMEX TYPE="ORDINAL">first</NUMEX> component
+          (<NUMEX TYPE="MONEY">abscissa</NUMEX>) discerns treatment with mirtazapine (a) from
+          treatment with paroxetine (<ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>). This component can be
+          interpreted as the drug-type effect. The <NUMEX TYPE="ORDINAL">second</NUMEX> component
+          discerns short (<TIMEX TYPE="TIME">1 day</TIMEX>) from longer (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX> or <TIMEX TYPE="DATE">28 days</TIMEX>)
+          treatment and can be interpreted as the treatment
+          duration effect. Figure <NUMEX TYPE="CARDINAL">8shows</NUMEX> the <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> selected at
+          the <NUMEX TYPE="PERCENT">99%</NUMEX> percentile in a color-coded expression table.
+          These genes strongly reflect the treatment type and
+          duration effect.
+        
+      
+      
+        Discussion
+        Here we propose a method for analyzing microarray data
+        with group <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> imposed by different conditions. We
+        combine the visualization focused on the variance of genes
+        between <ENAMEX TYPE="PER_DESC">groups</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> selection, taking into account the
+        within<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> variance. Based on <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>, this method is able to
+        visualize relationships between hybridizations by dimension
+        reduction. Yet, data visualization via a biplot allows more
+        than biological interpretation of the components. After
+        appropriate data preprocessing, searching for genes with
+        changes in expression patterns across the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> can be
+        based on the genes' (<ENAMEX TYPE="PER_DESC">objects</ENAMEX>') distance from the centroid
+        of the biplot. This distance is proportional to the
+        variance of genes in the dimension-reduced space. A
+        correspondence analysis would give a similar result [ <TIMEX TYPE="DATE">14</TIMEX>].
+        But a selection of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> must be accompanied by an
+        assessment of whether the results are statistically
+        reliable relative to the level of noise in the data.
+        Whereas classic statistical tests (like 
+        <ENAMEX TYPE="PRODUCT">t- and F-</ENAMEX>statistics) are based on
+        assumptions concerning distribution and variable
+        independence that do not hold for microarray data [ <ENAMEX TYPE="LAW">1, 19</ENAMEX>]
+        the permutation-validation procedure presented here makes
+        no assumption about the dependence of gene-expression
+        measurement within the expression matrix 
+        X . Therefore, gene-specific scatter is
+        taken into consideration by calculating the test-value
+        permutation distributions for each gene under the null
+        hypothesis of no <ENAMEX TYPE="ORG_DESC">group</ENAMEX>-structure effect in the expression
+        profiles. Another method for validating <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> results using a
+        leave-<NUMEX TYPE="CARDINAL">one</NUMEX>-out approach (<ENAMEX TYPE="ORGANIZATION">Wall</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">22</TIMEX>]) is very global, and
+        can only be applied when the conditions correspond to a
+        continuous parameter, such as time or dose.
+        The last step of the permutation-validated PCA procedure
+        concerns the visualization and the interpretation of the
+        selected genes according to their importance in a
+        biological context. In the case of <NUMEX TYPE="CARDINAL">two</NUMEX> dimensions ( 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>), a color-coded expression
+        profile can be generated by rearranging the selected genes
+        and the arrays with respect to angular distances in the
+        <ENAMEX TYPE="ORGANIZATION">biplot</ENAMEX>. When looking at a biplot showing several variable
+        <ENAMEX TYPE="PERSON">loadings</ENAMEX>, a given object (<ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>) has to be projected on all
+        different variables (conditions) to understand its pattern
+        with regard to all of them. A color-coded
+        expression-profile table may support this visual
+        interpretation. As a further development of the method
+        described here, we envisage cluster analysis of the
+        selected genes for higher dimensions ( 
+        <ENAMEX TYPE="ORGANIZATION">k ></ENAMEX> <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        The application of permutation-validated <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> to
+        microarray data shows that the basic sources of variance
+        could be extracted from all datasets: The components
+        computed from the Spellman 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] yeast data described
+        the cell cycle and allowed ordinations of the
+        hybridizations according to their temporal situation in the
+        cell cycle. Arrays misclassified by the Fourier
+        transformation [ <TIMEX TYPE="DATE">23</TIMEX>] were assigned to shifted positions in
+        the cell cycle (this was also achieved by correspondence
+        analysis [ <TIMEX TYPE="DATE">14</TIMEX>]). The <ENAMEX TYPE="ORG_DESC">components</ENAMEX> computed from the abolition
+        of <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> function experiment described a gradient of
+        increasing functional impairment depending on the genetic
+        background of the <ENAMEX TYPE="ANIMAL">animals</ENAMEX>. The analysis of the
+        antidepressant data also shows how principal <ENAMEX TYPE="ORG_DESC">components</ENAMEX> led
+        to an understanding of the fundamental biological phenomena
+        captured by the data: here, they discern the types of
+        treatment and the treatment duration.
+        But there were important differences in the results:
+        whereas the grouped <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> of the cell-cycle data explained
+        <NUMEX TYPE="PERCENT">94.4%</NUMEX> of the data's variance, the corresponding rates were
+        <NUMEX TYPE="PERCENT">72.1%</NUMEX> explained variance for the antidepressant data and
+        <NUMEX TYPE="PERCENT">54.8%</NUMEX> for the <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> abolition data. In a situation with
+        homogeneous array <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> and preselected <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> such as the
+        cell-cycle data, the level of explained variance was very
+        high as the <ENAMEX TYPE="ORG_DESC">components</ENAMEX> explained the kind of variance the
+        genes were preselected for. For the antidepressant data, no
+        
+        a priori information about the
+        relation of genes to treatment type and duration was
+        available. Thus the level of explained variance was lower
+        (<NUMEX TYPE="PERCENT">72.1%</NUMEX>), although the <NUMEX TYPE="CARDINAL">two</NUMEX> components used to build the test
+        statistics still captured a big part of the variance
+        present in the data. Although the <ENAMEX TYPE="SUBSTANCE">material</ENAMEX> used for the
+        <ENAMEX TYPE="DISEASE">antidepressant</ENAMEX> treatment data (<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from total mouse brain
+        <ENAMEX TYPE="SUBSTANCE">homogenates</ENAMEX> containing a variety of cell types) was more
+        heterogeneous than the clonal <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> cell lines,
+        antidepressant effects on the brain's mRNA transcription
+        were so important that clear variance structures emerged in
+        the data. In contrast, the level of explained variance for
+        the <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> function abolition data was <NUMEX TYPE="PERCENT">54.8%</NUMEX>. In this
+        experiment, different methods of impairing or abolishing
+        the function of <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> were used on different mouse genetic
+        backgrounds. The variance in the experimental design was
+        thus quite high. <ENAMEX TYPE="ORGANIZATION">Heterogeneity</ENAMEX> within the <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> was also
+        higher than in <TIMEX TYPE="DATE">the antidepressant</TIMEX> experiment, probably
+        because a selective pharmacologic antagonization of the
+        neuro-modulating peptide <ENAMEX TYPE="ORGANIZATION">CRH</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>] had a less pronounced
+        and stereotypic effect on transcription in the brain than
+        the antidepressant <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> acting on a wide spectrum of
+        neurotransmitter <ENAMEX TYPE="SUBSTANCE">receptors</ENAMEX>, transporters and related
+        <ENAMEX TYPE="ORGANIZATION">enzymes</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]. In this situation of high variance in the
+        experimental design, and a relatively high rate of
+        <ENAMEX TYPE="ORGANIZATION">heterogeneity</ENAMEX> in the treatment <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>,
+        permutation-validated PCA only selected genes reflecting
+        the contrast between the <ENAMEX TYPE="ORGANIZATION">groups</ENAMEX> <ENAMEX TYPE="PRODUCT">w1</ENAMEX>, <TIMEX TYPE="DATE">w7</TIMEX> on <NUMEX TYPE="CARDINAL">one</NUMEX> side and s7
+        and <ENAMEX TYPE="PRODUCT">k0</ENAMEX> on the other side because this contrast was captured
+        by the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">two</NUMEX> components. Other aspects of the data were
+        not captured by <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>. Thus, a multivariate approach trying
+        to compare very different gene expression patterns at the
+        same time might lead to loss of information. In such a
+        case, the selection of genes should be treated with caution
+        and cross-validation by independent methods should be
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> if hypotheses are to be derived from the selected
+        genes. Pairwise comparisons of <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> might be more
+        appropriate in such a situation.
+        In conclusion, permutation-validated <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> can be used to
+        extract the leading source of variance from microarray
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, to visualize relationships between genes and
+        <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> and to select informative genes in a
+        statistically reliable manner. This selection accounts for
+        the level of reproducibility of replicates or group
+        structure as well as gene-specific scatter.
+      
+      
+        Materials and methods
+        
+          Sample processing and hybridization
+          A subset of the data from Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] was used. To acquire
+          our own data, microarrays were manufactured, <ENAMEX TYPE="ANIMAL">mice</ENAMEX> treated
+          and total brain <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> extracted, labeled and hybridized as
+          described in [ <TIMEX TYPE="DATE">18</TIMEX>]. Briefly, <ENAMEX TYPE="ANIMAL">mice</ENAMEX> were killed after the
+          end of treatment, <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was extracted by <ENAMEX TYPE="ORGANIZATION">RNeasy</ENAMEX> and TRIZOL
+          procedure. Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">100 μg</ENAMEX>) was fluorescence-labeled by
+          oligo-<NUMEX TYPE="CARDINAL">dT</NUMEX>-primed reverse transcription to cDNA in the
+          presence of <NUMEX TYPE="CARDINAL">Cy3</NUMEX>-dUTP as described by <ENAMEX TYPE="ORGANIZATION">Eisen</ENAMEX> and <ENAMEX TYPE="PERSON">Brown</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">31</NUMEX>]. After reverse transcription, total brain Cy3-labeled
+          cDNA from each <ENAMEX TYPE="ANIMAL">animal</ENAMEX> was hybridized to a microarray.
+          Fluorescence intensity was detected using the <ENAMEX TYPE="ORGANIZATION">Genetic</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Microsystems GMS</ENAMEX> <ENAMEX TYPE="PRODUCT">418 Array Scanner</ENAMEX>. Raw data were
+          assessed with the <ENAMEX TYPE="ORGANIZATION">Spectrum</ENAMEX> vs.<NUMEX TYPE="MONEY">3.2</NUMEX> image-analysis software
+          developed by <ENAMEX TYPE="PERSON">Chen</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">32</TIMEX>].
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> preprocessing
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> from Spellman 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">23</TIMEX>] were also used by
+          Fellenberg 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">14</TIMEX>]; we did not modify
+          the described preprocessing. The <NUMEX TYPE="CARDINAL">two</NUMEX> datasets from our
+          lab were preprocessed in the following manner. <ENAMEX TYPE="ORGANIZATION">Matrix</ENAMEX>
+          <ENAMEX TYPE="PERSON">rows</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) with missing observations were excluded from
+          the datasets, resulting in data without missing values.
+          To normalize and compare the different hybridizations to
+          each other, the intensity measured at each spot of the
+          arrays was divided by the centered median of the
+          <ENAMEX TYPE="PRODUCT">intensities</ENAMEX> measured at the corresponding spot in the
+          reference <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Thus, every single hybridization was
+          <ENAMEX TYPE="ORGANIZATION">normalized</ENAMEX> against the reference <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> by computing the
+          log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> of the ratios (the mean of groups
+          so, ho and wo for the <ENAMEX TYPE="PRODUCT">CRH-R1</ENAMEX> data and group c28 for the
+          antidepressant data). Therefore, these <ENAMEX TYPE="PER_DESC">groups</ENAMEX> do not
+          appear in Figures <NUMEX TYPE="CARDINAL">5to 8</NUMEX>. Given an 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> data matrix, the following model
+          [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>] can be stated:
+          
+          X 
+          <ENAMEX TYPE="CONTACT_INFO">gj  = μ + α</ENAMEX> 
+          
+            g 
+           <ENAMEX TYPE="CONTACT_INFO">+ β</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">+ δ</ENAMEX> 
+          
+            gj 
+           <ENAMEX TYPE="CONTACT_INFO">+ ε</ENAMEX> 
+          
+            gj 
+           
+          In this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, 
+          X 
+          <ENAMEX TYPE="PERSON">gi</ENAMEX>  is the log-ratio of gene 
+          g under experimental condition 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> , α 
+          
+            g 
+           is the normalizing effect for gene 
+          <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> (<TIMEX TYPE="DATE">row</TIMEX>), β 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is the experimental variance effect for j (column),
+          δ 
+          
+            gj 
+           is the differential gene expression for gene 
+          g under experimental condition j
+          and ε 
+          
+            gj 
+           is the random error.
+          To estimate the interaction term δ 
+          
+            gj 
+           , several other effects must be controlled: as α 
+          
+            g 
+           reflects the relation of experiment <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> to
+          <ENAMEX TYPE="SUBSTANCE">normalizing RNA</ENAMEX> and is of no biological interest, it can
+          be controlled by mean centering rows. β 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           reflects the global variance in <ENAMEX TYPE="SUBSTANCE">RNA preparation</ENAMEX>,
+          labeling efficacy and hybridization quality as well as
+          other <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of experimental variance between the arrays
+          and can be controlled by standardizing the matrix
+          columns. Doing replicates enables control of ε 
+          
+            gj 
+           . The term δ 
+          
+            gj 
+           can thus be obtained by data polishing [ <ENAMEX TYPE="LAW">9</ENAMEX>], that
+          is, the matrix is iteratively subjected to column
+          <ENAMEX TYPE="ORGANIZATION">standardization</ENAMEX> and row mean centering until convergence
+          is reached. This polished matrix was used as the basis
+          for multivariate analysis.
+        
+      
+    
+  

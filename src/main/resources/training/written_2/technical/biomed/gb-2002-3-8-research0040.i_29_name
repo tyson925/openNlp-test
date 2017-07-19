@@ -1,0 +1,466 @@
+
+  
+    
+      
+        Background
+        Power-law behaviors have been observed in many different
+        population distributions. Also known as <ENAMEX TYPE="LAW">Zipf's law</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>],
+        <NUMEX TYPE="CARDINAL">one</NUMEX> of the most famous examples is the usage of words in
+        text documents [ <ENAMEX TYPE="LAW">1</ENAMEX>]. On grouping words that occur in
+        similar numbers, it was noted that a small selection of
+        words such as 'the' and <ENAMEX TYPE="FAC">'of'</ENAMEX>, are used many times, while
+        most other words are used infrequently. When the size of
+        each <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is plotted against its usage, the distribution
+        can be approximated to a power-law function; that is, the
+        number of words 
+        (<ENAMEX TYPE="ORGANIZATION">N</ENAMEX>) with a given occurrence 
+        (<ENAMEX TYPE="PRODUCT">F</ENAMEX>) decays according to the equation 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> = 
+        aF - 
+        b . This distribution has a linear
+        appearance when plotted on double-logarithmic axes, where 
+        -b describes the slope. (<ENAMEX TYPE="ORGANIZATION">Strictly</ENAMEX>
+        speaking, <ENAMEX TYPE="ORGANIZATION">Zipf</ENAMEX>'s law plots the frequency of occurrence of a
+        word against its rank, where words are ranked according to
+        their occurrence. In addition, the exponent 
+        b in the power-law function must be
+        close to <NUMEX TYPE="CARDINAL">1</NUMEX>. Here instead of the rank, we plot the number of
+        words with similar occurrences and do not require an
+        exponent of <NUMEX TYPE="CARDINAL">1</NUMEX>). Some other examples of this behavior
+        include income levels [ <ENAMEX TYPE="LAW">1</ENAMEX>], relative sizes of <ENAMEX TYPE="GPE_DESC">cities</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>]
+        and the connectivity of nodes in large networks [ <ENAMEX TYPE="LAW">2</ENAMEX>] such
+        as the <ENAMEX TYPE="ORGANIZATION">World Wide Web</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>].
+        In regard to genomic biology, Mantegna 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX>] discussed the fact that
+        the usage of short base sequences in <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, or 'DNA words',
+        also follows the power law. They concluded that the
+        behavior applies better to non-coding than to
+        <ENAMEX TYPE="SUBSTANCE">protein-coding sequences</ENAMEX> and suggested that non-coding DNA
+        resembles a natural language. Further instances cited in
+        genomic biology include the occurrence of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> families
+        or folds [ <ENAMEX TYPE="LAW">5, 6, 7, 8, 9</ENAMEX>], the connectivity within
+        metabolic pathways [ <TIMEX TYPE="DATE">10</TIMEX>] and the number of intra- and
+        intermolecular interactions made by <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">11, 12</TIMEX>,
+        <NUMEX TYPE="CARDINAL">13</NUMEX>].
+        From the analysis of <NUMEX TYPE="CARDINAL">over 20</NUMEX> of the <NUMEX TYPE="ORDINAL">first</NUMEX> genomes
+        sequenced, we show that power-law behavior is prominent
+        throughout genomic biology. As noted above, previous
+        studies have cited the occurrence of power-law behaviors
+        for individual properties. Here we report the behavior for
+        further genomic properties that have not previously been
+        found; in particular, for the occurrence of pseudogene and
+        pseudomotif <ENAMEX TYPE="PER_DESC">populations</ENAMEX> in the intergenic regions of
+        genomes, the number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> functions associated with a
+        particular fold, and the number of expressed mRNA
+        transcripts within a cell. Furthermore, we bring together
+        all the individual observations within a single framework
+        and demonstrate that the power-law behavior is prevalent
+        across most different genomic properties. Finally, in
+        presenting these data, we discuss the significance of power
+        laws in biology and discuss several models that aim to
+        describe how genomes evolved to their current <ENAMEX TYPE="GPE_DESC">states</ENAMEX> to
+        produce this type of behavior.
+      
+      
+        Results
+        
+          Genomic occurrence of 'mers, <ENAMEX TYPE="PER_DESC">families</ENAMEX> and
+          folds
+          We start with the usage of short DNA sequences in
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX>; we consider DNA words of size 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , termed 
+          <ENAMEX TYPE="ORGANIZATION">n -mers</ENAMEX>, and count the occurrence
+          of distinct words by shifting across the entire genome
+          <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="FAC_DESC">base</ENAMEX> at a time. By grouping the different 'mers by
+          their occurrences, we observe that the occurrence of <NUMEX TYPE="CARDINAL">6</NUMEX>-
+          to <NUMEX TYPE="CARDINAL">10</NUMEX>-mers displays power-law-like behavior. Figure
+          1ashows the distributions of <NUMEX TYPE="QUANTITY">6- to 10-mers</NUMEX> in the 
+          Caenorhabditis elegans genome. The
+          distribution for each 'mer is staggered, which,
+          unsurprisingly, indicates that shorter words have a
+          higher average occurrence in the genome than longer ones.
+          A more unexpected feature of the plot is that the slopes
+          for the different-length words are nearly identical ( 
+          b = <NUMEX TYPE="CARDINAL">3.2</NUMEX>), indicating that the
+          number of 'mers with given occurrences fall at similar
+          rates regardless of their length (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Moreover, we
+          find that 'mers in both coding and non-coding regions
+          follow the power-law distribution equally well (see
+          Additional data).
+          Having observed the occurrence of short 'mers, we now
+          shift our focus towards the coding regions of genomes.
+          Most <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded in a genome can be grouped
+          according to their similarity in three-dimensional
+          structure or amino<ENAMEX TYPE="SUBSTANCE">-acid sequence</ENAMEX>. The most common
+          classifications of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are the fold, superfamily and
+          family [ <TIMEX TYPE="DATE">14</TIMEX>]; each <ENAMEX TYPE="PER_DESC">class</ENAMEX> is a subset of the <NUMEX TYPE="CARDINAL">one</NUMEX> before,
+          and groups <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with increasing similarity. First,
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are defined to have a common fold if their
+          secondary structural elements occupy the same spatial
+          arrangement and have the same topological <ENAMEX TYPE="FAC_DESC">connections</ENAMEX>.
+          <NUMEX TYPE="ORDINAL">Second</NUMEX>, <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are grouped into the same superfamily if
+          they share the same fold, and are deemed to share a
+          common evolutionary origin, owing to a similar protein
+          function, for example. Both the fold and superfamily
+          classes aim to group <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are structurally
+          related, but whose similarities cannot necessarily be
+          detected only by their sequences. Finally, <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> are
+          grouped into the same <ENAMEX TYPE="PER_DESC">family</ENAMEX> if their amino-acid
+          sequences are considered similar, most commonly using a
+          measure of percentage sequence identity or an 
+          E -value cut-off. Alternatively,
+          they can also be characterized by the presence of a
+          particular sequence 'signature' or <NUMEX TYPE="MONEY">'motif</NUMEX>. Here, we have
+          used the fold and superfamily assignments from the <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">14</NUMEX>] and <ENAMEX TYPE="ORGANIZATION">Superfamily</ENAMEX> <ENAMEX TYPE="PER_DESC">databases</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>] and the family
+          classifications from <ENAMEX TYPE="GPE">InterPro</ENAMEX> [ <TIMEX TYPE="DATE">16, 17</TIMEX>].
+          By analogy with the earlier 'mers, <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded in
+          a <ENAMEX TYPE="PER_DESC">genome</ENAMEX> can be thought of as longer DNA words.
+          Therefore, by grouping <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the classification
+          system above, we can measure the occurrences of
+          collections of sequences of <NUMEX TYPE="QUANTITY">around 1,000-mers</NUMEX> in the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. As we explained above, <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the same
+          superfamily have often diverged beyond detectable
+          sequence similarity and, in the case of folds, may have
+          independently converged to similar structures from
+          unrelated <ENAMEX TYPE="SUBSTANCE">DNA sequences</ENAMEX>. Nevertheless, the occurrences of
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, superfamilies, and folds in the <ENAMEX TYPE="ANIMAL">worm</ENAMEX>
+          approximate to a power-law behavior quite well (Figure
+          1a). In fact, despite the differing definitions of
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, superfamilies and folds, the resulting
+          distributions for each group are very similar. Compared
+          with the <NUMEX TYPE="QUANTITY">6- to 10-mers</NUMEX>, the distributions fall off more
+          gradually ( 
+          b = <NUMEX TYPE="CARDINAL">1.0</NUMEX>-<NUMEX TYPE="CARDINAL">1.2</NUMEX>); this indicates a
+          greater difference in the relative occurrence of the most
+          and least common <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+          Returning to the non-coding regions of the genome, we
+          also plotted the occurrence of pseudogene <ENAMEX TYPE="PER_DESC">families</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">pseudomotifs</ENAMEX> found in intergenic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). Whole
+          pseudogenes were found by searching for matches to
+          <ENAMEX TYPE="ORGANIZATION">SWISS-PROT</ENAMEX> <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> in intergenic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>, and are
+          usually characterized by frameshift mutations or early
+          stop codons that prevent normal transcription or
+          translation [ <TIMEX TYPE="DATE">18, 19</TIMEX>]. Therefore, they encode
+          non-functional <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>. As with functional
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>, pseudogenes were classified into <ENAMEX TYPE="PER_DESC">families</ENAMEX> using
+          <ENAMEX TYPE="ORGANIZATION">InterPro</ENAMEX>. Pseudomotifs were found by matching PROSITE
+          motifs in intergenic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and are thought to be more
+          ancient pseudogenes that have accumulated so many
+          mutations that only small fragments of recognizable
+          motifs remain (<ENAMEX TYPE="PERSON">Z.Z.</ENAMEX> and <ENAMEX TYPE="PERSON">M.G.</ENAMEX>, unpublished observations).
+          These fragments are classified according to the PROSITE
+          <ENAMEX TYPE="PERSON">classification</ENAMEX>. As shown in Figure <TIMEX TYPE="DATE">1b</TIMEX>, the occurrences of
+          <ENAMEX TYPE="ORGANIZATION">pseudogenes</ENAMEX> and the fragments also follow a power law.
+          The distribution for pseudogenes is similar to that for
+          <ENAMEX TYPE="PER_DESC">protein families</ENAMEX> and folds ( 
+          b = <NUMEX TYPE="CARDINAL">1.8</NUMEX>); this is expected, as
+          <ENAMEX TYPE="ORGANIZATION">pseudogenes</ENAMEX> in the <ENAMEX TYPE="ANIMAL">worm</ENAMEX> represent a <ENAMEX TYPE="PER_DESC">population</ENAMEX> of DNA
+          sequences that used to encode functional <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. The
+          distribution of occurrences for pseudomotifs ( 
+          b = <NUMEX TYPE="CARDINAL">0.9</NUMEX>) has a wide spread and
+          actually bridges those of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> and 'mers.
+          This is probably because the most frequently occurring
+          PROSITE motifs are only <NUMEX TYPE="CARDINAL">5</NUMEX>-10 amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in length, and
+          therefore are similar to 'mers, whereas the less
+          frequently occurring motifs are longer (<NUMEX TYPE="CARDINAL">82</NUMEX> amino-acid
+          <ENAMEX TYPE="ORGANIZATION">residues</ENAMEX>), and so resemble protein <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+          Our findings for the <ENAMEX TYPE="ANIMAL">worm genome</ENAMEX> also apply to at
+          least <NUMEX TYPE="CARDINAL">20</NUMEX> other prokaryotic and eukaryotic <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>.
+          Figure 1cshows <ENAMEX TYPE="PERSON">InterPro</ENAMEX> family distributions in 
+          Mycoplasma genitalium, Escherichia
+          <ENAMEX TYPE="PERSON">coli</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Saccharomyces</ENAMEX> cerevisiae and 
+          Drosophila melanogaster ; other
+          distributions from many of the recently sequenced genomes
+          are available from our website [ <TIMEX TYPE="DATE">20</TIMEX>]. Interestingly,
+          smaller genomes ( 
+          b = <NUMEX TYPE="CARDINAL">1.0</NUMEX>-<NUMEX TYPE="CARDINAL">2.0</NUMEX>) tend to have a steeper
+          fall-off than larger genomes; with fewer genes, it would
+          seem natural to expect a narrower distribution in these
+          <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. Given the prevalence of the power-law
+          behavior, it is likely to be universal to other genomes
+          yet to be analyzed.
+        
+        
+          Functions, interactions and expression
+          levels
+          The power law is not only found in the occurrence of
+          words, <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and folds, but also extends to further
+          genomic features of biological macromolecules. As shown
+          in Figure <TIMEX TYPE="DATE">1d</TIMEX>, the distribution fits the number of
+          distinct functions held by a particular protein fold [
+          <TIMEX TYPE="DATE">21, 22</TIMEX>]. Most <ENAMEX TYPE="PER_DESC">folds</ENAMEX> are only associated with <NUMEX TYPE="CARDINAL">only one</NUMEX> or
+          <NUMEX TYPE="CARDINAL">two</NUMEX> functions, whereas a few, such as the <ENAMEX TYPE="PERSON">TIM</ENAMEX> barrel,
+          have <NUMEX TYPE="CARDINAL">up to 16</NUMEX> ( 
+          b = <NUMEX TYPE="CARDINAL">2.2</NUMEX>). The behavior also applies
+          to the number of distinct <ENAMEX TYPE="SUBSTANCE">protein-protein</ENAMEX> interactions
+          made by different folds ( 
+          b = <NUMEX TYPE="CARDINAL">1.2</NUMEX>) and the number of
+          transcripts for each protein <ENAMEX TYPE="PER_DESC">family</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> in a given
+          cellular <ENAMEX TYPE="ORG_DESC">state</ENAMEX> ( 
+          b = <NUMEX TYPE="CARDINAL">1.6</NUMEX>).
+        
+        
+          Is the power-law function the best fit?
+          We have so far demonstrated that disparate types of
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> display power-law behavior. Not all genomic
+          properties follow a power law, however, and examples
+          include occurrences of 'mers shorter than <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>, the
+          occurrence of particular amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, and the
+          number of <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> that are involved in protein
+          flexibility (Figure <NUMEX TYPE="CARDINAL">1f</NUMEX>).
+          The original <ENAMEX TYPE="ORG_DESC">publication</ENAMEX> by Mantegna 
+          et al. [ <ENAMEX TYPE="LAW">4</ENAMEX>] resulted in a prolonged
+          debate as to whether the power law is actually the best
+          fit for the 'mer distribution [ <TIMEX TYPE="DATE">23, 24, 25, 26, 27, 28</TIMEX>],
+          and similar discussions are found for power-law behavior
+          outside biology [ <TIMEX TYPE="DATE">29, 30, 31, 32</TIMEX>]. Previous publications
+          have only tested the suitability of individual functions.
+          In Figure <TIMEX TYPE="DATE">1e</TIMEX>, however, we examine the best-fit curves of
+          <NUMEX TYPE="CARDINAL">seven</NUMEX> alternative functions for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-fold occurrence
+          in the <ENAMEX TYPE="ANIMAL">worm</ENAMEX>: linear, exponential, double-exponential,
+          triple-exponential, stretched-exponential, lognormal and
+          Yule distributions. The <ENAMEX TYPE="NATIONALITY">Yule</ENAMEX> distribution in particular
+          was reported as providing a better fit for the occurrence
+          of 'mers than the power law [ <TIMEX TYPE="DATE">27</TIMEX>], and the
+          stretched-exponential and lognormal distributions have
+          been cited as providing good fits for non-biological
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+          We measure the fit of each function by calculating the
+          residual between actual <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-fold occurrence and the
+          mathematical functions as follows:
+          
+          R = ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( 
+          actual ) - 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">fitted</ENAMEX> )) 2
+          For example, for the fits in Figure <NUMEX TYPE="CARDINAL">1ewe</NUMEX> use the
+          following equation:
+          
+          R 
+          
+            folds 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            folds 
+           ( 
+          <ENAMEX TYPE="ANIMAL">worm</ENAMEX> ) - 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> 
+          
+            folds 
+           ( 
+          <ENAMEX TYPE="ORGANIZATION">fitted</ENAMEX> )) 2
+          In this calculation, a smaller residual 
+          (<ENAMEX TYPE="NATIONALITY">R</ENAMEX>) indicates a better fit between
+          the data and the mathematical functions.
+          The main differences in the fit appear at the tail of
+          the distribution, at high fold occurrences. Although most
+          functions describe the lower end of the distribution
+          well, they do not extend far enough at the upper end of
+          the distribution. The linear and single-exponential
+          <ENAMEX TYPE="ORGANIZATION">curves</ENAMEX> clearly do not describe the data well. The
+          double-exponential curve provides a reasonable fit for
+          lower genomic occurrences, but diverges from the data at
+          higher values. The same applies for the
+          stretched-exponential and <ENAMEX TYPE="ORGANIZATION">Yule</ENAMEX> distributions.
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> functions perform well: the triple-exponential and
+          the lognormal distributions. In fact, the
+          triple-exponential displays a smaller residual than the
+          power-law function and one would expect higher-order
+          <ENAMEX TYPE="ORGANIZATION">exponentials</ENAMEX> to provide increasingly better fits.
+          However, this is at the expense of having more free
+          parameters to fine-tune the shape of the curve. As the
+          fold distribution actually displays a wide spread of
+          values - especially for higher occurrences (Figure <NUMEX TYPE="CARDINAL">1a,1</NUMEX>d)
+          - we conclude that <NUMEX TYPE="CARDINAL">all three</NUMEX> mathematical functions
+          describe the data equally well. The same also applies to
+          the other genomic data we discussed <TIMEX TYPE="DATE">earlier</TIMEX>. However,
+          given the fit across many different biological
+          <ENAMEX TYPE="PERSON">distributions</ENAMEX>, combined with the relative simplicity of
+          the function compared to the higher-order-exponential and
+          lognormal distributions, we suggest that the power law
+          provides the best description of the data.
+        
+      
+      
+        Discussion
+        
+          The significance of power-law behavior
+          Although the power-law behavior has previously been
+          detected in individual biological distributions [ <ENAMEX TYPE="CONTACT_INFO">4, 5,</ENAMEX>
+          <TIMEX TYPE="DATE">6, 7, 8, 9, 10, 11, 12, 13</TIMEX>], this is the <NUMEX TYPE="ORDINAL">first</NUMEX> time it
+          has been reported for such a wide group of properties
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with genomes. Moreover, here we demonstrate
+          for the <NUMEX TYPE="ORDINAL">first</NUMEX> time that power-law distributions are
+          applicable to the occurrence of pseudogenes and
+          <ENAMEX TYPE="ORGANIZATION">pseudomotifs</ENAMEX> in intergenic regions, the number of
+          functions associated with a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> fold, and the
+          expression levels of different <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+          At <NUMEX TYPE="ORDINAL">first</NUMEX> glance, these observations might appear to be
+          <ENAMEX TYPE="ORGANIZATION">'biological</ENAMEX> trivia'. However, power-law behavior actually
+          provides a concise mathematical description of an
+          important biological feature: the sheer dominance of a
+          few <ENAMEX TYPE="PER_DESC">members</ENAMEX> over the overall <ENAMEX TYPE="PER_DESC">population</ENAMEX>. For example, out
+          of the <NUMEX TYPE="CARDINAL">247</NUMEX> distinct <ENAMEX TYPE="SUBSTANCE">protein folds</ENAMEX> currently assigned in
+          the <ENAMEX TYPE="ANIMAL">worm</ENAMEX> genome, just <NUMEX TYPE="CARDINAL">10</NUMEX> account for <NUMEX TYPE="CARDINAL">over half</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">7,805</NUMEX> assigned domains. The top fold, the
+          immunoglobulin-like β-<ENAMEX TYPE="SUBSTANCE">sandwich</ENAMEX>, accounts for <NUMEX TYPE="CARDINAL">about 829</NUMEX>
+          (<NUMEX TYPE="PERCENT">10.6%</NUMEX>) domains in the genome. For <ENAMEX TYPE="SUBSTANCE">protein superfamilies</ENAMEX>,
+          <NUMEX TYPE="CARDINAL">21</NUMEX> out of <NUMEX TYPE="CARDINAL">606</NUMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX> account for <NUMEX TYPE="CARDINAL">half</NUMEX> of the <NUMEX TYPE="CARDINAL">15,450</NUMEX>
+          assigned domains, and <NUMEX TYPE="CARDINAL">only 37</NUMEX> of <NUMEX TYPE="CARDINAL">1,936</NUMEX> <ENAMEX TYPE="NATIONALITY">InterPro</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+          match <NUMEX TYPE="CARDINAL">half</NUMEX> of the <NUMEX TYPE="CARDINAL">12,589</NUMEX> assigned <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. Half of all
+          pseudogenes belong to <NUMEX TYPE="MONEY">10</NUMEX> (out of a total of <NUMEX TYPE="CARDINAL">70</NUMEX>) protein
+          <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and just <NUMEX TYPE="CARDINAL">two</NUMEX> types of motif make up <NUMEX TYPE="CARDINAL">over half</NUMEX>
+          of pseudogenic PROSITE fragments.
+          Power-law behavior also describes similar underlying
+          observations for the remaining data. For <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-protein
+          <ENAMEX TYPE="PERSON">interactions</ENAMEX>, we find that <NUMEX TYPE="CARDINAL">6</NUMEX> out of <NUMEX TYPE="CARDINAL">39</NUMEX> <ENAMEX TYPE="SUBSTANCE">protein folds</ENAMEX> in
+          the <ENAMEX TYPE="SUBSTANCE">yeast genome</ENAMEX> make up <NUMEX TYPE="CARDINAL">half</NUMEX> of the <NUMEX TYPE="CARDINAL">89</NUMEX> known
+          combinations of interdomain interactions, and for
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression levels in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from <NUMEX TYPE="CARDINAL">just 12</NUMEX>
+          out of a total <NUMEX TYPE="CARDINAL">145</NUMEX> <ENAMEX TYPE="FAC_DESC">folds</ENAMEX> comprise <NUMEX TYPE="CARDINAL">half</NUMEX> of all the
+          transcripts in the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> at any given <ENAMEX TYPE="GPE_DESC">state</ENAMEX>.
+        
+        
+          Power-law behavior and the underlying evolutionary
+          mechanism
+          Having discussed the significance of power-law
+          <ENAMEX TYPE="PERSON">behaviors</ENAMEX>, this leads us to the question of how genomes
+          achieved these distributions. Given a mathematical
+          description common to many genomes and different genomic
+          <ENAMEX TYPE="ORGANIZATION">properties</ENAMEX>, it is possible to define evolutionary models
+          that replicate the power-law distributions. Recently,
+          several <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> have attempted to answer this question
+          from a theoretical perspective by building mathematical
+          models for evolution.
+          Mantegna 
+          et al. [ <ENAMEX TYPE="LAW">4</ENAMEX>] drew analogies with
+          <ENAMEX TYPE="ORGANIZATION">Zipf</ENAMEX>'s original work to suggest that the behavior for
+          'mers originate from similarities between <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequences
+          and natural languages. This suggestion attracted
+          extensive criticism [ <TIMEX TYPE="DATE">23, 24, 25, 26, 27, 28</TIMEX>] and the
+          work of <ENAMEX TYPE="PERSON">Li</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>] demonstrated that power-law-like
+          behavior could in fact simply arise from non-equal
+          occurrences of words in random texts. Shorter <TIMEX TYPE="TIME">'mers</TIMEX> (<
+          <TIMEX TYPE="TIME">6-mers</TIMEX>) fail to display power-law behavior because there
+          are insufficient numbers of distinct words to
+          differentiate levels of occurrence. The <NUMEX TYPE="CARDINAL">4</NUMEX>- and <NUMEX TYPE="CARDINAL">5</NUMEX>-mers
+          have larger numbers of distinct sequences and there are
+          hints of power-law behavior in the tails of their
+          <ENAMEX TYPE="PERSON">distributions</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1d</NUMEX>). For <NUMEX TYPE="CARDINAL">6</NUMEX>-mers and above, the
+          reason that words of different lengths have identical
+          slopes is because their distributions are not independent
+          of each other; longer words also contain combinations of
+          the shorter words.
+          Although random <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequences provide a possible
+          explanation for power-law behavior with 'mers, the same
+          is unlikely to apply to <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>. Rather, at
+          these levels the distributions probably arise from
+          evolutionary development centered on an underlying
+          process of gene duplication. If we treat gene duplication
+          as a stochastic process, the chance of a given gene being
+          <ENAMEX TYPE="PERSON">duplicated</ENAMEX> is proportional to its occurrence in the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. With each duplication, some genes increase their
+          presence in the genome, enhancing their chance of further
+          <ENAMEX TYPE="ORGANIZATION">duplication</ENAMEX>. Combined with selective pressure accounting
+          for the functional significance of different protein
+          products, such a process gives prominence to some gene
+          types, or <ENAMEX TYPE="PER_DESC">families</ENAMEX>, over others. Previous studies outside
+          genomic biology have linked such stochastic dynamical
+          processes to power laws [ <TIMEX TYPE="DATE">34, 35, 36, 37</TIMEX>].
+          <NUMEX TYPE="CARDINAL">Three</NUMEX> evolutionary <ENAMEX TYPE="PER_DESC">models</ENAMEX> proposed by <ENAMEX TYPE="ORGANIZATION">Huynen</ENAMEX> and van
+          <ENAMEX TYPE="ORGANIZATION">Nimwegen</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX>], Yanai 
+          et al. [ <TIMEX TYPE="DATE">38</TIMEX>] and Qian 
+          et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>] successfully replicated
+          the observed biological data using such a duplicative
+          process. <NUMEX TYPE="CARDINAL">All three</NUMEX> <ENAMEX TYPE="PER_DESC">models</ENAMEX> rely heavily on gene
+          duplication as the underlying process and, in fact, this
+          process on its own results in an exponential
+          distribution. Each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> achieves the power-law
+          distribution by emulating biological processes that
+          perturb the <ENAMEX TYPE="ORG_DESC">duplicative</ENAMEX> processes; this is done by
+          including parameters that mimic selective pressure, point
+          mutations or <ENAMEX TYPE="DISEASE">lateral</ENAMEX> gene transfer.
+          In the <NUMEX TYPE="ORDINAL">first</NUMEX> model, of <ENAMEX TYPE="ORGANIZATION">Huynen</ENAMEX> and <ENAMEX TYPE="PERSON">van Nimwegen</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX>],
+          gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> start the simulation with <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">member</ENAMEX> each.
+          Each <ENAMEX TYPE="PER_DESC">family</ENAMEX> is allowed to expand or contract in size
+          through successive <ENAMEX TYPE="PER_DESC">multiplications</ENAMEX> with a random factor,
+          which represents duplication or deletion events depending
+          on its value. In the <NUMEX TYPE="ORDINAL">second</NUMEX> model, that of Yanai 
+          et al. [ <TIMEX TYPE="DATE">38</TIMEX>], genomes evolve from a
+          set of precursor genes to a mature size by random gene
+          <ENAMEX TYPE="PERSON">duplications</ENAMEX> and gradual accumulation of modifications
+          through point mutations. When an individual <ENAMEX TYPE="PER_DESC">family</ENAMEX> member
+          acquires enough random mutations, it breaks away to form
+          a new <ENAMEX TYPE="PER_DESC">family</ENAMEX>. Finally in the <NUMEX TYPE="ORDINAL">third</NUMEX> model, that of Qian 
+          et al. [ <ENAMEX TYPE="LAW">9</ENAMEX>], genomes evolve from
+          their initial small size using <NUMEX TYPE="CARDINAL">two</NUMEX> basic operations:
+          first, duplication of existing genes to expand the size
+          of existing <ENAMEX TYPE="PER_DESC">families</ENAMEX>, and <NUMEX TYPE="ORDINAL">second</NUMEX>, the introduction of
+          completely new <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> by <ENAMEX TYPE="DISEASE">lateral</ENAMEX> transfer from other
+          <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> or 
+          <ENAMEX TYPE="ORGANIZATION">ab</ENAMEX> initio creation. Both components
+          are vital for replicating the observed data. In this
+          paper, we have discussed the finding that genomic
+          distributions first take on an exponential appearance and
+          then adopt a power-law behavior after a sufficiently long
+          evolutionary process. In a similar vein, a recent paper
+          by <ENAMEX TYPE="ORGANIZATION">Rzhetsky</ENAMEX> and <ENAMEX TYPE="PERSON">Gomez</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>] introduced a model in which
+          the underlying DNA duplication mechanism, combined with
+          <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> production of an <ENAMEX TYPE="SUBSTANCE">inter-protein interaction</ENAMEX>,
+          successfully simulates the power-law distribution for
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>.
+          This leads us to speculate on a possible explanation
+          of power-law behaviors for the other properties. For
+          protein functions, folds with high occurrence in the
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> also tend to have diverse functions; thus the
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>-loop-containing <ENAMEX TYPE="ORGANIZATION">NTP</ENAMEX> <ENAMEX TYPE="PER_DESC">hydrolase</ENAMEX> fold is found <NUMEX TYPE="CARDINAL">130</NUMEX> times
+          in <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> and has <NUMEX TYPE="CARDINAL">at least six</NUMEX> distinct enzymatic
+          functions [ <TIMEX TYPE="DATE">20</TIMEX>]. Parallel to this, we find that folds
+          with many <ENAMEX TYPE="SUBSTANCE">protein-protein interactions</ENAMEX> also tend to hold
+          more diverse functions [ <TIMEX TYPE="DATE">39</TIMEX>]; for example, the NTP
+          <ENAMEX TYPE="PER_DESC">hydrolase</ENAMEX> fold is currently associated with <NUMEX TYPE="CARDINAL">nine</NUMEX>
+          interdomain interactions within <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>. Finally, the state
+          of the transcription-regulatory mechanism in a particular
+          cellular <ENAMEX TYPE="ORG_DESC">state</ENAMEX> clearly has the most important role in
+          determining gene-expression levels. However, it has
+          previously been shown that some gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> with high
+          <ENAMEX TYPE="PERSON">occurrences</ENAMEX> also display high expression levels under
+          diverse experimental conditions [ <TIMEX TYPE="DATE">40</TIMEX>]. Finally, the
+          occurrence of pseudogene <ENAMEX TYPE="PER_DESC">families</ENAMEX> is related to the
+          occurrence of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> from which they
+          originate. In addition, a major method of producing
+          <ENAMEX TYPE="ORGANIZATION">pseudogenes</ENAMEX> is through reverse transcription of expressed
+          mRNA, and so their occurrences are actually related to
+          expression levels of these <ENAMEX TYPE="PER_DESC">families</ENAMEX>. Given the
+          correlation of all the different genomic properties with
+          the occurrence of gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> in the genome, we can
+          reason that they are connected to an underlying
+          duplicative process.
+          The main arguments supporting the view that all
+          power-law <ENAMEX TYPE="ORG_DESC">behaviours</ENAMEX> are arise from a common duplicative
+          process are that the occurrences of different genomic
+          properties are correlated and the fits between the
+          distributions of biological and simulated data are good.
+          Although these <ENAMEX TYPE="PER_DESC">models</ENAMEX> are based on well-known biological
+          processes, there is, unfortunately, little experimental
+          evidence to directly confirm the validity of these
+          models. However, it is worth noting that most of the
+          properties that do not follow a power law (Figure <NUMEX TYPE="CARDINAL">1d</NUMEX>) are
+          those that are clearly not directly connected with gene
+          <ENAMEX TYPE="ORGANIZATION">duplication</ENAMEX>.
+        
+      
+      
+        Additional data files
+        The <ENAMEX TYPE="ORGANIZATION">CGI</ENAMEX> script and data that are used to produce the
+        website are available for downloadand from [ <TIMEX TYPE="DATE">20</TIMEX>].
+        Additional data file 1
+        The <ENAMEX TYPE="ORGANIZATION">CGI</ENAMEX> script and data used to produce the website
+        The <ENAMEX TYPE="ORGANIZATION">CGI</ENAMEX> script and data used to produce the website
+        Click here for additional data file
+      
+    
+  

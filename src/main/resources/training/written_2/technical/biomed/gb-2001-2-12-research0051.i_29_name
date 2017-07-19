@@ -1,0 +1,652 @@
+
+  
+    
+      
+        Background
+        The availability of a large number of <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>,
+        including complete <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sets encoded in diverse genomes,
+        and the rapidly growing database of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> have
+        already greatly impacted on our understanding of the
+        evolution of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structure and function [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. This
+        process has been aided by the development of powerful
+        <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> and sensitive computational tools for detecting
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> and structural similarities between <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>. In
+        particular, methods that extract information from multiple
+        <ENAMEX TYPE="ORGANIZATION">alignments</ENAMEX> to construct various types of sequence profiles
+        and use the resulting sequence profiles for iterative
+        database searching, such as <ENAMEX TYPE="ORGANIZATION">PSI</ENAMEX>-BLAST and
+        <ENAMEX TYPE="PERSON">Hidden-Markov</ENAMEX>-Model (HMM)-based approaches, have
+        substantially improved the detection of subtle similarities
+        between <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that previously were amenable only to
+        direct structural comparison [ <ENAMEX TYPE="LAW">3, 4</ENAMEX>]. The sensitivity and
+        accuracy of these methods have been extensively tested and
+        statistical approaches for validating the observed
+        similarities are available [ <ENAMEX TYPE="LAW">5, 6, 7, 8, 9, 10, 11</ENAMEX>].
+        Despite these achievements, detection and interpretation
+        of relationships between homologous <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that have
+        limited sequence similarity remains a major challenge. Such
+        studies typically require a case-by-case approach that is
+        guided by a detailed understanding of protein
+        sequence-structure patterns and is rooted in the biology of
+        the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> analyzed. Prediction of <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> and
+        function(s) of <ENAMEX TYPE="SUBSTANCE">uncharacterized proteins</ENAMEX> is one of the
+        principal outcomes of these analyses, and experimental
+        verification of such predictions tends to increase
+        confidence in the validity of sequence-structure
+        comparative approaches. The negative feedback from
+        experiments that failed to confirm a computational
+        prediction is potentially even more important, because it
+        could result in revision and refinement of the
+        computational methods.
+        When examining cases of reported prediction followed by
+        experimental <ENAMEX TYPE="SUBSTANCE">validation</ENAMEX>, however, we encountered several
+        paradoxical situations. In each of these, a prediction that
+        has been reportedly confirmed by experiment was
+        incompatible with results obtained with several standard
+        <ENAMEX TYPE="ORGANIZATION">computational</ENAMEX> procedures. More importantly, alternative
+        predictions, supported by statistically significant
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> and/or structural similarity, were made in some of
+        these cases. Here we present several such mysteries,
+        describe the refutation of the original predictions and the
+        new predictions, wherever feasible, and discuss the
+        discrepancy between the computational and experimental
+        results. The choice of the cases was not systematic;
+        rather, those chosen were notable because they relied on
+        novel computational techniques, exploited particularly
+        subtle sequence or structural motifs, and dealt with
+        crucial biological problems.
+      
+      
+        Results
+        
+          MJ1477: a predicted archaeal cysteinyl-tRNA
+          synthetase
+          Aminoacyl-tRNA synthetases (aaRSs) specific for <NUMEX TYPE="CARDINAL">17</NUMEX> of
+          the <NUMEX TYPE="CARDINAL">20</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> are universally present in cellular
+          life forms. The <NUMEX TYPE="CARDINAL">three</NUMEX> exceptions are <ENAMEX TYPE="ORGANIZATION">GlnRS, AsnRS</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">GInRS</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">AsnRS</ENAMEX> are missing in many <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">archaea</ENAMEX> because glutamine and asparagine are incorporated
+          into <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> through transamidation of glutamate and
+          aspartate, respectively. <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX> is missing in <NUMEX TYPE="CARDINAL">two</NUMEX> archaeal
+          <ENAMEX TYPE="PER_DESC">methanogens</ENAMEX> whose genomes have been sequenced - 
+          Methanobacterium
+          <ENAMEX TYPE="ORGANIZATION">thermoautotrophicum</ENAMEX> and 
+          Methanococcus jannaschii [ <TIMEX TYPE="DATE">12</TIMEX>]. No
+          alternative mechanism for cysteine incorporation into
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> is known; hence the absence of <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX> in these
+          <ENAMEX TYPE="PERSON">organisms</ENAMEX> was an <ENAMEX TYPE="PER_DESC">enigma</ENAMEX>.
+          <TIMEX TYPE="TIME">Two</TIMEX> solutions to this puzzle, both unusual, have
+          recently been proposed and experimentally validated. One
+          involves non-orthologous gene displacement, a situation
+          in which the same essential function is carried out by
+          distantly related or even unrelated <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in different
+          organisms [ <TIMEX TYPE="DATE">13, 14</TIMEX>]. It has been shown that 
+          <ENAMEX TYPE="PERSON">M. jannaschii ProRS</ENAMEX>, a class II
+          synthetase that is unrelated to the class <ENAMEX TYPE="WORK_OF_ART">I CysRS</ENAMEX>,
+          substituted for the missing CysRS activity [ <TIMEX TYPE="DATE">15, 16, 17</TIMEX>].
+          The other solution involved a new <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> for the role
+          of <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX>, the <ENAMEX TYPE="SUBSTANCE">MJ1477 protein</ENAMEX> from 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> jannaschii. This <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and its
+          <ENAMEX TYPE="ORGANIZATION">orthologs</ENAMEX> (direct evolutionary <ENAMEX TYPE="PER_DESC">counterparts</ENAMEX> related by
+          vertical descent from a common ancestor) from the
+          <ENAMEX TYPE="CONTACT_INFO">bacteria</ENAMEX> 
+          Thermotoga maritima and 
+          Deinococcus radiodurans were
+          identified as 'distant <ENAMEX TYPE="PER_DESC">orthologs</ENAMEX>' of the 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis CysRS</ENAMEX> by using a
+          computational method specifically designed to detect
+          distantly related <ENAMEX TYPE="ORG_DESC">orthologs</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX>]. The method is based on
+          application of discriminant analysis to alignment scores,
+          in order to separate the scores for pairs of functionally
+          identical <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from different genomes from the scores
+          for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> with different functions. This prediction
+          was then validated experimentally by showing that MJ1477
+          had CysRS activity 
+          in vitro and that an ortholog of
+          MJ1477 from 
+          <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> radiodurans, <TIMEX TYPE="DATE">DR0705</TIMEX>,
+          complemented a <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX> deficient, temperature-sensitive,
+          lethal 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> mutant strain [ <TIMEX TYPE="DATE">18</TIMEX>]. An
+          important corollary of these surprising findings is a
+          rapid divergence of the <ENAMEX TYPE="PRODUCT">MJ1477</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> from <ENAMEX TYPE="GPE">CysRS</ENAMEX>, such
+          that all the catalytic and otherwise functionally
+          important <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> characteristic of this enzyme, and
+          also present in other <ENAMEX TYPE="PER_DESC">class</ENAMEX> I aaRSs, have changed.
+          Furthermore, <ENAMEX TYPE="PRODUCT">MJ1477</ENAMEX> and its orthologs do not have the
+          <ENAMEX TYPE="SUBSTANCE">accessory domains</ENAMEX> found in all known <ENAMEX TYPE="PERSON">CysRS</ENAMEX>, namely the
+          DALR domain (named after a distinct amino-acid
+          signature), which is shared by aaRSs of several
+          specificities, and another domain specific to <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">19</NUMEX>].
+          We examined the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences of <ENAMEX TYPE="SUBSTANCE">MJ1477</ENAMEX> and its
+          <ENAMEX TYPE="ORGANIZATION">homologs</ENAMEX> using more traditional computational techniques.
+          Almost all these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> contain amino-terminal signal
+          pep-tides readily identifiable by using the SignalP
+          program [ <TIMEX TYPE="DATE">20</TIMEX>], but do not contain any predicted
+          transmembrane <ENAMEX TYPE="ORG_DESC">segments</ENAMEX>, and, accordingly, are predicted
+          to be secreted from the cells (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Furthermore,
+          iterative database searches using the PSI-BLAST program [
+          <NUMEX TYPE="CARDINAL">9</NUMEX>] showed statistically significant sequence similarity
+          between these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and an experimentally
+          <ENAMEX TYPE="PERSON">characterized endo α</ENAMEX>-<NUMEX TYPE="CARDINAL">1,4</NUMEX>-polygalactosaminidase from 
+          Pseudomonas <ENAMEX TYPE="ANIMAL">species</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]. For
+          example, in a search initiated with the sequence of
+          MJ1477 and a profile inclusion cut-off of <NUMEX TYPE="MONEY">0.01</NUMEX>, the
+          polygalactosaminidase sequence was retrieved from the
+          database in the <NUMEX TYPE="ORDINAL">second</NUMEX> iteration, followed by other
+          <ENAMEX TYPE="SUBSTANCE">bacterial proteins</ENAMEX> predicted to possess the same
+          activity. This <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family has several conserved
+          <ENAMEX TYPE="PERSON">motifs</ENAMEX>, including a characteristic Dxhp signature (<ENAMEX TYPE="ORGANIZATION">h</ENAMEX>,
+          hydrophobic <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>; <ENAMEX TYPE="PRODUCT_DESC">p</ENAMEX>, polar <ENAMEX TYPE="SUBSTANCE">residue</ENAMEX>), in which the
+          conserved aspartate is likely to directly participate in
+          <ENAMEX TYPE="ORGANIZATION">catalysis</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). The hybrid<NUMEX TYPE="CARDINAL">-fold</NUMEX>-recognition method,
+          which combines sequence-profile analysis with
+          <ENAMEX TYPE="GPE">alignment</ENAMEX>-based secondary-structure prediction [ <TIMEX TYPE="DATE">22</TIMEX>] and
+          the <NUMEX TYPE="ORDINAL">3D</NUMEX>-PSSM method [ <TIMEX TYPE="DATE">23</TIMEX>] both suggested a likely
+          α-<NUMEX TYPE="CARDINAL">amylase</NUMEX>-like triosephosphate isomerase (<ENAMEX TYPE="ORGANIZATION">TIM</ENAMEX>) barrel
+          structure for this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>. Thus, although the
+          identification of <TIMEX TYPE="DATE">MJ1477</TIMEX> as a secreted
+          <ENAMEX TYPE="ORGANIZATION">polygalactosaminidase</ENAMEX> or a related polysaccharide
+          hydrolase with a different specificity awaits
+          experimental verification, it shows all the signs of a
+          correct computational prediction: statistically
+          significant similarity between the analyzed <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and
+          an experimentally characterized <TIMEX TYPE="DATE">enzyme</TIMEX>; conservation of
+          distinct motifs implicated in <TIMEX TYPE="DATE">catalysis</TIMEX>; potential
+          presence of a structural fold compatible with the
+          experimentally demonstrated enzymatic activity; and
+          confident prediction of the extracellular localization
+          that is, again, compatible with a polysaccharide
+          hydrolase activity involved in environmental carbohydrate
+          utilization or capsular metabolism. None of this evidence
+          is offered by the analysis that led to the CysRS
+          prediction for <TIMEX TYPE="DATE">MJ1477</TIMEX>.
+          Therefore we are forced to conclude that <ENAMEX TYPE="PRODUCT">MJ1477</ENAMEX> and
+          its homologs are not related to <ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX> and there is
+          nothing in the computational analysis of these proteins
+          that would point to an aaRS activity. In contrast, we
+          predict these <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> to be extracellular
+          <ENAMEX TYPE="ORGANIZATION">polygalactosaminidases</ENAMEX> or similar polysaccharide
+          <ENAMEX TYPE="ORGANIZATION">hydrolases</ENAMEX>. The polysaccharide hydrolase and aaRS
+          functions seem to be essentially incompatible. First, a
+          secreted enzyme is unlikely to function as an <ENAMEX TYPE="PER_DESC">aaRS</ENAMEX> whose
+          site of action is, by definition, intracellular. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+          even if an entirely new class of aaRSs is postulated, the
+          reaction catalyzed by this new aaRS does not resemble
+          polysaccharide hydrolysis or its reversal. Aminoacyl-tRNA
+          synthetases catalyze a succession of reactions, which
+          involve: hydrolysis of the <ENAMEX TYPE="ANIMAL">α-β phosphate</ENAMEX> bond in <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>;
+          condensation of <ENAMEX TYPE="ORGANIZATION">AMP</ENAMEX> with the cognate amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>,
+          resulting in the formation of an aminoacyl-adenylate;
+          displacement of the <ENAMEX TYPE="ORGANIZATION">AMP</ENAMEX> moiety of the aminoacyl-adenylate
+          with the cognate tRNA, producing aminoacyl-tRNA. Even if
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> condensation reactions, in very general terms,
+          could be considered a reversal of the polysaccharide
+          <ENAMEX TYPE="ORGANIZATION">hydrolysis</ENAMEX> reaction, there is no indication that
+          polysaccharide hydrolases could bind and hydrolyze <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>,
+          and the multiple alignment of the <ENAMEX TYPE="PRODUCT">MJ1477</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> did not
+          include any conserved signatures typical of potential
+          <ENAMEX TYPE="ORGANIZATION">phosphate</ENAMEX>-binding loops (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Neither does this
+          family contain any recognizable <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding domains.
+          Finally, 
+          <ENAMEX TYPE="PERSON">M. thermoautotrophicum</ENAMEX> does not
+          encode any homologs of <TIMEX TYPE="DATE">MJ1477</TIMEX>, ruling out the possibility
+          that this family <ENAMEX TYPE="PER_DESC">encompasses</ENAMEX> <ENAMEX TYPE="PERSON">CysRS</ENAMEX> of both archaeal
+          <ENAMEX TYPE="ORGANIZATION">methanogens</ENAMEX>. Taken together, these observations appear to
+          effectively refute the prediction of a CysRS activity,
+          thus pitting computational results against experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+        
+        
+          MJ0301: a predicted dihydropteroate synthase
+          Dihydropteroate synthase (DHPS) catalyzes the
+          condensation of 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -aminobenzoic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> with
+          <NUMEX TYPE="QUANTITY">7,8-dihydro-6-hydroxymethylpterin</NUMEX> pyrophosphate to give
+          <NUMEX TYPE="CARDINAL">7,8</NUMEX>-dihydropteroate, an intermediate in folate
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX>. The <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> from 
+          <ENAMEX TYPE="PERSON">Staphylococcus</ENAMEX>, a <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive
+          <ENAMEX TYPE="SUBSTANCE">bacterium</ENAMEX>, has been crystallized and shown to adopt a
+          <ENAMEX TYPE="PERSON">TIM</ENAMEX>-barrel structure [ <TIMEX TYPE="DATE">24</TIMEX>]. Although it has been
+          indicated that no DHPS could be detected in archaeal
+          <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>], orthologs of bacterial <ENAMEX TYPE="DISEASE">DHPS</ENAMEX> are readily
+          identifiable in all archaea; this enzyme is missing only
+          in <ENAMEX TYPE="ANIMAL">animals</ENAMEX> and in several intracellular bacterial
+          pathogens, such as 
+          Rickettsia prowazekii, spirochetes
+          and mycoplasmas (<NUMEX TYPE="MONEY">COG0294</NUMEX> in the database of <ENAMEX TYPE="ORGANIZATION">Clusters of</ENAMEX>
+          Orthologous <ENAMEX TYPE="PER_DESC">Groups</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (COGs)) [ <TIMEX TYPE="DATE">26</TIMEX>]. Most
+          archaea have a distinct version of <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX> that shows
+          relatively low sequence similarity to the bacterial
+          <ENAMEX TYPE="ORGANIZATION">orthologs</ENAMEX> and contains an additional uncharacterized
+          carboxy-terminal domain. This previously undetected
+          domain is also present in some other enzymes of pterin
+          biosynthesis, such as
+          tetrahydromethanopterin-S-methyltransferase from 
+          <ENAMEX TYPE="ORGANIZATION">Streptomyces</ENAMEX> (<ENAMEX TYPE="PERSON">L.M.I.</ENAMEX>, <ENAMEX TYPE="GPE">LA.</ENAMEX> and
+          <ENAMEX TYPE="PERSON">E.V.K.</ENAMEX>, unpublished observation). Some archaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX>,
+          including 
+          <ENAMEX TYPE="ORGANIZATION">Thermoplasma</ENAMEX> and 
+          Halobacterium, have the
+          bacterial-type <ENAMEX TYPE="SUBSTANCE">DHPS</ENAMEX>, which was probably acquired by
+          horizontal gene transfer and displaced the original
+          <ENAMEX TYPE="ORGANIZATION">archaeal</ENAMEX> version. Despite the relatively low sequence
+          similarity to bacterial <ENAMEX TYPE="DISEASE">DHPS</ENAMEX>, all archaeal orthologs have
+          the <ENAMEX TYPE="SUBSTANCE">conserved catalytic residues</ENAMEX> identified in DHPS
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>) and are confidently predicted, by the
+          hybrid-fold-recognition method, to assume the same fold
+          as <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX> from 
+          Pneumocystis carinii and 
+          <ENAMEX TYPE="SUBSTANCE">Staphylococcus aureus</ENAMEX> whose crystal
+          structures have been determined.
+          An analysis using <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>, a program developed to
+          recognize folds by comparing predicted secondary
+          structures of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> ([ <TIMEX TYPE="DATE">27</TIMEX>]; we are unaware of a
+          published detailed description of this method),
+          identified MJ0301 as a homolog of <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX>, although, given
+          the low sequence similarity, a convergent origin of the
+          relationship between <TIMEX TYPE="DATE">MJ0301</TIMEX> and <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX> was deemed likely
+          (there seems to be a terminological confusion involved
+          here, but we are quoting the results of the original
+          computational analysis of this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> as they have been
+          presented). It was acknowledged that <TIMEX TYPE="DATE">MJ0107</TIMEX> (a <ENAMEX TYPE="PER_DESC">member</ENAMEX> of
+          COG0294) could be identified as a possible homolog of
+          <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX> by sequence-based methods, and this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> was
+          assayed for dihydropteroate synthase activity, but none
+          was detected [ <TIMEX TYPE="DATE">25</TIMEX>]. In contrast, DHPS activity (albeit
+          relatively low) was shown 
+          in vitro for the partially purified
+          MJ0301 <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>]. However, <ENAMEX TYPE="PRODUCT">MJ0301</ENAMEX> has been shown to
+          belong to the metallo-β-lactamase superfamily of enzymes
+          and, in the evolutionary classification of
+          metallo-β-lactamases, belongs to an archaea-specific
+          family (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>; <ENAMEX TYPE="PRODUCT">COG1237</ENAMEX>) [ <TIMEX TYPE="DATE">28</TIMEX>]. Metallo-β-lactamases
+          encompass a wide range of <ENAMEX TYPE="SUBSTANCE">metal-dependent hydrolytic</ENAMEX> and
+          oxidoreductase activities with a variety of substrates
+          and are particularly abundant in archaea where some of
+          them are involved in <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> processing [ <TIMEX TYPE="DATE">28</TIMEX>]. None of these
+          enzymes catalyzes a reaction resembling the condensation
+          reaction catalyzed by <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX>. The characteristic motifs of
+          metallo-β-lactamases, which mostly include <ENAMEX TYPE="SUBSTANCE">metal</ENAMEX>-binding
+          histidines, are highly conserved in <TIMEX TYPE="DATE">MJ0301</TIMEX> and its
+          <ENAMEX TYPE="ORGANIZATION">orthologs</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). In contrast, most of the MJ0301
+          <ENAMEX TYPE="PERSON">residues</ENAMEX> described as equivalent to the functionally
+          important <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> of 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> dihydropteroate
+          synthase are not conserved, even among the archaeal
+          orthologs of this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. Finally, the β-<ENAMEX TYPE="PER_DESC">lactamase</ENAMEX> fold
+          consists of <NUMEX TYPE="CARDINAL">two</NUMEX> subdomains of the <ENAMEX TYPE="PRODUCT">β4-α-β-α</ENAMEX> <ENAMEX TYPE="ANIMAL">topology</ENAMEX> whose
+          <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> sheets are sandwiched against each other; in structural
+          terms, these domains are completely different from the
+          <ENAMEX TYPE="PERSON">TIM-barrel</ENAMEX>, with which the ORF program matched the MJ0301
+          structural prediction. Taken together, these observations
+          are sufficient to reject the proposed relationship
+          <TIMEX TYPE="DATE">between MJ0301</TIMEX> and dihydropteroate synthases.
+        
+        
+          MJ0757: a predicted thymidylate synthase
+          Thymidylate synthase is a central <ENAMEX TYPE="ORG_DESC">enzyme</ENAMEX> of pyrimidine
+          metabolism that catalyzes the formation of deoxythymidine
+          <ENAMEX TYPE="ORGANIZATION">monophosphate</ENAMEX> (dTMP) from deoxyuridine monophosphate
+          (dUMP) by transfer of a <ENAMEX TYPE="SUBSTANCE">methyl</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to its pyrimidine
+          ring. This reaction is catalyzed by <NUMEX TYPE="CARDINAL">at least two</NUMEX>
+          unrelated enzymes. The canonical thymidylate synthase
+          (<ENAMEX TYPE="ORGANIZATION">TS</ENAMEX>), such as the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli ThyA</ENAMEX>, is a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with a
+          <ENAMEX TYPE="CONTACT_INFO">distinct α/β</ENAMEX>-fold that transfers a <ENAMEX TYPE="SUBSTANCE">methyl</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to dUMP
+          from <NUMEX TYPE="CARDINAL">5,10</NUMEX>-methylenetetrahydrofolate [ <TIMEX TYPE="DATE">29</TIMEX>]. This classic
+          <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> is readily identifiable in many (but not all)
+          <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, eukaryotes and <NUMEX TYPE="CARDINAL">three</NUMEX> archaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX>, 
+          Archaeoglobus fulgidus, <ENAMEX TYPE="ORGANIZATION">M.</ENAMEX>
+          jannaschii, and 
+          <ENAMEX TYPE="PERSON">M. thermoautotrophicum</ENAMEX> (<NUMEX TYPE="MONEY">COG0207</NUMEX>).
+          The archaeal <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> family share with their
+          bacterial orthologs all the conserved <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> involved
+          in <TIMEX TYPE="DATE">catalysis</TIMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          An alternative <ENAMEX TYPE="SUBSTANCE">TS</ENAMEX> or its subunit is predicted to be
+          encoded by a gene from 
+          Dictyostelium that rescues a slime
+          mold mutant auxotrophic for thymidylate [ <TIMEX TYPE="DATE">30</TIMEX>]. This
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> is not homologous to the canonical <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX>, but its
+          <ENAMEX TYPE="ORGANIZATION">orthologs</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and archaea show an almost perfect
+          complementary phyletic distribution (<NUMEX TYPE="MONEY">COG1351</NUMEX>).
+          In a screen for the <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> in 
+          <ENAMEX TYPE="PERSON">M. jannaschii</ENAMEX>, the ORF method
+          picked the <ENAMEX TYPE="SUBSTANCE">MJ0757 protein</ENAMEX> as the most likely homolog of
+          the canonical <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>]. In the validation
+          experiment, <ENAMEX TYPE="PRODUCT">MJ0757</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">overexpressed</ENAMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> was shown to possess TS
+          activity [ <TIMEX TYPE="DATE">25</TIMEX>]. Sequence searches show that MJ0757
+          belongs to a small <ENAMEX TYPE="PER_DESC">family</ENAMEX> of euryarchaea-specific
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> of uncharacterized function (<NUMEX TYPE="MONEY">COG1810</NUMEX>). Of the <NUMEX TYPE="CARDINAL">17</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">residues</ENAMEX> reported to be conserved between <TIMEX TYPE="DATE">MJ0757</TIMEX> and the
+          <ENAMEX TYPE="PERSON">TS</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, <NUMEX TYPE="CARDINAL">only seven</NUMEX> were conserved thoughout the MJ0757
+          family (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Moreover, a comparison of the
+          secondary structure elements derived from the reported
+          three-dimensional model of <ENAMEX TYPE="PRODUCT">MJ0757</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>] and those derived
+          from a prediction generated using a multiple alignment
+          query with the structure-prediction program PHD (such
+          predictions typically exceed <NUMEX TYPE="PERCENT">70%</NUMEX> accuracy), showed an
+          overlap of just <NUMEX TYPE="CARDINAL">two</NUMEX> of the <NUMEX TYPE="CARDINAL">16 or so</NUMEX> secondary structural
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Conversely, several sequence motifs
+          that are characteristic of the <ENAMEX TYPE="PRODUCT">MJ0757</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> did not
+          overlap with the conserved regions in the <NUMEX TYPE="ORDINAL">MJ0757</NUMEX>-TS
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Furthermore, some, but not all,
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the <NUMEX TYPE="ORDINAL">MJ0757</NUMEX> family contain an amino-terminal
+          insertion of a small, metal-chelating module (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>),
+          which was used to improve the alignment with the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli TS</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX>], although this
+          region was variable even within <TIMEX TYPE="DATE">the MJ0757</TIMEX> family itself.
+          On the basis of these observations, a relationship
+          <TIMEX TYPE="DATE">between MJ0757</TIMEX> and the canonical <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> has to be rejected.
+          The actual fold and function of <ENAMEX TYPE="SUBSTANCE">MJ0757</ENAMEX> and its homologs
+          cannot be predicted at present. However, these proteins
+          have several features that suggest that they might be
+          metal-dependent enzymes potentially involved in redox
+          reactions. These suggestive features include the fusion
+          with a ferredoxin domain seen in the 
+          <ENAMEX TYPE="PERSON">M.</ENAMEX> thermoautotrophicum member
+          MTH601, the insertion of the metal-binding module in
+          certain <ENAMEX TYPE="PER_DESC">members</ENAMEX>, including MJ0757 (see above), and the
+          presence of <NUMEX TYPE="CARDINAL">three</NUMEX> cysteines that are conserved throughout
+          this <ENAMEX TYPE="PER_DESC">family</ENAMEX>.
+        
+        
+          Cmpp16: a <ENAMEX TYPE="FAC">plant 'paralog' of</ENAMEX> <ENAMEX TYPE="FAC_DESC">plant</ENAMEX> viral movement
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>
+          Viral movement <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (MPs) are encoded by diverse,
+          unrelated <ENAMEX TYPE="PER_DESC">families</ENAMEX> of plant viruses, such as
+          positive-strand <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, negative-strand <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, single-stranded
+          <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> and double-stranded <ENAMEX TYPE="SUBSTANCE">DNA viruses</ENAMEX>, and are essential
+          for cell-to-cell movement of all these viruses [ <TIMEX TYPE="DATE">31, 32</TIMEX>].
+          To isolate potential <ENAMEX TYPE="PER_DESC">host</ENAMEX> homologs of the red clover
+          necrotic <ENAMEX TYPE="DISEASE">mosaic</ENAMEX> virus (RCNMV) <ENAMEX TYPE="PER_DESC">MP</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">antibodies</ENAMEX> to this
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> were used to screen phloem extracts of 
+          <ENAMEX TYPE="PRODUCT">Cucurbita maxima</ENAMEX>, resulting in the
+          detection of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> designated <TIMEX TYPE="DATE">Cmpp16</TIMEX>. This protein
+          was identified as a 'paralog' (generally, this term
+          refers to homologous genes related by duplication within
+          the same genome) of the viral <ENAMEX TYPE="SUBSTANCE">MPs</ENAMEX> on the basis of
+          sequence similarity detected using the <ENAMEX TYPE="ORGANIZATION">Megalign</ENAMEX> program [
+          <NUMEX TYPE="CARDINAL">33</NUMEX>]. Subsequently, <TIMEX TYPE="DATE">Cmpp16</TIMEX> was shown to bind <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>, which is
+          a common property of viral <ENAMEX TYPE="SUBSTANCE">MPs</ENAMEX>, and to induce an increase
+          of the size-exclusion limit of plasmodesmata, also a
+          mechanism associated with the <ENAMEX TYPE="ORGANIZATION">MPs</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX>].
+          However, computational analysis of the <NUMEX TYPE="ORDINAL">Cmpp16</NUMEX> sequence
+          reveals a picture that is incompatible with a homologous
+          relationship with <ENAMEX TYPE="ORGANIZATION">MPs</ENAMEX>. Cmpp16 consists mostly of a C2
+          domain that is readily detected by <ENAMEX TYPE="ORGANIZATION">PSI</ENAMEX>-BLAST or by
+          profile-searching engines such as the CD-search [ <TIMEX TYPE="DATE">34</TIMEX>].
+          The <NUMEX TYPE="ORDINAL">Cmpp16</NUMEX> sequence contains all critical <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> of the
+          C2 domain (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). C2 <ENAMEX TYPE="PER_DESC">domains</ENAMEX> bind a variety of
+          substrates, such as Ca <NUMEX TYPE="CARDINAL">2</NUMEX>+, phospholipids, inositol
+          <ENAMEX TYPE="ORGANIZATION">polyphosphates</ENAMEX> and other <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, but apparently not <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          [ <TIMEX TYPE="DATE">35</TIMEX>]. There is no detectable similarity between C2
+          <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">MPs</ENAMEX>, and conserved motifs in the
+          published alignment of <ENAMEX TYPE="SUBSTANCE">Cmpp16</ENAMEX> and the <ENAMEX TYPE="ORGANIZATION">RCNMV</ENAMEX> <ENAMEX TYPE="PER_DESC">MP</ENAMEX> do not
+          correspond to those in <TIMEX TYPE="DATE">C2</TIMEX> domains; moreover, many of the
+          <ENAMEX TYPE="PERSON">residues</ENAMEX> described as conserved in <TIMEX TYPE="DATE">Cmpp16</TIMEX> and <ENAMEX TYPE="PER_DESC">MP</ENAMEX> are not
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> within the viral movement protein family
+          itself. Thus, we conclude that viral <ENAMEX TYPE="SUBSTANCE">MPs</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cmpp16</ENAMEX>, a
+          C2-domain <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, are not homologs. Subsequently, a
+          similar methodology has been employed to detect a
+          relationship between Cmpp36 (a cytochrome <ENAMEX TYPE="PRODUCT">B5</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">reductase</ENAMEX>),
+          Cmpp16 and the <ENAMEX TYPE="ORGANIZATION">RCNMV</ENAMEX> movement <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> [ <TIMEX TYPE="DATE">36</TIMEX>]. As in the
+          above case of <TIMEX TYPE="DATE">Cmpp16</TIMEX>, this relationship of a cytochrome
+          B5 <ENAMEX TYPE="PER_DESC">reductase</ENAMEX> with the viral movement proteins appears to
+          be spurious (data not shown).
+        
+        
+          Human <ENAMEX TYPE="SUBSTANCE">activating transcription factor-2</ENAMEX> (ATF-<NUMEX TYPE="CARDINAL">2</NUMEX>): a
+          predicted histone acetyltransferase
+          Histone acetyltransferases (<ENAMEX TYPE="ORGANIZATION">HAT</ENAMEX>) are key <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> of
+          eukaryotic transcription. GCN5-like <ENAMEX TYPE="ORGANIZATION">HATs</ENAMEX>, which modulate
+          chromatin-associated transcription, belong to a vast
+          superfamily of amino<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> acetyl- and
+          myristoyl-transferases with extremely diverse functions [
+          <NUMEX TYPE="CARDINAL">37</NUMEX>]. <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX> is a basic <ENAMEX TYPE="SUBSTANCE">leucine zipper</ENAMEX> (b-<ENAMEX TYPE="ORGANIZATION">ZIP</ENAMEX>) family
+          transcription factor that binds to cyclic AMP-response
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> (CRE) and activates transcription [ <TIMEX TYPE="DATE">38</TIMEX>].
+          <ENAMEX TYPE="ORGANIZATION">Vertebrate</ENAMEX> <ENAMEX TYPE="PRODUCT">ATF-2</ENAMEX> also has an amino-terminal zinc finger,
+          which is involved in transcription activation [ <TIMEX TYPE="DATE">39</TIMEX>].
+          Non-vertebrate orthologs of <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX>, in 
+          Drosophila, Caenorhabditis
+          <ENAMEX TYPE="ORGANIZATION">elegans</ENAMEX> and yeasts, lack the zinc finger. In
+          experiments designed to isolate <ENAMEX TYPE="PRODUCT">ATF-2-associated HAT</ENAMEX>,
+          <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX> alone was shown to be sufficient for the
+          acetyltransferase activity. Examining the region of ATF-2
+          that showed HAT activity, the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> found some sequence
+          similarity and <NUMEX TYPE="CARDINAL">at least one</NUMEX> motif resembling the
+          acetyltransferase superfamily and concluded that ATF-2
+          contained a <NUMEX TYPE="ORDINAL">GCN5</NUMEX>-like acetyltransferase domain [ <TIMEX TYPE="DATE">40</TIMEX>].
+          Subsequent site-directed mutagenesis supported the
+          importance of the reported acetyltransferase motifs for
+          the HAT activity of ATF-2.
+          However, profile-based sequence searches and attempts
+          at fold recognition failed to detect any relationship
+          between <ENAMEX TYPE="ORGANIZATION">ATF-2</ENAMEX> and the acetyltransferase superfamily. The
+          region designated as having HAT activity and containing
+          the acetyltransferase domain shows poor conservation
+          between orthologs and closely related paralogs of the
+          <ENAMEX TYPE="PRODUCT">ATF-2</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, especially in the sequence identified as
+          the most prominent A motif of the acetyltransferase
+          family (Figure <NUMEX TYPE="CARDINAL">7</NUMEX>). Furthermore, complexity analysis using
+          the SEG program, with the parameters adjusted for
+          decomposition of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> into globular and non-globular
+          regions [ <TIMEX TYPE="DATE">41</TIMEX>], predicted that the entire <ENAMEX TYPE="GPE_DESC">region</ENAMEX> of the
+          <ENAMEX TYPE="SUBSTANCE">ATF-2 protein</ENAMEX> between the amino-terminal zinc finger and
+          the carboxy-terminal helical <ENAMEX TYPE="PRODUCT">b-ZIP</ENAMEX> was unstructured. This
+          is consistent with the structural prediction derived
+          using the PHD program that indicated no regular secondary
+          structure in this region. Thus, the relationship between
+          <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX> and the <NUMEX TYPE="ORDINAL">GCN5</NUMEX>-like acetyltransferase superfamily
+          seems to be invalid, leaving the structural basis for the
+          reported acetyltransferase activity of <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX> an open
+          issue.
+        
+        
+          Predicted <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domain in the phytochrome-interacting
+          transcription factor PIF3
+          <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domains are sensory modules in various signal
+          transduction <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from all major lineages of cellular
+          life [ <TIMEX TYPE="DATE">42</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domains are typically implicated in
+          <ENAMEX TYPE="SUBSTANCE">sensing oxygen</ENAMEX>, redox potential, light and small ligands
+          [ <TIMEX TYPE="DATE">43</TIMEX>]. In addition, <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domains are sites for
+          <ENAMEX TYPE="SUBSTANCE">protein-protein interactions</ENAMEX> and are responsible for the
+          formation of homo- and hetero-dimers in several signal
+          transduction pathways that involve transcriptional
+          <ENAMEX TYPE="ORGANIZATION">activation</ENAMEX>. A <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domain has been reported in the
+          transcription factor PIF3 from 
+          Arabidopsis, which interacts with a
+          phytochrome photoreceptor and transduces light signals to
+          <ENAMEX TYPE="ORGANIZATION">photoresponsive</ENAMEX> plant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>]. It has been
+          hypothesized that the purported PAS domain of PIF3
+          directly interacts with the <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domains of the
+          <ENAMEX TYPE="ORGANIZATION">phytochrome</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>]. This hypothesis was later tested
+          <ENAMEX TYPE="PERSON">experimentally</ENAMEX> and evidence was presented that the PAS
+          domain of <ENAMEX TYPE="ORGANIZATION">PIF3</ENAMEX> indeed was a major contributor to the
+          interaction between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">45</TIMEX>].
+          PIF3 belongs to a plant-specific <ENAMEX TYPE="PER_DESC">family</ENAMEX> of basic
+          helix-loop-helix (bHLH)-domain- containing <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that,
+          in addition to the bHLH domain, have an uncharacterized
+          conserved domain at the amino terminus present in single
+          or duplicate copies (<ENAMEX TYPE="PERSON">L.M.I.</ENAMEX>, <ENAMEX TYPE="PERSON">I.Z.</ENAMEX>, <ENAMEX TYPE="GPE">L.A.</ENAMEX> and <ENAMEX TYPE="PERSON">E.V.K.</ENAMEX>,
+          unpublished observations). The <ENAMEX TYPE="PRODUCT">PIF3</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX> currently
+          consists of <NUMEX TYPE="CARDINAL">about eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">paralogous proteins</ENAMEX> in 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> and an ortholog from
+          <ENAMEX TYPE="PERSON">rice</ENAMEX>. The region predicted to be a PAS domain is poorly
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in the <ENAMEX TYPE="SUBSTANCE">rice</ENAMEX> ortholog of <ENAMEX TYPE="SUBSTANCE">PIF3</ENAMEX> and the paralogs
+          from 
+          <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX>. An alignment with the
+          <ENAMEX TYPE="PERSON">rice</ENAMEX> ortholog indicated that the proposed PAS domain was
+          a rapidly diverging, compositionally biased sequence
+          (Figure <NUMEX TYPE="CARDINAL">8</NUMEX>). Complexity analysis using the SEG program
+          showed that the reported PAS domain mapped to a region
+          that was predicted to be entirely non-globular. All
+          attempts to objectively detect a PAS domain in <TIMEX TYPE="DATE">PIF3</TIMEX> using
+          sensitive profile methods based on PSI-BLAST-derived
+          <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> matrices or <ENAMEX TYPE="PERSON">Hidden Markov Models</ENAMEX> (HMM) failed.
+          Additionally, secondary-structure prediction for the
+          proposed <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> region using <ENAMEX TYPE="ORGANIZATION">PHD</ENAMEX> indicated that this region
+          is largely unstructured. These observations appear to be
+          sufficient to reject the presence of a PAS domain in PIF3
+          although the region thought to be a PAS domain could
+          indeed be involved in the interaction with
+          <ENAMEX TYPE="ORGANIZATION">phytochrome</ENAMEX>.
+        
+      
+      
+        Discussion and conclusions
+        In the <NUMEX TYPE="CARDINAL">six</NUMEX> cases described above, we provide evidence
+        for rejecting the homologous relationships and functional
+        predictions inferred for the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in question by using
+        computational methods. The number of examples in this
+        category could be increased, and some have already been
+        considered in the literature, for example the spurious
+        discovery of a 'functional PDZ domain' in the molecular
+        <ENAMEX TYPE="PERSON">chaperone ClpA</ENAMEX> ([ <TIMEX TYPE="DATE">46</TIMEX>], see refutation in [ <TIMEX TYPE="DATE">47</TIMEX>]) or the
+        finding of an ATPase domain and death effector domains in
+        the apoptosis-associated protein FLASH ([ <TIMEX TYPE="DATE">48</TIMEX>], see
+        <ENAMEX TYPE="ORGANIZATION">refutation</ENAMEX> in [ <TIMEX TYPE="DATE">49</TIMEX>]). The common and most striking aspect
+        of all these cases is that the predictions based on
+        apparently erroneous computational analysis were supported
+        by experiments. What are the solutions to this clash
+        between computational and experimental evidence?
+        We envisage <NUMEX TYPE="CARDINAL">three</NUMEX> main possibilities. The <NUMEX TYPE="ORDINAL">first</NUMEX>,
+        experiment-centered view would hold that experimental
+        evidence always has the upper hand and that, even if the
+        alternative <ENAMEX TYPE="SUBSTANCE">computational solutions</ENAMEX> that we describe here
+        seem more plausible than the original predictions, the
+        latter are correct insofar as they are supported by
+        experiment. Epistemologically, this argument is not sound
+        because hypotheses (computational predictions in this case)
+        cannot be proved by the success of the experiments they
+        prompt. They can only be falsified by experiments producing
+        results incompatible with the predictions [ <TIMEX TYPE="DATE">50</TIMEX>]. Simply
+        put, the experiments could have worked for a wrong reason.
+        For example, this seems particularly likely in the case of
+        the site-directed mutagenesis of the transcription factor
+        <ENAMEX TYPE="SUBSTANCE">ATF-2</ENAMEX> discussed above. The mutagenized <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX> probably
+        are indeed important for the function of this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, but
+        not because they are part of a <NUMEX TYPE="ORDINAL">GCN5</NUMEX>-like acetyltransferase
+        <ENAMEX TYPE="PERSON">domain</ENAMEX>, which this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> does not contain. Similar logic
+        applies to the case of the predicted, but apparently
+        <ENAMEX TYPE="PERSON">nonexistent</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PAS</ENAMEX> domain in the transcription factor <TIMEX TYPE="DATE">PIF3</TIMEX>.
+        More important, however, computational predictions are
+        <ENAMEX TYPE="ORGANIZATION">falsifiable</ENAMEX> within the realm of computational analysis
+        itself. <ENAMEX TYPE="ORGANIZATION">Falsification</ENAMEX> is offered by alternative,
+        <ENAMEX TYPE="PERSON">unequivocally</ENAMEX> supported predictions that are incompatible
+        with the original ones. In <NUMEX TYPE="CARDINAL">four</NUMEX> of the <NUMEX TYPE="CARDINAL">six</NUMEX> cases described
+        (<ENAMEX TYPE="ORGANIZATION">CysRS</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">TS</ENAMEX> and <ENAMEX TYPE="PER_DESC">MP</ENAMEX>), such evidence was obtained by
+        computational methods.
+        The <NUMEX TYPE="ORDINAL">second</NUMEX> possibility is that, although the
+        computational predictions described here are correct,
+        whereas the original ones are wrong, the experimental
+        evidence is also solid. In each of the described cases,
+        this would elevate the biochemical activities identified
+        through these experiments to the status of major,
+        unexpected discoveries, because the chemistry underlying
+        them would have to be extremely unusual. In particular, if
+        the identification of the 
+        <ENAMEX TYPE="PERSON">M.</ENAMEX> jannaschii cysteinyl-tRNA
+        <ENAMEX TYPE="ORGANIZATION">synthetase</ENAMEX> is indeed correct, this enzyme would have to be
+        a derivative of a specific <ENAMEX TYPE="PER_DESC">family</ENAMEX> of polysaccharide
+        <ENAMEX TYPE="SUBSTANCE">hydrolases</ENAMEX> containing a signal peptide but no recognizable
+        <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>-binding or <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-binding domains.
+        The <NUMEX TYPE="ORDINAL">third</NUMEX> explanation is that the original computational
+        predictions triggered over-interpretation of the
+        experimental results that, in reality, might have been
+        obtained as a result of nonspecific activities,
+        contamination or other artifacts. In this regard, it is
+        important to realize that not only computational
+        predictions, but biological experiments also, are
+        intrinsically error-prone and open to conflicting
+        interpretations. The probabilistic nature of computational
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX> is well realized (and at times, perhaps,
+        <ENAMEX TYPE="ORGANIZATION">overrated</ENAMEX>) by most <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>, probably because explicit
+        calculation of probability or likelihood is at the core of
+        most widely used computer methods for sequence and
+        structure analyses. In this regard, it is prudent to note
+        that the alternative computational predictions presented
+        here should be considered to be 'more likely' than the
+        original ones, rather than to contradict the latter in an
+        absolute sense. As we attempted to show above, however, the
+        difference in the likelihood of <NUMEX TYPE="CARDINAL">two</NUMEX> mutually incompatible
+        predictions can be overwhelming, with one supported by
+        multiple lines of evidence as opposed to the other. In
+        contrast to computational studies, experimental ones are
+        often, consciously or unconsciously, treated as
+        demonstration of 'final truth'. In reality, however,
+        probabilistic inference is inherent in practically any
+        interpretation of experimental results when questions are
+        asked such as "How likely is it that the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> under
+        study has a particular biochemical activity 
+        in vivo ?" or "How central is this
+        activity for the 
+        in vivo function of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> under
+        study, given the results of a surrogate 
+        in vitro assay?" Thus, certain
+        experimental designs may not be appropriate to ascertain
+        the actual 
+        in vivo biochemistry of a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>.
+        Furthermore, even if the particular activities detected
+        under these conditions are genuine, the likelihood of these
+        being relevant 
+        in vivo needs to be additionally
+        assessed. Accordingly, when strong computational
+        predictions seem not to be borne out by experiment, the
+        conditions and design of the experiments deserve special
+        scrutiny: they might have given a negative result for a
+        wrong reason. A case in point is the <ENAMEX TYPE="SUBSTANCE">MJ0107 protein</ENAMEX>, the
+        apparent archaeal ortholog of <ENAMEX TYPE="ORGANIZATION">DHPS</ENAMEX>, which failed to show
+        dihydropteroate synthase activity [ <TIMEX TYPE="DATE">25</TIMEX>]. We strongly
+        believe that this issue needs to be revisited. All this
+        considered, the results of independent application of
+        <ENAMEX TYPE="ORGANIZATION">computational</ENAMEX> and experimental techniques tend to be
+        <ENAMEX TYPE="PERSON">complementary</ENAMEX>, and useful in adding or reducing confidence
+        in the biological conclusions of a particular study.
+        Finally, it should be emphasized that these cautionary
+        notes on application of computational methods in protein
+        function prediction in no way suggest that new
+        <ENAMEX TYPE="PER_DESC">computational</ENAMEX> approaches that depart sharply from more
+        established ones are doomed to failure. Indeed, the most
+        <ENAMEX TYPE="ORGANIZATION">popular</ENAMEX> advanced search methods based on sequence profiles
+        - PSI-BLAST and <ENAMEX TYPE="PRODUCT">Hidden Markov Model</ENAMEX> (HMM) search - are
+        rather recent innovations [ <TIMEX TYPE="DATE">11, 51, 52</TIMEX>]. Furthermore,
+        methods based on a different principle, such as protein
+        <ENAMEX TYPE="FAC">sequence-</ENAMEX><ENAMEX TYPE="FAC_DESC">structure</ENAMEX> threading, have a recent history of
+        <ENAMEX TYPE="ORGANIZATION">success</ENAMEX> despite uncertainties in their statistical
+        foundations [ <TIMEX TYPE="DATE">22, 53, 54, 55, 56</TIMEX>]. It does seem, however,
+        that when a structurally and functionally plausible
+        prediction is produced, with a high confidence, by a well
+        tested, statistically sound computational method, an
+        incompatible prediction yielded by a new method without a
+        clear statistical <ENAMEX TYPE="ORG_DESC">foundation</ENAMEX> is most likely to be
+        incorrect.
+      
+      
+        Materials and methods
+        The non-redundant <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>-sequence database at the
+        <ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology Information</ENAMEX> (NCBI) was
+        searched using the gapped version of the BLAST program [
+        <NUMEX TYPE="CARDINAL">9</NUMEX>]. Sequence-profile searches were carried out using the
+        PSI-BLAST program, with the cut-off for inclusion of
+        sequences into the profile set at 
+        E = <NUMEX TYPE="CARDINAL">0.01</NUMEX> [ <ENAMEX TYPE="LAW">3, 9</ENAMEX>], and the HMMer
+        program package [ <TIMEX TYPE="DATE">57</TIMEX>]. Multiple alignments of amino-acid
+        sequences were generated using the <ENAMEX TYPE="PRODUCT">T_Coffee</ENAMEX> program [ <TIMEX TYPE="DATE">58</TIMEX>].
+        Protein secondary-structure predictions were generated
+        using the PHD program [ <TIMEX TYPE="DATE">59, 60</TIMEX>], with multiple alignments
+        of individual protein <ENAMEX TYPE="PER_DESC">families</ENAMEX> used as queries.
+        <ENAMEX TYPE="FAC">Sequence-</ENAMEX><ENAMEX TYPE="FAC_DESC">structure threading</ENAMEX> was carried out using the
+        combined<NUMEX TYPE="CARDINAL">-fold</NUMEX>-prediction algorithm [ <TIMEX TYPE="DATE">22</TIMEX>] or the <NUMEX TYPE="ORDINAL">3D</NUMEX>-PSSM
+        <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> based on the use of a three-dimensional
+        position-specific scoring matrix [ <TIMEX TYPE="DATE">23</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Signal</ENAMEX> peptides in
+        <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX> were predicted using the <ENAMEX TYPE="ORGANIZATION">SignalP</ENAMEX> program
+        [ <TIMEX TYPE="DATE">61</TIMEX>]. The COG database [ <TIMEX TYPE="DATE">62, 63</TIMEX>] was used as a source of
+        information on orthologous relationships between
+        <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>.
+      
+    
+  

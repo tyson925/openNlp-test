@@ -1,0 +1,556 @@
+
+  
+    
+      
+        Background
+        <ENAMEX TYPE="ORGANIZATION">Mefloquine</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Lariam</ENAMEX>) is a prophylactic antimalarial that
+        is also used for <ENAMEX TYPE="DISEASE">malaria chemotherapy</ENAMEX>. Adverse central
+        nervous system (CNS) events have been associated with its
+        use. Severe CNS events requiring hospitalization occur in
+        <TIMEX TYPE="TIME">1:10,000 and 1:</TIMEX><ENAMEX TYPE="CONTACT_INFO">200-1200</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX> taking mefloquine for
+        <ENAMEX TYPE="ORGANIZATION">chemoprophylaxis</ENAMEX> and treatment, respectively [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Milder
+        CNS events (e.g. dizziness, headache and insomnia) are a
+        more frequent occurrence, occurring in <NUMEX TYPE="PERCENT">up to 25%</NUMEX> of those
+        receiving chemoprophylactic doses and <NUMEX TYPE="PERCENT">90%</NUMEX> of patients
+        receiving therapeutic doses [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Higher blood levels of
+        mefloquine are reached under prophylactic as compared to
+        therapeutic regimens [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . The relative incidence of
+        adverse effects is, therefore, probably dose-related,
+        although the concomitant effect of <ENAMEX TYPE="DISEASE">malaria</ENAMEX> during treatment
+        cannot be dismissed. It is likely, then, that the
+        neurological events associated with mefloquine have a
+        <ENAMEX TYPE="ORGANIZATION">biochemical</ENAMEX> basis. In this study, an attempt was made to
+        deduce a possible mechanism of action for mefloquine in rat
+        neuronal cells using <ENAMEX TYPE="NATIONALITY">Affymetrix</ENAMEX> <ENAMEX TYPE="ANIMAL">rat toxicology arrays</ENAMEX>.
+        Microarray analysis offers the unique potential to
+        identify unknown <ENAMEX TYPE="PER_DESC">targets</ENAMEX> of toxic <ENAMEX TYPE="SUBSTANCE">agents</ENAMEX>, as
+        <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> responses of the entire genome can be
+        measured in parallel [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . Ideally, one should be able to
+        identify new <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> quickly, confidently, and without
+        recourse to alternative methods. Appropriate selection of a
+        method for filtering gene expression data is therefore
+        critical to this process. <NUMEX TYPE="CARDINAL">One</NUMEX> of the first definitions to
+        emerge was the arbitrary designation of a particular level
+        of - usually <NUMEX TYPE="CARDINAL">two</NUMEX>-fold up or down regulation - gene
+        expression as representing 'significance' [ <NUMEX TYPE="CARDINAL">4 5</NUMEX> ] . Such
+        arbitrary definitions emerged from the observation that
+        fold-regulation of genes between control cultures with
+        identical cell <ENAMEX TYPE="PER_DESC">populations</ENAMEX> seldom varies by more than this
+        level (discussed by <ENAMEX TYPE="ORGANIZATION">Ideker et al.</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX> ] ).
+        However, arbitrary designations cannot be considered
+        <ENAMEX TYPE="ORGANIZATION">'significant'</ENAMEX> in the traditional, statistical sense unless
+        experimental <ENAMEX TYPE="SUBSTANCE">variance</ENAMEX> is taken into consideration. An
+        evolving method of analysis is to define significant
+        changes in gene expression in terms of a particular 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value after performing appropriate
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> tests that take into account the variability of
+        gene expression data and sample size [ <NUMEX TYPE="CARDINAL">6 7 8 9 10</NUMEX> ] .
+        However, care must be taken to use appropriate statistical
+        tests, 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value thresholds for significance,
+        and sufficient 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , otherwise, <ENAMEX TYPE="GPE">variance</ENAMEX>-based
+        methods, as with less rigorous fold-change approaches, will
+        generate high error rates. Recent studies have discussed
+        the utility of the <ENAMEX TYPE="WORK_OF_ART">'Z score', the parametric t</ENAMEX>-test, and
+        the nonparametric <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> rank sum test for expression
+        <ENAMEX TYPE="ORGANIZATION">profiling</ENAMEX> [ <ENAMEX TYPE="LAW">9 10</ENAMEX> ] . However, the effects of inadequate
+        sample size and 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value correction methods are only
+        beginning to be addressed [ <TIMEX TYPE="DATE">11</TIMEX> ] .
+        Due to restrictions on the type and availability of
+        biological samples and the prohibitive cost of arrays, many
+        array studies have resorted to the use of extremely low
+        sample sizes (for a recent example see <ENAMEX TYPE="ORGANIZATION">Lang et al.</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX> ]
+        ). This is potentially problematic because the power of
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> tests decreases with sample size. There is also
+        the multiplicity problem [ <TIMEX TYPE="DATE">13</TIMEX> ] . As the number of
+        hypotheses being tested increases so does the number of
+        type I errors (false conclusions of significance). This is
+        of great concern in microarray studies given the number of
+        statistical comparisons being made (i.e. <NUMEX TYPE="CARDINAL">one</NUMEX> test per gene
+        on an array). Therefore, 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value correction is essential in
+        expression profiling to control an appropriate type 1 error
+        rate, although undue conservatism may result in the failure
+        to detect transcriptional changes for some genes that might
+        indeed be verifiable by other means. As shown in this
+        study, adoption of an experimental design that incorporates
+        an adequate sample size and appropriate selection of a 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering method is critical
+        if genes with altered transcription are to be efficiently
+        and effectively identified.
+      
+      
+        Materials and Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Reagents</ENAMEX> and media
+          Mefloquine was obtained from <ENAMEX TYPE="ORGANIZATION">Walter Reed Army</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Institute of Research</ENAMEX> chemical <ENAMEX TYPE="SUBSTANCE">repository</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">Dulbecco</ENAMEX>'s
+          <ENAMEX TYPE="ORGANIZATION">Modified Eagle Medium</ENAMEX> (DMEM),
+          hypoxanthine-<ENAMEX TYPE="GPE">aminopterin-thymidine</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">HAT</ENAMEX>) medium
+          supplement, foetal calf serum (FCS) and gentamycin were
+          purchased from <ENAMEX TYPE="ORGANIZATION">Gibco BRL</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Rockville</ENAMEX>, <ENAMEX TYPE="GPE">Maryland</ENAMEX>). <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-STAT
+          was obtained from <ENAMEX TYPE="PRODUCT">Tel-Test</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Friendswood</ENAMEX>, <ENAMEX TYPE="GPE">Texas</ENAMEX>).
+        
+        
+          Cell maintenance
+          NG108-<NUMEX TYPE="CARDINAL">15</NUMEX> (mouse neuroblastoma-rat glioma <ENAMEX TYPE="ORG_DESC">hybrid</ENAMEX>) cells
+          were maintained in <NUMEX TYPE="QUANTITY">75-cm</NUMEX> <ENAMEX TYPE="PRODUCT">2tissue</ENAMEX> culture flasks in DMEM
+          supplemented with <ENAMEX TYPE="ORGANIZATION">HAT</ENAMEX>, <NUMEX TYPE="PERCENT">10%</NUMEX> <ENAMEX TYPE="ORGANIZATION">FCS</ENAMEX> and gentamycin (<ENAMEX TYPE="CONTACT_INFO">50 μg/ml</ENAMEX>),
+          in a humidified <NUMEX TYPE="PERCENT">6.0%</NUMEX> <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="ORG_DESC">incubator</ENAMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>. For the
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> studies, <NUMEX TYPE="QUANTITY">175 cm</NUMEX> <ENAMEX TYPE="PRODUCT">2tissue</ENAMEX> culture flasks were
+          seeded with <NUMEX TYPE="CARDINAL">4.6 million</NUMEX> NG108 <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in <NUMEX TYPE="CARDINAL">49.6</NUMEX> ml culture
+          medium <NUMEX TYPE="CARDINAL">24</NUMEX> h prior to the experiments. For cytotoxicity
+          studies, <NUMEX TYPE="QUANTITY">25 cm</NUMEX> <ENAMEX TYPE="PRODUCT">2tissue</ENAMEX> culture flasks were seeded with
+          <NUMEX TYPE="CARDINAL">0.66 million</NUMEX> NG108 <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> in <TIMEX TYPE="DATE">10</TIMEX> ml culture medium <NUMEX TYPE="CARDINAL">24</NUMEX> h
+          prior to the experiment.
+        
+        
+          Cytotoxicity of mefloquine in <TIMEX TYPE="DATE">NG108</TIMEX> and primary rat
+          neuronal cell cultures
+          The cytotoxicity of mefloquine was assessed using <NUMEX TYPE="CARDINAL">25</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">cm</ENAMEX> <ENAMEX TYPE="PRODUCT">2tissue</ENAMEX> culture flasks. After <TIMEX TYPE="TIME">overnight</TIMEX> incubation of
+          NG108 cells, culture media were replaced with fresh DMEM
+          containing <ENAMEX TYPE="SUBSTANCE">mefloquine</ENAMEX> (<NUMEX TYPE="QUANTITY">2.5-40 μM</NUMEX>) or <NUMEX TYPE="PERCENT">1%</NUMEX> <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX> (control).
+          After incubation of the flasks for <TIMEX TYPE="TIME">2 h</TIMEX>, the cells were
+          washed twice, and then resuspended, in <NUMEX TYPE="CARDINAL">5</NUMEX> ml phosphate
+          buffered saline. Total numbers of viable cells at each
+          mefloquine concentration were determined using trypan
+          blue exclusion as previously described [ <TIMEX TYPE="DATE">14</TIMEX> ] . Viability
+          (<NUMEX TYPE="PERCENT">%</NUMEX>) was calculated using the following formula: <ENAMEX TYPE="ORGANIZATION">Viability</ENAMEX>
+          (<NUMEX TYPE="PERCENT">%</NUMEX>) = <NUMEX TYPE="MONEY">#</NUMEX> viable cells in treated culture/<NUMEX TYPE="MONEY">#</NUMEX> viable cells in
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> culture * <TIMEX TYPE="DATE">100</TIMEX>. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> shown represent the mean (<NUMEX TYPE="PERCENT">%</NUMEX>)
+          <ENAMEX TYPE="ORGANIZATION">viability (± SEM</ENAMEX>) for <NUMEX TYPE="CARDINAL">three</NUMEX> experiments. The cytotoxicity
+          of mefloquine to primary embryonic <ENAMEX TYPE="ANIMAL">rat neurons</ENAMEX> was
+          assessed in <TIMEX TYPE="DATE">24</TIMEX> well tissue culture plates using the MTT
+          assay as previously described [ <TIMEX TYPE="DATE">15</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> represent
+          mean (<NUMEX TYPE="PERCENT">%</NUMEX>) viability (± SEM) for <NUMEX TYPE="CARDINAL">eight</NUMEX> replicate
+          experiments. <NUMEX TYPE="PERCENT">Fifty percent</NUMEX> inhibitory concentrations (IC 
+          50 s) were calculated using Prism
+          software.
+        
+        
+          Design of <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments, cell harvesting
+          and total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> extraction
+          On <TIMEX TYPE="DATE">the day</TIMEX> of the experiment, the <ENAMEX TYPE="ORG_DESC">media</ENAMEX> was removed
+          from the seeded flasks and replaced with <NUMEX TYPE="CARDINAL">70</NUMEX> ml DMEM
+          supplemented with either <NUMEX TYPE="PERCENT">0.25%</NUMEX> <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX> (controls) or <NUMEX TYPE="QUANTITY">10 �</NUMEX>�M
+          <ENAMEX TYPE="ORGANIZATION">mefloquine</ENAMEX> in <NUMEX TYPE="PERCENT">0.25%</NUMEX> <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX> (treated). The cells were
+          treated with mefloquine or DMSO for <NUMEX TYPE="CARDINAL">2</NUMEX> h. This treatment
+          regime reduces the viability of <NUMEX TYPE="CARDINAL">NG108</NUMEX> cells by
+          <NUMEX TYPE="PERCENT">approximately 35%</NUMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). After incubation, media was
+          removed and replaced with <NUMEX TYPE="CARDINAL">15.0</NUMEX> ml <ENAMEX TYPE="SUBSTANCE">RNA STAT</ENAMEX> (<ENAMEX TYPE="PRODUCT">Tel-Test</ENAMEX>,
+          Friendswood <ENAMEX TYPE="GPE">Texas</ENAMEX>). Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was then extracted
+          according to the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s instructions. <NUMEX TYPE="CARDINAL">Eight</NUMEX> pairs
+          of <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> (<NUMEX TYPE="CARDINAL">eight</NUMEX> control and <NUMEX TYPE="CARDINAL">eight</NUMEX> treated samples)
+          were collected on different occasions.
+        
+        
+          CDNA synthesis, in vitro transcription and
+          fluorescent labeling, hybridization, staining and
+          scanning of gene chips, and assay monitoring
+          Detailed procedures for preparation of cDNA and
+          <ENAMEX TYPE="PER_DESC">fluorescently</ENAMEX> labeled cRNA, hybridization, staining, and
+          scanning of <ENAMEX TYPE="SUBSTANCE">gene chips</ENAMEX> and assay monitoring are outlined
+          by Vahey 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">16</TIMEX> ] . The platform
+          chosen for global expression profile was the <ENAMEX TYPE="ANIMAL">Rat Tox</ENAMEX> U34
+          Array (<ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>, <ENAMEX TYPE="GPE">Santa Clara</ENAMEX>, <ENAMEX TYPE="GPE">California</ENAMEX>), which
+          contains probes for <TIMEX TYPE="TIME">EST</TIMEX> clusters and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> linked to a
+          variety of toxic <ENAMEX TYPE="SUBSTANCE">endpoints</ENAMEX> (total of <ENAMEX TYPE="PRODUCT">1031</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> sets
+          including controls). <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<NUMEX TYPE="QUANTITY">10 μg</NUMEX>) extracted from each
+          individual <ENAMEX TYPE="PER_DESC">flask</ENAMEX> was hybridized to a single gene chip
+          (i.e. a total of <NUMEX TYPE="CARDINAL">16</NUMEX> chips were used).
+        
+        
+          Gene expression data analysis
+          Affymetrix analysis software (version <NUMEX TYPE="CARDINAL">4</NUMEX>) was used to
+          generate average difference (<ENAMEX TYPE="ORGANIZATION">AD</ENAMEX>) values for each gene for
+          each treatment (<ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX>, <ENAMEX TYPE="GPE">Santa Clara</ENAMEX>, <ENAMEX TYPE="GPE">California</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">AD</ENAMEX>
+          values represent the difference in mean fluorescence
+          between positive and mismatch probe cells for each gene.
+          All genes with mean AD levels <NUMEX TYPE="MONEY">< 100</NUMEX> in either
+          <ENAMEX TYPE="ORGANIZATION">mefloquine</ENAMEX> or DMSO-treated cultures were excluded. This
+          procedure eliminated most of the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> called absent by
+          the <ENAMEX TYPE="PRODUCT">Affymetrix</ENAMEX> software. For simplicity, an AD value is
+          <ENAMEX TYPE="PERSON">hereafter</ENAMEX> referred to as the expression value of a gene.
+          The expression values for each gene chip were imported
+          directly into <ENAMEX TYPE="EVENT">Parteck Pro 2000</ENAMEX>. No additional data
+          <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> or scaling methods were employed (as these
+          procedures were performed previously by the Affymetrix
+          <ENAMEX TYPE="ORGANIZATION">software</ENAMEX>). No additional filtering of data was conducted
+          on the basis of either number of reporting probe cells or
+          the present/absent calls generated by the Affymetrix
+          analysis software. Paired t-tests (<NUMEX TYPE="CARDINAL">two</NUMEX>-sided, <ENAMEX TYPE="PER_DESC">df</ENAMEX> = <NUMEX TYPE="CARDINAL">7</NUMEX>)
+          were performed to compare the expression levels of each
+          of the remaining <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="CARDINAL">695</NUMEX> of <TIMEX TYPE="DATE">1031</TIMEX>) in <ENAMEX TYPE="ORGANIZATION">DMSO</ENAMEX> and
+          mefloquine-treated cultures. The <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were then rank
+          ordered in terms of their unadjusted 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values. This general approach to
+          the analysis of <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> expression data is outlined in
+          Partek technical literature. Fold-changes (FC) in
+          expression were = mean mefloquine expression level/mean
+          DMSO expression level.
+        
+        
+          Expression data generated for this study is
+          available from <ENAMEX TYPE="PRODUCT">GEO</ENAMEX> (<ENAMEX TYPE="PRODUCT">Accession #GSE39</ENAMEX> for a summary of the
+          experiment and <ENAMEX TYPE="PRODUCT">GSM1654-1669</ENAMEX> for individual
+          treatments)
+          
+            RT-PCR validation
+            <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> following reverse transcription was performed
+            for semi-quantitative <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of steady-state
+            expression of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> for tubulin (negative control) and
+            <NUMEX TYPE="CARDINAL">six</NUMEX> of the <NUMEX TYPE="CARDINAL">eleven</NUMEX> lowest 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value ranked transcripts (see
+            RT-PCR conditions in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). For each sample, <NUMEX TYPE="QUANTITY">2 �</NUMEX>�g
+            <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was transcribed in a <NUMEX TYPE="QUANTITY">20 �</NUMEX>�l reaction using the
+            <ENAMEX TYPE="ORGANIZATION">Invitrogen SuperScript First-Strand Synthesis System</ENAMEX>
+            oligo-(dT) primer method according to the
+            <ENAMEX TYPE="ORGANIZATION">manufacturer</ENAMEX>'s instructions. cDNA was RNase-treated ( 
+            <ENAMEX TYPE="SUBSTANCE">E. coli RNAse</ENAMEX> H at <TIMEX TYPE="DATE">37°C</TIMEX> for <NUMEX TYPE="CARDINAL">20</NUMEX>
+            <ENAMEX TYPE="PERSON">min</ENAMEX>) and diluted to <NUMEX TYPE="QUANTITY">400 μl</NUMEX> in molecular biology grade
+            <ENAMEX TYPE="ORGANIZATION">water</ENAMEX> prior to <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX>. For each gene, <NUMEX TYPE="QUANTITY">5 μl</NUMEX> of cDNA was
+            incorporated into a <NUMEX TYPE="QUANTITY">25 μl</NUMEX> PCR mixture containing <NUMEX TYPE="CARDINAL">8.8</NUMEX> mM
+            TrisHCL, <NUMEX TYPE="CARDINAL">44</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">KCl</ENAMEX>, <NUMEX TYPE="CARDINAL">1.3</NUMEX> mM MgCl 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> , <NUMEX TYPE="PERCENT">0.00088 %</NUMEX> gelatin, <NUMEX TYPE="CARDINAL">0.284</NUMEX> mM each
+            deoxynucleoside triphosphate, <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="ORGANIZATION">U of Taq</ENAMEX> DNA polymerase
+            (<ENAMEX TYPE="ORGANIZATION">Applied Biosystems, Foster City</ENAMEX>, CA) and <NUMEX TYPE="QUANTITY">1.78 μM</NUMEX> of
+            each primer. After an initial denaturation of <ENAMEX TYPE="SUBSTANCE">94°C</ENAMEX> for
+            <TIMEX TYPE="TIME">5 min</TIMEX>, cycles consisted of <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="ORGANIZATION">sec</ENAMEX> <ENAMEX TYPE="PER_DESC">denaturation</ENAMEX> at <TIMEX TYPE="DATE">94°C</TIMEX>,
+            <TIMEX TYPE="TIME">30 sec</TIMEX> of primer annealing at a gene specific annealing
+            temperature and <NUMEX TYPE="QUANTITY">60 sec</NUMEX> of primer extension at <TIMEX TYPE="DATE">72°C</TIMEX>,
+            followed by a final elongation step of <ENAMEX TYPE="SUBSTANCE">72°C</ENAMEX> for <NUMEX TYPE="CARDINAL">5</NUMEX> min.
+            <ENAMEX TYPE="CONTACT_INFO">Cycle</ENAMEX> numbers were chosen such that amplification was
+            in the linear range of detection. <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products (<NUMEX TYPE="QUANTITY">20 μl</NUMEX>)
+            were electrophoresed on ethidium bromide-stained <NUMEX TYPE="PERCENT">1.2%</NUMEX>
+            agarose gels, revealed by <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> illumination and analyzed
+            <ENAMEX TYPE="ORGANIZATION">densitometrically</ENAMEX>. Gene specific primer sequences,
+            cycle times and annealing temperatures are outlined in
+            <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. For each transcript, raw densitometry data was
+            subjected to paired t-testing (<NUMEX TYPE="CARDINAL">two</NUMEX>-sided, <ENAMEX TYPE="PER_DESC">df</ENAMEX> = <NUMEX TYPE="CARDINAL">7</NUMEX>) to
+            determine whether differences in expression existed in
+            <ENAMEX TYPE="ORGANIZATION">mefloquine</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">DMSO-</ENAMEX>treated cultures ( 
+            P <NUMEX TYPE="MONEY">< 0.05</NUMEX>).
+          
+          
+            Designation of a list of genes with altered
+            expression
+            The mefloquine data set was used to compare several 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value correction and gene
+            expression filtering methods. The methods were compared
+            in terms of their ability (or <ENAMEX TYPE="DISEASE">failure</ENAMEX>) to detect genes
+            defined as having (truly) altered expression. Genes
+            with altered changes in expression were those with an
+            array 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> < <NUMEX TYPE="CARDINAL">0.003</NUMEX>. This threshold was
+            selected because of the good correlation of microarray
+            and RT-PCR 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values and because it
+            represents the highest unadjusted 
+            <ENAMEX TYPE="ORGANIZATION">P -Value</ENAMEX> for which an associated
+            mefloquine-induced expression change was confirmed by
+            <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX>.
+          
+          
+            Descriptions of different gene expression
+            filtering methods
+            Genes were filtered on the basis of their unadjusted
+            
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values according to several
+            different methods: (i) The normal 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> < <NUMEX TYPE="CARDINAL">0.05</NUMEX> threshold (i.e. 
+            <ENAMEX TYPE="PRODUCT">P < 0.05</ENAMEX> for significance),
+            (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) the modified <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX>'s step-down procedure of
+            <ENAMEX TYPE="ORGANIZATION">Holm</ENAMEX> or (<ENAMEX TYPE="ORGANIZATION">iii</ENAMEX>) the <ENAMEX TYPE="ORGANIZATION">Holm-Bonferroni</ENAMEX> procedure applied in
+            reverse with initial 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values of <NUMEX TYPE="CARDINAL">0.05</NUMEX> or <NUMEX TYPE="CARDINAL">0.01</NUMEX>.
+            Applying the <ENAMEX TYPE="GPE">Holm</ENAMEX> step-down procedure [ <TIMEX TYPE="DATE">13</TIMEX> ] , the 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value threshold for
+            significance for each genes is determined on the basis
+            of its rank according to the following formula: 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">0.05/</NUMEX>(total number of t-tests
+            or genes in array + <NUMEX TYPE="CARDINAL">1</NUMEX> - gene rank). Therefore, the gene
+            ranked 1 (i.e. having the lowest 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value) in an expression set
+            for which <NUMEX TYPE="CARDINAL">695</NUMEX> statistical tests are to be conducted,
+            the threshold 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value is <NUMEX TYPE="CARDINAL">0.05/695</NUMEX>. For the
+            lowest ranked gene (i.e. with the highest 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value) the threshold is
+            <NUMEX TYPE="CARDINAL">0.05/1</NUMEX>. This method was also applied in reverse,
+            <ENAMEX TYPE="ORGANIZATION">utilizing</ENAMEX> starting 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values of <NUMEX TYPE="MONEY">0.05 and 0.01</NUMEX>,
+            according to the following formula: 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = (<NUMEX TYPE="MONEY">0.05</NUMEX> or <NUMEX TYPE="MONEY">0.01</NUMEX>)/gene rank.
+            This approach is hereafter referred to as the reverse
+            Holm procedure. For comparison, the expression data
+            were also filtered using an ad hoc fold-change method.
+            For the fold-change method, the expression ratios were
+            calculated for each gene and a <NUMEX TYPE="CARDINAL">two</NUMEX>-fold change was used
+            as the criterion for significance.
+          
+          
+            Power analysis using mefloquine data set
+            In general, when using statistical tests (in this
+            case a paired t-test), the required sample size to
+            detect a particular change (e.g. treatment versus
+            <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>) depends on the magnitude of the difference,
+            variability of the data, the required statistical power
+            and the acceptable type 1 error. The mefloquine data
+            set was used to assess the power and implications of
+            sample size in terms of the minimum detectable average
+            fold-change in expression of the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> defined as
+            being truly upregulated by the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>. First, a publicly
+            available power/sample size calculator ( [ <TIMEX TYPE="DATE">17</TIMEX> ] ,
+            available at <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">mc</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">vanderbilt</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/prevmed/ps</ENAMEX>)
+            was used to determine the power of the paired test
+            (<NUMEX TYPE="CARDINAL">two</NUMEX>-sided, <ENAMEX TYPE="PER_DESC">df</ENAMEX> = <NUMEX TYPE="CARDINAL">7</NUMEX>). Then, based on this level of power
+            and the same critical values, absolute change in
+            expression was calculated at different sample sizes.
+            The critical values for the calculations were as
+            follows. The detectable difference (δ) was the
+            absolute, average changes in the expression values of
+            the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. The standard deviation (σ) was the
+            square root of the average variance of differences in
+            expression of the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in individual pairs of DMSO
+            and mefloquine-treated cultures. The type 1 error
+            (<NUMEX TYPE="CARDINAL">two</NUMEX>-sided) was set at α = <NUMEX TYPE="CARDINAL">0.003</NUMEX>, which corresponded to
+            the maximum 
+            <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value for which expression
+            changes were confirmed by <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX>. Absolute changes in
+            expression at different sample sizes are presented as
+            minimum detectable fold-changes in expression using the
+            following formula: Minimum detectable fold-change =
+            (average expression value of the <NUMEX TYPE="CARDINAL">six</NUMEX> upregulated genes
+            in control cultures + size of the detectable
+            difference)/average expression value of the <NUMEX TYPE="CARDINAL">six</NUMEX>
+            upregulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in control cultures.
+          
+        
+      
+      
+        Results
+        NG108 and primary embryonic <ENAMEX TYPE="ANIMAL">rat</ENAMEX> neuronal cells were
+        similarly susceptible to mefloquine. The IC 
+        50 s of the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> against <NUMEX TYPE="CARDINAL">NG108</NUMEX> cells and
+        primary neurons were <NUMEX TYPE="QUANTITY">12 and 6.6 �</NUMEX>�M respectively and the
+        overall shapes of the dose response curves were similar
+        (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        The <NUMEX TYPE="CARDINAL">eleven</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with the lowest (array) 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values are presented in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+        The upregulation by mefloquine of transcripts encoding the
+        transcription factors cJun and <ENAMEX TYPE="PERSON">IkappaB</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">IkB</ENAMEX>) and the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>
+        stress <ENAMEX TYPE="SUBSTANCE">protein GADD153</ENAMEX> were confirmed by <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>,
+        Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). All the genes listed in <ENAMEX TYPE="PRODUCT">Table</ENAMEX> 2had 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values for the microarray
+        expression data substantially less than <NUMEX TYPE="CARDINAL">0.05</NUMEX>. However,
+        expression changes were only confirmed for those genes with
+        array 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values <NUMEX TYPE="MONEY">< 0.003</NUMEX>. Also, there was
+        a good correlation between 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values for the microarray and
+        RT-PCR expression data (r = <NUMEX TYPE="CARDINAL">0.97</NUMEX>. 
+        <ENAMEX TYPE="PRODUCT">P < 0.002</ENAMEX>, Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). Therefore,
+        the <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with array 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values < <NUMEX TYPE="CARDINAL">0.003</NUMEX> were considered
+        to have expression truly altered by mefloquine (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+        <NUMEX TYPE="CARDINAL">2</NUMEX>).
+        The fold-change and 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering methods were
+        compared in terms of their ability to detect (not detect)
+        genes differentially modulated by mefloquine (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). The
+        fold-change and 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> < <NUMEX TYPE="CARDINAL">0.05</NUMEX> filtering methods
+        detected all <NUMEX TYPE="CARDINAL">seven</NUMEX> <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes, but also
+        identified many other genes which, given their relatively
+        high unadjusted 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -values, are unlikely to be
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed (i.e. are probably false
+        <ENAMEX TYPE="ORGANIZATION">positives</ENAMEX>). The <ENAMEX TYPE="ORGANIZATION">Holm-Bonferroni</ENAMEX> procedure failed to detect
+        any <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes. Other conservative
+        filtering methods described in the literature [ <TIMEX TYPE="DATE">13</TIMEX> ]
+        performed similarly poorly (e.g. the <ENAMEX TYPE="PERSON">Sidak</ENAMEX> and Hochberg
+        procedures). The reverse <ENAMEX TYPE="ORGANIZATION">Holm</ENAMEX> procedures detected more
+        significant genes than the <ENAMEX TYPE="ORGANIZATION">Holm-Bonferroni</ENAMEX> method and
+        generated fewer false positive results than the 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> < <NUMEX TYPE="CARDINAL">0.05</NUMEX> method. However, the more
+        conservative reverse Holm method (initial 
+        P <NUMEX TYPE="MONEY">< 0.01</NUMEX>) failed to identify <NUMEX TYPE="CARDINAL">two</NUMEX>
+        significant genes.
+        The effect of sample size on the ease of detection of
+        mefloquine-induced transcriptional changes was then
+        examined. The power of a paired t-test capable of detecting
+        the average change in expression of the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        upregulated by mefloquine was found to be <NUMEX TYPE="PERCENT">50%</NUMEX>. The effect
+        of sample size on the minimum fold-change detectable using
+        a test of such power is illustrated in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. The
+        minimum detectable fold-change increased with decreasing
+        sample size. Reduction of total sample size from <NUMEX TYPE="CARDINAL">16 to 12</NUMEX>
+        modestly increased the minimum detectable fold-change from
+        <NUMEX TYPE="CARDINAL">3.0</NUMEX> to <NUMEX TYPE="CARDINAL">3.8</NUMEX>. At a total sample size lower than <TIMEX TYPE="DATE">10</TIMEX>, the
+        minimum detectable fold-change exceeded the maximum change
+        in expression induced by mefloquine.
+      
+      
+        Discussion
+        The detection of differentially expressed genes depends
+        critically on having adequate replication (sample size) and
+        on the selection of appropriate filtering methods (in the
+        case of this study a 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering method). In terms
+        of their ability to detect genes differentially modulated
+        by mefloquine, the different 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering methods can be
+        ranked in terms of their conservativeness as follows:
+        Holm-Bonferroni > reverse <ENAMEX TYPE="PERSON">Holm</ENAMEX> (initial 
+        P <NUMEX TYPE="MONEY">< 0.01</NUMEX>) > reverse Holm
+        (initial 
+        P <NUMEX TYPE="MONEY">< 0.05</NUMEX>) > no correction (i.e.
+        
+        P <NUMEX TYPE="MONEY">< 0.05</NUMEX>). These results are not
+        surprising if one considers the distribution of observed
+        (unadjusted) microarray 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> values and that expected (uniform
+        if independent tests) under the complete null hypothesis
+        that all genes are unaltered (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Application of the
+        <ENAMEX TYPE="ORGANIZATION">reverse Holm</ENAMEX> procedures generates relatively few false
+        positive results compared to no 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value correction, but detects
+        genes more efficiently than if the <ENAMEX TYPE="GPE">Holm</ENAMEX>-Bonferroni
+        procedure is applied.
+        This, of course, begs the question as to whether it is
+        appropriate to now conclude that the reverse Holm procedure
+        is the most appropriate 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering method. The
+        answer, of course, depends on the goal of the proposed
+        study. If, for example, one wished to be certain that a
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> is differentially expressed, or does not wish to
+        resort to laborious conventional techniques to confirm
+        expression changes, the only appropriate filtering method
+        is the <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> (or other related) procedure, as the
+        chance of generating false positive results using such
+        methods is negligible. However, if one wishes to identify
+        all <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes, and possesses the
+        resources necessary to confirm all expression changes using
+        traditional approaches, the 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> < <NUMEX TYPE="CARDINAL">0.05</NUMEX> threshold (or a
+        fold-change method) might be the most appropriate. However
+        for many studies that do not fall at either of these
+        <ENAMEX TYPE="PERSON">extremes</ENAMEX>, application of a reverse Holm procedure might be
+        the most appropriate choice.
+        The choice of an appropriate sample size is also
+        critical if (true) differentially expressed genes are to
+        have a high probability of being detected. A power analysis
+        was conducted to determine whether the transcriptional
+        changes induced by mefloquine might have been detectable
+        using lower sample sizes. There was a modest increase in
+        the minimum detectable fold-change of an average gene when
+        the sample size was reduced to twelve from <TIMEX TYPE="DATE">sixteen</TIMEX>. In
+        theory, then, a modest reduction in sample size may still
+        have allowed many significant genes to be detected. However
+        at sample sizes below <NUMEX TYPE="CARDINAL">ten</NUMEX>, the minimum detectable
+        fold-change exceeded the maximum transcriptional modulation
+        of any gene by mefloquine, implying that such changes would
+        be extremely difficult if not impossible to detect. These
+        observations may be directly relevant for planning future
+        studies in which transcriptional changes of similar
+        magnitude, and data-sets with similar variance
+        <ENAMEX TYPE="PERSON">characteristics</ENAMEX>, are expected. However, such a power
+        analysis might be considered conservative for studies in
+        which larger magnitude fold-changes are expected.
+        Appropriate experimental design is also necessary to
+        ensure that any changes in gene expression observed are
+        relevant to the problem being investigated. The choice of
+        cell system, toxicant concentration and exposure time must
+        all be carefully considered. In the present study, an
+        <ENAMEX TYPE="PERSON">immortal</ENAMEX> (<NUMEX TYPE="MONEY">NG108</NUMEX>) cell line was selected as these <ENAMEX TYPE="FAC_DESC">cells</ENAMEX> are
+        easier to maintain 
+        in vitro and large amounts of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> can
+        be routinely isolated. Cell lines do not always respond in
+        the same manner that untransformed cells would in an 
+        in vivo context; therefore their use
+        in experimental <ENAMEX TYPE="PRODUCT_DESC">model systems</ENAMEX> may not always be
+        appropriate. However, this does not appear to be the case
+        for mefloquine, since <TIMEX TYPE="DATE">NG108</TIMEX> cells and primary embryonic rat
+        <ENAMEX TYPE="ORGANIZATION">neurons</ENAMEX> appear similarly susceptible to the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> (Figure
+        <NUMEX TYPE="CARDINAL">1</NUMEX>). The mefloquine concentration (<NUMEX TYPE="QUANTITY">10 μM</NUMEX>) was selected on
+        the basis of its physiological relevance [ <NUMEX TYPE="CARDINAL">18 19 20</NUMEX> ] and
+        ability to elicit a measurable physiological response
+        without inducing maximum cell death (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). A short
+        exposure time (<ENAMEX TYPE="CONTACT_INFO">2 h</ENAMEX>) was selected for <NUMEX TYPE="CARDINAL">two</NUMEX> reasons. Firstly,
+        shorter toxicant exposure time ensured that any changes
+        observed in specific mRNA transcript levels were due to the
+        direct cellular effects of mefloquine, rather than
+        secondary effects caused by changing culture conditions
+        (since <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>-treated NG108 cells divide less rapidly than
+        DMSO-treated cells). <NUMEX TYPE="ORDINAL">Secondly</NUMEX>, a short 
+        in vitro exposure time is appropriate
+        since the adverse neurological effects of mefloquine 
+        in vivo occur within <TIMEX TYPE="TIME">24-48 hours</TIMEX> of
+        the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">1</NUMEX>-2 doses administered [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ] .
+        Mefloquine induced changes in the expression of three
+        genes, <TIMEX TYPE="DATE">GADD153</TIMEX>, <ENAMEX TYPE="ORGANIZATION">IkB</ENAMEX> and cJun. <ENAMEX TYPE="ORGANIZATION">CJun</ENAMEX> is a transcription
+        factor upregulated in response to many forms of
+        neurological injury [ <TIMEX TYPE="DATE">23</TIMEX> ] , thus its modulation by
+        mefloquine under conditions of cellular stress is
+        <ENAMEX TYPE="PERSON">unsurprising</ENAMEX> and does not imply a specific mechanism of
+        action. However, this is not the case for <TIMEX TYPE="DATE">GADD153</TIMEX> and <ENAMEX TYPE="ORGANIZATION">IkB</ENAMEX>.
+        Two highly conserved responses are observed under
+        conditions of endoplasmic reticulum (<ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>) stress; the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>
+        <ENAMEX TYPE="PERSON">overload</ENAMEX> and unfolded <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> responses [ <NUMEX TYPE="CARDINAL">24 25</NUMEX> ] . The
+        unfolded protein response is characterized by generalized
+        suppression of <ENAMEX TYPE="SUBSTANCE">protein synthesis</ENAMEX> and the specific induction
+        of <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>-resident <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and <ENAMEX TYPE="PRODUCT">GADD153</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] . The
+        transcription factor nuclear factor kB is activated during
+        the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> overload response, leading to the downstream
+        induction of pro-inflammatory <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] . Therefore,
+        the transcriptional modulation of <ENAMEX TYPE="SUBSTANCE">GADD153</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">IkB</ENAMEX> by
+        <ENAMEX TYPE="PERSON">mefloquine</ENAMEX> suggests that the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> might be a target of the
+        <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>.
+        In neurons, <ENAMEX TYPE="PRODUCT">GADD153</ENAMEX> is selectively upregulated under
+        conditions of endoplasmic reticulum (<ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX>) stress arising
+        from depletion of calcium <ENAMEX TYPE="ORG_DESC">stores</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX> ] . Here, the
+        upregulation of <ENAMEX TYPE="SUBSTANCE">GADD153</ENAMEX> was observed after mefloquine
+        treatment in <NUMEX TYPE="CARDINAL">NG108</NUMEX> cells (<NUMEX TYPE="QUANTITY">10 �</NUMEX>�M for <TIMEX TYPE="TIME">2 h</TIMEX>). In preliminary
+        experiments utilizing primary <ENAMEX TYPE="ANIMAL">rat neurons</ENAMEX>, we have also
+        observed an upregulation of <TIMEX TYPE="DATE">GADD153</TIMEX> after mefloquine
+        treatment (unpublished data). <ENAMEX TYPE="ORGANIZATION">Mefloquine</ENAMEX> has been found to
+        alter calcium flux, into and out of, isolated skeletal
+        muscle and brain microsomes, via an inhibitory effect of
+        the <ENAMEX TYPE="FAC_DESC">compound</ENAMEX> on the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> calcium pump and calcium release
+        <ENAMEX TYPE="PERSON">channels</ENAMEX> (IC 
+        <NUMEX TYPE="CARDINAL">50</NUMEX> of <NUMEX TYPE="CARDINAL">42-43</NUMEX> uM, [ <NUMEX TYPE="CARDINAL">27 28</NUMEX> ] ). Plasma
+        mefloquine concentrations (therapeutic dosing) may reach <NUMEX TYPE="CARDINAL">21</NUMEX>
+        <ENAMEX TYPE="ORGANIZATION">μM</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] and the drug crosses the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-brain barrier,
+        accumulating to concentrations in excess of <NUMEX TYPE="CARDINAL">50</NUMEX> and <NUMEX TYPE="QUANTITY">90 μM</NUMEX> in
+        the brains of <ENAMEX TYPE="PER_DESC">humans</ENAMEX> and <ENAMEX TYPE="ANIMAL">rats</ENAMEX> respectively [ <NUMEX TYPE="CARDINAL">19 20</NUMEX> ] .
+        Therefore, these biochemical effects occur at
+        concentrations within a relevant physiological range.
+        Collectively, these observations suggest that mefloquine
+        disrupts neuronal function through a combination of
+        disrupted calcium homeostasis and <ENAMEX TYPE="DISEASE">ER stress</ENAMEX>. This
+        <ENAMEX TYPE="ORGANIZATION">hypothesis</ENAMEX> is currently under investigation in this
+        laboratory.
+      
+      
+        Conclusions
+        Adequate sample sizes and appropriate selection of 
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> -value filtering methods are
+        essential for the efficient and effective detection of
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes. Mefloquine induced changes
+        in the expression of genes encoding cJun, <ENAMEX TYPE="WORK_OF_ART">IkB and the ER</ENAMEX>
+        stress response protein <ENAMEX TYPE="SUBSTANCE">GADD153</ENAMEX>. The upregulation of
+        GADD153 by mefloquine suggests that the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> might affect
+        the function of the <ENAMEX TYPE="WORK_OF_ART">ER</ENAMEX> in neurons, perhaps by disruption of
+        calcium homeostasis.
+      
+      
+        Competing interests
+        None declared.
+      
+    
+  

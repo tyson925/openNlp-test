@@ -1,0 +1,1206 @@
+
+  
+    
+      
+        Background
+        Microarrays are used to measure the (relative)
+        expression levels of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (or expressed
+        sequence tags). A comparison of gene expression in cells or
+        tissues from <NUMEX TYPE="CARDINAL">two</NUMEX> conditions may provide useful information
+        on important biological processes or functions [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. The
+        challenge now is how to detect those genuine changes from
+        noisy data. It is now known that simply using fold changes,
+        as in the <TIMEX TYPE="DATE">earlier days</TIMEX>, is unreliable and inefficient [ <ENAMEX TYPE="CONTACT_INFO">3,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">4</NUMEX>]. More sophisticated statistical methods are called for.
+        Many proposals have appeared in the literature [ <ENAMEX TYPE="CONTACT_INFO">3, 4, 5,</ENAMEX>
+        <ENAMEX TYPE="LAW">6, 7, 8, 9, 10</ENAMEX>]. In particular, it has been noticed that it
+        may be necessary to design an experiment that uses multiple
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX> (or multiple spots on each array) containing
+        multiple measurements for each gene under each condition.
+        <NUMEX TYPE="CARDINAL">One</NUMEX> reason is that because of a high noise-to-signal ratio,
+        a single array may not provide enough information that can
+        be reliably extracted [ <TIMEX TYPE="DATE">11</TIMEX>]. More important, multiple
+        measurements from each gene make it possible to assess the
+        potentially different variability of genes. The problem
+        then seems to fall within the traditional <NUMEX TYPE="CARDINAL">two</NUMEX>-sample
+        comparison in statistics. <NUMEX TYPE="CARDINAL">Two</NUMEX> of the best known <NUMEX TYPE="CARDINAL">two</NUMEX>-sample
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> tests are the <NUMEX TYPE="CARDINAL">two</NUMEX>-sample 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test and the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test (or
+        equivalently, <ENAMEX TYPE="PERSON">Mann-Whitney</ENAMEX> test). The 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test is parametric and is based on
+        the assumption that the gene-expression levels have normal
+        distributions. In contrast, the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test is
+        <ENAMEX TYPE="ORGANIZATION">nonparametric</ENAMEX> and is based on the ranks of observed
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression levels. Although the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test is robust to departures from
+        <ENAMEX TYPE="ORGANIZATION">normality</ENAMEX> and the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test does not depend on the
+        normality assumption, the problem is that under non-normal
+        situations the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test may be too conservative, and
+        hence, as with the <ENAMEX TYPE="PRODUCT">Wilcoxon</ENAMEX> test, may have too low power,
+        especially when the sample size is small, which is the case
+        for most microarray experiments. These points have been
+        verified in <NUMEX TYPE="CARDINAL">two</NUMEX> case studies using real data [ <ENAMEX TYPE="LAW">8, 12</ENAMEX>]. In a
+        class of nonparametric approaches [ <ENAMEX TYPE="LAW">5, 9, 10</ENAMEX>], a version of
+        the <NUMEX TYPE="CARDINAL">two</NUMEX>-sample 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic is used but its null
+        distribution is estimated nonparametrically, rather than
+        directly assumed to be a 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -distribution. In addition, some
+        earlier studies have suggested that the variability of gene
+        expression may be related to the mean expression [ <ENAMEX TYPE="CONTACT_INFO">3, 4,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">6</NUMEX>]. Therefore, it implies that the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic being used should be
+        based on unequal variances for the two samples.
+        An important and natural question often asked by
+        <ENAMEX TYPE="PERSON">biologists</ENAMEX> is how many <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> are required. For
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments, unlike many other experimental
+        contexts, this issue has rarely been discussed in the
+        literature. To our knowledge, the only exception is the
+        work by <ENAMEX TYPE="ORGANIZATION">Black</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Doerge</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>], which, however, is for the
+        situation where parametric statistical methods are applied
+        to detect expression changes. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, we discuss the
+        problem when a nonparametric method, the normal mixture
+        model approach [ <TIMEX TYPE="DATE">10</TIMEX>], is used to detect differential
+        expression. But to facilitate calculations of sample size,
+        the formulation is slightly changed from their original
+        <NUMEX TYPE="CARDINAL">one</NUMEX>. Nonparametric methods of microarray data analysis have
+        been pioneered by <ENAMEX TYPE="ORGANIZATION">Efron</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Tibshirani</ENAMEX> and <ENAMEX TYPE="PER_DESC">co-workers</ENAMEX> [ <ENAMEX TYPE="CONTACT_INFO">5,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">9</NUMEX>]. They take advantage of the presence of replicates and
+        thus can impose much weaker modeling assumptions. For
+        instance, the parametric methods of <ENAMEX TYPE="ORGANIZATION">Black</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Doerge</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]
+        depend on the assumption on the log-normal or <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX>
+        distribution of gene-expression levels, whereas the mixture
+        model approach does not have such a distributional
+        assumption and directly estimates distributions related to
+        <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> errors. Note that modeling the distribution of
+        <ENAMEX TYPE="ORGANIZATION">random</ENAMEX> errors has advantages over direct modeling of
+        expression levels, and is a common practice in applied
+        statistics. For example, gene-expression levels may be
+        <ENAMEX TYPE="ORGANIZATION">correlated</ENAMEX> (for example, as a result of coexpression of
+        some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) whereas random errors can be more reasonably
+        assumed to be independent. This is similar to modeling
+        longitudinal data using a linear mixed-effects model [ <TIMEX TYPE="DATE">14</TIMEX>]:
+        the responses from each subject (corresponding to a group
+        of <ENAMEX TYPE="SUBSTANCE">coregulated genes</ENAMEX> here) are in general correlated, but
+        the measurement errors from the same subject can be
+        considered to be independent after incorporating a
+        <ENAMEX TYPE="ORGANIZATION">random</ENAMEX>-subject effect in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. Note that the random
+        effect will be canceled out from the 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -statistic for each gene. Our
+        proposal here also shows an attractive feature of the
+        mixture model approach, as compared to <NUMEX TYPE="CARDINAL">the other two</NUMEX>
+        <ENAMEX TYPE="PER_DESC">nonparametric</ENAMEX> approaches [ <ENAMEX TYPE="LAW">5, 9</ENAMEX>], because it is still
+        unclear how the sample size/power calculation can be done
+        in the other <NUMEX TYPE="CARDINAL">two</NUMEX> approaches.
+        The problem of calculating the number of replicates
+        required in a microarray experiment is similar to that of
+        sample size/power calculations in clinical trials and other
+        experiment designs; the (to-be-determined) sample size in
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments refers to the number of replicates,
+        whereas the number of genes is not an issue here. As usual,
+        we assume that the replicates are (<NUMEX TYPE="MONEY">approximately</NUMEX>)
+        independent with each other, whether they are drawn from
+        the same <ENAMEX TYPE="PER_DESC">individual</ENAMEX> or multiple <ENAMEX TYPE="PER_DESC">individuals</ENAMEX>. In general,
+        the required sample size depends on several factors: the
+        true magnitude of the change of gene expression (say, 
+        d ), the desired statistical power
+        (that is, probability) ( ) to detect the change, and the
+        specified Type I error rate ( ). The problem of how to
+        calculate the number of replicates for any given triplet ( 
+        d , <ENAMEX TYPE="GPE">,</ENAMEX> ) is equivalent to that of how
+        the power depends on the <ENAMEX TYPE="PER_DESC">pair</ENAMEX> ( 
+        d , ) and the number of replicates,
+        which we consider in the paper.
+        The proposed method is not restricted to any specific
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> technology. From now on, the expression level
+        can refer to a summary measure of relative
+        red-to-green-channel intensities in a fluorescence-labeled
+        cDNA array, a radioactive intensity of a radiolabeled cDNA
+        array (as used in the example <TIMEX TYPE="DATE">later</TIMEX>), or a summary
+        difference of the perfect match (PM) and mismatch (MM)
+        scores from an oligonucleotide array. The gene-expression
+        levels may have been suitably preprocessed, including
+        dimension reduction, data normalization and data
+        transformation [ <TIMEX TYPE="DATE">5, 15, 16, 17, 18</TIMEX>].
+      
+      
+        Results and discussion
+        
+          A statistical model
+          We consider a generic situation that, for each gene 
+          i, I = <NUMEX TYPE="CARDINAL">1,2,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>, we have (relative) expression
+          levels 
+          X 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          i  ,..., 
+          X 
+          
+            mi 
+           from 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> microarrays under condition <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX>
+          and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          i  ,..., 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            mi 
+           from 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> arrays under condition <NUMEX TYPE="CARDINAL">2</NUMEX>. We need
+          to assume that 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> is an even integer. A general
+          <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is assumed for gene expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>:
+          
+          X 
+          
+            ji 
+           = 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  + 
+          
+            ji 
+           , <ENAMEX TYPE="CONTACT_INFO">   </ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="PERSON">li</ENAMEX> 
+           = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  + 
+          e 
+          
+            <ENAMEX TYPE="PERSON">li</ENAMEX> 
+           ,
+          where 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  and 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  are the mean expression
+          levels for gene 
+          i under the <NUMEX TYPE="CARDINAL">two</NUMEX> conditions
+          respectively, and 
+          
+            ji 
+           and 
+          e 
+          
+            <ENAMEX TYPE="PERSON">li</ENAMEX> 
+           are independent random errors with means and
+          variances
+          
+          for any 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> and 
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> . It is assumed that random
+          errors 
+          
+            ji 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  and are randomly taken
+          respectively from one of <NUMEX TYPE="CARDINAL">two</NUMEX> (not necessarily equal)
+          distributions that are symmetric about their mean <NUMEX TYPE="CARDINAL">0</NUMEX>. Note
+          that the above assumption on the distributions of random
+          errors, not on that of gene expression levels (that is, 
+          X 
+          
+            ji 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="PERSON">li</ENAMEX> 
+           ), is often reasonable, and similar assumptions are
+          common in other statistical applications. In addition, we
+          do not assume that the expression levels of all the genes
+          have an equal variance, because some previous studies [
+          <ENAMEX TYPE="LAW">3, 4, 6</ENAMEX>] have found that the variance <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          ( 
+          c ), 
+          i  (for 
+          c = <NUMEX TYPE="CARDINAL">1,2</NUMEX>) of gene-expression levels
+          may depend on the mean expression 
+          ( 
+          c ), 
+          i  . Also, we do not even need
+          to assume that <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  unless 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  .
+          A goal is to detect all genes with 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  ≠ 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  . This can be accomplished
+          through statistical hypothesis testing.
+        
+        
+          A test statistic
+          To test the null hypothesis 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <TIMEX TYPE="TIME">0 :</TIMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  , we use a 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -type test statistic or score
+          
+          Note that the mean and variance of 
+          Z 
+          
+            i 
+           are
+          
+          whereas the mean 
+          E ( 
+          Z 
+          
+            i 
+           ) = <NUMEX TYPE="CARDINAL">0</NUMEX> under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . Hence, it can be seen that a large
+          absolute value of 
+          Z 
+          
+            i 
+           , | 
+          Z 
+          
+            i 
+           <ENAMEX TYPE="PERSON">|</ENAMEX>, gives evidence against 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . As the number of arrays (that is, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> ) increases, the variance of the
+          test statistic 
+          Z 
+          
+            i 
+           decreases. Hence, it is possible to reject 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> (that is, detect differential
+          expression for gene 
+          i ) with any 
+          E ( 
+          Z 
+          
+            i 
+           ) �<NUMEX TYPE="MONEY">� 0</NUMEX> if 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> is large enough. In other words,
+          if the <ENAMEX TYPE="DISEASE">Type</ENAMEX> I error rate and other parameters are fixed,
+          then the statistical power of the test will increase as 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> increases. This is the key point
+          that motivates the discussion on sample size
+          calculations.
+          To determine the cut-off point for | 
+          Z 
+          
+            i 
+           | to reject 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , we need to know or estimate the
+          distribution of 
+          Z 
+          
+            i 
+           under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , the null distribution 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . In a parametric approach, based on
+          some full distributional assumptions for 
+          X 
+          
+            ji 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            ji 
+           , <NUMEX TYPE="CARDINAL">one</NUMEX> may derive the null distribution 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , such as in a <NUMEX TYPE="CARDINAL">two</NUMEX>-sample 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test. However, the validity of
+          such a parametric method critically depends on the
+          correctness of assumed distributions, which of course is
+          not guaranteed. Here, we consider a nonparametric
+          approach: a finite normal mixture <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is used to
+          estimate 
+          f 
+          <TIMEX TYPE="TIME">0 nonparametrically.</TIMEX>
+        
+        
+          Estimating the null distribution
+          There may be various ways to estimate the null
+          distribution 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . For instance, using expression
+          levels of some housekeeping genes that are known to have
+          non-differential expression, one can construct their 
+          Z 
+          
+            i 
+           scores and then estimate 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> using the obtained 
+          Z 
+          
+            i 
+           scores. In practice, however, there may be only a
+          small number of or no housekeeping genes in a given
+          experiment. Here, following the basic idea in a class of
+          nonparametric methods [ <ENAMEX TYPE="LAW">5, 9, 10</ENAMEX>], we construct a null
+          score 
+          z 
+          
+            i 
+           for each gene and then use these null scores to
+          estimate 
+          f 
+          <TIMEX TYPE="TIME">0 nonparametrically.</TIMEX> The null score is
+          constructed from the same observed gene expression data
+          as used in 
+          Z 
+          
+            i 
+           :
+          
+          Under the assumption that 
+          
+            ji 
+           and 
+          e 
+          
+            ji 
+           have symmetric distributions, then 
+          
+            ji 
+           and - 
+          
+            ji 
+           have the same distribution, and 
+          e 
+          
+            ji 
+           and - 
+          e 
+          
+            ji 
+           have the same distribution. Thus, by comparing the
+          form of 
+          z 
+          
+            i 
+           with that of 
+          Z 
+          
+            i 
+           , we know that the distribution of 
+          z 
+          
+            i 
+           is exactly 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , the null distribution for 
+          Z 
+          
+            i 
+           (under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ). Note that under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">0 ,</ENAMEX> 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  , and hence 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          I  (since we assume that 
+          ( 
+          c ), 
+          i  only depends on 
+          ( 
+          c ), 
+          i  ), then
+          
+          Thus 
+          z 
+          
+            i 
+           and 
+          Z 
+          
+            i 
+           have the same distribution 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . We use all 
+          z 
+          
+            i 
+           values across all genes to estimate 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> .
+          In practice, 
+          ( 
+          c ), 
+          i  (for 
+          c = <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>) are unknown, and can be
+          estimated using the sample standard deviations (SDs) 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          ( 
+          c ), 
+          i  . Although the sample SD 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          ( 
+          c ), 
+          i  is asymptotically unbiased,
+          if 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> are small, 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          ( 
+          c ), 
+          i  may not be stable, and some
+          modifications may be necessary. In any case, substituting
+          
+          ( 
+          c ), 
+          i  by any suitable estimates,
+          we can calculate the scores 
+          z 
+          
+            i 
+           values and 
+          Z 
+          
+            i 
+           values, on the basis of which we can estimate 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and 
+          f respectively. By comparing 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and 
+          f , we can gain insight about genes
+          with altered expression (that is, 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  ≠ 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  ).
+          We assume that all the 
+          z 
+          
+            i 
+           values for 
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> are a random sample from 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ; thus we can use the observed 
+          z 
+          
+            i 
+           values to estimate 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . <ENAMEX TYPE="ORGANIZATION">Pan</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] proposed estimating 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> using a finite normal mixture model
+          [ <TIMEX TYPE="DATE">19</TIMEX>]. Specifically, it is assumed that
+          
+          where ( 
+          z ; 
+          a 
+          
+            r 
+           , 
+          V 
+          
+            r 
+           ) denotes the density function of a normal
+          distribution 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( 
+          a 
+          
+            r 
+           , 
+          V 
+          
+            r 
+           ) with mean 
+          a 
+          
+            r 
+           and variance 
+          V 
+          
+            r 
+           , and 
+          
+            r 
+           values are mixing proportions. Ω 
+          
+          <ENAMEX TYPE="ORGANIZATION">g 0</ENAMEX> represents all unknown
+          parameters { 
+          
+            r 
+           , 
+          a 
+          
+            r 
+           , 
+          V 
+          
+            r 
+           ) : 
+          r = <NUMEX TYPE="CARDINAL">1,..</NUMEX>. 
+          g 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> } in a 
+          g 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> -component mixture model. Among
+          others, a normal mixture is essentially nonparametric and
+          flexible, and easy to use with stable tail
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX>.
+          A mixture <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be fitted by maximum likelihood
+          using the expectation-maximization (EM) algorithm [ <TIMEX TYPE="DATE">19</TIMEX>,
+          <TIMEX TYPE="DATE">20, 21</TIMEX>]. The number of <ENAMEX TYPE="ORG_DESC">components</ENAMEX> can be selected
+          <ENAMEX TYPE="ORGANIZATION">adaptively</ENAMEX> using the <ENAMEX TYPE="ORGANIZATION">Akaike Information Criterion</ENAMEX> (AIC) [
+          <NUMEX TYPE="CARDINAL">22</NUMEX>] or the <ENAMEX TYPE="ORGANIZATION">Bayesian Information Criterion</ENAMEX> (BIC) [ <TIMEX TYPE="DATE">23</TIMEX>]. In
+          using the <ENAMEX TYPE="ORGANIZATION">AIC</ENAMEX> or BIC, <NUMEX TYPE="CARDINAL">one</NUMEX> <NUMEX TYPE="ORDINAL">first</NUMEX> fits a series of models
+          with various values of 
+          g 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , then picks up the 
+          g 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> corresponding to the first local
+          minimum of <ENAMEX TYPE="ORGANIZATION">AIC</ENAMEX> or BIC [ <TIMEX TYPE="DATE">24</TIMEX>]. Some empirical studies seem
+          to favor the use of <ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>].
+        
+        
+          Determining the cut-off point
+          Once we obtain an estimate of the null distribution 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , we can determine the cut-off point
+          of the rejection region for testing 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . In general, as for a <NUMEX TYPE="CARDINAL">two</NUMEX>-sample
+          test, the rejection region can be selected in the tails
+          of 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> because, under the null hypothesis, 
+          Z 
+          
+            i 
+           should be close to the center of 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , whereas if there is differential
+          expression for gene 
+          i , 
+          Z 
+          
+            i 
+           is likely to be in one of the two tails of 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . The specific choice may depend on
+          the goal of the analysis. For example, if we are only
+          interested in detecting upregulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, we can choose
+          the rejection region at the right-tail of 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> . Our proposed method works for any
+          specified way of determining the rejection region. As 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> should be symmetric about its mean
+          <NUMEX TYPE="CARDINAL">0</NUMEX>, and often we are interested in both up- and
+          downregulated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, we propose to take the rejection
+          region at the two tails of 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , { 
+          z : 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ( 
+          z ) < 
+          C }, where the constant 
+          C <NUMEX TYPE="MONEY">> 0</NUMEX> is the cut-off point and
+          depends on the specified (gene-specific) Type I error
+          rate . As usual, 
+          C <NUMEX TYPE="MONEY">> 0</NUMEX> is chosen such that the
+          rejection rate under 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is exactly :
+          
+          where (.; 
+          a , 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ) is the corresponding cumulative
+          distribution function for (.; 
+          a , 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ). Using a numerical algorithm,
+          such as the bisection method [ <TIMEX TYPE="DATE">25</TIMEX>], we can solve the
+          above equation to obtain 
+          C for any given .
+          For microarray data, because we are testing 
+          <ENAMEX TYPE="ORGANIZATION">H</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> for each gene, the multiple test
+          problem arises and some control on it is necessary.
+          Usually we can use <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX>'s method. For instance, if
+          we want to maintain the genome-wide Type I error rate at
+          the usual <NUMEX TYPE="PERCENT">5%</NUMEX> level, then the <ENAMEX TYPE="GPE">Bonferroni</ENAMEX>-adjusted
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-specific (that is, test-specific) Type I error rate
+          is = <NUMEX TYPE="CARDINAL">0.05/</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> , where 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the total number of genes to
+          be tested.
+          Once 
+          C is determined, we can calculate
+          the <ENAMEX TYPE="GPE_DESC">power</ENAMEX> as a function of 
+          d , the magnitude of the expression
+          change targeted to be detected. Note that
+          
+          is the difference of the coefficients of variation
+          under the <NUMEX TYPE="CARDINAL">two</NUMEX> conditions. If 
+          (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          i  = 
+          (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>), 
+          i  , 
+          d can be interpreted as the change
+          of the mean expression levels from condition <NUMEX TYPE="CARDINAL">1</NUMEX> to
+          condition <NUMEX TYPE="CARDINAL">2</NUMEX>. Otherwise, it can be regarded as the
+          difference of (variation) standardized mean expression
+          levels. Specifically, we have the power function
+          
+          Unsurprisingly, we can see that ( 
+          d , ) will increase as | 
+          d | increases. The effects of
+          having more replicates will reduce the variability of 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , leading to larger ( 
+          d , ) for any given 
+          d .
+        
+        
+          Calculation of replicate numbers
+          Now we describe how to calculate replicate numbers
+          based on some <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> data taken from earlier studies. We
+          use 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  to explicitly denote the 
+          z 
+          
+            i 
+           scores in (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) with 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> replicates. Based on the data we
+          can estimate the density function 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  ( 
+          z ;Ω 
+          
+          g <NUMEX TYPE="CARDINAL">0</NUMEX> ) of 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  values as a normal
+          mixture
+          
+          From now on, we treat 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  as known in <ENAMEX TYPE="GPE">Equation</ENAMEX>
+          (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>).
+          With estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  , we want to estimate the
+          density function 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          mk  for 
+          z 
+          
+          mk , 
+          i  , the 
+          z 
+          
+            i 
+           scores based on 
+          mk replicates (with 
+          <ENAMEX TYPE="ORGANIZATION">k ></ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX>). If we can have an
+          estimate of 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          mk  , then we can obtain the
+          corresponding power function ( 
+          d , ) for 
+          mk replicates in the same way as
+          described <TIMEX TYPE="DATE">earlier</TIMEX> for <ENAMEX TYPE="SUBSTANCE">m replicates</ENAMEX>. Of course, we assume
+          that our <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> data are drawn from only 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> arrays under each of the two
+          experimental conditions, and thus we do not observe any 
+          z 
+          
+          mk , 
+          i  based on 
+          mk arrays. However, we show next
+          that it is possible to generate 
+          z 
+          
+          mk , 
+          i  values from 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  values. Note that we can
+          draw random realizations of 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  from the estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  (see <ENAMEX TYPE="ORGANIZATION">Pan</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">10</TIMEX>] or the example
+          below). Suppose 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  ( 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> )values (for 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,2,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ) are 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> independent realizations of 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  , then it is easy to show
+          that
+          
+          have the distribution 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  . Thus, the density
+          function for 
+          z 
+          
+          mk , 
+          i  values is
+          
+          For example, if we triple the number of replicates,
+          the resulting density function is
+          
+          The number of components of 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          mk  may be too large. For
+          example, if the number of <ENAMEX TYPE="ORG_DESC">components</ENAMEX> is 
+          g 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> for 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, the corresponding numbers of
+          components for 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">6</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">8</NUMEX> are, respectively, 
+          g 
+          <ENAMEX TYPE="CONTACT_INFO">0 2= 9,</ENAMEX> 
+          g 
+          <NUMEX TYPE="CARDINAL">0 3</NUMEX>= <NUMEX TYPE="CARDINAL">27</NUMEX> and 
+          g 
+          <NUMEX TYPE="CARDINAL">0 4</NUMEX>= <NUMEX TYPE="CARDINAL">81</NUMEX>. In fact, some of these
+          components maybe very similar or have a negligible role,
+          hence the form of 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          mk  , may be simplified. In the
+          extreme situation, as 
+          <ENAMEX TYPE="PERSON">mk → ∞</ENAMEX>, by the <ENAMEX TYPE="ORGANIZATION">Central Limit</ENAMEX>
+          Theorem, the mixture model will reduce to a
+          single-component normal distribution. Hence, we propose a
+          <ENAMEX TYPE="GPE">simulation</ENAMEX>-based method to select a more parsimonious
+          model for 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  .
+          On the basis of the mixture model 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>), we can
+          generate a random sample of 
+          z 
+          
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> , 
+          i  ( 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> )values [ <TIMEX TYPE="DATE">10</TIMEX>], from which we can
+          calculate 
+          z 
+          
+          mk , 
+          i  values using <ENAMEX TYPE="ORGANIZATION">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>).
+          Using 
+          z 
+          
+          mk , 
+          i  values we can fit a normal
+          mixture model for 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  . As we shall show later,
+          we find such a fitted mixture model often contains a
+          smaller number of components than 
+          g 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , as dictated in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>),
+          leading to a simplified form of 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  .
+        
+        
+          Summary of the proposed method
+          In summary, our proposed method of calculating the
+          required replicate number works in the following
+          steps.
+          
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>. Suppose that we have pilot
+          gene expression data 
+          X 
+          
+            ji 
+           and 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            ij 
+           from 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> arrays under each condition. Use
+          formula (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) to calculate the scores 
+          z 
+          
+          i , 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>. Use 
+          z 
+          
+          i , 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  and the normal mixture model
+          (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) to estimate 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>. For a specified Type I
+          error rate , determine the cutoff point 
+          C for the rejection region using
+          formula (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>), in which 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is replaced with the estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">4</NUMEX>. For any specified 
+          d , calculate the power function ( 
+          d , ) using <ENAMEX TYPE="SUBSTANCE">formula</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>), in which 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is replaced with the estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">5</NUMEX>. For any given 
+          <ENAMEX TYPE="ORGANIZATION">k ></ENAMEX> <ENAMEX TYPE="PRODUCT">1</ENAMEX>, use <ENAMEX TYPE="SUBSTANCE">formula</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) or (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) to
+          estimate 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">6</NUMEX>. For a specified Type I
+          error rate , determine the cutoff point 
+          C for the rejection region using
+          formula (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>), in which 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is replaced with the estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">7</NUMEX>. For any specified 
+          d , calculate the power function ( 
+          d , ) using formulae (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>), in which 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is replaced with the estimated 
+          f 
+          <ENAMEX TYPE="CONTACT_INFO">0,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">mk</ENAMEX>  .
+          
+          Step <NUMEX TYPE="CARDINAL">8</NUMEX>. Repeat Steps <NUMEX TYPE="CARDINAL">5 to 7</NUMEX> until
+          all 
+          <ENAMEX TYPE="ORGANIZATION">k ></ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> of interest have been
+          tried.
+          After the power functions for many possible 
+          mk replicates have been obtained,
+          we can determine an appropriate number of replicates by
+          considering all the factors involved, the desired power
+          and <ENAMEX TYPE="DISEASE">Type</ENAMEX> I error rate, the targeted expression changes
+          and other experimental constraints.
+        
+        
+          An example
+          To understand the pathogenesis of otitis media, a
+          study was conducted to identify genes involved in
+          response to pneumococcal middle-ear infection and to
+          study their roles in otitis media. <ENAMEX TYPE="PER_DESC">Radioactively</ENAMEX> labeled
+          <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> were applied to the mRNA analysis of
+          <NUMEX TYPE="CARDINAL">1,176</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in middle-ear mucosa of rats with and without
+          subacute pneumococcal middle-ear infection [ <TIMEX TYPE="DATE">26</TIMEX>]. The
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are available for the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> and for the
+          pneumococcal middle-ear infection <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. A more detailed
+          description of how the data were collected and their
+          public availability was provided in <ENAMEX TYPE="ORGANIZATION">Pan</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">26</TIMEX>]. For the purpose of
+          sample size calculations and to mimic many practical
+          situations with only a small number of replicates, we
+          only use 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> arrays from each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. We
+          <NUMEX TYPE="ORDINAL">first</NUMEX> take a natural <ENAMEX TYPE="SUBSTANCE">logarithm</ENAMEX> transformation for all the
+          observed gene-expression levels (that is, radioactive
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX>) so that the resulting distributions are less
+          <ENAMEX TYPE="PERSON">skewed</ENAMEX> (which will reduce the number of components of a
+          fitted mixture model). Then, for each microarray, we
+          standardize the transformed gene-expression levels by
+          subtracting their median.
+          Because of the small 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, the sample <ENAMEX TYPE="ORGANIZATION">SDs</ENAMEX> may not be
+          stable. <NUMEX TYPE="CARDINAL">One</NUMEX> way is to add a small constant as suggested
+          by Efron 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Here we follow the
+          idea of <ENAMEX TYPE="ORGANIZATION">Lin</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">27</TIMEX>] and use a loess
+          smoother [ <TIMEX TYPE="DATE">28</TIMEX>] to nonparametrically model the sample SDs
+          in terms of the mean expression levels (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Then
+          we plug in the smoothed <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> to calculate 
+          z 
+          <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX> 
+          i  . Note that an alternative
+          use of <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> or its modification in calculating 
+          z 
+          <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX> 
+          i  values will not change the
+          basic idea and the following steps in sample size
+          calculations.
+          We fitted <NUMEX TYPE="CARDINAL">three</NUMEX> mixture models for 
+          f 
+          <NUMEX TYPE="CARDINAL">0,2</NUMEX> with 
+          g 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> ranging from <TIMEX TYPE="DATE">1 to 3</TIMEX>. Table
+          1summarizes <TIMEX TYPE="DATE">the model</TIMEX>-fitting results. 
+          g 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> was selected as both <ENAMEX TYPE="ORGANIZATION">AIC</ENAMEX> and BIC
+          achieve their minima there. So the fitted 
+          f 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is a normal distribution, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (-<NUMEX TYPE="CARDINAL">0.0013</NUMEX>, <NUMEX TYPE="CARDINAL">0.1278</NUMEX>). However, for
+          the purposes of general illustration, we choose 
+          g 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> as the fitted model:
+          
+          f 
+          <NUMEX TYPE="CARDINAL">0,2</NUMEX> ( 
+          z ) = <NUMEX TYPE="CARDINAL">0.76</NUMEX> ( 
+          z ;-<NUMEX TYPE="CARDINAL">0.0415</NUMEX>, <NUMEX TYPE="CARDINAL">1.3117</NUMEX>) + <NUMEX TYPE="CARDINAL">0.24</NUMEX> ( 
+          z ;<NUMEX TYPE="MONEY">0.0700</NUMEX>, <NUMEX TYPE="CARDINAL">2.6970</NUMEX>).
+          Figure <NUMEX TYPE="CARDINAL">2apresents</NUMEX> the histogram of 
+          z 
+          
+            i 
+           values and the fitted 
+          f 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> with 
+          g 
+          <TIMEX TYPE="DATE">0</TIMEX> = <NUMEX TYPE="CARDINAL">1 and 2</NUMEX>. There is not much
+          difference between the <NUMEX TYPE="CARDINAL">two</NUMEX> fitted 
+          f 
+          <NUMEX TYPE="CARDINAL">0,2</NUMEX> , both of which fit the data well.
+          In particular, 
+          f 
+          <NUMEX TYPE="CARDINAL">0,2</NUMEX> does not look like a 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -distribution with small degrees
+          of freedom, as predicted from the 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test.
+          A realization of 
+          z 
+          <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX> 
+          i  can be simulated in the
+          following <NUMEX TYPE="CARDINAL">two</NUMEX> steps. First, we draw a random number 
+          p 
+          
+            i 
+           from {<NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>} with probability <NUMEX TYPE="CARDINAL">0.76</NUMEX> and <NUMEX TYPE="CARDINAL">0.24</NUMEX>
+          respectively. <NUMEX TYPE="ORDINAL">Second</NUMEX>, if the drawn 
+          p 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">= 1,</ENAMEX> 
+          z 
+          
+            i 
+           is randomly drawn from a normal distribution ( 
+          z ; <NUMEX TYPE="PERCENT">-0.0415</NUMEX>, <NUMEX TYPE="CARDINAL">1.3117</NUMEX>); otherwise, it
+          is drawn from ( 
+          z ; <NUMEX TYPE="MONEY">0.0700</NUMEX>, <NUMEX TYPE="CARDINAL">2.6970</NUMEX>). From the
+          generated 
+          z 
+          <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX> 
+          i  values, following expression
+          (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>) we generated <NUMEX TYPE="CARDINAL">three</NUMEX> simulated data sets: 
+          z 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , 
+          i  values, 
+          I = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, <NUMEX TYPE="CARDINAL">1,176</NUMEX> for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>, <NUMEX TYPE="CARDINAL">3 and 4</NUMEX>. Then a normal
+          mixture model was fitted to each data set. From <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>,
+          it can be seen that a single-component normal
+          distribution was selected in each case. In Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, each
+          of the fitted normal distributions, 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (-<NUMEX TYPE="CARDINAL">0.0494</NUMEX>, <NUMEX TYPE="CARDINAL">0.8226</NUMEX>), 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (-<NUMEX TYPE="CARDINAL">0.0644</NUMEX>, <NUMEX TYPE="CARDINAL">0.5383</NUMEX>) and 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> (-<NUMEX TYPE="CARDINAL">0.0438</NUMEX>, <NUMEX TYPE="CARDINAL">0.4206</NUMEX>), is compared
+          with its theoretically derived mixture model in <ENAMEX TYPE="GPE">Equation</ENAMEX>
+          (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>); they are all very close. Here we see that using
+          simulated data to fit a mixture model results in a
+          much-simplified model. For example, for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX>, it is a fitted
+          single-component model versus a <NUMEX TYPE="CARDINAL">2 4</NUMEX>= <NUMEX TYPE="CARDINAL">16</NUMEX>-component model
+          in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>). Note that, as predicted, all the means
+          of the fitted <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are all essentially <NUMEX TYPE="CARDINAL">0</NUMEX>, and their
+          variances decrease as 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> increases.
+          If we want to have <NUMEX TYPE="CARDINAL">only one</NUMEX> expected false-positive
+          result from testing each of <NUMEX TYPE="CARDINAL">1,176</NUMEX> non-differentially
+          expressed genes, the gene-specific (or test-specific)
+          Type I error rate is = <NUMEX TYPE="CARDINAL">1/1176</NUMEX> = <NUMEX TYPE="PERCENT">0.09%</NUMEX>. Using <ENAMEX TYPE="SUBSTANCE">formula</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+          and fitted-mixture model 
+          f 
+          0,2 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  , the cut-off points 
+          C are determined. Then the power
+          functions ( 
+          d , ) are drawn in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>, which
+          may help make a decision on the required number of
+          <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX>. For instance, if we want to detect an
+          expression change 
+          d = <NUMEX TYPE="CARDINAL">3</NUMEX> with probability <NUMEX TYPE="PERCENT">at least 80%</NUMEX>
+          and with = <NUMEX TYPE="PERCENT">0.09%</NUMEX>, then <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="PER_DESC">replicates</ENAMEX> are needed. Also,
+          with <TIMEX TYPE="DATE">just two replicates</TIMEX>, the power to detect a change as
+          high as <ENAMEX TYPE="PRODUCT">4</ENAMEX> is very low, smaller than <NUMEX TYPE="PERCENT">30%</NUMEX>. Note that the
+          choice of 
+          d may depend on some prior
+          knowledge. For instance, based on the pilot data, we can
+          estimate the 
+          d values for some selected genes
+          (with the sample means and sample SDs substituting the
+          true means and <ENAMEX TYPE="ORGANIZATION">SDs</ENAMEX> in the formula for 
+          d ), from which one can determine a
+          range of 
+          d values of interest.
+          Figures <TIMEX TYPE="DATE">4, 5, 6give</TIMEX> the results for testing 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> = <NUMEX TYPE="CARDINAL">1,000</NUMEX>, <NUMEX TYPE="CARDINAL">5,000 and 10,000</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          respectively, while controlling the genome-wide Type I
+          error rate at the usual <NUMEX TYPE="PERCENT">5%</NUMEX> level. It can be seen that as 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> increases, we also need a larger
+          number of arrays to maintain the power of the statistical
+          test when other parameters are fixed. For instance, for 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> = <NUMEX TYPE="CARDINAL">10,000</NUMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>), even eight
+          <ENAMEX TYPE="PERSON">replicates</ENAMEX> cannot detect a change as large as 
+          d = <NUMEX TYPE="CARDINAL">3</NUMEX> with <NUMEX TYPE="PERCENT">80%</NUMEX> power, but <NUMEX TYPE="CARDINAL">six</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX> can detect a change 
+          d = <NUMEX TYPE="CARDINAL">4</NUMEX> with <NUMEX TYPE="PERCENT">80%</NUMEX> power.
+        
+      
+      
+        Conclusions
+        We have described a method for calculating the number of
+        <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments. This method is
+        designed for the situation where the mixture approach is
+        going to be taken to analyze the data. Note that any method
+        for sample size/power calculations has to depend on a
+        specific statistical test to be used in data analysis; this
+        explains why there is a huge literature on the topic for
+        clinical trials. However, because of the close relation
+        between the mixture approach and <NUMEX TYPE="CARDINAL">the other two</NUMEX> recently
+        proposed nonparametric approaches - the empirical Bayes
+        method [ <ENAMEX TYPE="LAW">5</ENAMEX>] and the statistical analysis of microarray
+        (<ENAMEX TYPE="GPE">SAM</ENAMEX>) method [ <ENAMEX TYPE="LAW">9</ENAMEX>] - our proposed method can be also applied
+        to provide some useful guideline for designing microarray
+        experiments even when one of the latter <NUMEX TYPE="CARDINAL">two</NUMEX> approaches (or
+        other approaches) is planned to be used for data analysis
+        in a later stage. For instance, even though the null
+        distribution 
+        f 
+        <ENAMEX TYPE="PRODUCT">0</ENAMEX> is estimated using the null scores 
+        z 
+        
+          i 
+         in our proposal, there maybe alternative ways of
+        estimating 
+        f 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> , such as using an alternative
+        nonparametric method (for example, kernel or local
+        likelihood), rather than the finite normal mixture model,
+        to estimate 
+        f 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> or using the test statistics, 
+        Z 
+        
+          i 
+         , of a large number of <ENAMEX TYPE="SUBSTANCE">housekeeping genes</ENAMEX> to estimate 
+        f 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> . Some modifications to the test
+        statistic 
+        Z 
+        
+          i 
+         and the null statistic 
+        z 
+        
+          i 
+         are also possible, especially when we consider
+        differential gene expression across more than <TIMEX TYPE="TIME">two</TIMEX>
+        conditions. These are all interesting topics we are
+        investigating now.
+        In most sample size/power calculations, some <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> data
+        are needed to provide reasonable estimates of some
+        parameters needed for subsequent calculations. An
+        alternative is to obtain reasonable estimates from other
+        similar studies in the literature. However, because of the
+        rapid development of microarray technology, the latter is
+        not likely and we expect a <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> will have to do his
+        or her own <ENAMEX TYPE="PER_DESC">pilot</ENAMEX> study. This was the situation we
+        considered in the example. A particular challenge is how to
+        obtain good estimates of the variances of gene expression
+        levels from a small number of replicates. In our example,
+        we considered a nonparametric method to smooth sample
+        <ENAMEX TYPE="ORGANIZATION">variances</ENAMEX>. Some alternative smoothing methods have also
+        appeared in the literature. But it is not clear which one
+        is the most desirable. This is a topic for future
+        study.
+        The proposed method is straightforward to statisticians
+        and can be implemented in many existing statistical
+        packages. Our sample S-Plus program and data are available
+        at [ <TIMEX TYPE="DATE">29</TIMEX>].
+      
+    
+  

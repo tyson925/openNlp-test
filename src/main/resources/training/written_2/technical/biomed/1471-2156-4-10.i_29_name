@@ -1,0 +1,828 @@
+
+  
+    
+      
+        Background
+        Many <ENAMEX TYPE="PER_DESC">authors</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3 4</NUMEX> ] have compared the statistical
+        power of different methods for quantitative trait locus
+        (<ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>) mapping. These comparisons have shown that the
+        additional information supplied by the genetic distance
+        between identifiable <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> markers unconfounds the QTL effect
+        from the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> location, thus making <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker models</ENAMEX> more
+        powerful than single <ENAMEX TYPE="PRODUCT_DESC">marker models</ENAMEX> of detection (for review
+        see Doerge 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">5</ENAMEX> ] ).
+        With the goal of detecting and/or locating <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>, there
+        are <NUMEX TYPE="CARDINAL">two</NUMEX> common statistical approaches that can be taken.
+        The first approach is based on <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>, or simple linear
+        regression, and performs statistical tests based solely on
+        single DNA marker information. No genetic map is required
+        for single marker analysis, and the calculations are based
+        on phenotypic means and variances within each of the
+        <ENAMEX TYPE="ORGANIZATION">genotypic</ENAMEX> classes. The <NUMEX TYPE="ORDINAL">second</NUMEX>, and more involved approach,
+        is based on <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">DNA markers</ENAMEX>, the estimated recombination
+        fraction between them (or the estimated genetic distance),
+        and either a maximum likelihood based calculation or a
+        <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> model including multiple (<NUMEX TYPE="CARDINAL">two or more</NUMEX>) markers
+        as independent variables. The linear ordering of multiple
+        <ENAMEX TYPE="SUBSTANCE">DNA markers</ENAMEX> based upon their estimated relationships ( 
+        <ENAMEX TYPE="PERSON">i.e.</ENAMEX> , recombination fraction (or
+        genetic distance)) supplies the framework or genetic map
+        for (composite) interval mapping [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] and as such
+        unconfounds the QTL effect and the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> location, thus
+        providing a more precise means for detecting and locating
+        <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> with respect to the estimated genetic map for the
+        <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX> under investigation.
+        Rebaï 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] present a comprehensive
+        comparison of the statistical power for many of the
+        commonly used <ENAMEX TYPE="SUBSTANCE">flanking marker</ENAMEX> or two marker methods
+        employed, and conclude that <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">marker mapping</ENAMEX> provides a
+        relatively small gain (<NUMEX TYPE="PERCENT">5%</NUMEX>) in power over single marker
+        methods when the <NUMEX TYPE="CARDINAL">two</NUMEX> markers define an interval of width
+        less than <NUMEX TYPE="CARDINAL">20</NUMEX> cM, but a substantial increase (greater than
+        <NUMEX TYPE="PERCENT">30%</NUMEX>) in power for intervals upwards of <NUMEX TYPE="CARDINAL">70</NUMEX> cM, indicating
+        that the gain in power may come from the addition of the
+        <NUMEX TYPE="ORDINAL">second</NUMEX> marker to the analysis, or the addition of
+        information from that marker, rather than the map.
+        Using the findings of Rebaï 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , and others as our
+        motivation, we hypothesize that the power increase between
+        single marker and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">marker regression</ENAMEX> methods is due to
+        additional genotypic information in the <NUMEX TYPE="ORDINAL">second</NUMEX> marker. In
+        order to assess this, similar test statistics should be
+        compared. A comparison of maximum likelihood interval
+        mapping to single marker <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX> is complicated because of
+        the differences that may be observed due to differences
+        between regression and maximum likelihood [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , as well
+        as differences in marker information. In order to avoid
+        this complication, we consider <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">regression</ENAMEX> based
+        approaches that differ only in the number of markers
+        included in the initial model (i.e. the statistical
+        <ENAMEX TYPE="PERSON">methodology</ENAMEX> is the same, the <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are different). First,
+        a set of <ENAMEX TYPE="FAC_DESC">compound hypotheses</ENAMEX> are defined for use with a
+        single marker analysis and used to define an intersection
+        test. We then state the equivalent hypotheses for a
+        <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> based <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX> for a test of the
+        interval. Last we compare, via simulation, the power of the
+        <ENAMEX TYPE="PERSON">intersection</ENAMEX> and the two marker test under the stated
+        hypotheses for each <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. We do not consider the case of
+        <ENAMEX TYPE="ORGANIZATION">multiple QTL</ENAMEX> in a single interval, as this case was not
+        considered by Rebaï 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . These <NUMEX TYPE="CARDINAL">two</NUMEX> approaches
+        are then applied to a 'backcross' <ENAMEX TYPE="PER_DESC">population</ENAMEX> of 
+        Drosophila with <NUMEX TYPE="CARDINAL">76</NUMEX> informative
+        <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] to detect QTL associated with ovariole
+        number.
+      
+      
+        Results
+        
+          Simulations
+          An overview of the simulations performed is given in
+          <ENAMEX TYPE="PRODUCT">Table 1and 2</ENAMEX>. For the purpose of evaluating the relative
+          difference in statistical power between the intersection
+          test and the two marker test, the estimated statistical
+          power of the two marker test was subtracted from that of
+          the intersection test for each of the parameter
+          combinations investigated, and a 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test [ <ENAMEX TYPE="LAW">9</ENAMEX> ] was performed to test
+          the null hypothesis that the mean difference in power was
+          zero.
+          For the binomial phenotype with a backcross design,
+          sample size of <NUMEX TYPE="CARDINAL">100</NUMEX>, the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations
+          examined resulted in <TIMEX TYPE="DATE">34</TIMEX> showing no difference in
+          statistical power between the intersection test and the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> marker test ( 
+          i.e , the value of the difference
+          was exactly <NUMEX TYPE="CARDINAL">zero</NUMEX>), <NUMEX TYPE="CARDINAL">39</NUMEX> favoring the intersection test, and
+          <NUMEX TYPE="CARDINAL">27</NUMEX> favoring the two marker test. The intersection test
+          was more powerful with a mean difference in power of
+          <NUMEX TYPE="CARDINAL">0.010</NUMEX>, and the 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test of the null hypothesis that
+          the difference in power was <NUMEX TYPE="CARDINAL">zero</NUMEX> was rejected ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.020</NUMEX>). When 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> was equal to <NUMEX TYPE="CARDINAL">500</NUMEX>, the <NUMEX TYPE="CARDINAL">139</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations examined yielded <NUMEX TYPE="CARDINAL">116</NUMEX> showing there
+          was no difference in statistical power, <NUMEX TYPE="CARDINAL">18</NUMEX> parameter
+          <ENAMEX TYPE="PERSON">combinations</ENAMEX> indicated the intersection test as more
+          powerful, and <NUMEX TYPE="CARDINAL">5</NUMEX> indicated the two marker test as more
+          powerful. The mean difference in power was <NUMEX TYPE="MONEY">0.020</NUMEX>, and the
+          
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test of the null hypothesis that
+          the difference in power was <NUMEX TYPE="CARDINAL">zero</NUMEX> was rejected ( 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.010</NUMEX>). The test of the null
+          hypothesis that the mean difference between the
+          <ENAMEX TYPE="PERSON">intersection</ENAMEX> and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="FAC_DESC">marker</ENAMEX> was <NUMEX TYPE="CARDINAL">zero</NUMEX> was rejected for
+          both sets of simulations. The estimated difference
+          between the <NUMEX TYPE="CARDINAL">two</NUMEX> approaches was positive, indicating that
+          the intersection test has slightly higher power than the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> marker test in these cases.
+          We also investigated 
+          F 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> experimental <ENAMEX TYPE="PER_DESC">populations</ENAMEX> for a
+          binomial phenotype, using a sample size of <NUMEX TYPE="CARDINAL">500</NUMEX>. From the
+          <NUMEX TYPE="CARDINAL">25</NUMEX> <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations investigated, <NUMEX TYPE="CARDINAL">5</NUMEX> failed to
+          <ENAMEX TYPE="ORGANIZATION">converge</ENAMEX> consistently for the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX> due to
+          <ENAMEX TYPE="ORGANIZATION">singularity</ENAMEX> in the design matrix. The remaining <NUMEX TYPE="CARDINAL">20</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations showed <TIMEX TYPE="DATE">10</TIMEX> as having no difference
+          in statistical power, while the remaining <NUMEX TYPE="CARDINAL">10</NUMEX> favored the
+          intersection test. Results similar to those found in the
+          initial simulations indicate that the intersection test
+          performs as well as, or better than the two marker test.
+          Comparisons with smaller sample sizes (<ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX>) were not
+          conducted because of convergence problems using the two
+          <ENAMEX TYPE="PERSON">marker</ENAMEX> model.
+          For a normally distributed phenotype, <NUMEX TYPE="CARDINAL">75</NUMEX> parameter
+          combinations for the backcross were examined. From these,
+          <TIMEX TYPE="DATE">12</TIMEX> showed no difference in statistical power, <NUMEX TYPE="CARDINAL">34</NUMEX>
+          scenarios favored the intersection test, while <NUMEX TYPE="CARDINAL">29</NUMEX>
+          indicated the two marker test as more powerful. The mean
+          difference in power was <NUMEX TYPE="MONEY">0.015</NUMEX>, and we failed to reject
+          the test of the null hypothesis that the difference was
+          <ENAMEX TYPE="CONTACT_INFO">zero,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.064</NUMEX>.
+          Upon investigation of the <ENAMEX TYPE="SUBSTANCE">parameter</ENAMEX> combinations that
+          showed some difference in power, specifically, for the
+          scenario highlighted by Rebaï 
+          et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] (<ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> in the middle of
+          the interval with a large distance between markers), we
+          also find the two marker approach to be slightly more
+          powerful than the intersection test. However, when the
+          distance between the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and one marker is much smaller
+          than the distance between the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and the <NUMEX TYPE="ORDINAL">second</NUMEX> marker,
+          the intersection test is more powerful. Although we can
+          point to these cases, it is important to realize that for
+          most of the scenarios no difference in power was observed
+          (see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        
+        
+          DrosophilaAnalysis
+          <ENAMEX TYPE="CONTACT_INFO">Ovariole</ENAMEX> number is related to reproductive success in 
+          Drosophila melanogaster and
+          positively correlated with maximum <TIMEX TYPE="DATE">daily</TIMEX> female fecundity
+          [ <NUMEX TYPE="CARDINAL">10 11</NUMEX> ] . The <NUMEX TYPE="CARDINAL">98</NUMEX> <ENAMEX TYPE="ORGANIZATION">RILs</ENAMEX> (recombinant inbred lines) for
+          this study were scored for the trait ovariole number and
+          genotyped as described in <ENAMEX TYPE="GPE">Wayne</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">8</ENAMEX> ] .
+          For the <NUMEX TYPE="CARDINAL">71 marker</NUMEX> pairs considered, <NUMEX TYPE="CARDINAL">36</NUMEX> markers were
+          found to be significant using both the intersection test
+          and the two marker test, and <NUMEX TYPE="CARDINAL">26</NUMEX> were found to be
+          non-significant with both tests. The intersection and <NUMEX TYPE="CARDINAL">two</NUMEX>
+          <ENAMEX TYPE="PERSON">marker</ENAMEX> tests were concordant in <NUMEX TYPE="CARDINAL">62</NUMEX> of the <NUMEX TYPE="CARDINAL">71</NUMEX> pairs of
+          <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>). The estimated chance corrected
+          agreement (<ENAMEX TYPE="ORGANIZATION">Kappa</ENAMEX> coefficient) was <NUMEX TYPE="CARDINAL">0.75</NUMEX> with a <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval of (<NUMEX TYPE="MONEY">0.58,0.90</NUMEX>). <ENAMEX TYPE="ORGANIZATION">McNemar</ENAMEX>'s test showed
+          no systematic difference in the <NUMEX TYPE="CARDINAL">two</NUMEX> approaches ( 
+          S = <NUMEX TYPE="CARDINAL">1.00</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.32</NUMEX>).
+          Overlapping regions on chromosome 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> were identified by the
+          intersection test, the two marker test, and the interval
+          mapping test (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). On chromosome 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , the two marker test identified
+          a <ENAMEX TYPE="LOCATION">region</ENAMEX> between 
+          3E and 
+          7D while the comparable
+          intersection test showed borderline significance for one
+          <ENAMEX TYPE="PERSON">marker</ENAMEX> in that region ( 
+          4F , p = <NUMEX TYPE="CARDINAL">0.0256</NUMEX>). On chromosome 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , the two marker test identified
+          a <ENAMEX TYPE="GPE_DESC">region</ENAMEX> from 
+          <ENAMEX TYPE="PRODUCT">35B-46C</ENAMEX> while intersection tests
+          identified a smaller <ENAMEX TYPE="GPE_DESC">region</ENAMEX> from 
+          <ENAMEX TYPE="PRODUCT">35B-38E</ENAMEX> and the interval mapping
+          identified a region from 
+          <ENAMEX TYPE="PRODUCT">38A-46C</ENAMEX> . On <ENAMEX TYPE="ORGANIZATION">Chromosome</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> the two marker test identifies
+          <NUMEX TYPE="CARDINAL">two</NUMEX> regions 
+          <ENAMEX TYPE="PRODUCT">65A-87F</ENAMEX> and 
+          <ENAMEX TYPE="PRODUCT">96F-100A</ENAMEX> while the intersection
+          test finds the entire <ENAMEX TYPE="GPE_DESC">region</ENAMEX> from 
+          63A-100A significant. The interval
+          <ENAMEX TYPE="PERSON">mapping</ENAMEX> agrees with the intersection test for interval 
+          <ENAMEX TYPE="PRODUCT">63A-65A</ENAMEX> and finds it significant,
+          while it agrees with the two marker test for the interval
+          
+          <ENAMEX TYPE="PRODUCT">97D-97F</ENAMEX> and does not find this
+          interval significant. Chromosome 
+          <NUMEX TYPE="CARDINAL">4</NUMEX> was not associated with the trait
+          for any test.
+          The application of the intersection test to these data
+          can be further expanded to include an analysis with all
+          <TIMEX TYPE="TIME">76 markers.</TIMEX> We conducted <NUMEX TYPE="QUANTITY">76 single marker</NUMEX> regression
+          tests at a <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> adjusted α of <NUMEX TYPE="CARDINAL">6.6</NUMEX> × <NUMEX TYPE="PERCENT">10 -4</NUMEX>. Markers 
+          68B, <TIMEX TYPE="DATE">71E</TIMEX>, <TIMEX TYPE="DATE">73D</TIMEX>, <TIMEX TYPE="DATE">76A</TIMEX>, <TIMEX TYPE="DATE">82D</TIMEX>, <TIMEX TYPE="DATE">99A</TIMEX>, <TIMEX TYPE="DATE">99B</TIMEX>,
+          99E and 
+          100A were significant using this
+          intersection test (see Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). The regions identified
+          are consistent with a regression-based interval mapping
+          analysis.
+        
+      
+      
+        Discussion
+        The findings of Rebaï 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] show differences in the
+        statistical power of the two marker methods ( 
+        <ENAMEX TYPE="PERSON">i.e.</ENAMEX> , interval mapping) over single
+        <ENAMEX TYPE="PERSON">marker</ENAMEX> tests ( 
+        e.g. , <ENAMEX TYPE="ORGANIZATION">ANOVA</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test) only when the markers are
+        <NUMEX TYPE="QUANTITY">more than 50cM</NUMEX> apart, suggesting that these differences may
+        be due to the addition of information in the <NUMEX TYPE="ORDINAL">second</NUMEX> marker.
+        Our simulation study supports this hypothesis.
+        The application of an intersection test uses information
+        from both markers, and tests the same null hypotheses as
+        the <NUMEX TYPE="CARDINAL">two</NUMEX> marker test. The use of the intersection test takes
+        advantage of the additional genotypic information provided
+        in <TIMEX TYPE="DATE">the second marker</TIMEX>.
+        While compound hypotheses are common in statistical
+        theory, and typically seen in the use of union/intersection
+        tests, their use in the quantitative genetics arena and QTL
+        application is relatively novel. Furthermore, the
+        intersection test is simple to implement, the expansion to
+        <ENAMEX TYPE="DISEASE">multiple markers</ENAMEX> is straightforward, and uses all available
+        <ENAMEX TYPE="PERSON">marker</ENAMEX> information. In a framework map, where markers are
+        <ENAMEX TYPE="PERSON">unlinked</ENAMEX>, the intersection test is simply the single marker
+        analysis with a <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction for the significance
+        level. In cases where markers are correlated, the
+        application of the <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction will be overly
+        conservative. This correction guarantees that the nominal α
+        is not exceeded, but is well known to be overly
+        conservative in cases where tests are not independent. In
+        this case, the application of the intersection test will
+        require an alternative correction in order to achieve
+        maximum power.
+        We demonstrate situations for a pair of adjacent markers
+        where the power of the intersection test is equal to or
+        greater than the power of the two marker test. In the case
+        highlighted by Rebaï 
+        et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , markers <NUMEX TYPE="CARDINAL">more than 50</NUMEX>
+        cM apart and large effect size, we also find that the two
+        <ENAMEX TYPE="PERSON">marker test</ENAMEX> has higher power than the intersection test. A
+        counter example is when one marker is much closer to the
+        QTL than the other marker, in this case the intersection
+        test is more powerful. Overall, the power of the two
+        approaches is nearly identical and differences between them
+        small.
+        In the 
+        Drosophila reanalysis both methods
+        identify the same general regions. However, <NUMEX TYPE="CARDINAL">six</NUMEX> marker
+        pairs were found to be significant using the two marker
+        tests that were not identified using the intersection test.
+        Using the map and notation defined by Nuzhdin 
+        et al. [ <TIMEX TYPE="DATE">12</TIMEX> ] they were: <ENAMEX TYPE="ORGANIZATION">Chromosome</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">1</NUMEX> pairs 
+        <ENAMEX TYPE="PRODUCT">3E-4F</ENAMEX>, <ENAMEX TYPE="PRODUCT">4F-5D</ENAMEX>, <ENAMEX TYPE="PRODUCT">6E-7D</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">Chromosome</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> pairs 
+        <ENAMEX TYPE="PRODUCT">38E-43A</ENAMEX>, <ENAMEX TYPE="PRODUCT">43A-43E</ENAMEX> , and 
+        <ENAMEX TYPE="PRODUCT">43E-46C</ENAMEX> . The 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values for the <NUMEX TYPE="CARDINAL">6 marker</NUMEX> pairs from
+        the intersection tests were small but did not exceed the
+        Bonferroni corrected significance level (see <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). The
+        above markers that contribute to these marker pairs are
+        linked indicating that the <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction may be
+        overly conservative.
+        In contrast, <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="WORK_OF_ART">marker pairs on Chromosome</ENAMEX> 
+        <NUMEX TYPE="CARDINAL">3</NUMEX> were significant using the
+        intersection tests, but were not significant using the two
+        <ENAMEX TYPE="PERSON">marker</ENAMEX> tests: 
+        <ENAMEX TYPE="PRODUCT">63A-65D</ENAMEX>, <ENAMEX TYPE="PRODUCT">87F-88E</ENAMEX> , and 
+        <ENAMEX TYPE="PRODUCT">96A-96F</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). In these cases the
+        "internal" marker of the <ENAMEX TYPE="PER_DESC">pair</ENAMEX> is giving signal while the
+        "outer" <ENAMEX TYPE="PERSON">marker</ENAMEX> does not. This provides an interesting point
+        of discussion. We could say that marker 
+        65D appears to be associated with
+        <ENAMEX TYPE="CONTACT_INFO">ovariole</ENAMEX> number, but we do not know if the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> lies to the
+        left or right of this marker. Just because marker 
+        63A does not appear to be
+        significantly associated with ovariole number, we can not
+        infer that the region to the "left" of 
+        65D does not contain the gene of
+        interest.
+        In some cases, the two marker test results in a larger
+        region than the intersection test, while in others the
+        reverse is true. QTL mapping is usually a <NUMEX TYPE="ORDINAL">first</NUMEX> attempt to
+        locate genes, which the <ENAMEX TYPE="PER_DESC">biologist</ENAMEX> uses to identify all
+        possible regions of interest, e.g. is willing to accept
+        type I error. We have discussed different ways to detect
+        underlying <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and an approach for maximizing or minimizing
+        the potential region containing the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>. It is also
+        possible to estimate the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> position directly. Estimates
+        can be obtained using a variety of techniques and the
+        different possible approaches to estimation are reviewed in
+        Doerge 
+        et al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">Kao</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . However,
+        even when the position is estimated, a confidence interval
+        will exist defining the size of the region to be included
+        for further study. Different approaches will result in
+        regions of different sizes with more, or fewer markers
+        included. The differences in the size of the regions are
+        potentially important to a <ENAMEX TYPE="PER_DESC">biologist</ENAMEX>, who relies on QTL
+        mapping analyses to determine regions for further study.
+        Most <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> accept that current QTL mapping methods are
+        best used for identifying broad <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>, which subsequently
+        can be dissected with more precise genetical techniques.
+        The question is then: what region should be advanced to
+        fine mapping experiments? The <ENAMEX TYPE="PER_DESC">investigator</ENAMEX> may choose to
+        take only the <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> which are significant in both
+        <ENAMEX TYPE="PERSON">intersection</ENAMEX> and multiple marker approaches, or s/he may
+        choose to carry forward any marker that shows a positive
+        result according to <NUMEX TYPE="CARDINAL">at least one</NUMEX> analysis. We recommend
+        that experimentalists perform both a single marker analysis
+        with an intersection test and a multiple marker analysis
+        and use the information available in both analyses to guide
+        their decisions about what <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> to carry forward for
+        further study.
+      
+      
+        Conclusion
+        We find that the intersection test has equal or greater
+        power compared to the two marker equivalent. Our analyses
+        were conducted using the <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction for the
+        intersection test. When <ENAMEX TYPE="PER_DESC">markers</ENAMEX> are linked, as in many of
+        our simulations, this correction is overly conservative. If
+        the intersection test is used in conjunction with a more
+        appropriate correction, the performance of the intersection
+        test would improve perhaps even surpassing the two marker
+        equivalent in <NUMEX TYPE="CARDINAL">more</NUMEX> cases. Thus, our motivation and hope in
+        presenting this investigation of the statistical power of
+        intersection tests versus <NUMEX TYPE="CARDINAL">two</NUMEX> marker tests is to make clear
+        the compound framework and resulting evidence under which
+        intersection tests are indeed equal to and/or more powerful
+        than the complicated procedures based on <NUMEX TYPE="CARDINAL">two</NUMEX> marker
+        models.
+      
+      
+        Materials
+        
+          <ENAMEX TYPE="ORGANIZATION">Statistical Framework</ENAMEX>
+          As the framework for our comparison, and in
+          conjunction with the previous simulations and conclusions
+          provided by the work of Rebaï 
+          et al. [ <ENAMEX TYPE="LAW">4</ENAMEX> ] , we consider a
+          <ENAMEX TYPE="ORGANIZATION">backcross</ENAMEX> experimental design originating from a cross of
+          <NUMEX TYPE="CARDINAL">two</NUMEX> homozygous inbred lines, differing in the trait of
+          interest, and producing heterozygous lines that are
+          <ENAMEX TYPE="ORGANIZATION">backcrossed</ENAMEX> to one of the initial homozygous parental
+          lines. We examine both normal and binomial phenotypic
+          distributions. In general, we denote each marker as 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , where 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is the number of markers being
+          examined and allow each marker to have <NUMEX TYPE="CARDINAL">two</NUMEX> alleles, 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="DATE">11</TIMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="TIME">12</TIMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">2</NUMEX> . The <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k phenotypic</ENAMEX> means are
+          differentiated via subscripts (e.g., μ 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="TIME">11</TIMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">k1 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="TIME">11</TIMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          k1  or <NUMEX TYPE="MONEY">�</NUMEX>� 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="TIME">11</TIMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">k1 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="TIME">12</TIMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          k2  ) and the frequencies of these
+          classes are denoted as 
+          p 
+          <TIMEX TYPE="DATE">11</TIMEX> , 
+          p 
+          <TIMEX TYPE="TIME">21</TIMEX> ... 
+          p 
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <NUMEX TYPE="CARDINAL">1</NUMEX> under the binomial scenario
+          ( 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX> , = 
+          <ENAMEX TYPE="ORGANIZATION">np</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">11</NUMEX> ).
+        
+        
+          <ENAMEX TYPE="PRODUCT">Single Marker Model</ENAMEX> and Hypotheses
+          A simple linear regression backcross <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is employed
+          for single marker <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> detection
+          
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= β</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> + β 
+          * 
+          X 
+          * 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  + ε 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">;</ENAMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          where 
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           is the quantitative trait value, 
+          X 
+          * 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  is an indicator variable
+          that denotes the <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of a particular marker, β 
+          <ENAMEX TYPE="PRODUCT">0</ENAMEX> is the overall mean, and β 
+          * is the effect of an allelic
+          substitution at the marker. Ideally, if the marker and
+          <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> are completely linked, the effect of an allelic
+          <ENAMEX TYPE="PERSON">substitution</ENAMEX> is the effect of the <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX>. If 
+          <ENAMEX TYPE="ORGANIZATION">k markers</ENAMEX> are considered
+          <ENAMEX TYPE="CONTACT_INFO">independently,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k linear</ENAMEX> regression <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> can be
+          considered ( 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX> , one for each marker, 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,..., 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           ) by denoting the allelic substitution associated
+          with marker 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+            i 
+           as β 
+          * = β 
+          
+            i 
+           , for 
+          i = <NUMEX TYPE="CARDINAL">1..</NUMEX>. 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> . For 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> markers, we denote the
+          allelic substitution associated with marker 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> as β 
+          * = β 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , where β 
+          <TIMEX TYPE="DATE">0</TIMEX> = μ 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">11 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="DATE">11</TIMEX>  and β 
+          <TIMEX TYPE="DATE">1</TIMEX> = μ 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">11 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="QUANTITY">12  - �</NUMEX>� 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">11 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">11</NUMEX>  ; and the allelic substitution
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with marker 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> as β 
+          * = β 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , where β 
+          <TIMEX TYPE="DATE">0</TIMEX> = μ 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">21 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="DATE">21</TIMEX>  and β 
+          <TIMEX TYPE="DATE">2</TIMEX> = μ 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">21 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="QUANTITY">22  - �</NUMEX>� 
+          
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">21 /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <TIMEX TYPE="DATE">21</TIMEX>  .
+          A <ENAMEX TYPE="FAC_DESC">compound</ENAMEX> hypothesis testing the effect of an allelic
+          substitution at either or both of these <NUMEX TYPE="CARDINAL">two</NUMEX> independent
+          <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX> is,
+          
+          Rejection of this compound null hypothesis indicates
+          an association between a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and either or both of the
+          markers, 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , hence the term intersection test.
+          From a statistical perspective the relative position of
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">markers</ENAMEX> is irrelevant. However, to compare this
+          to a <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX> there is an implicit assumption
+          that the markers considered form an interval, or are
+          adjacent to one another. This marks a departure from the
+          traditional single marker analysis where no consideration
+          to marker order is given. To define an overall level α
+          test, the significance level α must be adjusted for the
+          individual tests to account for multiple testing. There
+          are many ways to account for multiple testing. Assuming
+          the markers are independent, the <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction
+          can be applied [ <ENAMEX TYPE="LAW">9</ENAMEX> ] . The <ENAMEX TYPE="ORGANIZATION">Bonferroni</ENAMEX> correction is
+          conservative for the intersection test and the lack of
+          independence between markers would tend to make it more
+          difficult for the intersection test to reject.
+          More generally, for 
+          <ENAMEX TYPE="ORGANIZATION">k markers</ENAMEX>, the compound hypothesis
+          testing the effect of an allelic substitution at any of
+          the independent markers, 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           is
+          
+          
+          Rejection of this compound null hypothesis indicates
+          an association between a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and <NUMEX TYPE="CARDINAL">at least one</NUMEX> of the
+          markers, 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ... 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           . To define an overall level α test, using a
+          Bonferroni correction [ <ENAMEX TYPE="LAW">9</ENAMEX> ] , each β 
+          * is tested at an adjusted
+          significance level of . An association between a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> and
+          a marker is then indicated when the individual single
+          <ENAMEX TYPE="PERSON">marker</ENAMEX> test rejects the null at the adjusted α level.
+          The practical result of the application of an
+          intersection test, is the simplicity of calculation of
+          the single marker test statistic, with a correction for
+          multiple testing.
+        
+        
+          <NUMEX TYPE="CARDINAL">Two</NUMEX> <ENAMEX TYPE="PRODUCT">Marker Regression Model and Test</ENAMEX> of the
+          Corresponding Interval
+          Extending the (backcross) notation defined previously,
+          a multiple linear regression <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (based on <NUMEX TYPE="CARDINAL">two</NUMEX> markers)
+          can be employed for <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> detection purposes. The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is
+          defined as
+          
+          <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">= β</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> + β 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          X 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  + β 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          X 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  + β 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> 
+          X 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  + ε 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <ENAMEX TYPE="ORGANIZATION">;</ENAMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          where 
+          X 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  and 
+          X 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX>  are the genotypic <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of
+          the respective markers 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , along with their respective
+          allelic substitution effects (β 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> , β 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ), and 
+          X 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>  is the combined genotypic
+          <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of markers 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> with allelic substitutions at both
+          markers 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> having effect β 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> . Interestingly to note, when one is
+          selectively genotyping, the information in β 
+          <ENAMEX TYPE="PRODUCT">3</ENAMEX> is maximized.
+          In other words,
+          
+          Based upon this <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX> with <NUMEX TYPE="CARDINAL">four</NUMEX> parameters,
+          the hypothesis employed to perform a level α test for
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> between a trait and the marker loci 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX> is the test of β 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> where,
+          
+          The null hypothesis for this test is that there is no
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> between either marker ( 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> or 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ) and the trait. A similar set of
+          hypotheses follow for an 
+          F 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> experimental design.
+          This model <ENAMEX TYPE="PRODUCT">parameterization</ENAMEX> differs from the least
+          squares interval mapping approach first introduced by
+          <ENAMEX TYPE="ORGANIZATION">Knott</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Haley</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . In the parameterization proposed
+          here, <NUMEX TYPE="CARDINAL">only one</NUMEX> test is performed for the pair of markers.
+          In contrast, the regression based interval mapping
+          approach [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , recalculates the value of the
+          independent variables for each putative position in the
+          interval. Our <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">marker regression</ENAMEX> has a different
+          parameterization from <ENAMEX TYPE="ORGANIZATION">Knott</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Haley</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . We chose
+          the <ENAMEX TYPE="PER_DESC">alternate parameterization</ENAMEX> in order to directly
+          compare the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX> and the single <ENAMEX TYPE="PRODUCT_DESC">marker model</ENAMEX>.
+          In the <ENAMEX TYPE="ORGANIZATION">Knott</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Haley</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] <ENAMEX TYPE="PER_DESC">parameterization</ENAMEX>, flanking
+          markers are used to define the coefficients of the
+          regression as mean, <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> or dominance effects. For 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> steps along the interval between
+          <NUMEX TYPE="CARDINAL">two</NUMEX> markers 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> values of 
+          X are calculated according to the
+          conditional probability of a <ENAMEX TYPE="ORGANIZATION">QTL</ENAMEX> in that location.
+          The <ENAMEX TYPE="ORG_DESC">regression</ENAMEX> based interval mapping parameterization
+          thus provides a mechanism to test for <ENAMEX TYPE="SUBSTANCE">additive</ENAMEX> and
+          dominance effects using tests of the regression
+          parameters. In our parameterization, the regression
+          coefficients are tests for detection. Thus, the two
+          parameterizations have different null hypotheses for the
+          tests of the regression coefficients and are not directly
+          comparable in terms of power. We use the alternative
+          <ENAMEX TYPE="ORGANIZATION">parameterization</ENAMEX> so that the interpretation of the tests
+          is comparable in the single marker and <NUMEX TYPE="CARDINAL">two</NUMEX> marker
+          <ENAMEX TYPE="PRODUCT">regression</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> and we can directly compare the power
+          of the two tests.
+        
+        
+          Simulations
+          <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were simulated for <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">marker backcross</ENAMEX> and 
+          F 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PER_DESC">populations</ENAMEX> with binomial trait
+          distributions and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">marker backcross populations</ENAMEX> with
+          normal trait distributions. A total of <NUMEX TYPE="CARDINAL">339</NUMEX> parameter
+          combinations were examined (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). For each
+          combination of parameters, <TIMEX TYPE="DATE">1000</TIMEX> data sets were simulated.
+          Traits were simulated from a binomial distribution 
+          <ENAMEX TYPE="PERSON">Bin</ENAMEX> ( 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) where sample sizes 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">500</NUMEX> were utilized, and from a
+          normal distribution 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> ( , <NUMEX TYPE="CARDINAL">1.0</NUMEX>) with 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">500</NUMEX>. The effect of the binary
+          trait [ <TIMEX TYPE="DATE">13</TIMEX> ] varied based on μ = 
+          <ENAMEX TYPE="ORGANIZATION">np</ENAMEX> 
+          
+            i 
+           (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The binomial probabilities 
+          p 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          p 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , and 
+          p 
+          <ENAMEX TYPE="PRODUCT">3</ENAMEX> represent the probability that a
+          binary trait is present given a specific <ENAMEX TYPE="ORGANIZATION">BTL</ENAMEX> genotype
+          (<ENAMEX TYPE="ORGANIZATION">GT</ENAMEX>), or the penetrance of the trait for the specific
+          genotypes 
+          Q 
+          <ENAMEX TYPE="CONTACT_INFO">1 /</ENAMEX> 
+          Q 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          Q 
+          <ENAMEX TYPE="CONTACT_INFO">1 /</ENAMEX> 
+          Q 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , and 
+          Q 
+          <ENAMEX TYPE="CONTACT_INFO">2 /</ENAMEX> 
+          Q 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , respectively. The location of the
+          locus relative to marker loci 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX>  and 
+          <ENAMEX TYPE="ORGANIZATION">M</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX>  also varied. Similarly, the
+          effect under the normally distributed phenotype was
+          allowed to vary (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>) under seventy <NUMEX TYPE="CARDINAL">five</NUMEX> parameter
+          combinations. The effect size is the difference in the
+          <ENAMEX TYPE="ORGANIZATION">penetrances</ENAMEX> (for binary traits) and between the means
+          (for normally distributed traits). For each phenotypic
+          trait distribution and each parameter combination (<ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+          1and <NUMEX TYPE="CARDINAL">2</NUMEX>) we analyzed, via least squares, <TIMEX TYPE="DATE">1000</TIMEX> simulated
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> sets using both the single marker regression model
+          and the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">marker regression model</ENAMEX>.
+          For the intersection test, the null hypothesis was
+          rejected when the empirical p-value for either single
+          <ENAMEX TYPE="PERSON">marker</ENAMEX> regression test statistic was less than = <NUMEX TYPE="CARDINAL">0.025</NUMEX>
+          (Bonferroni adjustment). For <TIMEX TYPE="DATE">the comparable two</TIMEX> marker
+          test ( 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX> , β 
+          <TIMEX TYPE="DATE">3</TIMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>), the null hypothesis was
+          rejected when the empirical 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -value was less than α = <NUMEX TYPE="CARDINAL">0.05</NUMEX>.
+          Under each parameter combination, the cumulative
+          assessment of statistical power was evaluated from the
+          <TIMEX TYPE="DATE">1000</TIMEX> simulated data sets as the proportion of times the
+          <ENAMEX TYPE="PERSON">empirical</ENAMEX> (permutation) 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> -values were less than the
+          specified α level.
+        
+        
+          DrosophilaAnalysis
+          The <ENAMEX TYPE="PER_DESC">population</ENAMEX> of 
+          Drosophila melanogaster used in our
+          analysis was a set of <NUMEX TYPE="CARDINAL">98</NUMEX> <ENAMEX TYPE="ORGANIZATION">RILs</ENAMEX> (recombinant in lines)
+          derived from a cross of <NUMEX TYPE="CARDINAL">two</NUMEX> isogenic lines as described
+          in <ENAMEX TYPE="GPE">Wayne</ENAMEX> 
+          et al. [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , for the trait
+          <ENAMEX TYPE="CONTACT_INFO">ovariole</ENAMEX> number. There were <NUMEX TYPE="CARDINAL">76</NUMEX> informative markers on <NUMEX TYPE="CARDINAL">4</NUMEX>
+          chromosomes. <ENAMEX TYPE="ORGANIZATION">Markers</ENAMEX> used were the cytological map
+          positions of the insertion sites of 
+          roo transposable element markers,
+          with the exception of the <NUMEX TYPE="ORDINAL">fourth</NUMEX> chromosome, where a
+          visible mutation was used as a marker ( 
+          <ENAMEX TYPE="ORGANIZATION">spa</ENAMEX> ) [ <TIMEX TYPE="DATE">12</TIMEX> ] . A complete linkage
+          map was obtained for chromosome 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> (the 
+          X ) and chromosome <NUMEX TYPE="CARDINAL">3</NUMEX>, with <NUMEX TYPE="CARDINAL">15</NUMEX>
+          <ENAMEX TYPE="PERSON">adjacent marker</ENAMEX> pairs (<NUMEX TYPE="MONEY">16 markers</NUMEX>) on 
+          <NUMEX TYPE="CARDINAL">1 and 36</NUMEX> adjacent marker pairs (<NUMEX TYPE="CARDINAL">37</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">markers</ENAMEX>) on 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> . There was a centromeric break
+          in the genetic map for chromosome 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , such that there were <NUMEX TYPE="CARDINAL">18</NUMEX>
+          adjacent pairs (<NUMEX TYPE="MONEY">19 markers</NUMEX>) on the left <ENAMEX TYPE="ORG_DESC">arm</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX>
+          adjacent pairs (<NUMEX TYPE="MONEY">3 markers</NUMEX>) on the right <ENAMEX TYPE="ORG_DESC">arm</ENAMEX>.
+          To compare the intersection test to the two marker
+          test, the <NUMEX TYPE="CARDINAL">71</NUMEX> pairs of markers identified above were
+          examined. For each <ENAMEX TYPE="PER_DESC">pair</ENAMEX>, the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">marker regression</ENAMEX> with
+          the test of the β 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> parameter was conducted at α = <NUMEX TYPE="CARDINAL">0.05</NUMEX>.
+          The <NUMEX TYPE="CARDINAL">two</NUMEX> individual <ENAMEX TYPE="PER_DESC">markers</ENAMEX> were then separately modeled
+          in a linear regression <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (see <ENAMEX TYPE="PRODUCT">Equation 1</ENAMEX>), and the
+          intersection test was conducted. For the <NUMEX TYPE="CARDINAL">71</NUMEX> unique pairs
+          of markers, concordance between the intersection test and
+          <NUMEX TYPE="CARDINAL">two</NUMEX> marker test was estimated using the <ENAMEX TYPE="ORGANIZATION">Kappa</ENAMEX>
+          coefficient, and <ENAMEX TYPE="ORGANIZATION">McNemar</ENAMEX>'s test [ <TIMEX TYPE="DATE">14</TIMEX> ] was conducted to
+          determine whether systematic differences existed between
+          the <NUMEX TYPE="CARDINAL">two</NUMEX> methods. <ENAMEX TYPE="ORGANIZATION">Regression</ENAMEX> based interval mapping was
+          performed according to the <ENAMEX TYPE="ORGANIZATION">Haley</ENAMEX> and Knott
+          <ENAMEX TYPE="ORGANIZATION">parameterization</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . Analysis was conducted using
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX>-PLUS <TIMEX TYPE="DATE">2000</TIMEX> (<ENAMEX TYPE="ORGANIZATION">Insightful Corp.</ENAMEX>).
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' Contributions
+        <ENAMEX TYPE="PERSON">Cynthia Coffman</ENAMEX> is the post-doctoral <ENAMEX TYPE="PER_DESC">associate</ENAMEX> who
+        programmed all simulations and analyzed the 
+        Drosophila data. <ENAMEX TYPE="PERSON">Rebecca Doerge</ENAMEX> and
+        <ENAMEX TYPE="PERSON">Lauren McIntyre</ENAMEX> designed the simulation study and assisted
+        with the interpretation of the results. <ENAMEX TYPE="PERSON">Marta Wayne</ENAMEX>
+        provided the 
+        Drosophila data, and assisted in the
+        interpretation of the results. All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> contributed to
+        the writing of this manuscript.
+      
+    
+  

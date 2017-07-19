@@ -1,0 +1,273 @@
+
+  
+    
+      
+        Background
+        Genetic heterogeneity is a hallmark of <ENAMEX TYPE="SUBSTANCE">RNA viruses</ENAMEX> in
+        <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, and the <ENAMEX TYPE="DISEASE">hepatitis C virus</ENAMEX> (HCV) in particular, due
+        to the lack of fidelity of viral <ENAMEX TYPE="SUBSTANCE">RNA-dependent RNA</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">polymerases</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] . In <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX>, this genetic diversity has
+        been organized into <NUMEX TYPE="CARDINAL">six</NUMEX> major genotypes and numerous
+        <ENAMEX TYPE="ORGANIZATION">subtypes</ENAMEX> (<NUMEX TYPE="CARDINAL">over 80</NUMEX>). Isolates of the same genotype have an
+        average DNA sequence identity of <NUMEX TYPE="PERCENT">95%</NUMEX>, but different
+        genotypes have DNA sequence identity close to <NUMEX TYPE="PERCENT">65%</NUMEX> on
+        average [ <NUMEX TYPE="CARDINAL">2 3 4 5</NUMEX> ] .
+        Nucleic acid-based assays, such as the polymerase chain
+        reaction (PCR), the ligase chain reaction (LCR), nucleic
+        acid sequence-based amplification (NASBA), branched chain
+        <ENAMEX TYPE="PERSON">DNA (</ENAMEX>bDNA) and sequence analysis itself, rely on the
+        efficient hybridization of oligonucleotides to the targeted
+        sequence. Mismatches between the oligonucleotides and the
+        targeted nucleic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> can affect <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> stability and may
+        compromise the ability of a system to amplify and detect
+        the targeted sequences. Numerous factors determine the
+        effect of mismatches, including: the length of the
+        oligonucleotide, the nature and position of the mismatches,
+        the temperature of hybridization, the presence of
+        <ENAMEX TYPE="ORGANIZATION">co</ENAMEX>-<ENAMEX TYPE="SUBSTANCE">solvents</ENAMEX> and the concentrations of oligonucleotides, as
+        well as monovalent and divalent cations [ <ENAMEX TYPE="LAW">6</ENAMEX> ] .
+        The sequence heterogeneity of <ENAMEX TYPE="EVENT">HCV</ENAMEX> challenges efficient
+        detection with nucleic acid-based assays. <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> is widely
+        used for the detection of HCV specific nucleic <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> due to
+        its sensitivity. Generally speaking however, effective
+        primers require the genotype of the sample to be known in
+        advance and even then will often be <NUMEX TYPE="PERCENT">less than 100%</NUMEX>
+        effective due to minor variations in the isolates.
+        Design of robust primers to maximize success with
+        unsequenced isolates ( 
+        <ENAMEX TYPE="ORGANIZATION">i.e</ENAMEX> . clinical samples), is a common
+        challenge facing the molecular <ENAMEX TYPE="PER_DESC">virologists</ENAMEX>. A number of
+        software products exist to facilitate primer selection with
+        defined genomes. Many factors are considered in these
+        programs, for example, melting temperature of primers,
+        avoiding primer dimers, avoiding self-complementary primers
+        <ENAMEX TYPE="PERSON">etc</ENAMEX> (e.g., <ENAMEX TYPE="NATIONALITY">Primer</ENAMEX> <ENAMEX TYPE="PER_DESC">Premier</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ] , <ENAMEX TYPE="PRODUCT">Primer3</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , <ENAMEX TYPE="PRODUCT">PRIDE</ENAMEX> [ <NUMEX TYPE="CARDINAL">9</NUMEX>
+        ] ). These algorithms deal mostly with a single template or
+        a small number of sequences. Little effort has been made to
+        handle large number of heterogeneous variants of a given
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>.
+        A large number of <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> related sequences have been
+        deposited in <ENAMEX TYPE="GPE">GenBank</ENAMEX>, making genome wide comparison of all
+        different HCV genotypes and subtypes possible. In this
+        <ENAMEX TYPE="ORGANIZATION">report</ENAMEX>, <NUMEX TYPE="CARDINAL">more than 100</NUMEX> complete and <NUMEX TYPE="CARDINAL">14,000</NUMEX> partial sequences
+        deposited in <ENAMEX TYPE="GPE">GenBank</ENAMEX> (<ENAMEX TYPE="PRODUCT">Release 129</ENAMEX>, <TIMEX TYPE="DATE">April 15, 2002</TIMEX>) have
+        been used to generate <NUMEX TYPE="QUANTITY">a genome</NUMEX> wide consensus sequence and
+        Position <ENAMEX TYPE="ORGANIZATION">Weight Matrix</ENAMEX> (PWM) for the <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> genome. A PWM
+        based approach for identifying highly conserved regions is
+        proposed which should aid in robust primer design for
+        nucleic acid-based assays. This approach is general enough
+        to be used to optimize any set of genomes with a high
+        degree of heterogeneity.
+      
+      
+        Results and Discussion
+        
+          Aligning genomes and generating a position weight
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>(PWM)
+          <NUMEX TYPE="CARDINAL">One</NUMEX> <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> genome (<NUMEX TYPE="MONEY">D90208</NUMEX>) was used as a template and was
+          separated into pieces based on known gene boundaries. All
+          complete and partial sequences that contained a given
+          region were collected by <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] against <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX>
+          sequences from the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> non-redundant nucleotide
+          sequence database (nt). An alignment was then made for
+          each part of the genome using <ENAMEX TYPE="ORGANIZATION">ClustalW</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] . A weight
+          score for each position in each fragment was calculated
+          and a <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX> was created for that fragment. <TIMEX TYPE="TIME">A whole</TIMEX> genome
+          <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX> was created by joining the individual <ENAMEX TYPE="ORGANIZATION">PWMs</ENAMEX>. Finally a
+          <NUMEX TYPE="CARDINAL">25</NUMEX>-bp window, (<ENAMEX TYPE="PER_DESC">representative</ENAMEX> of a typical primer), was
+          walked through the genome<ENAMEX TYPE="ORGANIZATION">/PWM</ENAMEX> to identify the most
+          <ENAMEX TYPE="GPE">conserved</ENAMEX> locations for primer design.
+          Due to the extreme genetic heterogeneity of the HCV
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> and the nature and large number of complete and
+          partial sequences in the public database, a direct genome
+          wide sequence alignment was not feasible. The approach
+          taken, to break the <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> genome into <NUMEX TYPE="CARDINAL">10</NUMEX> pieces according
+          to the gene boundaries, proved to be successful. HCV
+          <ENAMEX TYPE="PRODUCT">sequence D90208</ENAMEX> was chosen arbitrarily as the template
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> and the number of sequences included for
+          alignment of each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> is indicated in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>.
+          Some <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> genome share only <NUMEX TYPE="PERCENT">50 percent</NUMEX>
+          identity across strains. Figure 1shows a plot of
+          conservation score using a <NUMEX TYPE="CARDINAL">10</NUMEX>-bp window for the whole HCV
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">Region 1-350</ENAMEX>, which corresponds to the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> is
+          very conserved across all strains while region <TIMEX TYPE="DATE">1860-2230</TIMEX>
+          corresponding to the <ENAMEX TYPE="SUBSTANCE">E2 protein</ENAMEX>, is very heterogeneous.
+          In addition, <NUMEX TYPE="ORDINAL">third</NUMEX> position wobble causes <ENAMEX TYPE="PER_DESC">mismatching</ENAMEX> at
+          virtually every <NUMEX TYPE="ORDINAL">third</NUMEX> base (in the coding region),
+          leading as expected, to less identity at the DNA level [
+          <NUMEX TYPE="CARDINAL">12</NUMEX> ] . In the process of collecting sequences for each
+          <ENAMEX TYPE="GPE">HCV</ENAMEX> region, using a nucleotide level comparison algorithm
+          like <ENAMEX TYPE="ORGANIZATION">BLASTN</ENAMEX>, a lot of sequence entries will be missed. To
+          solve this problem, a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> level comparison algorithm
+          <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> was used via a <NUMEX TYPE="CARDINAL">six</NUMEX>-frame translation. Different
+          stringency scores were used to ensure that as many
+          sequences as possible were retrieved. A sequence was
+          chosen for alignment (for a given region) if it shared at
+          least <NUMEX TYPE="PERCENT">50%</NUMEX> identity over a <NUMEX TYPE="CARDINAL">30</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> stretch or <NUMEX TYPE="PERCENT">65 %</NUMEX>
+          identity over a <NUMEX TYPE="CARDINAL">20</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> stretch, or <NUMEX TYPE="PERCENT">over 90%</NUMEX>
+          identity over a <NUMEX TYPE="CARDINAL">10</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> stretch with the template
+          sequence. These cutoffs were chosen following inspection
+          of the blast hits for the different regions. <NUMEX TYPE="PERCENT">Only 4.9%</NUMEX> of
+          the available sequences were discarded due to failure to
+          meet the aforementioned criteria.
+          For each regional alignment, flanking sequences were
+          trimmed prior to generating the <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX>. The genome wide PWM
+          was created by combining all individual <ENAMEX TYPE="ORGANIZATION">PWMs</ENAMEX> (see
+          additional file <NUMEX TYPE="CARDINAL">1</NUMEX>). <ENAMEX TYPE="ORGANIZATION">Insertions</ENAMEX> (represented by '-' in
+          additional file <NUMEX TYPE="CARDINAL">1</NUMEX>) were added to the template sequence
+          only if greater than <NUMEX TYPE="PERCENT">1%</NUMEX> of the sequences contained this
+          <ENAMEX TYPE="ORGANIZATION">insertion</ENAMEX>. This was done to reduce the inclusion of
+          spurious insertions that are caused by sequencing errors
+          or that exist in only a single isolate. A consensus
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> was derived by picking the most frequently
+          occurring base at each position.
+          Additional file 1
+          HCV whole genome <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX>. The <NUMEX TYPE="ORDINAL">first</NUMEX> line is the consensus
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX> and the <NUMEX TYPE="ORDINAL">second</NUMEX> line is the template sequence,
+          D90208.
+          Click here for file
+        
+        
+          Choosing a conserved region for optimized primer
+          design
+          Using the <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX>, the most <ENAMEX TYPE="ORG_DESC">conserved</ENAMEX> stretches were
+          rapidly identified making possible the design of robust
+          <ENAMEX TYPE="ORGANIZATION">primers</ENAMEX> based on the criteria described in <ENAMEX TYPE="GPE">Methods</ENAMEX>. The
+          <TIMEX TYPE="TIME">25-bp</TIMEX> segments in <ENAMEX TYPE="PRODUCT">Table 2and Table 3are</ENAMEX> listed by
+          positions in the genome. The higher the odds score, the
+          more conserved the region. Figure <ENAMEX TYPE="SUBSTANCE">2shows samples</ENAMEX> from the
+          final <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX>; <NUMEX TYPE="CARDINAL">one 10</NUMEX>-bp region in <TIMEX TYPE="DATE">NS5B</TIMEX> has a very low
+          conservation score (A), a second <NUMEX TYPE="CARDINAL">10</NUMEX>-bp <ENAMEX TYPE="GPE_DESC">region</ENAMEX> shows a
+          very high conservation score (<ENAMEX TYPE="ORGANIZATION">B</ENAMEX>). This approach allows
+          rapid identification of the most conserved regions of the
+          genome with no regard for self-complementarity of
+          primers, optimizing melting temperature, avoiding primer
+          dimers, etc. Once potential regions of interest are
+          identified, other primer design algorithms can then be
+          used to ensure that self-complementarity etc. will not be
+          a problem. This <NUMEX TYPE="CARDINAL">two</NUMEX> step strategy for designing robust
+          <ENAMEX TYPE="ORGANIZATION">primers</ENAMEX> can be applied to any set of genomes with a high
+          degree of heterogeneity such as viruses, bacterial genes
+          etc. Once a specific sequence has been identified,
+          partially degenerate or <ENAMEX TYPE="DISEASE">multiple oligonucleotides</ENAMEX> can
+          easily be generated as deemed appropriate for the
+          particular application. Empirical validation of all
+          <ENAMEX TYPE="ORGANIZATION">primers</ENAMEX> is still prudent.
+        
+      
+      
+        Methods
+        
+          <ENAMEX TYPE="ORGANIZATION">Databases</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Resources</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Genbank</ENAMEX> <ENAMEX TYPE="PRODUCT">Release 129</ENAMEX> was downloaded from
+          <ENAMEX TYPE="CONTACT_INFO">ftp://ncbi.</ENAMEX><ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="PER_DESC">gov.</ENAMEX> <ENAMEX TYPE="PERSON">Pairwise</ENAMEX> alignment <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ]
+          was used to determine whether or not <NUMEX TYPE="CARDINAL">two</NUMEX> sequences share
+          similarity. <ENAMEX TYPE="ORGANIZATION">ClustalW</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] was used for multiple
+          sequence alignment. All non-commercial softwares used in
+          this study were written in PERL <NUMEX TYPE="CARDINAL">5.0</NUMEX>.
+        
+        
+          Construction of alignment
+          All <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> related sequences were extracted from GenBank
+          (<ENAMEX TYPE="PRODUCT">Release 129</ENAMEX>) by using keyword <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> or <ENAMEX TYPE="DISEASE">Hepatitis</ENAMEX> C. D90208
+          was chosen as the organizing <ENAMEX TYPE="PER_DESC">template</ENAMEX> for its fully
+          annotated genome in the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX>. (Other organizing HCV
+          genomes yielded virtually identical consensus sequences
+          and <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX> profiles.) The genomes were separated into <NUMEX TYPE="CARDINAL">10</NUMEX>
+          regions according to <TIMEX TYPE="DATE">D90208</TIMEX>'s annotation: <ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>, core,
+          E1, <TIMEX TYPE="DATE">E2</TIMEX>(<NUMEX TYPE="MONEY">P7</NUMEX>), <TIMEX TYPE="DATE">NS2</TIMEX>, <TIMEX TYPE="DATE">NS3</TIMEX>, <TIMEX TYPE="DATE">NS4A</TIMEX>, <TIMEX TYPE="DATE">NS4B</TIMEX>, <TIMEX TYPE="DATE">NS5A</TIMEX>, <TIMEX TYPE="DATE">NS5B</TIMEX>. The DNA
+          sequences for each of these regions were retrieved and
+          used for <ENAMEX TYPE="ORGANIZATION">TBLASTN</ENAMEX> analysis against all HCV sequences. If a
+          sequence shared <NUMEX TYPE="PERCENT">50%</NUMEX> identity over <NUMEX TYPE="CARDINAL">90</NUMEX>-bp (<NUMEX TYPE="CARDINAL">30</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>),
+          <NUMEX TYPE="PERCENT">65%</NUMEX> identity over <NUMEX TYPE="CARDINAL">60</NUMEX>-bp (<NUMEX TYPE="CARDINAL">20</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>) or <NUMEX TYPE="PERCENT">90%</NUMEX> over
+          <TIMEX TYPE="TIME">30-bp</TIMEX> (<NUMEX TYPE="CARDINAL">10</NUMEX> amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>) with the query template region, it
+          was considered to contain part of the corresponding gene
+          from a <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> genome in that region, and therefore was used
+          for <ENAMEX TYPE="DISEASE">multiple sequences</ENAMEX> alignments of this region. For
+          each <ENAMEX TYPE="GPE_DESC">region</ENAMEX>, a multiple alignment was done using
+          <ENAMEX TYPE="ORGANIZATION">ClustalW</ENAMEX>. Alignment was manually curated to eliminate
+          obvious false alignments due to bad sequence quality or
+          inappropriate BLAST hits.
+        
+        
+          Construction of PWM
+          A <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX> and a consensus sequence were built for each
+          region of <ENAMEX TYPE="ORGANIZATION">HCV</ENAMEX> and subsequently assembled into a whole
+          genome consensus sequence and <ENAMEX TYPE="ORGANIZATION">PWM</ENAMEX>. For each of the <NUMEX TYPE="CARDINAL">10</NUMEX>
+          regions, the number of occurrences of each <ENAMEX TYPE="FAC_DESC">base</ENAMEX> at a
+          given position was compiled. These counts were converted
+          to frequencies that were used to calculate log odds
+          scores. The odds score is the frequency observed divided
+          by the theoretical frequency expected ( 
+          <ENAMEX TYPE="PERSON">i.e.</ENAMEX>, the background frequency of
+          the base, usually averaged over the genome ~<ENAMEX TYPE="PRODUCT">0.25/base</ENAMEX>).
+          For example, if the base frequency is <NUMEX TYPE="CARDINAL">0.79</NUMEX> and the
+          estimated background frequency is <NUMEX TYPE="CARDINAL">0.25</NUMEX>, the odds score
+          would be <TIMEX TYPE="DATE">0.79/0.25</TIMEX> = <NUMEX TYPE="CARDINAL">3.16</NUMEX>. Finally, odds scores were
+          converted to log odds scores by taking the logarithm base
+          <NUMEX TYPE="CARDINAL">2</NUMEX>.
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+          i,<ENAMEX TYPE="PER_DESC">j</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (F 
+          i,<ENAMEX TYPE="ORGANIZATION">j /P</ENAMEX> 
+          i, )
+          Where
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+          i,j is the scoring matrix value of
+          base i in position j
+          F 
+          i,j is the frequency of base i in
+          position j, P 
+          i is the background frequency of base
+          i
+          As the logarithm of <NUMEX TYPE="CARDINAL">zero</NUMEX> is infinity, a zero
+          occurrence of a particular base in the matrix creates a
+          problem. In this case, a large negative log odds score
+          may be used at such a position in a scoring matrix. A
+          formula proposed by <ENAMEX TYPE="ORGANIZATION">Hertz</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Stormo</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX> ] was used
+          instead in our calculations.
+          <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+          i,<ENAMEX TYPE="PER_DESC">j</ENAMEX> = log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> [(C 
+          i,j + P 
+          i )/{(<ENAMEX TYPE="ORGANIZATION">N</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX>)P 
+          i }] â‰ˆ log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> (F 
+          i,<ENAMEX TYPE="ORGANIZATION">j /P</ENAMEX> 
+          i, )
+          Where C 
+          i,j is the count of base i in position
+          <ENAMEX TYPE="PERSON">j</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is the total number of sequences.
+        
+        
+          Choosing a conserved region for primer
+          design
+          By sliding <NUMEX TYPE="CARDINAL">25</NUMEX> bp window (representing average primer
+          length) incrementally along the genome in <NUMEX TYPE="CARDINAL">1</NUMEX>-bp intervals,
+          an average of the highest log odds scores for each
+          position (either A, C, <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> or <ENAMEX TYPE="ORGANIZATION">T</ENAMEX>) was calculated to generate
+          the overall degree of conservation (conservation score)
+          for this <NUMEX TYPE="CARDINAL">25</NUMEX>-bp region.
+          
+          where L is the length of the <ENAMEX TYPE="LOCATION">region</ENAMEX> (<NUMEX TYPE="CARDINAL">25</NUMEX>-bp in this
+          case).
+          For PCR applications (or those involving
+          polymerization, where homology at the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of the
+          <ENAMEX TYPE="ORGANIZATION">primer</ENAMEX> is most critical), it is recommended that the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+          end and the penultimate position be <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> or C with
+          frequencies of <NUMEX TYPE="MONEY">â‰¥0.98</NUMEX>. It is also beneficial if the
+          previous position (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>' <NUMEX TYPE="PERCENT">-2</NUMEX>) is a <ENAMEX TYPE="ORGANIZATION">G</ENAMEX> or C with a frequency of
+          â<NUMEX TYPE="MONEY">‰¥0.90</NUMEX> or alternatively, an A or T with a frequency of
+          â<NUMEX TYPE="MONEY">‰¥0.95</NUMEX>. Regions that contain insertions, should in
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, be avoided.
+        
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">PQ</ENAMEX> carried out the data analysis. <ENAMEX TYPE="ORGANIZATION">PQ</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">XC</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">LW</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">JG</ENAMEX> and BM
+        participated in the design of the study. <ENAMEX TYPE="ORGANIZATION">PQ</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">BM</ENAMEX> drafted
+        the manuscript.
+        All <ENAMEX TYPE="PER_DESC">authors</ENAMEX> read and approved the final manuscript.
+      
+    
+  

@@ -1,0 +1,890 @@
+
+  
+    
+      
+        Background
+        The <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of multiple, complete genome sequences
+        of <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, archaea and eukaryotes has created the
+        opportunity for a new level of phylogenetic analysis that
+        is based not on a phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> for selected molecules,
+        for example, rRNAs, as in traditional molecular
+        <ENAMEX TYPE="ORGANIZATION">phylogenetic</ENAMEX> studies [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] , but (ideally) on the entire
+        <ENAMEX TYPE="PER_DESC">body</ENAMEX> of information contained in the genomes. The most
+        <ENAMEX TYPE="ORGANIZATION">straightforward</ENAMEX> version of this type of analysis, to which
+        we <ENAMEX TYPE="PER_DESC">hereinafter</ENAMEX> refer to <NUMEX TYPE="MONEY">as 'genome-</NUMEX>tree' <ENAMEX TYPE="FAC_DESC">building</ENAMEX>, involves
+        scaling-up the traditional <ENAMEX TYPE="PLANT">tree</ENAMEX>-building approach and
+        analyzing the phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX> for multiple gene <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+        (in principle, all <ENAMEX TYPE="PER_DESC">families</ENAMEX> represented in many genomes),
+        in an attempt to derive a consensus, 'organismal' phylogeny
+        [ <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] . However, because of the wide spread of
+        horizontal gene transfer and lineage-specific gene loss, at
+        least in the prokaryotic world, comparison of <ENAMEX TYPE="PLANT">trees</ENAMEX> for
+        different <ENAMEX TYPE="PER_DESC">families</ENAMEX> and consensus derivation may become
+        highly problematic [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] . Probably due to all these
+        problems, a pessimistic conclusion has been reached that
+        prokaryotic phylogeny might not be reconstructable from
+        <ENAMEX TYPE="SUBSTANCE">protein sequences</ENAMEX>, at least with current phylogenetic
+        methods [ <ENAMEX TYPE="LAW">4</ENAMEX> ] .
+        With the complete genome sequences at hand, it appears
+        natural to seek for alternatives to traditional,
+        <ENAMEX TYPE="GPE">alignment</ENAMEX>-based tree-<ENAMEX TYPE="FAC_DESC">building</ENAMEX> in the form of integral
+        characteristics of the evolutionary process. Probably the
+        most obvious of such characteristics is the
+        presence-absence of <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> of the analyzed species
+        in orthologous <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes, and recently, at least
+        <NUMEX TYPE="CARDINAL">three</NUMEX> groups have employed this approach to build genome
+        <ENAMEX TYPE="PLANT">trees</ENAMEX>, primarily for prokaryotes [ <NUMEX TYPE="CARDINAL">8 9 10</NUMEX> ] . An
+        alternative way to construct a genome <ENAMEX TYPE="PLANT">tree</ENAMEX> involves using
+        the mean or median level of similarity among all detectable
+        pairs of orthologs as the measure of the evolutionary
+        distance between species [ <TIMEX TYPE="DATE">11</TIMEX> ] . Yet another possibility
+        involves building species <ENAMEX TYPE="PLANT">trees</ENAMEX> by comparing gene orders.
+        This approach had been pioneered in the classical work of
+        <ENAMEX TYPE="ORGANIZATION">Dobzhansky</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Sturtevant</ENAMEX> who used inversions in 
+        Drosophila chromosomes to construct
+        an evolutionary tree [ <TIMEX TYPE="DATE">12</TIMEX> ] . Subsequently, mathematical
+        methods have been developed to calculate rearrangement
+        distances between genomes, and, using these, phylogenetic
+        <ENAMEX TYPE="PLANT">trees</ENAMEX> have been built for certain small genomes, such as
+        plant <ENAMEX TYPE="SUBSTANCE">mitochondria</ENAMEX> and herpesviruses [ <NUMEX TYPE="CARDINAL">13 14</NUMEX> ] . These
+        approaches, however, are applicable only to genomes that
+        show significant conservation of global gene order, which
+        is manifestly not the case among <ENAMEX TYPE="PER_DESC">prokaryotes</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16 17</NUMEX> ] .
+        Even relatively close species such as, for example, 
+        Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> and 
+        Haemophilus influenzae, <NUMEX TYPE="CARDINAL">two</NUMEX> species
+        of the γ-subdivision of <ENAMEX TYPE="ORGANIZATION">Proteobacteria</ENAMEX>, retain very little
+        conservation of gene order beyond the operon level
+        (typically, <NUMEX TYPE="CARDINAL">two</NUMEX>-to-<NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in <TIMEX TYPE="DATE">a row</TIMEX>), and essentially
+        none is detectable among evolutionarily distant bacteria
+        and <ENAMEX TYPE="SUBSTANCE">archaea</ENAMEX> [ <NUMEX TYPE="CARDINAL">15 16 18</NUMEX> ] . Very few operons, primarily
+        those coding for physically interacting subunits of
+        multiprotein <ENAMEX TYPE="FAC_DESC">complexes</ENAMEX> such as certain <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>
+        or <ENAMEX TYPE="SUBSTANCE">RNA-polymerase subunits</ENAMEX>, are conserved across a wide
+        range of prokaryotic lineages [ <NUMEX TYPE="CARDINAL">15 16</NUMEX> ] . On the other
+        hand, pairwise comparisons of even distantly related
+        <ENAMEX TYPE="ORGANIZATION">prokaryotic</ENAMEX> <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> reveal considerable number of shared
+        (predicted) operons, which creates an opportunity for a
+        meaningful comparative analysis [ <TIMEX TYPE="DATE">19</TIMEX> ] [ <NUMEX TYPE="CARDINAL">20 21</NUMEX> ] .
+        The critical issue with all these approaches to genome
+        tree <ENAMEX TYPE="FAC_DESC">building</ENAMEX> is to what extent each of them reflects
+        <ENAMEX TYPE="ORGANIZATION">phylogeny</ENAMEX> and to what extent they are affected by other
+        evolutionary processes, such as lineage-specific gene loss
+        and horizontal gene transfer. Comparative analyses have
+        strongly suggested that these phenomena make major
+        contributions to genome evolution, at least in prokaryotes
+        [ <NUMEX TYPE="CARDINAL">7 22 23 24 25</NUMEX> ] . These phenomena have the potential to
+        severely affecting phylogenetic <ENAMEX TYPE="PLANT">tree topology</ENAMEX>, particularly
+        when similar sets of genes are lost indifferent lineages
+        because of similar environmental pressures, or when a
+        preferential trend of horizontal gene flow exists between
+        different lineages. The possibility even has been discussed
+        that the amount of <ENAMEX TYPE="DISEASE">lateral</ENAMEX> gene exchange is such that it
+        invalidates the very principle of representing the
+        evolution of <ENAMEX TYPE="ANIMAL">species</ENAMEX> as a <ENAMEX TYPE="PLANT">tree</ENAMEX>; instead, the only adequate
+        representation of evolutionary history could be a complex
+        network [ <ENAMEX TYPE="LAW">6</ENAMEX> ] [ <TIMEX TYPE="DATE">25</TIMEX> ] . Genome-<ENAMEX TYPE="PLANT">trees</ENAMEX> seem to be the last
+        resort for the <ENAMEX TYPE="ANIMAL">species</ENAMEX> tree concept. Unless phylogenetic
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> can be revealed by at least some approaches based on
+        genome-wide comparisons, the conclusion seems imminent that
+        this concept should be abandoned and replaced by a more
+        complex representation of evolution.
+        Here, we compare the topologies produced with <NUMEX TYPE="CARDINAL">five</NUMEX>,
+        largely independent approaches to genome-tree <ENAMEX TYPE="FAC_DESC">building</ENAMEX>: i)
+        presence-absence of genomes in <ENAMEX TYPE="ORGANIZATION">Clusters</ENAMEX> of Orthologous
+        <ENAMEX TYPE="ORG_DESC">Groups</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (COGs); <ENAMEX TYPE="LAW">ii</ENAMEX>) conservation of local gene
+        order (pairs of adjacent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) among prokaryotic genomes;
+        <ENAMEX TYPE="PERSON">iii</ENAMEX>) distribution of percent identity between apparent
+        <ENAMEX TYPE="ORGANIZATION">orthologs; iv</ENAMEX>) sequence conservation in concatenated
+        alignments of <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>; v) comparative analysis
+        of multiple <ENAMEX TYPE="PLANT">trees</ENAMEX> reconstructed for <ENAMEX TYPE="PER_DESC">representative</ENAMEX> protein
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>. We find that, while the presence-absence approach
+        is most heavily affected by gene loss and horizontal
+        transfer, <NUMEX TYPE="CARDINAL">the other four</NUMEX> methods reveal stronger
+        phylogenetic signals. Although the topologies of the trees
+        constructed with different approaches were only partially
+        compatible, <NUMEX TYPE="CARDINAL">three</NUMEX> previously unnoticed high-level clades
+        among <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> were revealed with notable consistency. We
+        suggest that, in spite of all the complexity brought about
+        by horizontal gene transfer and lineage-specific gene loss,
+        these <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> reflect certain evolutionary reality, i.e. the
+        trajectory of evolution for a relatively stable gene core.
+        It appears that this is the only meaningful way to treat
+        the notion of a species <ENAMEX TYPE="PLANT">tree</ENAMEX>: as the history of a
+        relatively large ensemble of genes, not a comprehensive
+        representation of the history of entire genomes.
+      
+      
+        Results
+        
+          New criteria for genome-tree construction
+          
+            Conserved gene pairs in prokaryotic
+            genomes
+            The results of the present analysis of conserved
+            gene pairs are consistent with the notion of the
+            fluidity of prokaryotic gene order caused by extensive
+            <ENAMEX TYPE="PERSON">recombination</ENAMEX>. <NUMEX TYPE="CARDINAL">Only 17</NUMEX> invariant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> pairs were
+            detected, all of which consists of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX>
+            <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">RNA polymerase subunits</ENAMEX>. The remaining
+            <TIMEX TYPE="DATE">4586</TIMEX> gene pairs were missing in <NUMEX TYPE="CARDINAL">at least one</NUMEX> genome.
+            The number of gene pairs represented in <TIMEX TYPE="TIME">three, four and</TIMEX>
+            a greater number of genomes decayed rapidly, with
+            highly conserved pairs forming the tail of the
+            distribution (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). The <NUMEX TYPE="PERCENT">95%</NUMEX> quantile of this
+            distribution (excluding the highly conserved pairs) was
+            found to fit the geometric <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> with a high
+            statistical significance (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>). This is compatible
+            with random, independent loss of gene pairs during
+            evolution suggesting that, with the caveat of
+            horizontal transfer, the number of gene pairs shared by
+            <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="PER_DESC">genomes</ENAMEX> could reflect the evolutionary distance
+            between them.
+            The number of conserved gene pairs present in
+            individual <ENAMEX TYPE="PER_DESC">prokaryotic</ENAMEX> genomes varied from <NUMEX TYPE="MONEY">208</NUMEX> for 
+            <ENAMEX TYPE="PERSON">M.</ENAMEX> genitalium to <TIMEX TYPE="DATE">2314</TIMEX> for 
+            P. aeruginosa (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Analysis
+            of the co-occurrence of gene pairs among the
+            prokaryotic genomes shows high values of the Jaquard
+            coefficient, which reflect partial conservation of gene
+            order (see legend to <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>), for closely related
+            <ENAMEX TYPE="ORGANIZATION">species</ENAMEX>, for example, <NUMEX TYPE="CARDINAL">0.32</NUMEX> for 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> influenzae and <NUMEX TYPE="CARDINAL">0.35</NUMEX> for 
+            <ENAMEX TYPE="PERSON">M.</ENAMEX> thermoautotrophicum and 
+            <ENAMEX TYPE="PERSON">M. jannaschi</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The value
+            of this coefficient varied from <NUMEX TYPE="MONEY">0.16 to 0.66</NUMEX>, with a
+            mean of <NUMEX TYPE="MONEY">0.26</NUMEX>, for archaea, and from <NUMEX TYPE="MONEY">0.04 to 0.87</NUMEX>, with
+            a mean of <NUMEX TYPE="MONEY">0.16</NUMEX>, for <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>. In contrast, for
+            archaeal-bacterial comparisons, the values varied from
+            <NUMEX TYPE="CARDINAL">0.04</NUMEX> to <NUMEX TYPE="CARDINAL">0.18</NUMEX>, with the average of <NUMEX TYPE="MONEY">0.08</NUMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). These
+            observations appear to indicate that the distribution
+            of conserved gene pairs among prokaryotic genomes
+            carries a phylogenetic signal.
+          
+          
+            Distributions of identity percentage between
+            probable orthologs from complete prokaryotic
+            genomes
+            Figure 2shows a sampling of the distributions of
+            identity percentage between pairs of apparent orthologs
+            identified as reciprocal best hits from a range of
+            <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> pairs separated by varying phylogenetic
+            <ENAMEX TYPE="PERSON">distances</ENAMEX>. Most of the distributions are clearly
+            unimodal, and the distributions for pairs of
+            phylogenetically distant <ENAMEX TYPE="PER_DESC">genomes</ENAMEX>, such as those from
+            different major bacterial lineages or <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> versus
+            archaea, have their modes within a relatively narrow
+            range around <NUMEX TYPE="PERCENT">33%</NUMEX> identity (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>).
+            The use of reciprocal best hits is a conservative
+            <ENAMEX TYPE="PERSON">way</ENAMEX> to identify the set of probable orthologs between
+            pairs of genomes because some of the orthologs are
+            missed due to complex relationships between <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of
+            <ENAMEX TYPE="ORGANIZATION">paralogs</ENAMEX>. Nevertheless, all genome-to-genome
+            comparisons included <NUMEX TYPE="MONEY">at least 100</NUMEX> (for the smallest
+            genomes such as the mycoplasmas), and typically, a
+            considerably greater number of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> pairs ( [ <TIMEX TYPE="DATE">11</TIMEX> ]
+            and data not shown). This suggests that parameters of
+            the distributions of the similarity level between
+            probable orthologs identified in this fashion could
+            potentially serve as useful measures of the
+            evolutionary distance between genomes.
+          
+          
+            Genome <ENAMEX TYPE="PLANT">trees</ENAMEX> constructed with <NUMEX TYPE="CARDINAL">three</NUMEX> different
+            approaches
+            Genome <ENAMEX TYPE="PLANT">trees</ENAMEX> were generated using the approaches
+            described under <ENAMEX TYPE="LAW">Material and Methods</ENAMEX>. All the trees
+            showed a clear separation of the <NUMEX TYPE="CARDINAL">two</NUMEX> major prokaryotic
+            domains, <ENAMEX TYPE="SUBSTANCE">Bacteria</ENAMEX> and <ENAMEX TYPE="PERSON">Archaea</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">3, 4, 5</ENAMEX>). Several
+            terminal bifurcations that reflect clustering of
+            relatively close <ENAMEX TYPE="ANIMAL">species</ENAMEX>, such as <NUMEX TYPE="CARDINAL">three</NUMEX> mycoplasmas ( 
+            <ENAMEX TYPE="PERSON">M. genitalium</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">M.</ENAMEX> pneumoniae and 
+            <ENAMEX TYPE="ORGANIZATION">U.</ENAMEX> urealiticum ), <NUMEX TYPE="CARDINAL">two</NUMEX> spirochetes
+            ( 
+            <ENAMEX TYPE="PERSON">B. burgdorferi</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> pallidum ), and 
+            <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori and 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni, are also reproduced in
+            all <ENAMEX TYPE="PLANT">trees</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">3, 4, 5</ENAMEX>). This retention of both the
+            <ENAMEX TYPE="PERSON">deepest</ENAMEX> and the terminal branchings shows that all
+            types of data used for <ENAMEX TYPE="PLANT">tree</ENAMEX> construction contained at
+            least a <ENAMEX TYPE="SUBSTANCE">crude</ENAMEX> phylogenetic signal. However, beyond
+            these obvious aspects of topology, and in particular
+            with respect to clustering of distantly related
+            <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and archaea, the <ENAMEX TYPE="PLANT">trees</ENAMEX> produced with different
+            approaches showed significant differences, which appear
+            to reflect the relative contributions of phenotypic and
+            phylogenetic signals. A quantitative comparison of the
+            <ENAMEX TYPE="PLANT">tree topologies</ENAMEX> using the symmetric distance method
+            showed that the presence-absence tree was most
+            different from the <ENAMEX TYPE="PLANT">trees</ENAMEX> made by the other methods
+            (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+          
+          
+            Presence-absence of genomes in COGs
+            The topology of the parsimony <ENAMEX TYPE="PLANT">tree</ENAMEX> built using this
+            <ENAMEX TYPE="PERSON">criterion</ENAMEX> appears to reflect primarily the phenotypes
+            of the respective <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). This is most
+            clearly manifest in the <NUMEX TYPE="CARDINAL">two</NUMEX> major bacterial clusters
+            that appear in this tree, each with a strong bootstrap
+            support:
+            i) <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> with large genomes, namely 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, B. <ENAMEX TYPE="SUBSTANCE">subtilis</ENAMEX>, Synechocystis
+            <ENAMEX TYPE="GPE">sp.</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Deinococcus</ENAMEX> radiodurans and 
+            Mycobacterium tuberculosis, and
+            free-living <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> with small genomes, 
+            A. aeolicus and 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima 
+            <ENAMEX TYPE="ORGANIZATION">ii</ENAMEX>) parasites with small genomes (mycoplasmas,
+            spirochetes, chlamydia and rickettsia)
+            Parasites with moderate-sized genomes ( 
+            <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> influenzae, <ENAMEX TYPE="ORGANIZATION">N.</ENAMEX>
+            meningitidis, and 
+            P. multocida; <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori and 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni ) formed <NUMEX TYPE="CARDINAL">two</NUMEX> distinct
+            <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>. Thus, well-established phylogenetic
+            relationships between <ENAMEX TYPE="PER_DESC">free-</ENAMEX>living and parasitic
+            <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, such as those within the <ENAMEX TYPE="ORGANIZATION">Proteobacteria</ENAMEX> ( 
+            <ENAMEX TYPE="SUBSTANCE">E. coli-H</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">influenzae-P.</ENAMEX> multocida-<ENAMEX TYPE="ORGANIZATION">N.</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">meningitidis</ENAMEX> ) and within low-<ENAMEX TYPE="ORGANIZATION">GC Gram</ENAMEX>-positive
+            <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> ( 
+            <ENAMEX TYPE="PERSON">B. subtilis-mycoplasmas</ENAMEX> ), are
+            not reflected accurately in this tree <ENAMEX TYPE="ANIMAL">topology</ENAMEX>. The <NUMEX TYPE="CARDINAL">two</NUMEX>
+            free-living <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> with small genomes, the
+            hyperthermophiles 
+            A. aeolicus and 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima, did not join either
+            the <ENAMEX TYPE="PER_DESC">free-</ENAMEX>living or the parasitic bacterial cluster,
+            despite their small number of genes similar to that in
+            bacterial parasites (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>). That these <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> do
+            not <ENAMEX TYPE="PER_DESC">group</ENAMEX> with the parasites despite similar genome
+            <ENAMEX TYPE="PERSON">sizes</ENAMEX>, suggests that it is not the number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> per
+            <ENAMEX TYPE="PRODUCT">se</ENAMEX>, but rather the degree of genome degradation and the
+            loss of coherent sets of genes that affect the topology
+            of the presence-absence <ENAMEX TYPE="PLANT">tree</ENAMEX>. The inclusion of the
+            parasites 
+            <ENAMEX TYPE="PERSON">M.</ENAMEX> tuberculosis and 
+            Pseudomonas aeruginosa in the
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> with large genomes probably
+            reflects the recent origin of parasitism in these
+            <ENAMEX TYPE="ORGANIZATION">lineages</ENAMEX>. It is further notable that, in this tree, the
+            <NUMEX TYPE="CARDINAL">two</NUMEX> representative of <ENAMEX TYPE="ORGANIZATION">Crenarchaeota</ENAMEX> ( 
+            A. pernix and 
+            <ENAMEX TYPE="PERSON">S. solfataricus</ENAMEX> ) do not comprise
+            a sister <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">Euryarchaeota</ENAMEX> (the remaining
+            archaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX>), but rather for am <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> within the
+            Euryarchaeal cluster (see discussion below).
+            In previous studies that employed similar approaches
+            to genome-tree <ENAMEX TYPE="FAC_DESC">building</ENAMEX>, <ENAMEX TYPE="PER_DESC">phylogenetically</ENAMEX> reasonable
+            clades were observed after a simple omission of
+            parasitic <ENAMEX TYPE="ANIMAL">species</ENAMEX> [ <NUMEX TYPE="CARDINAL">8 9</NUMEX> ] . Such an operation could be
+            <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to the <ENAMEX TYPE="PLANT">tree</ENAMEX> shown in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">3</NUMEX>, indeed resulting
+            in the correct recovery of the proteobacterial and
+            <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive bacterial lineages. However, it seems
+            that, because known natural <ENAMEX TYPE="PER_DESC">groups</ENAMEX> could be reproduced
+            by this approach only after omission of certain species
+            on the basis of independent prior knowledge, this
+            method hardly can be useful for delineating new,
+            phylogenetically sound clades.
+          
+          
+            Conserved gene pairs
+            The topology of the <ENAMEX TYPE="PLANT">tree</ENAMEX> based on gene pair
+            conservation seems to carry a stronger phylogenetic
+            <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> than the gene presence-absence tree because it
+            correctly <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> together related <ENAMEX TYPE="PER_DESC">free-</ENAMEX>living and
+            parasitic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> despite major differences in gene
+            <ENAMEX TYPE="ORGANIZATION">repertoires</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). The bacterial side of this tree
+            consists of <NUMEX TYPE="CARDINAL">three</NUMEX> major clades: i) proteobacterial
+            clade that, in addition to bona fide <ENAMEX TYPE="PERSON">Proteobacteria</ENAMEX>,
+            includes also 
+            A. aeolicus, <ENAMEX TYPE="PERSON">M. tuberculosis</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">D.</ENAMEX>
+            radiodurans, and 
+            <ENAMEX TYPE="PRODUCT">Synechocystis sp</ENAMEX>, <ENAMEX TYPE="DISEASE">ii</ENAMEX>)
+            <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive clade that additionally includes 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima, and iii) an
+            unexpected clade that unites spirochetes and chlamydia.
+            In the archaeal domain, the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> of the
+            <ENAMEX TYPE="ORGANIZATION">Crenarchaeota</ENAMEX> did not form a clade, but instead were
+            present as separate <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> interspersed with
+            euryarchaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX>. To further assess the robustness
+            of the obtained <ENAMEX TYPE="PLANT">tree</ENAMEX>, we varied the parameters of the
+            included <NUMEX TYPE="CARDINAL">conserved</NUMEX> pairs by allowing distances between
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> comprising a pair from <TIMEX TYPE="DATE">0 to 5</TIMEX> and changing
+            the minimal number of genomes, in which a conserved
+            gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> had to be present, from <TIMEX TYPE="DATE">2 to 4</TIMEX>. These changes
+            did not significantly affect the <ENAMEX TYPE="PLANT">tree</ENAMEX> topology (data
+            not shown). The topology of a neighbor-joining tree
+            constructed by using the number of gene pairs shared by
+            <NUMEX TYPE="CARDINAL">two</NUMEX> genomes to calculate the evolutionary distance
+            between them was similar to the topology of the maximum
+            parsimony <ENAMEX TYPE="PLANT">tree</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2and</ENAMEX> data not shown).
+            At least some unusual aspects of this tree's the
+            <ENAMEX TYPE="ORGANIZATION">topology</ENAMEX> could be explained by horizontal transfer of
+            operons between particular bacterial and archaeal
+            <ENAMEX TYPE="ORGANIZATION">lineages</ENAMEX>. Specifically, it has been noticed previously
+            that 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima shares a considerable
+            number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and operons with <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive
+            <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, to the exclusion of other <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] ;
+            this seems to be compatible with the position of 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima with the
+            <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive cluster. Similarly, considerable
+            horizontal gene transfer appear to have occurred
+            between the 
+            <ENAMEX TYPE="ORGANIZATION">Sulfolobus</ENAMEX> and 
+            Thermoplasma lineages, which
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> together in the archaeal part of this <ENAMEX TYPE="PLANT">tree</ENAMEX>. The
+            presence of extra <ENAMEX TYPE="ANIMAL">species</ENAMEX> in the proteobacterial
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> is more surprising because no obvious trend for
+            operon transfer between these <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and bona fide
+            <ENAMEX TYPE="ORGANIZATION">Proteobacteria</ENAMEX> has been noticed during systematic
+            genome comparisons; however, a considerable number of
+            <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> gene pairs was detected during the present
+            analysis (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). Artifacts of <ENAMEX TYPE="PLANT">tree</ENAMEX> construction
+            could also contribute to these <ENAMEX TYPE="ORG_DESC">associations</ENAMEX>. In
+            contrast, the spirochete-chlamydia clade might reflect
+            a deep phylogenetic relationship (see discussion
+            below).
+          
+          
+            Parameters of percent identity distributions
+            between orthologs
+            Different characteristics of the distributions of
+            percent identity between the probable orthologs, such
+            as the mean, the median, the mode and various
+            quantiles, were used to calculate distances between
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> and construct phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX>. <ENAMEX TYPE="PERSON">Trees</ENAMEX> built
+            with different cut-off values for symmetrical best
+            hits, <NUMEX TYPE="CARDINAL">four</NUMEX> different formulas for the evolutionary
+            distance calculation (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Methods</ENAMEX>) and
+            different parameters of the distributions showed
+            essentially the same topology, with strong bootstrap
+            support for most of the clades (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. 5and data not
+            shown). The complete proteobacterial and <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive
+            bacterial clusters were recovered in this tree as well
+            as the unexpected grouping of chlamydia with spirochete
+            noticed above in the <ENAMEX TYPE="PLANT">tree</ENAMEX> based on conserved gene pairs
+            (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">4, 5</ENAMEX>). Also similarly to the previous <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PLANT">trees</ENAMEX>,
+            the <ENAMEX TYPE="ORGANIZATION">Crenarchaea</ENAMEX> grouped with 
+            <ENAMEX TYPE="ORGANIZATION">Thermoplasma</ENAMEX> within the archaeal
+            part of the <ENAMEX TYPE="PLANT">tree</ENAMEX>. Beyond these groupings, the tree
+            appeared conservative in the sense that the unassigned
+            <ENAMEX TYPE="ANIMAL">bacterial species</ENAMEX> formed separate <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> near the
+            root of the bacterial subtree. The closest to the root
+            were the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">hyperthermophilic species</ENAMEX>, 
+            A. aeolicus and 
+            <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX> maritima, which is compatible
+            with the standard view of their phylogenetic position [
+            <NUMEX TYPE="CARDINAL">1 26</NUMEX> ] .
+          
+          
+            <ENAMEX TYPE="GPE">Alignment</ENAMEX>-based approaches to the construction of
+            a <ENAMEX TYPE="ANIMAL">species</ENAMEX> tree
+            
+              Concatenated alignments of <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX>
+              <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX>
+              The alignments of the <NUMEX TYPE="CARDINAL">32</NUMEX> <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>
+              <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in all bacterial and archaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX> were
+              <ENAMEX TYPE="ORGANIZATION">concatenated</ENAMEX> <ENAMEX TYPE="PER_DESC">head</ENAMEX>-to-tail and treated as a single
+              <ENAMEX TYPE="SUBSTANCE">alignment</ENAMEX> containing <TIMEX TYPE="DATE">4821</TIMEX> columns. The underlying
+              assumption is that the genes coding for <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX>
+              <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that function as components of a large
+              macromolecular <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> are unlikely to undergo
+              horizontal transfer, which tends to confound
+              comparisons of the <ENAMEX TYPE="PLANT">tree</ENAMEX> topologies for other protein
+              <ENAMEX TYPE="PER_DESC">families</ENAMEX> and would invalidate the concatenation
+              approach. The resulting maximum-likelihood tree
+              contains the complete proteobacterial and
+              <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive bacterial clusters as well as the
+              spirochete-chlamydia cluster noticed in the
+              genome-<ENAMEX TYPE="PLANT">trees</ENAMEX>. In addition to the
+              spirochetes-chlamydia clade, the following
+              non-trivial affinities were detected with strong
+              bootstrap support: i) a cluster of the two
+              hyperthemophiles, 
+              A. aeolicus and <ENAMEX TYPE="ORGANIZATION">T.</ENAMEX>
+              maritima, <ENAMEX TYPE="DISEASE">ii</ENAMEX>) a cluster including 
+              <ENAMEX TYPE="NATIONALITY">D.</ENAMEX> radiodurans, <ENAMEX TYPE="GPE">Synechocystis</ENAMEX>, and
+              <ENAMEX TYPE="PERSON">M. tuberculosis</ENAMEX>, which, at a deeper level, joined
+              the <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive bacterial <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">6</NUMEX>). Similar
+              <ENAMEX TYPE="PLANT">tree topologies</ENAMEX> were obtained when the <ENAMEX TYPE="SUBSTANCE">ribosomal</ENAMEX>
+              protein data were analyzed using the <ENAMEX TYPE="ORG_DESC">neighbor</ENAMEX>-joining
+              method and when bacterial phylogeny was analyzed
+              separately by using a concatenated alignments of <NUMEX TYPE="CARDINAL">51</NUMEX>
+              <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX> shared by all <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> (data not
+              shown). Notably, in the quantitative comparison of
+              <ENAMEX TYPE="PLANT">tree topologies</ENAMEX>, the <ENAMEX TYPE="PLANT">tree</ENAMEX> made of concatenated
+              <ENAMEX TYPE="SUBSTANCE">ribosomal protein</ENAMEX> alignments showed the closest
+              similarity to the genome-tree based on the
+              distributions of percent identity between orthologs
+              (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>).
+              The reliability of the observed non-trivial
+              groupings was further examined by using a maximum
+              likelihood approach (the <ENAMEX TYPE="PRODUCT">Kishino-Hasegawa</ENAMEX> test). For
+              each <ENAMEX TYPE="PER_DESC">clade</ENAMEX> (usually, <ENAMEX TYPE="ANIMAL">species</ENAMEX>) forming the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> to be
+              tested, <ENAMEX TYPE="PLANT">trees</ENAMEX> with alternative topologies were
+              manually constructed by joining the clade in question
+              to every other major <ENAMEX TYPE="ORG_DESC">group</ENAMEX> in the <ENAMEX TYPE="PLANT">tree</ENAMEX>. For example,
+              to assess the support for the spirochetes-chlamydia
+              grouping, spirochetes were placed, sequentially, with
+              
+              Thermotoga, <ENAMEX TYPE="GPE">Aquifex</ENAMEX>, the 
+              Thermotoga-<ENAMEX TYPE="GPE">Aquifex</ENAMEX> <ENAMEX TYPE="ORG_DESC">branch</ENAMEX>,
+              ε-proteobacteria, the αβγ-proteobacterial <ENAMEX TYPE="ORG_DESC">branch</ENAMEX>,
+              Proteobacteria, the 
+              
+              Deinococcus-Synechocystis-Mycobacterium cluster,
+              the low <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>+<ENAMEX TYPE="PRODUCT">C Gram</ENAMEX>-positive cluster, the <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> that
+              unites the latter <NUMEX TYPE="CARDINAL">two</NUMEX> clusters, and between bacteria
+              and archaea (to the bacterial root). The same
+              alternatives were tested for chlamydia. Alternative
+              topologies were compared either directly, using the
+              ProtML program, or were subjected to local
+              rearrangement <NUMEX TYPE="ORDINAL">first</NUMEX>. In cases when the topology did
+              not revert to the original one, the final,
+              "optimized" topology was used for the comparison.
+              These tests showed high stability of the 
+              Thermotoga-<ENAMEX TYPE="GPE">Aquifex</ENAMEX> and 
+              
+              Deinococcus-Synechocystis-Mycobacterium groupings
+              (no competing topologies with likelihood within <TIMEX TYPE="DATE">1</TIMEX> SD
+              unit from the original; <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">7, 8, Table 3, 4, 5, 6</ENAMEX>).
+              The affinity of the 
+              
+              Deinococcus-<ENAMEX TYPE="GPE">Synechocystis-Mycobacterium</ENAMEX> with
+              <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> also was supported, although
+              an alternative topology, with this cluster joining
+              <ENAMEX TYPE="ORGANIZATION">Proteobacteria</ENAMEX> could not be ruled out (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">9</NUMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+              <NUMEX TYPE="CARDINAL">7</NUMEX>). Assessment of the spirochete-chlamydia grouping
+              revealed <NUMEX TYPE="CARDINAL">two</NUMEX> competing topologies, albeit unusual
+              ones. Specifically, moving ε-proteobacteria from the
+              <ENAMEX TYPE="ORGANIZATION">proteobacterial</ENAMEX> <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> to the spirochete <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> or,
+              alternatively, moving spirochetes with
+              ε-proteobacteria and simultaneously moving chlamydia
+              to the bacterial root results in statistically
+              acceptable topologies (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">10</NUMEX>; <ENAMEX TYPE="PRODUCT">Table 8</ENAMEX>, <NUMEX TYPE="CARDINAL">9</NUMEX>). Also, a
+              minor rearrangement of the topology within the
+              <ENAMEX TYPE="ORGANIZATION">euryarchaeal</ENAMEX> <ENAMEX TYPE="ORG_DESC">branch</ENAMEX> allowed for a reasonable
+              alternative to the topology in <ENAMEX TYPE="GPE">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">8</NUMEX>(euryarchaeal
+              <ENAMEX TYPE="ORGANIZATION">paraphyly</ENAMEX>), with the <ENAMEX TYPE="GPE">Crenarchaea</ENAMEX>-Euryarchaea
+              radiation at the archaeal root (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <TIMEX TYPE="DATE">11</TIMEX>, <ENAMEX TYPE="PRODUCT">Table</ENAMEX>
+              <NUMEX TYPE="CARDINAL">10</NUMEX>).
+            
+            
+              A census of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> families
+              Another approach to the "species tree" problem
+              involves analysis of phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX> for as many
+              individual protein <ENAMEX TYPE="PER_DESC">families</ENAMEX> as possible, in an
+              attempt to identify a prevailing topology or at least
+              common phylogenetic patterns. A survey of the COG
+              <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> set identified <NUMEX TYPE="CARDINAL">132</NUMEX> <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX>, each of which included
+              a large number of bacterial and archaeal <ENAMEX TYPE="ANIMAL">species</ENAMEX>, but
+              no or few paralogs and thus appeared to be amenable
+              to a large-scale phylogenetic analysis (<ENAMEX TYPE="PRODUCT">Table 11</ENAMEX>).
+              Maximum-likelihood <ENAMEX TYPE="PLANT">trees</ENAMEX> were constructed for each of
+              these <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX>, and a breakdown of nearest <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> was
+              derived for <ENAMEX TYPE="ANIMAL">species</ENAMEX> and <ENAMEX TYPE="PER_DESC">groups</ENAMEX> involved in each of
+              the non-trivial or questionable branchings discussed
+              above ( 
+              Crenarchaea, <ENAMEX TYPE="ORGANIZATION">Thermotoga, Aquifex</ENAMEX>,
+              Deinococcus, <ENAMEX TYPE="GPE">Mycobacterium</ENAMEX>,
+              Synechocystis, spirochetes, chlamydia, and
+              ε-proteobacteria). In each case, a wide spread of
+              topologies was observed, but the grouping that is
+              observed in the concatenated <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX> tree
+              was encountered most often, although, for example,
+              for the spirochete-chlamydia cluster, the lead over
+              other topologies was slim (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <TIMEX TYPE="DATE">13, 14, 15</TIMEX>).
+            
+          
+        
+      
+      
+        Discussion and Conclusions
+        The <ENAMEX TYPE="PLANT">trees</ENAMEX> constructed with each of the <NUMEX TYPE="CARDINAL">four</NUMEX> approaches
+        employed here reflect both the phylogenetic signal and the
+        <ENAMEX TYPE="ORGANIZATION">phenotypic</ENAMEX> (life style) similarities or differences between
+        <ENAMEX TYPE="PERSON">organisms</ENAMEX>, but the relative contributions of these two
+        types of information appear to differ substantially. The
+        gene presence-absence analysis seemed to be dominated by
+        the phenotypic signal, primarily that from gene loss. The
+        tree based on conserved gene pairs appeared to combine
+        <ENAMEX TYPE="ORGANIZATION">phylogenetic</ENAMEX> information with major effects of horizontal
+        transfer of operons. In contrast, the <ENAMEX TYPE="PLANT">trees</ENAMEX> based on the
+        distributions of the identity level of orthologs appear to
+        be more meaningful phylogenetically as indicated by the
+        recovery of established high-level phylogenetic <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of
+        <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, such as <ENAMEX TYPE="ORGANIZATION">Proteobacteria</ENAMEX> and <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive
+        <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>. The ability to correctly identify these major
+        bacterial <ENAMEX TYPE="DISEASE">subdivisions</ENAMEX> and the absence of obviously wrong
+        groupings confer credibility to non-trivial clades present
+        in these <ENAMEX TYPE="PLANT">trees</ENAMEX>, in particular the spirochete-chlamydia
+        <ENAMEX TYPE="ORGANIZATION">clade</ENAMEX>. The same logic applied to the <ENAMEX TYPE="PLANT">tree</ENAMEX> made of
+        concatenated <ENAMEX TYPE="SUBSTANCE">ribosomal protein sequences</ENAMEX>, which included
+        <NUMEX TYPE="CARDINAL">two</NUMEX> other non-trivial bacterial groupings, 
+        Aquifex-<ENAMEX TYPE="GPE">Thermotoga</ENAMEX> and 
+        
+        Synechocystis-<ENAMEX TYPE="GPE">Mycobacterium-Deinococcus</ENAMEX>, the latter
+        joining the <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive <ENAMEX TYPE="ORG_DESC">branch</ENAMEX>. Furthermore, extensive
+        testing of alternative topologies using the
+        Kishino-<ENAMEX TYPE="GPE">Hasegawa</ENAMEX> test largely supported these new bacterial
+        <ENAMEX TYPE="ORGANIZATION">branches</ENAMEX>. The nature of this support becomes clearer when
+        <NUMEX TYPE="CARDINAL">one</NUMEX> examines the results of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> family census. Each
+        of the potential new clades was indeed most common among
+        the observed topologies, but in no case, was the excess of
+        this topology overwhelming. Taken together, these results
+        seem to shed light on the very notion of a "species tree".
+        It appears that, at best, a species <ENAMEX TYPE="PLANT">tree</ENAMEX> can be viewed as a
+        prevailing phylogenetic trend, which, as far as deep
+        branchings are concerned, may not even apply to a majority
+        of the genes in a genome.
+        The potential new, deep relationships between bacterial
+        <ENAMEX TYPE="PERSON">lineages</ENAMEX> revealed during this analysis should be considered
+        preliminary and treated with caution. Nevertheless, an
+        evolutionary affinity between <ENAMEX TYPE="ORGANIZATION">Cyanobacteria</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">Synechocystis</ENAMEX> ) and <ENAMEX TYPE="PERSON">Actinomycetes</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">Mycobacterium</ENAMEX> ) appears plausible,
+        particularly given the presence, in these bacterial <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>,
+        of well-developed and partly similar signal transduction
+        <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX> ] . The connection between <NUMEX TYPE="CARDINAL">two</NUMEX>
+        hyperthermophilic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">Aquifex</ENAMEX> and 
+        Thermotoga, also has obvious
+        biological meaning, although, in this case, particular
+        caution is due, given the possibility of preferential
+        horizontal gene exchange between these <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> that
+        inhabit similar environments. However, the strong support
+        for this grouping obtained in the analysis of concatenated
+        <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX> argues against horizontal transfer as
+        the primary cause for the observed topology. Although
+        recent studies on the phylogeny of <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>
+        suggest some horizontal transfer events, these seem to be
+        largely restricted to <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>-specific <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>.
+        In the universal set of <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>, <NUMEX TYPE="CARDINAL">only one</NUMEX>, <TIMEX TYPE="DATE">S14</TIMEX>,
+        showed clear signs of horizontal transfer [ <TIMEX TYPE="DATE">28</TIMEX> ] . The
+        potential deep phylogenetic connections uncovered during
+        this analysis call for detailed genome comparisons in
+        search of potential shared derived <ENAMEX TYPE="PER_DESC">characters</ENAMEX>, such as
+        unique protein domain architectures, that could support the
+        new clades.
+        The major bacterial lineages are poorly resolved in
+        <ENAMEX TYPE="GPE">rRNA</ENAMEX>-based <ENAMEX TYPE="PLANT">trees</ENAMEX> [ <ENAMEX TYPE="LAW">2 29</ENAMEX> ] and those built using alignments
+        of <ENAMEX TYPE="SUBSTANCE">RNA polymerase subunits</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] and translation
+        elongation factors [ <NUMEX TYPE="CARDINAL">29 31</NUMEX> ] . In the currently accepted
+        taxonomy, which is based primarily (but not exclusively) on
+        16S <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> phylogenetic analysis, bacterial lineages that are
+        suggested by this analysis to form higher-level clusters,
+        tend to form primary nodes under <ENAMEX TYPE="PERSON">Bacteria</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Chlamydiales</ENAMEX>,
+        Spirochetales, <ENAMEX TYPE="GPE">Cyanobacteria</ENAMEX>, the 
+        <ENAMEX TYPE="ORGANIZATION">Thermus-Deinococcus</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+        Aquificales, <ENAMEX TYPE="ORGANIZATION">Thermotogales</ENAMEX>). Thus, the genome trees
+        primarily suggest (however tentatively) new unifications
+        based on deep phylogenetic <ENAMEX TYPE="FAC_DESC">connections</ENAMEX>, rather than split
+        already established clades. A notable exception is the
+        traditional unification of <ENAMEX TYPE="ORGANIZATION">Actinomycetes</ENAMEX>, or <ENAMEX TYPE="ORGANIZATION">High G</ENAMEX>+C
+        <ENAMEX TYPE="PERSON">gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> (represented here by 
+        <ENAMEX TYPE="ORGANIZATION">Mycobacterium</ENAMEX> ), with low <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>+C
+        <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> (the 
+        <ENAMEX TYPE="ORGANIZATION">Bacillus-Clostridium</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>) under
+        <ENAMEX TYPE="ORGANIZATION">Firmicutes</ENAMEX> (<ENAMEX TYPE="NATIONALITY">Gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>). Such a connection was
+        not supported by any of the <ENAMEX TYPE="PLANT">trees</ENAMEX> analyzed here, and it is
+        also poorly, if at all, supported by the latest consensus
+        <ENAMEX TYPE="PLANT">trees</ENAMEX> for <ENAMEX TYPE="SUBSTANCE">16S RNA</ENAMEX>, <NUMEX TYPE="CARDINAL">23</NUMEX> S <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> and translation factor <ENAMEX TYPE="PRODUCT">EF-Tu</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">29</NUMEX> ] . Therefore it seems likely that the <ENAMEX TYPE="ORGANIZATION">Firmicutes</ENAMEX> clade,
+        at least in its present composition, does not exist. The
+        new clade that might replace it consists of low-GC
+        <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and the potential
+        Actinomycetes-Deinococcales-Cyanobacteria <ENAMEX TYPE="ORG_DESC">group</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">6</NUMEX>).
+        All methods of <ENAMEX TYPE="PLANT">tree</ENAMEX> analysis applied here also challenge
+        the traditional <ENAMEX TYPE="ORG_DESC">division</ENAMEX> of the archaeal <ENAMEX TYPE="GPE_DESC">kingdom</ENAMEX> into
+        <ENAMEX TYPE="ORGANIZATION">Euryarchaeota</ENAMEX> and <ENAMEX TYPE="PERSON">Crenarchaeota</ENAMEX>, suggesting instead that
+        <ENAMEX TYPE="ORGANIZATION">Euryarchaeota</ENAMEX> could be a paraphyletic <ENAMEX TYPE="ORG_DESC">group</ENAMEX> with respect to
+        Crenarchaeota, or in other words, that <ENAMEX TYPE="ORGANIZATION">Crenarchaeota</ENAMEX> might
+        have evolved from within the <ENAMEX TYPE="ORGANIZATION">Euryarchaeota</ENAMEX>. However, the
+        existence of a statistically supported alternative
+        topology, with a sister<ENAMEX TYPE="ORG_DESC">-group</ENAMEX> relationship between
+        <ENAMEX TYPE="ORGANIZATION">Euryarchaeota</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Crenarchaeota</ENAMEX> allows for the possibility
+        that the apparent paraphyly of <ENAMEX TYPE="ORGANIZATION">Euryarchaea</ENAMEX> is an artifact
+        caused by rapid evolution in some <ENAMEX TYPE="NATIONALITY">Euryarchaeal</ENAMEX> lineages,
+        such as 
+        <ENAMEX TYPE="ORGANIZATION">Halobacterium</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">Thermoplasma</ENAMEX>. 
+        An independent phylogenetic study of concatenated
+        <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX> has been recently published [ <TIMEX TYPE="DATE">32</TIMEX> ] . The
+        main specific conclusion reported in this study was the
+        apparent <ENAMEX TYPE="ORG_DESC">association</ENAMEX> of 
+        Synechocystis with <ENAMEX TYPE="GPE">Gram</ENAMEX>-positive
+        <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, although instability of the <ENAMEX TYPE="PLANT">tree</ENAMEX> topology
+        dependent on the subset of sites used for analysis was
+        noticed. Another recent study addressed the issue of a
+        global tree through phylogenetic analysis of <NUMEX TYPE="CARDINAL">14</NUMEX>
+        <ENAMEX TYPE="PER_DESC">concatenated</ENAMEX> sets of <ENAMEX TYPE="SUBSTANCE">orthologous proteins</ENAMEX>, for which no
+        strong evidence of horizontal transfer was available [ <TIMEX TYPE="DATE">33</TIMEX> ]
+        . Notably, some of the unexpected groupings within the
+        bacterial domain reported in this study coincide or overlap
+        with those described here, namely, a spirochete-chlamydial
+        <ENAMEX TYPE="ORGANIZATION">clade</ENAMEX> and a <ENAMEX TYPE="GPE">Deinococcales-Cyanobacteria</ENAMEX> clade. The grouping
+        of the latter clade with <ENAMEX TYPE="ORGANIZATION">Actinomycetes</ENAMEX>, the unification of
+        the <ENAMEX TYPE="FAC">Deinococcales-Cyanobacteria-Actinomycetes</ENAMEX> <ENAMEX TYPE="FAC_DESC">clade</ENAMEX> with
+        <ENAMEX TYPE="PERSON">Gram</ENAMEX>-positive <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> and the grouping of the two
+        bacterial hyperthermophiles were not reproduced in the work
+        of <ENAMEX TYPE="PERSON">Brown</ENAMEX> and <ENAMEX TYPE="PER_DESC">co-workers</ENAMEX>. The differences between the
+        results of the <NUMEX TYPE="CARDINAL">two</NUMEX> studies could owe to the differences
+        between data sets analyzed, the methods used or, most
+        likely, both. We should note that the present study engaged
+        a substantially broader data set and more diverse methods
+        for <ENAMEX TYPE="PLANT">tree</ENAMEX> construction. We believe, however, that, in terms
+        of the potential contribution of genome-wide phylogenetic
+        analysis to phylogenetic taxonomy, the areas where
+        different methods and independent analyses by different
+        <ENAMEX TYPE="ORG_DESC">groups converge</ENAMEX> might be more important than the areas of
+        discrepancy. It appears that potential new clades revealed
+        in such independent studies are strong <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for new,
+        high-level taxa.
+        The results of the present study suggest that genome
+        <ENAMEX TYPE="PLANT">trees</ENAMEX> based on new, integral criteria do not provide
+        substantial advantages in phylogenetic reconstruction over
+        more traditional, <ENAMEX TYPE="GPE">alignment</ENAMEX>-based methods expanded to the
+        genomic scale. In fact, the latter seem to be more
+        sensitive in detecting potential deep evolutionary
+        relationships and this is expected to further improve with
+        the increasing number of completely sequenced genomes
+        becoming available for analysis. We believe, however, that
+        this conclusion does not necessarily indicate that genome
+        <ENAMEX TYPE="PLANT">trees</ENAMEX>, such as those based on representation of genomes in
+        <ENAMEX TYPE="PER_DESC">orthologous</ENAMEX> sets or conservation of gene pairs, are
+        useless. In addition to revealing some new phylogenetic
+        <ENAMEX TYPE="PERSON">affinities</ENAMEX>, they are capable of alerting <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to
+        other evolutionary phenomena, such as loss of similar gene
+        sets in different <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> and preferential horizontal
+        gene exchange between certain lineages.
+      
+      
+        Material and Methods
+        
+          Sequence data
+          The sequences of the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded in complete
+          genomes were extracted from the <ENAMEX TYPE="ORGANIZATION">Genome</ENAMEX> <ENAMEX TYPE="ORG_DESC">division</ENAMEX> of the
+          Entrez retrieval system [ <TIMEX TYPE="DATE">34</TIMEX> ] . The analyzed genomes
+          included those of <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>: 
+          Aquifex aeolicus (<ENAMEX TYPE="ORGANIZATION">Aquae</ENAMEX>), 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus halodurans</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Bacha</ENAMEX>), 
+          <ENAMEX TYPE="SUBSTANCE">Bacillus subtilis</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Bacsu</ENAMEX>), 
+          Borrelia burgdorferi (<ENAMEX TYPE="ORGANIZATION">Borbu</ENAMEX>), 
+          <ENAMEX TYPE="PRODUCT">Buchnera sp</ENAMEX>. (<ENAMEX TYPE="ORGANIZATION">Bucsp</ENAMEX>), 
+          Campylobacter jejunii (<ENAMEX TYPE="ORGANIZATION">Camje</ENAMEX>), 
+          Caulobacter crescentus (<ENAMEX TYPE="ORGANIZATION">Caucr</ENAMEX>), 
+          Chlamydia trachomatis (<ENAMEX TYPE="ORGANIZATION">Chltr</ENAMEX>), 
+          Chlamydophila pneumoniae (<ENAMEX TYPE="ORGANIZATION">Chlpn</ENAMEX>), 
+          Deinococcus radiodurans (<ENAMEX TYPE="ORGANIZATION">Deira</ENAMEX>), 
+          Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Escco</ENAMEX>), 
+          Haemophilus influenzae (<ENAMEX TYPE="ORGANIZATION">Haein</ENAMEX>), 
+          Helicobacter pylori (<ENAMEX TYPE="ORGANIZATION">Helpy</ENAMEX>), 
+          Lactococcus lactis (<ENAMEX TYPE="ORGANIZATION">Lacla</ENAMEX>), 
+          Mesorhizobium loti (<ENAMEX TYPE="ORGANIZATION">Meslo</ENAMEX>), 
+          Mycoplasma genitalium (<ENAMEX TYPE="ORGANIZATION">Mycge</ENAMEX>), 
+          Mycoplasma pneumoniae (<ENAMEX TYPE="ORGANIZATION">Mycpn</ENAMEX>), 
+          Mycobacterium tuberculosis (<ENAMEX TYPE="ORGANIZATION">Myctu</ENAMEX>),
+          
+          Neisseria meningitidis (<ENAMEX TYPE="ORGANIZATION">Neime</ENAMEX>), 
+          Pasteurella multocida (<ENAMEX TYPE="ORGANIZATION">Pasmu</ENAMEX>), 
+          Psudomonas aeruginosa (<ENAMEX TYPE="ORGANIZATION">Pseae</ENAMEX>), 
+          Rickettsia prowazekii (<ENAMEX TYPE="ORGANIZATION">Ricpr</ENAMEX>), 
+          Staphyloccocus <ENAMEX TYPE="SUBSTANCE">aureus</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Staau</ENAMEX>), 
+          Streptococcus pyogenes (<ENAMEX TYPE="ORGANIZATION">Strpy</ENAMEX>), 
+          <ENAMEX TYPE="ORGANIZATION">Synechocystis</ENAMEX> <ENAMEX TYPE="PRODUCT">PCC6803</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">SynPC</ENAMEX>), 
+          Thermotoga maritima (<ENAMEX TYPE="PRODUCT">Thema</ENAMEX>), 
+          Treponema pallidum (<ENAMEX TYPE="ORGANIZATION">Trepa</ENAMEX>), 
+          Ureaplasma urealyticum (<ENAMEX TYPE="ORGANIZATION">Ureur</ENAMEX>), 
+          Vibrio cholerae (<ENAMEX TYPE="ORGANIZATION">Vibch</ENAMEX>), 
+          Xylella fastidiosa (<ENAMEX TYPE="ORGANIZATION">Xylfa</ENAMEX>), and <NUMEX TYPE="CARDINAL">ten</NUMEX>
+          archaea: 
+          Aeropyrum pernix (<ENAMEX TYPE="ORGANIZATION">Aerpe</ENAMEX>), 
+          Archaeoglobus fulgidus (<ENAMEX TYPE="ORGANIZATION">Arcfu</ENAMEX>),
+          <ENAMEX TYPE="PRODUCT">Halobacterium sp</ENAMEX>. (<ENAMEX TYPE="ORGANIZATION">Halsp</ENAMEX>), 
+          Methanobacterium
+          <ENAMEX TYPE="ORGANIZATION">thermoautotrophicum</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Metth</ENAMEX>), 
+          Methanococcus jannaschii (<ENAMEX TYPE="ORGANIZATION">Metja</ENAMEX>), 
+          Pyrococcus horikoshii (<ENAMEX TYPE="ORGANIZATION">Pyrho</ENAMEX>), 
+          Pyrococcus abyssi (<ENAMEX TYPE="ORGANIZATION">Pyrab</ENAMEX>), 
+          Sulfolobus solfataricus (<ENAMEX TYPE="ORGANIZATION">Sulso</ENAMEX>), 
+          Thermoplasma acidophilum (<ENAMEX TYPE="ORGANIZATION">Theac</ENAMEX>), 
+          Thermoplasma volcanium (<ENAMEX TYPE="ORGANIZATION">Thevo</ENAMEX>).
+        
+        
+          Phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> construction
+          
+            Parsimony <ENAMEX TYPE="PLANT">trees</ENAMEX> based on the presence-absence of
+            conserved gene pairs in prokaryotic genomes
+            The database of <ENAMEX TYPE="ORGANIZATION">Clusters of Orthologous Groups of</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (COGs) was used as the source of information
+            on <ENAMEX TYPE="SUBSTANCE">orthologous genes</ENAMEX> in prokaryotic genomes [ <NUMEX TYPE="CARDINAL">35 36</NUMEX> ] .
+            Briefly, the <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX> were constructed from the results of
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-against-all BLAST [ <TIMEX TYPE="DATE">37</TIMEX> ] comparison of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">encoded</ENAMEX> in complete genomes by detecting consistent
+            <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genome-specific best hits (BeTs). The COG
+            construction procedure does not rely on any
+            preconceived phylogenetic <ENAMEX TYPE="PLANT">tree</ENAMEX> of the included species
+            except that certain obviously related genomes (for
+            example, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> of mycoplasmas or pyrococci) were
+            grouped prior to the analysis, to eliminate strong
+            dependence between BeTs. In order to avoid spurious
+            occurrence of the same gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX>, only gene pairs
+            <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> in <NUMEX TYPE="CARDINAL">three</NUMEX> or more genomes were considered. A
+            pair of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX> was considered to be
+            <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> if the respective <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were adjacent in at
+            least <NUMEX TYPE="CARDINAL">one</NUMEX> genome and were separated by <NUMEX TYPE="CARDINAL">no more than two</NUMEX>
+            genes in <NUMEX TYPE="CARDINAL">at least two</NUMEX> additional genomes. This relaxed
+            definition of a conserved gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> was adopted to take
+            into account the high level of recombination in
+            prokaryotic genomes. From the data on the
+            presence-absence of each conserved gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in the
+            analyzed genomes (excluding pairs of closely related
+            <ENAMEX TYPE="ANIMAL">species</ENAMEX>: 
+            <ENAMEX TYPE="SUBSTANCE">E. coli-</ENAMEX><ENAMEX TYPE="PRODUCT">Buchnera sp</ENAMEX>., <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">influenzae-P.</ENAMEX> multocida, C. trachomatis-C. pneumoniae,
+            <ENAMEX TYPE="CONTACT_INFO">P. horikoshii-P.</ENAMEX> <ENAMEX TYPE="PERSON">abyssi, M. genitalium-M</ENAMEX>. pneumoniae-<ENAMEX TYPE="GPE">U.</ENAMEX>
+            urealyticum, <ENAMEX TYPE="PERSON">H. pyroli - C. jejuni</ENAMEX>, <ENAMEX TYPE="PERSON">T. acidophilum-T</ENAMEX>.
+            <ENAMEX TYPE="ORGANIZATION">volcanium</ENAMEX> ), a <NUMEX TYPE="CARDINAL">0/1</NUMEX> matrix analogous to the <NUMEX TYPE="CARDINAL">one</NUMEX> used
+            for the presence-absence of individual <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was
+            constructed, and a tree was built using <ENAMEX TYPE="ORGANIZATION">Dollo</ENAMEX> parsimony
+            [ <TIMEX TYPE="DATE">38</TIMEX> ] . A parsimony method was chosen for this
+            analysis because the presence-absence of a conserved
+            gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX> in a genome can be naturally treated in terms
+            of character <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. The <ENAMEX TYPE="PRODUCT">Dollo</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is based on the
+            assumption that each derived character <ENAMEX TYPE="GPE_DESC">state</ENAMEX> (in this
+            case, the presence of a gene <ENAMEX TYPE="PER_DESC">pair</ENAMEX>) originates only
+            once, and <ENAMEX TYPE="PRODUCT_DESC">homoplasies</ENAMEX> exist only in the form of
+            reversals to the ancestral condition (absence of a gene
+            pair) [ <TIMEX TYPE="DATE">38</TIMEX> ] . In other words, parallel or convergent
+            gains of the derived condition are assumed to be highly
+            unlikely. The <ENAMEX TYPE="ORGANIZATION">Dollo</ENAMEX> parsimony method is not sensitive
+            to gene loss which is extremely common in evolution of
+            prokaryotes, but the results can be affected by
+            independent acquisition of the same gene pair by
+            different genome via horizontal gene transfer.
+            Phylogenetic analysis was performed by using the PAUP
+            <NUMEX TYPE="CARDINAL">4.0</NUMEX> program [ <TIMEX TYPE="DATE">39</TIMEX> ] , with <TIMEX TYPE="DATE">1000</TIMEX> bootstrap replicates
+            performed to assess the reliability of the tree
+            <ENAMEX TYPE="ORGANIZATION">topology</ENAMEX>. In addition, the <ENAMEX TYPE="PLANT">tree</ENAMEX> topology was analyzed
+            using the <ENAMEX TYPE="ORG_DESC">neighbor</ENAMEX>-joining method [ <TIMEX TYPE="DATE">40</TIMEX> ] .
+          
+          
+            Parsimony <ENAMEX TYPE="PLANT">trees</ENAMEX> based on the representation of
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> in orthologous gene sets
+            The information on orthologous <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in prokaryotic
+            <ENAMEX TYPE="ORGANIZATION">genomes</ENAMEX> and the <ENAMEX TYPE="SUBSTANCE">yeast genome</ENAMEX> was derived from the COGs
+            as in the previous approach, and the orthology data
+            were similarly represented as a <NUMEX TYPE="QUANTITY">0/1 matrix</NUMEX> of
+            presence-absence of the analyzed genomes in the <ENAMEX TYPE="ORGANIZATION">COGs</ENAMEX>. A
+            Dollo parsimony <ENAMEX TYPE="PLANT">tree</ENAMEX> was constructed and the
+            reliability of its topology was assessed using the
+            bootstrap method as described above.
+          
+          
+            Distance <ENAMEX TYPE="PLANT">trees</ENAMEX> based on distributions of identity
+            percentage between orthologous <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> sequences
+            The sequences of all <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> encoded in the
+            analyzed genomes were compared to each other using the
+            <ENAMEX TYPE="ORGANIZATION">gapped</ENAMEX> BLASTP program [ <TIMEX TYPE="DATE">37</TIMEX> ] . Reciprocal,
+            genome-specific BeTs were collected at different
+            <ENAMEX TYPE="PERSON">expectation</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">E</ENAMEX>) value cutoffs (<NUMEX TYPE="MONEY">0.01</NUMEX>, <NUMEX TYPE="CARDINAL">0.001</NUMEX>, <NUMEX TYPE="CARDINAL">0.0001</NUMEX>,
+            <NUMEX TYPE="MONEY">0.00001</NUMEX>). This method for identification of probable
+            <ENAMEX TYPE="ORGANIZATION">orthologs</ENAMEX> is, in principle, similar to the method
+            employed in <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX> construction, but differs in that there
+            is no requirement for the formation of triangles of
+            consistent BeTs. The result of this procedure is a
+            conservative selection of <NUMEX TYPE="CARDINAL">orthologous</NUMEX> pairs because the
+            cases of lineage-specific duplication that result in
+            non-symmetrical BeTs are excluded and so are
+            <ENAMEX TYPE="ORGANIZATION">orthologous</ENAMEX> pairs with very low sequence similarity.
+            However, the limitation of the <ENAMEX TYPE="ORGANIZATION">COG</ENAMEX> system, namely the
+            requirement that each orthologous <ENAMEX TYPE="ORG_DESC">group</ENAMEX> is represented
+            in <NUMEX TYPE="CARDINAL">at least three</NUMEX> genomes, is avoided. The
+            distributions of identity percentage among the
+            reciprocal best hits were derived for each pair of
+            <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The mean, mode, median and different quantiles
+            of the identity percentage distributions were used for
+            estimating evolutionary distances. <NUMEX TYPE="CARDINAL">Four</NUMEX> distance
+            measures were used, namely: i) P-distances calculated
+            as the fraction of different <ENAMEX TYPE="SUBSTANCE">residues</ENAMEX>: 
+            d = <NUMEX TYPE="CARDINAL">1</NUMEX>- 
+            <ENAMEX TYPE="PERSON">q</ENAMEX>, <ENAMEX TYPE="DISEASE">ii</ENAMEX>) Poisson distances 
+            d = -1n 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX>, iii) geometric distances
+            calculated using the formula 
+            d = <NUMEX TYPE="CARDINAL">1/</NUMEX> 
+            <ENAMEX TYPE="CONTACT_INFO">u -1</ENAMEX>, and <ENAMEX TYPE="PRODUCT">iv</ENAMEX>) logarithmic
+            <ENAMEX TYPE="PERSON">distances</ENAMEX> found as a solution of the equation 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> = <ENAMEX TYPE="PER_DESC">ln</ENAMEX>(<NUMEX TYPE="CARDINAL">1</NUMEX>+<NUMEX TYPE="CARDINAL">2</NUMEX> 
+            d )/(<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX> 
+            d ), where 
+            d is the evolutionary distance, 
+            <ENAMEX TYPE="PERSON">q</ENAMEX> is percent identity, and 
+            <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> = ( 
+            <ENAMEX TYPE="CONTACT_INFO">q -0.05</ENAMEX>)/0.95 [ <NUMEX TYPE="CARDINAL">41 42</NUMEX> ] [ <TIMEX TYPE="DATE">43</TIMEX> ] .
+            <ENAMEX TYPE="PLANT">Trees</ENAMEX> were constructed from the distance matrices
+            obtained with the above distance estimates using the
+            neighbor-joining method [ <TIMEX TYPE="DATE">40</TIMEX> ] as implemented in the
+            <ENAMEX TYPE="ORGANIZATION">NEIGHBOR</ENAMEX> program of the <ENAMEX TYPE="ORGANIZATION">PHYLIP</ENAMEX> package [ <TIMEX TYPE="DATE">44</TIMEX> ] .
+            <ENAMEX TYPE="ORGANIZATION">Bootstrap</ENAMEX> values were estimated by resampling the set
+            of orthologs identified for each pair of genomes <TIMEX TYPE="DATE">1000</TIMEX>
+            times and reconstructing <ENAMEX TYPE="PLANT">trees</ENAMEX> from the distributions
+            of the distances from these resampled sets.
+          
+          
+            Maximum Likelihood <ENAMEX TYPE="PLANT">trees</ENAMEX> based on concatenated
+            alignments of <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>
+            Sets of <ENAMEX TYPE="SUBSTANCE">orthologous ribosomal proteins</ENAMEX> were
+            extracted from the COG database, and their amino <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX>
+            sequences were aligned using the <ENAMEX TYPE="PRODUCT">T-Coffee</ENAMEX> program [ <NUMEX TYPE="CARDINAL">45</NUMEX>
+            ] , with subsequent manual validation and removal of
+            poorly aligned regions. The alignments are available
+            upon request. Pairwise evolutionary distances between
+            the sequences in concatenated alignments were
+            calculated using the <ENAMEX TYPE="PRODUCT">Dayhoff PAM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> as implemented
+            in the PROTDIST program of the <ENAMEX TYPE="ORGANIZATION">PHYLIP</ENAMEX> package [ <TIMEX TYPE="DATE">44</TIMEX> ] .
+            A distance tree was constructed from the resulting
+            distance matrix by using the <NUMEX TYPE="QUANTITY">least-square</NUMEX> [ <TIMEX TYPE="DATE">46</TIMEX> ] method
+            as implemented in the <ENAMEX TYPE="ORGANIZATION">FITCH</ENAMEX> program of <ENAMEX TYPE="ORGANIZATION">PHYLIP</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX> ] .
+            The maximum likelihood tree was constructed with the
+            <ENAMEX TYPE="PRODUCT">JTT-F</ENAMEX> model of amino <ENAMEX TYPE="SUBSTANCE">acid substitutions</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX> ] , as
+            implemented in the <ENAMEX TYPE="ORGANIZATION">ProtML</ENAMEX> program of the <ENAMEX TYPE="ORGANIZATION">MOLPHY</ENAMEX> package
+            [ <TIMEX TYPE="DATE">48</TIMEX> ] , by optimizing the least squares <ENAMEX TYPE="PLANT">tree</ENAMEX> with
+            local rearrangements. Alternative <ENAMEX TYPE="SUBSTANCE">topologies</ENAMEX> were
+            created manually by modifications of the original tree
+            and directly compared by <ENAMEX TYPE="ORGANIZATION">ProtML</ENAMEX>. Bootstrap analysis was
+            performed by using the <ENAMEX TYPE="ORGANIZATION">Resampling</ENAMEX> of Estimated
+            <ENAMEX TYPE="PERSON">Log-Likelihoods</ENAMEX> (RELL) method as implemented in ProtML
+            [ <NUMEX TYPE="CARDINAL">48 49</NUMEX> ] .
+          
+          
+            Comparative analysis of <ENAMEX TYPE="PERSON">Maximum Likelihood</ENAMEX> trees
+            for individual protein <ENAMEX TYPE="PER_DESC">families</ENAMEX>
+            The <ENAMEX TYPE="PER_DESC">representative families</ENAMEX> were selected from the
+            COG database according to the following criteria: i) at
+            least <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="ANIMAL">species</ENAMEX> are represented; <ENAMEX TYPE="LAW">ii</ENAMEX>) no <TIMEX TYPE="TIME">more than two</TIMEX>
+            <ENAMEX TYPE="ORGANIZATION">paralogs</ENAMEX> in any of the <ENAMEX TYPE="ANIMAL">species</ENAMEX>; <ENAMEX TYPE="PERSON">iii</ENAMEX>) <NUMEX TYPE="CARDINAL">no more than 1.2</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">paralogs per genome</ENAMEX> on average; <ENAMEX TYPE="PRODUCT">iv</ENAMEX>) at least <NUMEX TYPE="CARDINAL">100</NUMEX>
+            positions in the alignment containing <NUMEX TYPE="PERCENT">less than 30%</NUMEX> of
+            <ENAMEX TYPE="ORGANIZATION">gaps</ENAMEX>. This selection procedure resulted in a set of <NUMEX TYPE="CARDINAL">132</NUMEX>
+            <ENAMEX TYPE="PER_DESC">families</ENAMEX> (COGs). <ENAMEX TYPE="ORGANIZATION">Alignments</ENAMEX> and <ENAMEX TYPE="PLANT">ML trees</ENAMEX> were
+            constructed for these <ENAMEX TYPE="PER_DESC">families</ENAMEX> as described above for
+            the concatenated <ENAMEX TYPE="SUBSTANCE">ribosomal proteins</ENAMEX>.
+          
+          
+            Quantitative comparison of <ENAMEX TYPE="PLANT">tree</ENAMEX> topologies
+            To compare tree <ENAMEX TYPE="ANIMAL">topologies</ENAMEX> quantitatively, the
+            symmetric distance between <ENAMEX TYPE="PLANT">trees</ENAMEX> [ <TIMEX TYPE="DATE">50</TIMEX> ] was computed
+            using the TREEDIST program of the <ENAMEX TYPE="ORGANIZATION">PHYLIP</ENAMEX> package
+            (version 3.6a). Briefly, each of the <NUMEX TYPE="CARDINAL">two</NUMEX> compared trees
+            is divided by each internal branch into <NUMEX TYPE="CARDINAL">two</NUMEX> partitions.
+            The symmetric distance is the number of partitions that
+            are found in <NUMEX TYPE="CARDINAL">one</NUMEX> tree but not the other.
+          
+        
+      
+    
+  

@@ -1,0 +1,994 @@
+
+  
+    
+      
+        Background
+        Recently, <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> chip or microarray technology has been
+        developed that allows <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to measure the expression
+        levels of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes simultaneously over different
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points, different experimental conditions or different
+        tissue samples. It is based on the hybridization of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> or
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> molecules with a library of complementary strands fixed
+        on a solid surface. <ENAMEX TYPE="ORGANIZATION">Oligonucleotide</ENAMEX> chips contain <NUMEX TYPE="CARDINAL">thousands</NUMEX>
+        of features with gene-specific sequences <NUMEX TYPE="CARDINAL">about 25</NUMEX> bases
+        long. These oligos are then hybridized with labeled probe
+        derived from a given tissue or cell line. The resulting
+        fluorescence intensity gives information about the
+        abundance of the corresponding mRNA. This is the Affymetrix
+        <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> chip technology. Alternatively, cDNA can be spotted on
+        <ENAMEX TYPE="PRODUCT">nylon</ENAMEX> filters or <ENAMEX TYPE="SUBSTANCE">glass</ENAMEX> slides. Complex mRNA probes are
+        reverse transcribed to cDNA and labeled with red or green
+        fluorescent dyes. This technique is often called the
+        spotted array or cDNA array. In both methods, <NUMEX TYPE="CARDINAL">thousands</NUMEX> of
+        mRNA concentrations can be measured in parallel,
+        potentially revealing complex gene regulatory <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>.
+        <NUMEX TYPE="CARDINAL">One</NUMEX> important application of the microarray gene
+        expression data in <ENAMEX TYPE="SUBSTANCE">medicine</ENAMEX> is to study the relationship
+        between tissue phenotypes and gene expression profiles on
+        the whole-genome scale. The phenotype could be several
+        different types of <ENAMEX TYPE="DISEASE">cancers</ENAMEX> [ <ENAMEX TYPE="LAW">1, 2, 3</ENAMEX>], responses of cell
+        lines to different chemical <ENAMEX TYPE="SUBSTANCE">compounds</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>], or time to
+        tumor recurrence after treatment. For binary phenotypes
+        such as <NUMEX TYPE="CARDINAL">two</NUMEX> different types of <ENAMEX TYPE="DISEASE">cancers</ENAMEX>, the problem becomes
+        the classification of <ENAMEX TYPE="PER_DESC">patients</ENAMEX>' samples. It has been
+        suggested that gene expression may provide the additional
+        information needed to improve cancer classification and
+        diagnosis [ <ENAMEX TYPE="LAW">4</ENAMEX>]. For continuous phenotypes such as drug
+        <ENAMEX TYPE="PERSON">sensitivity</ENAMEX>, the problem of interest is to relate gene
+        expression patterns to sensitivity to <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> and, therefore,
+        aid in the process of <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> discovery and provide a
+        rationale for selection of therapy on the basis of the
+        molecular characteristics of a <ENAMEX TYPE="PER_DESC">patient</ENAMEX>'s tumor.
+        From the statistical point of view, the challenge is
+        that the microarray gene expression data are often measured
+        with a great deal of noise, and that the sample size of
+        tissues or cell lines, denoted by 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>, is usually very small compared to
+        the number of genes in expression arrays, denoted by 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> . This results in the 'large 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>, small 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ' problem [ <ENAMEX TYPE="LAW">5</ENAMEX>]. Most current
+        approaches to dealing with this problem first select genes
+        that can best separate tissues of different types by
+        performing univariate analysis. The expression levels of
+        these genes are then combined linearly in a weighted way to
+        form compound <TIMEX TYPE="DATE">covariates</TIMEX>. These covariates are then used in
+        the standard regression <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> for <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> fitting and
+        prediction. West 
+        <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <ENAMEX TYPE="LAW">5</ENAMEX>] proposed a Bayesian
+        binary regression approach using the singular value
+        <ENAMEX TYPE="ORGANIZATION">decomposition</ENAMEX> to first reduce the dimension of the variable
+        space ( 
+        <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) to the number of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> ( 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> ). They called the resulting linear
+        combination of the expression levels of all the genes the
+        expression of the <ENAMEX TYPE="FAC">'supergenes'</ENAMEX>. All these approaches reduce
+        the variable space by making one or several linear
+        combinations of the expression levels of some or all of the
+        genes. <ENAMEX TYPE="ORGANIZATION">Linear</ENAMEX> combination may not, however, be the best way
+        of reducing the dimension of the variable space.
+        Another popular approach to analyzing gene expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is to use clustering methods to simultaneously cluster
+        both <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in order to determine some clusters
+        of genes that are mostly correlated with some clusters of
+        samples. Examples of such an application include analysis
+        of gene expression data and drug response for the <NUMEX TYPE="CARDINAL">60</NUMEX> human
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> cell lines of the <ENAMEX TYPE="ORGANIZATION">National Cancer Institute</ENAMEX> (NCI60
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>) [ <ENAMEX TYPE="LAW">4</ENAMEX>], and analysis of cancerous and normal colon
+        tissues [ <ENAMEX TYPE="LAW">2</ENAMEX>]. However, the clustering approach is purely
+        <ENAMEX TYPE="PERSON">exploratory</ENAMEX> and requires an external similarity measure.
+        Methods that can be used to assess the significance of the
+        clustering results are needed.
+        The <ENAMEX TYPE="PRODUCT">Rasch</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (RM) and its extensions [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>] are an
+        important staple of psychological research and are used in
+        other fields such as sociology, educational testing and
+        medicine. The idea of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> is that one can indirectly
+        infer a <ENAMEX TYPE="PER_DESC">person</ENAMEX>'s position on a latent trait from his/her
+        responses to a set of well-chosen items. For example, the
+        <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> has been used to infer the quality of life of cancer
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> from their answers to a well-designed
+        questionnaire [ <ENAMEX TYPE="LAW">8</ENAMEX>], or to measure disability from
+        activities of <TIMEX TYPE="DATE">daily</TIMEX> living [ <ENAMEX TYPE="LAW">9</ENAMEX>]. For these applications,
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are usually given in a matrix, with rows being
+        <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> and columns being responses to a set of items.
+        Microarray gene expression data are also given in a
+        transposable matrix form with rows being genes and columns
+        being samples, and vice versa. The <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> can therefore be used
+        to explain the observed patterns over different columns.
+        Here we propose <NUMEX TYPE="CARDINAL">two</NUMEX> different formulations of the
+        <ENAMEX TYPE="ORGANIZATION">polytomous RM</ENAMEX> for analysis of microarray gene expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. The first formulation treats samples as 'persons' and
+        genes as 'items'. The idea is to infer several latent
+        factors associated with a given sample on the basis of its
+        expression profile over many genes. We combine a
+        model-based clustering method [ <TIMEX TYPE="DATE">10</TIMEX>] with the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> to define a
+        small set of latent factors associated with samples. For a
+        given sample, we assume that <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the same cluster
+        determine one latent factor associated with this sample,
+        and use the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> to estimate this latent factor for each gene
+        <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. These latent factors are then used in a regression
+        analysis of the observed phenotypes. The rational of this
+        approach is that <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> of similar function yield similar
+        expression patterns in microarray <ENAMEX TYPE="SUBSTANCE">hybridization</ENAMEX> experiments
+        [ <TIMEX TYPE="DATE">11, 12, 13</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Co</ENAMEX>-regulated genes may share similar
+        expression profiles, maybe involved in related functions or
+        regulated by common regulatory elements [ <TIMEX TYPE="DATE">14</TIMEX>]. Therefore,
+        if genes are clustered together, it is impossible from a
+        statistical point of view to differentiate <NUMEX TYPE="CARDINAL">one</NUMEX> gene from
+        the other. In this case, a better way of studying these
+        genes is to treat them as a cluster. Consideration of genes
+        in the same cluster can potentially reduce noise associated
+        with a single gene.
+        The <NUMEX TYPE="ORDINAL">second</NUMEX> formulation is to treat genes as 'persons'
+        and <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> as 'items'. The idea is to infer several latent
+        factors associated with each gene based on its expression
+        levels across samples from different tissue or cell types.
+        This formulation provides simple summary statistics for
+        genes based on their expression profiles over <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, and
+        helps to identify genes that are more likely be over- or
+        <ENAMEX TYPE="ORGANIZATION">underexpressed</ENAMEX> within samples of the same type or between
+        samples of different types. We first briefly review some
+        key ideas of the polytomous <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> and its estimation. We then
+        present <NUMEX TYPE="CARDINAL">two</NUMEX> different formulations of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> for the gene
+        expression data. Details involved in these formulations are
+        given. We apply our proposed methods to the analysis of the
+        <ENAMEX TYPE="DISEASE">leukemia dataset</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>] and the <NUMEX TYPE="ORDINAL">NCI60</NUMEX> dataset [ <ENAMEX TYPE="LAW">4</ENAMEX>] and
+        conclude with discussion of our method.
+      
+      
+        Results
+        
+          The <ENAMEX TYPE="PRODUCT">Rasch</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (RM)
+          The <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> was originally proposed as an item-response
+          theory model in the psychological test or attitude scale
+          [ <ENAMEX TYPE="LAW">6</ENAMEX>]. The idea is that the use of a test or scale
+          presupposes that one can indirectly infer a <ENAMEX TYPE="PER_DESC">person</ENAMEX>'s
+          position on a latent trait from his/her responses to a
+          set of well-chosen items. Assume that we have 
+          I <ENAMEX TYPE="PER_DESC">persons</ENAMEX> and 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> items. Let 
+          Z 
+          
+            ij 
+           be the response of individual 
+          i to the item 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>, where the response can take one
+          from 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> possible ordinal categories,
+          <NUMEX TYPE="CARDINAL">0,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m. One</ENAMEX> version of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, which we
+          use in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, called the partial credit model [ <TIMEX TYPE="DATE">15</TIMEX>],
+          assumes the probability of response 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX>, as
+          <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          for 
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          I , 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="PERSON">J</ENAMEX>, and 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX>, where 
+          β 
+          
+            jl 
+           is the item-specific parameter, which expresses the
+          attractiveness of the respective level 
+          l of item 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . 
+          α 
+          i  is the <ENAMEX TYPE="PER_DESC">person</ENAMEX> parameter that
+          expresses the latent factor of the 
+          i th <ENAMEX TYPE="PER_DESC">person</ENAMEX> that is measured by the
+          
+          <ENAMEX TYPE="PERSON">J</ENAMEX> items. It is easy to verify that
+          the probability of the response is monotonous in both
+          <ENAMEX TYPE="PER_DESC">person</ENAMEX> and item parameters. For example, for 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX>, Figure <NUMEX TYPE="CARDINAL">1plots</NUMEX> the Rasch
+          <ENAMEX TYPE="PERSON">probabilities</ENAMEX> as a function of the value of the latent
+          factor (a) for <NUMEX TYPE="CARDINAL">two</NUMEX> sets of <ENAMEX TYPE="SUBSTANCE">item</ENAMEX>-specific 
+          <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> values. It can be seen from these
+          plots that for a given item, <ENAMEX TYPE="PER_DESC">persons</ENAMEX> with larger 
+          α value tend to have greater
+          probability of expressing high scores, and for a given
+          <ENAMEX TYPE="PER_DESC">person</ENAMEX>, the response probabilities are different for
+          items with different 
+          <ENAMEX TYPE="ORGANIZATION">β</ENAMEX> values. To make the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          <ENAMEX TYPE="PERSON">identifiable</ENAMEX>, the following constraints are required
+          Therefore, there is a total of 
+          Jm - <NUMEX TYPE="CARDINAL">1</NUMEX> unconstraint item-specific
+          parameters.
+          The item parameters can be estimated based on the
+          conditional likelihood, given minimal sufficient
+          statistics for the <ENAMEX TYPE="PER_DESC">person</ENAMEX> parameters. For a given <ENAMEX TYPE="PER_DESC">person</ENAMEX>,
+          the minimal sufficient statistic is the sum of the
+          category weights corresponding to the observed responses.
+          After the β parameters are estimated, the person
+          parameters can then be estimated by maximizing the
+          likelihood function. Details on the conditional
+          likelihood estimation of the item parameters can be found
+          in <ENAMEX TYPE="ORGANIZATION">Anderson</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX>].
+        
+        
+          Relating gene expression profiles to
+          phenotypes
+          
+            Outline of the approach
+            Our goal is to infer several latent factors
+            <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with each sample based on its gene
+            expression profile, and relate these latent factors to
+            the observed phenotypes. Using the terms of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, we
+            treat each gene as an 'item', each tissue sample or
+            cell line as a <ENAMEX TYPE="FAC">'person'</ENAMEX>, and treat the expression level
+            as the response of a given tissue to a given gene. The
+            <ENAMEX TYPE="ORGANIZATION">unidimensional RM</ENAMEX> may not, however, hold for the
+            complete set of genes generated by microarrays. Here we
+            assume that genes with similar expressions determine
+            one latent factor, and that the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> holds for each set
+            of genes with similar expression profiles.
+            To identify genes with similar expression profiles
+            over <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, we first use the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based clustering
+            method of <ENAMEX TYPE="ORGANIZATION">Fraley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Raftery</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>] to cluster 
+            p genes into 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters based on their gene
+            expression profiles over 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> samples. Note that the
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>-step is performed based on the observed
+            continuous gene expression data, not the discretized
+            gene expression patterns. For a given sample, using
+            expression profiles of genes in a given cluster, we
+            estimate a latent factor by fitting a <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>. These latent
+            factors are then used in a regression analysis to study
+            the relationship between the gene expressions and the
+            <ENAMEX TYPE="ORGANIZATION">phenotype</ENAMEX>. The method allows to investigate whether a
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> of genes with similar expression profiles is
+            related to the observed phenotypes, and can also be
+            used for future prediction by estimating the latent
+            factors using the maximum likelihood estimation. We
+            give some details for each of these steps in the
+            following sections.
+          
+          
+            Model-based clustering analysis
+            Cluster analysis, based on multivariate normal
+            mixture models [ <TIMEX TYPE="DATE">10, 17</TIMEX>], has been used for clustering
+            various types of biological, zoological, financial and
+            industrial data. We <NUMEX TYPE="ORDINAL">first</NUMEX> set up the mixture model for
+            the gene expression data. Let 
+            x 
+            
+              <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+             = { 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> 
+            <ENAMEX TYPE="PERSON">j</ENAMEX>  , ..., 
+            x 
+            
+              nj 
+             } be the 
+            <ENAMEX TYPE="ORGANIZATION">n -dimensional</ENAMEX> vector of the 
+            <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> gene expression over 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> samples. We assume that the
+            gene expression values of 
+            p genes, 
+            x 
+            <NUMEX TYPE="CARDINAL">1</NUMEX> , ..., 
+            x 
+            
+              p 
+             , arise from a mixture of 
+            <ENAMEX TYPE="ORGANIZATION">K n -dimensional</ENAMEX> Gaussian
+            distribution with density
+            <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>)
+            where the τ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             is the probability that a gene belongs to the 
+            <ENAMEX TYPE="ORGANIZATION">k th cluster</ENAMEX>, and φ 
+            
+              <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+             ( 
+            X |μ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ,Σ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             ) denotes the density function of the multivariate
+            normal distribution with mean μ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             and <NUMEX TYPE="QUANTITY">variance-covariance matrix �</NUMEX>� 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             Possible <ENAMEX TYPE="PER_DESC">parameterization</ENAMEX> of the covariance matrix
+            is discussed in <ENAMEX TYPE="GPE">Fraley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Raftery</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>]. Note that if
+            we assume a simple covariance structure, Σ 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             <ENAMEX TYPE="CONTACT_INFO">= λ</ENAMEX> 
+            I , where 
+            I is the identity matrix, and λ
+            is the variance, then the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based clustering method
+            becomes the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>-means clustering method [ <TIMEX TYPE="DATE">18</TIMEX>].
+            Treating clustering as a mixture model problem
+            allows us to use the <ENAMEX TYPE="ORGANIZATION">EM</ENAMEX> algorithm to estimate the
+            probability of a given gene belonging to each of the 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters, and to estimate the
+            corresponding mean vector and covariance matrix for
+            each cluster [ <TIMEX TYPE="DATE">10</TIMEX>]. <NUMEX TYPE="CARDINAL">One</NUMEX> advantage of this approach is
+            that it allows us to obtain an estimate of the number
+            of gene clusters. Following <ENAMEX TYPE="PERSON">Fraley</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Raftery</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX>],
+            we propose to use the <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> inference criterion
+            (<ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX>) [ <TIMEX TYPE="DATE">19</TIMEX>] for selecting the number of gene clusters.
+            <ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX> is defined as
+            
+            <ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> ) = <NUMEX TYPE="CARDINAL">2</NUMEX> 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> ) - 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> 
+             log 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>, 
+            where 
+            <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> ) is the maximized
+            <ENAMEX TYPE="CONTACT_INFO">log-likelihood,</ENAMEX> 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             is the number of independent parameters to be
+            estimated in the 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> -cluster <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> is the sample size (number of
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>). We will choose 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> that gives the maximum 
+            <ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX> ( 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> ) value.
+            As the <NUMEX TYPE="ORDINAL">first</NUMEX> step of our approach, we cluster genes
+            into 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters using the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based
+            clustering method described above, where the number of
+            gene clusters 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> is determined by maximizing the
+            BIC scores. Let 
+            C 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             denote the genes in cluster 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, and 
+            p 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             denote the number of genes in this cluster, for 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> .
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Rasch</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> and regression analysis
+            We fit a <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> as in equation (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in
+            each of the 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters respectively, treating
+            samples as 'persons' and <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as 'items'. To fit the
+            <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> (equation <NUMEX TYPE="QUANTITY">1</NUMEX>) for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the 
+            <ENAMEX TYPE="ORGANIZATION">k th cluster</ENAMEX>, we let 
+            i be the sample index, and 
+            j be the gene index, for 
+            i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , and 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            p 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             , and let α 
+            
+              i 
+             <ENAMEX TYPE="CONTACT_INFO">= α</ENAMEX> 
+            
+              ik 
+             in <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) be the latent factor for the 
+            i th sample which is determined
+            by the genes in the 
+            <ENAMEX TYPE="ORGANIZATION">k th cluster</ENAMEX>, and β 
+            
+              jl 
+             be the gene-specific parameter for the 
+            <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> gene. The <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> assumes that
+            the variation of the gene expression patterns observed
+            over different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> is due to a latent factor, and
+            it provides a probabilistic <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to describe the gene
+            expression pattern for a given sample.
+            Let 
+            
+              ik 
+             be the maximum likelihood estimate of the latent
+            factor for the 
+            i th sample determined by the
+            genes in the 
+            <ENAMEX TYPE="ORGANIZATION">k th cluster</ENAMEX>. Let 
+            
+              i 
+             <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+            
+            i 1 , ..., 
+            
+              iK 
+             ) be the vector of the estimated latent factors
+            based on the gene expression profiles for the 
+            i th sample. In general, we can
+            relate the phenotype 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+            
+              i 
+             for the 
+            i th sample to the estimated of
+            latent factors 
+            
+              i 
+             by a regression model,
+            <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+            for 
+            i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , where γ is the vector of
+            regression parameters, ε 
+            
+              i 
+             , is the error term, and the actual model of the
+            regression function ( 
+            f ) and the distribution of the
+            error depend on type of the phenotype. If the phenotype
+            is a continuous variable, linear regression can be
+            used, if it is a binary variable, logistic or probit
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> can be used, and if the phenotype is
+            survival time, the <ENAMEX TYPE="PERSON">Cox</ENAMEX> regression <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be used.
+            Alternatively, the generalized linear <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be
+            used. <NUMEX TYPE="CARDINAL">One</NUMEX> advantage of the proposed method is that we
+            can model the interactions between the latent factors
+            in the standard way of modeling interactions in the
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> models. As only the estimated and not the
+            observed latent factors are available in the regression
+            model (equation <NUMEX TYPE="QUANTITY">3</NUMEX>), the variance of the estimate of the
+            γ parameter has to be corrected. We propose to use a
+            two-step bootstrap resampling procedure [ <TIMEX TYPE="DATE">20</TIMEX>] to
+            estimate the variance of the estimate of the parameter
+            <ENAMEX TYPE="ORGANIZATION">γ</ENAMEX> in the regression model. First, within the 
+            <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> gene cluster, we resample
+            <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and re-estimate the α 
+            
+              ik 
+             parameter by fitting the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>). <NUMEX TYPE="ORDINAL">Second</NUMEX>, for a
+            given set of estimated 
+            α parameters, we resample the 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> samples from ( 
+            <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+            
+              i 
+             , 
+            
+              i 
+             ), for 
+            i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>, and fit the regression model
+            (equation <NUMEX TYPE="QUANTITY">3</NUMEX>) to obtain a new estimate of <NUMEX TYPE="MONEY">γ</NUMEX>. We can then
+            estimate the variance of with these resampled
+            estimates.
+          
+          
+            Prediction
+            For a new sample with gene expression 
+            x 
+            
+              new 
+             <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+            x 
+            
+            new <NUMEX TYPE="CARDINAL">,1</NUMEX> ,..., 
+            x 
+            
+            new , 
+            <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>  ), these 
+            p genes are first divided into 
+            <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> clusters according to the
+            clustering result. For a gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in cluster 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, we first discretize its
+            expression level into one of the 
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> + <NUMEX TYPE="CARDINAL">1</NUMEX> categories using the
+            <NUMEX TYPE="CARDINAL">cut-off</NUMEX> points used in the discretization-step, denoted
+            by 
+            z 
+            
+            new , 
+            <ENAMEX TYPE="PERSON">j</ENAMEX>  . We can then estimate the
+            corresponding latent factor α 
+            
+              <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+             by maximizing the following likelihood
+            <ENAMEX TYPE="CONTACT_INFO">function,</ENAMEX>
+            <ENAMEX TYPE="PRODUCT">      </ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+            where 
+            
+              <ENAMEX TYPE="CONTACT_INFO">jh</ENAMEX> 
+             is the estimated gene-specific parameter for gene 
+            <ENAMEX TYPE="PERSON">j</ENAMEX> in the 
+            <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> cluster based on the
+            training sample. Using the estimated vector of the
+            latent factors , the regression <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) can then be
+            used for predicting phenotype 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> 
+            new  .
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> for latent factors associated with genes
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> formulation of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> for gene expression
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> is to treat genes as <ENAMEX TYPE="FAC">'persons'</ENAMEX>, and <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> as
+          <ENAMEX TYPE="ORGANIZATION">'items'</ENAMEX>. Assume that we have gene expression data of 
+          p different <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, indexed by 
+          i, over 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           samples of the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> sample type, indexed by 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> , for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, ..., 
+          <ENAMEX TYPE="PERSON">K. Note</ENAMEX> that the indices 
+          i and 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX> are used differently from the
+          previous sections. We are interested in identifying genes
+          that are expressed differently among these different
+          sample types. Here each gene has its own expression
+          patterns over different samples. For gene 
+          i, we can estimate a latent factor
+          α 
+          
+            ik 
+           based on its gene expression profile over 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> from the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> sample type by fitting the RM
+          (equation <NUMEX TYPE="QUANTITY">1</NUMEX>), for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, ..., 
+          <ENAMEX TYPE="PERSON">K.</ENAMEX> In this formulation of the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>,
+          we treat genes as <ENAMEX TYPE="FAC">'persons'</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">treat samples</ENAMEX> as <ENAMEX TYPE="FAC">'items'</ENAMEX>,
+          and treat each gene's expression level over <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> as
+          the responses. In <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), 
+          I = 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>, and 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , α 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">= α</ENAMEX> 
+          
+            ik 
+           , which is the latent factor for the 
+          i th gene determined by the samples
+          of the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> type, and β 
+          
+            jl 
+           is the sample-specific parameter. This model assumes
+          that the variation of gene expression patterns across
+          different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> among different <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> is due to several
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-specific latent factors. Here the latent factor α 
+          
+            ik 
+           can be interpreted as some quantities related to the
+          transcription factors of the 
+          i th gene which determine the gene
+          expression levels in samples of the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> sample type. For a given
+          tissue or cell line type 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, genes with larger estimated
+          latent factor (α 
+          
+            ik 
+           ) tend to have higher expression levels than those
+          with smaller estimated latent factor. For a given sample
+          type 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, the estimated latent factors, ( 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">k  }</ENAMEX>, ..., 
+          
+            pk 
+           ), provide a nice way to order <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> based on their
+          expression levels over a small number of samples of
+          sample type 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, and to identify genes that are
+          relatively over- or underexpressed in the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> sample type. In addition, by
+          comparing the estimated latent factors associated with
+          genes across different sample types, we can identify
+          genes that are differentially expressed among different
+          tissue or cell line types.
+        
+        
+          Analysis of the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> dataset
+          
+            Classification using cluster-RM
+            We applied the proposed approach to the problem of
+            classifying acute leukemias. Acute leukemias can
+            broadly be divided into <NUMEX TYPE="CARDINAL">two</NUMEX> classes, acute myeloid
+            <ENAMEX TYPE="PERSON">leukemia</ENAMEX> (AML) and acute lymphoblastic <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ALL</ENAMEX>),
+            that originate, respectively, from cells of myeloid or
+            lymphoid origin. The <NUMEX TYPE="CARDINAL">two</NUMEX> diseases appear identical
+            under the microscope. However, correct diagnosis is
+            critical, as they respond best to different treatment
+            <ENAMEX TYPE="ORGANIZATION">regimens</ENAMEX>. Golub 
+            et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] used a set of <NUMEX TYPE="CARDINAL">38</NUMEX>
+            <ENAMEX TYPE="SUBSTANCE">leukemia samples</ENAMEX> including <NUMEX TYPE="CARDINAL">11</NUMEX> <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX> and <TIMEX TYPE="TIME">27 ALL as</TIMEX>
+            training samples set, and used <NUMEX TYPE="CARDINAL">an additional 34</NUMEX> samples
+            (<NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>, <TIMEX TYPE="TIME">20 ALL</TIMEX>) as a test set for testing their
+            proposed method for class prediction. In our analysis,
+            we combined both the training and the test datasets
+            into a dataset of <NUMEX TYPE="CARDINAL">72</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> (<TIMEX TYPE="TIME">25 AML and 47 ALL</TIMEX>). For
+            each of the <NUMEX TYPE="CARDINAL">72</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, the gene expression data were
+            extracted from Affymetrix expression arrays.
+            We first selected the subset of <NUMEX TYPE="CARDINAL">3,571</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> based on
+            an initial processing adopted by the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> of the
+            <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> study. The expressions summarized are the log
+            (base <NUMEX TYPE="CARDINAL">10</NUMEX>) values of the actual expression levels
+            following this initial filtering and transformation. We
+            then select <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are mostly over-expressed in
+            <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>, and <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are mostly overexpressed in ALL
+            by using the <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> rank sums test. This simple rule
+            of selecting a smaller set of genes are also used in
+            Golub 
+            et al. [ <ENAMEX TYPE="LAW">1</ENAMEX>] using slightly
+            different tests. As expected, the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based
+            clustering method assuming the common covariance matrix
+            clusters these <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> into <NUMEX TYPE="CARDINAL">two</NUMEX> clusters, with <NUMEX TYPE="CARDINAL">50</NUMEX>
+            genes in each cluster. The left plot of Figure 2shows
+            the gene expression levels of these <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for the
+            <NUMEX TYPE="CARDINAL">72</NUMEX> <ENAMEX TYPE="SUBSTANCE">leukemia samples</ENAMEX>. Clearly, these <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are
+            highly differentially expressed between the two types
+            of the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> samples.
+            Given the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> selected, methods such as
+            principal component analysis, partial <NUMEX TYPE="QUANTITY">least-square</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">regression</ENAMEX> or composite covariate predictor can be used
+            to further reduce the gene dimension to <NUMEX TYPE="CARDINAL">two or three</NUMEX>
+            dimensions by taking linear combinations of the gene
+            expression levels. Instead of taking linear combination
+            of gene expression levels, we first discretize the
+            expression levels of all the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> over <TIMEX TYPE="DATE">72</TIMEX> samples
+            into <NUMEX TYPE="CARDINAL">four</NUMEX> categories using the quantiles as the cut-off
+            points. Therefore, for each gene, their expression
+            level can take one of <NUMEX TYPE="CARDINAL">four</NUMEX> possible values of <ENAMEX TYPE="CONTACT_INFO">0, 1, 2</ENAMEX>
+            and <NUMEX TYPE="CARDINAL">3</NUMEX>. The same analysis was also done by discretizing
+            gene expression levels into <NUMEX TYPE="CARDINAL">eight</NUMEX> categories, the
+            results were essentially the same. In <TIMEX TYPE="DATE">the following</TIMEX>, we
+            only present the results using <NUMEX TYPE="CARDINAL">four</NUMEX> categories. Fitting
+            <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX> to these discretized gene expression levels, we
+            estimate two latent factors for each sample; one latent
+            factor is determined by gene expression profiles of <NUMEX TYPE="CARDINAL">50</NUMEX>
+            genes in one cluster, the other is determined by the
+            gene expression profiles of <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in another
+            <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. The right <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of Figure <NUMEX TYPE="CARDINAL">2shows</NUMEX> the estimated
+            values of these <NUMEX TYPE="CARDINAL">two</NUMEX> latent factors for all the <NUMEX TYPE="CARDINAL">72</NUMEX>
+            samples. This plot shows that the two <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> types
+            are well separated by these <NUMEX TYPE="CARDINAL">two</NUMEX> latent factors, with no
+            <ENAMEX TYPE="PERSON">overlap</ENAMEX>, except that <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">leukemia samples</ENAMEX>, one from ALL
+            <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> and the other from <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, are close to each
+            other in this two-dimensional space.
+            Discriminant analysis using these <NUMEX TYPE="CARDINAL">two</NUMEX> latent factors
+            would expect to perform very well in classification. We
+            performed a leave-<NUMEX TYPE="CARDINAL">one</NUMEX>-out cross validation analysis to
+            estimate the misclassification rate. Specifically, we
+            leave one sample out, and <NUMEX TYPE="ORDINAL">first</NUMEX> estimate the
+            sample-specific latent factors α 
+            
+              ik 
+             for the 
+            i th gene for 
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1,2</NUMEX> and gene-specific
+            parameter β 
+            
+              jl 
+             using the remaining samples. We then estimate the
+            latent factors of the <ENAMEX TYPE="PER_DESC">left-</ENAMEX>out sample by maximizing the
+            likelihood function (<ENAMEX TYPE="CONTACT_INFO">Equation 4</ENAMEX>). <ENAMEX TYPE="PERSON">Fisher</ENAMEX>'s linear
+            discriminant analysis using the estimated latent
+            factors was then used to classify the <ENAMEX TYPE="PER_DESC">left-</ENAMEX>out sample.
+            The above procedure was applied to each of the <NUMEX TYPE="CARDINAL">72</NUMEX>
+            samples, and resulted in a misclassification rate of
+            <TIMEX TYPE="DATE">2/72</TIMEX> = <NUMEX TYPE="PERCENT">3%</NUMEX>. We use this example to demonstrate that two
+            latent factors carry most of the information of the
+            gene expression levels of the <NUMEX TYPE="CARDINAL">100</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          
+          
+            Summary of gene expression profiles
+            In order to study the difference of the gene
+            expression profiles between the ALL and <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX>, we
+            fit <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX> treating genes as 'persons'. The first
+            <ENAMEX TYPE="PRODUCT">model</ENAMEX> uses the ALL samples as <ENAMEX TYPE="FAC">'items'</ENAMEX>, and the second
+            uses the <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX> as 'items'. Therefore, for each
+            <ENAMEX TYPE="PERSON">gene</ENAMEX>, we obtain <NUMEX TYPE="CARDINAL">two</NUMEX> latent factors, one based on the
+            gene expression profiles of <ENAMEX TYPE="SUBSTANCE">ALL samples</ENAMEX>, the other
+            based on the gene expression profiles of <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX>.
+            Figure <NUMEX TYPE="CARDINAL">3plots</NUMEX> the estimated latent factors for each
+            gene together with the <NUMEX TYPE="PERCENT">99% point</NUMEX>-wise confidence
+            intervals. From these <NUMEX TYPE="CARDINAL">two</NUMEX> plots, we conclude that the
+            gene expression levels of most of the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (genes with
+            <NUMEX TYPE="PERCENT">99%</NUMEX> confidence intervals containing <NUMEX TYPE="CARDINAL">zero</NUMEX>) are not
+            significantly different in both <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX> and ALL samples.
+            For the ALL <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, <NUMEX TYPE="CARDINAL">189</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed at lower level
+            and <NUMEX TYPE="CARDINAL">164</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> expressed at higher level compared to the
+            rest of the <NUMEX TYPE="CARDINAL">3,753</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. For the <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX>, <NUMEX TYPE="CARDINAL">92</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            were expressed at lower level and <NUMEX TYPE="CARDINAL">94</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at higher
+            level compared to the rest of the <NUMEX TYPE="CARDINAL">3,920</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+            In order to see the difference of gene expression
+            between ALL and <ENAMEX TYPE="SUBSTANCE">AML samples</ENAMEX>, the <NUMEX TYPE="CARDINAL">two estimated</NUMEX> factors
+            are plotted on the left in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. Genes in the upper
+            left quadrant tend to have higher gene expression level
+            in <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>, but lower expression level in ALL. On the other
+            hand, <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the lower right quadrant tend to higher
+            gene expression level in ALL, but lower expression
+            level in <ENAMEX TYPE="ORGANIZATION">AML</ENAMEX>. The logarithm (base <NUMEX TYPE="CARDINAL">10</NUMEX>) of the gene
+            expression levels of these genes are plotted on the
+            right <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. Clearly, these genes are
+            <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed between the <NUMEX TYPE="CARDINAL">two</NUMEX> type of the
+            samples. Further examination indicates that all the <NUMEX TYPE="CARDINAL">100</NUMEX>
+            genes identified by the <ENAMEX TYPE="ORGANIZATION">Wilcoxon</ENAMEX> rank-sum test are
+            included in these genes.
+          
+        
+        
+          Analysis of <ENAMEX TYPE="PRODUCT">NC160</ENAMEX> dataset
+          
+            Relating gene expression profiles to drug
+            activities
+            Scherf 
+            et al. [ <ENAMEX TYPE="LAW">4</ENAMEX>] reported the use of
+            cDNA microarrays to assess gene expression profiles in
+            a set of <NUMEX TYPE="CARDINAL">60</NUMEX> human cancer cell lines that have been
+            characterized pharmacologically by treatment with more
+            than <NUMEX TYPE="CARDINAL">70,000</NUMEX> different <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> <ENAMEX TYPE="PER_DESC">agents</ENAMEX>, one at <TIMEX TYPE="TIME">time</TIMEX> and
+            independently. This dataset offers us a unique
+            opportunity to relate variations in gene expression to
+            the molecular <ENAMEX TYPE="PER_DESC">pharmacology</ENAMEX> of <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. The <NUMEX TYPE="ORDINAL">NCI60</NUMEX> set
+            includes cell lines derived from <ENAMEX TYPE="DISEASE">cancers</ENAMEX> of colorectal
+            (<ENAMEX TYPE="ORGANIZATION">CO</ENAMEX>, <NUMEX TYPE="CARDINAL">seven</NUMEX> cell lines), renal (<ENAMEX TYPE="ORGANIZATION">RE</ENAMEX>, <NUMEX TYPE="CARDINAL">eight</NUMEX> cell lines),
+            <ENAMEX TYPE="PERSON">breast</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">BR</ENAMEX>, <NUMEX TYPE="CARDINAL">eight</NUMEX> cell lines), ovarian (<ENAMEX TYPE="ORGANIZATION">OV</ENAMEX>, <NUMEX TYPE="CARDINAL">six</NUMEX> cell
+            lines), prostate (<ENAMEX TYPE="ORGANIZATION">PR</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> lines), lung (<ENAMEX TYPE="ORGANIZATION">LC</ENAMEX>, <NUMEX TYPE="CARDINAL">nine</NUMEX>
+            cell lines) and central nervous system (<ENAMEX TYPE="ORGANIZATION">CNS</ENAMEX>, <NUMEX TYPE="CARDINAL">six</NUMEX> cell
+            lines) origin, as well as leukemias (<ENAMEX TYPE="ORGANIZATION">LE</ENAMEX>, <NUMEX TYPE="CARDINAL">six</NUMEX> cell
+            lines) and melanomas (<ENAMEX TYPE="WORK_OF_ART">ME</ENAMEX>, <NUMEX TYPE="CARDINAL">eight</NUMEX> cell lines). In this
+            analysis, we consider only the <NUMEX TYPE="CARDINAL">90</NUMEX> <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> <ENAMEX TYPE="PER_DESC">subsets</ENAMEX> whose
+            mechanisms of action is putatively understood, and
+            their activity data are available from the Web. We used
+            the <NUMEX TYPE="CARDINAL">1,376</NUMEX> gene subset along with <NUMEX TYPE="CARDINAL">40</NUMEX> individually
+            assessed targets for the present analysis. These subset
+            was selected by selective filters used in [ <ENAMEX TYPE="LAW">4</ENAMEX>]. These
+            <NUMEX TYPE="CARDINAL">90</NUMEX> <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> are listed in <ENAMEX TYPE="PRODUCT">Table 1of</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX>]. They applied the
+            clustering methods to cluster cell lines basing on both
+            gene expression profiles, and the drug expression
+            profiles. The phenotype of interest is
+            chemother-apeutic susceptibility, as measured by -log 
+            <ENAMEX TYPE="LAW">GI</ENAMEX> 
+            <TIMEX TYPE="DATE">50</TIMEX> , where 
+            <ENAMEX TYPE="LAW">GI</ENAMEX> 
+            <NUMEX TYPE="CARDINAL">50</NUMEX> measures the dose needed to cause
+            <NUMEX TYPE="PERCENT">50%</NUMEX> growth inhibition. We first cluster the <NUMEX TYPE="CARDINAL">1,476</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+            using the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based clustering method described
+            previously using the original data of the log-ratios.
+            The <ENAMEX TYPE="ORGANIZATION">BIC</ENAMEX> <ENAMEX TYPE="PER_DESC">scores</ENAMEX> in the upper left <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of Figure
+            5indicate that there are <NUMEX TYPE="CARDINAL">four</NUMEX> gene clusters, with <NUMEX TYPE="CARDINAL">307</NUMEX>,
+            <NUMEX TYPE="CARDINAL">312</NUMEX>, <NUMEX TYPE="CARDINAL">323 and 474</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in each cluster, respectively.
+            As a comparison, we also applied the hierarchical
+            clustering method to cluster these genes. The
+            dendrogram shown in the upper right plot of Figure
+            5also indicates <NUMEX TYPE="CARDINAL">four</NUMEX> gene clusters. For each cell line,
+            a latent factor is estimated using the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, based on the
+            gene expression levels of the genes in each of the <NUMEX TYPE="CARDINAL">four</NUMEX>
+            <ENAMEX TYPE="PERSON">clusters</ENAMEX>. To fit the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, we discretize the gene
+            expression levels into <NUMEX TYPE="CARDINAL">four</NUMEX> categories using the
+            <ENAMEX TYPE="ORGANIZATION">quartiles</ENAMEX>. The same analysis was also done with <NUMEX TYPE="CARDINAL">eight</NUMEX>
+            catagories, and the results are the same. The lower
+            left plot of Figure <NUMEX TYPE="CARDINAL">5shows</NUMEX> the levels of these <NUMEX TYPE="CARDINAL">four</NUMEX>
+            latent factors sorted by <ENAMEX TYPE="DISEASE">cancer</ENAMEX> <ENAMEX TYPE="PER_DESC">types</ENAMEX>. In general, cell
+            lines with the same origin tend to have similar levels
+            of the latent factors; therefore, these factors can be
+            used for discriminating among the <NUMEX TYPE="CARDINAL">nine</NUMEX> different cell
+            lines. However, for the <NUMEX TYPE="ORDINAL">third</NUMEX> latent factor, the cell
+            lines <ENAMEX TYPE="PRODUCT">MDA-MB-435</ENAMEX> (derived from the pleural effusion of
+            a <ENAMEX TYPE="PER_DESC">patient</ENAMEX> with <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX>) and its <ENAMEX TYPE="PRODUCT">Erb/</ENAMEX>B2
+            <ENAMEX TYPE="ORGANIZATION">transfectant MDA-N</ENAMEX> have similar levels to those of
+            latent factors estimated for the melanoma cell lines.
+            To verify the <ENAMEX TYPE="ORG_DESC">utilities</ENAMEX> of these latent factors in
+            clustering cell lines, we performed the hierarchical
+            clustering analysis based on these <NUMEX TYPE="CARDINAL">four</NUMEX> factors (see
+            lower right plot in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). We note that the two
+            <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> cell lines are clustered together with
+            <ENAMEX TYPE="ORGANIZATION">melanomas</ENAMEX>. Hierarchical clustering analysis using all
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> also resulted in clustering these <NUMEX TYPE="CARDINAL">two</NUMEX> cell
+            lines with melanomas. In general, cell lines of the
+            same origin are clustered together on the basis of the
+            <NUMEX TYPE="CARDINAL">four</NUMEX> latent factors estimated with the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>. The
+            clustering result of the cell lines using these <NUMEX TYPE="CARDINAL">four</NUMEX>
+            factors are similar to the clusters obtained using all
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (see [ <ENAMEX TYPE="LAW">4</ENAMEX>]).
+            Each of the <NUMEX TYPE="CARDINAL">60</NUMEX> cell lines is now characterized by
+            <NUMEX TYPE="CARDINAL">four</NUMEX> different latent factors, where each latent factor
+            is estimated based on the expression profiles of the
+            genes in each of the <NUMEX TYPE="CARDINAL">four</NUMEX> clusters. It would be
+            interesting to relate these <NUMEX TYPE="CARDINAL">four</NUMEX> latent factors to the
+            drug activity patterns as measured by -log 
+            <ENAMEX TYPE="LAW">GI</ENAMEX> 
+            <TIMEX TYPE="DATE">50</TIMEX> across the <NUMEX TYPE="CARDINAL">60</NUMEX> cell lines. For a
+            given <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>, we first performed a simple linear
+            regression analysis treating the drug activity as
+            response variable and using one of the <NUMEX TYPE="CARDINAL">four</NUMEX> latent
+            factors as a predictor, and obtained the parameter
+            estimate of γ in <TIMEX TYPE="DATE">the following</TIMEX> model:
+            drug activity = <NUMEX TYPE="CARDINAL">μ</NUMEX> + γx latent factor.
+            The left <ENAMEX TYPE="ORG_DESC">panel</ENAMEX> of Figure <NUMEX TYPE="CARDINAL">6shows</NUMEX> the estimated γ
+            value together with <NUMEX TYPE="PERCENT">point</NUMEX>-wise <NUMEX TYPE="PERCENT">99%</NUMEX> confidence interval
+            for each of the <NUMEX TYPE="CARDINAL">90</NUMEX> <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> using one of the latent
+            factors as a predictor. The variance of the regression
+            <ENAMEX TYPE="PERSON">parameter β</ENAMEX> and the <NUMEX TYPE="PERCENT">99%</NUMEX> confidence interval was
+            estimated using the bootstrap procedure, where <NUMEX TYPE="CARDINAL">50</NUMEX>
+            resamples of genes in each cluster and <NUMEX TYPE="CARDINAL">50</NUMEX> resamples of
+            samples were used. For each latent factor, greater
+            positive <ENAMEX TYPE="PER_DESC">parameter</ENAMEX> estimate implies that higher gene
+            expression level in a given gene cluster corresponds to
+            a higher drug activity. For a given latent factor,
+            <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> with <NUMEX TYPE="PERCENT">99%</NUMEX> confidence interval of the estimated γ
+            parameter not including <NUMEX TYPE="CARDINAL">zero</NUMEX> are those whose activities
+            are related to genes which determine this latent
+            factor.
+            In order to relate the drug activity of a given drug
+            to all the <NUMEX TYPE="CARDINAL">four</NUMEX> latent factors, we performed multiple
+            <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> regression analysis where drug activity for a
+            given cell line was treated as a response variable, and
+            the <NUMEX TYPE="CARDINAL">four</NUMEX> latent factors were treated as the predictors.
+            The right plot of Figure <NUMEX TYPE="CARDINAL">6shows</NUMEX> the estimates of the
+            parameters in the multiple regression model for each of
+            the <NUMEX TYPE="CARDINAL">90</NUMEX> <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX>. This plot can be used for selecting drugs
+            that are related to gene expression profiles. For
+            example, only <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> with <NUMEX TYPE="CARDINAL">at least one</NUMEX> large parameter
+            estimate are important for further study, as only for
+            these <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX>, their activity levels are related to gene
+            expression profiles.
+          
+          
+            Identifying genes differentially expressed in
+            different cell lines
+            It is also interesting to identify genes that are
+            <NUMEX TYPE="CARDINAL">over</NUMEX>- or under-expressed relative to other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for a
+            given cell line type. Using the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, we treat genes as
+            <ENAMEX TYPE="ORGANIZATION">'persons</ENAMEX>' and cell line samples as different 'items',
+            and estimate the latent factor for each gene based on
+            its expression profiles over all the samples of a given
+            cell line type. Figure <NUMEX TYPE="CARDINAL">7shows</NUMEX> the estimated latent
+            factor for each gene based on the gene expression
+            profiles over each of <NUMEX TYPE="CARDINAL">nine</NUMEX> different cell lines. These
+            estimated latent factors provide a summary of gene
+            expressions over different cell lines. Clearly, the
+            gene expression profiles are different across different
+            cell line types.
+            For a given cell line type, we can also infer which
+            genes are over- or underexpressed compared to other
+            genes based on the estimated latent factors. Figure
+            8shows the estimated latent factor and the point-wise
+            <NUMEX TYPE="PERCENT">99%</NUMEX> confidence interval for each gene for each of the
+            <NUMEX TYPE="CARDINAL">nine</NUMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> line types. For a given cell line, genes with
+            <NUMEX TYPE="PERCENT">99%</NUMEX> confidence interval of the estimated latent factor
+            not including <NUMEX TYPE="CARDINAL">zero</NUMEX> show significantly different
+            expression from those genes with <NUMEX TYPE="PERCENT">99%</NUMEX> confidence
+            interval of the estimated latent factor including <NUMEX TYPE="CARDINAL">zero</NUMEX>.
+            For example, for <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> cell line, the method
+            identified <NUMEX TYPE="CARDINAL">15</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or expressed sequence tags (ESTs)
+            that are relatively overexpressed (the estimated latent
+            factor is greater than <NUMEX TYPE="CARDINAL">zero</NUMEX>, and is significant at the
+            <NUMEX TYPE="MONEY">0.01</NUMEX> level) and <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or ESTs that are relatively
+            <ENAMEX TYPE="ORGANIZATION">underexpressed</ENAMEX> (estimated latent factor is less than
+            <ENAMEX TYPE="PERSON">zero</ENAMEX>, and is significant at the <NUMEX TYPE="CARDINAL">0.01</NUMEX> level) in the
+            <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> cell lines. <ENAMEX TYPE="PRODUCT">Table 1lists</ENAMEX> the known genes.
+            Interestingly, we note that genes that are
+            overexpressed include 
+            p53, and genes that are
+            underexpressed include that for tumor-associated
+            <ENAMEX TYPE="ORGANIZATION">antigen CO-029</ENAMEX>. On the basis of our analysis, all other
+            genes have similar gene expression level in the breast
+            <ENAMEX TYPE="DISEASE">cancer</ENAMEX> cell line. Genes that are over- or
+            <ENAMEX TYPE="ORGANIZATION">underexpressed</ENAMEX> in other types of cell line can be
+            similarly identified.
+          
+        
+      
+      
+        Discussion
+        We have described <NUMEX TYPE="CARDINAL">two</NUMEX> different formulations of the RM
+        for relating gene expression data to phenotypes. The RM
+        provides a probabilistic <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to describe the observed
+        gene expression patterns. The first formulation can be used
+        for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> class prediction, and for identifying clusters
+        of genes with similar expression profiles that are related
+        to drug responses. The method is based on a combination of
+        clustering analysis, the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX> and the regression analysis.
+        The <NUMEX TYPE="ORDINAL">second</NUMEX> formulation can be used for identifying
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes from different types of
+        sample. We applied this method to a publicly available
+        <ENAMEX TYPE="DISEASE">leukemia dataset</ENAMEX> to demonstrate the application of the
+        proposed method for class prediction. We also applied this
+        method to an analysis of the <ENAMEX TYPE="PRODUCT">NCI60</ENAMEX> data to show that the
+        method can also be applied to other phenotypes.
+        The method introduced here has several advantages.
+        First, it provides a probabilistic model for describing the
+        gene expression patterns. These <ENAMEX TYPE="PER_DESC">models</ENAMEX> are used to reduce
+        the complexity of the raw data and offer a certain degree
+        of simplification. In contrast to most of the currently
+        available methods for gene expression data, such as
+        principal component analysis, the model used here provides
+        a non-linear method for dimension reduction. <NUMEX TYPE="ORDINAL">Second</NUMEX>,
+        compared with traditional density-based <ENAMEX TYPE="PER_DESC">models</ENAMEX>, the method
+        is more robust to outliers, as it uses ranks rather than
+        actual expression levels. There is a long sequence of steps
+        in the laboratory as well as in the image analysis before a
+        single number is produced for an expression level, and
+        there are many potential <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error. Methods that use
+        ranks rather than the original measured gene expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> are also advocated by <ENAMEX TYPE="ORGANIZATION">A Tsodikov</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">A Szabo</ENAMEX> and D Jones
+        (unpublished data) and <ENAMEX TYPE="ORGANIZATION">Park</ENAMEX> 
+        et al. [ <TIMEX TYPE="DATE">21</TIMEX>]. <NUMEX TYPE="ORDINAL">Third</NUMEX>, in contrast to
+        clustering methods for simultaneously clustering both genes
+        and <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based approach allows formal
+        estimates of the variance and therefore facilitates formal
+        tests of null hypotheses and assignments of confidence
+        intervals.
+        There are several limitations to the proposed approach.
+        First, in order to apply the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>, the gene expression levels
+        are dis-cretized. It is clear that by discretizing the
+        measured expression levels we are losing information.
+        Certainly, additional information is present in the level
+        of gene expression, but normalization or scaling errors
+        across subjects or slides make it difficult to determine
+        the precision of these numbers. We believe that
+        <ENAMEX TYPE="ORGANIZATION">discretization</ENAMEX> provides a reasonably unbiased approach for
+        dealing with this type of data. For both the <ENAMEX TYPE="DISEASE">leukemia</ENAMEX> and
+        NCI60 <ENAMEX TYPE="PER_DESC">datasets</ENAMEX>, we fitted the <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX> by discretizing the gene
+        expression levels into both <NUMEX TYPE="CARDINAL">four and eight</NUMEX> categories, and
+        obtained essentially the same conclusions. Of course, the
+        more categories we use, the closer are the discretized data
+        to the real continuous data. However, this will introduce
+        more parameters to the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. <NUMEX TYPE="ORDINAL">Second</NUMEX>, this approach assumes
+        that genes can be clustered into several <ENAMEX TYPE="PER_DESC">subgroups</ENAMEX> based on
+        their expression profiles over samples. This might not be
+        true for some studies. In this case, we can consider all
+        the possible clusters of genes in a step-wise regression
+        analysis as proposed by Hastie 
+        et al. [ <TIMEX TYPE="DATE">22</TIMEX>]. <NUMEX TYPE="ORDINAL">Third</NUMEX>, we used the
+        bootstrap resampling procedure to estimate the variance of
+        the regression parameter β after we have clustered genes
+        into <NUMEX TYPE="CARDINAL">several</NUMEX> classes. This procedure does not account for
+        possible variability associated with the clustering step,
+        and therefore, the bootstrap variance estimates are likely
+        to be underestimated.
+        In our proposed method, the clustering, the Rasch
+        modeling and the regression analysis are done separately.
+        Important research for the future is to take a joint
+        likelihood approach that can combine <NUMEX TYPE="CARDINAL">all three</NUMEX> steps to
+        obtain better estimates of the number of clusters, the
+        latent factors and the regression parameters. This kind of
+        <ENAMEX TYPE="ORGANIZATION">mixture RM</ENAMEX> provides a natural framework for unifying
+        statistical inference and clustering. We are currently
+        carrying out research in this direction. In conclusion, we
+        demonstrate here the potential application of the <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX> in
+        analysis of gene expression data. <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX> provide a probability
+        model for describing gene expression profiles measured over
+        different <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> or over different times. We are currently
+        exploring various other formulations of the microarray gene
+        expression problems in the framework of the <ENAMEX TYPE="ORGANIZATION">RMs</ENAMEX>, including
+        class discovery in cases of hidden taxonomies based on the
+        estimated latent factors using the <ENAMEX TYPE="ORGANIZATION">RM</ENAMEX>.
+      
+    
+  

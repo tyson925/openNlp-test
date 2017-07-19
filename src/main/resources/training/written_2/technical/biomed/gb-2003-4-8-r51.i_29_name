@@ -1,0 +1,388 @@
+
+  
+    
+      
+        Rationale
+        <ENAMEX TYPE="SUBSTANCE">Protein</ENAMEX>-sequence-based comparative analysis to infer
+        biological function is important and familiar to most
+        <ENAMEX TYPE="PER_DESC">biologists</ENAMEX>. Sequence-profile methods such as <ENAMEX TYPE="ORGANIZATION">PSI</ENAMEX>-BLAST [ <NUMEX TYPE="CARDINAL">1</NUMEX>
+        ] or HMMER [ <ENAMEX TYPE="LAW">2</ENAMEX> ] are often used to detect distant <ENAMEX TYPE="PER_DESC">homologs</ENAMEX>,
+        and resources such as <ENAMEX TYPE="PRODUCT">Prosite</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , BLOCKS [ <ENAMEX TYPE="LAW">4</ENAMEX> ] and PFAM
+        [ <ENAMEX TYPE="LAW">5</ENAMEX> ] are representative resources resulting from protein
+        classification based on sequence patterns. <ENAMEX TYPE="CONTACT_INFO">Protein</ENAMEX>
+        structure also plays a crucial role in a full understanding
+        of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> function as it is more conserved than sequence
+        and hence exposes relationships not possible from sequence
+        alone. Many <ENAMEX TYPE="SUBSTANCE">protein domains</ENAMEX> have <NUMEX TYPE="PERCENT">less than 10%</NUMEX> sequence
+        identity, and yet possess a similar fold and possibly
+        related function.
+        <NUMEX TYPE="CARDINAL">One</NUMEX> of the early insights gained from comparative
+        genomics was domain accretion [ <ENAMEX TYPE="LAW">6</ENAMEX> ] . From prokaryotes to
+        eukaryotes, the number of domains increases. But in higher
+        eukaryotes, different combinations of domains are often
+        observed in the same and different <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">families</ENAMEX>. From a
+        structural point of view domains are discreet compact
+        folding <ENAMEX TYPE="PRODUCT_DESC">units</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PIR</ENAMEX> [ <ENAMEX TYPE="LAW">7</ENAMEX> ] classifies <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> into either a
+        homeomorphic superfamily (<ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> containing similar
+        <ENAMEX TYPE="ORGANIZATION">domains</ENAMEX> in the same order) or a homology domain superfamily
+        (<ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> from different homeomorphic superfamilies sharing
+        a common ancestral domain). This modular nature of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>
+        necessitates a new approach to proteome annotation - a
+        structural-domain-based approach.
+        There already exist a number of automated or
+        semi-automated complete genome annotation systems. For
+        example, <ENAMEX TYPE="GPE">GeneQuiz</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] and <ENAMEX TYPE="ORGANIZATION">PEDANT</ENAMEX> [ <ENAMEX TYPE="LAW">9</ENAMEX> ] are <NUMEX TYPE="CARDINAL">two</NUMEX> pipelines
+        that are comprehensive and highly automated (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+        Similarly, there are several sites that provide protein
+        structure annotations for various genomes. <ENAMEX TYPE="ORGANIZATION">Superfamily</ENAMEX> [ <NUMEX TYPE="CARDINAL">10</NUMEX>
+        ] uses a set of hidden <ENAMEX TYPE="PRODUCT">Markov</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> (HHM) profiles based on
+        <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> superfamily <ENAMEX TYPE="PER_DESC">members</ENAMEX>. MatDB, based on PEDANT analysis
+        of 
+        Arabidopsis thaliana , provides
+        structural <ENAMEX TYPE="PER_DESC">annotations</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> domain position specific
+        <ENAMEX TYPE="WORK_OF_ART">scoring matrix</ENAMEX> (PSSM) profiles. The <ENAMEX TYPE="ORGANIZATION">National Center for</ENAMEX>
+        Biotechnology Information (NCBI) maintains a Conserved
+        <ENAMEX TYPE="PERSON">Domain Database</ENAMEX> (CDD) that uses <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX> and SMART [ <TIMEX TYPE="DATE">11</TIMEX> ]
+        <ENAMEX TYPE="ORGANIZATION">domain PSSMs</ENAMEX> to detect possible structural <ENAMEX TYPE="PER_DESC">homologs</ENAMEX>. The
+        3D-Genomics database [ <TIMEX TYPE="DATE">12</TIMEX> ] uses <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> domain <ENAMEX TYPE="ORGANIZATION">PSSMs</ENAMEX> from
+        3D-<ENAMEX TYPE="ORGANIZATION">PSSM</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX> ] . Gene3D uses the CATH domain classification
+        to annotate <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and genomes [ <TIMEX TYPE="DATE">14</TIMEX> ] .
+        We have developed an automated integrative genome
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> (iGAP) initially to annotate the
+        <ENAMEX TYPE="ORGANIZATION">proteins of</ENAMEX> 
+        A. thaliana and later all proteomes
+        based on a comprehensive fold <ENAMEX TYPE="ORG_DESC">library</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). In
+        addition to the domains from <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>, we have included domains
+        <ENAMEX TYPE="ORGANIZATION">parsed</ENAMEX> using the <ENAMEX TYPE="SUBSTANCE">protein domain parser</ENAMEX> (PDP) [ <TIMEX TYPE="DATE">15</TIMEX> ] ,
+        <ENAMEX TYPE="ORGANIZATION">full-length Protein Data Bank</ENAMEX> (PDB) <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> and <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> not
+        classified by <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>, but associated with <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> using
+        combinatorial extension (CE), a structural-similarity
+        search <ENAMEX TYPE="ORG_DESC">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] . The result is a comprehensive
+        fold <ENAMEX TYPE="ORG_DESC">library</ENAMEX> (FOLDLIB) from which comparative and fold
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> models of three-dimensional structure are
+        derived. As a step beyond PSI-BLAST or PFAM profiles, we
+        have used <NUMEX TYPE="CARDINAL">123D</NUMEX>+ [ <NUMEX TYPE="CARDINAL">17 18</NUMEX> ] , which not only performs
+        target-template profile-profile alignment, but also uses
+        secondary structure and contact capacity potential
+        information for <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> fold recognition. Further, the
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX> <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> provides a graded reliability index of
+        <ENAMEX TYPE="ANIMAL">functional prediction reliability</ENAMEX> ranging from A to E based
+        on extensive benchmarking of selectivity versus sensitivity
+        (<ENAMEX TYPE="ORGANIZATION">N.N</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">A.</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">I.N.S</ENAMEX> and <ENAMEX TYPE="PERSON">P.E.B.</ENAMEX>, unpublished work). Here we
+        describe iGAP and the initial results on the analysis of 
+        A. thaliana , the <NUMEX TYPE="ORDINAL">first</NUMEX> proteome
+        processed, using a combination of web interface and SQL
+        <ENAMEX TYPE="PERSON">queries</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Comparisons are made to other
+        annotation schemes used to process 
+        <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> and to other proteomes
+        processed with iGAP. The iGAP is systematically being
+        <ENAMEX TYPE="ORGANIZATION">applied</ENAMEX> to <NUMEX TYPE="CARDINAL">more than 1,000</NUMEX> proteomes, completely or
+        partially sequenced and publicly available at <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX> ] ,
+        to develop a comparative proteomic resource.
+      
+      
+        Results and discussion
+        Automated annotation <ENAMEX TYPE="ORG_DESC">pipelines</ENAMEX> are crucial to organize
+        the deluge of genomic information. <ENAMEX TYPE="PRODUCT">Table 1compares</ENAMEX> features
+        of iGAP with those of <ENAMEX TYPE="ORGANIZATION">GeneQuiz</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PEDANT</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> established
+        genome annotation methodologies. <ENAMEX TYPE="ORG_DESC">GeneQuiz</ENAMEX> focuses on
+        <ENAMEX TYPE="ORGANIZATION">homolog</ENAMEX> and function assignment through sequence similarity
+        search; <ENAMEX TYPE="ORGANIZATION">PEDANT</ENAMEX> is a comprehensive analysis <ENAMEX TYPE="FAC_DESC">pipeline</ENAMEX> with
+        emphasis on gene prediction, secondary and tertiary
+        structure assignment; <ENAMEX TYPE="PER_DESC">iGAP</ENAMEX> puts much more emphasis on fold
+        <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX>, threading and, to be released in the near
+        future, <ENAMEX TYPE="PER_DESC">homology</ENAMEX> modeling. <ENAMEX TYPE="PRODUCT">Table 2compares</ENAMEX> the <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> of 
+        A. thaliana (<ENAMEX TYPE="ORGANIZATION">PAT</ENAMEX>) database to
+        established databases of <ENAMEX TYPE="SUBSTANCE">protein annotations</ENAMEX>. They differ
+        in both coverage and focus. Again, each of the resources
+        has clear strengths in a number of areas, but <ENAMEX TYPE="PERSON">PAT</ENAMEX> stands
+        out in terms of the amount of structural information it
+        provides. Whereas other resources are limited to what is
+        present in <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> or SCOP, <ENAMEX TYPE="PERSON">PAT</ENAMEX> provides additional domains
+        from <ENAMEX TYPE="ORGANIZATION">PDP</ENAMEX>, and genetic domains from <ENAMEX TYPE="GPE">Astral</ENAMEX>. Moreover, an
+        important feature of iGAP is the benchmarking used to
+        establish the reliability measures. Such quality assurance
+        is critical to the future development of these resources if
+        they are to be used in a meaningful way by
+        <ENAMEX TYPE="ORGANIZATION">experimentalists</ENAMEX>.
+        <ENAMEX TYPE="PRODUCT">Table 3aindicates</ENAMEX> the coverage of the 
+        Arabidopsis proteome provided by each
+        <ENAMEX TYPE="PERSON">methodology</ENAMEX> and associated resource. It is clear that
+        <ENAMEX TYPE="ORGANIZATION">InterPro</ENAMEX> and iGAP represent <NUMEX TYPE="CARDINAL">two</NUMEX> approaches that provide
+        very high coverage of the 
+        Arabidopsis proteome, based on
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> and structural information respectively. A
+        combination of <ENAMEX TYPE="ORGANIZATION">InterProScan</ENAMEX> and iGAP is under active
+        development to integrate sequence- and structure-based
+        <ENAMEX TYPE="ORGANIZATION">annotation</ENAMEX>. Interestingly, <NUMEX TYPE="PERCENT">only 14%</NUMEX> of the 
+        <ENAMEX TYPE="ORGANIZATION">Arabidopsis Information Resource</ENAMEX>
+        (<ENAMEX TYPE="ORGANIZATION">TAIR</ENAMEX>) GO annotation is based on nonelectronic annotation.
+        This makes an even stronger argument for the integration of
+        sequence- and structure-based annotation, to reduce the
+        possibility of error propagation in electronic annotation.
+        Table 3bhighlights some specific examples of results
+        achieved by <ENAMEX TYPE="PERSON">PAT</ENAMEX> over other means. Whether these results are
+        meaningful depends on the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s perspective. For <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">user</ENAMEX>,
+        a few additional predictions with <NUMEX TYPE="PERCENT">90%</NUMEX> certainty could be a
+        distraction. To another, they might, in connection with
+        additional experimental evidence, prove valuable. A future
+        challenge to those of us providing such resources is to
+        minimize the pain and maximize the gain for the different
+        types of <ENAMEX TYPE="PER_DESC">user</ENAMEX>. Again quality assurance and <ENAMEX TYPE="PER_DESC">user</ENAMEX> interface
+        design will prove important. While we have made efforts to
+        classify the reliability of our predictions, they are still
+        predictions and should be used, where possible, with
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> experimental proof.
+        With regard to iGAP specifically, we first looked at the
+        overall coverage of the 
+        Arabidopsis proteome using iGAP
+        (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). We were able to assign <NUMEX TYPE="PERCENT">nearly 70%</NUMEX> of the 
+        Arabidopsis proteome to folds which
+        had a reliability index C (<NUMEX TYPE="PERCENT">90%</NUMEX> confidence) or better. This
+        compares to <NUMEX TYPE="PERCENT">56%</NUMEX> of 
+        Arabidopsis <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the NCBI
+        <ENAMEX TYPE="ORGANIZATION">nonredundant</ENAMEX> (NR) <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> database having an assigned
+        function. While fold assignment does not necessarily
+        translate into functional assignment, it provides a useful
+        indicator.
+        <NUMEX TYPE="ORDINAL">Second</NUMEX>, <ENAMEX TYPE="PERSON">PAT</ENAMEX> provides annotations not reported by other
+        <ENAMEX TYPE="ORGANIZATION">databases</ENAMEX>. Some examples are listed in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. For
+        example, the <NUMEX TYPE="ORDINAL">AP2</NUMEX>-domain is a <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>-binding transcription
+        factor that controls flower and <ENAMEX TYPE="SUBSTANCE">seed</ENAMEX> development [ <TIMEX TYPE="DATE">20</TIMEX> ] in 
+        <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> . The <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> of the
+        AP2 domain is found in the <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> (<NUMEX TYPE="MONEY">1gcc</NUMEX>) [ <TIMEX TYPE="DATE">21</TIMEX> ] . Standard
+        BLAST using the <NUMEX TYPE="ORDINAL">1gcc</NUMEX> sequence provides <NUMEX TYPE="CARDINAL">140</NUMEX> hits at 
+        p <NUMEX TYPE="MONEY">< 0.1</NUMEX> (a very weak threshold).
+        In <ENAMEX TYPE="GPE">PAT</ENAMEX>, there are <NUMEX TYPE="CARDINAL">143</NUMEX> hits of A or B reliability (> <NUMEX TYPE="PERCENT">99%</NUMEX>
+        confidence) plus <NUMEX TYPE="CARDINAL">12</NUMEX> of reliability <NUMEX TYPE="MONEY">C</NUMEX> (> <NUMEX TYPE="PERCENT">90% < 99%</NUMEX>
+        confidence). Another putative <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="LAW">GI</ENAMEX> number <NUMEX TYPE="CARDINAL">15228210</NUMEX>,
+        <ENAMEX TYPE="CONTACT_INFO">locus id At3g47660</ENAMEX>) has a previously undetected domain at
+        the amino <ENAMEX TYPE="SUBSTANCE">terminus</ENAMEX> which resembles the structure of the
+        pleckstrin homology (PH) domain from phospholipase C delta
+        (<ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> <ENAMEX TYPE="PRODUCT">1mai</ENAMEX>) (C prediction). <ENAMEX TYPE="ORGANIZATION">PH</ENAMEX> domains are commonly found in
+        signaling <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] . Additional <ENAMEX TYPE="SUBSTANCE">domains</ENAMEX> found in
+        this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (also documented by <ENAMEX TYPE="ORGANIZATION">TAIR</ENAMEX> as <ENAMEX TYPE="ORGANIZATION">InterPro</ENAMEX> domains)
+        include <ENAMEX TYPE="ORGANIZATION">FYVE/PHD</ENAMEX> zinc finger and <TIMEX TYPE="DATE">an RCC1</TIMEX> like domain (a
+        <ENAMEX TYPE="PER_DESC">regulator</ENAMEX> of chromosome condensation), with <ENAMEX TYPE="ORGANIZATION">A</ENAMEX> and B
+        reliabilities respectively. <ENAMEX TYPE="ORGANIZATION">TAIR</ENAMEX> also reported a sugar
+        transporter signature for this <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> from <ENAMEX TYPE="GPE">Prosite</ENAMEX>. While
+        the exact function of the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> remains to be determined
+        <ENAMEX TYPE="PERSON">experimentally</ENAMEX>, the new finding of a putative PH domain
+        could offer clues to its potential mechanism for signaling
+        and intracellular targeting.
+        <NUMEX TYPE="ORDINAL">Third</NUMEX>, we surveyed a set of 
+        Arabidopsis <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that have known
+        protein <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> (confidence level A, <ENAMEX TYPE="PRODUCT">Table 4a</ENAMEX>). For most
+        of these <ENAMEX TYPE="FAC_DESC">structures</ENAMEX>, <ENAMEX TYPE="PERSON">PAT</ENAMEX> identifies a number of additional 
+        Arabidopsis <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> predicted to
+        contain the same domain. For example, the
+        ubiquitin-conjugating enzyme, which is important in protein
+        <ENAMEX TYPE="PERSON">degradation</ENAMEX>, identifies 6 unknown <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> out of <NUMEX TYPE="CARDINAL">12</NUMEX>, with
+        <ENAMEX TYPE="ORGANIZATION">'C</ENAMEX>' or above confidence, which contain similar domains. In
+        contrast, no additional <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> were found to have
+        TBP-like (<ENAMEX TYPE="SUBSTANCE">TATA binding protein</ENAMEX>-like) domains.
+        Recent structures not found in <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> or SCOP (release
+        <NUMEX TYPE="MONEY">1.55</NUMEX>) were examined to see how well they were predicted by
+        <ENAMEX TYPE="ORGANIZATION">iGAP</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 4b</ENAMEX>). For <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> structures <TIMEX TYPE="DATE">1gp4 and 1gp6</TIMEX> (putative
+        leucoanthocyanidin dioxygenase, NCBI NR database <TIMEX TYPE="DATE">17 October</TIMEX>
+        <TIMEX TYPE="DATE">2001</TIMEX> release), <TIMEX TYPE="DATE">123D</TIMEX> was able to correctly predict the fold
+        to be similar to 1hig (clavaminate synthase-like SCOP
+        <ENAMEX TYPE="ORGANIZATION">superfamily</ENAMEX>). <ENAMEX TYPE="PERSON">WU</ENAMEX>-BLAST only gave a number of
+        low-probability (<ENAMEX TYPE="ORGANIZATION">E</ENAMEX> <ENAMEX TYPE="PER_DESC">reliability</ENAMEX>) predictions.
+        Similarly, <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> entry 1e6b (putative glutathione- 
+        <ENAMEX TYPE="ORGANIZATION">S -transferase</ENAMEX>, NCBI NR database <NUMEX TYPE="CARDINAL">17</NUMEX>
+        <TIMEX TYPE="DATE">October 2001</TIMEX>) is a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> with an amino-terminal
+        thioredoxin-like domain and a contiguous glutathione- 
+        <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> -transferase carboxy-terminal
+        domain. Both <ENAMEX TYPE="ORGANIZATION">WU</ENAMEX>-BLAST and <ENAMEX TYPE="PRODUCT">123D</ENAMEX> correctly recognized the
+        template structure 1fw1 (glutathione transferase
+        z/maleylacetoacetate isomerase). Both <ENAMEX TYPE="ORGANIZATION">WU</ENAMEX>-BLAST and 123D
+        predicted the whole <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> to be thioredoxin-like with a
+        <ENAMEX TYPE="ORGANIZATION">reliability</ENAMEX> index of <ENAMEX TYPE="ORGANIZATION">A.</ENAMEX> However, <ENAMEX TYPE="GPE">WU</ENAMEX>-BLAST made two
+        additional predictions, both correct. The 'pseudo SCOP
+        entry by <ENAMEX TYPE="PERSON">PAT</ENAMEX>' is a novel domain parsed by <ENAMEX TYPE="ORGANIZATION">PDP</ENAMEX>, which at the
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> was not in SCOP release <NUMEX TYPE="MONEY">1.55</NUMEX>. (It is classified as a
+        separate domain in <NUMEX TYPE="MONEY">SCOP 1.59</NUMEX>.) This was recognized by
+        <ENAMEX TYPE="PERSON">WU</ENAMEX>-BLAST. Additionally, <ENAMEX TYPE="GPE">WU</ENAMEX>-BLAST also recognized the
+        amino-terminal thioredoxin-like domain with correct
+        boundaries.
+        Finally, the SCOP classification of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> structures
+        by fold (Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>) and by <ENAMEX TYPE="PER_DESC">family</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>) provides a
+        convenient way to catalog the relative occurrences of
+        structures in 
+        A. thaliana . With respect to folds,
+        the membrane all-alpha fold, alpha-alpha superhelix and
+        <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX>-like (PK-like) fold ranked highest. The <ENAMEX TYPE="ORGANIZATION">TIM</ENAMEX>
+        barrel and <ENAMEX TYPE="ORGANIZATION">Rossman</ENAMEX> folds, and <NUMEX TYPE="CARDINAL">seven</NUMEX>-bladed beta-propeller
+        folds are also among the top folds. PK-like <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> have
+        the <NUMEX TYPE="ORDINAL">second</NUMEX> highest occurrence at the superfamily level
+        (data not shown). Not surprisingly, <ENAMEX TYPE="CONTACT_INFO">serine/threonine</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">kinases</ENAMEX> and tyrosine kinases are among the most abundant
+        <ENAMEX TYPE="PER_DESC">families</ENAMEX>.
+      
+      
+        Conclusions
+        The PAT database was initially developed as a joint
+        development of academia and industry to serve the 
+        <ENAMEX TYPE="ORGANIZATION">Arabidopsis</ENAMEX> and plant proteomics
+        <ENAMEX TYPE="ORGANIZATION">community</ENAMEX> through the provision of <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> and functional
+        assignment to all identified <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> in the 
+        Arabidopsis genome. The underlying
+        technology, specifically iGAP and the associated
+        reliability criteria, is well suited for application to
+        other proteomes and this processing is ongoing to provide a
+        comparative proteomics resource. With more of a focus on
+        comparative proteomics, the resource is being expanded in
+        an effort we refer to as the <ENAMEX TYPE="ORGANIZATION">Encyclopedia of Life</ENAMEX> (EOL).
+        Details on <ENAMEX TYPE="ORGANIZATION">EOL</ENAMEX> can be found at [ <TIMEX TYPE="DATE">23</TIMEX> ] .
+      
+      
+        Materials and methods
+        
+          Software and availability
+          
+            FOLDLIB
+            SCOP domain sequences filtered at <NUMEX TYPE="PERCENT">90%</NUMEX> identity [ <NUMEX TYPE="CARDINAL">26</NUMEX>
+            ] are downloaded from the <ENAMEX TYPE="ORGANIZATION">Astral</ENAMEX> database [ <TIMEX TYPE="DATE">27</TIMEX> ] . PDB
+            <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> are clustered at <NUMEX TYPE="PERCENT">90%</NUMEX> identity and parsed with
+            <ENAMEX TYPE="ORGANIZATION">PDP</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX> ] to provide additional domains, including
+            those not yet assigned by <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>. SCOP lags behind the
+            <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> in terms of <ENAMEX TYPE="ORG_DESC">structures</ENAMEX> processed. The sequences
+            from <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">PDP</ENAMEX> are then clustered at <NUMEX TYPE="PERCENT">90%</NUMEX>
+            identity to define the final structure-template
+            <ENAMEX TYPE="ORGANIZATION">library</ENAMEX>. Profile <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> for these templates are
+            generated for use by <TIMEX TYPE="DATE">123D</TIMEX> using PSI-BLAST with a
+            default E-value of <ENAMEX TYPE="PRODUCT">1e-6</ENAMEX> and <NUMEX TYPE="CARDINAL">three</NUMEX> iterations.
+          
+          
+            The pipeline
+            The <NUMEX TYPE="ORDINAL">first</NUMEX> step of the pipeline uses a set of filter
+            programs to determine the low-complexity regions as
+            well as transmembrane regions, signal-peptide
+            sequences, and coiled coils in a particular proteome.
+            The programs used include <ENAMEX TYPE="ORGANIZATION">SEG</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ] for low-complexity
+            region, <ENAMEX TYPE="ORGANIZATION">COILS</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] for coiled coils, <ENAMEX TYPE="ORGANIZATION">TMHMM</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] for
+            transmembrane region, <ENAMEX TYPE="ORGANIZATION">PSORT</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX> ] for subcellular
+            location and signalP [ <TIMEX TYPE="DATE">32</TIMEX> ] for signal peptides.
+            The <NUMEX TYPE="ORDINAL">second</NUMEX> step determines sequence similarity hits
+            by pairwise sequence comparison using <ENAMEX TYPE="ORGANIZATION">WU</ENAMEX>-BLAST (<ENAMEX TYPE="CONTACT_INFO">W.</ENAMEX>
+            Gish, personal communication). <ENAMEX TYPE="PERSON">WU</ENAMEX>-BLAST is used because
+            it is fast and performed best in our benchmark studies.
+            The default E-value used is <ENAMEX TYPE="PRODUCT">1e-5</ENAMEX>. The <NUMEX TYPE="ORDINAL">third</NUMEX> step
+            generates PSI-BLAST profiles for each input protein
+            sequence against the <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> sequences. The default
+            <ENAMEX TYPE="ORGANIZATION">H</ENAMEX>-value used is <ENAMEX TYPE="PRODUCT">1e-6</ENAMEX> and <NUMEX TYPE="CARDINAL">three</NUMEX> iterations for profile
+            generation. In the <NUMEX TYPE="ORDINAL">fourth</NUMEX> step, the program 123D is
+            used to provide additional mapping to <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> using
+            fold recognition [ <TIMEX TYPE="DATE">17</TIMEX> ] . 123D has been used
+            successfully in <ENAMEX TYPE="ORGANIZATION">CASP</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] competitions.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">Reliability</ENAMEX> index
+            The reliability of a prediction is calculated on the
+            basis of a novel benchmarking procedure against <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>
+            and will be described elsewhere. The index is expressed
+            as percent certainty that a particular prediction is
+            correct: A = <NUMEX TYPE="PERCENT">99.9%</NUMEX> certainty, B = <NUMEX TYPE="PERCENT">99%</NUMEX> certainty, C =
+            <NUMEX TYPE="PERCENT">90%</NUMEX> certainty, <ENAMEX TYPE="NATIONALITY">D</ENAMEX> = <NUMEX TYPE="PERCENT">50%</NUMEX> certainty, and E = <NUMEX TYPE="PERCENT">10%</NUMEX>
+            certainty.
+          
+        
+        
+          Database and <ENAMEX TYPE="PER_DESC">user</ENAMEX> interface
+          
+            <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> browser
+            The use of <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> classifications provides a
+            hierarchical view of the data from a structure
+            <ENAMEX TYPE="ORGANIZATION">perspective</ENAMEX>. For example, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> may start with the
+            <NUMEX TYPE="CARDINAL">all</NUMEX>-alpha class and drill down through fold,
+            superfamily, <ENAMEX TYPE="PER_DESC">family</ENAMEX>, and domain level. Alternatively,
+            the structure classification can be searched for terms
+            such as "<ENAMEX TYPE="PERSON">Rossman</ENAMEX> fold" present in <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> annotation.
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> browser
+            The classification of <ENAMEX TYPE="SUBSTANCE">protein folds</ENAMEX> in the fold
+            <ENAMEX TYPE="ORGANIZATION">library</ENAMEX> can be browsed. Alternatively, it can be
+            searched by <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> id or sequence.
+          
+          
+            Search by identifier
+            The database may be searched using identifiers from
+            a number of existing databases such as <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ID</ENAMEX>
+            or Accession Number), <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX> (<ENAMEX TYPE="PER_DESC">GI number</ENAMEX>), <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> identifier,
+            Locus identifier, <ENAMEX TYPE="PERSON">Gene Ontology</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">GO</ENAMEX>) term [ <TIMEX TYPE="DATE">40</TIMEX> ] , or
+            <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> identifier.
+          
+          
+            Search by keywords
+            Descriptions from <ENAMEX TYPE="ORGANIZATION">NR</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PFAM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> and
+            GO are parsed and indexed. The text index supports
+            complex searches and wild card searches. No attempt is
+            made to reconcile nomenclature differences introduced
+            by each individual data source.
+          
+          
+            Domain summary
+            This provides preliminary information on a
+            particular domain, identified by its FOLDLIB id. The
+            protein domain sequence is displayed and its structure
+            may be viewed using a <ENAMEX TYPE="ORGANIZATION">Chime</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">MDL</ENAMEX>, <ENAMEX TYPE="GPE">San Leandro</ENAMEX>, CA)
+            plug-in [ <TIMEX TYPE="DATE">41</TIMEX> ] . All sequences which contain the same
+            domain are displayed. For each sequence, a link
+            provides the specific target-template alignment and a
+            graphic representation of the domain architecture. It
+            also links to the template based <ENAMEX TYPE="PER_DESC">models</ENAMEX> described
+            below.
+          
+          
+            Gene summary
+            This provides preliminary information on all the
+            <ENAMEX TYPE="ORG_DESC">domains</ENAMEX> located within a particular gene including
+            domain boundary information. Each domain may
+            subsequently be interrogated with the <ENAMEX TYPE="ORGANIZATION">SCOP</ENAMEX> browser to
+            provide superfamily, <ENAMEX TYPE="PER_DESC">family</ENAMEX> and fold level information.
+            The <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> summary page provides comprehensive
+            information about the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> besides domain
+            assignment.
+          
+          
+            <ENAMEX TYPE="GPE">Template</ENAMEX>-based models
+            From the template target alignment, <TIMEX TYPE="DATE">3D</TIMEX> coordinates
+            from the <ENAMEX TYPE="ORGANIZATION">FOLDLIB</ENAMEX> template are used to construct a
+            C-alpha only <ENAMEX TYPE="ORGANIZATION">PDB</ENAMEX> format file using the sequence of the
+            target <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>. The resulting PDB file may then be
+            <ENAMEX TYPE="ORGANIZATION">visualized</ENAMEX> using <ENAMEX TYPE="ORGANIZATION">QuickPDB</ENAMEX>, a <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> applet developed by
+            <ENAMEX TYPE="PERSON">I.N.S. and P.E.B.</ENAMEX> (unpublished), or with other popular
+            3D <ENAMEX TYPE="PER_DESC">viewers</ENAMEX> such as the <ENAMEX TYPE="ORGANIZATION">Chime</ENAMEX> <ENAMEX TYPE="PER_DESC">viewer plugin</ENAMEX>.
+          
+        
+        
+          Availability and update
+          The data are available from the Web [ <TIMEX TYPE="DATE">25</TIMEX> ] .
+          Information may be downloaded in text or XML format and
+          imported into an <ENAMEX TYPE="PRODUCT">Excel</ENAMEX> spreadsheet, <ENAMEX TYPE="ORGANIZATION">MySQL</ENAMEX> database or
+          other applications. For advanced <ENAMEX TYPE="PER_DESC">users</ENAMEX>, the data may be
+          retrieved using <ENAMEX TYPE="SUBSTANCE">SQL</ENAMEX> from the Web interface. A database
+          <ENAMEX TYPE="ORGANIZATION">schema</ENAMEX> is available on the <ENAMEX TYPE="ORGANIZATION">SQL</ENAMEX> search page as an aid in
+          <ENAMEX TYPE="ORGANIZATION">SQL</ENAMEX> query formulation.
+          A workflow management system is under development to
+          automate the processing and update of proteomes. All
+          <ENAMEX TYPE="ORGANIZATION">external</ENAMEX> data are updated when a major release of NR
+          becomes available. NR database is downloaded from <ENAMEX TYPE="ORGANIZATION">NCBI</ENAMEX>.
+          Sequences from other <ENAMEX TYPE="ORG_DESC">sequencing centers</ENAMEX> are clustered at
+          <NUMEX TYPE="PERCENT">100%</NUMEX> identity using cd-hit [ <TIMEX TYPE="DATE">42</TIMEX> ] . Subsequent updates
+          are performed <TIMEX TYPE="DATE">monthly</TIMEX> using the NCBI NR Month database.
+          The unique <ENAMEX TYPE="ANIMAL">sequences</ENAMEX> are sorted according to taxonomy
+          using the <ENAMEX TYPE="LAW">NCBI gi</ENAMEX>_taxonomy mapping table. Only sequences
+          that are new or changed (<ENAMEX TYPE="PRODUCT">crc64</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">checksum</ENAMEX>) are submitted to
+          a continuous update process. The <TIMEX TYPE="DATE">release date</TIMEX> for each
+          source database used is given on the home page. The 
+          Arabidopsis proteome (<NUMEX TYPE="CARDINAL">27,242</NUMEX> total
+          and <NUMEX TYPE="CARDINAL">27,089</NUMEX> unique sequences, <NUMEX TYPE="CARDINAL">7</NUMEX> <TIMEX TYPE="DATE">September 2002</TIMEX> release)
+          may be computed in <NUMEX TYPE="CARDINAL">approximately 50,000</NUMEX> computer
+          <TIMEX TYPE="TIME">hours</TIMEX>.
+        
+      
+    
+  

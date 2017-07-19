@@ -1,0 +1,423 @@
+
+  
+    
+      
+        Introduction
+        Mortality prediction systems have been advocated as
+        means of evaluating the performance of intensive care units
+        (<ENAMEX TYPE="ORGANIZATION">ICUs</ENAMEX>) [ <ENAMEX TYPE="LAW">1</ENAMEX>]. These systems allow adjustment to the severity
+        of <ENAMEX TYPE="DISEASE">illness</ENAMEX> of the patient <ENAMEX TYPE="PER_DESC">population</ENAMEX>. Acute Physiology and
+        <ENAMEX TYPE="ORGANIZATION">Chronic Health Evaluation</ENAMEX> (<ENAMEX TYPE="PRODUCT">APACHE) II</ENAMEX> and <ENAMEX TYPE="PERSON">Simplified Acute</ENAMEX>
+        <ENAMEX TYPE="WORK_OF_ART">Physiology Score</ENAMEX> (SAPS) II measure severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> by a
+        numeric score [ <ENAMEX TYPE="LAW">2, 3</ENAMEX>] based on physiologic variables
+        selected because of their impact on mortality: the sicker
+        the <ENAMEX TYPE="PER_DESC">patient</ENAMEX>, the more deranged the values and the higher
+        the score. The numeric scores are then converted into
+        predicted mortality by using a logistic regression formula
+        developed and validated on <ENAMEX TYPE="PER_DESC">populations</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>.
+        <ENAMEX TYPE="PERSON">Mortality Probability Models</ENAMEX> (MPM) <ENAMEX TYPE="ORGANIZATION">II</ENAMEX> differ slightly in
+        that they use categorical variables (with the exception of
+        <ENAMEX TYPE="ORGANIZATION">age</ENAMEX>) for mortality prediction [ <ENAMEX TYPE="LAW">4</ENAMEX>].
+        Before the clinical application of any of these systems,
+        they must be validated on the <ENAMEX TYPE="PER_DESC">population</ENAMEX> under evaluation [
+        <ENAMEX TYPE="LAW">5, 6</ENAMEX>]. These <ENAMEX TYPE="ORG_DESC">systems</ENAMEX> have been assessed for validity in
+        several <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> [ <ENAMEX TYPE="LAW">7, 8, 9</ENAMEX>]. We report here the result of
+        our validation study of the <NUMEX TYPE="CARDINAL">four</NUMEX> systems in ICU population
+        in a tertiary care <ENAMEX TYPE="FAC_DESC">center</ENAMEX> in <ENAMEX TYPE="GPE">Saudi Arabia</ENAMEX>.
+      
+      
+        Methods
+        King <ENAMEX TYPE="ORGANIZATION">Fahad National Guard Hospital</ENAMEX> is a <NUMEX TYPE="CARDINAL">550</NUMEX>-bed tertiary
+        care <ENAMEX TYPE="FAC_DESC">center</ENAMEX> in <ENAMEX TYPE="GPE">Riyadh</ENAMEX>, <ENAMEX TYPE="GPE">Saudi Arabia</ENAMEX>. The <NUMEX TYPE="CARDINAL">12</NUMEX>-bed
+        medical-surgical <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> has <NUMEX TYPE="CARDINAL">600</NUMEX> admissions <TIMEX TYPE="DATE">a year</TIMEX>. The
+        <ENAMEX TYPE="ORGANIZATION">hospital</ENAMEX> also has a coronary care <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> and a cardiac
+        surgical intensive care <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>. <ENAMEX TYPE="PER_DESC">Patients</ENAMEX> admitted to these
+        units were not included in the study. The <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> is run by
+        full-time intensivists and has <TIMEX TYPE="TIME">24-hour</TIMEX> immediate access to
+        other medical and surgical specialties. Our
+        <ENAMEX TYPE="PER_DESC">nurse</ENAMEX>-to-patient ratio is <TIMEX TYPE="TIME">approximately 1:1.2</TIMEX>. This high
+        ratio has been maintained because of the high acuity of
+        <ENAMEX TYPE="ORGANIZATION">care</ENAMEX>. Our ICU database was established in <TIMEX TYPE="DATE">March 1999</TIMEX> to
+        record ICU admissions. The present study presents
+        information on all consecutive admissions <TIMEX TYPE="DATE">between 1</TIMEX> <ENAMEX TYPE="EVENT">March</ENAMEX>
+        <TIMEX TYPE="DATE">1999 and 31 December 2000</TIMEX>. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> were collected by one of
+        the <ENAMEX TYPE="GPE">inten-sivists</ENAMEX> (<ENAMEX TYPE="PERSON">Y.A., S.H. or R.G.</ENAMEX>). To minimize
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in data collection, one <ENAMEX TYPE="PER_DESC">physician</ENAMEX> (<ENAMEX TYPE="PERSON">Y.A.</ENAMEX>)
+        coordinated the overall process. In addition, a written
+        reference with the definitions used in original articles
+        was made. <ENAMEX TYPE="PER_DESC">Patients</ENAMEX> <TIMEX TYPE="DATE">aged 16 years</TIMEX> or more were eligible for
+        the study with the exception of burn and brain-dead
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. For <ENAMEX TYPE="PER_DESC">patients</ENAMEX> admitted to the ICU more than once
+        in the same hospitalization, data from the first admission
+        were used. Approval from the hospital <ENAMEX TYPE="ORGANIZATION">Ethics Committee</ENAMEX> was
+        not required because the information had already been
+        collected for clinical reasons.
+        The following data were collected: demographics, <ENAMEX TYPE="ORGANIZATION">APACHE</ENAMEX>
+        <ENAMEX TYPE="PRODUCT">II</ENAMEX> and <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX> <ENAMEX TYPE="PER_DESC">scores</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> variables. <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <ENAMEX TYPE="PRODUCT">0</ENAMEX> data were obtained on all admissions,
+        whereas <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <TIMEX TYPE="DATE">24</TIMEX> , <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> and <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX> data were
+        obtained on <ENAMEX TYPE="PER_DESC">patients</ENAMEX> who stayed for <TIMEX TYPE="TIME">24 hours</TIMEX> or more in
+        <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX>. <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> II scores were calculated in
+        accordance with the original methodology, using the worst
+        <ENAMEX TYPE="ORGANIZATION">physiologic</ENAMEX> values in the <NUMEX TYPE="ORDINAL">first</NUMEX> ICU day [ <ENAMEX TYPE="LAW">2, 3</ENAMEX>]. The only
+        exception was <ENAMEX TYPE="WORK_OF_ART">Glasgow Coma Score</ENAMEX> (GCS). Many of these
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> were under the influence of sedation and the worst
+        <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX> would reflect the effect of sedation more than the true
+        underlying mental status. We therefore used the worst GCS
+        value for non-sedated <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and the pre-sedation score
+        for <ENAMEX TYPE="PER_DESC">patients</ENAMEX> under sedation, as described previously [ <ENAMEX TYPE="CONTACT_INFO">4,</ENAMEX>
+        <TIMEX TYPE="DATE">10, 11, 12</TIMEX>]. The main reason for ICU admission, whether the
+        admission was after emergency surgery, and the presence of
+        severe chronic <ENAMEX TYPE="DISEASE">illness</ENAMEX> were documented in accordance with
+        the original definitions [ <ENAMEX TYPE="LAW">2</ENAMEX>]. Postoperative <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with
+        <ENAMEX TYPE="DISEASE">sepsis</ENAMEX> or cardiac arrest were included with non-operative
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with these conditions [ <ENAMEX TYPE="LAW">2</ENAMEX>]. <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> and hospital
+        length of stay (<ENAMEX TYPE="GPE">LOS</ENAMEX>) and lead time (the interval from
+        hospital admission to <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> admission) were calculated. Vital
+        status at discharge from the <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> and from the <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> was
+        registered.
+        Predicted hospital mortality was calculated with the
+        logistic regression formulas described originally [ <ENAMEX TYPE="CONTACT_INFO">2, 3,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">4</NUMEX>]. Standardized mortality ratio (SMR) was calculated by
+        <ENAMEX TYPE="PERSON">dividing</ENAMEX> observed <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> mortality by the predicted
+        <ENAMEX TYPE="ORGANIZATION">hospital</ENAMEX> mortality. The <NUMEX TYPE="PERCENT">95%</NUMEX> confidence intervals (CIs) for
+        <ENAMEX TYPE="ORGANIZATION">SMRs</ENAMEX> were calculated by regarding the observed mortality as
+        a <ENAMEX TYPE="ORGANIZATION">Poisson</ENAMEX> variable, then dividing its <NUMEX TYPE="PERCENT">95%</NUMEX> <ENAMEX TYPE="ORGANIZATION">CI</ENAMEX> by the
+        predicted mortality [ <ENAMEX TYPE="LAW">7</ENAMEX>].
+        Validation of the systems was tested by assessing
+        <ENAMEX TYPE="ORGANIZATION">calibration</ENAMEX> and discrimination. <ENAMEX TYPE="ORGANIZATION">Calibration</ENAMEX> (the ability to
+        provide risk estimate corresponding to the observed
+        mortality) was assessed by calibration curves and the
+        Lemeshow-Hosmer goodness-of-fit 
+        C -statistic [ <TIMEX TYPE="DATE">11</TIMEX>]. Calibration
+        curves were drawn by plotting predicted against actual
+        mortality for <ENAMEX TYPE="PER_DESC">groups</ENAMEX> of the patient <ENAMEX TYPE="PER_DESC">population</ENAMEX> stratified
+        by <NUMEX TYPE="PERCENT">10%</NUMEX> increments of predicted mortality. To calculate the 
+        C -statistic, the study population
+        was stratified into <NUMEX TYPE="CARDINAL">ten</NUMEX> deciles with approximately equal
+        numbers of <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. The predicted and actual number of
+        <ENAMEX TYPE="PER_DESC">survivors</ENAMEX> and non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX> were compared statistically
+        with the use of formal goodness-of-fit testing to determine
+        whether or not the discrepancy was statistically
+        <ENAMEX TYPE="PERSON">insignificant</ENAMEX> ( 
+        P <NUMEX TYPE="MONEY">> 0.05</NUMEX>).
+        Discrimination was tested by <ENAMEX TYPE="ORG_DESC">receiver</ENAMEX> operating
+        <ENAMEX TYPE="PERSON">characteristic</ENAMEX> (ROC) curves and <ENAMEX TYPE="PRODUCT">2 × 2</ENAMEX> classification
+        <ENAMEX TYPE="ORGANIZATION">matrices</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curves were constructed as a measure of
+        assessing discrimination with <NUMEX TYPE="PERCENT">10%</NUMEX> stepwise increments in
+        predicted mortality [ <TIMEX TYPE="DATE">14, 15</TIMEX>]. The <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="PER_DESC">curves</ENAMEX> were
+        compared by computing the areas under the curves.
+        Classification matrices were performed at decision criteria
+        of <NUMEX TYPE="PERCENT">10%</NUMEX>, <NUMEX TYPE="PERCENT">30% and 50%</NUMEX>. <ENAMEX TYPE="PERSON">Sensitivity</ENAMEX>, specificity, positive and
+        negative predictive values and overall correct
+        classification rate were calculated.
+        Minitab for <ENAMEX TYPE="PERSON">Windows</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Release 12.1</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Minitab Inc.</ENAMEX>) was
+        used to perform statistics. Continuous variables were
+        expressed as means ± <ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> and were compared by standard 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -test. <ENAMEX TYPE="ORGANIZATION">Categorical</ENAMEX> values were
+        expressed in absolute and relative frequencies and were
+        analyzed by χ <TIMEX TYPE="DATE">2test</TIMEX>. <ENAMEX TYPE="ORGANIZATION">Linear</ENAMEX> regression and logistic
+        regression analysis were used when appropriate. 
+        <ENAMEX TYPE="PRODUCT">P ≤ 0.05</ENAMEX> was considered
+        significant.
+      
+      
+        Results
+        
+          Patient population
+          The demographics of the <NUMEX TYPE="CARDINAL">969</NUMEX> eligible <ENAMEX TYPE="PER_DESC">patients</ENAMEX> are
+          shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>. It is noteworthy that <NUMEX TYPE="PERCENT">32%</NUMEX> of all
+          <ENAMEX TYPE="PER_DESC">patients</ENAMEX> had one or more severe chronic illnesses. Severe
+          <ENAMEX TYPE="DISEASE">hepatic disease</ENAMEX> was the leading chronic <ENAMEX TYPE="DISEASE">illness</ENAMEX>, followed
+          by immunosuppression, severe respiratory <ENAMEX TYPE="DISEASE">illness</ENAMEX>, renal
+          <ENAMEX TYPE="DISEASE">illness</ENAMEX> and cardiovascular <ENAMEX TYPE="DISEASE">illness</ENAMEX>. Some <ENAMEX TYPE="PER_DESC">patients</ENAMEX> had
+          <NUMEX TYPE="CARDINAL">more than one</NUMEX> severe chronic <ENAMEX TYPE="DISEASE">illness</ENAMEX>. In comparison with
+          <ENAMEX TYPE="PER_DESC">survivors</ENAMEX>, non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX> were older, had a longer lead
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">ICU LOS</ENAMEX> but shorter hospital <ENAMEX TYPE="GPE">LOS</ENAMEX>. They had
+          higher <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> and <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX> <ENAMEX TYPE="PER_DESC">scores</ENAMEX>. The type of
+          admission was more likely to be medical or emergency
+          surgical in non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX>, and to be elective surgical in
+          <ENAMEX TYPE="PER_DESC">survivors</ENAMEX>. Severe chronic <ENAMEX TYPE="DISEASE">illness</ENAMEX> was more common in
+          non-<ENAMEX TYPE="PER_DESC">survivors</ENAMEX>, especially liver disease.
+        
+        
+          Mortality predicted by the <NUMEX TYPE="CARDINAL">four</NUMEX> systems
+          <ENAMEX TYPE="PRODUCT">Table 2shows</ENAMEX> the actual mortality and predicted
+          mortality by <NUMEX TYPE="CARDINAL">all four</NUMEX> systems, and also SMRs and their
+          <NUMEX TYPE="PERCENT">95%</NUMEX> <ENAMEX TYPE="ORGANIZATION">CIs</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">SMRs</ENAMEX> for all <ENAMEX TYPE="ORG_DESC">system</ENAMEX> were not significantly
+          different from <NUMEX TYPE="CARDINAL">1</NUMEX>, indicating accurate overall mortality
+          prediction.
+        
+        
+          Predicted mortality by <ENAMEX TYPE="PER_DESC">subgroups</ENAMEX>
+          When subgrouped by categories of main reasons for ICU
+          <ENAMEX TYPE="PERSON">admission</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>), <ENAMEX TYPE="ORGANIZATION">SMRs</ENAMEX> by the <NUMEX TYPE="CARDINAL">four</NUMEX> systems were not
+          significantly different from <NUMEX TYPE="CARDINAL">1</NUMEX>, with few exceptions. MPM
+          II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="TIME">24 overestimated</TIMEX> mortality for the
+          category 'non-operative trauma' admissions, and <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> II
+          underestimated mortality for the category 'other
+          medical'. When subgrouped by the source of admission, all
+          <ENAMEX TYPE="ORGANIZATION">SMRs</ENAMEX> were not significantly different from <NUMEX TYPE="CARDINAL">1</NUMEX> with the
+          exception of the underestimation of mortality of <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> II
+          for <ENAMEX TYPE="PER_DESC">patients</ENAMEX> admitted from the floor.
+        
+        
+          Calibration
+          Calibration curves are shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>. Of the <NUMEX TYPE="CARDINAL">four</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> stands out as deviating from the
+          identity line in most of the strata, including those with
+          large numbers of <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. The <ENAMEX TYPE="LAW">SAPS II</ENAMEX> curve shows an
+          underestimation of mortality in low-risk <ENAMEX TYPE="PER_DESC">patients</ENAMEX> and an
+          overestimation of mortality in high-risk <ENAMEX TYPE="PER_DESC">patients</ENAMEX>,
+          leading to the skewed appearance of its calibration
+          curve. The curves of the other <NUMEX TYPE="CARDINAL">three</NUMEX> systems fell on the
+          identity line in the strata with large number of patients
+          and deviated in some other strata.
+          The results of <ENAMEX TYPE="GPE">Lemeshow</ENAMEX>-Hosmer goodness-of-fit tests
+          are shown in <ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>. The 
+          C -statistic was best for <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> (<NUMEX TYPE="MONEY">14.71</NUMEX>), with 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">0.06</NUMEX>. For the other three
+          <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>, <ENAMEX TYPE="PER_DESC">calibration</ENAMEX> tested by the 
+          C -statistic was poor. These
+          results indicate that, of the <NUMEX TYPE="CARDINAL">four</NUMEX> systems, <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> had the least statistically
+          significant discrepancy between predicted and observed
+          mortality across the strata of increasing predicted
+          mortality.
+        
+        
+          Discrimination
+          Figure <NUMEX TYPE="CARDINAL">2shows</NUMEX> the receiver operating characteristic
+          (<ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX>) curves for the <NUMEX TYPE="CARDINAL">four</NUMEX> systems. The corresponding
+          <ENAMEX TYPE="FAC_DESC">areas</ENAMEX> under the curves were as follows: <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> , <NUMEX TYPE="CARDINAL">0.85</NUMEX>; <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> , <NUMEX TYPE="CARDINAL">0.84</NUMEX>; <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX>, <NUMEX TYPE="CARDINAL">0.83</NUMEX>; <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX>,
+          <NUMEX TYPE="CARDINAL">0.79</NUMEX>. These reflect the better discriminative power of
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">three</NUMEX> systems than that of <ENAMEX TYPE="EVENT">SAPS</ENAMEX> II.
+          The results of the <NUMEX TYPE="CARDINAL">2×2</NUMEX> classification matrix are shown
+          in <ENAMEX TYPE="PRODUCT">Table 5</ENAMEX>. The overall correct classification rate was
+          highest for <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and lowest for <ENAMEX TYPE="LAW">SAPS II</ENAMEX> at the
+          different cutoff points; <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> and <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> had intermediate
+          rates. This was consistent with the results of <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> curve
+          testing.
+        
+        
+          Correlation of predicted mortalities by the <NUMEX TYPE="CARDINAL">four</NUMEX>
+          systems
+          On the basis of linear regression analysis,
+          <ENAMEX TYPE="ORGANIZATION">mortalities</ENAMEX> predicted by <NUMEX TYPE="CARDINAL">all four</NUMEX> systems correlated with
+          each other ( 
+          <ENAMEX TYPE="PRODUCT">P < 0.001</ENAMEX> for all combinations).
+          The closest correlation was between <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.67</NUMEX>) followed by <ENAMEX TYPE="ORGANIZATION">APACHE</ENAMEX> II
+          and <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.66</NUMEX>), <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> and <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.62</NUMEX>), <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <TIMEX TYPE="DATE">24</TIMEX> and <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.56</NUMEX>), <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.52</NUMEX>) and <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+          <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> ( 
+          r <TIMEX TYPE="DATE">2</TIMEX>= <NUMEX TYPE="CARDINAL">0.48</NUMEX>). Figure 3shows plots for
+          the highest and lowest correlations.
+        
+        
+          The effect of lead time and <ENAMEX TYPE="ORGANIZATION">ICU LOS</ENAMEX> on <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX>
+          mortality
+          By univariate analysis, lead time was a significant
+          predictor of hospital outcome (odds ratio <NUMEX TYPE="CARDINAL">1.02</NUMEX>, <NUMEX TYPE="PERCENT">95%</NUMEX> CI
+          <NUMEX TYPE="CARDINAL">1.00</NUMEX>-<NUMEX TYPE="CARDINAL">1.03</NUMEX> per day, 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">0.04</NUMEX>). However, when adjusted
+          to the severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> estimated from the mortality
+          predicted by any of the <NUMEX TYPE="CARDINAL">four</NUMEX> systems, lead time was not
+          an independent predictor of hospital outcome. Similarly,
+          <ENAMEX TYPE="ORGANIZATION">ICU LOS</ENAMEX> was a significant predictor of hospital outcome
+          by univariate analysis (odds ratio <NUMEX TYPE="CARDINAL">1.02</NUMEX>, <NUMEX TYPE="PERCENT">95%</NUMEX> CI <NUMEX TYPE="CARDINAL">1.00</NUMEX>-<NUMEX TYPE="CARDINAL">1.03</NUMEX>
+          per day, 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = <NUMEX TYPE="CARDINAL">0.01</NUMEX>) but not when adjusted to
+          severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> by multivariate analysis.
+        
+      
+      
+        Discussion
+        The main findings of this validation study on a <ENAMEX TYPE="ORGANIZATION">Saudi</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Arabian ICU</ENAMEX> <ENAMEX TYPE="PER_DESC">population</ENAMEX> can be summarized as follows: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+        overall mortality prediction, estimated by <ENAMEX TYPE="ORGANIZATION">SMR</ENAMEX>, was
+        reasonably accurate, especially for <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX>; (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> <ENAMEX TYPE="PRODUCT">II24</ENAMEX> had the
+        best calibration by 
+        C -statistic; (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) <ENAMEX TYPE="LAW">SAPS II</ENAMEX> had the
+        lowest calibration and discrimination.
+        There is great international variability in patient mix
+        and severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> [ <ENAMEX TYPE="LAW">7, 8, 9, 16</ENAMEX>, <TIMEX TYPE="DATE">17, 18</TIMEX>]. Some of the
+        differences are inherent in the patient <ENAMEX TYPE="PER_DESC">population</ENAMEX>. For
+        example, <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with cirrhosis have a high severity of
+        <ENAMEX TYPE="DISEASE">illness</ENAMEX> and poor prognosis when admitted to the <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> [ <TIMEX TYPE="DATE">19</TIMEX>,
+        <TIMEX TYPE="DATE">20, 21</TIMEX>]. Case mix is also affected by the type of hospital,
+        for example whether it is primary or tertiary, or a
+        transplant or trauma <ENAMEX TYPE="FAC_DESC">center</ENAMEX>. <ENAMEX TYPE="PER_DESC">Patients</ENAMEX> referred from other
+        <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX> have a higher severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> and mortality
+        compared with direct admissions [ <TIMEX TYPE="DATE">22</TIMEX>]. Other factors are
+        practice-related. An important example is the 'do
+        not-resuscitate' (DNR) practice [ <TIMEX TYPE="DATE">23, 24</TIMEX>]. <ENAMEX TYPE="PERSON">Early</ENAMEX> (pre-ICU)
+        determination of <ENAMEX TYPE="LAW">DNR</ENAMEX> status reduces the number of futile
+        admissions to the <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> leading to a probable reduction in
+        overall severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX>. Another example is related to
+        <ENAMEX TYPE="PRODUCT">ICU</ENAMEX> bed availability. It has been documented that
+        <ENAMEX TYPE="PER_DESC">physicians</ENAMEX> tend to be more selective in their ICU
+        admissions at times of bed shortages, with <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with
+        higher severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> being admitted [ <TIMEX TYPE="DATE">25</TIMEX>]. In our
+        study, the relatively high level of severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> was
+        probably related to a combination of all these factors.
+        Being a tertiary care <ENAMEX TYPE="FAC_DESC">center</ENAMEX>, our <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> receives
+        referrals from other <ENAMEX TYPE="ORG_DESC">hospitals</ENAMEX>, some of them directly to
+        <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Being a transplant <ENAMEX TYPE="FAC_DESC">center</ENAMEX>, we have a large
+        <ENAMEX TYPE="PER_DESC">population</ENAMEX> of end-stage liver disease. The concept of DNR
+        is evolving in <ENAMEX TYPE="GPE">Saudi Arabia</ENAMEX>. Our <ENAMEX TYPE="ORG_DESC">hospital</ENAMEX> has been leading
+        in the <ENAMEX TYPE="GPE_DESC">country</ENAMEX> in this field by establishing a written
+        policy for DNR orders and raising the awareness among
+        <ENAMEX TYPE="ORGANIZATION">physicians</ENAMEX> about this issue. Nevertheless, there is room
+        for improvement. Frequently the <ENAMEX TYPE="LAW">DNR</ENAMEX> status is discussed at
+        a very late stage or is not discussed at all before
+        admission to the <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX>. Consequently, many desperately ill
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> are admitted to the <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> with very high severity of
+        <ENAMEX TYPE="DISEASE">illness</ENAMEX> and no meaningful chance of survival. The nursing
+        shortage in our <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> led to selecting the sicker admissions
+        and decreasing the number of elective admissions.
+        In this study we showed that the overall mortality
+        prediction was accurate but calibration was inadequate.
+        Potential reasons for insufficient calibration might
+        include the following: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) factors related to the
+        calibration methodology itself; (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) reasons related to data
+        collection, namely <ENAMEX TYPE="PER_DESC">intra-observer</ENAMEX> and interobserver
+        <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX>; (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) variability in <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX>; (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) differences in
+        case mix; (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) differences in DNR policies; and (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>)
+        differences in medical care.
+        The results of <ENAMEX TYPE="ORGANIZATION">Lemeshow-Hosmer</ENAMEX> statistics are dependent
+        not only on the calibration of the model but also on
+        <ENAMEX TYPE="CONTACT_INFO">patient</ENAMEX> numbers and the distribution of the estimates [
+        <NUMEX TYPE="CARDINAL">26</NUMEX>]. The results of the calibration tests in our study
+        might seem inconsistent with the overall estimate of
+        mortality of the whole <ENAMEX TYPE="PER_DESC">population</ENAMEX> and with the mortality
+        estimates of the <ENAMEX TYPE="PER_DESC">subgroups</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). This apparent
+        <ENAMEX TYPE="ORGANIZATION">inconsistency</ENAMEX> is probably related to the distribution of
+        estimates. The overestimation of mortality in certain
+        strata of severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> is 'counterbalanced' by
+        <ENAMEX TYPE="ORGANIZATION">underestimation</ENAMEX> in other strata (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>), leading to
+        <ENAMEX TYPE="ORGANIZATION">'perfect</ENAMEX>' estimation when the whole <ENAMEX TYPE="PER_DESC">population</ENAMEX> or a
+        specific subgroup is considered.
+        Interobserver variability in data collection has been
+        documented in several studies [ <TIMEX TYPE="DATE">27, 28, 29</TIMEX>]. This is
+        potentially relevant to our study because data collection
+        was performed by several <ENAMEX TYPE="PER_DESC">physicians</ENAMEX> and over a relatively
+        long period (<TIMEX TYPE="DATE">22 months</TIMEX>). We tried to minimize variability
+        by having a written reference of definitions based on the
+        original articles of the various scoring systems and having
+        <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="PER_DESC">person</ENAMEX> coordinate the process of data collection.
+        Similar approaches have been shown to minimize variability
+        [ <TIMEX TYPE="DATE">30, 31</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">systems</ENAMEX> have been documented to have high
+        reproducibility, which might explain the better calibration
+        of <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <NUMEX TYPE="CARDINAL">24</NUMEX> in our study [ <TIMEX TYPE="DATE">32</TIMEX>].
+        The variability of <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX> <ENAMEX TYPE="PER_DESC">determination</ENAMEX> in sedated patients
+        accounts for much of the variability in scoring <ENAMEX TYPE="EVENT">APACHE</ENAMEX> II.
+        Several approaches in determining <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX> have been used
+        previously. For non-sedated <ENAMEX TYPE="PER_DESC">patients</ENAMEX> we used the worst
+        value in <TIMEX TYPE="TIME">the first 24 hours</TIMEX>; for sedated <ENAMEX TYPE="PER_DESC">patients</ENAMEX> we used
+        the pre-sedation <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX>. This approach has been shown to be
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with better performance of <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> than the
+        approach that assumes normal <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX> for sedated <ENAMEX TYPE="PER_DESC">patients</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">10</NUMEX>]. This approach also follows the original <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> article
+        definitions [ <ENAMEX TYPE="LAW">4</ENAMEX>] and is consistent with the approach
+        described by <ENAMEX TYPE="ORGANIZATION">Knaus</ENAMEX> and others [ <TIMEX TYPE="DATE">11, 12</TIMEX>].
+        Another potential reason for the inadequate calibration
+        is the differences in case mix between our database and the
+        development databases of the mortality prediction systems.
+        Medical <ENAMEX TYPE="PER_DESC">patients</ENAMEX> constitute a larger proportion in our
+        <ENAMEX TYPE="PERSON">database</ENAMEX> (<NUMEX TYPE="PERCENT">68%</NUMEX>) than in the development databases (<ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> , <NUMEX TYPE="PERCENT">45%</NUMEX>; <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <TIMEX TYPE="DATE">24</TIMEX> , <NUMEX TYPE="PERCENT">48%</NUMEX>; <ENAMEX TYPE="PRODUCT">SAPS II</ENAMEX>, <NUMEX TYPE="PERCENT">49%</NUMEX>; <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX>, <NUMEX TYPE="PERCENT">58%</NUMEX>)
+        [ <ENAMEX TYPE="LAW">2, 3, 4</ENAMEX>]. When the main diagnostic categories in our
+        database are compared with those in the development
+        database <ENAMEX TYPE="PRODUCT">of APACHE II</ENAMEX>, some interesting differences appear.
+        The post cardiac arrest category, which is associated with
+        a high mortality risk (<ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> diagnostic category weight
+        is <NUMEX TYPE="CARDINAL">0.393</NUMEX>) accounts for <NUMEX TYPE="PERCENT">7%</NUMEX> of our admissions, compared with
+        <NUMEX TYPE="PERCENT">3%</NUMEX> in the developmental database of <ENAMEX TYPE="EVENT">APACHE</ENAMEX> II. The
+        postoperative category 'peripheral vascular surgery', which
+        is associated with a low mortality risk (<ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX>
+        diagnostic weight is <NUMEX TYPE="PERCENT">-1.315</NUMEX>) accounts for <NUMEX TYPE="PERCENT">1.5%</NUMEX> of our
+        <ENAMEX TYPE="PERSON">admissions</ENAMEX>, compared with <NUMEX TYPE="PERCENT">9.82%</NUMEX> of the development
+        database. Our database also has more severe chronic
+        <ENAMEX TYPE="PERSON">illnesses</ENAMEX> (<NUMEX TYPE="PERCENT">32%</NUMEX>) compared with <NUMEX TYPE="CARDINAL">5</NUMEX>-<NUMEX TYPE="PERCENT">29%</NUMEX> in different
+        <ENAMEX TYPE="ORGANIZATION">participating ICUs</ENAMEX> in the <ENAMEX TYPE="PRODUCT">APACHE II</ENAMEX> development database.
+        This is partly related to the high percentage of patients
+        with end-stage liver disease admitted to our <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> (<NUMEX TYPE="PERCENT">12.5%</NUMEX> of
+        all <ENAMEX TYPE="PER_DESC">patients</ENAMEX>).
+        Differences in admission practises to the <ENAMEX TYPE="ORGANIZATION">ICUs</ENAMEX> might
+        also have an impact on ICU outcome. The delay in <ENAMEX TYPE="ORGANIZATION">DNR</ENAMEX> orders
+        is mentioned <TIMEX TYPE="DATE">earlier</TIMEX>. This factor probably contributes to
+        our high severity of <ENAMEX TYPE="DISEASE">illness</ENAMEX> and could have affected system
+        <ENAMEX TYPE="ORGANIZATION">calibration</ENAMEX>.
+        Finally, one must examine whether the inadequate
+        <ENAMEX TYPE="ORGANIZATION">calibration</ENAMEX> is related to differences in medical care.
+        However, in our study, overall actual mortality was not
+        different from predicted mortality, as is evident in the
+        <ENAMEX TYPE="ORGANIZATION">SMRs</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). Furthermore, when the calibration curves
+        are examined there is no consistent pattern of
+        <ENAMEX TYPE="ORGANIZATION">overestimation</ENAMEX> or underestimation of mortality among the
+        <NUMEX TYPE="CARDINAL">four</NUMEX> systems in the different strata of severity of
+        <ENAMEX TYPE="DISEASE">illness</ENAMEX>. This suggests that the inadequate calibration is
+        inherent in these systems when applied to this population
+        and less likely to be related to gross variation in medical
+        <ENAMEX TYPE="ORGANIZATION">care</ENAMEX>.
+        Our study has some limitations. First, it is a
+        single-center study, which makes it biased towards a
+        certain case mix. <NUMEX TYPE="ORDINAL">Second</NUMEX>, as discussed above, collecting
+        the data over a relatively long period by different
+        <ENAMEX TYPE="ORGANIZATION">physicians</ENAMEX> has implications for consistency of data
+        collection. The use of a written reference of definitions
+        and assigning a <ENAMEX TYPE="PER_DESC">coordinator</ENAMEX> to oversee the whole process
+        probably decreased variability, as has been shown
+        previously [ <TIMEX TYPE="DATE">28, 29</TIMEX>]. In addition, variability has been
+        found to be random and of little impact on the overall
+        estimates [ <TIMEX TYPE="DATE">29</TIMEX>]. A multicenter study would have addressed
+        some of these <ENAMEX TYPE="ORG_DESC">concerns</ENAMEX>.
+        In conclusion, the <NUMEX TYPE="CARDINAL">four</NUMEX> mortality prediction systems
+        gave accurate overall estimates of mortality, especially
+        <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <NUMEX TYPE="CARDINAL">0</NUMEX> and <ENAMEX TYPE="EVENT">APACHE</ENAMEX> II. <ENAMEX TYPE="PERSON">Calibration</ENAMEX> was modest
+        for <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <TIMEX TYPE="DATE">24</TIMEX> and inadequate for the others. SAPS
+        <ENAMEX TYPE="PERSON">II</ENAMEX> had the lowest calibration and discrimination. The local
+        performance of <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">systems</ENAMEX> (particularly <ENAMEX TYPE="ORGANIZATION">MPM</ENAMEX> II 
+        <NUMEX TYPE="CARDINAL">24</NUMEX> ), in addition to their ease of use,
+        makes them attractive models for use in <ENAMEX TYPE="GPE">Saudi Arabia</ENAMEX>.
+        However, a multi-center national study is needed to confirm
+        these findings.
+      
+      
+        Competing interests
+        None declared.
+      
+      
+        Abbreviations
+        <ENAMEX TYPE="PRODUCT">APACHE = Acute Physiology</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Chronic Health Evaluation</ENAMEX>;
+        <ENAMEX TYPE="ORGANIZATION">CI</ENAMEX> = confidence interval; <ENAMEX TYPE="ORGANIZATION">DNR</ENAMEX> = 'do not resuscitate'; <ENAMEX TYPE="ORGANIZATION">GCS</ENAMEX> =
+        <ENAMEX TYPE="WORK_OF_ART">Glasgow Coma Score</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">ICU</ENAMEX> = intensive care <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>; <ENAMEX TYPE="GPE">LOS</ENAMEX> = length
+        of stay; <ENAMEX TYPE="PRODUCT">MPM = Mortality Probability Model</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">ROC</ENAMEX> = receiver
+        operating characteristic; <ENAMEX TYPE="ORGANIZATION">SAPS</ENAMEX> = <ENAMEX TYPE="WORK_OF_ART">Simplified Acute</ENAMEX>
+        <ENAMEX TYPE="WORK_OF_ART">Physiology Score</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">SMR</ENAMEX> = standardized mortality ratio.
+      
+    
+  

@@ -1,0 +1,1113 @@
+
+  
+    
+      
+        Background
+        Methods for analysis of cDNA microarray data include
+        those that cluster hierarchically [ <ENAMEX TYPE="LAW">1</ENAMEX>] by principles of
+        self-organization [ <ENAMEX TYPE="LAW">2</ENAMEX>] or by k-means [ <ENAMEX TYPE="LAW">3</ENAMEX>]. These methods
+        yield enormous amounts of information about similarities of
+        cell state and coordination of gene regulation, and are
+        useful for <ENAMEX TYPE="SUBSTANCE">grouping genes</ENAMEX> or transcriptional profiles by
+        similarity. They have the limitation that although
+        experimental replication enhances the significance of
+        <ENAMEX TYPE="PERSON">groupings</ENAMEX> observed, the groupings do not inherently
+        quantify signal and noise. A fold-value cutoff originally
+        was used for this purpose [ <ENAMEX TYPE="LAW">4</ENAMEX>], and held double duty as a
+        signifier of true signal and a boundary beyond which
+        observed fold-measures were considered to be reflective of
+        actual fold-change. Other approaches use likelihood-based
+        methods [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>] to obtain P-values for gene expression
+        differences in replicated comparisons. These methods make
+        the assumptions and have the power of <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based
+        statistics, but as yet are not formulated to handle more
+        than <NUMEX TYPE="CARDINAL">two</NUMEX> genotypes, environments, or developmental states
+        within a single, cohesive framework.
+        One method for analyzing experiments that involve
+        numerous treatments is the use of analysis of variance on
+        microarray data. Methods have been developed that can yield
+        a profusion of information about the <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+        experimental variation [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>] or, at a biological level,
+        about the proportion of variation in expression profile
+        attributable to biological factors such as sex or genotype
+        [ <ENAMEX TYPE="LAW">9</ENAMEX>]. These methods can estimate the magnitude of effects
+        as well as significance, but also impose considerable
+        constraints on experimental design [ <TIMEX TYPE="DATE">10</TIMEX>], and they are not
+        robust to missing or excluded data.
+        Volcano plots [ <ENAMEX TYPE="LAW">8</ENAMEX>] have highlighted well the important
+        distinction between biological and statistical
+        significance. There are effects that may be biologically
+        important that may not be statistically significant, and
+        <ENAMEX TYPE="PER_DESC">vice</ENAMEX> versa. Because many microarray experiments can have a
+        complex and unbalanced design, owing to the technical
+        failure of certain hybridizations and the iterative nature
+        of the work itself, we have developed an approach for
+        assessing statistical significance that could potentially
+        use all the available observations in any transitively
+        connected design. Our goal is to identify effects of
+        biologically significant magnitude to statistically
+        significant precision.
+        To that end, we introduce a <ENAMEX TYPE="NATIONALITY">Bayesian</ENAMEX> analysis of gene
+        expression level (BAGEL) model for statistical inference of
+        gene expression and demonstrate its utility by re-examining
+        cDNA microarray data on the response of <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> to ethanol
+        shock [ <TIMEX TYPE="DATE">11</TIMEX>], on transcriptional regulation by 
+        SNF2 and 
+        SWI1 [ <TIMEX TYPE="DATE">12</TIMEX>], and on zinc regulation [
+        <NUMEX TYPE="CARDINAL">13</NUMEX>].
+      
+      
+        Results and discussion
+        
+          Ethanol shock
+          Alexandre 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">11</TIMEX>] examined the effect
+          of <TIMEX TYPE="TIME">30 minutes</TIMEX> of ethanol shock on a culture of yeast
+          exposed during log-phase growth, by comparing the global
+          gene expression of the <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>-exposed cells to the
+          global gene expression of cells in <TIMEX TYPE="DATE">the mid-</TIMEX>log phase of
+          growth (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). If we arbitrarily assign the node
+          with the lower estimated expression to a level of unity
+          and assume an equal error variance in both treatment and
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>, there are <NUMEX TYPE="CARDINAL">only two</NUMEX> parameters to estimate: the
+          mean expression level of the higher-expressed node, and
+          their common error variance <NUMEX TYPE="CARDINAL">2</NUMEX>. Figure <NUMEX TYPE="CARDINAL">2ashows</NUMEX> contour
+          plots of the likelihood functions (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and
+          methods) for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> transcriptional
+          <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> ( 
+          MSN4 , 
+          HSF1 and 
+          GCR1 ) that could potentially be
+          responsible for observed downstream changes discussed
+          later in this text. These <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> demonstrate typical
+          two-dimensional likelihood surfaces in which the most
+          likely expression levels are equivalent, different, and
+          very different, respectively. Msn4p is a <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-finger
+          transcriptional activator for many genes regulated by
+          Snf1p. When 
+          MSN4 has a null allele,
+          stress-response genes including 
+          HSP12 , 
+          HSP26 , 
+          HSP42 , 
+          HSP78 and 
+          HSP104 are upregulated [ <TIMEX TYPE="DATE">19</TIMEX>]. Hsf1p
+          is a heat-shock transcription factor that binds to the
+          heat-shock DNA element at both normal and raised
+          temperatures. Abundant transcripts from 
+          MSN4 and 
+          HSF1 could have a role in the
+          upregulation of heat shock <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> after ethanol shock (see
+          below). Abundant transcripts of 
+          MSN4 and 
+          GCR1 could have a role in the
+          concomitant upregulation of the trehalose pathway (see
+          below).
+          The observed 
+          MSN4 ratios in two replicate
+          microarrays were inconsistent (<NUMEX TYPE="CARDINAL">0.6</NUMEX>- and <NUMEX TYPE="CARDINAL">2</NUMEX>-fold). This, in
+          fact, gives very weak support to the hypothesis that the
+          nodes are expressed at nearly the same level. This is in
+          part because, conditional on higher error variances,
+          larger differences in expression become increasingly
+          likely. This effect is seen more dramatically in the
+          contour plot for 
+          HSF1 , for which the highly
+          <ENAMEX TYPE="PERSON">dispersed</ENAMEX>, somewhat inconsistent ratios of <NUMEX TYPE="CARDINAL">0.9</NUMEX>-fold,
+          <NUMEX TYPE="CARDINAL">3</NUMEX>-fold and <NUMEX TYPE="CARDINAL">5</NUMEX>-fold were observed. Consistent data, even
+          when relatively dispersed (ratios <NUMEX TYPE="CARDINAL">3</NUMEX>-fold, <NUMEX TYPE="CARDINAL">5</NUMEX>-fold and
+          <NUMEX TYPE="CARDINAL">10-fold</NUMEX>), as for 
+          GCR1 , shows this effect but with a
+          greater slope in the likelihood surface. Although Figure
+          2adepicts two-dimensional surfaces from an ordinary
+          treatment-reference experimental design with a common
+          variance term, it shows typical simple topologies of the
+          likelihood surface. Increasing the amount of data in
+          larger datasets accelerates reliable convergence upon the
+          stationary distribution of the <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>, which is
+          required for inference of the posterior distributions of
+          the parameters of interest. Furthermore, in larger
+          datasets, these posterior unconditional distributions of
+          the parameters are unimodal. By inference, the
+          multidimensional likelihood surfaces are expected to be
+          fairly simple.
+          These likelihood plots clearly convey the most
+          probable expression levels. To determine statistical
+          significance, we examine the posterior distributions of
+          the parameters, as determined by <ENAMEX TYPE="GPE">Markov</ENAMEX> chain <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX>
+          <ENAMEX TYPE="PERSON">simulation</ENAMEX>. In fact, the credible intervals for the
+          expression level for <NUMEX TYPE="CARDINAL">all three</NUMEX> of these genes overlap
+          (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). There is not enough information in the
+          replicated comparisons of each gene's ratio of expression
+          to constrain the variance parameter to a small enough
+          value so that expression levels could be inferred to lie
+          within a small range.
+          In contrast to the lack of statistical significance of
+          the expression differences observed in these three
+          upstream transcription factors, many of the downstream
+          conclusions of the original study are not only consistent
+          with <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> estimates, but are statistically significant
+          by the conservative gene-by-gene criterion of
+          nonoverlapping <NUMEX TYPE="PERCENT">95%</NUMEX> credible intervals. For instance, the
+          <ENAMEX TYPE="PER_DESC">authors</ENAMEX> concluded that the stress-induced chaperonins
+          ('heat-shock' <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) were upregulated by <TIMEX TYPE="TIME">30 minutes</TIMEX> of
+          exposure to <NUMEX TYPE="PERCENT">7%</NUMEX> v/<ENAMEX TYPE="SUBSTANCE">v ethanol</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]. Many of these genes are
+          clearly significantly abundant in the stressed state
+          (Figure <NUMEX TYPE="CARDINAL">3a</NUMEX>), although there is not enough data to
+          conclude that all of the set of 
+          HSP70 -family genes is
+          significantly abundant in the stressed <ENAMEX TYPE="GPE_DESC">state</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>).
+          On the basis of the large estimated expression
+          differences (nearly always twofold or greater), an effect
+          on the 
+          HSP70 <ENAMEX TYPE="PER_DESC">family</ENAMEX> may yet be large and
+          biologically important.
+          In addition, the trehalose pathway, whose product aids
+          the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> in dealing with excess <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX> [ <TIMEX TYPE="DATE">20</TIMEX>], is clearly
+          <ENAMEX TYPE="ORGANIZATION">upregulated</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). Interestingly, the <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> 
+          HXK2 , 
+          PGM1 , <TIMEX TYPE="DATE">YHL0012w</TIMEX>, 
+          TSL1 , 
+          TPS2 and 
+          ATH1 , form a completely parallel
+          pathway from <NUMEX TYPE="MONEY">α</NUMEX>-D-glucose to α,α-trehalose to <ENAMEX TYPE="NATIONALITY">D</ENAMEX>-glucose.
+          Of those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, none is significantly upregulated.
+          Teasing apart the biochemical modes of action of these
+          <ENAMEX TYPE="ORGANIZATION">isoforms</ENAMEX> ('redundant' <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) will lead to a better
+          understanding of the modularity of genomes and of the
+          varied methods of response to environmental challenges of
+          <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. Alexandre 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . propose a futile trehalose
+          cycle after observing high ratios of expression of 
+          NTH1 in their <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>-shocked
+          sample [ <TIMEX TYPE="DATE">11</TIMEX>]. However, the wide credible intervals around
+          the expression levels of the genes for the neutral
+          <ENAMEX TYPE="ORGANIZATION">trehalase</ENAMEX> <ENAMEX TYPE="PRODUCT">NTH1</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>) and the <ENAMEX TYPE="SUBSTANCE">acid trehalase ATH1</ENAMEX>,
+          the observed accumulation of trehalose in fermentations [
+          <NUMEX TYPE="CARDINAL">21</NUMEX>], and the potential for compartmentalization [ <TIMEX TYPE="DATE">22</TIMEX>]
+          indicate that more data are needed before one can infer
+          the extent of such a cycle.
+          In addition to the results previously noted, it is
+          interesting to observe significant abundant expression of
+          numerous open reading frames (ORFs) containing
+          transposable-element sequence under ethanol shock (Figure
+          <NUMEX TYPE="CARDINAL">5</NUMEX>). Although robust inferences are compromised by the
+          high sequence homology of these ORFs, the fact that <NUMEX TYPE="CARDINAL">six</NUMEX>
+          were significantly abundant and none was meagerly
+          expressed suggests an interesting biological phenomenon.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> possible effector is the transcriptional regulator
+          Gcr1p, whose <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> estimate in ethanol shock is fivefold
+          greater than in normal log growth and whose credible
+          intervals in the <NUMEX TYPE="CARDINAL">two</NUMEX> conditions barely overlap (Figure
+          <NUMEX TYPE="CARDINAL">2</NUMEX>). Gcr1p elevates transcription of transposable elements
+          Ty2-917 and <ENAMEX TYPE="PRODUCT">Ty1-912</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>] as well as of 
+          GLK1 of the trehalose pathway ([
+          <NUMEX TYPE="CARDINAL">24</NUMEX>], and Figure <NUMEX TYPE="CARDINAL">4</NUMEX>).
+          There are many reasons why data points in microarray
+          experiments are wisely excluded from analysis. Whole
+          sectors occasionally fail due to premature drying during
+          hybridization, spots are occasionally malformed, and
+          experimental signal is frequently so low compared to
+          background that a spot is best excluded from the data.
+          <NUMEX TYPE="CARDINAL">Only 2,041</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> of <NUMEX TYPE="CARDINAL">6,138</NUMEX> in these data passed the spot
+          background-foreground acceptance criteria (see Materials
+          and methods) in <NUMEX TYPE="CARDINAL">all three</NUMEX> experiments. Of these genes, <NUMEX TYPE="CARDINAL">65</NUMEX>
+          were significantly different by a gene-by-gene criterion,
+          demanding nonoverlapping <NUMEX TYPE="PERCENT">95%</NUMEX> confidence intervals. A
+          further <NUMEX TYPE="CARDINAL">2,337</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> had one observation missing; their
+          credible intervals were appropriately wider after BAGEL
+          analysis of the data and <NUMEX TYPE="CARDINAL">only 22</NUMEX> were statistically
+          significant. Genes with one acceptable observation were
+          not analyzed. Use of an informative prior distribution on
+          the variance, however, would allow such analysis.
+          <ENAMEX TYPE="PRODUCT">Table 1gives</ENAMEX> an overview of informative pairwise
+          comparisons from the experiments analyzed here. In the
+          ethanol-shock experiments, only the <NUMEX TYPE="CARDINAL">87</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> listed in
+          <ENAMEX TYPE="PRODUCT">Table 1are</ENAMEX> statistically significantly different out of
+          the, on-average, <NUMEX TYPE="CARDINAL">1,851</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> measured as greater than
+          twofold differentially expressed in these single
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments. <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> analysis allows unambiguous
+          inference as to the expression levels and confidence
+          intervals of these genes of interest. In this dataset
+          with <NUMEX TYPE="CARDINAL">only three</NUMEX> replicates, we detect no significant
+          differences at below a twofold level. Datasets with
+          greater direct replication, or with less dispersed
+          ratios, or with transitively informative comparisons (see
+          below and <ENAMEX TYPE="PERSON">J.P.T.</ENAMEX>, unpublished data) promise to do so.
+        
+        
+          Deletion of <ENAMEX TYPE="PRODUCT">SWI1and</ENAMEX> SNF2
+          Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . undertook a study to
+          ascertain which <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were controlled by the <ENAMEX TYPE="CONTACT_INFO">Snf2p/</ENAMEX>Swi1p
+          chromatin-remodeling and transcriptional-activator
+          complex subunits, whether the genes had any distinct
+          regulatory roles, and how their regulatory roles compare
+          in rich and minimal media ([ <TIMEX TYPE="DATE">12</TIMEX>], and Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). In rich
+          medium, the credible intervals among mutant and wild-type
+          expression levels do not overlap for <NUMEX TYPE="CARDINAL">251</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (more than
+          <NUMEX TYPE="PERCENT">4%</NUMEX> of the genome). <ENAMEX TYPE="PERSON">Importantly</ENAMEX>, <NUMEX TYPE="CARDINAL">46</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with estimated
+          ratios greater than twofold have overlapping credible
+          <ENAMEX TYPE="PERSON">intervals</ENAMEX> (Figure <TIMEX TYPE="DATE">6a</TIMEX>, lower left and lower right
+          <ENAMEX TYPE="ORGANIZATION">quadrants</ENAMEX>). Moreover, almost <NUMEX TYPE="CARDINAL">one quarter of the 251</NUMEX>
+          significantly different <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have estimated ratios less
+          than twofold (<ENAMEX TYPE="PER_DESC">densely</ENAMEX> packed between the dashed lines
+          because the difference between estimates cannot exceed
+          the distance between credible intervals, Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>). In
+          minimal medium, similar results were acquired; a greater
+          number of significant results were obtained, due in part
+          to greater replication (Figure <TIMEX TYPE="DATE">1b</TIMEX>, <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The credible
+          intervals of mutant and wild-type expression levels do
+          not overlap for <NUMEX TYPE="CARDINAL">604</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, <NUMEX TYPE="PERCENT">almost 10%</NUMEX> of the genome.
+          Interestingly, <NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with estimated ratios greater
+          than twofold have overlapping credible intervals, and <NUMEX TYPE="CARDINAL">361</NUMEX>
+          (<NUMEX TYPE="PERCENT">more than 50%</NUMEX>) of the <NUMEX TYPE="CARDINAL">604</NUMEX> significantly differentially
+          expressed genes are differentially expressed below the
+          <ENAMEX TYPE="ORGANIZATION">twofold</ENAMEX> level.
+          Whether these genes represent all of the genes
+          controlled by the <ENAMEX TYPE="ORGANIZATION">Snf/Swi</ENAMEX> complex depends, of course, on
+          what level of difference is deemed biologically
+          significant, which in many cases depends upon the gene of
+          interest. For many transcription factors, it may be that
+          small changes in expression level cause very large
+          changes in biological state [ <TIMEX TYPE="DATE">25, 26, 27</TIMEX>], and for many
+          metabolic <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, very large changes in expression may
+          change pathway throughput very little [ <TIMEX TYPE="DATE">28</TIMEX>]. Note also
+          that these criteria do not distinguish between 
+          <ENAMEX TYPE="ORGANIZATION">cis</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">trans</ENAMEX> effects on expression level.
+          Presumably, many 
+          <ENAMEX TYPE="ORGANIZATION">trans</ENAMEX> effects percolate into much
+          or all of the genome in very small ways; some of these
+          effects may be overwhelmed by systematic error induced by
+          the technology, but most should be detectable with
+          sufficient replication.
+          Credible intervals determined using <ENAMEX TYPE="SUBSTANCE">BAGEL</ENAMEX> make it
+          clear that even 
+          SER3 , which Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . examine as a candidate gene
+          differentially affected in the 
+          snf2 Δ and 
+          swi1 Δ <ENAMEX TYPE="PLANT">strains</ENAMEX> on the basis of cDNA
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> and northern data [ <TIMEX TYPE="DATE">12</TIMEX>], should not be
+          inferred to be differentially affected solely on the
+          basis of their cDNA microarray data. Although estimates
+          of the abundance of 
+          SER3 transcript differ by more than
+          twofold, the credible intervals for these <NUMEX TYPE="CARDINAL">two</NUMEX> mutants
+          have extensive overlap (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>). Examining the
+          <ENAMEX TYPE="PERSON">rich</ENAMEX>-media cDNA microarray dataset for other candidates
+          for differential expression, we observe that there are <NUMEX TYPE="CARDINAL">27</NUMEX>
+          genes in which only one of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">mutants</ENAMEX> has
+          nonoverlapping credible intervals with the wild type.
+          More important, there are just <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in this
+          global dataset for which the credible intervals of
+          expression levels in 
+          snf2 and 
+          swi1 <ENAMEX TYPE="PER_DESC">mutants</ENAMEX> do not overlap. This
+          answers a question posed by Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . as to whether the
+          differences in gene expression between these mutants that
+          they observed were due to variation in microarray
+          measurements or to real differences between the mutants [
+          <NUMEX TYPE="CARDINAL">12</NUMEX>]. Nearly all differences they observed in the
+          transcriptional profiles of these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">mutants</ENAMEX> are
+          potentially due to variation in <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments. A
+          scatterplot of the log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> estimates of gene-expression levels
+          for genes significantly different from wild type, in the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> deletion <ENAMEX TYPE="PER_DESC">mutants</ENAMEX> compared to wild type, yields a
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> correlation of <NUMEX TYPE="MONEY">0.97</NUMEX> (Figure <NUMEX TYPE="CARDINAL">6b</NUMEX>). The large number
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> meagerly expressed compared to wild type in both
+          deletion mutants is consistent with the roles of Snf2p
+          and <ENAMEX TYPE="PRODUCT">Swi1p</ENAMEX> as transcriptional activators. In addition,
+          <ENAMEX TYPE="PERSON">globally</ENAMEX>, not a single gene shows a contrasting change in
+          expression in comparison to wild type. This affirms the
+          conclusion [ <TIMEX TYPE="DATE">12</TIMEX>] that the two genes work almost entirely
+          in concert in the media conditions tested. The expression
+          levels of the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> detected by <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> as having
+          significantly different expression in the <NUMEX TYPE="CARDINAL">two</NUMEX> mutants, 
+          ECM33 and <ENAMEX TYPE="PRODUCT">YOL154w</ENAMEX>, are shown in
+          Figure <TIMEX TYPE="DATE">7b</TIMEX>. The small magnitude of the difference observed
+          in 
+          ECM33 between the <NUMEX TYPE="CARDINAL">two</NUMEX> strains may
+          indicate that this highly statistically significant
+          difference is biologically irrelevant, but certainly
+          further investigation of the significantly different
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression levels observed in <TIMEX TYPE="DATE">YOL154w</TIMEX> is
+          <ENAMEX TYPE="PERSON">warranted</ENAMEX>.
+          Quantitation of short transcript sequence tags by
+          serial analysis of gene expression (<ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX>) [ <TIMEX TYPE="DATE">29</TIMEX>] yields
+          absolute counts of expressed sequences in the yeast
+          <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]. These quantitations may be used to put
+          relative expression values obtained from <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> on an
+          absolute scale. There are issues with sampling error and
+          non-uniqueness of sequence tags in <ENAMEX TYPE="SUBSTANCE">SAGE assays</ENAMEX> [ <TIMEX TYPE="DATE">31</TIMEX>] as
+          well as with the linearity of cDNA microarray ratio
+          measures [ <TIMEX TYPE="DATE">17</TIMEX>], and with differences between the
+          'wild-type' strain used in <ENAMEX TYPE="GPE">SAGE</ENAMEX> and in cDNA microarray
+          experiments. These <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of error are many, but small
+          and uncorrelated. With these caveats in mind, Figure
+          8aassumes that <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> counts are exact in order to provide
+          absolute expression levels inferred using <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">normalized</ENAMEX> so that the wild-type strain on rich <ENAMEX TYPE="PER_DESC">medium</ENAMEX> is
+          assumed to have the same expression levels as indicated
+          by <ENAMEX TYPE="SUBSTANCE">SAGE assay</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX>]. Figure <TIMEX TYPE="DATE">8ashows</TIMEX> that, as observed by
+          Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">12</TIMEX>], the <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> phosphatase
+          genes are meagerly expressed in 
+          snf2 Δ and 
+          swi1 Δ mutants.
+          Note that although there is esthetic appeal to having
+          the measurements reported on an absolute basis of
+          transcripts per <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, little additional information is
+          obtained by this transformation for most experimental
+          questions, as the result is simply a rescaling of the 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> -axis for each gene. Also,
+          whereas the statistical significance of <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> results is
+          robust to considerable deviation from general linearity
+          of cDNA microarray results, the quantitative result using
+          <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> counts as a basis depends critically upon the
+          linearity of cDNA microarray measurements. Lastly, it is
+          unclear how to scale meagerly expressed genes that had a
+          count of <NUMEX TYPE="CARDINAL">zero</NUMEX> in a SAGE analysis. 
+          PHO4 is such a gene; in Figure <TIMEX TYPE="DATE">8b</TIMEX>,
+          we have arbitrarily charted a frequency that would be
+          appropriate if it were present at <NUMEX TYPE="CARDINAL">approximately one</NUMEX> order
+          of magnitude below the <ENAMEX TYPE="GPE">SAGE</ENAMEX> experiment's detection
+          threshold of <NUMEX TYPE="CARDINAL">0.1</NUMEX> molecules per cell. Neither 
+          PHO2 nor 
+          PHO4 shows significant evidence of
+          differential expression in 
+          <ENAMEX TYPE="CONTACT_INFO">snf2 Δ/</ENAMEX> 
+          swi1 Δ mutants. Consideration of
+          the raw ratio data led Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">12</TIMEX>] to thus conclude that
+          
+          PHO5 gene expression is directly
+          controlled by <ENAMEX TYPE="CONTACT_INFO">Snf2p/Swi1p.</ENAMEX> 
+          PHO3 , a 'constitutive' acid
+          phosphatase, shows the same relative abundance across 
+          <ENAMEX TYPE="CONTACT_INFO">snf2 Δ/</ENAMEX> 
+          swi1 Δ mutants as does 
+          PHO5 (data not shown). The <NUMEX TYPE="PERCENT">87%</NUMEX>
+          identity of the nucleotide sequence of these genes means
+          that cross-hybridization may confound inference about
+          their regulation. However, unlike 
+          PHO5 , there is currently no
+          evidence that 
+          PHO3 is regulated by 
+          PHO2 or 
+          PHO4 . 
+          PHO5 may share a direct <ENAMEX TYPE="CONTACT_INFO">Snf2p/</ENAMEX>Swi1p
+          regulatory mechanism with 
+          PHO3 .
+          Analysis presented here supports the result that 
+          SWI1 and 
+          SNF2 work almost entirely in
+          concert within the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> in rich <ENAMEX TYPE="PER_DESC">medium</ENAMEX> [ <TIMEX TYPE="DATE">12</TIMEX>]. As
+          Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . noted, however, the
+          <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> may not always be produced together in all
+          conditions. Moreover, it should be noted that their
+          experimental design has the least power to detect these
+          specific differences. This is because all comparisons of
+          expression level between the mutant <ENAMEX TYPE="PLANT">strains</ENAMEX> are
+          transitive comparisons, which inherit the variance
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the <ENAMEX TYPE="PER_DESC">intermediary</ENAMEX> wild-type expression
+          level as well as the variance associated with the
+          expression levels of the two mutant strains. The result
+          is that on a log scale the credible intervals of
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression level are broader for the <NUMEX TYPE="CARDINAL">two</NUMEX> mutants
+          than for the wild type. This outcome is a recurrent
+          problem with a repeated reference-sample experimental
+          design: <NUMEX TYPE="CARDINAL">one</NUMEX> learns the most information about the
+          reference sample, which is frequently arbitrary and not
+          necessarily of interest. An ideal addition to the
+          experimental design in Figure 1bwould be several direct
+          comparisons of the mutant strains. Then, both transitive
+          and direct information would contribute to the
+          statistical power of a <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> analysis for any comparison.
+          It is also clear that an increase in number of
+          comparisons would yield more power to detect
+          <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes, and would indeed find
+          more of them. Every single gene that was detected as
+          significantly differentially expressed in <NUMEX TYPE="CARDINAL">only one</NUMEX> of the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> mutants compared to wild type in the rich <ENAMEX TYPE="PER_DESC">medium</ENAMEX> was
+          significantly different in expression level only in the 
+          swi1 Δ mutant. The 
+          swi1 Δ mutant comparison to wild
+          type had <NUMEX TYPE="CARDINAL">one</NUMEX> more replicate than did the comparison of
+          the 
+          snf2 Δ mutant (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>).
+        
+        
+          Zinc regulation
+          <ENAMEX TYPE="CONTACT_INFO">Lyons</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . examined wild-type and 
+          zap1 mutant strains of yeast
+          growing in cultures containing <NUMEX TYPE="CARDINAL">three</NUMEX> different
+          concentrations of <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> ([ <TIMEX TYPE="DATE">13</TIMEX>], and Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). Zap1p is a
+          transcriptional activator that appears to regulate
+          transcription of the <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-uptake system genes in response
+          to zinc [ <TIMEX TYPE="DATE">32</TIMEX>]. Using the nonoverlapping <NUMEX TYPE="PERCENT">95%</NUMEX> credible
+          interval criterion, a <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> analysis on this data reveals
+          <NUMEX TYPE="CARDINAL">469</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> significantly more abundantly expressed in
+          cells grown in <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-deficient medium compared to cells
+          grown in <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-<NUMEX TYPE="CARDINAL">supplemented</NUMEX> medium, and reveals <NUMEX TYPE="CARDINAL">261</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+          significantly less abundant in the same comparison. This
+          is a total of <NUMEX TYPE="PERCENT">about 10%</NUMEX> of the genome, and is <NUMEX TYPE="CARDINAL">two thirds</NUMEX>
+          of the number found by use of an averaged twofold
+          <ENAMEX TYPE="PERSON">criterion</ENAMEX>. A considerable number of the genes viewed as
+          abundant by a twofold criterion, then, are not
+          significantly different by the credible interval
+          <ENAMEX TYPE="PERSON">criterion</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, Figure <TIMEX TYPE="DATE">6c</TIMEX>, lower left and lower right
+          <ENAMEX TYPE="ORGANIZATION">quadrants</ENAMEX>). Moreover, <NUMEX TYPE="CARDINAL">42</NUMEX> of the genes significantly
+          different by the credible-interval criterion are
+          significantly different at a ratio of below twofold
+          (Figure <TIMEX TYPE="DATE">6c</TIMEX>, <ENAMEX TYPE="PER_DESC">densely</ENAMEX> packed between the dashed lines
+          delimiting a twofold change). As one might generally
+          expect, making 
+          ZAP1 <ENAMEX TYPE="PER_DESC">nonfunctional</ENAMEX> in a
+          zinc-deficient environment creates a similar relative
+          effect on most significantly differentially expressed
+          genes to that created by providing <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> to a
+          zinc-deficient wild-type strain (Figure <NUMEX TYPE="CARDINAL">6d</NUMEX>).
+          A common technique to discover candidate genes of
+          interest in microarray studies is to pick out overlapping
+          sets of genes expressed at a ratio greater than some
+          cutoff from replicate and/or different microarray
+          experiments (for example, Figure <NUMEX TYPE="ORDINAL">1of</NUMEX> [ <TIMEX TYPE="DATE">13</TIMEX>], Figure <NUMEX TYPE="ORDINAL">1of</NUMEX> [
+          <NUMEX TYPE="CARDINAL">33</NUMEX>]). <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> supplants any need to examine overlapping
+          gene sets in replicate experiments. Moreover, it provides
+          a statistically rigorous method for comparison of
+          multiple different experiments. The equivalent of an
+          overlap in <NUMEX TYPE="CARDINAL">two</NUMEX> lists of highly expressed genes is that
+          neither of the credible intervals for gene-expression
+          level in a given gene in <NUMEX TYPE="CARDINAL">two</NUMEX> experimental conditions
+          overlaps the reference condition.
+          For instance, <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> analysis of the <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-regulation
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> revealed <NUMEX TYPE="CARDINAL">96</NUMEX> genes whose levels of gene expression in
+          a wild-type genotype and <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-deficient medium were
+          significantly greater than both <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-supplemented
+          wild-type and 
+          zap1 in <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-deficient medium. This
+          is <NUMEX TYPE="CARDINAL">31</NUMEX> more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> than were detected using the twofold
+          <ENAMEX TYPE="PERSON">criterion</ENAMEX>. Figure 9shows <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX> results for <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+          PHM7 and <ENAMEX TYPE="PRODUCT">YGL121c</ENAMEX>, discussed by [
+          <NUMEX TYPE="CARDINAL">13</NUMEX>], as well as results on <NUMEX TYPE="CARDINAL">four</NUMEX> other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. A
+          zinc-responsive element (ZRE) consensus DNA sequence,
+          <ENAMEX TYPE="ORGANIZATION">ACCYTNARGGT</ENAMEX> (in the single-letter amino<ENAMEX TYPE="SUBSTANCE">-acid</ENAMEX> code, where
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is any nucleotide, <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> is C or <ENAMEX TYPE="ORGANIZATION">T</ENAMEX>, and <ENAMEX TYPE="NATIONALITY">R</ENAMEX> is A or <ENAMEX TYPE="ORGANIZATION">G</ENAMEX>)
+          (compare Figure <NUMEX TYPE="ORDINAL">2of</NUMEX> [ <TIMEX TYPE="DATE">13</TIMEX>]), is located in close proximity
+          to 
+          CTT1 (chromosome <ENAMEX TYPE="WORK_OF_ART">VII</ENAMEX>, location
+          <ENAMEX TYPE="PRODUCT">65270-80</ENAMEX>), 
+          MNT2 (<ENAMEX TYPE="PRODUCT">VII</ENAMEX>, <ENAMEX TYPE="PRODUCT">20659-69</ENAMEX> and <ENAMEX TYPE="PRODUCT">20774-84</ENAMEX>),
+          YOL083w (<ENAMEX TYPE="GPE">XI</ENAMEX>, <ENAMEX TYPE="PRODUCT">442975-85</ENAMEX>) and <TIMEX TYPE="DATE">YNL253w</TIMEX> (<ENAMEX TYPE="ORGANIZATION">XIV</ENAMEX>, <NUMEX TYPE="CARDINAL">169669</NUMEX>). BAGEL
+          results shown in Figure <NUMEX TYPE="CARDINAL">9convey</NUMEX> not just the significance
+          but also the extent of differential regulation. 
+          CTT1 and <ENAMEX TYPE="PRODUCT">YOL083w</ENAMEX> are like the two
+          genes 
+          PHM7 and <ENAMEX TYPE="PRODUCT">YGL121c</ENAMEX> discussed by [
+          <NUMEX TYPE="CARDINAL">13</NUMEX>], in that having the 
+          zap1 :: 
+          TRP1 <ENAMEX TYPE="ORG_DESC">genotype</ENAMEX> does not entirely
+          eliminate transcriptional response to <ENAMEX TYPE="DISEASE">zinc deficiency</ENAMEX>.
+          These intermediate levels of expression indicate the
+          action of auxiliary <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-regulatory mechanisms.
+          Figure 10charts <TIMEX TYPE="DATE">several transcription</TIMEX> factors that are
+          significantly differentially expressed below the twofold
+          level. For every gene shown, the credible intervals
+          between wild type in <NUMEX TYPE="CARDINAL">3</NUMEX> mM <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> and wild type in <ENAMEX TYPE="LANGUAGE"><</ENAMEX> 100
+          nM <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX> do not overlap. For 
+          VPS20 , in contrast to the other
+          <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, expression is greater when in <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-deficient
+          medium. Expression levels in Figure <NUMEX TYPE="CARDINAL">10are</NUMEX> graphed
+          cosequentially with the experimental design structure
+          (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). As a result, the increasing size of credible
+          intervals as one scans from the middle expression nodes
+          to the expression nodes at the ends of the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> of
+          experiments is clear. The largest credible interval is
+          for the 
+          zap1 strain grown in <TIMEX TYPE="DATE">10 �</TIMEX>�M <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>, on
+          the far right of each cluster of columns. This is as
+          expected, given that it is at the end of the line of
+          comparisons and is informed by <NUMEX TYPE="CARDINAL">only one</NUMEX> cDNA microarray
+          comparison. In a balanced linear set of comparisons such
+          as this, it turns out that for any gene on a log scale,
+          the credible intervals around the gene-expression values
+          of the <ENAMEX TYPE="PER_DESC">ends</ENAMEX> are greater than the credible intervals
+          around those in the middle of the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> (data not
+          shown).
+          For an analysis such as this one, the statistical
+          power could be improved if expression nodes were compared
+          to more than <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX>. Specifically, direct
+          comparisons between wild type in <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">Zn</ENAMEX> and 
+          zap1 in <NUMEX TYPE="CARDINAL">3</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">Zn</ENAMEX> would complete a
+          circle of comparisons, increasing transitive information
+          on all expression nodes. <ENAMEX TYPE="ORGANIZATION">Cross</ENAMEX>-circle comparisons would
+          also contribute considerable power. Generally,
+          eliminating 'ends' of <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> of comparisons should be a
+          goal of any cDNA microarray experimental design.
+        
+      
+      
+        Conclusions
+        Small datasets such as the <ENAMEX TYPE="SUBSTANCE">ethanol dataset</ENAMEX> are very good
+        <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for use of a more informative prior distribution
+        to keep variances within a reasonable range and yield
+        better results. Analysis of larger datasets indicates that
+        true variances for microarray data within this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are
+        not larger than <NUMEX TYPE="CARDINAL">one</NUMEX>. The impact of using less-vague priors,
+        especially for the variance, when there are few
+        comparisons, is under investigation by a number of
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>. A hierarchical <ENAMEX TYPE="PRODUCT">Bayesian</ENAMEX> model [ <TIMEX TYPE="DATE">34</TIMEX>] has been
+        used to analyze ratio data and provide <NUMEX TYPE="PERCENT">95%</NUMEX> confidence
+        intervals for the log ratio of gene expression from
+        reference to control. This method assumes normal
+        distributions of the log ratios rather than ratios of
+        normal distributions. It has a hierarchical structure that
+        allocates error variance among microarrays and experiments.
+        The <ENAMEX TYPE="PER_DESC">authors</ENAMEX> suggest use of calibration data, or,
+        alternatively, empirical evaluation of the distribution of
+        <ENAMEX TYPE="ORGANIZATION">variances</ENAMEX> across all other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in order to construct a
+        <TIMEX TYPE="DATE">prior</TIMEX>. A subset of genes of nearly equal intensity can be
+        used to form a prior for variances [ <TIMEX TYPE="DATE">35</TIMEX>]. This prior was
+        used by the <ENAMEX TYPE="PER_DESC">authors</ENAMEX> to input reliable variances in 
+        <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> -tests of significance. Promising
+        advances have been made on <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> methods for correcting
+        misleading fold-change measurements made from low-intensity
+        spots [ <TIMEX TYPE="DATE">36</TIMEX>], using a <ENAMEX TYPE="SUBSTANCE">gamma</ENAMEX> rather than normal model of
+        ratio results.
+        All these methods have considerable potential to be
+        incorporated as priors into a framework such as that
+        presented here, so that the prior may be applied to
+        multiple samples from different genotypes, environments or
+        developmental <ENAMEX TYPE="GPE_DESC">states</ENAMEX>. Priors such as those above should
+        result in smaller credible intervals and detection of
+        increasingly significant differences because they curtail
+        the exploration of unrealistically high variances that
+        small <ENAMEX TYPE="PER_DESC">datasets</ENAMEX> have too few observations to rule out 'on
+        their own'. Continued work in this area, using an increased
+        amount of non-ratio data provided from scanned microarrays,
+        should be very fruitful [ <TIMEX TYPE="DATE">10</TIMEX>]. Furthermore, posterior
+        distributions from such analyses of gene-expression level
+        have subsequent use in <ENAMEX TYPE="GPE">Bayesian</ENAMEX> methodologies for
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> [ <TIMEX TYPE="DATE">37</TIMEX>] and tumor identification [ <TIMEX TYPE="DATE">38</TIMEX>].
+        In summary, the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based approach we have implemented
+        can accommodate complex and unbalanced experimental
+        designs. Some research will continue to be carried out
+        comparing just <NUMEX TYPE="CARDINAL">two</NUMEX> samples multiple times. However, complex
+        designs will increase in popularity as <ENAMEX TYPE="PER_DESC">investigators</ENAMEX>
+        explore multiple genotypes, environments and developmental
+        <ENAMEX TYPE="GPE_DESC">states</ENAMEX> within a single research project [ <TIMEX TYPE="DATE">18</TIMEX>]. The utility
+        of this approach in determining levels of gene expression
+        may be maximized if these designs incorporate certain
+        features.
+        First, compare samples of direct interest directly. When
+        interested in the differences between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, compare
+        them to each other rather than to an arbitrary reference
+        sample [ <ENAMEX TYPE="LAW">7, 8</ENAMEX>]. Whenever possible, study a few expression
+        nodes thoroughly, rather than many superficially.
+        <NUMEX TYPE="ORDINAL">Second</NUMEX>, replicate each comparison at least once [ <TIMEX TYPE="DATE">39</TIMEX>].
+        Whether this is done directly by incorporation of dye
+        during reverse transcription, or, preferably, by labeling
+        incorporated amino<ENAMEX TYPE="GPE">-allyl-dUTP</ENAMEX>, reverse the dye labeling to
+        ameliorate any dye effect thereof [ <ENAMEX TYPE="LAW">9, 10, 18</ENAMEX>].
+        <NUMEX TYPE="ORDINAL">Third</NUMEX>, eliminate 'ends' of comparison <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> by carrying
+        out hybridizations comparing one end to another. This
+        allows reconciliation of transitive data around a circle of
+        comparisons. The more circles created, the more
+        reconciliation occurs. The smaller the circumference of the
+        circle created, the stronger the transitive power.
+        <NUMEX TYPE="ORDINAL">Fourth</NUMEX>, connect nodes otherwise distantly located on a
+        chain of comparisons with extra cross-comparisons. The
+        number of 'extra' comparisons to make depends on what size
+        of effect is of interest. The observation of a small but
+        significant effect on key regulatory genes may be of
+        greater biological interest than the same observation on a
+        metabolic enzyme. The appropriate weighing of the cost of
+        additional comparisons against the greater precision of
+        measurement depends critically upon the question being
+        asked.
+        For <TIMEX TYPE="TIME">time</TIMEX>-course experiments or any other experiment with
+        an explicit ordered 
+        x -axis these guidelines may still be
+        followed, as long as replicate comparisons are made among
+        <ENAMEX TYPE="ORGANIZATION">nodes</ENAMEX>. <ENAMEX TYPE="PERSON">Inferred</ENAMEX> estimates at each node are assessed
+        independently of location along the 
+        x -axis, so that regressions across
+        them are valid. Ultimately, experimental design may be
+        subject to limitation owing to lack of resources or
+        experimental failure. Fortunately, within a framework such
+        as that developed here, missing spots or missing
+        comparisons do not require any special consideration or any
+        change in methodology. Credible intervals acquired for less
+        well determined <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or less well determined expression
+        nodes are correspondingly larger. This quantitative
+        information on gene-expression levels tendered by a
+        thorough analysis of microarray results should be carefully
+        considered in assessments of the biological effects of
+        genetic or environmental differences upon cellular
+        state.
+      
+      
+        Materials and methods
+        
+          Normalization
+          For the <ENAMEX TYPE="SUBSTANCE">ethanol-shock dataset</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>], raw data from
+          <ENAMEX TYPE="ORGANIZATION">GenePix</ENAMEX> files was processed as follows. Any spot was
+          excluded from analysis if both <TIMEX TYPE="DATE">the Cy3</TIMEX> and Cy5
+          fluorescence signals were within <NUMEX TYPE="CARDINAL">two</NUMEX> standard deviations
+          of the distribution of intensities of the background
+          pixels for that spot. These low-intensity spots are those
+          most aberrant in fold-change and are those for which the
+          magnitude is adjusted most by the model of <ENAMEX TYPE="GPE">Newton</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">36</TIMEX>]. Expression values
+          were normalized by linear scaling of the <NUMEX TYPE="ORDINAL">Cy5</NUMEX> values so
+          that the mean <TIMEX TYPE="DATE">Cy5 and Cy3</TIMEX> values of nonexcluded spots
+          were equal. <NUMEX TYPE="CARDINAL">Two</NUMEX> of <NUMEX TYPE="CARDINAL">three</NUMEX> experiments thereby achieved a
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> log-log intensity plot for included spots, with
+          slope <NUMEX TYPE="CARDINAL">approximately 1</NUMEX>. The <NUMEX TYPE="ORDINAL">third</NUMEX> was linearized by
+          exponentiation of the <NUMEX TYPE="ORDINAL">Cy3</NUMEX> <ENAMEX TYPE="ORG_DESC">channel</ENAMEX> to <NUMEX TYPE="CARDINAL">0.8</NUMEX>, before
+          normalization of the means.
+          For other experiments, ratio and spot pass criteria
+          were used as reported in the <ENAMEX TYPE="ORG_DESC">papers</ENAMEX>. In the dataset
+          released by Sudarsanam 
+          <ENAMEX TYPE="ORGANIZATION">et al</ENAMEX> . [ <TIMEX TYPE="DATE">12</TIMEX>], one of the three
+          reported microarray hybridizations between wild-type and 
+          snf2 <ENAMEX TYPE="PER_DESC">nodes</ENAMEX> was excluded from
+          analysis because it had an anomalous global mean log
+          ratio of <NUMEX TYPE="PERCENT">-0.26</NUMEX>, whereas for all others that value was
+          very nearly <NUMEX TYPE="CARDINAL">zero</NUMEX>. For the <ENAMEX TYPE="SUBSTANCE">zinc</ENAMEX>-regulation <ENAMEX TYPE="PER_DESC">dataset</ENAMEX> [ <TIMEX TYPE="DATE">13</TIMEX>],
+          no pass criterion had been used to ensure each spot on
+          each microarray carried considerably more signal than
+          noise. The data appeared to be of high quality. However,
+          in a few cases, one or two misleading data points from
+          <ENAMEX TYPE="ORGANIZATION">low-intensity</ENAMEX> spots may have led to especially high
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-by-gene error variance estimates and thus concealed
+          otherwise significant differences.
+          The best normalization method and spot pass criteria
+          are highly dependent on cDNA microarray protocol,
+          <ENAMEX TYPE="PERSON">methodology</ENAMEX>, experimental experience and analytical
+          <ENAMEX TYPE="ORGANIZATION">resources</ENAMEX>. As long as normalization method and spot pass
+          criteria are applied uniformly within a dataset, the
+          resulting ratios should be appropriate for analysis by
+          the <ENAMEX TYPE="PER_DESC">model</ENAMEX> described here.
+        
+        
+          Model
+          In <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments, the original idea was that,
+          with current technology, spots on a cDNA microarray had a
+          number of confounding pseudolinear terms - whose
+          variation from experiment to experiment could be
+          minimized but not eliminated - which contributed to the
+          intensity measurements observed when a hybridization was
+          <ENAMEX TYPE="ORGANIZATION">scanned</ENAMEX>. Model parameters under this scheme differ from
+          those used for high-density oligonucleotide microarrays [
+          <NUMEX TYPE="CARDINAL">40</NUMEX>]. These terms included the density and size of the
+          cDNA deposition, the correspondingly larger or smaller
+          amount of labeled mRNA hybridized to the microarray, the
+          hybridization conditions and the sequence of the gene [
+          <NUMEX TYPE="CARDINAL">41</NUMEX>]. With these assumptions, the post-normalization
+          intensity in <NUMEX TYPE="CARDINAL">one</NUMEX> fluorescence channel at a <ENAMEX TYPE="PER_DESC">reporter</ENAMEX> spot
+          may be modeled linearly as
+          
+          where is the absolute quantity of mRNA per <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, the 
+          c 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           are terms for any 
+          q multiplicatively confounding
+          factors, the 
+          c 
+          
+            <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+           are terms for any 
+          <ENAMEX TYPE="PRODUCT">q - t</ENAMEX> linearly confounding factors,
+          and is an error term accounting for mild pseudorandom
+          departures from linearity and unavoidable small
+          variations in cell-growth conditions. Note that
+          multiplicative error associated with the sample must have
+          been compensated for by an appropriate normalization ([
+          <NUMEX TYPE="CARDINAL">42</NUMEX>], reviewed by [ <TIMEX TYPE="DATE">43</TIMEX>]); if, on the other hand, there are
+          considerable multiplicative factors that are common to a
+          spot, they are accommodated by the 
+          c 
+          
+            <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+           above. This model cannot be directly implemented
+          because experimental replication to estimate each
+          confounding term is technically difficult. These
+          difficulties led to a rapid conclusion that the
+          information that can be best obtained from a cDNA
+          <ENAMEX TYPE="PERSON">microarray</ENAMEX> experiment is ratio information rather than
+          absolute quantification. This is because the confounding
+          spot terms above will apply equally to <NUMEX TYPE="CARDINAL">two</NUMEX> samples
+          competitively hybridized against a single spot on a
+          single microarray, yielding a ratio that correctly
+          represents the ratio of expression levels in the
+          comparison of interest.
+          When comparing just <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, ratio measurements
+          are nearly as good as absolute data. However, when more
+          than <NUMEX TYPE="CARDINAL">one</NUMEX> genotype or environmental condition or cell
+          developmental stage is examined, ratio measurements
+          rapidly become cumbersome because comparing across
+          numerous states requires a common <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> of measurement.
+          Therefore it is of interest to use these ratio
+          measurements within a statistical model to estimate
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression levels in a common (if arbitrary) <ENAMEX TYPE="ORG_DESC">unit</ENAMEX>,
+          and also to assess the significance of such a
+          difference.
+          Consistent with the original interpretation of cDNA
+          microarray data that privileged ratio over absolute
+          quantification [ <TIMEX TYPE="DATE">41</TIMEX>], the observed ratios of intensities,
+          
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            ij 
+           , maybe modeled as
+          
+          where 
+          
+            i 
+           , and 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           are the scaled quantities of mRNA in samples 
+          i versus 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> . This expression is true for any
+          terms that are consistent for both mRNA preparations,
+          regardless of linearity, which is fortunate, as there are
+          known nonlinearities in microarray data acquisition [
+          <NUMEX TYPE="CARDINAL">17</NUMEX>]. This yields
+          
+          Assuming that error terms are composed of many small,
+          unbiased effects, and scaling the error terms 
+          
+            i 
+           and 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           by
+          
+          a constant for every microarray spot, so that they are
+          distributed with variances specific to each sample, 
+          
+            i 
+           2and 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <NUMEX TYPE="CARDINAL">2</NUMEX>, it follows directly that the observed ratio data,
+          
+          z 
+          
+            ij 
+           , are drawn from
+          
+          This can be true even if the distribution of
+          <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> across spots and arrays is decidedly not
+          Gaussian, because confounding factors which vary linearly
+          or multiplicatively or even interactively across spots or
+          arrays are commonly presumed not to be different between
+          <NUMEX TYPE="CARDINAL">two</NUMEX> labeled samples hybridized to a single spot [ <TIMEX TYPE="DATE">41</TIMEX>].
+          Note that <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> may, under this formulation, have
+          different variances as well as different means.
+          The ratio of standard normal distributions is a Cauchy
+          distribution, which has the unpleasant property that it
+          has no moments. The ratio of nonstandard normal
+          distributions is not much better. Fortunately, the
+          infinite tails of the normal distributions that result in
+          this property are not generally observed in real data; in
+          fact, a model that allows negative gene expression levels
+          is not valid. The joint normal distribution may be
+          truncated at a considerable distance from its peak, along
+          an elliptical probability contour within the positive
+          <ENAMEX TYPE="ORGANIZATION">quadrant</ENAMEX> [ <TIMEX TYPE="DATE">44</TIMEX>], yielding a ratio 
+          z 
+          
+            ij 
+           distributed approximately as
+          
+          This approximation of the density of the ratio of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          nonstandard normal distributions is extremely good as
+          long as 
+          
+            i 
+           >> 
+          
+            i 
+           , and 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           >> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , which is certainly true for informative cDNA
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments. It is not symmetrical like a
+          normal distribution, but skewed with a long right-hand
+          <ENAMEX TYPE="PERSON">tail</ENAMEX>, like gene expression data. Moreover, as implied
+          above, if microarray data contain no negative expression
+          levels (a natural proposition), it is likely that the
+          distribution of 
+          z above is closer to the true
+          distribution of microarray data than is the distribution
+          of the ratio of true normal distributions.
+          Let us consider how this result may be used. An ideal
+          statistical framework for the analysis of microarray
+          ratio data could be used to analyze microarray data of
+          any experimental design including any number of
+          <ENAMEX TYPE="PERSON">treatments</ENAMEX>, genotypes, or developmental <ENAMEX TYPE="GPE_DESC">states</ENAMEX>; would be
+          highly robust to missing data; and would yield estimates
+          of the magnitude of expression differences and measures
+          of statistical significance across all treatments,
+          genotypes, and developmental <ENAMEX TYPE="GPE_DESC">states</ENAMEX>.
+          The number of expression nodes, 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , is equal to the number of
+          permutations of strain, treatment, and developmental
+          state that are examined. Unless informative prior
+          information about expression levels or error variance is
+          used, the following (minimal) requirements must be met.
+          First, every node of interest must be present in at least
+          one comparison. <NUMEX TYPE="ORDINAL">Second</NUMEX>, every node of interest must be
+          connected to every other node of interest by an unbroken
+          chain of comparisons. And <NUMEX TYPE="ORDINAL">third</NUMEX>, there must be as many
+          comparisons as there are mean and variance parameters to
+          be estimated.
+          If separate error variances for each sample are to be
+          estimated as well as means, the last requirement
+          indicates that there must be at least <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n - 1</ENAMEX> measurements when each
+          expression node is assumed to have an independent
+          variance, and there must be at least 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> measurements when each expression
+          <ENAMEX TYPE="ORGANIZATION">node</ENAMEX> is assumed to have the same error variance. A few
+          measurements beyond the minimum contribute greatly to the
+          power to detect differences in gene expression and to the
+          ease with which significance of results is ascertained
+          within the <ENAMEX TYPE="ORGANIZATION">Bayesian</ENAMEX> framework. Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the
+          comparison structure of experiments examined in this
+          paper. The three-dimensional matrix of ratio results from
+          these comparisons, 
+          
+            Z 
+           , may be constructed, with dimensions 
+          i denoting the sample labeled with
+          <NUMEX TYPE="CARDINAL">one</NUMEX> fluorophore, 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> denoting the sample labeled with
+          another, and 
+          <ENAMEX TYPE="ORGANIZATION">k denoting</ENAMEX> the replicate ordinate
+          of that particular comparison. Then, for any continuous
+          structure of comparisons among the nodes of interest, the
+          likelihood density for the parameters μ 
+          
+            <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+           and σ 
+          
+            <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">2, 1 ≤</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">l �</ENAMEX>� 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , is, by <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX>' rule,
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">g</ENAMEX> ( 
+          
+            i 
+           , 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">2,</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           <NUMEX TYPE="CARDINAL">2</NUMEX>) is the prior distribution of the parameters, and
+          where the probability 
+          f ( 
+          z 
+          
+            ijk 
+           ) of empty elements in the data matrix 
+          
+            Z 
+           is evaluated as <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          Any <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for which , where 
+          I is an indicator variable and 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> when variances are common among
+          all <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> within a gene and 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> = 
+          2n - 1 when variances are not,
+          yield improper posteriors unless an informative prior is
+          used. These few genes are not analyzed here, nor are
+          genes whose matrix 
+          
+            Z 
+           is reducible. Note that diagonal entries in 
+          
+            Z 
+           are control, self-self hybridizations, in which the
+          same expression node has been labeled with <NUMEX TYPE="CARDINAL">two</NUMEX> different
+          <ENAMEX TYPE="PERSON">dyes</ENAMEX>. In this framework, these controls can and should be
+          included in the dataset if performed with all <ENAMEX TYPE="PER_DESC">sources</ENAMEX> of
+          experimental error included in their preparation. They
+          contribute to estimation of the error variance of
+          genes.
+          Appropriate informative priors for the variance of
+          microarray data are currently under investigation by a
+          number of <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> [ <TIMEX TYPE="DATE">34, 35, 36</TIMEX>]. An informative prior must
+          be clearly justified in order to prevent inappropriate
+          conclusions of statistical significance. In this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, a
+          <ENAMEX TYPE="ORGANIZATION">noninformative</ENAMEX> prior distribution, uniform across
+          positive real numbers, has been used for both the
+          expression levels and for their variance. In theory, we
+          use a uniform prior for the variance, bounded from <NUMEX TYPE="CARDINAL">0</NUMEX> to
+          <NUMEX TYPE="CARDINAL">100</NUMEX>. In practice, the upper limit, beyond <TIMEX TYPE="DATE">20 or so</TIMEX>, makes
+          no difference, as such high values are very improbable
+          and are never sampled by the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> in the datasets
+          analyzed here. This uniform prior gives the microarray
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> itself the greatest impact on the inferred means and
+          variances, and implies that credible intervals
+          constructed are close to those that would be found by
+          maximum likelihood if analytical integration of the full
+          multidimensional parameter surface were feasible. A
+          frequently used 'noninformative' prior such as <ENAMEX TYPE="PRODUCT">-1</ENAMEX>[ <TIMEX TYPE="DATE">45</TIMEX>] is
+          in this case not desirable, because, in practice, the
+          most likely variances observed are so small that this
+          prior has a considerable impact on the posterior
+          distribution.
+          Fortunately, we may use the constant denominator of
+          the <ENAMEX TYPE="ORGANIZATION">Bayes</ENAMEX>' rule formulation (<ENAMEX TYPE="CONTACT_INFO">Equation 5</ENAMEX>) to assert
+          that
+          
+          This may be used to construct a <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> whose
+          stationary distribution is the posterior distribution of
+          the parameters given the data. A vector and a vector of
+          initial expression levels, [ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., 
+          
+            <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+           ] is chosen such that at step 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, and subsequent values in the
+          <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> are determined iteratively by choosing successive
+          proposed values according to an acceptance rule.
+          Our proposed values are constructed in two separate
+          steps. First, <NUMEX TYPE="CARDINAL">two</NUMEX> of the 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> gene-expression level parameters
+          from are chosen at random. A step size is drawn at random
+          from a triangular distribution centered at <NUMEX TYPE="CARDINAL">zero</NUMEX> with
+          range [- 
+          <ENAMEX TYPE="PERSON">μ</ENAMEX> ,+ 
+          <ENAMEX TYPE="ORGANIZATION">μ</ENAMEX> ]. The <NUMEX TYPE="ORDINAL">first</NUMEX> of the <NUMEX TYPE="CARDINAL">two</NUMEX> chosen
+          parameters is incremented by the chosen step size, and
+          the <NUMEX TYPE="ORDINAL">second</NUMEX> is decremented by the same quantity, so that
+          is maintained, where the apostrophe indicates a proposed
+          parameter value. In the next iteration, the variance
+          <ENAMEX TYPE="CONTACT_INFO">parameters,</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">l</ENAMEX> 
+           2are incremented by an amount drawn at random from a
+          triangular distribution with range to form . Because
+          these <ENAMEX TYPE="ORG_DESC">operations</ENAMEX> have probabilities of transitions from
+          the current state to the proposed state equal to the
+          probabilities that the converse transitions would have,
+          this proposal scheme satisfies <ENAMEX TYPE="GPE">Hastings</ENAMEX> [ <TIMEX TYPE="DATE">46</TIMEX>] and can be
+          implemented in the <ENAMEX TYPE="ORGANIZATION">Metropolis</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX>] <ENAMEX TYPE="PRODUCT_DESC">algorithm</ENAMEX>. Thus the
+          <ENAMEX TYPE="PERSON">conjecture</ENAMEX> is accepted for the next <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of the Markov
+          chain if
+          
+          Otherwise the original <ENAMEX TYPE="GPE_DESC">state</ENAMEX> is retained for the next
+          iteration of the <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>.
+          These steps are repeated over many <ENAMEX TYPE="PER_DESC">generations</ENAMEX> in
+          order to 'burn in' the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX>, so that it converges from
+          the initial parameter settings to a stationary
+          distribution. Subsequently, <ENAMEX TYPE="GPE_DESC">states</ENAMEX> are sampled from the
+          chain at regular intervals to build a posterior
+          distribution for each parameter, integrated across the
+          probable <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of all other parameters. An easy-to-use
+          stand-alone software program entitled <ENAMEX TYPE="ORGANIZATION">BAGEL</ENAMEX>, which
+          implements this <ENAMEX TYPE="NATIONALITY">Bayesian</ENAMEX> analysis of gene expression
+          levels on <ENAMEX TYPE="ORGANIZATION">MacOS</ENAMEX> or Windows <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>, is available on the
+          web with an online manual [ <TIMEX TYPE="DATE">48</TIMEX>]. It accepts tab-delimited
+          text files of ratio data as input.
+          To decrease the number of parameters that must be
+          estimated, we estimate a single variance parameter for
+          each gene across all expression nodes, which is
+          equivalent to the assumption that 
+          
+            i 
+           and 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           . from the same distribution for every sample. On
+          larger, more highly replicated datasets, where all
+          parameters could be estimated, constraining the variance
+          has not led to substantially different results (<ENAMEX TYPE="ORGANIZATION">J.P.T.</ENAMEX>,
+          unpublished data and <ENAMEX TYPE="PERSON">J.M. Ranz</ENAMEX>, personal communication).
+          All analyses in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> were performed with <NUMEX TYPE="CARDINAL">20,000</NUMEX>
+          <ENAMEX TYPE="PER_DESC">generations</ENAMEX> of burn-in, followed by <NUMEX TYPE="CARDINAL">200,000</NUMEX> generations
+          during which the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> was sampled every <NUMEX TYPE="CARDINAL">20</NUMEX> generations
+          to construct the posterior distribution. Runs using
+          multiple starting vectors and were performed and always
+          converged to the same, unimodal, posteriors, indicating
+          that this is a well-behaved multidimensional likelihood
+          surface (see Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). Results reported here were the
+          <ENAMEX TYPE="ORGANIZATION">outcomes of Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> started with the elements of
+          all equal to <NUMEX TYPE="CARDINAL">one</NUMEX>, and started with the elements of all
+          equal to <NUMEX TYPE="CARDINAL">0.03</NUMEX>. Step sizes 
+          <ENAMEX TYPE="PERSON">μ</ENAMEX> and were tuned for each gene so that
+          acceptance ratios for each parameter update were in the
+          efficient and well-mixed range (<NUMEX TYPE="MONEY">0.15</NUMEX>, <NUMEX TYPE="CARDINAL">0.50</NUMEX>) [ <TIMEX TYPE="DATE">49</TIMEX>]. If
+          acceptance ratios for either parameter jump were less
+          than <NUMEX TYPE="CARDINAL">0.15</NUMEX> or greater than <NUMEX TYPE="CARDINAL">0.5</NUMEX>, the <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> was run again
+          with a better-tuned jump size, until acceptable ratios
+          for both parameters were obtained. In this way, there is
+          no alteration of the jump size during any run. There is
+          only the evaluation of pilot <ENAMEX TYPE="ORGANIZATION">Markov</ENAMEX> <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> to optimize
+          jump size.
+          Output from the BAGEL software is in the form of a
+          tab-delimited text file with one header row. Each row
+          thereafter displays the results for a single gene,
+          including columns with the estimate of expression level
+          for each sample (the median of the posterior
+          distribution); the additions and subtractions to make <NUMEX TYPE="PERCENT">95%</NUMEX>
+          upper and lower bounds on that estimate; the stationary
+          <ENAMEX TYPE="ORGANIZATION">acceptance</ENAMEX> rates for the <ENAMEX TYPE="ORGANIZATION">Monte Carlo</ENAMEX> steps for that <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>;
+          and a column that reads 'TRUE' when those rates are
+          acceptable. Further columns contain the posterior
+          probabilities for whether that gene's expression level in
+          each expression node is greater, or lesser, than that
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>'s expression level in each other expression
+          <ENAMEX TYPE="ORGANIZATION">node</ENAMEX>.
+        
+      
+      
+        Additional data files
+        Estimates and credible intervals for expression levels
+        of all genes assayed in these experiments in all conditions
+        are available with the online version of this manuscript as
+        tab-delimited text output files, with columns of data as
+        described in the methods section. The files are entitled
+        <ENAMEX TYPE="ORGANIZATION">'EtOH</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">txt', 'SwiSnfMin.</ENAMEX><ENAMEX TYPE="PERSON">txt'and 'SwiSnfRich</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">txt'</ENAMEX>, and
+        <ENAMEX TYPE="ORGANIZATION">'Zinc</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">txt'</ENAMEX>.
+        Additional data file 1
+        Tab-delimited text output files for EtOH
+        Tab-delimited text output files for EtOH
+        Click here for additional data file
+        Additional data file 2
+        Tab-delimited text output files for SwiSnfMin
+        Tab-delimited text output files for SwiSnfMin
+        Click here for additional data file
+        Additional data file 3
+        Tab-delimited text output files for SwiSnfRich
+        Tab-delimited text output files for SwiSnfRich
+        Click here for additional data file
+        Additional data file 4
+        Tab-delimited text output files for <ENAMEX TYPE="ORGANIZATION">Zinc</ENAMEX>
+        Tab-delimited text output files for <ENAMEX TYPE="ORGANIZATION">Zinc</ENAMEX>
+        Click here for additional data file
+      
+    
+  

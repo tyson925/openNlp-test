@@ -1,0 +1,611 @@
+
+  
+    
+      
+        Background
+        Standard graphical representations of complex systems
+        have been developed for many disciplines in order to
+        <ENAMEX TYPE="PERSON">communicate</ENAMEX>, archive and analyze systems knowledge.
+        Electronic circuit diagrams and architectural plans, for
+        instance, can be created, read and analyzed by
+        knowledgeable <ENAMEX TYPE="PER_DESC">persons</ENAMEX>, yet there is no such common
+        graphical language for describing functional systems in
+        biology. A variety of representations are used in print or
+        online to archive knowledge in particular domains such as
+        metabolic pathways [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>], gene <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX>], signaling
+        <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> [ <ENAMEX TYPE="LAW">4, 5</ENAMEX>], and molecular interactions [ <ENAMEX TYPE="LAW">6, 7</ENAMEX>], yet
+        are not sufficiently standardized to represent
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-disciplinary systems - the interactions of gene
+        expression and metabolism at the inter- and intra-molecular
+        levels, for instance. To describe such multidisciplinary
+        biological problems at multiple levels of abstraction (for
+        example, from intramolecular to <ENAMEX TYPE="DISEASE">disease phenotype</ENAMEX>),
+        biologists customarily resort to informal cartoon diagrams
+        which, although expressive, are often ambiguous and must be
+        <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> to be interpreted properly.
+        Here we suggest that a standardized visual biological
+        description language would provide more readable and less
+        ambiguous communication and, with computational
+        implementation, provide a basis for distributed searchable
+        <ENAMEX TYPE="ORGANIZATION">archives</ENAMEX> of functional (as opposed to structural)
+        knowledge, and serve as a 'computer-aided design' (CAD)
+        language for simulating and analyzing biological systems.
+        To explore these possibilities, we are developing a
+        prototype biological description language, <ENAMEX TYPE="GPE">BioD</ENAMEX>, as a
+        platform to test its conceptual basis, explore its utility
+        and identify key issues surrounding its implementation.
+      
+      
+        Results and discussion
+        
+          Functional properties: a basis for a biological
+          description language
+          If the goal were simply to standardize the graphics of
+          cartoon diagrams, one could collect and standardize sets
+          of icons and arrows for use as 'clip <ENAMEX TYPE="PER_DESC">art</ENAMEX>' in
+          general-purpose graphics software or as templates in
+          diagramming software such as <ENAMEX TYPE="ORGANIZATION">Visio™</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Microsoft™</ENAMEX>; for
+          <ENAMEX TYPE="ORGANIZATION">Windows™</ENAMEX>) or <ENAMEX TYPE="ORGANIZATION">TopDown™</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Kaetron™ Software</ENAMEX>; for <ENAMEX TYPE="ORGANIZATION">MacOS™</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">Windows™</ENAMEX>). To build a sophisticated software <ENAMEX TYPE="PER_DESC">editor</ENAMEX> for a
+          visual language and, especially, to design the language
+          to support computer archiving and analysis, one must,
+          however, establish deeper <ENAMEX TYPE="ORG_DESC">foundations</ENAMEX> for creating,
+          <ENAMEX TYPE="ORGANIZATION">organizing</ENAMEX> and using graphic <ENAMEX TYPE="PER_DESC">elements</ENAMEX>.
+          As a starting point, consider the common metaphor of
+          biological systems as 'circuits'. Indeed, viewing
+          metabolic pathways as electrical circuits is particularly
+          apt as, in each case, a limited set of <ENAMEX TYPE="ORG_DESC">entity</ENAMEX> classes
+          (<ENAMEX TYPE="GPE">metabolites</ENAMEX> versus resistors, capacitors and inductors)
+          are represented by icons that are linked by lines (or
+          <ENAMEX TYPE="ORGANIZATION">arrows</ENAMEX>) representing interactions between iconified
+          <ENAMEX TYPE="PERSON">entities</ENAMEX>. The benefit of such pathway and circuit
+          <ENAMEX TYPE="ORGANIZATION">diagrams</ENAMEX> is, of course, that they help us infer and track
+          how a change in a 'state property' (for example,
+          metabolite concentration versus electrical voltage) of
+          one icon acts via an 'action property' (metabolic flux
+          rate versus electrical current) on the state properties
+          of linked icons. The problem for <ENAMEX TYPE="PER_DESC">biologists</ENAMEX> is that
+          metabolite concentrations and flux rates, while
+          absolutely fundamental to many biological systems, are
+          not the only functional properties that need to be
+          considered.
+          Just as architectural plans must display and
+          distinguish several interacting circuit <ENAMEX TYPE="ORG_DESC">systems</ENAMEX> with
+          different properties (such as power, <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, drainage,
+          <ENAMEX TYPE="PERSON">ventilation</ENAMEX>, telephone, security, and digital cable),
+          diagrams of multidisciplinary biological systems must
+          distinguish multiple functions (metabolic pathways,
+          enzyme kinetics, <ENAMEX TYPE="SUBSTANCE">ion fluxes</ENAMEX>, fluid flow) characterized by
+          different properties (concentration, catalytic activity,
+          voltage, pressure, respectively). Thus, the key challenge
+          for describing, archiving and analyzing complex
+          biological systems is not simply to collect expressive
+          <ENAMEX TYPE="ORGANIZATION">icons</ENAMEX> and arrows but to establish a system of expressive
+          <ENAMEX TYPE="ORGANIZATION">icons</ENAMEX> and arrows that consistently and unambiguously
+          represents the functional <ENAMEX TYPE="ORG_DESC">entities</ENAMEX> and their specific
+          functional properties. Does an arrow increase (or
+          decrease) the concentration or the catalytic activity of
+          an enzyme icon? Can we consistently represent the
+          separate effects of transmembrane ion flow on both ion
+          concentration and transmembrane voltage?
+          Whereas state and action properties are generally
+          implicit in most diagrams, computer implementation of a
+          visual language requires that language elements be
+          formalized as computational <ENAMEX TYPE="PER_DESC">objects</ENAMEX> in order to edit,
+          <ENAMEX TYPE="ORGANIZATION">archive</ENAMEX> and analyze models. To this end, we began
+          <ENAMEX TYPE="PERSON">designing BioD</ENAMEX> by creating building-block icons (Figure
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) that represent primitive functional <ENAMEX TYPE="ORG_DESC">entities</ENAMEX> such as
+          <ENAMEX TYPE="PERSON">atoms</ENAMEX>, molecules, compartments and so on, where each icon
+          is understood implicitly (as in metabolic pathway and
+          electrical circuit diagrams), but specifically, to
+          possess <NUMEX TYPE="CARDINAL">one or more</NUMEX> state <ENAMEX TYPE="FAC_DESC">properties</ENAMEX>. For instance,
+          <ENAMEX TYPE="ORGANIZATION">'atom</ENAMEX>' and 'molecule' icons each have a 'concentration'
+          property. A 'compartment' icon has 'volume' and (surface)
+          <ENAMEX TYPE="ORGANIZATION">'area</ENAMEX>' properties. A 'membrane-bound compartment' icon,
+          derived from a simple compartment, is used to represent
+          cells and organelles and inherits the compartment's
+          volume and <ENAMEX TYPE="LOCATION">area</ENAMEX> properties while including a
+          (<NUMEX TYPE="MONEY">transmembrane</NUMEX>) 'voltage' property. In this manner, an
+          extensible hierarchical lexicon of building-block icons
+          can be built by deriving new icons from existing icons.
+          Furthermore, additional state <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> (such as
+          <ENAMEX TYPE="PERSON">temperature</ENAMEX>, ionic charge, isotopy, pressure) can be
+          created and appended to new or existing icons as needed
+          to create new functional <ENAMEX TYPE="ORG_DESC">entities</ENAMEX>; an 'ion' icon is an
+          atom icon with an ionic charge property, for
+          instance.
+          In addition to creating new icons by derivation,
+          compound icons representing <ENAMEX TYPE="FAC_DESC">complex structures</ENAMEX> can be
+          built by aggregating icons according to common-sense
+          structural rules (for example, <NUMEX TYPE="QUANTITY">a 'molecular</NUMEX> site', but
+          not a cell, can be part of a molecule). In the examples
+          below, a simple model of the cell-cycle kinase Cdk4
+          begins as a molecule icon to which is appended a 'kinase
+          site' (a square with a <ENAMEX TYPE="ORGANIZATION">K</ENAMEX>), <NUMEX TYPE="QUANTITY">a 'phosphorylation</NUMEX> site' (a
+          circle with a <ENAMEX TYPE="ORGANIZATION">P</ENAMEX>) and <NUMEX TYPE="QUANTITY">a 'binding</NUMEX> site' (a small circle
+          with a dot) (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>). As another example, the
+          membrane-bound compartment representing a cell could
+          contain other <ENAMEX TYPE="PER_DESC">compartments</ENAMEX> representing internal
+          <ENAMEX TYPE="ORGANIZATION">organelles</ENAMEX> or even compartments defined solely by
+          diffusion-limitations (for example a submembrane
+          <ENAMEX TYPE="ORGANIZATION">compartment</ENAMEX>).
+          Functional interactions between building-block icons,
+          whether aggregated as <ENAMEX TYPE="FAC_DESC">compound icons</ENAMEX> or not, are
+          represented by 'action' arrows (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, upper right
+          panel) that are designed to minimize the functional
+          ambiguity of informal cartoon <ENAMEX TYPE="PER_DESC">diagrams</ENAMEX>. It is required,
+          for instance, that arrows consistently distinguish: which
+          (if there is <NUMEX TYPE="CARDINAL">more than one</NUMEX>) of an icon's functional
+          properties are affected either by context (as in
+          <ENAMEX TYPE="ORGANIZATION">cartoons</ENAMEX>) or by appearance (for example, double-weight
+          arrows change concentration properties, by chemical
+          reactions or transport, whereas single-weight arrows
+          activate or inhibit activity properties); and how the
+          property is affected (for example, filled heads mean
+          <ENAMEX TYPE="ORGANIZATION">'increase'</ENAMEX>, open heads mean 'decrease'). As for the
+          lexicon of icons, the lexicon of action arrows in Figure
+          1could be extended to include other forms to represent,
+          say, thermal fluxes (which change temperature properties)
+          and fluid flows (which change compartmental volume and
+          pressure properties).
+          In <TIMEX TYPE="DATE">the Cdk4</TIMEX> kinase model of Figure <NUMEX TYPE="CARDINAL">2we</NUMEX> use
+          single-weight arrows to represent how the activity of the
+          <ENAMEX TYPE="ORGANIZATION">kinase</ENAMEX> site is inhibited by occupancy of the <NUMEX TYPE="ORDINAL">p15</NUMEX> binding
+          site and is activated by occupancy of the phosphorylation
+          site. A double-weight, solid-headed 'phosphorylate' arrow
+          represents the transfer of <ENAMEX TYPE="ANIMAL">phosphate groups</ENAMEX> by the kinase
+          site of <NUMEX TYPE="CARDINAL">Cdk4</NUMEX> to increase occupancy of the retinoblastoma
+          <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (RB) phosphorylation site. A phosphatase
+          molecular site (a square with open-style P) represents
+          how an unspecified phosphatase activity reduces the
+          occupancy of the <ENAMEX TYPE="ORGANIZATION">RB</ENAMEX> phosphorylation site. A dashed,
+          double-weight 'occupy' arrow represents the binding to
+          and increased occupancy of <NUMEX TYPE="CARDINAL">p15</NUMEX> to its binding site on
+          Cdk4. In this manner the diagram can represent both
+          intra- and inter-molecular site-site interactions while
+          <ENAMEX TYPE="CONTACT_INFO">distinguishing activation/inhibition</ENAMEX> (as by
+          <ENAMEX TYPE="ORGANIZATION">conformational</ENAMEX> changes) from chemical reactions between
+          <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+          Consistent coding of qualitative effects as 'increase'
+          or 'decrease' arrows allows qualitative 'what if
+          experiments where an initiating 'event' - an increase or
+          decrease of a functional property of <NUMEX TYPE="CARDINAL">one</NUMEX> icon, say - can
+          be tracked through a model (or a network of <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, see
+          below) as a <ENAMEX TYPE="ORG_DESC">chain</ENAMEX> of events. Such events <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> can be
+          displayed in 'event <ENAMEX TYPE="PER_DESC">diagrams</ENAMEX>' to represent some events
+          (but not necessarily all events) as <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> of 'event'
+          <ENAMEX TYPE="ORGANIZATION">icons</ENAMEX> (each representing a change of a specific
+          functional property) linked by 'cause' arrows. For
+          instance, the event diagram in Figure <NUMEX TYPE="CARDINAL">2bdisplays</NUMEX> the
+          consequences (as events icons) of increasing the
+          concentration of <ENAMEX TYPE="SUBSTANCE">p15</ENAMEX> in the model in Figure <TIMEX TYPE="DATE">2a</TIMEX>. In
+          complex systems, such consistent qualitative
+          representations can reveal previously unappreciated
+          causal links - redundant parallel pathways or feedback
+          <ENAMEX TYPE="CONTACT_INFO">loops -</ENAMEX> in <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> built solely from pairwise interactions
+          of many functional parts.
+          As we will discuss below, formalizing a functional
+          descriptive language for biology can offer additional
+          benefits for exploring and understanding the function of
+          complex biological systems if the functional structures
+          and processes can be adequately and unambiguously
+          described.
+        
+        
+          <ENAMEX TYPE="PERSON">Extending BioD</ENAMEX> to other domains
+          A major criterion for the <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> of any technical
+          language is whether it can fully express concepts within
+          a domain of knowledge; that is, is the language
+          <ENAMEX TYPE="ORGANIZATION">'complete</ENAMEX>'? For a domain such as biology which is almost
+          <ENAMEX TYPE="ORGANIZATION">limitless</ENAMEX> in terms of physical (not to mention psychic,
+          <ENAMEX TYPE="ORGANIZATION">social</ENAMEX> and evolutionary) phenomena, it is unlikely that
+          any single language will suffice for all purposes - nor
+          could such a language be proved complete by some
+          inductive process. Rather, in our approach to designing
+          and developing <ENAMEX TYPE="PRODUCT">BioD</ENAMEX>, we have begun with basic
+          cell-biological <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> as test beds for <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX>'s conceptual
+          <ENAMEX TYPE="PERSON">framework</ENAMEX> (that is, of functional properties, icons and
+          <ENAMEX TYPE="ORGANIZATION">arrows</ENAMEX>), its lexicon and its icon-arrow linking rules
+          (tantamount to a 'graphical grammar'). We have
+          <ENAMEX TYPE="ORGANIZATION">iteratively</ENAMEX> tested and modified the language to describe
+          an expanding array of biological functions that now
+          includes online models of: the cell-cycle G1<ENAMEX TYPE="ORGANIZATION">/S</ENAMEX> checkpoint
+          machinery as it may be controlled by ion channel
+          <ENAMEX TYPE="ORGANIZATION">activation</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX>]; and the metabolic, signaling and
+          neuronal pathways by which the ketogenic diet may affect
+          seizure susceptibility [ <ENAMEX TYPE="LAW">9</ENAMEX>]. In this early phase of
+          design we expect modifications in basic as well as
+          superficial features (as for any software design
+          process), but we also expect that the basic precepts of
+          the functional-property approach can be extended to other
+          phenomenological domains such as fluid flow, heat
+          <ENAMEX TYPE="ORGANIZATION">exchange</ENAMEX>, neural circuitry, and so forth. To demonstrate
+          the progress of language development within the
+          cell-biological domain, we will describe and discuss the
+          G1<ENAMEX TYPE="ORGANIZATION">/S</ENAMEX> checkpoint control <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+        
+        
+          Extending the lexicon to describe G1<ENAMEX TYPE="ORGANIZATION">/S</ENAMEX> checkpoint
+          machinery
+          With a few additional icons and arrows, the complex
+          molecular signaling <ENAMEX TYPE="ORG_DESC">network</ENAMEX> that includes <ENAMEX TYPE="SUBSTANCE">Cdk4</ENAMEX> and
+          controls the <ENAMEX TYPE="ORGANIZATION">G1/S</ENAMEX> transition can be described compactly
+          (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). First, a simple rectangle is used to
+          represent a 'process' that may be, but need not be,
+          specified by a separate model (see below). <NUMEX TYPE="ORDINAL">Second</NUMEX>, we use
+          an arrow with a starred <ENAMEX TYPE="FAC_DESC">circle</ENAMEX> as a tail to mean
+          <ENAMEX TYPE="ORGANIZATION">'produces</ENAMEX>' to correspond to commonly used shorthand for
+          saying that a commodity is produced where the specific
+          mechanism of production is either unknown or not germane
+          to the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. Figure <NUMEX TYPE="CARDINAL">3can</NUMEX> then represent a very complex
+          network of intramolecular and intermolecular actions
+          controlling the <ENAMEX TYPE="ORGANIZATION">G1/S</ENAMEX> <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>-cycle transition [ <TIMEX TYPE="DATE">6, 10, 11</TIMEX>,
+          <TIMEX TYPE="DATE">12, 13, 14</TIMEX>], including <ENAMEX TYPE="PRODUCT">Cdk2</ENAMEX>, cyclins A and E, the
+          inhibitor <ENAMEX TYPE="SUBSTANCE">proteins p21</ENAMEX> and <ENAMEX TYPE="PRODUCT">p27</ENAMEX> and inputs from
+          transforming growth <ENAMEX TYPE="SUBSTANCE">factor-β</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">TGF-β</ENAMEX>) stimulation and DNA
+          damage processes.
+        
+        
+          Extensions for compartmental transport, gene
+          expression and membrane biophysics
+          <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX>'s iconography can be extended to accommodate
+          additional cell-biological phenomena. For instance, the
+          model of Figure <NUMEX TYPE="CARDINAL">4introduces</NUMEX> 'membrane-bound <ENAMEX TYPE="PER_DESC">compartments</ENAMEX>'
+          in order to model the dependence of the nuclear
+          concentration of <ENAMEX TYPE="SUBSTANCE">cyclin D1</ENAMEX> on the <ENAMEX TYPE="FAC_DESC">complex</ENAMEX> kinetics of its
+          <ENAMEX TYPE="PERSON">synthesis</ENAMEX>, degradation and cytoplasmic-nuclear transport.
+          The figure also introduces <NUMEX TYPE="CARDINAL">two</NUMEX> derivatives of the
+          <ENAMEX TYPE="ORGANIZATION">'molecule</ENAMEX>' icon: a 'dimer' icon (adapted from <ENAMEX TYPE="GPE">Kohn</ENAMEX> [ <ENAMEX TYPE="LAW">6</ENAMEX>])
+          to represent dimers such as cyclin <ENAMEX TYPE="PRODUCT">D1-Cdk4</ENAMEX> and a
+          <ENAMEX TYPE="ORGANIZATION">'biomolecule</ENAMEX>' icon as a shorthand to represent
+          catalytically active molecules with both 'concentration'
+          and 'activity' <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> (for example the kinases in the
+          <ENAMEX TYPE="ORGANIZATION">mitogen</ENAMEX>-to-<ENAMEX TYPE="ORGANIZATION">ERK</ENAMEX> and -Akt kinase cascades). The
+          <ENAMEX TYPE="ORGANIZATION">'dimerization</ENAMEX>' action arrow (dashed, double-weight) is
+          derived from the 'bind occupy' arrow to link to species
+          participating in the dimerization reaction.
+          To describe the possible effects of membrane potential
+          and ion fluxes on cellular activity in Figure <NUMEX TYPE="CARDINAL">5</NUMEX>, we have
+          introduced an electrical 'voltage' property (represented
+          by the <ENAMEX TYPE="FAC">'depol'</ENAMEX> (depolarization) process icon) of
+          membrane-bound compartments and an ionic 'charge'
+          property used to derive 'ion' icons from atom icons. <ENAMEX TYPE="CONTACT_INFO">Ion</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">channel</ENAMEX> function is modeled as a 'transporter'-derivative
+          <ENAMEX TYPE="ORGANIZATION">'ion</ENAMEX> <ENAMEX TYPE="ORG_DESC">channel</ENAMEX>' that is used to represent the <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> +and Ca
+          <NUMEX TYPE="CARDINAL">2</NUMEX>+ion transport pathways as parts of <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>-sensitive
+          <ENAMEX TYPE="ORGANIZATION">potassium</ENAMEX> <ENAMEX TYPE="ORG_DESC">channels</ENAMEX> (KATP) and calcium channels,
+          respectively. A 'depol' process icon is appended to the
+          cytoplasmic compartment's membrane to represent how
+          <ENAMEX TYPE="ORGANIZATION">depolarization</ENAMEX> is decreased by <ENAMEX TYPE="ORGANIZATION">K</ENAMEX> +efflux, increased by Ca
+          <NUMEX TYPE="CARDINAL">2</NUMEX>+influx, and further activates voltage-dependent Ca
+          <NUMEX TYPE="CARDINAL">2</NUMEX>+<ENAMEX TYPE="ORG_DESC">channels</ENAMEX>. With these additions, we can represent the
+          hypothetical action of 'K-channel <ENAMEX TYPE="PER_DESC">blockers</ENAMEX>' that bind to
+          and inhibit <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>-sensitive potassium channels so that
+          increased intracellular Ca <NUMEX TYPE="CARDINAL">2</NUMEX>+activates intranuclear
+          <ENAMEX TYPE="ORGANIZATION">calmodulin</ENAMEX>.
+          The lexicon and example models presented so far have
+          focused primarily on cell signaling and transduction
+          pathways where intramolecular site-site interactions (for
+          example conformational regulation of kinase activity) are
+          prominent. However, intermolecular steric interactions
+          figure just as prominently in gene-regulatory systems, as
+          <ENAMEX TYPE="ORGANIZATION">exemplified</ENAMEX> in the classic problem of the lysis-lysogeny
+          <ENAMEX TYPE="PER_DESC">'genetic</ENAMEX> switch' of <ENAMEX TYPE="SUBSTANCE">lambda phage</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>]. This system is
+          modeled in Figure <NUMEX TYPE="CARDINAL">6to</NUMEX> illustrate how activation and
+          inhibition arrows can be adapted to represent both steric
+          <ENAMEX TYPE="ORGANIZATION">hindrance</ENAMEX> and mutual cooperativity of binding. For
+          instance, steric hindrance between the binding of the
+          transcription <ENAMEX TYPE="SUBSTANCE">factor Cro</ENAMEX> to its <ENAMEX TYPE="ORG_DESC">operator</ENAMEX> (<ENAMEX TYPE="NATIONALITY">Cro</ENAMEX>- 
+          OR1 ) and <ENAMEX TYPE="SUBSTANCE">RNA polymerase</ENAMEX> (RNAP) to
+          the promoter 
+          <ENAMEX TYPE="ORGANIZATION">PR</ENAMEX> (RNAP- 
+          <ENAMEX TYPE="ORGANIZATION">PR</ENAMEX> ) is represented by a
+          double-headed 'inhibition' arrow linking the respective
+          binding-reaction arrows. The positive cooperativity of
+          the binding reactions CI- 
+          OR2, RNAP- 
+          <ENAMEX TYPE="ORGANIZATION">PRM</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">CI-RNAP</ENAMEX> is represented by
+          <NUMEX TYPE="CARDINAL">three</NUMEX> pairs of double-tailed 'activation' arrows that
+          each link <NUMEX TYPE="CARDINAL">two</NUMEX> binding reactions to <NUMEX TYPE="CARDINAL">a third</NUMEX> reaction that
+          is enhanced by the <NUMEX TYPE="CARDINAL">two</NUMEX> previous binding events. The
+          cooperativity being mutual, the <NUMEX TYPE="CARDINAL">three</NUMEX> sets of
+          double-headed arrows are superimposed to form a triangle
+          of arrows linking the <NUMEX TYPE="CARDINAL">three</NUMEX> binding arrows. Similar
+          <ENAMEX TYPE="ORGANIZATION">cooperativity</ENAMEX> in the formation of <ENAMEX TYPE="ORGANIZATION">CI-CI</ENAMEX> and CI- 
+          OR1 bonds with the CI- 
+          OR2 bond further stabilizes the
+          <ENAMEX TYPE="ORGANIZATION">association</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">RNAP</ENAMEX> with 
+          <ENAMEX TYPE="ORGANIZATION">PRM</ENAMEX> (see Figure <TIMEX TYPE="DATE">6legend</TIMEX> for further
+          discussion).
+          The example <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> in Figures <ENAMEX TYPE="CONTACT_INFO">3, 4, 5,</ENAMEX> 6demonstrate
+          that a functional description language can be extended by
+          defining new functional properties, associating the
+          properties with existing or new icons, and using the new
+          <ENAMEX TYPE="ORGANIZATION">icons</ENAMEX> to represent a wide variety of biological
+          <ENAMEX TYPE="PERSON">phenomena</ENAMEX>. In creating the <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> lexicon and drawing
+          conventions we have opted for simple icons and arrows
+          (more elaborate and expressive graphics can readily be
+          imagined) so that diagrams can be easily drawn by hand or
+          with a variety of general purpose computer graphics
+          applications. Creating and editing <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> is greatly
+          facilitated, however, by applications such as <ENAMEX TYPE="ORGANIZATION">TopDown�</ENAMEX>�
+          (as used here) or <ENAMEX TYPE="ORGANIZATION">Visio�</ENAMEX>� that provide 'templates' of
+          reuseable icons and arrows and that also maintain
+          icon-icon arrow links as icons are moved about in the
+          field of the diagram. Even at this stage of development,
+          BioD diagrams created by these general graphic and
+          diagramming tools can be readily imported to available
+          web page design tools to create, edit, link and post
+          models on the internet (see sample <ENAMEX TYPE="PRODUCT">BioD</ENAMEX> model sites [ <ENAMEX TYPE="CONTACT_INFO">8,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">9</NUMEX>]).
+        
+        
+          Design considerations for a <ENAMEX TYPE="NATIONALITY">BioD</ENAMEX> <ENAMEX TYPE="PER_DESC">editor</ENAMEX>
+          To fully realize the advantages of a standardized
+          visual language, however, custom <ENAMEX TYPE="PER_DESC">editors</ENAMEX> will be required
+          for creating new icon and arrow objects, for maintaining
+          <ENAMEX TYPE="PERSON">icon</ENAMEX> and arrow lexicons, and for creating and editing
+          models. The key <NUMEX TYPE="ORDINAL">first</NUMEX> step in developing <ENAMEX TYPE="PER_DESC">editors</ENAMEX> (as well
+          as archiving and analysis software, see below) is to
+          develop standardized, platform-independent computer
+          representations of core <ENAMEX TYPE="LANGUAGE">BioD</ENAMEX> language elements
+          (functional properties, icons, arrows and <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>) in
+          <ENAMEX TYPE="ORGANIZATION">object-oriented</ENAMEX> programming (OOP) terms so that <ENAMEX TYPE="PER_DESC">editors</ENAMEX>
+          and <ENAMEX TYPE="PER_DESC">browsers</ENAMEX> can be developed on a number of
+          <ENAMEX TYPE="PERSON">platforms</ENAMEX>.
+          In <ENAMEX TYPE="ORGANIZATION">OOP</ENAMEX> parlance, for instance, <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> icons and arrow
+          objects would 'know' how to draw themselves, 'inherit'
+          <ENAMEX TYPE="PERSON">functional</ENAMEX> and graphical properties from 'parent' icons
+          and arrows, and know how to link to each other. The tasks
+          of a <ENAMEX TYPE="NATIONALITY">BioD</ENAMEX> <ENAMEX TYPE="PER_DESC">editor</ENAMEX>, as we envisage, would be to create
+          <ENAMEX TYPE="ORGANIZATION">icons</ENAMEX> and arrows, organize them into lexicons and
+          palettes, and allow <ENAMEX TYPE="PER_DESC">users</ENAMEX> to draw and link them into
+          models. A particularly attractive, but considerably more
+          sophisticated, feature would allow <ENAMEX TYPE="PER_DESC">models</ENAMEX> to be built and
+          <ENAMEX TYPE="ORGANIZATION">formatted</ENAMEX> automatically according to pairwise functional
+          <ENAMEX TYPE="PERSON">interactions</ENAMEX> as available in metabolic pathway, gene
+          network and protein <ENAMEX TYPE="SUBSTANCE">interaction databases</ENAMEX>.
+        
+        
+          Model-model links for archiving and searching
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX> models
+          A standardized biological description language that is
+          <ENAMEX TYPE="ORGANIZATION">formalized</ENAMEX> in terms of computational and not just
+          <ENAMEX TYPE="NATIONALITY">graphical</ENAMEX> objects offers <NUMEX TYPE="CARDINAL">two</NUMEX> very attractive benefits.
+          First, it would be possible to build models of very large
+          systems by linking individual submodels into distributed
+          model <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> on the internet. <NUMEX TYPE="ORDINAL">Second</NUMEX>, it would be
+          possible to treat such model <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> as searchable
+          <ENAMEX TYPE="ORGANIZATION">archives</ENAMEX> of functional knowledge that can be queried for
+          specific functional relationships.
+          The first possibility can be illustrated by linking
+          models (see Figures <ENAMEX TYPE="CONTACT_INFO">3, 4, 5</ENAMEX>) into <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> using <NUMEX TYPE="CARDINAL">only two</NUMEX>
+          kinds of <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-model links: 'action' and 'identity'
+          links. Action links allow a functional property of an
+          icon in <NUMEX TYPE="CARDINAL">one</NUMEX> model to act on a functional property of an
+          icon or action in another <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, as if in a single <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+          For instance, an action link (iconified as a wall plug)
+          allows the calcium-dependent activation of calmodulin in
+          Figure 4to inhibit the export of <ENAMEX TYPE="SUBSTANCE">cyclin D1</ENAMEX> from the
+          nucleus in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. Identity links, on the other hand,
+          allow models to share a common icon and its properties.
+          For instance, an identity link (iconified as an = sign)
+          establishes that the cyclin <ENAMEX TYPE="PRODUCT">D1</ENAMEX> concentration in Figure
+          2represents <TIMEX TYPE="DATE">the same cyclin D1</TIMEX> concentration as in the
+          nucleus in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. Additional examples of <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-model
+          links can be seen in a network of <ENAMEX TYPE="PER_DESC">models</ENAMEX> created to
+          explain how the ketogenic diet might affect seizure
+          activity [ <ENAMEX TYPE="LAW">9</ENAMEX>].
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> possibility is to establish online models
+          as searchable archives of functional, as opposed to
+          structural, relationships. Just as modern bioinformatics
+          provides immense databases and search tools for molecular
+          structures and polymer sequences [ <TIMEX TYPE="DATE">16</TIMEX>], we envisage that
+          with suitable computational implementation, distributed
+          <ENAMEX TYPE="PRODUCT">online</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> may be queried not only for local pairwise
+          <ENAMEX TYPE="PERSON">interactions</ENAMEX> (such as site-site interactions) but also
+          for long-distance <ENAMEX TYPE="ORG_DESC">chains</ENAMEX> of events (for example 'Find
+          models where a potassium channel blocker affects
+          cell-cycle <ENAMEX TYPE="ORG_DESC">progression</ENAMEX>'), a capability not available in
+          any other approach to biological systems. Implementing
+          this capability would depend, <NUMEX TYPE="ORDINAL">first</NUMEX>, on encoding and
+          <ENAMEX TYPE="LANGUAGE">storing BioD</ENAMEX> language elements and <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> as <ENAMEX TYPE="PER_DESC">objects</ENAMEX> in
+          <ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> (<ENAMEX TYPE="NATIONALITY">Extensible</ENAMEX> <ENAMEX TYPE="LANGUAGE">Markup Language</ENAMEX> [ <TIMEX TYPE="DATE">17</TIMEX>]). This is a
+          standard language for describing and exchanging
+          information on the internet and is rapidly beginning to
+          fulfill its promise [ <TIMEX TYPE="DATE">18</TIMEX>] as a means of representing
+          biological knowledge such as polymer sequences [ <TIMEX TYPE="DATE">19</TIMEX>],
+          cellular and anatomical structures [ <TIMEX TYPE="DATE">20</TIMEX>] and mathematical
+          models of biological systems [ <TIMEX TYPE="DATE">21</TIMEX>]. <NUMEX TYPE="ORDINAL">Second</NUMEX>, to link model
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX> into distributed <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> on the internet,
+          XML-encoded <ENAMEX TYPE="NATIONALITY">BioD</ENAMEX> objects and <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> can be linked using
+          <ENAMEX TYPE="ORGANIZATION">XLink</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">XML</ENAMEX> <ENAMEX TYPE="LANGUAGE">Linking Language</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX>]) and queried for
+          patterns of functional interactions using query languages
+          such as <ENAMEX TYPE="PERSON">Lore</ENAMEX> (<ENAMEX TYPE="PRODUCT">Lightweight Object Repository</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>]) that
+          have been developed for distributed, semistructured
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+        
+        
+          Beyond description: <ENAMEX TYPE="PRODUCT_DESC">model simulation</ENAMEX> and
+          analysis
+          Visual languages in other fields [ <TIMEX TYPE="DATE">24, 25</TIMEX>] have been
+          implemented as formal computer languages so that the
+          diagrams are not only comprehensible to <ENAMEX TYPE="PER_DESC">humans</ENAMEX> but can be
+          analyzed by computers. This includes <ENAMEX TYPE="ORGANIZATION">CAD</ENAMEX> systems for
+          electronic circuit design and visual languages for
+          computer programming (for example <ENAMEX TYPE="ORGANIZATION">ProLog</ENAMEX>) as well as
+          mathematical modeling software that translates diagrams
+          into mathematical equations for quantitative analysis.
+          Indeed, visual languages suitable for mathematical
+          modeling in biology (for example <ENAMEX TYPE="PRODUCT">Stella™</ENAMEX> [ <TIMEX TYPE="DATE">26</TIMEX>], SAAM II™
+          [ <TIMEX TYPE="DATE">27, 28</TIMEX>] and <ENAMEX TYPE="PRODUCT">KineCyte™</ENAMEX> [ <TIMEX TYPE="DATE">29, 30</TIMEX>]) have contributed to
+          the establishment of quantitative modeling as a 'gold
+          <ENAMEX TYPE="ORGANIZATION">standard</ENAMEX>' and critical element of biological
+          analysis.
+          Despite the successes and value of quantitative
+          analytical methods, it must be recognized that progress
+          in the knowledge of biological systems proceeds largely
+          on qualitative information and reasoning ('A binds to <ENAMEX TYPE="ORGANIZATION">B.</ENAMEX>'
+          'If C increases then D decreases.') rather than
+          quantitative analysis. This is due in large part to the
+          huge range of experimental conditions and phenomena that
+          are encountered and must be considered, and the great
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>, effort and expense required to generate consistent
+          sets of quantitative system properties (concentrations,
+          reaction rates and binding constants, for instance) many
+          of which are experimentally inaccessible. In the face of
+          such difficulties, biology, perhaps more than other
+          disciplines, consists of a vast amount of qualitative
+          information that forms the basis for speculation,
+          reasoning and decision-making at all levels from the
+          basic science <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> to the <ENAMEX TYPE="ORG_DESC">clinic</ENAMEX>. To exploit this
+          reservoir of qualitative biological knowledge, a variety
+          of qualitative and hybrid <ENAMEX TYPE="PLANT">qualitative</ENAMEX>/quantitative
+          <ENAMEX TYPE="PERSON">simulation</ENAMEX> and analysis tools that have been developed in
+          the artificial intelligence <ENAMEX TYPE="PER_DESC">community</ENAMEX> [ <TIMEX TYPE="DATE">31, 32, 33, 34</TIMEX>]
+          have been adapted to the analysis of biological problems
+          [ <TIMEX TYPE="DATE">35, 36, 37, 38</TIMEX>].
+          The advantage of hybrid <ENAMEX TYPE="PLANT">qualitative</ENAMEX>/quantitative
+          methods with <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> is that they allow simulation and
+          analysis of the behavior of complex systems at the
+          prevailing level of systems knowledge; <ENAMEX TYPE="PRODUCT">BioD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> may be
+          <ENAMEX TYPE="ORGANIZATION">brainstormed</ENAMEX> in descriptive terms early in the discovery
+          process and then upgraded in stages as qualitative
+          information and then quantitative data become available.
+          <ENAMEX TYPE="PRODUCT">Model</ENAMEX> development and testing can, therefore, become an
+          integral part of early discovery and hypothesis testing
+          all within the context of a single graphical description,
+          rather than developing <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> simply as validations of
+          well understood phenomena. In effect, <ENAMEX TYPE="PRODUCT">BioD</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> would
+          fill the descriptive and analytical gap between informal
+          cartoons and fully quantitative mathematical models.
+          To accomplish this, <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> object data structures would
+          have to be extended to <NUMEX TYPE="ORDINAL">first</NUMEX> represent functional
+          properties and then provide action arrows with logical
+          rules or mathematical functions that determine how the
+          <ENAMEX TYPE="GPE_DESC">states</ENAMEX> of linked icons affect each other. Within a BioD
+          <ENAMEX TYPE="PER_DESC">editor</ENAMEX>, such rules and functions would be selectable in
+          preprogrammed form from context-sensitive menus of
+          appropriate and specific action arrows (a feature in
+          KineCyte™ simulation <ENAMEX TYPE="ORG_DESC">software; RainTown</ENAMEX> [ <TIMEX TYPE="DATE">39</TIMEX>]). Encoding
+          BioD data <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in XML according to the <ENAMEX TYPE="ORGANIZATION">Systems</ENAMEX>
+          <ENAMEX TYPE="PERSON">Biology Markup Language</ENAMEX> (SBML), a recently proposed 'open
+          <ENAMEX TYPE="ORGANIZATION">standard</ENAMEX>' for exchanging mathematical models of
+          biological systems [ <TIMEX TYPE="DATE">21</TIMEX>], would allow <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> models to be
+          exported and quantitatively simulated in a variety of
+          analytical software <ENAMEX TYPE="FAC_DESC">platforms</ENAMEX>.
+          Dissociating the specification of functional
+          properties and values from the graphical description of
+          the model means that <ENAMEX TYPE="PER_DESC">models</ENAMEX> can be created on a purely
+          speculative basis, and then, as system knowledge matures,
+          <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> values and action rules can be selected (or
+          specified) to support qualitative reasoning and
+          hypothesis testing. As quantitative values and functions
+          are warranted, they can then used to constrain the
+          qualitative predictions of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>.
+        
+      
+      
+        Discussion
+        We propose a conceptual basis for an extensible
+        biological description language that is designed to be
+        implemented as visual computer language for describing,
+        <ENAMEX TYPE="ORGANIZATION">archiving</ENAMEX> and analyzing complex, multidisciplinary
+        biological systems. We view this suggestion not as radical
+        but as a natural, perhaps inevitable, extension to
+        biomedicine of the visual computer language paradigm [ <TIMEX TYPE="DATE">24</TIMEX>,
+        <TIMEX TYPE="DATE">25, 40</TIMEX>] that has been successfully applied in other
+        technical disciplines. The major challenge is that biology
+        offers perhaps some of the most complex and functionally
+        diverse systems known.
+        With example <ENAMEX TYPE="PER_DESC">models</ENAMEX> here and online, we have shown that
+        a limited, but extensible, lexicon of icons and arrows is
+        capable of describing complex systems that involve a range
+        of cell-biological disciplines from gene regulation to the
+        biophysics of ion transport. The value of such
+        <ENAMEX TYPE="ORGANIZATION">standardization</ENAMEX> is increased conciseness, readability and
+        clarity for communication of knowledge about complex
+        <ENAMEX TYPE="ORGANIZATION">systems</ENAMEX>. Beyond simple graphic <ENAMEX TYPE="PER_DESC">standardization</ENAMEX>, computer
+        implementation of a graphic language for biology is not
+        only feasible with currently available computer and
+        internet technology, but could yield substantial benefits
+        to biomedical education, investigation and industry. For
+        instance, development of a common language to build
+        accessible common <ENAMEX TYPE="PER_DESC">models</ENAMEX> are critical elements in the
+        <ENAMEX TYPE="ORGANIZATION">'blackboard</ENAMEX>' approach [ <TIMEX TYPE="DATE">41, 42</TIMEX>] for multidisciplinary
+        collaborations on complex problems. We suggest that a
+        standard language for building and posting
+        <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-disciplinary functional <ENAMEX TYPE="PER_DESC">models</ENAMEX> on the internet will
+        be a necessary stage in the evolution of bioinformatics, as
+        there is a growing need to express and understand
+        whole-systems behavior and the complex systems that
+        <ENAMEX TYPE="DISEASE">underlie disease</ENAMEX>. We further suggest that additional
+        extensions to a standard graphical language can serve as a
+        <ENAMEX TYPE="PER_DESC">user interface</ENAMEX> for a variety of qualitative and
+        quantitative simulation and analysis methods used in other
+        <ENAMEX TYPE="ORGANIZATION">disciplines</ENAMEX>.
+        The prototype language we present here is designed
+        primarily for describing cell-biological systems as
+        <ENAMEX TYPE="ORGANIZATION">discrete</ENAMEX> <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> of interacting functional <ENAMEX TYPE="PER_DESC">objects</ENAMEX> at
+        multiple conceptual levels. As such, it may prove
+        cumbersome for describing massively parallel systems (such
+        as the coupled expression of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) or
+        <ENAMEX TYPE="ORGANIZATION">continuum</ENAMEX> systems (such as the wave propagation of
+        cytoplasmic calcium). Even in these modeling domains,
+        however, a standardized visual computational interface
+        would allow modelers to describe discrete parts ('finite
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX>') of systems and/or to embed the <ENAMEX TYPE="ORG_DESC">systems</ENAMEX> in larger
+        <ENAMEX TYPE="ORGANIZATION">BioD</ENAMEX> models that both control and depend on the massive or
+        continuum <ENAMEX TYPE="PRODUCT_DESC">systems models</ENAMEX>.
+        How might BioD evolve and be extended from a core set of
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX> as described above to more general biological
+        description language? In our approach, we have followed the
+        model of recent developments of internet protocols,
+        operating systems and computer languages by envisioning
+        that if a core computational framework can be established,
+        it can be extended and implemented for a variety of
+        methods, languages and operating systems. Thus we envision
+        that, given the development of <NUMEX TYPE="CARDINAL">one</NUMEX> (or more) <ENAMEX TYPE="PER_DESC">editor</ENAMEX>
+        applications, <ENAMEX TYPE="PER_DESC">users</ENAMEX> could invent <ENAMEX TYPE="LANGUAGE">BioD</ENAMEX> language elements
+        (functional properties, icons, arrows and <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>) as needed
+        to describe specific domains. As domain lexicons and
+        model-model <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> expand, with inevitable conflicts and
+        <ENAMEX TYPE="PERSON">duplications</ENAMEX>, we would suggest more global standardization
+        be negotiated according to 'open-<ENAMEX TYPE="PER_DESC">source</ENAMEX>' mechanisms of
+        distributed, cooperative development [ <TIMEX TYPE="DATE">43</TIMEX>] used for
+        developing the <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX> operating system and now being applied
+        to SBML development [ <TIMEX TYPE="DATE">21</TIMEX>].
+        By whatever mechanism, language development raises other
+        key issues. How can one maintain the delicate balance of
+        <ENAMEX TYPE="ORGANIZATION">expressiveness</ENAMEX> and readability - can the language concisely
+        describe all systems of interest while still being
+        understandable without extensive training? When does the
+        ability to derive more expressive icons begin to diminish
+        readability as <ENAMEX TYPE="PER_DESC">viewers</ENAMEX> are required to recognize and
+        interpret subtle differences between similar icons? Even if
+        successfully developed for selected domains and purposes,
+        inevitably there will be edges to any language for
+        describing all domains and for all analytical purposes -
+        hence the continued appearance of new computer languages
+        such as <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX>.
+      
+      
+        Conclusions
+        We have proposed that a generalized biological
+        descriptive language akin to schematic diagramming
+        languages in other disciplines is a necessary step in the
+        evolution of functional <ENAMEX TYPE="PER_DESC">bioinformatics</ENAMEX>. Toward this, we
+        have developed a prototype language, <ENAMEX TYPE="GPE">BioD</ENAMEX>, that we have
+        used to test the value of this approach and to explore the
+        feasibility of computational implementation using
+        <ENAMEX TYPE="ORGANIZATION">object-oriented</ENAMEX> programming methods in the context of
+        Internet-based communications. We suggest that a
+        sufficiently formalized descriptive language built on the
+        BioD concept of 'functional <ENAMEX TYPE="FAC_DESC">properties</ENAMEX>' can anchor a
+        computational framework capable of supporting the archiving
+        of extended, web-linked model networks and model analysis
+        using hybrid <ENAMEX TYPE="SUBSTANCE">qualitative reasoning</ENAMEX> and quantitative
+        <ENAMEX TYPE="PERSON">simulations</ENAMEX>.
+      
+    
+  

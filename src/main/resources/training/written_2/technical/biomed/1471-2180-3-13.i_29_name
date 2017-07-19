@@ -1,0 +1,719 @@
+
+  
+    
+      
+        Background
+        The rapid determination of microbial genomic sequences
+        poses a challenge in gene annotation and assignment of
+        transcriptional start sites. Without experimental data,
+        incorrect annotations can be made as well as erroneous
+        determination of gene start sites. This is especially true
+        for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that are evolutionarily and structurally related
+        such as the bacterial porin <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> . For example, a BLAST search
+        using the 
+        <ENAMEX TYPE="DISEASE">Salmonella typhimurium</ENAMEX> ompF gene
+        <ENAMEX TYPE="PERSON">sequence</ENAMEX> identifies 
+        Enterobacter cloacae ompC as well as 
+        <ENAMEX TYPE="CONTACT_INFO">Salmonella minnesota</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> (unpublished). However, when gene promoter sites,
+        <ENAMEX TYPE="CONTACT_INFO">transcript 5</ENAMEX>'UTR sequences, or signatures within <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from
+        <ENAMEX TYPE="ANIMAL">reference organisms</ENAMEX> are used, an accurate assignment of a
+        <ENAMEX TYPE="PERSON">gene</ENAMEX> as well as a prediction of its start site can be made
+        by a comparative approach. These regions serve specific
+        functions in molecular processes, e.g., <TIMEX TYPE="DATE">several 5</TIMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> of
+        mRNA transcripts are mRNA stability determinants [ <NUMEX TYPE="CARDINAL">1 2</NUMEX> ] .
+        Thus they can display sequence and/or secondary structure
+        signatures and these defined <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> can be more useful
+        than using entire gene sequences for annotations. The use
+        of domains for annotation of genomic sequences originated
+        with analyses of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> coding regions [ <NUMEX TYPE="CARDINAL">3 4 5</NUMEX> ] . In this
+        paper, alignment and comparative methods have been used to
+        annotate the small regulatory <ENAMEX TYPE="SUBSTANCE">RNA gene</ENAMEX> 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and its associated genes, 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> in 
+        Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> . Transcriptional
+        start sites have also been assigned based on alignment
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>.
+        The 
+        micF transcript is a small
+        non-<ENAMEX TYPE="SUBSTANCE">protein coding RNA</ENAMEX> found in 
+        <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and related <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ]
+        . 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> regulates outer membrane protein
+        F (<ENAMEX TYPE="ORGANIZATION">OmpF</ENAMEX>) synthesis in response to stress and other
+        environmental signals [ <ENAMEX TYPE="LAW">8</ENAMEX> ] and these signals induce the
+        transcription of 
+        micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. 
+        micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> functions by interacting
+        with the target 
+        ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> to form an <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX>
+        <ENAMEX TYPE="PERSON">duplex</ENAMEX>. The 
+        micF transcript inhibits 
+        ompF expression
+        post-transcriptionally by blocking translation and inducing
+        degradation of the 
+        ompF message [ <ENAMEX TYPE="LAW">9</ENAMEX> ] .
+        With the use of newly determined 
+        Yersinia genomic sequences [ <TIMEX TYPE="DATE">10</TIMEX> ]
+        (see also Accession no. gnl|SANGER_<ENAMEX TYPE="CONTACT_INFO">34054|,</ENAMEX> 
+        Yersinia enterocolitica <TIMEX TYPE="DATE">8081</TIMEX>), 
+        <ENAMEX TYPE="CONTACT_INFO">micF RNA/</ENAMEX> 
+        ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="PRODUCT_DESC">UTR duplex models</ENAMEX> have
+        been deduced. These structures show a strong evolutionary
+        conservation of the <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex structure</ENAMEX>, but also
+        reveal additional interacting sites. The new 
+        Yersinia sequences further support a
+        phylogenetic conservation of the 
+        micF regulatory system in
+        γ-proteobacteria.
+      
+      
+        Results and Discussion
+        
+          <ENAMEX TYPE="PERSON">Gene Annotation</ENAMEX>
+          BLAST searches were performed to find 
+          <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and its target 
+          ompF , as well as 
+          <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> in genomic sequences available
+          on the <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> site of the <ENAMEX TYPE="ORGANIZATION">National Center for</ENAMEX>
+          Biotechnology Information (NCBI). Due to similarities in
+          sequence in <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> coding regions of 
+          <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+          ompC , a BLAST search using known
+          gene <ENAMEX TYPE="PER_DESC">sequences</ENAMEX> can provide erroneous results. However the
+          <ENAMEX TYPE="PRODUCT">mRNA 5</ENAMEX>' UTR transcript sequences of 
+          <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> differ significantly and the 
+          <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' UTR sequence provides a
+          basis for detection in a BLAST search since several 
+          <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' UTR sequence signatures are
+          <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> and are 
+          ompF specific. Additional markers
+          used were genomic positions relative to highly conserved
+          genes such as 
+          asnS , the asparaginyl-tRNA
+          synthetase, which is preceded by 
+          <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> in the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> typhimurium chromosomes by about
+          <TIMEX TYPE="TIME">600 bp</TIMEX>. The 
+          <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> and 
+          micF genes are upstream of each
+          other in <ENAMEX TYPE="GPE">Gram</ENAMEX>-negative genomic sequences and in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , they are separated by a
+          <NUMEX TYPE="CARDINAL">253</NUMEX> bp regulatory promoter <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . Since these
+          genes share a transcriptional regulatory region,
+          rearrangements, where these genes may be repositioned and
+          separated on the chromosome, are probably unlikely.
+          
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica
+          ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences were found by a BLAST
+          search on <ENAMEX TYPE="GPE">GenBank</ENAMEX> using the 
+          Serratia marcescens ompF <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTR
+          sequence as a probe. Position <NUMEX TYPE="CARDINAL">1600321</NUMEX> of the 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis genomic sequence and
+          position <NUMEX TYPE="CARDINAL">1759190</NUMEX> of the 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica sequence were
+          pinpointed as the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' starts.
+          The 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens ompC <ENAMEX TYPE="CONTACT_INFO">5' UTR/</ENAMEX> 
+          regulatory promoter
+          region/micF <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> provided a suitable sequence for
+          determination of genomic positions of 
+          Yersinia ompC and 
+          micF , however these have been
+          partially annotated in 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis (<ENAMEX TYPE="ORGANIZATION">Accession #</ENAMEX>
+          <ENAMEX TYPE="GPE">NC</ENAMEX>_<NUMEX TYPE="CARDINAL">003143.1</NUMEX>). Assignment of <NUMEX TYPE="CARDINAL">5</NUMEX>' start sites of 
+          Yersinia species 
+          micF , 
+          <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+          ompC was based on sequence
+          <ENAMEX TYPE="ORGANIZATION">alignment</ENAMEX> using <NUMEX TYPE="CARDINAL">5</NUMEX>' start sites of other <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> (see
+          below). Annotation of 
+          ompF , 
+          <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> and 
+          micF <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in 
+          Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> is shown in Table
+          <NUMEX TYPE="CARDINAL">1</NUMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">Sequence Alignments</ENAMEX> and comparisons
+          
+            <ENAMEX TYPE="ORGANIZATION">ompFand</ENAMEX> <ENAMEX TYPE="PRODUCT">ompC5</ENAMEX>' UTR
+            Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the alignment of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> sequences
+            representing <NUMEX TYPE="CARDINAL">six</NUMEX> 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX>. 
+            <ENAMEX TYPE="ORGANIZATION">opnP</ENAMEX> is the 
+            ompF homolog in 
+            Xenorhabdus nematophilus , an
+            organism which resides in a specific ecological nitch
+            but is phylogenetically related to the γ-proteobacteria
+            [ <NUMEX TYPE="CARDINAL">11 12 13</NUMEX> ] . Assignment of <NUMEX TYPE="CARDINAL">5</NUMEX>' start sites of 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> mRNA transcripts
+            was based on alignment and similarity with the other 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences.
+            
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica ompF <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTRs
+            differ only by a <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> to A base substitution at position
+            <TIMEX TYPE="DATE">39</TIMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). In addition, the nucleotide sequence
+            identity between 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> and other
+            γ-proteobacteria is high (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Consistent with
+            bacterial evolutionary <ENAMEX TYPE="PER_DESC">relatedness</ENAMEX>, the percent
+            identity of 
+            Yersinia species 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> appear to be closest
+            to 
+            Serratia marcescens (Figure
+            <NUMEX TYPE="CARDINAL">2</NUMEX>).
+            High sequence conservation implies a functional role
+            for conserved elements. The <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTRs</ENAMEX> of bacterial mRNAs
+            are important determinants of mRNA stability and/or
+            translational regulation [ <NUMEX TYPE="CARDINAL">1 2 14 15 16</NUMEX> ] . In keeping
+            with a functional role, the <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> of 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="SUBSTANCE">UTR</ENAMEX> that forms the major
+            <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex pairing</ENAMEX> with 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> (i.e., positions <NUMEX TYPE="CARDINAL">96-125</NUMEX>), is
+            highly conserved amongst the <ENAMEX TYPE="ANIMAL">species</ENAMEX> analyzed,
+            including 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). In
+            addition, this region contains the ribosome binding
+            site [<ENAMEX TYPE="PERSON">Shine-Dalgarno</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">S-D</ENAMEX>) sequence] and initiation
+            <ENAMEX TYPE="ORGANIZATION">codon ATG</ENAMEX> start site and these also contribute to
+            evolutionary sequence stability. An additional
+            signature shared by the 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> is an A-rich
+            region that precedes the <ENAMEX TYPE="ORGANIZATION">S-D</ENAMEX> domain. The <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end region
+            of 
+            ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="SUBSTANCE">UTR</ENAMEX> contains a long
+            stem-loop and evolutionary changes in this segment
+            consist primarily of compensatory base-pair changes
+            that maintain a stem-loop structure [ <TIMEX TYPE="DATE">17</TIMEX> ] . However
+            the <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-end region of the 
+            <ENAMEX TYPE="ORGANIZATION">ompF UTR</ENAMEX> also has a high sequence
+            <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX>, with the exception of a <NUMEX TYPE="CARDINAL">12</NUMEX> nt deletion
+            that the 
+            Yersinia species share with 
+            <ENAMEX TYPE="PERSON">S. marcescens</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+            <ENAMEX TYPE="PRODUCT">Putative 5</ENAMEX>' start sites of 
+            Yersinia species 
+            ompC transcripts were also
+            determined by sequence alignment (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). High
+            similarity in the <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> regions also support start
+            site predictions of both 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and ompC transcripts (see
+            below). 
+            ompC mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences show
+            more sequence divergence than 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences, e.g., the
+            percent identity between 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica sequences is
+            <NUMEX TYPE="PERCENT">81%</NUMEX> and divergence between the two 
+            Yersinia ompC <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> <ENAMEX TYPE="ORG_DESC">segments</ENAMEX> is
+            greater than that of the closely related <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>, 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+            <ENAMEX TYPE="PERSON">S. typhimurium</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). As
+            with 
+            ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>, the S-D
+            <ENAMEX TYPE="ORGANIZATION">sequence GAGG</ENAMEX> and AT rich region between the <ENAMEX TYPE="ORGANIZATION">S-D</ENAMEX> site
+            and <ENAMEX TYPE="ORGANIZATION">ATG</ENAMEX> start codon are highly conserved (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>).
+            With exception of the ribosome binding site, a
+            functional role for the 
+            ompC mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> is not
+            known.
+          
+          
+            micFsequence comparisons
+            <ENAMEX TYPE="PRODUCT">5</ENAMEX>' ends of 
+            Yersinia <ENAMEX TYPE="SUBSTANCE">micF genes</ENAMEX> were deduced
+            by alignment with 
+            micF sequences from related
+            <ENAMEX TYPE="ORGANIZATION">species</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). The ρ-independent termination motif
+            of the 
+            micF transcript delineates the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+            end. A comparison of 
+            micF sequences from <NUMEX TYPE="CARDINAL">6</NUMEX> bacterial
+            <ENAMEX TYPE="PERSON">species</ENAMEX> reveals that the initial <TIMEX TYPE="DATE">13</TIMEX> nt from the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end
+            are invariant; in addition, <TIMEX TYPE="DATE">the first 32</TIMEX> nt are highly
+            <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). <TIMEX TYPE="DATE">This 32</TIMEX> nt region represents the
+            segment of the 
+            micF transcript that forms the
+            major <ENAMEX TYPE="FAC_DESC">duplex interaction</ENAMEX> with the target 
+            ompF mRNA in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Similar to target
+            <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> in 
+            ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> (positions
+            <NUMEX TYPE="CARDINAL">96-125</NUMEX>, see Figure <NUMEX TYPE="CARDINAL">1</NUMEX>), this binding role may account
+            for the high evolutionary sequence conservation of the
+            <TIMEX TYPE="TIME">32 nt</TIMEX> segment at the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> .
+            The variability of 
+            micF nucleotide sequence in the
+            last <NUMEX TYPE="CARDINAL">two thirds</NUMEX> of the gene may be due to several
+            factors. For example, the ρ-independent termination
+            stem-loop transcript <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> may function on
+            secondary and not primary structural features, and can
+            tolerate compensatory base-pair changes in the stem as
+            well as changes in loop sequences. In addition,
+            variation in the type of <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> base pairing occurs
+            with sequences in the highly variable middle section of
+            
+            micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (positions <TIMEX TYPE="DATE">33-70</TIMEX>, Figure
+            <NUMEX TYPE="CARDINAL">5</NUMEX>). For example, nucleotide sequences within this
+            region allow for formation of intra- and inter-
+            molecular base-pairings in <ENAMEX TYPE="SUBSTANCE">RNA/RNA interactions</ENAMEX> in 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX>. These base
+            pairings are not seen in other <ENAMEX TYPE="ANIMAL">species</ENAMEX> (see below).
+            
+            Yersinia micF sequences have
+            diverged more than the 
+            <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens micF sequence,
+            e.g., the percent identity between 
+            <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens micF and 
+            <ENAMEX TYPE="SUBSTANCE">E. coli micF</ENAMEX> is <NUMEX TYPE="PERCENT">65.5%</NUMEX>; it is
+            <NUMEX TYPE="PERCENT">52.9%</NUMEX> between 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and 
+            <ENAMEX TYPE="SUBSTANCE">E. coli micF genes</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>).
+            Evolutionary instability in sequence is consistent with
+            the high genetic flux found in the 
+            <ENAMEX TYPE="ORGANIZATION">Y</ENAMEX> . 
+            pestis genome [ <TIMEX TYPE="DATE">10</TIMEX> ] .
+            Interestingly, the 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica micF sequence
+            has diverged somewhat more (Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). But of interest
+            also is the large difference in sequence between the
+            two 
+            Yersinia <ENAMEX TYPE="SUBSTANCE">micF RNA genes</ENAMEX>, i.e., <NUMEX TYPE="CARDINAL">15</NUMEX>
+            base substitutions and a <NUMEX TYPE="CARDINAL">6</NUMEX> base insertion at positions
+            <NUMEX TYPE="CARDINAL">18-23</NUMEX> in 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>).
+            These sequence differences actually reinforce the 
+            Yersinia <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> model
+            (see below). The reason for the evolutionary drift in 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica micF sequence
+            is not known.
+            The 
+            micF sequence identities differ
+            markedly from those of 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> (compare Figure 2and
+            Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). These differences are also evident in the
+            phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">7and</NUMEX> Figure <NUMEX TYPE="CARDINAL">8</NUMEX>). Noteworthy
+            are the differences between 
+            Yersinia species sequence 
+            <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> , i.e., there are <NUMEX TYPE="CARDINAL">21</NUMEX> base
+            changes between the two 
+            Yersinia species 
+            micF sequences (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>) and
+            <NUMEX TYPE="CARDINAL">only one</NUMEX> base change (at position <TIMEX TYPE="DATE">39</TIMEX>) between 
+            Yersinia ompF <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences
+            (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Thus this reveals a very unequal rate of
+            nucleotide sequence change between 
+            Yersinia micF and 
+            <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences. On the
+            other hand there appears to be a uniform rate of
+            nucleotide change between 
+            <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens and 
+            <ENAMEX TYPE="SUBSTANCE">E. coli sequences</ENAMEX> in 
+            ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> (<NUMEX TYPE="PERCENT">67.2 %</NUMEX>
+            identity) and 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> (<NUMEX TYPE="PERCENT">65.5 %</NUMEX> identity) (compare
+            Figures 2and <NUMEX TYPE="CARDINAL">6</NUMEX>).
+          
+          
+            Upstream regulatory region
+            In <ENAMEX TYPE="ORGANIZATION">E.</ENAMEX> 
+            <ENAMEX TYPE="PERSON">coli</ENAMEX> , the <NUMEX TYPE="QUANTITY">253 nt</NUMEX> upstream
+            sequence between 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and 
+            <ENAMEX TYPE="SUBSTANCE">ompC</ENAMEX> contains <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> as well
+            as binding sites for several transcription factors [ <NUMEX TYPE="CARDINAL">8</NUMEX>
+            ] . 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> is part of a global
+            regulatory <ENAMEX TYPE="ORG_DESC">network</ENAMEX> that responds to environmental
+            stress conditions in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <NUMEX TYPE="CARDINAL">18 9 19</NUMEX> ] . It is thus
+            not surprising that this region has a complex set of
+            transcriptional regulatory sites. These <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> comprise
+            <NUMEX TYPE="PERCENT">approximately</NUMEX> <NUMEX TYPE="CARDINAL">one third</NUMEX> of the upstream sequence
+            between 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> .
+            A comparison of nucleotide sequences from related
+            bacteria shows that these binding <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are highly
+            conserved evolutionarily and that 
+            Yersinia <ENAMEX TYPE="ANIMAL">species sequences</ENAMEX> have
+            not appreciably diverged, either between themselves or
+            in comparison to those in other bacterial sequences
+            (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). OmpR, the transcription factor that
+            activates transcription of both 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and 
+            <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> in response to osmolarity
+            increase binds at <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , <TIMEX TYPE="DATE">C1</TIMEX>, <TIMEX TYPE="DATE">C2</TIMEX>, and <ENAMEX TYPE="PRODUCT">C3</ENAMEX> [ <NUMEX TYPE="CARDINAL">18 20</NUMEX>
+            ] . These <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are highly conserved between all
+            <ENAMEX TYPE="ANIMAL">bacterial species</ENAMEX> where <NUMEX TYPE="CARDINAL">5</NUMEX>-<NUMEX TYPE="CARDINAL">6</NUMEX> positions out of <NUMEX TYPE="CARDINAL">10</NUMEX> are
+            totally conserved (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). A high degree of sequence
+            <ENAMEX TYPE="ORGANIZATION">conservation</ENAMEX> is also found for integration host factor
+            (<ENAMEX TYPE="ORGANIZATION">IHF</ENAMEX>), a <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> that participates in bending of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> [
+            <NUMEX TYPE="CARDINAL">21</NUMEX> ] .
+            SoxS, <ENAMEX TYPE="ORGANIZATION">MarA</ENAMEX>, and <ENAMEX TYPE="PERSON">Rob</ENAMEX> are part of the <ENAMEX TYPE="PER_DESC">family</ENAMEX> of
+            <ENAMEX TYPE="ORGANIZATION">AraC/XylS</ENAMEX> transcription <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> and share the same
+            DNA binding sites in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] . These factors
+            regulate 
+            <ENAMEX TYPE="SUBSTANCE">E. coli micF transcription</ENAMEX> in
+            response to different environmental factors. The
+            <ENAMEX TYPE="ORGANIZATION">SoxS/MarA/Rob</ENAMEX> binding site upstream of 
+            micF , termed the <ENAMEX TYPE="ORGANIZATION">SoxS/MarA/Rob</ENAMEX>
+            <ENAMEX TYPE="ORGANIZATION">box</ENAMEX>, is not well conserved phylogenetically, however
+            the major polymerase interaction site, the <ENAMEX TYPE="DISEASE">A box</ENAMEX>, is
+            almost totally conserved in bacterial sequences
+            analyzed, including those of 
+            <ENAMEX TYPE="ORGANIZATION">Yersinia</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). <ENAMEX TYPE="ORGANIZATION">MarA</ENAMEX> and <ENAMEX TYPE="PERSON">Rob</ENAMEX>
+            transcription <ENAMEX TYPE="ORG_DESC">regulators</ENAMEX> in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> have <NUMEX TYPE="CARDINAL">two</NUMEX> helix-turn-helix
+            (<ENAMEX TYPE="ORGANIZATION">HTH</ENAMEX>) motifs that interact with <ENAMEX TYPE="ORGANIZATION">A</ENAMEX> and B box sequences [
+            <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] , and <NUMEX TYPE="CARDINAL">one</NUMEX> HTH element of <ENAMEX TYPE="PERSON">Rob</ENAMEX> has been shown to
+            insert itself in the 
+            micF promoter <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> at the major
+            groove of the A box <ENAMEX TYPE="LOCATION">region</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX> ] .
+            An alignment of <NUMEX TYPE="CARDINAL">six</NUMEX> different gene <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> that contain a
+            <ENAMEX TYPE="CONTACT_INFO">SoxS/MarA/Rob box</ENAMEX> shows that they conform to a
+            conserved <NUMEX TYPE="QUANTITY">18-19 bp</NUMEX> distance between the <ENAMEX TYPE="ORGANIZATION">SoxS/MarA/Rob</ENAMEX>
+            binding sequences and the <ENAMEX TYPE="PRODUCT">-10</ENAMEX> <ENAMEX TYPE="PER_DESC">promoter</ENAMEX> [ <NUMEX TYPE="CARDINAL">25 26</NUMEX> ] . This
+            also holds true for 
+            micF <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> in related
+            <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>, including <ENAMEX TYPE="PER_DESC">promoters</ENAMEX> of the 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX>, but the
+            exception is the 
+            <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens sequence, which has
+            a <NUMEX TYPE="QUANTITY">12 bp</NUMEX> insertion between the <NUMEX TYPE="PERCENT">-10 and -35</NUMEX> 
+            micF promoter <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> and adjacent
+            to the B box of (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). Thus this partially
+            conserved <NUMEX TYPE="QUANTITY">18-19 bp</NUMEX> distance may not be as relevant as
+            previously thought. Although sites of interaction of
+            <ENAMEX TYPE="SUBSTANCE">RNA polymerase</ENAMEX> (RNAP) with these transcription
+            <ENAMEX TYPE="ORG_DESC">regulators</ENAMEX> have not been determined [ <NUMEX TYPE="CARDINAL">27 28</NUMEX> ] , the <NUMEX TYPE="CARDINAL">12</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX> <ENAMEX TYPE="PER_DESC">pair</ENAMEX> insertion does pose the question of how
+            putative 
+            <ENAMEX TYPE="PERSON">S. marcescens SoxS</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">MarA/Rob</ENAMEX>
+            factors interact with <ENAMEX TYPE="ORGANIZATION">RNAP</ENAMEX> to activate transcription in
+            
+            <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens .
+            The leucine response <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Lrp</ENAMEX>), a global
+            <ENAMEX TYPE="PER_DESC">regulator</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">transcription</ENAMEX> [ <TIMEX TYPE="DATE">29</TIMEX> ] represses 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] . In 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> the primary Lrp binding
+            site [ <TIMEX TYPE="DATE">30</TIMEX> ] overlaps much of the <ENAMEX TYPE="ORGANIZATION">SoxS/MarA/Rob</ENAMEX> site
+            upstream of 
+            <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). The highest
+            sequence conservation is primarily in the
+            <ENAMEX TYPE="ORGANIZATION">SoxS/MarA/Rob</ENAMEX>-related A <ENAMEX TYPE="DISEASE">box sequence GCAC</ENAMEX>. Since the
+            <ENAMEX TYPE="ORGANIZATION">Lrp</ENAMEX> site overlaps the <ENAMEX TYPE="ORGANIZATION">SoxS/marA/Rob</ENAMEX> site, a high
+            overall sequence conservation may be expected, but the
+            degree of conservation is much less than that for
+            example, of the <ENAMEX TYPE="FAC">OmpR</ENAMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX>. The putative Lrp binding
+            site sequences between 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> are nearly
+            identical but differ almost uniformly from those of the
+            other <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX>.
+            Some <ENAMEX TYPE="GPE_DESC">regions</ENAMEX> not pinpointed as sites for factor
+            binding have diverged appreciably, e.g., the region
+            between integration host factor (IHF) and <ENAMEX TYPE="ORGANIZATION">Lrp</ENAMEX> binding
+            sites (positions <TIMEX TYPE="DATE">195 to 228</TIMEX>), but the region between C1
+            and <ENAMEX TYPE="ORGANIZATION">IHF</ENAMEX> binding sites (<NUMEX TYPE="CARDINAL">100 to 182</NUMEX>) has some partially
+            conserved sequences (Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). These may serve as
+            sites for other transcription factors where binding
+            sequences have not been defined. For example in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , <ENAMEX TYPE="ORGANIZATION">H-NS</ENAMEX> binds in an as yet
+            unspecified site in the 
+            <ENAMEX TYPE="CONTACT_INFO">ompC /</ENAMEX> 
+            micF regulatory region [ <TIMEX TYPE="DATE">31</TIMEX> ] .
+            In addition, 
+            nfxB encodes a transcriptional
+            <ENAMEX TYPE="ORGANIZATION">repressor</ENAMEX> and may act on 
+            micF as an 
+            nfxB mutant was found to reduce
+            <ENAMEX TYPE="ORGANIZATION">OmpF</ENAMEX> levels post-transcriptionally in 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <TIMEX TYPE="DATE">32</TIMEX> ] . 
+            <ENAMEX TYPE="ORGANIZATION">nfxB</ENAMEX> has also been found in 
+            Pseudomonas aeruginosa [ <TIMEX TYPE="DATE">33</TIMEX> ] ;
+            thus a putative 
+            micF regulatory site for 
+            nfxB may also be evolutionarily
+            <ENAMEX TYPE="ORGANIZATION">conserved</ENAMEX>. Evolutionary conservation of transcription
+            factor binding sites as seen in Figure <TIMEX TYPE="DATE">9implies</TIMEX> that
+            these transcriptional <ENAMEX TYPE="PER_DESC">regulators</ENAMEX> function in bacterial
+            species being analyzed here. Some factors, such as OmpR
+            have been found in related organisms [ <TIMEX TYPE="DATE">34</TIMEX> ] .
+            Although transcription factor binding sites display
+            a high uniformity in sequence, a sequence comparison of
+            the entire upstream regulatory region shows that the 
+            Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> have diverged
+            significantly between each other and more than the 
+            <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> / 
+            S. <ENAMEX TYPE="CONTACT_INFO">typhimurium /</ENAMEX> 
+            <ENAMEX TYPE="PERSON">K.</ENAMEX> pneumoniae grouping has
+            <ENAMEX TYPE="ORGANIZATION">diverged</ENAMEX> within itself (data not shown). It remains to
+            be seen if entire genome comparisons of 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and 
+            <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica will show this
+            evolutionary trend, which has also been seen in 
+            micF , or if this divergence
+            pattern is an anomaly.
+          
+        
+        
+          <ENAMEX TYPE="CONTACT_INFO">OmpFmRNA 5'UTR/</ENAMEX> micFRNA <ENAMEX TYPE="FAC_DESC">duplex structures</ENAMEX>
+          Secondary structure probing by enzymatic and chemical
+          techniques helped defined a 
+          <ENAMEX TYPE="CONTACT_INFO">micF RNA/</ENAMEX> 
+          ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="PRODUCT">UTR interaction</ENAMEX> [ <NUMEX TYPE="CARDINAL">2 8</NUMEX>
+          ] . In 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">micF RNA</ENAMEX> binds the 
+          ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> to form an <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX>
+          duplex that contains imperfect base-pairing [ <ENAMEX TYPE="LAW">2 35</ENAMEX> ] . In
+          the present work, 
+          Yersinia ompF mRNA <ENAMEX TYPE="CONTACT_INFO">5' UTR/</ENAMEX> 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex structure</ENAMEX> modeling
+          was performed with the mfold program [ <NUMEX TYPE="CARDINAL">36 37</NUMEX> ] (Figure
+          10and Figure <NUMEX TYPE="CARDINAL">11</NUMEX>). Sequences between 
+          Yersinia <ENAMEX TYPE="SUBSTANCE">micF RNA</ENAMEX> species differ in
+          <NUMEX TYPE="CARDINAL">21</NUMEX> out of <NUMEX TYPE="CARDINAL">91</NUMEX> <ENAMEX TYPE="PER_DESC">positions</ENAMEX> (shown in blue in Figure <NUMEX TYPE="CARDINAL">11</NUMEX>).
+          Interestingly, these changes result in only minor
+          variations in 
+          Yersinia <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> structural
+          models. For example, base substitutions at positions
+          <NUMEX TYPE="CARDINAL">39-42</NUMEX>, and <NUMEX TYPE="CARDINAL">77</NUMEX> in 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica are in looped
+          regions (compare Figures <NUMEX TYPE="CARDINAL">10and 11</NUMEX>). The <NUMEX TYPE="CARDINAL">6</NUMEX> base insertion
+          at positions <TIMEX TYPE="DATE">18-23</TIMEX> in 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica <ENAMEX TYPE="SUBSTANCE">micF RNA</ENAMEX>, as well
+          as the base substitution at position <TIMEX TYPE="DATE">61</TIMEX> expand duplex
+          <ENAMEX TYPE="ORGANIZATION">pairings</ENAMEX> in stems <NUMEX TYPE="CARDINAL">1 and 3</NUMEX>. Base changes at positions <TIMEX TYPE="DATE">38</TIMEX>,
+          <TIMEX TYPE="DATE">44, 46, 53</TIMEX>, and <NUMEX TYPE="CARDINAL">69</NUMEX> constitute compensatory changes that
+          maintain base pairs in stems. Thus the large divergence
+          in 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA sequence</ENAMEX> between 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> pestis and 
+          <ENAMEX TYPE="PERSON">Y.</ENAMEX> enterocolitica does not
+          significantly alter the <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex structure</ENAMEX>. This
+          strengthens the rationale for the <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> model.
+          Figure 12shows a diagrammatic representation of the 
+          Yersinia <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> models
+          along with <ENAMEX TYPE="PER_DESC">models</ENAMEX> of 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens duplexes. Both 
+          Yersinia <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> conform to a
+          generalized 
+          <ENAMEX TYPE="CONTACT_INFO">ompF mRNA 5'UTR /</ENAMEX> 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> structural model, but the 
+          Yersinia species form additional
+          intra- and inter- molecular base pairings, i.e., stem
+          <ENAMEX TYPE="PERSON">loop a</ENAMEX> and stem 2 (Figure <NUMEX TYPE="CARDINAL">12</NUMEX>). Compensatory base pair
+          changes in stem loop a add strong phylogenetic support
+          for the presence of this <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> in 
+          Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The question is,
+          does this stem loop have a function in regulation of 
+          ompF expression in 
+          <ENAMEX TYPE="ORGANIZATION">Yersinia</ENAMEX> ? <ENAMEX TYPE="PER_DESC">Mfold</ENAMEX> modeling does not
+          predict formation of thermodynamically stable stem loop a
+          or stem <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> or 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> marcescens <ENAMEX TYPE="SUBSTANCE">RNA/RNA duplexes</ENAMEX>.
+          However structure probe data of the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli micF RNA</ENAMEX>/ 
+          ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX> do not
+          necessarily support or preclude <ENAMEX TYPE="PERSON">Watson</ENAMEX>-Crick pairings
+          that can form stem <NUMEX TYPE="CARDINAL">2</NUMEX> in 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+          In 
+          <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , stem <NUMEX TYPE="CARDINAL">1</NUMEX> of the <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX>
+          <ENAMEX TYPE="PERSON">duplex</ENAMEX> is formed from <ENAMEX TYPE="LOCATION">regions</ENAMEX> that are largely
+          single-stranded in free (uncomplexed) <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> [ <ENAMEX TYPE="LAW">2 39</ENAMEX> ] , but
+          a minor stem loop in 
+          <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> and a thermodynamically
+          weak stem loop in 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA unfold</ENAMEX> to form the <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . In the 
+          <ENAMEX TYPE="SUBSTANCE">E. coli RNA/RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex</ENAMEX>, structure
+          probe data show that intra-molecular stem loop c in 
+          <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> and stem loop b in 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (the ρ-independent
+          <ENAMEX TYPE="ORGANIZATION">terminator</ENAMEX>), which are present in uncomplexed <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX>, are
+          unaltered in the <ENAMEX TYPE="SUBSTANCE">RNA/RNA duplex</ENAMEX> [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Mfold analyses of
+          
+          Yersinia <ENAMEX TYPE="ANIMAL">species duplexes</ENAMEX> also
+          predict that these stem loops are maintained in <ENAMEX TYPE="SUBSTANCE">RNA/RNA</ENAMEX>
+          <ENAMEX TYPE="FAC_DESC">duplex structures</ENAMEX>. Perhaps evolutionary pressure to
+          maintain the stability of these intra-molecular stem
+          <ENAMEX TYPE="PERSON">loops</ENAMEX> is greater than a progression to unfolding that may
+          create more sites for <ENAMEX TYPE="SUBSTANCE">RNA/RNA interactions</ENAMEX>. However we
+          cannot rule out a functional role for stem loops b and c
+          in 
+          ompF mRNA inactivation, e.g.,
+          <ENAMEX TYPE="SUBSTANCE">protein factor binding</ENAMEX> during 
+          micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>-induced 
+          ompF mRNA destabilization.
+        
+      
+      
+        Conclusions and <ENAMEX TYPE="WORK_OF_ART">Future Prospects</ENAMEX>
+        With rapid sequencing of bacterial genomes, it is a
+        challenge to annotate the <NUMEX TYPE="CARDINAL">thousands</NUMEX> of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and especially
+        determine gene start sites (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>' ends of <ENAMEX TYPE="SUBSTANCE">RNA transcripts</ENAMEX>). In
+        this work, BLAST searches using segments of genes, such as
+        the 
+        <ENAMEX TYPE="PRODUCT">ompF 5</ENAMEX>' UTR sequence resulted in the
+        annotation of 
+        Yersinia <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. This was achieved in
+        part because the 
+        ompF mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTR sequence has
+        functional domains which are involved in translational
+        regulation. Use of signatures to annotate genomic sequences
+        has been widely reported <TIMEX TYPE="DATE">before</TIMEX>. This includes
+        <ENAMEX TYPE="PRODUCT">PRINTS/BLOCKS/Pfam</ENAMEX> data bases [ <NUMEX TYPE="CARDINAL">3 4 5 40</NUMEX> ] and <ENAMEX TYPE="ORGANIZATION">CDART</ENAMEX> [ <TIMEX TYPE="DATE">41</TIMEX> ]
+        . In these examples, <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> coding regions are employed to
+        search for sequences that display similar domains.
+        In this work, sequence alignment programs have provided
+        putative start sites as well as definition of transcription
+        factor binding sites in the upstream regulatory region of 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> . Additionally, with these
+        sequences, new 
+        Yersinia ompF mRNA <ENAMEX TYPE="CONTACT_INFO">5' UTR/</ENAMEX> 
+        micF <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> <ENAMEX TYPE="FAC_DESC">duplex structures</ENAMEX> have been
+        proposed. These add strong phylogenetic support for
+        previously determined <ENAMEX TYPE="FAC_DESC">duplex structures</ENAMEX>.
+        The approach used here to locate <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> may also be
+        useful in additional annotations. For example, a sequence
+        has been located in 
+        Desufovibrio desulfuricans that
+        displays <NUMEX TYPE="PERCENT">74%</NUMEX> similarity to a putative mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' UTR sequence
+        from 
+        <ENAMEX TYPE="PERSON">K. pneumoniae</ENAMEX> (unpublished data).
+        This is of particular of interest since 
+        Desufovibrio desulfuricans is
+        <ENAMEX TYPE="ORGANIZATION">phylogenetically</ENAMEX> in the δ-subdivision of the proteobacteria
+        [ <TIMEX TYPE="DATE">42</TIMEX> ] ; 
+        <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> , 
+        <ENAMEX TYPE="PERSON">K.</ENAMEX> pneumoniae , 
+        <ENAMEX TYPE="PERSON">S. marcescens</ENAMEX> , and 
+        Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX> , are part of the
+        γ-proteobacteria. 
+        micF <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in distantly related
+        <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> have not yet been found due to evolutionary
+        divergence of 
+        micF , 
+        ompC mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX>, and the upstream
+        sequences, in spite of the presence of conserved elements
+        such as the invariant 13 nt at the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' end of 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and conserved putative
+        transcription factor binding sites in currently analyzed
+        <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>. However a combination of sequence and secondary
+        structure motifs [ <NUMEX TYPE="CARDINAL">43 44</NUMEX> ] will be utilized in future
+        studies for additional searches for 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> .
+      
+      
+        Methods
+        BLAST searches were performed to find 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and target 
+        ompF <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as well as 
+        <ENAMEX TYPE="ORGANIZATION">ompC</ENAMEX> in genomic sequences available
+        on <ENAMEX TYPE="FAC">GenBank</ENAMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> of the <ENAMEX TYPE="ORGANIZATION">National Center for Biotechnology</ENAMEX>
+        Information <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">ncbi</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nlm</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">nih</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">gov/.</ENAMEX> Genomic data were
+        scanned by alignment methods in <ENAMEX TYPE="GPE">GenBank</ENAMEX>. To search for
+        particular genes, a highly conserved gene was first located
+        and then alignment methods were used to locate the desire
+        gene in adjacent sequences. mRNA signatures such as AUG
+        start, the <ENAMEX TYPE="FAC">Shine-Dalgarno</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">S-D</ENAMEX>) ribosome binding site and
+        other signatures were also used as a guide. Where there
+        were questions of sequence errors in <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> analyzed, these
+        sequences were not used. BLAST searches for sequences
+        homologous to 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> also included sequences in 
+        Haemophilus influenzae , 
+        Klebsiella pneumoniae, Pasteurella
+        multocida , 
+        Desulfovibrio desulfricans , and 
+        Schwanella oneidensis as well as
+        those from 
+        Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX>.
+        BLAST sequence similarity search programs also provided
+        in <ENAMEX TYPE="GPE">GenBank</ENAMEX> were used [ <TIMEX TYPE="DATE">45</TIMEX> ] . <ENAMEX TYPE="ORGANIZATION">Microbial</ENAMEX> <ENAMEX TYPE="PER_DESC">genome</ENAMEX> searches
+        with <NUMEX TYPE="MONEY">BLASTN 2.2.3 and 2.2.4</NUMEX> using expect values of <TIMEX TYPE="DATE">10-1000</TIMEX>
+        with the <ENAMEX TYPE="ORGANIZATION">Advanced</ENAMEX> BLAST program was used to find 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and associated genes sequences
+        in 
+        Yersinia <ENAMEX TYPE="ANIMAL">species</ENAMEX>: <ENAMEX TYPE="CONTACT_INFO">ref #|NC</ENAMEX>_<NUMEX TYPE="CARDINAL">003143.1|</NUMEX> 
+        Yersinia pestis strain <TIMEX TYPE="DATE">CO92</TIMEX>, complete
+        genome, and gnl|SANGER_<ENAMEX TYPE="CONTACT_INFO">34054|</ENAMEX> 
+        Yersinia enterocolitica <TIMEX TYPE="DATE">8081</TIMEX>. 
+        Yersinia species 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+        ompC <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were located by BLAST
+        searches with 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> or 
+        ompC mRNA <ENAMEX TYPE="PRODUCT">5</ENAMEX>' <ENAMEX TYPE="ORGANIZATION">UTR</ENAMEX> sequences.
+        The <ENAMEX TYPE="PRODUCT">5</ENAMEX>' start sites of 
+        <ENAMEX TYPE="ORGANIZATION">micF</ENAMEX> and, 
+        <ENAMEX TYPE="ORGANIZATION">ompF</ENAMEX> and 
+        ompC <NUMEX TYPE="QUANTITY">5'UTRs</NUMEX>, were predicted by
+        nucleotide sequence alignment and similarity. MegAlign
+        alignment programs were from <ENAMEX TYPE="ORGANIZATION">DNASTAR, Inc.</ENAMEX>
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">dnastar</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com/.</ENAMEX> Parameters used were either that
+        of <ENAMEX TYPE="PERSON">J. Hein</ENAMEX> with gap penalty <TIMEX TYPE="DATE">11</TIMEX>, gap length, <NUMEX TYPE="CARDINAL">3</NUMEX>; <ENAMEX TYPE="PERSON">ClustalV</ENAMEX>,
+        with gap penalty <TIMEX TYPE="DATE">10</TIMEX>, gap length <NUMEX TYPE="CARDINAL">10</NUMEX>; or <ENAMEX TYPE="ORGANIZATION">ClustalW</ENAMEX> with gap
+        penalty <TIMEX TYPE="DATE">15</TIMEX>, gap length, <NUMEX TYPE="CARDINAL">6.66</NUMEX>. Percent identities, consensus
+        (majority) sequences, and phylogenetic <ENAMEX TYPE="PLANT">trees</ENAMEX> were also
+        based on programs from <ENAMEX TYPE="ORGANIZATION">DNASTAR, Inc.</ENAMEX> Alignment methods
+        chosen were for the most part based on results with well
+        established identities in previously determined sequences.
+        When an alignment showed obvious discrepancies, such a lack
+        of alignment of stretches of near perfect identity, it was
+        discarded.
+        Standard default parameters, with the exception of
+        assignment of the number of alternate <ENAMEX TYPE="FAC_DESC">structures</ENAMEX> to <NUMEX TYPE="CARDINAL">10</NUMEX> were
+        use to fold <ENAMEX TYPE="ORGANIZATION">RNAs</ENAMEX> into <ENAMEX TYPE="FAC_DESC">duplex structures</ENAMEX> with the
+        <ENAMEX TYPE="ORGANIZATION">Zuker/Turner</ENAMEX> mfold program, version <NUMEX TYPE="CARDINAL">3.1</NUMEX>. The program is
+        available at internet address:
+        <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">bioinfo</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">rpi</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">edu/applications/mfold/</ENAMEX>
+      
+      
+        Abbreviations
+        
+          Organisms 
+        
+        <ENAMEX TYPE="CONTACT_INFO">E.c.,</ENAMEX> 
+        Escherichia <ENAMEX TYPE="SUBSTANCE">coli</ENAMEX> ; <ENAMEX TYPE="PERSON">S.t.</ENAMEX>, 
+        <ENAMEX TYPE="DISEASE">Salmonella typhimurium</ENAMEX> ; S.m. 
+        Serratia marcescens ; <ENAMEX TYPE="PERSON">K.p.</ENAMEX>, 
+        Klebsiella pneumoniae . <ENAMEX TYPE="PERSON">Y.e.</ENAMEX>, 
+        Yersinia enterocolitica , <ENAMEX TYPE="PERSON">Y.p.</ENAMEX>, 
+        Yersinia pestis ;<ENAMEX TYPE="PERSON">H.i.</ENAMEX>, 
+        Haemophilus influenzae ; <ENAMEX TYPE="PERSON">P.m.</ENAMEX>, 
+        Pasteurella multocida , <ENAMEX TYPE="NATIONALITY">D.d.</ENAMEX>, 
+        Desulfovibrio desulfricans .
+        
+          <ENAMEX TYPE="ORGANIZATION">Proteins</ENAMEX> 
+        
+        OmpF, outer membrane <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PRODUCT">F</ENAMEX>; <ENAMEX TYPE="PERSON">OmpC</ENAMEX>, outer membrane
+        <ENAMEX TYPE="PRODUCT">protein C</ENAMEX>; <ENAMEX TYPE="PERSON">Lrp</ENAMEX>, leucine-responsive <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>; <ENAMEX TYPE="ORGANIZATION">IHF</ENAMEX>,
+        integration host factor; <ENAMEX TYPE="ORGANIZATION">HTH</ENAMEX>, helix-turn-helix; <ENAMEX TYPE="ORGANIZATION">RNAP</ENAMEX>, <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+        <ENAMEX TYPE="PERSON">polymerase</ENAMEX>.
+        
+          <ENAMEX TYPE="ORGANIZATION">Nucleic Acids</ENAMEX> 
+        
+        <ENAMEX TYPE="PERSON">nt</ENAMEX>, nucleotides; <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>, base pairs
+      
+    
+  

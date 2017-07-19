@@ -1,0 +1,578 @@
+
+  
+    
+      
+        Rationale
+        <ENAMEX TYPE="ORGANIZATION">Microarray</ENAMEX> technology has radically changed the way
+        <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> address many biological questions. It is now
+        possible to measure messenger <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> levels quantitatively for
+        <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes, or even entire genomes, using DNA
+        arrays, microarrays or 'chips' [ <ENAMEX TYPE="LAW">1, 2</ENAMEX>]. <ENAMEX TYPE="PER_DESC">Researchers</ENAMEX> can, in
+        a fairly straightforward fashion, examine the overall
+        <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> response of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of genes in normal
+        cells and tissues, in disease <ENAMEX TYPE="GPE_DESC">states</ENAMEX>, in response to
+        biological, genetic or chemical stimuli (such as <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX>), or
+        during normal biological processes such as cell-cycle
+        <ENAMEX TYPE="ORGANIZATION">progression</ENAMEX> and embryonic development [ <ENAMEX TYPE="LAW">3, 4, 5</ENAMEX>].
+        <NUMEX TYPE="CARDINAL">Two</NUMEX> of the most commonly used microarrays for
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression measurements are oligonucleotide GeneChip
+        Â®expression arrays made by <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> and custom-made cDNA
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>. Affymetrix oligonucleotide arrays are created by a
+        combination of <ENAMEX TYPE="SUBSTANCE">DNA synthesis</ENAMEX> and photolithographic
+        techniques, whereas cDNA arrays are constructed by spotting
+        or printing <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products or oligonucleotides onto glass
+        slides [ <ENAMEX TYPE="LAW">6, 7, 8, 9</ENAMEX>]. Affymetrix arrays contain sets of
+        multiple <NUMEX TYPE="CARDINAL">25</NUMEX> mer oligonucleotide probes specific for each
+        gene or expressed-sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>), whereas spotted
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX> generally contain longer cDNA probes (usually <NUMEX TYPE="CARDINAL">500</NUMEX> to
+        <NUMEX TYPE="CARDINAL">1,000</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>) or oligonucleotide probes (usually <NUMEX TYPE="CARDINAL">25 to 60</NUMEX>
+        bases) for each gene.
+        The large amount of information generated from
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> has been a great strength, but is sometimes
+        seen as a frustrating weakness [ <TIMEX TYPE="DATE">10</TIMEX>]. A significant
+        obstacle in microarray research has been the inability to
+        process experimental data easily, assess the data quality,
+        manage multiple data sets and mine the data with
+        user-friendly tools that can be quickly learned and applied
+        for routine analysis by laboratory <ENAMEX TYPE="PER_DESC">scientists</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX>].
+        <NUMEX TYPE="CARDINAL">Two</NUMEX> <ENAMEX TYPE="GPE">HTML</ENAMEX>-based microarray filtering and analysis
+        programs were written, one for the <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> platform
+        (<ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX>) and one for the cDNA platform (<ENAMEX TYPE="ORGANIZATION">Spot</ENAMEX>) to address
+        common data-analysis needs. Our aim in creating Bullfrog
+        and Spot is to provide simple tools that enable <ENAMEX TYPE="PER_DESC">researchers</ENAMEX>
+        at all levels to analyze their data in multiple ways
+        without having to use more complex software, without having
+        to call in bioinformatics <ENAMEX TYPE="PER_DESC">experts</ENAMEX>, and without having to
+        learn to program in scripting or database languages.
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot were built with an easy-to-navigate user
+        <ENAMEX TYPE="ORGANIZATION">interface</ENAMEX> and adjustable analysis criteria, and were
+        written to run quickly, allowing multiple microarray
+        experiments to be filtered in <TIMEX TYPE="TIME">several seconds</TIMEX>. They were
+        created to provide the bench <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> with uncomplicated
+        tools that help focus microarray data from <NUMEX TYPE="QUANTITY">thousands of</NUMEX>
+        genes to a relatively small number of high-confidence,
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed candidates. The programs are not
+        intended for high-level statistical or other complex
+        <ENAMEX TYPE="PERSON">analyses</ENAMEX>, but they do make it easy to export filtered data
+        to GeneSpringâ„¢ or other visualization and clustering
+        programs. Lastly, the programs are freeware, made publicly
+        available to the research <ENAMEX TYPE="PER_DESC">community</ENAMEX> in the hope of
+        accelerating functional genomics research.
+      
+      
+        Manipulating data sets in Bullfrog
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot can be used to select <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (probes,
+        <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> or spots) that behave in specific ways across
+        multiple experiments by using a combination of <NUMEX TYPE="CARDINAL">more than 20</NUMEX>
+        different qualitative and quantitative criteria (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>).
+        To illustrate a few of <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX>'s capabilities, we use data
+        obtained in gene-expression studies of the <ENAMEX TYPE="PER_DESC">adult</ENAMEX> mouse
+        brain using <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> oligonucleotide arrays [ <TIMEX TYPE="DATE">12</TIMEX>]. A
+        simple question to ask is, "what genes are differentially
+        expressed between <NUMEX TYPE="CARDINAL">two</NUMEX> different regions of the brain (for
+        example, the cerebellum and the amygdala) in a
+        129S6<ENAMEX TYPE="ORGANIZATION">/SvEvTac</ENAMEX> (<NUMEX TYPE="MONEY">129SvEv</NUMEX>) <ENAMEX TYPE="PER_DESC">inbred</ENAMEX> mouse strain?" As in most
+        experiments, it is important to <NUMEX TYPE="ORDINAL">first</NUMEX> estimate the
+        false-positive rate for this type of comparison between
+        brain regions. The best way to realistically approximate
+        the false-positive rate is to perform and analyze
+        independent experimental replicates of the same brain
+        region from multiple different <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. We used <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from the
+        cerebellums of <NUMEX TYPE="CARDINAL">two</NUMEX> different <ENAMEX TYPE="ANIMAL">mice</ENAMEX> with <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> prepared
+        separately and hybridized to <NUMEX TYPE="CARDINAL">two</NUMEX> different chips. Ideally,
+        replicate comparisons from well-controlled experiments
+        would show no differentially expressed genes. However,
+        experimental noise and biological variation may lead to
+        genes being scored as <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed between
+        <ENAMEX TYPE="ORGANIZATION">replicates</ENAMEX>. For example, small differences in the brain
+        <ENAMEX TYPE="ORGANIZATION">dissections</ENAMEX> or differences in the exact time of sacrifice
+        can affect gene-expression patterns. It is very important
+        to estimate the false-positive rate for the particular
+        experimental system being studied, and to set analysis
+        filter criteria that lead to appropriate levels of false
+        <ENAMEX TYPE="ORGANIZATION">positives</ENAMEX> without sacrificing sensitivity to low-abundance
+        mRNA transcripts or subtle changes in gene expression.
+        To estimate the false-positive rate, a comparison
+        between the data for independent replicate 129SvEv
+        cerebellums was made (that is, expression data from mouse 1
+        <ENAMEX TYPE="GPE">cerebellum</ENAMEX> versus expression data from mouse <NUMEX TYPE="CARDINAL">2</NUMEX> cerebellum).
+        This comparison file (saved as text from the Affymetrix
+        GeneChip Â®MAS <NUMEX TYPE="CARDINAL">4.0</NUMEX> software) was loaded into <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and
+        the filter criteria were selected. A number of different
+        criteria may be selected, but our default criteria for
+        calling a gene 'differentially expressed' are as follows: a
+        qualitative difference call of 'Increase' (I), 'Marginal
+        Increase' (MI), 'Decrease' (<ENAMEX TYPE="NATIONALITY">D</ENAMEX>) or 'Marginal Decrease' (<ENAMEX TYPE="PRODUCT">MD</ENAMEX>),
+        a fold change (expression ratio) of greater than <NUMEX TYPE="CARDINAL">1.8</NUMEX>, an
+        average difference change of greater than <TIMEX TYPE="DATE">50</TIMEX> (after scaling
+        to a mean signal, or target value, across the entire array
+        of <NUMEX TYPE="CARDINAL">200</NUMEX>), and an absolute call of 'Present' for the probe
+        set in either or both replicate cerebellums. The use of
+        multiple filter criteria reduces the risk of erroneously
+        assigning a gene as <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed, while
+        maintaining sensitivity to rare mRNAs and small differences
+        in expression [ <TIMEX TYPE="DATE">13, 14</TIMEX>].
+        When applied to the cerebellum replicate data, the
+        filter criteria yielded <NUMEX TYPE="CARDINAL">36</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> scored as
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed out of <NUMEX TYPE="CARDINAL">6,529</NUMEX>, a false-positive
+        rate of approximately <NUMEX TYPE="PERCENT">0.6%</NUMEX>. We have carried out a large
+        number of analyses using a combination of qualitative and
+        quantitative filters and consistently observe
+        false-positive rates of <NUMEX TYPE="PERCENT">less than 1.0%</NUMEX> <TIMEX TYPE="DATE">between</TIMEX> well
+        controlled independent duplicates using the default
+        selection criteria [ <ENAMEX TYPE="LAW">7, 12, 13</ENAMEX>]. For example, <NUMEX TYPE="CARDINAL">34</NUMEX> duplicate
+        comparisons for data from different brain regions and
+        different strains of <ENAMEX TYPE="ANIMAL">mice</ENAMEX> were analyzed using the default
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> and quantitative criteria. The number of probe
+        sets out of <NUMEX TYPE="CARDINAL">6,529</NUMEX> that were scored as 'differentially
+        expressed' ranged from <TIMEX TYPE="DATE">1 to 64</TIMEX> (<NUMEX TYPE="PERCENT">0.02% to 1.0%</NUMEX> of the total
+        considered), with a mean value of <NUMEX TYPE="MONEY">26</NUMEX> (<ENAMEX TYPE="ORGANIZATION">SD</ENAMEX> = <NUMEX TYPE="CARDINAL">17</NUMEX>) and a median
+        value of <NUMEX TYPE="CARDINAL">24</NUMEX>. For the cerebellum data, decreasing the
+        fold-change cut-off from <NUMEX TYPE="CARDINAL">1.8</NUMEX> to <NUMEX TYPE="CARDINAL">1.4</NUMEX> increased the number of
+        selected <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> to <NUMEX TYPE="CARDINAL">52</NUMEX>. A lower false-positive rate was
+        achieved, at the expense of sensitivity, by increasing the
+        average difference (signal) change requirement from <NUMEX TYPE="CARDINAL">50</NUMEX> to
+        <NUMEX TYPE="CARDINAL">200</NUMEX> and maintaining the qualitative criteria and the
+        fold-change threshold at <NUMEX TYPE="CARDINAL">1.8</NUMEX>. The average difference
+        (signal) is proportional to mRNA abundance [ <TIMEX TYPE="DATE">15</TIMEX>] and the
+        average difference change is the difference between the
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity for a probe set on chip <NUMEX TYPE="CARDINAL">1</NUMEX> and the signal
+        intensity for that same probe set on chip <NUMEX TYPE="CARDINAL">2</NUMEX>. Raising the
+        average difference-change threshold to <NUMEX TYPE="CARDINAL">200</NUMEX>, which
+        <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to <NUMEX TYPE="CARDINAL">about 3</NUMEX>-<NUMEX TYPE="CARDINAL">5</NUMEX> copies of the mRNA transcript per
+        cell on average [ <TIMEX TYPE="DATE">16</TIMEX>], yielded <NUMEX TYPE="CARDINAL">11</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> scored as
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed, producing a very low
+        false-positive rate of <NUMEX TYPE="PERCENT">less than 0.2%</NUMEX>.
+        A common mistake when analyzing gene-expression data
+        from oligonucleotide arrays is to ignore the qualitative
+        calls (absolute and difference calls) and focus solely on
+        the quantitative values (for example, the average
+        difference, fold change and average difference change). The
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> calls are important, however, because they
+        provide an assessment of the consistency of the behavior
+        across the multiple probes in a probe set. The use of the
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> calls enables <NUMEX TYPE="CARDINAL">one</NUMEX> to determine not only whether
+        there is a signal (or a signal change), but also whether
+        the signal (or the signal change) is due to the gene for
+        which the probe set was designed [ <TIMEX TYPE="DATE">14, 15</TIMEX>]. Signals or
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> changes that are not consistent across a probe set
+        should not be interpreted with confidence. Ignoring the
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> calls in an analysis of the replicate 129SvEv
+        cerebellum data and using only quantitative <ENAMEX TYPE="PER_DESC">thresholds</ENAMEX> (a
+        fold change greater than <NUMEX TYPE="CARDINAL">1.8</NUMEX> and an average difference
+        change greater than <NUMEX TYPE="CARDINAL">50</NUMEX>) yielded a long list of <NUMEX TYPE="CARDINAL">715</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        scored as <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed. In other words,
+        ignoring the qualitative calls increased the false-positive
+        rate by a factor of <NUMEX TYPE="CARDINAL">20</NUMEX>. To maintain the low false-positive
+        rate obtained with the combination of qualitative and
+        quantitative criteria (<NUMEX TYPE="PERCENT">approximately 0.6%</NUMEX>) using only the
+        quantitative fold change and average difference change
+        criteria, the thresholds would have to be set very high
+        (for example, fold change greater than <NUMEX TYPE="CARDINAL">ten</NUMEX> and average
+        difference change greater than <NUMEX TYPE="CARDINAL">200</NUMEX>). Fold change and signal
+        change thresholds this high result in a tremendous loss in
+        sensitivity. This example demonstrates that an effective
+        <ENAMEX TYPE="PERSON">way</ENAMEX> to preserve a low false-positive rate while maintaining
+        high sensitivity is to use a combination of both
+        <ENAMEX TYPE="ORGANIZATION">qualitative</ENAMEX> and quantitative filters. <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> is designed
+        to help <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> apply these types of multiple-criteria
+        analyses.
+        The best way to reduce the false-positive rate is to
+        combine the filtering criteria described above with the use
+        of multiple independent experimental <ENAMEX TYPE="SUBSTANCE">replicates</ENAMEX>. Inclusion
+        of expression measurements for cerebellar mRNA from two
+        additional 129SvEv <ENAMEX TYPE="ANIMAL">mice</ENAMEX> (cerebellums from mouse <NUMEX TYPE="CARDINAL">3</NUMEX> and mouse
+        <NUMEX TYPE="CARDINAL">4</NUMEX>) further reduces the false-positive rate. To include data
+        from more <ENAMEX TYPE="ANIMAL">mice</ENAMEX>, a file for the comparison between
+        independent replicate cerebellums from mouse <NUMEX TYPE="CARDINAL">3</NUMEX> and mouse 4
+        was created in <ENAMEX TYPE="GPE">GeneChip Â®</ENAMEX>(<ENAMEX TYPE="CONTACT_INFO">Cb3 versus Cb4</ENAMEX>). This comparison
+        file was loaded into <ENAMEX TYPE="GPE">Bullfrog</ENAMEX> along with the comparison
+        between the data for mouse <NUMEX TYPE="CARDINAL">1</NUMEX> and mouse 2 (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). The
+        filter criteria were set to select genes that scored as
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed in both comparisons (I, <ENAMEX TYPE="ORGANIZATION">MI</ENAMEX>, <ENAMEX TYPE="NATIONALITY">D</ENAMEX> or
+        <ENAMEX TYPE="PRODUCT">MD</ENAMEX>, fold change â‰<NUMEX TYPE="MONEY">¥ 1.8</NUMEX>, average difference change â‰<NUMEX TYPE="MONEY">¥ 50</NUMEX>, and
+        <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> (present) in <NUMEX TYPE="CARDINAL">at least one</NUMEX> measurement). 'Directional
+        <ENAMEX TYPE="PERSON">consistency</ENAMEX>' was also imposed on the two comparison files.
+        Directional consistency means that the direction or sign of
+        a change is the same in both comparisons. Adding the
+        additional replicates and using these filter criteria
+        yielded only <NUMEX TYPE="CARDINAL">3</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (out of <NUMEX TYPE="CARDINAL">6,529</NUMEX>), indicating a very low
+        false-positive rate with only moderately stringent
+        selection criteria, again consistent with what we usually
+        observe [ <ENAMEX TYPE="LAW">7, 12, 13</ENAMEX>].
+        Once analysis criteria and an estimate of the
+        false-positive rate had been established, it was possible
+        to confidently assess differences in the gene-expression
+        patterns between the cerebellum and the amygdala. Pairwise
+        comparisons between cerebellum (<TIMEX TYPE="DATE">Cb1 and Cb2</TIMEX>) and amygdala
+        (<TIMEX TYPE="DATE">Ag1 and Ag2</TIMEX>) <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> were made in <ENAMEX TYPE="GPE">GeneChip Â®</ENAMEX>(for example,
+        Cb1 vs <TIMEX TYPE="DATE">Ag1 and Cb2</TIMEX> vs <ENAMEX TYPE="ORGANIZATION">Ag2</ENAMEX>). Both of these comparisons were
+        loaded into <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and filtered using the criteria that
+        yielded the very low false-positive rate (I, <ENAMEX TYPE="ORGANIZATION">MI</ENAMEX>, D, or <ENAMEX TYPE="PRODUCT">MD</ENAMEX>,
+        fold change â‰<NUMEX TYPE="MONEY">¥ 1.8</NUMEX>, average difference change â‰<NUMEX TYPE="MONEY">¥ 50</NUMEX>, and <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> in
+        <NUMEX TYPE="CARDINAL">at least one</NUMEX> measurement). An analysis of the
+        cerebellum-amygdala comparisons with these criteria yielded
+        <NUMEX TYPE="CARDINAL">230</NUMEX> <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes. In the list of <NUMEX TYPE="CARDINAL">230</NUMEX>
+        genes, cerebellum-specific genes, such as <ENAMEX TYPE="ORGANIZATION">Purkinje</ENAMEX> cell
+        <ENAMEX TYPE="SUBSTANCE">protein 2</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PCP-2</ENAMEX>) and 
+        <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> -<ENAMEX TYPE="SUBSTANCE">methyl-D-aspartate</ENAMEX> (NMDA) receptor
+        NR2C <ENAMEX TYPE="PER_DESC">subunit</ENAMEX>, were identified as being specifically
+        expressed in the cerebellum and not the amygdala,
+        consistent with expectations [ <TIMEX TYPE="DATE">17, 18</TIMEX>]. On the basis of
+        careful analysis of independent replicates, a high
+        percentage of the <NUMEX TYPE="CARDINAL">230</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are likely to be correctly
+        identified as <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed. Therefore, Bullfrog
+        provides the bench <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> with a way to quickly
+        identify <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed genes for further
+        analysis and follow-up.
+      
+      
+        Manipulating data sets in Spot
+        Many of the features available in <ENAMEX TYPE="GPE">Bullfrog</ENAMEX> for
+        oligonucleotide arrays are available in Spot for cDNA
+        <ENAMEX TYPE="ORGANIZATION">arrays</ENAMEX>. To illustrate the specific capabilities of Spot, we
+        use experimental data from a time-course study of wild-type
+        and <ENAMEX TYPE="ANIMAL">mutant mouse thymus</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">C.J. Winrow</ENAMEX>, <ENAMEX TYPE="PERSON">D.G.P.</ENAMEX>, <ENAMEX TYPE="PERSON">C.T. Vibat</ENAMEX>,
+        <ENAMEX TYPE="PERSON">T.J. Bowen</ENAMEX>, <ENAMEX TYPE="PERSON">M.A. Callahan</ENAMEX>, <ENAMEX TYPE="PERSON">D.J.L.</ENAMEX>, <ENAMEX TYPE="PERSON">A.J. Warren</ENAMEX>, B.S.
+        Hilbush, <ENAMEX TYPE="PERSON">A. Wynshaw-Boris</ENAMEX>, <ENAMEX TYPE="PERSON">K.W. Hasel</ENAMEX>, <ENAMEX TYPE="PERSON">Z. Weaver</ENAMEX> and <ENAMEX TYPE="PERSON">C.B.</ENAMEX>,
+        unpublished observations). The <ENAMEX TYPE="ANIMAL">mutant mice</ENAMEX> typically
+        <ENAMEX TYPE="PERSON">acquire T-cell</ENAMEX> lymphomas at <TIMEX TYPE="DATE">age 3-4 months</TIMEX> [ <TIMEX TYPE="DATE">19</TIMEX>]. The cDNA
+        array experiment compared gene expression in the thymus of
+        the mutant and wild-type <ENAMEX TYPE="ANIMAL">mice</ENAMEX> at <NUMEX TYPE="CARDINAL">four</NUMEX> different times (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>
+        <TIMEX TYPE="DATE">weeks, 5 weeks</TIMEX>, <TIMEX TYPE="DATE">8 weeks</TIMEX> and <TIMEX TYPE="DATE">9 weeks</TIMEX>).
+        As with <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> experiments, cDNA microarray
+        experiments require meaningful independent replicates to
+        determine the false-positive rate and to confidently
+        identify genes that are differentially expressed. It is
+        recommended, when performing cDNA <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> experiments
+        with the standard <NUMEX TYPE="CARDINAL">two</NUMEX>-fluorophore co-hybridization
+        reactions, that all experiments and replicates be performed
+        in <TIMEX TYPE="TIME">fluorophore-</TIMEX>reversed pairs. Reversal of fluorescent
+        labeling, in which the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> to be compared are
+        labeled once with <NUMEX TYPE="CARDINAL">one</NUMEX> fluorophore and once with the other,
+        helps compensate for differential incorporation of the
+        fluorescent dyes and other sources of fluorophore-related
+        systematic errors or bias [ <TIMEX TYPE="DATE">20</TIMEX>]. Newer labeling strategies,
+        such as amino<ENAMEX TYPE="GPE">-allyl</ENAMEX>-based labeling, reduce some of the bias
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with differential fluorophore incorporation, but
+        it is still important to use fluorophore reversal [ <TIMEX TYPE="DATE">21</TIMEX>,
+        <NUMEX TYPE="CARDINAL">22</NUMEX>]. Fluorophore reversal results in two measurements for
+        each pair of <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, a forward measurement (<ENAMEX TYPE="CONTACT_INFO">fluorophore 1</ENAMEX>
+        = experimental sample, <TIMEX TYPE="DATE">fluorophore 2</TIMEX> = control sample) and
+        a reverse measurement (<TIMEX TYPE="DATE">fluorophore 1</TIMEX> = control sample,
+        <TIMEX TYPE="DATE">fluorophore 2</TIMEX> = experimental sample).
+        To estimate the false-positive rate for the cDNA
+        experiment described above, <ENAMEX TYPE="SUBSTANCE">RNA samples</ENAMEX> from two
+        independent thymuses from wild-type <ENAMEX TYPE="ANIMAL">mice</ENAMEX> at <TIMEX TYPE="DATE">age 16 weeks</TIMEX>
+        were compared, using fluorophore reversal replicates. The
+        array data were background subtracted, normalized and
+        analyzed with the custom cDNA normalization program
+        described below. The forward measurement file was loaded
+        into Spot together with the reverse measurement file (saved
+        from the custom cDNA normalization program). Application of
+        the standard filter criteria (a difference call of <ENAMEX TYPE="LAW">I, MI</ENAMEX>, D
+        or <ENAMEX TYPE="PRODUCT">MD</ENAMEX>, fold change = <NUMEX TYPE="CARDINAL">1.8</NUMEX>; signal change = <NUMEX TYPE="CARDINAL">50</NUMEX> in both files,
+        after scaling to a mean signal, or target value, across the
+        entire array of <NUMEX TYPE="CARDINAL">100</NUMEX>, an absolute call of <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> in <NUMEX TYPE="CARDINAL">at least one</NUMEX>
+        <ENAMEX TYPE="PERSON">measurement</ENAMEX>, and directional consistency) yielded <NUMEX TYPE="CARDINAL">1</NUMEX> gene
+        scored as <ENAMEX TYPE="PER_DESC">differentially</ENAMEX> expressed out of <NUMEX TYPE="CARDINAL">4,608</NUMEX>. To
+        increase sensitivity, the fold-change threshold was
+        decreased to <NUMEX TYPE="CARDINAL">1.4</NUMEX> and the scaled signal change cut-off to
+        <TIMEX TYPE="DATE">25</TIMEX>. This more sensitive filter yielded <NUMEX TYPE="CARDINAL">only 2</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> out of
+        <NUMEX TYPE="CARDINAL">4,608</NUMEX>, indicating a low and satisfactory false-positive
+        rate.
+        Once the false-positive rate had been estimated, the
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>-course comparisons were filtered for differences
+        between mutant and wild-type <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. For this cDNA microarray
+        experiment, there were <NUMEX TYPE="CARDINAL">four</NUMEX> <TIMEX TYPE="TIME">time</TIMEX>-point comparisons of
+        <ENAMEX TYPE="PRODUCT">mutant</ENAMEX> to wild-type mouse <ENAMEX TYPE="SUBSTANCE">thymus</ENAMEX> (<TIMEX TYPE="DATE">4 weeks</TIMEX>, <TIMEX TYPE="DATE">5 weeks</TIMEX>, <ENAMEX TYPE="CONTACT_INFO">8 weeks</ENAMEX>
+        and <TIMEX TYPE="DATE">9 weeks</TIMEX>). First, we looked for differentially expressed
+        genes (wild type vs mutant) at each individual time point.
+        Using the criteria established above, <NUMEX TYPE="CARDINAL">48</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were found
+        to be significantly different at <NUMEX TYPE="CARDINAL">4</NUMEX> <TIMEX TYPE="DATE">weeks</TIMEX>, <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> at <NUMEX TYPE="CARDINAL">5</NUMEX>
+        <TIMEX TYPE="DATE">weeks</TIMEX>, <NUMEX TYPE="CARDINAL">four</NUMEX> at <NUMEX TYPE="CARDINAL">8</NUMEX> <TIMEX TYPE="DATE">weeks</TIMEX>, and <NUMEX TYPE="CARDINAL">nine</NUMEX> at <NUMEX TYPE="CARDINAL">9</NUMEX> <TIMEX TYPE="DATE">weeks</TIMEX>. None of these
+        genes was common to all time points. However, <NUMEX TYPE="CARDINAL">three</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>
+        were common to the <TIMEX TYPE="DATE">4- and 5-week</TIMEX> time points, <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> to
+        <TIMEX TYPE="DATE">4 and 8 weeks</TIMEX>, and <NUMEX TYPE="CARDINAL">one</NUMEX> <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> to <NUMEX TYPE="CARDINAL">4 and 9</NUMEX> <TIMEX TYPE="DATE">weeks</TIMEX>.
+        Both <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to apply the
+        filtering criteria to a subset of the loaded files (done by
+        checking the 'Filter?' <ENAMEX TYPE="CONTACT_INFO">box</ENAMEX> for the relevant files only).
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot display the results for all loaded files,
+        but the filter criteria are only applied to checked files.
+        It is often useful to filter using only a subset of the
+        files, while viewing the results across all the files. For
+        example, in the time-course experiment, it is possible to
+        identify the <NUMEX TYPE="CARDINAL">48</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that were differentially expressed in
+        the <NUMEX TYPE="ORDINAL">first</NUMEX> time point, while also monitoring how those same
+        <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> behaved in the other <NUMEX TYPE="CARDINAL">three</NUMEX> time points. Using this
+        feature, <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> genes were found that were
+        directionally consistent for all time points, but were
+        slightly below at least some of the thresholds for some
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points. Similar to <ENAMEX TYPE="PERSON">Bullfrog</ENAMEX>, Spot quickly identified a
+        list of differentially expressed genes for further analysis
+        and follow-up. To determine all this information, including
+        estimating the false-positive rate and testing the
+        selection criteria, required less than <TIMEX TYPE="TIME">ten minutes</TIMEX>.
+      
+      
+        Further features of <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot
+        
+          Double-<ENAMEX TYPE="SUBSTANCE">tiered</ENAMEX> filters
+          In addition to the commonly used filters described
+          above, <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot have several double-tiered
+          <ENAMEX TYPE="PERSON">filters</ENAMEX> (located on the right in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). An example of
+          their use is to select genes that are differentially
+          expressed with a fold change greater than <NUMEX TYPE="MONEY">1.3</NUMEX> in <NUMEX TYPE="CARDINAL">six</NUMEX> of
+          <NUMEX TYPE="CARDINAL">six</NUMEX> files AND with a larger fold change of greater than
+          <NUMEX TYPE="MONEY">3.0</NUMEX> in <NUMEX TYPE="CARDINAL">at least one</NUMEX> of the <NUMEX TYPE="CARDINAL">six</NUMEX> files.
+          <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and <ENAMEX TYPE="PERSON">Spot</ENAMEX> also contain a simple logical Venn
+          function. The <ENAMEX TYPE="ORGANIZATION">Venn</ENAMEX> function (taken from <NUMEX TYPE="MONEY">Venn diagrams</NUMEX>)
+          allows <NUMEX TYPE="CARDINAL">two</NUMEX> or more lists of <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX> or spots to be
+          compared to find common occurrences within the lists. The
+          Venn function lets the <ENAMEX TYPE="PER_DESC">user</ENAMEX> quickly identify the genes in
+          common between lists generated from different
+          measurements or using different filtering criteria. In
+          addition, <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot allow the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to save the
+          results of a filtering operation and reload them for
+          further filtering.
+        
+        
+          Attaching gene information
+          Once a filtered list of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> has been generated, gene
+          information can be attached to the list. This information
+          can include <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession numbers, <ENAMEX TYPE="ORGANIZATION">UniGene</ENAMEX> numbers
+          with direct hyperlinks to <ENAMEX TYPE="ORGANIZATION">UniGene Resources</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Locus</ENAMEX> Link
+          <ENAMEX TYPE="ORGANIZATION">IDs</ENAMEX>, gene names, gene descriptions, BLAST hits, protein
+          products, functions, chromosomal locations and known
+          <ENAMEX TYPE="ORGANIZATION">associations</ENAMEX> with particular phenotypes. The gene
+          information is stored in tables created in <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">Excel</ENAMEX> and must contain these columns (comma separated) in
+          the following order: <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> set or spot identifier,
+          <ENAMEX TYPE="CONTACT_INFO">accession</ENAMEX> number, <ENAMEX TYPE="ORGANIZATION">UniGene ID</ENAMEX>, gene title, and map
+          location. Additional information may be added past these
+          columns. To append gene information to a filtered list in
+          <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> or Spot, the browse button next to the 'Enter
+          <ENAMEX TYPE="WORK_OF_ART">Probe Set Description From File:</ENAMEX>' statement at the bottom
+          of the filter criteria table is pressed (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). The
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> can choose to show or hide gene information by
+          pressing the <ENAMEX TYPE="PRODUCT">'Show Probe Set Description</ENAMEX>' button. Gene
+          lists for <TIMEX TYPE="DATE">the Mu11KsubA</TIMEX>, <TIMEX TYPE="DATE">Mu11KsubB</TIMEX>, <TIMEX TYPE="DATE">Hu6800</TIMEX>, <ENAMEX TYPE="PRODUCT">MG-U74av2</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">HG</ENAMEX><ENAMEX TYPE="PRODUCT">-U95av2</ENAMEX> and <ENAMEX TYPE="PRODUCT">RG-U34a</ENAMEX> Affymetrix chips are available for
+          download as additional data files with this article or
+          from the <ENAMEX TYPE="PERSON">Barlow</ENAMEX> website [ <TIMEX TYPE="DATE">23</TIMEX>].
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Exporting</ENAMEX> results
+          Genes (spots or <ENAMEX TYPE="PRODUCT_DESC">probe sets</ENAMEX>) that pass the set filter
+          criteria are listed in a simple table format that can be
+          exported to <ENAMEX TYPE="ORGANIZATION">Excel</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). To export the entire
+          filtered table with all the information present,
+          including gene information, the <ENAMEX TYPE="PRODUCT">'Save Table To Excel</ENAMEX>'
+          button is pressed. To export a more refined list, check
+          boxes are provided. For example, if only the fold change
+          and average difference values are needed, the pertinent
+          boxes are checked and the 'Save As <ENAMEX TYPE="PRODUCT">Series To Excel</ENAMEX>'
+          button is pressed. To export a simple list of the probe
+          sets that passed certain filter criteria, without
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> information, the <ENAMEX TYPE="WORK_OF_ART">'Save List To Excel</ENAMEX>' button
+          is pressed. This exported data can be analyzed further in
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> and visualization programs. In our experience,
+          it is often helpful to pre-filter data sets using
+          <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot before hierarchical or k-means
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>].
+        
+      
+      
+        Program architecture of <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot are Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX> <NUMEX TYPE="CARDINAL">5.0</NUMEX>+ client
+        applications running on <ENAMEX TYPE="PRODUCT">Windows NT</ENAMEX> operating systems. They
+        are written using a combination of <ENAMEX TYPE="PRODUCT">C++</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">HTML</ENAMEX> and Scripting
+        code (<ENAMEX TYPE="ORGANIZATION">VBScript</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">JScript</ENAMEX>). They are relatively small
+        programs, <NUMEX TYPE="CARDINAL">1.1</NUMEX> <ENAMEX TYPE="PRODUCT">MB and 1.2 MB</ENAMEX> respectively, and are easy to
+        install. Double clicking the setup.bat module registers
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot onto the hard drive.
+        The <ENAMEX TYPE="PRODUCT">C++</ENAMEX> module (<ENAMEX TYPE="ORGANIZATION">Atlprov</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">dll</ENAMEX>) performs the
+        computationally intensive functions such as parsing and
+        filtering the <ENAMEX TYPE="ORGANIZATION">Affymetrix</ENAMEX> or cDNA data files. This module
+        makes the data files accessible as a <ENAMEX TYPE="ORGANIZATION">Microsoft OLE-DB</ENAMEX> data
+        source, allowing script code to communicate through
+        <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s Active <ENAMEX TYPE="ORGANIZATION">Data Objects</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">ADO</ENAMEX>) interface.
+        <ENAMEX TYPE="ORGANIZATION">Atlprov</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">dll</ENAMEX> is a <ENAMEX TYPE="PRODUCT">C++ Windows Dynamic Link Library</ENAMEX> developed
+        with <ENAMEX TYPE="PRODUCT">Visual Studio 6.0</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">ADO Interface</ENAMEX> uses the Active
+        <ENAMEX TYPE="ORGANIZATION">Template Library</ENAMEX> (ATL) to implement the appropriate
+        <ENAMEX TYPE="PRODUCT">Component Object Model</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">COM</ENAMEX>) <ENAMEX TYPE="PERSON">Interfaces</ENAMEX>, as provided by the
+        <ENAMEX TYPE="WORK_OF_ART">Visual Studio Wizard</ENAMEX> for creating an OLE-<ENAMEX TYPE="ORGANIZATION">DB</ENAMEX> data
+        provider.
+        The <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX> and Spot.<ENAMEX TYPE="CONTACT_INFO">htm</ENAMEX> modules have scripting
+        code that uses the <ENAMEX TYPE="ORGANIZATION">ADO interface</ENAMEX> to query the <ENAMEX TYPE="PRODUCT">C++</ENAMEX> module as
+        if it were a database. These modules are a combination of
+        <ENAMEX TYPE="ORGANIZATION">static HTML</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">VBScript</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">JScript</ENAMEX> that produce <ENAMEX TYPE="SUBSTANCE">HTML</ENAMEX> on the
+        fly (DHTML) and use <ENAMEX TYPE="SUBSTANCE">ADO commands</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Recordsets</ENAMEX>. They were
+        developed and debugged using <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s <ENAMEX TYPE="PERSON">Visual InterDev</ENAMEX>
+        and <ENAMEX TYPE="PERSON">Visual Studio</ENAMEX>.<ENAMEX TYPE="ORGANIZATION">NET</ENAMEX>. The static <ENAMEX TYPE="ORGANIZATION">HTML</ENAMEX> provides a simple
+        and familiar <ENAMEX TYPE="PER_DESC">user interface</ENAMEX> for loading files and choosing
+        filtering options. The <ENAMEX TYPE="PER_DESC">user interface</ENAMEX> has scripts to
+        dynamically create and modify the page's <ENAMEX TYPE="ORGANIZATION">HTML</ENAMEX> (DHTML), such
+        as occurs when displaying a results table.
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot require that data from experiments be
+        saved as specific file types before loading. Bullfrog
+        requires that the data from .chp comparison files be saved
+        as .<ENAMEX TYPE="ORGANIZATION">txt</ENAMEX> files (tab-delimited text, refer to the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s
+        manual for complete instructions). Spot requires that data
+        from the <ENAMEX TYPE="ORGANIZATION">Excel</ENAMEX> summary files, discussed below, be saved as
+        .<ENAMEX TYPE="PERSON">csv</ENAMEX> files (comma-separated text). These files can then be
+        loaded into their respective programs for analysis by
+        <ENAMEX TYPE="WORK_OF_ART">clicking the 'Add Text File</ENAMEX>' button (see Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). If the
+        <ENAMEX TYPE="ORGANIZATION">'Prompt For File Auto Load</ENAMEX>' <ENAMEX TYPE="FAC_DESC">box</ENAMEX> is checked, the program
+        will automatically import <NUMEX TYPE="CARDINAL">up to 200</NUMEX> files from the same
+        directory or folder. Once the files are loaded, clicking
+        the <ENAMEX TYPE="PRODUCT">'Complete Summary Table</ENAMEX>' button displays relevant
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> and data analysis information. To download
+        the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s manual, see the online version of this article
+        or [ <TIMEX TYPE="DATE">23</TIMEX>].
+      
+      
+        Features and architecture of the cDNA normalization
+        program
+        The custom cDNA normalization program is a <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>
+        Excel macro and was written in <ENAMEX TYPE="PRODUCT">Visual Basic</ENAMEX> for
+        Applications (VBA) using <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s <ENAMEX TYPE="PRODUCT">Visual Basic Editor</ENAMEX>.
+        The program background subtracts and normalizes raw cDNA
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> before data analysis and filtering in <ENAMEX TYPE="GPE">Spot</ENAMEX>. The
+        normalization program output includes quantitative
+        information and qualitative calls similar to those used for
+        Affymetrix oligonucleotide arrays. Raw median pixel
+        intensities for each gene are loaded into <ENAMEX TYPE="ORGANIZATION">Microsoft Excel</ENAMEX>.
+        Median pixel intensities are used because they are less
+        likely to be affected by small artifacts or slight
+        imperfections in spot morphology. The regional background
+        is calculated by dividing the cDNA array into <NUMEX TYPE="CARDINAL">24</NUMEX> equal
+        sections, and the average of the lowest <NUMEX TYPE="PERCENT">4%</NUMEX> of spot
+        <ENAMEX TYPE="ORGANIZATION">intensities</ENAMEX> in a section is considered the section
+        background (a section typically contains <NUMEX TYPE="CARDINAL">384 to 418</NUMEX> spots).
+        The background signal is the result of nonspecific
+        hybridization, binding of the fluorophores to the glass
+        surface, and fluorescence and reflection from the surface
+        of the cDNA array. The lowest <NUMEX TYPE="PERCENT">4%</NUMEX> of spots (typically <NUMEX TYPE="CARDINAL">15-17</NUMEX>
+        spots) was chosen as a balance between using multiple spots
+        at different locations that accurately reflect nonspecific
+        signals and not including too many spots that contain
+        <ENAMEX TYPE="ORGANIZATION">'real</ENAMEX>' signals. A separate background value is calculated
+        for each section to help correct for background that may be
+        uneven. The background is subtracted from each spot in a
+        particular section before further scaling or processing of
+        quantitative results. For more information on background
+        <ENAMEX TYPE="PERSON">subtraction</ENAMEX>, please review the <ENAMEX TYPE="ORGANIZATION">Salk</ENAMEX> cDNA analysis algorithm
+        guide in the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s manual folder, available with the
+        <ENAMEX TYPE="ORGANIZATION">online</ENAMEX> version of this article or at [ <TIMEX TYPE="DATE">23</TIMEX>].
+        After background subtraction, the cDNA array signals are
+        linearly scaled and normalized to compensate for
+        non-biological variation (for example, differential
+        fluorophore incorporation, different amounts of labeled
+        sample, array-to-array variability). Background-subtracted
+        signals are scaled to an overall, average target value that
+        can be set by the <ENAMEX TYPE="PER_DESC">user</ENAMEX> (the default value is <NUMEX TYPE="CARDINAL">100</NUMEX>). The
+        scaling factor is calculated on the basis of the total
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity, after ignoring the lowest <NUMEX TYPE="PERCENT">60%</NUMEX> and the
+        highest <NUMEX TYPE="PERCENT">10%</NUMEX> of signals. We determined empirically, by
+        analyzing large amounts of cDNA array data and testing
+        different combinations of high and low exclusion
+        <ENAMEX TYPE="PERSON">percentages</ENAMEX>, that ignoring the bottom <NUMEX TYPE="PERCENT">60%</NUMEX> and top <NUMEX TYPE="PERCENT">10%</NUMEX> of
+        signals led to scaling factors that were consistent and
+        well behaved (for example, the mean and median of the
+        resulting distributions were approximately equal). More
+        important, scaling factors calculated in this way
+        consistently resulted in the smallest number of genes
+        <ENAMEX TYPE="PRODUCT">scoring</ENAMEX> as <ENAMEX TYPE="PER_DESC">'differentially</ENAMEX> expressed' between replicates.
+        To identify scaled signals that are detectable above
+        background and to accurately estimate fold changes
+        (ratios), a threshold is set using the scaled background
+        values. Scaled signals that are less than the threshold are
+        considered undetectable and are set equal to the threshold
+        value. For more information on scaling and the setting of
+        the <ENAMEX TYPE="PER_DESC">thresholds</ENAMEX> please review the <ENAMEX TYPE="ORGANIZATION">Salk</ENAMEX> cDNA analysis
+        algorithm <ENAMEX TYPE="PER_DESC">guide</ENAMEX> in the <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s manual folder, available with
+        the online version of this article or at [ <TIMEX TYPE="DATE">23</TIMEX>].
+        The custom cDNA normalization program generates a file
+        in <ENAMEX TYPE="ORGANIZATION">Microsoft Excel</ENAMEX> that provides a single printable summary
+        sheet for each experiment (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). The file includes
+        information on the cDNA array background, the raw average
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity, the scaling factors, the thresholds, the
+        percentage of genes scored as present, the number of genes
+        with fold changes (ratios) above certain thresholds and
+        several correlation coefficients. This file provides an
+        assessment of the overall quality of the data and a summary
+        of the experimental results for each cDNA array. At the top
+        of the summary file, not shown in <ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, are several
+        user-entered parameters that define the experiment. If
+        controls were spotted on the cDNA array, a control summary
+        is also created. In addition to the data summary, the
+        detailed results for each spot on the microarray are
+        provided in a table for further analysis with Spot or other
+        programs. The results for each spot (or <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX>) include an
+        absolute call of present (<ENAMEX TYPE="ORGANIZATION">P</ENAMEX>) or absent (A) (a call of
+        present indicates that the signal was greater than the
+        regional background AND greater than the local background
+        measured in the <NUMEX TYPE="CARDINAL">four</NUMEX> <ENAMEX TYPE="FAC_DESC">corners</ENAMEX> surrounding the individual
+        spot), the scaled intensity, the difference between the
+        scaled fluorophore intensities, the fold change or ratio of
+        the <NUMEX TYPE="CARDINAL">two</NUMEX>-color intensities (expression ratio), and a
+        qualitative difference or change call of <ENAMEX TYPE="LAW">I, MI</ENAMEX>, <ENAMEX TYPE="NATIONALITY">D</ENAMEX> or <ENAMEX TYPE="PRODUCT">MD</ENAMEX>
+        (change calls are based on the fold changes across the
+        duplicate spot data). The spot-by-spot results are easily
+        <ENAMEX TYPE="ORGANIZATION">exportable</ENAMEX> to other programs for further visualization or
+        <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX>. Once the cDNA data are normalized and in a
+        systematic format similar to the normalized Affymetrix
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, the data are ready for further analysis in <ENAMEX TYPE="GPE">Spot</ENAMEX>. To
+        download the <ENAMEX TYPE="ORGANIZATION">Salk</ENAMEX> cDNA analysis algorithm guide see the
+        <ENAMEX TYPE="PER_DESC">user</ENAMEX>'s manual folder, available with the online version of
+        this article or at [ <TIMEX TYPE="DATE">23</TIMEX>].
+      
+      
+        Overall assessment
+        By creating an intuitive <ENAMEX TYPE="PER_DESC">user interface</ENAMEX> with <ENAMEX TYPE="DISEASE">multiple</ENAMEX>,
+        adjustable filter criteria, we have established valuable
+        research tools for microarray <ENAMEX TYPE="PER_DESC">users</ENAMEX>. Bullfrog, Spot and the
+        custom cDNA normalization program were not designed to do
+        complex statistical analyses and visualization. Rather,
+        they were designed to help the <ENAMEX TYPE="PER_DESC">researcher</ENAMEX> narrow their
+        search from <NUMEX TYPE="CARDINAL">tens of thousands</NUMEX> of gene <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> to several
+        <ENAMEX TYPE="PERSON">hundred</ENAMEX> or fewer that meet specific, but adjustable,
+        criteria. Bullfrog, Spot and the custom cDNA normalization
+        program eliminate some of the difficulty of handling large
+        numbers of array results and allow <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to answer
+        crucial questions about their data quickly. These programs,
+        along with detailed instructions and <ENAMEX TYPE="PER_DESC">user</ENAMEX> manuals, may be
+        downloaded at [ <TIMEX TYPE="DATE">23</TIMEX>].
+      
+      
+        <ENAMEX TYPE="ORGANIZATION">Downloading</ENAMEX> files
+        The microarray data analysis tools <ENAMEX TYPE="PERSON">Bullfrog</ENAMEX> and Spot and
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> files are available for download from the <ENAMEX TYPE="PERSON">Barlow</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">homepage</ENAMEX> [ <TIMEX TYPE="DATE">23</TIMEX>]. <TIMEX TYPE="DATE">Full</TIMEX> help manuals are also available at the
+        website.
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot analysis programsare also available
+        for download. Also available are the <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot
+        analysis programs user's manuals, gene lists for <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX>,
+        and <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot sample data.
+        Additional data file 1
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot analysis programs (ZIP file)
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot analysis programs (ZIP file)
+        Click here for additional data file
+        Additional data file 2
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot analysis programs user's manuals (<ENAMEX TYPE="ORGANIZATION">ZIP</ENAMEX>
+        file)
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot analysis programs user's manuals (<ENAMEX TYPE="ORGANIZATION">ZIP</ENAMEX>
+        file)
+        Click here for additional data file
+        Additional data file 3
+        <ENAMEX TYPE="PERSON">Gene</ENAMEX> lists for <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> (ZIP file)
+        <ENAMEX TYPE="PERSON">Gene</ENAMEX> lists for <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> (ZIP file)
+        Click here for additional data file
+        Additional data file 4
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot sample data (ZIP file)
+        <ENAMEX TYPE="ORGANIZATION">Bullfrog</ENAMEX> and Spot sample data (ZIP file)
+        Click here for additional data file
+      
+    
+  

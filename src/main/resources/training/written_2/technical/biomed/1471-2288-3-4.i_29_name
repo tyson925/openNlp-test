@@ -1,0 +1,1112 @@
+
+  
+    
+      
+        Background
+        Because randomized cancer screening trials are very
+        expensive and sometimes difficult to implement,
+        observational <ENAMEX TYPE="DISEASE">cancer screening</ENAMEX> studies can play an
+        important role in estimating the efficacy of cancer
+        screening during early phases of evaluation of the
+        screening test. However the standard methodology for
+        observational <ENAMEX TYPE="DISEASE">cancer screening</ENAMEX> studies has various
+        limitations. Case-control studies require adequate case
+        identification, eligibility criteria for equal access of
+        cases and controls to screening, distinguishing symptomatic
+        and diagnostic tests, and adjustments for self-selection
+        <ENAMEX TYPE="PERSON">bias</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . <ENAMEX TYPE="ORGANIZATION">Cohort</ENAMEX> studies often involve natural history
+        models which rest upon assumptions about the duration of
+        <ENAMEX TYPE="DISEASE">preclinical cancer</ENAMEX> or the growth rate of the tumor, the
+        sensitivity of the screening test, and how screening
+        <ENAMEX TYPE="DISEASE">affects cancer</ENAMEX> mortality. Some examples can be found in [ <NUMEX TYPE="CARDINAL">2</NUMEX>
+        <NUMEX TYPE="CARDINAL">3 4 5 6</NUMEX> ] . Importantly natural history <ENAMEX TYPE="PER_DESC">models</ENAMEX> based only
+        on observational data must implicitly assume no selection
+        <ENAMEX TYPE="PERSON">bias</ENAMEX>, a very tenuous assumption.
+        In contrast, periodic screening evaluation (<ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>), which
+        combines estimates from screened subjects to estimate the
+        reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality associated with
+        periodic cancer screening [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] , does not involve
+        natural history <ENAMEX TYPE="PER_DESC">models</ENAMEX> and the associated assumptions.
+        However a different set of assumptions is required. In
+        certain situations these assumptions may be more plausible
+        than the natural history assumptions, so in some
+        circumstances, the method may be complementary and possibly
+        <ENAMEX TYPE="ORGANIZATION">superior</ENAMEX>, to the natural history modeling approach.
+        <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> starts with the following estimates based directly
+        on observed data from a few screenings at regular intervals
+        over various ages (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) age-specific rates of cancer
+        detection on first screening, interval <ENAMEX TYPE="DISEASE">cancers</ENAMEX>, and cancer
+        detection on subsequent screenings, and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) cancer fatality
+        rates following <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection at first screening,
+        interval cases, and <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection on subsequent
+        screening. For evaluation it is also necessary to estimate
+        (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) the age-specific rate of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection in the 
+        absence of screening and (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) the
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rate following detection in the 
+        absence of screening. Because there
+        are no randomized controls the challenge is to estimate
+        rates in the absence of screening in a manner that
+        <ENAMEX TYPE="SUBSTANCE">mitigates</ENAMEX> selection bias.
+        In estimating the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection rate in the absence
+        of screening <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> mitigates selection bias in a unique
+        manner. As will be discussed, <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates the
+        age-specific detection rate in the absence of screening as
+        the sum of the age-specific rates of detection for <ENAMEX TYPE="DISEASE">cancers</ENAMEX>
+        on the first screening, interval <ENAMEX TYPE="DISEASE">cancers</ENAMEX>, and <ENAMEX TYPE="DISEASE">cancers</ENAMEX> on
+        subsequent screenings, minus the age-specific rate of
+        detection for <ENAMEX TYPE="DISEASE">cancer</ENAMEX> on the first screening in subjects one
+        <TIMEX TYPE="DATE">year older</TIMEX>. This estimation assumes progressive detection,
+        namely that once a <ENAMEX TYPE="DISEASE">cancer</ENAMEX> is detected on screening it will
+        always be detected on screening. Previous versions of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+        made this assumption. However progressive detection is not
+        likely to hold for many types of screening <ENAMEX TYPE="FAC_DESC">modalities</ENAMEX>.
+        Fortunately, as we discuss, if progressive detection is
+        violated, the estimated detection rate in the absence of
+        screening is an upper bound and this can lead to useful
+        estimates.
+        In estimating the cancer fatality rate following
+        <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX> in the absence of screening, <TIMEX TYPE="DATE">earlier</TIMEX> versions of
+        <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> used data from <ENAMEX TYPE="PER_DESC">refusers</ENAMEX> and simply assumed no selection
+        <ENAMEX TYPE="PERSON">bias</ENAMEX>. To avoid this assumption (and the need to collect
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from <ENAMEX TYPE="PER_DESC">refusers</ENAMEX>), we estimated the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rate
+        following detection in the absence of screening by the
+        <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rate in interval <ENAMEX TYPE="DISEASE">cancers</ENAMEX>. As we discuss,
+        this also leads to an upper bound (i.e. optimistic)
+        estimate of screening <ENAMEX TYPE="FAC_DESC">efficacy</ENAMEX>.
+        Thus, this version of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> circumvents the problem of
+        selection bias by estimating an upper bound. The specific
+        estimates of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection rates and <ENAMEX TYPE="DISEASE">cancer</ENAMEX> fatality
+        rates after cancer detection are not meaningful as separate
+        quantities. Fortunately, one can longitudinally combine the
+        estimates to estimate an upper bound on the reduction in
+        <ENAMEX TYPE="DISEASE">population cancer</ENAMEX> mortality associated with periodic
+        screening. (Given these data, it is not possible to
+        estimate reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality for other
+        intervals between screenings or after periodic screening
+        has stopped). The longitudinal combination of
+        <ENAMEX TYPE="ORGANIZATION">cross-sectional</ENAMEX> estimates, which also appears in earlier
+        versions of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> [ <NUMEX TYPE="CARDINAL">7 8 9</NUMEX> ] , is similar to <ENAMEX TYPE="ORGANIZATION">G-computation</ENAMEX> [
+        <NUMEX TYPE="CARDINAL">10</NUMEX> ] and the method of <ENAMEX TYPE="ORGANIZATION">Flanders</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Longini</ENAMEX> [ <TIMEX TYPE="DATE">11</TIMEX> ] .
+        If an upper bound estimate of screening <ENAMEX TYPE="FAC_DESC">efficacy</ENAMEX> is
+        small, a definitive randomized trial to evaluate the effect
+        of screening on <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality would not be warranted.
+        Thus the upper bound estimate is helpful only if is not
+        unreasonably large. To determine if the upper bound is
+        reasonable, we estimated its value using data from screened
+        subjects in randomized trials of colorectal cancer
+        screening [ <NUMEX TYPE="CARDINAL">12 13</NUMEX> ] , <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> screening [ <TIMEX TYPE="DATE">14</TIMEX> ] , and
+        lung <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening [ <NUMEX TYPE="CARDINAL">15 16</NUMEX> ] . We then compared this
+        estimate to a modified <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimate using data from all
+        subjects, so that estimates of age-specific <ENAMEX TYPE="DISEASE">cancer</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX> in the absence of screening and <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality
+        in the absence of screening are based on data from
+        <ENAMEX TYPE="ORGANIZATION">randomized</ENAMEX> controls and <ENAMEX TYPE="PER_DESC">refusers</ENAMEX>.
+        We also compared the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates with estimates based
+        on a comparison of outcomes in the <NUMEX TYPE="CARDINAL">two</NUMEX> randomized <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>,
+        adjusting for <ENAMEX TYPE="PER_DESC">refusers</ENAMEX> and mitigating the effect of
+        dilution after stopping screening [ <TIMEX TYPE="DATE">17</TIMEX> ] . It is important
+        to bear in mind that the <NUMEX TYPE="CARDINAL">two</NUMEX> estimates are answering
+        different questions. For <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>, the question is "What is the
+        effect of periodic screening starting at a given age and
+        ending at a later age<ENAMEX TYPE="WORK_OF_ART">?</ENAMEX>" For comparing randomized <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>,
+        the question is "What is the effect of the particular
+        screening program in the intervention <ENAMEX TYPE="ORG_DESC">group</ENAMEX>?"
+      
+      
+        Methods
+        
+          Simple formulation of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+          We derive a simple formulation of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> and show that it
+          gives an upper bound on the estimated reduction in
+          <ENAMEX TYPE="DISEASE">population cancer</ENAMEX> mortality.
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> requires <NUMEX TYPE="CARDINAL">two</NUMEX> types of data from <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who
+          receive <NUMEX TYPE="CARDINAL">two</NUMEX> or more screenings at regular intervals. The
+          <NUMEX TYPE="ORDINAL">first</NUMEX> type of data are the numbers of <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who
+          receive each screen and who are detected with <ENAMEX TYPE="DISEASE">cancer</ENAMEX> as a
+          result of screening or in the interval between screens.
+          (See Tables <ENAMEX TYPE="CONTACT_INFO">1, 2, 3, 4</ENAMEX>) The <NUMEX TYPE="ORDINAL">second</NUMEX> type of data are
+          numbers of subjects with <ENAMEX TYPE="DISEASE">cancer</ENAMEX> who die from <ENAMEX TYPE="DISEASE">cancer</ENAMEX> and
+          are in the risk set <TIMEX TYPE="DATE">each year</TIMEX> after diagnosis. (See Table
+          <NUMEX TYPE="CARDINAL">5</NUMEX>)
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> involves <NUMEX TYPE="CARDINAL">three</NUMEX> steps: (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) estimate the
+          age-specific incidence of cancer associated with
+          different types of detection: <NUMEX TYPE="ORDINAL">first</NUMEX> screen, interval
+          between screens, subsequent screen, <ENAMEX TYPE="PER_DESC">refusers</ENAMEX>, and
+
+          controls, if available, (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) estimate cancer fatality
+          rates after cancer detection, and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) combine these
+          estimates to estimate the reduction in population cancer
+          mortality associated with periodic cancer screening.
+          Because <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> requires regular intervals, the analysis
+          is restricted to screenings that occur "on-time", namely,
+          within a window of time close to the length of interval.
+          The length of the window for on-time screenings is
+          somewhat arbitrary. A very wide window discards
+          relatively few <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>; however it may introduce bias
+          into calculations that are based on assuming the
+          screening interval equals the midpoint of the window.
+          Alternatively, a narrow window might discard too much
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, increasing the chance for bias from nonrandom
+          exclusion of subjects. In designing a study for <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+          analysis, the screening intervals should be as regular as
+          possible. Without loss of generality in the following
+          discussion, we assume a regular interval between screens
+          of <TIMEX TYPE="DATE">1 year</TIMEX>.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">1</NUMEX>: Age-specific <ENAMEX TYPE="DISEASE">cancer</ENAMEX> incidence
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> requires estimates of age-specific <ENAMEX TYPE="DISEASE">cancer</ENAMEX>
+          incidence for the following types of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection:
+          type 
+          F , detection on the first
+          screening; type 
+          I , detection in the interval
+          between screenings; type 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> , detection on screening
+          subsequent to the <NUMEX TYPE="ORDINAL">first</NUMEX>; and type 
+          A , detection in the absence of
+          screening. The incidence of type 
+          F detection at age 
+          a is 
+          q 
+          
+            F 
+           ( 
+          a ) = 
+          x 
+          
+            F 
+           ( 
+          a ) / 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            F 
+           ( 
+          a ), where 
+          x 
+          
+            F 
+           ( 
+          a ) is the number of subjects
+          detected with <ENAMEX TYPE="DISEASE">cancer</ENAMEX> as a result of a <NUMEX TYPE="ORDINAL">first</NUMEX> screening at
+          <ENAMEX TYPE="ORGANIZATION">age</ENAMEX> 
+          a and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            F 
+           ( 
+          a ) is the number who received the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> screening at age 
+          <ENAMEX TYPE="PERSON">a.</ENAMEX> The incidence of type 
+          I detection at age 
+          a is 
+          q 
+          
+            I 
+           ( 
+          a ) = 
+          x 
+          
+            I 
+           ( 
+          a ) / 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            I 
+           ( 
+          a ) where 
+          x 
+          
+            I 
+           ( 
+          a ) is the number of cases in the
+          interval after screening at age 
+          a and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            I 
+           ( 
+          a ) is the number at risk at the
+          start of the interval. The incidence of type 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> <ENAMEX TYPE="ORG_DESC">detection</ENAMEX> at age 
+          a is 
+          q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) = 
+          x 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) / 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) where 
+          x 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) is the number of subjects
+          detected with <ENAMEX TYPE="DISEASE">cancer</ENAMEX> as a result of an "on-time"
+          screening after a previous screening at age 
+          a and 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) is the number of <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> who
+          received an "on-time" screening after the previous
+          screening at age 
+          a . Although a type 
+          S detection occurs on screening at
+          <ENAMEX TYPE="ORGANIZATION">age</ENAMEX> 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>, for mathematical
+          <ENAMEX TYPE="ORGANIZATION">convenience</ENAMEX>, it is associated with screening at age 
+          a . We cannot observe type 
+          A detection from data on subjects
+          <ENAMEX TYPE="PERSON">screened</ENAMEX>. However, as derived in [ <ENAMEX TYPE="LAW">8</ENAMEX> ] , one can estimate
+          the probability of type 
+          A detection by
+          
+          q 
+          
+            A 
+           ( 
+          a ) = 
+          q 
+          
+            F 
+           ( 
+          a ) + 
+          q 
+          
+            I 
+           ( 
+          a ) + 
+          q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          a ) - 
+          q 
+          
+            F 
+           ( 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>), (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>)
+          if the following key assumption holds.
+          
+            <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX>. Progressive
+            Detection 
+          
+          Once a subject is detectable on screening the subject
+          will always be detectable on screening.
+          (The quantity 
+          q 
+          
+            F 
+           ( 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>) in (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) is the cancer
+          detection rate on the first screening among subjects age 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX> at first screening.) The
+          graphical proof of (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) in Figure <NUMEX TYPE="CARDINAL">1generalizes</NUMEX> the
+          graphical proof in [ <ENAMEX TYPE="LAW">8</ENAMEX> ] to allow some <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> with
+          <ENAMEX TYPE="DISEASE">preclinical cancer</ENAMEX> to be missed on screening. In Figure
+          <ENAMEX TYPE="CONTACT_INFO">1,</ENAMEX> 
+          Assumption <NUMEX TYPE="CARDINAL">1</NUMEX> corresponds to <ENAMEX TYPE="PER_DESC">δ</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>,
+          where δ is the probability that some <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> with
+          <ENAMEX TYPE="DISEASE">preclinical cancer</ENAMEX> would be detected if screened at age 
+          a but missed if screened at age 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>. As an example of 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 7</ENAMEX>, consider a <ENAMEX TYPE="PER_DESC">woman</ENAMEX> who
+          would have been detected with <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> at <TIMEX TYPE="DATE">age 50</TIMEX>,
+          but is not screened at <TIMEX TYPE="DATE">age 50</TIMEX> for reasons unrelated to
+          the screening or any possibility of <ENAMEX TYPE="DISEASE">cancer</ENAMEX>. Under 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX>, if the <ENAMEX TYPE="PER_DESC">woman</ENAMEX> were
+          screened at <TIMEX TYPE="DATE">age 51</TIMEX>, she would be detected with <ENAMEX TYPE="DISEASE">cancer</ENAMEX>.
+          There is sometimes confusion about how this relates to
+          sensitivity of the screening test. As shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> implies that the
+          sensitivity of the screening test equals <NUMEX TYPE="CARDINAL">1</NUMEX> if a previous
+          screening test would have detected <ENAMEX TYPE="DISEASE">cancer</ENAMEX>.
+          Ideally 
+          q 
+          
+            F 
+           ( 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>) estimates the probability of
+          <ENAMEX TYPE="DISEASE">detecting cancer</ENAMEX> on a <NUMEX TYPE="ORDINAL">first</NUMEX> screen at age 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX> <TIMEX TYPE="DATE">one year</TIMEX> 
+          after the start of the study.
+          Because there are no data on subjects <NUMEX TYPE="ORDINAL">first</NUMEX> screened
+          after a <TIMEX TYPE="DATE">one year</TIMEX> delay, we compute 
+          q 
+          
+            F 
+           ( 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX>) from subjects age 
+          a + <NUMEX TYPE="CARDINAL">1</NUMEX> at the start of the study.
+          This procedure requires the following additional
+          assumption.
+          
+            <ENAMEX TYPE="CONTACT_INFO">Assumption 2</ENAMEX>. No <ENAMEX TYPE="LANGUAGE">Birth</ENAMEX> Cohort
+            Effect 
+          
+          Given age, <TIMEX TYPE="DATE">year</TIMEX> of birth provides no additional
+          information for predicting cancer incidence on the first
+          screen.
+        
+        
+          Step <NUMEX TYPE="CARDINAL">2</NUMEX>: <ENAMEX TYPE="ORGANIZATION">Cancer</ENAMEX>-fatality rates among cases
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> also requires estimates of cancer fatality-rates
+          among cases. The estimated probability of death from
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> within <TIMEX TYPE="DATE">5 years</TIMEX> of type 
+          d <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection at age 
+          a is
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (cancer death | type 
+          d detection at age 
+          a )
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">di</ENAMEX> 
+           is the estimated case-fatality rate from <ENAMEX TYPE="DISEASE">cancer</ENAMEX> in
+          year 
+          i after type 
+          d detection, and 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + 
+          i ) is the probability of surviving
+          competing risks from age 
+          a to age 
+          a + 
+          i . See also <ENAMEX TYPE="ORGANIZATION">Gooley et al</ENAMEX> [ <TIMEX TYPE="DATE">18</TIMEX> ] .
+          For year 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> after type 
+          d detection ( 
+          d = 
+          F, I, <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> ), the estimated
+          case-fatality rate from the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> under study is 
+          <ENAMEX TYPE="ORGANIZATION">h</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">dj</ENAMEX> 
+           = 
+          x 
+          
+            <ENAMEX TYPE="CONTACT_INFO">dj</ENAMEX> 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          r 
+          
+            <ENAMEX TYPE="CONTACT_INFO">dj</ENAMEX> 
+           , where 
+          x 
+          
+            <ENAMEX TYPE="CONTACT_INFO">dj</ENAMEX> 
+           is the number of cancer deaths among cases at year 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> after type 
+          d detection, and 
+          r 
+          
+            <ENAMEX TYPE="CONTACT_INFO">dj</ENAMEX> 
+           the number of cases with type 
+          d <ENAMEX TYPE="PER_DESC">detection</ENAMEX> who are at risk at year
+          
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX> since <TIMEX TYPE="DATE">detection</TIMEX>.
+          We approximate 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + 
+          i ) by the probability of surviving
+          from age 
+          a to age 
+          a + 
+          i obtained from demographic data
+          stratified by sex [ <TIMEX TYPE="DATE">19</TIMEX> ] . We approximate the probability
+          of surviving competing risks <TIMEX TYPE="DATE">each year over five years</TIMEX> as
+          the probability of surviving competing risks at the
+          midpoint of <TIMEX TYPE="DATE">two years</TIMEX>, i.e., 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + 
+          i ) = 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + <NUMEX TYPE="CARDINAL">3</NUMEX>) for 
+          i = <NUMEX TYPE="CARDINAL">1,2,3,4,5</NUMEX>. This lets us
+          <ENAMEX TYPE="PERSON">approximate</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">2</ENAMEX>) by
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (cancer death in cases | type 
+          d detection at age 
+          i ) = 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + <NUMEX TYPE="CARDINAL">3</NUMEX>) 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            d 
+           , (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>)
+          where is the estimated probability of cancer death
+          within <TIMEX TYPE="DATE">five years</TIMEX> of type 
+          d detection conditional on no death
+          from competing risk and 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + <NUMEX TYPE="CARDINAL">3</NUMEX>) is the approximate
+          probability of surviving competing risks within <TIMEX TYPE="TIME">five</TIMEX>
+          <TIMEX TYPE="DATE">years</TIMEX> of type 
+          d detection.
+          A major challenge is how to estimate 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           , the probability of cancer fatality within <TIMEX TYPE="TIME">five</TIMEX>
+          <TIMEX TYPE="DATE">years</TIMEX> of type 
+          A detection (i.e. in the absence of
+          screening) conditional on no death from competing risk.
+          Previous approaches [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX> ] used data from <ENAMEX TYPE="PER_DESC">refusers</ENAMEX>,
+          substituting 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            R 
+           for 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           . However this requires a strong unreasonable
+          assumption as well as data from <ENAMEX TYPE="PER_DESC">refusers</ENAMEX>, which is often
+          not available.
+          As an alternative, we estimate an upper bound on the
+          reduction in the population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rate from
+          screening by estimating the cancer fatality rate in the
+          absence of screening using data from <ENAMEX TYPE="DISEASE">interval cancers</ENAMEX>,
+          namely, substituting 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           . The reason this is an upper bound is that <ENAMEX TYPE="DISEASE">cancers</ENAMEX>
+          arising in the absence of screening are composed of
+          <ENAMEX TYPE="DISEASE">cancers</ENAMEX> that would have arisen in the interval after a
+          negative screening (had there been screening) and <ENAMEX TYPE="DISEASE">cancers</ENAMEX>
+          that would have been detected on a previous screening
+          (had there been screening). The latter cases are
+          presumably slower growing (a type of length-biased
+          <ENAMEX TYPE="ORGANIZATION">sampling</ENAMEX>) with better survival, so using only the
+          <ENAMEX TYPE="DISEASE">interval cancers</ENAMEX> artificially increases the estimated
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX>-fatality rate in the absence of screening. (<ENAMEX TYPE="CONTACT_INFO">One</ENAMEX>
+          <ENAMEX TYPE="PERSON">caveat</ENAMEX> is that the survival of <ENAMEX TYPE="DISEASE">interval cancers</ENAMEX> may be
+          improved due to increased awareness of treatment options
+          that would occur as part of a screening program. If the
+          effect of length bias is relatively small, substituting 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           for 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           might not be an upper bound, although we believe it
+          would be a reasonable approximation.)
+        
+        
+          Step <NUMEX TYPE="CARDINAL">3</NUMEX>. Reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality
+          rates due to periodic screening
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates the reduction in population cancer
+          mortality rates due to starting periodic cancer screening
+          at age 
+          a instead of age 
+          b , where ages 
+          a and 
+          b lie in the range of ages at
+          initial screening. (This estimate accounts for competing
+          risks through the use of 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a , 
+          a + <NUMEX TYPE="CARDINAL">3</NUMEX>)). To avoid different rates
+          of overdiagnosis between comparison <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> compares
+          <ENAMEX TYPE="DISEASE">population cancer</ENAMEX> mortality rates in <NUMEX TYPE="CARDINAL">two</NUMEX> hypothetical
+          scenarios involving full compliance: Scenario , periodic
+          screening from age 
+          a until age 
+          b and Scenario , no periodic
+          screening from age 
+          a to age 
+          b <NUMEX TYPE="PERCENT">-1</NUMEX> followed by screening at age 
+          b . Scenario involves either
+          detection on the first screen at age 
+          a or detection in the interval or
+          on subsequent screens to age 
+          b . Scenario involves either
+          <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX> in the absence of screening from ages 
+          a to 
+          b - 1 or detection on a first
+          screen at age 
+          <ENAMEX TYPE="PERSON">b. Screening</ENAMEX> at age 
+          b in both Scenarios and avoids
+          differential overdiagnosis rates because, if 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> holds, both scenarios
+          and specify equal probabilities of detecting <ENAMEX TYPE="DISEASE">cancer</ENAMEX> by
+          <ENAMEX TYPE="ORGANIZATION">age</ENAMEX> 
+          b .
+          More formally we can write the reduction in population
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rates associated with starting periodic
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening at age 
+          a instead of age 
+          b as
+          
+          g = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (<ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality under Scenario
+          )
+          - 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (<ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality under Scenario
+          ), (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>)
+          where
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (<ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality under Scenario
+          )
+          = 
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (cancer death in cases | type 
+          A detection at age 
+          i )
+          <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          q 
+          
+            F 
+           ( 
+          b ) pr(cancer death in cases | type
+          
+          F detection at age 
+          b )
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (<ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality under Scenario
+          )
+          = 
+          q 
+          
+            F 
+           ( 
+          a ) pr(cancer death in cases | type
+          
+          F detection at age 
+          a )
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (cancer death in cases | type 
+          I detection at age 
+          i )
+          
+          <ENAMEX TYPE="ORGANIZATION">pr</ENAMEX> (cancer death in cases | type 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> <ENAMEX TYPE="ORG_DESC">detection</ENAMEX> at age 
+          i )
+          and cancer death in cases refers to death from cancer
+          in cases within <TIMEX TYPE="DATE">five years</TIMEX> of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> detection.
+          Accounting for deaths from competing risks, the estimated
+          probability of type 
+          d detection at age 
+          i , conditional on being alive at
+          <ENAMEX TYPE="ORGANIZATION">age</ENAMEX> 
+          a , is
+          
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> (type 
+          d detection at age 
+          i ) = 
+          <ENAMEX TYPE="ORGANIZATION">Surv</ENAMEX> ( 
+          a, i ) 
+          q 
+          
+            d 
+           ( 
+          i ) (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>)
+          <ENAMEX TYPE="PERSON">Substituting</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>) and (<ENAMEX TYPE="CONTACT_INFO">3</ENAMEX>) into (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) gives
+          
+          To simplify (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>), we define
+          
+          <ENAMEX TYPE="PERSON">Substituting</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">7</ENAMEX>) into (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>) gives the following simple
+          estimate,
+          
+          
+            basic 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          Q 
+          
+            A 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          q 
+          
+          <ENAMEX TYPE="PRODUCT">F 1</ENAMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">basic</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            F 
+           ) - ( 
+          q 
+          
+          <ENAMEX TYPE="PRODUCT">F 0</ENAMEX>( 
+          <ENAMEX TYPE="ORGANIZATION">basic</ENAMEX> ) 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            F 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          Q 
+          
+            I 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          Q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           . (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>)
+          To increase the stability of 
+          
+            basic 
+           , we used averages over 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">3</NUMEX> intervals, for the
+          probabilities of detection on the first screenings at age
+          
+          a and at age 
+          b ,
+          
+          <ENAMEX TYPE="PERSON">Substituting</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">9</ENAMEX>) into (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>) gives the modified
+          estimate
+          
+          
+            modified 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          Q 
+          
+            A 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          q 
+          
+          F 1 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            F 
+           ) - ( 
+          q 
+          
+          F 0 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            F 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          Q 
+          
+            I 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          Q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ). (<NUMEX TYPE="MONEY">10</NUMEX>)
+          <ENAMEX TYPE="PERSON">Invoking</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), we substitute 
+          q 
+          
+          F <NUMEX TYPE="CARDINAL">0</NUMEX> + 
+          Q 
+          
+            I 
+           <ENAMEX TYPE="CONTACT_INFO">+</ENAMEX> 
+          Q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           - 
+          Q 
+          
+          <ENAMEX TYPE="PRODUCT">F 1</ENAMEX> for 
+          Q 
+          
+            A 
+           (<NUMEX TYPE="MONEY">10</NUMEX>). As discussed previously to obtain an upper
+          bound, we also set 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            A 
+           = 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           . This gives the following estimated upper bound in
+          the reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality from
+          periodic screening and its asymptotic variance
+          
+          
+            upp 
+           <ENAMEX TYPE="PERSON">=</ENAMEX> ( 
+          q 
+          
+          F <NUMEX TYPE="CARDINAL">0</NUMEX> - 
+          q 
+          
+          <ENAMEX TYPE="PRODUCT">F 1</ENAMEX> ) ( 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           - 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            F 
+           ) + 
+          Q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ( 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           - 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           ), (<NUMEX TYPE="MONEY">11</NUMEX>)
+          
+          
+        
+        
+          Upper bound if <ENAMEX TYPE="PRODUCT">Assumption 1</ENAMEX> is violated
+          There are <NUMEX TYPE="CARDINAL">two</NUMEX> basic scenarios in which 
+          <ENAMEX TYPE="PRODUCT">Assumption 1</ENAMEX> could be violated.
+          First the <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, or at least the detectable part of
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX>, could regress over time. This would most likely
+          occur if the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> were at a very early stage. Of
+          course, early <ENAMEX TYPE="DISEASE">lesions</ENAMEX> are the principal <ENAMEX TYPE="PER_DESC">targets</ENAMEX> of
+          screening tests. <NUMEX TYPE="ORDINAL">Second</NUMEX>, chance fluctuations in the
+          results of the screening test might mask cancer
+          detection, particularly if the interval between the
+          screening tests were small. For example if the screening
+          test were based on a sampling of cells, the screening
+          test may, by chance, not include any of the tumor cells.
+          For many screening modalities 
+          Assumption 1 may not hold.
+          As shown in Figure <NUMEX TYPE="CARDINAL">1</NUMEX>, if 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> did not hold, <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+          would estimate the cancer incidence rate in the absence
+          of screening as 
+          q 
+          
+            A 
+           ( 
+          a ) + δ, for <NUMEX TYPE="MONEY">δ > 0</NUMEX>, instead of 
+          q 
+          
+            A 
+           ( 
+          a ). Thus if 
+          Assumption <NUMEX TYPE="CARDINAL">1</NUMEX> were not satisfied,
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> would overestimate the cancer incidence rate in the
+          absence of screening which 
+          overestimates the reduction in the
+          <ENAMEX TYPE="DISEASE">population cancer</ENAMEX> mortality rate. On the other hand, a
+          violation of 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> would also imply that
+          some <ENAMEX TYPE="DISEASE">cancers</ENAMEX> detected on screening in would not have been
+          detected on the last screening in which would lower the
+          reduction in the population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality rate in (<ENAMEX TYPE="CONTACT_INFO">4</ENAMEX>).
+          However we think this latter situation would have a small
+          impact relative to the former which involves the entire
+          span of ages at screening and not just the last <TIMEX TYPE="DATE">age</TIMEX> at
+          screening.
+          Thus (<NUMEX TYPE="MONEY">11</NUMEX>) is an upper bound for <NUMEX TYPE="CARDINAL">two</NUMEX> reasons. First it
+          uses interval <ENAMEX TYPE="DISEASE">cancers</ENAMEX> to estimate fatality rates
+          following <ENAMEX TYPE="DISEASE">cancer</ENAMEX> diagnosis in the absence of screening.
+          Second it is an upper bound if 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> is violated.
+        
+      
+      
+        Validation methodology
+        
+          <ENAMEX TYPE="WORK_OF_ART">Minnesota Colon Cancer Control Study</ENAMEX> (MCCCS)
+          <TIMEX TYPE="DATE">Between 1975 and 1978</TIMEX> <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> randomized
+          <NUMEX TYPE="PERCENT">approximately 45,000</NUMEX> subjects to either <NUMEX TYPE="CARDINAL">5</NUMEX> <TIMEX TYPE="DATE">annual</TIMEX> fecal
+          <ENAMEX TYPE="ORGANIZATION">occult</ENAMEX> blood screenings, <NUMEX TYPE="CARDINAL">3</NUMEX> biennial screenings, or no
+          screening [ <NUMEX TYPE="CARDINAL">6 7</NUMEX> ] . Due to a lower than expected death
+          rate among controls, the <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> resumed screening
+          <TIMEX TYPE="DATE">between 1982 and 1986</TIMEX>. After a hiatus of screening of
+          <TIMEX TYPE="DATE">between 3 and 5 years</TIMEX>, the <TIMEX TYPE="DATE">annual</TIMEX> screened <ENAMEX TYPE="ORG_DESC">group</ENAMEX> received
+          <NUMEX TYPE="CARDINAL">5</NUMEX> additional annual screenings and the <TIMEX TYPE="DATE">biennial</TIMEX> screened
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> received <NUMEX TYPE="CARDINAL">3</NUMEX> additional biennial screenings.
+          <NUMEX TYPE="PERCENT">Approximately 14 percent</NUMEX> of subjects randomized to
+          screening did not receive screening. Each screening cycle
+          consisted of <NUMEX TYPE="CARDINAL">six</NUMEX> <ENAMEX TYPE="ORGANIZATION">Hemocult</ENAMEX> slides with planned definitive
+          work-up if any slide showed evidence of <ENAMEX TYPE="SUBSTANCE">occult blood</ENAMEX>.
+          Screenings for the annual <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> were labeled as on time
+          if they were done in <TIMEX TYPE="DATE">the 9 to 15 month</TIMEX> time window since
+          the previous screening. Screenings for the <TIMEX TYPE="DATE">biennial</TIMEX> group
+          were labeled as on-time if they were done <TIMEX TYPE="DATE">20 to 28 months</TIMEX>
+          since the previous screening. (The longer time window was
+          used to keep the loss of data arbitrarily to no more than
+          <NUMEX TYPE="PERCENT">15%</NUMEX>) Excluding the first screening after the resumption
+          of screening, <NUMEX TYPE="PERCENT">approximately 93 percent</NUMEX> of the annual
+          subsequent screenings and <NUMEX TYPE="PERCENT">85 percent</NUMEX> of the biennial
+          subsequent screenings were on-time. The age range for the
+          analysis was <TIMEX TYPE="DATE">50 to 75</TIMEX>. For estimating the age-specific
+          incidence of <ENAMEX TYPE="DISEASE">cancer</ENAMEX> among controls, we used data
+          collected up to the time of the last screen, which was <NUMEX TYPE="CARDINAL">16</NUMEX>
+          <TIMEX TYPE="DATE">years</TIMEX> after the start of the study. We increased the
+          <ENAMEX TYPE="ORGANIZATION">precision</ENAMEX> of the estimated age-specific <ENAMEX TYPE="DISEASE">cancer</ENAMEX> incidence
+          on the first screen by pooling data on the first
+          screening in the <TIMEX TYPE="DATE">annual</TIMEX> and biennial <ENAMEX TYPE="PRODUCT_DESC">arms</ENAMEX>. For <TIMEX TYPE="DATE">annual</TIMEX>
+          <ENAMEX TYPE="DISEASE">cancer</ENAMEX> screening, age was divided into intervals of <NUMEX TYPE="CARDINAL">1</NUMEX>
+          <TIMEX TYPE="DATE">year</TIMEX>. For <TIMEX TYPE="DATE">biennial</TIMEX> screening, age was divided into
+          intervals of <TIMEX TYPE="DATE">2 years</TIMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Health Insurance Plan of Greater New York</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">HIP</ENAMEX>)
+          Study
+          Starting in <TIMEX TYPE="DATE">1963</TIMEX>, <NUMEX TYPE="CARDINAL">approximately 60,000</NUMEX> <ENAMEX TYPE="PER_DESC">women</ENAMEX> were
+          randomly assigned to either a study <ENAMEX TYPE="PER_DESC">group</ENAMEX> invited for
+          <TIMEX TYPE="DATE">four annual</TIMEX> mammograms and physical examinations or to a
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> that received no screening within the study
+          [ <ENAMEX TYPE="LAW">8</ENAMEX> ] . <NUMEX TYPE="PERCENT">Approximately 1/3</NUMEX> of the <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> in the study
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> refused the first screening and received no
+          <ENAMEX TYPE="PERSON">screenings</ENAMEX>. Screenings were labeled on-time if they were
+          done <TIMEX TYPE="DATE">9 to 15 months</TIMEX> after a previous screening.
+          <NUMEX TYPE="PERCENT">Approximately 79 percent</NUMEX> of <NUMEX TYPE="ORDINAL">second</NUMEX> screenings, <NUMEX TYPE="PERCENT">76 percent</NUMEX>
+          of <NUMEX TYPE="ORDINAL">third</NUMEX> screenings, and <NUMEX TYPE="PERCENT">73 percent</NUMEX> of <NUMEX TYPE="ORDINAL">fourth</NUMEX> screenings
+          were on time. The age range for the analysis was <NUMEX TYPE="CARDINAL">40</NUMEX> to
+          <TIMEX TYPE="DATE">64</TIMEX>. For estimating the age-specific incidence of cancer
+          among controls, we used data collected up to the time of
+          the last screen, which was <TIMEX TYPE="DATE">4 years</TIMEX> after the start of the
+          study.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Mayo Lung Project</ENAMEX> (MLP)
+          <TIMEX TYPE="DATE">Between 1971 and 1976</TIMEX> <NUMEX TYPE="CARDINAL">approximately 9,200</NUMEX> male heavy
+          <ENAMEX TYPE="PER_DESC">smokers</ENAMEX> who tested negative on a prevalence (initial)
+          screening were randomized to either a study <ENAMEX TYPE="ORG_DESC">group</ENAMEX> urged
+          to undergo radiologic and cytological screening
+          examinations <TIMEX TYPE="DATE">every 4 months</TIMEX> for <TIMEX TYPE="DATE">6 years</TIMEX> or a control
+          <ENAMEX TYPE="ORGANIZATION">group</ENAMEX> that at study entry received a recommendation for
+          <TIMEX TYPE="DATE">annual</TIMEX> chest X-rays with no further reminders [ <ENAMEX TYPE="LAW">9 10</ENAMEX> ] .
+          <NUMEX TYPE="PERCENT">Approximately 7 percent</NUMEX> of the study group <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> did
+          not receive any screenings.
+          Because <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> requires a single screening time at each
+          round of screening, we restricted <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> to the screenings
+          in which the time between cytology and x-ray was less
+          than <TIMEX TYPE="DATE">3 weeks</TIMEX>. Screenings were labeled as on-time if they
+          were done within <TIMEX TYPE="DATE">3.5 to 5.5 months</TIMEX> of the previous
+          screening and the time between cytology and x-ray was
+          less than <TIMEX TYPE="DATE">3 weeks</TIMEX>. <NUMEX TYPE="PERCENT">Approximately 85 percent</NUMEX> of the
+          subsequent screenings were on-time.
+          <TIMEX TYPE="DATE">Only yearly</TIMEX> age data were available. Because the
+          screenings in the <ENAMEX TYPE="ORGANIZATION">Mayo Lung Project</ENAMEX> were scheduled at <NUMEX TYPE="CARDINAL">4</NUMEX>
+          <TIMEX TYPE="DATE">month</TIMEX> intervals, <TIMEX TYPE="DATE">yearly</TIMEX> <ENAMEX TYPE="DISEASE">cancer</ENAMEX> incidence data for types 
+          I and 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> <ENAMEX TYPE="ORG_DESC">detection</ENAMEX> are approximated using
+          the sums of counts for <NUMEX TYPE="CARDINAL">three</NUMEX> successive screens. Because
+          all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> had an initial
+          <ENAMEX TYPE="PERSON">screening</ENAMEX>, we pooled data for detection rates on initial
+          screenings in the study and control <ENAMEX TYPE="ORG_DESC">groups</ENAMEX>.
+          Unfortunately the initial screening in the control
+          group greatly complicated the validation, which requires
+          that no screening be performed in the control <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. In
+          order to better approximate a control <ENAMEX TYPE="ORG_DESC">group</ENAMEX> that received
+          no screening, we only used data in controls starting 6
+          <TIMEX TYPE="DATE">years</TIMEX> after randomization. The underlying assumption is
+          that by <TIMEX TYPE="DATE">6 years</TIMEX>, most <ENAMEX TYPE="DISEASE">cancers</ENAMEX> detected on the prevalence
+          screening would have progressed to clinical <ENAMEX TYPE="DISEASE">cancer</ENAMEX> in the
+          absence of intervention. (This may not be true because of
+          the likely possibility of <ENAMEX TYPE="SUBSTANCE">overdiagnosis</ENAMEX> [ <TIMEX TYPE="DATE">10</TIMEX> ] and lead
+          times that may exceed <TIMEX TYPE="DATE">6 years</TIMEX>, but it may serve as a
+          useful approximation if the amount of overdiagnosis is
+          small). Due to the <TIMEX TYPE="DATE">6-year</TIMEX> wash-out period, we start the
+          age range for <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> at <NUMEX TYPE="CARDINAL">51</NUMEX> instead of <NUMEX TYPE="CARDINAL">45</NUMEX>. We chose 6 years
+          for <TIMEX TYPE="DATE">the washout period</TIMEX> as a compromise. We thought a
+          longer washout period would have greatly restricted the
+          age range under study and a shorter <TIMEX TYPE="DATE">washout period</TIMEX> would
+          have had a much more limited effect.
+          We illustrate the calculations for the analysis of the
+          <ENAMEX TYPE="ORGANIZATION">HIP</ENAMEX> data on <ENAMEX TYPE="DISEASE">breast cancer</ENAMEX> screening. The probability of a
+          <ENAMEX TYPE="PER_DESC">women</ENAMEX> surviving competing risk from <TIMEX TYPE="DATE">age 40</TIMEX> to each
+          successive <TIMEX TYPE="DATE">age up to age 64</TIMEX> is <NUMEX TYPE="CARDINAL">1.</NUMEX>, <NUMEX TYPE="CARDINAL">1.</NUMEX>, <NUMEX TYPE="CARDINAL">0.99</NUMEX>, <NUMEX TYPE="CARDINAL">0.99</NUMEX>, <NUMEX TYPE="CARDINAL">0.99</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.99</NUMEX>, <NUMEX TYPE="CARDINAL">0.99</NUMEX>, <NUMEX TYPE="CARDINAL">0.98</NUMEX>, <NUMEX TYPE="CARDINAL">0.98</NUMEX>, <NUMEX TYPE="CARDINAL">0.98</NUMEX>, <NUMEX TYPE="CARDINAL">0.97</NUMEX>, <NUMEX TYPE="CARDINAL">0.97,0.96</NUMEX>, <NUMEX TYPE="CARDINAL">0.96,0.95</NUMEX>,
+          <NUMEX TYPE="CARDINAL">0.95,0.94</NUMEX>, <NUMEX TYPE="CARDINAL">0.93,0.92</NUMEX>, <NUMEX TYPE="CARDINAL">0.92,0.91</NUMEX>, <NUMEX TYPE="CARDINAL">0.9</NUMEX>, <NUMEX TYPE="CARDINAL">0.89</NUMEX>, <NUMEX TYPE="CARDINAL">0.87</NUMEX>. Using
+          these probabilities and data from <ENAMEX TYPE="PRODUCT">Tables 1and 5</ENAMEX>, we
+          computed 
+          q 
+          
+            F 
+           = <NUMEX TYPE="CARDINAL">.00166</NUMEX>, 
+          q 
+          
+            Fs 
+           = <NUMEX TYPE="CARDINAL">.00373</NUMEX>, 
+          Q 
+          
+            I 
+           = <NUMEX TYPE="CARDINAL">.0151</NUMEX>, 
+          Q 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">.0338</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            I 
+           = <NUMEX TYPE="CARDINAL">.334</NUMEX>, and 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">.123</NUMEX>, Substituting into (<NUMEX TYPE="MONEY">11</NUMEX>) gave 
+          
+            upp 
+           = <NUMEX TYPE="CARDINAL">.00676</NUMEX>. To estimate the variance we computed 
+          v 
+          
+            I 
+           = <NUMEX TYPE="CARDINAL">.00497</NUMEX>, 
+          v 
+          
+            <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+           = <NUMEX TYPE="CARDINAL">.00189</NUMEX>, 
+          V 
+          
+          <ENAMEX TYPE="PRODUCT">F 0</ENAMEX> = <NUMEX TYPE="CARDINAL">.00000056</NUMEX>, 
+          V 
+          
+          <ENAMEX TYPE="PRODUCT">F 1</ENAMEX> = <NUMEX TYPE="CARDINAL">.0000023</NUMEX>. Substituting
+          into (<NUMEX TYPE="MONEY">12</NUMEX>) gave 
+          <ENAMEX TYPE="ORGANIZATION">var</ENAMEX> ( 
+          
+            upp 
+           ) = <NUMEX TYPE="CARDINAL">.0000090</NUMEX>.
+        
+      
+      
+        Results
+        
+          <ENAMEX TYPE="WORK_OF_ART">Minnesota Colon Cancer Control Study</ENAMEX> (MCCCS)
+          There is a large overlap in the confidence intervals
+          for the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimated upper bound from screened subjects
+          and <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates from all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Also, the
+          <NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval for the estimated difference
+          includes <NUMEX TYPE="CARDINAL">zero</NUMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), indicating that the upper bound
+          estimate is reasonable. The estimated mortality reduction
+          in the screening program is similar to the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates
+          (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>) because the long-duration of screening (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>
+          <TIMEX TYPE="DATE">annual</TIMEX> or <NUMEX TYPE="CARDINAL">3</NUMEX> biennial screenings followed by <NUMEX TYPE="CARDINAL">3</NUMEX>-5 years
+          <ENAMEX TYPE="PERSON">hiatus</ENAMEX> followed by <NUMEX TYPE="CARDINAL">5</NUMEX> <TIMEX TYPE="DATE">annual</TIMEX> or <NUMEX TYPE="CARDINAL">3</NUMEX> biennial screenings) in
+          the trial approximated the <TIMEX TYPE="DATE">21 years</TIMEX> of periodic
+          screening.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Health Insurance Plan of Greater New York</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">HIP</ENAMEX>)
+          Study
+          As in the previous example, there is a large overlap
+          in the confidence intervals for the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimated upper
+          bound from screened <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates from all
+          <ENAMEX TYPE="PERSON">subjects</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). Also, similar to the previous
+          example, the <NUMEX TYPE="PERCENT">95%</NUMEX> confidence interval for the difference
+          included <NUMEX TYPE="CARDINAL">zero</NUMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>) indicating that the upper bound
+          estimate is reasonable. The <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates were higher
+          than the estimated effect of the screening program in the
+          trial because the former was based on <TIMEX TYPE="DATE">24</TIMEX> annual
+          <ENAMEX TYPE="PERSON">screenings</ENAMEX> and the latter was based on <TIMEX TYPE="DATE">only 4</TIMEX> annual
+          <ENAMEX TYPE="PERSON">screenings</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Mayo Lung Project</ENAMEX> (MLP)
+          Unlike the other examples the confidence intervals for
+          <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates from screened <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates
+          from all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> differed considerably (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). We
+          think 
+          Assumption 1 may not have held due
+          to the short interval between screens and to the fact
+          that the performance of sputum cytology screening depends
+          on sampling of the tumor cells. Although the <NUMEX TYPE="PERCENT">95%</NUMEX>
+          confidence interval for the difference included zero
+          (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>), its large width means that a substantial bias
+          cannot be ruled out. The <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimates were higher than
+          the estimated effect of the screening program in the
+          trial because ( 
+          i ) the former is based on 24 years
+          of screening while the latter is based on only 6 years
+          and ( 
+          <ENAMEX TYPE="ORGANIZATION">ii</ENAMEX> ) the effect in the latter was
+          reduced by a prevalence screening in the controls. <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+          for screened subjects does not use any data from the
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX>. With <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> for all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>, we assumed a
+          <ENAMEX TYPE="GPE">wash</ENAMEX>-out period to try to remove the effect of the
+          prevalence screen.
+          The results indicate that a <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimated upper bound
+          based on subjects screened is not unreasonable when
+          compared to the <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> estimate based on all <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> in the
+          randomized trial. Because of sampling variability it is
+          not surprising that the point estimate of the upper bound
+          can be smaller than the point estimate based on all
+          subjects.
+          We caution that violations of 
+          <ENAMEX TYPE="PRODUCT">Assumption 2</ENAMEX> could have a
+          substantial impact. 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 2</ENAMEX> depends on the
+          cumulative effect of birth cohort from ages 
+          a to 
+          b . According to <ENAMEX TYPE="ORGANIZATION">Moran</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX> ] the
+          relative bias due to violation of 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 2</ENAMEX> is particularly large
+          if the age-specific incidence on the first screen changes
+          little with age and interval and subsequent <ENAMEX TYPE="DISEASE">cancers</ENAMEX> are
+          relatively rare. In that case <ENAMEX TYPE="PERSON">Moran</ENAMEX> advised that other
+          methods be applied. <NUMEX TYPE="CARDINAL">One</NUMEX> way to reduce bias from 
+          <ENAMEX TYPE="CONTACT_INFO">Assumption 2</ENAMEX> is to only estimate
+          the effect of screening for <TIMEX TYPE="DATE">at most 5 years</TIMEX>. That way the
+          cumulative birth cohort effect would be limited to <NUMEX TYPE="CARDINAL">only 5</NUMEX>
+          <TIMEX TYPE="DATE">years</TIMEX>.
+        
+      
+      
+        Conclusion
+        We think the major role of <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> is to rule out screening
+        modalities that have little benefit. This information is
+        useful when making policy decisions about screening, or
+        when considering a large randomized trial to definitively
+        compare benefits and harms of screening strategies. Because
+        <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX> is estimating an upper bound when 
+        <ENAMEX TYPE="CONTACT_INFO">Assumption 1</ENAMEX> is violated, if <ENAMEX TYPE="ORGANIZATION">PSE</ENAMEX>
+        estimates little reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality,
+        the true reduction in population <ENAMEX TYPE="DISEASE">cancer</ENAMEX> mortality due to
+        periodic screening is likely small. If any effects of birth
+        cohort are minimal, further evaluation with a randomized
+        trial would not be warranted.
+      
+      
+        Competing interests
+        None declared.
+      
+      
+        <ENAMEX TYPE="PER_DESC">Authors</ENAMEX>' contributions
+        <ENAMEX TYPE="ORGANIZATION">SGB</ENAMEX> wrote the initial draft. <ENAMEX TYPE="GPE">DE</ENAMEX> created Tables <NUMEX TYPE="CARDINAL">1 2 3 4</NUMEX>
+        5from the data files and provided many helpful suggestions.
+        <ENAMEX TYPE="ORGANIZATION">BSK</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PCP</ENAMEX> substantially improved the manuscript.
+      
+    
+  

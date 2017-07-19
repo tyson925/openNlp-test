@@ -1,0 +1,983 @@
+
+  
+    
+      
+        Background
+        
+        Plasmodium falciparum , a parasitic
+        protozoan, is the causative <ENAMEX TYPE="PER_DESC">agent</ENAMEX> of the most lethal form
+        of human <ENAMEX TYPE="DISEASE">malaria</ENAMEX>. It is responsible for <NUMEX TYPE="CARDINAL">300</NUMEX>-<NUMEX TYPE="CARDINAL">500 million</NUMEX>
+        infections per year in <NUMEX TYPE="CARDINAL">some 90</NUMEX> <ENAMEX TYPE="GPE_DESC">countries</ENAMEX> and regions
+        throughout the tropical and subtropical world. Of these
+        clinical cases, <NUMEX TYPE="CARDINAL">approximately 2.1 million</NUMEX> result in death
+        annually [ <ENAMEX TYPE="LAW">1</ENAMEX>]. In areas where mosquito abatement has
+        failed, chemotherapy, consisting of a limited selection of
+        <ENAMEX TYPE="ORGANIZATION">antimalarial</ENAMEX> <ENAMEX TYPE="PER_DESC">agents</ENAMEX>, is the only defense against this
+        <ENAMEX TYPE="DISEASE">disease</ENAMEX>. The increase in drug <ENAMEX TYPE="ORG_DESC">resistance</ENAMEX> throughout the
+        <ENAMEX TYPE="DISEASE">malaria endemic</ENAMEX> regions is cause for great concern and
+        calls for the development of new antimalarial measures,
+        which would involve a larger variety of drug <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> as
+        well as a wider array of <ENAMEX TYPE="SUBSTANCE">vaccine</ENAMEX> strategies (reviewed in [
+        <ENAMEX TYPE="LAW">2, 3</ENAMEX>]).
+        The study of <ENAMEX TYPE="DISEASE">malaria</ENAMEX> will be greatly helped by the
+        publicly available complete genome sequence of 
+        P. falciparum . The sequencing
+        project, driven by the <ENAMEX TYPE="PERSON">Sanger Centre</ENAMEX>, the <ENAMEX TYPE="ORGANIZATION">Institute for</ENAMEX>
+        <ENAMEX TYPE="ORGANIZATION">Genomic Research</ENAMEX> (TIGR), and <ENAMEX TYPE="ORGANIZATION">Stanford University</ENAMEX> is
+        essentially complete [ <ENAMEX TYPE="LAW">4</ENAMEX>]. The sequence of the completed
+        chromosomes are available for download from each sequencing
+        <ENAMEX TYPE="ORGANIZATION">center</ENAMEX> and from the 
+        <ENAMEX TYPE="ORGANIZATION">Plasmodium Genome Resource</ENAMEX>, PlasmoDB
+        [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>]. Preliminary analysis of the <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="PER_DESC">megabase-pair</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Mbp</ENAMEX>)
+        
+        P. falciparum genome indicates the
+        presence of <NUMEX TYPE="CARDINAL">approximately 5,400</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> spread across <NUMEX TYPE="CARDINAL">14</NUMEX>
+        <ENAMEX TYPE="PERSON">chromosomes</ENAMEX>, a circular plastid genome and a mitochondrial
+        <ENAMEX TYPE="ORGANIZATION">genome</ENAMEX>. <ENAMEX TYPE="PERSON">Strikingly</ENAMEX>, <NUMEX TYPE="PERCENT">more than 60%</NUMEX> of the predicted open
+        reading frames (ORFs) lack orthologs in other genomes [ <ENAMEX TYPE="LAW">4</ENAMEX>].
+        This fact underscores the need to elucidate gene function,
+        yet many of the tools that have propelled the study of
+        model organisms remain inefficient or nonexistent in 
+        <ENAMEX TYPE="ORGANIZATION">Plasmodium</ENAMEX> . Despite recent
+        improvements in 
+        P. falciparum transformation
+        techniques, [ <ENAMEX TYPE="LAW">7</ENAMEX>] the efficiency of stable transfection
+        under a direct <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> selection remains <NUMEX TYPE="PERCENT">approximately 10 -6</NUMEX>,
+        making knockout and <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> replacement experiments difficult,
+        and genetic complementation strategies nearly impossible.
+        Genome-wide expression profiling by microarray technology
+        provides an easy alternative for the functional genomic
+        exploration of 
+        P. falciparum. 
+        In <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> ranging from <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> to <ENAMEX TYPE="PER_DESC">humans</ENAMEX>, expression
+        <ENAMEX TYPE="ORGANIZATION">profiling</ENAMEX> has proved a powerful tool. <ENAMEX TYPE="ORGANIZATION">Profiling</ENAMEX> has been
+        used to gain important insights into processes such as
+        <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>, responses to environmental perturbations, gene
+        <ENAMEX TYPE="PERSON">mutation</ENAMEX>, pathogen and <ENAMEX TYPE="PER_DESC">host</ENAMEX> response, and <ENAMEX TYPE="DISEASE">cancer</ENAMEX> [ <ENAMEX TYPE="CONTACT_INFO">8, 9,</ENAMEX>
+        <TIMEX TYPE="DATE">10, 11, 12, 13, 14</TIMEX>]. Expression profiling has already been
+        successfully applied to the partial genome sequence of 
+        P. falciparum , and has been used to
+        characterize the role of previously unannotated <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> [ <TIMEX TYPE="DATE">15</TIMEX>,
+        <TIMEX TYPE="DATE">16, 17</TIMEX>].
+        Here we present the design and assembly of a
+        long-oligonucleotide 
+        P. falciparum gene-specific
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> using the currently available genomic sequence
+        generated by the <ENAMEX TYPE="ORGANIZATION">Malaria Genome Consortium</ENAMEX> [ <TIMEX TYPE="DATE">18, 19, 20</TIMEX>].
+        During the course of this work, we have developed software,
+        improved by experimental data and an open-source policy,
+        for rapidly selecting unique sequences from predicted ORFs
+        of any genome. Subsequently, we constructed a
+        long<ENAMEX TYPE="GPE">-oligonucleotide</ENAMEX>-based 
+        P. falciparum microarray, which we
+        used to evaluate changes in the global expression profile
+        between <NUMEX TYPE="CARDINAL">two</NUMEX> distinct stages of 
+        P. falciparum erythrocytic-stage
+        asexual development - <TIMEX TYPE="DATE">mid-trophozoite</TIMEX> and <TIMEX TYPE="DATE">mid-schizont</TIMEX>. The
+        large number of differentially expressed genes detected in
+        this analysis suggests that extensive transcriptional
+        regulation has a major role in the functional
+        specialization of parasite development.
+      
+      
+        Results and discussion
+        
+          P. falciparumORF predictions
+          At the outset of these studies, a total of <NUMEX TYPE="CARDINAL">27.6</NUMEX> <ENAMEX TYPE="PERSON">Mbp</ENAMEX> of
+          
+          P. falciparum genomic sequence was
+          obtained from the publicly available <ENAMEX TYPE="PER_DESC">sources</ENAMEX> presented by
+          the <ENAMEX TYPE="ORGANIZATION">Malaria Genome Consortium</ENAMEX> [ <TIMEX TYPE="DATE">18, 19, 20</TIMEX>] in <TIMEX TYPE="DATE">October</TIMEX>
+          <TIMEX TYPE="DATE">2000</TIMEX>. The sequence comprised <NUMEX TYPE="CARDINAL">two</NUMEX> completely assembled
+          <ENAMEX TYPE="PERSON">chromosomes</ENAMEX>, the complete mitochondrial and plastid
+          genomes, and the sum of all the partial contigs from the
+          remaining chromosomes. ORF predictions were carried out
+          using <ENAMEX TYPE="ORGANIZATION">GlimmerM</ENAMEX>, a gene-finding tool trained with 
+          P. falciparum specific sequences [
+          <TIMEX TYPE="DATE">21, 22</TIMEX>]. Using default parameters, <ENAMEX TYPE="GPE">GlimmerM</ENAMEX> frequently
+          yielded a large number of overlapping predictions
+          (competing gene <ENAMEX TYPE="PER_DESC">models</ENAMEX>) and thus additional filtering of
+          the initial prediction output was required. As slight
+          overprediction of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> is generally desirable for the
+          purpose of expression array <ENAMEX TYPE="FAC_DESC">building</ENAMEX>, the post-prediction
+          filtering of the <ENAMEX TYPE="GPE">GlimmerM</ENAMEX> output was modified with
+          respect to the process used by the <ENAMEX TYPE="PERSON">Malaria Genome</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Consortium</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]. Briefly, individual predictions that
+          <ENAMEX TYPE="ORGANIZATION">overlapped</ENAMEX> and were on opposite strands or in different
+          reading frames were retained. For competing predictions
+          within <TIMEX TYPE="DATE">a given</TIMEX> GlimmerM gene model, <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> that were
+          extended downstream by <NUMEX TYPE="QUANTITY">at least 300 bp</NUMEX> and were within
+          <TIMEX TYPE="TIME">300 bp</TIMEX> of the total size compared to the size of the
+          largest prediction were chosen. In all other cases, the
+          largest predicted <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> was selected. This selection method
+          resulted in <NUMEX TYPE="CARDINAL">290</NUMEX> ORF predictions for chromosome <NUMEX TYPE="CARDINAL">2</NUMEX>, whereas
+          the <ENAMEX TYPE="ORGANIZATION">Malaria Genome Consortium</ENAMEX> selected <NUMEX TYPE="CARDINAL">210</NUMEX> for the same
+          chromosome [ <TIMEX TYPE="DATE">21</TIMEX>].
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> round of predictions, carried out on the
+          publicly available genomic sequence as of <TIMEX TYPE="DATE">August 2000</TIMEX>,
+          yielded <NUMEX TYPE="QUANTITY">8,008 putative</NUMEX> ORFs. The predicted <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> are
+          available as additional data with the online version of
+          this paper (see Additional data files) and from [ <TIMEX TYPE="DATE">23</TIMEX>]. As
+          a <NUMEX TYPE="ORDINAL">first</NUMEX> step to annotation, the translation of all
+          predicted <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> were used to search the <ENAMEX TYPE="ORGANIZATION">Astral, SwissProt</ENAMEX>,
+          and non-redundant (NR) databases for sequence
+          similarities using the <ENAMEX TYPE="ORGANIZATION">Smith-Waterman</ENAMEX> <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> [ <TIMEX TYPE="DATE">24</TIMEX>]. In
+          addition, all ORF predictions were linked to their
+          <ENAMEX TYPE="PER_DESC">counterparts</ENAMEX> in <ENAMEX TYPE="GPE">PlasmoDB</ENAMEX> [ <ENAMEX TYPE="LAW">5, 6</ENAMEX>].
+        
+        
+          ArrayOligoSelector: array element design
+          To construct a gene-specific microarray of the 
+          P. falciparum genome, we designed
+          <NUMEX TYPE="CARDINAL">70</NUMEX> mer oligonucleotide array elements. We chose this
+          length for a number of reasons. Long oligonucleotides are
+          a highly sensitive alternative to <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products and
+          provide a means to readily distinguish between genes with
+          high degrees of sequence similarity [ <TIMEX TYPE="DATE">25</TIMEX>]. In addition,
+          the presence of various types of repetitive sequences and
+          highly homologous gene <ENAMEX TYPE="PER_DESC">families</ENAMEX> in the AT-rich 
+          P. falciparum genome contributes to
+          a high rate of <ENAMEX TYPE="DISEASE">PCR failure</ENAMEX> ([ <TIMEX TYPE="DATE">17</TIMEX>] and <ENAMEX TYPE="PERSON">J.L.D.</ENAMEX>, unpublished
+          results). A software program, <ENAMEX TYPE="GPE">ArrayOligoSelector</ENAMEX>, was
+          developed specifically for the purpose of systematically
+          selecting gene-specific long oligonucleotide probes for
+          entire genomes. The latest version and complete source
+          code for <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> is freely available at [ <TIMEX TYPE="DATE">26</TIMEX>].
+          For each <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>, the program optimizes the oligonucleotide
+          selection on the basis of several parameters, including
+          <ENAMEX TYPE="ORGANIZATION">uniqueness</ENAMEX> in the genome, sequence complexity, lack of
+          self-binding, and <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). Similar
+          approaches to oligonucleotide design have previously been
+          described, but the exact algorithms, <ENAMEX TYPE="PER_DESC">source</ENAMEX> code, and/or
+          accompanying hybridization data are not available [ <TIMEX TYPE="DATE">25</TIMEX>,
+          <TIMEX TYPE="DATE">27, 28</TIMEX>].
+          ArrayOligoSelector helps ensure complete genome
+          coverage and optimal array hybridization while avoiding
+          several potential problems originating from the peculiar
+          characteristics of the 
+          P. falciparum genome. The algorithm
+          attempts to minimize cross-hybridization between the
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> and other regions of the genome. To
+          evaluate the potential for cross-hybridization, early
+          versions of <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> used a simple BLASTN
+          <ENAMEX TYPE="NATIONALITY">alignment</ENAMEX> identity [ <TIMEX TYPE="DATE">29</TIMEX>]. Although this method prevents
+          the selection of troublesome sequences, it does not take
+          into account the effect of mismatch distribution or base
+          composition. Subsequent versions of ArrayOligoSelector
+          were improved by calculating a theoretical energy of
+          binding between the oligonucleotide and its most probable
+          <ENAMEX TYPE="ORGANIZATION">cross</ENAMEX>-hybridization target in the genome ('second best
+          target'). The binding energy (<ENAMEX TYPE="CONTACT_INFO">kcal/mol</ENAMEX>) is calculated
+          using a nearest-neighbor <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> using established
+          thermodynamic parameters [ <TIMEX TYPE="DATE">30, 31, 32, 33, 34, 35</TIMEX>]. Thus,
+          a sequence with high cross-hybridization potential will
+          have a more stable binding energy with a larger absolute
+          value. In contrast, a sequence unique in the genome will
+          yield a smaller absolute value for the binding energy. A
+          representative plot of the calculated binding energies
+          for all possible <NUMEX TYPE="QUANTITY">70 bp oligonucleotides</NUMEX> from a putative 
+          var <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PlasmoDB</ENAMEX> <ENAMEX TYPE="PRODUCT">v4.0</ENAMEX> annotated
+          <ENAMEX TYPE="CONTACT_INFO">gene ID PF08</ENAMEX>_<TIMEX TYPE="DATE">0140</TIMEX>) is shown in Figure <TIMEX TYPE="DATE">2a</TIMEX>.
+          An important aspect of oligonucleotide design for
+          microarray hybridization is avoiding secondary structures
+          within the oligonucleotide, as these are likely to be
+          detrimental to hybridization performance. To avoid
+          selecting oligonucleotides with secondary complex
+          structure, <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> uses the <ENAMEX TYPE="PERSON">Smith</ENAMEX>-Waterman
+          algorithm with the <ENAMEX TYPE="SUBSTANCE">PAM47 DNA matrix</ENAMEX> to calculate the
+          optimal alignment score between the candidate
+          oligonucleotide sequence and the reverse complement of
+          that sequence [ <TIMEX TYPE="DATE">24</TIMEX>]. A high <ENAMEX TYPE="PERSON">Smith</ENAMEX>-Waterman score
+          indicates the potential to create secondary structures
+          (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>).
+          The presence of low-complexity sequence could also
+          result in significant nonspecific cross-hybridization.
+          For example, the 
+          P. falciparum genome contains a
+          large number of low-complexity sequence elements as a
+          result of a high frequency of continuous stretches of A
+          and <ENAMEX TYPE="PRODUCT">T</ENAMEX> nucleotides in both the non-coding and the coding
+          regions. <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> automatically detects such
+          sequences by subjecting <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> oligonucleotide
+          <ENAMEX TYPE="ORGANIZATION">sequences</ENAMEX> to a lossless compression [ <TIMEX TYPE="DATE">36</TIMEX>]. The
+          compression score, calculated as the difference in bytes
+          between the original sequence and the compressed version,
+          is inversely proportional to complexity (Figure <NUMEX TYPE="CARDINAL">2c</NUMEX>).
+          Using this score, repeats of essentially any nature are
+          detected in a computationally efficient manner.
+          In addition, in order to avoid specific sequence
+          features, <ENAMEX TYPE="PERSON">ArrayOligoSelector</ENAMEX> supports filtering based on
+          user-defined patterns. This feature can be used to
+          implement filtering rules based on <ENAMEX TYPE="SUBSTANCE">empirically</ENAMEX> derived
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>. Finally, the melting temperature of an
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> is largely determined by its <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content.
+          As is the case with most ORFs, there exists a large range
+          of <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> values (<NUMEX TYPE="MONEY">< 10</NUMEX> to > <NUMEX TYPE="PERCENT">60%</NUMEX>) over a <NUMEX TYPE="CARDINAL">70</NUMEX> bp window
+          (Figure <NUMEX TYPE="CARDINAL">2d</NUMEX>). For this reason, a user-defined <NUMEX TYPE="PERCENT">%</NUMEX>GC target
+          range is used by <ENAMEX TYPE="PERSON">ArrayOligoSelector</ENAMEX> such that the
+          majority of the array elements will share a similar base
+          <ENAMEX TYPE="PERSON">composition</ENAMEX> and hybridization <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> across the
+          array.
+          Given the above parameters, ArrayOligoSelector
+          evaluates every <NUMEX TYPE="CARDINAL">70</NUMEX> mer sequence within an <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> and chooses
+          an optimal set on the following criteria. The
+          uniqueness-filter requires oligonucleotides to satisfy
+          <TIMEX TYPE="DATE">two</TIMEX> simultaneous threshold criteria based on the
+          calculation of the binding energy to their <NUMEX TYPE="ORDINAL">second</NUMEX>-best
+          target (the best <ENAMEX TYPE="ORG_DESC">target</ENAMEX> is itself). First, the
+          oligonucleotide must rank among the top <NUMEX TYPE="PERCENT">5%</NUMEX> of the unique
+          or almost unique <NUMEX TYPE="CARDINAL">70</NUMEX> mers in the entire <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>. <NUMEX TYPE="ORDINAL">Second</NUMEX>, its
+          binding energy must be within <TIMEX TYPE="TIME">5 kcal</TIMEX>/mol of the best
+          <ENAMEX TYPE="PER_DESC">candidate</ENAMEX> for the <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>. In addition, an optional
+          user-defined energy threshold can operate in conjunction
+          with the default threshold. Initial settings for the
+          low-complexity and the self-binding terms allow the
+          top-scoring <NUMEX TYPE="PERCENT">33%</NUMEX> of <NUMEX TYPE="CARDINAL">70</NUMEX> mers to pass to the next selection
+          step. Finally, an optional 'user-defined sequence filter'
+          simply eliminates the <NUMEX TYPE="CARDINAL">70</NUMEX> mer <ENAMEX TYPE="ORG_DESC">candidates</ENAMEX> containing the
+          defined sequences. These <NUMEX TYPE="CARDINAL">four</NUMEX> filters operate on the
+          entire set of <NUMEX TYPE="CARDINAL">70</NUMEX> mer <ENAMEX TYPE="PER_DESC">candidates</ENAMEX> for a particular <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> and
+          generate <NUMEX TYPE="CARDINAL">four</NUMEX> independent output sets. The intersection
+          of the <NUMEX TYPE="CARDINAL">four</NUMEX> outputs is then subjected to the final
+          selection. If no common oligonucleotide is identified in
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> intersection, the self-binding and complexity
+          filters are incrementally relaxed until an intersection
+          becomes available. The final selection of candidate
+          oligonucleotides depends upon <NUMEX TYPE="PERCENT">the %</NUMEX><ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> filter and <ENAMEX TYPE="PRODUCT">3</ENAMEX>'-end
+          proximity ranking. Initially, oligonucleotides are
+          allowed to pass if they meet the <ENAMEX TYPE="PER_DESC">user</ENAMEX>-specified <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">GC</ENAMEX>. If
+          no oligonucleotide with the desired <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content is found,
+          the target <NUMEX TYPE="PERCENT">%</NUMEX><ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> range is relaxed by <NUMEX TYPE="CARDINAL">one</NUMEX> percentage point
+          in each direction until one or more oligonucleotides
+          pass. As a final step, a single <ENAMEX TYPE="PER_DESC">candidate</ENAMEX>, closest to the
+          <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of the gene is chosen. Finally, ArrayOligoSelector
+          generates an output file containing the oligonucleotide
+          selections for each putative <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX>.
+          From our initial set of predictions, a total of <NUMEX TYPE="CARDINAL">6,272</NUMEX>
+          <NUMEX TYPE="CARDINAL">70</NUMEX> mer oligonucleotides were selected and synthesized.
+          For <TIMEX TYPE="TIME">our first</TIMEX> pass of <ENAMEX TYPE="DISEASE">malaria</ENAMEX> oligonucleotide selections,
+          the earlier version of <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> utilizing the
+          <ENAMEX TYPE="GPE">BLASTN</ENAMEX>-based identity threshold was used. The identity
+          <ENAMEX TYPE="PERSON">cutoff</ENAMEX> was adjusted to a very conservative value of <
+          <TIMEX TYPE="TIME">30 bp</TIMEX> of identity. The initial setting of the <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content
+          <ENAMEX TYPE="ORGANIZATION">filter</ENAMEX> was set to <NUMEX TYPE="PERCENT">28%</NUMEX> <ENAMEX TYPE="ORGANIZATION">GC</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">73°C T</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> . Subsequently, with the release of
+          additional sequence information, a new set of predictions
+          was generated in <TIMEX TYPE="DATE">April 2002</TIMEX> and <NUMEX TYPE="CARDINAL">an additional 1,025</NUMEX>
+          oligonucleotides were selected using the upgraded version
+          of <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX>. In this selection, the
+          user-defined uniqueness threshold was set at <ENAMEX TYPE="CONTACT_INFO">-35</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">kcal/mol</ENAMEX>, the value at which cross-hybridization is
+          essentially eliminated (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). The <ENAMEX TYPE="SUBSTANCE">GC</ENAMEX> content target
+          was set at <NUMEX TYPE="PERCENT">28%</NUMEX>. The sequence and location of each
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> is available online [ <TIMEX TYPE="DATE">23</TIMEX>]. The
+          experiments described in the following section were
+          conducted with the <NUMEX TYPE="ORDINAL">first</NUMEX> set of predictions only. As
+          additional annotations become available for the whole
+          genome sequence, additional oligonucleotides will be
+          selected and added to the existing collection. We expect
+          the final set to contain <NUMEX TYPE="CARDINAL">approximately 8,500</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX>.
+        
+        
+          Oligonucleotide performance
+          <ENAMEX TYPE="ORGANIZATION">Hughes</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">25</TIMEX>] showed that <NUMEX TYPE="CARDINAL">60</NUMEX> mer
+          oligonucleotides make highly sensitive specific
+          microarray <ENAMEX TYPE="PER_DESC">elements</ENAMEX> for expression profiling of 
+          Saccharomyces cerevisiae [ <TIMEX TYPE="DATE">25</TIMEX>]. The
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> used in that study were synthesized 
+          in situ using ink-jet technology
+          whereas the oligonucleotides used in our study were
+          commercially synthesized and subsequently printed using
+          mechanical deposition. Similarly to the experiments of
+          <ENAMEX TYPE="ORGANIZATION">Hughes</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">et al.</ENAMEX> , we wished to test
+          experimentally the effect of mismatches on sensitivity
+          and specificity of <NUMEX TYPE="CARDINAL">70</NUMEX> mer oligonucleotides in the context
+          of a complex hybridization mixture ( 
+          P. falciparum total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>). <TIMEX TYPE="TIME">Ten</TIMEX>
+          separate <ENAMEX TYPE="DISEASE">malaria</ENAMEX> ORF predictions were arbitrarily
+          selected for analysis and for each of these ORFs a set of
+          <NUMEX TYPE="CARDINAL">ten</NUMEX> oligonucleotides were synthesized. The first
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> in each set represents the original <NUMEX TYPE="CARDINAL">70</NUMEX>
+          <ENAMEX TYPE="SUBSTANCE">mer</ENAMEX> selection from <ENAMEX TYPE="GPE">ArrayOligoSelector</ENAMEX>. Each successive
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotide</ENAMEX> within a set contains an increasing
+          number of mutations made in increments of <NUMEX TYPE="PERCENT">10%</NUMEX>. Thus, the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> oligonucleotide in each set had <NUMEX TYPE="CARDINAL">seven</NUMEX> bases (<NUMEX TYPE="PERCENT">10%</NUMEX>)
+          altered, while the last oligonucleotide had <NUMEX TYPE="CARDINAL">63</NUMEX> bases
+          (<NUMEX TYPE="PERCENT">90%</NUMEX>) mutated. For the <NUMEX TYPE="ORDINAL">first</NUMEX> set of <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> (Figure
+          4a,4b<NUMEX TYPE="CARDINAL">,4</NUMEX>c<NUMEX TYPE="CARDINAL">,4</NUMEX>d<NUMEX TYPE="CARDINAL">,4</NUMEX>e), which is referred to as the 'distributed
+          set', both the position and the identity of each mutation
+          was random. For the <NUMEX TYPE="ORDINAL">second</NUMEX> set of <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> (Figure
+          4g<NUMEX TYPE="QUANTITY">,4h,4i,4j,4</NUMEX>k), referred to as the 'anchored <ENAMEX TYPE="PER_DESC">set</ENAMEX>', the
+          mutations in each oligonucleotide were limited to the
+          ends of the sequence. In this manner, a contiguous
+          stretch of perfectly matched <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> was always preserved
+          in the center of each oligonucleotide.
+          Figure <NUMEX TYPE="CARDINAL">4summarizes</NUMEX> normalized hybridization
+          intensities of control oligonucleotides obtained from the
+          global gene-expression comparisons between trophozoite
+          and schizont stages. The results originate from the <NUMEX TYPE="CARDINAL">six</NUMEX>
+          microarray hybridizations presented in Figure 5and 10
+          additional hybridizations available as additional data
+          files [ <TIMEX TYPE="DATE">23</TIMEX>]. The resulting hybridization intensity
+          measurements for each oligonucleotide were averaged
+          across all hybridizations and scaled as a fraction of the
+          average intensity of the perfect-match oligonucleotide
+          for each set. As is evident from Figure <NUMEX TYPE="QUANTITY">4a,4b,4c,4d,4e</NUMEX>,
+          the presence of internal mismatches (bubbles and bulges)
+          had a large effect on hybridization performance:
+          oligonucleotides with <NUMEX TYPE="PERCENT">10%</NUMEX> mismatches (<NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>) suffered
+          an average reduction of <NUMEX TYPE="PERCENT">64%</NUMEX> in hybridization intensity
+          when compared to the perfect match, while
+          oligonucleotides with <NUMEX TYPE="PERCENT">20%</NUMEX> (<NUMEX TYPE="CARDINAL">14</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX>) or more mismatches
+          were reduced by an average of <NUMEX TYPE="PERCENT">97%</NUMEX> (Figure <NUMEX TYPE="CARDINAL">4f</NUMEX>). For the
+          <ENAMEX TYPE="PERSON">anchored</ENAMEX> set (Figure <NUMEX TYPE="QUANTITY">4 4g,4h,4i,4j,4</NUMEX>k), a more gradual
+          hybridization trend was observed. Mutating the terminal
+          <NUMEX TYPE="CARDINAL">14</NUMEX> bases (<NUMEX TYPE="CARDINAL">7</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> at <TIMEX TYPE="DATE">each end</TIMEX>) resulted in an average
+          loss of <NUMEX TYPE="PERCENT">49%</NUMEX> of the maximal hybridization intensity. Not
+          until <TIMEX TYPE="DATE">42</TIMEX> bases had been mutated (<NUMEX TYPE="CARDINAL">21</NUMEX> <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> at <TIMEX TYPE="DATE">each end</TIMEX>)
+          did the relative intensity of hybridization drop by an
+          average of <NUMEX TYPE="PERCENT">97.5%</NUMEX> (Figure <NUMEX TYPE="CARDINAL">4l</NUMEX>). In agreement with the
+          findings of <ENAMEX TYPE="ORGANIZATION">Hughes</ENAMEX> 
+          et al. [ <TIMEX TYPE="DATE">25</TIMEX>], the data from the
+          <ENAMEX TYPE="PERSON">anchored</ENAMEX> set of <ENAMEX TYPE="PER_DESC">oligonucleotides</ENAMEX> reveal a strong
+          relationship between the length of contiguous match (the
+          equivalent of oligonucleotide length) and overall
+          hybridization performance.
+          To measure the extent to which the energy calculation
+          implemented in <ENAMEX TYPE="GPE">ArrayOligoSelector</ENAMEX> matches reality, we
+          have plotted in Figure <NUMEX TYPE="CARDINAL">3the</NUMEX> calculated energy of the <NUMEX TYPE="CARDINAL">100</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> oligos shown in Figure <NUMEX TYPE="CARDINAL">4and</NUMEX> their relative
+          intensities of hybridization. The calculated energy and
+          relative intensity of hybridization correlate at | 
+          r | = <NUMEX TYPE="CARDINAL">0.91</NUMEX>. For comparison, the
+          relative intensity of hybridization and number of
+          nucleotide identities correlate at | 
+          r | = <NUMEX TYPE="CARDINAL">0.72</NUMEX>. This indicates that a
+          calculated binding energy approach may be used to
+          estimate the potential for cross-hybridization for any
+          sequence relative to the rest of the genome. The
+          specificity for each oligonucleotide is uniquely and
+          <ENAMEX TYPE="ORGANIZATION">computationally</ENAMEX> determined and expressed as a binding
+          energy (<ENAMEX TYPE="CONTACT_INFO">kcal/mol</ENAMEX>).
+          To further address the question of specificity of
+          oligonucleotide hybridization to their <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> in a
+          complex sample we introduced a set of probes targeting a
+          set of <NUMEX TYPE="CARDINAL">19</NUMEX> non-repetitive sequences from 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae to the microarray. To
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> for the nucleotide bias of the <ENAMEX TYPE="DISEASE">malaria</ENAMEX> genome
+          relative to <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX>, the selection criteria for this set
+          were identical to selection of the plasmodial microarray
+          <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. The average GC content of the 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae oligonucleotides was
+          <NUMEX TYPE="PERCENT">31.5%</NUMEX>, whereas the average GC content of plasmodial
+          <ENAMEX TYPE="ORGANIZATION">oligonucleotides</ENAMEX> is <NUMEX TYPE="PERCENT">32.5%</NUMEX>. The average
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>-to-background ratios across all hybridizations for
+          these negative control spots was less than twofold, which
+          is well below the conservative fivefold
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX>-to-background threshold used to filter data (see
+          Materials and methods). In addition, a series of <NUMEX TYPE="CARDINAL">10</NUMEX>
+          hybridizations was carried out where total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from an
+          asynchronous parasite culture was hybridized against <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX>
+          products corresponding to the negative control 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae sequences. In these
+          hybridizations the yeast PCR fragment <ENAMEX TYPE="ORG_DESC">hybridized</ENAMEX> strictly
+          to its cognate sequence, while the average signal to
+          background value for plasmodial <ENAMEX TYPE="PER_DESC">elements</ENAMEX> in the same
+          <ENAMEX TYPE="ORGANIZATION">channel</ENAMEX> was <NUMEX TYPE="MONEY">1.17 ± 0.05</NUMEX>. In no individual case did a
+          plasmodial element yield a signal greater than <NUMEX TYPE="PERCENT">2.3%</NUMEX> of
+          the <ENAMEX TYPE="ORG_DESC">target</ENAMEX> hydridization signal intensity. The results of
+          these microarray hybridizations are available as
+          additional data files [ <TIMEX TYPE="DATE">23</TIMEX>].
+          To assess whether separate oligonucleotides designed
+          to represent the same target gene perform in a similar
+          manner, we examined <NUMEX TYPE="CARDINAL">three</NUMEX> distinct situations: elements
+          dispersed over a long single exon <ENAMEX TYPE="ORGANIZATION">ORF</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6a</NUMEX>),
+          overlapping oligonucleotides (Figure <NUMEX TYPE="CARDINAL">6b</NUMEX>), and
+          <ENAMEX TYPE="PER_DESC">oligonucleotides</ENAMEX> representing multiple exons of a single
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">6c</NUMEX>). In each case we observed consistent
+          oligonucleotide performance.
+        
+        
+          <ENAMEX TYPE="PERSON">Gene</ENAMEX>-expression profiling of trophozoites and
+          schizonts
+          We chose a direct comparison of the trophozoite and
+          schizont stages of the 
+          P. falciparum asexual
+          intraerythrocytic life cycle as a <NUMEX TYPE="ORDINAL">first</NUMEX> step toward
+          comprehensively profiling all life-cycle stages of this
+          <ENAMEX TYPE="ORGANIZATION">parasite</ENAMEX>. The trophozoite and schizont represent two
+          distinct developmental stages within <TIMEX TYPE="TIME">the 48-hour</TIMEX>
+          plasmodial erythrocytic life cycle. These stages vary
+          greatly in morphology, biochemical properties, and
+          transcriptional activity (reviewed in [ <TIMEX TYPE="DATE">15, 37</TIMEX>]). The
+          <ENAMEX TYPE="ORGANIZATION">mid</ENAMEX>-trophozoite stage, <TIMEX TYPE="TIME">18-24 hours</TIMEX> post-invasion,
+          contains a highly transcriptionally active nucleus with
+          abundant euchromatin. In addition, trophozoites are
+          characterized by massive hemoglobin ingestion, intake of
+          nutrients from the surrounding medium, increasing
+          concentration of cytoplasmic ribosomes and rapid
+          formation of organelles. In contrast, <TIMEX TYPE="DATE">the mid-schizonts</TIMEX>,
+          at <TIMEX TYPE="TIME">36-42 hours</TIMEX> post-invasion, are characterized by DNA
+          <ENAMEX TYPE="PERSON">replication</ENAMEX> (<NUMEX TYPE="CARDINAL">16-32</NUMEX> copies) and compaction into newly
+          formed nuclei. In addition, maturation of merozoite cells
+          begins at the schizont stage and is characterized by the
+          appearance of merozoite organelles such as the rhoptry
+          and dense granules. The several trophozoite- and
+          schizont-specific genes identified previously provide an
+          excellent source of positive controls for the experiments
+          described below.
+          For microarray hybridization, total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was prepared
+          from synchronized 
+          in vitro P. falciparum cultures
+          representing the trophozoite stage and the schizont stage
+          (see <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods). <NUMEX TYPE="CARDINAL">Six</NUMEX> independent
+          hybridizations were carried out; in <NUMEX TYPE="CARDINAL">three</NUMEX>, the
+          trophozoite-derived cDNA was labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and the
+          schizont-derived cDNA with <TIMEX TYPE="DATE">Cy5</TIMEX>. In the other three
+          hybridizations, the fluorophore assignment was reversed.
+          Of the genes assayed, <NUMEX TYPE="CARDINAL">854</NUMEX> features displayed a
+          differential expression greater than twofold (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>):
+          <TIMEX TYPE="DATE">525</TIMEX> showed higher relative transcript abundance in
+          trophozoites than in schizonts, whereas <NUMEX TYPE="CARDINAL">326</NUMEX> had greater
+          relative transcript abundance in schizonts. <ENAMEX TYPE="ORGANIZATION">Linear</ENAMEX>
+          regression ratios were calculated for each possible pair
+          of microarray hybridizations using the filtered dataset.
+          The correlation between hybridizations with the same
+          <ENAMEX TYPE="CONTACT_INFO">Cy3/Cy5</ENAMEX> assignment was 
+          r = <NUMEX TYPE="MONEY">0.94 ± 0.02</NUMEX>, while correlation
+          of hybridizations with the opposite <ENAMEX TYPE="CONTACT_INFO">Cy3/Cy5</ENAMEX> order was 
+          r = <NUMEX TYPE="CARDINAL">0.89</NUMEX> ± <NUMEX TYPE="CARDINAL">0.03</NUMEX>.
+        
+        
+          Northern blot hybridizations
+          To confirm the microarray results, we examined <NUMEX TYPE="CARDINAL">six</NUMEX>
+          genes by northern blot analysis. In the microarray
+          hybridization, the expression levels of <NUMEX TYPE="CARDINAL">two</NUMEX> of the
+          selected genes were unchanged (<NUMEX TYPE="MONEY">< 2</NUMEX>-fold) while <NUMEX TYPE="CARDINAL">four</NUMEX>
+          additional genes showed a differential expression between
+          the trophozoite and schizont stage (<NUMEX TYPE="MONEY">> 2</NUMEX>-fold). An
+          equal mass of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> from both the trophozoite and
+          schizont <ENAMEX TYPE="FAC_DESC">stages</ENAMEX> was hybridized with PCR-generated DNA
+          probes corresponding to the selected genes. Subsequently,
+          each northern blot was stripped and rehybridized with a
+          probe specific for the <NUMEX TYPE="CARDINAL">41</NUMEX> kD <ENAMEX TYPE="SUBSTANCE">antigen</ENAMEX> (<NUMEX TYPE="MONEY">p41</NUMEX>),
+          fructose-bisphosphate aldolase (<ENAMEX TYPE="ORGANIZATION">PfALDO; PlasmoDB</ENAMEX> <ENAMEX TYPE="PRODUCT">v4.0 ID</ENAMEX>
+          PF14_<TIMEX TYPE="DATE">0425</TIMEX>; <ENAMEX TYPE="PRODUCT">Oligo ID M11919</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) [ <TIMEX TYPE="DATE">38</TIMEX>], as a loading
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX>. While the relative amount of <ENAMEX TYPE="ORGANIZATION">PfALDO</ENAMEX> transcript
+          differs by more than twofold between trophozoite and
+          schizont <ENAMEX TYPE="FAC_DESC">stages</ENAMEX> when equal masses of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> are
+          blotted, we found that the relative amount of <ENAMEX TYPE="ORGANIZATION">PfALDO</ENAMEX> to
+          be essentially equivalent when equal masses of poly(A)
+          <ENAMEX TYPE="SUBSTANCE">+RNA</ENAMEX> were used for the northern blot (Figure <NUMEX TYPE="CARDINAL">7a</NUMEX>). The
+          discrepancy between northern blots with total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">poly</ENAMEX>(A) +mRNA are probably due to changes in the relative
+          amounts of mRNA and <ENAMEX TYPE="SUBSTANCE">ribosomal RNA</ENAMEX> during the
+          intraerythrocytic life cycle. The poly(A) +northern blot
+          measurements agree well with the replicate array
+          <ENAMEX TYPE="PERSON">hybridizations, in which PfALDO</ENAMEX> was consistently less
+          than <NUMEX TYPE="CARDINAL">1.5</NUMEX>-fold differentially expressed (Figure <NUMEX TYPE="CARDINAL">7b</NUMEX>). To
+          make northern blot measurements comparable to the
+          normalized expression array ratios, the ratio between the
+          <NUMEX TYPE="CARDINAL">two</NUMEX> stages was measured using a phosphoimager and divided
+          by the ratio obtained for the <ENAMEX TYPE="NATIONALITY">PfALDO</ENAMEX> control in each
+          case. The normalized ratios of the radiolabel signal were
+          highly consistent with the averaged ratios from the <NUMEX TYPE="CARDINAL">six</NUMEX>
+          microarray hybridizations (Figure <NUMEX TYPE="CARDINAL">7b</NUMEX>).
+        
+        
+          Biological significance of the gene-expression
+          results
+          
+            Trophozoite genes
+            The predominant <ENAMEX TYPE="ORG_DESC">group</ENAMEX> of features with elevated
+            expression in the trophozoite stage comprised genes
+            encoding various components of the eukaryotic
+            translation machinery. This <ENAMEX TYPE="ORG_DESC">group</ENAMEX> contained <NUMEX TYPE="CARDINAL">24 and 33</NUMEX>
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> of <TIMEX TYPE="DATE">the 40S</TIMEX> and <ENAMEX TYPE="SUBSTANCE">60S ribosomal subunits</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">RPS</ENAMEX> and
+            <ENAMEX TYPE="ORGANIZATION">RPL</ENAMEX>), respectively. In addition, <NUMEX TYPE="CARDINAL">nine</NUMEX> <ENAMEX TYPE="PER_DESC">orthologs</ENAMEX> of
+            aminoacyl-tRNA synthetases, and <NUMEX TYPE="CARDINAL">10</NUMEX> initiation and <NUMEX TYPE="CARDINAL">seven</NUMEX>
+            <ENAMEX TYPE="PERSON">elongation</ENAMEX> translation factors were detected among
+            trophozoite-specific genes. Several previously
+            identified plasmodial <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were present in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+            including <ENAMEX TYPE="GPE">Asp</ENAMEX>-tRNA synthetase, <NUMEX TYPE="CARDINAL">two</NUMEX> plasmodial
+            elongation factors (<TIMEX TYPE="DATE">PfEF1A and PfEF2</TIMEX>) and one
+            ribosome-releasing <ENAMEX TYPE="SUBSTANCE">factor</ENAMEX>, <ENAMEX TYPE="PRODUCT">PfRF1</ENAMEX> [ <TIMEX TYPE="DATE">21, 39</TIMEX>]. Consistent
+            with our findings, <ENAMEX TYPE="PRODUCT">PfEF-1A</ENAMEX> has been previously shown to
+            have peak expression during the trophozoite stage [
+            <NUMEX TYPE="CARDINAL">40</NUMEX>]. <NUMEX TYPE="CARDINAL">Two</NUMEX> additional gene <ENAMEX TYPE="PER_DESC">groups</ENAMEX> whose functions are
+            linked to the process of <ENAMEX TYPE="SUBSTANCE">protein synthesis</ENAMEX> were present
+            among the trophozoite <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>: <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">DEAD-box RNA</ENAMEX>
+            helicases, including a close homolog of 
+            P. <ENAMEX TYPE="SUBSTANCE">cynomolgi RNA helicases-1</ENAMEX> [
+            <NUMEX TYPE="CARDINAL">41</NUMEX>] and <NUMEX TYPE="CARDINAL">23</NUMEX> molecular <ENAMEX TYPE="PER_DESC">chaperone</ENAMEX>-like molecules,
+            including <NUMEX TYPE="CARDINAL">two</NUMEX> 
+            P. falciparum heat-shock proteins
+            such as PfHSP70 (<ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> accession number <NUMEX TYPE="CARDINAL">M19753</NUMEX>) and
+            PfHSP86 (accession number <NUMEX TYPE="CARDINAL">L34028</NUMEX>), and a homolog of a
+            DnaJ-domain-containing <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> <ENAMEX TYPE="PER_DESC">family</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">DNJ1/</ENAMEX>SIS1
+            <ENAMEX TYPE="ORGANIZATION">homolog</ENAMEX> [ <TIMEX TYPE="DATE">42</TIMEX>]. These data agree with previous studies
+            that found a group of <ENAMEX TYPE="ORGANIZATION">DEAD</ENAMEX>-box <ENAMEX TYPE="SUBSTANCE">RNA helicases</ENAMEX> to be
+            <ENAMEX TYPE="ORGANIZATION">overexpressed</ENAMEX> during the trophozoite stage in 
+            P. cynomolgi [ <TIMEX TYPE="DATE">41</TIMEX>]. Along with
+            the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for the translation machinery a number of
+            genes involved in various steps of <ENAMEX TYPE="SUBSTANCE">RNA synthesis</ENAMEX> and
+            processing were located among the 'trophozoite <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>',
+            including <NUMEX TYPE="CARDINAL">16</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">ORFs</ENAMEX> belonging to various <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> polymerase
+            <ENAMEX TYPE="PERSON">complexes</ENAMEX> and <NUMEX TYPE="CARDINAL">11</NUMEX> splicing factors (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). Two
+            previously identified plasmodial <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> polymerase
+            components were found in this <ENAMEX TYPE="ORG_DESC">group</ENAMEX>, including the
+            largest subunit of 
+            P. <ENAMEX TYPE="SUBSTANCE">falciparum RNA polymerase</ENAMEX> <ENAMEX TYPE="PRODUCT">II</ENAMEX>,
+            <ENAMEX TYPE="ORGANIZATION">PfRNApolIIA</ENAMEX> (<NUMEX TYPE="MONEY">M73770</NUMEX>), and a homolog <ENAMEX TYPE="ORGANIZATION">RNApolK</ENAMEX> (<NUMEX TYPE="MONEY">14 kD</NUMEX>) [
+            <NUMEX TYPE="CARDINAL">39</NUMEX>]. The expression characteristics revealed are also
+            consistent with several previous studies that suggested
+            that the plasmodial transcription and translation
+            <ENAMEX TYPE="ORGANIZATION">machinery</ENAMEX> is active through the late ring and early
+            trophozoite <ENAMEX TYPE="FAC_DESC">stage</ENAMEX> before decaying during the late
+            schizont stage [ <TIMEX TYPE="DATE">15, 40</TIMEX>].
+            Another functional <ENAMEX TYPE="PER_DESC">group</ENAMEX> of genes that encode
+            enzymes of cellular biosynthetic pathways was
+            distinguished within the trophozoite category. This
+            <ENAMEX TYPE="PERSON">gene</ENAMEX> set includes <NUMEX TYPE="CARDINAL">16</NUMEX> enzymes of carbohydrate
+            <ENAMEX TYPE="PERSON">metabolism</ENAMEX>, <NUMEX TYPE="CARDINAL">10</NUMEX> ORFs likely to be involved in nucleotide
+            <ENAMEX TYPE="PERSON">metabolism</ENAMEX>, and <NUMEX TYPE="CARDINAL">11</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> involved in the biosynthetic
+            pathways of several amino <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX>. Several
+            well-characterized <ENAMEX TYPE="SUBSTANCE">plasmodial genes</ENAMEX> were identified in
+            this metabolic collection, including 
+            P. falciparum lactate
+            <ENAMEX TYPE="ORGANIZATION">dehydrogenase</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PfLDH</ENAMEX>; <ENAMEX TYPE="CONTACT_INFO">027743</ENAMEX>), enolase (<NUMEX TYPE="MONEY">U00152</NUMEX>),
+            triose-phosphate isomerase (<ENAMEX TYPE="ORGANIZATION">PfTPI; L01654</ENAMEX>),
+            <ENAMEX TYPE="CONTACT_INFO">glucose-6-phosphate isomerase</ENAMEX> (<TIMEX TYPE="DATE">PfG6PI</TIMEX>; <ENAMEX TYPE="PRODUCT">J05544</ENAMEX>),
+            hypoxanthine-guanine phosphoribosyl-transferase
+            (<ENAMEX TYPE="ORGANIZATION">PfHGPRT; X16279</ENAMEX>) and dihydropteroate synthetase
+            (<ENAMEX TYPE="ORGANIZATION">PfDHPS; U07706</ENAMEX>). In addition, a group of <NUMEX TYPE="CARDINAL">11</NUMEX>
+            proteolytic enzymes potentially involved in hemoglobin
+            <ENAMEX TYPE="PERSON">degradation</ENAMEX> was detected among the trophozoite <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>;
+            these include a cysteine protease, falcipain-2
+            (<NUMEX TYPE="MONEY">AF251193</NUMEX>), a metalloprotease falcilysine, (<NUMEX TYPE="MONEY">AF123458</NUMEX>),
+            and a <ENAMEX TYPE="PER_DESC">member</ENAMEX> of an aspartic protease <ENAMEX TYPE="PER_DESC">family</ENAMEX>,
+            plasmepsin-2 (<NUMEX TYPE="MONEY">L10740</NUMEX>). Falcipain-<NUMEX TYPE="CARDINAL">2 and plasmepsin</NUMEX>-2
+            have been the targets of recent drug discovery research
+            [ <TIMEX TYPE="DATE">43, 44</TIMEX>].
+            Overall, the emergent gene clusters suggest that the
+            trophozoite <ENAMEX TYPE="FAC_DESC">stage</ENAMEX>, a central phase of plasmodial
+            intraerythrocytic development, is characterized by the
+            activation of general cellular growth functions such as
+            transcription, translation and hemoglobin degradation
+            and biosynthesis of basic metabolites.
+          
+          
+            Schizont genes
+            A large number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> found in the
+            schizont-expressed category correspond to genes
+            previously associated with the various steps by which
+            newly released merozoites invade new <ENAMEX TYPE="PER_DESC">host</ENAMEX> cells. The
+            initial step of this process, adhesion of the merozoite
+            to the surface of an erythrocyte, is facilitated by
+            several <ENAMEX TYPE="PER_DESC">classes</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> exposed on the surface of
+            the parasite. <NUMEX TYPE="CARDINAL">Eighteen</NUMEX> <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX>, identical or homologous to
+            proteins associated with the merozoite surface, were
+            present among the schizont-enriched <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. This group
+            included <NUMEX TYPE="CARDINAL">four</NUMEX> merozoite surface <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> (MSP): MSP1
+            (<NUMEX TYPE="MONEY">M19753</NUMEX>), <TIMEX TYPE="DATE">MSP4</TIMEX>, <TIMEX TYPE="DATE">MSP5</TIMEX>, (<NUMEX TYPE="MONEY">AF033037</NUMEX>) and <TIMEX TYPE="DATE">MSP6</TIMEX> (<NUMEX TYPE="MONEY">AY007721</NUMEX>).
+            Additional <ENAMEX TYPE="PER_DESC">members</ENAMEX> of this <ENAMEX TYPE="ORG_DESC">group</ENAMEX> include <NUMEX TYPE="CARDINAL">two</NUMEX> ORFs
+            <ENAMEX TYPE="PERSON">containing Duffy</ENAMEX>-like binding domains,
+            erythrocyte-binding <ENAMEX TYPE="SUBSTANCE">antigen</ENAMEX>, <NUMEX TYPE="MONEY">EBA 175</NUMEX> (<NUMEX TYPE="MONEY">L07755</NUMEX>), a
+            putative erythrocyte-binding <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, <TIMEX TYPE="DATE">EBL1</TIMEX> (<NUMEX TYPE="MONEY">AF131999</NUMEX>),
+            and <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> known to be delivered to the surface from
+            apical organelles, including apical membrane <ENAMEX TYPE="SUBSTANCE">antigen</ENAMEX>,
+            AMA1 (<NUMEX TYPE="MONEY">U65407</NUMEX>), and finally <NUMEX TYPE="CARDINAL">two rhoptry</NUMEX>-associated
+            <ENAMEX TYPE="ORGANIZATION">proteins</ENAMEX> (<NUMEX TYPE="MONEY">RAP1</NUMEX> (<NUMEX TYPE="MONEY">U20985</NUMEX>) and <ENAMEX TYPE="PRODUCT">RAP2</ENAMEX>).
+            Initial attachment of the merozoite is followed by
+            reorientation of the parasite <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> with its apical part
+            toward the erythrocyte membrane followed by
+            invagination of the membrane. Previous studies
+            suggested that both steps are facilitated by the action
+            of actomyosin, which requires <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX> hydrolysis [ <TIMEX TYPE="DATE">45</TIMEX>].
+            Consistent with these findings, we found <NUMEX TYPE="CARDINAL">five</NUMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>
+            previously associated with this process, 
+            <ENAMEX TYPE="ORGANIZATION">pf-actinI</ENAMEX> (<NUMEX TYPE="MONEY">M19146</NUMEX>), 
+            <ENAMEX TYPE="ORGANIZATION">pf-myoA</ENAMEX> (<NUMEX TYPE="MONEY">AF255909</NUMEX>), and merozoite
+            <ENAMEX TYPE="PERSON">cap protein-1</ENAMEX> (<NUMEX TYPE="MONEY">U14189</NUMEX>), and <NUMEX TYPE="CARDINAL">two subtilisin</NUMEX>-like
+            <ENAMEX TYPE="ORGANIZATION">proteases</ENAMEX> (<TIMEX TYPE="DATE">PfSUB1 and PfSUB2</TIMEX> (<NUMEX TYPE="MONEY">AJ132422</NUMEX>)) differentially
+            <ENAMEX TYPE="ORGANIZATION">enriched</ENAMEX> in schizonts. Interestingly, <NUMEX TYPE="CARDINAL">one</NUMEX> additional
+            homolog of <ENAMEX TYPE="SUBSTANCE">PfSUB1</ENAMEX> was identified among the schizont
+            genes. Moreover, the expression levels of a set of
+            plasmodial <ENAMEX TYPE="SUBSTANCE">protein kinases</ENAMEX> were previously found to be
+            <ENAMEX TYPE="ORGANIZATION">augmented</ENAMEX> during the late stages of the malarial
+            erythrocytic life cycle [ <TIMEX TYPE="DATE">15</TIMEX>]. Our findings confirm and
+            extend this report: <NUMEX TYPE="CARDINAL">26</NUMEX> unique ORFs sharing a high to
+            medium level of homology with <ENAMEX TYPE="SUBSTANCE">protein kinases</ENAMEX> and
+            <ENAMEX TYPE="ORGANIZATION">phosphorylases</ENAMEX> had elevated mRNA levels during the
+            schizont <ENAMEX TYPE="FAC_DESC">stage</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>). <NUMEX TYPE="CARDINAL">Two</NUMEX> previously identified
+            <ENAMEX TYPE="PER_DESC">representatives</ENAMEX> were present in this set: a
+            cAMP-dependent <ENAMEX TYPE="SUBSTANCE">protein kinase</ENAMEX>, <ENAMEX TYPE="PERSON">PfPKAc</ENAMEX> (<NUMEX TYPE="MONEY">AF126719</NUMEX>), and a
+            plasmodial <ENAMEX TYPE="DISEASE">serine</ENAMEX>/threonine <ENAMEX TYPE="SUBSTANCE">protein phosphatase</ENAMEX>, PfPPJ
+            (<NUMEX TYPE="MONEY">AF126719</NUMEX>).
+            A <NUMEX TYPE="ORDINAL">second</NUMEX> functional <ENAMEX TYPE="PER_DESC">group</ENAMEX> of genes with increased
+            expression in schizonts encodes <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that are
+            thought to function on the periphery of a newly
+            infected erythrocyte at the early stages of asexual
+            <ENAMEX TYPE="ORGANIZATION">development</ENAMEX>. <ENAMEX TYPE="PER_DESC">Representatives</ENAMEX> include: the genes for
+            ring-infected erythrocyte surface <ENAMEX TYPE="SUBSTANCE">antigen</ENAMEX> (RESA)
+            (<NUMEX TYPE="MONEY">X04572</NUMEX>) and several close <ENAMEX TYPE="ORGANIZATION">RESA</ENAMEX> homologs, CLAG9
+            (<NUMEX TYPE="MONEY">AF055476</NUMEX>) the related gene 
+            CLAG3<NUMEX TYPE="CARDINAL">.1</NUMEX> , and <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the
+            serine-repeat rich <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (SERA) <ENAMEX TYPE="PER_DESC">family</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]. In
+            addition to these well-characterized surface <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>,
+            the <ENAMEX TYPE="ORG_DESC">schizont-enriched</ENAMEX> set of transcripts contained a
+            number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> identical or homologous to proteins
+            recognized by antibodies present in plasmodium immune
+            sera obtained either from model organisms [ <TIMEX TYPE="DATE">46</TIMEX>] or from
+            acute and/or convalescent <ENAMEX TYPE="PER_DESC">patients</ENAMEX> [ <TIMEX TYPE="DATE">47</TIMEX>]. In summary,
+            the schizont stage of plasmodial development featured
+            genes predominantly occupied with the process of
+            merozoite function as well as the advance synthesis of
+            transcripts for <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> that facilitate parasite
+            establishment within the newly infected
+            <ENAMEX TYPE="ORGANIZATION">erythrocyte</ENAMEX>.
+            Taken together, these results suggest that the
+            parasite <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> in the trophozoite stage is dedicated to
+            cell growth, and the predominant function of the
+            <ENAMEX TYPE="ORGANIZATION">mid</ENAMEX>-late schizont stage is maturation of the next
+            <ENAMEX TYPE="PER_DESC">generation</ENAMEX> of merozoites. Of particular interest is the
+            large number of <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> within both categories (<NUMEX TYPE="PERCENT">39%</NUMEX> in
+            <ENAMEX TYPE="ORGANIZATION">trophozoite</ENAMEX> and <NUMEX TYPE="PERCENT">61%</NUMEX> in schizonts) with no putative
+            functions assigned. These ORFs have little to no
+            <ENAMEX TYPE="ORGANIZATION">homology</ENAMEX> to any other known genes and may possibly
+            represent highly specialized functions not likely to be
+            <ENAMEX TYPE="ORGANIZATION">shared</ENAMEX> outside this <ENAMEX TYPE="PER_DESC">family</ENAMEX> of parasites.
+          
+        
+      
+      
+        Conclusions
+        In this study, we present a 
+        P. falciparum ORF-specific microarray
+        utilizing <NUMEX TYPE="CARDINAL">70</NUMEX> mer oligonucleotides as individual microarray
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. This approach helped to overcome potential
+        problems originating from low PCR amplification and allowed
+        us to select probes with a high specificity, thereby
+        minimizing potential cross-hybridization. Moreover, the
+        oligonucleotide-selection algorithm allowed a balanced GC
+        content (<NUMEX TYPE="PERCENT">around 28%</NUMEX>) across the entire microarray set,
+        which is significantly higher than the plasmodial genome
+        average, which is <NUMEX TYPE="PERCENT">19.4%</NUMEX> with <NUMEX TYPE="PERCENT">23.7%</NUMEX> in coding regions [
+        <NUMEX TYPE="CARDINAL">4</NUMEX>].
+        Application of the <ENAMEX TYPE="ORGANIZATION">ArrayOligoSelector</ENAMEX> is not restricted
+        to the 
+        P. falciparum genome, but is broadly
+        useful for the automated selection of hybridization probes
+        for a range of <ENAMEX TYPE="ANIMAL">species</ENAMEX>. The flexibility of the selection
+        parameters controlling stringency of uniqueness,
+        self-binding, complexity, <ENAMEX TYPE="PER_DESC">user</ENAMEX>-defined filters and GC
+        content, allows the selection of oligonucleotides
+        appropriate for any genome.
+        Evaluation of results from derivative control
+        oligonucleotides showed that long oligonucleotides could
+        tolerate <NUMEX TYPE="PERCENT">10%</NUMEX> mismatches; however, alteration of the target
+        sequence by more then <NUMEX TYPE="PERCENT">20%</NUMEX> eliminated most of the
+        hybridization signal. Therefore, small sequencing errors
+        and natural variation among isolates are not likely to
+        impact on sensitivity. These performance characteristics
+        imply that the array design for this effort can accommodate
+        the study of essentially any 
+        P. falciparum strain with a high
+        degree of specificity.
+        At present, the 
+        P. falciparum microarray used in this
+        study consists of <NUMEX TYPE="CARDINAL">approximately 6,000</NUMEX> gene-specific
+        <ENAMEX TYPE="PER_DESC">elements</ENAMEX> corresponding to the majority of the total coding
+        content predicted for the 
+        P. falciparum genome. As new sequence
+        and improved gene predictions arise, additional elements
+        will be added to this evolving platform. Moreover, the
+        present oligonucleotide representation could be further
+        extended for investigation of several unusual 
+        P. falciparum genetic and
+        transcriptional phenomena, including antisense mRNA
+        <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX> [ <TIMEX TYPE="DATE">48</TIMEX>] and alternative <ENAMEX TYPE="SUBSTANCE">splicing</ENAMEX> and/or
+        transcriptional initiation [ <TIMEX TYPE="DATE">49, 50</TIMEX>]. This may be achieved
+        by designing exon-specific array features, as well as
+        antisense oligonucleotides. The oligonucleotide collection
+        could also be expanded by sequences corresponding to
+        intergenic genomic regions. Inclusion of such elements was
+        found to be extremely useful for identifying
+        protein-binding <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> regions by
+        chromatin-immunoprecipitation as well as <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> not detected
+        by automated gene-prediction algorithms [ <TIMEX TYPE="DATE">51</TIMEX>].
+        Within both the trophozoite and schizont categories,
+        large numbers of genes belong to functionally related
+        processes. These include <ENAMEX TYPE="SUBSTANCE">genes encoding ribosomal subunits</ENAMEX>,
+        multiple factors for transcription and translation, enzymes
+        of biosynthetic and catabolic pathways, or merozoite
+        <ENAMEX TYPE="ORGANIZATION">adherence</ENAMEX> and invasion machinery. These results are
+        consistent with predictions that a large number of
+        plasmodial genes undergo strict stage-specific
+        transcriptional regulation, and that such (co-)regulation
+        is shared among functionally related genes [ <TIMEX TYPE="DATE">15, 52</TIMEX>].
+        Naturally, a 'fine-resolution' global gene-expression
+        profile including the different steps of the plasmodial
+        life cycle for multiple divergent strains will be necessary
+        to characterize fully the intraerythrocytic life of the
+        <ENAMEX TYPE="ORGANIZATION">parasite</ENAMEX>. At present, our <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX> is analyzing a global
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression profile of the <TIMEX TYPE="TIME">48-hour</TIMEX> erythrocytic life
+        cycle with <TIMEX TYPE="TIME">1-hour</TIMEX> resolution for <NUMEX TYPE="CARDINAL">three</NUMEX> strains of 
+        P. falciparum. 
+        In a number of model <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>, high-resolution
+        <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression maps have served as extremely powerful
+        tools for discovery and characterization of novel genes as
+        well as exploration of multiple cellular functions [ <ENAMEX TYPE="CONTACT_INFO">9,</ENAMEX>
+        <NUMEX TYPE="CARDINAL">11</NUMEX>]. The gene-expression maps typically comprise
+        genome-wide expression profiles at a number of different
+        stages of cellular development, profiles of multiple
+        strains and genetic variants, and global expression
+        responses to number of growth perturbations and
+        growth-inhibitory <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX>. Following a similar approach in 
+        P. falciparum is most likely to
+        provide substantial information about the many ORFs that
+        lack functional <ENAMEX TYPE="PER_DESC">annotation</ENAMEX>. Further understanding of
+        cellular physiology of this parasite including basic
+        metabolic functions and the intricate interactions between
+        the parasite <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> and human <ENAMEX TYPE="PER_DESC">host</ENAMEX> immune system will be a
+        key step in uncovering new <ENAMEX TYPE="ORG_DESC">targets</ENAMEX> for antimalarial drug
+        <ENAMEX TYPE="PERSON">discoveries</ENAMEX> and vaccine development.
+      
+      
+        Materials and methods
+        
+          <ENAMEX TYPE="PERSON">Microarray</ENAMEX> fabrication
+          The <NUMEX TYPE="CARDINAL">70</NUMEX>-bp oligonucleotides were synthesized (Operon
+          <ENAMEX TYPE="ORGANIZATION">Technologies</ENAMEX>, CA), resuspended in <NUMEX TYPE="CARDINAL">3</NUMEX> × <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX> to a final
+          concentration of <NUMEX TYPE="QUANTITY">60 pmol</NUMEX><ENAMEX TYPE="PRODUCT">/μl</ENAMEX>, and spotted onto
+          poly-L-<NUMEX TYPE="CARDINAL">lysine</NUMEX>-coated microscopic slides, as previously
+          described [ <TIMEX TYPE="DATE">53</TIMEX>]. All oligo sequences are available at [
+          <NUMEX TYPE="CARDINAL">23</NUMEX>].
+        
+        
+          Cell cultures
+          
+          P. falciparum parasite cells (W2
+          strain) were cultured as described [ <TIMEX TYPE="DATE">54</TIMEX>] with slight
+          modifications: <NUMEX TYPE="PERCENT">2%</NUMEX> suspension of purified human red blood
+          cells in <TIMEX TYPE="DATE">RPMI1640</TIMEX> media supplemented with <NUMEX TYPE="PERCENT">0.25%</NUMEX> AlbumaxI
+          (<ENAMEX TYPE="ORGANIZATION">GIBCO/Invitrogen</ENAMEX>, <ENAMEX TYPE="GPE">San Diego</ENAMEX>, CA), <ENAMEX TYPE="CONTACT_INFO">2 g/l sodium</ENAMEX>
+          bicarbonate, <NUMEX TYPE="CARDINAL">0.1</NUMEX> mM hypoxanthine, <NUMEX TYPE="CARDINAL">25</NUMEX> mM HEPES pH <NUMEX TYPE="CARDINAL">7.4</NUMEX>, and
+          <ENAMEX TYPE="PRODUCT">50 μg/I</ENAMEX> gentamycin. Cells were synchronized by <TIMEX TYPE="TIME">two</TIMEX>
+          consecutive sorbitol treatments on <NUMEX TYPE="CARDINAL">two</NUMEX> consecutive cell
+          <ENAMEX TYPE="PERSON">cycles</ENAMEX> (a total of <NUMEX TYPE="CARDINAL">four</NUMEX> treatments) and harvested at the
+          subsequent trophozoite stage (<NUMEX TYPE="CARDINAL">18-24</NUMEX> h post-invasion) and
+          schizont <ENAMEX TYPE="FAC_DESC">stage</ENAMEX> (<NUMEX TYPE="CARDINAL">36-42</NUMEX> h post-invasion). For the
+          trophozoite stage collection, visual inspection of the
+          Giemsa stains show a nearly pure trophozoite population
+          with less than <NUMEX TYPE="PERCENT">1%</NUMEX> schizonts. For the schizont stage
+          collection, we estimate the amount of ring contamination
+          to be <NUMEX TYPE="PERCENT">around 3%</NUMEX>. The cells were harvested in prewarmed
+          <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>, and spun at <NUMEX TYPE="CARDINAL">1,500</NUMEX> 
+          g for <ENAMEX TYPE="PRODUCT">5</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">min. Cell pellets</ENAMEX> were
+          rapidly frozen in liquid nitrogen and stored at
+          <ENAMEX TYPE="CONTACT_INFO">-80°C.</ENAMEX>
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">RNA preparation</ENAMEX> and microarray hybridization
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was prepared directly from the frozen
+          <ENAMEX TYPE="PERSON">pellets</ENAMEX> of parasitized erythrocytes, where approximately
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ml of <ENAMEX TYPE="FAC_DESC">cell pellet</ENAMEX> was lysed in <NUMEX TYPE="CARDINAL">7.5</NUMEX> <ENAMEX TYPE="PER_DESC">ml</ENAMEX> <ENAMEX TYPE="PERSON">Trizol</ENAMEX> (GIBCO)
+          and <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was extracted according to the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>'s
+          instructions. mRNA was isolated from total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>
+          preparations using the <ENAMEX TYPE="FAC">Oligotex mRNA Mini Kit</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>,
+          <ENAMEX TYPE="PERSON">Valencia</ENAMEX>, CA). For the <ENAMEX TYPE="SUBSTANCE">hybridization</ENAMEX> experiments, <NUMEX TYPE="QUANTITY">12 �</NUMEX>�g
+          total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was used for <NUMEX TYPE="ORDINAL">first</NUMEX>-strand cDNA synthesis as
+          follows: <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was mixed with a mixture of random hexamer
+          (pdN 
+          <NUMEX TYPE="CARDINAL">6</NUMEX> ) oligonucelotides and oligo-(dT 
+          <NUMEX TYPE="CARDINAL">20</NUMEX> ) at final concentration <ENAMEX TYPE="CONTACT_INFO">125 μg/μl</ENAMEX>
+          for each oligonucleotide. The mixture was heated to 70°C
+          for <TIMEX TYPE="TIME">10 min</TIMEX> and then incubated on <ENAMEX TYPE="SUBSTANCE">ice</ENAMEX> for <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="NATIONALITY">min.</ENAMEX> Reverse
+          transcription was started by adding dNTPs to a final
+          concentration of <NUMEX TYPE="CARDINAL">1</NUMEX> mM dATP and <NUMEX TYPE="QUANTITY">500 �</NUMEX>�M each: dCTP, dGTP,
+          <ENAMEX TYPE="ORGANIZATION">dTTP</ENAMEX> and
+          <NUMEX TYPE="CARDINAL">5</NUMEX>-(<ENAMEX TYPE="CONTACT_INFO">3-aminoallyl</ENAMEX>)-2'-<NUMEX TYPE="CARDINAL">deoxyuridine</NUMEX>-5'-triophosphate,
+          (aa-dUTP) (<ENAMEX TYPE="ORGANIZATION">Sigma</ENAMEX>), with <NUMEX TYPE="CARDINAL">150</NUMEX> units of StrataScript
+          (<ENAMEX TYPE="ORGANIZATION">Stratagene</ENAMEX>, <ENAMEX TYPE="GPE">La Jolla</ENAMEX>, CA). The reaction was carried out
+          at <TIMEX TYPE="DATE">42°C</TIMEX> for <TIMEX TYPE="TIME">120 min</TIMEX> and the residual <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was hydrolyzed
+          with <NUMEX TYPE="CARDINAL">0.1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX> and <NUMEX TYPE="CARDINAL">0.2</NUMEX> <ENAMEX TYPE="PRODUCT">M NaOH</ENAMEX> at <TIMEX TYPE="DATE">65°C</TIMEX> for <NUMEX TYPE="CARDINAL">15</NUMEX> min. The
+          resulting aa-dUTP-containing cDNA was coupled to CyScribe
+          Cy3 or <NUMEX TYPE="MONEY">Cy5</NUMEX> (<ENAMEX TYPE="ORGANIZATION">Amersham</ENAMEX>, <ENAMEX TYPE="GPE">Piscataway</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">NJ</ENAMEX>) monofunctional dye
+          in the presence of <NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PERSON">M NaHCO</ENAMEX> 
+          <TIMEX TYPE="TIME">3 pH 9.0</TIMEX>. Coupling reactions were
+          incubated for a minimum of <NUMEX TYPE="CARDINAL">1</NUMEX> h at room temperature. The
+          labeled product was purified using <ENAMEX TYPE="ORGANIZATION">QIAquick</ENAMEX> PCR
+          <ENAMEX TYPE="ORGANIZATION">purification</ENAMEX> system (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>). <ENAMEX TYPE="ORGANIZATION">Hybridizations</ENAMEX> and final
+          washing procedures were carried out as described [ <ENAMEX TYPE="LAW">9</ENAMEX>]
+          with slight modifications. Briefly, the hybridization
+          medium contained <NUMEX TYPE="CARDINAL">3</NUMEX> × <ENAMEX TYPE="ORGANIZATION">SSC</ENAMEX>, <ENAMEX TYPE="PRODUCT">1.5 μg/μl</ENAMEX> poly(A) DNA
+          (<ENAMEX TYPE="ORGANIZATION">Pharmacia Biotech, Uppsala</ENAMEX>), and <NUMEX TYPE="PERCENT">0.5%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX>.
+          Hybridizations were incubated at <TIMEX TYPE="DATE">65°C</TIMEX> for <NUMEX TYPE="CARDINAL">8-16</NUMEX> <ENAMEX TYPE="PERSON">h. Arrays</ENAMEX>
+          were washed in <NUMEX TYPE="CARDINAL">2</NUMEX> × <NUMEX TYPE="CARDINAL">SSC/0</NUMEX><NUMEX TYPE="PERCENT">.2%</NUMEX> <ENAMEX TYPE="ORGANIZATION">SDS</ENAMEX> and then <NUMEX TYPE="QUANTITY">0.1 ×</NUMEX> SSC at
+          room temperature. The microarrays were scanned with a
+          <ENAMEX TYPE="ORGANIZATION">GenePix</ENAMEX> <ENAMEX TYPE="PRODUCT">4000B</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">scanner</ENAMEX> and the images analyzed using
+          <ENAMEX TYPE="PRODUCT">GenePix Pro 3.0</ENAMEX> software (<ENAMEX TYPE="ORGANIZATION">Axon Instruments</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Union City</ENAMEX>,
+          CA). Subsequently, the data were normalized using the
+          <ENAMEX TYPE="ORGANIZATION">AMAD</ENAMEX> microarray database and subjected to the cluster
+          analysis using the <ENAMEX TYPE="ORGANIZATION">CLUSTER</ENAMEX> and TREEVIEW software, as
+          described [ <TIMEX TYPE="DATE">53</TIMEX>]. For the <ENAMEX TYPE="ORGANIZATION">CLUSTER</ENAMEX> analysis, low-quality
+          features and features with a signal level less than
+          fivefold the background were filtered from the initial
+          raw data set, yielding <NUMEX TYPE="CARDINAL">4,737</NUMEX> <ENAMEX TYPE="PER_DESC">elements</ENAMEX>. Subsequently,
+          features with an arbitrary twofold fluorescence signal
+          difference in <NUMEX TYPE="CARDINAL">at least four</NUMEX> experiments were considered.
+          All programs and microarray-related protocols are
+          available online [ <TIMEX TYPE="DATE">55</TIMEX>].
+        
+        
+          Probe preparation and northern blot analysis
+          The northern blot probes were generated by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> using
+          the following oligonucleotide sequences:
+          <ENAMEX TYPE="PRODUCT">FWD-M11919</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1: 5</ENAMEX>'-TAGAAAACAGAGCTAGCTACAGAG;
+          <ENAMEX TYPE="PRODUCT">REV-M11919</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1: 5</ENAMEX>'-AGTTGGTTTTCCTTTGGCTGTGTG; <ENAMEX TYPE="PRODUCT">FWD-M1282</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-CTGTAGGTGGTATCCCTTTACAAG; <ENAMEX TYPE="PRODUCT">REV-M12812</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-GACAAATAATAATGCCATACCAGG; <ENAMEX TYPE="PRODUCT">FWD-I12861</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-AAATGCAGTTGTTACTGTCCCTG; <ENAMEX TYPE="PRODUCT">REV-I12861</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-GCTCTTTTGTCAGTTCTTAAATCG; <ENAMEX TYPE="PRODUCT">FWD-F5910</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-ACAACCAGTTTGCTCTGCTTATC; <ENAMEX TYPE="PRODUCT">REV-F5910</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">2:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-GGCCGACATTAATTGCTTATATGC; <ENAMEX TYPE="PRODUCT">FWD-M38757</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-TAGAAGTATATCATTCCGAAGGTG; <ENAMEX TYPE="PRODUCT">REV-M38757</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-GTAGAAGCTTCAATATCAAGCTC; <ENAMEX TYPE="PRODUCT">FWD-M1282</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-CTGTAGGTGGTATCCCTTTACAAG; <ENAMEX TYPE="PRODUCT">REV-M12812</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">7:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="ORGANIZATION">GCTAATGCCTTCATTCTCTTAGTT; FWD</ENAMEX><ENAMEX TYPE="PRODUCT">-Ks44</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-<ENAMEX TYPE="ORGANIZATION">GGCAAGCTATAACAAATCCTGAGA; REV</ENAMEX><ENAMEX TYPE="PRODUCT">-Ks44</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">1:</ENAMEX>
+          <ENAMEX TYPE="PRODUCT">5</ENAMEX>'-GCTAAAGCGGCAGCAGTTGGTTCA.
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<NUMEX TYPE="QUANTITY">10 μg</NUMEX>) or poly(A) +<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> (<NUMEX TYPE="QUANTITY">0.4 μg</NUMEX>) was
+          resolved on a denaturing <NUMEX TYPE="PERCENT">1%</NUMEX> agarose gel, transferred to
+          nitrocellulose membrane and hybridized with a
+          radiolabeled <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX> as described [ <TIMEX TYPE="DATE">56</TIMEX>]. The blots were
+          analyzed using <ENAMEX TYPE="ORGANIZATION">ImageQuant</ENAMEX> <ENAMEX TYPE="PRODUCT">v1.2</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Molecular Dynamics</ENAMEX>,
+          <ENAMEX TYPE="GPE">Sunnyvale</ENAMEX>, CA).
+        
+      
+      
+        Additional data files
+        The predicted <ENAMEX TYPE="ORGANIZATION">ORFs</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">GenePix</ENAMEX> results (GPR) files
+        containing raw data for Figure <TIMEX TYPE="DATE">5and</TIMEX> from <NUMEX TYPE="CARDINAL">10</NUMEX> additional
+        hybridizations are available as additional data files with
+        the online version of this paper and from [ <TIMEX TYPE="DATE">23</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> for
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: <NUMEX TYPE="MONEY">three hybridizations</NUMEX> ( <ENAMEX TYPE="CONTACT_INFO">1, 2, 3</ENAMEX>) with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with <TIMEX TYPE="DATE">Cy5</TIMEX>;
+        <NUMEX TYPE="CARDINAL">Three</NUMEX> hybridizations ( <ENAMEX TYPE="CONTACT_INFO">4, 5, 6</ENAMEX>) with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX>
+        labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with <TIMEX TYPE="DATE">Cy3</TIMEX>.
+        Additional hybridizations: <NUMEX TYPE="CARDINAL">Six</NUMEX> hybridizations ( <ENAMEX TYPE="CONTACT_INFO">7, 8, 9,</ENAMEX>
+        <TIMEX TYPE="DATE">10, 11, 12</TIMEX>) with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and
+        schizont <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <TIMEX TYPE="DATE">Cy5</TIMEX>; <NUMEX TYPE="MONEY">four hybridizations</NUMEX> ( <NUMEX TYPE="MONEY">14</NUMEX>,
+        <TIMEX TYPE="DATE">15, 15, 16</TIMEX>) with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and
+        schizont <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <TIMEX TYPE="DATE">Cy3</TIMEX>.
+        ORF predictions of <TIMEX TYPE="DATE">August 2000</TIMEX> were predicted from
+        contig sequences available in <TIMEX TYPE="DATE">August 2000</TIMEX>, using GlimmerM
+        software. These predictions were used to design the first
+        set of <NUMEX TYPE="CARDINAL">70</NUMEX> mer oligonucleotides and includes <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from the
+        plastid genome. ORF predictions of <TIMEX TYPE="DATE">October 2000</TIMEX> were
+        predicted from contig sequences available in <TIMEX TYPE="DATE">October 2000</TIMEX>,
+        using <ENAMEX TYPE="PRODUCT">GlimmerM</ENAMEX> software. These predictions also include
+        genes from the plastid and mitochondrial genomes.
+        Additional data file 1
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file 2
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file 3
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file 4
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file 5
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file 6
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Figure <NUMEX TYPE="CARDINAL">5</NUMEX>: hybridization with <ENAMEX TYPE="SUBSTANCE">trophozoite RNA</ENAMEX> labeled
+        with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file 7
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file 8
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file 9
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">10</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">11</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">12</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy3</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy5
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">13</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">14</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">15</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+        Additional data file <NUMEX TYPE="CARDINAL">16</NUMEX>
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Additional hybridization: hybridization with trophozoite
+        <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> labeled with <ENAMEX TYPE="PRODUCT">Cy5</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">schizont RNA</ENAMEX> labeled with Cy3
+        Click here for additional data file
+      
+    
+  

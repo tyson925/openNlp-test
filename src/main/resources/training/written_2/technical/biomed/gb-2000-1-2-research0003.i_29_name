@@ -1,0 +1,626 @@
+
+  
+    
+      
+        Background
+        Through the use of recently developed <ENAMEX TYPE="SUBSTANCE">DNA arrays</ENAMEX>, it is
+        now possible to obtain accurate, quantitative (relative)
+        measurements of a large proportion of the mRNA species
+        present in a biological sample. <ENAMEX TYPE="SUBSTANCE">DNA arrays</ENAMEX> have been used
+        to monitor changes in gene expression during important
+        biological processes (for example, cellular replication and
+        the response to changes in the environment), and to study
+        variation in gene expression across collections of related
+        <ENAMEX TYPE="PERSON">samples</ENAMEX> (such as tumor samples from <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with <ENAMEX TYPE="DISEASE">cancer</ENAMEX>).
+        A major challenge in interpreting these results is to
+        understand the structure of the data produced by such
+        studies, which often consist of <NUMEX TYPE="CARDINAL">millions</NUMEX> of measurements. A
+        variety of clustering techniques have been applied to such
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, and have proved useful for identifying biologically
+        relevant groupings of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> [ <ENAMEX TYPE="CONTACT_INFO">1, 2, 3, 4, 5, 6,</ENAMEX>
+        <TIMEX TYPE="DATE">7, 8, 9, 10, 11, 12, 13</TIMEX>]. Although the underlying
+        principles and computational details of these methods
+        differ, they share the goal of organizing the elements
+        under consideration (such as <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) into <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> (clusters)
+        with coherent behavior across relevant measurements (such
+        as <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>). Generally absent is any consideration of the
+        nature of the coherent variation. For example, one might
+        want to identify <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of genes that have coherent
+        patterns of expression with large variance across samples,
+        or groups of genes that optimally separate <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> into
+        <ENAMEX TYPE="ORGANIZATION">predefined</ENAMEX> classes (such as different clinical response
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in tumor samples). Here, we introduce a new
+        statistical method, which we call gene shaving, that
+        attempts to identify <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="PER_DESC">elements</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>) that have
+        coherent expression and are optimal for various properties
+        of the variation in their expression.
+        Figure <NUMEX TYPE="CARDINAL">1shows</NUMEX> the dataset used in our study, which
+        consisted of <TIMEX TYPE="DATE">4673</TIMEX> gene expression measurements on <NUMEX TYPE="CARDINAL">48</NUMEX>
+        <ENAMEX TYPE="PER_DESC">patients</ENAMEX> with diffuse large <ENAMEX TYPE="GPE">B-cell</ENAMEX> lymphoma (DLCL). These
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> have been described in detail previously [ <TIMEX TYPE="DATE">14</TIMEX>]. The
+        column labels refer to different <ENAMEX TYPE="PER_DESC">patients</ENAMEX>, and the rows
+        correspond to genes. The order of rows and columns is
+        arbitrary.
+        Some <ENAMEX TYPE="PER_DESC">authors</ENAMEX> have recently explored the use of
+        clustering methods to arrange the genes in some systematic
+        <ENAMEX TYPE="PERSON">way</ENAMEX>, with similar genes placed close together (see [ <ENAMEX TYPE="LAW">2</ENAMEX>] for
+        <ENAMEX TYPE="ORGANIZATION">developments</ENAMEX> and [ <TIMEX TYPE="DATE">15</TIMEX>] for an overview). In Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, we
+        have applied hierarchical clustering to the genes and
+        samples separately. Each clustering produces a (non-unique)
+        ordering, one that ensures that the <ENAMEX TYPE="ORG_DESC">branches</ENAMEX> of the
+        corresponding dendrogram do not cross. Figure <NUMEX TYPE="CARDINAL">2displays</NUMEX> the
+        original data, with rows and columns ordered
+        accordingly.
+        Some <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> is evident in Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, and this method
+        can be used to recognize relationships among the genes and
+        samples.With any method that reduces the dimension of the
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>, however, finer <ENAMEX TYPE="FAC_DESC">structure</ENAMEX> can be lost. For example,
+        suppose the expression of some subset of genes divides the
+        samples in an informative way, correlating with the rate of
+        proliferation of tumor cells, for example, whereas another
+        subset of genes divides the samples a different way,
+        representing the immune response, for example. Then methods
+        such as two-way hierarchical clustering, which seek a
+        single reordering of the samples for all genes, cannot find
+        such <ENAMEX TYPE="FAC_DESC">structure</ENAMEX>.
+        The method of gene shaving we describe here is designed
+        to extract coherent and typically small clusters of genes
+        that vary as much as possible across the samples. Figure
+        3shows <NUMEX TYPE="CARDINAL">three</NUMEX> gene clusters for the <ENAMEX TYPE="ORGANIZATION">DLCL</ENAMEX> data, found using
+        shaving. Some of the genes within each cluster lie close to
+        each other in the hierarchical clustering of Figure <NUMEX TYPE="CARDINAL">2</NUMEX>, but
+        others, and the clusters themselves, are quite far
+        apart.
+        In Figure <ENAMEX TYPE="SUBSTANCE">3the samples</ENAMEX> have been ordered by values of
+        the average gene expression. This average gene is a good
+        <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of the cluster, as all the <ENAMEX TYPE="PER_DESC">members</ENAMEX> are so
+        similar. The variance measures at the top of each cluster
+        are discussed in more detail later. The clusters are all of
+        different sizes. We use an automatic method for determining
+        the size of the clusters, based on a randomization
+        procedure that protects us from looking too hard in the
+        large sea of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and finding spurious structure. The
+        <NUMEX TYPE="CARDINAL">three</NUMEX> cluster-average genes, one from each cluster, are
+        reasonably uncorrelated (see below and Figure <NUMEX TYPE="CARDINAL">6</NUMEX>). This is
+        another aspect of the shaving process - it seeks different
+        <ENAMEX TYPE="PERSON">clusters</ENAMEX>, where difference is measured by correlation of
+        the cluster mean. Figure <NUMEX TYPE="CARDINAL">4shows</NUMEX> the results of a
+        hierarchical clustering applied to the <NUMEX TYPE="CARDINAL">three</NUMEX> column-average
+        genes. Whereas hierarchical clustering suggests <NUMEX TYPE="CARDINAL">two</NUMEX> main
+        gene groupings, the shaving process may suggest more useful
+        <ENAMEX TYPE="ORGANIZATION">groupings</ENAMEX>.
+        This article is organized as follows. In the section
+        'Gene shaving' we describe the method itself. The section
+        entitled 'The gap estimate of cluster size' outlines the
+        gap test for choosing the cluster size. In the section
+        'Predicting patient survival' we try to predict patient
+        survival from gene cluster averages. 'Supervised shaving'
+        is discussed in the following section. Finally, in the
+        <ENAMEX TYPE="ORGANIZATION">'Conclusions</ENAMEX>' we propose some further generalizations. A
+        more statistical treatment of <ENAMEX TYPE="SUBSTANCE">gene shaving</ENAMEX> is given in [
+        <NUMEX TYPE="CARDINAL">16</NUMEX>].
+      
+      
+        Results
+        
+          Gene shaving
+          In this section we describe in detail our technique
+          for finding clusters like the example in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. A gene
+          expression matrix is an 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p matrix</ENAMEX> of real-valued
+          measurements 
+          X = x 
+          
+            ij 
+           . The rows are genes, the columns are samples, and x
+          
+          
+            ij 
+           is the measured (log) expression, relative to a
+          baseline. Typically there are missing entries in 
+          <ENAMEX TYPE="PERSON">X.</ENAMEX> We use a technique described in
+          [ <TIMEX TYPE="DATE">17</TIMEX>], an iterative algorithm based on the singular value
+          decomposition, for imputing missing expression values;our
+          analysis here assumes that 
+          X has no missing values.
+          Let 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           be the indices of a cluster of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, and
+          be the collection of 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> column averages of the expression
+          values for this cluster. Then for each cluster size 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>, gene shaving seeks a cluster 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           having the highest variance of the column
+          averages:
+          The important question of how to choose the cluster
+          size 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is addressed in the next
+          <ENAMEX TYPE="LANGUAGE">section</ENAMEX>.
+          Our procedure generates a sequence of nested clusters 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , in a top-down manner, starting with 
+          <ENAMEX TYPE="ORGANIZATION">k = N</ENAMEX>, the total number of genes,
+          and decreasing down to 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX> gene. At each stage the
+          largest principal component of the current cluster of
+          genes is computed. This eigen gene is the normalized
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> combination of genes with largest variance across
+          the samples. We then compute the inner product
+          (essentially the correlation) of each gene with the eigen
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>, and discard (<NUMEX TYPE="MONEY">'shave</NUMEX> off') a fraction of the genes
+          having lowest (absolute) inner product. The process is
+          repeated on the reduced cluster of genes. The shaving
+          <ENAMEX TYPE="ORGANIZATION">algorithm</ENAMEX> is depicted in Figure <ENAMEX TYPE="SUBSTANCE">5and</ENAMEX> given in detail in
+          <ENAMEX TYPE="CONTACT_INFO">Box 1</ENAMEX>.
+          There are a number of duplicate genes in the dataset.
+          In some cases the sequence for a given gene appears on
+          the microarray more than once, either by design or by
+          accident. In other cases, <NUMEX TYPE="CARDINAL">more than one</NUMEX> different <TIMEX TYPE="TIME">EST</TIMEX>
+          (expressed sequence tag) is present for the same gene.
+          Gene shaving can be affected by duplicate genes, since
+          they are highly correlated with each other. We therefore
+          averaged expression profiles for the duplicate genes,
+          leaving <NUMEX TYPE="CARDINAL">3624</NUMEX> unique gene profiles.
+          The sequence of operations <ENAMEX TYPE="CONTACT_INFO">1-5</ENAMEX> in <ENAMEX TYPE="ORGANIZATION">Box</ENAMEX> <ENAMEX TYPE="PRODUCT">1gives</ENAMEX> the first
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> of rows - the <NUMEX TYPE="ORDINAL">first</NUMEX> ribbon in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>. Step <NUMEX TYPE="CARDINAL">6</NUMEX>
+          orthogonalizes the data to encourage discovery of a
+          different (uncorrelated) second cluster. Note that
+          although we work with the orthogonalized matrix in the
+          shaving process for the <NUMEX TYPE="ORDINAL">second</NUMEX> and subsequent clusters,
+          the derived clusters and their averages involve the
+          original genes.
+          The shaving process requires repeated computation of
+          the largest principal component of a large set of
+          variables. If naively implemented, this requires the
+          construction of a 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> sample covariance <ENAMEX TYPE="ANIMAL">matrix ∑</ENAMEX> of the
+          genes, and the computation of its largest eigenvector. We
+          can avoid the computational burden by working in the dual
+          space, where the matrices have dimension 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          <ENAMEX TYPE="PERSON">p. Furthermore</ENAMEX>, as we require only
+          the largest eigenvector, the computations can be reduced
+          even further by using the power method, using the
+          eigenvector of the previous cluster as a starting
+          value.
+          The <NUMEX TYPE="CARDINAL">three</NUMEX> resulting clusters are shown in Figure 3and
+          again in Figure <NUMEX TYPE="CARDINAL">4</NUMEX>. Figure <NUMEX TYPE="CARDINAL">6shows</NUMEX> the pairwise
+          scatterplots of each of the <NUMEX TYPE="CARDINAL">three</NUMEX> column averages ('super
+          genes') from the clusters. The absolute correlations
+          range from <NUMEX TYPE="CARDINAL">0.27</NUMEX> to <NUMEX TYPE="CARDINAL">0.68</NUMEX>. The full gene names for the
+          <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the <NUMEX TYPE="ORDINAL">first</NUMEX> <NUMEX TYPE="CARDINAL">three</NUMEX> clusters are given in Table
+          <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          It is useful to evaluate how much of the
+          dimensionality of the gene expression variation is
+          captured by the clusters derived from <ENAMEX TYPE="SUBSTANCE">gene shaving</ENAMEX>. We
+          can approximate the expression profile for each gene in
+          the complete dataset as a linear combination of the three
+          <ENAMEX TYPE="SUBSTANCE">super genes</ENAMEX> from each cluster (which are simple averages
+          of the genes in each cluster). The percent variance
+          explained by the first 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> = <NUMEX TYPE="CARDINAL">1,2</NUMEX>, ... <NUMEX TYPE="CARDINAL">10</NUMEX> super <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> is
+          shown in Figure <NUMEX TYPE="CARDINAL">7</NUMEX>.
+          Thus the <NUMEX TYPE="CARDINAL">three</NUMEX> gene clusters, involving a total of <NUMEX TYPE="CARDINAL">33</NUMEX>
+          genes, explain <NUMEX TYPE="PERCENT">about 20%</NUMEX> of the variation. The percent
+          <ENAMEX TYPE="PERSON">variance</ENAMEX> explained by the first 
+          <ENAMEX TYPE="PERSON">j</ENAMEX> principal <ENAMEX TYPE="ORG_DESC">components</ENAMEX> (broken
+          curve) exceeds that from <ENAMEX TYPE="SUBSTANCE">gene shaving</ENAMEX>. Each principal
+          component gives a non-zero weight to all <NUMEX TYPE="CARDINAL">3624</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          however.
+        
+        
+          The gap estimate of cluster size
+          Each shaving sequence produces a nested set of gene
+          clusters 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , starting with the entire expression matrix and
+          then proceeding down to some minimum cluster size
+          (typically <NUMEX TYPE="CARDINAL">1</NUMEX>). If we applied this procedure to null data,
+          in which the rows and columns were independent of each
+          other, we could still find some interesting-looking
+          patterns in the resulting blocks. Hence, we need to
+          calibrate this process so that we can differentiate real
+          patterns from spurious ones. Even in the case of real
+          structure, it is unlikely that a distinct set of genes is
+          correct for a cluster, and the rest not. More likely
+          there is a graduation of membership eligibility, and we
+          have to decide where to draw the line. Here we describe a
+          procedure based on randomization that helps us select a
+          reasonable cluster size.
+          Our method requires a quality measure for a cluster.
+          We favor both high-variance clusters, and high coherence
+          between <ENAMEX TYPE="PER_DESC">members</ENAMEX> of the cluster. As the generation of the
+          cluster sequence was driven strongly by the former, we
+          focus on the latter in selecting a good cluster. By
+          analogy with the analysis of variance for grouped data,
+          we define the following measures of variance for a
+          cluster 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           :
+          
+          
+          The between variance is the variance of the (signed)
+          mean gene. The within variance measures the variability
+          of each gene about the cluster average, also averaged
+          over samples. As this can be small if the overall
+          <ENAMEX TYPE="ORGANIZATION">variance</ENAMEX> is small, a more pertinent measure is the
+          between-to-within variance ratio 
+          V 
+          
+            B 
+           <ENAMEX TYPE="CONTACT_INFO">/</ENAMEX> 
+          V 
+          
+            <ENAMEX TYPE="ORGANIZATION">W</ENAMEX> 
+           , or alternatively, the <NUMEX TYPE="PERCENT">percent</NUMEX> variance
+          explained
+          A large value of 
+          R 2implies a tight cluster of
+          coherent genes. This is the quality measure we use to
+          select a cluster from the shaving sequence 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           .
+          Let 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           index the clusters of a given shaving sequence (with
+          
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> being the number of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>). Let 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           be the 
+          R 2measure for the 
+          <ENAMEX TYPE="ORGANIZATION">k th</ENAMEX> <ENAMEX TYPE="PER_DESC">member</ENAMEX> of sequence. We wish to
+          know whether 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           is larger than we would expect by chance, if the
+          rows and columns of the data were independent.
+          Let 
+          X * 
+          b be a permuted data matrix,
+          obtained by permuting the elements within each row 
+          of <ENAMEX TYPE="PERSON">X.</ENAMEX> We form 
+          B such matrices, indexed by 
+          b = <NUMEX TYPE="CARDINAL">1,2,..</NUMEX>. 
+          B . Let 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           * 
+          b be the 
+          R 2measure for cluster S 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           * 
+          b . Denote by 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           *the average of 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           * 
+          b over 
+          b . The 
+          Gap function is defined by
+          We then select as the optimal number of genes that
+          value of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> producing the largest gap:
+          The idea is that at the value the observed variance is
+          the most ahead of expected. Multiple clusters are
+          produced for the randomized data just like for the
+          original data, and the gap test is used repeatedly to
+          select the cluster size at each stage.
+          For the <ENAMEX TYPE="ORGANIZATION">DLCL</ENAMEX> data, the maximum for the first cluster
+          occurs at <NUMEX TYPE="CARDINAL">eight</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. Figure 8shows <NUMEX TYPE="PERCENT">the percent</NUMEX>-variance
+          curves, 
+          D 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           , for both the original and randomized tumor data as
+          a function of size, and the gap curves used to select the
+          specific cluster sizes in Figure <NUMEX TYPE="CARDINAL">3</NUMEX>.
+        
+        
+          Predicting patient survival
+          <NUMEX TYPE="CARDINAL">One</NUMEX> important motivation for developing gene shaving
+          was the wish to identify distinct sets of genes whose
+          variation in expression could be related to a biological
+          property of the samples. In the present example, finding
+          genes whose expression correlates with patient survival
+          is an obvious challenge. Group factors 
+          g 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          g 
+          <ENAMEX TYPE="CONTACT_INFO">2 ,</ENAMEX> 
+          g 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> were created by splitting each gene
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">3into two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <NUMEX TYPE="CARDINAL">24</NUMEX> <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. We
+          used each of these groupings as a factor in <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX>'s
+          proportional hazards model for predicting overall
+          survival [ <TIMEX TYPE="DATE">18</TIMEX>]. Of the <ENAMEX TYPE="ORG_DESC">group</ENAMEX> factors only 
+          g 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> was significant, at the <NUMEX TYPE="CARDINAL">0.05</NUMEX> level (
+          
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> = <NUMEX TYPE="CARDINAL">0.04</NUMEX>).
+          In [ <TIMEX TYPE="DATE">14</TIMEX>], a cluster of <NUMEX TYPE="CARDINAL">380</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was chosen on the
+          basis of their large variation over <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX>, and their
+          'germinal <ENAMEX TYPE="FAC_DESC">center</ENAMEX> B-like' or 'activated B-like' expression
+          profiles. Using these <NUMEX TYPE="CARDINAL">380</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, a hierarchical
+          <ENAMEX TYPE="ORGANIZATION">clustering</ENAMEX> produced <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of <ENAMEX TYPE="PER_DESC">patients</ENAMEX> which were
+          (<NUMEX TYPE="MONEY">just</NUMEX>) statistically different in survival. Close
+          <ENAMEX TYPE="ORGANIZATION">inspection</ENAMEX> shows that <NUMEX TYPE="CARDINAL">18</NUMEX> of the <NUMEX TYPE="CARDINAL">23</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in the second
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX> above also fall into this cluster of <NUMEX TYPE="CARDINAL">380</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>.
+          Hence, <ENAMEX TYPE="SUBSTANCE">gene shaving</ENAMEX> can find clinically and biologically
+          relevant subdivisions in gene expression data in an
+          unsupervised fashion.
+          It may be fortuitous that one of these groupings
+          correlates with survival, as the clusters were not chosen
+          with survival in mind. We next describe a modification of
+          gene shaving that explicitly looks for clusters that are
+          related to patient survival.
+        
+        
+          Supervised shaving
+          The methods discussed so far have not used information
+          about the columns to 'supervise' the shaving of rows.
+          Here we generalize gene shaving to incorporate full or
+          partial supervision.
+          As in <ENAMEX TYPE="GPE">Equation</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>), we consider a cluster of genes 
+          <ENAMEX TYPE="ORGANIZATION">S</ENAMEX> 
+          
+            <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> 
+           having column average vector . Let 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = ( 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> , ... 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> ) be a set of auxiliary measurements
+          available for the samples. For example each 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> 
+          
+            <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+           , might be a survival time for the patient
+          corresponding to sample 
+          <ENAMEX TYPE="PRODUCT">j</ENAMEX> or a class label for each sample,
+          such as a diagnosis category. Supervised shaving
+          maximizes a weighted combination of column variance and
+          an information measure 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> ( <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ):
+          for fixed <ENAMEX TYPE="CONTACT_INFO">0 ≤ α ≤ 1</ENAMEX>. The value α = <NUMEX TYPE="CARDINAL">1</NUMEX> gives full
+          <ENAMEX TYPE="ORGANIZATION">supervision</ENAMEX>; values between o and <NUMEX TYPE="CARDINAL">1</NUMEX> provide partial
+          <ENAMEX TYPE="ORGANIZATION">supervision</ENAMEX>.
+          Choice of the measure 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> ( <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) depends on the nature of the
+          auxiliary information 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> . If the 
+          y codes class labels, 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> ( <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) can be taken as the sum of
+          squared differences between the category averages . For
+          censored survival times 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , think of as a covariate in a
+          <ENAMEX TYPE="PERSON">Cox</ENAMEX> (proportional hazards) model. If the score vector
+          from this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is 
+          g, we set 
+          <ENAMEX TYPE="PERSON">J</ENAMEX> ( <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> ) = 
+          gg 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> , a 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p matrix</ENAMEX>. Computationally we first
+          scale the genes so that the within-risk set variance is
+          <NUMEX TYPE="CARDINAL">1</NUMEX>.
+          When fully supervised, the shaving procedure reduces
+          to simply ranking the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from largest to smallest <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX>
+          model score test. Thus there is no role for principal
+          components or top-down shaving in this case. However, to
+          encourage coherence within the gene clusters, it can be
+          better to use a partially supervised criterion, which
+          does use principal <ENAMEX TYPE="ORG_DESC">components</ENAMEX> and top-down shaving. This
+          is demonstrated in the example below. One can also
+          include other prognostic factors in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, and direct
+          shaving to find a gene cluster whose column average is a
+          strong predictor in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. This can be done with
+          other <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX>, for example a linear regression model for a
+          quantitative measurement. Operationally, all of these
+          choices for 
+          <ENAMEX TYPE="PRODUCT">J</ENAMEX> are quadratic functions of the
+          column averages , and <ENAMEX TYPE="SUBSTANCE">gene shaving</ENAMEX> can be carried out via
+          principal components of a suitably modified variance
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>.
+          We applied supervised shaving to the set of <TIMEX TYPE="DATE">3624</TIMEX> genes
+          from the DLCL samples. Figure <NUMEX TYPE="CARDINAL">9examines</NUMEX> the effect of
+          different values of the supervision weight α, showing the
+          average (absolute) gene correlation and <ENAMEX TYPE="PERSON">Cox</ENAMEX> model 
+          p value for each choice. From this
+          plot we chose the value α = <NUMEX TYPE="CARDINAL">0.10</NUMEX>, which gives a good mix
+          of high gene correlation and low 
+          p value. Partially supervised gene
+          shaving produced a cluster with <NUMEX TYPE="CARDINAL">234</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, shown in
+          Figure <NUMEX TYPE="CARDINAL">10and</NUMEX> in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>.
+          Some of the genes are close together in the
+          hierarchical clustering order (indicated by the first
+          number in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>), many are not. Some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have a
+          negative sign, and others have no sign. We will call
+          these 'negative' and 'positive' genes respectively. The
+          negative genes have their expression values flipped
+          before being averaged with other gene expression
+          profiles. Figure <NUMEX TYPE="CARDINAL">11ashows</NUMEX> the gap curve, suggesting a
+          cluster size of <NUMEX TYPE="CARDINAL">35</NUMEX>. However, further analysis below
+          suggests the better cluster size of <NUMEX TYPE="CARDINAL">234</NUMEX>.
+          The cluster of <NUMEX TYPE="CARDINAL">234</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> contains many of the
+          strongest individual <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for predicting survival. For
+          example, <NUMEX TYPE="CARDINAL">130</NUMEX> of the strongest <NUMEX TYPE="CARDINAL">200</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are in the
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. Some weaker genes are, however, also in the
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>, the weakest being the <NUMEX TYPE="CARDINAL">1332nd</NUMEX> strongest gene
+          among the full list of <TIMEX TYPE="DATE">3624</TIMEX>. Figure <NUMEX TYPE="CARDINAL">11bshows</NUMEX> the survival
+          curves stratified by the low and high expression of this
+          gene cluster, using the median of the cutoff point. The
+          <NUMEX TYPE="CARDINAL">two</NUMEX> resulting <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> are shown in Figure <NUMEX TYPE="CARDINAL">12</NUMEX>.
+          Using this grouping as a predictor in the <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX> model
+          for survival gave a highly significant 
+          p value (<NUMEX TYPE="MONEY">0.00042</NUMEX>). However, this 
+          p value must be scrutinized. Figure
+          13a, bshows the <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX> model 
+          p value as a function of the
+          cluster size, for both partially and fully supervised
+          shaving. We will call these the 'training set 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values'. As the gene shaving
+          process was supervised by the survival times, the
+          training set 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values will be biased downward,
+          and it is important to adjust them appropriately. We
+          permuted the survival times, re-ran the shaving process
+          and computed the corresponding 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values. This was repeated 100
+          times, and for each cluster size we computed the
+          proportion of times the permutation 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values were less than or equal to
+          the training set 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values. These proportions are
+          shown in Figure <TIMEX TYPE="DATE">13c</TIMEX>, <ENAMEX TYPE="GPE">d</ENAMEX>, and are unbiased estimates of the
+          true 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values. Fully supervised shaving
+          is too aggressive, and the upward adjustment of the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values is large. As a result the 
+          p value is <NUMEX TYPE="MONEY">around 0.05</NUMEX> for the full
+          set of genes, but none of the smaller clusters is
+          significant at the <NUMEX TYPE="CARDINAL">0.05</NUMEX> level. For partially supervised
+          shaving, many of the 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> values are below <NUMEX TYPE="MONEY">0.05</NUMEX>, and from
+          this we chose the cluster size of <NUMEX TYPE="CARDINAL">234</NUMEX> near the
+          minimum.
+          Using the full set of genes, flipping each to have
+          positive correlation with survival, averaging their
+          expression values and finally cutting at the median, gave
+          a grouping nearly the same as <ENAMEX TYPE="PRODUCT">Groups 1</ENAMEX> and <NUMEX TYPE="CARDINAL">2</NUMEX> in Figure
+          <TIMEX TYPE="DATE">12</TIMEX>. The only change was a swap between <ENAMEX TYPE="ORGANIZATION">DLCL</ENAMEX><ENAMEX TYPE="PRODUCT">-oo14</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">DLCL</ENAMEX><ENAMEX TYPE="PRODUCT">-oo18</ENAMEX>, and these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">samples</ENAMEX> are right at the median
+          cutpoint between the <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">10</NUMEX>.
+          The international prognostic index (IPI) A score was
+          also available for these <ENAMEX TYPE="PER_DESC">patients</ENAMEX>. Components of the IPI
+          include age, level of the enzyme lactate dehydrogenase
+          (<ENAMEX TYPE="ORGANIZATION">LDH</ENAMEX>) and the number of extranodal sites. As in [ <TIMEX TYPE="DATE">14</TIMEX>], we
+          <ENAMEX TYPE="ORGANIZATION">dichotomized IPI</ENAMEX> <ENAMEX TYPE="PER_DESC">scores</ENAMEX> into low (<ENAMEX TYPE="CONTACT_INFO">0, 1</ENAMEX> or <NUMEX TYPE="MONEY">2</NUMEX>) and high (<ENAMEX TYPE="CONTACT_INFO">3,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">4</NUMEX> or <NUMEX TYPE="MONEY">5</NUMEX>). The resulting grouping seems to be about as
+          predictive as the <ENAMEX TYPE="ORGANIZATION">IPI</ENAMEX> index, and is quite independent
+          from it, as <ENAMEX TYPE="PRODUCT">Table 3indicates</ENAMEX>.
+          When added to a <ENAMEX TYPE="ORGANIZATION">Cox</ENAMEX> model containing <ENAMEX TYPE="SUBSTANCE">IPI</ENAMEX>, this
+          <ENAMEX TYPE="ORGANIZATION">grouping</ENAMEX> had a training set 
+          p value of <NUMEX TYPE="CARDINAL">0.0006</NUMEX>. Figure 14shows
+          the <ENAMEX TYPE="PERSON">Kaplan-Meier</ENAMEX> survival curves for each <ENAMEX TYPE="ORG_DESC">group</ENAMEX>,
+          stratified by low and high <ENAMEX TYPE="ORGANIZATION">IPI</ENAMEX>.
+          In [ <TIMEX TYPE="DATE">14</TIMEX>], <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="PER_DESC">patient groups</ENAMEX> were defined from a
+          <ENAMEX TYPE="PLANT">hierarchical clustering tree</ENAMEX> grown from a <NUMEX TYPE="ORDINAL">38o</NUMEX>-gene
+          <ENAMEX TYPE="ORGANIZATION">cluster</ENAMEX>. As a predictor, the grouping was just
+          significant in the low <ENAMEX TYPE="ORGANIZATION">IPI</ENAMEX> <ENAMEX TYPE="ORG_DESC">group</ENAMEX> only, at the <NUMEX TYPE="CARDINAL">0.05</NUMEX> level.
+          <ENAMEX TYPE="PRODUCT">Table 4gives</ENAMEX> a cross-tabulation of that grouping with the
+          <NUMEX TYPE="CARDINAL">one</NUMEX> used in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> in Figure <NUMEX TYPE="CARDINAL">10</NUMEX>.
+          Thus <TIMEX TYPE="DATE">25/36</TIMEX> = <NUMEX TYPE="PERCENT">69%</NUMEX> of the <ENAMEX TYPE="PER_DESC">patients</ENAMEX> are classified the
+          same way by both groupings. The <ENAMEX TYPE="PER_DESC">patient</ENAMEX> grouping of
+          Alizadeh 
+          et al. [ <TIMEX TYPE="DATE">14</TIMEX>] was based on a cluster
+          of <NUMEX TYPE="CARDINAL">380</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, chosen for their large variation over the
+          samples. Our cluster of <NUMEX TYPE="CARDINAL">234</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> has <NUMEX TYPE="CARDINAL">38</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> in common
+          with this cluster of <NUMEX TYPE="CARDINAL">380</NUMEX>, and they are indicated by an
+          <ENAMEX TYPE="ORGANIZATION">asterisk</ENAMEX> in <ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>. <NUMEX TYPE="CARDINAL">Five</NUMEX> of the <NUMEX TYPE="CARDINAL">234</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> also appear in
+          the unsupervised clusters found <TIMEX TYPE="DATE">earlier</TIMEX>, in the <NUMEX TYPE="ORDINAL">second</NUMEX> of
+          the <NUMEX TYPE="CARDINAL">three</NUMEX> clusters.
+        
+      
+      
+        Conclusions
+        We have proposed a set of 'shaving' methods for
+        isolating interesting clusters of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> from a set of DNA
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> experiments. The methods may be unsupervised, or
+        may be supervised - that is, use information available
+        about the samples such as a class label or survival time.
+        The proposed shaving methods search for clusters of genes
+        showing both high variation across the samples, and
+        <ENAMEX TYPE="PERSON">coherence</ENAMEX> (correlation) across the genes. Both of these
+        aspects are important and cannot be captured by simple
+        clustering of the genes, or thresholding of individual
+        genes based on the variation over samples.
+        With our <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>-based approach for supervised shaving,
+        one can incorporate other prognostic factors in the search
+        for interesting gene clusters. If an outcome such as
+        survival time is available for each sample, the method
+        searches for a gene cluster whose column average gene has a
+        significant effect, possibly the presence of other
+        prognostic factors, for predicting the outcome.
+        The microarray data 
+        x 
+        ij  we have considered are
+        real-valued expression levels. However, other kinds of
+        arrays produce different kinds of data. In particular, some
+        arrays detect the presence or absence of single-nucleotide
+        <ENAMEX TYPE="ORGANIZATION">polymorphisms</ENAMEX> (SNPs), so that the 
+        x 
+        <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX>  values take on <NUMEX TYPE="CARDINAL">one</NUMEX> of 
+        <ENAMEX TYPE="ORGANIZATION">k ≥</ENAMEX> <ENAMEX TYPE="PRODUCT">2</ENAMEX> unordered values. The shaving
+        methods described can be easily modified to handle this
+        kind of data. In detail, we construct 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> data matrices 
+        X 
+        <ENAMEX TYPE="CONTACT_INFO">1 ,</ENAMEX> 
+        X 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> ... 
+        X 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX>  , each of size 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+        <ENAMEX TYPE="ORGANIZATION">m</ENAMEX> . The 
+        <ENAMEX TYPE="ORGANIZATION">ij th</ENAMEX> element of 
+        X 
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         is <NUMEX TYPE="CARDINAL">1</NUMEX> if x 
+        
+          ij 
+         <ENAMEX TYPE="PERSON">falls</ENAMEX> in class 
+        <ENAMEX TYPE="PERSON">j</ENAMEX>, and zero otherwise. Letting ∑ 
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         
+        <ENAMEX TYPE="PRODUCT">j = 1</ENAMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>, ... 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> be the 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+        <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> covariance matrices of the genes in
+        each 
+        X 
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         , we simply apply principal component shaving, using ∑
+        
+        
+          <ENAMEX TYPE="CONTACT_INFO">j</ENAMEX> 
+         , as the variance matrix for the penalty. This can be
+        done unsupervised, or a supervision term can also be
+        added.
+      
+    
+  

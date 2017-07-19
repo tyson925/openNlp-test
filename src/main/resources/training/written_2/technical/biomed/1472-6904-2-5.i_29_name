@@ -1,0 +1,1656 @@
+
+  
+    
+      
+        Background
+        The expression "physiologically based pharmacokinetic
+        model" (PBPK) describes an approach where the drug kinetics
+        are modeled using a realistic physiological description of
+        the <ENAMEX TYPE="ANIMAL">animal</ENAMEX>. This has now become a standard approach to
+        <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> and has been applied to many different
+        <ENAMEX TYPE="ORGANIZATION">compounds</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ] . Despite this, most human <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> studies
+        still rely on approximate compartmental pharmacokinetic
+        techniques and do not attempt a complete physiological
+        model. <NUMEX TYPE="CARDINAL">One</NUMEX> reason for this is that detailed kinetic
+        information for the different organs is not available in
+        <ENAMEX TYPE="PER_DESC">humans</ENAMEX> to the same extent as it is in animal studies. A
+        <NUMEX TYPE="ORDINAL">second</NUMEX> reason is that <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> are still somewhat
+        difficult to use and remain a tool primarily of
+        <ENAMEX TYPE="PER_DESC">specialists</ENAMEX>.
+        This paper, along with the accompanying papers [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ]
+        , describes a new <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> modeling program (PKQuest) that is
+        designed to overcome both of these problems. The first
+        problem (lack of information) is avoided by preprogramming
+        a large set of data about kinetics in different organs that
+        can be called as default variables applicable to whatever
+        <ENAMEX TYPE="ORGANIZATION">solute</ENAMEX> is being investigated. The <NUMEX TYPE="ORDINAL">second</NUMEX> problem (ease of
+        use) is overcome by using a simple interface and a
+        <ENAMEX TYPE="ORGANIZATION">graphical</ENAMEX> and printed output that provides a complete
+        description of the pharmacokinetics. Despite this ease of
+        use, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> provides a rigorously accurate PBPK applicable
+        to all the different physiological and biochemical
+        properties of the different compounds that are commonly
+        investigated.
+        This <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> introduces the general features of the
+        program, describes the mathematical details and explains
+        the simple interface that has been designed to use it.
+        <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has incorporated a large number of features, some
+        of which have been developed and introduced for the first
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> (see below). Some of these features are illustrated in
+        this paper by using <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to obtain new information about
+        the human pharmacokinetics of propranolol. This is an
+        intensively investigated area. For example, a search in
+        PubMed for the terms "propranolol" AND "pharmacokinetics"
+        <ENAMEX TYPE="CONTACT_INFO">yielded 1306</ENAMEX> references. Despite this, there are still
+        several important questions remaining about its behavior in
+        <ENAMEX TYPE="PER_DESC">man</ENAMEX>. In particular, the rather peculiar effect of food
+        intake on plasma levels remains unexplained [ <ENAMEX TYPE="LAW">5</ENAMEX> ] : <ENAMEX TYPE="ORGANIZATION">Meals</ENAMEX>
+        decrease the plasma levels when propranolol is given
+        <ENAMEX TYPE="ORGANIZATION">intravenously</ENAMEX> (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>), and increase the plasma levels when
+        <ENAMEX TYPE="ORGANIZATION">propranolol</ENAMEX> is given orally (<ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>). Since it has been shown
+        that gastrointestinal absorption is complete [ <ENAMEX TYPE="LAW">6</ENAMEX> ] , this
+        meal effect must result from a food induced change in the
+        <ENAMEX TYPE="PERSON">metabolism</ENAMEX>, distribution or rate of absorption. Since liver
+        propranolol metabolism is partially limited by liver blood
+        flow [ <ENAMEX TYPE="LAW">7</ENAMEX> ] , the meal induced decrease in the plasma level
+        of the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> administered propranolol can be explained by the
+        increase in liver blood flow that has been shown to be
+        <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with a meal [ <NUMEX TYPE="CARDINAL">5 8 9 10</NUMEX> ] . However, this would
+        not explain the meal induced increase in plasma levels
+        following the oral propranolol. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will be used to try
+        and provide an explanation of this behavior. This analysis
+        is based primarily on the experimental data of <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>.
+        al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] in which the plasma propranolol levels were
+        measured after simultaneous <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and <ENAMEX TYPE="PERSON">PO</ENAMEX> <ENAMEX TYPE="ORG_DESC">administration</ENAMEX>,
+        eliminating the effects of individual variation from these
+        measurements. Requiring a single set of parameters to fit
+        both the simultaneous <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> plasma concentration data
+        imposes a strong limitation on the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. Comparing the
+        <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameter set for the fed and fasted case then
+        provides quantitative information about the effect of meals
+        on propranolol pharmacokinetics. This analysis makes
+        extensive use of the novel PKQuest feature that uses the
+        blood levels following an oral dose to calculate the time
+        course of the <ENAMEX TYPE="ANIMAL">intestinal PO absorption</ENAMEX>.
+        In the last section, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will be used to quantitate
+        the time course of intestinal absorption of a sustained
+        release form of propranolol.
+        The modeling program, along with the detailed
+        applications described in these <ENAMEX TYPE="ORG_DESC">papers</ENAMEX>, is freely available
+        on the Web at <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>.
+      
+      
+        Methods
+        
+          Flow diagram
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> uses the conventional PBPK flow diagram [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          shown in fig. <NUMEX TYPE="CARDINAL">1</NUMEX>. Each <ENAMEX TYPE="FAC_DESC">box corresponds</ENAMEX> to a well-mixed
+          <ENAMEX TYPE="PERSON">compartment</ENAMEX> and each arrow is an input or output to the
+          compartment determined by the blood flow. The different
+          compartments are numbered from <NUMEX TYPE="MONEY">0</NUMEX> (vein) to <NUMEX TYPE="MONEY">11</NUMEX> (lipid).
+          Each compartment is described by the total organ blood
+          flow (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>) and the total weight (<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>). In PKQuest
+          the names shown in fig. 1can be used in place of the
+          numbers. For example the muscle blood flow can be
+          described either by F [ <ENAMEX TYPE="LAW">7</ENAMEX> ] or <ENAMEX TYPE="PRODUCT">F</ENAMEX> [muscle]. Table Ilists
+          the values of organ weight and the blood flow per organ
+          weight for each organ for the standard human (<NUMEX TYPE="QUANTITY">70 Kg</NUMEX>).
+          These organ weights are for the default value of <NUMEX TYPE="PERCENT">20%</NUMEX> body
+          fat. They are scaled depending on the value of "<ENAMEX TYPE="WORK_OF_ART">Fat</ENAMEX>" that
+          is input. The "portal" compartment corresponds to all the
+          organs drained by the portal vein (stomach, small and
+          large intestine, pancreas and spleen) with a blood flow
+          equal to that in the portal vein. The "liver" blood flow
+          <ENAMEX TYPE="ORGANIZATION">corresponds</ENAMEX> to the hepatic <ENAMEX TYPE="FAC_DESC">artery</ENAMEX>. The compartment
+          labeled "other" <ENAMEX TYPE="PER_DESC">groups</ENAMEX> all the other organs with a flow
+          and weight adjusted to account for the total body weight
+          (<NUMEX TYPE="QUANTITY">70 Kg</NUMEX>) and the total default cardiac output (<NUMEX TYPE="CARDINAL">6.06</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>). For a complete listing of all parameters and
+          <ENAMEX TYPE="ORGANIZATION">constants</ENAMEX> used in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, download the file gensolve.mws
+          from the PKQuest web site <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">pkquest</ENAMEX>.comand view the
+          routines "standardman()" and "defaultpar()".
+          A number of other properties are associated with each
+          compartment such as the water volume fraction of the
+          tissue (wfract, <ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>), the fraction of the
+          <ENAMEX TYPE="SUBSTANCE">compartment water</ENAMEX> that is extracelluar (ecf), the
+          <ENAMEX TYPE="GPE">capillary</ENAMEX> clearance (flcear), etc. The critical variable
+          describing the kinetics is the free water concentration
+          c[i] for each compartment i. This is the concentration
+          that determines the rate of <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> across the
+          <ENAMEX TYPE="ORGANIZATION">capillary</ENAMEX>. It is related to the experimental
+          <ENAMEX TYPE="PRODUCT">concentration C</ENAMEX>[i] (amount/<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>) by the parameter fw[i]
+          which is the fraction of the total solute in compartment
+          i that is free in the water phase (c = fw*C/wfract). The
+          parameter fw is determined by factors such as protein
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> and lipid <ENAMEX TYPE="SUBSTANCE">solubility</ENAMEX>. Although fw is the
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> used in the actual calculations, its value is
+          usually input in terms of other parameters, such as the
+          <ENAMEX TYPE="CONTACT_INFO">lipid/</ENAMEX>water partition coefficient [ <ENAMEX TYPE="LAW">2</ENAMEX> ] or the protein
+          binding [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . For the propranolol calculations, fw[i]
+          is related to the input parameters ktiss[i] (the ratio of
+          tissue to plasma concentration) and freepl (the fraction
+          free in plasma) by the relation: <ENAMEX TYPE="SUBSTANCE">fw</ENAMEX>[i] =
+          freepl*watfr[i]/(watfrpl*ktiss[i]) where <ENAMEX TYPE="PER_DESC">watfr</ENAMEX>[i] and
+          watfrpl are the water fractions in tissue i and in the
+          <ENAMEX TYPE="PERSON">plasma</ENAMEX>.
+          Each compartment can have a metabolic component (Q)
+          described either by the <ENAMEX TYPE="ORGANIZATION">Michaelis-Menten</ENAMEX> parameters Vm
+          and <ENAMEX TYPE="PERSON">Km</ENAMEX> (Q[i] = <ENAMEX TYPE="ORGANIZATION">Vm</ENAMEX>[i]*c[i]/(<ENAMEX TYPE="ORGANIZATION">Km</ENAMEX>[i]+c[i])) if the metabolism
+          <ENAMEX TYPE="ORGANIZATION">saturates</ENAMEX> or by a metabolic clearance (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX>) if the
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX> is linear. The <ENAMEX TYPE="DISEASE">kidney</ENAMEX> is a special case,
+          removing solute either via filtered renal clearance
+          (<NUMEX TYPE="MONEY">rclr</NUMEX>) or by tubule secretion (described by <ENAMEX TYPE="ORGANIZATION">Vm</ENAMEX>[kidney],
+          Km[kidney] and <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX>[kidney]). (The default is no tubule
+          <ENAMEX TYPE="ORGANIZATION">secretion</ENAMEX> or clearance). Each compartment can also have
+          its own unique input from outside the <ENAMEX TYPE="ORG_DESC">body</ENAMEX> (cinput[i]).
+          The standard inputs are to the vein, lung or <ENAMEX TYPE="PER_DESC">GI</ENAMEX> tract. It
+          is assumed that the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption goes directly into the
+          liver via the portal vein. This choice was made (as
+          opposed to <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input into the portal compartment) because
+          the <ENAMEX TYPE="ORG_DESC">solute</ENAMEX> absorbed by, e.g., the small intestine is
+          picked up by the villous capillaries and removed in the
+          portal vein before it distributes in the entire small
+          <ENAMEX TYPE="ORGANIZATION">intestine</ENAMEX> or even in the local intestinal submucosal
+          tissue compartment.
+          It is assumed that the tissue region of each organ can
+          be modeled as a single well-stirred compartment. This is
+          clearly an approximation and effects such as diffusion
+          gradients, countercurrent <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> and heterogeneous
+          organ blood flows [ <NUMEX TYPE="CARDINAL">11 12 13</NUMEX> ] will produce small
+          deviations from this assumption. The exchange between the
+          <ENAMEX TYPE="ORGANIZATION">vascular</ENAMEX> and tissue compartments results from diffusion
+          of the free solute between the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and this well mixed
+          tissue region during the passage through the capillary
+          (see <ENAMEX TYPE="PERSON">Appendix</ENAMEX>, fig. <NUMEX TYPE="CARDINAL">7</NUMEX>). The rate of this <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> is
+          determined by the capillary permeability-surface area
+          product (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX>), which can be related to the parameter
+          <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX> (see <ENAMEX TYPE="PERSON">Appendix</ENAMEX>, eq. <NUMEX TYPE="CARDINAL">3</NUMEX>), which varies from <NUMEX TYPE="CARDINAL">0</NUMEX>
+          (<NUMEX TYPE="MONEY">impermeable</NUMEX>) to <NUMEX TYPE="MONEY">1</NUMEX> (flow limited). For flow limited
+          <ENAMEX TYPE="ORGANIZATION">solutes</ENAMEX> (e.g. propranolol), the free water concentration
+          (c) in the vein leaving the tissue is equal to the free
+          tissue water concentration.
+          The major limitation of this <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is the
+          representation of the venous and arterial vascular spaces
+          as single compartments. This means that <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> cannot
+          provide an accurate picture of the very early time course
+          of <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> distribution (<NUMEX TYPE="MONEY">less than</NUMEX> a minute) when a more
+          detailed model of the vascular compartments is required [
+          <NUMEX TYPE="CARDINAL">14</NUMEX> ] .
+        
+        
+          Determination of physiological parameters
+          The most important feature of a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> is the accuracy
+          and validity of the physiological parameters (organ
+          weight, blood flow, volume of distribution, etc.). The
+          major advantage of a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> over a simpler <NUMEX TYPE="CARDINAL">2</NUMEX> or <NUMEX TYPE="CARDINAL">3</NUMEX>
+          <ENAMEX TYPE="PRODUCT">compartment</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> is that, presumably, it returns a
+          higher resolution view of the way the body handles the
+          <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>. This presumption depends on the assumption that the
+          physiological parameters in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> are correct. A
+          large amount of effort has been expended on the choice of
+          these parameters in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. Initially, the parameters
+          were chosen using standard references, such as the
+          "Report on the <ENAMEX TYPE="ORGANIZATION">Task Group</ENAMEX> on <ENAMEX TYPE="WORK_OF_ART">Reference Man</ENAMEX>" [ <TIMEX TYPE="DATE">15</TIMEX> ] and
+          "<ENAMEX TYPE="ORGANIZATION">Reference</ENAMEX> values for resting blood flow to organs of
+          <ENAMEX TYPE="PER_DESC">man</ENAMEX>" [ <TIMEX TYPE="DATE">16</TIMEX> ] and by copying values used from previous PBPK
+          models [ <ENAMEX TYPE="LAW">1 17</ENAMEX> ] . Then the parameters were adjusted to
+          insure that they were in agreement with such features as
+          total blood volume and cardiac output [ <NUMEX TYPE="CARDINAL">18 19</NUMEX> ] ,
+          <ENAMEX TYPE="PRODUCT">extracellular</ENAMEX> space [ <TIMEX TYPE="DATE">20</TIMEX> ] and total body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> [ <NUMEX TYPE="CARDINAL">21 22</NUMEX> ]
+          . Finally, certain parameters were adjusted to optimize
+          the fit to the pharmacokinetics of selected solutes. For
+          example, muscle blood flow was adjusted to fit the D 
+          <ENAMEX TYPE="PRODUCT">2 O kinetics</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , fat blood flow to
+          fit the enflurane kinetics [ <ENAMEX TYPE="LAW">2</ENAMEX> ] , and total
+          <ENAMEX TYPE="PRODUCT">extracellular</ENAMEX> space to fit the inulin kinetics [ <ENAMEX TYPE="LAW">4</ENAMEX> ] .
+          All of the human physiological parameters are listed in
+          the "standardhuman" procedure in the PKQuest program.
+          Since muscle represents <NUMEX TYPE="PERCENT">about 50%</NUMEX> of the total water
+          volume, the muscle blood flow and volume are the <NUMEX TYPE="CARDINAL">two</NUMEX> most
+          important parameters in the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>. The value of the muscle
+          blood flow would be expected to have large variations
+          depending on whether, for example, the subject is lying
+          on a <ENAMEX TYPE="PER_DESC">couch</ENAMEX> with an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> catheter in his arm or is
+          ambulatory after an oral drug dose. It is a gross
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX> to treat all the muscles as a single
+          compartment with a single blood flow and some PBPKs have
+          divided the muscle into a "working" and "resting"
+          compartment [ <TIMEX TYPE="DATE">23</TIMEX> ] . However, <ENAMEX TYPE="ORG_DESC">sub-division</ENAMEX> of the muscle
+          compartment increases the complexity of the model beyond
+          what is usually justified by the available data. For this
+          reason, the muscle blood flow is the parameter that is
+          most frequently varied for the different studies
+          described in these <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> and will be regarded as an
+          adjustable parameter. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, when the blood flow of
+          <NUMEX TYPE="CARDINAL">one</NUMEX> organ is changed, all the other organ flows remain
+          the same, so that the total cardiac output is also
+          changed. The default value for the muscle blood flow is
+          at the low end of most estimates (<NUMEX TYPE="CARDINAL">0.0266</NUMEX> <ENAMEX TYPE="PER_DESC">liters</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>),
+          representing <NUMEX TYPE="PERCENT">14%</NUMEX> of the cardiac output. In several of the
+          studies described in these <ENAMEX TYPE="ORG_DESC">papers</ENAMEX>, the muscle blood flow
+          has been increased by up to a factor of <NUMEX TYPE="CARDINAL">two</NUMEX>.
+          The focus in this series of papers is on human
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> (using the "standardhuman" parameter
+          set). In addition, a "standardrat" parameter set is
+          included in the current version of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. The
+          physiological parameters for this rat data set have been
+          <ENAMEX TYPE="ORGANIZATION">chosen</ENAMEX> and refined using the same approach that was
+          described here for the human data set.
+        
+        
+          Implementation
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is written using the <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> (version <ENAMEX TYPE="CONTACT_INFO">6, 7</ENAMEX> or <NUMEX TYPE="MONEY">8</NUMEX>)
+          computer algebra system <ENAMEX TYPE="CONTACT_INFO">www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">maplesoft</ENAMEX>.<ENAMEX TYPE="CONTACT_INFO">com</ENAMEX>. This means
+          that the <ENAMEX TYPE="PER_DESC">user</ENAMEX> must have <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> installed and running
+          before <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> can be used. This limitation is outweighed
+          by the advantage of being able to use all of the features
+          that are preprogrammed in <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>, such as the numerical
+          solution and graphical options. <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> is available for
+          most operating systems (PC, <ENAMEX TYPE="ORGANIZATION">Mac</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Linux</ENAMEX>) and PKQuest
+          should run on any system that has <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> installed.
+          The derivations and mathematic details of the modeling
+          program are described in the <ENAMEX TYPE="ORGANIZATION">Appendix</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is so
+          large and has so many optional features that not all of
+          them can be described here. The <ENAMEX TYPE="ORGANIZATION">Appendix</ENAMEX> focuses on the
+          features of the program that are new and have not
+          previously been incorporated into a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, including
+          the features <ENAMEX TYPE="CONTACT_INFO">4, 5, 6, 7</ENAMEX> and <NUMEX TYPE="CARDINAL">8</NUMEX> listed below. The
+          description of many other features is available using the
+          <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> "help" option that has been programmed into
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. This allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to enter the name of a term
+          or parameter that is used in the program and view a
+          description of the feature and how it should be used. As
+          a typical example, entering the term fclear in the help
+          option pops up a help page that begins:
+          
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX>[i] is measure of capillary
+            permeability: 
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX>[i] =<NUMEX TYPE="ORDINAL">first</NUMEX> pass clearance of
+            <ENAMEX TYPE="PER_DESC">solute</ENAMEX> =(<ENAMEX TYPE="ORGANIZATION">Cartery - Cvein</ENAMEX>)/(<ENAMEX TYPE="ORGANIZATION">Cartery-Ctissue</ENAMEX>) where C's
+            are free water concentrations. 
+          
+          
+            It is related to the capillary
+            permeability by: <ENAMEX TYPE="PER_DESC">fclear</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>-exp(<ENAMEX TYPE="NATIONALITY">-fw</ENAMEX> [artery]*<ENAMEX TYPE="PRODUCT">ps/F</ENAMEX>) for
+            organ i where p=capillary permeability, s= capillary
+            surface area, <ENAMEX TYPE="PRODUCT">F</ENAMEX> = blood flow, and fw [artery] =
+            fraction of solute that is free (unbound) in arterial
+            <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>. 
+          
+          
+            NOTE that the effective permeability
+            is the product of the fraction free in <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> (fw
+            [artery]) times the classical permeability. For cases
+            where fw [artery] is very small, the solute can become
+            <ENAMEX TYPE="ORGANIZATION">diffusion</ENAMEX> limited even for solutes with a large
+            <ENAMEX TYPE="ORGANIZATION">capillary ps</ENAMEX>. 
+          
+          
+            Flow limited case (<ENAMEX TYPE="ORGANIZATION">Cvein</ENAMEX>=<ENAMEX TYPE="ORGANIZATION">Ctissue</ENAMEX>):
+            <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX>[i] = <NUMEX TYPE="CARDINAL">1</NUMEX> (=maximum allowed value) 
+          
+          This is the <NUMEX TYPE="ORDINAL">first third</NUMEX> of this help page. It goes on
+          to describe the different options for entering values of
+          <ENAMEX TYPE="ORGANIZATION">fclear</ENAMEX>[i] and for varying and optimizing this parameter.
+          Almost every parameter in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has a similar help
+          entry.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is a large program, consisting of <NUMEX TYPE="CARDINAL">more than 30</NUMEX>
+          separate <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> procedures and a number of <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX>
+          worksheets. Once the program has been installed, the user
+          only needs to deal with <NUMEX TYPE="CARDINAL">two</NUMEX> simple procedures, each of
+          which is contained in <NUMEX TYPE="CARDINAL">one</NUMEX> worksheet: The <NUMEX TYPE="ORDINAL">first</NUMEX> procedure
+          lists the values of the model parameters that differ from
+          the default values for the specific solute that is being
+          investigated. This procedure is labeled with a name that
+          describes the <ENAMEX TYPE="FAC_DESC">compound</ENAMEX> being investigated. The <NUMEX TYPE="ORDINAL">second</NUMEX>
+          procedure calls the data in the first procedure, runs the
+          program and determines the type of output that is
+          displayed. In the remainder of this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX>, the use of
+          these <NUMEX TYPE="CARDINAL">two</NUMEX> procedures will be illustrated by an
+          investigation of the human propranolol
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX>.
+        
+        
+          Experimental data
+          <NUMEX TYPE="CARDINAL">Three</NUMEX> sets of experimental data were used. The first
+          set was from the <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">Fagan et</ENAMEX>. al. [ <TIMEX TYPE="DATE">24</TIMEX> ] . It
+          described measurements of the plasma propranolol
+          concentration <TIMEX TYPE="TIME">from 1 minute to 8 hours</TIMEX> after a <NUMEX TYPE="CARDINAL">0.05</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>
+          dose infused at a rate of <ENAMEX TYPE="CONTACT_INFO">1 mg/min</ENAMEX> in <NUMEX TYPE="CARDINAL">6</NUMEX> young normal
+          <ENAMEX TYPE="PERSON">males</ENAMEX> (weight <NUMEX TYPE="CARDINAL">60-90</NUMEX> <ENAMEX TYPE="PERSON">Kg</ENAMEX>). The <NUMEX TYPE="ORDINAL">second</NUMEX> set was the data of
+          <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] for the simultaneous <ENAMEX TYPE="PRODUCT">IV</ENAMEX> infusion of
+          <NUMEX TYPE="QUANTITY">0.1 mg</NUMEX><ENAMEX TYPE="PRODUCT">/Kg</ENAMEX> (infused at a rate of <ENAMEX TYPE="CONTACT_INFO">1 mg/min</ENAMEX>) of unlabeled
+          racemic propranolol and oral dose of <NUMEX TYPE="MONEY">80 mg</NUMEX> (consisting of
+          <TIMEX TYPE="TIME">40 mg</TIMEX> of the hexadeuterium-labeled (+)-propranolol
+          <ENAMEX TYPE="ORGANIZATION">hydrochloride</ENAMEX> and <NUMEX TYPE="CARDINAL">40</NUMEX> mg of the dideuterium-labeled (<ENAMEX TYPE="CONTACT_INFO">-</ENAMEX>)
+          propranolol hydrochloride). The <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were <NUMEX TYPE="CARDINAL">6</NUMEX> healthy
+          <ENAMEX TYPE="PER_DESC">males</ENAMEX> weighing <NUMEX TYPE="QUANTITY">70 to 100 Kg</NUMEX>. The doses were given either
+          to fasting <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> or immediately after eating a high
+          protein breakfast. The <NUMEX TYPE="ORDINAL">third</NUMEX> set was the experimental
+          measurements of <ENAMEX TYPE="ORGANIZATION">Takahashi et</ENAMEX>. al. [ <TIMEX TYPE="DATE">25</TIMEX> ] of the plasma
+          propranolol concentration after oral <ENAMEX TYPE="ORG_DESC">administration</ENAMEX> of <NUMEX TYPE="CARDINAL">60</NUMEX>
+          mg of either conventional or long acting propranolol
+          (<ENAMEX TYPE="ORGANIZATION">Inderal LA</ENAMEX>) to <NUMEX TYPE="CARDINAL">10</NUMEX> healthy <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> (<NUMEX TYPE="CARDINAL">4</NUMEX> <ENAMEX TYPE="PER_DESC">females</ENAMEX>, <NUMEX TYPE="CARDINAL">6</NUMEX> <ENAMEX TYPE="PER_DESC">males</ENAMEX>,
+          average weight of <NUMEX TYPE="QUANTITY">59.1 Kg</NUMEX>).
+          The mean plasma concentrations at each time point were
+          used for the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> fitting. The experimental data points
+          were obtained by using <ENAMEX TYPE="ORGANIZATION">UN-SCAN</ENAMEX>-IT (<ENAMEX TYPE="ORGANIZATION">Silk Scientific</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Corporation</ENAMEX>) to read the data from the published
+          figures.
+        
+      
+      
+        Results
+        
+          Summary of features
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has a number of novel features, many of which
+          have never before been implemented in a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>.
+          <NUMEX TYPE="CARDINAL">1</NUMEX>) There is a large set of default parameters (e.g.
+          organ volumes, blood flows, volume of distribution) that
+          can be called upon. For example, all the values required
+          for human studies are setup simply by a call to
+          "standardhuman". (The current version also implements a
+          "standardrat"). The default case assumes that the solute
+          is lipid soluble, distributes in all the body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, has
+          a very high capillary permeability (is flow limited) and
+          is not volatile (no pulmonary <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX>). Each of these
+          assumptions can be easily modified. For example, if the
+          drug distributes only in the extracellular space, the
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> need set only the parameter "mecf" equal to <NUMEX TYPE="CARDINAL">1</NUMEX> and
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will now use the default set of extracellular
+          volumes for each organ [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . Or, if the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> is not
+          flow limited but has a significant capillary permeability
+          <ENAMEX TYPE="PERSON">limitation</ENAMEX>, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> needs only to input a clearance
+          value for the muscle <ENAMEX TYPE="PRODUCT_DESC">capillaries</ENAMEX> ("fclear [muscle]") and
+          all the other organs will have their permeability set on
+          the basis of their blood flows and reference permeability
+          surface (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX>) product values relative to muscle [ <ENAMEX TYPE="LAW">4</ENAMEX> ] . As
+          a another example, if the <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> is volatile so that
+          pulmonary <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> is important, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> need only input
+          values for the <NUMEX TYPE="CARDINAL">two</NUMEX> parameters <ENAMEX TYPE="PERSON">Kwair</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">water</ENAMEX>/air partition
+          <ENAMEX TYPE="ORGANIZATION">coefficient</ENAMEX>) and <ENAMEX TYPE="PERSON">Kfwat</ENAMEX> (fat/water partition) and all the
+          appropriate parameters necessary for a respiratory
+          compound are activated [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Any or all of the default
+          values can be easily set to arbitrary, <ENAMEX TYPE="PER_DESC">user</ENAMEX> prescribed,
+          values.
+          <NUMEX TYPE="CARDINAL">2</NUMEX>) The output is routinely displayed in graphical form
+          (in addition to the standard numerical output). No user
+          input is required to specify the routine graphical
+          output. All of the figures shown in this <ENAMEX TYPE="ORG_DESC">paper</ENAMEX> are taken
+          directly from the output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> without any
+          modifications. Experimental data can be either typed in
+          or read from a tabular file.
+          <NUMEX TYPE="CARDINAL">3</NUMEX>) A chosen set of parameters can be optimized to give
+          the best fit to the experimental data. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> uses a
+          rigorous non-linear global (simulated anealling [ <NUMEX TYPE="CARDINAL">26 27</NUMEX> ]
+          ) and local (<ENAMEX TYPE="ORGANIZATION">Powell</ENAMEX>, [ <TIMEX TYPE="DATE">28</TIMEX> ] ) minimization routines that
+          have a simple interface. For example, if the <ENAMEX TYPE="PER_DESC">user</ENAMEX> wanted
+          to find the best set of values for the <ENAMEX TYPE="LAW">Vmax and Km</ENAMEX> for
+          the liver metabolism, and for the muscle blood flow
+          ("F"), it is only necessary to input "adjustn" = <NUMEX TYPE="CARDINAL">3</NUMEX>; and
+          "adjustvar" = ["<ENAMEX TYPE="PERSON">Vm</ENAMEX>[<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]","<ENAMEX TYPE="PERSON">Km</ENAMEX>[<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]","F[muscle]"]. Any
+          of the parameters used in the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> can be optimized
+          using this type of call and there is no limit to the
+          number that can be simultaneously optimized (although, in
+          most cases, simultaneous optimization of <NUMEX TYPE="CARDINAL">more than 3</NUMEX>
+          parameters is not recommended, given the limited
+          experimental data).
+          <NUMEX TYPE="CARDINAL">4</NUMEX>) The rate of intestinal absorption (<ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>, defined as
+          the rate of uptake by the portal vein) of a <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> can be
+          determined from the experimental <ENAMEX TYPE="SUBSTANCE">venous blood</ENAMEX> levels
+          after an oral dose. A new technique is used to invert the
+          model equations in order to obtain an accurate solution
+          for the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption. This is a useful new application
+          of <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>, providing the <ENAMEX TYPE="PER_DESC">user</ENAMEX> with an accurate time course
+          (and <ENAMEX TYPE="SUBSTANCE">graphical</ENAMEX> output) of the oral absorption rate (or,
+          optionally, intramuscular, intraperotineal, or skin
+          <ENAMEX TYPE="ORGANIZATION">absorption</ENAMEX>) for any <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> whose PBPK parameters have been
+          previously determined. This is probably the single most
+          important original feature in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, opening up a new
+          approach to a number of pharmacokinetic problems. An
+          example of the potential of this tool is illustrated in
+          the application to propranolol discussed below.
+          <NUMEX TYPE="CARDINAL">5</NUMEX>) The <NUMEX TYPE="ORDINAL">first</NUMEX> pass liver metabolism (FPM) and systemic
+          (peripheral) availability of a <ENAMEX TYPE="SUBSTANCE">PO administered drug</ENAMEX> is
+          directly determined and plotted as output. (<ENAMEX TYPE="ORGANIZATION">Systemic</ENAMEX>
+          availability is defined as the equivalent <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input that
+          would produce an identical venous concentration as a
+          function of time as the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input). This determination
+          uses a new definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> that is applicable to the
+          case of non-linear (saturable) liver metabolism. As has
+          been discussed previously [ <TIMEX TYPE="DATE">29</TIMEX> ] , the classical
+          definition of <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> breaks down for the non-linear case and
+          this is the first rigorous approach to describing this
+          case. This aspect of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is presented in more detail
+          in an accompanying paper that focuses on ethanol
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] .
+          <NUMEX TYPE="CARDINAL">6</NUMEX>) <ENAMEX TYPE="PERSON">Plasma</ENAMEX> and extracellular <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding is treated
+          <ENAMEX TYPE="PERSON">rigorously</ENAMEX>. Since the majority of <ENAMEX TYPE="SUBSTANCE">drugs</ENAMEX> have some protein
+          <ENAMEX TYPE="PERSON">binding</ENAMEX>, an accurate modeling of this property is
+          essential. The option of non-linear (saturable) protein
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> is also included. Because this saturation greatly
+          complicates the mathematics of the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>, it is rarely
+          included in <ENAMEX TYPE="ORGANIZATION">PBPKs</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also allows for a combination
+          of capillary permeability limited <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> and non-linear
+          binding - the <NUMEX TYPE="ORDINAL">first</NUMEX> time this case has been described and
+          implemented. These features are described in more detail
+          in an accompanying paper that discusses the application
+          to antibiotics [ <ENAMEX TYPE="LAW">4</ENAMEX> ] .
+          <NUMEX TYPE="CARDINAL">7</NUMEX>) Although it is well recognized that capillary
+          permeability may limit the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>-tissue <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> of a
+          <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>, most PBPK <ENAMEX TYPE="PRODUCT_DESC">models</ENAMEX> deal only with the high capillary
+          <ENAMEX TYPE="ORGANIZATION">permeability</ENAMEX> (flow limited) case. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> provides for a
+          rigorous modeling of capillary permeability limitations.
+          It is shown in an accompanying paper [ <ENAMEX TYPE="LAW">4</ENAMEX> ] that solutes
+          that are normally assumed to be flow limited can have a
+          significant capillary permeability limitation if there is
+          a high degree of plasma protein binding.
+          <NUMEX TYPE="CARDINAL">8</NUMEX>) The model of the lung used in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> for the
+          <ENAMEX TYPE="SUBSTANCE">respiratory gases</ENAMEX> allows for the option of
+          ventilation-perfusion mismatch. The <ENAMEX TYPE="DISEASE">lung</ENAMEX> can be divided
+          into an arbitrary number of compartments (determined by
+          the parameter <ENAMEX TYPE="PRODUCT">N1dim</ENAMEX>) with a log normal distribution of
+          flows and ventilation to each compartment determined by
+          the either the default or user input values of the log
+          standard deviation of ventilation (<ENAMEX TYPE="CONTACT_INFO">sig_v</ENAMEX>) and perfusion
+          (<ENAMEX TYPE="CONTACT_INFO">sig_f</ENAMEX>). This feature is described in more detail in an
+          accompanying paper that analyses the pharmacokinetics of
+          volatile solutes [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+          <NUMEX TYPE="CARDINAL">9</NUMEX>) <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> can be used to describe an arbitrary number
+          of simultaneously interacting solutes. <NUMEX TYPE="CARDINAL">Two</NUMEX> types of
+          <ENAMEX TYPE="ORGANIZATION">interaction</ENAMEX> (competitive or non-competitive inhibition)
+          are allowed. Also, the case where some solutes are
+          converted into other solutes can be modeled, with a
+          <ENAMEX TYPE="PERSON">separate Vm</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Km</ENAMEX> for each <ENAMEX TYPE="PER_DESC">substrate</ENAMEX>/product pair.
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> parameters for propranolol intravenous (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>)
+          input
+          Some of these features will be illustrated by
+          application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to propranolol pharmacokinetics. A
+          baseline set of physiological <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters will be
+          determined using the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> data of <ENAMEX TYPE="ORGANIZATION">Fagen et</ENAMEX>. al. [ <TIMEX TYPE="DATE">24</TIMEX> ] .
+          This data was chosen because it represents <NUMEX TYPE="CARDINAL">one</NUMEX> of the
+          most complete sets of propranolol data, with plasma
+          values ranging from <TIMEX TYPE="TIME">5 minutes to 8 hours</TIMEX>. Shown below is
+          the listing for the procedure "<ENAMEX TYPE="WORK_OF_ART">prop_iv_fagen"</ENAMEX>, which
+          inputs all of the unique parameters that are required.
+          These values have been adjusted to provide a good fit to
+          the <ENAMEX TYPE="ORGANIZATION">Fagen et</ENAMEX>. al. data.
+          <ENAMEX TYPE="PERSON">prop_iv_fagen</ENAMEX>:=<ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="ORGANIZATION">defaultpar</ENAMEX>():
+          Wtot:=<NUMEX TYPE="CARDINAL">82.0</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> Total body weight
+          <ENAMEX TYPE="ORGANIZATION">standardhuman</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>);
+          Fat:=<NUMEX TYPE="CARDINAL">0.20</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> <ENAMEX TYPE="EVENT">Fat</ENAMEX> fraction
+          cunit:="micrograms";
+          <ENAMEX TYPE="ORGANIZATION">concunit</ENAMEX>[vein] :=<NUMEX TYPE="CARDINAL">4</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> input is plasma venous
+          concentratin
+          rblpl:=<NUMEX TYPE="CARDINAL">0.85</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> blood/plasma concentration ratio
+          freepl:=<NUMEX TYPE="CARDINAL">0.08</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX>fraction free in plasma
+          for i from <NUMEX TYPE="CARDINAL">2</NUMEX> to <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> do
+          <ENAMEX TYPE="ORGANIZATION">ktiss</ENAMEX>[i]:= <NUMEX TYPE="CARDINAL">9.67</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX>tissue/blood partition
+          coefficients
+          end do;
+          <ENAMEX TYPE="ORGANIZATION">ktiss</ENAMEX>[lung]:=<NUMEX TYPE="CARDINAL">29.0</NUMEX>; <NUMEX TYPE="MONEY">#</NUMEX> tissue/blood partition
+          coefficient for lung
+          <ENAMEX TYPE="ORGANIZATION">ktiss</ENAMEX>[lipid]:=<NUMEX TYPE="CARDINAL">2.42</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> tissue/blood partition
+          coefficient for fat
+          <ENAMEX TYPE="ORGANIZATION">ktiss</ENAMEX>[muscle]:=<NUMEX TYPE="CARDINAL">3.62</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> tissue/blood partition
+          coefficient for muscle
+          <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX>[<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]:=<NUMEX TYPE="CARDINAL">52</NUMEX>;<NUMEX TYPE="MONEY">#</NUMEX> metabolic liver clearance
+          datafile:="C:<ENAMEX TYPE="PRODUCT">/Documents and Settings/DLevitt/My</ENAMEX>
+          Documents<ENAMEX TYPE="CONTACT_INFO">/mymaple/scandatda/prop_iv</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">0</ENAMEX>_<ENAMEX TYPE="CONTACT_INFO">480</ENAMEX>_new";
+          pdata:=<NUMEX TYPE="CARDINAL">1</NUMEX>;data [ <ENAMEX TYPE="LAW">1</ENAMEX> ] :=<ENAMEX TYPE="PER_DESC">readtab</ENAMEX>(datafile);
+          ninput:=<NUMEX TYPE="CARDINAL">1</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX> ]
+          :=table([organ=vein,type=<TIMEX TYPE="DATE">1,rate</TIMEX>=<TIMEX TYPE="DATE">1000,tbeg</TIMEX>=<TIMEX TYPE="DATE">0,tend</TIMEX>=<TIMEX TYPE="DATE">4.1,csteady</TIMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>,
+          pad just=<NUMEX TYPE="CARDINAL">0</NUMEX>]);<NUMEX TYPE="MONEY">#constant</NUMEX> infusion of <ENAMEX TYPE="CONTACT_INFO">1000 micrograms/min</ENAMEX>
+          for <NUMEX TYPE="CARDINAL">4.1</NUMEX> min
+          end <TIMEX TYPE="DATE">proc</TIMEX>;
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> line in the procedure ("defaultpar()") calls
+          another procedure that sets up all the default
+          parameters. The <NUMEX TYPE="ORDINAL">second</NUMEX> line (<ENAMEX TYPE="ORGANIZATION">Wtot</ENAMEX>) is the total body
+          weight. It is the only parameter that must be set before
+          the call to "standardhuman". (The weight is arbitrary for
+          this data because the dose was scaled for body weight.
+          The value of <NUMEX TYPE="CARDINAL">82</NUMEX> <ENAMEX TYPE="PERSON">Kg</ENAMEX> was chosen because it is the average
+          value for the <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. data, see below). The forth
+          line is the fraction of body weight that is fat. The
+          <NUMEX TYPE="ORDINAL">fifth</NUMEX> line ("cunit") sets the amount <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> that is used to
+          <ENAMEX TYPE="ORGANIZATION">micrograms</ENAMEX>. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the <ENAMEX TYPE="ORG_DESC">units</ENAMEX> of volume, weight and
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> are always liters, <ENAMEX TYPE="PERSON">Kg</ENAMEX> and <TIMEX TYPE="TIME">minutes</TIMEX>. Thus, for this
+          case, the concentration <ENAMEX TYPE="ORG_DESC">units</ENAMEX> are micrograms/liter. The
+          parameter cunit is not needed for the actual
+          calculations, but is used to label the printed output
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> and the axis of the output plot. Line 6 ("concunit")
+          determines the <ENAMEX TYPE="ORG_DESC">units</ENAMEX> that are used for the experimental
+          input value. In this case, concunit[vein] = <NUMEX TYPE="CARDINAL">4</NUMEX> indicates
+          that the experimental input data corresponds to the
+          venous plasma concentration. Line 7 ("rblpl") is the
+          blood/plasma concentration ratio. If this is not entered
+          then a default value will be used. However, in this case
+          the experimental value is known [ <ENAMEX TYPE="LAW">7</ENAMEX> ] .
+          The next <NUMEX TYPE="CARDINAL">7</NUMEX> lines (lines <NUMEX TYPE="CARDINAL">8-14</NUMEX>) are related to the lipid
+          binding of propranolol. Propranolol <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and tissue
+          <ENAMEX TYPE="PERSON">binding</ENAMEX> has been studied in great detail [ <ENAMEX TYPE="LAW">7 30 31 32</ENAMEX> ] .
+          The propranolol tissue distribution seems to be
+          determined primarily by the phosphatidylserine
+          composition of the tissue [ <TIMEX TYPE="DATE">33</TIMEX> ] . These studies indicate
+          that the factional binding is constant, and does not
+          saturate over the pharmacological concentration range.
+          Since drug binding is such a ubiquitous property of
+          <ENAMEX TYPE="ORGANIZATION">kinetic</ENAMEX> studies, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has incorporated a large number
+          of different ways that the data can be entered. In this
+          case, <NUMEX TYPE="CARDINAL">2</NUMEX> sets of data are required: freepl, which is the
+          fraction free in plasma and is set in line <NUMEX TYPE="CARDINAL">8</NUMEX> to the
+          experimental value [ <ENAMEX TYPE="LAW">7</ENAMEX> ] and ktiss[i], the ratio of the
+          equilibrium tissue/plasma concentration which is set in
+          lines <NUMEX TYPE="CARDINAL">9-14</NUMEX>. Lines <NUMEX TYPE="CARDINAL">9-11</NUMEX> set <TIMEX TYPE="DATE">ktiss</TIMEX> = <NUMEX TYPE="CARDINAL">9.67</NUMEX> for all the
+          organs, and lines <NUMEX TYPE="CARDINAL">12-14</NUMEX> reset the ktiss for <NUMEX TYPE="CARDINAL">3</NUMEX> organs that
+          are known to have distinct binding (<ENAMEX TYPE="DISEASE">lung</ENAMEX>, muscle and
+          <ENAMEX TYPE="ORGANIZATION">lipid</ENAMEX>). Tissue binding studies indicate that propranolol
+          binding in the <ENAMEX TYPE="DISEASE">lung</ENAMEX> is <NUMEX TYPE="CARDINAL">about 3</NUMEX> times higher, and muscle
+          is <NUMEX TYPE="CARDINAL">about a third</NUMEX> of that of most tissues. Somewhat
+          surprisingly, propranolol binding to fat tissue is less
+          than the rest of the <ENAMEX TYPE="ORG_DESC">body</ENAMEX> as indicated by a smaller
+          volume of distribution (when normalized for body weight)
+          in obese <ENAMEX TYPE="PER_DESC">people</ENAMEX> [ <TIMEX TYPE="DATE">34</TIMEX> ] . Although these values of
+          <ENAMEX TYPE="ORGANIZATION">ktiss</ENAMEX>[i] are similar to the experimental measurements in
+          the <ENAMEX TYPE="ANIMAL">rat</ENAMEX> [ <TIMEX TYPE="DATE">33</TIMEX> ] , they have been slightly adjusted to
+          improve the fit.
+          It is well established that the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> is the major
+          site of propranolol clearance. Line <TIMEX TYPE="DATE">15</TIMEX> (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]) is
+          the input data describing the liver metabolism. Although
+          it has been shown that the liver metabolism is
+          non-linear, saturating at high blood levels, this
+          non-linearity only becomes significant at doses above <NUMEX TYPE="CARDINAL">200</NUMEX>
+          mg/day [ <TIMEX TYPE="DATE">35</TIMEX> ] . At lower doses, both the liver metabolism
+          and <ENAMEX TYPE="DISEASE">PO absorption</ENAMEX> appear to be linear [ <NUMEX TYPE="CARDINAL">36 37</NUMEX> ] . All the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> that will be used here fall in this linear dose
+          range. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, there are <NUMEX TYPE="CARDINAL">2</NUMEX> options for entering the
+          metabolism of each organ i. If metabolism is non-linear,
+          than the <NUMEX TYPE="CARDINAL">2</NUMEX> parameters <ENAMEX TYPE="ORGANIZATION">Vmax</ENAMEX>[i] and <ENAMEX TYPE="PRODUCT">Km</ENAMEX>[i] are required and
+          the rate of metabolism of organ i is described by
+          <ENAMEX TYPE="ORGANIZATION">Vmax</ENAMEX>[i]*c[i]/(<ENAMEX TYPE="ORGANIZATION">Km</ENAMEX>[i] + c[i]) where c[i] is the free
+          concentration in the water of organ i. If the metabolism
+          is linear, than metabolism is described by the parameter
+          <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX>[i] (rate of metabolism = <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX>[i]*c[i]). Since the
+          propranolol liver metabolism is linear, it is described
+          by inputting a value of <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>] of <NUMEX TYPE="CARDINAL">52</NUMEX> <ENAMEX TYPE="PER_DESC">liters</ENAMEX>/min.
+          This value was determined by using the <ENAMEX TYPE="ORGANIZATION">Powel</ENAMEX> minimization
+          feature in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to optimize the fit to the
+          experimental data. <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> is the "intrinsic" clearance
+          (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>) of the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>, relating the rate of
+          metabolism to the free water liver concentration. This
+          intrinsic clearance differs significantly from the actual
+          liver clearance (volume of plasma cleared in one pass
+          through the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>) because the liver clearance is
+          partially flow limited and the free water concentration
+          is lower than the absolute concentration. Although there
+          is some stereoselectivity in the propranolol metabolism,
+          the effect is small and was neglected in this analysis [
+          <NUMEX TYPE="CARDINAL">38 39</NUMEX> ] .
+          Line <TIMEX TYPE="DATE">16</TIMEX> ("datafile") is the name of the computer
+          tabular file where the data (time, concentration) is
+          stored. In line <TIMEX TYPE="DATE">17</TIMEX>, "pdata" is the number of input files,
+          and the data is read into data [i = <NUMEX TYPE="CARDINAL">1</NUMEX>].
+          The last <NUMEX TYPE="CARDINAL">2</NUMEX> lines specify the experimental input
+          functions. The parameter "ninput" is the number of input
+          functions. In this case there is <NUMEX TYPE="CARDINAL">only one</NUMEX> - described by
+          the <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> table "finput [ <ENAMEX TYPE="LAW">1</ENAMEX> ] ". The table parameter
+          "organ" is the compartment that the input entered - in
+          this case (<ENAMEX TYPE="PRODUCT">IV</ENAMEX> input) the venous compartment. The
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> "type" specifies the mathematical form of the
+          <ENAMEX TYPE="PERSON">input</ENAMEX> (<NUMEX TYPE="CARDINAL">0</NUMEX> = <ENAMEX TYPE="PER_DESC">bolus</ENAMEX>, <TIMEX TYPE="DATE">1</TIMEX> = constant infusion, <TIMEX TYPE="DATE">2</TIMEX> = <ENAMEX TYPE="PER_DESC">exponential</ENAMEX>,
+          <TIMEX TYPE="DATE">3</TIMEX> = <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> type). In this case there was a constant
+          infusion at a rate of <TIMEX TYPE="DATE">1000</TIMEX> micrograms/min starting at
+          <ENAMEX TYPE="PER_DESC">tbeg</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX> and ending at tend = <NUMEX TYPE="CARDINAL">4.1</NUMEX> <TIMEX TYPE="TIME">minutes</TIMEX>. (See below for
+          an example of multiple inputs.)
+          This completes the description of the data entry for
+          <ENAMEX TYPE="ORGANIZATION">propranolol</ENAMEX>. There are really only <NUMEX TYPE="CARDINAL">2</NUMEX> sets of values that
+          are specific for propranolol: the lipid binding
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX> (freepl and ktiss[i]) and the liver clearance
+          (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]). All the rest of the entries (body weight,
+          concentration <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, data file, etc.) are essentially
+          <ENAMEX TYPE="PERSON">housekeeping</ENAMEX>. The default parameters (set up by the call
+          to "defaultpar") are for the case that the solute is flow
+          <ENAMEX TYPE="ORGANIZATION">limited</ENAMEX> and distributes in all the body <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>. Since this
+          is the case for propranolol, the parameters describing
+          the volume of distribution and capillary permeability do
+          not need to be input.
+        
+        
+          <ENAMEX TYPE="GPE">PKQuest</ENAMEX> output for this set of model
+          parameters
+          Using this propranolol data, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> is ready to be
+          run. A listing of the procedure "pkquest" is shown
+          below:
+          pkquest:= <ENAMEX TYPE="PER_DESC">proc</ENAMEX>()
+          <ENAMEX TYPE="PERSON">prop_iv_fagen</ENAMEX>();
+          modelplot:=table([n =
+          <NUMEX TYPE="CARDINAL">1</NUMEX>,(ip<NUMEX TYPE="CARDINAL">,1</NUMEX>)=vein,<ENAMEX TYPE="PER_DESC">mstart</ENAMEX>=data[<ENAMEX TYPE="LAW">1</ENAMEX>][<ENAMEX TYPE="LAW">1</ENAMEX>][<ENAMEX TYPE="LAW">1</ENAMEX>],
+          mend=data[<ENAMEX TYPE="LAW">1</ENAMEX>] [<ENAMEX TYPE="SUBSTANCE">nops</ENAMEX>(data[<ENAMEX TYPE="LAW">1</ENAMEX>])][<ENAMEX TYPE="LAW">1</ENAMEX>]);
+          cdata:=vein;
+          <ENAMEX TYPE="PERSON">calculate</ENAMEX>(adjustn,adjustvar,farea,findabs);
+          end <TIMEX TYPE="DATE">proc</TIMEX>;
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> line of the procedure calls the data listed
+          above in the procedure "<ENAMEX TYPE="WORK_OF_ART">prop_iv_fagen"</ENAMEX>. The <NUMEX TYPE="ORDINAL">second</NUMEX> line
+          calls for the standard graphical output. In this case,
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will output the plot of just the venous
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>, (ip<NUMEX TYPE="CARDINAL">,1</NUMEX>)=vein) starting at the time
+          of the <NUMEX TYPE="ORDINAL">first</NUMEX> experimental data point (data[<ENAMEX TYPE="LAW">1</ENAMEX>][<ENAMEX TYPE="LAW">1</ENAMEX>][<ENAMEX TYPE="LAW">1</ENAMEX>]) and
+          ending at the time of the last data point (data[<ENAMEX TYPE="LAW">1</ENAMEX>]
+          [nops(data[<ENAMEX TYPE="LAW">1</ENAMEX>])][<ENAMEX TYPE="LAW">1</ENAMEX>]). (Up to <NUMEX TYPE="CARDINAL">6</NUMEX> different organ
+          concentrations can be plotted on the same graph). The
+          <NUMEX TYPE="ORDINAL">third</NUMEX> line ("cdata") specifies that the venous
+          concentration at the experimental data time points will
+          be printed in addition to the graphical output. The last
+          line (calculate) runs the program.
+          The <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> <ENAMEX TYPE="SUBSTANCE">graphical</ENAMEX> output is shown in fig. <NUMEX TYPE="CARDINAL">2</NUMEX>. (The
+          entire run took <TIMEX TYPE="TIME">less than one second</TIMEX> on a <NUMEX TYPE="CARDINAL">1</NUMEX> <ENAMEX TYPE="NATIONALITY">Ghz</ENAMEX> PC). The
+          solid line is the model plasma concentration and the open
+          squares are the experimental data. The complete layout of
+          this figure (axes, labels, etc.) is determined without
+          any <ENAMEX TYPE="PER_DESC">user</ENAMEX> input. <ENAMEX TYPE="ORGANIZATION">Maple</ENAMEX> has a variety of export options.
+          The figures shown here have been exported in jpg
+          format.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also prints out information pertinent to each
+          particular case, such as, in this case, the rate of liver
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX>, portal and hepatic blood flow, plasma and
+          tissue binding, etc. <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also routinely outputs the
+          classical pharmacokinetic values for the experimental
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>:
+          <ENAMEX TYPE="PERSON">Classical Phamacokinetics</ENAMEX> from <ENAMEX TYPE="ORGANIZATION">Experimental Data</ENAMEX>
+          (extrapolate to infinity): <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> = <NUMEX TYPE="CARDINAL">3003.4840</NUMEX> <ENAMEX TYPE="ORGANIZATION">AUMC</ENAMEX> =
+          <NUMEX TYPE="CARDINAL">557363.9367</NUMEX> <ENAMEX TYPE="ORGANIZATION">MIT</ENAMEX>(min) = <NUMEX TYPE="CARDINAL">2.05</NUMEX> clearance(lit) = <NUMEX TYPE="CARDINAL">1.3651</NUMEX>
+          Steady <ENAMEX TYPE="ORGANIZATION">State</ENAMEX> <ENAMEX TYPE="PERSON">Vol. Dist</ENAMEX>.(lit) = <NUMEX TYPE="CARDINAL">252.6390</NUMEX>
+          where the total clearance and steady state volume are
+          determined from the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">AUMC</ENAMEX> (the area under the
+          curve and its first moment), and <ENAMEX TYPE="ORGANIZATION">MIT</ENAMEX> (the mean input
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>) [ <TIMEX TYPE="DATE">40</TIMEX> ] .
+        
+        
+          Application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to simultaneous <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> and <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          input data
+          <ENAMEX TYPE="ORGANIZATION">Olanoff et al.</ENAMEX> [ <ENAMEX TYPE="LAW">5</ENAMEX> ] simultaneously administered
+          unlabeled propranolol intravenously (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>), and deuterium
+          labeled propranolol orally (<ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>) and measured the plasma
+          levels of the labeled and <ENAMEX TYPE="SUBSTANCE">unlabeled drug</ENAMEX>. Since the
+          propranolol pharmacokinetics are linear for this dose,
+          these <NUMEX TYPE="CARDINAL">two</NUMEX> inputs can be treated as completely independent
+          and non-interacting. These experiments will be used to
+          quantitate the influence of <ENAMEX TYPE="SUBSTANCE">food</ENAMEX> on propranolol plasma
+          levels.
+          The approach that will be used is based on finding a
+          set of <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters that are consistent with the
+          <ENAMEX TYPE="ORGANIZATION">simultaneous PO</ENAMEX> and <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input data. The <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> parameters
+          must meet the following <NUMEX TYPE="CARDINAL">three</NUMEX> criteria: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) Since the
+          measurements are simultaneous, an identical set of
+          parameters must be used in the modeling of the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and
+          oral input data. <NUMEX TYPE="CARDINAL">2</NUMEX>) The <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> plasma levels for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          input must fit the observed plasma values. <NUMEX TYPE="CARDINAL">3</NUMEX>) The PKQuest
+          total absorption for the oral input plasma data must be
+          equal to the total experimental oral dose of <NUMEX TYPE="CARDINAL">80</NUMEX> mg. These
+          are quite restrictive conditions. This process will be
+          carried out for both the fasted (fig. <NUMEX TYPE="CARDINAL">3</NUMEX>) and meal case
+          (fig. <NUMEX TYPE="CARDINAL">4</NUMEX>) in order to determine the effect of the <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX> on
+          the propranolol pharmacokinetics.
+          Figure <NUMEX TYPE="CARDINAL">3shows</NUMEX> the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output for the case where
+          the propranolol was given to fasted subjects
+          simultaneously by the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> (fig. 3A) and <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> (fig. 3B)
+          route. Figure 3Ashows a comparison of the experimental
+          plasma data and model predictions when the propranolol
+          was given <ENAMEX TYPE="PRODUCT">IV</ENAMEX> (<NUMEX TYPE="CARDINAL">0.1</NUMEX> <ENAMEX TYPE="PER_DESC">mg</ENAMEX>/<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>). Figure <NUMEX TYPE="CARDINAL">3Bshows</NUMEX> the PKQuest
+          calculation of the time course of the intestinal
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> (open squares) determined using the
+          experimental plasma values for the oral propranolol
+          administration. Note that, as required, the predicted
+          total absorption equals <NUMEX TYPE="CARDINAL">80</NUMEX> mg, the experimental oral
+          dose. The same set of parameters is used for both figs.
+          3Aand <TIMEX TYPE="DATE">3B</TIMEX>. All of the parameters are identical to those
+          used above (fig. <NUMEX TYPE="CARDINAL">2</NUMEX>) for the <ENAMEX TYPE="ORGANIZATION">Fagen et</ENAMEX>. al. [ <TIMEX TYPE="DATE">24</TIMEX> ] data
+          except that it was necessary to reduce the portal blood
+          flow by <NUMEX TYPE="PERCENT">25%</NUMEX> from the default value used in fig. 2in order
+          to satisfy the <NUMEX TYPE="CARDINAL">three</NUMEX> criteria stated above. This strong
+          dependence on portal flow arises from the fact that the
+          liver clearance is limited by liver blood flow for an <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          <ENAMEX TYPE="PERSON">dose</ENAMEX>, while the <NUMEX TYPE="ORDINAL">first</NUMEX> pass clearance of an oral dose is
+          relatively independent of liver flow. This relationship
+          can be quantitated and <ENAMEX TYPE="ORGANIZATION">Kornhauser et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">7</ENAMEX> ] used
+          measurements of the <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX> after an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral dose to
+          estimate the total liver blood flow. In addition, the
+          muscle blood flow was doubled for the fit in fig. 3in
+          order to slightly improve the fit. It is not clear
+          whether this change in muscle flow has some physiological
+          significance or is basically a sort of "fudge
+          factor".
+          For the output shown in fig. 3B, the parameter
+          "findabs" was set = <NUMEX TYPE="CARDINAL">1</NUMEX>. This tells <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to use the
+          input <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels to determine the intestinal absorption
+          rate (see <ENAMEX TYPE="ORGANIZATION">Appendix</ENAMEX> for details). (<ENAMEX TYPE="NATIONALITY">Setting</ENAMEX> <ENAMEX TYPE="PER_DESC">findabs</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>
+          will find the rate of input into the venous compartment,
+          corresponding to <ENAMEX TYPE="ORGANIZATION">IM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">IP</ENAMEX> or skin absorption). Figure
+          3Bshows <TIMEX TYPE="DATE">the standard</TIMEX>, default <ENAMEX TYPE="SUBSTANCE">PKQuest</ENAMEX> output format for
+          this option. The open squares are the total predicted
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> as a function of time. The solid line is a
+          <NUMEX TYPE="CARDINAL">3</NUMEX>-parameter approximation to the actual model total
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> (absorption at time t = A [<ENAMEX TYPE="ORGANIZATION">t H/</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t H+T H</ENAMEX>)]
+          where A = total absorption, <ENAMEX TYPE="ORGANIZATION">H = Hill</ENAMEX> exponent, <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = half
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>). In most cases this provides a good approximation
+          to the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption [ <ENAMEX TYPE="LAW">3</ENAMEX> ] . However, in this case the
+          <ENAMEX TYPE="ORGANIZATION">approximation</ENAMEX> is poor because of the unusual long initial
+          delay in the propranolol absorption (see below for
+          discussion). The open triangles are the total amount of
+          <ENAMEX TYPE="ORGANIZATION">systemically</ENAMEX> (peripherally) available propranolol,
+          determined by finding the equivalent <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input that would
+          produce the same plasma levels (see <ENAMEX TYPE="PERSON">Appendix</ENAMEX>, section
+          <ENAMEX TYPE="PERSON">III</ENAMEX>, for details). The difference between the total
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> (squares) and peripheral availability
+          (<ENAMEX TYPE="SUBSTANCE">diamonds</ENAMEX>) is the <NUMEX TYPE="ORDINAL">first</NUMEX> pass liver metabolism. The time
+          dependence of the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption has an initial delay of
+          <TIMEX TYPE="TIME">30 to 40 minutes</TIMEX>, followed by a relatively rapid rate of
+          absorption that is nearly complete within <NUMEX TYPE="CARDINAL">about 2</NUMEX>
+          <TIMEX TYPE="TIME">hours</TIMEX>.
+          A test of the accuracy of this <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>
+          absorption using plasma concentration data that mimics
+          the experimental data for propranolol is described in the
+          Appendix, section <ENAMEX TYPE="ORGANIZATION">VI</ENAMEX>. For this test case, the total
+          predicted absorption differs from the actual total <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>
+          input by <NUMEX TYPE="PERCENT">less than 1%</NUMEX>.
+          The next step is to repeat the above calculations, but
+          this time using the simultaneous <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral data when
+          <ENAMEX TYPE="ORGANIZATION">propranolol</ENAMEX> is administered at the same time as a
+          standard meal (<NUMEX TYPE="QUANTITY">660 calorie</NUMEX> high protein breakfast [ <ENAMEX TYPE="LAW">5</ENAMEX> ]
+          ). As before, since the <NUMEX TYPE="CARDINAL">two</NUMEX> sets of data are obtained
+          simultaneously, exactly the same set of physiological
+          parameters must be used for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and oral calculations.
+          Some of these parameters should differ from those used
+          for the above calculations (fig. <NUMEX TYPE="CARDINAL">3</NUMEX>) because of the
+          changes induced by the <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX>. It is well established that
+          <ENAMEX TYPE="ORGANIZATION">portal</ENAMEX> blood flow is increased during a meal. Direct
+          measurements in <ENAMEX TYPE="PER_DESC">humans</ENAMEX> of the time course of portal blood
+          flow after a meal show an increase of <NUMEX TYPE="PERCENT">between 50 and 100%</NUMEX>
+          that peaks <TIMEX TYPE="TIME">30 to 60 minutes</TIMEX> after the <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX> [ <NUMEX TYPE="CARDINAL">8 9 10</NUMEX> ] .
+          <ENAMEX TYPE="ORGANIZATION">Olfanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] found an average meal induced
+          increase in total liver blood flow of <NUMEX TYPE="PERCENT">about 34%</NUMEX> using
+          <ENAMEX TYPE="ORGANIZATION">indocyanine</ENAMEX> green [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . It has also been shown that the
+          serum propranolol binding is not affected by meal induced
+          variations in fatty <ENAMEX TYPE="SUBSTANCE">acids</ENAMEX> [ <TIMEX TYPE="DATE">30</TIMEX> ] so that the model
+          parameters related to lipid binding (freepl and ktiss[i])
+          were not allowed to vary between the fasting and standard
+          <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX> experiments.
+          As described above, <ENAMEX TYPE="SUBSTANCE">meals</ENAMEX> have a bi-directional effect
+          on <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels: decreasing the plasma concentration (and
+          <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX>) when propranolol is given <ENAMEX TYPE="PRODUCT">IV</ENAMEX>, and increasing the
+          levels (and <ENAMEX TYPE="ORGANIZATION">AUC</ENAMEX>) when given orally. This bi-directional
+          meal effect could not be fit just by varying the portal
+          blood flow. In order to quantitatively fit the meal data,
+          it was necessary to increase the value used above for the
+          <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">al</ENAMEX> fasting portal blood flow (<ENAMEX TYPE="PRODUCT">F</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">portal</ENAMEX>]) by
+          <NUMEX TYPE="PERCENT">50%</NUMEX> and decrease the "intrinsic" liver propranolol
+          clearance (<ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>]) by <NUMEX TYPE="PERCENT">20%</NUMEX>. The increased portal
+          flow is consistent with the indocyanine green
+          measurements of <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] . Figure <NUMEX TYPE="CARDINAL">4shows</NUMEX> the
+          <ENAMEX TYPE="SUBSTANCE">PKQuest</ENAMEX> fit to the meal data using this modified
+          <ENAMEX TYPE="ORGANIZATION">parameter</ENAMEX> set. As before, the requirements of a
+          "successful" fit to the simultaneous data is that the <ENAMEX TYPE="PRODUCT">IV</ENAMEX>
+          input model curve fit the observed plasma concentration
+          (fig. 4A) and the predicted total absorption for the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>
+          input case (fig. 4B) equal the actual amount administered
+          (<NUMEX TYPE="MONEY">80 mg</NUMEX>).
+        
+        
+          Application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to a slow release form of
+          propranolol
+          In this section, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> will be applied to the data
+          of <ENAMEX TYPE="ORGANIZATION">Takahashi et</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">al</ENAMEX> [ <TIMEX TYPE="DATE">25</TIMEX> ] in which the oral absorption
+          (in fasting <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>) of a sustained release form of
+          <ENAMEX TYPE="ORGANIZATION">propranolol</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Inderal LA</ENAMEX>) was compared with the standard
+          form in same set of subjects. The <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters used
+          for these <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> were identical to those determined
+          above for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> data of <ENAMEX TYPE="ORGANIZATION">Fagen et</ENAMEX>. al. [ <TIMEX TYPE="DATE">24</TIMEX> ] , except
+          that the value of <ENAMEX TYPE="ORGANIZATION">Tclr</ENAMEX> [<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>] was adjusted (increased by
+          <NUMEX TYPE="PERCENT">50%</NUMEX> per Kg body weight) so that the total absorption for
+          the standard propranolol equaled the total oral dose (<NUMEX TYPE="CARDINAL">60</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">mg</ENAMEX>). Figure <NUMEX TYPE="CARDINAL">5shows</NUMEX> the predicted time course for the
+          experimental data for oral <ENAMEX TYPE="ORG_DESC">administration</ENAMEX> of the standard
+          form (fig. 5A) and the long acting form (fig. 5B). It can
+          be seen that the absorption rate is markedly slowed.
+          There appears to be a significant absorption rate even
+          for the last data point at <TIMEX TYPE="TIME">24.5 hours</TIMEX>. It can also be
+          seen that <NUMEX TYPE="PERCENT">only about 50%</NUMEX> of the slow release form is
+          absorbed by <TIMEX TYPE="TIME">24 hours</TIMEX> (<NUMEX TYPE="CARDINAL">30</NUMEX> mg absorption of the <NUMEX TYPE="CARDINAL">60</NUMEX> mg
+          dose). It is possible that a higher absorption faction
+          would have been seen if the plasma measurements were
+          carried out for longer times. This result is consistent
+          with the absorption estimate of <NUMEX TYPE="PERCENT">60%</NUMEX> of <ENAMEX TYPE="ORGANIZATION">Takahashi et</ENAMEX>. <ENAMEX TYPE="ORGANIZATION">al</ENAMEX> [
+          <NUMEX TYPE="CARDINAL">25</NUMEX> ] , based on measurements of the <TIMEX TYPE="TIME">48 hour</TIMEX> urinary
+          excretion of <NUMEX TYPE="CARDINAL">6</NUMEX> metabolites of propranolol.
+          Once the <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters have been determined, PKQuest
+          can be used to predict the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels for an arbitrary
+          set of input functions. For example, using the above
+          analysis, one can determine the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels after
+          different dosage regimens of the standard and long acting
+          forms of propranolol. This will be illustrated by a
+          comparison of the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels of a <TIMEX TYPE="DATE">daily</TIMEX> dose of <NUMEX TYPE="CARDINAL">120</NUMEX> mg
+          of the standard form given in <TIMEX TYPE="DATE">40</TIMEX> mg doses, <NUMEX TYPE="CARDINAL">3</NUMEX> times a day
+          (at <TIMEX TYPE="TIME">8 hour</TIMEX> intervals) versus <NUMEX TYPE="CARDINAL">120</NUMEX> mg of the sustained
+          release form (<ENAMEX TYPE="ORGANIZATION">Inderal LA</ENAMEX>) given once a day. (According to
+          the <ENAMEX TYPE="ORGANIZATION">Physicians Desk Reference</ENAMEX>, these are roughly
+          equivalent therapeutic doses). The <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption rate
+          (Q(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)) is described by the <NUMEX TYPE="CARDINAL">3</NUMEX> parameter <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> equations
+          obtained from the <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> output shown in fig.
+          5A(standard) and <TIMEX TYPE="DATE">5B</TIMEX>(long acting) where Q(<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) = A [<ENAMEX TYPE="ORGANIZATION">t H/</ENAMEX>(t
+          <ENAMEX TYPE="ORGANIZATION">H+T H</ENAMEX>)] and A = total absorption, <ENAMEX TYPE="ORGANIZATION">H = Hill</ENAMEX> exponent, <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> =
+          <NUMEX TYPE="CARDINAL">half</NUMEX> time. For the case of the <NUMEX TYPE="CARDINAL">3</NUMEX> times per day <TIMEX TYPE="DATE">40</TIMEX> mg
+          standard dose: A = <NUMEX TYPE="CARDINAL">40000</NUMEX> μg, H = <NUMEX TYPE="CARDINAL">2.67</NUMEX>, and <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = <NUMEX TYPE="CARDINAL">122.1</NUMEX>
+          (fig. 5A). For the case of the once per day <NUMEX TYPE="QUANTITY">120 mg long</NUMEX>
+          acting dose: A = <NUMEX TYPE="CARDINAL">60000</NUMEX> �<ENAMEX TYPE="ORGANIZATION">�g; H</ENAMEX> = <NUMEX TYPE="CARDINAL">2.25</NUMEX> and <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = <NUMEX TYPE="CARDINAL">499.2</NUMEX> (fig.
+          5B). The value of A (total amount absorbed) for the long
+          acting form was assumed to be <NUMEX TYPE="CARDINAL">60</NUMEX> mg, <NUMEX TYPE="PERCENT">50%</NUMEX> of the total <NUMEX TYPE="CARDINAL">120</NUMEX>
+          <TIMEX TYPE="DATE">mg</TIMEX> dose.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> has a simple interface for entering arbitrary
+          input doses. The following input is for the case of <NUMEX TYPE="CARDINAL">4</NUMEX>
+          consecutive <TIMEX TYPE="DATE">40</TIMEX> mg doses of the standard form at <TIMEX TYPE="TIME">8 hour</TIMEX>
+          intervals:
+          ninput:=<NUMEX TYPE="CARDINAL">4</NUMEX>;
+          <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">1</ENAMEX>]:=
+          table([organ=liver,type=<TIMEX TYPE="DATE">3,rate</TIMEX>=<TIMEX TYPE="DATE">40000,tbeg</TIMEX>=<TIMEX TYPE="DATE">0,tend</TIMEX>=<TIMEX TYPE="DATE">122.1,hn</TIMEX>=<TIMEX TYPE="DATE">2.67,csteady</TIMEX>=<TIMEX TYPE="DATE">0,padjust</TIMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);
+          <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">2</ENAMEX>]:=
+          table([organ=liver,type=<TIMEX TYPE="DATE">3,rate</TIMEX>=<TIMEX TYPE="DATE">40000,tbeg</TIMEX>=<TIMEX TYPE="DATE">480,tend</TIMEX>=<TIMEX TYPE="DATE">122.1,hn</TIMEX>=<TIMEX TYPE="DATE">2.67,csteady</TIMEX>=<TIMEX TYPE="DATE">0,padjust</TIMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);
+          <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">3</ENAMEX>]:=
+          table([organ=liver,type=<TIMEX TYPE="DATE">3,rate</TIMEX>=<TIMEX TYPE="DATE">40000,tbeg</TIMEX>=<TIMEX TYPE="DATE">960,tend</TIMEX>=<TIMEX TYPE="DATE">122.1,hn</TIMEX>=<TIMEX TYPE="DATE">2.67,csteady</TIMEX>=<TIMEX TYPE="DATE">0,padjust</TIMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);
+          <ENAMEX TYPE="ORGANIZATION">finput</ENAMEX>[<ENAMEX TYPE="LAW">4</ENAMEX>]:=
+          table([organ=liver,type=<TIMEX TYPE="DATE">3,rate</TIMEX>=<TIMEX TYPE="DATE">40000,tbeg</TIMEX>=<TIMEX TYPE="DATE">1440,tend</TIMEX>=<TIMEX TYPE="DATE">122.1,hn</TIMEX>=<TIMEX TYPE="DATE">2.67,csteady</TIMEX>=<TIMEX TYPE="DATE">0,padjust</TIMEX>=<NUMEX TYPE="CARDINAL">0</NUMEX>]);
+          The input is PO absorption directly to the liver
+          (organ=<ENAMEX TYPE="SUBSTANCE">liver</ENAMEX>), described by the <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> equation (type = <NUMEX TYPE="CARDINAL">3</NUMEX>)
+          with A, <ENAMEX TYPE="ORGANIZATION">H and T</ENAMEX> indicated by rate, tend and hn,
+          respectively. The parameter tbeg indicates the start time
+          in <TIMEX TYPE="TIME">minutes</TIMEX> of each input. (The parameters csteady and
+          padjust are not used for this case). Figure <NUMEX TYPE="CARDINAL">6shows</NUMEX> the
+          predicted blood levels using the <ENAMEX TYPE="ORGANIZATION">Takahashi et</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">al. PBPK</ENAMEX>
+          parameters for the <NUMEX TYPE="CARDINAL">3</NUMEX> times per day standard propranolol
+          (fig. 6A) and the once per day long acting form (fig.
+          6B). (This calculation of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels for <TIMEX TYPE="TIME">32 hours</TIMEX>
+          required <TIMEX TYPE="TIME">1.7 seconds</TIMEX> on a <ENAMEX TYPE="PRODUCT">1 Mhz</ENAMEX> computer). It can be seen
+          that the once per day <NUMEX TYPE="QUANTITY">120 mg</NUMEX> long acting dose has
+          significantly lower blood levels then the same daily
+          dosage of the standard form.
+        
+      
+      
+        Discussion and Conclusions
+        
+          Overview of novel aspects of PKQuest
+          <ENAMEX TYPE="PRODUCT">PKQuest</ENAMEX> differs from other <ENAMEX TYPE="ORGANIZATION">PBPKs</ENAMEX> in that it has been
+          designed to be a complete general-purpose modeling
+          program. To this end it includes all the different
+          features that are required to model the commonly
+          investigated compounds. In this and the accompanying
+          papers [ <NUMEX TYPE="CARDINAL">2 3 4</NUMEX> ] , examples of the application of PKQuest
+          to the human kinetics for D 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> <ENAMEX TYPE="PERSON">O</ENAMEX>, inulin, propranolol, <ENAMEX TYPE="SUBSTANCE">ethanol</ENAMEX>,
+          toluene, anesthetic <ENAMEX TYPE="SUBSTANCE">gases</ENAMEX>, ceftriaxone and dicloxacillin
+          (<ENAMEX TYPE="SUBSTANCE">protein bound antibiotics</ENAMEX>) are presented. All of these
+          studies use the same set of basic physiological
+          parameters. (For most of these compounds, these results
+          represent the first complete human <ENAMEX TYPE="SUBSTANCE">PBPK</ENAMEX>.) These compounds
+          cover most of the range of chemical <ENAMEX TYPE="FAC_DESC">properties</ENAMEX> that one
+          would expect to encounter in a pharmacokinetic study. The
+          pharmacokinetics of different solutes depends on
+          different sets of <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters. For example, the time
+          course of the distribution of D 
+          <ENAMEX TYPE="PRODUCT">2 O</ENAMEX> [ <TIMEX TYPE="DATE">22</TIMEX> ] has a strong dependence on
+          the cardiac output, muscle blood flow and total body
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>, while the kinetics for inulin [ <TIMEX TYPE="DATE">41</TIMEX> ] have a strong
+          dependence on the extracellular volume and capillary
+          <ENAMEX TYPE="PERSON">permeability Knowing</ENAMEX> that the same PBPK (using the same
+          set of parameters) is applicable to a large variety of
+          compounds increases ones confidence in the validity of
+          the parameters.
+          The <NUMEX TYPE="CARDINAL">three</NUMEX> accompanying <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> illustrate other novel
+          features of PKQuest: a) quantitation of <NUMEX TYPE="ORDINAL">first</NUMEX> pass
+          metabolism for non-linear liver metabolism [ <ENAMEX TYPE="LAW">3</ENAMEX> ] ; b)
+          measurement of capillary permeability [ <ENAMEX TYPE="LAW">4</ENAMEX> ] ; c)
+          description of non-linear plasma and tissue protein
+          binding [ <ENAMEX TYPE="LAW">4</ENAMEX> ] ; <ENAMEX TYPE="GPE">d</ENAMEX>) pharmacokinetics of volatile solutes [
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ] ; and e) importance of perfusion-ventilation mismatch
+          [ <ENAMEX TYPE="LAW">2</ENAMEX> ] . Each of these <ENAMEX TYPE="ORG_DESC">papers</ENAMEX> provides significant new
+          information about intensively investigated solutes.
+          The most important of the new features is the option
+          that provides a quantitative measurement (and graphical
+          output) of the time course of the intestinal absorption
+          and peripheral (or systemic) availability. Calculations
+          of intestinal absorption have been incorporated into
+          earlier <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> calculations based on the assumption that
+          intestinal absorption could be described by either a
+          simple <NUMEX TYPE="ORDINAL">first</NUMEX> order rate process [ <NUMEX TYPE="CARDINAL">42 43 44</NUMEX> ] , or by a
+          pseudo <NUMEX TYPE="CARDINAL">two</NUMEX> [ <TIMEX TYPE="DATE">45</TIMEX> ] or <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> [ <TIMEX TYPE="DATE">46</TIMEX> ] multi-compartment process.
+          These intestinal compartmental parameters were then
+          adjusted to provide the optimal fit to the observed blood
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> course. In contrast, in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the PBPK equations
+          are directly solved for the intestinal absorption time
+          course without any assumptions about the physical or
+          mathematical form of the absorption process.
+          If the system is linear, another method of estimating
+          the intestinal absorption or peripheral availability is
+          by the application of the deconvolution approach to the
+          blood levels after an <ENAMEX TYPE="PRODUCT">IV</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input in the same subject
+          [ <TIMEX TYPE="DATE">47</TIMEX> ] . For the peripheral availability, this technique
+          provides a direct approach with a minimum of model
+          assumptions. In contrast, the intestinal absorption
+          cannot be directly determined by the deconvolution
+          approach without some additional assumptions [ <TIMEX TYPE="DATE">47</TIMEX> ] or by
+          using experimental measurements of the systemic blood
+          levels produced by portal vein input [ <NUMEX TYPE="CARDINAL">48 49</NUMEX> ] . Thus,
+          the intestinal absorption feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> should
+          provide a useful new application even for the linear
+          case.
+          The use of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to determine the intestinal
+          absorption or peripheral availability requires that PBPK
+          parameters first be determined using the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input
+          measurements. However, this does not mean that these
+          measurements must be made in the same <ENAMEX TYPE="PER_DESC">individuals</ENAMEX> (as is
+          a requirement for the strict deconvolution approach). For
+          example, in the above measurement of the rate of
+          intestinal absorption of the long acting form of
+          propranolol, no <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input information was available for
+          these <ENAMEX TYPE="PER_DESC">subjects</ENAMEX>. The <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> parameters for these subjects
+          were determined by using the previously determined
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, inputting the body weight and fat fraction
+          for these <ENAMEX TYPE="PER_DESC">subjects</ENAMEX> and by using the assumption that the
+          short acting form was completely absorbed to determine
+          the value of the intrinsic liver clearance for these
+          subjects.
+          The term "intestinal absorption" used in PKQuest
+          refers to the total amount that enters the portal vein.
+          Drug that is absorbed and then metabolized by the <ENAMEX TYPE="LAW">GI</ENAMEX>
+          tract before entering the portal vein will be treated as
+          if it was never absorbed. For the special case of a drug
+          that is known to be completely absorbed (<ENAMEX TYPE="SUBSTANCE">e.g. ethanol</ENAMEX>),
+          the difference between the total <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> "absorption" and
+          the total <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> dose is a measure of the <ENAMEX TYPE="LAW">GI</ENAMEX> tract drug
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX>.
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> provides the <NUMEX TYPE="ORDINAL">first</NUMEX>, rigorous, operational
+          definition of peripheral availability and <NUMEX TYPE="ORDINAL">first</NUMEX> pass
+          <ENAMEX TYPE="PERSON">metabolism</ENAMEX> (FPM) for the non-linear case. As discussed in
+          detail in the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to ethanol
+          metabolism [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , confusion about the definition of FPM
+          has been the cause of a controversy regarding the
+          relative importance of gastric metabolism in the overall
+          ethanol metabolism.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the most important applications of animal PBPKs
+          is to predict the time course of <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> levels in different
+          <ENAMEX TYPE="ORGANIZATION">tissues</ENAMEX>. This feature must be used warily when applied to
+          <ENAMEX TYPE="PER_DESC">humans</ENAMEX> because the tissue partition coefficients are, in
+          most cases, not directly measured but are extrapolated
+          from animal measurements. The successful prediction of
+          the venous plasma concentrations (<ENAMEX TYPE="CONTACT_INFO">e.g. figs. 2, 3, 4</ENAMEX>)
+          does not guarantee that the correct tissue partition
+          coefficients have been used, especially in organs with
+          small volumes (e.g. brain) that have little influence on
+          the total body disposition. The output of PKQuest allows
+          the simultaneous display of the concentrations in <TIMEX TYPE="DATE">up to 6</TIMEX>
+          different organs.
+        
+        
+          Effect of <ENAMEX TYPE="SUBSTANCE">meals</ENAMEX> on propranolol
+          pharmacokinetics
+          The application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to the simultaneous
+          measurements of <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] indicates that a
+          <ENAMEX TYPE="PERSON">meal</ENAMEX> has <NUMEX TYPE="CARDINAL">two</NUMEX> actions on propranolol metabolism: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) An
+          increase in portal blood flow; and <NUMEX TYPE="CARDINAL">2</NUMEX>) A decrease in the
+          intrinsic liver metabolism of propranolol. This meal
+          induced increase in portal blood flow is a well
+          documented effect [ <NUMEX TYPE="CARDINAL">5 8 9 10</NUMEX> ] . In contrast, the
+          decrease in metabolism has not been previously
+          <ENAMEX TYPE="ORGANIZATION">quantitated</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] suggested that the
+          increase in portal blood flow might be the only change
+          required to explain the meal effect. The decreased
+          intrinsic clearance presumably results from some
+          competition in the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> between the absorbed food
+          products and propranolol.
+          There is another rather peculiar effect of <ENAMEX TYPE="SUBSTANCE">meals</ENAMEX> on
+          propranolol kinetics that is not usually commented on. A
+          close look and at the plasma blood level measurements of
+          <ENAMEX TYPE="ORGANIZATION">Melander et</ENAMEX>. al. [ <TIMEX TYPE="DATE">50</TIMEX> ] and <ENAMEX TYPE="ORGANIZATION">Walle et</ENAMEX>. al. [ <TIMEX TYPE="DATE">51</TIMEX> ] reveals
+          that the peak in the plasma concentration curve for the
+          <ENAMEX TYPE="PERSON">meal</ENAMEX> case occurs at a slightly earlier time than for the
+          <ENAMEX TYPE="ORGANIZATION">fasting</ENAMEX> case. This is the opposite of what would be
+          expected because the <ENAMEX TYPE="SUBSTANCE">meal</ENAMEX> will significantly delay the
+          rate of gastric emptying which should delay the peak in
+          the plasma concentration. For example, the peak in the
+          <ENAMEX TYPE="SUBSTANCE">blood ethanol</ENAMEX> after an oral dose is delayed by <NUMEX TYPE="CARDINAL">about 20</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX> by a meal because of the delayed gastric emptying
+          [ <ENAMEX TYPE="LAW">3 52</ENAMEX> ] . The above <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> analysis provides an
+          explanation for this peculiar effect. A comparison of
+          <ENAMEX TYPE="ORGANIZATION">figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">3Band 4Bshows</ENAMEX> that in the fasting case (fig. 3B)
+          there is a long delay (<TIMEX TYPE="TIME">about 40 minutes</TIMEX>) before any
+          significant PO absorption occurs. This initial delay is
+          significantly reduced in the meal case (fig. 4B). <TIMEX TYPE="DATE">This 40</TIMEX>
+          minute initial delay suggests that some sort of change in
+          the <ENAMEX TYPE="GPE_DESC">state</ENAMEX> of propranolol (e.g. lipid binding or micelle
+          formation) is required before it can be absorbed and that
+          this change is more rapid in the presence of a meal.
+          Whatever the explanation, this ability to obtain high
+          <ENAMEX TYPE="ORGANIZATION">resolution</ENAMEX> information about the time course of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> drug
+          <ENAMEX TYPE="PERSON">absorption</ENAMEX> is a useful feature of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>.
+          In addition to providing quantitative information
+          about the rate of <ENAMEX TYPE="SUBSTANCE">PO drug absorption</ENAMEX> and peripheral
+          availability, <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> also routinely provides a <NUMEX TYPE="CARDINAL">3</NUMEX>
+          parameter equation describing the rate of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption
+          that can be used to predict <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels for other dosage
+          <ENAMEX TYPE="ORGANIZATION">regimens</ENAMEX>. This was illustrated above in a comparison of
+          the same total <TIMEX TYPE="DATE">daily</TIMEX> propranolol dose given either <NUMEX TYPE="CARDINAL">3</NUMEX>
+          times per day using standard propranolol or once per day
+          as the long acting form. This same approach can be used
+          to predict <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> levels administered via <ENAMEX TYPE="ORGANIZATION">IM</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">IP</ENAMEX> or
+          skin.
+        
+      
+      
+        Competing interests
+        None declared.
+      
+      
+        Appendix: <ENAMEX TYPE="ORGANIZATION">Details</ENAMEX> of PKQuest
+        
+          <ENAMEX TYPE="ORGANIZATION">I.</ENAMEX> Given a known input to the <ENAMEX TYPE="ANIMAL">animal</ENAMEX>, solve for the
+          venous, arterial and organ concentrations as a function
+          of time
+          The derivation of the basic set of model equations is
+          described here. This derivation takes pains to
+          distinguish clearly between weights and volumes of organs
+          and flows and between the total organ concentration and
+          the free water concentration. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, volume, weight
+          and time are always in units of liters, <ENAMEX TYPE="PERSON">Kg</ENAMEX> and <TIMEX TYPE="TIME">minutes</TIMEX>.
+          The solute quantity <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> (moles, gms, etc.) is arbitrary
+          and is set by the <ENAMEX TYPE="PER_DESC">user</ENAMEX>. For illustrative purposes, it has
+          been assumed below that the <ENAMEX TYPE="ORG_DESC">unit</ENAMEX> is moles. The following
+          definitions are used:
+          v 
+          i = weight (<ENAMEX TYPE="ORGANIZATION">Kg</ENAMEX>) of organ i
+          C 
+          i = amount/<ENAMEX TYPE="PERSON">Kg</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">mole/Kg</ENAMEX>) in organ
+          <ENAMEX TYPE="ORGANIZATION">i.</ENAMEX>
+          wfract 
+          i = fraction of weight of organ i that
+          is water (<ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>)
+          c 
+          i = free concentration in water
+          (<ENAMEX TYPE="CONTACT_INFO">moles/liter</ENAMEX>)
+          fw 
+          i = fraction of the total solute in
+          organ i that is free = c 
+          i wfract 
+          i /C 
+          i 
+          ecf 
+          i = fraction of extravascular water
+          that is extracellular
+          F 
+          i = organ blood flow (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> 
+          i = <NUMEX TYPE="CARDINAL">permeability</NUMEX> - surface area
+          product for organ i(<ENAMEX TYPE="CONTACT_INFO">liters/min/Kg</ENAMEX>)
+          fclear 
+          i = fraction solute that equilibrates
+          across capillary in one pass
+          <ENAMEX TYPE="PER_DESC">Valv</ENAMEX> = <ENAMEX TYPE="PERSON">Lung</ENAMEX> alveolar gas volume per lung weigt
+          (<ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>) <ENAMEX TYPE="PER_DESC">alvent</ENAMEX> = <ENAMEX TYPE="PERSON">Lung</ENAMEX> alveolar ventilation rate
+          (<ENAMEX TYPE="CONTACT_INFO">liters/min</ENAMEX>)
+          ρ 
+          B = density of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Kg/liter</ENAMEX>)
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> = <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding constant (<ENAMEX TYPE="CONTACT_INFO">moles/liter</ENAMEX>) <NUMEX TYPE="PERCENT">-1</NUMEX>
+          Pb 
+          i = concentration of <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> binding
+          sites in organ i (<ENAMEX TYPE="CONTACT_INFO">moles/liter</ENAMEX>) Q 
+          i = metabolism by organ i
+          (<ENAMEX TYPE="CONTACT_INFO">moles/min</ENAMEX>)
+          cinput 
+          i = external input to organ i
+          (<ENAMEX TYPE="CONTACT_INFO">moles/min</ENAMEX>)
+          It will be assumed in this section that solute binding
+          is linear and does not saturate (fw 
+          i = constant). The modifications of
+          the equations required for non-linear binding will be
+          described in section <ENAMEX TYPE="PRODUCT">IV</ENAMEX>. The solution described in this
+          <ENAMEX TYPE="LANGUAGE">section</ENAMEX> uses the conventional approach that is routinely
+          used in <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> models. The only aspect that is novel is the
+          incorporation of a capillary permeability limitation
+          through the parameter fclear 
+          i .
+          Figure <NUMEX TYPE="CARDINAL">7describes</NUMEX> the <ENAMEX TYPE="ORG_DESC">exchange</ENAMEX> of solute between the
+          <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and tissue compartment across the capillary wall.
+          It is assumed that the tissue consists of <ENAMEX TYPE="ORGANIZATION">N</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">capillaries/Kg</ENAMEX>, all with exactly the same geometry, blood
+          flow, permeability, etc. It will also be assumed that the
+          relation between the capillary and tissue concentration
+          is in a pseudo steady <ENAMEX TYPE="GPE_DESC">state</ENAMEX>. The steady state
+          differential equation for the concentration in the
+          capillary as a function of position is:
+          
+          where C and c are the total and free water
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX>, subscript B and <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> refers to the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> and
+          tissue compartment, <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> is the capillary permeability, <ENAMEX TYPE="ORGANIZATION">N</ENAMEX> is
+          the number of capillaries per Kg tissue, and a is the
+          capillary radius. The total concentration C 
+          B can be related to the free
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (c 
+          B ) using the definition of fw 
+          b (C 
+          B = c 
+          B wfract 
+          b /fw 
+          b ). Integrating eq. <NUMEX TYPE="CARDINAL">1</NUMEX> over the length
+          of the capillary and solving for the venous concentration
+          leaving the capillary:
+          
+          where <ENAMEX TYPE="ORGANIZATION">PS</ENAMEX> is the permeability-surface area product per
+          tissue weight (<ENAMEX TYPE="CONTACT_INFO">liters/min/Kg</ENAMEX>). <ENAMEX TYPE="CONTACT_INFO">Equation 2</ENAMEX> can then be
+          related to capillary clearance term fclear[i] (for organ
+          i) that is used in PKQuest:
+          
+          where the dimensionless fclear is equal to the
+          fractional equilibration that occurs in one pass through
+          the capillary. Note that physical capillary permeability
+          (<ENAMEX TYPE="ORGANIZATION">PS</ENAMEX>) in eq. <ENAMEX TYPE="PRODUCT">3</ENAMEX> is multiplied by fw 
+          b , the fraction free in the <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX>.
+          Thus, solutes that have a high intrinsic permeability may
+          become permeability limited if a large fraction is bound.
+          This case is discussed in detail in the application of
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to <ENAMEX TYPE="SUBSTANCE">protein bound antibiotics</ENAMEX> [ <ENAMEX TYPE="LAW">4</ENAMEX> ] .
+          Using eq. <NUMEX TYPE="CARDINAL">3</NUMEX> to relate the venous concentration (c 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ) to the tissue concentration (c 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> ) and the definition of fw to relate
+          the free to total concentration, the differential
+          equation for the free tissue concentration in organ i (c 
+          i ) can be obtained from the mass
+          balance relation for organ i:
+          
+          where Q is the metabolic utilization and cinput is the
+          input from outside the <ENAMEX TYPE="ORG_DESC">body</ENAMEX>. In equation <NUMEX TYPE="QUANTITY">4</NUMEX>, c 
+          B is the free concentration entering
+          the organ. For the lung c 
+          B corresponds to the venous
+          concentration and for all other organs c 
+          B is the arterial concentration. If
+          the solute can only distribute in the extracellular
+          space, than the wfract 
+          i term in eq. <ENAMEX TYPE="PRODUCT">4</ENAMEX> is replaced by the
+          product ecf 
+          i × wfract 
+          i where ecf 
+          i is the fraction of extravascular
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> in organ i that is extracellular.
+          The mass balance equation for the lung must be
+          modified to take account of ventilatory exchange of
+          volatile solutes. The total concentration of solute in
+          the lung (C 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) is the sum of the solute in the
+          lung tissue compartment plus that in the alveolar gas
+          space:
+          (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>)     
+          C 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = 
+          ValvC 
+          <ENAMEX TYPE="ORGANIZATION">Alv</ENAMEX> + 
+          C 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = 
+          ValvC 
+          <ENAMEX TYPE="ORGANIZATION">Alv</ENAMEX> + 
+          wfract 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          c 
+          <ENAMEX TYPE="CONTACT_INFO">L /</ENAMEX> 
+          fw 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> 
+          where <ENAMEX TYPE="ORGANIZATION">Valv</ENAMEX> is the alveolar volume per unit weight
+          (<ENAMEX TYPE="CONTACT_INFO">liters/Kg</ENAMEX>) and C 
+          <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> is the absolute tissue concentration
+          which can be related to the free concentration in lung
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX> (c 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> ) via fw 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> . It is assumed that the solute in
+          alveolar <ENAMEX TYPE="SUBSTANCE">gas</ENAMEX> is in equilibrium with the lung tissue
+          <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>:
+          (<ENAMEX TYPE="CONTACT_INFO">6</ENAMEX>)     
+          C 
+          <ENAMEX TYPE="PER_DESC">Alv</ENAMEX> = 
+          c 
+          <ENAMEX TYPE="CONTACT_INFO">L /</ENAMEX> 
+          Kwair 
+          where <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> is the water/air partition coefficient.
+          Thus:
+          
+          Thus, eq. <NUMEX TYPE="CARDINAL">4</NUMEX> can also be used for the <ENAMEX TYPE="DISEASE">lung</ENAMEX>, with <ENAMEX TYPE="PER_DESC">fw</ENAMEX>'
+          substituted for fw. The cinput term in eq. <NUMEX TYPE="CARDINAL">4</NUMEX> for the lung
+          can be written in terms of the alveolar ventilation
+          (alvent, <ENAMEX TYPE="PER_DESC">liters</ENAMEX>/minute):
+          (<ENAMEX TYPE="CONTACT_INFO">8</ENAMEX>)     
+          cinput 
+          <ENAMEX TYPE="ORGANIZATION">L</ENAMEX> = 
+          <ENAMEX TYPE="ORGANIZATION">alvent</ENAMEX> ( 
+          C 
+          inhale - 
+          c 
+          <ENAMEX TYPE="CONTACT_INFO">L /</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">Kwair</ENAMEX> )
+          where C 
+          <ENAMEX TYPE="ORGANIZATION">inhale</ENAMEX> is the inhaled gas
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">moles/liter</ENAMEX>). The above equations are for
+          the case where there is one lung <ENAMEX TYPE="DISEASE">compartment</ENAMEX>. The
+          modifications for the case of perfusion-ventilation
+          <ENAMEX TYPE="PERSON">mismatch</ENAMEX> is described in section <ENAMEX TYPE="PERSON">V.</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">Equation 4</ENAMEX> is the mass balance for each organ
+          <ENAMEX TYPE="PERSON">compartment</ENAMEX>. We still need to define the mass balance for
+          the arterial and venous compartments. For the <ENAMEX TYPE="FAC_DESC">artery</ENAMEX>, the
+          mass balance is described by:
+          
+          where the subscript A indicates <ENAMEX TYPE="FAC_DESC">artery</ENAMEX>, F 
+          <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> is the cardiac output and c L 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> is the concentration in the venous
+          blood leaving the <ENAMEX TYPE="DISEASE">lung</ENAMEX>. The concentration c L 
+          <ENAMEX TYPE="PRODUCT">v</ENAMEX> can be related to the venous
+          concentration entering the <ENAMEX TYPE="DISEASE">lung</ENAMEX> (c 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> ) by the use of eq<NUMEX TYPE="CARDINAL">.3</NUMEX>:
+          
+          Finally, substituting eq. <TIMEX TYPE="TIME">10</TIMEX> into eq. <TIMEX TYPE="TIME">9:</TIMEX>
+          
+          An equation similar to eq. <ENAMEX TYPE="PRODUCT">9</ENAMEX> is obtained for the
+          venous compartment, except that it is necessary to sum
+          over the venous concentrations leaving each organ,
+          multiplied by the organ blood flow:
+          
+          where c i 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> is the concentration in the vein
+          leaving organ i. The sum is over all the organs that
+          empty in to the vein (i = <NUMEX TYPE="CARDINAL">0 and 1</NUMEX> correspond to the
+          <ENAMEX TYPE="ORGANIZATION">venous</ENAMEX> and arterial compartments). The concentration c i 
+          <ENAMEX TYPE="PRODUCT">V</ENAMEX> can be related to the arterial
+          concentration entering organ i by the use of eq<NUMEX TYPE="CARDINAL">.3</NUMEX>:
+          
+          Finally, substituting eq. <TIMEX TYPE="TIME">13</TIMEX> into eq. <TIMEX TYPE="TIME">12:</TIMEX>
+          
+          The set of differential equations for dc 
+          i /dt, i = <NUMEX TYPE="CARDINAL">0..11</NUMEX> for each of the
+          <ENAMEX TYPE="PERSON">organs</ENAMEX> (i = <NUMEX TYPE="CARDINAL">2..11</NUMEX>) and the venous (i = <NUMEX TYPE="CARDINAL">0</NUMEX>) and arterial (i
+          <ENAMEX TYPE="CONTACT_INFO">= 1</ENAMEX>) compartments is then solved by a <ENAMEX TYPE="GPE">Runge</ENAMEX>-Kutta
+          numerical procedure for the values of c 
+          i as a function of time. The free
+          water concentration c 
+          i is then converted to the
+          experimental concentration <ENAMEX TYPE="ORG_DESC">units</ENAMEX> and plotted along with
+          the experimental data. This conversion depends on exactly
+          what is measured experimentally. In <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> the user
+          inputs the parameter concunit[i] which characterizes what
+          experimental unit is used. For example, <ENAMEX TYPE="PER_DESC">concunit</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>
+          indicates total concentration in units of amount/Kg wet
+          weight; <ENAMEX TYPE="PER_DESC">concunit</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> corresponds to amount/liter tissue;
+          <ENAMEX TYPE="PER_DESC">concunit</ENAMEX> = <NUMEX TYPE="CARDINAL">4</NUMEX> corresponds to plasma concentration,
+          etc.
+        
+        
+          II. Given the experimental venous concentration as
+          a function of time, solve for rate of oral (<ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>) or
+          <ENAMEX TYPE="ORGANIZATION">intramuscular</ENAMEX> (IM) absorption as a function of
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX>
+          The solution described above in I corresponds to the
+          case where the input to <NUMEX TYPE="CARDINAL">one</NUMEX> or more of the compartments
+          is given (cinput[i]) and the concentration of the
+          different compartments as a function of time is solved
+          for. This <ENAMEX TYPE="LAW">section</ENAMEX> describes the new procedure that was
+          developed to invert this <ENAMEX TYPE="SUBSTANCE">solution</ENAMEX>, and find the value of
+          <ENAMEX TYPE="ORGANIZATION">cinput</ENAMEX>[i] as a function of time that would produce the
+          experimental venous concentration. Although the approach
+          described below can be used for input into any
+          <ENAMEX TYPE="PERSON">compartment</ENAMEX>, the current version of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> implements
+          <NUMEX TYPE="CARDINAL">only two</NUMEX> different inputs: <ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) PO input in which the
+          <ENAMEX TYPE="ORGANIZATION">solute</ENAMEX> is absorbed from the <ENAMEX TYPE="LAW">GI</ENAMEX> tract and goes directly
+          into the portal vein, where it distributes in and is
+          metabolized by the liver before entering the systemic
+          vein; and <NUMEX TYPE="CARDINAL">2</NUMEX>) <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input in which the solute directly enters
+          the systemic vein. The <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input case is applicable to any
+          input where there is time dependent input directly to the
+          venous <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> without significant distribution in another
+          organ - e.g. intramuscular (IM), intraperitoneal (IP) or
+          skin absorption.
+          Since the venous concentration is known experimentally
+          at a set of time points, this concentration can be used
+          as input to the set of equations described in section I
+          (omitting the venous differential equation, since its
+          concentration is known). The solution to this set of
+          equations then yields the corresponding arterial and
+          organ concentrations as a function of time. In the
+          implementation in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, a <NUMEX TYPE="QUANTITY">cubic spline</NUMEX> interpolation
+          is applied to the experimental data points to obtain a
+          continuous function c 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) that is used as input to the set
+          of equations. For the case of <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input these organ
+          <ENAMEX TYPE="PERSON">concentrations</ENAMEX> (as a function of time) should be equal to
+          the actual organ concentrations in the experimental case,
+          since both cases have the same venous concentration.
+          For the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input case, all the organs will have the
+          correct concentration except for the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> which receives
+          input from the <ENAMEX TYPE="LAW">GI</ENAMEX> tract in addition to the venous input.
+          Another step is required to determine the liver
+          concentration for this case. The differential equation
+          for the venous compartment (eq. <NUMEX TYPE="CARDINAL">14</NUMEX>) can be solved for the
+          liver concentration (c 
+          <ENAMEX TYPE="PERSON">Liver</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>)) since the concentrations in
+          all the other organs and in the vein are known. (In eq.
+          <TIMEX TYPE="DATE">14</TIMEX>, the cinput 
+          v term is <NUMEX TYPE="CARDINAL">0</NUMEX> since there is no venous
+          <ENAMEX TYPE="PERSON">input</ENAMEX>, and Q 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> is <NUMEX TYPE="CARDINAL">zero</NUMEX> because it is assumed for
+          this case that there is no metabolism in the venous
+          <ENAMEX TYPE="ORGANIZATION">compartment</ENAMEX>). The only factor in eq. <TIMEX TYPE="DATE">14</TIMEX> that is not
+          directly available is the time derivative of the venous
+          <ENAMEX TYPE="PERSON">concentration</ENAMEX> (dc 
+          <ENAMEX TYPE="CONTACT_INFO">v /dt</ENAMEX>). However, this can be estimated
+          by taking the derivative of the cubic spline
+          <ENAMEX TYPE="ORGANIZATION">interpolation</ENAMEX> to the experimental venous data. This
+          solution for the liver concentration is then combined
+          with the previous solutions to obtain the concentrations
+          of all the body organs as a function of time for the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>
+          input case.
+          Knowledge of the concentrations as a function of time
+          of all the body compartments is all that is needed to
+          determine the rate of input to the <ENAMEX TYPE="ORG_DESC">body</ENAMEX>. The total body
+          input at time t is equal to the total amount in the body
+          at time t (obtained by summing over all the body
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX>) plus the total amount that has been
+          metabolized or excreted up to that time - which is
+          obtained by integrating over the rates of metabolism (Q 
+          i ) in the different organs, plus the
+          rate of <ENAMEX TYPE="DISEASE">renal clearance</ENAMEX>, etc. In the implementation of
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, this calculated total amount input is plotted as
+          a function of time. A test of this approach is described
+          below (<ENAMEX TYPE="ORGANIZATION">VI</ENAMEX>) using data that is <ENAMEX TYPE="PER_DESC">representative</ENAMEX> of what is
+          observed experimentally for propranolol. It is shown that
+          the total predicted absorption differs from the actual
+          <ENAMEX TYPE="ORGANIZATION">total PO</ENAMEX> input by <NUMEX TYPE="PERCENT">only about 0.5%</NUMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">III</ENAMEX>. Direct calculation of the <NUMEX TYPE="ORDINAL">first</NUMEX> pass
+          metabolism or peripheral availability for the case of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX>
+          input
+          The procedure described above in <ENAMEX TYPE="LAW">section II</ENAMEX> for
+          determining the rate of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption can be directly
+          used to determine the <NUMEX TYPE="ORDINAL">first</NUMEX> pass metabolism. In the
+          calculation in <ENAMEX TYPE="LAW">section II</ENAMEX>, <NUMEX TYPE="CARDINAL">two</NUMEX> different sets of liver
+          concentrations were obtained: <ENAMEX TYPE="ORGANIZATION">Case 1</ENAMEX>) Using just the
+          experimental venous concentration as input. <ENAMEX TYPE="CONTACT_INFO">Case 2</ENAMEX>) Using
+          the direct calculation of the liver concentration via the
+          solution of eq. <TIMEX TYPE="DATE">14</TIMEX>. Case <NUMEX TYPE="CARDINAL">1</NUMEX> corresponds to the <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> (and
+          other organ) concentrations that would be obtained if the
+          input were intravenous (<ENAMEX TYPE="PRODUCT">IV</ENAMEX>) and <ENAMEX TYPE="ORGANIZATION">Case 2</ENAMEX> is for a <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input.
+          Both cases have exactly the same venous concentration.
+          This means that both cases have the same "peripheral
+          availability". Thus, the peripheral availability for the
+          <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input case can be obtained by solving for the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input
+          as a function of time (by summing over the amounts in
+          each organ plus the amount of metabolism) using the organ
+          concentrations for Case <TIMEX TYPE="DATE">1</TIMEX>. This is a direct measure of
+          what the time course of the <ENAMEX TYPE="PRODUCT">IV</ENAMEX> input would have to be to
+          give exactly the same venous concentrations as occurred
+          for the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input. The <NUMEX TYPE="ORDINAL">first</NUMEX> pass metabolism (FPM) is
+          directly related to the peripheral availability by the
+          following relation:
+          <ENAMEX TYPE="ORGANIZATION">First Pass Metabolism = Total Absorption - Peripheral</ENAMEX>
+          Availability
+          In the implementation of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> for the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption
+          case, both the total amount of <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption and the
+          peripheral availability are routine plotted as a function
+          of time.
+          This is a new definition of <NUMEX TYPE="ORDINAL">first</NUMEX> pass metabolism. It
+          provides the first rigorous, operational definition of
+          <ENAMEX TYPE="ORGANIZATION">FPM</ENAMEX> that is applicable to the non-linear liver metabolism
+          case. This case is discussed in more detail in the paper
+          describing the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to ethanol
+          <ENAMEX TYPE="ORGANIZATION">pharmacokinetics</ENAMEX> [ <ENAMEX TYPE="LAW">3</ENAMEX> ] .
+        
+        
+          <ENAMEX TYPE="PRODUCT">IV</ENAMEX>. Modifications of above equations for the case
+          where there is non-linear (saturable) protein
+          binding
+          Allowing for <ENAMEX TYPE="SUBSTANCE">non-linear protein</ENAMEX> binding seriously
+          complicates the <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX>. It corresponds to the case where
+          the fw 
+          i in the above equations becomes a
+          function of c 
+          i (<ENAMEX TYPE="ORGANIZATION">t</ENAMEX>) and it requires major
+          modifications of all of the equations. The modifications
+          described below are similar to those used previously by
+          Tsuji, <ENAMEX TYPE="ORGANIZATION">et</ENAMEX>. al. [ <TIMEX TYPE="DATE">53</TIMEX> ] , but with the new feature of
+          including the capillary permeability. This is the first
+          description of a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX> <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> that allows for both
+          non-linear binding and capillary permeability.
+          The modifications of the left and right hand sides of
+          <ENAMEX TYPE="ORGANIZATION">eq</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX> will be described separately. The left hand side
+          described the change in the total (bound + free)
+          concentration in organ i:
+          
+          where, as previously defined, c 
+          i is the free water concentration, and
+          c b 
+          i is the concentration of the bound
+          <ENAMEX TYPE="ORGANIZATION">solute</ENAMEX> in the organ <ENAMEX TYPE="SUBSTANCE">water</ENAMEX>. It will be assumed that there
+          is <NUMEX TYPE="CARDINAL">only one</NUMEX> homogeneous binding site with the classical
+          Scatchard type binding described by:
+          
+          where k is the binding constant for the <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> and Pb
+          
+          i is the concentration of protein
+          binding sites in compartment <ENAMEX TYPE="PERSON">i. Pb</ENAMEX> must have the came
+          units as c (<ENAMEX TYPE="CONTACT_INFO">e.g. moles/liters</ENAMEX>) and k has the inverse
+          units (<NUMEX TYPE="CARDINAL">e.g. 1/</NUMEX>(<ENAMEX TYPE="CONTACT_INFO">moles/liters</ENAMEX>)). It is assumed that there
+          is <NUMEX TYPE="CARDINAL">only one</NUMEX> type of binding <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> (with a unique k)
+          that is distributed with different concentrations (Pb 
+          i ) in the different compartments.
+          Taking the derivative of c b 
+          i (eq. <NUMEX TYPE="CARDINAL">16</NUMEX>) and substituting it in eq.
+          <TIMEX TYPE="TIME">15:</TIMEX>
+          
+          For the limiting case where binding does not saturate
+          (kc 
+          i << <NUMEX TYPE="CARDINAL">1</NUMEX>), γ 
+          i in eq. <TIMEX TYPE="DATE">17</TIMEX> becomes equal to 1/fw 
+          i and eq. <TIMEX TYPE="DATE">17</TIMEX> becomes equal to the left
+          hand side of eq. <NUMEX TYPE="CARDINAL">4</NUMEX>.
+          The right hand side of eq. <ENAMEX TYPE="PRODUCT">4</ENAMEX> has a term that describes
+          the balance between the inflow and outflow of <ENAMEX TYPE="SUBSTANCE">blood</ENAMEX> from
+          organ i:
+          
+          where c 
+          B and c i 
+          <ENAMEX TYPE="PRODUCT">v</ENAMEX> are the free concentration in the
+          <ENAMEX TYPE="SUBSTANCE">blood water</ENAMEX> entering and leaving organ i, and c b 
+          B and c b 
+          <ENAMEX TYPE="PRODUCT">v</ENAMEX> are the bound concentrations
+          entering and leaving the organ. As before, c i 
+          <ENAMEX TYPE="PRODUCT">v</ENAMEX> can be related to c 
+          B and the tissue concentration c 
+          i using fclear 
+          i :
+          
+          Finally, substituting eq. <TIMEX TYPE="TIME">19</TIMEX> into eq. <TIMEX TYPE="DATE">18</TIMEX>, and equating
+          the right (eq. <NUMEX TYPE="CARDINAL">17</NUMEX>) and left hand sides (eq. <NUMEX TYPE="CARDINAL">18</NUMEX>), the
+          generalization of eq. <NUMEX TYPE="CARDINAL">4</NUMEX> to include non-linear binding is
+          obtained:
+          
+          where the new parameters κ 
+          B , κ 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> and γ are defined as follows: For
+          the case where the binding is linear:
+          
+          For the case of non-linear binding (saturation)
+          
+          There is <NUMEX TYPE="CARDINAL">one</NUMEX> other complication introduced by the
+          non-linear binding. As shown in eq. <NUMEX TYPE="CARDINAL">3</NUMEX>, the fclear 
+          i that enters eqs. <NUMEX TYPE="CARDINAL">20-22</NUMEX> depends on fw
+          
+          B which, for the non-linear case, is a
+          function of c 
+          B (eq. <NUMEX TYPE="CARDINAL">16</NUMEX>). To take this into account,
+          <ENAMEX TYPE="ORGANIZATION">eq</ENAMEX>. <ENAMEX TYPE="PRODUCT">3</ENAMEX> is solved for the value of fclear 
+          i (c 
+          B ):
+          
+          where fclear 
+          i is the clearance in the limit of <NUMEX TYPE="CARDINAL">0</NUMEX>
+          concentration and is the value the <ENAMEX TYPE="PER_DESC">user</ENAMEX> inputs to
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. This last expression for fclear 
+          i (c 
+          B ) is substituted for fclear 
+          i in eqs. <NUMEX TYPE="CARDINAL">20-22</NUMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">V. Modification</ENAMEX> of lung <ENAMEX TYPE="PRODUCT_DESC">model</ENAMEX> to include
+          ventilation-perfusion mismatch
+          The equation in <ENAMEX TYPE="LAW">section I</ENAMEX> for the lung assumed that
+          there was one lung <ENAMEX TYPE="DISEASE">compartment</ENAMEX>, perfused by F 
+          <ENAMEX TYPE="ORGANIZATION">CO</ENAMEX> (cardiac output) with an alveolar
+          volume valv that was ventilated at a rate alvent. This is
+          an idealized case and it is known that even in normal
+          humans the <ENAMEX TYPE="DISEASE">lung</ENAMEX> is heterogeneous, with different regions
+          receiving different fractions of the cardiac output and
+          the alveolar ventilation. In order to investigate the
+          significance of the ventilation-perfusion mismatch, this
+          feature was incorporated as in option in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>. This is
+          the <NUMEX TYPE="ORDINAL">first</NUMEX> time this feature has been used in a <ENAMEX TYPE="ORGANIZATION">PBPK</ENAMEX>.
+          As was discussed in detail by <ENAMEX TYPE="PERSON">Wilson</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Beck</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ]
+          the standard measurement of the distribution does not
+          uniquely characterize the actual ventilation and
+          perfusion heterogeneities to the different regions of the
+          <ENAMEX TYPE="PERSON">lung</ENAMEX> and some additional assumptions must be made. The
+          following derivation closely follows the arguments of
+          <ENAMEX TYPE="PERSON">Wilson</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Beck</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ] . It is assumed that the
+          probability distribution of ventilation and perfusion can
+          be described as a bivariate, uncorrelated, log-normal
+          function:
+          
+          where μ 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> and μ 
+          Q are the means and σ 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> and σ 
+          Q are the standard deviations of the
+          log normal distribution. The function F returns the
+          fraction of the lung that has ventilation and blood flow
+          in the interval 
+          d ln and 
+          d ln centered about ln and ln . The
+          function can be normalized by the use of the normalized
+          variables v and q:
+          
+          In the implementation in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the <ENAMEX TYPE="DISEASE">lung</ENAMEX> is divided
+          into (<NUMEX TYPE="MONEY">2N</NUMEX>) <TIMEX TYPE="DATE">2equal</TIMEX> volume regions by finding the sequence
+          of v 
+          i and q 
+          i (i = <TIMEX TYPE="DATE">0..N</TIMEX>.<NUMEX TYPE="CARDINAL">.2</NUMEX><ENAMEX TYPE="ORGANIZATION">N</ENAMEX>) centered <NUMEX TYPE="CARDINAL">about 0</NUMEX> such
+          that all integrals of f(v)dv from v 
+          i to v 
+          i+<NUMEX TYPE="CARDINAL">1</NUMEX> have the same value. Then each of
+          the regions r 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> (v 
+          i ..v 
+          i+<NUMEX TYPE="CARDINAL">1</NUMEX> , q 
+          <ENAMEX TYPE="CONTACT_INFO">j ..q</ENAMEX> 
+          <ENAMEX TYPE="PERSON">j</ENAMEX>+<NUMEX TYPE="CARDINAL">1</NUMEX> ) has equal area. Each lung region
+          r 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX> is assigned a fraction of the total
+          blood flow ( 
+          
+            ij 
+           ) defined by:
+          
+          From the definition of q (eq. <NUMEX TYPE="CARDINAL">25</NUMEX>):
+          
+          where, in the <NUMEX TYPE="ORDINAL">second</NUMEX> equality in eq. <TIMEX TYPE="DATE">27</TIMEX>, the relation
+          A21 of <ENAMEX TYPE="ORGANIZATION">Beck</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Wilson</ENAMEX> [ <TIMEX TYPE="DATE">54</TIMEX> ] has been substituted for
+          exp(μ 
+          <ENAMEX TYPE="ORGANIZATION">q</ENAMEX> ). Substituting eq. <TIMEX TYPE="TIME">27</TIMEX> into eq. 26
+          and integrating, yields the blood flow to the ij region.
+          A similar approach is used to find the ventilation to the
+          ij region.
+          The overall result of this rather messy procedure can
+          be summarized as follows: The lung is divided into (<NUMEX TYPE="MONEY">2N</NUMEX>)
+          2equal volume regions, each region having a ventilation
+          and blood flow based on the observed log normal
+          distributions. Each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> is defined to have the same
+          tissue and alveolar volume. An important assumption that
+          has been used here is that the ventilation and perfusion
+          to each <ENAMEX TYPE="GPE_DESC">region</ENAMEX> is uncorrelated. This assumption is
+          consistent with recent direct measurements of regional
+          <ENAMEX TYPE="ORGANIZATION">perfusion</ENAMEX> and ventilation [ <NUMEX TYPE="CARDINAL">55 56</NUMEX> ] .
+          In the implementation in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>, the number of lung
+          <ENAMEX TYPE="ORGANIZATION">compartments</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX>) is determined by the parameter N1dim
+          (<ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX> = (<ENAMEX TYPE="CONTACT_INFO">2 N1dim</ENAMEX>) <NUMEX TYPE="CARDINAL">2</NUMEX>). The default is <ENAMEX TYPE="PERSON">Nlung</ENAMEX> = <NUMEX TYPE="CARDINAL">1</NUMEX>
+          (indicated by <TIMEX TYPE="DATE">N1dim</TIMEX> = <NUMEX TYPE="PERCENT">-1</NUMEX>). Choosing N1dim = <NUMEX TYPE="CARDINAL">2</NUMEX>, means that
+          the perfusion and ventilation is distributed over <TIMEX TYPE="DATE">16</TIMEX> lung
+          compartments which should be enough to provide a good
+          test of the importance of perfusion-ventilation mismatch.
+          If <ENAMEX TYPE="ORGANIZATION">Nlung</ENAMEX>><NUMEX TYPE="CARDINAL">1</NUMEX> then values are required for σ 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> (sig_v in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>) and σ 
+          <ENAMEX TYPE="PERSON">q</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">sig_f</ENAMEX>). Default values of sig_v and
+          sig_f are included in standardhuman. These default values
+          were obtained using the relation of <ENAMEX TYPE="ORGANIZATION">Wilson</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Beck</ENAMEX> [ <NUMEX TYPE="CARDINAL">54</NUMEX>
+          ] that relates the standard deviation of the distribution
+          that is routinely measured (σ 
+          <ENAMEX TYPE="CONTACT_INFO">v/q</ENAMEX> ) to the values of σ 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> and σ 
+          q that are required in eqs. <TIMEX TYPE="TIME">23-26:</TIMEX>
+          
+          where ρ is the correlation between perfusion and
+          ventilation. The default values in <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> are for the
+          case of <ENAMEX TYPE="PER_DESC">ρ</ENAMEX> = <NUMEX TYPE="CARDINAL">0</NUMEX>, and σ 
+          <ENAMEX TYPE="PERSON">v</ENAMEX> = σ 
+          <ENAMEX TYPE="PERSON">q</ENAMEX> and σ 
+          <ENAMEX TYPE="CONTACT_INFO">v/q</ENAMEX> = <NUMEX TYPE="CARDINAL">0.4</NUMEX>, the normal value for young
+          adult <ENAMEX TYPE="PER_DESC">men</ENAMEX> [ <TIMEX TYPE="DATE">57</TIMEX> ] . The <ENAMEX TYPE="PER_DESC">user</ENAMEX> can input arbitrary values by
+          inputting sig_v and sig_f. This perfusion-ventilation
+          mismatch feature is discussed and tested in the paper
+          describing the application of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> to volatile solutes
+          [ <ENAMEX TYPE="LAW">2</ENAMEX> ] .
+        
+        
+          <ENAMEX TYPE="PERSON">V. Tests</ENAMEX> of the accuracy of the "find absorption"
+          option of PKQuest
+          The "find absorption" option (see <ENAMEX TYPE="PERSON">II</ENAMEX> above for
+          details) predicts the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> absorption as a function of time
+          based on the observation of plasma concentration at a set
+          of time points. The following test of this calculation
+          was carried out. It is assumed that the <ENAMEX TYPE="ORGANIZATION">PO</ENAMEX> input is known
+          and can be described by the following <NUMEX TYPE="CARDINAL">3</NUMEX>-parameter <ENAMEX TYPE="PERSON">Hill</ENAMEX>
+          type equation similar to what was found experimentally
+          for propranolol in fig:
+          (<NUMEX TYPE="MONEY">29</NUMEX>) <ENAMEX TYPE="LANGUAGE">    Absorption</ENAMEX> at time t = A [<ENAMEX TYPE="ORGANIZATION">t H/</ENAMEX>(<ENAMEX TYPE="ORGANIZATION">t H+ T H</ENAMEX>)]
+          where A = <NUMEX TYPE="CARDINAL">80000</NUMEX> micrograms, H = <NUMEX TYPE="CARDINAL">2</NUMEX>, <ENAMEX TYPE="ORGANIZATION">T</ENAMEX> = <NUMEX TYPE="CARDINAL">90</NUMEX>
+          Figure <NUMEX TYPE="CARDINAL">8shows</NUMEX> the plasma concentration curve generated
+          by <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> for this known input. The solid line is the
+          model plasma concentration, and the squares are the
+          values of the plasma concentration, sampled at the same
+          <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> points as the experimental plasma concentration in
+          the measurements of <ENAMEX TYPE="ORGANIZATION">Olanoff et</ENAMEX>. al. [ <ENAMEX TYPE="LAW">5</ENAMEX> ] described in
+          the text. The test of the "find absorption" feature is to
+          see if <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> can reproduce the time dependent
+          absorption that was used to generate these points (eq,
+          <NUMEX TYPE="CARDINAL">29</NUMEX>), just using these experimental points as inputs.
+          Figure <NUMEX TYPE="CARDINAL">9shows</NUMEX> the output of <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX> using the "find
+          absorption" option using the data points (squares) from
+          <ENAMEX TYPE="PERSON">fig</ENAMEX>. 8as input. The value of the total predicted
+          <ENAMEX TYPE="PRODUCT">absorption</ENAMEX> differs from the actual total input by only
+          <NUMEX TYPE="PERCENT">0.5%</NUMEX> (<NUMEX TYPE="CARDINAL">80505</NUMEX> versus actual <NUMEX TYPE="CARDINAL">80000</NUMEX>). The time dependence of
+          the absorption is also quite close to the actual input
+          function (eq. <NUMEX TYPE="CARDINAL">29</NUMEX>), with the <ENAMEX TYPE="ORGANIZATION">Hill</ENAMEX> exponent (<ENAMEX TYPE="ORGANIZATION">H</ENAMEX>) differing
+          by <NUMEX TYPE="PERCENT">2%</NUMEX> (<NUMEX TYPE="CARDINAL">2.04</NUMEX> versus input <NUMEX TYPE="MONEY">2.0</NUMEX>) and the <NUMEX TYPE="CARDINAL">half</NUMEX> time (<ENAMEX TYPE="ORGANIZATION">T</ENAMEX>)
+          differing by <NUMEX TYPE="PERCENT">4%</NUMEX> (<NUMEX TYPE="CARDINAL">94.63</NUMEX> versus input <NUMEX TYPE="MONEY">90.0</NUMEX>). This agreement
+          is remarkable, considering the coarse discrete samples of
+          the venous concentration that were used as input to
+          <ENAMEX TYPE="ORGANIZATION">PKQuest</ENAMEX>.
+        
+      
+    
+  

@@ -1,0 +1,693 @@
+
+  
+    
+      
+        Background
+        Knowing the differences in gene expression levels among
+        different tissues is of paramount interest in various areas
+        of biomedical research. These include, but are by no means
+        limited to, (i) comparisons of healthy and diseased tissue
+        in order to understand malfunctions in regulation and
+        identify genes essential for control, thus identifying
+        target molecules for the development of novel therapeutics
+        and (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) the observation of changes in expression over time
+        after addition of a <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX> to elucidate the mechanism of
+        action of pharmaceuticals and predict their toxicology.
+        Experiments in that realm furthermore help to understand
+        the molecular basis of <ENAMEX TYPE="DISEASE">diseases</ENAMEX>, provide means for early
+        <ENAMEX TYPE="ORGANIZATION">diagnostics</ENAMEX>, and facilitate monitoring of therapy.
+        Examples for analog techniques representing mRNA
+        expression patterns are subtractive cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> [ <NUMEX TYPE="CARDINAL">1 2 3</NUMEX>
+        <NUMEX TYPE="CARDINAL">4 5 6 7 8</NUMEX> ] and the <ENAMEX TYPE="FAC">Differential Display</ENAMEX> method and its
+        derivatives [ <ENAMEX TYPE="LAW">9 10 11 12</ENAMEX> ] . Macro- and microarrays [ <TIMEX TYPE="DATE">13</TIMEX> ]
+        are rapidly becoming the analog method of choice, mainly
+        due to their high throughput in data production which
+        allows complex biological questions to be addressed.
+        <ENAMEX TYPE="ORGANIZATION">Digital</ENAMEX> methods for counting differences in gene
+        expression levels provide specific advantages. With the
+        expressed sequence tag (<TIMEX TYPE="TIME">EST</TIMEX>) approach [ <NUMEX TYPE="CARDINAL">14 15</NUMEX> ] expression
+        patterns are analyzed by sequencing many clones from cDNA
+        <ENAMEX TYPE="PERSON">libraries</ENAMEX>. Even limited sequence information on the cDNA
+        <ENAMEX TYPE="PRODUCT">3</ENAMEX>'-end (tag sequences) permits unambiguous identification
+        of the cDNA and the corresponding gene. The different
+        frequencies of cDNAs in <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> derived from different
+        <ENAMEX TYPE="PER_DESC">sources</ENAMEX> give evidence of possible changes in gene
+        expression. This approach provides accurate quantitative
+        information and has a flexible degree of sensitivity which
+        depends solely on the number of analyzed clones. However,
+        this is very labor-intensive. In order to analyze the
+        expression of low abundant <ENAMEX TYPE="SUBSTANCE">cDNAs</ENAMEX> that represent mRNA in the
+        range of <NUMEX TYPE="CARDINAL">one</NUMEX> copy per mammalian <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>, <NUMEX TYPE="CARDINAL">more than 100.000</NUMEX>
+        <ENAMEX TYPE="GPE">colonies</ENAMEX> have to be analyzed per <ENAMEX TYPE="ORG_DESC">library</ENAMEX>. Improvements in
+        sequencing automation and analysis such as capillary
+        electrophoresis have speeded up the process considerably
+        and recent developments such as a sequencing method based
+        on <ENAMEX TYPE="SUBSTANCE">real-time pyrophosphate</ENAMEX> [ <TIMEX TYPE="DATE">16</TIMEX> ] , sequencing on
+        microchips [ <TIMEX TYPE="DATE">17</TIMEX> ] , and massive parallel signature
+        sequencing on microbead arrays [ <TIMEX TYPE="DATE">18</TIMEX> ] also contribute to
+        the speed and depth of <TIMEX TYPE="TIME">EST</TIMEX> gene expression analysis.
+        Oligonucleotide fingerprinting [ <TIMEX TYPE="DATE">19</TIMEX> ] characterizes
+        expressed genes via the hybridization of <NUMEX TYPE="QUANTITY">hundreds of</NUMEX>
+        synthetic oligonucleotides to cDNA that produces unique
+        fingerprints of matching and non-matching oligonucleotides.
+        Another approach to increase throughput is the serial
+        analysis of gene expression (<ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX>). Short defined cDNA
+        sequences are initially prepared from mRNA which are then
+        dimerized, multimerized, cloned, and sequenced [ <TIMEX TYPE="DATE">20</TIMEX> ] .
+        <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> accelerated the process of gene expression analysis
+        more than an order of magnitude compared to the
+        conventional <TIMEX TYPE="TIME">EST</TIMEX> analysis and still is compatible with most
+        of the improvements of <ENAMEX TYPE="SUBSTANCE">DNA sequencing</ENAMEX> mentioned above.
+        However, after the identification of differentially
+        expressed cDNA the full length gene has to be cloned
+        starting from minor sequence information (<NUMEX TYPE="CARDINAL">12</NUMEX> bp tag) which
+        hampers further functional analysis of the corresponding
+        <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX>, a complex task that requires the complete coding
+        sequence.
+        Each of these methods clearly has its specific
+        advantages, and often different subsets of differentially
+        expressed genes are identified employing a certain method.
+        For example, cDNAs that are not easily amplified by means
+        of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> are inadequately represented in <ENAMEX TYPE="GPE">PCR</ENAMEX>-based methods.
+        <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> was designed in order to overcome specific
+        shortcomings of established differential expression
+        analysis technologies used <TIMEX TYPE="DATE">today</TIMEX>, e.g. the need to sequence
+        all of the examined <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or the involvement of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> steps.
+        In addition, further cloning of the complete coding
+        sequence of the identified genes of interest is facilitated
+        by ending up with rather long (e.g. in comparison to the
+        <ENAMEX TYPE="ORGANIZATION">SAGE</ENAMEX> method) and multiple corresponding <ENAMEX TYPE="ORG_DESC">cDNAs</ENAMEX> comprising at
+        least part of the coding sequence. <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> is a digital method
+        which identifies and counts the abundance of genes by means
+        of restriction fragment fingerprinting.
+      
+      
+        Results and Discussion
+        
+          <NUMEX TYPE="CARDINAL">1</NUMEX> - principle of the method
+          <ENAMEX TYPE="SUBSTANCE">DADA distinguishes</ENAMEX> and identifies genes by their
+          specific patterns of cDNA fragments derived from digests
+          with <NUMEX TYPE="CARDINAL">6</NUMEX> different restriction enzymes recognizing
+          sequences of <NUMEX TYPE="CARDINAL">4</NUMEX> specific nucleotides. In order to avoid
+          detection of other fragments than the desired cDNA
+          fragments spanning from the <ENAMEX TYPE="PRODUCT">3</ENAMEX>', poly-A end towards the
+          nearest upstream restriction site, a special cloning
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> has been devised. It harbors a particular
+          combination of cleavage sites that permits cloning of a
+          nucleic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> in defined orientation and controlled
+          labeling of only the desired fragments with fluorescent
+          <ENAMEX TYPE="PERSON">dyes</ENAMEX> (<ENAMEX TYPE="CONTACT_INFO">Figs. 1, 2, 3</ENAMEX>).
+          Double stranded cDNA was synthesized by a reverse
+          <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX> reaction using isolated mRNA and an
+          anchored oligo dT primer (see <ENAMEX TYPE="SUBSTANCE">material</ENAMEX> and methods). The
+          resulting cDNA pool containing a defined poly A stretch
+          of <NUMEX TYPE="CARDINAL">16</NUMEX> nucleotides was cloned uni-directionally in the
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX>, a cDNA <ENAMEX TYPE="ORG_DESC">library</ENAMEX> was constructed in <ENAMEX TYPE="SUBSTANCE">E. coli</ENAMEX> and
+          plasmid <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was isolated from the resulting <ENAMEX TYPE="GPE">colonies</ENAMEX>.
+          The part of the vector containing the cDNA fragment
+          was labelled by means of a simultaneous
+          restriction/ligation reaction [ <TIMEX TYPE="DATE">21</TIMEX> ] with double
+          <ENAMEX TYPE="PERSON">stranded</ENAMEX>, <ENAMEX TYPE="PER_DESC">fluorescently</ENAMEX> labeled oligonucleotides using
+          the <ENAMEX TYPE="FAC">Bgl I</ENAMEX> site (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, Step <NUMEX TYPE="CARDINAL">1</NUMEX>) located adjacent to the
+          <ENAMEX TYPE="ORGANIZATION">cloning</ENAMEX> site of the <ENAMEX TYPE="PER_DESC">cDNA</ENAMEX> representing the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'/poly-A end
+          of the corresponding mRNA. The labelled oligonucleotide
+          was only ligated to the cDNA end of the <ENAMEX TYPE="ORGANIZATION">BglI</ENAMEX> restriction
+          site due to the non-palindrome nature of the overhang
+          (see <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>). In addition, the other <ENAMEX TYPE="ORGANIZATION">BglI</ENAMEX> site located
+          within the vector backbone (Bgl I*, <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">2</NUMEX>) and virtually
+          all Bgl I sites (with the exception of sites with CCT
+          <ENAMEX TYPE="ORGANIZATION">overhang</ENAMEX>) occasionally found in the inserted cDNA
+          sequences were not labelled, as the overhangs created by
+          the restriction digest were not compatible with the
+          overhang of the used oligonucleotides. In comparison, the
+          <ENAMEX TYPE="PER_DESC">labelling of the Bgl</ENAMEX> I was less affected by artifacts
+          resulting from labelling of internal restriction sites
+          within the cDNA as compared to labeling of a <ENAMEX TYPE="ORGANIZATION">NotI</ENAMEX> site in
+          a different vector construct, although <ENAMEX TYPE="FAC">Bgl I</ENAMEX> <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> are
+          more often found in cDNAs compared to Not I sites (data
+          not shown).
+          In a <NUMEX TYPE="ORDINAL">second</NUMEX> step, the plasmids were digested with
+          restriction enzymes recognizing <NUMEX TYPE="QUANTITY">4 bp sequences</NUMEX> (<ENAMEX TYPE="LAW">Alu I,</ENAMEX>
+          <ENAMEX TYPE="LAW">Bfa I, Dde I Dpn I, Hinf I</ENAMEX>, or Rsa I) in <NUMEX TYPE="CARDINAL">six</NUMEX> separate
+          reactions (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, step <NUMEX TYPE="CARDINAL">2</NUMEX>). This created labelled cDNA
+          fragments comprising <TIMEX TYPE="DATE">the most 3</TIMEX>' located site of each
+          restriction enzyme, respectively, towards a defined
+          stretch of the poly-A tail of the cDNA, a defined part of
+          the cloning vector and the labelled oligonucleotide. The
+          resulting fragments were separated by polyacrylamide gel
+          <ENAMEX TYPE="ORGANIZATION">electrophoresis</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">ABI377 DNA analyzer</ENAMEX>) and the length of
+          the labelled fragments were analyzed by comparison to a
+          specially designed internal size marker (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>, step <NUMEX TYPE="CARDINAL">3</NUMEX>;
+          see <ENAMEX TYPE="SUBSTANCE">material</ENAMEX> and methods for details). The pattern of
+          restriction fragment sizes generated by the procedure was
+          characteristic for each individual gene transcript and
+          represented an unique fingerprint of the corresponding
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. Partial cDNA inserts and empty vectors represent a
+          substantial part of cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> that would hamper the
+          analysis of restriction fingerprints in standard cloning
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>; e.g. the empty <ENAMEX TYPE="FAC_DESC">cloning vector</ENAMEX> itself would
+          generate a characteristic restriction fingerprint that
+          would overlay and disturb every analysis. To distinguish
+          fragments derived from restriction digests within the
+          cDNA inserts from fragments derived from restriction
+          <ENAMEX TYPE="ORGANIZATION">digests</ENAMEX> within the vector resulting in mixed cDNA/vector
+          or vector only sequences, the <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> cloning vector
+          contains an engineered <ENAMEX TYPE="ORG_DESC">segment</ENAMEX> that is free from the
+          <ENAMEX TYPE="ORGANIZATION">recognition</ENAMEX> sites used in the fragment analysis (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">1</NUMEX>)
+          and that is longer than the detection window of <NUMEX TYPE="CARDINAL">45</NUMEX> to
+          <NUMEX TYPE="PERCENT">approximately</NUMEX> <TIMEX TYPE="DATE">900</TIMEX> bp (<ENAMEX TYPE="ORGANIZATION">Figs.</ENAMEX> <ENAMEX TYPE="PRODUCT">3and 4</ENAMEX>). This extended the
+          restriction fingerprint of the empty vector to fragments
+          over <NUMEX TYPE="CARDINAL">900</NUMEX> bp which were not detectable in the analysis. In
+          addition, the "restriction site-free" segment of the
+          vector guaranteed that all detected fragments within the
+          <ENAMEX TYPE="ORGANIZATION">detection</ENAMEX> window stemmed from restriction sites within
+          the cDNAs. If a specific restriction site is not
+          contained within <NUMEX TYPE="QUANTITY">900 bp</NUMEX> of the <ENAMEX TYPE="PRODUCT">3</ENAMEX>' end of a cDNA, no
+          detectable fragment was generated.
+          There are <NUMEX TYPE="CARDINAL">2</NUMEX> variations of the experimental procedure
+          for a given cDNA <ENAMEX TYPE="ORG_DESC">library</ENAMEX> (see <ENAMEX TYPE="PERSON">Fig</ENAMEX>. 1and the detailed
+          description in <ENAMEX TYPE="ORGANIZATION">Material and Methods</ENAMEX>). In (i) a single
+          clone analysis (SCA) the procedure was applied to only
+          <NUMEX TYPE="CARDINAL">one</NUMEX> clone at a time, and yielded accurate fingerprints
+          for certain genes experimentally. This did not speed up
+          the process of expression analysis compared to sequencing
+          of clones from cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> (<TIMEX TYPE="TIME">EST</TIMEX> approach), but
+          generated the fingerprints used for the mixed analysis.
+          In (<ENAMEX TYPE="DISEASE">ii</ENAMEX>) the mixed analyses (<ENAMEX TYPE="ORGANIZATION">MA</ENAMEX>) the procedure was applied
+          to pools of <NUMEX TYPE="CARDINAL">96</NUMEX> cDNA clones multiplexing the plasmid
+          preparation, labelling and analysis, thereby speeded up
+          the process by <NUMEX TYPE="CARDINAL">nearly two</NUMEX> orders of magnitude. In spite
+          of the multiplexing, already established fingerprints of
+          genes could be unambiguously identified in the
+          restriction fragment mixture derived from the <ENAMEX TYPE="FAC_DESC">pools</ENAMEX> (<ENAMEX TYPE="PERSON">Fig</ENAMEX>.
+          1and <NUMEX TYPE="CARDINAL">4</NUMEX>). If the characteristic fingerprint of a certain
+          <ENAMEX TYPE="PERSON">gene</ENAMEX> was identified in the fragment mixture, at least one
+          of the <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> of the pool included a vector with the
+          corresponding cDNA. Therefore, the frequency of
+          occurrence of a fingerprint enabled us to count the
+          abundance of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and to calculate expression levels
+          from cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> derived from different statuses at a
+          high throughput. The high throughput only applied to the
+          analysis of the abundance of fingerprints, as in contrast
+          to the <ENAMEX TYPE="ORGANIZATION">SCA</ENAMEX>, no new fingerprints could be generated by the
+          mixed analysis.
+        
+        
+          <NUMEX TYPE="CARDINAL">2</NUMEX> - obtaining patterns from a single clone
+          analysis
+          We randomly picked single clones of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> from a
+          murine wounded skin <ENAMEX TYPE="ORG_DESC">library</ENAMEX> and compared the analyzed
+          restriction fingerprints with the corresponding,
+          experimentally determined cDNA sequence of the vectors.
+          <ENAMEX TYPE="SUBSTANCE">Vectors</ENAMEX> containing no cDNA inserts produced no signals in
+          the detection window of <TIMEX TYPE="DATE">45 to 900</TIMEX> base pairs and
+          incomplete or short cDNA inserts yielded only signals of
+          fragments derived from restrictions within the cDNA
+          sequence. This demonstrated that the restriction free
+          region next to the cDNA cloning site fulfills its
+          function in repressing misleading fragments and the
+          corresponding signals.
+          A thorough comparison of the analyzed fragment lengths
+          with the corresponding sequences of the clones resulted
+          in a good agreement of theoretical and experimental
+          fragment length for the <NUMEX TYPE="CARDINAL">6</NUMEX> restriction enzymes. In
+          <ENAMEX TYPE="ORGANIZATION">general</ENAMEX>, only those fragments were detected, that were
+          derived from the nearest restriction site of the
+          corresponding enzyme as judged by sequencing. However, in
+          several cases the first <ENAMEX TYPE="FAC">Alu I</ENAMEX> site was not recognized by
+          the enzyme despite the use of an <NUMEX TYPE="CARDINAL">at least 4</NUMEX>-fold excess
+          of enzyme units compared to the amount of cDNA,
+          indicating site preferences of this restriction enzyme
+          that may depend on the context of the recognition
+          sequence [ <TIMEX TYPE="DATE">22</TIMEX> ] . This did not affect the analysis of
+          fingerprints in mixed clone analyses reported below as
+          the same site preference was also observed under these
+          conditions.
+          Another inherent discrepancy is the integer character
+          of the predicted values versus the non-integer values
+          stemming from the comparison to the size marker. The
+          average of the difference of the experimentally analyzed
+          length to the calculated length was <NUMEX TYPE="QUANTITY">0.258 bp</NUMEX> (median
+          <NUMEX TYPE="QUANTITY">0.115 bp</NUMEX>) which means that the analyzed values were
+          generally a little longer than the predicted ones. About
+          <NUMEX TYPE="PERCENT">95%</NUMEX> of the analyzed lengths differed <NUMEX TYPE="CARDINAL">less than 1</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">bp</ENAMEX> and
+          <NUMEX TYPE="PERCENT">about 50%</NUMEX> differed <NUMEX TYPE="QUANTITY">less than 0.5 bp</NUMEX> from the predicted
+          lengths which by far exceeded the experimental deviations
+          in repeated experiments (standard deviation of less than
+          <NUMEX TYPE="QUANTITY">0.2 bp</NUMEX>, see below) and is in accordance to results from
+          other <ENAMEX TYPE="PER_DESC">authors</ENAMEX> [ <NUMEX TYPE="CARDINAL">23 24</NUMEX> ] . These data demonstrated, that
+          there is a reproducible but not yet predictable shift of
+          the fragments within the polyacrylamide gel run. Together
+          with the above mentioned site preference of <ENAMEX TYPE="ORGANIZATION">AluI</ENAMEX> and
+          additional problems like the not well defined
+          polyadenylation-site in public database entries, this
+          hinders the construction of fingerprints solely based on
+          sequence data. Attempts to predict these shifts based on
+          the sequence composition of the fragments were not
+          successful in the <NUMEX TYPE="ORDINAL">first</NUMEX> trials.
+          Experimentally determined fingerprints from single
+          clone analysis could be used for the analysis without any
+          of the above mentioned hindrances. The fragment lengths
+          from single clone analyses that by chance contained cDNAs
+          from the same gene reproduced very accurately. The
+          standard deviation from the average value was below <NUMEX TYPE="CARDINAL">0.2</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX> for fragments below <NUMEX TYPE="CARDINAL">500</NUMEX> <ENAMEX TYPE="PRODUCT_DESC">bp</ENAMEX> and increased with larger
+          fragment size. The range in which a <ENAMEX TYPE="ORG_DESC">band</ENAMEX> was accepted as
+          being the same as the search value was determined
+          <ENAMEX TYPE="ORGANIZATION">empirically</ENAMEX>. <ENAMEX TYPE="PERSON">Colonies</ENAMEX> of specific genes were mixed into
+          different pools of defined clone <ENAMEX TYPE="SUBSTANCE">compositions</ENAMEX> and the
+          detection width was adjusted to be the best compromise
+          between not missing any real hits and counting false
+          ones. As assumed from the increasing peak width of the
+          analyzed fragments and the internal size marker, the
+          detection width varied with the length of the fragments
+          (see <ENAMEX TYPE="SUBSTANCE">material</ENAMEX> and methods). The detection range was
+          increased above the determined <NUMEX TYPE="CARDINAL">0.2</NUMEX> bp standard deviation
+          especially for the longer fragments. The broader
+          detection width that could in principle lead to false
+          positive identification of a fingerprint was
+          counterbalanced by the fact that the peak density is much
+          lower towards the longer fragments (<ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>).
+        
+        
+          <NUMEX TYPE="CARDINAL">3</NUMEX> - proof of concept
+          The differences in gene expression following treatment
+          of a tissue with an active compound was monitored using
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> of wound tissue derived from control
+          (phosphate buffer saline, <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX>, normally healing) and
+          <ENAMEX TYPE="ORGANIZATION">dexamethasone</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">DEX</ENAMEX>, badly healing) treated <ENAMEX TYPE="ANIMAL">mice</ENAMEX>. <ENAMEX TYPE="CONTACT_INFO">Steroid</ENAMEX>
+          treatment is widely used as a model for impaired wound
+          healing [ <TIMEX TYPE="DATE">25</TIMEX> ] . From each <ENAMEX TYPE="ORG_DESC">library</ENAMEX> <NUMEX TYPE="CARDINAL">about 37.000</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX>
+          were analyzed in pools of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> each. The complete
+          analysis of <NUMEX TYPE="CARDINAL">74.000</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> required only <NUMEX TYPE="CARDINAL">16</NUMEX> runs on an
+          ABI377 <ENAMEX TYPE="SUBSTANCE">DNA analyzer</ENAMEX> (<NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="FAC_DESC">lanes</ENAMEX> with <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> each, <NUMEX TYPE="CARDINAL">2</NUMEX>
+          gels of <NUMEX TYPE="MONEY">3 enzymes</NUMEX> each for the analysis of <NUMEX TYPE="CARDINAL">6</NUMEX> different
+          <ENAMEX TYPE="ORGANIZATION">enzymes</ENAMEX>). All calculated fragment sizes were analyzed and
+          stored in a relational database, representing nearly
+          <ENAMEX TYPE="PRODUCT">500.000</ENAMEX> data points from this analysis alone.
+          Applying the restriction fingerprints of the above
+          mentioned single clone analysis, we found several genes
+          that were up-regulated in wounds of <ENAMEX TYPE="SUBSTANCE">dexamethasone</ENAMEX> treated
+          <ENAMEX TYPE="ANIMAL">animals</ENAMEX>. <NUMEX TYPE="CARDINAL">Two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are shown that were confirmed with
+          <ENAMEX TYPE="ORGANIZATION">quantitative Real Time RT-PCR</ENAMEX> and represent intriguing
+          examples (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>). <ENAMEX TYPE="SUBSTANCE">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> cDNAs contain
+          all <NUMEX TYPE="CARDINAL">six</NUMEX> restriction sites within <NUMEX TYPE="QUANTITY">500 bp</NUMEX> from the poly-A
+          <ENAMEX TYPE="PERSON">tail</ENAMEX> (experimental fragment lengths including poly-A tail
+          and labelling oligonucleotides: <ENAMEX TYPE="PRODUCT">MCP-2/Cystatin C</ENAMEX>: Dde I:
+          <ENAMEX TYPE="ORGANIZATION">196.23/276.11 bp; Alu</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">67.51/118.08 bp; Hinf</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>:
+          <ENAMEX TYPE="ORGANIZATION">349.88/274.51 bp; Bfa</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">531.02/270.83 bp; Dpn</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>:
+          <ENAMEX TYPE="ORGANIZATION">245.02/265.17 bp; Rsa</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">254.23/89.18 bp</ENAMEX>, respectively).
+          These fingerprints are unambiguously related to their
+          cDNA as a search in the complete GenBank database (see
+          material and methods) showed only the corresponding
+          murine cDNA hits even though the search parameters were
+          loosened to account for the above mentioned differences
+          in experimentally derived fragment lengths to the real
+          sequence.
+          Finally, these <NUMEX TYPE="CARDINAL">two</NUMEX> fingerprints were used for a
+          <ENAMEX TYPE="ORGANIZATION">digital</ENAMEX> analysis of the <ENAMEX TYPE="ORGANIZATION">DEX</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>. The
+          fingerprints of <NUMEX TYPE="CARDINAL">all six</NUMEX> <ENAMEX TYPE="PER_DESC">enzymes</ENAMEX> were used for the search
+          of the database from the <NUMEX TYPE="CARDINAL">74.000</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX>. Each of the <NUMEX TYPE="CARDINAL">768</NUMEX>
+          subsets of the data representing a pool of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX>
+          was analyzed by a computer program for the concurrent
+          appearance of the <NUMEX TYPE="CARDINAL">6</NUMEX> fragments of a specific fingerprint.
+          The search for the appearance of the fingerprints from
+          <ENAMEX TYPE="SUBSTANCE">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> resulted in <NUMEX TYPE="CARDINAL">3 and 4</NUMEX> counts,
+          respectively. Interestingly, the fingerprints were only
+          found in datasets/<ENAMEX TYPE="PER_DESC">pools</ENAMEX> from the cDNA <ENAMEX TYPE="ORG_DESC">library</ENAMEX> derived
+          from <ENAMEX TYPE="SUBSTANCE">DEX</ENAMEX> treated <ENAMEX TYPE="ANIMAL">animals</ENAMEX> and not in the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> from
+          <ENAMEX TYPE="ORGANIZATION">control</ENAMEX> <ENAMEX TYPE="ANIMAL">animals</ENAMEX>. The concluded induction of both
+          transcripts in wounds from badly healing <ENAMEX TYPE="ANIMAL">animals</ENAMEX> compared
+          well to quantitative <ENAMEX TYPE="ORGANIZATION">RT-PCR</ENAMEX> data (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>).
+          In order to explore the limitation of the method we
+          also computed all possible restricted fingerprints of
+          <ENAMEX TYPE="SUBSTANCE">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> containing only <NUMEX TYPE="CARDINAL">5</NUMEX> different
+          restriction enzymes. Here we obtained the same results
+          when we used the <NUMEX TYPE="CARDINAL">five</NUMEX> shortest fragments of the
+          <ENAMEX TYPE="PERSON">fingerprints</ENAMEX>, but misleading results, if we left out for
+          example the restriction enzyme that produced the shortest
+          fragment. This observation can be easily explained, as
+          partial cDNA <ENAMEX TYPE="SUBSTANCE">sequences</ENAMEX> derived from oligo dT synthesis
+          can lack the most <ENAMEX TYPE="PER_DESC">5</ENAMEX>' restriction site and include the
+          most <ENAMEX TYPE="PER_DESC">3</ENAMEX>' restriction site, but never vice versa. If the
+          numbers of fragments were reduced to the <NUMEX TYPE="CARDINAL">4</NUMEX> shortest ones,
+          the results were perturbed by unspecific fingerprints
+          that were not derived from the specific cDNAs but were
+          erratically composed of fragments derived from different
+          <ENAMEX TYPE="ORGANIZATION">cDNAs</ENAMEX> within the pool of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX>. More of those
+          comparisons started to reveal significance limits such as
+          the number of fragments that should be contained in a
+          fingerprint. From the limited amount of comparisons it
+          would seem that having <NUMEX TYPE="CARDINAL">6</NUMEX> different fragments in a pattern
+          and finding all of them works reliably even with low
+          abundant genes like <ENAMEX TYPE="PRODUCT">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> that were
+          induced to medium abundance by the treatment (<NUMEX TYPE="CARDINAL">3 to 4</NUMEX>
+          transcripts within the <NUMEX TYPE="CARDINAL">72.000</NUMEX> analyzed transcripts or
+          <NUMEX TYPE="PERCENT">about 0.05%</NUMEX>).. Finding <TIMEX TYPE="DATE">only 3 to 4</TIMEX> fragments is
+          sufficient only for high abundant <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> with a
+          significant differential expression. E.g., serum albumin
+          and <ENAMEX TYPE="PRODUCT">SPR1a</ENAMEX> with abundances of <NUMEX TYPE="PERCENT">about 0.5%</NUMEX> in <ENAMEX TYPE="SUBSTANCE">liver</ENAMEX> and skin
+          <ENAMEX TYPE="PERSON">libraries</ENAMEX>, respectively [ <NUMEX TYPE="CARDINAL">26 27</NUMEX> ] , could be identified
+          and quantified by using <NUMEX TYPE="PERCENT">only 3</NUMEX> restriction enzymes in the
+          corresponding cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> [ <TIMEX TYPE="DATE">28</TIMEX> ]
+          The clones of <ENAMEX TYPE="SUBSTANCE">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> were examined more
+          closely regarding their length. They contained the
+          complete cDNA sequence. This is not the case for all
+          other <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>, but the clones often contain substantial
+          parts of the coding regions and they almost always
+          prolong the public database cDNA entries toward the <ENAMEX TYPE="PRODUCT">3</ENAMEX>'
+          end. This supports the notion that <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> will also
+          facilitate a rapid full length cloning effort after
+          identification of interesting genes.
+        
+      
+      
+        Conclusion
+        In conclusion, <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> is a digital method for analyzing
+        expression levels based on the counting of restriction
+        fingerprints of cDNA clones. It is built around a
+        specifically designed cloning vector that suppresses
+        misleading fingerprints derived from partial cDNAs or empty
+        <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>. The method yields quantitative data and absolute
+        figures that do not depend on amplification by polymerase
+        chain reaction. Compared to the sequencing of cDNA
+        <ENAMEX TYPE="PERSON">libraries</ENAMEX> (conventional <TIMEX TYPE="TIME">EST</TIMEX> approach [ <TIMEX TYPE="DATE">14</TIMEX> ] ), it is
+        substantially faster and more economical. In comparison to
+        the SAGE method [ <TIMEX TYPE="DATE">20</TIMEX> ] it results in physical cDNA clones
+        of substantial length which speed up further analysis.
+        Within the limited number of examples, there is a good
+        correlation between the clear results from <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> and other
+        gene expression analysis methods such as quantitative real
+        <ENAMEX TYPE="ORGANIZATION">time RT-PCR</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">RNase Protection Assays</ENAMEX>, and various
+        <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> procedures (data not shown). A number of
+        additional genes with differential regulation discovered by
+        <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> and confirmed by independent methods are now under
+        investigations for the use as therapeutical targets
+        (unpublished observations). Some of the genes identified by
+        DADA including <ENAMEX TYPE="SUBSTANCE">MCP-2</ENAMEX> and <ENAMEX TYPE="PRODUCT">Cystatin C</ENAMEX> were neither discovered
+        by means of subtractive hybridization [ <ENAMEX TYPE="LAW">3</ENAMEX> ] , nor by
+        differential display [ <ENAMEX TYPE="LAW">9</ENAMEX> ] , although these methods were
+        successfully used in comparable settings in our laboratory
+        and lead to a high number of differentially expressed
+        genes. <ENAMEX TYPE="PER_DESC">Vice versa</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> could not detect certain
+        <ENAMEX TYPE="ORGANIZATION">differentially</ENAMEX> expressed genes, that were discovered by
+        standard methods. As an example, the injury-induced
+        differential expression of <ENAMEX TYPE="PRODUCT">S100A9</ENAMEX> could be detected by
+        subtractive hybridization [ <TIMEX TYPE="DATE">33</TIMEX> ] . The DADA fingerprint of
+        S100A9 was detected in both analyzed cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX>.
+        However, as it occurs only once in each <ENAMEX TYPE="ORG_DESC">library</ENAMEX>, no
+        statistical significant differential expression could be
+        identified by the DADA method. Only a subset of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> was
+        identified by all methods. In general, the different
+        approaches can be seen as complementary rather than
+        competitive. The specific findings will certainly vary with
+        changes in the completeness and individual execution of the
+        respective screens. Additionally, <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> offers advantages
+        with regard to absolute and quantitative data at the level
+        of screening.
+        As of yet we can only perform digital analyses with
+        patterns experimentally analyzed from single clone
+        analysis. These fragment lengths reproduce accurately
+        enough to search and count them in mixed analyses applying
+        rigid queries. The usage of restriction fingerprints
+        <ENAMEX TYPE="SUBSTANCE">computationally</ENAMEX> derived from sequence database entries is
+        hampered by the lack of predictability of gel positions
+        from sequences and the integer versus non-integer issue.
+        The experimental fingerprints, due to the narrower search
+        space, allowed for the identification of fingerprints in
+        mixtures of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> as demonstrated here. The broader
+        search space of sequence-based predictions allow only for
+        the identification of fingerprints in mixtures of <NUMEX TYPE="CARDINAL">about 10</NUMEX>
+        <ENAMEX TYPE="PERSON">colonies</ENAMEX> (data not shown). The <NUMEX TYPE="CARDINAL">one</NUMEX> order of magnitude lower
+        <ENAMEX TYPE="ORGANIZATION">throughput</ENAMEX> in the case of predicted fingerprints would
+        render the method non-superior to others.
+        The generation of experimental fingerprints is the
+        bottleneck of the procedure as described here. Once the
+        fingerprints are generated for a certain species they can
+        be rapidly applied in all possible settings. Therefore, we
+        are developing improvements of this step. In addition, the
+        use of a now available <NUMEX TYPE="ORDINAL">fifth</NUMEX> fluorescent dye as a size
+        <ENAMEX TYPE="PERSON">marker</ENAMEX> in sequencing <ENAMEX TYPE="FAC_DESC">lanes</ENAMEX> should allow for a fast
+        correlation between restriction fragment sizes (derived
+        from the sequence) and gel run behaviors of <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> fragments
+        (relative to the size marker). The latter improvement could
+        not only lead to a faster generation of experimental
+        <ENAMEX TYPE="PERSON">fingerprints</ENAMEX>, but could also supply a large dataset to
+        improve the prediction of gel run behaviors of fragments
+        based on the sequence composition.
+        Another improvement could result from alternative DNA
+        separation and detection methods such as capillary
+        <ENAMEX TYPE="ORGANIZATION">electrophoresis</ENAMEX> or mass spectrometry. This could further
+        improve the reproducibility of the fragment analysis and
+        lead to a reduction of the search space for every fragment.
+        As discussed above, this parameter is directly linked to
+        the throughput of the method. In addition, <ENAMEX TYPE="ORGANIZATION">DADA</ENAMEX> would
+        profit from the higher throughput of capillary
+        <ENAMEX TYPE="ORGANIZATION">electrophoresis</ENAMEX> compared to the gel electrophoresis used in
+        this study. On the other hand, values created by mass
+        spectrometry are precisely predictable from the sequence of
+        DNA fragments [ <TIMEX TYPE="DATE">29</TIMEX> ] . This would allow for the generation
+        of fingerprints from sequence data in silico and speed up
+        this limiting step of the procedure.
+      
+      
+        Materials and Methods
+        
+          Cloning vectors
+          The vector pUC19 (<ENAMEX TYPE="ORGANIZATION">Yanisch-Perron et al.</ENAMEX>, <TIMEX TYPE="DATE">1985</TIMEX>) was cut
+          with <ENAMEX TYPE="PERSON">Hind III</ENAMEX> and <ENAMEX TYPE="PRODUCT">Aat II</ENAMEX> and the <TIMEX TYPE="DATE">2170</TIMEX> bp fragment
+          containing the β-lactamase gene and <TIMEX TYPE="DATE">the ColE1</TIMEX> replication
+          <ENAMEX TYPE="PERSON">origin</ENAMEX> was isolated, and <NUMEX TYPE="CARDINAL">two</NUMEX> different synthetic double
+          stranded oligonucleotides were inserted (order of
+          restriction sites <ENAMEX TYPE="PERSON">Hind III</ENAMEX>-Asc <ENAMEX TYPE="FAC">I-EcoR I-Xho I-Sfi I</ENAMEX>/Bgl
+          I-<NUMEX TYPE="CARDINAL">T7promoter</NUMEX>-<ENAMEX TYPE="PERSON">Aat II</ENAMEX>). To generate a restriction-free
+          region at the <ENAMEX TYPE="PRODUCT">5</ENAMEX>' side of the cDNA cloning site (EcoR
+          I-Xho I) a <NUMEX TYPE="QUANTITY">860 bp long</NUMEX> PCR fragment of human <ENAMEX TYPE="SUBSTANCE">genomic DNA</ENAMEX>
+          (<ENAMEX TYPE="SUBSTANCE">primers</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">CCCCAAGCTTGAGTATGAACAAATTTACTTTCTTCTTTC</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">CCGGCGCGCCTCCTAAAGTGCTGGATTATAG</ENAMEX>) devoid of <ENAMEX TYPE="LAW">Alu I, Dpn I,</ENAMEX>
+          <ENAMEX TYPE="LAW">Dde I, Hinf I and Rsa I</ENAMEX> was inserted between the <ENAMEX TYPE="ORGANIZATION">Hind III</ENAMEX>
+          and <ENAMEX TYPE="FAC">Asc I</ENAMEX> site of the vectors. The <ENAMEX TYPE="ORGANIZATION">BfaI</ENAMEX> site originally
+          located in the PCR fragment from genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was deleted
+          by site directed mutagenesis (details available upon
+          request).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">cDNA</ENAMEX> <ENAMEX TYPE="ORG_DESC">library</ENAMEX> construction
+          mRNA was extracted from murine tissues (<ENAMEX TYPE="ORGANIZATION">BALB</ENAMEX><ENAMEX TYPE="PRODUCT">/c</ENAMEX> <ENAMEX TYPE="ANIMAL">mice</ENAMEX>:
+          Id wound of controls, <TIMEX TYPE="DATE">1d</TIMEX> wound of <ENAMEX TYPE="ANIMAL">mice</ENAMEX> treated with <NUMEX TYPE="CARDINAL">0.5</NUMEX>
+          <ENAMEX TYPE="PERSON">mg Dexamethason</ENAMEX> per <NUMEX TYPE="QUANTITY">kg</NUMEX> bodyweight twice a day for <TIMEX TYPE="DATE">5 days</TIMEX>
+          before wounding) according to standard procedures [ <TIMEX TYPE="DATE">30</TIMEX> ]
+          . Methylated cDNA was synthesized from an anchored Xho
+          I-<NUMEX TYPE="CARDINAL">oligo</NUMEX>-dT primer ((<ENAMEX TYPE="GPE">GA</ENAMEX>) 
+          <NUMEX TYPE="CARDINAL">10</NUMEX> ACTAGTCTCGAGT 
+          <TIMEX TYPE="TIME">16 VN</TIMEX>) that secured a defined start of
+          the cDNA synthesis at the <ENAMEX TYPE="GPE">cDNA-polyA</ENAMEX> border using the
+          Stratagene cDNA synthesis kit according to the
+          instructions of the <ENAMEX TYPE="ORG_DESC">supplier</ENAMEX>. EcoR I adapter was added,
+          the cDNA was digested by <ENAMEX TYPE="ORGANIZATION">Xho</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX> and the cDNA was inserted
+          between the <ENAMEX TYPE="LAW">EcoR I and Xho I</ENAMEX> sites of the vectors in a
+          directional fashion. cDNA <ENAMEX TYPE="ORG_DESC">libraries</ENAMEX> were constructed by
+          electroporation into <ENAMEX TYPE="SUBSTANCE">E. coli SURE</ENAMEX> and single <ENAMEX TYPE="GPE">colonies</ENAMEX>
+          were picked either manually or by robots (<ENAMEX TYPE="PERSON">Q-Pix</ENAMEX>,
+          <ENAMEX TYPE="ORGANIZATION">GeneScreen</ENAMEX>) into <NUMEX TYPE="CARDINAL">96 or 384</NUMEX> microtiter plates,
+          respectively.
+        
+        
+          DNA preparation
+          For the single clone analysis, <ENAMEX TYPE="GPE">colonies</ENAMEX> were grown in
+          <NUMEX TYPE="QUANTITY">96</NUMEX> deep well plates. For the mixed clone analysis, <TIMEX TYPE="DATE">9216</TIMEX>
+          single <ENAMEX TYPE="GPE">colonies</ENAMEX> were inoculated in <NUMEX TYPE="CARDINAL">24 384</NUMEX>-
+          <ENAMEX TYPE="ORGANIZATION">microtiterplates</ENAMEX> in <NUMEX TYPE="QUANTITY">50 μl</NUMEX> of TYGPN-medium [ <TIMEX TYPE="DATE">31</TIMEX> ] and
+          grown for <TIMEX TYPE="TIME">48 hours</TIMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>. The cultured medium of <NUMEX TYPE="CARDINAL">96</NUMEX>
+          colonies each was collected by means of a BIOMEK
+          <ENAMEX TYPE="ORGANIZATION">pipetting</ENAMEX> robot (<ENAMEX TYPE="ORGANIZATION">Beckman</ENAMEX>) and pooled in one well of a <NUMEX TYPE="CARDINAL">96</NUMEX>
+          deep well plate. <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was prepared according to the <ENAMEX TYPE="ORGANIZATION">REAL</ENAMEX>
+          DNA preparation kit (<ENAMEX TYPE="ORGANIZATION">Qiagen</ENAMEX>) and dissolved at a
+          concentration of <NUMEX TYPE="QUANTITY">about 100 ng</NUMEX><ENAMEX TYPE="PRODUCT">/μl</ENAMEX> in H 
+          <ENAMEX TYPE="CONTACT_INFO">2 O.</ENAMEX>
+        
+        
+          Labelling of cDNA
+          Double stranded, fluorescently labelled (<ENAMEX TYPE="ORGANIZATION">FAM</ENAMEX>, <ENAMEX TYPE="PERSON">JOE</ENAMEX>, or
+          <ENAMEX TYPE="ORGANIZATION">NED</ENAMEX>) oligonucleotides (<ENAMEX TYPE="CONTACT_INFO">5</ENAMEX>' labelled oligonucleotide:
+          <ENAMEX TYPE="ORGANIZATION">CAGGAGATGCTGTTCGTAGG</ENAMEX>, unlabelled oligonucleotide:
+          <ENAMEX TYPE="ORGANIZATION">ACGAACAGCATCTCCT</ENAMEX>, <ENAMEX TYPE="ORG_DESC">supplier</ENAMEX>: <ENAMEX TYPE="ORGANIZATION">Applied Biosystems</ENAMEX>) were
+          <ENAMEX TYPE="ORGANIZATION">annealed</ENAMEX> in <TIMEX TYPE="DATE">10</TIMEX> mM <ENAMEX TYPE="ORGANIZATION">Tris</ENAMEX> pH <NUMEX TYPE="CARDINAL">8.0</NUMEX>, <NUMEX TYPE="CARDINAL">10</NUMEX> <ENAMEX TYPE="PER_DESC">mM</ENAMEX> <ENAMEX TYPE="PERSON">NaCl</ENAMEX>, and <NUMEX TYPE="CARDINAL">1</NUMEX> mM EDTA
+          (<NUMEX TYPE="CARDINAL">3</NUMEX> min. at <TIMEX TYPE="DATE">94°C</TIMEX>, cooling to <NUMEX TYPE="CARDINAL">20°C</NUMEX> within <TIMEX TYPE="TIME">15 minutes</TIMEX>). Two
+          times <NUMEX TYPE="CARDINAL">three</NUMEX> labelling reactions were prepared in <NUMEX TYPE="CARDINAL">6</NUMEX>
+          different <NUMEX TYPE="MONEY">96-microtiterplates</NUMEX> (<ENAMEX TYPE="PRODUCT">2×FAM</ENAMEX>, <TIMEX TYPE="DATE">2×JOE</TIMEX>, and <ENAMEX TYPE="PRODUCT">2×NED</ENAMEX>,
+          respectively). <TIMEX TYPE="TIME">500 ng</TIMEX> (FAM labelling) or <NUMEX TYPE="QUANTITY">1 μg</NUMEX> (<ENAMEX TYPE="PRODUCT">JOE</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">NED</ENAMEX> labelling) of the cDNA plasmid preparation was mixed
+          with <NUMEX TYPE="CARDINAL">0.5</NUMEX> pmol labelled oligonucleotides, <NUMEX TYPE="MONEY">0.25</NUMEX> (FAM) or
+          <NUMEX TYPE="MONEY">0.5</NUMEX> (<ENAMEX TYPE="PRODUCT">JOE</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">NED</ENAMEX>) <ENAMEX TYPE="LAW">Units Bgl I, and 10</ENAMEX> (FAM) or <NUMEX TYPE="MONEY">20</NUMEX> (<ENAMEX TYPE="ORGANIZATION">JOE</ENAMEX>
+          and <ENAMEX TYPE="ORGANIZATION">NED</ENAMEX>) Units T4-<ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX>-ligase (<ENAMEX TYPE="ORGANIZATION">New England Biolabs</ENAMEX>),
+          respectively, in <TIMEX TYPE="DATE">20</TIMEX> mM Tris-acetate (pH <NUMEX TYPE="CARDINAL">7.9</NUMEX>), <NUMEX TYPE="CARDINAL">10</NUMEX> mM
+          magnesium acetate, <NUMEX TYPE="CARDINAL">50</NUMEX> mM potassium acetate, <NUMEX TYPE="CARDINAL">1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, <NUMEX TYPE="CARDINAL">100</NUMEX>
+          <ENAMEX TYPE="CONTACT_INFO">μg/ml BSA</ENAMEX>, <NUMEX TYPE="CARDINAL">1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">ATP</ENAMEX>. The reactions were incubated over
+          <TIMEX TYPE="TIME">night</TIMEX> at <TIMEX TYPE="DATE">37°C</TIMEX> and stopped by heating to <NUMEX TYPE="QUANTITY">65°C</NUMEX> for <NUMEX TYPE="CARDINAL">10</NUMEX>
+          <TIMEX TYPE="TIME">minutes</TIMEX>. The restriction enzymes for the <NUMEX TYPE="ORDINAL">second</NUMEX> digest
+          (<NUMEX TYPE="CARDINAL">0.5</NUMEX> <ENAMEX TYPE="ORGANIZATION">U Bfa</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>, <NUMEX TYPE="CARDINAL">1.0</NUMEX> <ENAMEX TYPE="ORGANIZATION">U Dde</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>, <NUMEX TYPE="CARDINAL">1.5</NUMEX> <ENAMEX TYPE="ORGANIZATION">U Dpn</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>, <NUMEX TYPE="CARDINAL">2.0</NUMEX> <ENAMEX TYPE="ORGANIZATION">U Alu</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>, <NUMEX TYPE="CARDINAL">1.0</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">U Rsa</ENAMEX> <ENAMEX TYPE="PRODUCT">I</ENAMEX>, or <NUMEX TYPE="CARDINAL">2.0</NUMEX> <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> Hinf I) were diluted in <TIMEX TYPE="DATE">10 �</TIMEX>�l buffer
+          (<NUMEX TYPE="CARDINAL">20</NUMEX> mM Tris-acetate (pH <NUMEX TYPE="CARDINAL">7.9</NUMEX>), <NUMEX TYPE="CARDINAL">10</NUMEX> mM magnesium acetate, <NUMEX TYPE="CARDINAL">50</NUMEX>
+          mM potassium acetate, <NUMEX TYPE="CARDINAL">1</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">DTT</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">100 μg/ml BSA</ENAMEX>) and added
+          separately to the <NUMEX TYPE="CARDINAL">six</NUMEX> rections (FAM: <ENAMEX TYPE="LAW">Bfa I and Dde I,</ENAMEX>
+          <ENAMEX TYPE="PERSON">JOE</ENAMEX>: <ENAMEX TYPE="LAW">Dpn I and Alu I, NED: Rsa I and Hinf I</ENAMEX>). After <NUMEX TYPE="CARDINAL">2</NUMEX>
+          <TIMEX TYPE="TIME">hours</TIMEX> at <TIMEX TYPE="DATE">37°C</TIMEX>, the reactions were stopped by heating to
+          80°C for <TIMEX TYPE="TIME">20 minutes</TIMEX> and the reactions <ENAMEX TYPE="LAW">Bfa I, Dpn I and</ENAMEX>
+          Rsa I as well as <ENAMEX TYPE="LAW">Dde I, Alu I and Hinf I</ENAMEX> were pooled,
+          respectively. The reaction products were purified by
+          means of <NUMEX TYPE="CARDINAL">three</NUMEX> repeated gel chromatographies using water
+          <ENAMEX TYPE="ORGANIZATION">saturated Sephadex G-50</ENAMEX> in <ENAMEX TYPE="GPE">Millipore</ENAMEX> Multiscreen
+          ®filtration plates according to the instructions provided
+          by the <ENAMEX TYPE="ORG_DESC">supplier</ENAMEX> and dried under vacuum.
+        
+        
+          Fragment analysis
+          The dried <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> was dissolved in <NUMEX TYPE="QUANTITY">2 μl</NUMEX> of loading buffer
+          (<ENAMEX TYPE="PRODUCT">7 M Urea</ENAMEX>, <NUMEX TYPE="CARDINAL">5</NUMEX> mM <ENAMEX TYPE="ORGANIZATION">EDTA</ENAMEX>, <NUMEX TYPE="PERCENT">0.5%</NUMEX> <ENAMEX TYPE="ORGANIZATION">Blue Dextrane</ENAMEX>, pH <NUMEX TYPE="CARDINAL">8.0</NUMEX>)
+          containing a ROX-labelled size marker derived from
+          specifically designed λ-phage PCR fragments (<TIMEX TYPE="TIME">45 bp</TIMEX>, <NUMEX TYPE="CARDINAL">80</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">120 bp, 160 bp, 200 bp, 240 bp, 280 bp, 320 bp, 360</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">400 bp, 450 bp, 500 bp, 550 bp, 600 bp, 650 bp, 700</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>, <ENAMEX TYPE="CONTACT_INFO">750 bp, 800 bp, 850 bp, 900 bp</ENAMEX>). The fragments were
+          denaturated at <TIMEX TYPE="DATE">90°C</TIMEX> for <TIMEX TYPE="TIME">6 minutes</TIMEX>, loaded onto a <NUMEX TYPE="CARDINAL">36</NUMEX> cm
+          <ENAMEX TYPE="PERSON">long</ENAMEX>, <NUMEX TYPE="PERCENT">5%</NUMEX> (<NUMEX TYPE="MONEY">29</NUMEX>:<ENAMEX TYPE="CONTACT_INFO">1</ENAMEX>) polyacrylamid, <ENAMEX TYPE="PRODUCT">7 M</ENAMEX> urea <ENAMEX TYPE="ORG_DESC">gel</ENAMEX>, and
+          separated at <TIMEX TYPE="DATE">2000</TIMEX> <ENAMEX TYPE="PRODUCT">V</ENAMEX>, <NUMEX TYPE="CARDINAL">50</NUMEX> <ENAMEX TYPE="PER_DESC">mA</ENAMEX>, and <ENAMEX TYPE="PRODUCT">51°C</ENAMEX> in a <NUMEX TYPE="CARDINAL">96</NUMEX> lane ABI377
+          <ENAMEX TYPE="SUBSTANCE">DNA analyzer</ENAMEX>. The fragment sizes of the <ENAMEX TYPE="ORGANIZATION">FAM</ENAMEX>, <ENAMEX TYPE="PERSON">JOE</ENAMEX>, and <ENAMEX TYPE="ORGANIZATION">NED</ENAMEX>
+          labeled fragments between <NUMEX TYPE="CARDINAL">45 and 900</NUMEX> <ENAMEX TYPE="PER_DESC">bp</ENAMEX> were calculated
+          from the raw data relative to the ROX size marker by the
+          GeneScan program (<ENAMEX TYPE="ORGANIZATION">Applied Biosystems</ENAMEX>) and exported as
+          text files. The data pertaining to the peaks (lane
+          number, height, area, colour, calculated length of
+          <ENAMEX TYPE="ORGANIZATION">fragments</ENAMEX>) were imported into a relational database
+          scheme (<ENAMEX TYPE="ORGANIZATION">Oracle</ENAMEX> 8.01 relational database management
+          <ENAMEX TYPE="ORGANIZATION">system</ENAMEX>) and integrated with the information on the cDNA
+          <ENAMEX TYPE="ORGANIZATION">library</ENAMEX>, the location of the <ENAMEX TYPE="GPE">colonies</ENAMEX> on the
+          microtiterplates, the <ENAMEX TYPE="GPE_DESC">colony</ENAMEX> composition of the DNA
+          preparation, the labelling reaction, and the gel
+          conditions.
+          Analysis of restriction fingerprints derived from
+          single clones - single clone analysis (SCA) A computer
+          program (written with the <ENAMEX TYPE="ORGANIZATION">Microsoft Visual Studio</ENAMEX> <NUMEX TYPE="CARDINAL">6</NUMEX>
+          software <ENAMEX TYPE="FAC_DESC">suite</ENAMEX>) was designed that extracted fingerprints
+          from the raw data of single clone analysis. In <NUMEX TYPE="CARDINAL">one</NUMEX> lane,
+          the peak for each restriction enzyme was chosen, that had
+          the maximum height (<ENAMEX TYPE="ORGANIZATION">NewHeight</ENAMEX>) after applying the
+          following empirically determined formula in order to
+          account for the broadening in peak shape and the
+          resulting lower peak height that goes along with
+          increasing numbers of base pairs: <ENAMEX TYPE="ORGANIZATION">NewHeight</ENAMEX> =
+          <ENAMEX TYPE="CONTACT_INFO">MeasuredHeight /</ENAMEX> ((<ENAMEX TYPE="CONTACT_INFO">CalculatedBasePairs / - Denominator</ENAMEX>) +
+          <ENAMEX TYPE="ORGANIZATION">Addend</ENAMEX>), with <ENAMEX TYPE="ORGANIZATION">Denominator</ENAMEX> = <NUMEX TYPE="CARDINAL">3.0</NUMEX>, <ENAMEX TYPE="ORGANIZATION">Addend</ENAMEX> = <NUMEX TYPE="CARDINAL">500</NUMEX>. The
+          corresponding calculated lengths of the fragments were
+          stored as fingerprints in the database.
+        
+        
+          Calculation of the abundance of fingerprints in
+          mixed clone analysis (<ENAMEX TYPE="ORGANIZATION">MA</ENAMEX>)
+          A <NUMEX TYPE="ORDINAL">second</NUMEX> computer program was designed that analyzed
+          the datasets from the mixed analysis for the frequency of
+          occurrence of the stored fingerprints. Each dataset
+          derived from a pool of <NUMEX TYPE="CARDINAL">96</NUMEX> <ENAMEX TYPE="GPE">colonies</ENAMEX> (<NUMEX TYPE="CARDINAL">6</NUMEX> complex fragment
+          mixtures in <NUMEX TYPE="CARDINAL">2</NUMEX> corresponding <ENAMEX TYPE="FAC_DESC">lanes</ENAMEX> on <NUMEX TYPE="CARDINAL">two</NUMEX> corresponding
+          <ENAMEX TYPE="ORGANIZATION">gels</ENAMEX>) was queried for the concurrent occurrence of the
+          peaks / fragments of each fingerprint, respectively (see
+          <ENAMEX TYPE="PERSON">Fig</ENAMEX>. <NUMEX TYPE="CARDINAL">4</NUMEX>). As an example, for a certain cDNA fingerprint
+          the <TIMEX TYPE="DATE">the peak</TIMEX> from <ENAMEX TYPE="ORGANIZATION">SCA</ENAMEX> for restriction enzyme <ENAMEX TYPE="PERSON">DdeI</ENAMEX> was
+          determined at <NUMEX TYPE="QUANTITY">326,5 bp</NUMEX>. In <NUMEX TYPE="CARDINAL">one</NUMEX> lane in a <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX> there are
+          multiple peaks stemming from <NUMEX TYPE="MONEY">DdeI digestion</NUMEX> (<NUMEX TYPE="MONEY">50.3</NUMEX>, <NUMEX TYPE="CARDINAL">67.4</NUMEX>,
+          <NUMEX TYPE="CARDINAL">98.5,.....326.7....500.1..</NUMEX>.). The computer program
+          checked if the peak for Dde I was contained in the
+          complex peak mixture derived from the Dde I digest,
+          considering a certain bandwidth. In the example above,
+          <NUMEX TYPE="QUANTITY">326.7 bp</NUMEX> in the <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX> would be considered as a hit. The
+          computer <ENAMEX TYPE="ORG_DESC">program</ENAMEX> did the same for the other <NUMEX TYPE="CARDINAL">5</NUMEX> restriction
+          <ENAMEX TYPE="ORGANIZATION">enzymes</ENAMEX>. When all peaks are simultaneously present in one
+          dataset from a pool of <ENAMEX TYPE="GPE">colonies</ENAMEX> the counter for this
+          <ENAMEX TYPE="PRODUCT">fingerprint/</ENAMEX><ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> goes up by <NUMEX TYPE="CARDINAL">one</NUMEX>. It is possible to adjust
+          the program to query the data with only a subset of the <NUMEX TYPE="CARDINAL">6</NUMEX>
+          restriction enzymes of the fingerprints.
+          The empirical determined allowed bandwidth for a peak
+          to be counted was set to the following parameters
+          fragments from <NUMEX TYPE="CARDINAL">40</NUMEX> to <ENAMEX TYPE="CONTACT_INFO">100 bp: bandwidth +-0.5 bp, 100-300</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>: +-<NUMEX TYPE="CARDINAL">0.3</NUMEX>, <ENAMEX TYPE="CONTACT_INFO">300-500 bp: +-0.7, 500-700 bp:+-2.0, 700-900</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">bp</ENAMEX>:+-<NUMEX TYPE="CARDINAL">5.0</NUMEX>).
+        
+        
+          Pattern search in <ENAMEX TYPE="LANGUAGE">Database</ENAMEX> Sequences
+          Search strings of the form (<ENAMEX TYPE="SUBSTANCE">eg. fingerprint MCP-2</ENAMEX>, Bfa
+          I, <ENAMEX TYPE="LAW">Hinf I, Rsa I, Dpn I, Dde I, Alu I</ENAMEX>) CTAGN 
+          <ENAMEX TYPE="CONTACT_INFO">177-181 GANTCN</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">90-94</NUMEX> GTACN 
+          <ENAMEX TYPE="CONTACT_INFO">3-7 GATCN</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">41-45</NUMEX> CTNAGN 
+          <ENAMEX TYPE="PRODUCT">123-127</ENAMEX> <ENAMEX TYPE="PER_DESC">AGCT</ENAMEX> were derived from the
+          restriction fingerprints. The distances between the
+          restriction <ENAMEX TYPE="FAC_DESC">sites</ENAMEX> were set to be flexible (<ENAMEX TYPE="CONTACT_INFO">+/-2 bp</ENAMEX> of the
+          empirical length), because the experimentally analyzed
+          fragment lengths have non-integer numbers and do not
+          correspond to sequence length in <ENAMEX TYPE="FAC_DESC">base</ENAMEX> pairs better than
+          <ENAMEX TYPE="CONTACT_INFO">+/-1 bp.</ENAMEX> The strings served as an input to the Perl
+          script prosite_scan (<ENAMEX TYPE="PER_DESC">author</ENAMEX>: <ENAMEX TYPE="PERSON">Kay Hofmann</ENAMEX>
+          <ENAMEX TYPE="CONTACT_INFO">http://www.</ENAMEX><ENAMEX TYPE="ORGANIZATION">isrec</ENAMEX>.isb-sib.<ENAMEX TYPE="CONTACT_INFO">ch/ftp-server/prosite_scan/pattern_find</ENAMEX>)
+          searching the nucleotide section of <ENAMEX TYPE="ORGANIZATION">GenBank</ENAMEX> (downloaded
+          <TIMEX TYPE="DATE">April 12 th2000</TIMEX>).
+        
+        
+          <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> Preparation and reverse transcription
+          Total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was extracted from the frozen mouse skin
+          biopsies of <NUMEX TYPE="CARDINAL">30</NUMEX> <ENAMEX TYPE="ANIMAL">animals</ENAMEX> as described by <ENAMEX TYPE="ORGANIZATION">Chomczynski</ENAMEX> and
+          <ENAMEX TYPE="ORGANIZATION">Sacchi</ENAMEX> (<TIMEX TYPE="DATE">1987</TIMEX>) [ <TIMEX TYPE="DATE">32</TIMEX> ] . The total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> was digested by
+          <ENAMEX TYPE="GPE">RNase</ENAMEX> free <ENAMEX TYPE="ORGANIZATION">DNaseI</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">phenol</ENAMEX> extracted in order to remove
+          genomic <ENAMEX TYPE="SUBSTANCE">DNA contaminations</ENAMEX>. <NUMEX TYPE="ORDINAL">First</NUMEX> strand cDNA was
+          synthesized from <NUMEX TYPE="QUANTITY">1 μg</NUMEX> of total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> in a <NUMEX TYPE="QUANTITY">100 �</NUMEX>�l reaction
+          volume using random hexamers as primer and Multiscribe
+          reverse transcriptase (<ENAMEX TYPE="NATIONALITY">TaqMan</ENAMEX> Reverse Transcription
+          <ENAMEX TYPE="PERSON">Reagents Kit</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PE Biosystems</ENAMEX>).
+        
+        
+          Real-time polymerase chain reaction (PCR)
+          Specific primers were designed using the
+          <ENAMEX TYPE="ORGANIZATION">Primer-Express</ENAMEX> program (<ENAMEX TYPE="ORGANIZATION">PE Biosystems</ENAMEX>) and synthesized by
+          <ENAMEX TYPE="ORGANIZATION">Interactiva</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">Ulm</ENAMEX>, <ENAMEX TYPE="GPE">Germany</ENAMEX>). The sequences and necessary
+          concentrations in the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> reaction are outlined in Table
+          <NUMEX TYPE="CARDINAL">2</NUMEX>. The PCR mixture included <NUMEX TYPE="CARDINAL">0.625</NUMEX> <ENAMEX TYPE="ORGANIZATION">U AmpliTaq Gold</ENAMEX> DNA
+          polymerase in the <ENAMEX TYPE="PRODUCT">2× SYBR Green Master Mix</ENAMEX> (PE
+          <ENAMEX TYPE="ORGANIZATION">Biosystems</ENAMEX>), the required concentration of specific
+          forward and reverse primers, <NUMEX TYPE="CARDINAL">10</NUMEX> ng of cDNA template and
+          <NUMEX TYPE="CARDINAL">0.25</NUMEX> <ENAMEX TYPE="ORGANIZATION">U AmpErase UNG</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PE Biosystems</ENAMEX>) in a <NUMEX TYPE="QUANTITY">25 �</NUMEX>�l reaction
+          volume. The quantification relative to the <ENAMEX TYPE="FAC_DESC">house</ENAMEX> keeping
+          <ENAMEX TYPE="PERSON">gene GAPDH</ENAMEX> was carried out in <ENAMEX TYPE="ORGANIZATION">MicroAmp Optical</ENAMEX> <NUMEX TYPE="CARDINAL">96</NUMEX>-well
+          reaction plates (<ENAMEX TYPE="ORGANIZATION">PE Biosystems</ENAMEX>). On each plate a standard
+          curve was generated for both the <ENAMEX TYPE="ORGANIZATION">GAPDH</ENAMEX> and <ENAMEX TYPE="ORG_DESC">target</ENAMEX> PCR
+          reactions by amplifying <NUMEX TYPE="CARDINAL">5</NUMEX> different known amounts of cDNA
+          derived from total <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>. For each cDNA sample under
+          investigation triplicate reaction <ENAMEX TYPE="FAC_DESC">wells</ENAMEX> were set up for
+          both <ENAMEX TYPE="ORGANIZATION">GAPDH</ENAMEX> and target amplification. The amplification
+          was carried out and analysed in the <ENAMEX TYPE="PRODUCT">GeneAmp 5700 Sequence</ENAMEX>
+          <ENAMEX TYPE="ORGANIZATION">Detection System</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">PE Biosystems</ENAMEX>). The efficiency of each
+          <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> was calculated from the slope of the standard curve
+          (E = <NUMEX TYPE="CARDINAL">10</NUMEX> (<ENAMEX TYPE="PRODUCT">-1/s</ENAMEX>)- <NUMEX TYPE="CARDINAL">1</NUMEX>). The abundance of the target relative
+          to GAPDH was calculated as: <NUMEX TYPE="PERCENT">X</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> = (<NUMEX TYPE="CARDINAL">1</NUMEX> + E 
+          <ENAMEX TYPE="ORGANIZATION">GAPDH</ENAMEX> ) <ENAMEX TYPE="PERSON">Ct</ENAMEX>,<ENAMEX TYPE="PER_DESC">gapdh</ENAMEX>/(<NUMEX TYPE="CARDINAL">1</NUMEX> + E 
+          target ) <ENAMEX TYPE="PERSON">Ct</ENAMEX>,<ENAMEX TYPE="ORG_DESC">target</ENAMEX>, where C 
+          <ENAMEX TYPE="ORGANIZATION">t</ENAMEX> is the threshold cycle determined
+          from the amplification curves, and the relative
+          abundances from <NUMEX TYPE="CARDINAL">one</NUMEX> quantification were set into relation
+          with one another.
+        
+      
+      
+        List of abbreviations
+        cDNA - DNA complementary to ribonucleic <ENAMEX TYPE="SUBSTANCE">acid</ENAMEX> (<ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX>), DNA
+        - <ENAMEX TYPE="SUBSTANCE">deoxyribonucleic acid</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">PBS</ENAMEX> - phosphate buffer saline, DEX
+        - dexamethasone, <TIMEX TYPE="TIME">EST</TIMEX> - expressed sequence tag, <ENAMEX TYPE="GPE">SAGE</ENAMEX> -
+        serial analysis of gene expression, SCA - single clone
+        analysis, <ENAMEX TYPE="ORGANIZATION">MA</ENAMEX> - mixed analysis, bp - base pairs, <ENAMEX TYPE="GPE">StDev</ENAMEX> -
+        <ENAMEX TYPE="ORGANIZATION">Standard Deviation</ENAMEX>, RT-PCR - real-time polymerase chain
+        reaction. poly-A - polyadenylation, GAPDH - Glyceraldehyde
+        <ENAMEX TYPE="CONTACT_INFO">3-phosphate dehydrogenase</ENAMEX>
+      
+    
+  

@@ -1,0 +1,1029 @@
+
+  
+    
+      
+        Background
+        The <NUMEX TYPE="CARDINAL">three</NUMEX> goals of most microarray experiments are
+        <ENAMEX TYPE="PERSON">description</ENAMEX>, classification, or characterization. For
+        example, <ENAMEX TYPE="PER_DESC">microarrays</ENAMEX> have been used to describe
+        comprehensively the diauxic shift, progression through the
+        cell cycle, sporulation and the effects of treatment with a
+        small molecule [ <ENAMEX TYPE="LAW">1, 2, 3, 4</ENAMEX>]. They have been used to
+        classify the <ENAMEX TYPE="DISEASE">cancer</ENAMEX> type of a given sample or classify
+        <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> of co-regulated genes [ <ENAMEX TYPE="LAW">5, 6, 7, 8</ENAMEX>]. Finally,
+        microarrays have been used to characterize biological
+        systems using comparisons of wild-type and mutant cells,
+        with the goal of obtaining mechanistic insights [ <ENAMEX TYPE="LAW">9, 10</ENAMEX>,
+        <NUMEX TYPE="CARDINAL">11</NUMEX>].
+        Searching for concerted, dramatic changes in gene
+        expression or searching for differential expression of a
+        given gene has been a successful method in analyzing
+        transcription-profiling data, especially in description or
+        characterization [ <ENAMEX TYPE="LAW">4, 12</ENAMEX>]. Often, <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> take a
+        manual approach to accomplishing these tasks. However,
+        manual approaches to data analysis are sometimes
+        impractical or cumbersome, inspiring the development of
+        tools to accomplish the <NUMEX TYPE="CARDINAL">three</NUMEX> goals described above. A
+        variety of techniques such as hierarchical clustering, 
+        <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -means clustering and
+        self-organizing maps have been implemented with success,
+        especially in classification [ <TIMEX TYPE="DATE">13</TIMEX>].
+        As the number of publicly available profiles in 
+        Saccharomyces cerevisiae alone now
+        <ENAMEX TYPE="CONTACT_INFO">exceeds 500</ENAMEX>, a great need exists to exploit this
+        information properly to understand cell function. At least
+        <NUMEX TYPE="CARDINAL">three</NUMEX> independent international projects have been set up
+        to serve as database-driven repositories of genome-wide
+        expression data [ <TIMEX TYPE="DATE">14</TIMEX>]. A major effort is being made to
+        systematize data storage, especially involving XML
+        (extensible markup language), to ensure interoperability of
+        these databases and associated analysis tools.
+        A related need that has been less addressed is the
+        systematization of expression data analysis. This
+        requirement extends not only to analysis but also to
+        <ENAMEX TYPE="ORGANIZATION">pedagogy</ENAMEX> and to practical aspects of algorithm
+        implementation. Various studies in the literature have
+        successfully implemented tools from vector algebra in
+        analyzing genome-wide expression data [ <TIMEX TYPE="DATE">11, 15, 16</TIMEX>].
+        However, a framework for the analysis of transcription
+        profiles using vector algebra has not yet been codified.
+        Here we present such a framework. Common statistical
+        measures have natural <ENAMEX TYPE="PER_DESC">counterparts</ENAMEX> in vector algebra that
+        have visual interpretations and are easily implemented on a
+        computer. Within this framework, the analysis of
+        genome-wide expression data is converted to the study of
+        high-dimensional vector spaces. The many powerful theorems
+        that have been developed in vector algebra can be applied
+        to these spaces, and these theorems offer biologically
+        relevant insights. <ENAMEX TYPE="PER_DESC">Elements</ENAMEX> of the vector space can also be
+        analyzed statistically. This construction has analytic and
+        pedagogic appeal.
+      
+      
+        Results and discussion
+        
+          Constructing expression vectors
+          Transcription-profiling experiments offer different
+          kinds of measurements depending on the technology used.
+          <NUMEX TYPE="CARDINAL">One</NUMEX> type of technology (using noncompetitive
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>) measures absolute gene expression, while a
+          <NUMEX TYPE="ORDINAL">second</NUMEX> type (using competitive hybridization) measures
+          relative gene expression. A microarray that uses
+          competitive hybridization yields a list of fold changes
+          for each gene between the conditions or cell types
+          measured. The data from a microarray that uses
+          noncompetitive hybridization can be 'divided' (after
+          proper normalization) into another microarray of the same
+          type to produce the fold change of each gene from one
+          condition to another. In practice, even those
+          <ENAMEX TYPE="PER_DESC">investigators</ENAMEX> who use noncompetitive technology platforms
+          generally interpret and publish the fold changes between
+          conditions or strains rather than absolute
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>-expression levels. Therefore this study will focus
+          on analysis of fold-change values, hereafter called a
+          <ENAMEX TYPE="ORGANIZATION">transcription</ENAMEX> or expression profile.
+          There are <NUMEX TYPE="CARDINAL">three</NUMEX> common types of values that can be
+          <ENAMEX TYPE="ORGANIZATION">associated</ENAMEX> with the fold change of a gene. The <NUMEX TYPE="ORDINAL">first</NUMEX>, a
+          signed fold change (such as a <NUMEX TYPE="CARDINAL">+1.6</NUMEX> or <NUMEX TYPE="PERCENT">-2.3</NUMEX> fold change,
+          corresponding to induction or repression, respectively)
+          has the most intuitive appeal but has a discontinuity
+          spanning from <NUMEX TYPE="PERCENT">-1.0</NUMEX> to <NUMEX TYPE="CARDINAL">+1.0</NUMEX> that can be problematic. The
+          <NUMEX TYPE="ORDINAL">second</NUMEX> type, an unsigned fold change (such as <NUMEX TYPE="CARDINAL">1.6</NUMEX> or <NUMEX TYPE="CARDINAL">0.43</NUMEX>
+          fold change, again corresponding to induction or
+          repression, respectively) has no such discontinuity but
+          is bounded on the left by <NUMEX TYPE="CARDINAL">zero</NUMEX> and is unbounded on the
+          right. This asymmetry about unity hinders analysis. The
+          <NUMEX TYPE="ORDINAL">third</NUMEX> type, a logarithm (base 2, base <TIMEX TYPE="DATE">10</TIMEX>, or natural) of
+          the unsigned fold change, is undoubtedly the most
+          <ENAMEX TYPE="ORGANIZATION">tractable</ENAMEX>. No fold change in expression is represented by
+          <ENAMEX TYPE="PERSON">zero</ENAMEX>, induction is positive and repression is negative.
+          Most importantly, there are no discontinuities or
+          <ENAMEX TYPE="ORGANIZATION">asymmetries</ENAMEX>.
+          Once a set of transcription profiles is obtained
+          (where each profile represents a set of fold changes for
+          a set of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>), a data matrix can be generated with
+          genes as rows and experiments as columns (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>).
+          With this picture in mind, generating vectors from the
+          <ENAMEX TYPE="ORGANIZATION">data matrix</ENAMEX> (the logarithms of the unsigned fold changes)
+          is a natural <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> for which there is an obvious
+          construction.
+          
+          Definition. For 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> transcription profiles measuring
+          the expression of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> genes, let 
+          <ENAMEX TYPE="ORGANIZATION">s</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">ij</ENAMEX>  represent the logarithm of the
+          expression of the 
+          i th gene in the 
+          <ENAMEX TYPE="ORGANIZATION">j th</ENAMEX> experiment. The vector
+          [s 
+          
+          i 1 s 
+          
+          i 2 ...s 
+          
+            ip 
+           ] T
+          is defined as a 'gene vector'. Similarly,
+          
+          is defined as an 'experiment vector'. By construction,
+          a gene vector is 
+          <ENAMEX TYPE="ORGANIZATION">p -dimensional</ENAMEX> and an experiment
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> is 
+          <ENAMEX TYPE="ORGANIZATION">n -dimensional.</ENAMEX> An 'expression
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX>' represents either a gene vector or an experiment
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX>. The superscript <ENAMEX TYPE="ORGANIZATION">Tdesignates</ENAMEX> transposition.
+          It can easily be seen that with respect to the data
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>, a gene vector consists of the elements of a row
+          and an experiment vector consists of the elements of a
+          column (Figure <NUMEX TYPE="CARDINAL">1a</NUMEX>). By convention, vectors are treated as
+          columns and not as rows. Experiment vectors are already
+          columns, so gene vectors are transposed from rows to also
+          become columns.
+          In the most common scheme of comparing <NUMEX TYPE="CARDINAL">two</NUMEX> profiles, a
+          <ENAMEX TYPE="ORGANIZATION">'cloud'</ENAMEX> of genes is plotted on a scatterplot. This view
+          is simply the display of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> two-dimensional gene vectors
+          (Figure <NUMEX TYPE="CARDINAL">1b</NUMEX>). It is well suited to detecting particular
+          genes whose expression varies between experiments. As
+          more experiments are added to the matrix, the dimension
+          of the space grows but the number of points remains
+          fixed. Considering a large number of experiments, genes
+          that have similar biological regulation remain in nearby
+          regions of high-dimensional spaces. <ENAMEX TYPE="ORGANIZATION">Integrated</ENAMEX> with
+          promoter-sequence analysis and consideration of chromatin
+          structure, the study of gene vectors is useful in studies
+          of transcription regulation.
+          There is another, complementary, way of thinking about
+          expression profiles, or more generally, about
+          multivariate statistical data [ <TIMEX TYPE="DATE">17</TIMEX>]. Although analysis of
+          <ENAMEX TYPE="SUBSTANCE">gene vectors</ENAMEX> is a powerful tool, it is less efficient at
+          demonstrating relationships between profiles. This is
+          because overlaying clouds of <NUMEX TYPE="CARDINAL">thousands</NUMEX> of gene vectors
+          may not offer an insightful picture because of the many
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> points in view. In the alternative method of
+          analysis, an expression profile is regarded as just one
+          point in a high-dimensional <ENAMEX TYPE="FAC_DESC">space</ENAMEX>. Because this point
+          captures the same information contained in the
+          scatterplot of gene vectors, the point must reside in a
+          much higher-dimensional <ENAMEX TYPE="FAC_DESC">space</ENAMEX>. In this space, the
+          relationships between profiles become more apparent.
+          Instead of plotting genes, one now plots experiments
+          (Figure <NUMEX TYPE="CARDINAL">1c</NUMEX>). As new profiles are added to the data
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX>, the dimension of the space remains fixed but the
+          number of points increases, the reverse case of gene
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>. Although the high-dimensional space of
+          experiment <ENAMEX TYPE="PER_DESC">vectors</ENAMEX> cannot be visualized, the
+          relationships of vectors in the space can often be
+          understood using intuition from the <NUMEX TYPE="CARDINAL">two</NUMEX>- or
+          <ENAMEX TYPE="PERSON">three-dimensional</ENAMEX> case. The power of vector algebra comes
+          from its ability to scale - the concepts, equations and
+          <ENAMEX TYPE="ORGANIZATION">theorems</ENAMEX> move seamlessly (usually identically) to higher
+          <ENAMEX TYPE="PERSON">dimensions</ENAMEX>.
+          Assuming that there are 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> genes represented on the
+          microarray, it is theoretically possible that each
+          profile would yield an 
+          <ENAMEX TYPE="ORGANIZATION">n -dimensional</ENAMEX> experiment vector.
+          However, because of poor <ENAMEX TYPE="PER_DESC">detection</ENAMEX> of scarce transcripts,
+          flaws on the microarray or experimental error, an
+          expression profile in practice gives fewer than 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> values. This leaves <NUMEX TYPE="CARDINAL">three</NUMEX> basic
+          options for how to carry out the analysis. The <NUMEX TYPE="ORDINAL">first</NUMEX> is
+          that a lack of data can be declared as no change in
+          expression, and a <NUMEX TYPE="CARDINAL">zero</NUMEX> inserted into the position of that
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. This approach is generally too simplistic for use
+          in further analysis.
+          The <NUMEX TYPE="ORDINAL">second</NUMEX> option is to estimate the missing value on
+          the basis of other profiles and insert it into the
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX>. For example, we can look for the gene most
+          similar to the missing gene as judged by all other
+          experiments, and then replace the missing value with the
+          value of the similar gene for that experiment. For
+          robustness, we can also find the most similar 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and use the average of
+          those <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for that experiment as the replacement. A
+          comparative study has found that this 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> -nearest <ENAMEX TYPE="PER_DESC">neighbors</ENAMEX> method
+          performs better than filling missing values with <NUMEX TYPE="CARDINAL">zeros</NUMEX> or
+          the averages of that <ENAMEX TYPE="SUBSTANCE">gene</ENAMEX> in other experiments [ <TIMEX TYPE="DATE">18</TIMEX>].
+          There are more complicated imputation methods in the
+          statistics literature, but their usefulness, given the
+          complex calculations involved, is not yet clear.
+          Finally, the vector space can be resized to a smaller
+          dimension than 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , where the expression profiles
+          of interest have data for all genes in that space. As the
+          missing data are not estimated, this is the most
+          conservative method of analysis, although at the price of
+          discarding some data.
+        
+        
+          Vector angle is the <ENAMEX TYPE="PER_DESC">counterpart</ENAMEX> to the <ENAMEX TYPE="ORGANIZATION">Pearson</ENAMEX>
+          correlation coefficient
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the most fundamental measures in statistics is
+          the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation coefficient (referred to as 
+          r ). This represents a widely used
+          measure of similarity between 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> -tuples. With expression vectors,
+          the geometric picture of similarity is that the vectors
+          are pointing in the same direction of expression space.
+          This picture is equivalent to <NUMEX TYPE="CARDINAL">two</NUMEX> vectors with a small
+          angle between them. When expression vectors are
+          uncorrelated, they are orthogonal. This leads to the
+          following remark.
+          
+          <ENAMEX TYPE="CONTACT_INFO">Remark 1</ENAMEX>. Correlation of expression
+          vectors corresponds to the angle θ between those vectors.
+          Low angle ( 
+          r near <NUMEX TYPE="CARDINAL">1</NUMEX>) implies correlation,
+          Angle near <NUMEX TYPE="MONEY">90°</NUMEX> ( 
+          r near <NUMEX TYPE="CARDINAL">zero</NUMEX>) implies uncorrelation,
+          and angle near <NUMEX TYPE="MONEY">180°</NUMEX> ( 
+          r near <NUMEX TYPE="PERCENT">-1</NUMEX>) implies
+          <ENAMEX TYPE="ORGANIZATION">anticorrelation</ENAMEX>.
+          This remark is motivated by consideration of the
+          relationship between the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation coefficient
+          ( 
+          r ) and vector angle (θ). (We use
+          the notation where <, > represents an inner
+          product, also called a dot product, and where cov(<ENAMEX TYPE="CONTACT_INFO">,</ENAMEX>) is
+          the covariance between ordered 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> -tuples.) For <NUMEX TYPE="CARDINAL">two</NUMEX> vectors 
+          x and 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , the formulas for 
+          r and θ are:
+          
+          It is evident that 
+          r and the argument of the inverse
+          cosine function are identical except that covariance and
+          inner product are interchanged. In practice, the argument
+          to the inverse cosine and 
+          r are nearly identical because the
+          <ENAMEX TYPE="ORGANIZATION">covariance</ENAMEX> is essentially a mean adjusted inner product
+          and the means of expression vectors are near <NUMEX TYPE="CARDINAL">zero</NUMEX>. (In
+          fact, covariance and inner product are identical for
+          vectors with <NUMEX TYPE="CARDINAL">zero</NUMEX> mean.) Thus, there is no advantage of
+          either measure because of nearly identical performance on
+          actual expression data (Figure <NUMEX TYPE="CARDINAL">2a</NUMEX>).
+          For <ENAMEX TYPE="SUBSTANCE">gene vectors</ENAMEX>, angles are a measure of how similar
+          <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> are expressed across experiments. For
+          experiment vectors, angles are a measure of how similar
+          <NUMEX TYPE="CARDINAL">two</NUMEX> experiments are across genes. For experiment vectors,
+          a quantitative sense of the distribution of θ can be
+          obtained by examining a collection of diverse
+          transcription profiles. A set of <NUMEX TYPE="CARDINAL">300</NUMEX> transcription
+          profiles in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae from a wide variety
+          of gene deletions and treatments was obtained and made
+          publicly available [ <TIMEX TYPE="DATE">19</TIMEX>]. We converted these profiles
+          into experiment vectors and computed all possible angles
+          <TIMEX TYPE="DATE">between the vectors</TIMEX> (a total of <NUMEX TYPE="CARDINAL">44,850</NUMEX> angles). (<ENAMEX TYPE="ORGANIZATION">Computer</ENAMEX>
+          source written in <ENAMEX TYPE="GPE">Matlab�</ENAMEX>� is publicly available at our
+          website [ <TIMEX TYPE="DATE">20</TIMEX>]) These angles gave a distribution with a
+          mean of <NUMEX TYPE="MONEY">88.4°</NUMEX> (close to orthogonal, as expected) and a
+          standard deviation of <NUMEX TYPE="MONEY">7.4°</NUMEX> (Figure <NUMEX TYPE="CARDINAL">2b</NUMEX>). In practice, we
+          have found <NUMEX TYPE="CARDINAL">60° and 120°</NUMEX> as useful cutoff values for
+          significance of correlation or anticorrelation,
+          respectively.
+          The vector algebra approach is illustrated using a
+          publicly available data set. The small molecule rapamycin
+          has been <ENAMEX TYPE="PER_DESC">transcriptionally</ENAMEX> profiled by <NUMEX TYPE="CARDINAL">three</NUMEX> research
+          <ENAMEX TYPE="ORG_DESC">groups</ENAMEX> in <NUMEX TYPE="CARDINAL">four</NUMEX> separate studies [ <TIMEX TYPE="DATE">4, 11, 21, 22</TIMEX>]. It has
+          a very dramatic expression profile in which <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of
+          genes are rapidly (within <TIMEX TYPE="TIME">minutes</TIMEX>) up- or down-regulated.
+          The <ENAMEX TYPE="SUBSTANCE">protein</ENAMEX> targets of rapamycin (the <ENAMEX TYPE="ORGANIZATION">Tor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>) are
+          known to sense nutrients. When treated as an experiment
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX>, other experiment vectors were searched for that
+          had a low angle with the rapamycin vector. Against the
+          same set of <NUMEX TYPE="CARDINAL">300</NUMEX> diverse expression profiles described
+          earlier [ <TIMEX TYPE="DATE">19</TIMEX>], not a single vector could be found that
+          had an angle <NUMEX TYPE="CARDINAL">less than 60°</NUMEX> with the rapamycin experiment
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> (data not shown). However another study identified
+          <NUMEX TYPE="CARDINAL">two</NUMEX> vectors with smaller angles to the rapamycin
+          expression vector (angles of <NUMEX TYPE="CARDINAL">44° and 47°</NUMEX>) [ <TIMEX TYPE="DATE">11</TIMEX>]. These
+          similar vectors were those corresponding to the removal
+          of high-quality <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX> or nitrogen from the <ENAMEX TYPE="ORG_DESC">media</ENAMEX>. Thus,
+          it can be inferred that the <ENAMEX TYPE="ORGANIZATION">Tor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> regulate the
+          responses to <ENAMEX TYPE="SUBSTANCE">carbon</ENAMEX>- and nitrogen-quality of the medium.
+          This is an example of using angles to identify the
+          functions of <ENAMEX TYPE="SUBSTANCE">uncharacterized proteins</ENAMEX>.
+          It is apparent that angles provide a quantitative
+          measure for asserting genome-wide similarities. This
+          measure is important when making claims about the target
+          of a small molecule, effects of gene deletion or
+          specificity of a <ENAMEX TYPE="SUBSTANCE">drug</ENAMEX>. Orthogonal angles (implying
+          <ENAMEX TYPE="ORGANIZATION">uncorrelation</ENAMEX>) when similarity is expected or claimed
+          raise questions about the validity of the hypothesis
+          under examination.
+        
+        
+          A ratio of magnitudes is a natural second metric
+          for comparing <NUMEX TYPE="CARDINAL">two</NUMEX> expression vectors
+          An advantage of vector algebra is the extension from
+          angles into ratios of magnitudes for which other
+          formulations have awkward or no counterparts. The <NUMEX TYPE="CARDINAL">two</NUMEX>
+          four-dimensional vectors 
+          x = [<NUMEX TYPE="PERCENT">1 0 2 -1</NUMEX>] Tand 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = [<NUMEX TYPE="PERCENT">2 0 4 -2</NUMEX>] <ENAMEX TYPE="PERSON">Thave</ENAMEX> θ = <NUMEX TYPE="CARDINAL">0</NUMEX> (implying 
+          r = <NUMEX TYPE="CARDINAL">1</NUMEX>). However, there is an
+          important difference between the vectors not identified
+          by these measures, as we can observe that 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX> 
+          x . This information is captured by
+          computing the ratio of vector magnitudes.
+          
+          <ENAMEX TYPE="CONTACT_INFO">Remark 2</ENAMEX>. Besides angle, the ratio
+          of vector magnitudes (α) is a <NUMEX TYPE="ORDINAL">second</NUMEX> measure of
+          similarity of <NUMEX TYPE="CARDINAL">two</NUMEX> expression vectors. For <NUMEX TYPE="CARDINAL">two</NUMEX> vectors 
+          x and 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , this is calculated as:
+          
+          With the <NUMEX TYPE="CARDINAL">two</NUMEX> four-dimensional vectors listed above, α
+          is easily seen to be <NUMEX TYPE="CARDINAL">2</NUMEX>. By interchanging < , > and
+          <ENAMEX TYPE="ORGANIZATION">cov</ENAMEX>( <ENAMEX TYPE="CONTACT_INFO">,</ENAMEX> ) as was done with 
+          r and θ, it is tempting to think
+          that the quantity 
+          <ENAMEX TYPE="PER_DESC">β</ENAMEX> = (cov( 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> )/cov( 
+          x , 
+          x )) 1/2might behave similarly to 
+          <ENAMEX TYPE="ORGANIZATION">α</ENAMEX> . With the same vectors as above,
+          
+          <ENAMEX TYPE="PER_DESC">β</ENAMEX> = 
+          <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">2</NUMEX>. When considering the two
+          vectors 
+          x = [<NUMEX TYPE="CARDINAL">2 2 2 2</NUMEX>] Tand 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> = [<NUMEX TYPE="CARDINAL">1 2 1 2</NUMEX>] <ENAMEX TYPE="ORGANIZATION">T</ENAMEX>, it can be calculated
+          that 
+          <ENAMEX TYPE="PER_DESC">α</ENAMEX> = <NUMEX TYPE="CARDINAL">0.79</NUMEX>, the value expected as 
+          <ENAMEX TYPE="ORGANIZATION">y</ENAMEX> is a 'smaller' vector. However 
+          <ENAMEX TYPE="PER_DESC">β</ENAMEX> = <NUMEX TYPE="CARDINAL">0.5/0</NUMEX> = <ENAMEX TYPE="PER_DESC">∞</ENAMEX>. Indeed, the mean
+          <ENAMEX TYPE="ORGANIZATION">subtraction</ENAMEX> component of the covariance fundamentally
+          alters the behavior of <NUMEX TYPE="MONEY">β</NUMEX> compared to α, making it an
+          <ENAMEX TYPE="ORGANIZATION">unsuitable</ENAMEX> measure of expression vector magnitude. An
+          elegant feature of regarding microarray data as
+          expression vectors is that both angles and magnitudes are
+          natural measurements with important biological meaning,
+          as will be discussed in <TIMEX TYPE="DATE">later</TIMEX> sections.
+        
+        
+          Searching subspaces is an important step in
+          analyzing expression vectors
+          Another advantage to treating expression data as
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> in a space rather than as 
+          <ENAMEX TYPE="ORGANIZATION">n -tuples</ENAMEX> is the associated notion
+          of subspaces. With experiment vectors, this concept is
+          particularly valuable. Experiment vector space can be
+          divided into subspaces, most naturally where the
+          subspaces correspond to co-regulated or functionally
+          related genes. This can most easily be done using
+          <ENAMEX TYPE="ORGANIZATION">annotated</ENAMEX> lists where genes are classified by function.
+          The <ENAMEX TYPE="GPE">Munich</ENAMEX> <ENAMEX TYPE="ORGANIZATION">Information Center for Protein</ENAMEX> Sequences
+          (<ENAMEX TYPE="ORGANIZATION">MIPS</ENAMEX>) provides a commonly used functional <ENAMEX TYPE="PER_DESC">grouping</ENAMEX> for
+          genes [ <TIMEX TYPE="DATE">23</TIMEX>].
+          Considering subspaces is nearly always an essential
+          part of analysis. From the vantage point of certain
+          subspaces, many different experiment vectors may
+          <ENAMEX TYPE="ORGANIZATION">'collapse</ENAMEX>' into identical vectors. This enables the
+          decomposition of vectors into sums of common and distinct
+          <ENAMEX TYPE="ORGANIZATION">components</ENAMEX>. For example, <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> stress responses (such as
+          DNA damage or heat shock) are composed of a general
+          response that stresses share and a specific response for
+          the particular stress faced. Identification of these
+          <ENAMEX TYPE="ORGANIZATION">subspaces</ENAMEX> remains a goal in biology. Another example is
+          that of the <ENAMEX TYPE="ORGANIZATION">Tor</ENAMEX> <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX>, which have many effectors, one
+          of which is called <ENAMEX TYPE="PRODUCT">Ure2p</ENAMEX>. Comparing the expression
+          vectors of rapamycin treatment with a 
+          URE2 deletion reveals that the
+          genome-wide angle between these <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">vectors</ENAMEX> is <NUMEX TYPE="CARDINAL">76°</NUMEX> and
+          thus the vectors show only weak correlation. However,
+          calculating the angle of these same vectors within the
+          subspace of genes controlled by <TIMEX TYPE="DATE">Ure2p</TIMEX> gives an angle of
+          <NUMEX TYPE="CARDINAL">13°</NUMEX> [ <TIMEX TYPE="DATE">11</TIMEX>]. With respect to this subspace of genes,
+          treatment with rapamycin and deletion of 
+          URE2 are nearly identical.
+          Experiments reveal that treatment with rapamycin leads to
+          dephosphorylation of <TIMEX TYPE="DATE">Ure2p</TIMEX>, corroborating this low angle
+          [ <ENAMEX TYPE="LAW">4, 21</ENAMEX>]. Thus it is important to consider not only
+          whole-genome angles, but also those for important
+          <ENAMEX TYPE="ORGANIZATION">subspaces</ENAMEX>.
+        
+        
+          The effects of mutations on vector angles and
+          magnitudes
+          When studying a particular process by transcription
+          profiling, it is common also to transcriptionally profile
+          the same process after deleting <NUMEX TYPE="CARDINAL">one</NUMEX> or more <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> known
+          to be involved. For example, this has been carried out
+          with <ENAMEX TYPE="DISEASE">MAP kinase deletion mutants</ENAMEX> after pheromone
+          treatment [ <TIMEX TYPE="DATE">10</TIMEX>], deletions of effectors of the Tor
+          <ENAMEX TYPE="SUBSTANCE">proteins</ENAMEX> after rapamycin treatment [ <TIMEX TYPE="DATE">11</TIMEX>], and 
+          lexA deletions after <ENAMEX TYPE="ORGANIZATION">UV</ENAMEX> irradiation
+          [ <TIMEX TYPE="DATE">24</TIMEX>].
+          When an effector of some process is deleted, the
+          resulting vector is often not uncorrelated in the
+          subspace involving that effector, but is reduced in
+          magnitude. For example, when there are <NUMEX TYPE="CARDINAL">two</NUMEX> transcription
+          factors with overlapping specificity for some <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>,
+          deletion of one can be compensated by the presence of the
+          <NUMEX TYPE="ORDINAL">second</NUMEX> with a similar (though weaker) induction of the
+          same genes. If an effector truly is an exclusive
+          controller of some set of genes, when it is deleted, the
+          resulting experiment vector in that subspace would be
+          expected to be orthogonal (uncorrelated) with the
+          original vector. However, biological <ENAMEX TYPE="ORG_DESC">networks</ENAMEX> generally
+          exhibit redundancy in their control of genes - a
+          reduction in the vector magnitude is to be more commonly
+          expected than rotation toward perpendicularity
+          (<NUMEX TYPE="MONEY">uncorrelation</NUMEX>). Thus it is important to rely on the
+          coordinate use of angles and magnitudes in
+          expression-profiling analysis, something that is not
+          always performed in the literature.
+        
+        
+          Combined use of angles and ratios of vector
+          <ENAMEX TYPE="ORGANIZATION">magnitudes</ENAMEX> is a tool for biological discovery
+          When one is characterizing a transcription profile of
+          an uncharacterized gene deletion or treatment with a
+          small molecule, the <NUMEX TYPE="ORDINAL">first</NUMEX> <ENAMEX TYPE="ORG_DESC">operation</ENAMEX> that should
+          ordinarily be completed is a comparison of that profile
+          as an experiment vector with all other available
+          experiment vectors from the same <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>. By performing
+          such a comparison, the gene can be partially
+          characterized or the target of a small molecule can be
+          identified [ <TIMEX TYPE="DATE">19</TIMEX>]. By coloring the results of a
+          comparison, mimicking the false-coloring schemes usually
+          found on microarrays, one can quickly scan a large set of
+          profiles for those correlated, uncorrelated, or
+          anticorrelated with a reference profile that is being
+          tested [ <TIMEX TYPE="DATE">11</TIMEX>]. This color scheme is red to represent
+          <ENAMEX TYPE="PERSON">correlation</ENAMEX>, yellow to represent uncorrelation, and green
+          to represent anticorrelation (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). This overall
+          <ENAMEX TYPE="PERSON">depiction</ENAMEX> is called a colorimetric comparison array
+          (<ENAMEX TYPE="ORGANIZATION">CCA</ENAMEX>). It can also be carried out with ratios of vector
+          magnitudes where red represents greater magnitude, yellow
+          unchanged magnitude, and green reduced magnitude.
+          To understand the most general relationships, it is
+          useful in <TIMEX TYPE="DATE">the first row</TIMEX> of a <ENAMEX TYPE="ORGANIZATION">CCA</ENAMEX> to compare
+          whole-experiment vectors. This gives an important
+          genome-wide characterization of the profiles being
+          studied - assertions of global behavior should be
+          substantiated in these values. As previously discussed,
+          the angles and magnitudes within subspaces are important
+          to analyze - in subsequent rows, therefore, the same
+          experiment vectors are compared in various subspaces of
+          the genome. By examining a range of subspaces, this
+          analysis can be used to partition a transcription profile
+          and define which effectors are responsible for particular
+          patterns of expression. By looking at whole-genome angles
+          as well as angles within subspaces of interest, the CCA
+          reveals a wealth of information about the expression
+          vectors being studied (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). A <ENAMEX TYPE="ORGANIZATION">CCA</ENAMEX> can also be used
+          to identify the structure of signaling <ENAMEX TYPE="ORG_DESC">networks</ENAMEX>.
+        
+        
+          Singular value decomposition in expression-profile
+          analysis
+          We next explore ideas relating to dimensionality
+          reduction of expression vectors. Dimensionality reduction
+          is a common problem in many disciplines of science and
+          <ENAMEX TYPE="ORGANIZATION">engineering</ENAMEX>. Questions include: what are the essential
+          pieces of information within a transcription profile and
+          what is noise? If the full set of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (<NUMEX TYPE="MONEY">around 6,000</NUMEX> in 
+          <ENAMEX TYPE="PERSON">S. cerevisiae</ENAMEX> ) carries redundant
+          information, how small a subset can we choose? Are most
+          transcription profiles merely combinations of a smaller
+          number of transcription profiles? The <NUMEX TYPE="ORDINAL">first</NUMEX> tool we
+          discuss is singular value decomposition (SVD).
+          <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> is a <ENAMEX TYPE="ANIMAL">matrix factorization</ENAMEX> that reveals many
+          important properties of a matrix. It is a standard tool
+          in many areas of the physical sciences, and many
+          <ENAMEX TYPE="ORGANIZATION">algorithms</ENAMEX> in <ENAMEX TYPE="SUBSTANCE">matrix algebra</ENAMEX> make use of <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX>. Given an 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          p rectangular data matrix 
+          A 
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>  of expression profiles
+          (again where 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> is the number of genes, 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> is the number of experiments), we
+          can obtain the following factorization:
+          
+          where 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> and 
+          <ENAMEX TYPE="PRODUCT">V</ENAMEX> are orthonormal and 
+          D is diagonal. (Mathematical details
+          of the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> can be found in <ENAMEX TYPE="PRODUCT">Materials</ENAMEX> and methods.) The
+          intuition behind the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> is straightforward. Let 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           be the 
+          i th column of 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> . Note that this column vector is 
+          <ENAMEX TYPE="ORGANIZATION">n -dimensional.</ENAMEX> The best vector (in
+          a sense that can be made mathematically precise, see
+          Materials and methods) that captures (spans) the
+          experiment vectors of 
+          A is 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> . Similarly, the best <NUMEX TYPE="CARDINAL">two</NUMEX> column
+          vectors that span the experiment vectors of 
+          A are 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> . In the limit, all 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> vectors 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           exactly span all the experiment vectors of 
+          A . In the same way, the columns of 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> , in descending order, are 
+          <ENAMEX TYPE="ORGANIZATION">p -dimensional</ENAMEX> vectors that best
+          span the gene vectors of 
+          A . These ideas are best illustrated
+          with an example.
+          
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> column of 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> , 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <TIMEX TYPE="TIME">1 best spans</TIMEX> (that is, when multiplied
+          by a constant) the columns of 
+          A . Together with the <NUMEX TYPE="ORDINAL">second</NUMEX> column, 
+          A is exactly captured by taking
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> combinations of 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> . In this case, 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">3</NUMEX> and 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">4</NUMEX> are not needed to capture 
+          A . Similarly, the <NUMEX TYPE="ORDINAL">first</NUMEX> column of 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> , 
+          v 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> best spans the gene vectors (rows)
+          of 
+          A . The first value along the
+          diagonal of 
+          D measures how much contribution 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          v 
+          <ENAMEX TYPE="PRODUCT">1</ENAMEX> make to capturing 
+          A , and the next value measures how
+          much contribution 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> and 
+          v 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX> make. In this case, the large size
+          of the <NUMEX TYPE="ORDINAL">first</NUMEX> singular value indicates that 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> and 
+          v 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> capture most of the information in 
+          A . These values along the diagonal
+          of 
+          D are called the singular values of 
+          A . Matrices that contain mostly
+          redundant columns (low-rank matrices) have singular
+          values that rapidly decay, because the matrix is
+          efficiently spanned by a small number of vectors.
+          However, matrices containing very independent columns
+          (high-rank matrices) have singular values that slowly
+          decay. In the limit, the identity matrix, which has the
+          highest possible rank of 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> , has singular values that do not
+          decay at all - they all are <NUMEX TYPE="CARDINAL">one</NUMEX>.
+          For microarray data, <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> can be used to bring out
+          dominant underlying behaviors. For example, examining the
+          cell-cycle data [ <TIMEX TYPE="DATE">25</TIMEX>] using <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> revealed that among the
+          first 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> vectors ( 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ,...), the <NUMEX TYPE="ORDINAL">first</NUMEX> corresponds to a
+          <ENAMEX TYPE="ORGANIZATION">steady-state</ENAMEX> and the subsequent ones correspond to the
+          oscillatory behavior that one would expect from such data
+          [ <TIMEX TYPE="DATE">15, 16</TIMEX>]. <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> can also be used to 'de-noise' profiles by
+          recomputing the data matrix using only significant 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> (significance determined by reading the 
+          i th singular value along the
+          diagonal matrix 
+          D .) The <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> can also be used to
+          estimate missing values.
+          A technique called principal components analysis (PCA)
+          [ <TIMEX TYPE="DATE">26</TIMEX>] is closely related to the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX>. In <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX>, the
+          <ENAMEX TYPE="ORGANIZATION">factorization</ENAMEX> is applied to the covariance matrix of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> rather than the original data matrix. If the data
+          are mean-adjusted, both <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">PCA</ENAMEX> give the same
+          information. If the data are from a time series, then the
+          principal <ENAMEX TYPE="ORG_DESC">components</ENAMEX> may correspond to derivatives of the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> [ <TIMEX TYPE="DATE">27</TIMEX>].
+        
+        
+          Towards a basis of expression vectors
+          <NUMEX TYPE="CARDINAL">One</NUMEX> of the most powerful ideas in linear algebra is
+          the notion of basis vectors. Besides constructing the
+          space, basis vectors can be chosen to highlight important
+          features of the data or simply to store the data
+          efficiently. For example, the function sin 
+          x can be expressed either in a
+          <ENAMEX TYPE="ORGANIZATION">polynomial</ENAMEX> or exponential basis,
+          
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> basis is clearly awkward - it is
+          <ENAMEX TYPE="PERSON">infinite-dimensional</ENAMEX> and offers little insight. However,
+          the <NUMEX TYPE="ORDINAL">second</NUMEX> basis captures the sine wave more compactly
+          and provides more insight. Many of the successes of
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> algebra in image compression, smoothing and signal
+          detection come from the identification of appropriate
+          basis functions.
+          This concept has important implications in the
+          analysis of transcription-profiling data. Considering the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> as expression vectors, what is the right basis to
+          express the data in? The data is originally in the basis
+          of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>. But is that the best basis? We have already
+          examined <NUMEX TYPE="CARDINAL">one</NUMEX> change of basis - the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX>. In this case, the
+          
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           and 
+          v 
+          
+            i 
+           vectors are basis vectors for the spaces of
+          experiment vectors and <ENAMEX TYPE="SUBSTANCE">gene vectors</ENAMEX>, respectively. While
+          very efficient basis vectors, the vectors themselves are
+          completely artificial and do not correspond to actual
+          profiles.
+          An important question in biology is how many different
+          fundamental cellular <ENAMEX TYPE="GPE_DESC">states</ENAMEX> or transitions exist. It may
+          be that there are a relatively small number, and that
+          cellular <ENAMEX TYPE="GPE_DESC">states</ENAMEX> or transitions are essentially
+          superpositions of a finite number of basic <ENAMEX TYPE="GPE_DESC">states</ENAMEX> or
+          <ENAMEX TYPE="ORGANIZATION">transitions</ENAMEX>. This question is easily posed in expression
+          space because, if the hypothesis holds, the complete set
+          of expression profiles can be examined for the smallest
+          number of basis vectors that can construct the nearly
+          identical entire set. If a profile is added to the data
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> and cannot adequately be constructed by other
+          existing profiles, then it becomes a basis vector. The
+          collection of basis vectors formed by this procedure can
+          be thought of as containing the building blocks of
+          cellular state or transition space. Thus, it would be
+          interesting to try to find basis vectors for all
+          experiment vectors, using actual experiment vectors and
+          not artificial <ENAMEX TYPE="FAC_DESC">bases</ENAMEX> that offer little insight.
+          First, how can one estimate how many basis vectors are
+          required? This problem corresponds to estimating the rank
+          of the data matrix. This problem of finding an
+          approximate rank of a matrix, 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> , is a common one. <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX>, as
+          described above, is often employed. Using <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX>, one
+          typically looks for a sharp drop in the singular values
+          to estimate the rank. Let us suppose that the singular
+          values fall below a defined threshold at some value. This
+          <ENAMEX TYPE="ORGANIZATION">value</ENAMEX> serves as a logical choice for 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> . In fact, the first 
+          <ENAMEX TYPE="ORGANIZATION">k vectors</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           of 
+          A serve as the best possible basis to
+          span 
+          A . In our case, however, we desire
+          the basis vectors to be a subset of the original vectors
+          of 
+          A . This is a more difficult
+          problem.
+          We investigated these concepts using <NUMEX TYPE="CARDINAL">two</NUMEX> large data
+          sets of transcription profiles generated in 
+          <ENAMEX TYPE="PERSON">S.</ENAMEX> cerevisiae : the set of <NUMEX TYPE="CARDINAL">300</NUMEX>
+          expression profiles previously analyzed and a <NUMEX TYPE="ORDINAL">second</NUMEX> set
+          of <NUMEX TYPE="CARDINAL">over 170</NUMEX> expression profiles of various yeast
+          environmental responses [ <TIMEX TYPE="DATE">19, 28</TIMEX>]. We converted these
+          sets to data matrices of experiment vectors and computed
+          the singular values of each matrix. For each matrix, the
+          <ENAMEX TYPE="ORGANIZATION">singular</ENAMEX> values decayed rapidly (Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). This decay
+          shows that the columns of the matrix are far from
+          <ENAMEX TYPE="ORGANIZATION">orthogonal</ENAMEX> and a basis containing a small number of 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> can efficiently capture the original matrix.
+          Interestingly, the singular value decay of the
+          environmental responses was much faster than the more
+          diverse <NUMEX TYPE="CARDINAL">300</NUMEX> profile set (compare Figure <ENAMEX TYPE="PRODUCT">4bwith 4a</ENAMEX>). This
+          is due to the limited number of responses that yeast
+          cells possess when facing stress. This further suggests
+          that there are a small number of building-block
+          transitions that <ENAMEX TYPE="SUBSTANCE">yeast</ENAMEX> can undergo and that other
+          behaviors are, at least partially, superpositions of
+          these transitions.
+          But how can one find these <ENAMEX TYPE="FAC_DESC">building</ENAMEX>-block, fundamental
+          expression vectors in the profile set? Instead of using
+          the 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           vectors from <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> (which are linear combinations of
+          the experiment vectors) it would be useful to identify
+          which actual experiment vectors are most useful to form a
+          basis for the matrix. That is, it would be useful to
+          <ENAMEX TYPE="ORGANIZATION">express</ENAMEX> profiles in terms of other profiles (basis
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX>), rather than simply as lists of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figure
+          <NUMEX TYPE="CARDINAL">5</NUMEX>). There are a number of possible algorithms for
+          identifying these basis experiment vectors. We tested a
+          variety of algorithms, especially those utilizing
+          projections of the 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           vectors on 
+          A , to identify optimal candidate
+          basis vectors. (The <ENAMEX TYPE="PER_DESC">source</ENAMEX> code for <NUMEX TYPE="CARDINAL">one</NUMEX> such algorithm is
+          publicly available online at [ <TIMEX TYPE="DATE">20</TIMEX>].) While small subsets
+          of experiment vectors could span the entire set of
+          experiment vectors, it was found that there were many
+          such subsets of experimental <ENAMEX TYPE="SUBSTANCE">vectors</ENAMEX> that had a
+          comparable spanning ability toward 
+          A (data not shown). This suggests
+          that the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX> probably does have a small number of
+          fundamental transitions, although many different groups
+          of transitions (as represented by experiment vectors)
+          appear nearly equivalently able to span the
+          <ENAMEX TYPE="ORGANIZATION">transcriptional</ENAMEX> range of cellular behavior.
+          Given this behavior, perhaps the ideal basis vectors
+          for transition space would be the basis of experiment
+          <ENAMEX TYPE="ORGANIZATION">vectors</ENAMEX> in which only one signaling pathway is
+          selectively modulated. This could be accomplished with
+          small molecules like rapamycin that selectively modulate
+          one signaling pathway with complete specificity. If one
+          had a collection of small molecules that could
+          selectively modulate every signaling pathway in the <ENAMEX TYPE="FAC_DESC">cell</ENAMEX>,
+          then it might be possible to simply project an experiment
+          <ENAMEX TYPE="ORGANIZATION">vector</ENAMEX> on these small molecules' experiment vectors and
+          determine which pathways are activated and to what
+          degree. This would immediately characterize the
+          expression profile in a very powerful basis that provides
+          a great deal of biological insight.
+        
+      
+      
+        Conclusions
+        We have described various techniques motivated by vector
+        algebra for analyzing genome-wide expression data. Some of
+        these techniques have been used previously, but we find
+        that by regarding expression profiles as vectors, either in
+        the sense of <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> or experiments, we gain a richer
+        understanding of the existing techniques and can take these
+        insights into new directions.
+        The angle between <NUMEX TYPE="CARDINAL">two</NUMEX> <ENAMEX TYPE="ORG_DESC">vectors</ENAMEX> is essentially equivalent
+        to the <ENAMEX TYPE="PRODUCT">Pearson</ENAMEX> correlation coefficient and studying the
+        changes in magnitudes as well as the angles provides
+        important biological information. In particular, we find
+        that decomposing the experiment vector space into a set of
+        smaller <ENAMEX TYPE="ORG_DESC">subspaces</ENAMEX>, using functional categories for
+        instance, results in a concise but useful description of
+        the biological system (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). These types of
+        genome-wide descriptions are essential for understanding
+        large amounts of complex expression data. Thinking in terms
+        of vector spaces naturally introduced the idea of optimal
+        basis vectors, but with the constraint that these basis
+        vectors belong to the original set of expression vectors.
+        This may be a useful way of characterizing expression
+        profiles. We have described the usefulness of the singular
+        value decomposition as a tool for reducing the dimension of
+        the problem and the insight it brings to the problem of
+        finding basis vectors.
+        A complete analysis of genome-wide expression data
+        involves numerous issues not discussed here. The importance
+        of preprocessing and normalization to correct for various
+        <ENAMEX TYPE="PERSON">artifacts</ENAMEX> has been noted recently [ <TIMEX TYPE="DATE">29, 30</TIMEX>]. Artificially
+        large fold changes caused by small values in ratios
+        (red/green or vice versa) should be numerically bounded in
+        competitive hybridization experiments. Assigning a level of
+        significance to observed changes in expression levels is
+        also an important issue and has been addressed by a number
+        of different approaches, most often with a derivation of a
+        <ENAMEX TYPE="ORGANIZATION">statistical</ENAMEX> model for noise to obtain estimates for the
+        fold changes [ <TIMEX TYPE="DATE">31, 32</TIMEX>]. For oligonucleotide arrays, there
+        are similar and sometimes more complicated issues for the
+        same steps. Finally, there are a variety of clustering and
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX>-mining techniques for understanding the structure of
+        the data in other ways. Appropriate methods should be
+        <ENAMEX TYPE="ORGANIZATION">chosen</ENAMEX> carefully, depending on the type of data and the
+        questions to be answered. As the quantity of expression
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> increases rapidly, more tools such as the ones
+        developed here will play an important role in understanding
+        biological <ENAMEX TYPE="GPE_DESC">states</ENAMEX> and transitions.
+      
+      
+        Materials and methods
+        
+          Software
+          Computer <ENAMEX TYPE="ORG_DESC">software</ENAMEX> was written in the <ENAMEX TYPE="ORGANIZATION">Matlab�</ENAMEX>�
+          programming language and is publicly available for
+          download from our website [ <TIMEX TYPE="DATE">20</TIMEX>].
+        
+        
+          Singular value decomposition (SVD)
+          <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> is the <ENAMEX TYPE="SUBSTANCE">matrix factorization</ENAMEX>:
+          
+          where 
+          D is diagonal and 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> and 
+          <ENAMEX TYPE="PRODUCT">V</ENAMEX> are orthonormal ( 
+          <ENAMEX TYPE="ORGANIZATION">UU T</ENAMEX>= 
+          <ENAMEX TYPE="ORGANIZATION">U T</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> = 
+          I 
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX>  and 
+          <ENAMEX TYPE="ORGANIZATION">VV T</ENAMEX>= 
+          <ENAMEX TYPE="PRODUCT">V T</ENAMEX> 
+          <ENAMEX TYPE="PERSON">V</ENAMEX> = 
+          I 
+          
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>  ). The diagonal entries of 
+          D are the singular values σ 
+          <ENAMEX TYPE="CONTACT_INFO">1 ≥ σ</ENAMEX> 
+          <ENAMEX TYPE="CONTACT_INFO">2 ≥ ... ≥ σ</ENAMEX> 
+          
+            p 
+           and the columns { 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           } 
+          
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">n  of</ENAMEX> 
+          <ENAMEX TYPE="ORGANIZATION">U</ENAMEX> and { 
+          v 
+          
+            i 
+           } 
+          
+          i = <NUMEX TYPE="CARDINAL">1,...</NUMEX>, 
+          <ENAMEX TYPE="ORGANIZATION">p  of</ENAMEX> 
+          <ENAMEX TYPE="PRODUCT">V</ENAMEX> are called left and right singular
+          vectors, respectively. For microarray data, we assume
+          that 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> > 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> as we usually think of the data
+          <ENAMEX TYPE="ORGANIZATION">matrix</ENAMEX> as having 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> rows for <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> and 
+          p rows for experiments, and we
+          assume that the columns are linearly independent.
+          The geometric visualization of the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> is the
+          following. When 
+          A 
+          
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX>  is applied to a 
+          <ENAMEX TYPE="ORGANIZATION">p -dimensional</ENAMEX> sphere, the result
+          is an 
+          <ENAMEX TYPE="ORGANIZATION">n -dimensional</ENAMEX> ellipse in which the
+          principal axes have been stretched by factors σ 
+          <NUMEX TYPE="CARDINAL">1</NUMEX> ,..., σ 
+          
+            p 
+           in directions 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           
+          ,...,u 
+          
+            p 
+           respectively. (The right singular vectors 
+          v 
+          
+            i 
+           are the axes of the sphere that get mapped to 
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           through 
+          Av 
+          
+            i 
+           <ENAMEX TYPE="CONTACT_INFO">= σ</ENAMEX> 
+          
+            i 
+           
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           .) The usefulness of the <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> is often based on the
+          fact that it answers the following important question:
+          what is the best approximation to 
+          A using a matrix of lower rank? (The
+          term 'best' can be defined mathematically.) This is
+          important because a comparable matrix with a smaller rank
+          may make the underlying structure of the matrix more
+          apparent. Another way of writing 
+          A = <ENAMEX TYPE="ORGANIZATION">UDV Tis</ENAMEX>:
+          
+          Then, it can be shown mathematically that the best
+          approximation of dimension 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> is obtained by the partial sum of
+          the first 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> terms [ <TIMEX TYPE="DATE">33</TIMEX>]. Sometimes the terms
+          σ 
+          
+            i 
+           
+          <ENAMEX TYPE="ORGANIZATION">u</ENAMEX> 
+          
+            i 
+           
+          v 
+          
+            i 
+           <ENAMEX TYPE="ORGANIZATION">Tare</ENAMEX> called the 'characteristic modes'. This
+          representation is similar to that of a signal by a sum of
+          its Fourier modes. The <ENAMEX TYPE="ORGANIZATION">SVD</ENAMEX> can be used to <ENAMEX TYPE="GPE">de</ENAMEX>-noise the
+          <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> by recomputing the sum with the small singular
+          values set to <NUMEX TYPE="CARDINAL">zero</NUMEX>.
+        
+        
+          Measuring basis quality
+          Let 
+          A be an 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">p matrix</ENAMEX> where the columns of 
+          A represent a collection of 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> transcription profiles over 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> genes. 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> expression vectors are chosen
+          from 
+          A as a basis for the complete set.
+          Let 
+          B be the matrix whose columns consist
+          of the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> expression vectors ( 
+          B is therefore 
+          <ENAMEX TYPE="ORGANIZATION">n</ENAMEX> × 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> ). The ability of 
+          B to form a basis for the remaining 
+          <ENAMEX TYPE="ORGANIZATION">p</ENAMEX> - k vectors of 
+          A (designated 
+          x 
+          
+            i 
+           ) is tested by application of the projection
+          <ENAMEX TYPE="ORGANIZATION">theorem</ENAMEX>. Let 
+          P be the projection matrix for 
+          B , that is 
+          <ENAMEX TYPE="ORGANIZATION">P</ENAMEX> = 
+          B ( 
+          <ENAMEX TYPE="ORGANIZATION">B T</ENAMEX> 
+          B ) <NUMEX TYPE="PERCENT">-1</NUMEX> 
+          <ENAMEX TYPE="ORGANIZATION">B T.</ENAMEX> A measure of the spanning
+          ability of the basis 
+          B toward the 
+          x 
+          i is:
+          
+          Until γ is below a determined threshold for the
+          original matrix 
+          A , a different collection of 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> expression vectors can be tested
+          or 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> can be increased to include more
+          basis vectors.
+          In the expression for γ, the numerator is the
+          'residual vector', the part of the 
+          x 
+          
+            i 
+           that could not be captured by 
+          B . The normalized magnitude of the
+          residual vector measures how well the 
+          x 
+          
+            i 
+           can be constructed from the 
+          <ENAMEX TYPE="ORGANIZATION">k</ENAMEX> columns of 
+          B .
+        
+      
+    
+  

@@ -1,0 +1,928 @@
+
+  
+    
+      
+        Background
+        Categorization of <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> on the basis of their
+        genotypic characteristics is supplanting classification
+        based on phenotypic markers. <ENAMEX TYPE="ORGANIZATION">Genotypic</ENAMEX> information
+        surpasses the resolution achievable with phenotypic
+        markers, giving deeper insights into evolutionary
+        relationships between <ENAMEX TYPE="ANIMAL">species</ENAMEX> that are indistinguishable on
+        the basis of phenotypic traits. We are particularly
+        interested in the use of genome-composition information to
+        identify factors that distinguish pathogenic <ENAMEX TYPE="SUBSTANCE">bacteria</ENAMEX> from
+        their non-<ENAMEX TYPE="NATIONALITY">pathogenic</ENAMEX> counterparts.
+        Although <NUMEX TYPE="CARDINAL">more than 86</NUMEX> <ENAMEX TYPE="PER_DESC">prokaryotes</ENAMEX> have been sequenced
+        since the <NUMEX TYPE="ORDINAL">first</NUMEX> completed genome in <TIMEX TYPE="DATE">1995</TIMEX> [ <ENAMEX TYPE="LAW">1</ENAMEX>], the vast
+        majority of the sequenced genomes represent different
+        <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Use of this information is therefore generally
+        limited to mapping relationships on the genus and species
+        levels. However, much of the interesting genome information
+        that determines phenotypic traits, such as degree of
+        <ENAMEX TYPE="PERSON">virulence</ENAMEX>, is encoded in small differences between strains
+        and serovars, rather than <ENAMEX TYPE="ANIMAL">species</ENAMEX>. Although considerable
+        <ENAMEX TYPE="ORGANIZATION">time</ENAMEX> will elapse before enough strain-specific sequence
+        information becomes available through genome sequencing
+        <ENAMEX TYPE="FAC_DESC">projects</ENAMEX> to identify such traits, microarrays provide us
+        with a tool to gain insight into genome composition at
+        present.
+        A number of studies have investigated genome composition
+        using spotted <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX> [ <ENAMEX TYPE="LAW">2, 3, 4, 5, 6, 7, 8, 9, 10</ENAMEX>,
+        <TIMEX TYPE="DATE">11, 12, 13</TIMEX>], a technique that has been referred to as
+        <ENAMEX TYPE="ORGANIZATION">genomotyping</ENAMEX> [ <TIMEX TYPE="DATE">14</TIMEX>]. The basic methodology is to hybridize
+        the <ENAMEX TYPE="ORG_DESC">fluorescently</ENAMEX> labeled genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> of the strain of
+        interest to the microarray along with the fluorescently
+        labeled genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> of a reference strain, typically the
+        strain whose genome sequence the array was based on. By
+        comparing the ratios of the signals obtained from the spots
+        on the microarray, one can predict whether a given gene is
+        present or divergent (the latter referring to either an
+        absent gene or a gene that is divergent to the point of
+        having poor hybridization <ENAMEX TYPE="FAC_DESC">properties</ENAMEX>) in the strain of
+        interest. Current data-analysis methods typically use a
+        constant ratio value as a cutoff for assignment into either
+        the divergent or present categories. This cutoff is
+        typically empirically determined from a comparison of the
+        reference strain to a similar strain that is known to be
+        missing certain genetic elements. However, a strain with
+        known deletions is not always available for every <ENAMEX TYPE="SUBSTANCE">organism</ENAMEX>,
+        hindering empirical determination of a constant cutoff.
+        This has led some <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> to adopt published cutoff
+        values without empirical determination. This approach may
+        be inappropriate, however, as variability in appropriate
+        <ENAMEX TYPE="ORGANIZATION">cutoffs</ENAMEX> will be inherent in the many variations of
+        <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> technology and analysis methods, as well as in
+        the strains being analyzed.
+        In addition to these limitations, we have observed that
+        use of a constant cutoff leads to erroneous assignment of
+        gene presence in many cases. First, using a constant cutoff
+        demands that the microarrays exhibit high reproducibility.
+        Each <ENAMEX TYPE="PER_DESC">dataset</ENAMEX> must exhibit an almost identical distribution
+        of ratio values in order for the chosen value to fall in
+        the same relative location along the distribution.
+        Variation in the width of the ratio distribution, which
+        occurs as a result of variable array and hybridization
+        quality, results in anomalous categorization of genes. More
+        problematically, <ENAMEX TYPE="PLANT">strains</ENAMEX> which are highly divergent from
+        the reference strain cannot be compared to the reference
+        because of strain-specific inconsistencies in established
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> procedures (described in more detail below).
+        For these reasons, we have developed a method for dynamic
+        assignment of genes, where an independent cutoff is
+        calculated for each hybridization dataset. Array-specific
+        cutoff determination provides more flexibility in the
+        <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> and strains that can be compared. The method
+        is more accurate than using a constant-ratio cutoff for
+        identification of divergent genes, and also allows
+        extraction of data from lower-quality hybridizations which
+        would otherwise be discarded. We have implemented these
+        methods in the genomotyping analysis program GACK.
+      
+      
+        Results
+        
+          Constant cutoffs are not appropriate for varying
+          distributions
+          One might expect that in comparing the genome
+          composition of a strain of interest to a reference
+          (usually a sequenced) strain, the genes would either be
+          present or absent. In examining such a strain on a
+          microarray, the spots would either exhibit signal
+          (corresponding to present genes) or be missing signal
+          (corresponding to absent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX>). This would manifest
+          itself in a distribution of signal intensity ratios as a
+          bimodal <ENAMEX TYPE="ORG_DESC">distribution</ENAMEX> representing present and absent
+          genes. In practice, we observe a major peak (present
+          genes) with a left-hand tail for every distribution we
+          have examined, including several published datasets (see,
+          for example, Figures <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>). We presume that the
+          manifestation of the non-present genes as a <ENAMEX TYPE="PER_DESC">left-</ENAMEX>side
+          tail rather than a peak is due to a combination of
+          divergence on the nucleotide-sequence level (see below),
+          <ENAMEX TYPE="ORGANIZATION">cross-hybridization</ENAMEX> and variability inherent in the
+          calculation of ratios for small signal-intensity values.
+          We refer to these genes as divergent rather than absent,
+          as they may be present but too divergent in nucleotide
+          sequence to show a good hybridization signal. Owing to
+          the continuous nature of the ratio distribution
+          representing both present and divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>),
+          the selection of a cutoff ratio value to assign the genes
+          into these <ENAMEX TYPE="PER_DESC">classes</ENAMEX> is not straightforward.
+          Previously published work has empirically determined a
+          cutoff value utilizing a strain known to be missing
+          certain genetic elements [ <ENAMEX TYPE="LAW">8, 10, 11</ENAMEX>]. The raw ratios are
+          <ENAMEX TYPE="ORGANIZATION">normalized</ENAMEX> to represent a linear ratio of <NUMEX TYPE="CARDINAL">1</NUMEX>, which
+          assumes that most genes are present in both the
+          comparison and reference strains. The constant-ratio
+          <ENAMEX TYPE="PERSON">cutoff</ENAMEX> is an arbitrarily chosen value that divides the
+          known present and divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (based on genome
+          <ENAMEX TYPE="ORGANIZATION">sequence</ENAMEX>) into their respective categories. However,
+          small differences in selection of a constant-ratio cutoff
+          can lead to improper assignment of <NUMEX TYPE="CARDINAL">hundreds</NUMEX> of genes
+          (<ENAMEX TYPE="CONTACT_INFO">Tables 1, 2, 3</ENAMEX>). We desired a more robust method of
+          <ENAMEX TYPE="PERSON">cutoff</ENAMEX> assignment that would address this problem.
+          Furthermore, whereas the constant cutoff method may be
+          reasonably accurate for strain comparisons in which
+          closely related strains are compared, we discovered
+          during the comparison of several 
+          <ENAMEX TYPE="DISEASE">Salmonella enterica</ENAMEX> serovars using
+          our serovar <ENAMEX TYPE="ORGANIZATION">Typhimurium</ENAMEX> microarray that this procedure is
+          inaccurate for relatively divergent strains.
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> facet of the problem exists within the
+          normalization procedure. In a typical normalization of a
+          microarray dataset, the ratio values are converted to a
+          log scale, and each data point is normalized by
+          subtraction of the mean or median log-ratio value of the
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> in order to center the distribution around <NUMEX TYPE="CARDINAL">zero</NUMEX>.
+          This procedure was primarily developed for the analysis
+          of <ENAMEX TYPE="SUBSTANCE">RNA</ENAMEX> expression data, in which the shape of the
+          distribution of ratios is often consistent from
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX> to hybridization regardless of the
+          conditions. In genomic <ENAMEX TYPE="SUBSTANCE">DNA</ENAMEX> comparisons, however, the
+          distributions display more variation in their shape as a
+          result of different numbers of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figures
+          <ENAMEX TYPE="CONTACT_INFO">1, 2, 3a</ENAMEX>). The distribution of ratios is generally skewed
+          to the left, but the size of the left tail, as
+          represented by the area under the tail, varies depending
+          on the number of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figure <NUMEX TYPE="CARDINAL">3</NUMEX>). A larger
+          tail results in the main peak being shifted further to
+          the right during this type of normalization, as the main
+          peak must balance the values of the tail. As the
+          divergent genes presumably fall primarily within the left
+          <ENAMEX TYPE="PERSON">tail</ENAMEX> of the distribution and the main peak primarily
+          consists of present genes, the ideal cutoff value to
+          distinguish present and divergent genes is located near
+          the base of the left side of the main peak.
+          As different types of analysis will require slightly
+          different cutoffs (see below), we refer to the region
+          near the left base of the main peak as the 'transition
+          <ENAMEX TYPE="ORGANIZATION">region'</ENAMEX>, and to the precise cutoff value selected for a
+          given analysis as the 'transition point' (Figure <NUMEX TYPE="CARDINAL">3b</NUMEX>).
+          Owing to different proportions of divergent genes, the
+          boundary values of the transition region change depending
+          on the strain being analyzed, which results in different
+          degrees of <ENAMEX TYPE="PER_DESC">shifting</ENAMEX> of the main peak. In addition,
+          <ENAMEX TYPE="ORGANIZATION">variability</ENAMEX> in hybridization quality will influence the
+          boundary values, as the main peaks of the distributions
+          will vary in width and position. Using a constant-ratio
+          cutoff for the transition point leads to the cutoff
+          having a variable location along different distributions,
+          rather than intersecting each distribution at an
+          identical point. Ideally, the transition point should
+          fall at the same location along the distribution of
+          ratios for every hybridization; that is, the transition
+          point should always be located near the base of the left
+          side of the main peak. Visual inspection of the
+          intersection of a constant cutoff ratio with a
+          distribution with many divergent genes demonstrates
+          first, that the constant transition point intersects
+          different distributions at different locations along the
+          <ENAMEX TYPE="PERSON">curve</ENAMEX> (Figure <TIMEX TYPE="DATE">3b</TIMEX>; see also Figures <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>), and <NUMEX TYPE="ORDINAL">second</NUMEX>,
+          that there are divergent genes in some hybridizations
+          which would be inappropriately deemed present instead of
+          divergent because the constant transition point falls far
+          to the left of the transition <ENAMEX TYPE="LOCATION">region</ENAMEX> (Figure <TIMEX TYPE="DATE">3b</TIMEX>, 
+          Bongori hybridization).
+        
+        
+          Dynamic cutoff determination
+          <NUMEX TYPE="CARDINAL">One</NUMEX> solution to the above problems is to choose a
+          different cutoff for each hybridization dataset, which we
+          refer to <NUMEX TYPE="QUANTITY">as</NUMEX> dynamic cutoff determination. By calculating
+          independent cutoff ratio values for each dataset, we can
+          eliminate the problems of variability in the ratio
+          distributions. Manual selection of cutoffs for each
+          <ENAMEX TYPE="ORGANIZATION">dataset</ENAMEX> is both tedious and inaccurate, so we desired an
+          algorithm that would perform reproducible and consistent
+          analyses. In order to select a cutoff dynamically, we
+          <NUMEX TYPE="ORDINAL">first</NUMEX> require an algorithm for identifying the transition
+          region. This algorithm can either describe the left tail
+          or the main peak; identification of one allows
+          identification of the other by subtraction from the
+          overall distribution. We initially employed what we refer
+          to as positive-side mirroring to describe the peak. In
+          this algorithm, the highest point of the main peak is
+          identified, and the right <NUMEX TYPE="CARDINAL">half</NUMEX> of the main peak of the
+          distribution is mirrored over the maximum. This creates a
+          symmetrical distribution in which the right <NUMEX TYPE="CARDINAL">half</NUMEX> of the
+          main peak is mirrored to the left side, creating a
+          distribution which approximately resembles the
+          distribution we would expect if all of the <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were
+          present (for example, the reference strain hybridized to
+          the reference strain). However, we found this algorithm
+          was not very accurate for peaks that deviated from
+          perfect symmetry around their maxima (data not shown). We
+          subsequently turned to an algorithm that estimates the
+          main peak using the normal probability density function,
+          which we found to be more accurate in describing the
+          shape of the main peak for datasets deviating from
+          symmetry.
+          The <NUMEX TYPE="ORDINAL">first</NUMEX> step of the normal curve-mapping algorithm
+          is to find the location and height of the maximum of the
+          major peak. The <ENAMEX TYPE="GPE_DESC">sides</ENAMEX> of the distribution are then
+          determined on the basis of the ratio values at <NUMEX TYPE="CARDINAL">half</NUMEX> of
+          the peak's maximum height. A normal probability density
+          function is fitted to the main peak on the basis of these
+          <NUMEX TYPE="CARDINAL">three</NUMEX> parameters (height of peak + coordinates of <NUMEX TYPE="CARDINAL">two</NUMEX>
+          side points) (Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>). This normal curve is used as an
+          estimate of the peak representing the present genes. We
+          observe a left tail in the actual ratio distribution,
+          which deviates from the normal curve and represents the
+          <ENAMEX TYPE="PER_DESC">population</ENAMEX> of <ENAMEX TYPE="SUBSTANCE">putatively divergent genes</ENAMEX> (shaded region,
+          Figure <NUMEX TYPE="CARDINAL">4a</NUMEX>). We have thus established a mathematical
+          description of the main peak of the distribution,
+          allowing us to identify the transition region, that is,
+          the region at the left base of the mapped normal curve.
+          This is the <NUMEX TYPE="ORDINAL">first</NUMEX> step in allowing us to distinguish
+          between present and divergent genes.
+        
+        
+          Estimated probability of presence
+          Most published genomotyping analyses have been limited
+          to identification of divergent genes. However, this is
+          <NUMEX TYPE="CARDINAL">only one</NUMEX> type of analysis that can be accomplished with
+          microarray data. One can also determine core sets of
+          genes that are common to multiple strains, as in the case
+          of 
+          Helicobacter pylori [ <TIMEX TYPE="DATE">11</TIMEX>]. With the
+          <NUMEX TYPE="ORDINAL">first</NUMEX> step of describing the distributions complete, the
+          challenge becomes to select a precise transition point.
+          Our genomotyping program GACK allows the <ENAMEX TYPE="PER_DESC">user</ENAMEX> to carry
+          out different types of analyses that require different
+          transition-point cutoff values. For example,
+          determination of the set of genes that are divergent in a
+          strain with a <NUMEX TYPE="PERCENT">0%</NUMEX> false-discovery rate will require a
+          different cutoff compared to <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of the set of
+          core conserved <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> within a set of strains with a <NUMEX TYPE="PERCENT">0%</NUMEX>
+          false-discovery rate. In other words, depending on the
+          type of analysis and the confidence desired in the
+          predictions, the cutoffs will need to be assigned either
+          very close to or farther away from the base of the main
+          peak. We have observed that the empirical determination
+          of cutoff values generally tends to be conservative in
+          the assignment of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (Figures <NUMEX TYPE="CARDINAL">1</NUMEX>, <NUMEX TYPE="CARDINAL">2</NUMEX>); that
+          is, genes that fall to the left of a cutoff of <NUMEX TYPE="PERCENT">-1.0</NUMEX> are
+          likely to be truly divergent. However, assigning all
+          genes with signals larger than this cutoff value to the
+          present category is not accurate, as many genes that are
+          actually divergent will be assigned as present. A cutoff
+          that is conservative for <ENAMEX TYPE="PER_DESC">determination</ENAMEX> of divergent genes
+          inappropriately overestimates the number of present
+          genes, and vice versa. To make these assignments more
+          accurately, we invoke a simple method for estimating the
+          probability that a gene with a given ratio value is
+          present.
+          Estimated probability of presence (<ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX>) is calculated
+          by dividing the mapped normal curve value, which is the
+          expected value for a distribution in which all spots have
+          <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> present on the hybridized microarray, by the
+          actual observed data distribution value for any given
+          ratio.
+          <ENAMEX TYPE="PERSON">%EPP</ENAMEX> = <NUMEX TYPE="CARDINAL">100</NUMEX> × (expected normal value/observed
+          <ENAMEX TYPE="ORGANIZATION">value</ENAMEX>)
+          By comparing the expected distribution for a
+          hybridization with no absent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> (estimated by the
+          mapped normal curve) to the actual observed distribution,
+          it is possible to estimate the degree of divergence of
+          the genome <ENAMEX TYPE="SUBSTANCE">compositions</ENAMEX> based on the divergence of the
+          distributions.
+          <ENAMEX TYPE="PERSON">EPP</ENAMEX> values are calculated across the distribution in
+          order to assess the probability of presence for any given
+          ratio value (Figure <NUMEX TYPE="CARDINAL">4b</NUMEX>). In the left-hand tail of the
+          observed data distribution, the normal distribution
+          approaches <NUMEX TYPE="CARDINAL">zero</NUMEX>. This reflects the fact that in this
+          region genes have a very low (close to <NUMEX TYPE="PERCENT">0%</NUMEX>) chance of
+          being present. As the <ENAMEX TYPE="SUBSTANCE">EPP</ENAMEX> distribution approaches the
+          main peak, it rapidly increases as the mapped normal
+          distribution becomes substantial in relation to the
+          observed hybridization data distribution, which reflects
+          the increasing proportion of present genes. Eventually,
+          the EPP crosses <NUMEX TYPE="PERCENT">100%</NUMEX>, at which point all genes with that
+          particular ratio or higher are expected to be
+          present.
+          After the point at which it crosses <NUMEX TYPE="PERCENT">100%</NUMEX>, the shape of
+          the <ENAMEX TYPE="SUBSTANCE">EPP</ENAMEX> distribution for different hybridizations is
+          <ENAMEX TYPE="PERSON">variable</ENAMEX> and unpredictable. As a result, we only consider
+          the left portion before the curve reaches <NUMEX TYPE="PERCENT">100%</NUMEX> for the
+          determination of <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX>. Once the <ENAMEX TYPE="SUBSTANCE">EPP</ENAMEX> distribution reaches
+          <NUMEX TYPE="PERCENT">100%</NUMEX>, all genes to the right are considered to be
+          present. We therefore have a measure of the probability
+          that a gene is present for every data point in the
+          <ENAMEX TYPE="ORGANIZATION">hybridization</ENAMEX>.
+        
+        
+          <ENAMEX TYPE="PERSON">Categorical</ENAMEX> assignment based on <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX>
+          The final problem is assignment into categories. The
+          <ENAMEX TYPE="PERSON">EPP</ENAMEX> gives us an estimate of how likely a gene is to be
+          present. Genes with <NUMEX TYPE="PERCENT">0% or 100%</NUMEX> <ENAMEX TYPE="SUBSTANCE">EPP</ENAMEX> are easily assigned
+          into the divergent and present categories, respectively.
+          However, a significant number of genes have EPP values
+          <NUMEX TYPE="PERCENT">between 0% and 100%</NUMEX>. These genes fall into the transition
+          region, which is defined by the <NUMEX TYPE="PERCENT">0% and 100%</NUMEX> EPP
+          boundaries.
+          Typically, divergent and present are the primary
+          categories of interest. However, if a gene is predicted
+          to have a <NUMEX TYPE="PERCENT">50%</NUMEX> chance of being present, the question
+          <ENAMEX TYPE="PERSON">arises</ENAMEX> as to how it should be assigned. Moreover, in a
+          strict analysis of divergent genes, one would want to
+          exclude even genes with a <NUMEX TYPE="PERCENT">10%</NUMEX> chance of being present
+          from the divergent category. It is clear that selection
+          of a transition point within the transition region is
+          also a variable that should be specified by the user
+          depending on the type of analysis. To provide flexibility
+          in the types of analysis that can be carried out, we
+          provide <NUMEX TYPE="CARDINAL">three</NUMEX> categorization tools in the GACK software
+          for assignment into various categories as well as
+          parameters for controlling the stringency with which the
+          genes are assigned to the categories.
+          The categorization options that are offered to the
+          <ENAMEX TYPE="PER_DESC">user</ENAMEX> are binary assignment (present and divergent),
+          <ENAMEX TYPE="PERSON">trinary</ENAMEX> assignment (present, slightly divergent, highly
+          <ENAMEX TYPE="ORGANIZATION">divergent</ENAMEX>), and an assignment scale that reflects the <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX>
+          for every data point (graded assignment). To date, most
+          <ENAMEX TYPE="ORGANIZATION">publications</ENAMEX> have used a binary assignment scale [ <ENAMEX TYPE="CONTACT_INFO">3, 5,</ENAMEX>
+          <ENAMEX TYPE="LAW">7, 8, 11</ENAMEX>], whereas others have circumvented the problem
+          of representation by reporting raw values [ <TIMEX TYPE="DATE">10</TIMEX>] or only
+          identifying divergent genes [ <ENAMEX TYPE="LAW">4, 9</ENAMEX>]. As noted above, the
+          transition region contains the transition point, but the
+          precise point must be <ENAMEX TYPE="PER_DESC">user</ENAMEX>-specified depending on the
+          type of analysis. In binary assignment, a transition
+          point is selected on the basis of the percent <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX>. In a
+          strict divergent genes analysis, the <ENAMEX TYPE="PER_DESC">user</ENAMEX> would specify
+          <NUMEX TYPE="PERCENT">0%</NUMEX> <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> as the cutoff, which would result in approximately
+          <NUMEX TYPE="PERCENT">0%</NUMEX> falsely assigned divergent genes. In contrast, a
+          strict analysis of present genes should use a <NUMEX TYPE="PERCENT">100%</NUMEX> <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> to
+          minimize falsely assigned genes.
+          Although binary assignment is desirable in some cases
+          as it gives an orderly appearance, this sort of
+          assignment discards probability information that can
+          serve as an indicator of confidence in the category
+          <ENAMEX TYPE="PERSON">assignments</ENAMEX>. <ENAMEX TYPE="PERSON">Trinary</ENAMEX> assignment is identical to binary
+          assignment, except that in addition to the divergent and
+          present categories, a <NUMEX TYPE="ORDINAL">third</NUMEX> category is added for data
+          values that fall in the uncertain transition region. Two
+          transition points are specified, resulting in <TIMEX TYPE="TIME">three</TIMEX>
+          categories. Only the genes with the most confident
+          predictions are included in the absolute present and
+          highly divergent categories, whereas a <NUMEX TYPE="ORDINAL">third</NUMEX> category
+          contains the genes that could not be assigned with high
+          certainty. These uncertain genes represent the class of
+          genes that are slightly divergent (see "<ENAMEX TYPE="ORGANIZATION">Assessment</ENAMEX> of
+          divergence" below). The precise <ENAMEX TYPE="PERSON">EPP</ENAMEX> values to use as the
+          cutoffs for trinary assignment are <ENAMEX TYPE="PER_DESC">user</ENAMEX>-specified in the
+          software, but we recommend using the most stringent
+          values, <NUMEX TYPE="PERCENT">0% and 100%</NUMEX>, for most analyses. Using these
+          values, there is high confidence that genes assigned into
+          the <NUMEX TYPE="CARDINAL">three</NUMEX> categories are accurate.
+          The graded assignment categorization option is used to
+          preserve the most information regarding the probability
+          that a gene is present. A gene with a <NUMEX TYPE="PERCENT">100%</NUMEX> chance of
+          being divergent is assigned a value of <NUMEX TYPE="PERCENT">-0.5</NUMEX>; a gene with
+          a <NUMEX TYPE="PERCENT">50%</NUMEX> chance of being divergent or present is assigned a
+          value of <NUMEX TYPE="CARDINAL">0</NUMEX>; a gene with a <NUMEX TYPE="PERCENT">100%</NUMEX> chance of being present is
+          assigned <NUMEX TYPE="CARDINAL">0.5</NUMEX>. Genes with intermediate <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> values are
+          assigned values in <TIMEX TYPE="TIME">between -0.5 and 0.5</TIMEX> on a linear scale
+          on the basis of the likelihood of their being present.
+          This graded scale will ultimately give the most accurate
+          assessment of the data, as it preserves information about
+          the location along the distribution for each gene.
+        
+        
+          Analysis of published results
+          <NUMEX TYPE="CARDINAL">Only two</NUMEX> published spotted microarray genomotyping
+          analysis studies have made their raw <ENAMEX TYPE="SUBSTANCE">datasets</ENAMEX> publicly
+          available [ <ENAMEX TYPE="LAW">7, 11</ENAMEX>]. We reanalyzed these datasets to
+          evaluate the performance of <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>.
+          Dorrell 
+          et al. [ <ENAMEX TYPE="LAW">7</ENAMEX>] analyzed human isolates
+          of 
+          Campylobacter jejuni using a
+          microarray constructed from the <ENAMEX TYPE="ORG_DESC">library</ENAMEX> of clones used
+          for genome sequencing of 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni <ENAMEX TYPE="LAW">NCTC 11168</ENAMEX>. Using other
+          published analyses as a basis, these <ENAMEX TYPE="PER_DESC">researchers</ENAMEX> chose a
+          <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> constant cutoff of <NUMEX TYPE="MONEY">0.5</NUMEX> (-<NUMEX TYPE="CARDINAL">1.0</NUMEX> in log 
+          <ENAMEX TYPE="PRODUCT">2</ENAMEX> space) to identify divergent genes.
+          We conducted our own constant-cutoff analysis using the
+          same parameters on the published raw data, and our
+          results generally agree with the published analysis
+          (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>, and Additional data files). However, we note
+          that even following the methods of the original <ENAMEX TYPE="PER_DESC">authors</ENAMEX>,
+          we were unable to reproduce the analysis with <NUMEX TYPE="PERCENT">100%</NUMEX>
+          <ENAMEX TYPE="ORGANIZATION">precision</ENAMEX>.
+          We next analyzed the original raw <ENAMEX TYPE="SUBSTANCE">dataset</ENAMEX> with our
+          algorithm coded in the program <ENAMEX TYPE="PER_DESC">GACK</ENAMEX> and used trinary
+          categorization for the output. Visual inspection of the
+          frequency distributions of their hybridization data
+          reveals that the cutoff was generally conservative
+          (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). This was reflected in the <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> values; all
+          except one of the <NUMEX TYPE="PERCENT">0%</NUMEX> <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> values is greater than a log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> ratio of <NUMEX TYPE="PERCENT">-1.0</NUMEX> (Figure <NUMEX TYPE="CARDINAL">1</NUMEX>). The less
+          conservative cutoff resulted in the larger number of
+          highly divergent genes predicted by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> (<ENAMEX TYPE="PRODUCT">Table 1</ENAMEX>; median
+          of <NUMEX TYPE="CARDINAL">40</NUMEX> more highly divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> per strain). We
+          conclude that as a result of <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>'s dynamic cutoff
+          determination, less conservative transition points, which
+          are still appropriate as judged by visual inspection of
+          the ratio distributions, can be used for gene
+          <ENAMEX TYPE="ORGANIZATION">categorization</ENAMEX>.
+          The overall genome compositions look fairly similar
+          across the analyses (Figure <NUMEX TYPE="CARDINAL">5</NUMEX>), even though many
+          additional divergent genes are predicted by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>. Closer
+          analysis of the <ENAMEX TYPE="PER_DESC">loci</ENAMEX> analyzed in the original publication
+          (restriction modification, <ENAMEX TYPE="GPE">lipo-oligosaccharide</ENAMEX>, and
+          capsule biosynthesis) show that on the gene level, the
+          analytical methods yield similar results (Figures <ENAMEX TYPE="CONTACT_INFO">6, 7,</ENAMEX>
+          <NUMEX TYPE="CARDINAL">8</NUMEX>). <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>, however, predicts additional divergent genes in
+          these previously identified variable loci, suggesting
+          that the level of divergence may be even greater than
+          determined by the original <ENAMEX TYPE="PER_DESC">authors</ENAMEX>. Some of these
+          additional loci are readily explainable: in the original
+          publication, a single present locus is sometimes flanked
+          by <NUMEX TYPE="CARDINAL">two</NUMEX> regions of deleted genes. Our analysis finds that
+          such loci often fall into the divergent category or into
+          the transition region, indicating a low signal ratio.
+          These genes are presumably divergent, but did not meet
+          the constant-cutoff analysis criterion for a divergent
+          gene because of a slightly higher signal. Using the
+          combination of a less conservative cutoff and trinary
+          output shows that such loci are not very likely to be
+          highly conserved. Furthermore, sequencing of these loci
+          has confirmed that many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> previously assigned to be
+          present are in fact divergent, and that <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> is more
+          accurate than constant-cutoff approaches in identifying
+          these divergent loci (<ENAMEX TYPE="ORGANIZATION">B. Wren</ENAMEX>, personal communication). A
+          complete list of divergent genes is available from our
+          website [ <TIMEX TYPE="DATE">15</TIMEX>] and as additional data files.
+          Salama 
+          et al. [ <TIMEX TYPE="DATE">11</TIMEX>] analyzed strains of 
+          Helicobacter pylori using a spotted
+          <ENAMEX TYPE="ORGANIZATION">microarray</ENAMEX> based primarily on the strain <NUMEX TYPE="CARDINAL">26695</NUMEX> genome
+          <ENAMEX TYPE="PERSON">sequence</ENAMEX>, with additional spots representing strain
+          J99-specific genes. The array therefore contains
+          sequences that are unique to <NUMEX TYPE="QUANTITY">J99</NUMEX> and others that are
+          unique to <NUMEX TYPE="CARDINAL">26695</NUMEX>, which proved useful for empirically
+          choosing a log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> cutoff of <NUMEX TYPE="PERCENT">-1.0</NUMEX>. As observed for the 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni analysis, we observed
+          that a log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> cutoff of <NUMEX TYPE="PERCENT">-1.0</NUMEX> was generally
+          conservative (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>), and that many divergent genes
+          were falsely assigned to the present category. We
+          compared the trinary <ENAMEX TYPE="SUBSTANCE">GACK</ENAMEX> output to published analyses of
+          divergent and present genes. In some strains, more highly
+          divergent genes are predicted by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>, but in other
+          strains, fewer highly divergent genes are predicted
+          (<ENAMEX TYPE="PRODUCT">Table 2</ENAMEX>). In the case of present genes, fewer present
+          genes are predicted by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> for all strains (<ENAMEX TYPE="PRODUCT">Table 3</ENAMEX>),
+          which is due to the assignment of many of the genes to
+          the slightly divergent category. In conclusion, whereas
+          <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> analysis coupled with <ENAMEX TYPE="SUBSTANCE">trinary</ENAMEX> output is generally
+          less conservative in predicting highly divergent genes,
+          the predictions for present genes are more conservative
+          (that is, they predict fewer present genes) as a result
+          of assignment of some of these genes to the slightly
+          divergent category. From visual inspection of the
+          position of the cutoff values along the ratio
+          distributions we expect that these assignments more
+          accurately reflect the true genome <ENAMEX TYPE="SUBSTANCE">compositions</ENAMEX>.
+          Viewing the whole <ENAMEX TYPE="SUBSTANCE">genomes</ENAMEX> indicated that the major
+          <ENAMEX TYPE="PERSON">variable loci</ENAMEX> predicted in the original <ENAMEX TYPE="ORG_DESC">publication</ENAMEX> are
+          preserved in the <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> analysis. No additional major
+          <ENAMEX TYPE="PERSON">contiguous</ENAMEX> regions of divergence are predicted. A full
+          list of divergent <ENAMEX TYPE="PER_DESC">loci</ENAMEX> predicted by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> is available [
+          <NUMEX TYPE="CARDINAL">15</NUMEX>]. Analysis of the 
+          cag pathogenicity island reveals
+          that whereas the major differences are conserved, some
+          <ENAMEX TYPE="ORGANIZATION">loci</ENAMEX> also display consistent weak signal across a portion
+          of the <ENAMEX TYPE="PLANT">strains</ENAMEX> (black <ENAMEX TYPE="GPE_DESC">regions</ENAMEX>, Figure <NUMEX TYPE="CARDINAL">9</NUMEX>). Examples of
+          these loci are 
+          orf7, <TIMEX TYPE="DATE">cag4</TIMEX>, <ENAMEX TYPE="PRODUCT">cag22</ENAMEX> and 
+          cag25. <ENAMEX TYPE="PERSON">Intriguingly</ENAMEX>, multiple
+          alleles of 
+          orf7 are apparent across the
+          <ENAMEX TYPE="PERSON">strains</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">N. Salama</ENAMEX>, personal communication). The
+          <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX> contains the <NUMEX TYPE="CARDINAL">26695</NUMEX> allele of 
+          orf7, which is confirmed to be
+          present in strains <TIMEX TYPE="DATE">G27</TIMEX>, <ENAMEX TYPE="PRODUCT">NCTC11638</ENAMEX> and <ENAMEX TYPE="PRODUCT">SPM-342</ENAMEX> by <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> and
+          sequencing, in agreement with <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> analysis. The locus is
+          absent in strains <TIMEX TYPE="DATE">SS1</TIMEX>, <TIMEX TYPE="DATE">G50</TIMEX>, <ENAMEX TYPE="SUBSTANCE">SPM-314</ENAMEX>, <ENAMEX TYPE="PRODUCT">H34</ENAMEX> and <ENAMEX TYPE="SUBSTANCE">SPM-292</ENAMEX>,
+          also in agreement with <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> analysis. In <TIMEX TYPE="DATE">J99 and 87A300</TIMEX>, 
+          orf7 contains an insertion in the
+          coding sequence. These <NUMEX TYPE="CARDINAL">two</NUMEX> strains exhibit weak
+          hybridization signal, resulting in assignment of 
+          orf7 to the slightly divergent
+          category, presumably due to the presence of the
+          <ENAMEX TYPE="ORGANIZATION">insertion</ENAMEX>. The 
+          orf7 <ENAMEX TYPE="PER_DESC">alleles</ENAMEX> present in <TIMEX TYPE="DATE">AR32</TIMEX>,
+          <ENAMEX TYPE="SUBSTANCE">SPM-326</ENAMEX>, <TIMEX TYPE="DATE">G39</TIMEX>, and <ENAMEX TYPE="PRODUCT">HP1</ENAMEX> are uncharacterized, but our
+          results would predict that these <ENAMEX TYPE="PLANT">strains</ENAMEX> also contain the
+          J99 <ENAMEX TYPE="PER_DESC">allele</ENAMEX> or another allele that is divergent from the
+          <TIMEX TYPE="TIME">26695 allele.</TIMEX> This finding suggests that the preservation
+          of ratio-intensity information in the trinary or graded
+          output may be useful in identifying allelic differences
+          in some genes.
+        
+        
+          Assessment of divergence detection for <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX>
+          pylorimicroarrays
+          The complete sequencing of a second 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori strain, <ENAMEX TYPE="PRODUCT">J99</ENAMEX> [ <TIMEX TYPE="DATE">16, 17</TIMEX>],
+          provides a convenient means for assessing how divergence
+          in sequence identity affects microarray signal, and
+          therefore categorization. As the design of the microarray
+          was based on the <NUMEX TYPE="CARDINAL">26695</NUMEX> sequence, the <NUMEX TYPE="ORDINAL">J99</NUMEX> hybridization
+          products represent a spectrum of sequence identities
+          between target and <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>. We examined the correlation
+          between signal intensities and percent sequence identity
+          for a <NUMEX TYPE="ORDINAL">J99</NUMEX> hybridization dataset in order to assess the
+          degree of sequence divergence that could be detected on
+          the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori microarray. As expected,
+          the hybridization signal decreases with increasing
+          sequence divergence (Figure <NUMEX TYPE="CARDINAL">10a</NUMEX>). For a constant-cutoff
+          analysis using a log 
+          <NUMEX TYPE="CARDINAL">2</NUMEX> cutoff of <NUMEX TYPE="PERCENT">-1.0</NUMEX>, the identity level
+          for categorization as divergent is <NUMEX TYPE="PERCENT">approximately 88%</NUMEX>. For
+          the trinary GACK analysis, the transition points were at
+          -<NUMEX TYPE="CARDINAL">0.2</NUMEX> and <NUMEX TYPE="PERCENT">-0.7</NUMEX>, corresponding to <NUMEX TYPE="PERCENT">approximately 92% and 89%</NUMEX>
+          sequence identity. These trends are reflected in Figure
+          10b; <NUMEX TYPE="PERCENT">approximately 50%</NUMEX> of the genes with <NUMEX TYPE="PERCENT">88%</NUMEX> sequence
+          identity are categorized as present, and the other <NUMEX TYPE="PERCENT">50%</NUMEX>
+          are divergent for the constant-cutoff analysis.
+          Similarly, the <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> analysis assigns <NUMEX TYPE="PERCENT">approximately 50%</NUMEX> of
+          the genes with <NUMEX TYPE="PERCENT">89%</NUMEX> identity to divergent, and close to
+          <NUMEX TYPE="PERCENT">100%</NUMEX> of the genes with <NUMEX TYPE="PERCENT">greater than 92%</NUMEX> identity as
+          present. This suggests that the detection limit of the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori microarray is
+          <NUMEX TYPE="PERCENT">approximately 88%</NUMEX> sequence identity, and that this
+          detection limit results in classification of certain
+          genes as divergent in spite of the fact that sequence
+          identity may be relatively high (<NUMEX TYPE="PERCENT">80-85%</NUMEX>).
+          We observe, however, that the majority of <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products
+          on the array are <NUMEX TYPE="PERCENT">approximately 93-97%</NUMEX> identical to J99
+          (Figure <NUMEX TYPE="CARDINAL">11a</NUMEX>), and that the distribution of percent
+          sequence identity bears a striking resemblance to the
+          shape of the distribution of the array data (Figure <NUMEX TYPE="CARDINAL">11b</NUMEX>).
+          This implies that the shape of the array data
+          distribution may largely be a function of the genome
+          content, in addition to the hybridization quality and
+          <ENAMEX TYPE="PERSON">parameters</ENAMEX>, and that the limits of detection for the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori microarray may be
+          considerably lower than the apparent value. The
+          consequence for interpretation of genomotyping data is
+          that divergence is always relative to the main peak of
+          present genes. This main peak will represent differing
+          degrees of sequence identity for different <ENAMEX TYPE="ANIMAL">organisms</ENAMEX> and
+          strains, limiting our ability to make precise predictions
+          about the absolute degree of divergence for any given
+          <ENAMEX TYPE="PERSON">gene</ENAMEX>. Furthermore, the predictions are likely to be
+          affected by the hybridization conditions. Nevertheless,
+          it is evident that the microarray data contain a fairly
+          high level of sequence identity resolution, and that
+          binary representation unnecessarily overlooks this
+          information.
+        
+        
+          Validation of <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> predictions
+          Sequencing of the 
+          <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni capsule biosynthetic
+          locus from several strains has indicated that some
+          regions which were incorrectly predicted to be present by
+          constant-cutoff methods are correctly predicted to be
+          divergent by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> (<ENAMEX TYPE="ORGANIZATION">B. Wren</ENAMEX>, personal communication). To
+          further validate the algorithm, we attempted to
+          PCR-amplify and sequence <NUMEX TYPE="CARDINAL">40</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> representing a spectrum
+          of array intensities from the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori strain <TIMEX TYPE="DATE">G27</TIMEX>. We
+          successfully amplified <NUMEX TYPE="CARDINAL">21</NUMEX> regions for subsequent
+          <ENAMEX TYPE="ORGANIZATION">sequencing</ENAMEX>. Many of the genes predicted to be highly
+          divergent by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> did not amplify, presumably because of
+          their divergence. However, in the cases where
+          <ENAMEX TYPE="ORGANIZATION">amplification</ENAMEX> and sequencing were successful for the
+          highly divergent genes, we observed <NUMEX TYPE="PERCENT">approximately 90%</NUMEX>
+          sequence identity between <TIMEX TYPE="DATE">G27</TIMEX> and the amplified sequence
+          present on the array (<ENAMEX TYPE="CONTACT_INFO">26695</ENAMEX> or <NUMEX TYPE="MONEY">J99</NUMEX>) (<ENAMEX TYPE="PRODUCT">Table 4</ENAMEX>). All genes
+          that were predicted to be slightly divergent by GACK
+          (array ratio of <NUMEX TYPE="PERCENT">-0.6</NUMEX> to <NUMEX TYPE="PERCENT">-0.2</NUMEX>) were <NUMEX TYPE="PERCENT">91-96%</NUMEX> identical with
+          sequences on the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori array, with a median of
+          <NUMEX TYPE="PERCENT">94%</NUMEX>. Genes with stronger array intensities were predicted
+          to be present by <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>, and, not surprisingly,
+          corresponded to higher sequence identities. On the basis
+          of a linear regression of the sequencing results, we
+          predict that the majority of genes of <NUMEX TYPE="CARDINAL">G27</NUMEX> share
+          <NUMEX TYPE="PERCENT">approximately 96%</NUMEX> identity with the sequences on the
+          array (primarily <NUMEX TYPE="CARDINAL">26695</NUMEX>). These data, taken together with
+          our analyses of the <NUMEX TYPE="ORDINAL">J99</NUMEX> hybridizations, indicate that
+          <ENAMEX TYPE="PER_DESC">microarrays</ENAMEX> do not just predict presence or divergence,
+          but can resolve variation in sequence identity between
+          target and <ENAMEX TYPE="PRODUCT_DESC">probe</ENAMEX>. Furthermore, <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> is able to correctly
+          categorize these genes.
+        
+      
+      
+        Discussion
+        Microarrays are increasingly used as a tool for
+        genome-composition analysis, or genomotyping [ <TIMEX TYPE="DATE">14, 18</TIMEX>].
+        Current methods of microarray data analysis are primarily
+        designed for expression (mRNA) studies, in which the
+        distribution of signals is assumed to remain relatively
+        similar across conditions. For <ENAMEX TYPE="SUBSTANCE">microarray</ENAMEX>-based comparative
+        genome analyses, the signal distributions may show
+        significant variation between <ENAMEX TYPE="ANIMAL">species</ENAMEX> or strains.
+        Furthermore, normalization procedures in which
+        distributions are centered to <NUMEX TYPE="CARDINAL">zero</NUMEX> on a log 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> scale are not appropriate for strain
+        comparisons, as the majority of the distributions are
+        skewed. This skew manifests itself as the main peak of the
+        ratio distribution, representing the present genes, being
+        shifted to different degrees for different strains. The
+        <ENAMEX TYPE="ORGANIZATION">peak</ENAMEX>'s position is also dependent on the length of, and
+        number of genes present in, the left tail (area under the
+        left tail). Because of the varying position of the ratio
+        <ENAMEX TYPE="PERSON">distributions</ENAMEX>, a constant-cutoff analysis results in
+        selection of a different location on each distribution as
+        the transition point for category assignment. Other
+        <ENAMEX TYPE="ORGANIZATION">normalization</ENAMEX> procedures can be used that will not be
+        subject to such problems, but are more complicated to
+        implement and require some prior knowledge of genome
+        composition [ <TIMEX TYPE="DATE">19</TIMEX>]. We hypothesized that a more accurate
+        approach to creating these assignments is to select a
+        <ENAMEX TYPE="PERSON">mathematically</ENAMEX> identical point on each distribution being
+        analyzed as the transition point. We subsequently developed
+        an algorithm to reproducibly identify such a point.
+        The <ENAMEX TYPE="PER_DESC">algorithm</ENAMEX> assumes that a hybridization in which all
+        spots have signal present are distributed normally. This
+        assumption proves to be fairly accurate, as is observed in
+        the mapping of normal curves to the hybridization
+        <ENAMEX TYPE="PERSON">distributions</ENAMEX> (for example, Figure <NUMEX TYPE="CARDINAL">4</NUMEX>). Slight deviations
+        are seen in the tails of the distributions, suggesting that
+        better estimates of the distributions may exist. The
+        observation that percent sequence identity is at least
+        <ENAMEX TYPE="PERSON">crudely</ENAMEX> resolved on the microarrays suggests that a
+        <ENAMEX TYPE="ORGANIZATION">multinormal</ENAMEX> model maybe more accurate. Nonetheless, the
+        normal curve mapping consistently gives good overlap with
+        the main peak of the ratio distributions in our analyses.
+        Furthermore, normalization of the dataset does not impact
+        on analysis with <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> because the algorithm depends on the
+        shape of the distribution. The genes are determined to be
+        present or divergent on the basis of their relative
+        position in the distribution, rather than an absolute
+        <ENAMEX TYPE="ORGANIZATION">signal</ENAMEX> intensity ratio. We observed that the algorithm
+        works as well on un-normalized datasets as it does on
+        normalized datasets (data not shown), circumventing the
+        need to implement more complex normalization procedures for
+        genomotyping data. However, while <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> is able to account
+        for minor variations in a set of replicate hybridizations,
+        we emphasize that hybridizations of poor quality yield
+        irreproducible results regardless of the analysis
+        method.
+        We originally considered using the left side of the
+        normal curve map as a transition point for binary analysis.
+        This point effectively represents a <NUMEX TYPE="PERCENT">0%</NUMEX> EPP cutoff, which we
+        believe is appropriate and accurate for a strict divergent
+        genes analysis. However, we realized that genomotyping data
+        embodies information that can be analyzed in many other
+        <ENAMEX TYPE="ORGANIZATION">ways</ENAMEX>, and therefore chose to implement multiple flexible
+        assignment systems in the software. The choice of the
+        transition point(s) and the output format depend closely on
+        one another; regardless of this, the algorithm selects
+        points that are consistent in their location on each
+        distribution for any given analysis. This method, coupled
+        with our estimates of probability that a gene is present
+        (<ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> values), should give more accurate assignments across
+        <ENAMEX TYPE="ORGANIZATION">hybridizations</ENAMEX> and <ENAMEX TYPE="PLANT">strains</ENAMEX>.
+        We developed <ENAMEX TYPE="SUBSTANCE">GACK</ENAMEX> to improve analysis of genomotyping
+        <ENAMEX TYPE="ORGANIZATION">data</ENAMEX> generated in our <ENAMEX TYPE="FAC_DESC">laboratory</ENAMEX>. In an effort to both
+        determine if the algorithm would be broadly applicable to
+        other genomotyping datasets generated from different
+        <ENAMEX TYPE="ORGANIZATION">microarrays</ENAMEX> and by other <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>, we tested all of the
+        publicly available datasets with <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>. It should be noted
+        that at present <NUMEX TYPE="CARDINAL">only two</NUMEX> <ENAMEX TYPE="PER_DESC">datasets</ENAMEX> are available, both of
+        which were generated using spotted <ENAMEX TYPE="SUBSTANCE">DNA microarrays</ENAMEX>, and
+        therefore the applicability of <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> to data generated from
+        <ENAMEX TYPE="GPE">oligo</ENAMEX>-based arrays remains to be tested. Nonetheless, our
+        analyses generally correspond well with the published
+        analyses of 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni and 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori strains. Categorical
+        assignments were based on a constant log 
+        <NUMEX TYPE="CARDINAL">2</NUMEX> cutoff of <NUMEX TYPE="PERCENT">-1.0</NUMEX> in these <ENAMEX TYPE="ORG_DESC">publications</ENAMEX>,
+        which, from visual inspection of the distributions, appear
+        to be conservative for divergent gene identification.
+        Accordingly, <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> predicted transition-point values that
+        were generally higher than <NUMEX TYPE="PERCENT">-1.0</NUMEX>. As these publications
+        primarily focused on divergent genes, conservatism in the
+        predictions was appropriate, but resulted in lower
+        sensitivity of detection. Our analyses have recategorized
+        <NUMEX TYPE="CARDINAL">several hundred</NUMEX> <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> based on <NUMEX TYPE="PERCENT">0% and 100%</NUMEX> <ENAMEX TYPE="ORGANIZATION">EPP</ENAMEX> values.
+        Although many <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> have been reclassified as highly
+        <ENAMEX TYPE="PERSON">divergent</ENAMEX>, many also fall into the slightly divergent
+        category. In creating this additional category, we make a
+        relatively conservative prediction of both highly divergent
+        and present genes, which results in more confidence in our
+        <ENAMEX TYPE="PERSON">assignments</ENAMEX>.
+        We found that the published analyses of 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori strains were also
+        conservative in their predictions of divergent genes,
+        although less so than the 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni analysis. In contrast, the
+        published predictions for present <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> were less
+        conservative, as <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> that lie within the tail of the
+        ratio distribution but have a ratio of greater than <NUMEX TYPE="PERCENT">-1.0</NUMEX>
+        were classified as present (Figure <NUMEX TYPE="CARDINAL">2</NUMEX>). This is a limitation
+        of binary representation of the information. This
+        <ENAMEX TYPE="PERSON">limitation</ENAMEX>, coupled with our observations that
+        sequence-identity information is present in the array data,
+        indicate to us that more sophisticated and detailed
+        representation systems are necessary. We believe that at
+        present, trinary and <ENAMEX TYPE="SUBSTANCE">graded</ENAMEX> output are the best options, as
+        they preserve more information than binary output, but more
+        work is needed in this area.
+        Closer analysis of the 
+        cag pathogenicity island revealed
+        that the predictions were for the most part identical to
+        the previously published predictions. <ENAMEX TYPE="PERSON">Intriguingly</ENAMEX>, some
+        loci, such as 
+        orf7 , consistently show
+        hybridization, but with relatively low strength. This is
+        particularly interesting because there are multiple allelic
+        forms of 
+        orf7 in different 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori strains (<ENAMEX TYPE="ORGANIZATION">N. Salama</ENAMEX>,
+        personal communication). This indicates that preservation
+        of ratio information, such as in the output of trinary or
+        graded analyses, can result in detection of relevant
+        biological differences and should be done for most
+        analyses.
+        Analysis of the degree of sequence identity required for
+        detection on the 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori microarray revealed that
+        sequences with <NUMEX TYPE="PERCENT">less than 88%</NUMEX> identity resulted in
+        dramatically reduced signal on the microarray. Genes with
+        this degree of identity or lower were typically classified
+        as highly divergent, regardless of the method of analysis.
+        In contrast to the hybridization results, loci with greater
+        than <NUMEX TYPE="PERCENT">80%</NUMEX> sequence identity are generally considered to be
+        likely homologs by 
+        in silico comparison. This is a
+        limitation of the microarray technology that should be
+        considered when referring to a particular locus as
+        divergent.
+        We attempted to validate the GACK predictions by PCR
+        <ENAMEX TYPE="ORGANIZATION">amplifying</ENAMEX> and sequencing loci of the different classes.
+        Not surprisingly, many of the highly divergent genes did
+        not amplify, limiting our ability to draw any conclusions
+        about the precise degree of sequence identity that results
+        in a gene being classified as divergent. Nevertheless, the
+        observed PCR success/failure rate and percent sequence
+        identities are consistent with the GACK predictions. True
+        validation of this analysis method, and of microarray
+        genomic comparison and analysis methods in general, will be
+        achieved through a combination of more strain comparison
+        work and accompanying sequence information in the form of
+        genome sequencing projects and the sequencing of particular
+        loci by individual <ENAMEX TYPE="FAC_DESC">laboratories</ENAMEX>. Multiple strain and
+        <ENAMEX TYPE="ANIMAL">species genomes</ENAMEX> are available, or will be soon, for a
+        number of <ENAMEX TYPE="ANIMAL">organisms</ENAMEX>, providing a wealth of information for
+        direct comparative genomic analysis and the groundwork for
+        further establishing microarray-based genomic comparisons
+        as a viable means of assessing genetic differences in
+        strains of interest.
+        Our findings offer improved methods for analysis of
+        <ENAMEX TYPE="GPE">microarray</ENAMEX>-based genome-composition data. Analysis of
+        genomotyping datasets of 
+        <ENAMEX TYPE="PERSON">S.</ENAMEX> enterica serovars has demonstrated
+        that dynamic cutoff selection is more reliable and
+        reproducible than constant cutoffs [ <TIMEX TYPE="DATE">20</TIMEX>]. We have also
+        described <NUMEX TYPE="CARDINAL">two</NUMEX> additional systems for representation, which
+        preserve more of the raw information than a binary
+        analysis. Most importantly, we have identified shortcomings
+        in currently available analytical methods. Most of the
+        tools for microarray data analysis have been developed for
+        use with expression data, but even simple manipulations
+        such as normalization of the datasets are not necessarily
+        appropriate in the case of genomic comparisons. We hope and
+        anticipate that identification of these problems will
+        facilitate that development of even more sophisticated
+        analysis methods.
+      
+      
+        Materials and methods
+        
+          GACK programming
+          <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX> was written in <ENAMEX TYPE="GPE">Perl</ENAMEX>. Testing was conducted on a
+          <ENAMEX TYPE="PRODUCT">Windows 2000</ENAMEX> system with <NUMEX TYPE="MONEY">ActivePerl 5.6.1</NUMEX> build <NUMEX TYPE="CARDINAL">631</NUMEX>. The
+          script requires <ENAMEX TYPE="ORGANIZATION">Perl/Tk</ENAMEX> for the <ENAMEX TYPE="PER_DESC">user interface</ENAMEX>. A
+          <ENAMEX TYPE="PERSON">stand-alone executable for Windows</ENAMEX> was created using
+          <ENAMEX TYPE="ORGANIZATION">Perlapp</ENAMEX> (<ENAMEX TYPE="PRODUCT">Activestate Perl Developer's Kit 4.0</ENAMEX>).
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">Reconstruction</ENAMEX> of datasets
+          
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni dataset
+            Raw hybridization values were downloaded for
+            triplicate hybridizations of the <NUMEX TYPE="CARDINAL">11</NUMEX> 
+            <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni strains [ <ENAMEX TYPE="LAW">7</ENAMEX>]. The
+            <ENAMEX TYPE="ORGANIZATION">linear</ENAMEX> data was converted to log 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> , although the linear data
+            contained negative values (median <NUMEX TYPE="PERCENT">0.8%</NUMEX> per strain, or
+            <NUMEX TYPE="CARDINAL">14</NUMEX> spots out of <NUMEX TYPE="CARDINAL">1,730</NUMEX>), which could not be converted to
+            log 
+            <NUMEX TYPE="CARDINAL">2</NUMEX> and were subsequently discarded
+            from the dataset. The triplicates were averaged, and
+            these data served as the raw <ENAMEX TYPE="SUBSTANCE">dataset</ENAMEX> for our analyses.
+            The published present/divergent genes category sizes
+            were tabulated from the lists of divergent genes
+            available at [ <TIMEX TYPE="DATE">15</TIMEX>].
+          
+          
+            <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori dataset
+            Raw values were downloaded from the <ENAMEX TYPE="ORGANIZATION">Stanford</ENAMEX>
+            <ENAMEX TYPE="PRODUCT">Microarray Database</ENAMEX> [ <TIMEX TYPE="DATE">21</TIMEX>]. The data for <TIMEX TYPE="DATE">the AR32</TIMEX> and
+            H34 strains were absent in the <ENAMEX TYPE="ORGANIZATION">Published Data</ENAMEX> section,
+            and were obtained directly from the <ENAMEX TYPE="PER_DESC">authors</ENAMEX>. The data
+            were filtered to include the same <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> as the
+            previously published dataset [ <TIMEX TYPE="DATE">11</TIMEX>]. Numbers describing
+            the size of the present and divergent genes categories
+            were obtained directly from the <ENAMEX TYPE="ORG_DESC">publication</ENAMEX>.
+          
+        
+        
+          <ENAMEX TYPE="ORGANIZATION">PCRs</ENAMEX> and sequencing
+          Genes were selected for sequencing using various
+          criteria, including array signal intensity, variance in
+          the replicates and amplicon length. Primers were selected
+          that were identical to those used to construct the 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori array. Sequencing was
+          from both ends of the <ENAMEX TYPE="ORGANIZATION">PCR</ENAMEX> products and was carried out by
+          <ENAMEX TYPE="ORGANIZATION">Sequetech</ENAMEX> (<ENAMEX TYPE="GPE">Mountain View</ENAMEX>, CA). 
+          <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori <ENAMEX TYPE="SUBSTANCE">G27 genomic DNA</ENAMEX> was a
+          gift from <ENAMEX TYPE="PERSON">Douglas Scott Merrell</ENAMEX>.
+        
+      
+      
+        Additional data files
+        The <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> code for <ENAMEX TYPE="ORGANIZATION">GACK</ENAMEX>, a Windows-executable
+        versionof the program, and a manualin PDF format are freely
+        available here and at our website [ <TIMEX TYPE="DATE">15</TIMEX>]. A complete list of
+        divergent genes, raw ratio valuesand trinary outputsare
+        also available for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni as well as lists of
+        divergent genes, raw ratio valuesand trinary outputsfor 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. A tool for constant-cutoff
+        analysis, <ENAMEX TYPE="ORGANIZATION">CCACK</ENAMEX>, can also be downloaded at our website [
+        <NUMEX TYPE="CARDINAL">15</NUMEX>].
+        Additional data file 1
+        <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> code for GACK
+        <ENAMEX TYPE="ORGANIZATION">Perl</ENAMEX> <ENAMEX TYPE="PER_DESC">source</ENAMEX> code for GACK
+        Click here for additional data file
+        Additional data file 2
+        Windows-executable version of the program
+        Windows-executable version of the program
+        Click here for additional data file
+        Additional data file 3
+        A manual in PDF format
+        A manual in PDF format
+        Click here for additional data file
+        Additional data file 4
+        A complete list of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        A complete list of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        Click here for additional data file
+        Additional data file 5
+        A complete list of raw ratio values for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        A complete list of raw ratio values for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        Click here for additional data file
+        Additional data file 6
+        A complete list of trinary outputs for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        A complete list of trinary outputs for 
+        <ENAMEX TYPE="ORGANIZATION">C.</ENAMEX> jejuni 
+        Click here for additional data file
+        Additional data file 7
+        A complete list of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        A complete list of divergent <ENAMEX TYPE="SUBSTANCE">genes</ENAMEX> for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        Click here for additional data file
+        Additional data file 8
+        A complete list of raw ratio values for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        A complete list of raw ratio values for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        Click here for additional data file
+        Additional data file 9
+        A complete list of trinary outputs for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        A complete list of trinary outputs for 
+        <ENAMEX TYPE="ORGANIZATION">H.</ENAMEX> pylori. 
+        Click here for additional data file
+      
+    
+  

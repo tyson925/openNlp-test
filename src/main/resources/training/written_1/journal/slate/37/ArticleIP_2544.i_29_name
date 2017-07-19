@@ -1,0 +1,184 @@
+
+   
+   
+      
+         
+            <ENAMEX TYPE="PERSON">Hack Attacks</ENAMEX>
+
+            Hardly <TIMEX TYPE="DATE">a week</TIMEX> goes by
+without a report of some new <ENAMEX TYPE="DISEASE">virus</ENAMEX> or other security risk on the Internet.
+<ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX> was a particularly fertile ground for
+bug-<ENAMEX TYPE="PER_DESC">hunters</ENAMEX>, as is explained . Depending on whom you talk to, browsing the
+Internet is as safe as a walk in the <ENAMEX TYPE="FAC_DESC">park</ENAMEX>, or as dangerous as a walk alone at
+<TIMEX TYPE="TIME">night</TIMEX> in <ENAMEX TYPE="LOCATION">Central Park</ENAMEX>.
+
+            Is your
+<ENAMEX TYPE="ORGANIZATION">data</ENAMEX> being read by prying eyes? Intercepted by <NUMEX TYPE="ORDINAL">third</NUMEX> <ENAMEX TYPE="ORG_DESC">parties</ENAMEX>? Altered or
+obliterated by <ENAMEX TYPE="PER_DESC">crooks</ENAMEX> or pranksters? How concerned should you be, and what
+exactly is at risk?
+
+            <ENAMEX TYPE="ORGANIZATION">Data</ENAMEX> can be compromised while it resides on your computer
+or during transmission from <NUMEX TYPE="CARDINAL">one</NUMEX> place to another. (To see why transmission is
+so risky, see this explanation of .)
+
+            The best way to secure your
+<ENAMEX TYPE="ORGANIZATION">data</ENAMEX> from <ENAMEX TYPE="PER_DESC">outsiders</ENAMEX> is via encryption . The goal here is to prevent
+others from accessing it or, as a last resort, preventing them from reading it
+or tampering with it if they do succeed in accessing it. Encryption
+works on the principle of a lock and key. The lock is the encrypted data; the
+key is a number. The number can't be derived from the encrypted data, so the
+lock can't be opened without the key.
+
+            The
+<ENAMEX TYPE="PERSON">simplest</ENAMEX> and most effective kind of encryption is single-key encryption :
+The <ENAMEX TYPE="PER_DESC">author</ENAMEX> puts his data in a box, locks it, and sends it to an <ENAMEX TYPE="PER_DESC">audience</ENAMEX> that
+already has a copy of the key. Single-key encryption works fine for broadcast
+situations such as a military command sending orders to its <ENAMEX TYPE="ORG_DESC">units</ENAMEX>, but not so
+well for two-way interactions. Public/private-key encryption provides an
+elegant solution to the problem. Under <ENAMEX TYPE="PER_DESC">public</ENAMEX>/private-key encryption, everyone
+gets an individual lock with <NUMEX TYPE="CARDINAL">two</NUMEX> keys. <NUMEX TYPE="CARDINAL">One</NUMEX> key locks it, the other key unlocks
+it, and you can't derive one from the other. If <ENAMEX TYPE="PERSON">Bill</ENAMEX> wants to send <ENAMEX TYPE="PERSON">Joe</ENAMEX> mail, he
+locks it with <ENAMEX TYPE="PERSON">Joe</ENAMEX>'s public key, which is available for all the world to see.
+Now it is locked, and only <ENAMEX TYPE="PERSON">Joe</ENAMEX> can unlock it with his private key, so only he
+and <ENAMEX TYPE="PERSON">Bill</ENAMEX> can know the contents. Unfortunately, there is currently no standard
+<ENAMEX TYPE="PERSON">way</ENAMEX> for someone to get or publish a key, which is one reason encrypted e-mail
+is not common <TIMEX TYPE="DATE">today</TIMEX>. <ENAMEX TYPE="ORGANIZATION">PGP</ENAMEX> (<ENAMEX TYPE="WORK_OF_ART">Pretty Good Privacy</ENAMEX>) is a free <ENAMEX TYPE="ORG_DESC">utility</ENAMEX> that lets you do
+public/private-key encryption.
+
+            
+<ENAMEX TYPE="ORGANIZATION">Encryption</ENAMEX> comes in different strengths,
+denoted by the size of the numeric key. The bigger the key, the harder it is to
+break the encryption (pick the lock). Since encryption inhibits the ability of
+the <ENAMEX TYPE="ORG_DESC">government</ENAMEX> to <ENAMEX TYPE="PER_DESC">spy</ENAMEX> on private dialogues, there are public-policy issues
+surrounding encryption. This is another reason encrypted e-mail is uncommon
+today, a topic which <ENAMEX TYPE="PERSON">David Plotz</ENAMEX> covered in an earlier "<ENAMEX TYPE="WORK_OF_ART">The Gist" in Slate</ENAMEX>. SSL
+(<ENAMEX TYPE="PERSON">Secure Sockets Layer</ENAMEX>), an Internet standard for encrypting data, is built into
+recent versions of <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX> and <ENAMEX TYPE="ORGANIZATION">Netscape</ENAMEX>'s <ENAMEX TYPE="PER_DESC">Navigator</ENAMEX>. But
+because encrypting and decrypting data is fairly slow, <ENAMEX TYPE="SUBSTANCE">SSL</ENAMEX> tends to be used
+only where privacy really matters--typically, electronic commerce.
+
+            Sometimes
+it's desirable to have data that are publicly available, but untamperable. For
+instance, the <ENAMEX TYPE="ORG_DESC">government</ENAMEX> publishes a crop report that a commodity <ENAMEX TYPE="PER_DESC">broker</ENAMEX> then
+passes on to a <ENAMEX TYPE="PER_DESC">client</ENAMEX>. How can the <ENAMEX TYPE="PER_DESC">client</ENAMEX> know that the <ENAMEX TYPE="ORG_DESC">broker</ENAMEX> hasn't altered
+the report? <ENAMEX TYPE="ORGANIZATION">Digital</ENAMEX> signatures solve this problem. Mathematics can
+reduce any document to a few unique numbers--the signature. Changing the
+original data in any way results in a different signature. This signature is
+then encrypted with a private key. Using a public key, anyone can confirm that
+the signature matches the document. The document can't have changed because the
+signature is the same, and the signature can't be forged because only the
+<ENAMEX TYPE="PERSON">creator</ENAMEX> has access to the private key that encrypted it.
+
+            What about protecting the data on your hard drive?
+Typically this is done at the operating-system level by restricting access to
+certain <ENAMEX TYPE="PER_DESC">users</ENAMEX>. Ideally, <ENAMEX TYPE="PER_DESC">users</ENAMEX> would carry around giant numeric keys to identify
+themselves, but computer <ENAMEX TYPE="ORG_DESC">marketers</ENAMEX> could never sell that solution. In <TIMEX TYPE="DATE">the end</TIMEX>,
+most systems identify <ENAMEX TYPE="PER_DESC">users</ENAMEX> by passwords. Users enter their names and
+passwords. The name is public, but the password is private. The simplicity of
+the system is its power. While an encrypted document gives a code breaker
+something to analyze, an empty password prompt is simply empty.
+
+            
+Unfortunately, computer <ENAMEX TYPE="PER_DESC">users</ENAMEX> betray themselves. Anecdotal evidence shows that
+most passwords are birth dates of family <ENAMEX TYPE="PER_DESC">members</ENAMEX>, maiden names, <ENAMEX TYPE="PER_DESC">favorite</ENAMEX> sports
+<ENAMEX TYPE="PER_DESC">teams</ENAMEX>--things that are easy to guess. That's why the best passwords aren't real
+words, but combinations of letters, numbers, and punctuation. The best password
+contains enough nonsense so that no one can guess it, but not so much nonsense
+that you can't remember it. And therein lies the other problem with passwords:
+<ENAMEX TYPE="PER_DESC">People</ENAMEX> forget them. This is so common that, for every <ENAMEX TYPE="ORG_DESC">network</ENAMEX>, there is someone
+(the system <ENAMEX TYPE="PER_DESC">administrator</ENAMEX>) who has the power to retrieve or change your
+<ENAMEX TYPE="ORGANIZATION">password</ENAMEX>. The world's best password is useless if the system <ENAMEX TYPE="PER_DESC">administrator</ENAMEX>'s
+<ENAMEX TYPE="ORGANIZATION">password</ENAMEX> is easy to guess, or if someone can get her drunk or blackmail her.
+But the alternative is frightening, which is why we don't encrypt our hard
+drives with the password as our key. If we lost the key, that would be
+that.
+
+            
+The greatest perils to your precious data are
+the programs you've installed on your computer. Who hasn't accidentally told a
+computer to delete the wrong file or stood by helplessly while the operating
+system crashed and took all the files with it?
+
+            Then there are programs
+designed to do damage. The worst are <ENAMEX TYPE="ANIMAL">Trojan horses</ENAMEX> , programs that
+claim to be one thing but are really another, such as a program that is
+supposed to be a calendar but secretly erases your hard drive or copies its
+contents somewhere else. Then there are the legitimate programs that have been
+infected with subprograms called viruses . Viruses are crafty things that
+are cleverly (if perversely) designed to replicate themselves whenever their
+<ENAMEX TYPE="PER_DESC">host</ENAMEX> program is run. Once replicated, they might then do harm to your data,
+just like biological viruses can do harm to their <ENAMEX TYPE="PER_DESC">hosts</ENAMEX>.
+
+            Further
+perils to your data are programs like operating systems and browsers, which are
+supposed to protect you from harm. Like a brick wall, they resist any frontal
+attack. But like a brick wall, some of these programs have holes. The most
+insidious kind of hole is a back door , put there with a benign purpose
+(like letting in the dog) that can be exploited for nefarious ends (like
+letting in a trained <ENAMEX TYPE="ANIMAL">monkey</ENAMEX> to steal your wallet). The recent Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX>
+was just that. Some <ENAMEX TYPE="PER_DESC">people</ENAMEX> feel that , found in most browsers, are a security
+<ENAMEX TYPE="GPE">hole</ENAMEX>, but I strongly disagree.
+
+            How can you be sure your programs are safe? Either obtain
+your programs from trustworthy <ENAMEX TYPE="PER_DESC">sources</ENAMEX>, or ensure that the programs behave.
+Both have their trade-offs. If you were a <ENAMEX TYPE="PER_DESC">photographer</ENAMEX> and had to hire child
+models for an important shoot, you could hire from a reputable modeling agency
+that guaranteed its <ENAMEX TYPE="ORG_DESC">clients</ENAMEX>, or you could hire <ENAMEX TYPE="PER_DESC">children</ENAMEX> off the <ENAMEX TYPE="FAC_DESC">street</ENAMEX> and also
+hire an authoritarian nanny to watch them every second. The <ENAMEX TYPE="ORG_DESC">agency</ENAMEX> can't really
+ensure their <ENAMEX TYPE="ORG_DESC">client</ENAMEX>'s behavior, but you would know that it had done its very
+best to choose only well-behaved <ENAMEX TYPE="PER_DESC">children</ENAMEX>. The nanny, by comparison, can be
+trusted to control the <ENAMEX TYPE="PER_DESC">children</ENAMEX>, but her constant presence irritates the
+<ENAMEX TYPE="PER_DESC">children</ENAMEX> and slows down the shoot. Either way, you're paying someone (the
+<ENAMEX TYPE="ORGANIZATION">agency</ENAMEX> or the nanny). The best case of the <ENAMEX TYPE="ORG_DESC">agency</ENAMEX> is best (everyone behaves and
+is happy), but the worst case of the <ENAMEX TYPE="ORG_DESC">agency</ENAMEX> is worst overall (all the <ENAMEX TYPE="PER_DESC">children</ENAMEX>
+go into hysterics at once). With the nanny, you know what to expect. Your shoot
+will never go as well as the best case of the <ENAMEX TYPE="ORG_DESC">agency</ENAMEX>, but then neither will it
+ever descend into chaos.
+
+            With
+software, the "<ENAMEX TYPE="ORG_DESC">agency</ENAMEX>" is an independent, trusted body verifying that software
+comes from where it claims. A digital signature ensures it came straight from
+the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>, picking up no stray viruses along the way. <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>'s
+Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX> uses this method for its <ENAMEX TYPE="ORGANIZATION">ActiveX</ENAMEX> controls, which it calls
+"<ENAMEX TYPE="WORK_OF_ART">Authenticode TM</ENAMEX> ." These controls are small programs with no
+artificial constraints on their behavior. They allow for the highest possible
+performance and functionality, but also the highest potential for damage. If
+you download a control that has not been signed by a trusted <ENAMEX TYPE="ORG_DESC">agency</ENAMEX>, you're
+putting your data in danger.
+
+            
+The "nanny" approach is the one taken by <ENAMEX TYPE="PERSON">Java</ENAMEX>,
+a special programming language available in both Internet <ENAMEX TYPE="PRODUCT">Explorer</ENAMEX> and
+<ENAMEX TYPE="PER_DESC">Navigator</ENAMEX> that restricts the behavior of its programs. Because the abilities of
+these programs are restricted, they can't harm your data. But because they are
+restricted, they are slower and can do less. For example, <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> <ENAMEX TYPE="ORG_DESC">programs</ENAMEX> cannot
+read the files created by your personal-finance program. That's good for
+safety, but rotten for functionality if you're trying to write a program to
+help <ENAMEX TYPE="PER_DESC">people</ENAMEX> analyze their personal finances. Another <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> advantage is that
+because its programs do less, they can run on almost any computer, no matter
+what the operating system (<ENAMEX TYPE="PRODUCT">Windows 95</ENAMEX>, <ENAMEX TYPE="ORGANIZATION">Mac</ENAMEX> OS, OS<NUMEX TYPE="CARDINAL">/2</NUMEX>, Unix, etc.).
+
+            Both approaches have merit
+for different applications. A high-performance video game can't afford the
+performance penalty of <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX>, but if you trust the <ENAMEX TYPE="ORG_DESC">manufacturer</ENAMEX>, digital
+signatures that guarantee <ENAMEX TYPE="PERSON">ActiveX</ENAMEX> give you the confidence to run it. On the
+other hand, a fill-in-the-blanks tax application doesn't require breakneck
+performance, so a <ENAMEX TYPE="ORGANIZATION">Java</ENAMEX> version that can run on almost any computer might be
+desirable. In fact, a hybrid approach may yield the best results: for example,
+Java presentation software that uses machine-specific <ENAMEX TYPE="ORGANIZATION">ActiveX</ENAMEX> controls for
+high-performance animation and sound.
+
+            The
+concern over Internet security is somewhat overblown. There isn't a <ENAMEX TYPE="PER_DESC">mob</ENAMEX> of data
+<ENAMEX TYPE="PER_DESC">villains</ENAMEX> waiting on the other side of the wire to steal your money, read your
+e-mail, and kidnap your <ENAMEX TYPE="ANIMAL">dog</ENAMEX>. There is no documented case of a credit-card
+number being stolen over the Internet. Sure, viruses do spread and data are
+occasionally lost, but the main reason you hear so much about security is that
+it's a great marketing tactic. "Don't buy their browser; ours is safer." Or,
+"Viruses can kill! Buy our anti-virus software." <ENAMEX TYPE="ORGANIZATION">Microsoft</ENAMEX>, <ENAMEX TYPE="GPE">Netscape</ENAMEX>, and
+others compete to make sure their products are as secure as possible. So maybe
+<ENAMEX TYPE="DISEASE">paranoia</ENAMEX> is sometimes a good thing.
+
+         
+      
+   
